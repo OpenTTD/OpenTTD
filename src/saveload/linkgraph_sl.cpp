@@ -17,6 +17,7 @@
 #include "../linkgraph/linkgraphschedule.h"
 #include "../network/network.h"
 #include "../settings_internal.h"
+#include "../settings_table.h"
 
 #include "../safeguards.h"
 
@@ -165,7 +166,6 @@ public:
 SaveLoadTable GetLinkGraphJobDesc()
 {
 	static std::vector<SaveLoad> saveloads;
-	static const char *prefix = "linkgraph.";
 
 	static const SaveLoad job_desc[] = {
 		SLE_VAR(LinkGraphJob, join_date,        SLE_INT32),
@@ -184,7 +184,7 @@ SaveLoadTable GetLinkGraphJobDesc()
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
 	if (saveloads.size() == 0) {
-		GetSettingSaveLoadByPrefix(prefix, saveloads);
+		GetSaveLoadFromSettingTable(_linkgraph_settings, saveloads);
 
 		for (auto &sl : saveloads) {
 			sl.address_proc = proc;

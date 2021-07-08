@@ -72,8 +72,18 @@ static ErrorList _settings_error_list; ///< Errors while loading minimal setting
 static auto &GenericSettingTables()
 {
 	static const SettingTable _generic_setting_tables[] = {
-		_settings,
+		_difficulty_settings,
+		_economy_settings,
+		_game_settings,
+		_gui_settings,
+		_linkgraph_settings,
+		_locale_settings,
+		_multimedia_settings,
 		_network_settings,
+		_news_display_settings,
+		_pathfinding_settings,
+		_script_settings,
+		_world_settings,
 	};
 	return _generic_setting_tables;
 }
@@ -1207,7 +1217,7 @@ void LoadFromConfig(bool startup)
 		GameLoadConfig(generic_ini, "game_scripts");
 
 		PrepareOldDiffCustom();
-		IniLoadSettings(generic_ini, _gameopt_settings, "gameopt", &_settings_newgame, false);
+		IniLoadSettings(generic_ini, _old_gameopt_settings, "gameopt", &_settings_newgame, false);
 		HandleOldDiffCustom(false);
 
 		ValidateSettings();
@@ -1393,16 +1403,16 @@ static const SettingDesc *GetSettingFromName(const std::string_view name, const 
 }
 
 /**
- * Get the SaveLoad from all settings matching the prefix.
- * @param prefix The prefix to look for.
+ * Get the SaveLoad for all settings in the settings table.
+ * @param settings The settings table to get the SaveLoad objects from.
  * @param saveloads A vector to store the result in.
  */
-void GetSettingSaveLoadByPrefix(std::string_view prefix, std::vector<SaveLoad> &saveloads)
+void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads)
 {
-	for (auto &desc : _settings) {
+	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (StrStartsWith(sd->name, prefix)) saveloads.push_back(sd->save);
+		saveloads.push_back(sd->save);
 	}
 }
 

@@ -15,18 +15,25 @@
 #include <array>
 #include "settings_internal.h"
 
-typedef span<const SettingVariant> SettingTable;
-
-extern SettingTable _settings;
-extern SettingTable _network_settings;
-extern SettingTable _network_private_settings;
-extern SettingTable _network_secrets_settings;
-
 extern SettingTable _company_settings;
 extern SettingTable _currency_settings;
-extern SettingTable _gameopt_settings;
+extern SettingTable _difficulty_settings;
+extern SettingTable _economy_settings;
+extern SettingTable _game_settings;
+extern SettingTable _gui_settings;
+extern SettingTable _linkgraph_settings;
+extern SettingTable _locale_settings;
 extern SettingTable _misc_settings;
+extern SettingTable _multimedia_settings;
+extern SettingTable _network_private_settings;
+extern SettingTable _network_secrets_settings;
+extern SettingTable _network_settings;
+extern SettingTable _news_display_settings;
+extern SettingTable _old_gameopt_settings;
+extern SettingTable _pathfinding_settings;
+extern SettingTable _script_settings;
 extern SettingTable _window_settings;
+extern SettingTable _world_settings;
 #if defined(_WIN32) && !defined(DEDICATED)
 extern SettingTable _win32_settings;
 #endif /* _WIN32 */

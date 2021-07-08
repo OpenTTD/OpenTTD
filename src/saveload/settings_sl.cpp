@@ -151,7 +151,7 @@ struct OPTSChunkHandler : ChunkHandler {
 		 * a networking environment. This ensures for example that the local
 		 * autosave-frequency stays when joining a network-server */
 		PrepareOldDiffCustom();
-		LoadSettings(_gameopt_settings, &_settings_game, _gameopt_sl_compat);
+		LoadSettings(_old_gameopt_settings, &_settings_game, _gameopt_sl_compat);
 		HandleOldDiffCustom(true);
 	}
 };
@@ -159,22 +159,51 @@ struct OPTSChunkHandler : ChunkHandler {
 struct PATSChunkHandler : ChunkHandler {
 	PATSChunkHandler() : ChunkHandler('PATS', CH_TABLE) {}
 
+	/**
+	 * Create a single table with all settings that should be stored/loaded
+	 * in the savegame.
+	 */
+	SettingTable GetSettingTable() const
+	{
+		static const SettingTable saveload_settings_tables[] = {
+			_difficulty_settings,
+			_economy_settings,
+			_game_settings,
+			_linkgraph_settings,
+			_locale_settings,
+			_pathfinding_settings,
+			_script_settings,
+			_world_settings,
+		};
+		static std::vector<SettingVariant> settings_table;
+
+		if (settings_table.empty()) {
+			for (auto &saveload_settings_table : saveload_settings_tables) {
+				for (auto &saveload_setting : saveload_settings_table) {
+					settings_table.push_back(saveload_setting);
+				}
+			}
+		}
+
+		return settings_table;
+	}
+
 	void Load() const override
 	{
 		/* Copy over default setting since some might not get loaded in
 		 * a networking environment. This ensures for example that the local
 		 * currency setting stays when joining a network-server */
-		LoadSettings(_settings, &_settings_game, _settings_sl_compat);
+		LoadSettings(this->GetSettingTable(), &_settings_game, _settings_sl_compat);
 	}
 
 	void LoadCheck(size_t) const override
 	{
-		LoadSettings(_settings, &_load_check_data.settings, _settings_sl_compat);
+		LoadSettings(this->GetSettingTable(), &_load_check_data.settings, _settings_sl_compat);
 	}
 
 	void Save() const override
 	{
-		SaveSettings(_settings, &_settings_game);
+		SaveSettings(this->GetSettingTable(), &_settings_game);
 	}
 };
 

@@ -312,8 +312,10 @@ static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
 	return std::visit([](auto&& arg) -> const SettingDesc * { return &arg; }, desc);
 }
 
+typedef span<const SettingVariant> SettingTable;
+
 const SettingDesc *GetSettingFromName(const std::string_view name);
-void GetSettingSaveLoadByPrefix(const std::string_view prefix, std::vector<SaveLoad> &saveloads);
+void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);
 bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
 bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
 
