@@ -43,7 +43,7 @@ std::string_view GetNetworkRevisionString()
 	static std::string network_revision;
 
 	if (network_revision.empty()) {
-		std::string network_revision = _openttd_revision;
+		network_revision = _openttd_revision;
 		if (_openttd_revision_tagged) {
 			/* Tagged; do not mangle further, though ensure it's not too long. */
 			if (network_revision.size() >= NETWORK_REVISION_LENGTH) network_revision.resize(NETWORK_REVISION_LENGTH - 1);
