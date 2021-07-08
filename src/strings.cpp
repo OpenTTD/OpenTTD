@@ -818,8 +818,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	uint next_substr_case_index = 0;
 	char *buf_start = buff;
 	const char *current_str_arg = str_arg;
-	for (;;) {
-		if ((b = Utf8Consume(&current_str_arg)) == '\0') break;
+	while ((b = Utf8Consume(&current_str_arg)) != '\0') {
 		const char *&str = current_str_arg;
 
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
