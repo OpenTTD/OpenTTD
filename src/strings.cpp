@@ -817,7 +817,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	WChar b = '\0';
 	uint next_substr_case_index = 0;
 	char *buf_start = buff;
-	const char* current_str_arg = str_arg;
+	const char *current_str_arg = str_arg;
 	for (;;) {
 		if ((b = Utf8Consume(&current_str_arg)) == '\0') break;
 		const char *&str = current_str_arg;
