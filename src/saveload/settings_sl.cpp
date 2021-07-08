@@ -91,7 +91,8 @@ static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool 
 
 		SaveLoad sv = sd->save;
 		/* Replace the name with the actual name of the setting. */
-		if (!sd->name.empty()) sv.name = sd->name;
+		assert(!sd->name.empty());
+		sv.name = sd->name;
 		saveloads.push_back(sv);
 	}
 
