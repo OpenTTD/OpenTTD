@@ -49,16 +49,25 @@
 
 #include "safeguards.h"
 
-SettingTable _settings{ _settings_table };
-SettingTable _network_settings{ _network_settings_table };
-SettingTable _network_private_settings{ _network_private_settings_table };
-SettingTable _network_secrets_settings{ _network_secrets_settings_table };
-
 SettingTable _company_settings{ _company_settings_table };
 SettingTable _currency_settings{ _currency_settings_table };
-SettingTable _gameopt_settings{ _gameopt_settings_table };
+SettingTable _difficulty_settings{ _difficulty_settings_table };
+SettingTable _multimedia_settings{ _multimedia_settings_table };
+SettingTable _economy_settings{ _economy_settings_table };
+SettingTable _game_settings{ _game_settings_table };
+SettingTable _gui_settings{ _gui_settings_table };
+SettingTable _linkgraph_settings{ _linkgraph_settings_table };
+SettingTable _locale_settings{ _locale_settings_table };
 SettingTable _misc_settings{ _misc_settings_table };
+SettingTable _network_private_settings{ _network_private_settings_table };
+SettingTable _network_secrets_settings{ _network_secrets_settings_table };
+SettingTable _network_settings{ _network_settings_table };
+SettingTable _news_display_settings{ _news_display_settings_table };
+SettingTable _old_gameopt_settings{ _old_gameopt_settings_table };
+SettingTable _pathfinding_settings{ _pathfinding_settings_table };
+SettingTable _script_settings{ _script_settings_table };
 SettingTable _window_settings{ _window_settings_table };
+SettingTable _world_settings{ _world_settings_table };
 #if defined(_WIN32) && !defined(DEDICATED)
 SettingTable _win32_settings{ _win32_settings_table };
 #endif /* _WIN32 */
