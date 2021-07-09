@@ -3323,6 +3323,40 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 	}
 }
 
+/**
+ * Create an autosave or netsave.
+ * @param counter A reference to the counter variable to be used for rotating the file name.
+ * @param netsave Indicates if this is a regular autosave or a netsave.
+ */
+void DoAutoOrNetsave(int &counter, bool netsave)
+{
+	char buf[MAX_PATH];
+
+	if (_settings_client.gui.keep_all_autosave) {
+		GenerateDefaultSaveName(buf, lastof(buf));
+		if (!netsave) {
+			strecat(buf, ".sav", lastof(buf));
+		} else {
+			strecat(buf, "-netsave.sav", lastof(buf));
+		}
+	} else {
+		/* Generate a savegame name and number according to _settings_client.gui.max_num_autosaves. */
+		if (!netsave) {
+			seprintf(buf, lastof(buf), "autosave%d.sav", counter);
+		} else {
+			seprintf(buf, lastof(buf), "netsave%d.sav", counter);
+		}
+
+		if (++counter >= _settings_client.gui.max_num_autosaves) counter = 0;
+	}
+
+	Debug(sl, 2, "Autosaving to '{}'", buf);
+	if (SaveOrLoad(buf, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR) != SL_OK) {
+		ShowErrorMessage(STR_ERROR_AUTOSAVE_FAILED, INVALID_STRING_ID, WL_ERROR);
+	}
+}
+
+
 /** Do a save when exiting the game (_settings_client.gui.autosave_on_exit) */
 void DoExitSave()
 {
