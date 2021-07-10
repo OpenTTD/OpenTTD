@@ -16,6 +16,7 @@
 #include "object_base.h"
 #include "company_base.h"
 #include "company_func.h"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 
@@ -279,8 +280,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			bool indirectly_cleared = coa != nullptr && coa->first_tile != t;
 
 			/* Check tiletype-specific things, and add extra-cost */
-			const bool curr_gen = _generating_world;
-			if (_game_mode == GM_EDITOR) _generating_world = true; // used to create green terraformed land
+			Backup<bool> old_generating_world(_generating_world, FILE_LINE);
+			if (_game_mode == GM_EDITOR) old_generating_world.Change(true); // used to create green terraformed land
 			DoCommandFlag tile_flags = flags | DC_AUTO | DC_FORCE_CLEAR_TILE;
 			if (pass == 0) {
 				tile_flags &= ~DC_EXEC;
@@ -292,7 +293,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			} else {
 				cost = _tile_type_procs[GetTileType(t)]->terraform_tile_proc(t, tile_flags, z_min, tileh);
 			}
-			_generating_world = curr_gen;
+			old_generating_world.Restore();
 			if (cost.Failed()) {
 				_terraform_err_tile = t;
 				return cost;
