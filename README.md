@@ -34,7 +34,7 @@ Both 'stable' and 'nightly' versions are available for download:
 - most people should choose the 'stable' version, as this has been more extensively tested
 - the 'nightly' version includes the latest changes and features, but may sometimes be less reliable
 
-On some platforms OpenTTD will also be available via your OS package manager or a similar service.
+OpenTTD is also available for free on [Steam](https://store.steampowered.com/app/1536610/OpenTTD/), [GOG.com](https://www.gog.com/game/openttd), and the [Microsoft Store](https://www.microsoft.com/p/openttd-official/9ncjg5rvrr1c). On some platforms OpenTTD will be available via your OS package manager or a similar service.
 
 
 ## 1.2) OpenTTD gameplay manual
