@@ -2054,7 +2054,6 @@ STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Náušnica:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmeniť kravatu alebo náušnicu
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privátny
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Verejný
 
 # Network server list
@@ -2212,6 +2211,9 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Založi�
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Toto ste vy
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Toto je hosť hry
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Vyhodiť
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Vymazať
@@ -2337,6 +2339,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} da
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil reláciu
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server sa reštartuje...{}Čakajte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Hráč {STRING} bol vyhodený. Dôvod: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sťahovanie obsahu

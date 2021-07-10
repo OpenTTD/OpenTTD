@@ -2006,6 +2006,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :用戶端清單
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}多人遊戲
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}伺服器
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 
 
@@ -2115,6 +2118,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}伺服器關閉連線
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}伺服器重新啟動中...{}請稍候...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 已被踢出。原因：({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}內容下載中

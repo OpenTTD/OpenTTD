@@ -1855,6 +1855,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leik
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Þjónn
@@ -1962,6 +1965,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} yf
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heitir nú {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Þjónninn sleit tengingunni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Niðurhel efni

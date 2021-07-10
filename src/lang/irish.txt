@@ -1990,6 +1990,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta na gclia
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Freastalaí
@@ -2097,6 +2100,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** D'fhág {ST
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** D'athraigh {STRING} a (h)ainm go {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhún an freastalaí an seisiún
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tá an freastalaí á atosú...{}Fan go fóill...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Inneachar á íoslódáil

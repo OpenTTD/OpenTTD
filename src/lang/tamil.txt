@@ -1852,6 +1852,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :விளைய
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :சர்வர்
@@ -1959,6 +1962,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} �
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}சர்வர் ஆட்டத்தினை முடித்தது
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}சர்வர் மீண்டும் தொடங்குகிறது...{}சற்று பொறுக்கவும்...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} வெளியேற்றப்பட்டார். காரணம்: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}கோப்புகள் பதிவிறக்கம் செய்யப்படுகின்றன

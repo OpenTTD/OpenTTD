@@ -2146,7 +2146,6 @@ STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Серьга:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изменить галстук или серьгу
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Публичный
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Частный
 
 # Network server list
@@ -2305,6 +2304,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Это �
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Это организатор игры
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} клиент{P "" а ов} / {NUM} компани{P я и й}
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Отключить
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Заблокировать
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Удалить
@@ -2431,6 +2433,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Компа�
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрыл сессию
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента

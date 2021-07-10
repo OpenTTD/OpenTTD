@@ -1712,6 +1712,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :سرویس دهنده
@@ -1819,6 +1822,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ا
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نامش را به {STRING} تغییر داد
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرویس دهنده جلسه را تعطیل کرد
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}راه اندازی مجدد سرویس دهنده...{}لطفا صبر کنید...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}در حال دانلود

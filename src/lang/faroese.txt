@@ -1817,6 +1817,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klie
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Servari
@@ -1924,6 +1927,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} er
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hevur broytt sítt navn til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servarin endaði setuna
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servarin endurbyrjar...{}Vinarliga bíða...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Tilfar verur heinta niður

@@ -2238,6 +2238,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список к
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Сервер
@@ -2350,6 +2353,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Від {STR
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрив сеанс
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Перезавантаження сервера...{}Зачекайте...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} відключено. Причина: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Завантаження вмісту

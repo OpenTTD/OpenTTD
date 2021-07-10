@@ -1996,7 +1996,6 @@ STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Arracades:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia la corbata o les arracades
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privada
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Pública
 
 # Network server list
@@ -2155,6 +2154,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Aquest e
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aquest és l'hoste de la partida.
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} / {NUM} companyi{P a es}
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Treu
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Expulsa
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Esborra
@@ -2281,6 +2283,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha tancat la sessió
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor està reiniciant...{}Espera un moment...
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descàrregues de contingut

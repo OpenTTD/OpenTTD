@@ -1913,7 +1913,6 @@ STR_FACE_TIE                                                    :Cravată:
 STR_FACE_EARRING                                                :Cercei:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -2049,6 +2048,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modific�
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu parolă
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sigur vrei să dai afară jucătorul '{STRING}'?
@@ -2163,6 +2165,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a 
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a închis conexiunea
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm aşteptaţi...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a fost dat afară. Motiv: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descărcare resurse online

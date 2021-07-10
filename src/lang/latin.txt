@@ -2209,6 +2209,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Servatrum
@@ -2316,6 +2319,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} lu
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nomen suum mutat ad {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servatrum iam clausum est
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servatrum resumit...{}Maneas...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Arcessitus Rerum

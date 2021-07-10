@@ -2043,7 +2043,6 @@ STR_FACE_TIE                                                    :Lips:
 STR_FACE_EARRING                                                :Kõrvarõngas:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta kraed või kõrvarõngast
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privaatne
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Avalik
 
 # Network server list
@@ -2202,6 +2201,9 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Loo uus 
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tema oled sina
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Tema on mängu korraldaja
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Viska välja
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Keela
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Kustuta
@@ -2327,6 +2329,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} sa
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server sulges sessiooni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server restardib...{}Palun oota...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} visati välja. Põhjendus: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Aineste allalaadimine

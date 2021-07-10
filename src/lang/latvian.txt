@@ -2085,6 +2085,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju sa
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Serveris
@@ -2197,6 +2200,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ie
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris beidza sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris pārstartējas...{}Lūdzu uzgaidiet...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} tika izmests. Iemesls: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Satura lejupielāde

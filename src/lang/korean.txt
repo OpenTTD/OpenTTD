@@ -1996,7 +1996,6 @@ STR_FACE_TIE                                                    :넥타이:
 STR_FACE_EARRING                                                :귀걸이:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타이/귀걸이 변경
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :비공개
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :공개
 
 # Network server list
@@ -2155,6 +2154,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}당신�
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}이 게임을 연 사람입니다
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}접속자 {NUM}명 / 회사 {NUM}개
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :추방
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :차단
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :삭제
@@ -2281,6 +2283,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}기다려주세요...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} - 서버에서 강제로 추방되었습니다. 사유: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}콘텐츠 다운로드

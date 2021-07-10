@@ -2110,6 +2110,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Server
@@ -2222,6 +2225,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} hu
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De Server huet d'Sessioun zougemaach
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De Server gëtt nei gestart...{}W.e.g. waarden...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} gouf gekickt. Grond: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Lueden Inhalt erof

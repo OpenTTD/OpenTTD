@@ -1996,7 +1996,6 @@ STR_FACE_TIE                                                    :Gravata:
 STR_FACE_EARRING                                                :Brinco:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Alterar gravata ou brinco
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privado
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
 
 # Network server list
@@ -2155,6 +2154,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Esse é 
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Esse é o hospedeiro do jogo
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} / {NUM} empresa{P "" s}
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Banir
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Excluir
@@ -2281,6 +2283,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} de
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está reiniciando...{}Aguarde...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi kickado. Motivo: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Baixando conteúdo

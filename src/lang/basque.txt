@@ -1911,6 +1911,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Zerbitzaria
@@ -2018,6 +2021,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} jo
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING}-k bere izena {STRING}-ra aldatu du
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Zebitzariak saioa itxi du
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Zerbitzaria berriro hasten ari da...{}Mesedez itxaron...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Edukiak deskargatzen

@@ -1893,6 +1893,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client l
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Tsjinner
@@ -1970,6 +1973,7 @@ STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} de
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is in neie taskôger
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat syn/har namme oanpast nei {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tsjinner hat de ferbining sluten
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Ynhâld delheljen

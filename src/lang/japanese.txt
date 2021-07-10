@@ -1987,7 +1987,6 @@ STR_FACE_TIE                                                    :ネクタイ:
 STR_FACE_EARRING                                                :イヤリング:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネクタイ/イヤリングを変更します
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :プライベート
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :公開
 
 # Network server list
@@ -2145,6 +2144,9 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}新し�
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}これはあなたです
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲームのホストです
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :キック
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :BAN
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :削除
@@ -2271,6 +2273,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} �
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}サーバがセッションを終了しました
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバーは再起動中です…{}しばらくお待ちください…
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING}がキックされました。理由: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}コンテンツをダウンロード中

@@ -1996,7 +1996,6 @@ STR_FACE_TIE                                                    :Krawatte:
 STR_FACE_EARRING                                                :Ohrring:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte oder Ohrring ändern
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Öffentlich
 
 # Network server list
@@ -2155,6 +2154,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Das sind
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dies ist der Host des Spiels
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} Client{P "" s} / {NUM} Firm{P a en}
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Hinauswerfen
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Löschen
@@ -2281,6 +2283,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ga
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Server startet neu...{}Bitte warten...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} wurde vom Server hinausgeworfen. Grund: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Herunterladen von Erweiterungen

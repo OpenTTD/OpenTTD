@@ -2016,6 +2016,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת מש
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :שרת
@@ -2123,6 +2126,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :({2:STRING}) ע
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :{STRING} שינה את שמו ל {STRING} ***
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}השרת סגר את המשחק
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}השרת מופעל מחדש...{}אנא המתן...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}הורדת תוכן

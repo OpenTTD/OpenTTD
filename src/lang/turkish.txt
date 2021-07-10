@@ -1987,7 +1987,6 @@ STR_FACE_TIE                                                    :Kravat:
 STR_FACE_EARRING                                                :Küpe:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı veya küpeyi değiştir
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Özel
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Halka açık
 
 # Network server list
@@ -2145,6 +2144,9 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Yeni bir
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Bu sensin
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Bu, oyunun ev sahibi
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :At
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Yasakla
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Sil
@@ -2270,6 +2272,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} {1
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu kapandı
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} atıldı. Sebep: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}İçerik indirme

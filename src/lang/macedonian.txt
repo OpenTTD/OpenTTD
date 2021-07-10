@@ -994,6 +994,9 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 
@@ -1018,6 +1021,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Игра уште пауза ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игра скрипта
 ############ End of leave-in-this-order
+
 
 # Content downloading window
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Пребарај надворешни веб-страни

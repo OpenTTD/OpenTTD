@@ -1967,6 +1967,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Client list
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Server
@@ -2074,6 +2077,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} has changed his/her name to {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}The server closed the session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The server is restarting...{}Please wait...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Content downloading

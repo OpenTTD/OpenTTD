@@ -2197,6 +2197,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam hráčů
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Server
@@ -2309,6 +2312,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} po
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil relaci
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} byl vyhozen. Důvod: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Součásti ke stažení

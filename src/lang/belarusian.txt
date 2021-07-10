@@ -2346,6 +2346,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кл
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Сэрвэр
@@ -2454,6 +2457,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} в
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} зьмяніў сваё імя на {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Гэты сэрвэр закрыў сэсію
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Гэты сэрвэр перазапускаецца...{}Пачакайце, калі ласка
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Кантэнт запампоўваецца

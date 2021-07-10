@@ -2131,6 +2131,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei clie
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sei sicuro di voler eliminare la compagnia '{COMPANY}'?
 
@@ -2244,6 +2247,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il server ha chiuso la sessione
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download contenuti

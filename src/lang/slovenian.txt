@@ -2146,6 +2146,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Strežnik
@@ -2253,6 +2256,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} od
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je opravil/a spremembo imena v {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Strežnik je zaprl sejo
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Strežnik se zaganja...{}Prosim počakaj...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Prenos vsebin

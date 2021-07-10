@@ -1603,6 +1603,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :سرور
@@ -1710,6 +1713,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ن
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نے اپنا نام بدل کر {STRING} رکھ لیا ہے
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرور نے سیشن بند کر دیا
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}سرور دوبارہ سے سٹارٹ ہو رہا ہے - - -{}برائے مہربانی انتظار فرمائیے ۔ ۔ ۔
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}مواد ڈاون لوڈ کیا جا رہا ہے

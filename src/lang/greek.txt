@@ -2159,6 +2159,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συ
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Διακομιστής
@@ -2271,6 +2274,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έ
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}Παρακαλώ περιμένετε...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} εκδιώχθηκε. Λόγος: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Περιεχόμενο κατεβαίνει

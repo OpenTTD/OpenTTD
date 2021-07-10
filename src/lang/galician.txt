@@ -2038,6 +2038,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de client
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Servidor
@@ -2146,6 +2149,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ca
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Agarda por favor...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descargando contidos

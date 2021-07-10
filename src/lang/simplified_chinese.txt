@@ -2115,6 +2115,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :服务器
@@ -2227,6 +2230,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} �
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器关闭了进程
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动。{}请等待……
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}下载内容

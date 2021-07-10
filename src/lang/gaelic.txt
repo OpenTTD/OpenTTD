@@ -2202,6 +2202,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan clia
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Frithealaiche
@@ -2309,6 +2312,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Dh'fhalbh {
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Dh'atharraich {0:STRING} (a h-)ainm gu {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhùin am frithealaiche an seisean
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tha am frithealaiche ag ath-thòiseachadh...{}Fuirich greis...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Susbaint ri luchdadh a-nuas

@@ -433,6 +433,9 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}उद�
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 
@@ -455,6 +458,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}सं�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :खेल अभी भी ठहरा हुआ है ({STRING}, {STRING}, {STRING})
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :छोड़ रहा है
+
 
 # Content downloading window
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}यह आपके पास पहले से मौजूद है

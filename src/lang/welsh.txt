@@ -1998,6 +1998,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleienti
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Gweinydd
@@ -2105,6 +2108,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Fe gaewyd y sesiwn gan y gweinydd
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Llawrlwytho cynnwys

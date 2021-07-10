@@ -1998,7 +1998,6 @@ STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Ørering:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre slips eller ørering
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Offentlig
 
 # Network server list
@@ -2158,6 +2157,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dette er
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dette er verten for spillet
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" s} / {NUM} firma{P et er}
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Spark
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Utesteng
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Slett
@@ -2284,6 +2286,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ga
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tjeneren avsluttet spillet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tjeneren starter på nytt...{}Vennligst vent...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ble kastet ut. Grunn: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Laster ned innhold

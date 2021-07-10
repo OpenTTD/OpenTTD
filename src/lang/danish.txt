@@ -2050,6 +2050,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient liste
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Server
@@ -2159,6 +2162,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveren har lukket ned for dette spil
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveren genstarter...{}Vent venligst...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} blev sparket ud. Grund: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download af indhold

@@ -1995,7 +1995,6 @@ STR_FACE_TIE                                                    :Solmio:
 STR_FACE_EARRING                                                :Korvakoru:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda solmio tai korvakoru
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Yksityinen
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Julkinen
 
 # Network server list
@@ -2154,6 +2153,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tämä o
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Tämä on pelin ylläpitäjä
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} pelaaja{P "" a} / {NUM} yhtiö{P "" tä}
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Potki
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Estä
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Poista
@@ -2280,6 +2282,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} an
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sisällön lataus

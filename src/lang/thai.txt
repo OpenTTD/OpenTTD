@@ -1941,6 +1941,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายกา
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :เซิฟเวอร์
@@ -2048,6 +2051,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ได้ทำการเปลี่ยนชื่อเป็น {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}เซิฟเวอร์ปืดเซสซั่นนี้
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}เซิฟเวอร์กำลังทำการเริ่มต้นใหม่...{}กรุณารอซักครู่...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}กำลังโหลดเนื้อหา

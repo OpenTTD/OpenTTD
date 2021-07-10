@@ -1996,7 +1996,6 @@ STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Pendientes:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar corbata o pendientes
 
-STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privado
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
 
 # Network server list
@@ -2154,6 +2153,9 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Éste eres tú
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Éste es el servidor de la partida
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Prohibir el acceso
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Eliminar
@@ -2280,6 +2282,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} di
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor está reiniciando...{}Espera por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descarga de contenido

@@ -2036,6 +2036,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Verskaffer
@@ -2145,6 +2148,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} he
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Die verskaffer het die sessie toegemaak
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Die verskaffer is besig om te weerbegin...{}Wag asb...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is geskop. Rede: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Laai Inhoud af

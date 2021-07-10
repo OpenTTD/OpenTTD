@@ -2496,6 +2496,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista klientów
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Serwer
@@ -2608,6 +2611,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Firma {STRI
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer zamknął sesję
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}Proszę czekać...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} został wyrzucony. Powód: ({STRING})
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka dodatkowej zawartości

@@ -1914,6 +1914,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klie
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Tenar
@@ -2021,6 +2024,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tenaren avslutta spelet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tenaren startar om att...{}Vær venleg og vent...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Lastar ned innhald

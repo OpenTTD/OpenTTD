@@ -564,6 +564,9 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 
@@ -587,6 +590,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
 
 # Content downloading window
 

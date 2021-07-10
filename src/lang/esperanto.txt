@@ -1651,6 +1651,9 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
 
 # Network client list
 
+############ Begin of ConnectionType
+############ End of ConnectionType
+
 
 
 STR_NETWORK_SERVER                                              :Servilo
@@ -1746,6 +1749,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ĉ
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Enhavo elŝutiĝas
