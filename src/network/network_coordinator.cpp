@@ -159,7 +159,7 @@ void ClientNetworkCoordinatorSocketHandler::Connect()
 	this->connecting = true;
 	this->last_activity = std::chrono::steady_clock::now();
 
-	new NetworkCoordinatorConnecter(NETWORK_COORDINATOR_SERVER_HOST);
+	new NetworkCoordinatorConnecter(NetworkCoordinatorConnectionString());
 }
 
 NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool error)

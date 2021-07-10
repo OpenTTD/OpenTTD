@@ -342,7 +342,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
 
 	this->http_response_index = -1;
 
-	new NetworkHTTPContentConnecter(NETWORK_CONTENT_MIRROR_HOST, this, NETWORK_CONTENT_MIRROR_URL, content_request);
+	new NetworkHTTPContentConnecter(NetworkContentMirrorConnectionString(), this, NETWORK_CONTENT_MIRROR_URL, content_request);
 	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
 }
 
@@ -774,7 +774,7 @@ void ClientNetworkContentSocketHandler::Connect()
 {
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
 	this->isConnecting = true;
-	new NetworkContentConnecter(NETWORK_CONTENT_SERVER_HOST);
+	new NetworkContentConnecter(NetworkContentServerConnectionString());
 }
 
 /**

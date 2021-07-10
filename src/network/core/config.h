@@ -12,12 +12,10 @@
 #ifndef NETWORK_CORE_CONFIG_H
 #define NETWORK_CORE_CONFIG_H
 
-/** DNS hostname of the Game Coordinator server */
-static const char * const NETWORK_COORDINATOR_SERVER_HOST       = "coordinator.openttd.org";
-/** DNS hostname of the content server */
-static const char * const NETWORK_CONTENT_SERVER_HOST           = "content.openttd.org";
-/** DNS hostname of the HTTP-content mirror server */
-static const char * const NETWORK_CONTENT_MIRROR_HOST           = "binaries.openttd.org";
+const char *NetworkCoordinatorConnectionString();
+const char *NetworkContentServerConnectionString();
+const char *NetworkContentMirrorConnectionString();
+
 /** URL of the HTTP mirror system */
 static const char * const NETWORK_CONTENT_MIRROR_URL            = "/bananas";
 
