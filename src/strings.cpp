@@ -1850,18 +1850,18 @@ const char *GetCurrentLocale(const char *param)
 {
 	const char *env;
 
-	env = getenv("LANGUAGE");
+	env = std::getenv("LANGUAGE");
 	if (env != nullptr) return env;
 
-	env = getenv("LC_ALL");
+	env = std::getenv("LC_ALL");
 	if (env != nullptr) return env;
 
 	if (param != nullptr) {
-		env = getenv(param);
+		env = std::getenv(param);
 		if (env != nullptr) return env;
 	}
 
-	return getenv("LANG");
+	return std::getenv("LANG");
 }
 #else
 const char *GetCurrentLocale(const char *param);
