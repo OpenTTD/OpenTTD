@@ -1,6 +1,7 @@
 add_files(
     address.cpp
     address.h
+    config.cpp
     config.h
     core.cpp
     core.h
