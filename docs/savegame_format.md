@@ -184,3 +184,31 @@ We advise you to call this setting `__mypp_auto_destroy_rivers` in the settings 
 Doing it this way ensures that a savegame created by these patch-packs can still safely be loaded by unpatched clients.
 They will simply ignore the field and continue loading the savegame as usual.
 The prefix is strongly advised to avoid conflicts with future-settings in an unpatched client or conflicts with other patch-packs.
+
+## Scripts custom data format
+
+Script chunks (`AIPL` and `GSDT`) use `CH_TABLE` chunk type.
+
+At the end of each record there's an `uint8` to indicate if there's custom data (1) or not (0).
+
+There are 6 data types for scripts, called `script-data-type`.
+When saving, each `script-data-type` starts with the type marker saved as `uint8` followed by the actual data.
+- `0` - `SQSL_INT`:
+  - an `int64` with the actual value (`int32` before savegame version 296).
+- `1` - `SQSL_STRING`:
+  - an `uint8` with the string length.
+  - a list of `int8` for the string itself.
+- `2` - `SQSL_ARRAY`:
+  - each element saved as `script-data-type`.
+  - an `SQSL_ARRAY_TABLE_END` (0xFF) marker (`uint8`).
+- `3` - `SQSL_TABLE`:
+  - for each element:
+    - key saved as `script-data-type`.
+    - value saved as `script-data-type`.
+  - an `SQSL_ARRAY_TABLE_END` (0xFF) marker (`uint8`).
+- `4` - `SQSL_BOOL`:
+  - an `uint8` with 0 (false) or 1 (true).
+- `5` - `SQSL_NULL`:
+  - (no data follows)
+
+The first data type is always a `SQSL_TABLE`.
