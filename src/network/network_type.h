@@ -10,8 +10,6 @@
 #ifndef NETWORK_TYPE_H
 #define NETWORK_TYPE_H
 
-#include "core/config.h"
-
 /** How many clients can we have */
 static const uint MAX_CLIENTS = 255;
 

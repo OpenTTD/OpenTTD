@@ -15,6 +15,7 @@
 #include "screenshot.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/core/config.h"
 #include "pathfinder/pathfinder_type.h"
 #include "genworld.h"
 #include "train.h"

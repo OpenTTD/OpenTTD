@@ -14,7 +14,6 @@
 #include "economy_type.h"
 #include "town_type.h"
 #include "transport_type.h"
-#include "network/core/config.h"
 #include "network/network_type.h"
 #include "company_type.h"
 #include "cargotype.h"
