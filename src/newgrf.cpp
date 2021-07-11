@@ -80,7 +80,6 @@ static uint32 _ttdpatch_flags[8];
 GRFLoadedFeatures _loaded_newgrf_features;
 
 static const uint MAX_SPRITEGROUP = UINT8_MAX; ///< Maximum GRF-local ID for a spritegroup.
-static const uint MAX_GRF_COUNT = 128; ///< Maximum number of NewGRF files that could be loaded.
 
 /** Temporary data during loading of GRFs */
 struct GrfProcessingState {
@@ -9853,14 +9852,6 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				}
 				num_non_static++;
 			}
-
-			if (num_grfs >= MAX_GRF_COUNT) {
-				Debug(grf, 0, "'{}' is not loaded as the maximum number of file slots has been reached", c->filename);
-				c->status = GCS_DISABLED;
-				c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
-				continue;
-			}
-			num_grfs++;
 
 			LoadNewGRFFile(c, stage, subdir, false);
 			if (stage == GLS_RESERVE) {
