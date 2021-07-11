@@ -1635,15 +1635,14 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	if (sd->IsStringSetting()) {
 		success = SetSettingValue(sd->AsStringSetting(), value, force_newgame);
 	} else if (sd->IsIntSetting()) {
-		uint32 val;
-		extern bool GetArgumentInteger(uint32 *value, const char *arg);
-		success = GetArgumentInteger(&val, value);
-		if (!success) {
-			IConsolePrint(CC_ERROR, "'{}' is not an integer.", value);
+		const IntSettingDesc *isd = sd->AsIntSetting();
+		size_t val = isd->ParseValue(value);
+		if (!_settings_error_list.empty()) {
+			IConsolePrint(CC_ERROR, "'{}' is not a valid value for this setting.", value);
+			_settings_error_list.clear();
 			return;
 		}
-
-		success = SetSettingValue(sd->AsIntSetting(), val, force_newgame);
+		success = SetSettingValue(isd, (int32)val, force_newgame);
 	}
 
 	if (!success) {
