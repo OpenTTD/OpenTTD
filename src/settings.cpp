@@ -28,6 +28,7 @@
 #include "currency.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/core/config.h"
 #include "command_func.h"
 #include "console_func.h"
 #include "genworld.h"

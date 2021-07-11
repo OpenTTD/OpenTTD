@@ -38,7 +38,7 @@
 #include "strings_func.h"
 #include "date_func.h"
 #include "string_func.h"
-#include "network/network.h"
+#include "network/core/config.h"
 #include <map>
 #include "smallmap_gui.h"
 #include "genworld.h"
