@@ -615,7 +615,6 @@ void NetworkClose(bool close_admins)
 static void NetworkInitialize(bool close_admins = true)
 {
 	InitializeNetworkPools(close_admins);
-	NetworkUDPInitialize();
 
 	_sync_frame = 0;
 	_network_first_time = true;
@@ -907,6 +906,7 @@ bool NetworkServerStart()
 
 	NetworkDisconnect(false, false);
 	NetworkInitialize(false);
+	NetworkUDPInitialize();
 	Debug(net, 5, "Starting listeners for clients");
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
@@ -1292,6 +1292,7 @@ void NetworkStartUp()
 	_network_game_info = {};
 
 	NetworkInitialize();
+	NetworkUDPInitialize();
 	Debug(net, 3, "Network online, multiplayer available");
 	NetworkFindBroadcastIPs(&_broadcast_list);
 }
