@@ -9853,6 +9853,8 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				num_non_static++;
 			}
 
+			num_grfs++;
+
 			LoadNewGRFFile(c, stage, subdir, false);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
