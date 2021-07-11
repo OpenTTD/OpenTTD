@@ -1966,7 +1966,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Porneşt
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Porneşte un server propriu
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduceţi numele dvs.
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Introduceţi adresa serverului
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Începe un joc nou

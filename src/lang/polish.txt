@@ -2419,7 +2419,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Wprowadź swoje imię
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Wpisz adres IP serwera
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Rozpocznij nową grę wieloosobową

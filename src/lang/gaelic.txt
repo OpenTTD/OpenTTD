@@ -2125,7 +2125,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tòisich
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tòisich frithealaiche agad fhèin
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Cuir d' ainm a-steach
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Cuir seòladh an òstair a-steach
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tòisich geama ioma-chluicheadair ùr

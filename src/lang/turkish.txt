@@ -2041,7 +2041,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sunucu b
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Kendi sunucunu başlat
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}İsminizi girin
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sunucunun adresini girin
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Yeni çok oyunculu oyun başlat

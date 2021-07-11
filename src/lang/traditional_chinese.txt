@@ -1927,7 +1927,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}起動�
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}起動您自己的伺服器
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}輸入您的名稱
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}輸入主機位址
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}開始新的多人遊戲

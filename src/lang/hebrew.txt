@@ -1939,7 +1939,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}הפעל
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}הפעל שרת חדש
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK} :שמך
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}הזן את הכתובת של השרת
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}התחל משחק רב-משתתפים חדש

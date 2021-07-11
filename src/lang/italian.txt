@@ -2053,7 +2053,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Avvia se
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Avvia il proprio server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Inserire il nome del giocatore
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Digitare l'indirizzo del server
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Avvia nuova partita multigiocatore

@@ -2269,7 +2269,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запу
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Запуск сэрвэра на вашым кампутары. Да гэтае гульні змогуць далучыцца іншыя гульцы.
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Увядзіце вашае імя
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Увядзіце адрас сэрвэра
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Запуск новай сеткавай гульні

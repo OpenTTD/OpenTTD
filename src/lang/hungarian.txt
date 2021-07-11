@@ -2104,7 +2104,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Szerver 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Saját szervert indít
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Add meg a neved
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Írd be a szerver IP címét
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Új játékot kezd

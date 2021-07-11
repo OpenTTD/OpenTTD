@@ -1913,7 +1913,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tosaigh 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tosaigh d'fhreastalaí féin
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Iontráil d'ainm
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Iontráil seoladh an óstaigh
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tosaigh cluiche ilimreora nua

@@ -2008,7 +2008,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Palaist 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Palaist jūsu personīgo serveri
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Ievadīt savu vārdu
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Ievadīt servera adresi
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Sākt jaunu vairākspēlētāju spēli

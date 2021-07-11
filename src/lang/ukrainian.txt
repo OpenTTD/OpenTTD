@@ -2161,7 +2161,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Ство
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Створити ваш власний сервер
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Введіть ваше ім'я
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Введіть адресу сервера
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Створити нову мережеву гру

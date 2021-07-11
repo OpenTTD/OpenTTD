@@ -2132,7 +2132,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Servatru
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Servatrum tuum proprium incohare
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Nomen tuum inscribe
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Inscribe inscriptionem IP servatri
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Incipere novum ludum cum pluribus lusoribus

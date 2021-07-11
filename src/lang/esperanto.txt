@@ -1574,7 +1574,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Startu s
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Startu propran servilon
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Tajpu vian nomon
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Enigu la adreson de la gastiganto
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Komencu novan ludon por pluraj ludantoj

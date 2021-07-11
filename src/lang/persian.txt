@@ -1635,7 +1635,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}اجرا
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}راه اندازی سرویس دهنده خود
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}نام خود را وارد نماببد
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}نشانی میزبان را وارد کنید
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}آغاز بازی چندنفره

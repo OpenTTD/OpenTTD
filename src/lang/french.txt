@@ -2050,7 +2050,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Héberge
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarrer son propre serveur, sur cet ordinateur-ci
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Entrer votre nom
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Saisir l'adresse IP du serveur
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Commencer une nouvelle partie

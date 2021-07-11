@@ -2050,7 +2050,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Inicia e
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Inicia en un servidor propi
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Posa el teu nom
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Entra l'adreça IP del servidor
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Inicia una partida multijugador nova

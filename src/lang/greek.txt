@@ -2082,7 +2082,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Εκκί
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Ξεκινήστε το δικό σας διακομιστή
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Εισάγετε το όνομά σας
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Εισάγετε τη διεύθυνση του οικοδεσπότη
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Έναρξη νέου παιχνιδιού για πολλούς παίκτες

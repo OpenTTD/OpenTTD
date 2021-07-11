@@ -1961,7 +1961,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Comezar o teu propio servidor
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Escribe o teu nome
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Introduce a dirección IP do servidor
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Comezar nova partida multixogador

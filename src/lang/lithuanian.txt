@@ -2252,7 +2252,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sukurti 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Sukurti savo serverį
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Įrašykite savo vardą
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Įvesk adresą (IP)
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Pradėti naują daugiažaidėjinį žaidimą

@@ -2049,7 +2049,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tạo se
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tạo server của riêng bạn
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Gõ tên của bạn
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Gõ địa chỉ của server
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Bắt đầu ván chơi mạng nhiều người

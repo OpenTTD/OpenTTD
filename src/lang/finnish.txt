@@ -2049,7 +2049,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Käynnis
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Käynnistä oma palvelin
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Kirjoita nimesi
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Syötä palvelimen IP-osoite
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Aloita uusi peli

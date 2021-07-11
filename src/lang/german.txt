@@ -2050,7 +2050,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server s
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Einen eigenen Server starten
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Bitte eigenen Namen eingeben
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}IP-Adresse des Servers eingeben
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Neues Mehrspieler-Spiel beginnen

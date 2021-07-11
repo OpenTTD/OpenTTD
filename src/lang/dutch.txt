@@ -2049,7 +2049,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start se
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start eigen server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Vul je naam in
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Voer het IP-adres van de server in
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Nieuw spel met meerdere spelers starten

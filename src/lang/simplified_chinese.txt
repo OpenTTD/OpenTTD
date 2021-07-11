@@ -2038,7 +2038,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}启动�
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}启动本机作为服务器
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}输入姓名
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}输入服务器地址
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}开始新的联机游戏

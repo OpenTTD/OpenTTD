@@ -2108,7 +2108,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustiť
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Spustiť vlastný server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Zadajte vaše meno
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Zadajte IP adresu serveru
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Spustiť novú hru pre viacero hráčov

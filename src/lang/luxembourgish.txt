@@ -2033,7 +2033,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server s
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Eegenen Server starten
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Gëff däin Numm an
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}D'Address vum Host uginn
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Nei Multiplayerpartie starten

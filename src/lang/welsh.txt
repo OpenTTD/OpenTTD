@@ -1921,7 +1921,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Dechrau 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Dechrau eich gweinydd eich hun
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Rhowch eich enw
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Rhowch gyfeiriad y gwesteiwr
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Dechrau gêm newydd amlchwaraewr

@@ -1837,7 +1837,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start te
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start ein eigen tenar
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Set inn namnet ditt
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Skriv inn IP-adressa til tenaren
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start eit nytt fleirspelarspel

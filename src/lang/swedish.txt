@@ -2049,7 +2049,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Starta s
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Starta en server för andra att ansluta till
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Mata in ditt namn
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}IP-adressen till servern
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Starta ett nytt spel i flerspelarläge

@@ -1864,7 +1864,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}เร�
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}เริ่มเซิร์ฟเวอร์ใหม่ของคุณ
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}ป้อนชื่อของคุณ
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ป้อนที่อยู่ของโฮสต์
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}เริ่มเกมผู้เล่นหลายคนใหม่

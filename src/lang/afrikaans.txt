@@ -1959,7 +1959,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Begin be
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Begin u eie verskaffer
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Tik in jou naam
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Invoeg die adres van die gasheer
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Begin nuwe multispeler speletjie

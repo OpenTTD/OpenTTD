@@ -44,6 +44,7 @@ STR_CARGO_PLURAL_FRUIT                                          :फल
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_MAIZE                                        :मक्का
 STR_CARGO_SINGULAR_SWEETS                                       :मिठाई
+STR_CARGO_SINGULAR_BUBBLE                                       :बुलबुला
 STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
 
 # Quantity of cargo
@@ -73,6 +74,7 @@ STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 # Common window strings
 
 
+STR_TOOLTIP_RESIZE                                              :{BLACK}खिड़की का आकार बदलने के लिये क्लिक करके खींचें
 
 # Show engines button
 
@@ -107,6 +109,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 ############ range ends here
 
 ############ range for file menu starts
@@ -161,13 +164,16 @@ STR_ORDINAL_NUMBER_2ND                                          :द्वित
 ############ range for ordinal numbers ends
 
 ############ range for days starts
-STR_DAY_NUMBER_15TH                                             :१५वीं
+STR_DAY_NUMBER_14TH                                             :१४
+STR_DAY_NUMBER_15TH                                             :१५
+STR_DAY_NUMBER_23RD                                             :२३
 ############ range for days ends
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :जन
 STR_MONTH_ABBREV_NOV                                            :नव
 
+STR_MONTH_AUG                                                   :अगस्त
 ############ range for months ends
 
 # Graph window
@@ -201,6 +207,7 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHIT
 # Smallmap window
 
 
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}ट्रक लदान वीथी
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}रिक्त भूमि
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}नगर
 
@@ -290,6 +297,7 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक �
 
 
 
+STR_VARIETY_MEDIUM                                              :मध्यम
 
 STR_AI_SPEED_SLOW                                               :धीमा
 
@@ -321,17 +329,19 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :कंपनि
 
 
 
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम होने पर वाहनों के निर्देशों की आवधिक जाँच की जाती है, और कुछ सुस्पष्ट मामलों को पता चलते ही एक संदेश द्वारा बताया जाता है।
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम होने पर वाहनों के निर्देशों की आवधिक जाँच की जाती है, और कुछ सुस्पष्ट मामलों का पता चलते ही एक संदेश द्वारा बताया जाता है।
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
 
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :एक स्टेशन के हिस्सों के विस्तार हेतु अधिकतम क्षेत्र निर्धारित करें। ऊंची संख्या खेल को धीमा कर सकती है।
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :बैंगनी
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :अक्षम
 
 
 
 
 
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :सीमाहीन (आपके कंप्यूटर द्वारा सीमित)
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचार पत्र: {STRING}
 
@@ -397,6 +407,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्�
 # Face selection window
 
 STR_FACE_LOAD_DONE                                              :{WHITE}ओपनटीटीडी प्रारूप पत्र से आपका प्रिय चेहरा भर लिया गया है
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}कॉलर बदलें
 
 
 # Network server list
@@ -461,12 +472,14 @@ STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :छोड़ र�
 
 
 # Content downloading window
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}खोजी गयी सामग्री OpenTTD की सामग्री सेवा में उपलब्ध नहीं है, आप OpenTTD से असंबद्ध वेबसाइटों पर खोज सकते हैं
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}यह आपके पास पहले से मौजूद है
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}यह सामग्री अज्ञात है और इसे ओपनटीटीडी में प्राप्त नहीं किया जा सकता है
 
 # Order of these is important!
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}डाउनलोड पूरा हुआ
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}डाउनलोड असफल हुआ...
@@ -571,6 +584,7 @@ STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :रेलवे
 
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :इस्पात का रेल झूला पुल
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :इस्पात बाहुधरण रेल पुल
 
 
 
@@ -578,6 +592,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :इस्पा
 # About OpenTTD window
 
 # Framerate display window
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
@@ -607,6 +622,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}या�
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}चुने गये पूर्वनिश्चित समायोजन को खोलें
 
 
 
@@ -641,6 +657,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF खोजा जा रहा है। संख्या के अनुसार इसमें कुछ समय लग सकता है...
 
 # Sign list window
 
@@ -662,6 +679,7 @@ STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}फै�
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :लघु विज्ञापन अभियान
 
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}नगरों के सड़क तंत्र के पुनर्निर्माण में निवेश करें।{}इससे अधिकतम ६ महीने तक यातायात में बहुत विघ्न पड़ता है।{}मूल्य : {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -708,6 +726,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}संपत्ति का रखरखाव
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} उधार
@@ -860,6 +879,7 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
@@ -983,6 +1003,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... व�
 
 # Station construction related errors
 
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}अत्यधिक स्टेशन/लादन क्षेत्र
 
 # Station destruction related errors
 
@@ -1006,6 +1027,7 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}पट�
 
 
 # Road construction errors
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... असंगत ट्रामवे
 
 # Waterway construction errors
 
@@ -1057,6 +1079,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :ट्रां
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_POWER_STATION                                 :बिजलीघर
+STR_INDUSTRY_NAME_STEEL_MILL                                    :इस्पात चक्की
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :बैंक
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -1066,6 +1089,7 @@ STR_SV_EMPTY                                                    :
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} उत्तर
+STR_SV_STNAME_CENTRAL                                           :{STRING} केंद्रीय
 STR_SV_STNAME_AIRPORT                                           :{STRING} हवाई अड्डा
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
@@ -1078,8 +1102,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :कोयला
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :फल वाहन
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (विद्युतीय)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :खिलौनों का डब्बा
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :पानी का टैंकर
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :बबल वैन
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :प्लॉडीपीहट एमके३ बस
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :मोरलैंड काष्ठ ट्रक
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :फोस्टर कवचयुक्त ट्रक
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :पावरनोट मिष्ठान्न ट्रक
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बेकवेल कॉट्सवॉल्ड एलबी-३

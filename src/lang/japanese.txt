@@ -2041,7 +2041,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}サー�
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}自分でサーバーを立ち上げます
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}プレイヤー名を入力
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ホストアドレスを入力します
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}新規マルチプレイヤーゲームを開始

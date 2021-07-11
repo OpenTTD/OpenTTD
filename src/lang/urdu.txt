@@ -1526,7 +1526,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}سرور
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}اپنا سرور خود شروع کریں
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}اپنا نام لکھیں
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ہوسٹ کا ایڈریس لکھیں
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}نیا زیادہ کھلاڑیوں والا کھیل شروع کریں

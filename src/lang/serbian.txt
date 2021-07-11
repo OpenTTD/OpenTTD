@@ -2228,7 +2228,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Pokreni 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Pokrenite sopstveni server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Unesite Vaše ime
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Unesite adresu računara-servera
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Pokreni novu mrežnu partiju

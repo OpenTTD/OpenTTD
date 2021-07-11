@@ -2052,7 +2052,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start tj
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start en egen tjener
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Skriv inn ditt navn
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Skriv inn IP-adressen til verten
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start et nytt flerspillerspill

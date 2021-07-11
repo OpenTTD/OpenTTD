@@ -1229,6 +1229,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tato akce resetuje všechna nastavení hry na výchozí hodnoty.{}Jste si jistý, že chcete pokračovat?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Druh:
@@ -2120,7 +2121,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustit 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Spustit vlastní server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Zadej své jméno
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Vlož IP adresu serveru
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Začít novou hru
@@ -2196,11 +2196,19 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společn
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam hráčů
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Název serveru, na kterém hrajete
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Upravte název svého serveru
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Název serveru
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Jméno vašeho hráče
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Připojit se a hrát za tuto společnost
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Poslat zprávu tomuto hráči
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Poslat zprávu všem hráčům této firmy
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
 
 
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Jste si jisti, že chcete smazat společnost '{COMPANY}'?
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
@@ -2257,6 +2265,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vložen�
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvůj počítač je přiliš pomalý pro udržení kroku se serverem
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvému počítači trvalo stahování mapy příliš dlouho
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tvému počítači trvalo připojování na server příliš dlouho
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Jméno vašeho hráče není platné
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :všeobecná chyba
@@ -2313,6 +2322,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server u
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} byl vyhozen. Důvod: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Váš server neumožňuje vzdálené připojení
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Součásti ke stažení

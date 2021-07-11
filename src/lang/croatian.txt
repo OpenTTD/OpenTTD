@@ -2064,7 +2064,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Pokreni 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Pokreni vlastiti poslužitelj
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Upiši svoje ime
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Unesi adresu domaćina
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Započni novu igru za više igrača

@@ -1740,7 +1740,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Set serv
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Set tín egna servara í gongd
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Skriva títt navn
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Skriva bústað hjá verti
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Byrja eitt nýtt hópspæl

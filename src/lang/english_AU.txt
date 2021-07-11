@@ -1890,7 +1890,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start se
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start your own server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Enter your name
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Enter the address of the host
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start new multiplayer game

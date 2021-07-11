@@ -1829,7 +1829,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start ts
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start dien eigen tsjinner
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Fier dyn namme in
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Fier de namme fan de host yn
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start in spul foar multispilers

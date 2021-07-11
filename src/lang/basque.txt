@@ -1834,7 +1834,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Zerbitza
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Zure zerbitzaria sortu
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Sartu zure izena
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sartu antolatzailearen helbidea
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Multijokalari joko berri bat hasi

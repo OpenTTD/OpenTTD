@@ -2069,7 +2069,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Poženi 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Poženi lasten streznik
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Vpiši tvoje ime
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Vnesi naslov gostitelja
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Poženi novo igro za več igralcev

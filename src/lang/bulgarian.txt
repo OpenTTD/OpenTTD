@@ -1880,7 +1880,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Пуск
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Пуснете ваш собствен сървър
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Въведете името си
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Въведете адреса на хоста
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Започни нова мрежова игра
