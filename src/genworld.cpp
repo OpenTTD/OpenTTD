@@ -93,7 +93,9 @@ static void _GenerateWorld()
 		_generating_world = true;
 		if (_network_dedicated) Debug(net, 3, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
-		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
+		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) {
+			_settings_game.game_creation.generation_seed = InteractiveRandom();
+		}
 		_random.SetSeed(_settings_game.game_creation.generation_seed);
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
