@@ -934,7 +934,7 @@ bool NetworkServerStart()
 
 	NetworkInitGameInfo();
 
-	if (_settings_client.network.server_advertise) {
+	if (_settings_client.network.server_game_type != SERVER_GAME_TYPE_LOCAL) {
 		_network_coordinator_client.Register();
 	}
 
@@ -997,6 +997,29 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 
 	/* Reinitialize the UDP stack, i.e. close all existing connections. */
 	NetworkUDPInitialize();
+}
+
+/**
+ * The setting server_game_type was updated; possibly we need to take some
+ * action.
+ */
+void NetworkUpdateServerGameType()
+{
+	if (!_networking) return;
+
+	switch (_settings_client.network.server_game_type) {
+		case SERVER_GAME_TYPE_LOCAL:
+			_network_coordinator_client.CloseConnection();
+			break;
+
+		case SERVER_GAME_TYPE_INVITE_ONLY:
+		case SERVER_GAME_TYPE_PUBLIC:
+			_network_coordinator_client.Register();
+			break;
+
+		default:
+			NOT_REACHED();
+	}
 }
 
 /**

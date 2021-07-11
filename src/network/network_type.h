@@ -42,6 +42,7 @@ enum NetworkVehicleType {
 enum ServerGameType : uint8 {
 	SERVER_GAME_TYPE_LOCAL = 0,
 	SERVER_GAME_TYPE_PUBLIC,
+	SERVER_GAME_TYPE_INVITE_ONLY,
 };
 
 /** 'Unique' identifier to be given to clients */

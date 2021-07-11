@@ -48,6 +48,10 @@ Last updated:    2011-02-16
     - click add server
     - type in the ip address or hostname
     - if you want to add a port use :<port>
+ - If you want to play and you have the invite code of the game server you
+   want connect to.
+    - click add server
+    - type in the invite code
  - Now you can select a company and press: "Join company", to help that company
     - Or you can press "Spectate game", to spectate the game
     - Or you can press "New company", and start your own company (if there are
@@ -110,9 +114,10 @@ Last updated:    2011-02-16
  - You can let your server automatically restart a map when, let's say, year 2030
    is reached. See 'set restart_game_date' for detail.
 
- - If you want to be on the server-list, enable Advertising. To do this, select
-   'Internet (advertise)' in the Start Server menu, or type in console:
-   'set server_advertise 1'.
+ - If you want to be on the server-list, make your server public. You can do
+   this either from the Start Server GUI, via the in-game Online Players GUI,
+   or by typing in the console:
+   'set server_game_type 1'.
 
  - You can protect your server with a password via the console: 'set server_pw',
    or via the Start Server menu.
