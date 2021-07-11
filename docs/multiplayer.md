@@ -117,7 +117,7 @@ Last updated:    2011-02-16
  - If you want to be on the server-list, make your server public. You can do
    this either from the Start Server GUI, via the in-game Online Players GUI,
    or by typing in the console:
-   'set server_game_type 1'.
+   'set server_game_type public'.
 
  - You can protect your server with a password via the console: 'set server_pw',
    or via the Start Server menu.
