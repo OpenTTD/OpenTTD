@@ -82,10 +82,12 @@ private:
 		RESOLVING,  ///< The hostname is being resolved (threaded).
 		FAILURE,    ///< Resolving failed.
 		CONNECTING, ///< We are currently connecting.
+		CONNECTED,  ///< The connection is established.
 	};
 
 	std::thread resolve_thread;                         ///< Thread used during resolving.
 	std::atomic<Status> status = Status::INIT;          ///< The current status of the connecter.
+	std::atomic<bool> killed = false;                   ///< Whether this connecter is marked as killed.
 
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
 	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
@@ -101,7 +103,7 @@ private:
 	void OnResolved(addrinfo *ai);
 	bool TryNextAddress();
 	void Connect(addrinfo *address);
-	bool CheckActivity();
+	virtual bool CheckActivity();
 
 	/* We do not want any other derived classes from this class being able to
 	 * access these private members, but it is okay for TCPServerConnecter. */
@@ -125,15 +127,25 @@ public:
 	 */
 	virtual void OnFailure() {}
 
+	void Kill();
+
 	static void CheckCallbacks();
 	static void KillAll();
 };
 
 class TCPServerConnecter : public TCPConnecter {
+private:
+	SOCKET socket = INVALID_SOCKET; ///< The socket when a connection is established.
+
+	bool CheckActivity() override;
+
 public:
 	ServerAddress server_address; ///< Address we are connecting to.
 
 	TCPServerConnecter(const std::string &connection_string, uint16 default_port);
+
+	void SetConnected(SOCKET sock);
+	void SetFailure();
 };
 
 #endif /* NETWORK_CORE_TCP_H */
