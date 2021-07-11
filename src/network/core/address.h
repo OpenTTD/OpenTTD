@@ -185,6 +185,7 @@ public:
  */
 enum ServerAddressType {
 	SERVER_ADDRESS_DIRECT,      ///< Server-address is based on an hostname:port.
+	SERVER_ADDRESS_INVITE_CODE, ///< Server-address is based on an invite code.
 };
 
 /**

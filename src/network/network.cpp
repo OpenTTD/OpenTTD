@@ -453,6 +453,41 @@ static void CheckPauseOnJoin()
 }
 
 /**
+ * Parse the company part ("#company" postfix) of a connecting string.
+ * @param connection_string The string with the connection data.
+ * @param company_id        The company ID to set, if available.
+ * @return A std::string_view into the connection string without the company part.
+ */
+std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id)
+{
+	std::string_view ip = connection_string;
+	if (company_id == nullptr) return ip;
+
+	size_t offset = ip.find_last_of('#');
+	if (offset != std::string::npos) {
+		std::string_view company_string = ip.substr(offset + 1);
+		ip = ip.substr(0, offset);
+
+		uint8 company_value;
+		auto [_, err] = std::from_chars(company_string.data(), company_string.data() + company_string.size(), company_value);
+		if (err == std::errc()) {
+			if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
+				if (company_value > MAX_COMPANIES || company_value == 0) {
+					*company_id = COMPANY_SPECTATOR;
+				} else {
+					/* "#1" means the first company, which has index 0. */
+					*company_id = (CompanyID)(company_value - 1);
+				}
+			} else {
+				*company_id = (CompanyID)company_value;
+			}
+		}
+	}
+
+	return ip;
+}
+
+/**
  * Converts a string to ip/port/company
  *  Format: IP:port#company
  *
@@ -469,29 +504,7 @@ static void CheckPauseOnJoin()
  */
 std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id)
 {
-	std::string_view ip = connection_string;
-	if (company_id != nullptr) {
-		size_t offset = ip.find_last_of('#');
-		if (offset != std::string::npos) {
-			std::string_view company_string = ip.substr(offset + 1);
-			ip = ip.substr(0, offset);
-
-			uint8 company_value;
-			auto [_, err] = std::from_chars(company_string.data(), company_string.data() + company_string.size(), company_value);
-			if (err == std::errc()) {
-				if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
-					if (company_value > MAX_COMPANIES || company_value == 0) {
-						*company_id = COMPANY_SPECTATOR;
-					} else {
-						/* "#1" means the first company, which has index 0. */
-						*company_id = (CompanyID)(company_value - 1);
-					}
-				} else {
-					*company_id = (CompanyID)company_value;
-				}
-			}
-		}
-	}
+	std::string_view ip = ParseCompanyFromConnectionString(connection_string, company_id);
 
 	size_t port_offset = ip.find_last_of(':');
 	size_t ipv6_close = ip.find_last_of(']');
