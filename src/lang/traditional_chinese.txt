@@ -1876,6 +1876,8 @@ STR_FACE_TIE                                                    :領帶：
 STR_FACE_EARRING                                                :耳飾：
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變領帶或耳飾
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人遊戲

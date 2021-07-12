@@ -1913,6 +1913,8 @@ STR_FACE_TIE                                                    :Cravată:
 STR_FACE_EARRING                                                :Cercei:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer

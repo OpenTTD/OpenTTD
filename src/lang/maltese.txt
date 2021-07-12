@@ -528,6 +528,8 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is
 # Face selection window
 
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 

@@ -2146,7 +2146,9 @@ STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Серьга:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изменить галстук или серьгу
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Частный
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сетевая игра

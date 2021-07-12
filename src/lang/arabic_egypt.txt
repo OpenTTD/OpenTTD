@@ -1606,6 +1606,8 @@ STR_FACE_TIE                                                    :الربطة:
 STR_FACE_EARRING                                                :أقراط الأذان:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}غير الربطة أو أقراط الأذن
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}تعدد اللاعبين

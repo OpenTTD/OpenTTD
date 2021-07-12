@@ -1995,7 +1995,9 @@ STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Örhänge:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ändra slips eller örhänge
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Offentlig
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Flera spelare

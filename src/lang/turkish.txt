@@ -1987,7 +1987,9 @@ STR_FACE_TIE                                                    :Kravat:
 STR_FACE_EARRING                                                :Küpe:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı veya küpeyi değiştir
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Halka açık
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Çok Oyunculu

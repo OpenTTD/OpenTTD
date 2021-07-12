@@ -602,6 +602,8 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 # Face selection window
 
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 

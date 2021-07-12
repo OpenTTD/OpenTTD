@@ -1586,6 +1586,8 @@ STR_FACE_TIE                                                    :کراوات:
 STR_FACE_EARRING                                                :گوشواره:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغییر کراوات یا گوشواره
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}چندنفره

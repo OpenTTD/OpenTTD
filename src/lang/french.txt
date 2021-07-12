@@ -1996,7 +1996,9 @@ STR_FACE_TIE                                                    :Cravate{NBSP}:
 STR_FACE_EARRING                                                :Boucle d'oreille{NBSP}:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Modifier la cravate ou la boucle d'oreille
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Public
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueurs

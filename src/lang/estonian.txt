@@ -2043,7 +2043,9 @@ STR_FACE_TIE                                                    :Lips:
 STR_FACE_EARRING                                                :Kõrvarõngas:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta kraed või kõrvarõngast
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Avalik
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mitmikmäng

@@ -1626,6 +1626,8 @@ STR_FACE_TIE                                                    :Tali leher:
 STR_FACE_EARRING                                                :Anting-anting:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tukar tali leher atau anting-anting
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Pemain berbilang

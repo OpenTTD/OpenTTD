@@ -2015,6 +2015,8 @@ STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Naušnica:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promijeni kravatu ili naušnicu
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Više igrača

@@ -1790,6 +1790,8 @@ STR_FACE_TIE                                                    :Strik:
 STR_FACE_EARRING                                                :Earbel:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Feroarje strik of earbel
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer

@@ -2083,6 +2083,8 @@ STR_FACE_TIE                                                    :Focale:
 STR_FACE_EARRING                                                :Inauris:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare focale vel inaurem
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Modus Plurium Lusorum

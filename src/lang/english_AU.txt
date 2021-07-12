@@ -1841,6 +1841,8 @@ STR_FACE_TIE                                                    :Tie:
 STR_FACE_EARRING                                                :Earring:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Change tie or earring
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer

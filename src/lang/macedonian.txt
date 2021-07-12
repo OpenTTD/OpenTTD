@@ -960,6 +960,8 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дал�
 # Face selection window
 
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 

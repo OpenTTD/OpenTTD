@@ -1525,6 +1525,8 @@ STR_FACE_TIE                                                    :Kravato:
 STR_FACE_EARRING                                                :Orelringo:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ŝanĝi kravaton aŭ orelringon.
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Pluraj ludantoj

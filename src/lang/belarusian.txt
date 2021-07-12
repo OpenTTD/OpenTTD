@@ -2220,6 +2220,8 @@ STR_FACE_TIE                                                    :Гальшту�
 STR_FACE_EARRING                                                :Завушніца:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Зьмяніць гальштук або завушніцу
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сеткавая гульня

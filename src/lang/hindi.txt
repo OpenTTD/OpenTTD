@@ -110,6 +110,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
 ############ range ends here
 
 ############ range for file menu starts
@@ -135,6 +136,7 @@ STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :औद्यो
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युतिकृत रेलवे निर्माण
 ############ range ends here
 
 ############ range for road construction menu starts
@@ -362,6 +364,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :२x
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :अंतर्राष्ट्रीय मानक (m/s)
 
 
 
@@ -409,6 +412,8 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्�
 STR_FACE_LOAD_DONE                                              :{WHITE}ओपनटीटीडी प्रारूप पत्र से आपका प्रिय चेहरा भर लिया गया है
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}कॉलर बदलें
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 
@@ -779,6 +784,7 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING
 
 
 ############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :नई ट्रेनें
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}मूल्य : {GOLD}{CURRENCY_LONG}{BLACK} भार : {GOLD}{WEIGHT_SHORT}
@@ -992,6 +998,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... ब�
 
 # Company related errors
 
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}इस कंपनी का २५% अंश नहीं बेच सकते...
 
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}नगर का नाम नहीं बदला जा सकता है...
@@ -1030,6 +1037,7 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}पट�
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... असंगत ट्रामवे
 
 # Waterway construction errors
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... पानी पर बनाया जाना चाहिये।
 
 # Tree related errors
 

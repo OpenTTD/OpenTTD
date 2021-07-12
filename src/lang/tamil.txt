@@ -1732,6 +1732,8 @@ STR_FACE_TIE                                                    :Tie:
 STR_FACE_EARRING                                                :கம்மல்:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அல்லது காதணியை மாற்றவும்
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}பல்வீரர்

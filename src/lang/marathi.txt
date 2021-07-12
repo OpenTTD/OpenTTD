@@ -892,6 +892,8 @@ STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}ओठ �
 STR_FACE_CHIN                                                   :हनुवटी:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}हनुवटी बदला
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 

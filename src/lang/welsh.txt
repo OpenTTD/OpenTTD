@@ -1872,6 +1872,8 @@ STR_FACE_TIE                                                    :Tei:
 STR_FACE_EARRING                                                :Clustlws:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Newid tei neu glustlws
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Amlchwaraewr

@@ -1719,7 +1719,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :승객에 대�
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A역에서 B역으로 가려는 승객의 수가 B에서 A로 가려는 승객의 수와 비슷하다는 뜻입니다. "비대칭"은 승객이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 승객 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"대칭"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "비대칭"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :장갑 화물에 대한 분배 형식: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :귀금속 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대 기후에서는 대칭으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "비대칭"이나 "수동"으로 설정하십시오.
@@ -1996,8 +1996,10 @@ STR_FACE_TIE                                                    :넥타이:
 STR_FACE_EARRING                                                :귀걸이:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타이/귀걸이 변경
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :로컬
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :공개
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}멀티 플레이
@@ -2046,11 +2048,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}인터�
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}LAN 검색
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}로컬 영역 네트워크에서 서버를 검색합니다
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}서버 추가
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}서버를 목록에 수동으로 추가합니다.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}서버를 목록에 추가합니다. 서버 주소나 초대 코드를 입력하세요.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}서버 열기
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}당신이 서버가 되어 게임을 진행합니다.
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}이름을 입력하세요
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}서버 주소나 초대 코드를 입력하세요
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}새 멀티플레이 게임 시작하기
@@ -2136,6 +2139,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}서버�
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :서버 이름
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}공개 여부
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}서버 목록에 이 서버를 공개할 지 여부를 설정합니다
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}초대 코드
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}다른 플레이어가 이 서버에 들어오기 위한 초대 코드입니다
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}접속 방식
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}다른 사람이 이 서버에 들어올 수 있는지 여부를 나타냅니다
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}플레이어

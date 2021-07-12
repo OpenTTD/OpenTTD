@@ -2108,6 +2108,8 @@ STR_FACE_TIE                                                    :Краватк�
 STR_FACE_EARRING                                                :Сережки:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Змінити комір або сережки
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Мережева гра

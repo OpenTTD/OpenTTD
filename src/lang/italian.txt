@@ -2000,6 +2000,8 @@ STR_FACE_TIE                                                    :Cravatta:
 STR_FACE_EARRING                                                :Orecchino:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia la cravatta o l'orecchino
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multigiocatore

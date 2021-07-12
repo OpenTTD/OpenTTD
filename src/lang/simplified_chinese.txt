@@ -1985,6 +1985,8 @@ STR_FACE_TIE                                                    :领带
 STR_FACE_EARRING                                                :耳环
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择领带或是耳环
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏

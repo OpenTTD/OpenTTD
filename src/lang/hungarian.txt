@@ -2050,7 +2050,9 @@ STR_FACE_TIE                                                    :Nyakkendő:
 STR_FACE_EARRING                                                :Fülbevaló:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkendő vagy fülbevaló cseréje
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Nyilvános
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hálózati játék

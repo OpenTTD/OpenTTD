@@ -1785,6 +1785,8 @@ STR_FACE_TIE                                                    :Korbata:
 STR_FACE_EARRING                                                :Belarritakoak:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Aldatu korbata eta belarritakoak
 
+############ Next lines match ServerGameType
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijokalaria

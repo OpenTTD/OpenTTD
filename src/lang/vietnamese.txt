@@ -1995,7 +1995,9 @@ STR_FACE_TIE                                                    :Cà vạt:
 STR_FACE_EARRING                                                :Bông tai:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
+############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Công khai
+############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
