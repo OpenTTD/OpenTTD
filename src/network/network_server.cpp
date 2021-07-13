@@ -112,7 +112,6 @@ struct PacketWriter : SaveFilter {
 		 * we need to handle the save finish as well as the
 		 * next connection might just be requesting a map. */
 		WaitTillSaved();
-		ProcessAsyncSaveFinish();
 	}
 
 	/**
@@ -548,6 +547,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	}
 
 	if (this->status == STATUS_AUTHORIZED) {
+		WaitTillSaved();
 		this->savegame = new PacketWriter(this);
 
 		/* Now send the _frame_counter and how many packets are coming */
