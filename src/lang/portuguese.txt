@@ -1999,6 +1999,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mudar gr
 ############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Apenas convites
 ############ End of leave-in-this-order
 
 # Network server list

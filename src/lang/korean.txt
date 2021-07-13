@@ -1999,6 +1999,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타�
 ############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :로컬
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :공개
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :초대만
 ############ End of leave-in-this-order
 
 # Network server list
