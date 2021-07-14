@@ -1996,7 +1996,9 @@ STR_FACE_EARRING                                                :Korvakoru:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda solmio tai korvakoru
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Paikallinen
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Julkinen
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Vain kutsutut
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2046,11 +2048,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Etsi jul
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Etsi lähiverkosta
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Etsi palvelimia lähiverkosta
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisää palvelin
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelin listaan, joka käydään läpi aina uusia pelejä haettaessa
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelimen luetteloon. Tämä voi olla palvelimen osoite tai kutsukoodi.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Käynnistä palvelin
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Käynnistä oma palvelin
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Kirjoita nimesi
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Anna palvelimen osoite tai kutsukoodi
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Aloita uusi peli
@@ -2136,6 +2139,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Muokkaa 
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Palvelimen nimi
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Näkyvyys
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Näkyykö palvelimesi muille julkisessa listauksessa
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Kutsukoodi
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Kutsukoodi, jolla muut pelaajat voivat liittyä tälle palvelimelle
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Yhteystyyppi
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Voivatko muut ottaa yhteyden palvelimeesi, ja miten
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Pelaaja
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nimi
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Pelaajanimesi
@@ -2155,6 +2162,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Tämä o
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} pelaaja{P "" a} / {NUM} yhtiö{P "" tä}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Paikallinen
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Etäpelaajat eivät voi ottaa yhteyttä
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Julkinen
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Potki
@@ -2284,6 +2294,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Palvelimen rekisteröinti epäonnistui
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Palvelimesi ei salli etäyhteyksiä
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Muut pelaajat eivät voi saada yhteyttä palvelimeesi
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sisällön lataus
