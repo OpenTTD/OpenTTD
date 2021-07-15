@@ -16,6 +16,8 @@
 
 /**
  * Game Coordinator communication.
+ * For more detail about what the Game Coordinator does, please see
+ * docs/game_coordinator.md.
  *
  * For servers:
  *  - Server sends SERVER_REGISTER.
@@ -34,7 +36,7 @@
  *        - Send the client a GC_CONNECT with the peer address.
  *        - a) Client connects, client sends CLIENT_CONNECTED to Game Coordinator.
  *        - b) Client connect fails, client sends CLIENT_CONNECT_FAILED to Game Coordinator.
- *    2) STUN? (see https://en.wikipedia.org/wiki/STUN)
+ *    2) STUN?
  *        - Game Coordinator sends GC_STUN_REQUEST to server/client (asking for both IPv4 and IPv6 STUN requests).
  *        - Game Coordinator collects what combination works and sends GC_STUN_CONNECT to server/client.
  *        - a) Server/client connect, client sends CLIENT_CONNECTED to Game Coordinator.
