@@ -393,6 +393,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	 * be available between subsequent calls to FS2OTTD(). */
 	char *cmdline = stredup(FS2OTTD(GetCommandLine()).c_str());
 
+	/* Set the console codepage to UTF-8. */
+	SetConsoleOutputCP(CP_UTF8);
+
 #if defined(_DEBUG)
 	CreateConsole();
 #endif
