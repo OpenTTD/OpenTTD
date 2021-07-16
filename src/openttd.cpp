@@ -626,6 +626,7 @@ int openttd_main(int argc, char *argv[])
 			if (res != SL_OK || _load_check_data.HasErrors()) {
 				fprintf(stderr, "Failed to open savegame\n");
 				if (_load_check_data.HasErrors()) {
+					InitializeLanguagePacks(); // A language pack is needed for GetString()
 					char buf[256];
 					SetDParamStr(0, _load_check_data.error_data);
 					GetString(buf, _load_check_data.error, lastof(buf));
