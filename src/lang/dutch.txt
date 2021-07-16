@@ -1996,7 +1996,9 @@ STR_FACE_EARRING                                                :Oorbel:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander das of oorbel
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokaal
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Openbaar
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Alleen op uitnodiging
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2031,6 +2033,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverv
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradres: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Huidige datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spelscript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Beveiligd met wachtwoord!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER VOL
@@ -2046,11 +2049,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Op het i
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Op LAN zoeken
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Op lokaal netwerk zoeken naar servers
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg server toe
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst. Dit kan een serveradres of een uitnodigingscode zijn
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start eigen server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Vul je naam in
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Voer serveradres of uitnodigingscode in
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Nieuw spel met meerdere spelers starten
@@ -2136,6 +2140,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}De naam 
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servernaam
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Zichtbaarheid
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Bepaalt of andere mensen je server kunnen zien in de openbare lijst
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Uitnodigingscode
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Uitnodigingscode waarmee andere spelers toegang krijgen tot deze server
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Type verbinding
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Of en hoe je server toegankelijk is voor anderen
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Speler
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Naam
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Je spelernaam
@@ -2155,6 +2163,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dit is d
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klant{P "" en} / {NUM} bedrij{P f ven}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokaal
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Externe spelers kunnen geen verbinding maken
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Openbaar
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Eruit schoppen
@@ -2284,6 +2295,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De serve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht alstublieft...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is eruit geschopt. Reden: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistratie mislukt
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Je server staat geen externe verbindingen toe
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andere spelers krijgen geen toegang tot je server
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download extra inhoud
