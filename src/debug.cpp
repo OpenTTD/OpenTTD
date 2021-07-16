@@ -128,13 +128,7 @@ void DebugPrint(const char *level, const std::string &message)
 #endif
 	} else {
 		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
-#if defined(_WIN32)
-		wchar_t system_buf[512];
-		convert_to_fs(msg.c_str(), system_buf, lengthof(system_buf));
-		fputws(system_buf, stderr);
-#else
 		fputs(msg.c_str(), stderr);
-#endif
 
 		NetworkAdminConsole(level, message);
 		if (_settings_client.gui.developer >= 2) IConsolePrint(CC_DEBUG, "dbg: [{}] {}", level, message);
