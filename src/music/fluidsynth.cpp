@@ -65,7 +65,7 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 	const char *sfont_name = GetDriverParam(param, "soundfont");
 	int sfont_id;
 
-	Debug(driver, 1, "Fluidsynth: sf {}", sfont_name);
+	Debug(driver, 1, "Fluidsynth: sf {}", sfont_name != nullptr ? sfont_name : "(null)");
 
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
