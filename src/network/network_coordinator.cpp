@@ -231,7 +231,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p)
 
 		/* Read the NetworkGameInfo from the packet. */
 		NetworkGameInfo ngi = {};
-		DeserializeNetworkGameInfo(p, &ngi);
+		DeserializeNetworkGameInfo(p, &ngi, &this->newgrf_lookup_table);
 
 		/* Now we know the connection string, we can add it to our list. */
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
@@ -347,6 +347,18 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *p)
 	return true;
 }
 
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet *p)
+{
+	this->newgrf_lookup_table_cursor = p->Recv_uint32();
+
+	uint16 newgrfs = p->Recv_uint16();
+	for (; newgrfs> 0; newgrfs--) {
+		uint32 index = p->Recv_uint32();
+		DeserializeGRFIdentifierWithName(p, &this->newgrf_lookup_table[index]);
+	}
+	return true;
+}
+
 void ClientNetworkCoordinatorSocketHandler::Connect()
 {
 	/* We are either already connected or are trying to connect. */
@@ -433,6 +445,7 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_uint8(NETWORK_GAME_INFO_VERSION);
 	p->Send_string(_openttd_revision);
+	p->Send_uint32(this->newgrf_lookup_table_cursor);
 
 	this->SendPacket(p);
 }

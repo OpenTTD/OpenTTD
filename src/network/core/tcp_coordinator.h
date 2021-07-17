@@ -41,6 +41,7 @@ enum PacketCoordinatorType {
 	PACKET_COORDINATOR_GC_STUN_REQUEST,       ///< Game Coordinator tells client/server to initiate a STUN request.
 	PACKET_COORDINATOR_SERCLI_STUN_RESULT,    ///< Client/server informs the Game Coordinator of the result of the STUN request.
 	PACKET_COORDINATOR_GC_STUN_CONNECT,       ///< Game Coordinator tells client/server to connect() reusing the STUN local address.
+	PACKET_COORDINATOR_GC_NEWGRF_LOOKUP,      ///< Game Coordinator informs client about NewGRF lookup table updates needed for GC_LISTING.
 	PACKET_COORDINATOR_END,                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -125,6 +126,7 @@ protected:
 	 *  uint8   Game Coordinator protocol version.
 	 *  uint8   Game-info version used by this client.
 	 *  string  Revision of the client.
+	 *  uint32  (Game Coordinator protocol >= 4) Cursor as received from GC_NEWGRF_LOOKUP, or zero.
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -262,6 +264,29 @@ protected:
 	 * @return True upon success, otherwise false.
 	 */
 	virtual bool Receive_GC_STUN_CONNECT(Packet *p);
+
+	/**
+	 * Game Coordinator informs the client of updates for the NewGRFs lookup table
+	 * as used by the NewGRF deserialization in GC_LISTING.
+	 * This packet is sent after a CLIENT_LISTING request, but before GC_LISTING.
+	 *
+	 *  uint32   Lookup table cursor.
+	 *  uint16   Number of NewGRFs in the packet, with for each of the NewGRFs:
+	 *      uint32   Lookup table index for the NewGRF.
+	 *      uint32   Unique NewGRF ID.
+	 *      byte[16] MD5 checksum of the NewGRF
+	 *      string   Name of the NewGRF.
+	 *
+	 * The lookup table built using these packets are used by the deserialisation
+	 * of the NewGRFs for servers in the GC_LISTING. These updates are additive,
+	 * i.e. each update will add NewGRFs but never remove them. However, this
+	 * lookup table is specific to the connection with the Game Coordinator, and
+	 * should be considered invalid after disconnecting from the Game Coordinator.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_NEWGRF_LOOKUP(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:

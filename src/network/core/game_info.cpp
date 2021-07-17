@@ -254,7 +254,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
  * @param p    the packet to read the data from.
  * @param info the NetworkGameInfo to deserialize into.
  */
-void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
+void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
 	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
@@ -299,6 +299,14 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 					case NST_GRFID_MD5_NAME:
 						DeserializeGRFIdentifierWithName(p, &grf);
 						break;
+
+					case NST_LOOKUP_ID: {
+						if (newgrf_lookup_table == nullptr) return;
+						auto it = newgrf_lookup_table->find(p->Recv_uint32());
+						if (it == newgrf_lookup_table->end()) return;
+						grf = it->second;
+						break;
+					}
 
 					default:
 						NOT_REACHED();
