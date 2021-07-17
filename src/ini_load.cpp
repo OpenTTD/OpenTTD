@@ -112,8 +112,9 @@ void IniGroup::RemoveItem(const std::string &name)
 		if (item->name != name) continue;
 
 		*prev = item->next;
-		if (this->last_item == &this->item) {
-			this->last_item = &item->next;
+		/* "last_item" is a pointer to the "real-last-item"->next. */
+		if (this->last_item == &item->next) {
+			this->last_item = prev;
 		}
 
 		item->next = nullptr;
