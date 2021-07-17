@@ -1998,6 +1998,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia l
 
 ############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Pública
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Només invitació
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2032,6 +2033,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versió
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adreça del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data inicial: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data actual: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de partida: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegit per contrasenya!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONNECTAT
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR PLÉ
@@ -2285,6 +2287,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servi
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor està reiniciant...{}Espera un moment...
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registre al servidor ha fallat.
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descàrregues de contingut
