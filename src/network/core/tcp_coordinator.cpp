@@ -42,6 +42,7 @@ bool NetworkCoordinatorSocketHandler::HandlePacket(Packet *p)
 		case PACKET_COORDINATOR_GC_STUN_REQUEST:       return this->Receive_GC_STUN_REQUEST(p);
 		case PACKET_COORDINATOR_SERCLI_STUN_RESULT:    return this->Receive_SERCLI_STUN_RESULT(p);
 		case PACKET_COORDINATOR_GC_STUN_CONNECT:       return this->Receive_GC_STUN_CONNECT(p);
+		case PACKET_COORDINATOR_GC_NEWGRF_LOOKUP:      return this->Receive_GC_NEWGRF_LOOKUP(p);
 
 		default:
 			Debug(net, 0, "[tcp/coordinator] Received invalid packet type {}", type);
@@ -100,3 +101,4 @@ bool NetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p) { ret
 bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_REQUEST(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_REQUEST); }
 bool NetworkCoordinatorSocketHandler::Receive_SERCLI_STUN_RESULT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_STUN_RESULT); }
 bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_NEWGRF_LOOKUP); }

@@ -17,6 +17,8 @@
 #include "../../newgrf_config.h"
 #include "../../date_type.h"
 
+#include <unordered_map>
+
 /*
  * NetworkGameInfo has several revisions which we still need to support on the
  * wire. The table below shows the version and size for each field of the
@@ -32,6 +34,9 @@
  *                      1 = NewGRF ID, MD5 checksum and name.
  *                          Used for direct requests and the first game
  *                          update to Game Coordinator.
+ *                      2 = Index in NewGRF lookup table.
+ *                          Used for sending server listing from the Game
+ *                          Coordinator to the clients.
  *
  *   5+       4       version number of the Game Script (-1 is case none is selected).
  *   5+       var     string with the name of the Game Script.
@@ -46,6 +51,8 @@
  *                       For v4, v5, and v6+ in case of type 0 and/or type 1.
  *                     - string with name of NewGRF.
  *                       For v6+ in case of type 1.
+ *                     - 4 byte lookup table index.
+ *                       For v6+ in case of type 2.
  *
  *   3+       4       current game date in days since 1-1-0 (DMY)
  *   3+       4       game introduction date in days since 1-1-0 (DMY)
@@ -76,6 +83,7 @@
 enum NewGRFSerializationType {
 	NST_GRFID_MD5      = 0, ///< Unique GRF ID and MD5 checksum.
 	NST_GRFID_MD5_NAME = 1, ///< Unique GRF ID, MD5 checksum and name.
+	NST_LOOKUP_ID      = 2, ///< Unique ID into a lookup table that is sent before.
 	NST_END                 ///< The end of the list (period).
 };
 
@@ -120,6 +128,8 @@ struct NamedGRFIdentifier {
 	GRFIdentifier ident; ///< The unique identifier of the NewGRF.
 	std::string name;    ///< The name of the NewGRF.
 };
+/** Lookup table for the GameInfo in case of #NST_LOOKUP_ID. */
+typedef std::unordered_map<uint32, NamedGRFIdentifier> GameInfoNewGRFLookupTable;
 
 extern NetworkServerGameInfo _network_game_info;
 
@@ -134,7 +144,7 @@ void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf);
 void DeserializeGRFIdentifierWithName(Packet *p, NamedGRFIdentifier *grf);
 void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf);
 
-void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info);
+void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfoNewGRFLookupTable *newgrf_lookup_table = nullptr);
 void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool send_newgrf_names = true);
 
 #endif /* NETWORK_CORE_GAME_INFO_H */
