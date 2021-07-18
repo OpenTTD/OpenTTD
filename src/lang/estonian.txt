@@ -2099,6 +2099,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tee serv
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tee oma server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Sisesta enda nimi
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Sisesta serveri aadress või kutse kood
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Mitmikmängu alustamine

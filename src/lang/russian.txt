@@ -2147,7 +2147,9 @@ STR_FACE_EARRING                                                :Серьга:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изменить галстук или серьгу
 
 ############ Next lines match ServerGameType
-STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Частный
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Локальный
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Публичный
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :По приглашению
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2165,8 +2167,8 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Разм
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Размер карты игры{}Нажмите для сортировки по площади
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Текущая дата
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Года
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Количество лет{}в игре
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Лет
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Количество лет, прошедших в игре
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Язык, версия сервера и{NBSP}т.{NBSP}п.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберите игру из списка
@@ -2182,6 +2184,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Вер�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Дата начала: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Текущая дата: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Игровой скрипт: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Защищён паролем!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}СЕРВЕР ОТКЛЮЧЁН
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}СЕРВЕР ЗАПОЛНЕН
@@ -2197,11 +2200,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Поис
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Искать в ЛВС
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Поиск серверов в локальной сети
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Добавить сервер
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добавить сервер в список, который будет автоматически проверяться на идущие игры
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добавить в список новый сервер. Можно указать адрес сервера или код-приглашение.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запуск сервера
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Запуск сервера на вашем компьютере. К этой игре смогут подсоединяться другие игроки.
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Запуск сервера на вашем компьютере
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Введите ваше имя
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Введите адрес сервера или код-приглашение
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Запуск новой сетевой игры
@@ -2287,6 +2291,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Смен
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Название сервера
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Видимость
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Видимость вашего сервера в публичном списке
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Приглашение
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Код-приглашение, с помощью которого другие игроки смогут подключиться к вашему серверу
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Подключение
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Способ подключения других игроков к вашему серверу
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Игрок
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Имя
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ваше игровое имя
@@ -2306,6 +2314,10 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Это �
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} клиент{P "" а ов} / {NUM} компани{P я и й}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Локальное
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Другие игроки не могут подключиться
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Публичное
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Сервер за NAT
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Отключить
@@ -2435,6 +2447,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Серв
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Не удалось зарегистрировать сервер
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Клиентские подключения к вашему серверу запрещены
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Другие игроки не смогут подключиться к вашему серверу
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
