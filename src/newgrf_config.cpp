@@ -753,53 +753,6 @@ const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8
 	return best;
 }
 
-/** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
-struct UnknownGRF : public GRFIdentifier {
-	GRFTextWrapper name; ///< Name of the GRF.
-
-	UnknownGRF() = default;
-	UnknownGRF(const UnknownGRF &other) = default;
-	UnknownGRF(UnknownGRF &&other) = default;
-	UnknownGRF(uint32 grfid, const uint8 *_md5sum) : GRFIdentifier(grfid, _md5sum), name(new GRFTextList) {}
-};
-
-/**
- * Finds the name of a NewGRF in the list of names for unknown GRFs. An
- * unknown GRF is a GRF where the .grf is not found during scanning.
- *
- * The names are resolved via UDP calls to servers that should know the name,
- * though the replies may not come. This leaves "<Unknown>" as name, though
- * that shouldn't matter _very_ much as they need GRF crawler or so to look
- * up the GRF anyway and that works better with the GRF ID.
- *
- * @param grfid  the GRF ID part of the 'unique' GRF identifier
- * @param md5sum the MD5 checksum part of the 'unique' GRF identifier
- * @param create whether to create a new GRFConfig if the GRFConfig did not
- *               exist in the fake list of GRFConfigs.
- * @return The GRFTextWrapper of the name of the GRFConfig with the given GRF ID
- *         and MD5 checksum or nullptr when it does not exist and create is false.
- *         This value must NEVER be freed by the caller.
- */
-GRFTextWrapper FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
-{
-	static std::vector<UnknownGRF> unknown_grfs;
-
-	for (const auto &grf : unknown_grfs) {
-		if (grf.grfid == grfid) {
-			if (memcmp(md5sum, grf.md5sum, sizeof(grf.md5sum)) == 0) return grf.name;
-		}
-	}
-
-	if (!create) return nullptr;
-
-	unknown_grfs.emplace_back(grfid, md5sum);
-	UnknownGRF &grf = unknown_grfs.back();
-
-	AddGRFTextToList(grf.name, UNKNOWN_GRF_NAME_PLACEHOLDER);
-
-	return grf.name;
-}
-
 /**
  * Retrieve a NewGRF from the current config by its grfid.
  * @param grfid grf to look for.
