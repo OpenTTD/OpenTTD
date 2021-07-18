@@ -25,14 +25,27 @@
  * Version: Bytes:  Description:
  *   all      1       the version of this packet's structure
  *
+ *   6+       1       type of storage for the NewGRFs below:
+ *                      0 = NewGRF ID and MD5 checksum.
+ *                          Used as default for version 5 and below, and for
+ *                          later game updates to the Game Coordinator.
+ *                      1 = NewGRF ID, MD5 checksum and name.
+ *                          Used for direct requests and the first game
+ *                          update to Game Coordinator.
+ *
  *   5+       4       version number of the Game Script (-1 is case none is selected).
  *   5+       var     string with the name of the Game Script.
  *
- *   4+       1       number of GRFs attached (n)
- *   4+       n * 20  unique identifier for GRF files. Consists of:
- *                     - one 4 byte variable with the GRF ID
- *                     - 16 bytes (sent sequentially) for the MD5 checksum
- *                       of the GRF
+ *   4+       1       number of GRFs attached (n).
+ *   4+       n * var identifiers for GRF files. Consists of:
+ *                    Note: the 'vN' refers to packet version and 'type'
+ *                    refers to the v6+ type of storage for the NewGRFs.
+ *                     - 4 byte variable with the GRF ID.
+ *                       For v4, v5, and v6+ in case of type 0 and/or type 1.
+ *                     - 16 bytes with the MD5 checksum of the GRF.
+ *                       For v4, v5, and v6+ in case of type 0 and/or type 1.
+ *                     - string with name of NewGRF.
+ *                       For v6+ in case of type 1.
  *
  *   3+       4       current game date in days since 1-1-0 (DMY)
  *   3+       4       game introduction date in days since 1-1-0 (DMY)
@@ -43,7 +56,7 @@
  *
  *   1+       var     string with the name of the server
  *   1+       var     string with the revision of the server
- *   1+       1       the language run on the server
+ *   1 - 5    1       the language run on the server
  *                    (0 = any, 1 = English, 2 = German, 3 = French)
  *   1+       1       whether the server uses a password (0 = no, 1 = yes)
  *   1+       1       maximum number of clients allowed on the server
@@ -51,13 +64,20 @@
  *   1+       1       number of spectators on the server
  *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
  *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
- *   1+       var     string with the name of the map
+ *   1 - 5    var     string with the name of the map
  *   1+       2       width of the map in tiles
  *   1+       2       height of the map in tiles
  *   1+       1       type of map:
  *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
  *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
  */
+
+/** The different types/ways a NewGRF can be serialized in the GameInfo since version 6. */
+enum NewGRFSerializationType {
+	NST_GRFID_MD5      = 0, ///< Unique GRF ID and MD5 checksum.
+	NST_GRFID_MD5_NAME = 1, ///< Unique GRF ID, MD5 checksum and name.
+	NST_END                 ///< The end of the list (period).
+};
 
 /**
  * The game information that is sent from the server to the client.
@@ -92,6 +112,15 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
 };
 
+/**
+ * Container to hold the GRF identifier (GRF ID + MD5 checksum) and the name
+ * associated with that NewGRF.
+ */
+struct NamedGRFIdentifier {
+	GRFIdentifier ident; ///< The unique identifier of the NewGRF.
+	std::string name;    ///< The name of the NewGRF.
+};
+
 extern NetworkServerGameInfo _network_game_info;
 
 std::string_view GetNetworkRevisionString();
@@ -102,9 +131,10 @@ void FillStaticNetworkServerGameInfo();
 const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo();
 
 void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf);
+void DeserializeGRFIdentifierWithName(Packet *p, NamedGRFIdentifier *grf);
 void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf);
 
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info);
-void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info);
+void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool send_newgrf_names = true);
 
 #endif /* NETWORK_CORE_GAME_INFO_H */
