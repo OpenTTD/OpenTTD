@@ -166,10 +166,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)
 	/* Find the matching GRF file */
 	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, config->ident.md5sum);
 	if (f == nullptr) {
-		/* Don't know the GRF, so mark game incompatible and the (possibly)
-		 * already resolved name for this GRF (another server has sent the
-		 * name of the GRF already */
-		config->name = FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true);
+		AddGRFTextToList(config->name, GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN));
 		config->status = GCS_NOT_FOUND;
 	} else {
 		config->filename = f->filename;

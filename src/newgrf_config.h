@@ -234,10 +234,6 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
 
-/** For communication about GRFs over the network */
-#define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
-GRFTextWrapper FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
-
 void UpdateNewGRFScanStatus(uint num, const char *name);
 void UpdateNewGRFConfigPalette(int32 new_value = 0);
 
