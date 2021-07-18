@@ -410,13 +410,14 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 void ClientNetworkCoordinatorSocketHandler::SendServerUpdate()
 {
 	Debug(net, 6, "Sending server update to Game Coordinator");
-	this->next_update = std::chrono::steady_clock::now() + NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES;
 
 	Packet *p = new Packet(PACKET_COORDINATOR_SERVER_UPDATE, TCP_MTU);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
-	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo());
+	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo(), this->next_update.time_since_epoch() != std::chrono::nanoseconds::zero());
 
 	this->SendPacket(p);
+
+	this->next_update = std::chrono::steady_clock::now() + NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES;
 }
 
 /**
