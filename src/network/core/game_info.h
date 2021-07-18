@@ -25,6 +25,9 @@
  * Version: Bytes:  Description:
  *   all      1       the version of this packet's structure
  *
+ *   5+       4       version number of the Game Script (-1 is case none is selected).
+ *   5+       var     string with the name of the Game Script.
+ *
  *   4+       1       number of GRFs attached (n)
  *   4+       n * 20  unique identifier for GRF files. Consists of:
  *                     - one 4 byte variable with the GRF ID
