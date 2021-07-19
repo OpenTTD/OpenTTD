@@ -39,16 +39,33 @@ public:
 	/**
 	 * Safe implementation of addition.
 	 * @param other the amount to add
-	 * @note when the addition would yield more than T_MAX (or less than T_MIN),
-	 *       it will be T_MAX (respectively T_MIN).
+	 * @note when the addition would yield more than T_MAX, it will be T_MAX.
 	 */
 	inline OverflowSafeInt& operator += (const OverflowSafeInt& other)
 	{
-		if ((T_MAX - abs(other.m_value)) < abs(this->m_value) &&
-				(this->m_value < 0) == (other.m_value < 0)) {
-			this->m_value = (this->m_value < 0) ? T_MIN : T_MAX ;
+		if (this->m_value > 0 && other.m_value > 0 && (T_MAX - other.m_value) < this->m_value) {
+			this->m_value = T_MAX;
+		} else if (this->m_value < 0 && other.m_value < 0 && (this->m_value == T_MIN || other.m_value == T_MIN || ((T_MAX + this->m_value) + other.m_value < (T_MIN + T_MAX)))) {
+			this->m_value = T_MIN;
 		} else {
 			this->m_value += other.m_value;
+		}
+		return *this;
+	}
+
+	/**
+	 * Safe implementation of subtraction.
+	 * @param other the amount to subtract
+	 * @note when the subtraction would yield less than T_MIN, it will be T_MIN.
+	 */
+	inline OverflowSafeInt& operator -= (const OverflowSafeInt& other)
+	{
+		if (this->m_value > 0 && other.m_value < 0 && (T_MAX + other.m_value) < this->m_value) {
+			this->m_value = T_MAX;
+		} else if (this->m_value < 0 && other.m_value > 0 && (T_MAX + this->m_value) < (T_MIN + T_MAX) + other.m_value) {
+			this->m_value = T_MIN;
+		} else {
+			this->m_value -= other.m_value;
 		}
 		return *this;
 	}
@@ -57,7 +74,6 @@ public:
 	inline OverflowSafeInt  operator +  (const OverflowSafeInt& other) const { OverflowSafeInt result = *this; result += other; return result; }
 	inline OverflowSafeInt  operator +  (const int              other) const { OverflowSafeInt result = *this; result += (int64)other; return result; }
 	inline OverflowSafeInt  operator +  (const uint             other) const { OverflowSafeInt result = *this; result += (int64)other; return result; }
-	inline OverflowSafeInt& operator -= (const OverflowSafeInt& other)       { return *this += (-other); }
 	inline OverflowSafeInt  operator -  (const OverflowSafeInt& other) const { OverflowSafeInt result = *this; result -= other; return result; }
 	inline OverflowSafeInt  operator -  (const int              other) const { OverflowSafeInt result = *this; result -= (int64)other; return result; }
 	inline OverflowSafeInt  operator -  (const uint             other) const { OverflowSafeInt result = *this; result -= (int64)other; return result; }
@@ -75,10 +91,18 @@ public:
 	 */
 	inline OverflowSafeInt& operator *= (const int factor)
 	{
-		if (factor != 0 && (T_MAX / abs(factor)) < abs(this->m_value)) {
-			 this->m_value = ((this->m_value < 0) == (factor < 0)) ? T_MAX : T_MIN ;
+		if (factor == -1) {
+			this->m_value = (this->m_value == T_MIN) ? T_MAX : -this->m_value;
+		} else if (factor > 0 && this->m_value > 0 && (T_MAX / factor) < this->m_value) {
+			this->m_value = T_MAX;
+		} else if (factor > 0 && this->m_value < 0 && (T_MIN / factor) > this->m_value) {
+			this->m_value = T_MIN;
+		} else if (factor < 0 && this->m_value > 0 && (T_MIN / factor) < this->m_value) {
+			this->m_value = T_MIN;
+		} else if (factor < 0 && this->m_value < 0 && (T_MAX / factor) > this->m_value) {
+			this->m_value = T_MAX;
 		} else {
-			this->m_value *= factor ;
+			this->m_value *= factor;
 		}
 		return *this;
 	}
