@@ -34,7 +34,7 @@ public:
 
 	inline OverflowSafeInt& operator = (const OverflowSafeInt& other) { this->m_value = other.m_value; return *this; }
 
-	inline OverflowSafeInt operator - () const { return OverflowSafeInt(-this->m_value); }
+	inline OverflowSafeInt operator - () const { return OverflowSafeInt(this->m_value == T_MIN ? T_MAX : -this->m_value); }
 
 	/**
 	 * Safe implementation of addition.
