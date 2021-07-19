@@ -144,7 +144,11 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 			return false;
 
 		case NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE: {
-			this->CloseToken(detail);
+			auto connecter_pre_it = this->connecter_pre.find(detail);
+			if (connecter_pre_it != this->connecter_pre.end()) {
+				connecter_pre_it->second->SetFailure();
+				this->connecter_pre.erase(connecter_pre_it);
+			}
 
 			/* Mark the server as offline. */
 			NetworkGameList *item = NetworkGameListAddItem(detail);
@@ -258,15 +262,15 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *p)
 	std::string invite_code = p->Recv_string(NETWORK_INVITE_CODE_LENGTH);
 
 	/* Find the connecter based on the invite code. */
-	auto connecter_it = this->connecter_pre.find(invite_code);
-	if (connecter_it == this->connecter_pre.end()) {
+	auto connecter_pre_it = this->connecter_pre.find(invite_code);
+	if (connecter_pre_it == this->connecter_pre.end()) {
 		this->CloseConnection();
 		return false;
 	}
 
 	/* Now store it based on the token. */
-	this->connecter[token] = connecter_it->second;
-	this->connecter_pre.erase(connecter_it);
+	this->connecter[token] = connecter_pre_it->second;
+	this->connecter_pre.erase(connecter_pre_it);
 
 	return true;
 }
@@ -274,14 +278,6 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *p)
 bool ClientNetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet *p)
 {
 	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
-
-	auto connecter_it = this->connecter.find(token);
-	if (connecter_it != this->connecter.end()) {
-		connecter_it->second->SetFailure();
-		this->connecter.erase(connecter_it);
-	}
-
-	/* Close all remaining connections. */
 	this->CloseToken(token);
 
 	return true;
@@ -382,7 +378,7 @@ NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool er
 	_network_server_connection_type = CONNECTION_TYPE_UNKNOWN;
 	this->next_update = {};
 
-	this->CloseAllTokens();
+	this->CloseAllConnections();
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
@@ -524,11 +520,14 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &to
 		p->Send_string(token);
 		this->SendPacket(p);
 
+		/* Find the connecter; it can happen it no longer exist, in cases where
+		 * we aborted the connect but the Game Coordinator was already in the
+		 * processes of connecting us. */
 		auto connecter_it = this->connecter.find(token);
-		assert(connecter_it != this->connecter.end());
-
-		connecter_it->second->SetConnected(sock);
-		this->connecter.erase(connecter_it);
+		if (connecter_it != this->connecter.end()) {
+			connecter_it->second->SetConnected(sock);
+			this->connecter.erase(connecter_it);
+		}
 	}
 
 	/* Close all remaining connections. */
@@ -552,6 +551,11 @@ void ClientNetworkCoordinatorSocketHandler::StunResult(const std::string &token,
 	this->SendPacket(p);
 }
 
+/**
+ * Close the STUN handler.
+ * @param token The token used for the STUN handlers.
+ * @param family The family of STUN handlers to close. AF_UNSPEC to close all STUN handlers for this token.
+ */
 void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(const std::string &token, uint8 family)
 {
 	auto stun_it = this->stun_handlers.find(token);
@@ -581,12 +585,6 @@ void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(const std::string &
  */
 void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
 {
-	/* Ensure all other pending connection attempts are also killed. */
-	if (this->game_connecter != nullptr) {
-		this->game_connecter->Kill();
-		this->game_connecter = nullptr;
-	}
-
 	/* Close all remaining STUN connections. */
 	this->CloseStunHandler(token);
 
@@ -596,17 +594,12 @@ void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
 		connecter_it->second->SetFailure();
 		this->connecter.erase(connecter_it);
 	}
-	auto connecter_pre_it = this->connecter_pre.find(token);
-	if (connecter_pre_it != this->connecter_pre.end()) {
-		connecter_pre_it->second->SetFailure();
-		this->connecter_pre.erase(connecter_pre_it);
-	}
 }
 
 /**
  * Close all pending connection tokens.
  */
-void ClientNetworkCoordinatorSocketHandler::CloseAllTokens()
+void ClientNetworkCoordinatorSocketHandler::CloseAllConnections()
 {
 	/* Ensure all other pending connection attempts are also killed. */
 	if (this->game_connecter != nullptr) {
@@ -618,11 +611,17 @@ void ClientNetworkCoordinatorSocketHandler::CloseAllTokens()
 	for (auto &[token, it] : this->connecter) {
 		this->CloseStunHandler(token);
 		it->SetFailure();
+
+		/* Inform the Game Coordinator he can stop trying to connect us to the server. */
+		this->ConnectFailure(token, 0);
 	}
+	this->stun_handlers.clear();
+	this->connecter.clear();
+
+	/* Also close any pending invite-code requests. */
 	for (auto &[invite_code, it] : this->connecter_pre) {
 		it->SetFailure();
 	}
-	this->connecter.clear();
 	this->connecter_pre.clear();
 }
 

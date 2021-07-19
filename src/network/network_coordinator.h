@@ -86,7 +86,7 @@ public:
 
 	void Connect();
 	void CloseToken(const std::string &token);
-	void CloseAllTokens();
+	void CloseAllConnections();
 	void CloseStunHandler(const std::string &token, uint8 family = AF_UNSPEC);
 
 	void Register();
