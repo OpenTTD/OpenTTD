@@ -595,7 +595,7 @@ void NetworkClose(bool close_admins)
 			MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 		}
 
-		_network_coordinator_client.CloseAllTokens();
+		_network_coordinator_client.CloseAllConnections();
 	}
 
 	TCPConnecter::KillAll();
