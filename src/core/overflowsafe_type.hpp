@@ -12,6 +12,12 @@
 
 #include "math_func.hpp"
 
+#ifdef __has_builtin
+#	if __has_builtin(__builtin_add_overflow) && __has_builtin(__builtin_sub_overflow) && __has_builtin(__builtin_mul_overflow)
+#		define HAS_OVERFLOW_BUILTINS
+#	endif
+#endif
+
 /**
  * Overflow safe template for integers, i.e. integers that will never overflow
  * you multiply the maximum value with 2, or add 2, or subtract something from
@@ -43,6 +49,11 @@ public:
 	 */
 	inline OverflowSafeInt& operator += (const OverflowSafeInt& other)
 	{
+#ifdef HAS_OVERFLOW_BUILTINS
+		if (unlikely(__builtin_add_overflow(this->m_value, other.m_value, &this->m_value))) {
+			this->m_value = (other.m_value < 0) ? T_MIN : T_MAX;
+		}
+#else
 		if (this->m_value > 0 && other.m_value > 0 && (T_MAX - other.m_value) < this->m_value) {
 			this->m_value = T_MAX;
 		} else if (this->m_value < 0 && other.m_value < 0 && (this->m_value == T_MIN || other.m_value == T_MIN || ((T_MAX + this->m_value) + other.m_value < (T_MIN + T_MAX)))) {
@@ -50,6 +61,7 @@ public:
 		} else {
 			this->m_value += other.m_value;
 		}
+#endif
 		return *this;
 	}
 
@@ -60,6 +72,11 @@ public:
 	 */
 	inline OverflowSafeInt& operator -= (const OverflowSafeInt& other)
 	{
+#ifdef HAS_OVERFLOW_BUILTINS
+		if (unlikely(__builtin_sub_overflow(this->m_value, other.m_value, &this->m_value))) {
+			this->m_value = (other.m_value < 0) ? T_MAX : T_MIN;
+		}
+#else
 		if (this->m_value > 0 && other.m_value < 0 && (T_MAX + other.m_value) < this->m_value) {
 			this->m_value = T_MAX;
 		} else if (this->m_value < 0 && other.m_value > 0 && (T_MAX + this->m_value) < (T_MIN + T_MAX) + other.m_value) {
@@ -67,6 +84,7 @@ public:
 		} else {
 			this->m_value -= other.m_value;
 		}
+#endif
 		return *this;
 	}
 
@@ -91,6 +109,12 @@ public:
 	 */
 	inline OverflowSafeInt& operator *= (const int factor)
 	{
+#ifdef HAS_OVERFLOW_BUILTINS
+		bool is_result_positive = (this->m_value < 0) == (factor < 0); // -ve * -ve == +ve
+		if (unlikely(__builtin_mul_overflow(this->m_value, factor, &this->m_value))) {
+			this->m_value = is_result_positive ? T_MAX : T_MIN;
+		}
+#else
 		if (factor == -1) {
 			this->m_value = (this->m_value == T_MIN) ? T_MAX : -this->m_value;
 		} else if (factor > 0 && this->m_value > 0 && (T_MAX / factor) < this->m_value) {
@@ -104,6 +128,7 @@ public:
 		} else {
 			this->m_value *= factor;
 		}
+#endif
 		return *this;
 	}
 
@@ -175,5 +200,7 @@ template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_
 
 typedef OverflowSafeInt<int64, INT64_MAX, INT64_MIN> OverflowSafeInt64;
 typedef OverflowSafeInt<int32, INT32_MAX, INT32_MIN> OverflowSafeInt32;
+
+#undef HAS_OVERFLOW_BUILTINS
 
 #endif /* OVERFLOWSAFE_TYPE_HPP */
