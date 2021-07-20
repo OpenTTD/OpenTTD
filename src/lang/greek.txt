@@ -1498,6 +1498,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Με διπλό
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Με απλό κλικ (όταν είναι επικεντρωμένο)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Με απλό κλικ (άμεσα)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Εξομοίωση δεξιού κλικ {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Επιλέξτε τον τρόπο μίμησης των πατημάτων του δεξιού κουμπιού του ποντικιού
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Κλικ
@@ -2162,6 +2163,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συ
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

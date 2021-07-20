@@ -1692,6 +1692,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Падвоен�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Адзіночная пстрычка (калі выдзелена)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Адзіночная пстрычка (неадкладна)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляцыя правага кліка мышы: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Выбаць мэтад імітацыі націсьненьня правай кнопкі мышы.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :каманда+клік
@@ -2349,6 +2350,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кл
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

@@ -853,6 +853,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелин�
 
 
 
+
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Крај на година: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Изградба: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Возила: {STRING}
@@ -998,6 +999,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

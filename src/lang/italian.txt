@@ -1444,6 +1444,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic (con casella di testo attiva)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic (immediato)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulazione clic destro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Seleziona il metodo per emulare i clic con il tasto destro del mouse
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :COMANDO+clic
@@ -2137,6 +2138,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei clie
 
 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sei sicuro di voler eliminare la compagnia '{COMPANY}'?
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client

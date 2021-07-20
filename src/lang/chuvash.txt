@@ -588,6 +588,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Симĕс
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Сӳнтер
 
 
@@ -792,6 +793,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

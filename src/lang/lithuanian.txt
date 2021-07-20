@@ -1629,6 +1629,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvikartis spust
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Vienkartis spustelėjimas (jei židinyje)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Vienkartis spustelėjimas (iškart)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Dešiniojo pelės mygtuko emuliacija: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Pasirinkite būdą, kurį atliks dešinio pelės klavišo paspaudimas
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
@@ -2332,6 +2333,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Žaidėjų sąr
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

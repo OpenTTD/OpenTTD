@@ -155,6 +155,7 @@ STR_BAGS                                                        :{COMMA}{NBSP}sa
 STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} bucăți
+STR_CRATES                                                      :{COMMA}{NBSP}{P pachet pachete "de pachete"}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Albastru închis
@@ -860,6 +861,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai fi subvenţionat
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Ofertă retrasă:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai fi subvenţionat
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvenţie oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenţie pe {NUM} {P an ani "de ani"} din partea autorităţilor locale!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări cu 50% mai mari în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări duble în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări triple în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări de patru ori mai mari în următor{P 4 ul ii ii} {NUM} {P an ani "de ani"}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanțat de {STRING} pentru reconstrucția străzilor aduce 6 luni de haos participanților la trafic!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol de transport!
@@ -917,6 +923,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexican (M
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Noul Dolar Taiwanez (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinezesc (CNY)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indoneziană (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian (MYR)
 ############ end of currency region
 
@@ -1002,6 +1009,7 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele d
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} {P fișier fișiere "de fișiere"} lipsă/corupt{P "" e e}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informaţii adiţionale despre setul grafic de bază
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sunete de bază
@@ -1113,6 +1121,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Setări joc (st
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setări joc (stocate în fişierul de salvare; afectează doar jocul curent)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setări companie (stocate în fişierele de salvare; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setări companie (stocate în fişierul de salvare; afectează doar compania curentă)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atenție!
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
@@ -1162,6 +1171,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Defecțiuni ale
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlează cât de des se defectează vehiculele prost întreținute
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator al subvențiilor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Alege cât de mult se plătește pentru conexiuni subvenționate
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P an ani "de ani"}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costuri de construcție: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul de construcție și costurile de achiziție
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiuni: {STRING}
@@ -1186,6 +1196,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolar
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitează eliminarea de clădiri şi infrastructură deţinute de oraş
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lungimea maximă a trenurilor: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Configurează lungimea maximă a trenurilor
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} {P 0 pătrățel pătrățele "de pătrățele"}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantitatea de fum/ scântei ale vehiculului: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Configurează cât de mult fum sau cât de multe scântei sunt emise de vehicule
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelul de acceleraţie al trenurilor: {STRING}
@@ -1286,12 +1297,16 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automa
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi reînnoit automat când condițiile de înlocuire automată sunt îndeplinite
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoreînnoire când vehiculul {STRING} vârsta maximă
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Vârsta aproximativă când un vehicul ar trebui autoreînnoit
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} {P 0 lună luni "de luni"} până la
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} {P 0 lună luni "de luni"}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Fonduri minime pentru înnoire automată: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Suma minimă care trebuie să rămână disponibilă atunci când se face autoreînnoirea
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata de afișare a mesajelor de eroare: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata afișării mesajelor de eroare în fereastra roșie. Unele mesaje de eroare (cele critice) nu sunt închise automat după trecerea acestei perioade, și trebuie închise manual.
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 secundă secunde "de secunde"}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Afișează texte informative: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Durata dinaintea afișării sfaturilor când se ține mausul pe un element al interfeței. Alternativ, afișarea sfaturilor poate fi setată pentru clic-dreapta
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Plutește {COMMA} {P 0 milisecundă milisecunde "de milisecunde"}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click dreapta
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afişează populaţia unui oras lângă nume: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afișează populația orașelor în numele afișate pe hartă
@@ -1354,6 +1369,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamentul derulării hărții
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mută fereastra de vizualizare ținând apăsat click dreapta, poziția cursorului rămânând fixă
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mută harta ținând apăsat click dreapta, poziția cursorului rămânând fixă
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mută harta cu clic dreapta
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mută harta cu clic stânga
@@ -1381,6 +1397,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Dezactivat
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Click dublu
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un singur click (când este în focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un singur click (instant)
+
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulare click-dreapta: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Alege metoda de emulare a click-urilor provenite de la butonul din dreapta al mouse-ului
@@ -1490,6 +1507,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Alege dacă întreținerea vehiculelor este activată de trecerea unei anumite perioade de timp, sau scăzând un anumit procent din gradul de rezistență al vehiculului
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} {P 0 zi zile "de zile"}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalul de întreținere implicit al vehiculelor rutiere: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Alege perioada de întreținere implicită pentru noi vehicule rutiere, dacă nu există un interval de întreținere stabilit pentru vehicul
@@ -1556,6 +1574,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din p
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentul din câştig care este oferit legăturilor intermediare pentru alimentare, oferind mai mult control asupra încasărilor
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Când se trage cu mouse-ul, plasează semnale la fiecare: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Configurează distanța la care se vor construi semnale pe șină până la următorul obstacol (semnal, intersecție), dacă se trage cu mausul
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P 0 pătrățel pătrățele "de pătrățele"}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
@@ -1606,6 +1625,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Poziţia orizon
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei de stare: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Poziţia orizontală a barei principale în partea de jos a ecranului
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Raza "magnetică" a ferestrelor: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P 0 pixel pixeli "de pixeli"}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Dezactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1635,7 +1655,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :deloc
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator iniţial dimensiune oraş: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING}{NBSP}{P 0:2 zi zile "de zile"}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai timp CPU va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING}{NBSP}{P 0:2 zi zile "de zile"} pentru recalcularea graficului de distribuţie
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetric
@@ -1788,6 +1810,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verific�
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afişează setările pentru Inteligența Artificială şi pentru Scripturi Joc
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
 
+STR_INTRO_BASESET                                               :{BLACK}Setul grafic actual are lipsă {NUM} {P sprite spriteuri "de spriteuri"}. Verificați actualizările pentru setul de bază.
+STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipse{P 0 "şte" "sc" "sc"} {NUM} {P text texte "de texte"}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Ieşire din joc
@@ -1914,6 +1938,7 @@ STR_FACE_EARRING                                                :Cercei:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Public
 ############ End of leave-in-this-order
 
 # Network server list
@@ -1963,7 +1988,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Caută s
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Caută în LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Caută servere în rețeaua locală
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adaugă un server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adaugă un server la lista care va fi verificată pentru jocuri active
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adaugă un server la listă. Poate să fie ori o adresă de server, ori un cod de invitație
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Porneşte serverul
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Porneşte un server propriu
 
@@ -1979,10 +2004,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejea
 
 STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Vizibilitate
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P client clienţi "de clienți"}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P companie companii "de companii"}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companii maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitează serverul la un anumit număr de companii
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} {P spectator spectatori "de spectatori"}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spectatori maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitează serverul la un anumit număr de spectatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
@@ -2046,6 +2074,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modific�
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Vizibilitate
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică-ți numele
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Numele tău de jucător
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
 
@@ -2056,6 +2085,7 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu pa
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sigur vrei să dai afară jucătorul '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sigur vrei să blochezi jucătorul '{STRING}'?
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
@@ -2698,6 +2728,7 @@ STR_FRAMERATE_AVERAGE                                           :{WHITE}Medie
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorie
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Date bazate pe măsurători {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cadre/s
@@ -2749,6 +2780,7 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrare după:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Suprascrie fișierul
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Sigur vrei să suprascrii fișierul existent?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (listă)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduceţi un nume pentru salvare
@@ -2994,6 +3026,7 @@ STR_INVALID_VEHICLE                                             :<vehicul invali
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Se scanează resursele NewGRF. În funcție de numărul acestora, această operație poate dura un timp...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} {P 0 resursă resurse "de resurse"} NewGRF scanat{P "ă" "e" "e"} din aproximativ {NUM} {P 0 resursă resurse "de resurse"} NewGRF disponibil{P "ă" "e" "e"}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Scanez pentru arhive
 
 # Sign list window
@@ -3251,7 +3284,10 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Anul înfiinţării: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schemă culori:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicule:
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} {P tren trenuri "de trenuri"}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} {P autovehicul autovehicule "de autovehicule"}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} {P "" "" "de "}aeronav{P ă e e}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} {P navă nave "de nave"}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Niciunul
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valoarea companiei: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% deţinute de {COMPANY})
@@ -3498,6 +3534,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Redenumire depo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P vehicul vehicule "de vehicule"}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - trage vehiculele cu click stânga pentru a adauga/elimina din tren, click dreapta pe vehicul pentru informaţii. Tasta Ctrl aplică funcţiile pentru întreaga garnitură

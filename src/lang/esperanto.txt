@@ -1207,6 +1207,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Duobla klako
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Unuobla klako (kiam enfokusigita)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Unuobla klako (tuj)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Imitado de dekstra klako: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komando+Klako
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klako
@@ -1654,6 +1655,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

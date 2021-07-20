@@ -1561,6 +1561,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Bis premendo
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Semel premendo (dum conspicua est)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Semel premendo (statim)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Aemulatio dextrum premendi: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Eligere modum aemulationis dextrum globulum muris premendi
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Cmd+Premere
@@ -2212,6 +2213,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

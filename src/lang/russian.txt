@@ -1590,6 +1590,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :двойной 
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :одиночный щелчок (когда фокус в поле ввода)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :одиночный щелчок (немедленно)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляция нажатия правой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Выбор способа эмуляции нажатия правой кнопки мыши
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команд.
@@ -2330,6 +2331,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Отк�
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Заблокировать игрока «{STRING}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Удалить компанию «{COMPANY}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Сбросить пароль у компании «{COMPANY}»?
+
 
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клиент

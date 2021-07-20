@@ -1315,6 +1315,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :คลิกส
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :คลิกครั้งเดียว (เมื่อเพ่งความสนใจไป)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :คลิกครั้งเดียว (ทันที)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :จำลองคลิกขวา: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :เลือกผลของการใช้การคลิ๊กเมาส์ขวา
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+คลิก
@@ -1944,6 +1945,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายกา
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

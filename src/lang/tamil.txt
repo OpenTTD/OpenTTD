@@ -1293,6 +1293,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :இரு அ�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :ஒரு அழுத்தம் (ஒரே இடத்தில் இருந்தால்)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :ஒரு அழுத்தம் (உடனடியாக)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :அணை
@@ -1856,6 +1857,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :விளைய
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

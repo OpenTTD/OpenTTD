@@ -1159,6 +1159,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :نقشے کو �
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :آف
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :نقشے پر scrollwheel کی رفتار: {STRING}
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :آف
@@ -1606,6 +1607,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

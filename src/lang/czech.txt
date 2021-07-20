@@ -1512,6 +1512,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojklik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Jedno kliknutí (je-li zaměřen)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Jedno kliknutí (okamžitě)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulace pravého tlačítka: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vybrat metodu emulování stisknutí pravého tlačítka myši
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command + kliknutí
@@ -2211,6 +2212,7 @@ STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Poslat z
 
 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Jste si jisti, že chcete smazat společnost '{COMPANY}'?
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient

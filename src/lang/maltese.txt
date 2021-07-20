@@ -473,6 +473,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 
 
 
+
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :L-ebda azzjoni
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :L-azzjonijiet kollha
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uza l-lista avvanzata tal-vetturi: {STRING}
@@ -568,6 +569,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

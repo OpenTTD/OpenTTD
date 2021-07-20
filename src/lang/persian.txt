@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :جابجا کر
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :خاموش
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعت حرکت نقشه با چرخاندن غلطک ماوس: {STRING}
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :شبیه سازی کلیک راست: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :دستور+کلیک
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :کنترل+کلیک
@@ -1715,6 +1716,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

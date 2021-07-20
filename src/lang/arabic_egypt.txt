@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :تحريك ال
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :عدم استخدام
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعة تحريك الخريطة: {STRING}
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :محاكاة الزر الأيمن : {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :الأوامر
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :للتحكم
@@ -1735,6 +1736,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :قائمة ال
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

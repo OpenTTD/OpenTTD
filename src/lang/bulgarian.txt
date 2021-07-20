@@ -1345,6 +1345,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Двойно н
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Еднократно натискане (когато е на фокус)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Еднократно натискане (незабавно)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-щракане емулациа: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Избира метода за симулация на десния бутон на мишката
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
@@ -1960,6 +1961,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

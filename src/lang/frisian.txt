@@ -1342,6 +1342,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dûbel klikken
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Inkele klik (ûnder fokus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Inkele klik (direktst)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rjochtsklikemulaasje: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selektearje de metoade dy't brûkt wurdt om rjochts-klikken mûlk te meitsjen
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+Klik
@@ -1896,6 +1897,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client l
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

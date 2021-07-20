@@ -1440,6 +1440,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :더블 클릭
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :한 번 클릭 (커서가 활성화되어 있을 때)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :한 번 클릭 (즉시)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :오른쪽 클릭 매크로: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :오른쪽 마우스 버튼 클릭을 대신할 방법을 선택합니다.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드 + 클릭
@@ -2180,6 +2181,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRIN
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}'{STRING}' 플레이어를 정말로 차단하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' 회사를 정말로 삭제하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}'{COMPANY}' 회사의 비밀번호를 정말로 초기화하시겠습니까?
+
 
 STR_NETWORK_SERVER                                              :서버
 STR_NETWORK_CLIENT                                              :접속자

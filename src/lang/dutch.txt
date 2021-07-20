@@ -1439,6 +1439,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbelklik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkele klik (met focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkele klik (onmiddelijk)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklikemulatie: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Methode selecteeren voor nabootsen van rechtsklikken
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
@@ -2178,6 +2179,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Weet je
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Weet je zeker dat je de speler '{STRING}' wilt bannen?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je zeker dat je het bedrijf '{COMPANY}' wilt verwijderen?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Speler

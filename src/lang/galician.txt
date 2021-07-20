@@ -1385,6 +1385,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobre clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic sinxelo (centrado)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic sinxelo (inmediatamente)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulación do botón dereito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona o método para emular clics co botón dereito do rato
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Tecla Command+Clic
@@ -2041,6 +2042,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de client
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

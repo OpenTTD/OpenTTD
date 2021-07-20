@@ -1331,6 +1331,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Double click
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Single click (when focussed)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Single click (immediately)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Right-click emulation: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Select the method to emulate right mouse-button clicks
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
@@ -1970,6 +1971,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Client list
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

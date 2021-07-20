@@ -1558,6 +1558,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Briogadh dùbai
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Aon bhriogadh (le fòcas)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Aon bhriogadh (sa bhad)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Riochdachadh a' bhriogaidh dheis: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Tagh an dòigh sa thèid briogadh le putan deas na luchaige a riochdachadh
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Briogadh
@@ -2205,6 +2206,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan clia
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

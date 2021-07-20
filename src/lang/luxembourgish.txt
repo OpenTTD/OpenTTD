@@ -1424,6 +1424,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Duebelklick
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ee Klick (wann fokusséiert)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ee Klick (direkt)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rietsklickemulatioun: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wiel d'Method aus fir déi riets Maustast ze emuléiren
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :COMM+Klick
@@ -2113,6 +2114,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

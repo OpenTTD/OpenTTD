@@ -1429,6 +1429,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :双击
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :单击(当前焦点)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :单击 (立即)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右键模拟： {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :选择模拟鼠标右键的方式
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command键 点击
@@ -2118,6 +2119,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

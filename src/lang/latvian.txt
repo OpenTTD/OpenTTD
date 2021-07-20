@@ -1404,6 +1404,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :dubultklikšķi
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :viens klikšķis (kad fokusēta)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :viens klikšķis (nekavējoties)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Labā klikšķa emulēšana: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Izvēlēties peles labās pogas klikšķu emulēšanas paņēmienu
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komanda+klikšķis
@@ -2088,6 +2089,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju sa
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

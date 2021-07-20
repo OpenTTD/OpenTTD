@@ -1359,6 +1359,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :雙撳
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :單撳 (選定輸入方塊時)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :單撳 (立刻)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右鍵模擬：{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :選擇模擬右撳鼠鍵的方法
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
@@ -2011,6 +2012,7 @@ STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}伺服�
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
+
 
 
 STR_NETWORK_SERVER                                              :伺服器

@@ -1321,6 +1321,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Klik bikoitza
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik bakarra (enfokatua dagoenean)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik bakarra (Berehala)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Xaguaren eskuineko botoiaren emulazioa: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Aukeratu saguaren eskuineko botoiaren klikak emulatzeko modua
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
@@ -1914,6 +1915,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

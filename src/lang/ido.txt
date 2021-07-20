@@ -570,6 +570,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+
 # Config errors
 
 # Video initalization errors
@@ -640,6 +641,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

@@ -804,6 +804,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 
 
+
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :कोणतीही कृती नाही
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व कृत्या
 
@@ -938,6 +939,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

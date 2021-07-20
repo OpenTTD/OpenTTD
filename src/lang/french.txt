@@ -1440,6 +1440,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Double clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Simple clic (avec le focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Simple clic (immédiatement)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Émulation du clic droit{NBSP}: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Choisir la méthode pour émuler les clics du bouton droit de la souris
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Commande-clic
@@ -2180,6 +2181,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Êtes-v
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Êtes-vous sûr de vouloir bannir '{STRING}'{NBSP}?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Êtes-vous sûr de vouloir supprimer la compagnie '{COMPANY}'{NBSP}?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Êtes-vous sûr de vouloir réinitialiser le mot de passe de la compagnie '{COMPANY}'?
+
 
 STR_NETWORK_SERVER                                              :Serveur
 STR_NETWORK_CLIENT                                              :Client

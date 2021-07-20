@@ -1288,6 +1288,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Tvísmella
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ýta einusinni (þegar valið)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ýta einusinni (birtist strax)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Hægrismellshermun: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Veldu hvernig herma á eftir hægri smelli á músinni
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+smella
@@ -1858,6 +1859,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leik
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

@@ -1373,6 +1373,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :קליק כפו
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :קליק יחיד (כאשר בפוקוס)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :קליק יחיד (מיד)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{STRING} :הדמיית כפתור ימני בעכבר
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :בחר בשיטה לדימוי קליקים בכפתור העכבר הימני
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
@@ -2019,6 +2020,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת מש
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

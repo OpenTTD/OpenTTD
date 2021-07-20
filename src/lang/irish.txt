@@ -1350,6 +1350,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Cliceáil dhúb
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Cliceáil amháin (agus fócas aige)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Cliceáil amháin (láithreach)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Aithris deaschliceála: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Roghnaigh an modh a úsáidfear chun athris a dhéanamh ar dheaschliceáil an chnaipe luchóige
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ordú+Cliceáil
@@ -1993,6 +1994,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta na gclia
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

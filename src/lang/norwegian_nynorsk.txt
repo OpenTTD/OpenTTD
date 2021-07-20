@@ -1319,6 +1319,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobbelklikk
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelt klikk (når vald)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelt klikk (umiddelbart)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Høgreklikkemulering: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vel metode for å gjenskape høgre museknapp-klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+klikk
@@ -1917,6 +1918,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klie
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

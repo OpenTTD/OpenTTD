@@ -1494,6 +1494,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dupla kattintá
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Egyszeres kattintás (amikor előtérben van)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Egyszeres kattintás (azonnal)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Jobb egérgomb emuláció: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Jobb egérgomb emulálási módszerének kiválasztása
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Parancs+Kattintás
@@ -2221,6 +2222,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Biztos 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Biztos ki akarod tiltani ezt a játékost: '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Biztos ki akarod törölni a '{COMPANY}' vállalatot?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Biztos vissza akarod állítani a '{COMPANY}' vállalat jelszavát?
+
 
 STR_NETWORK_SERVER                                              :Szerver
 STR_NETWORK_CLIENT                                              :Kliens

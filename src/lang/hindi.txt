@@ -343,6 +343,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :अक्षम
 
 
 
+
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :सीमाहीन (आपके कंप्यूटर द्वारा सीमित)
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचार पत्र: {STRING}
@@ -451,6 +452,7 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}उद�
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

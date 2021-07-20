@@ -1382,6 +1382,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbel-klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkel klik (met fokus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkel klik (dadelik)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Regs-klik emulasie: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Kies die manier om regs-klik na te maak
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
@@ -2039,6 +2040,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

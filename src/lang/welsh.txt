@@ -1354,6 +1354,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Clic ddwbl
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic sengl (pan fo ffocws)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic sengl (ar unwaith)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Efelychu de-glicio: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Dewis sut i efelychu cliciau botwm dde y llygoden
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-clic
@@ -2001,6 +2002,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleienti
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

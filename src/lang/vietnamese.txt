@@ -1439,6 +1439,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Nháy kép
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Nháy đơn (nếu đang kích hoạt)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Nháy đơn (ngay lập tức)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Giả lập click chuột phải: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Chọn phương thức giả lập nút phải chuột
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
@@ -2167,6 +2168,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Bạn c
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Bạn có muốn cấm người chơi '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Bạn có muốn xoá công ty '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Bạn có muốn đặt lại mật khẩu cho công ty '{COMPANY}'?
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Máy trạm

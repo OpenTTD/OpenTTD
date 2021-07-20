@@ -1504,6 +1504,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojni klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enojni klik (ko je izostreno)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enojni klik (takojšnje)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacija desnega gumba miške: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Izberi način emulacije klika desnega bumba miške
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ukaz-klik
@@ -2149,6 +2150,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

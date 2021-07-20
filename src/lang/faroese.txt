@@ -1289,6 +1289,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dupult trýst
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Einkult trýst (tá savna)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Einkult trýst (alt fyri eitt)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Høgra-trýst eftirgerð: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vel háttin at eftirgerða trýst á høgra músa knøtt
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+trýst
@@ -1820,6 +1821,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klie
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 

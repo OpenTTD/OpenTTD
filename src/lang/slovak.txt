@@ -1498,6 +1498,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojklik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Jedno kliknutie (keď je textové pole zvolené)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Jendo kliknutie (hneď)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Funkcia pravého tlacidla myši: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Zvolte možnosť ako bude emulované PRAVÉ tlačítko myši.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Príkaz + klik
@@ -2225,6 +2226,7 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Ste si 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Ste si istý, že chcete zabanovť hráča '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Ste si istý, že chcete vymazať spoločnosť '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Ste si istý, že chcete zresetovať heslo pre spoločnosť '{COMPANY}'?
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient

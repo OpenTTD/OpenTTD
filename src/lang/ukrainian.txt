@@ -1552,6 +1552,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Подвійн�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Одиночний клац мишою (коли виділено)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Одиночний клац мишою (негайно)
 
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Емуляція правого клацу миші: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Задає спосіб емуляції правого клацу миші
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда+клац мишою
@@ -2241,6 +2242,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список к
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
+
 
 
 
