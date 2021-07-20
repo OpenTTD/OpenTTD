@@ -12,6 +12,8 @@
 
 #include "math_func.hpp"
 
+#include <limits>
+
 #ifdef __has_builtin
 #	if __has_builtin(__builtin_add_overflow) && __has_builtin(__builtin_sub_overflow) && __has_builtin(__builtin_mul_overflow)
 #		define HAS_OVERFLOW_BUILTINS
@@ -23,13 +25,14 @@
  * you multiply the maximum value with 2, or add 2, or subtract something from
  * the minimum value, etc.
  * @param T     the type these integers are stored with.
- * @param T_MAX the maximum value for the integers.
- * @param T_MIN the minimum value for the integers.
  */
-template <class T, T T_MAX, T T_MIN>
+template <class T>
 class OverflowSafeInt
 {
 private:
+	static constexpr T T_MAX = std::numeric_limits<T>::max();
+	static constexpr T T_MIN = std::numeric_limits<T>::min();
+
 	/** The non-overflow safe backend to store the value in. */
 	T m_value;
 public:
@@ -175,31 +178,31 @@ public:
 };
 
 /* Sometimes we got int64 operator OverflowSafeInt instead of vice versa. Handle that properly */
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator + (int64 a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator - (int64 a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return -b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator * (int64 a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b * a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator / (int64 a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
+template <class T> inline OverflowSafeInt<T> operator + (int64 a, OverflowSafeInt<T> b) { return b + a; }
+template <class T> inline OverflowSafeInt<T> operator - (int64 a, OverflowSafeInt<T> b) { return -b + a; }
+template <class T> inline OverflowSafeInt<T> operator * (int64 a, OverflowSafeInt<T> b) { return b * a; }
+template <class T> inline OverflowSafeInt<T> operator / (int64 a, OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
 
 /* Sometimes we got int operator OverflowSafeInt instead of vice versa. Handle that properly */
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator + (int   a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator - (int   a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return -b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator * (int   a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b * a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator / (int   a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
+template <class T> inline OverflowSafeInt<T> operator + (int   a, OverflowSafeInt<T> b) { return b + a; }
+template <class T> inline OverflowSafeInt<T> operator - (int   a, OverflowSafeInt<T> b) { return -b + a; }
+template <class T> inline OverflowSafeInt<T> operator * (int   a, OverflowSafeInt<T> b) { return b * a; }
+template <class T> inline OverflowSafeInt<T> operator / (int   a, OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
 
 /* Sometimes we got uint operator OverflowSafeInt instead of vice versa. Handle that properly */
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator + (uint  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator - (uint  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return -b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator * (uint  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b * a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator / (uint  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
+template <class T> inline OverflowSafeInt<T> operator + (uint  a, OverflowSafeInt<T> b) { return b + a; }
+template <class T> inline OverflowSafeInt<T> operator - (uint  a, OverflowSafeInt<T> b) { return -b + a; }
+template <class T> inline OverflowSafeInt<T> operator * (uint  a, OverflowSafeInt<T> b) { return b * a; }
+template <class T> inline OverflowSafeInt<T> operator / (uint  a, OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
 
 /* Sometimes we got byte operator OverflowSafeInt instead of vice versa. Handle that properly */
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator + (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b + (uint)a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator - (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return -b + (uint)a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator * (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b * (uint)a; }
-template <class T, int64 T_MAX, int64 T_MIN> inline OverflowSafeInt<T, T_MAX, T_MIN> operator / (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
+template <class T> inline OverflowSafeInt<T> operator + (byte  a, OverflowSafeInt<T> b) { return b + (uint)a; }
+template <class T> inline OverflowSafeInt<T> operator - (byte  a, OverflowSafeInt<T> b) { return -b + (uint)a; }
+template <class T> inline OverflowSafeInt<T> operator * (byte  a, OverflowSafeInt<T> b) { return b * (uint)a; }
+template <class T> inline OverflowSafeInt<T> operator / (byte  a, OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
 
-typedef OverflowSafeInt<int64, INT64_MAX, INT64_MIN> OverflowSafeInt64;
-typedef OverflowSafeInt<int32, INT32_MAX, INT32_MIN> OverflowSafeInt32;
+typedef OverflowSafeInt<int64> OverflowSafeInt64;
+typedef OverflowSafeInt<int32> OverflowSafeInt32;
 
 #undef HAS_OVERFLOW_BUILTINS
 
