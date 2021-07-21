@@ -1440,6 +1440,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Duplo clique
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clique simples (quando em foco)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clique (imediatamente)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Usar serviço de retransmissão: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Se a criação da ligação com o servidor falhar, pode usar um serviço de retransmissão para criar uma conexão. "Nunca" desautoriza isso; "perguntar" perguntará primeiro e "permitir" permitirá sem perguntar
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nunca
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Perguntar
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permitir
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação de clique de botão direito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecione o método de emulação dos cliques do botão direito do rato
@@ -1793,6 +1798,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuição de Carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Oponentes
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jogadores Computador
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rede
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
@@ -2169,6 +2175,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Jogadores remotos não conseguem conetar
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Público
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Atrás de NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via retransmissão
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
@@ -2182,6 +2189,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Tem a c
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Tem a certeza que quer apagar a empresa '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Tem a certeza que quer restabelecer a palavra-chave da empresa '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usar retransmissão?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Falha ao estabelecer a ligação entre si e o servidor.{}Deseja retransmitir esta sessão via '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Não
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sim, desta vez
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sim, não perguntar novamente
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente

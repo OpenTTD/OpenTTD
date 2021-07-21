@@ -1440,6 +1440,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :더블 클릭
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :한 번 클릭 (커서가 활성화되어 있을 때)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :한 번 클릭 (즉시)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :중계 서비스 이용: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :서버 연결에 실패할 경우, 중계 서비스를 이용하여 연결을 시도할 수 있습니다. "사용 안 함"으로 설정하면 이 중계 서비스를 사용하지 않고, "물어보기"는 처음에 물어보고 사용하며, "이용"은 물어보지 않고 중계 서비스를 사용합니다.
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :사용 안 함
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :물어보기
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :사용
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :오른쪽 클릭 매크로: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :오른쪽 마우스 버튼 클릭을 대신할 방법을 선택합니다.
@@ -1793,6 +1798,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}산업�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}화물 분배
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 플레이어
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}네트워크
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(권장)
@@ -2169,6 +2175,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}로컬
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}다른 플레이어가 접속할 수 없게 됩니다
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}공개
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}공유기 우회
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}중계 이용
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :추방
@@ -2182,6 +2189,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}'{STRIN
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' 회사를 정말로 삭제하시겠습니까?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}'{COMPANY}' 회사의 비밀번호를 정말로 초기화하시겠습니까?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}중계를 이용할까요?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}서버와 연결을 수립하는 데 실패했습니다.{} '{0:STRING}'{G 0 "을" "를"} 통해 연결을 중계하시겠습니까?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}아니요
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}이번에만 사용
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}항상 사용
 
 STR_NETWORK_SERVER                                              :서버
 STR_NETWORK_CLIENT                                              :접속자

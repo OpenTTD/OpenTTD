@@ -709,7 +709,7 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcje
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Zapis gry, opuszczenie gry, wyjście
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Wyświetl mapę, dodatkowy podgląd lub listę napisów
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Wyświetl listę miast
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświetl subsydia
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświetl dotacje
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświetl informacje finansowe firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
@@ -799,7 +799,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Załóż miasto
 ############ range ends here
 
 ############ range for subsidies menu starts
-STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydia
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotacje
 ############ range ends here
 
 ############ range for graph menu starts
@@ -1261,8 +1261,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} już akceptuje {STRING.b}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} już akceptuje {STRING.b} i {STRING.b}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsydiowanie wygasło:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już subsydiowany
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Dotacja wygasła:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już dotowany
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta usługi dotowanej:{}{}Pierwszy przewóz {STRING.d} z {STRING} do {STRING} będzie dotowany przez następn{P 3 y e ych} {NUM} {P rok lata lat} przez lokalne władze!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany o 50% więcej przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany podwójnie przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany potrójnie przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Przyznano dotację dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany poczwórnie przez następn{P 4 y e ych} {NUM} {P rok lata lat}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos na drogach w {TOWN}!{}{}Program przebudowy dróg ufundowany przez {STRING} przynosi 6 miesięcy męki dla kierowców!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol transportowy!
@@ -1328,7 +1333,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malezyj
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazda po prawej
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nazwy miast
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nazwy miast:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Wybierz styl nazw miast
 
 ############ start of townname region
@@ -1578,6 +1583,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Awarie pojazdó
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroluj jak często nieodpowiednio serwisowane pojazdy mogą się psuć
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Mnożnik dofinansowania: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ustaw wysokość zapłaty za połączenia dofinansowywane
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Czas trwania dotacji: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Określ liczbę lat, na które przyznawana jest dotacja
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P rok lata lat}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Brak dotacji
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty konstrukcji: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów konstrukcji i kupna
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
@@ -1810,6 +1819,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójny klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (w przybliżeniu)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Użyj usługi przekaźnika: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Jeśli nawiązanie połączenia z serwerem nie powiedzie się, można użyć usługi przekaźnika do nawiązania połączenia. „Nigdy" nie zezwoli na to, „pytaj” najpierw zapyta, „zezwól” pozwoli na to bez pytania
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nigdy
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Pytaj
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Zezwól
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacja prawego przycisku myszy: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wybierz metodę emulacji klikania prawym przyciskiem myszki
@@ -1961,8 +1975,8 @@ STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Wyświetl wiadomość w gazecie o dostępnym nowym typie pojazdu
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Wyświetlaj wiadomości o zmianach w akceptowaniu towarów przez stacje
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Wyświetl wiadomość w gazecie o wydarzeniach związanych z subsydiami
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Dotacje: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Wyświetl wiadomość w gazecie o wydarzeniach związanych z dotacjami
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie o wydarzeniach takich jak zakup ekskluzywnych praw lub fundowanie przebudowy dróg
 
@@ -2163,6 +2177,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Przedsi
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dystrybucja towarów
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gracze komputerowi
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Sieć
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Zalecane)
@@ -2252,7 +2267,7 @@ STR_QUIT_NO                                                     :{BLACK}Nie
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Wyjście
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy jesteś pewien, że chcesz skończyć tę grę?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jesteś pewny, że chcesz opuścić ten scenariusz?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jesteś pewien, że chcesz opuścić ten scenariusz?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
@@ -2281,8 +2296,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż s
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Pokaż schematy koloru pojazdów
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Pokaż schematy koloru statków
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Pokaż schematy koloru samolotów
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Ctrl + klik ustawi ten kolor dla wszystkich schematów
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz drugi kolor dla wybranego schematu. Ctrl + klik ustawi ten kolor dla wszystkich schematów
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz drugi kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wybierz schemat kolorów do zmiany, albo wiele schematów z CTRL+klik. Kliknij na okienku aby wł./wył. używanie schematu.
 
 STR_LIVERY_DEFAULT                                              :Standardowy wygląd
@@ -2368,6 +2383,9 @@ STR_FACE_EARRING                                                :Kolczyk:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień krawat lub kolczyk
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokalny
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Publiczny
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Tylko na zaproszenie
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2390,7 +2408,7 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Ilość 
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Język, wersja serwera, itp.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij na grze z listy by ją wybrać
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serwer z którym ostatnio się połączyłeś:
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serwer, do którego ostatnio dołączyłeś:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknij, aby wybrać serwer na którym grałeś ostatnio
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACJE O GRZE
@@ -2402,6 +2420,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Wersja 
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adres serwera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data uruchomienia: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktualna data: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Script: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Chronione hasłem!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERWER WYŁĄCZONY
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERWER PEŁNY
@@ -2422,6 +2441,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Wprowadź swoje imię
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Wprowadź adres serwera lub kod zaproszenia
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Rozpocznij nową grę wieloosobową
@@ -2431,6 +2451,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazwa gr
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Ustaw hasło
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Widoczność
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Czy inni ludzie mogą zobaczyć twój serwer na publicznej liście
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna liczba klientów:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
@@ -2494,15 +2516,63 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista klientów
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Połączeni gracze
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Serwer
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nazwa
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nazwa serwera, na którym grasz
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Edytuj nazwę swojego serwera
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nazwa serwera
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Widoczność
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Czy inni ludzie mogą zobaczyć twój serwer na publicznej liście
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Kod zaproszenia
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Kod zaproszenia, którego mogą użyć inni gracze, by dołączyć do tego serwera
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Typ połączenia
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Czy i jak twój serwer może być osiągalny dla innych
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Gracz
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nazwa
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Twoja nazwa gracza
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Edytuj swoją nazwę gracza
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Twoja nazwa gracza
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Działania administracyjne, które można wykonać dla tego klienta
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Działania administracyjne, które można wykonać dla tej firmy
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Dołącz do tej firmy
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Wyślij wiadomość do tego gracza
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Wyślij wiadomość do wszystkich graczy tej firmy
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Wyślij wiadomość do wszystkich obserwatorów
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Obserwatorzy
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nowa firma)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Utwórz nową firmę i dołącz do niej
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}To jesteś ty
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}To jest gospodarz gry
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" ów ów} / {NUM} firm{P a y ""}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokalny
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Zdalni gracze nie mogą się łączyć
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Publiczny
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Za NAT-em
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Przez przekaźnik
 ############ End of ConnectionType
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Wyrzuć
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Zbanuj
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Usuń
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Wyczyść hasło
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Działanie administratora
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Czy na pewno chcesz wyrzucić gracza „{STRING}”?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Czy na pewno chcesz zbanować gracza „{STRING}”?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Czy na pewno chcesz usunąć firmę „{COMPANY}”?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Czy na pewno chcesz zresetować hasło firmy „{COMPANY}”?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Używać przekaźnika?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nie udało się nawiązać połączenia między tobą a serwerem.{}Czy chcesz przekazać tę sesję za pośrednictwem „{STRING}”?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Tak, ten jeden raz
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Tak, nie pytaj ponownie
 
 STR_NETWORK_SERVER                                              :Serwer
 STR_NETWORK_CLIENT                                              :Klient
@@ -2547,6 +2617,8 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nie moż
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nie można połączyć
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Przekroczony limit czasu dla połączenia #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Błąd protokołu, połączenie zostało przerwane
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Twoja nazwa gracza nie została ustawiona. Nazwę można ustawić w górnej części okna Gra wieloosobowa
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nazwa twojego serwera nie została ustawiona. Nazwę można ustawić w górnej części okna Gra wieloosobowa
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Wersja gry nie zgadza się z wersją gry na serwerze
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Złe hasło
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serwer jest pełny
@@ -2559,6 +2631,8 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zbyt dł
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Twój komputer jest zbyt wolny, by nadążyć za serwerem
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Twój komputer zbyt długo pobierał mapę
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Twój komputer zbyt długo łączył się z serwerem
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Twoja nazwa gracza jest nieprawidłowa
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Zapytany serwer jest zbyt stary dla tego klienta
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :błąd ogólny
@@ -2581,6 +2655,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nie otrzymano h
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :przekroczono czas
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :pobieranie mapy trwało zbyt długo
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :przetwarzanie mapy trwało za długo
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nieprawidłowa nazwa klienta
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Możliwa utrata połączenia
@@ -2609,12 +2684,15 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} do
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} dołączył do obserwatorów
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} założył nową firmę (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opuścił grę ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmienił/zmieniła swoje imię na {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmienił swoją nazwę na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Firma {STRING} przekazała firmie {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer zamknął sesję
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}Proszę czekać...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} został wyrzucony. Powód: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Rejestracja serwera nie powiodła się
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Twój serwer nie pozwala na połączenia zdalne
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Inni gracze nie będą mogli połączyć się z twoim serwerem
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka dodatkowej zawartości
@@ -3421,6 +3499,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżen
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Błąd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Błąd krytyczny: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Wystąpił błąd krytyczny NewGRF:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Wystąpił błąd NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} jest przeznaczony dla TTD wersji {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} jest zaprojektowany do użycia z {STRING}
@@ -3610,11 +3689,11 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zamknij
 ############ End of Goal Question button list
 
 # Subsidies window
-STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydia
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Oferta subsydiów dla usługi przewozu:
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotacje
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Oferta dotacji dla usługi przewozu:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} (do {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Żadne -
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usługi już subsydiowane:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Usługi już dotowane:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+klik otwiera nowy podgląd na pozycji fabryki/miasta
 
@@ -3898,7 +3977,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknij 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień nazwę zaznaczonej grupy
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień kolor zaznaczonej grupy
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby ochronić tę grupę przed globalną zamianą pojazdów
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby chronić tę grupę przed globalną zamianą pojazdów. Ctrl+klik, aby chronić również podgrupy
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj grupę
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Jesteś pewien, że chcesz skasować tę grupę i wszystkich jej członków?
@@ -4157,7 +4236,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Kolej Maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Pojazdy drogowe
 STR_REPLACE_TRAM_VEHICLES                                       :Tramwaje
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klik, aby zastosować również do podgrup
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
