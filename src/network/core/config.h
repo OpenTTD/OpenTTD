@@ -94,14 +94,4 @@ static const uint NETWORK_GRF_NAME_LENGTH           =   80;           ///< Maxim
  */
 static const uint NETWORK_MAX_GRF_COUNT             =   255;
 
-/**
- * The number of landscapes in OpenTTD.
- * This number must be equal to NUM_LANDSCAPE, but as this number is used
- * within the network code and that the network code is shared with the
- * masterserver/updater, it has to be declared in here too. In network.cpp
- * there is a compile assertion to check that this NUM_LANDSCAPE is equal
- * to NETWORK_NUM_LANDSCAPES.
- */
-static const uint NETWORK_NUM_LANDSCAPES            =    4;
-
 #endif /* NETWORK_CORE_CONFIG_H */
