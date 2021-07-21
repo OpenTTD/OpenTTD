@@ -352,7 +352,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 			info->landscape      = p->Recv_uint8 ();
 			info->dedicated      = p->Recv_bool  ();
 
-			if (info->landscape >= NETWORK_NUM_LANDSCAPES) info->landscape = 0;
+			if (info->landscape >= NUM_LANDSCAPE) info->landscape = 0;
 	}
 }
 

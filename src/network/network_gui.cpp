@@ -483,7 +483,7 @@ public:
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 		this->SetFocusedWidget(WID_NG_FILTER);
 
-		/* As the master-server doesn't support "websocket" servers yet, we
+		/* As the Game Coordinator doesn't support "websocket" servers yet, we
 		 * let "os/emscripten/pre.js" hardcode a list of servers people can
 		 * join. This means the serverlist is curated for now, but it is the
 		 * best we can offer. */
