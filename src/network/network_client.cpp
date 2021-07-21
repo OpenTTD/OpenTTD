@@ -160,24 +160,19 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
 {
 	assert(status != NETWORK_RECV_STATUS_OKAY);
-	/*
-	 * Sending a message just before leaving the game calls cs->SendPackets.
-	 * This might invoke this function, which means that when we close the
-	 * connection after cs->SendPackets we will close an already closed
-	 * connection. This handles that case gracefully without having to make
-	 * that code any more complex or more aware of the validity of the socket.
-	 */
-	if (this->sock == INVALID_SOCKET) return status;
+	assert(this->sock != INVALID_SOCKET);
 
-	Debug(net, 3, "Closed client connection {}", this->client_id);
+	if (!this->HasClientQuit()) {
+		Debug(net, 3, "Closed client connection {}", this->client_id);
 
-	this->SendPackets(true);
+		this->SendPackets(true);
 
-	/* Wait a number of ticks so our leave message can reach the server.
-	 * This is especially needed for Windows servers as they seem to get
-	 * the "socket is closed" message before receiving our leave message,
-	 * which would trigger the server to close the connection as well. */
-	CSleep(3 * MILLISECONDS_PER_TICK);
+		/* Wait a number of ticks so our leave message can reach the server.
+		* This is especially needed for Windows servers as they seem to get
+		* the "socket is closed" message before receiving our leave message,
+		* which would trigger the server to close the connection as well. */
+		CSleep(3 * MILLISECONDS_PER_TICK);
+	}
 
 	delete this;
 
@@ -256,7 +251,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 /* static */ void ClientNetworkGameSocketHandler::Send()
 {
 	my_client->SendPackets();
-	my_client->CheckConnection();
+	if (my_client != nullptr) my_client->CheckConnection();
 }
 
 /**

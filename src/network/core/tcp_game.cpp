@@ -48,7 +48,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 		_networking = false;
 		ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
 
-		return NETWORK_RECV_STATUS_CLIENT_QUIT;
+		return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 	}
 
 	return this->CloseConnection(NETWORK_RECV_STATUS_CONNECTION_LOST);
