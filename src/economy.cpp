@@ -803,7 +803,7 @@ void RecomputePrices()
 
 	/* Setup cargo payment */
 	for (CargoSpec *cs : CargoSpec::Iterate()) {
-		cs->current_payment = ((int64)cs->initial_payment * _economy.inflation_payment) >> 16;
+		cs->current_payment = (cs->initial_payment * (int64)_economy.inflation_payment) >> 16;
 	}
 
 	SetWindowClassesDirty(WC_BUILD_VEHICLE);
