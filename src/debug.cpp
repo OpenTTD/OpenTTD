@@ -14,6 +14,7 @@
 #include "string_func.h"
 #include "fileio_func.h"
 #include "settings_type.h"
+#include <mutex>
 
 #if defined(_WIN32)
 #include "os/windows/win32.h"
@@ -25,6 +26,16 @@
 SOCKET _debug_socket = INVALID_SOCKET;
 
 #include "safeguards.h"
+
+/** Element in the queue of debug messages that have to be passed to either NetworkAdminConsole or IConsolePrint.*/
+struct QueuedDebugItem {
+	std::string level;   ///< The used debug level.
+	std::string message; ///< The actual formatted message.
+};
+std::atomic<bool> _debug_remote_console; ///< Whether we need to send data to either NetworkAdminConsole or IConsolePrint.
+std::mutex _debug_remote_console_mutex; ///< Mutex to guard the queue of debug messages for either NetworkAdminConsole or IConsolePrint.
+std::vector<QueuedDebugItem> _debug_remote_console_queue; ///< Queue for debug messages to be passed to NetworkAdminConsole or IConsolePrint.
+std::vector<QueuedDebugItem> _debug_remote_console_queue_spare; ///< Spare queue to swap with _debug_remote_console_queue.
 
 int _debug_driver_level;
 int _debug_grf_level;
@@ -107,6 +118,11 @@ void DebugPrint(const char *level, const std::string &message)
 {
 	if (_debug_socket != INVALID_SOCKET) {
 		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
+
+		/* Prevent sending a message concurrently, as that might cause interleaved messages. */
+		static std::mutex _debug_socket_mutex;
+		std::lock_guard<std::mutex> lock(_debug_socket_mutex);
+
 		/* Sending out an error when this fails would be nice, however... the error
 		 * would have to be send over this failing socket which won't work. */
 		send(_debug_socket, msg.c_str(), (int)msg.size(), 0);
@@ -130,8 +146,11 @@ void DebugPrint(const char *level, const std::string &message)
 		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
 		fputs(msg.c_str(), stderr);
 
-		NetworkAdminConsole(level, message);
-		if (_settings_client.gui.developer >= 2) IConsolePrint(CC_DEBUG, "dbg: [{}] {}", level, message);
+		if (_debug_remote_console.load()) {
+			/* Only add to the queue when there is at least one consumer of the data. */
+			std::lock_guard<std::mutex> lock(_debug_remote_console_mutex);
+			_debug_remote_console_queue.push_back({ level, message });
+		}
 	}
 }
 
@@ -229,3 +248,47 @@ const char *GetLogPrefix()
 	return _log_prefix;
 }
 
+/**
+ * Send the queued Debug messages to either NetworkAdminConsole or IConsolePrint from the
+ * GameLoop thread to prevent concurrent accesses to both the NetworkAdmin's packet queue
+ * as well as IConsolePrint's buffers.
+ *
+ * This is to be called from the GameLoop thread.
+ */
+void DebugSendRemoteMessages()
+{
+	if (!_debug_remote_console.load()) return;
+
+	{
+		std::lock_guard<std::mutex> lock(_debug_remote_console_mutex);
+		std::swap(_debug_remote_console_queue, _debug_remote_console_queue_spare);
+	}
+
+	for (auto &item : _debug_remote_console_queue_spare) {
+		NetworkAdminConsole(item.level, item.message);
+		if (_settings_client.gui.developer >= 2) IConsolePrint(CC_DEBUG, "dbg: [{}] {}", item.level, item.message);
+	}
+
+	_debug_remote_console_queue_spare.clear();
+}
+
+/**
+ * Reconsider whether we need to send debug messages to either NetworkAdminConsole
+ * or IConsolePrint. The former is when they have enabled console handling whereas
+ * the latter depends on the gui.developer setting's value.
+ *
+ * This is to be called from the GameLoop thread.
+ */
+void DebugReconsiderSendRemoteMessages()
+{
+	bool enable = _settings_client.gui.developer >= 2;
+
+	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
+		if (as->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
+			enable = true;
+			break;
+		}
+	}
+
+	_debug_remote_console.store(enable);
+}
