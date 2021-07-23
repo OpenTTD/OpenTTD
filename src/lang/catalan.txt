@@ -1440,6 +1440,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doble clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un clic (quan té el focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un clic (immediatament)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Servei de transmissió: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Si falla la creació d'una connexió al servidor, es pot usar un servei de transmissió per crear la connexió. «Mai» no permet fer-ho, «Pregunta» permet que l'usuari esculli què fer i «Permet» en permet l'ús sense preguntar-ho.
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Mai
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Pregunta
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permet
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulació del botó dret: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona el mètode per emular els clics amb el botó dret del ratolí
@@ -1793,6 +1798,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Indúst
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribució de la càrrega
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidors
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadors IA
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Xarxa
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
@@ -1998,6 +2004,7 @@ STR_FACE_EARRING                                                :Arracades:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia la corbata o les arracades
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Pública
 STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Només invitació
 ############ End of leave-in-this-order
@@ -2050,11 +2057,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Cerca se
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Cerca a la LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Cerca servidors a la xarxa local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Afegeix un servidor
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per buscar partides en marxa
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Afegeix un servidor a la llista. Es pot afegir l'adreça del servidor o un codi d'invitació.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Inicia el servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Inicia en un servidor propi
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Posa el teu nom
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Escriviu l'adreça del servidor o el codi d'invitació.
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Inicia una partida multijugador nova
@@ -2140,6 +2148,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Editeu e
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nom del servidor
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilitat
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Permet establir si altres persones poden veure el vostre servidor a la llista pública.
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Codi d'invitació
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Codi d'invitació que els altres jugadors poden usar per unir-se a aquest servidor.
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipus de connexió
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Indica com els altres usuaris poden comunicar-se amb el vostre servidor.
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jugador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nom
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}El vostre nom de jugador
@@ -2159,6 +2171,11 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aquest �
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} / {NUM} companyi{P a es}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Els jugadors remots no es poden connectar.
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Públic
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Darrere del NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via servei de transmissió
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Treu
@@ -2172,6 +2189,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Esteu s
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Esteu segur que voleu esborrar la companyia «{COMPANY}»?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Esteu segur que voleu restablir la contrasenya de la companyia «{COMPANY}»?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Voleu usar un servei de transmissió?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No s'ha pogut establir una connexió entre el servidor i el vostre dispositiu.{}Voleu transmetre aquesta sessió via «{STRING}»?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, aquest una vegada.
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no ho preguntis més.
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
@@ -2290,6 +2312,8 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servi
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registre al servidor ha fallat.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}El vostre servidor no permet connexions remotes.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Els altres jugadors no podran connectar-se al vostre servidor.
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descàrregues de contingut
