@@ -122,4 +122,7 @@ void CDECL ShowInfoF(const char *str, ...) WARN_FORMAT(1, 2);
 
 const char *GetLogPrefix();
 
+void DebugSendRemoteMessages();
+void DebugReconsiderSendRemoteMessages();
+
 #endif /* DEBUG_H */
