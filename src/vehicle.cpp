@@ -2100,6 +2100,7 @@ void Vehicle::BeginLoading()
 {
 	assert(IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP);
 
+	uint32 travel_time = this->current_order_time;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
 		this->DeleteUnreachedImplicitOrders();
@@ -2206,7 +2207,7 @@ void Vehicle::BeginLoading()
 			this->last_loading_station != this->last_station_visited &&
 			((this->current_order.GetLoadType() & OLFB_NO_LOAD) == 0 ||
 			(this->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0)) {
-		IncreaseStats(Station::Get(this->last_loading_station), this, this->last_station_visited);
+		IncreaseStats(Station::Get(this->last_loading_station), this, this->last_station_visited, travel_time);
 	}
 
 	PrepareUnload(this);
