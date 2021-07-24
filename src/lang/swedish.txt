@@ -1439,6 +1439,9 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbelklick
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelklick (om redan fokuserad)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelklick (omedelbart)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Aldrig
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Fråga
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Tillåt
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Högerklicksemulering: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Välj metod för att emulera klick med musens högra knapp
@@ -1792,6 +1795,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Godsdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Nätverk
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekommenderad)
@@ -2167,6 +2171,7 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} kl
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Fjärran belägna spelare kan inte ansluta
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Offentlig
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via relä
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kasta ut
@@ -2180,6 +2185,10 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Är du 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Är du säker på att du vill ta bort företaget {COMPANY}?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Är du säker på att du vill återställa företaget {COMPANY}s lösenord?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Använd relä?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, den här gången
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, fråga inte igen
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
