@@ -33,6 +33,7 @@ public:
 	inline static const SaveLoad description[] = {
 		    SLE_VAR(Edge, capacity,                 SLE_UINT32),
 		    SLE_VAR(Edge, usage,                    SLE_UINT32),
+		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
 		    SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
 		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_187, SL_MAX_VERSION),
 		    SLE_VAR(Edge, next_edge,                SLE_UINT16),

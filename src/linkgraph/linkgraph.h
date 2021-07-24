@@ -62,6 +62,7 @@ public:
 	struct BaseEdge {
 		uint capacity;                 ///< Capacity of the link.
 		uint usage;                    ///< Usage of the link.
+		uint64 travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
 		Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
 		Date last_restricted_update;   ///< When the restricted part of the link was last updated.
 		NodeID next_edge;              ///< Destination of next valid edge starting at the same source node.
@@ -96,6 +97,12 @@ public:
 		 * @return Usage.
 		 */
 		uint Usage() const { return this->edge.usage; }
+
+		/**
+		 * Get edge's average travel time.
+		 * @return Travel time, in ticks.
+		 */
+		uint32 TravelTime() const { return this->edge.travel_time_sum / this->edge.capacity; }
 
 		/**
 		 * Get the date of the last update to the edge's unrestricted capacity.
@@ -296,7 +303,7 @@ public:
 		 * @param edge Edge to be wrapped.
 		 */
 		Edge(BaseEdge &edge) : EdgeWrapper<BaseEdge>(edge) {}
-		void Update(uint capacity, uint usage, EdgeUpdateMode mode);
+		void Update(uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
 		void Restrict() { this->edge.last_unrestricted_update = INVALID_DATE; }
 		void Release() { this->edge.last_restricted_update = INVALID_DATE; }
 	};
@@ -429,8 +436,8 @@ public:
 			this->node.demand = demand;
 		}
 
-		void AddEdge(NodeID to, uint capacity, uint usage, EdgeUpdateMode mode);
-		void UpdateEdge(NodeID to, uint capacity, uint usage, EdgeUpdateMode mode);
+		void AddEdge(NodeID to, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
+		void UpdateEdge(NodeID to, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
 		void RemoveEdge(NodeID to);
 	};
 

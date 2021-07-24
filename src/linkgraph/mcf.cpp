@@ -284,12 +284,21 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 				capacity /= 100;
 				if (capacity == 0) capacity = 1;
 			}
-			/* punish in-between stops a little */
+			/* Prioritize the fastest route for passengers, mail and express cargo,
+			 * and the shortest route for other classes of cargo.
+			 * In-between stops are punished with a 1 tile or 1 day penalty. */
+			bool express = IsCargoInClass(this->job.Cargo(), CC_PASSENGERS) ||
+				IsCargoInClass(this->job.Cargo(), CC_MAIL) ||
+				IsCargoInClass(this->job.Cargo(), CC_EXPRESS);
 			uint distance = DistanceMaxPlusManhattan(this->job[from].XY(), this->job[to].XY()) + 1;
+			/* Compute a default travel time from the distance and an average speed of 1 tile/day. */
+			uint time = (edge.TravelTime() != 0) ? edge.TravelTime() + DAY_TICKS : distance * DAY_TICKS;
+			uint distance_anno = express ? time : distance;
+
 			Tannotation *dest = static_cast<Tannotation *>(paths[to]);
-			if (dest->IsBetter(source, capacity, capacity - edge.Flow(), distance)) {
+			if (dest->IsBetter(source, capacity, capacity - edge.Flow(), distance_anno)) {
 				annos.erase(dest);
-				dest->Fork(source, capacity, capacity - edge.Flow(), distance);
+				dest->Fork(source, capacity, capacity - edge.Flow(), distance_anno);
 				dest->UpdateAnnotation();
 				annos.insert(dest);
 			}
