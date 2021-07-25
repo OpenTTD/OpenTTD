@@ -93,7 +93,9 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Suc acidulat
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}{P călător călători "de călătorii"}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de cărbune
+STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}{P sac saci "de saci"} cu colete poștale
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petrol
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereale
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de lemne
@@ -102,16 +104,23 @@ STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minereu de cupru
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de porumb
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fructe
+STR_QUANTITY_DIAMONDS                                           :{COMMA} {P sac saci "de saci"} cu diamante
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimente
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de hârtie
+STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}{P sac saci "de saci"} cu aur
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de apă
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de grâu
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de cauciuc
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de zahăr
+STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}{P sac saci "de saci"} cu jucării
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}{P sac saci "de saci"} cu bomboane
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de vată de zahăr
+STR_QUANTITY_BUBBLES                                            :{COMMA} {P balonaș balonașe "de balonașe"}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel
+STR_QUANTITY_BATTERIES                                          :{COMMA} {P baterie baterii "de baterii"}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastic
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} {P bidon bidoane "de bidoane"} cu suc
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -151,6 +160,7 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NU
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOT
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :{COMMA}{NBSP}{P călător călători "de călători"}
 STR_BAGS                                                        :{COMMA}{NBSP}sac{P "" "" "de "}sac{P "" i i}
 STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
@@ -1018,6 +1028,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informa�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Setul de muzică de bază
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selectaţi setul de muzică de bază
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} {P fișier fișiere "de fișiere"} corupt{P "" e e}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informaţii adiţionale despre setul de muzică de bază
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nu s-a putut obține lista de rezoluții suportate
@@ -1398,6 +1409,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Click dublu
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un singur click (când este în focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un singur click (instant)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permite
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulare click-dreapta: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Alege metoda de emulare a click-urilor provenite de la butonul din dreapta al mouse-ului
@@ -1640,6 +1652,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :x2
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :x4
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :x8
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Viteza de dezvoltare a oraşului: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Viteza creşterii oraşelor
@@ -2057,6 +2070,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Î
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare informaţii joc...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare informaţii companie...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} {P client clienți "de clienți"} înaintea ta
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descărcat până acum
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descărcaţi până acum
 
@@ -2085,7 +2099,9 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu pa
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sigur vrei să dai afară jucătorul '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sigur vrei să blochezi jucătorul '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sigur dorești ștergerea companiei '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nu
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
@@ -3447,6 +3463,7 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Tramvaie noi
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicule pe şine
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Autovehicule noi
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nave noi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeronavă nouă
 ############ range for vehicle availability ends
