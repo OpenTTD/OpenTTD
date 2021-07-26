@@ -97,10 +97,13 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}{P
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de cărbune
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}{P sac saci "de saci"} cu colete poștale
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petrol
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}{P animal animale "de animale"}
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}{P pachet pachete "de pachete"} de bunuri
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereale
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de lemne
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minereu de fier
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de oțel
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}{P sac saci "de saci"} de valori
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minereu de cupru
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de porumb
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fructe
@@ -201,12 +204,16 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}{P tonă tone "de tone"}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}{P tonă tone "de tone"}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}{P galon galoane "de galoane"}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}{P litru litri "de litri"}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
@@ -2093,6 +2100,7 @@ STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite 
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Public
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu parolă
@@ -2583,6 +2591,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Construi
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Alege industria potrivită din acestă listă
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Creează multe industrii aleatoare
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Umple harta cu industrii generate aleator
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Creează multe industrii aleatoare
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectează
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieşte
@@ -3077,6 +3086,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} livrate
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (mai sunt necesare)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (livrate)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK}{NBSP}{P zi zile "de zile"}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK}{NBSP}{P zi zile "de zile"} (cu fonduri)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Orașul {RED}nu{BLACK} crește
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează imaginea pe locaţia oraşului. Ctrl+Click deshide o fereastra cu locaţia oraşului
@@ -3183,6 +3194,7 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referinţ�
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Numele staţiilor - clic pe un nume pentru a centra imaginea pe staţia respectivă. Ctrl+Click deshide o fereastra cu locaţia staţiei
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ţine apăsat Ctrl pentru a alege mai multe obiecte
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} {P stație stații "de stații"}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nici una -
@@ -3390,9 +3402,12 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Modifică nivelul producţiei (procent, până la 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} {P tren trenuri "de trenuri"}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P autovehicul autovehicule "de autovehicule"}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} {P navă nave "de nave"}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} {P aeronavă aeronave "de aeronave"}
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenuri - click pe un trn pentru detalii
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenuri - click pe tren pentru informații
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autovehicule - clic pe vehicul pentru informatii
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Nave - click pe navă pentru informaţii
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
@@ -3418,6 +3433,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Trimite la hang
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click pt oprirea tuturor vehiculelor din listă
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
 
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Comenzi sincronizate pentru {COMMA} {P vehicul vehicule "de vehicule"}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Toate trenurile
@@ -3681,6 +3697,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicule Pernă
 STR_REPLACE_ROAD_VEHICLES                                       :Autovehicule
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaie
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din faţă) dacă înlocuirea locomotivei ar face trenul mai lung
 
 # Vehicle view
@@ -3758,6 +3775,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Denumeş
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vechime: {LTBLUE}{STRING}{BLACK}   Mentenanţă: {LTBLUE}{CURRENCY_LONG}/an
 # The next two need to stay in this order
+STR_VEHICLE_INFO_AGE                                            :{COMMA} {P an ani "de ani"} ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P an ani "de ani"} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Tip de aeronavă: {LTBLUE}{STRING}
@@ -4012,6 +4031,8 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Călătoriți (
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(călătorie pentru {STRING}, neprogramată)
 STR_TIMETABLE_STAY_FOR                                          :şi opreşte pentru {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :şi călătoreşte pentru {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}{P zi zile "de zile"}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}{P unitate unități "de unități"} de timp intern{P ă e e}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)

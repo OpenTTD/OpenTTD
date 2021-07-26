@@ -1440,6 +1440,9 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppelklick
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ein Klick (wenn hervorgehoben)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ein Klick (sofort)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nie
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Fragen
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Erlauben
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklick-Emulation: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Lege die Methode, die rechte Maustaste zu emulieren, fest
@@ -1793,6 +1796,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Warenverteilung
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mitbewerber
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspieler
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netzwerk
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(empfohlen)
