@@ -1440,6 +1440,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppelklick
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ein Klick (wenn hervorgehoben)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ein Klick (sofort)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Weiterleitungsdienst benutzen: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Falls eine Verbindung mit dem Server fehlschlägt, kann man einen Weiterleitungsdienst benutzen, um eine Verbindung herzustellen. „Nie“ verbietet dies, „fragen“ wird zuerst fragen, „erlauben“ wird es ohne Nachfrage erlauben.
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nie
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Fragen
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Erlauben
@@ -2004,6 +2006,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte
 ############ Next lines match ServerGameType
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokal
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Öffentlich
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Nur Einladung
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2038,6 +2041,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverv
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradresse: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuelles Datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spielskript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Passwortgeschützt!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER VOLL
@@ -2171,6 +2175,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Nicht-lokale Spieler können sich nicht verbinden
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Öffentlich
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Hinter NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via Umleitung
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Hinauswerfen
@@ -2184,6 +2189,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sind Si
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sind Sie sicher, dass Sie die Firma '{COMPANY}' löschen möchten?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sind Sie sicher, dass Sie das Passwort der Firma '{COMPANY}' zurücksetzen möchten?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Weiterleitung benutzen?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Verbindung zwischen Ihnen und dem Server konnte nicht hergestellt werden.{}Möchten Sie für diese Sitzung eine Weiterleitung via „{STRING}” benutzen?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nein
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, diesmal
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, nicht erneut fragen
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Teilnehmer
