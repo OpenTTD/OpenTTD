@@ -1439,6 +1439,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Kaksoisnapsautu
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Yksi napsautus (kun kohdistettuna)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Yksi napsautus (välitön)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Käytä välityspalvelua: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Jos yhteyden muodostaminen palvelimeen epäonnistuu, yhteys voidaan muodostaa välityspalvelun kautta. ”Ei koskaan” estää tämän, ”kysy” kysyy ensin, ”salli” sallii kysymättä.
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Ei koskaan
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Kysy
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Salli
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Oikean painikkeen emulointi: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Valitse, miten hiiren oikean painikkeen painalluksia emuloidaan
@@ -1792,6 +1797,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Laitoks
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rahdin jakautuminen
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Tietokonepelaajat
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Verkko
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Suositeltu)
@@ -2034,6 +2040,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Palveli
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Palvelimen osoite: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Aloitusvuosi: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Päivämäärä: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Peliskripti: {WHITE}{STRING} (v.{NBSP}{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Salasanasuojattu!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}PALVELIN KIINNI
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}PALVELIN TÄYNNÄ
@@ -2166,6 +2173,8 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} pe
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Paikallinen
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Etäpelaajat eivät voi ottaa yhteyttä
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Julkinen
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NATin takana
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Välityspalvelimen kautta
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Potki
@@ -2179,6 +2188,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Haluatk
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Haluatko varmasti poistaa yhtiön ”{COMPANY}”?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Haluatko varmasti nollata yhtiön ”{COMPANY}” salasanan?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Käytetäänkö välityspalvelua?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Yhteyden muodostaminen sinun ja palvelimen välillä epäonnistui.{}Haluatko, että tämä istunto välitetään välityspalvelimen ”{STRING}” kautta?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ei
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Kyllä, tämän kerran
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Kyllä, älä kysy uudestaan
 
 STR_NETWORK_SERVER                                              :Palvelin
 STR_NETWORK_CLIENT                                              :Pelaaja
