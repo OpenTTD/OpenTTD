@@ -951,6 +951,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuka dotácie skončila:{}{}Preprava {STRING.g} z {STRING} do {STRING} už nebude dotovaná
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Dotácie stiahnuté:{}{}Preprava {STRING.g} z {STRING} do {STRING} už nie je dotovaná
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ponuka dotácie:{}{}Prvá preprava {STRING.g} z {STRING} do {STRING} bude dotovaná miestnou správou po dobu {NUM} rok{P "" "y" "ov"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok o 50% výnosnejšia po dobu {NUM} rok{P "" "y" "ov"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} to {STRING} bude budúci rok 2x výnosnejšia po dobu {NUM} rok{P "" "y" "ov"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok 3x výnosnejšia po dobu {NUM} rok{P "" "y" "ov"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok 4x výnosnejšia po dobu {NUM} rok{P "" "y" "ov"}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}V meste {TOWN} zavládol dopravný chaos!{}{}Rekonštrukcia ciest financovaná {STRING} prinesie 6 mesiacov utrpenia pre motoristov!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Prepravné monopoly!
@@ -1266,6 +1271,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Poruchy vozidla
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Zvoľte ako často budú mať zle udržiavané vozidlá poruchy
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Násobiteľ dotácii: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Zvoľte ako veľa sa platí za dotované spojenia
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Trvanie dotácie: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Počet rokov, na ktoré sa udelí dotácia
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} rok{P "" "y" "ov"}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Žiadne ponúknuté dotácie
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena stavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Zvoľte úroveň cien výstavby a nákupov
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesie: {STRING}
@@ -1498,6 +1507,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojklik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Jedno kliknutie (keď je textové pole zvolené)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Jendo kliknutie (hneď)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Použiť presmerovanie: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Ak sa nepodarí pripojiť sa na server, môže sa použiť presmerovanie na vytvorenie spojenia. "Nikdy" zakáže túto možnosť, "spýtať sa" sa pred vytvorením spojenia pýta na potvrdenie, "povoliť" povolí túto možnosť bez ďalšieho potvrdzovania.
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nikdy
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Spýtať sa
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Povoliť
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Funkcia pravého tlacidla myši: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Zvolte možnosť ako bude emulované PRAVÉ tlačítko myši.
@@ -1851,6 +1865,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Priemys
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribúcia nákladu
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Sieť
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(odporučený)
@@ -2056,7 +2071,9 @@ STR_FACE_EARRING                                                :Náušnica:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmeniť kravatu alebo náušnicu
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokálne
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Verejný
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Iba na pozvánku
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2091,6 +2108,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzia 
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Počiatočný dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuálny dátum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Herný skript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Heslo:
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE PLNÝ
@@ -2106,11 +2124,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Prehľad
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Prehľadať LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Prehľadať servery na lokálnej sieti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pridať server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pridá server do zoznamu, v ktorom sa vždy budú hľadať prebiehajúce hry
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pridá server do zoznamu. Môžu tu byť adresy alebo kódy pozvánok
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustiť server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Spustiť vlastný server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Zadajte vaše meno
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Zadajte adresu servra alebo kód pozvánky
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Spustiť novú hru pre viacero hráčov
@@ -2196,6 +2215,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Upraviť
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Názov servra
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Viditelnosť
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Aby ostatní hráči videli váš server v zozname verejných servrov
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Kód pozvánky
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Kód pozvánky ktorý ostatný hráči použijú na pripojenie sa k vašemu servru
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Typ pripojenia
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Či a ako bude Váš server dostupný pre ostatných
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Hráč
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Meno
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Meno vašeho hráča
@@ -2212,8 +2235,14 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nová spoločn
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Založiť novú spoločnosť a pripojiť sa k nej
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Toto ste vy
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Toto je hosť hry
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" "i" "ov"} / {NUM} spoločnos{P "ť" "ti" "tí"}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Miestna
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Vzdialení hráči sa nemôžu pripojiť
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Vrejný
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Za NAT smerovačom
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Pomocou presmerovania
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Vyhodiť
@@ -2227,6 +2256,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Ste si 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Ste si istý, že chcete vymazať spoločnosť '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Ste si istý, že chcete zresetovať heslo pre spoločnosť '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Použiť presmerovanie?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepodarilo sa uskutočniť pripojenie medzi Vami a servrom.{}Chceli by ste presmerovať toto pripojenie cez '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Áno, tentokrát
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Áno, znova sa nepýtať
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
@@ -2272,6 +2306,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nemožem
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Vypršal časový limit pre spojenie č. {NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Chyba vznikla v protokole a spojenie je zatvorené
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Meno vašeho hráča nebolo nastavené. Meno si môžete zmeniť v hlavičke okna Hry pre viacerých hráčov
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Názov vašeho servra nebol nastavený. Názov môžete nastaviť na vrchu okna hry pre viacerých hráčov
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nesprávne heslo
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server je plný
@@ -2343,6 +2378,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server u
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server sa reštartuje...{}Čakajte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Hráč {STRING} bol vyhodený. Dôvod: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrácia servra zlyhala
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Váš server nepovoľuje vzdialené pripojenia
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Ostatní hráči sa nebudú môcť pripojiť k vašemu servru
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sťahovanie obsahu
