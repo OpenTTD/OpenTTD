@@ -1439,6 +1439,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbelklik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkele klik (met focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkele klik (onmiddelijk)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Omleiden: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Als het niet lukt om verbinding te maken met de server, kun je laten omleiden om een verbinding tot stand te brengen. Met 'Nooit' sta je dit niet toe, met 'Vragen' krijg je eerst navraag, met 'Toestaan' sta je dit toe zonder navraag.
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nooit
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Vragen
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Toestaan
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklikemulatie: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Methode selecteeren voor nabootsen van rechtsklikken
@@ -1792,6 +1797,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrachtdistributie
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netwerk
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevolen)
@@ -2167,6 +2173,8 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} kl
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokaal
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Externe spelers kunnen geen verbinding maken
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Openbaar
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Achter NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via omleiden
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Eruit schoppen
@@ -2180,6 +2188,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Weet je
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je zeker dat je het bedrijf '{COMPANY}' wilt verwijderen?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Omleiden?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kan geen verbinding maken tussen server en jou.{}Wil je deze sessie omleiden via '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nee
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, deze keer
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, en vraag dit niet opnieuw
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Speler
