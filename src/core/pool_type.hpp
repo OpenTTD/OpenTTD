@@ -160,7 +160,11 @@ struct Pool : PoolBase {
 
 	private:
 		size_t index;
-		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index))) this->index++; }
+		void ValidateIndex()
+		{
+			while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index))) this->index++;
+			if (this->index >= T::GetPoolSize()) this->index = T::Pool::MAX_SIZE;
+		}
 	};
 
 	/*
@@ -172,7 +176,7 @@ struct Pool : PoolBase {
 		size_t from;
 		IterateWrapper(size_t from = 0) : from(from) {}
 		PoolIterator<T> begin() { return PoolIterator<T>(this->from); }
-		PoolIterator<T> end() { return PoolIterator<T>(T::GetPoolSize()); }
+		PoolIterator<T> end() { return PoolIterator<T>(T::Pool::MAX_SIZE); }
 		bool empty() { return this->begin() == this->end(); }
 	};
 
@@ -201,7 +205,11 @@ struct Pool : PoolBase {
 	private:
 		size_t index;
 		F filter;
-		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++; }
+		void ValidateIndex()
+		{
+			while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++;
+			if (this->index >= T::GetPoolSize()) this->index = T::Pool::MAX_SIZE;
+		}
 	};
 
 	/*
@@ -214,7 +222,7 @@ struct Pool : PoolBase {
 		F filter;
 		IterateWrapperFiltered(size_t from, F filter) : from(from), filter(filter) {}
 		PoolIteratorFiltered<T, F> begin() { return PoolIteratorFiltered<T, F>(this->from, this->filter); }
-		PoolIteratorFiltered<T, F> end() { return PoolIteratorFiltered<T, F>(T::GetPoolSize(), this->filter); }
+		PoolIteratorFiltered<T, F> end() { return PoolIteratorFiltered<T, F>(T::Pool::MAX_SIZE, this->filter); }
 		bool empty() { return this->begin() == this->end(); }
 	};
 
