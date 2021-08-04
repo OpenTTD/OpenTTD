@@ -1442,6 +1442,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobbeltklikk
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelt klikk (ved fokus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelt klikk (umiddelbart)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Bruk videresendingstjeneste: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Hvis opprettelsen av en tilkobling til serveren mislykkes, kan man bruke en videresendingstjeneste til å opprette en tilkobling. "Aldri" tillater dette, "spør" vil spørre først, "tillat" vil tillate det uten å spørre
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Aldri
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Spør
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Tillat
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Høyreklikkemulering: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Velg metoden å etterligne høyreklikk
@@ -1795,6 +1800,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Gods-distribusjon
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandere
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinstyrte spillere
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Nettverk
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
@@ -2000,7 +2006,9 @@ STR_FACE_EARRING                                                :Ørering:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre slips eller ørering
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokal
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Offentlig
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Kun invitasjon
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2035,6 +2043,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tjenerv
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Tjeneradresse: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Startdato: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Nettverksdato: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spillskript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Passordbeskyttet!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}TJENEREN ER FRAKOBLET
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}TJENEREN ER FULL
@@ -2050,11 +2059,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Søk på
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Søk LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Søk lokalt nettverk for servere
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Legg til tjener
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Legger til en tjener til listen som alltid vil bli sjekket for aktive spill.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Legger til en tjener til listen. Dette kan enten være en serveradresse eller en invitasjonskode
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start tjener
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start en egen tjener
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Skriv inn ditt navn
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Tast inn serveradresse og invitasjonskode
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start et nytt flerspillerspill
@@ -2141,6 +2151,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Rediger 
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servernavn
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Synlighet
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Om andre mennesker kan se serveren din i den offentlige oppføringen
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Invitasjonskode
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Invitasjonskode andre spillere kan bruke for å koble til denne serveren
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tilkoblingstype
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Hvorvidt og hvordan serveren din kan nås av andre
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Spiller
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Navn
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ditt spillernavn
@@ -2160,6 +2174,11 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dette er
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" s} / {NUM} firma{P et er}
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Eksterne spillere kan ikke koble til
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Offentlig
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Bak NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via videresending
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Spark
@@ -2173,6 +2192,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Er du s
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Er du sikker på at du vil slette firmaet '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Er du sikker på at du vil tilbakestille passordet til firma '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Vil du bruke videresending?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kunne ikke opprette en kobling mellom deg og serveren.{}Vil du videresende denne økten via '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nei
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, denne
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, ikke spør igjen
 
 STR_NETWORK_SERVER                                              :Tjener
 STR_NETWORK_CLIENT                                              :Klient
@@ -2290,6 +2314,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tjeneren
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tjeneren starter på nytt...{}Vennligst vent...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ble kastet ut. Grunn: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistrering mislykket
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Serveren din tillater ikke eksterne tilkoblinger
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andre spillere vil ikke kunne koble seg til din server
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Laster ned innhold
