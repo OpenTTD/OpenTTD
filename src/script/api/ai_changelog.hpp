@@ -20,6 +20,7 @@
  * API additions:
  * \li AINewGRF
  * \li AINewGRFList
+ * \li AIGroup::GetNumVehicles
  *
  * \b 1.11.0
  *
