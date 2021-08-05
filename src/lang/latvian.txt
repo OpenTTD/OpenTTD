@@ -65,13 +65,13 @@ STR_CARGO_SINGULAR_PASSENGER                                    :Pasažieris
 STR_CARGO_SINGULAR_COAL                                         :Ogles
 STR_CARGO_SINGULAR_MAIL                                         :Pasts
 STR_CARGO_SINGULAR_OIL                                          :Nafta
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Mājlopi
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Mājlops
 STR_CARGO_SINGULAR_GOODS                                        :Preces
 STR_CARGO_SINGULAR_GRAIN                                        :Graudi
 STR_CARGO_SINGULAR_WOOD                                         :Koksne
 STR_CARGO_SINGULAR_IRON_ORE                                     :Dzelzsrūda
 STR_CARGO_SINGULAR_STEEL                                        :Tērauds
-STR_CARGO_SINGULAR_VALUABLES                                    :Vērtslietas
+STR_CARGO_SINGULAR_VALUABLES                                    :Vērtslieta
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Vara rūda
 STR_CARGO_SINGULAR_MAIZE                                        :Kukurūza
 STR_CARGO_SINGULAR_FRUIT                                        :Augļi
@@ -89,7 +89,7 @@ STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_CANDYFLOSS                                   :Cukurvate
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuļi
 STR_CARGO_SINGULAR_TOFFEE                                       :Īriss
-STR_CARGO_SINGULAR_BATTERY                                      :Baterijas
+STR_CARGO_SINGULAR_BATTERY                                      :Baterija
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastmasa
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Limonāde
 
@@ -950,7 +950,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijas Ring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Brauc pa kreiso pusi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Brauc pa labo pusi
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Pilsētu nosaukumi
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Pilsētu nosaukumi:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pilsētu nosaukumu stila izvēle
 
 ############ start of townname region
@@ -974,7 +974,7 @@ STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Šveiciešu
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dāņu
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turku
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itāļu
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Kataloņu
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalāņu
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automātiskā saglabāšana
@@ -1846,7 +1846,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Vai tie
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Blēdības
 STR_CHEATS_TOOLTIP                                              :{BLACK}Atzīmētās rūtiņas norāda uz to, vai esat jau izmantojis šo blēdību
-STR_CHEATS_NOTE                                                 :{BLACK}Piezīme: Šo iestatījumu lietojumus tiks ierakstīs arī savegame
+STR_CHEATS_NOTE                                                 :{BLACK}Piezīme: Šo iestatījumu lietojums tiks ierakstīs arī spēles saglabājumā
 STR_CHEAT_MONEY                                                 :{LTBLUE}Palielināt naudas līdzekļus par {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlēt kā uzņēmumam: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}
@@ -2274,7 +2274,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Neizdevās atspiest lejupielādēto failu
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Trūkst grafikas
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vajag grafiku, lai strādātu, bet tādu nevarēja atrast. Vai ļaujat OpenTTD lejupielādēt un instalēt tādu grafiku?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD darbībai nepieciešama grafika, bet tāda nav atrodama. Vai ļaut OpenTTD lejupielādēt un instalēt šo grafiku?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jā, lejupielādēt grafiku
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nē, iziet no OpenTTD
 
@@ -2533,10 +2533,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Samazin�
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Radīt nejaušu zemi
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Izveidot jaunu scenāriju
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Atiestatīt ainavu
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Novākt visus spēlētājam piederošos īpašumus no kartes
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Noņemt visus spēlētājam piederošos īpašumus no kartes
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Atiestatīt ainavu
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Vai tiešām vēlaties novākt visus uzņēmumam piederošos īpašumus?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Vai tiešām vēlaties noņemt visus uzņēmumam piederošos īpašumus?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pilsētu radīšana
@@ -2584,7 +2584,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansē
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Noņemt visas nozares
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK} Noņemt visas kartē pašlaik esošās nozares
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE} Noņemt visas nozares
-STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Vai tiešām vēlaties noņemt visas industrijas?
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Vai tiešām vēlaties noņemt visas nozares?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes '{STRING}' kravu ķēde
@@ -3140,7 +3140,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Veikt l
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansēt ceļu remontdarbus. Rada satiksmes traucējumus līdz pat pusgadam.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Uzbūvēt statuju par godu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansēt jaunu komercēku būvniecību šajā pilsētā.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkt 1 gada izņēmuma tiesības uz kravu un pasažieru transportēšanu. Pašvaldība atļaus pasažieriem un kravas pārvešanai izmantot tkai jūsu uzņēmuma stacijas.{}Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkt 1 gada izņēmuma tiesības uz pārvadājumiem pilsētā.{}Pašvaldība neatļaus pasažieru un kravu pārvešanai izmantot jūsu sāncenšu stacijas.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Piekukuļot vietējo pašvaldību lai paceltu reitingu, riskējot saņemt lielu sodu.{}Izmaksas: {CURRENCY_LONG}
 
 # Goal window
@@ -3282,9 +3282,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Novērst
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz pieturas punktu. Ctrl+klikšķis atvērs skatu uz pieturas punktu jaunā skatulaukā
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz pieturas punktu. Ctrl+klikšķis atvērs skatu uz pieturas punktu jaunā skatlaukā
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mainīt pieturas punkta nosaukumu
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatulaukā
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatlaukā
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mainīt bojas nosaukumu
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot pieturas punkta nosaukumu
