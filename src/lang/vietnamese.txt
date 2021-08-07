@@ -1439,6 +1439,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Nháy kép
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Nháy đơn (nếu đang kích hoạt)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Nháy đơn (ngay lập tức)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Sử dụng dịch vụ chuyển tiếp: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Nếu không thể tạo kết nối tới server của bạn, người chơi có thể sử dụng dịch vụ chuyển tiếp để tạo kết nối. Chọn "Không cho phép" để cho phép sử dụng, "Hỏi" để hỏi trước, hoặc "Cho phép" để cho phép không cần hỏi.
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Không cho phép
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Hỏi
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Cho phép
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Giả lập click chuột phải: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Chọn phương thức giả lập nút phải chuột
@@ -1792,6 +1797,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nhà m�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân bổ hàng hóa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Kết nối
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Nên dùng)
@@ -1997,7 +2003,9 @@ STR_FACE_EARRING                                                :Bông tai:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Nội bộ
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Công khai
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Chỉ được mời
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2032,6 +2040,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Phiên 
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Địa chỉ server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Ngày bắt đầu: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Ngày hiện tại: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Script: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Mật khẩu bảo vệ!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER ĐẦY
@@ -2047,11 +2056,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Tìm má
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Tìm trên LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Tìm máy chủ trên mạng nội bộ
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Thêm server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Thêm server vào danh sách luôn được chọn khi chạy game.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Thêm server vào danh sách. Đây có thể là địa chỉ của server hoặc mã tham gia
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tạo server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tạo server của riêng bạn
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Gõ tên của bạn
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Nhập địa chỉ server hoặc mã tham gia
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Bắt đầu ván chơi mạng nhiều người
@@ -2137,6 +2147,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Sửa t�
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Tên của server
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Hiển thị
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Cho phép người khác thấy server của bạn trong danh sách công khai
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Mã tham gia
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Mã tham gia mà người chơi có thể sử dụng để tham gia vào server
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Cách kết nối
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Cách mà những người chơi khác kết nối tới server của bạn
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Người chơi
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Tên
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Tên người chơi
@@ -2156,6 +2170,11 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Đây l�
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} người chơi / {NUM} công ty
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Nội bộ
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Người chơi bên ngoài không thể kết nối
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Công khai
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Sau tầng NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Thông qua chuyển tiếp
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Đá ra
@@ -2169,6 +2188,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Bạn c
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Bạn có muốn xoá công ty '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Bạn có muốn đặt lại mật khẩu cho công ty '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Sử dụng chuyển tiếp?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kết nối tới server thất bại.{}Bạn có muốn chuyển tiếp kết nối của bạn thông qua '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Không
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Đồng ý, chỉ lần này
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Đồng ý, đừng hỏi lại
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Máy trạm
@@ -2286,6 +2310,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server k
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server khởi động lại...{}Xin chờ...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} đã bị đá khỏi ván chơi. Lý do: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Đăng ký server thất bại
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Server của bạn không cho phép kết nối bên ngoài
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Những người chơi khác sẽ không kết nối được vào server của bạn
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Đang tải nội dung
