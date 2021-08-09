@@ -17,6 +17,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AINewGRF
+ * \li AINewGRFList
+ *
  * \b 1.11.0
  *
  * API additions:

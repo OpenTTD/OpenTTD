@@ -179,6 +179,7 @@ add_files(
     script_log.hpp
     script_map.hpp
     script_marine.hpp
+    script_newgrf.hpp
     script_news.hpp
     script_object.hpp
     script_order.hpp
@@ -246,6 +247,7 @@ add_files(
     script_log.cpp
     script_map.cpp
     script_marine.cpp
+    script_newgrf.cpp
     script_news.cpp
     script_object.cpp
     script_order.cpp
