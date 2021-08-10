@@ -291,7 +291,6 @@ struct NetworkSettings {
 	uint8       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
 	uint8       max_companies;                            ///< maximum amount of companies
 	uint8       max_clients;                              ///< maximum amount of clients
-	uint8       max_spectators;                           ///< maximum amount of spectators
 	Year        restart_game_year;                        ///< year the server restarts
 	uint8       min_active_clients;                       ///< minimum amount of active clients to unpause the game
 	bool        reload_cfg;                               ///< reload the config file before restarting

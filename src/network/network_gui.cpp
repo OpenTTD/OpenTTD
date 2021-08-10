@@ -1033,10 +1033,6 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_COMPANIES_TXT:
 				SetDParam(0, _settings_client.network.max_companies);
 				break;
-
-			case WID_NSS_SPECTATORS_TXT:
-				SetDParam(0, _settings_client.network.max_spectators);
-				break;
 		}
 	}
 
@@ -1079,7 +1075,6 @@ struct NetworkStartServerWindow : public Window {
 
 			case WID_NSS_CLIENTS_BTND:    case WID_NSS_CLIENTS_BTNU:    // Click on up/down button for number of clients
 			case WID_NSS_COMPANIES_BTND:  case WID_NSS_COMPANIES_BTNU:  // Click on up/down button for number of companies
-			case WID_NSS_SPECTATORS_BTND: case WID_NSS_SPECTATORS_BTNU: // Click on up/down button for number of spectators
 				/* Don't allow too fast scrolling. */
 				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
@@ -1091,9 +1086,6 @@ struct NetworkStartServerWindow : public Window {
 							break;
 						case WID_NSS_COMPANIES_BTND: case WID_NSS_COMPANIES_BTNU:
 							_settings_client.network.max_companies  = Clamp(_settings_client.network.max_companies  + widget - WID_NSS_COMPANIES_TXT,  1, MAX_COMPANIES);
-							break;
-						case WID_NSS_SPECTATORS_BTND: case WID_NSS_SPECTATORS_BTNU:
-							_settings_client.network.max_spectators = Clamp(_settings_client.network.max_spectators + widget - WID_NSS_SPECTATORS_TXT, 0, MAX_CLIENTS);
 							break;
 					}
 				}
@@ -1110,12 +1102,6 @@ struct NetworkStartServerWindow : public Window {
 				this->widget_id = WID_NSS_COMPANIES_TXT;
 				SetDParam(0, _settings_client.network.max_companies);
 				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,  3, this, CS_NUMERAL, QSF_NONE);
-				break;
-
-			case WID_NSS_SPECTATORS_TXT: // Click on number of spectators
-				this->widget_id = WID_NSS_SPECTATORS_TXT;
-				SetDParam(0, _settings_client.network.max_spectators);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, 4, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case WID_NSS_GENERATE_GAME: // Start game
@@ -1172,7 +1158,7 @@ struct NetworkStartServerWindow : public Window {
 
 	void OnTimeout() override
 	{
-		static const int raise_widgets[] = {WID_NSS_CLIENTS_BTND, WID_NSS_CLIENTS_BTNU, WID_NSS_COMPANIES_BTND, WID_NSS_COMPANIES_BTNU, WID_NSS_SPECTATORS_BTND, WID_NSS_SPECTATORS_BTNU, WIDGET_LIST_END};
+		static const int raise_widgets[] = {WID_NSS_CLIENTS_BTND, WID_NSS_CLIENTS_BTNU, WID_NSS_COMPANIES_BTND, WID_NSS_COMPANIES_BTNU, WIDGET_LIST_END};
 		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
 			if (this->IsWidgetLowered(*widget)) {
 				this->RaiseWidget(*widget);
@@ -1194,7 +1180,6 @@ struct NetworkStartServerWindow : public Window {
 				default: NOT_REACHED();
 				case WID_NSS_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(value, 2, MAX_CLIENTS); break;
 				case WID_NSS_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(value, 1, MAX_COMPANIES); break;
-				case WID_NSS_SPECTATORS_TXT: _settings_client.network.max_spectators = Clamp(value, 0, MAX_CLIENTS); break;
 			}
 		}
 
@@ -1244,15 +1229,6 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 						NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, WID_NSS_COMPANIES_BTND), SetMinimalSize(12, 12), SetFill(0, 1), SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_NSS_COMPANIES_TXT), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_COMPANIES_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 						NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, WID_NSS_COMPANIES_BTNU), SetMinimalSize(12, 12), SetFill(0, 1), SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
-					EndContainer(),
-				EndContainer(),
-
-				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
-					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NSS_SPECTATORS_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, STR_NULL),
-					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, WID_NSS_SPECTATORS_BTND), SetMinimalSize(12, 12), SetFill(0, 1), SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_NSS_SPECTATORS_TXT), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_SPECTATORS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
-						NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, WID_NSS_SPECTATORS_BTNU), SetMinimalSize(12, 12), SetFill(0, 1), SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -1369,8 +1345,6 @@ struct NetworkLobbyWindow : public Window {
 		this->SetWidgetDisabledState(WID_NL_JOIN, this->company == INVALID_COMPANY || GetLobbyCompanyInfo(this->company)->ai);
 		/* Cannot start new company if there are too many. */
 		this->SetWidgetDisabledState(WID_NL_NEW, gi->companies_on >= gi->companies_max);
-		/* Cannot spectate if there are too many spectators. */
-		this->SetWidgetDisabledState(WID_NL_SPECTATE, gi->spectators_on >= gi->spectators_max);
 
 		this->vscroll->SetCount(gi->companies_on);
 

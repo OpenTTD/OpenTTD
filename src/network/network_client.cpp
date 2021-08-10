@@ -314,8 +314,6 @@ static std::string _password_server_id;
 
 /** Maximum number of companies of the currently joined server. */
 static uint8 _network_server_max_companies;
-/** Maximum number of spectators of the currently joined server. */
-static uint8 _network_server_max_spectators;
 
 /** Information about the game to join to. */
 NetworkJoinInfo _network_join;
@@ -1189,7 +1187,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(P
 	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	_network_server_max_companies = p->Recv_uint8();
-	_network_server_max_spectators = p->Recv_uint8();
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1405,13 +1402,4 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
 bool NetworkMaxCompaniesReached()
 {
 	return Company::GetNumItems() >= (_network_server ? _settings_client.network.max_companies : _network_server_max_companies);
-}
-
-/**
- * Check if max_spectatos has been reached on the server (local check only).
- * @return true if the max value has been reached or exceeded, false otherwise.
- */
-bool NetworkMaxSpectatorsReached()
-{
-	return NetworkSpectatorCount() >= (_network_server ? _settings_client.network.max_spectators : _network_server_max_spectators);
 }

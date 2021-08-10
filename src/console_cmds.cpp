@@ -698,14 +698,14 @@ DEF_CONSOLE_CMD(ConServerInfo)
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List current and maximum client/company limits. Usage 'server_info'.");
-		IConsolePrint(CC_HELP, "You can change these values by modifying settings 'network.max_clients', 'network.max_companies' and 'network.max_spectators'.");
+		IConsolePrint(CC_HELP, "You can change these values by modifying settings 'network.max_clients' and 'network.max_companies'.");
 		return true;
 	}
 
 	IConsolePrint(CC_DEFAULT, "Invite code:                {}", _network_server_invite_code);
 	IConsolePrint(CC_DEFAULT, "Current/maximum clients:    {:3d}/{:3d}", _network_game_info.clients_on, _settings_client.network.max_clients);
 	IConsolePrint(CC_DEFAULT, "Current/maximum companies:  {:3d}/{:3d}", Company::GetNumItems(), _settings_client.network.max_companies);
-	IConsolePrint(CC_DEFAULT, "Current/maximum spectators: {:3d}/{:3d}", NetworkSpectatorCount(), _settings_client.network.max_spectators);
+	IConsolePrint(CC_DEFAULT, "Current spectators:         {:3d}", NetworkSpectatorCount());
 
 	return true;
 }
@@ -762,11 +762,6 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 
 	if (NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas == company_id) {
 		IConsolePrint(CC_ERROR, "You are already there!");
-		return true;
-	}
-
-	if (company_id == COMPANY_SPECTATOR && NetworkMaxSpectatorsReached()) {
-		IConsolePrint(CC_ERROR, "Cannot join spectators, maximum number of spectators reached.");
 		return true;
 	}
 
@@ -2422,7 +2417,6 @@ void IConsoleStdLibRegister()
 	IConsole::AliasRegister("server_port",           "setting server_port %+");
 	IConsole::AliasRegister("max_clients",           "setting max_clients %+");
 	IConsole::AliasRegister("max_companies",         "setting max_companies %+");
-	IConsole::AliasRegister("max_spectators",        "setting max_spectators %+");
 	IConsole::AliasRegister("max_join_time",         "setting max_join_time %+");
 	IConsole::AliasRegister("pause_on_join",         "setting pause_on_join %+");
 	IConsole::AliasRegister("autoclean_companies",   "setting autoclean_companies %+");

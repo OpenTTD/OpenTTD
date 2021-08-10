@@ -60,7 +60,6 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 bool NetworkCompanyIsPassworded(CompanyID company_id);
 bool NetworkMaxCompaniesReached();
-bool NetworkMaxSpectatorsReached();
 void NetworkPrintClients();
 void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode);
 

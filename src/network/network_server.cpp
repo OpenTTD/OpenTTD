@@ -820,7 +820,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
 	Packet *p = new Packet(PACKET_SERVER_CONFIG_UPDATE);
 
 	p->Send_uint8(_settings_client.network.max_companies);
-	p->Send_uint8(_settings_client.network.max_spectators);
 	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -890,9 +889,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 			}
 			break;
 		case COMPANY_SPECTATOR: // Spectator
-			if (NetworkSpectatorCount() >= _settings_client.network.max_spectators) {
-				return this->SendError(NETWORK_ERROR_FULL);
-			}
 			break;
 		default: // Join another company (companies 1-8 (index 0-7))
 			if (!Company::IsValidHumanID(playas)) {
