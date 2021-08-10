@@ -126,7 +126,6 @@ void FillStaticNetworkServerGameInfo()
 	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
-	_network_game_info.spectators_max = _settings_client.network.max_spectators;
 	_network_game_info.map_width      = MapSizeX();
 	_network_game_info.map_height     = MapSizeY();
 	_network_game_info.landscape      = _settings_game.game_creation.landscape;
@@ -234,7 +233,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 	/* NETWORK_GAME_INFO_VERSION = 2 */
 	p->Send_uint8 (info->companies_max);
 	p->Send_uint8 (info->companies_on);
-	p->Send_uint8 (info->spectators_max);
+	p->Send_uint8 (info->clients_max); // Used to be max-spectators
 
 	/* NETWORK_GAME_INFO_VERSION = 1 */
 	p->Send_string(info->server_name);
@@ -331,7 +330,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		case 2:
 			info->companies_max  = p->Recv_uint8 ();
 			info->companies_on   = p->Recv_uint8 ();
-			info->spectators_max = p->Recv_uint8 ();
+			p->Recv_uint8(); // Used to contain max-spectators.
 			FALLTHROUGH;
 
 		case 1:

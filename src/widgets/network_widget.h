@@ -66,10 +66,6 @@ enum NetworkStartServerWidgets {
 	WID_NSS_COMPANIES_BTND,    ///< 'Max companies' downarrow.
 	WID_NSS_COMPANIES_TXT,     ///< 'Max companies' text.
 	WID_NSS_COMPANIES_BTNU,    ///< 'Max companies' uparrow.
-	WID_NSS_SPECTATORS_LABEL,  ///< Label for 'max spectators'.
-	WID_NSS_SPECTATORS_BTND,   ///< 'Max spectators' downarrow.
-	WID_NSS_SPECTATORS_TXT,    ///< 'Max spectators' text.
-	WID_NSS_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow.
 
 	WID_NSS_GENERATE_GAME,     ///< New game button.
 	WID_NSS_LOAD_GAME,         ///< Load game button.
