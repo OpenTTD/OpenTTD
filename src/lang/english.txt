@@ -2136,7 +2136,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online Players
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Name
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Name of the server you are playing on
