@@ -483,6 +483,12 @@ enum WindowClass {
 	WC_NETWORK_ASK_RELAY,
 
 	/**
+	 * Network Message Of The Day window; %Window numbers:
+	 *   - 0 - #NetworkMessageOfTheDayWidgets
+	 */
+	WC_NETWORK_MOTD,
+
+	/**
 	 * Chatbox; %Window numbers:
 	 *   - #DestType = #NetWorkChatWidgets
 	 */

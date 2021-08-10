@@ -817,7 +817,7 @@ static void NetworkInitGameInfo()
  * Trim the given server name in place, i.e. remove leading and trailing spaces.
  * After the trim check whether the server name is not empty.
  * When the server name is empty a GUI error message is shown telling the
- * user to set the servername and this function returns false.
+ * user to set the server name and this function returns false.
  *
  * @param server_name The server name to validate. It will be trimmed of leading
  *                    and trailing spaces.
@@ -829,6 +829,25 @@ bool NetworkValidateServerName(std::string &server_name)
 	if (!server_name.empty()) return true;
 
 	ShowErrorMessage(STR_NETWORK_ERROR_BAD_SERVER_NAME, INVALID_STRING_ID, WL_ERROR);
+	return false;
+}
+
+/**
+ * Trim the given server MOTD in place, i.e. remove leading and trailing spaces.
+ * After the trim check whether the server MOTD is not empty.
+ * When the server MOTD is empty a GUI error message is shown telling the
+ * user to set the server MOTD and this function returns false.
+ *
+ * @param server_name The server MOTD to validate. It will be trimmed of leading
+ *                    and trailing spaces.
+ * @return True iff the server MOTD is valid.
+ */
+bool NetworkValidateServerMessageOfTheDay(std::string &server_motd)
+{
+	StrTrimInPlace(server_motd);
+	if (!server_motd.empty()) return true;
+
+	ShowErrorMessage(STR_NETWORK_ERROR_BAD_SERVER_MOTD, INVALID_STRING_ID, WL_ERROR);
 	return false;
 }
 

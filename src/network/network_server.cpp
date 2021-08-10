@@ -821,6 +821,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
 
 	p->Send_uint8(_settings_client.network.max_companies);
 	p->Send_string(_settings_client.network.server_name);
+	p->Send_string(_settings_client.network.server_motd);
 	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }

@@ -88,6 +88,7 @@ extern std::string _network_server_invite_code;
 
 /* Variable available for clients. */
 extern std::string _network_server_name;
+extern std::string _network_server_motd;
 
 extern uint8 _network_reconnect;
 

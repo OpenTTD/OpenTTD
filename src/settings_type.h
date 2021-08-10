@@ -277,6 +277,7 @@ struct NetworkSettings {
 	std::string server_invite_code;                       ///< Invite code to use when registering as server.
 	std::string server_invite_code_secret;                ///< Secret to proof we got this invite code from the Game Coordinator.
 	std::string server_name;                              ///< name of the server
+	std::string server_motd;                              ///< Message Of The Day of the server.
 	std::string server_password;                          ///< password for joining this server
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	std::string admin_password;                           ///< password for the admin network

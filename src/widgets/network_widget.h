@@ -55,6 +55,7 @@ enum NetworkStartServerWidgets {
 	WID_NSS_BACKGROUND,        ///< Background of the window.
 	WID_NSS_GAMENAME_LABEL,    ///< Label for the game name.
 	WID_NSS_GAMENAME,          ///< Background for editbox to set game name.
+	WID_NSS_MOTD,              ///< Message Of The Day text.
 	WID_NSS_SETPWD,            ///< 'Set password' button.
 	WID_NSS_CONNTYPE_LABEL,    ///< Label for 'connection type'.
 	WID_NSS_CONNTYPE_BTN,      ///< 'Connection type' droplist button.
@@ -116,6 +117,14 @@ enum NetworkAskRelayWidgets {
 	WID_NAR_NO,         ///< "No" button.
 	WID_NAR_YES_ONCE,   ///< "Yes, once" button.
 	WID_NAR_YES_ALWAYS, ///< "Yes, always" button.
+};
+
+/** Widgets of the #NetworkMessageOfTheDayWindow class. */
+enum NetworkMessageOfTheDayWidgets {
+	WID_MOTD_CAPTION,               ///< Caption of the window.
+	WID_MOTD_TEXT,                  ///< Text in the window.
+	WID_MOTD_IF_SPECTATOR_SELECTOR, ///< Selector to show text if you join as spectator.
+	WID_MOTD_CLOSE,                 ///< "Close" button.
 };
 
 #endif /* WIDGETS_NETWORK_WIDGET_H */

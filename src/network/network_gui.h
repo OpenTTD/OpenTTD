@@ -23,7 +23,8 @@ void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();
 void ShowClientList();
 void ShowNetworkCompanyPasswordWindow(Window *parent);
-
+void ShowNetworkAskRelay(const std::string &connection_string, const std::string &token);
+void ShowNetworkMessageOfTheDay();
 
 /** Company information stored at the client side */
 struct NetworkCompanyInfo : NetworkCompanyStats {
@@ -36,7 +37,5 @@ struct NetworkCompanyInfo : NetworkCompanyStats {
 	bool use_password;        ///< Is there a password
 	std::string clients;      ///< The clients that control this company (Name1, name2, ..)
 };
-
-void ShowNetworkAskRelay(const std::string &connection_string, const std::string &token);
 
 #endif /* NETWORK_GUI_H */

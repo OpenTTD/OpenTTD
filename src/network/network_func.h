@@ -38,6 +38,7 @@ bool NetworkIsValidClientName(const std::string_view client_name);
 bool NetworkValidateOurClientName();
 bool NetworkValidateClientName(std::string &client_name);
 bool NetworkValidateServerName(std::string &server_name);
+bool NetworkValidateServerMessageOfTheDay(std::string &server_motd);
 void NetworkUpdateClientName(const std::string &client_name);
 void NetworkUpdateServerGameType();
 bool NetworkCompanyHasClients(CompanyID company);

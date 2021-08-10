@@ -53,6 +53,7 @@ static const byte NETWORK_COMPANY_INFO_VERSION      =    6;           ///< What 
 static const byte NETWORK_COORDINATOR_VERSION       =    5;           ///< What version of game-coordinator-protocol do we use?
 
 static const uint NETWORK_NAME_LENGTH               =   80;           ///< The maximum length of the server name and map name, in bytes including '\0'
+static const uint NETWORK_MOTD_LENGTH               = 1000;           ///< The maximum length of the server Message Of The Day, in bytes including '\0'
 static const uint NETWORK_COMPANY_NAME_LENGTH       =  128;           ///< The maximum length of the company name, in bytes including '\0'
 static const uint NETWORK_HOSTNAME_LENGTH           =   80;           ///< The maximum length of the host name, in bytes including '\0'
 static const uint NETWORK_HOSTNAME_PORT_LENGTH      =   80 + 6;       ///< The maximum length of the host name + port, in bytes including '\0'. The extra six is ":" + port number (with a max of 65536)

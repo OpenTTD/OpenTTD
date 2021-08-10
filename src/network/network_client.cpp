@@ -28,6 +28,7 @@
 #include "network_base.h"
 #include "network_client.h"
 #include "network_gamelist.h"
+#include "network_gui.h"
 #include "../core/backup_type.hpp"
 #include "../thread.h"
 
@@ -174,6 +175,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		CSleep(3 * MILLISECONDS_PER_TICK);
 	}
 
+	/* Reset MOTD so we show it next time we join the server. */
+	_network_server_motd = "";
+
 	delete this;
 
 	return status;
@@ -316,6 +320,8 @@ static std::string _password_server_id;
 static uint8 _network_server_max_companies;
 /** The current name of the server you are on. */
 std::string _network_server_name;
+/** The current Message Of The Day of the server you are on. */
+std::string _network_server_motd;
 
 /** Information about the game to join to. */
 NetworkJoinInfo _network_join;
@@ -1154,6 +1160,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(P
 
 	_network_server_max_companies = p->Recv_uint8();
 	_network_server_name = p->Recv_string(NETWORK_NAME_LENGTH);
+	std::string new_motd = p->Recv_string(NETWORK_MOTD_LENGTH);
+
+	if (new_motd != _network_server_motd) {
+		_network_server_motd = new_motd;
+		ShowNetworkMessageOfTheDay();
+	}
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

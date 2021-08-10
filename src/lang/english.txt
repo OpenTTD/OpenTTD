@@ -2068,6 +2068,8 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start ne
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Game name:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
+STR_NETWORK_START_SERVER_MOTD                                   :{BLACK}Message Of The Day:
+STR_NETWORK_START_SERVER_MOTD_TOOLTIP                           :{BLACK}When clients join they are shown this Message Of The Day
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 
@@ -2106,6 +2108,11 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconne
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
+
+STR_NETWORK_MOTD_CAPTION                                        :{WHITE}Welcome to {RAW_STRING}!
+STR_NETWORK_MOTD_TEXT                                           :{BLACK}{RAW_STRING}
+STR_NETWORK_MOTD_IF_SPECTATOR                                   :{BLACK}To start playing, join a (new) company via the "Online Players" window.
+STR_NETWORK_MOTD_CLOSE                                          :{BLACK}Close
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
@@ -2211,6 +2218,7 @@ STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connecti
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}A protocol error was detected and the connection was closed
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Your player name has not been set. The name can be set at the top of the Multiplayer window
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Your server name has not been set. The name can be set at the top of the Multiplayer window
+STR_NETWORK_ERROR_BAD_SERVER_MOTD                               :{WHITE}The Message Of The Day has not been set. The message can be set in the Start Server window
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full

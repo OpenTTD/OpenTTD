@@ -1006,13 +1006,16 @@ void ShowNetworkGameWindow()
 struct NetworkStartServerWindow : public Window {
 	byte widget_id;              ///< The widget that has the pop-up input menu
 	QueryString name_editbox;    ///< Server name editbox.
+	QueryString motd_editbox;    ///< Server MOTD editbox.
 
-	NetworkStartServerWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH)
+	NetworkStartServerWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH), motd_editbox(NETWORK_MOTD_LENGTH)
 	{
 		this->InitNested(WN_NETWORK_WINDOW_START);
 
 		this->querystrings[WID_NSS_GAMENAME] = &this->name_editbox;
+		this->querystrings[WID_NSS_MOTD] = &this->motd_editbox;
 		this->name_editbox.text.Assign(_settings_client.network.server_name.c_str());
+		this->motd_editbox.text.Assign(_settings_client.network.server_motd.c_str());
 
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
@@ -1197,6 +1200,14 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 					/* Game name widgets */
 					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NSS_GAMENAME_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME, STR_NULL),
 					NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NSS_GAMENAME), SetMinimalSize(10, 12), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP),
+				EndContainer(),
+			EndContainer(),
+
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 6, 10),
+				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
+					/* Message of the day widgets */
+					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_MOTD, STR_NULL),
+					NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NSS_MOTD), SetMinimalSize(10, 12), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_START_SERVER_MOTD_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 
@@ -2458,4 +2469,90 @@ void ShowNetworkAskRelay(const std::string &connection_string, const std::string
 
 	Window *parent = FindWindowById(WC_MAIN_WINDOW, 0);
 	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, connection_string, token);
+}
+
+struct NetworkMessageOfTheDay : public Window {
+	NetworkMessageOfTheDay(WindowDesc *desc) : Window(desc)
+	{
+		this->CreateNestedTree();
+		this->OnInvalidateData();
+		this->FinishInitNested(0);
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
+		CompanyID client_playas = own_ci == nullptr ? COMPANY_SPECTATOR : own_ci->client_playas;
+
+		this->GetWidget<NWidgetStacked>(WID_MOTD_IF_SPECTATOR_SELECTOR)->SetDisplayedPlane(client_playas == COMPANY_SPECTATOR ? 0 : SZSP_HORIZONTAL);
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	{
+		if (widget == WID_MOTD_TEXT) {
+			*size = GetStringBoundingBox(STR_NETWORK_MOTD_TEXT);
+			size->height = GetStringHeight(STR_NETWORK_MOTD_TEXT, size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT) + WD_FRAMETEXT_BOTTOM + WD_FRAMETEXT_TOP;
+		}
+	}
+
+	void SetStringParameters(int widget) const override
+	{
+		switch (widget) {
+			case WID_MOTD_CAPTION:
+				SetDParamStr(0, _network_server_name);
+				break;
+
+			case WID_MOTD_TEXT:
+				SetDParamStr(0, _network_server_motd);
+				break;
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		if (widget != WID_MOTD_TEXT) return;
+
+		DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_NETWORK_MOTD_TEXT, TC_FROMSTRING, SA_CENTER);
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		switch (widget) {
+			case WID_MOTD_CLOSE:
+				this->Close();
+				break;
+		}
+	}
+};
+
+static const NWidgetPart _nested_network_message_of_the_day_window_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_MOTD_CAPTION), SetDataTip(STR_NETWORK_MOTD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(WWT_TEXT, COLOUR_GREY, WID_MOTD_TEXT), SetAlignment(SA_HOR_CENTER), SetFill(1, 1),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_MOTD_IF_SPECTATOR_SELECTOR),
+			NWidget(NWID_VERTICAL), SetPIP(0, 0, 10),
+				NWidget(NWID_HORIZONTAL), SetPIP(10, 15, 10),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetAlignment(SA_HOR_CENTER), SetFill(1, 1), SetDataTip(STR_NETWORK_MOTD_IF_SPECTATOR, STR_NULL),
+				EndContainer(),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+	NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_MOTD_CLOSE), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_MOTD_CLOSE, STR_NULL),
+};
+
+static WindowDesc _network_message_of_the_day_window_desc(
+	WDP_CENTER, nullptr, 0, 0,
+	WC_NETWORK_MOTD, WC_NONE,
+	0,
+	_nested_network_message_of_the_day_window_widgets, lengthof(_nested_network_message_of_the_day_window_widgets)
+);
+
+void ShowNetworkMessageOfTheDay()
+{
+	CloseWindowByClass(WC_NETWORK_MOTD);
+
+	new NetworkMessageOfTheDay(&_network_message_of_the_day_window_desc);
 }
