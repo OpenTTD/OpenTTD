@@ -902,6 +902,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 		SetLocalCompany(_network_join.company);
 	}
 
+	ShowClientList();
+
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
