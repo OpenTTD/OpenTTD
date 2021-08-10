@@ -1693,9 +1693,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tentukan
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} syarikat
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Amaun maksimum syarikat:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Hadkan bilangan syarikat dalam pelayan
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} penyaksi
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Amaun maxsimum penyaksi:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Hadkan bilangan penyaksi dalam pelayan
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa yang digunakan:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain lain akan tahu bahasa apa yang digunakan di pelayan ini
 

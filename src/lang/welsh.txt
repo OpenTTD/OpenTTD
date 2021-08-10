@@ -1939,9 +1939,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Dewiswch
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} cwmni
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uchafswm nifer cwmnïau:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}rhoi cyfyngiad penodol ar sawl cwmni mae'r gweinydd yn ei ganiatáu
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} gwyliwr
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uchafswm nifer gwylwyr:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}rhoi cyfyngiad penodol ar sawl gwyliwr mae'r gweinydd yn ei ganiatáu
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'w siarad:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
 

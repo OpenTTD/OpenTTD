@@ -2072,9 +2072,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Imposta 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagni{P a e}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Limite compagnie:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita il server a un certo numero di compagnie
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spettator{P e i}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Limite spettatori:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita il server a un certo numero di spettatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server
 

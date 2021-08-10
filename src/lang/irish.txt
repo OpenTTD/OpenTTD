@@ -1931,9 +1931,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Roghnaig
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P ch ch ch gc c}uideachta
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uaslíon na gcuideachtaí:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Déan an freastalaí a theorannú go líon áirithe cuideachtaí
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} féachadóir{P "" í í í í}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uaslíon na bhféachóirí:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Déan an freastalaí a theorannú go líon áirithe féachadóirí
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}An teanga a labhraítear:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beidh a fhios ag imreoirí eile cén teanga a labhraítear ar an bhfreastalaí
 

@@ -2150,9 +2150,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Eligere 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} societa{P s tes}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Societates maximae:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Eligere numerum maximum societatum
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectator{P "" es}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spectatores maximi:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Eligere numerum maximum spectatorum
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua adhibita:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Lingua in servatro adhibita
 

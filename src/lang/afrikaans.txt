@@ -1977,9 +1977,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies die
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Maatskap{P py pye}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimum aantal maatskappye:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Beperk die verskaffer na 'n sekere bedrag van maatskappye
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} aanskouer{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimum aantal toekouers:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk die verskaffer na 'n sekere bedrag van aanskouers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Taal gepraat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ander spelers sal weet watter taal op die verskaffer gepraat is
 

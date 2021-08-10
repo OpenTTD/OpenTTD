@@ -2147,9 +2147,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvoľ ma
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} spoločnost{P "" i í}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximálny počet spoločností:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Obmedzenie servera na maximálny počet spoločností
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} pozorovate{P "ľ" lia ľov}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximálny počet divákov:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Obmedzenie servera na maximálny počet divákov
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk, ktorým sa hovorí:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči vedeli, akým jazykom sa bude hovoriť na serveri.
 

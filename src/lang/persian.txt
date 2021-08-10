@@ -1653,9 +1653,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}بیشت
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} شرک{P ت تها}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}بیشترین تعداد شرکت ها:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}محدود کردن سرویس دهنده به داشتن تعداد مشخصی شرکت
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} تماشاگر{P "" ها}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}بیشترین تعداد تماشاگر:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}محدود کردن سرویس دهنده به داشتن تعداد مشخصی تماشاگر
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}زبان گفتگو:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دیگر بازیگران می فهمند که با چه زبانی در این سرویس دهنده گفتگو می شود
 

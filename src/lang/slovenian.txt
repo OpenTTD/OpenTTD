@@ -2087,9 +2087,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izberite
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} podjet{P je ji ja ij}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Dovoljeno število podjetij:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Omeji strežnik na določeno število podjetij
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} opazoval{P ec ca ci cev}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Največje število opazovalcev:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omeji strežnik na določeno število opazovalcev
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
 

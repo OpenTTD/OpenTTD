@@ -2079,9 +2079,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn s
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} công ty
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Số công ty tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Giới hạn số công ty trong server
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} người khán giả
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Số người xem tối đa:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Giới hạn số người xem trong server
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ngôn ngữ trò chuyện:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Những người chơi sẽ biết ngôn ngữ dùng để trao đổi trong server
 

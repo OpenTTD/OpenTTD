@@ -1843,8 +1843,6 @@ STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kl
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimaal oantal kliïnten:
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} bedriuw{P "" en}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimaal tal bedriuwen:
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} taskôger{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimaal tal taskôgers:
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Sprutsen taal:
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Fier in namme yn foar it networkspul

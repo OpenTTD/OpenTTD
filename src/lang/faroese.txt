@@ -1758,9 +1758,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel mest
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} fyritøk{P a ur}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Mest loyvdar fyritøkur:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Avmarka nøgdina av fyritøkum á servaranum
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} eygleiðar{P i ar}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Mest loyvdir eygjleiðarar:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Avmarka nøgdina av eygleiðarum á servaranum
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir spælarir kunnu síggja hvat mál verður tosa á servaranum
 

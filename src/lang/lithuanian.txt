@@ -2270,9 +2270,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirink
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanij{P a os ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Daugiausia kompanijų:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Riboti serverį iki tam tikro skaičiaus kompanijų
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} stebėtoj{P as ai ų}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Daugiausia žiurovų:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Riboti serverį iki tam tikro skaičiaus žiurovų
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Kalba:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Kiti žaidėjai žinos kokia kalba kalbama serveryje
 

@@ -2124,9 +2124,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}A maxim�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} vállalat
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max. vállalatszám:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}A vállalatok maximális száma a szerveren
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} megfigyelő
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. megfigyelő:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}A megfigyelők maximális száma a szerveren
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt nyelv:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren
 

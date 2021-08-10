@@ -2079,9 +2079,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajie
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yhtiö{P "" tä}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Rajoita yhtiöiden määrää palvelimella
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} katsoja{P "" a}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Katsojien enimmäismäärä:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Puhuttu kieli:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan
 

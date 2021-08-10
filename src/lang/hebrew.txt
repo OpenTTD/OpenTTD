@@ -1957,9 +1957,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספ
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} חבר{P "ה" "ות"}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}מספר מקסימלי של חברות:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}הגבל את השרת למספר מסויים של חברות
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} צופ{P "ה" "ים"}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}מספר צופים מירבי:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}הגבלת השרת למספר צופים מסויים
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}שפת דיבור:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
 

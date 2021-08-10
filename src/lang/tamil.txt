@@ -1797,9 +1797,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}வா�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} நிறுவன{P ம் ங்கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}அதிகபட்ச நிறுவனங்கள்:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}சர்வர்கு குறிப்பிட்ட அளவு நிறுவனங்களை மட்டுமே அனுமதி
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} பார்வையாளர்{P "" கள்}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}அதிகபட்ச பார்வையாளர்கள்:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}சர்வரிற்கு குறிப்பிட்ட அளவு பார்வையாளர்களை மட்டுமே அனுமதி
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}பேசப்படும் மொழிகள்:
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}இணைய ஆட்டத்திற்கு ஒரு பெயரினை இடு

@@ -1796,9 +1796,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Veldu h�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Fyrirtæki
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Hámarksfjöldi fyrirtækja:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Takmarka fjölda fyrirtækja á vefþjóni
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} áhorf{P andi endur}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Hámarksfjöldi áhorfanda:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Takmarka fjölda áhorfanda á vefþjóninum
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
 

@@ -1544,9 +1544,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}زیاد
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} کمپنی{P "" اں}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}زیادہ سے زیادہ کمپنیاں:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}سرور پر کمپنیوں کی زیادہ سے زیادہ تعداد مقرر کریں
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ناظر{P "" ین}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}زیادہ سے زیادہ ناظرین
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}سرور پس زیادہ سے زیادہ ناظرین کی تعداد مقرر کریں
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}بولی گئی زبان:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دوسرے کھلاڑی سرور پر بولی جانے والی زبان کے بادے میں جان سکیں گے
 

@@ -1882,9 +1882,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}เล�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} บริษัท
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}จำนวนบริษัทสูงสุด:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}จำกัดจำนวนบริษัทที่อยู่ในเซิร์ฟเวอร์
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ผู้ชม
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}ผู้ชมสูงสุด:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}จำกัดจำนวนผู้ชมที่อยู่ในเซิร์ฟเวอร์
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}ภาษาที่ใช้พูดคุย:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู้เล่นทุกคนจะสามารถทราบถึงภาษาที่ใช้พูดคุยในเซิร์ฟเวอร์นี้
 

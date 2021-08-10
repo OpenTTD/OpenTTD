@@ -1673,9 +1673,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}شركة
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}أقصى عدد شركات:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}حدد العدد الاقصى للشركات في هذا الخادم
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM}مشاهد
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}أقصى عدد مشاهدين:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}حدد عدد المشاهدين لهذا الخادم
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}اللغة المتحدثة:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللاعبين الآخرين سيعرفون اللغة المتحدثة
 

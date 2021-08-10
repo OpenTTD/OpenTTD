@@ -2100,9 +2100,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλ
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} εταιρεί{P α ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Μέγιστος αριθμός εταιριών:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό εταιρειών
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} θεατ{P ής ές}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Μέγιστος αριθμός θεατών:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό θεατών
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ομιλούμενη γλώσσα:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στον διακομιστή
 

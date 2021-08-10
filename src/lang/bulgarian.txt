@@ -1898,9 +1898,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Избо
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компани{P а ий}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. брой компании:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничаване на играта до определен брой компании
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} зрител{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. брой наблюдатели:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничаване на сървъра до определен брой наблюдатели
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Говорим език:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
 

@@ -2179,9 +2179,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Вибе
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компані{P я ї й}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Максимум компаній:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Обмежує кількість компаній на сервері
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} спостерігач{P "" і ів}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Максимум глядачів:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Обмежує кількість глядачів на сервері
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
 

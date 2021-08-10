@@ -1852,9 +1852,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Gehienez
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} konpainia
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Gehienezko konpainia kopurua:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Zerbitzaria konpainia kupuru zehatz batera mugatu
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ikusle
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Gehienezko ikusle kopurua:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Zerbitzaria ikusle kupuru zehatz batera mugatu
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Hitzegiten den hizkuntza:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beste jokalariek erabiltzen ari den hizkuntza ezagutu ahalko dute
 

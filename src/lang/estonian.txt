@@ -2119,9 +2119,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määrab
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} ettevõte{P "" t}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Ettevõtteid kuni:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Piirab serveris olevate ettevõtete arvu
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} vaatleja{P "" t}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Vaatlejaid kuni:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Piirab serveris olevate vaatlejate arvu
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Suhtluskeel:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Teavitab teisi mängijaid, mis keeles serveris rääkida
 

@@ -2143,9 +2143,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tagh an 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P chompanaidh chompanaidh companaidhean companaidh}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companaidhean air a char as motha:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Cuingich am frithealaiche gu àireamh shònraichte dhe chompanaidhean
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} {P amharcaiche amharcaiche amharcaichean amharcaiche}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Amharcaichean air a char as motha:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Cuingich co mheud duine a dh'fhaodas sealltainn air geamannan air an fhrithealaiche
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Cànan a tha ga bhruidhinn:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Bidh fios aig cluicheadairean eile dè an cànan a tha ga bruidhinn air an fhrithealaiche
 

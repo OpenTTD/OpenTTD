@@ -1991,9 +1991,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vælg de
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} selskab{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. selskaber:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begræns serveren til et bestemt antal selskaber
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} tilskuer{P "" e}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. tilskuere:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begræns serveren til et bestemt antal tilskurere
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Talt sprog:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
 

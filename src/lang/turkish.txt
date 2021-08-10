@@ -2061,9 +2061,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}İzin ve
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} şirket
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}En fazla şirket sayısı:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Sunucudaki şirket sayısını sınırla
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} seyirci
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}En fazla izleyici sayısı:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Sunucudaki izleyici sayısını sınırla
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Konuşulan dil:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
 

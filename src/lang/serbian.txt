@@ -2246,9 +2246,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Odaberit
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} preduzeć{P e a a}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Najviše preduzeća:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Odaberite koliko najviše može biti preduzeća na serveru
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} posmatrač{P "" a a}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Najviše posmatrača:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Odaberite koliko najviše može biti posmatrača na serveru
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači će znati sa kojim jezikom se razgovara na serveru
 

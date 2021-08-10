@@ -2287,9 +2287,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выба
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} кампанi{P я i яў}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. колькасьць кампанiяў:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Абмежаваць максымальную колькасьць кампаніяў на сэрвэры
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} назіральнік{P "" i аў}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. назіральнiкаў:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Абмежаваць максымальную колькасьць назіральнікаў на сэрвэры
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова зносінаў:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Іншыя гульцы будуць ведаць, на якой мове размаўляюць на сэрвэры
 

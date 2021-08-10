@@ -2030,9 +2030,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P companie companii "de companii"}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companii maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitează serverul la un anumit număr de companii
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} {P spectator spectatori "de spectatori"}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spectatori maxim:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitează serverul la un anumit număr de spectatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
 
