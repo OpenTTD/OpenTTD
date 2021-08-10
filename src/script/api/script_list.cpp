@@ -832,7 +832,7 @@ SQInteger ScriptList::_nexti(HSQUIRRELVM vm)
 	SQInteger idx;
 	sq_getinteger(vm, 2, &idx);
 
-	int val = this->Next();
+	SQInteger val = this->Next();
 	if (this->IsEnd()) {
 		sq_pushnull(vm);
 		return 1;
