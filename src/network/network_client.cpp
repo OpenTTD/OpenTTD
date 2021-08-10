@@ -314,6 +314,8 @@ static std::string _password_server_id;
 
 /** Maximum number of companies of the currently joined server. */
 static uint8 _network_server_max_companies;
+/** The current name of the server you are on. */
+std::string _network_server_name;
 
 /** Information about the game to join to. */
 NetworkJoinInfo _network_join;
@@ -1151,6 +1153,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(P
 	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	_network_server_max_companies = p->Recv_uint8();
+	_network_server_name = p->Recv_string(NETWORK_NAME_LENGTH);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
