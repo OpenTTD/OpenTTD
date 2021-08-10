@@ -567,11 +567,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packe
 {
 	if (this->status != STATUS_COMPANY_INFO && this->status != STATUS_GAME_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	NetworkGameList *item = GetLobbyGameInfo();
-	if (item == nullptr) {
-		/* This is not the lobby, so add it to the game list. */
-		item = NetworkGameListAddItem(this->connection_string);
-	}
+	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 
 	/* Clear any existing GRFConfig chain. */
 	ClearGRFConfigList(&item->info.grfconfig);
@@ -582,9 +578,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packe
 	/* Ensure we consider the server online. */
 	item->online = true;
 
-	/* It could be either window, but only one is open, so redraw both. */
 	UpdateNetworkGameWindow();
-	SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
 	/* We will receive company info next, so keep connection open. */
 	if (this->status == STATUS_COMPANY_INFO) return NETWORK_RECV_STATUS_OKAY;
@@ -595,39 +589,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Pa
 {
 	if (this->status != STATUS_COMPANY_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	byte company_info_version = p->Recv_uint8();
-
-	if (!this->HasClientQuit() && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
-		/* We have received all data... (there are no more packets coming) */
-		if (!p->Recv_bool()) return NETWORK_RECV_STATUS_CLOSE_QUERY;
-
-		CompanyID current = (Owner)p->Recv_uint8();
-		if (current >= MAX_COMPANIES) return NETWORK_RECV_STATUS_CLOSE_QUERY;
-
-		NetworkCompanyInfo *company_info = GetLobbyCompanyInfo(current);
-		if (company_info == nullptr) return NETWORK_RECV_STATUS_CLOSE_QUERY;
-
-		company_info->company_name = p->Recv_string(NETWORK_COMPANY_NAME_LENGTH);
-		company_info->inaugurated_year = p->Recv_uint32();
-		company_info->company_value    = p->Recv_uint64();
-		company_info->money            = p->Recv_uint64();
-		company_info->income           = p->Recv_uint64();
-		company_info->performance      = p->Recv_uint16();
-		company_info->use_password     = p->Recv_bool();
-		for (uint i = 0; i < NETWORK_VEH_END; i++) {
-			company_info->num_vehicle[i] = p->Recv_uint16();
-		}
-		for (uint i = 0; i < NETWORK_VEH_END; i++) {
-			company_info->num_station[i] = p->Recv_uint16();
-		}
-		company_info->ai               = p->Recv_bool();
-
-		company_info->clients = p->Recv_string(NETWORK_CLIENTS_LENGTH);
-
-		SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
-
-		return NETWORK_RECV_STATUS_OKAY;
-	}
+	/* Unused, but this packet is part of the "this will never change" packet group. */
 
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }

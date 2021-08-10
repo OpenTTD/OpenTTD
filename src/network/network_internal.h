@@ -91,7 +91,6 @@ extern uint8 _network_reconnect;
 extern CompanyMask _network_company_passworded;
 
 void NetworkQueryServer(const std::string &connection_string);
-void NetworkQueryLobbyServer(const std::string &connection_string);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
 struct NetworkGameList *NetworkAddServer(const std::string &connection_string, bool manually = true, bool never_expire = false);

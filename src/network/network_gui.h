@@ -37,8 +37,6 @@ struct NetworkCompanyInfo : NetworkCompanyStats {
 	std::string clients;      ///< The clients that control this company (Name1, name2, ..)
 };
 
-NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company);
-NetworkGameList *GetLobbyGameInfo();
 void ShowNetworkAskRelay(const std::string &connection_string, const std::string &token);
 
 #endif /* NETWORK_GUI_H */

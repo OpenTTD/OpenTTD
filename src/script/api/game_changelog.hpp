@@ -21,6 +21,14 @@
  * \li GSNewGRF
  * \li GSNewGRFList
  *
+ * API removals:
+ * \li GSWindow::NetworkStartServerWidgets::WID_NSS_SPECTATORS_LABEL
+ * \li GSWindow::NetworkStartServerWidgets::WID_NSS_SPECTATORS_BTND
+ * \li GSWindow::NetworkStartServerWidgets::WID_NSS_SPECTATORS_TXT
+ * \li GSWindow::NetworkStartServerWidgets::WID_NSS_SPECTATORS_BTNU
+ * \li GSWindow::WindowNumberEnum::WN_NETWORK_WINDOW_LOBBY
+ * \li GSWindow::NetworkLobbyWidgets
+ *
  * \b 1.11.0
  *
  * API additions:

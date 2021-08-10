@@ -657,42 +657,6 @@ void NetworkQueryServer(const std::string &connection_string)
 	new TCPQueryConnecter(connection_string);
 }
 
-/** Non blocking connection to query servers for their game and company info. */
-class TCPLobbyQueryConnecter : TCPServerConnecter {
-private:
-	std::string connection_string;
-
-public:
-	TCPLobbyQueryConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
-
-	void OnFailure() override
-	{
-		CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
-
-		ShowErrorMessage(STR_NETWORK_ERROR_NOCONNECTION, INVALID_STRING_ID, WL_ERROR);
-	}
-
-	void OnConnect(SOCKET s) override
-	{
-		_networking = true;
-		new ClientNetworkGameSocketHandler(s, this->connection_string);
-		MyClient::SendInformationQuery(true);
-	}
-};
-
-/**
- * Query a server to fetch the game-info for the lobby.
- * @param connection_string the address to query.
- */
-void NetworkQueryLobbyServer(const std::string &connection_string)
-{
-	if (!_network_available) return;
-
-	NetworkInitialize();
-
-	new TCPLobbyQueryConnecter(connection_string);
-}
-
 /**
  * Validates an address entered as a string and adds the server to
  * the list. If you use this function, the games will be marked
