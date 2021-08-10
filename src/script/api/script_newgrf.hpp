@@ -45,7 +45,7 @@ public:
 	static uint32 GetVersion(uint32 grfid);
 
 	/**
-	 * Get the BridgeID of a bridge at a given tile.
+	 * Get the name of a loaded NewGRF.
 	 * @param grfid The NewGRF to query.
 	 * @pre ScriptNewGRF::IsLoaded(grfid).
 	 * @return The name of the NewGRF or nullptr if no name is defined.

@@ -19,13 +19,15 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC)) {
-			this->AddItem(c->ident.grfid);
+			this->AddItem(BSWAP32(c->ident.grfid));
 		}
 	}
 }
 
 /* static */ bool ScriptNewGRF::IsLoaded(uint32 grfid)
 {
+	grfid = BSWAP32(grfid); // Match people's expectations.
+
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
 			return true;
@@ -37,6 +39,8 @@ ScriptNewGRFList::ScriptNewGRFList()
 
 /* static */ uint32 ScriptNewGRF::GetVersion(uint32 grfid)
 {
+	grfid = BSWAP32(grfid); // Match people's expectations.
+
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
 			return c->version;
@@ -48,6 +52,8 @@ ScriptNewGRFList::ScriptNewGRFList()
 
 /* static */ char *ScriptNewGRF::GetName(uint32 grfid)
 {
+	grfid = BSWAP32(grfid); // Match people's expectations.
+
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
 			return ::stredup(c->GetName());
