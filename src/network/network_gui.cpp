@@ -1579,15 +1579,15 @@ private:
 	/**
 	 * Part of RebuildList() to create the information for a single company.
 	 * @param company_id The company to build the list for.
-	 * @param own_ci The NetworkClientInfo of the client itself.
+	 * @param client_playas The company the client is joined as.
 	 */
-	void RebuildListCompany(CompanyID company_id, const NetworkClientInfo *own_ci)
+	void RebuildListCompany(CompanyID company_id, CompanyID client_playas)
 	{
 		ButtonCommon *chat_button = new CompanyButton(SPR_CHAT, company_id == COMPANY_SPECTATOR ? STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP : STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyChat);
 
 		if (_network_server) this->buttons[line_count].emplace_back(new CompanyButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin, company_id == COMPANY_SPECTATOR));
 		this->buttons[line_count].emplace_back(chat_button);
-		if (own_ci->client_playas != company_id) this->buttons[line_count].emplace_back(new CompanyButton(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai));
+		if (client_playas != company_id) this->buttons[line_count].emplace_back(new CompanyButton(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai));
 
 		this->line_count += 1;
 
@@ -1618,6 +1618,7 @@ private:
 	void RebuildList()
 	{
 		const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
+		CompanyID client_playas = own_ci == nullptr ? COMPANY_SPECTATOR : own_ci->client_playas;
 
 		this->buttons.clear();
 		this->line_count = 0;
@@ -1625,24 +1626,24 @@ private:
 		this->player_self_index = -1;
 
 		/* As spectator, show a line to create a new company. */
-		if (own_ci->client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
+		if (client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
 			this->buttons[line_count].emplace_back(new CompanyButton(SPR_JOIN, STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP, COLOUR_ORANGE, COMPANY_SPECTATOR, &NetworkClientListWindow::OnClickCompanyNew));
 			this->line_count += 1;
 		}
 
-		if (own_ci->client_playas != COMPANY_SPECTATOR) {
-			this->RebuildListCompany(own_ci->client_playas, own_ci);
+		if (client_playas != COMPANY_SPECTATOR) {
+			this->RebuildListCompany(client_playas, client_playas);
 		}
 
 		/* Companies */
 		for (const Company *c : Company::Iterate()) {
-			if (c->index == own_ci->client_playas) continue;
+			if (c->index == client_playas) continue;
 
-			this->RebuildListCompany(c->index, own_ci);
+			this->RebuildListCompany(c->index, client_playas);
 		}
 
 		/* Spectators */
-		this->RebuildListCompany(COMPANY_SPECTATOR, own_ci);
+		this->RebuildListCompany(COMPANY_SPECTATOR, client_playas);
 
 		this->vscroll->SetCount(this->line_count);
 	}
@@ -2063,16 +2064,18 @@ public:
 				}
 
 				NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
-				if (own_ci->client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
+				CompanyID client_playas = own_ci == nullptr ? COMPANY_SPECTATOR : own_ci->client_playas;
+
+				if (client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
 					this->DrawCompany(COMPANY_NEW_COMPANY, r.left, r.right, r.top, line);
 				}
 
-				if (own_ci->client_playas != COMPANY_SPECTATOR) {
-					this->DrawCompany(own_ci->client_playas, r.left, r.right, r.top, line);
+				if (client_playas != COMPANY_SPECTATOR) {
+					this->DrawCompany(client_playas, r.left, r.right, r.top, line);
 				}
 
 				for (const Company *c : Company::Iterate()) {
-					if (own_ci->client_playas == c->index) continue;
+					if (client_playas == c->index) continue;
 					this->DrawCompany(c->index, r.left, r.right, r.top, line);
 				}
 

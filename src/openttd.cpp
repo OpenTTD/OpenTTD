@@ -65,6 +65,7 @@
 #include "viewport_sprite_sorter.h"
 #include "framerate_type.h"
 #include "industry.h"
+#include "network/network_gui.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -884,6 +885,8 @@ static void MakeNewGameDone()
 	CheckEngines();
 	CheckIndustries();
 	MarkWholeScreenDirty();
+
+	if (_network_server && !_network_dedicated) ShowClientList();
 }
 
 static void MakeNewGame(bool from_heightmap, bool reset_settings)
