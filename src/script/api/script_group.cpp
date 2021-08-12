@@ -106,6 +106,15 @@
 	return GetGroupNumEngines(ScriptObject::GetCompany(), group_id, engine_id);
 }
 
+/* static */ int32 ScriptGroup::GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type)
+{
+	bool valid_group = IsValidGroup(group_id);
+	if (!valid_group && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
+	if (!valid_group && (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR)) return -1;
+
+	return GetGroupNumVehicle(ScriptObject::GetCompany(), group_id, valid_group ? ::Group::Get(group_id)->vehicle_type : (::VehicleType)vehicle_type);
+}
+
 /* static */ bool ScriptGroup::MoveVehicle(GroupID group_id, VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT);
