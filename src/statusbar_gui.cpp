@@ -147,11 +147,15 @@ struct StatusBarWindow : Window {
 				break;
 
 			case WID_S_RIGHT: {
-				/* Draw company money, if any */
-				const Company *c = Company::GetIfValid(_local_company);
-				if (c != nullptr) {
-					SetDParam(0, c->money);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_COMPANY_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
+				if (_local_company == COMPANY_SPECTATOR) {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_SPECATOR, TC_FROMSTRING, SA_HOR_CENTER);
+				} else {
+					/* Draw company money, if any */
+					const Company *c = Company::GetIfValid(_local_company);
+					if (c != nullptr) {
+						SetDParam(0, c->money);
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_COMPANY_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
+					}
 				}
 				break;
 			}
