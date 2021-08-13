@@ -205,6 +205,9 @@ add_files(
     ini.cpp
     ini_load.cpp
     ini_type.h
+    interface_tutorial_gui.cpp
+    interface_tutorial_gui.h
+    interface_tutorial_type.h
     intro_gui.cpp
     landscape.cpp
     landscape.h

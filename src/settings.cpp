@@ -96,6 +96,7 @@ static auto &PrivateSettingTables()
 {
 	static const SettingTable _private_setting_tables[] = {
 		_network_private_settings,
+		_tutorial_private_settings,
 	};
 	return _private_setting_tables;
 }

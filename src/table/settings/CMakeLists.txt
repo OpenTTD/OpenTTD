@@ -19,6 +19,7 @@ set(TABLE_INI_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/old_gameopt_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/pathfinding_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/script_settings.ini
+        ${CMAKE_CURRENT_SOURCE_DIR}/tutorial_private_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/win32_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/window_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/world_settings.ini

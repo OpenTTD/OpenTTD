@@ -18,6 +18,7 @@
 #include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
+#include "../interface_tutorial_gui.h"
 #include "../core/random_func.hpp"
 #include "../date_func.h"
 #include "../gfx_func.h"
@@ -900,6 +901,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 			ShowJoinStatusWindow();
 			NetworkSendCommand(0, CCA_NEW, 0, CMD_COMPANY_CTRL, nullptr, {}, _local_company);
+		} else {
+			/* If you join the game as spectator, possibly show tutorial. */
+			ShowInterfaceTutorial(INTERFACE_TUTORIAL_MULTIPLAYER_JOIN);
 		}
 	} else {
 		/* take control over an existing company */

@@ -5251,3 +5251,10 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+
+STR_INTERFACE_TUTORIAL_CAPTION                                  :{BLACK}Tutorial: {STRING}
+STR_INTERFACE_TUTORIAL_TEXT                                     :{BLACK}{STRING}
+STR_INTERFACE_TUTORIAL_CLOSE                                    :{BLACK}Close
+
+STR_INTERFACE_TUTORIAL_MULTIPLAYER_JOIN_CAPTION                 :first time joining a server
+STR_INTERFACE_TUTORIAL_MULTIPLAYER_JOIN_TEXT                    :You always first join a server as spectator.{}As a spectator, you can look around, but not build.{}To start playing, use the "Online Players" window to either create your own company or join a friend's.

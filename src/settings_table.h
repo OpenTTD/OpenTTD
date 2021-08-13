@@ -32,6 +32,7 @@ extern SettingTable _news_display_settings;
 extern SettingTable _old_gameopt_settings;
 extern SettingTable _pathfinding_settings;
 extern SettingTable _script_settings;
+extern SettingTable _tutorial_private_settings;
 extern SettingTable _window_settings;
 extern SettingTable _world_settings;
 #if defined(_WIN32) && !defined(DEDICATED)

@@ -299,6 +299,11 @@ struct NetworkSettings {
 	UseRelayService use_relay_service;                        ///< Use relay service?
 };
 
+/** Settings to indicat eif user saw a piece of the tutorial. */
+struct TutorialSettings {
+	bool multiplayer_join;                   ///< Player has joined a multiplayer game before.
+};
+
 /** Settings related to the creation of games. */
 struct GameCreationSettings {
 	uint32 generation_seed;                  ///< noise seed for world generation
@@ -596,6 +601,7 @@ struct ClientSettings {
 	SoundSettings        sound;              ///< sound effect settings
 	MusicSettings        music;              ///< settings related to music/sound
 	NewsSettings         news_display;       ///< news display settings.
+	TutorialSettings     tutorial;           ///< Indications what part of the tutorial the player has seen.
 };
 
 /** The current settings for this game. */

@@ -67,6 +67,7 @@ SettingTable _news_display_settings{ _news_display_settings_table };
 SettingTable _old_gameopt_settings{ _old_gameopt_settings_table };
 SettingTable _pathfinding_settings{ _pathfinding_settings_table };
 SettingTable _script_settings{ _script_settings_table };
+SettingTable _tutorial_private_settings{ _tutorial_private_settings_table };
 SettingTable _window_settings{ _window_settings_table };
 SettingTable _world_settings{ _world_settings_table };
 #if defined(_WIN32) && !defined(DEDICATED)

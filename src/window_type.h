@@ -695,6 +695,12 @@ enum WindowClass {
 	 */
 	WC_SCREENSHOT,
 
+	/**
+	 * Interface tutorial window; %Window numbers:
+	 *   - 0 = #InterfaceTutorialWidgets
+	 */
+	WC_INTERFACE_TUTORIAL,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 

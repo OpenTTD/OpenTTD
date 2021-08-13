@@ -25,6 +25,7 @@ add_files(
     group_widget.h
     highscore_widget.h
     industry_widget.h
+    interface_tutorial_widget.h
     intro_widget.h
     link_graph_legend_widget.h
     main_widget.h
