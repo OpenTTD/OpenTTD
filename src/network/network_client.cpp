@@ -331,18 +331,10 @@ static_assert(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
 /**
  * Query the server for server information.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendInformationQuery(bool request_company_info)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendInformationQuery()
 {
 	my_client->status = STATUS_GAME_INFO;
 	my_client->SendPacket(new Packet(PACKET_CLIENT_GAME_INFO));
-
-	if (request_company_info) {
-		my_client->status = STATUS_COMPANY_INFO;
-		_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
-		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
-
-		my_client->SendPacket(new Packet(PACKET_CLIENT_COMPANY_INFO));
-	}
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -567,7 +559,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p)
 {
-	if (this->status != STATUS_COMPANY_INFO && this->status != STATUS_GAME_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_GAME_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 
@@ -581,17 +573,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packe
 	item->online = true;
 
 	UpdateNetworkGameWindow();
-
-	/* We will receive company info next, so keep connection open. */
-	if (this->status == STATUS_COMPANY_INFO) return NETWORK_RECV_STATUS_OKAY;
-	return NETWORK_RECV_STATUS_CLOSE_QUERY;
-}
-
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Packet *p)
-{
-	if (this->status != STATUS_COMPANY_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-
-	/* Unused, but this packet is part of the "this will never change" packet group. */
 
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
@@ -688,7 +669,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 	 * NETWORK_ERROR_NOT_EXPECTED on requesting the game info. Show a special
 	 * error popup in that case.
 	 */
-	if (error == NETWORK_ERROR_NOT_EXPECTED && (this->status == STATUS_GAME_INFO || this->status == STATUS_COMPANY_INFO)) {
+	if (error == NETWORK_ERROR_NOT_EXPECTED && this->status == STATUS_GAME_INFO) {
 		ShowErrorMessage(STR_NETWORK_ERROR_SERVER_TOO_OLD, INVALID_STRING_ID, WL_CRITICAL);
 		return NETWORK_RECV_STATUS_CLOSE_QUERY;
 	}

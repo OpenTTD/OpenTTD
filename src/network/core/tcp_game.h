@@ -38,9 +38,9 @@ enum PacketGameType {
 	PACKET_CLIENT_JOIN,                  ///< The client telling the server it wants to join.
 	PACKET_SERVER_ERROR,                 ///< Server sending an error message to the client.
 
-	/* Packets used for the pre-game lobby (unused, but remain for backward/forward compatibility). */
-	PACKET_CLIENT_COMPANY_INFO,          ///< Request information about all companies.
-	PACKET_SERVER_COMPANY_INFO,          ///< Information about a single company.
+	/* Unused packet types, formerly used for the pre-game lobby. */
+	PACKET_CLIENT_UNUSED,                ///< Unused.
+	PACKET_SERVER_UNUSED,                ///< Unused.
 
 	/* Packets used to get the game info. */
 	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
@@ -199,40 +199,6 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet *p);
-
-	/**
-	 * Request company information (in detail).
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_INFO(Packet *p);
-
-	/**
-	 * Sends information about the companies (one packet per company):
-	 * uint8   Version of the structure of this packet (NETWORK_COMPANY_INFO_VERSION).
-	 * bool    Contains data (false marks the end of updates).
-	 * uint8   ID of the company.
-	 * string  Name of the company.
-	 * uint32  Year the company was inaugurated.
-	 * uint64  Value.
-	 * uint64  Money.
-	 * uint64  Income.
-	 * uint16  Performance (last quarter).
-	 * bool    Company is password protected.
-	 * uint16  Number of trains.
-	 * uint16  Number of lorries.
-	 * uint16  Number of busses.
-	 * uint16  Number of planes.
-	 * uint16  Number of ships.
-	 * uint16  Number of train stations.
-	 * uint16  Number of lorry stations.
-	 * uint16  Number of bus stops.
-	 * uint16  Number of airports and heliports.
-	 * uint16  Number of harbours.
-	 * bool    Company is an AI.
-	 * string  Client names (comma separated list)
-	 * @param p The packet that was just received.
-	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_INFO(Packet *p);
 
 	/**
 	 * Send information about a client:

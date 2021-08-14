@@ -71,8 +71,6 @@ public:
 	 * Reopen the socket so we can send/receive stuff again.
 	 */
 	void Reopen() { this->has_quit = false; }
-
-	void SendCompanyInformation(Packet *p, const struct Company *c, const struct NetworkCompanyStats *stats, uint max_len = NETWORK_COMPANY_NAME_LENGTH);
 };
 
 #endif /* NETWORK_CORE_CORE_H */

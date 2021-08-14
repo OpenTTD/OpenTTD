@@ -640,7 +640,7 @@ public:
 	{
 		_networking = true;
 		new ClientNetworkGameSocketHandler(s, this->connection_string);
-		MyClient::SendInformationQuery(false);
+		MyClient::SendInformationQuery();
 	}
 };
 

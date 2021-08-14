@@ -25,7 +25,6 @@ class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<
 protected:
 	NetworkRecvStatus Receive_CLIENT_JOIN(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet *p) override;
-	NetworkRecvStatus Receive_CLIENT_COMPANY_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_GETMAP(Packet *p) override;
@@ -42,7 +41,6 @@ protected:
 	NetworkRecvStatus Receive_CLIENT_MOVE(Packet *p) override;
 
 	NetworkRecvStatus SendGameInfo();
-	NetworkRecvStatus SendCompanyInfo();
 	NetworkRecvStatus SendNewGRFCheck();
 	NetworkRecvStatus SendWelcome();
 	NetworkRecvStatus SendNeedGamePassword();
