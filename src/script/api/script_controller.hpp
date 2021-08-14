@@ -135,11 +135,20 @@ public:
 	/**
 	 * Get the OpenTTD version of this executable. The version is formatted
 	 * with the bits having the following meaning:
-	 * 28-31 major version
-	 * 24-27 minor version
-	 * 20-23 build
+	 * 24-31 major version + 16.
+	 * 20-23 minor version.
 	 *    19 1 if it is a release, 0 if it is not.
 	 *  0-18 revision number; 0 when the revision is unknown.
+	 * You have to subtract 16 from the major version to get the correct
+	 * value.
+	 *
+	 * Prior to OpenTTD 12, the bits have the following meaning:
+	 * 28-31 major version.
+	 * 24-27 minor version.
+	 * 20-23 build.
+	 *    19 1 if it is a release, 0 if it is not.
+	 *  0-18 revision number; 0 when the revision is unknown.
+	 *
 	 * @return The version in newgrf format.
 	 */
 	static uint GetVersion();

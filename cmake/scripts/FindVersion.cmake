@@ -6,9 +6,6 @@ endif()
 if(NOT REV_MINOR)
     set(REV_MINOR 0)
 endif()
-if(NOT REV_BUILD)
-    set(REV_BUILD 0)
-endif()
 
 #
 # Finds the current version of the current folder.

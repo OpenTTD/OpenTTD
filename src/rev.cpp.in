@@ -75,14 +75,17 @@ const byte _openttd_revision_tagged = ${REV_ISTAG};
 /**
  * The NewGRF revision of OTTD:
  * bits  meaning.
- * 28-31 major version
- * 24-27 minor version
- * 20-23 build
+ * 24-31 major version + 16
+ * 20-23 minor version
  *    19 1 if it is a release, 0 if it is not.
  *  0-18 used to be the SVN revision, now just last revision before switch to git
  *
  * The 19th bit is there so the development/betas/alpha, etc. leading to a
  * final release will always have a lower version number than the released
  * version, thus making comparisons on specific revisions easy.
+ *
+ * The + 16 for the major version is because we went from 1.11.0 to 12.0, dropping
+ * the "patch" part of the version. To make sure "1.11.0" is smaller than "12.0", we
+ * have to adjust the major by 16.
  */
-const uint32 _openttd_newgrf_version = ${REV_MAJOR} << 28 | ${REV_MINOR} << 24 | ${REV_BUILD} << 20 | ${REV_ISSTABLETAG} << 19 | 28004;
+const uint32 _openttd_newgrf_version = (${REV_MAJOR} + 16) << 24 | ${REV_MINOR} << 20 | ${REV_ISSTABLETAG} << 19 | 28004;
