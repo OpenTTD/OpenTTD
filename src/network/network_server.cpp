@@ -362,64 +362,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendGameInfo()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Send the client information about the companies. */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
-{
-	/* Fetch the latest version of the stats */
-	NetworkCompanyStats company_stats[MAX_COMPANIES];
-	NetworkPopulateCompanyStats(company_stats);
-
-	/* Make a list of all clients per company */
-	std::string clients[MAX_COMPANIES];
-
-	/* Add the local player (if not dedicated) */
-	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
-	if (ci != nullptr && Company::IsValidID(ci->client_playas)) {
-		clients[ci->client_playas] = ci->client_name;
-	}
-
-	for (NetworkClientSocket *csi : NetworkClientSocket::Iterate()) {
-		std::string client_name = static_cast<ServerNetworkGameSocketHandler*>(csi)->GetClientName();
-
-		ci = csi->GetInfo();
-		if (ci != nullptr && Company::IsValidID(ci->client_playas)) {
-			if (!clients[ci->client_playas].empty()) {
-				clients[ci->client_playas] += ", ";
-			}
-
-			clients[ci->client_playas] += client_name;
-		}
-	}
-
-	/* Now send the data */
-
-	Packet *p;
-
-	for (const Company *company : Company::Iterate()) {
-		p = new Packet(PACKET_SERVER_COMPANY_INFO);
-
-		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-		p->Send_bool  (true);
-		this->SendCompanyInformation(p, company, &company_stats[company->index]);
-
-		if (clients[company->index].empty()) {
-			p->Send_string("<none>");
-		} else {
-			p->Send_string(clients[company->index]);
-		}
-
-		this->SendPacket(p);
-	}
-
-	p = new Packet(PACKET_SERVER_COMPANY_INFO);
-
-	p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-	p->Send_bool  (false);
-
-	this->SendPacket(p);
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
 /**
  * Send an error to the client, and close its connection.
  * @param error The error to disconnect for.
@@ -833,11 +775,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_INFO(Packet *p)
 {
 	return this->SendGameInfo();
-}
-
-NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_INFO(Packet *p)
-{
-	return this->SendCompanyInfo();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED(Packet *p)
@@ -1444,58 +1381,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p)
 	/* if we get here we can move the client */
 	NetworkServerDoMove(this->client_id, company_id);
 	return NETWORK_RECV_STATUS_OKAY;
-}
-
-/**
- * Package some generic company information into a packet.
- * @param p       The packet that will contain the data.
- * @param c       The company to put the of into the packet.
- * @param stats   The statistics to put in the packet.
- * @param max_len The maximum length of the company name.
- */
-void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, const NetworkCompanyStats *stats, uint max_len)
-{
-	/* Grab the company name */
-	char company_name[NETWORK_COMPANY_NAME_LENGTH];
-	SetDParam(0, c->index);
-
-	assert(max_len <= lengthof(company_name));
-	GetString(company_name, STR_COMPANY_NAME, company_name + max_len - 1);
-
-	/* Get the income */
-	Money income = 0;
-	if (_cur_year - 1 == c->inaugurated_year) {
-		/* The company is here just 1 year, so display [2], else display[1] */
-		for (uint i = 0; i < lengthof(c->yearly_expenses[2]); i++) {
-			income -= c->yearly_expenses[2][i];
-		}
-	} else {
-		for (uint i = 0; i < lengthof(c->yearly_expenses[1]); i++) {
-			income -= c->yearly_expenses[1][i];
-		}
-	}
-
-	/* Send the information */
-	p->Send_uint8 (c->index);
-	p->Send_string(company_name);
-	p->Send_uint32(c->inaugurated_year);
-	p->Send_uint64(c->old_economy[0].company_value);
-	p->Send_uint64(c->money);
-	p->Send_uint64(income);
-	p->Send_uint16(c->old_economy[0].performance_history);
-
-	/* Send 1 if there is a password for the company else send 0 */
-	p->Send_bool  (!_network_company_states[c->index].password.empty());
-
-	for (uint i = 0; i < NETWORK_VEH_END; i++) {
-		p->Send_uint16(stats->num_vehicle[i]);
-	}
-
-	for (uint i = 0; i < NETWORK_VEH_END; i++) {
-		p->Send_uint16(stats->num_station[i]);
-	}
-
-	p->Send_bool(c->is_ai);
 }
 
 /**
