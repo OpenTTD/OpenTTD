@@ -5,7 +5,7 @@ if(NOT BINARY_NAME)
 endif()
 
 project(${BINARY_NAME}
-    VERSION 1.12.0
+    VERSION 12.0
 )
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
@@ -76,7 +76,6 @@ add_custom_target(find_version
                 -DCPACK_BINARY_DIR=${CMAKE_BINARY_DIR}
                 -DREV_MAJOR=${PROJECT_VERSION_MAJOR}
                 -DREV_MINOR=${PROJECT_VERSION_MINOR}
-                -DREV_BUILD=${PROJECT_VERSION_PATCH}
                 -DWINDOWS=${WIN32}
                 -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
