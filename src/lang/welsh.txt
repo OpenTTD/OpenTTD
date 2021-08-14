@@ -761,6 +761,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  WE
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AWTOGADW
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  CADW GÊM  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Hanes Negeseuon
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Rhestr o'r negeseuon newyddion diweddaraf

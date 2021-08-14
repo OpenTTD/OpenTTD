@@ -737,6 +737,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DI
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPANAN AUTOMATIK
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SEDANG SIMPAN PERMAINAN  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Pesanan Sebelumnya
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Senarai laporan berita terkini

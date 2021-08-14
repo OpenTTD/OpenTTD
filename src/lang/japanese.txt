@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}オートセーブ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ゲームセーブ中  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}メッセージ履歴
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最新のニュース/メッセージのリストです

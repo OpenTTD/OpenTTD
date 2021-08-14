@@ -785,6 +785,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE} * * PA
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMĀTISKĀ SAGLABĀŠANA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPĒLE TIEK SAGLABĀTA *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Ziņojumu vēsture
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Neseno ziņojumu saraksts

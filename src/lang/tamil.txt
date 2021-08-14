@@ -758,6 +758,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}பதிவுசெய்தல்
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ஆட்டம் பதிவாகிறது  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}செய்தி வரலாறு
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}சமீப செய்திகளின் பட்டியல்

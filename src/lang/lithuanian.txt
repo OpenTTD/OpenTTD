@@ -988,6 +988,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMATINIS SAUGOJIMAS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  Išsaugomas žaidimas  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Žinučių istorija
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Paskutinių žinučių sąrašas

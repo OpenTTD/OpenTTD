@@ -760,6 +760,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  A
 STR_STATUSBAR_AUTOSAVE                                          :{RED}UATHSHÁBHÁIL
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  CLUICHE Á SHÁBHÁIL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Stair na dteachtaireachtaí
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liosta de gach teachtaireacht nuachta le déanaí

@@ -220,6 +220,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 # Status bar messages
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * ठहरा हुआ (संपर्क चित्र अद्यतन के लिये प्रतीक्षारत) * *
 
+
 # News message history
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}

@@ -759,6 +759,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* * И�
 STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОЗАПАЗВАНЕ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗАПИСВАНЕ НА ИГРА  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}История на съобщенията
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Списък с последните новини

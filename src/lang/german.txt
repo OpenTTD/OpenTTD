@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Autosicherung
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEICHERE SPIEL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Nachrichtenchronik
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eine Liste der aktuellen Nachrichten

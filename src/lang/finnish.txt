@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  T
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMAATTITALLENNUS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  TALLENNETAAN PELIÄ  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Viestihistoria
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista viimeisimmistä uutisviesteistä

@@ -785,6 +785,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * SPI
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOLAGRING
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  LAGRER SPILL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meldingshistorikk
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste over de siste nyhetsmeldingene

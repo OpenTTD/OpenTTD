@@ -774,6 +774,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGRAVADO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GRAVANDO PARTIDA  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensaxes
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Unha lista das mensaxes e novas recentes

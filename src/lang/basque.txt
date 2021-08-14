@@ -753,6 +753,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  G
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-GORDEA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  JOKOA GORDETZEN  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Mezu Historia
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Azken albiste mezuetako zerrenda

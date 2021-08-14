@@ -779,6 +779,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SALVARE AUTOMATĂ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVARE JOC  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia mesajelor
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}O listă a celor mai recente mesaje

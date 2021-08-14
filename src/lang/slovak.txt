@@ -851,6 +851,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOŽENIE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Archív správ
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Zoznam posledných správ

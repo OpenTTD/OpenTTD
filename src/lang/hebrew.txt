@@ -778,6 +778,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ה
 STR_STATUSBAR_AUTOSAVE                                          :{RED}שמירה אוטומטית
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  שומר משחק  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}היסטוריית ההודעות
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}רשימת ההודעות האחרונות

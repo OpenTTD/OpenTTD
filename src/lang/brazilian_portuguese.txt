@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Salvo Automaticamente
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVANDO JOGO  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Uma lista das mensagens de notícias recentes

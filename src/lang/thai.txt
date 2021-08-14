@@ -752,6 +752,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}กำลังทำการเซฟอัตโนมัติ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  กำลังบันทึกเกม  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}ข้อความย้อนหลัง
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}รายการแสดงข้อความข่าวเมื่อเร็วๆนี้

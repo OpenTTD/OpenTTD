@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}자동 저장
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  게임 저장 중  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}메시지 기록
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}최근 뉴스 메시지의 기록입니다

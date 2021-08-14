@@ -913,6 +913,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PA
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Samodejno shranjevanje
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SHRANJEVANJE  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Arhiv sporočil
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam zadnjih novic

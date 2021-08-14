@@ -751,6 +751,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAVING GAME  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Message History
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}A list of the recent news messages

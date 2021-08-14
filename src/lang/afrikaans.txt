@@ -774,6 +774,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  GE
 STR_STATUSBAR_AUTOSAVE                                          :{RED}OUTOSTOOR
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  STOOR SPELETJIE  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Boodskapgeskiedenis
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}'n Lys van al die onlangs nuus boodskappe

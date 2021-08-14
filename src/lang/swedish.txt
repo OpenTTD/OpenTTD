@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPARA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPARAR SPEL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meddelandehistorik
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En lista med de senaste nyheterna

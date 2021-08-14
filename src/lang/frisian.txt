@@ -760,6 +760,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  SK
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Automatysk bewarje
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SLAAT SPUL OP  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Berjochtenskiednis
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}In list fan resinte nijsberjochten

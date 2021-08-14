@@ -755,6 +755,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  م
 STR_STATUSBAR_AUTOSAVE                                          :{RED}حفظ تلقائي
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  يتم حفظ اللعبة  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}الرسائل السابقة
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}قائمة بآخر الاخبار

@@ -752,6 +752,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ت
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره اتوماتیک
 STR_STATUSBAR_SAVING_GAME                                       :{RED}»»»»  در حال ذخيره بازي  ««««
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}تاریخچه پیام ها
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}لیست آخرین پیام های اخباری

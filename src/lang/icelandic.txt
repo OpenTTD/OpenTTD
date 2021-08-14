@@ -732,6 +732,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ST
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SJÁLFVIRK VISTUN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  VISTA LEIK  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Saga skilaboða
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listi yfir nýlegar fréttir

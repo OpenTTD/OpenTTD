@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  T
 STR_STATUSBAR_AUTOSAVE                                          :{RED}LƯU TỰ ĐỘNG
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ĐANG LƯU GAME *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Lịch Sử Thông Điệp
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sách những tin tức gần đây

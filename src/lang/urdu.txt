@@ -732,6 +732,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}٭ ٭ �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}خود مختار بچاو
 STR_STATUSBAR_SAVING_GAME                                       :{RED}٭ ٭ کھیل کو بچائیں ٭ ٭
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}پرانے پیغام
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}حالیہ پیغاموں کی فہرست

@@ -652,6 +652,7 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 # Status bar messages
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
+
 # News message history
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 

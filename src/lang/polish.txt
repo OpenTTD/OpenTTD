@@ -1163,6 +1163,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOZAPIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ZAPISYWANIE GRY  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Poprzednie wiadomości
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista ostatnich wiadomości

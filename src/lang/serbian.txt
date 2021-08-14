@@ -978,6 +978,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-ČUVANJE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ČUVAM PARTIJU  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Arhiva Vesti
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Spisak skorašnjih novosti

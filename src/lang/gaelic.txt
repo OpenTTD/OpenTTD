@@ -965,6 +965,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  N
 STR_STATUSBAR_AUTOSAVE                                          :{RED}FÈIN-SHÀBHALADH
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A' SÀBHALADH GEAMA  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Eachdraidh nam brath
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liosta nam brath-naidheachd o chionn ghoirid

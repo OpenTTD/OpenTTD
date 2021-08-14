@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPÄICHEREN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPÄICHERT D'SPILL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meldungshistorie
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eng Lëscht vun de leschten Meldungen

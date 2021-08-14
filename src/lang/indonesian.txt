@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * PAU
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPAN OTOMATIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MENYIMPAN PERMAINAN  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Pesan Lampau
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Daftar pesan berita-berita yang ada

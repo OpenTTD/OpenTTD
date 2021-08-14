@@ -762,6 +762,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PA
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOLAGRING
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  LAGRAR SPEL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meldingshistorikk
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Ei liste over siste nyheiter

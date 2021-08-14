@@ -955,6 +955,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  I
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSERVANS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  LUDUM SERVANS  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historia Nuntiorum
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Index nuntiorum recentium

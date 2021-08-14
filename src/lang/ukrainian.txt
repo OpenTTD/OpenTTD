@@ -911,6 +911,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  * П
 STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОЗБЕРЕЖЕННЯ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗБЕРЕЖЕННЯ ГРИ  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Історія повідомлень
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Список останніх повідомлень

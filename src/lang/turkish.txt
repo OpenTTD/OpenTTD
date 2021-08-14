@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  D
 STR_STATUSBAR_AUTOSAVE                                          :{RED}OTOMATİK KAYDET
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KAYDEDiYOR  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Mesaj Geçmişi
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En son haberlerin özetleri

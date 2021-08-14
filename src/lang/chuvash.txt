@@ -440,6 +440,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ХӐЙ УПРАВ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ВӐЙЙИ УПРАВ  *  *
 
+
 # News message history
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 

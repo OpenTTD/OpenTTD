@@ -773,6 +773,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PA
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGEM
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GEMMER SPIL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Beskedhistorik
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste over seneste nyheder

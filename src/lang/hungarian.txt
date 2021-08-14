@@ -847,6 +847,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  S
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Automatikus mentés
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  JÁTÉK MENTÉSE  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Előző üzenetek
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Az előző hírüzenetek listája

@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  E
 STR_STATUSBAR_AUTOSAVE                                          :{RED}DESADA AUTOMÀTICA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  DESANT PARTIDA  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de missatges
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Llista de les notícies més recents

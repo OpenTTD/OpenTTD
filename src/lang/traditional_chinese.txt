@@ -765,6 +765,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}自動儲存
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  遊戲儲存中 *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}訊息記錄
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}列出最近的新聞內容

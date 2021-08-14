@@ -733,6 +733,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  S
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SJÁLVGOYMSLA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GOYMUR SPÆL  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Boðs søga
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Yvirlit yvir fesk tíðinda boð

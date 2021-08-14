@@ -870,6 +870,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Automatické ukládání
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SE UKLÁDÁ  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historie zpráv
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam předešlých zpráv

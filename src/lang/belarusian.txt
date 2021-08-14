@@ -1083,6 +1083,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Аўтазахаваньне
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗАХАВАНЬНЕ ГУЛЬНІ  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Гісторыя паведамленьняў
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Сьпіс нядаўніх навін

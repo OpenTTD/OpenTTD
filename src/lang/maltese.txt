@@ -363,6 +363,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Uri l-pr
 # Status bar messages
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
+
 # News message history
 
 

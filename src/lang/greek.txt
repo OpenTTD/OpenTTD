@@ -885,6 +885,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}** ΠΑ
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ΑΥΤΟΜΑΤΗ ΑΠΟΘΗΚΕΥΣΗ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ΑΠΟΘΗΚΕΥΣΗ ΠΑΙΧΝΙΔΙΟΥ  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Ιστορικό Μηνυμάτων
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Λίστα των πρόσφατων μηνυμάτων ειδήσεων

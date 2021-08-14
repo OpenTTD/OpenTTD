@@ -727,6 +727,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Автозачувување
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗАШТЕДА НА ИГРА  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}порака Историја
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Листа на последните вести пораки

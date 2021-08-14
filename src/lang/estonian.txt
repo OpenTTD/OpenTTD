@@ -840,6 +840,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  S
 STR_STATUSBAR_AUTOSAVE                                          :{RED}VÄLPSALVESTUS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MÄNGU SALVESTAMINE  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Sõnumite ajalugu
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Nimekiri hiljutistest uudistest

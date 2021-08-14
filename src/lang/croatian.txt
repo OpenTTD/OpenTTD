@@ -869,6 +869,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  S
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMATSKO SPREMANJE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPREMAM IGRU  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Povijest poruka
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Popis nedavnih novinskih poruka

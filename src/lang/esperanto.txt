@@ -750,6 +750,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PA
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AŬTOMATA KONSERVADO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KONSERVAS LUDON  *  *
 
+
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Mesaĝa historio
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da aktualaj novaĵoj
