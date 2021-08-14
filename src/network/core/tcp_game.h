@@ -38,7 +38,7 @@ enum PacketGameType {
 	PACKET_CLIENT_JOIN,                  ///< The client telling the server it wants to join.
 	PACKET_SERVER_ERROR,                 ///< Server sending an error message to the client.
 
-	/* Packets used for the pre-game lobby. */
+	/* Packets used for the pre-game lobby (unused, but remain for backward/forward compatibility). */
 	PACKET_CLIENT_COMPANY_INFO,          ///< Request information about all companies.
 	PACKET_SERVER_COMPANY_INFO,          ///< Information about a single company.
 

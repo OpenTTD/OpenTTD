@@ -25,7 +25,6 @@ enum WindowNumberEnum {
 	WN_CONFIRM_POPUP_QUERY_BOOTSTRAP, ///< Query popup confirm for bootstrap.
 
 	WN_NETWORK_WINDOW_GAME = 0,     ///< Network game window.
-	WN_NETWORK_WINDOW_LOBBY,        ///< Network lobby window.
 	WN_NETWORK_WINDOW_CONTENT_LIST, ///< Network content list.
 	WN_NETWORK_WINDOW_START,        ///< Network start server.
 
@@ -459,7 +458,6 @@ enum WindowClass {
 	/**
 	 * Network window; %Window numbers:
 	 *   - #WN_NETWORK_WINDOW_GAME = #NetworkGameWidgets
-	 *   - #WN_NETWORK_WINDOW_LOBBY = #NetworkLobbyWidgets
 	 *   - #WN_NETWORK_WINDOW_CONTENT_LIST = #NetworkContentListWidgets
 	 *   - #WN_NETWORK_WINDOW_START = #NetworkStartServerWidgets
 	 */

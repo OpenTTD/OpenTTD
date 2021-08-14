@@ -75,21 +75,6 @@ enum NetworkStartServerWidgets {
 	WID_NSS_CANCEL,            ///< 'Cancel' button.
 };
 
-/** Widgets of the #NetworkLobbyWindow class. */
-enum NetworkLobbyWidgets {
-	WID_NL_BACKGROUND, ///< Background of the window.
-	WID_NL_TEXT,       ///< Heading text.
-	WID_NL_HEADER,     ///< Header above list of companies.
-	WID_NL_MATRIX,     ///< List of companies.
-	WID_NL_SCROLLBAR,  ///< Scroll bar.
-	WID_NL_DETAILS,    ///< Company details.
-	WID_NL_JOIN,       ///< 'Join company' button.
-	WID_NL_NEW,        ///< 'New company' button.
-	WID_NL_SPECTATE,   ///< 'Spectate game' button.
-	WID_NL_REFRESH,    ///< 'Refresh server' button.
-	WID_NL_CANCEL,     ///< 'Cancel' button.
-};
-
 /** Widgets of the #NetworkClientListWindow class. */
 enum ClientListWidgets {
 	WID_CL_PANEL,                      ///< Panel of the window.
