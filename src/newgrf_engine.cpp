@@ -1189,7 +1189,7 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
 	if (callback != CALLBACK_FAILED) {
 		if (is_signed) {
 			/* Sign extend 15 bit integer */
-			return static_cast<int16>(callback << 1) >> 1;
+			return static_cast<int16>(callback << 1) / 2;
 		} else {
 			return callback;
 		}
