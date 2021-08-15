@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  S
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ENREGISTREMENT AUTOMATIQUE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAUVEGARDE EN COURS  *  *
 
+STR_STATUSBAR_SPECATOR                                          :{WHITE}(spectateur)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des messages
@@ -2113,7 +2114,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}La compa
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Joueurs en ligne
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijoueur
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Joueurs en ligne
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Serveur
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nom
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nom du serveur sur lequel vous jouez

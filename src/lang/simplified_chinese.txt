@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}自动保存
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保存游戏中  *  *
 
+STR_STATUSBAR_SPECATOR                                          :{WHITE}（旁观者）
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}消息历史
@@ -949,7 +950,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左侧通行
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :右侧通行
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}城镇名称
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}城镇名称：
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}选择城镇名称的命名风格
 
 ############ start of townname region
@@ -989,6 +990,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :每 12 个月
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}语言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}选择界面语言
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (完成了 {NUM}%)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全屏幕
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}选择此项可以在全屏幕模式下进行 OpenTTD 游戏
@@ -1198,6 +1200,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :车辆损坏: {
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置运输工具故障率
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :补贴系数: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置线路补贴额度
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :财政补贴尺度：{STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :设置发放财政补贴的年数
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :没有财政补贴
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建设费用: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :设置建设费用和交易费用难度
 STR_CONFIG_SETTING_RECESSIONS                                   :经济衰退: {STRING}
@@ -1430,6 +1436,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :双击
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :单击(当前焦点)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :单击 (立即)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :使用中继服务：{STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :连接服务器失败时，玩家可以使用中继服务来建立连接。“关闭”禁止中继服务，“询问”先进行询问，“打开”直接使用中继。
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :关闭
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :询问
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :打开
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右键模拟： {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :选择模拟鼠标右键的方式
@@ -1783,6 +1794,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}工业�
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}货物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}竞争
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}电脑玩家
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}网络
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(推荐)
@@ -1988,6 +2000,9 @@ STR_FACE_EARRING                                                :耳环
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择领带或是耳环
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :本地
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :公开
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :仅限邀请
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2022,6 +2037,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}服务�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}该服IP: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}开始日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}当前日期: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}游戏脚本：{WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}有密码保护！
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}服务器离线
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}服务器满员
@@ -2037,11 +2053,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}搜索�
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}搜索局域网
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}搜索局域网内的服务器
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}添加服务器
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}添加一个永远显示在列表中的服务器
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}添加一个永远显示在列表中的服务器。可使用服务器地址或邀请码。
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}启动服务器
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}启动本机作为服务器
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}输入姓名
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}输入服务器地址或邀请码
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}开始新的联机游戏
@@ -2051,6 +2068,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}游戏�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}设置密码：
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}可见度
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}其他玩家能否在公开列表中查看你的服务器
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 客户端
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}玩家数目：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）
@@ -2086,15 +2105,63 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :在线玩家
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}在线玩家
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}服务器
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}名称
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}你正在游玩的服务器名称
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}编辑服务器名称
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :服务器名称
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}可见度
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}其他玩家能否在公开列表中查看你的服务器
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}邀请码
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}其他玩家可使用邀请码加入服务器
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}连接类型
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}其他玩家访问服务器的方式
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}玩家
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}名称
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}你的玩家名
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}编辑你的玩家名
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :你的玩家名
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}要在此客户端执行的管理命令
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}要在此公司执行的管理命令
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}加入该公司
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}给这位玩家发消息
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}给公司中的所有玩家发消息
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}给所有旁观者发消息
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :旁观者
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :（新公司）
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}新建并加入公司
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}这是你
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}这里是游戏的主机
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM}个客户端 / {NUM}个公司
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}本地
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}远程玩家无法加入
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}公开
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NAT后
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}使用中继
 ############ End of ConnectionType
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :封禁
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :删除
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :密码解锁
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}管理命令
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}你确定要踢出名为 {STRING} 的玩家吗？
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}你确定要封禁名为 {STRING} 的玩家吗？
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}你确定要删除 {COMPANY} 公司吗?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}你确定要重置 {COMPANY} 的公司密码吗？
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}使用中继？
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} 无法建立你与服务器的连接。{}你是否想通过 {STRING} 中转此次会话？
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，本次请求
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，不要再次询问
 
 STR_NETWORK_SERVER                                              :服务器
 STR_NETWORK_CLIENT                                              :客户端
@@ -2139,6 +2206,8 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}无法�
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}无法连接
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}连接 #{NUM} 超时
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}传输协议错误，连接断开
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}你没有设置玩家名。玩家名可在联机游戏窗口的上面设置
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}你没有设置服务器名。玩家名可在联机游戏窗口的上面设置
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}此客户端版本与服务器端不匹配
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}密码错误
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}服务器已经满员
@@ -2151,6 +2220,8 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}输入�
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}您的计算机联网超时
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}您的计算机下载地图用时过长
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}您的计算机加入服务器用时过长
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}您的玩家名不合法
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}请求的服务器版本过低
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
@@ -2173,6 +2244,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :没有在规定
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :超时
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :下载地图用时过长
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :处理地图用时过长
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :非法客户端名称
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}失去链接
@@ -2207,6 +2279,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务�
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动。{}请等待……
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}服务器注册失败
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}您的服务器不允许远程连接
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{BLACK}其他玩家将无法连接你的服务器
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}下载内容
@@ -3013,6 +3088,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}错误：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}严重错误：{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}发生了一个致命的NewGRF错误：{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}发生了一个NewGRF错误：{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} 不能与 OpenTTD 报告的 TTDPatch 版本兼容。
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 是为 {STRING} 版 TTD 开发的。
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} 应当与 {STRING} 配合
@@ -3490,7 +3566,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}创建�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}删除分组
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}重命名该分组
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}改变所选组的配色方案
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}点击以停止本组自动更新功能的使用
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}点击以停止本组自动更新功能的使用。按下CTRL并点击来同样应用于子组。
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}删除分组
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}确定要删除这个分组及其下级分组么?
@@ -3743,7 +3819,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :磁悬浮列车
 STR_REPLACE_ROAD_VEHICLES                                       :路面交通工具
 STR_REPLACE_TRAM_VEHICLES                                       :电车
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车（{STRING}）：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动从最前面的挂车去掉若干节以保证列车长度不变
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. 按下CTRL并点击来同样应用于子组
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

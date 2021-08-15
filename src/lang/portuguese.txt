@@ -2114,7 +2114,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores "online"
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multi-jogador
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jogadores "Online"
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nome
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nome do servidor onde está a jogar
