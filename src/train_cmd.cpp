@@ -363,7 +363,7 @@ int Train::GetCurveSpeedLimit() const
 
 		/* Apply max_speed modifier (cached value is fixed-point binary with 8 fractional bits)
 		 * and clamp the result to an acceptable range. */
-		max_speed += (max_speed * this->tcache.cached_curve_speed_mod) >> 8;
+		max_speed += (max_speed * this->tcache.cached_curve_speed_mod) / 256;
 		max_speed = Clamp(max_speed, 2, absolute_max_speed);
 	}
 
