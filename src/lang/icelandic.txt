@@ -1802,31 +1802,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir n
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sláðu inn nafn netleiksins
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Anddyri fjölspilunarleiks
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Undirbý tengingu við: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Listi yfir öll fyrirtæki í leiknum. Þú getur annað hvort gengið í lið með einu eða komið á fót nýju ef pláss er fyrir nýtt
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}UPPLÝSINGAR UM FYRIRTÆKI
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nafn fyrirtækis: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Upphaf: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Verðmæti fyrirtækis: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Núverandi staða: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Innkoma síðasta árs: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Frammistaða: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Farartæki: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stöðvar: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Leikmenn: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nýtt fyrirtæki
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Koma á fót nýju fyrirtæki
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Fylgjast með leik
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Fylgjast með leiknum sem áhorfandi
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Ganga í lið með fyrirtæki
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Hjálpa við stjórnun þessa fyrirtækis
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Tengist...
 

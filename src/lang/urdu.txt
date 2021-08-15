@@ -1550,31 +1550,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دوسر
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}نیٹ ورک والے کھیل کا نام لکھیں
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}زیادہ کھلاڑیوں والے کھیل کی لابی
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}شامل ہونے کی تیاری کرتے ہوئے: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}موجودہ کھیل میں شامل کمپنیوں کی فہرست۔ آپ ان میں سے کسی میں شامل ہو سکتے ہیں یا جگہ ہونے کی صورت میں نئی کمپنی شروع کر سکتے ہیں
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}کمپنی کی معلومات
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}کمپنی کا نام: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}افتتاح: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}کمپنی کی مالیت: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}موجودہ بقایا: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}پچھلے سال کی آمدن: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}کادکردگی: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}گاڑیاں: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}اسٹیشن: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}کھلاڑی: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}نئی کمپنی
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}نئی کمپنی بنائیں
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}کھیل دیکھیں
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}کھیل کو ناظر کے طور پر دیکھیں
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}کھیل میں شامل ہوں
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}کمپنی کو چلانے میں مدد کریں
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}رابطہ کر رہے ہیں۔ ۔ ۔
 

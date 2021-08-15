@@ -2067,31 +2067,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}この�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}ネットワークゲーム名を入力
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}マルチプレイヤーゲーム　ロビー
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{ORANGE}{STRING}{BLACK}への参加準備
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}このゲームに現在参加している会社のリストです。ゲームに参加する場合、既にある会社の経営に参画するか、新規開業(空きスロットがある場合)するかのいずれかになります
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}会社情報
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}会社名: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}開業日: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}企業価値: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}預金残高: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}昨年の損益: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}会社格付: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}輸送機器数: {WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}停留施設数: {WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}プレイヤー数: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}新規会社
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}新しく会社を設立します
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}ゲームを観覧
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}観覧者としてゲームを観戦します
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}経営に参画
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}この交通会社の経営に参画します
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}接続中…
 

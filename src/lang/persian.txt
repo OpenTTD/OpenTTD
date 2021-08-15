@@ -1659,31 +1659,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دیگر
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}برای بازی شبکه‌ای یک نام وارد نمایید
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}سالن انتظار بازی چندنفره
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}آماده سازی برای پیوستن: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}لیستی از تمامی شرکت هایی که در بازی وجود دارند. شما می توانید به یکی از آنها بپیوندید یا در صورت وجود جای خالی برای ساخت شرکت، یک شرکت جدید بسازید
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}مشخصات شرکت
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}نام شرکت: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}گشایش: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}ارزش شرکت: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}موجودی فعلی: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}درآمد سال گذشته: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}کارایی: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}وسایل نقلیه: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}ایستگاه ها: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}بازیگران: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}شرکت جدید
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}ساختن یک شرکت جدید
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}تماشای بازی
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}دیدن بازی به عنوان یک تماشاگر
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}پیوستن به شرکت
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}کمک به مدیریت این شرکت
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}درحال وصل شدن...
 

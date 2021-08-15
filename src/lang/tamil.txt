@@ -1802,29 +1802,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}பே�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}இணைய ஆட்டத்திற்கு ஒரு பெயரினை இடு
 
-# Network game lobby
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}சேர தொடங்கப்படுகிறது: {ORANGE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}நிறுவனங்களின் விவரம்
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}நிறுவனத்தின் பெயர்: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}தொடக்கம்: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}நிறுவனத்தின் மதிப்பு: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}தற்போதைய கையிருப்பு: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}சென்ற வருட வருமானம்: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}செயல்திறன்: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}வாகனங்கள்: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}நிலையங்கள்: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}வீரர்கள்: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}புதிய நிருவனம்
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}புதிய நிறுவனத்தை உருவாக்கு
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}விளையாட்டை பார்வையிடு
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}ஆட்டத்தினைப் பார்வையாளராக கவனி
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}நிறுவனத்தில் சேறு
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}நிறுவனத்தை கட்டுபடுத்த உதவு
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}இணைக்கப்படுகிறது...
 

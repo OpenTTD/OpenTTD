@@ -1963,31 +1963,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנ
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}הזן שם למשחק רשת
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}לובי של משחק רשת
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{ORANGE}{STRING} {BLACK} :מתכונן להצטרף אל
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}רשימת החברות המשתתפות במשחק. ניתן להצטרף לחברה קיימת או ליצור חברה חדשה במידה וקיים מקום פנוי
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}פרטי חברה
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}שם החברה: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{WHITE}{NUM}{SILVER} :שנת הקמה
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}ערך החברה: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{WHITE}{CURRENCY_LONG}{SILVER} :מאזן נוכחי
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{WHITE}{CURRENCY_LONG}{SILVER} :הכנסות בשנה האחרונה
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{WHITE}{NUM}{SILVER} :מדד הביצועים
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE} {SILVER} :כלי תעבורה
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE} {SILVER} :תחנות
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{WHITE}{STRING} {SILVER} :שחקנים
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}חברה חדשה
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}יצירת חברה חדשה
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}צפה במשחק
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}הצטרף למשחק כצופה
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}הצטרף לחברה
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}הצטרף להנהלת חברה זו
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}מתחבר...
 

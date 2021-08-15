@@ -2106,31 +2106,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υ�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Εισάγετε το όνομα του δικτυακού παιχνιδιού
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσα παιχνιδιού για πολλούς παίκτες
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Προετοιμασία για συμμετοχή: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Λίστα όλων των εταιρειών αυτήν τη στιγμή στο παιχνίδι. Μπορείτε είτε να συμμετάσχετε σε μία ή να δημιουργήσετε μια νέα αν υπάρχει κενή θέση
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ΠΛΗΡΟΦΟΡΙΕΣ ΕΤΑΙΡΕΙΑΣ
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Όνομα εταιρείας: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Ίδρυση: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Αξία εταιρείας: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Τρέχων ισοζύγιο: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Έσοδα τελευταίας χρονιάς: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Απόδοση: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Οχήματα: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Σταθμοί: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Παίκτες: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Νέα εταιρεία
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Δημιουργία νέας εταιρείας
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Παρακολούθηση παιχνιδιού
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Δείτε το παιχνίδι ως θεατής
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Συμμετοχή σε εταιρεία
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Βοηθήστε στη διαχείριση αυτής της εταιρείας
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Σύνδεση...
 

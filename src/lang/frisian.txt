@@ -1848,25 +1848,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Sprutsen
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Fier in namme yn foar it networkspul
 
-# Network game lobby
-
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}BEDRIUWSYNFORMAASJE
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Bedriuwsnamme: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Bedriuwswearde: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Prestaasje: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Auto's: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stasjons: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spilers: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nei Bedriuw
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Nei bedriuw oprjochtsje
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Spul taskôgje
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Spul besjen as taskôger
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Meidwaan mei dit bedriuw
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Help dit bedriuw bestjoeren
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Ferbyning meitsje...
 

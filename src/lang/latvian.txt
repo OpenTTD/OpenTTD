@@ -2032,31 +2032,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lie
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ievadīt tīkla spēles nosaukumu
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Vairākspēlētāju spēles vestibils
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Gatavojos pievienoties: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Spēlē esošo uzņēmumu saraksts. Jūs varat vai nu kādam pievienoties, vai arī sākt jaunu, ja ir brīvs uzņēmuma slots
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}UZŅĒMUMA INFORMĀCIJA
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Uzņēmuma nosaukums: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Atklāšana: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Uzņēmuma vērtība: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Šībrīža bilance: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Ienākumi pērn: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Veiktspēja: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Satiksmes līdzekļi: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stacijas: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spēlētāji: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Jauns uzņēmums
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Izveidot jaunu uzņēmumu
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Novērot spēli
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Skatīties spēli kā novērotājam
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Pievienoties uzņēmumam
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Palīdzēt vadīt šo uzņēmumu
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Savienojas...
 

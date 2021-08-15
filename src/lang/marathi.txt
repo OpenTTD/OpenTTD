@@ -916,14 +916,6 @@ STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}भा�
 
 
 
-# Network game lobby
-
-
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}गेल्या वर्ष्याची कमाई: {WHITE}{CURRENCY_LONG}
-
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्थानक: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-
-
 # Network connecting window
 
 ############ Leave those lines in this order!!

@@ -2149,31 +2149,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Bidh fio
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Cuir a-steach ainm airson a' gheama lìonraidh
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobaidh nan geamannan ioma-chluicheadair
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Ag ullachadh gus gabhail ann: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liosta dhen a h-uile companaidh a tha sa gheama an-dràsta. ’S urrainn dhut gabhail ann an tè no tè ùr a stèidheachadh ma tha slot companaidh saor ri làimh
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}FIOSRACHADH A' CHOMPANAIDH
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Ainm na companaidh: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Stèidheachadh: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Luach a' chompanaidh: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Balans an-dràsta: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Teachd a-steach an-uiridh: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Dèanadas: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Carbadan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stèiseanan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Cluicheadairean: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Companaidh ùr
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Cruthaich companaidh ùr
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Coimhead air geama
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Coimhead air a' gheama mar amharcaiche
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Gabh sa chompanaidh
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Cuidich le stiùireadh na companaidh seo
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}A' ceangal ...
 

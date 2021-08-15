@@ -1679,31 +1679,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللا
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}أدخل أسم اللعبة للشبكة
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}ردهة تعدد اللاعبين
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}التحضير لالانضمام الى:{ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}قائمة بالشركات الموجودة باللعبة ، يمكنك الإنضمام لشركة أو تأسيس واحدة
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}معلومات الشركة
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}أسم الشركة:{WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}افتتاح:{WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}قيمة الشركة:{WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}الرصيد الحالي:{WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}دخل السنة الماضية:{WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}الأداء:{WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}مركبة:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}محطات:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}لاعبين:{WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}شركة جديدة
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}أنشئ شركة جديدة
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}شاهد اللعبة
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}شاهد اللعبة كامشاهد
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}أنضم لشركة
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}ساعد في إدارة الشركة
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}إتصال...
 

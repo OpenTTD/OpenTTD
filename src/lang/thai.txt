@@ -1888,31 +1888,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}พิมพ์ชื่อสำหรับเล่นในเครือข่าย
 
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}ห้องรับรองโหมดผู้เล่นหลายคน
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}กำลังเตรียมการเข้าร่วม: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}รายการของบริษัททั้งหมดที่อยู่ในเกมนี้ คุณสามารถที่จะเข้าร่วมหนึ่งในรายชื่อบริษัทเหล่านี้ได้หรือสามารถที่จะสร้างบริษัทใหม่ได้หากมีช่องว่างให้คุณ
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ข้อมูลบริษัท
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}ชื่อบริษัท: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}วันที่เริ่มเปิด: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}มูลค่าของบริษัท: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}งบดุลปัจจุบัน: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}รายได้ของปีที่แล้ว: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}สมรรถภาพ: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}ภาหนะ: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}สถานี: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}ผู้เล่น: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}บริษัทใหม่
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}สร้างบริษัทใหม่
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}เข้าชมเกม
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}ดูเกมในฐานะผู้ชม
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}เข้าร่วมบริษัท
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}ช่วยบริหารจัดการบริษัทนี้
-
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}กำลังเชื่อมต่อ...
 

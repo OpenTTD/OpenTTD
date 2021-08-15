@@ -548,12 +548,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 
 
-# Network game lobby
-
-
-
-
-
 # Network connecting window
 
 ############ Leave those lines in this order!!
