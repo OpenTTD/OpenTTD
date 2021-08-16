@@ -1541,13 +1541,12 @@ static void NetworkAutoCleanCompanies()
 bool NetworkMakeClientNameUnique(std::string &name)
 {
 	bool is_name_unique = false;
-	uint number = 0;
 	std::string original_name = name;
 
-	while (!is_name_unique) {
+	for (uint number = 1; !is_name_unique && number <= MAX_CLIENTS; number++) {  // Something's really wrong when there're more names than clients
 		is_name_unique = true;
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-			if (ci->client_name.compare(name) == 0) {
+			if (ci->client_name == name) {
 				/* Name already in use */
 				is_name_unique = false;
 				break;
@@ -1556,7 +1555,7 @@ bool NetworkMakeClientNameUnique(std::string &name)
 		/* Check if it is the same as the server-name */
 		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (ci != nullptr) {
-			if (ci->client_name.compare(name) == 0) is_name_unique = false; // name already in use
+			if (ci->client_name == name) is_name_unique = false; // name already in use
 		}
 
 		if (!is_name_unique) {
