@@ -2020,7 +2020,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}地图�
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}游戏地图大小{}点击可以按地图大小排列
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日期
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}当前日期
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}年
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}年数
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}年数{}游戏正在运行的
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}语言，服务器版本和其他信息
 
