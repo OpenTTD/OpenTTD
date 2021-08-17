@@ -135,7 +135,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 			return false;
 
 		case NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED:
-			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED, STR_JUST_RAW_STRING, WL_ERROR);
+			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED, INVALID_STRING_ID, WL_ERROR);
 
 			/* To prevent that we constantly try to reconnect, switch to local game. */
 			_settings_client.network.server_game_type = SERVER_GAME_TYPE_LOCAL;
@@ -159,7 +159,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 		}
 
 		case NETWORK_COORDINATOR_ERROR_REUSE_OF_INVITE_CODE:
-			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE, STR_JUST_RAW_STRING, WL_ERROR);
+			ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE, INVALID_STRING_ID, WL_ERROR);
 
 			/* To prevent that we constantly battle for the same invite-code, switch to local game. */
 			_settings_client.network.server_game_type = SERVER_GAME_TYPE_LOCAL;
