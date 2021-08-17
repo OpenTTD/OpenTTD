@@ -2286,6 +2286,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serve
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a été exclu. Raison{NBSP}: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Échec de l'enregistrement du serveur
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Un autre serveur s'est enregistré avec le même code d'invitation. Le type de connexion est changé en "local".
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Votre serveur n'autorise pas les connexions distantes
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Les autres joueurs ne pourront pas se connecter à votre serveur
 
