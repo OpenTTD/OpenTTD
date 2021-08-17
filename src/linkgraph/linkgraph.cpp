@@ -74,6 +74,8 @@ void LinkGraph::Compress()
 			if (edge.capacity > 0) {
 				edge.capacity = std::max(1U, edge.capacity / 2);
 				edge.usage /= 2;
+			}
+			if (edge.travel_time_sum > 0) {
 				edge.travel_time_sum = std::max(1ULL, edge.travel_time_sum / 2);
 			}
 		}
@@ -279,14 +281,12 @@ void LinkGraph::Edge::Update(uint capacity, uint usage, uint32 travel_time, Edge
 		this->edge.capacity += capacity;
 		this->edge.usage += usage;
 	} else if (mode & EUM_REFRESH) {
-		/* If travel time is not provided, we scale the stored time based on
-		 * the capacity increase. */
-		if (capacity > this->edge.capacity && travel_time == 0) {
+		if (this->edge.travel_time_sum == 0) {
+			this->edge.capacity = std::max(this->edge.capacity, capacity);
+			this->edge.travel_time_sum = travel_time * this->edge.capacity;
+		} else if (capacity > this->edge.capacity) {
 			this->edge.travel_time_sum = this->edge.travel_time_sum / this->edge.capacity * capacity;
 			this->edge.capacity = capacity;
-		} else {
-			this->edge.capacity = std::max(this->edge.capacity, capacity);
-			this->edge.travel_time_sum = std::max<uint64>(this->edge.travel_time_sum, travel_time * capacity);
 		}
 		this->edge.usage = std::max(this->edge.usage, usage);
 	}
