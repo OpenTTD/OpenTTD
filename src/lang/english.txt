@@ -2285,6 +2285,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The serv
 STR_NETWORK_MESSAGE_KICKED                                      :*** {RAW_STRING} was kicked. Reason: ({RAW_STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server registration failed
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Another server with the same invite-code registered itself. Switching to "local" game-type.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Your server doesn't allow remote connections
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Other players won't be able to connect to your server
 
