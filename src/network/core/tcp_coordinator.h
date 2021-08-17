@@ -61,9 +61,10 @@ enum ConnectionType {
  * The type of error from the Game Coordinator.
  */
 enum NetworkCoordinatorErrorType {
-	NETWORK_COORDINATOR_ERROR_UNKNOWN,             ///< There was an unknown error.
-	NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED, ///< Your request for registration failed.
-	NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE, ///< The invite code given is invalid.
+	NETWORK_COORDINATOR_ERROR_UNKNOWN,              ///< There was an unknown error.
+	NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED,  ///< Your request for registration failed.
+	NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE,  ///< The invite code given is invalid.
+	NETWORK_COORDINATOR_ERROR_REUSE_OF_INVITE_CODE, ///< The invite code is used by another (newer) server.
 };
 
 /** Base socket handler for all Game Coordinator TCP sockets. */
