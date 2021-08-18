@@ -2164,6 +2164,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Tem a c
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Tem a certeza que quer restabelecer a palavra-chave da empresa '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usar retransmissão?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Falha ao estabelecer a ligação entre si e o servidor '{STRING}'.{}Deseja retransmitir esta sessão via '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Não
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sim, desta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sim, não perguntar novamente
@@ -2202,7 +2203,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduz
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Não foram encontradas interfaces de rede
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Não foram encontrados jogos de rede
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor não respondeu ao pedido
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}A ligação ao servidor atingiu o tempo limite ou foi recusada
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Impossível ligar devido a incompatibilidade de NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}A sincronização do jogo de rede falhou.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}A conexão do jogo de rede perdeu-se.

@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  T
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMAATTITALLENNUS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  TALLENNETAAN PELIÄ  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(katsoja)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Viestihistoria
@@ -2162,6 +2163,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Haluatk
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Haluatko varmasti nollata yhtiön ”{COMPANY}” salasanan?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Käytetäänkö välityspalvelua?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Yhteyden muodostaminen sinun ja palvelimen ”{STRING}” välille epäonnistui.{}Haluatko, että tämä istunto välitetään välityspalvelimen ”{STRING}” kautta?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ei
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Kyllä, tämän kerran
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Kyllä, älä kysy uudestaan
@@ -2200,7 +2202,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Syötä 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Verkkolaitteita ei löytynyt
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Verkkopelejä ei löytynyt
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Palvelin ei vastannut pyyntöön
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Yhteys palvelimeen aikakatkaistiin tai torjuttiin
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Yhteyden muodostaminen epäonnistui NewGRF-virheen vuoksi
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Verkkopelin tahdistus epäonnistui
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Verkkopeliyhteys katkesi
