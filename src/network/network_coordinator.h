@@ -54,7 +54,7 @@
 class ClientNetworkCoordinatorSocketHandler : public NetworkCoordinatorSocketHandler {
 private:
 	std::chrono::steady_clock::time_point next_update; ///< When to send the next update (if server and public).
-	std::map<std::string, TCPServerConnecter *> connecter; ///< Based on tokens, the current connecters that are pending.
+	std::map<std::string, std::pair<std::string, TCPServerConnecter *>> connecter; ///< Based on tokens, the current (invite-code, connecter) that are pending.
 	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on invite codes, the current connecters that are pending.
 	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>> stun_handlers; ///< All pending STUN handlers, stored by token:family.
 	std::map<std::string, std::unique_ptr<ClientNetworkTurnSocketHandler>> turn_handlers; ///< Pending TURN handler (if any), stored by token.

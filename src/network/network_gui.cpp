@@ -2361,13 +2361,18 @@ void ShowNetworkCompanyPasswordWindow(Window *parent)
 }
 
 /**
- * Window used for asking the user if he is okay using a TURN server.
+ * Window used for asking the user if he is okay using a relay server.
  */
 struct NetworkAskRelayWindow : public Window {
-	std::string connection_string; ///< The TURN server we want to connect to.
-	std::string token;             ///< The token for this connection.
+	std::string server_connection_string; ///< The game server we want to connect to.
+	std::string relay_connection_string;  ///< The relay server we want to connect to.
+	std::string token;                    ///< The token for this connection.
 
-	NetworkAskRelayWindow(WindowDesc *desc, Window *parent, const std::string &connection_string, const std::string &token) : Window(desc), connection_string(connection_string), token(token)
+	NetworkAskRelayWindow(WindowDesc *desc, Window *parent, const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token) :
+		Window(desc),
+		server_connection_string(server_connection_string),
+		relay_connection_string(relay_connection_string),
+		token(token)
 	{
 		this->parent = parent;
 		this->InitNested(0);
@@ -2400,7 +2405,8 @@ struct NetworkAskRelayWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NAR_TEXT:
-				SetDParamStr(0, this->connection_string);
+				SetDParamStr(0, this->server_connection_string);
+				SetDParamStr(1, this->relay_connection_string);
 				break;
 		}
 	}
@@ -2451,13 +2457,14 @@ static WindowDesc _network_ask_relay_desc(
 
 /**
  * Show a modal confirmation window with "no" / "yes, once" / "yes, always" buttons.
- * @param connection_string The relay server we want to connect to.
+ * @param server_connection_string The game server we want to connect to.
+ * @param relay_connection_string The relay server we want to connect to.
  * @param token The token for this connection.
  */
-void ShowNetworkAskRelay(const std::string &connection_string, const std::string &token)
+void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token)
 {
 	CloseWindowByClass(WC_NETWORK_ASK_RELAY);
 
 	Window *parent = FindWindowById(WC_MAIN_WINDOW, 0);
-	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, connection_string, token);
+	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
 }
