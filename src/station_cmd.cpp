@@ -3688,8 +3688,11 @@ void DeleteStaleLinks(Station *from)
 					auto iter = vehicles.begin();
 					while (iter != vehicles.end()) {
 						Vehicle *v = *iter;
-
-						LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
+						/* Do not refresh links of vehicles that have been stopped in depot for a long time. */
+						if (!v->IsStoppedInDepot() || static_cast<uint>(_date - v->date_of_last_service) <=
+								LinkGraph::STALE_LINK_DEPOT_TIMEOUT) {
+							LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
+						}
 						if (edge.LastUpdate() == _date) {
 							updated = true;
 							break;

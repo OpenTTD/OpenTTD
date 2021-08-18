@@ -447,6 +447,9 @@ public:
 	/** Minimum effective distance for timeout calculation. */
 	static const uint MIN_TIMEOUT_DISTANCE = 32;
 
+	/** Number of days before deleting links served only by vehicles stopped in depot. */
+	static const uint STALE_LINK_DEPOT_TIMEOUT = 1024;
+
 	/** Minimum number of days between subsequent compressions of a LG. */
 	static const uint COMPRESSION_INTERVAL = 256;
 
