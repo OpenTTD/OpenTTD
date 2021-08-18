@@ -2079,7 +2079,7 @@ public:
 					this->DrawCompany(c->index, r.left, r.right, r.top, line);
 				}
 
-				/* Specators */
+				/* Spectators */
 				this->DrawCompany(COMPANY_SPECTATOR, r.left, r.right, r.top, line);
 
 				break;

@@ -784,7 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  S
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ENREGISTREMENT AUTOMATIQUE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAUVEGARDE EN COURS  *  *
 
-STR_STATUSBAR_SPECATOR                                          :{WHITE}(spectateur)
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectateur)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des messages

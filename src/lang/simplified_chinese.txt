@@ -783,7 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}自动保存
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保存游戏中  *  *
 
-STR_STATUSBAR_SPECATOR                                          :{WHITE}（旁观者）
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}（旁观者）
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}消息历史
