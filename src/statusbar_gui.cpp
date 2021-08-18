@@ -148,7 +148,7 @@ struct StatusBarWindow : Window {
 
 			case WID_S_RIGHT: {
 				if (_local_company == COMPANY_SPECTATOR) {
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_SPECATOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_SPECTATOR, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
 					/* Draw company money, if any */
 					const Company *c = Company::GetIfValid(_local_company);

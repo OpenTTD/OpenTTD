@@ -928,7 +928,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * П�
 STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОСОХРАНЕНИЕ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  СОХРАНЕНИЕ ИГРЫ  *  *
 
-STR_STATUSBAR_SPECATOR                                          :{WHITE}(зритель)
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(зритель)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}История сообщений
