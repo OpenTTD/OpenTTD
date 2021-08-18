@@ -2162,7 +2162,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Omleiden?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kan geen verbinding maken tussen server en jou.{}Wil je deze sessie omleiden via '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nee
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, deze keer
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, en vraag dit niet opnieuw

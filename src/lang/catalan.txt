@@ -2164,7 +2164,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Esteu s
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Esteu segur que voleu restablir la contrasenya de la companyia «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Voleu usar un servei de transmissió?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No s'ha pogut establir una connexió entre el servidor i el vostre dispositiu.{}Voleu transmetre aquesta sessió via «{STRING}»?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, aquest una vegada.
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no ho preguntis més.

@@ -2112,7 +2112,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö o
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kytkeytyneet pelaajat
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Moninpeli
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Kytkeytyneet pelaajat
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Palvelin
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nimi
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Sen palvelimen nimi, jolla pelaat
@@ -2162,7 +2162,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Haluatk
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Haluatko varmasti nollata yhtiön ”{COMPANY}” salasanan?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Käytetäänkö välityspalvelua?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Yhteyden muodostaminen sinun ja palvelimen välillä epäonnistui.{}Haluatko, että tämä istunto välitetään välityspalvelimen ”{STRING}” kautta?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ei
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Kyllä, tämän kerran
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Kyllä, älä kysy uudestaan
@@ -2284,6 +2283,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Palvelimen rekisteröinti epäonnistui
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Toinen palvelin rekisteröityi samalla kutsukoodilla. Pelin tyypiksi vaihdetaan ”paikallinen”.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Palvelimesi ei salli etäyhteyksiä
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Muut pelaajat eivät voi saada yhteyttä palvelimeesi
 

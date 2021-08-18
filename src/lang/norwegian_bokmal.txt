@@ -2166,7 +2166,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Er du s
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Er du sikker på at du vil tilbakestille passordet til firma '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Vil du bruke videresending?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kunne ikke opprette en kobling mellom deg og serveren.{}Vil du videresende denne økten via '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nei
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, denne
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, ikke spør igjen

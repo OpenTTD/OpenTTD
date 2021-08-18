@@ -2158,7 +2158,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}你确�
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}你确定要重置 {COMPANY} 的公司密码吗？
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}使用中继？
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} 无法建立你与服务器的连接。{}你是否想通过 {STRING} 中转此次会话？
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，本次请求
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，不要再次询问

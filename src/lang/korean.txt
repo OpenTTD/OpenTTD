@@ -2163,7 +2163,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPA
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}'{COMPANY}' 회사의 비밀번호를 정말로 초기화하시겠습니까?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}중계를 이용할까요?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}서버와 연결을 수립하는 데 실패했습니다.{} '{0:STRING}'{G 0 "을" "를"} 통해 연결을 중계하시겠습니까?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}아니요
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}이번에만 사용
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}항상 사용

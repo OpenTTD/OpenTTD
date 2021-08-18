@@ -2163,7 +2163,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}¿Elimi
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}¿Restablecer contraseña de la empresa "{COMPANY}"?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}¿Utilizar servicio de retransmisión?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No se pudo establecer una conexión con el servidor.{}¿Deseas retransmitir esta sesión a través de "{STRING}"?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, solo esta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no volver a preguntar

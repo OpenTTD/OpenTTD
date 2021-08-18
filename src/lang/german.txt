@@ -2163,7 +2163,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sind Si
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sind Sie sicher, dass Sie das Passwort der Firma '{COMPANY}' zurücksetzen möchten?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Weiterleitung benutzen?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Verbindung zwischen Ihnen und dem Server konnte nicht hergestellt werden.{}Möchten Sie für diese Sitzung eine Weiterleitung via „{STRING}” benutzen?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nein
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, diesmal
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, nicht erneut fragen

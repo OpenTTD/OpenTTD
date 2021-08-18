@@ -2230,7 +2230,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Ste si 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Ste si istý, že chcete zresetovať heslo pre spoločnosť '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Použiť presmerovanie?
-STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepodarilo sa uskutočniť pripojenie medzi Vami a servrom.{}Chceli by ste presmerovať toto pripojenie cez '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Áno, tentokrát
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Áno, znova sa nepýtať
