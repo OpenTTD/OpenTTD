@@ -2873,6 +2873,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 					_scrolling_viewport = true;
 					_cursor.fix_at = (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED ||
 							_settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
+					DispatchRightClickEvent(w, x - w->left, y - w->top);
 					return;
 				}
 				break;

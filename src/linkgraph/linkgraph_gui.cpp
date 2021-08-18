@@ -218,8 +218,10 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 		const LinkGraph &lg = *LinkGraph::Get(ge.link_graph);
 		ConstEdge edge = lg[ge.node][to->goods[c].node];
 		if (edge.Capacity() > 0) {
-			this->AddStats(lg.Monthly(edge.Capacity()), lg.Monthly(edge.Usage()),
-					ge.flows.GetFlowVia(to->index), from->owner == OWNER_NONE || to->owner == OWNER_NONE,
+			this->AddStats(c, lg.Monthly(edge.Capacity()), lg.Monthly(edge.Usage()),
+					ge.flows.GetFlowVia(to->index),
+					edge.TravelTime() / DAY_TICKS,
+					from->owner == OWNER_NONE || to->owner == OWNER_NONE,
 					this->cached_links[from->index][to->index]);
 		}
 	}
@@ -235,14 +237,16 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
  * @param new_shared If the new link is shared.
  * @param cargo LinkProperties to write the information to.
  */
-/* static */ void LinkGraphOverlay::AddStats(uint new_cap, uint new_usg, uint new_plan, bool new_shared, LinkProperties &cargo)
+/* static */ void LinkGraphOverlay::AddStats(CargoID new_cargo, uint new_cap, uint new_usg, uint new_plan, uint32 time, bool new_shared, LinkProperties &cargo)
 {
 	/* multiply the numbers by 32 in order to avoid comparing to 0 too often. */
 	if (cargo.capacity == 0 ||
-			std::max(cargo.usage, cargo.planned) * 32 / (cargo.capacity + 1) < std::max(new_usg, new_plan) * 32 / (new_cap + 1)) {
+			cargo.Usage() * 32 / (cargo.capacity + 1) < std::max(new_usg, new_plan) * 32 / (new_cap + 1)) {
+		cargo.cargo = new_cargo;
 		cargo.capacity = new_cap;
 		cargo.usage = new_usg;
 		cargo.planned = new_plan;
+		cargo.time = time;
 	}
 	if (new_shared) cargo.shared = true;
 }
@@ -287,7 +291,7 @@ void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
  */
 void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &cargo) const
 {
-	uint usage_or_plan = std::min(cargo.capacity * 2 + 1, std::max(cargo.usage, cargo.planned));
+	uint usage_or_plan = std::min(cargo.capacity * 2 + 1, cargo.Usage());
 	int colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
 	int dash = cargo.shared ? this->scale * 4 : 0;
 
@@ -348,6 +352,56 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 	GfxDrawLine(x - w1, y + w2, x + w2, y + w2, border_colour);
 	GfxDrawLine(x - w1, y - w1, x - w1, y + w2, border_colour);
 	GfxDrawLine(x + w2, y - w1, x + w2, y + w2, border_colour);
+}
+
+bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
+{
+	for (auto i(this->cached_links.crbegin()); i != this->cached_links.crend(); ++i) {
+		if (!Station::IsValidID(i->first)) continue;
+		Point pta = this->GetStationMiddle(Station::Get(i->first));
+		for (auto j(i->second.crbegin()); j != i->second.crend(); ++j) {
+			if (!Station::IsValidID(j->first)) continue;
+			if (i->first == j->first) continue;
+
+			/* Check the distance from the cursor to the line defined by the two stations. */
+			Point ptb = this->GetStationMiddle(Station::Get(j->first));
+			float dist = std::abs((ptb.x - pta.x) * (pta.y - pt.y) - (pta.x - pt.x) * (ptb.y - pta.y)) /
+				std::sqrt((ptb.x - pta.x) * (ptb.x - pta.x) + (ptb.y - pta.y) * (ptb.y - pta.y));
+			const auto &link = j->second;
+			if (dist <= 4 && link.Usage() > 0 &&
+					pt.x >= std::min(pta.x, ptb.x) &&
+					pt.x <= std::max(pta.x, ptb.x)) {
+				static char buf[1024];
+				char *buf_end = buf;
+				buf[0] = 0;
+				/* Fill buf with more information if this is a bidirectional link. */
+				auto k = this->cached_links[j->first].find(i->first);
+				const auto &back = k->second;
+				if (k != this->cached_links[j->first].end() && back.Usage() > 0) {
+					SetDParam(0, back.cargo);
+					SetDParam(1, back.Usage());
+					SetDParam(2, back.Usage() * 100 / (back.capacity + 1));
+					buf_end = GetString(buf, STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION, lastof(buf));
+				}
+				/* Add information about the travel time if known. */
+				const auto time = link.time ? back.time ? ((link.time + back.time) / 2) : link.time : back.time;
+				if (time > 0) {
+					SetDParam(0, time);
+					buf_end = GetString(buf_end, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION, lastof(buf));
+				}
+				SetDParam(0, link.cargo);
+				SetDParam(1, link.Usage());
+				SetDParam(2, i->first);
+				SetDParam(3, j->first);
+				SetDParam(4, link.Usage() * 100 / (link.capacity + 1));
+				SetDParamStr(5, buf);
+				GuiShowTooltips(this->window, STR_LINKGRAPH_STATS_TOOLTIP, 7, nullptr, close_cond);
+				return true;
+			}
+		}
+	}
+	GuiShowTooltips(this->window, STR_NULL, 0, nullptr, close_cond);
+	return false;
 }
 
 /**

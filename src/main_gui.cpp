@@ -435,6 +435,12 @@ struct MainWindow : Window
 		}
 	}
 
+	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget != WID_M_VIEWPORT) return false;
+		return this->viewport->overlay->ShowTooltip(pt, close_cond);
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
