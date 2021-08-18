@@ -279,7 +279,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *p)
 	}
 
 	/* Now store it based on the token. */
-	this->connecter[token] = connecter_pre_it->second;
+	this->connecter[token] = {invite_code, connecter_pre_it->second};
 	this->connecter_pre.erase(connecter_pre_it);
 
 	return true;
@@ -378,16 +378,24 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet *p)
 		this->game_connecter = nullptr;
 	}
 
+	Debug(misc, 0, "{}", ticket);
 	this->turn_handlers[token] = ClientNetworkTurnSocketHandler::Turn(token, tracking_number, ticket, connection_string);
 
 	if (!_network_server) {
+		auto connecter_it = this->connecter.find(token);
+		if (connecter_it == this->connecter.end()) {
+			/* Make sure we are still interested in connecting to this server. */
+			this->ConnectFailure(token, 0);
+			return true;
+		}
+
 		switch (_settings_client.network.use_relay_service) {
 			case URS_NEVER:
 				this->ConnectFailure(token, 0);
 				break;
 
 			case URS_ASK:
-				ShowNetworkAskRelay(connection_string, token);
+				ShowNetworkAskRelay(connecter_it->second.first, connection_string, token);
 				break;
 
 			case URS_ALLOW:
@@ -579,7 +587,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &to
 		 * processes of connecting us. */
 		auto connecter_it = this->connecter.find(token);
 		if (connecter_it != this->connecter.end()) {
-			connecter_it->second->SetConnected(sock);
+			connecter_it->second.second->SetConnected(sock);
 			this->connecter.erase(connecter_it);
 		}
 	}
@@ -665,7 +673,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
 	/* Close the caller of the connection attempt. */
 	auto connecter_it = this->connecter.find(token);
 	if (connecter_it != this->connecter.end()) {
-		connecter_it->second->SetFailure();
+		connecter_it->second.second->SetFailure();
 		this->connecter.erase(connecter_it);
 	}
 }
@@ -685,7 +693,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseAllConnections()
 	for (auto &[token, it] : this->connecter) {
 		this->CloseStunHandler(token);
 		this->CloseTurnHandler(token);
-		it->SetFailure();
+		it.second->SetFailure();
 
 		/* Inform the Game Coordinator he can stop trying to connect us to the server. */
 		this->ConnectFailure(token, 0);
