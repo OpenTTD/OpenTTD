@@ -32,7 +32,7 @@
 #include "../../gfx_func.h"
 #include "../../window_func.h"
 #include "../../window_gui.h"
-
+#include "spritecache.h"
 
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
@@ -404,6 +404,87 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	return self;
 }
+
+#ifdef HAVE_OSX_1015_SDK
+
+- (void)touchBarButtonAction:(id)sender
+{
+	if (@available(macOS 10.15, *)) {
+		NSButtonTouchBarItem *btn = (NSButtonTouchBarItem *)sender;
+		NSNumber *hotkeyIndex = [ touchBarButtonActions objectForKey:btn.identifier ];
+		HandleToolbarHotkey(hotkeyIndex.intValue);
+	}
+}
+
+#pragma mark NSTouchBarProvider
+- (nullable NSTouchBar *)makeTouchBar
+{
+	NSTouchBar *bar = [ [ NSTouchBar alloc ] init ];
+	bar.delegate = self;
+	bar.defaultItemIdentifiers = touchBarButtonIdentifiers;
+
+	return bar;
+}
+
+-(NSImage *)generateImage:(int)spriteId
+{
+	if (!SpriteExists(spriteId)) {
+		return nullptr;
+	}
+
+	/* Fetch the sprite and create a new bitmap */
+	const Sprite *fullspr = GetSprite(spriteId, ST_NORMAL);
+	const std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(spriteId);
+	if (!buffer) {
+		return nullptr; // failed to blit sprite or we're using an 8bpp blitter.
+	}
+
+	NSBitmapImageRep *bitmap = [ [ NSBitmapImageRep alloc ] initWithBitmapDataPlanes:nil pixelsWide:fullspr->width pixelsHigh:fullspr->height bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSCalibratedRGBColorSpace bytesPerRow:0 bitsPerPixel:0 ];
+
+	/* Copy the sprite to the NSBitmapImageRep image buffer */
+	const Colour *src = (const Colour *)buffer.get();
+	for (int y = 0; y < fullspr->height; y++) {
+		for (int x = 0; x < fullspr->width; x++) {
+			NSUInteger pixel[4];
+			pixel[0] = src->r;
+			pixel[1] = src->g;
+			pixel[2] = src->b;
+			pixel[3] = src->a;
+			[ bitmap setPixel:pixel atX:x y:y ];
+
+			src += 1;
+		}
+	}
+
+	/* Finally, convert the NSBitmapImageRep we created to a NSimage we can put on the button and clean up. */
+	NSImage *outImage = [ [ NSImage alloc ] initWithSize:NSMakeSize(fullspr->width, fullspr->height) ];
+	[ outImage addRepresentation:bitmap ];
+	[ bitmap release ];
+
+	return outImage;
+}
+
+#pragma mark NSTouchBarDelegate
+- (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
+{
+	if (@available(macOS 10.15, *)) {
+		NSButtonTouchBarItem *button = [ [ NSButtonTouchBarItem alloc ] initWithIdentifier:identifier ];
+		button.target = self;
+		button.action = @selector(touchBarButtonAction:);
+
+		NSNumber *num = touchBarButtonSprites[identifier];
+		NSImage *generatedImage = [ self generateImage:num.unsignedIntValue ];
+		if (generatedImage != nullptr) {
+			button.image = generatedImage;
+		} else {
+			button.title = NSLocalizedString(touchBarFallbackText[identifier], @"");
+		}
+		return button;
+	} else {
+		return nullptr;
+	}
+}
+#endif
 
 /**
  * Define the rectangle we draw our window in

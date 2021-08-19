@@ -30,6 +30,10 @@
 #define HAVE_OSX_1012_SDK
 #endif
 
+#ifdef MAC_OS_X_VERSION_10_15
+#define HAVE_OSX_1015_SDK
+#endif
+
 /* It would seem that to ensure backward compatibility we have to ensure that we have defined MAC_OS_X_VERSION_10_x everywhere */
 #ifndef MAC_OS_X_VERSION_10_3
 #define MAC_OS_X_VERSION_10_3 1030
