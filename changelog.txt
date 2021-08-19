@@ -1,3 +1,12 @@
+12.0-beta2 (2021-08-19)
+------------------------------------------------------------------------
+Feature: [Linkgraph] Prioritize faster routes for passengers, mail and express cargo (#9457)
+Fix: Wrong town window refreshed when building an airport with noise levels enabled (#9497)
+Fix: Improve wording of network-related messages (#9494, #9495, #9500)
+Fix: [Network] Report reuse of invite-code (#9487)
+Fix: [Network] Connecting with the same client name thrice hangs the server (#9485)
+
+
 12.0-beta1 (2021-08-15)
 ------------------------------------------------------------------------
 Feature: [Network] Remove lobby window; pressing "Join Game" now immediately joins a server (#9467)
