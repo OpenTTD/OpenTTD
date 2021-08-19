@@ -1,4 +1,4 @@
-12.0-beta2 (2021-08-18)
+12.0-beta2 (2021-08-19)
 ------------------------------------------------------------------------
 Feature: [Linkgraph] Prioritize faster routes for passengers, mail and express cargo (#9457)
 Fix: Wrong town window refreshed when building an airport with noise levels enabled (#9497)
