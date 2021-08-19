@@ -2314,6 +2314,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Уда�
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Сбросить пароль у компании «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Использовать транслятор?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Не удалось установить соединение с сервером «{STRING}».{}Перенаправить соединение через «{STRING}»?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Нет
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Да, однократно
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Да, всегда

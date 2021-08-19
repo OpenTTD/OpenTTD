@@ -2164,6 +2164,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Êtes-v
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Êtes-vous sûr de vouloir réinitialiser le mot de passe de la compagnie '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Utiliser un relai{NBSP}?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Aucune connexion n'a pu être établie entre vous et le serveur '{STRING}'.{}Voudriez vous que cette session soit relayée par '{STRING}'{NBSP}?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Non
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Oui, cette fois uniquement
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Oui, ne plus me demander
@@ -2202,7 +2203,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer l
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Aucun périphérique réseau trouvé
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Aucune partie réseau n'a été trouvée
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Le serveur n'a pas répondu à la requête
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La connexion au serveur a dépassé le temps d'attente ou a été refusée
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Échec de la connexion{NBSP}: NewGRF requis
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La synchronisation de la partie réseau a échoué
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La connexion de la partie réseau a été perdue

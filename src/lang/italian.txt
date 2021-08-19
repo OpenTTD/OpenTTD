@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Impostazione di
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Impostazione di gioco (conservata nel salvataggio; influenza solo la partita corrente)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Impostazione della compagnia (conservata nei salvataggi; influenza solo le nuove partite)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione della compagnia (conservata nel salvataggio; influenza solo la compagnia corrente)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Questa azione resetterà tutti i settaggi ai loro valori predefiniti.{}Sei sicuro di voler procedere?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
@@ -1228,6 +1229,7 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Controlla l'att
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento della città in merito alle modifiche: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nell'area controllata
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Imposta l'altezza massima per il terreno. Con l'opzione "(auto)" un valore ottimale verrà scelto automaticamente dopo la generazione del terreno
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatico)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Impossibile impostare l'altezza massima della mappa a questo valore. Almeno una delle montagne della mappa è più alta
@@ -1445,6 +1447,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic (con casella di testo attiva)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic (immediato)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Chiedi
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Consenti
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulazione clic destro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Seleziona il metodo per emulare i clic con il tasto destro del mouse
@@ -2003,6 +2007,7 @@ STR_FACE_EARRING                                                :Orecchino:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia la cravatta o l'orecchino
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Locale
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2105,6 +2110,9 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagni
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Giocatore
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                : {BLACK}Modifica il nome del tuo personaggio
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nuova compagnia e controllala
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
@@ -2224,6 +2232,8 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il serve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrazione al server fallita
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Altri giocatori non saranno in grado di connettersi al tuo server
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download contenuti
@@ -2859,6 +2869,8 @@ STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero industrie:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{WHITE}Picco massimo:
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Aree innevate:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumenta la copertura della neve del dieci per cento
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuisci la copertura della neve del dieci per cento
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Aree desertiche:
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
@@ -3760,6 +3772,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Veicoli stradal
 STR_REPLACE_TRAM_VEHICLES                                       :Veicoli tranviari
 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click per applicare anche ai sotto-gruppi
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
