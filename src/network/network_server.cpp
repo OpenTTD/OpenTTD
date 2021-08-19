@@ -1660,9 +1660,9 @@ void NetworkServer_Tick(bool send_frame)
 					/* Client did still not report in within the specified limit. */
 					IConsolePrint(CC_WARNING, cs->last_packet + std::chrono::milliseconds(lag * MILLISECONDS_PER_TICK) > std::chrono::steady_clock::now() ?
 							/* A packet was received in the last three game days, so the client is likely lagging behind. */
-								"Client #%u (IP: %s) is dropped because the client's game state is more than %d ticks behind." :
+								"Client #{} (IP: {}) is dropped because the client's game state is more than {} ticks behind." :
 							/* No packet was received in the last three game days; sounds like a lost connection. */
-								"Client #%u (IP: %s) is dropped because the client did not respond for more than %d ticks.",
+								"Client #{} (IP: {}) is dropped because the client did not respond for more than {} ticks.",
 							cs->client_id, cs->GetClientIP(), lag);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
