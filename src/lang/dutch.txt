@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * GEP
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMATISCH OPSLAAN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEL WORDT OPGESLAGEN  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(toeschouwer)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Berichtengeschiedenis
@@ -2112,7 +2113,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelers online
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Meerdere spelers
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online-spelers
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Naam
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}De naam van de server waar je speelt
@@ -2162,6 +2163,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Omleiden?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kan geen verbinding maken tussen jou en server '{STRING}'.{}Wil je deze sessie omleiden via '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nee
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, deze keer
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, en vraag dit niet opnieuw
@@ -2200,7 +2202,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Geef tek
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Geen netwerkapparaten gevonden
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kon geen enkel netwerkspel vinden
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}De server beantwoordde het verzoek niet
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}De verbinding met de server is verlopen of geweigerd
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kan geen verbinding maken, je hebt niet dezelfde NewGRF-bestanden als de server
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synchronisatie van netwerkspel mislukt
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Verbinding met netwerkspel kwijt
@@ -2283,6 +2285,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De serve
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is eruit geschopt. Reden: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistratie mislukt
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Een andere server met dezelfde uitnodigingscode heeft zichzelf geregistreerd. Er wordt overgeschakeld naar speltype 'lokaal'.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Je server staat geen externe verbindingen toe
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andere spelers krijgen geen toegang tot je server
 

@@ -2164,6 +2164,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Você t
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Você tem certeza que quer restaurar a senha da empresa '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usar retransmissão?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Erro ao estabelecer uma conexão entre você e o servidor.'{STRING}'Você gostaria de retransmitir essa sessão via '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Não
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sim, apenas dessa vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sim, não perguntar novamente
@@ -2202,7 +2203,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Coloque 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Não foram encontrados jogos em rede
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor não respondeu ao pedido
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}A conexão ao servidor expirou ou foi recusada
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Não pode conectar devido ao NewGRF errado
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}A sincronização do jogo falhou.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}A conexão do jogo foi perdida
@@ -2285,6 +2286,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servid
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi kickado. Motivo: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Falha no registro do servidor
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Outro servidor com o mesmo código de convite foi registrado. Mudando para o tipo de jogo "local".
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Seu servidor não permite conexões remotas
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Outros jogadores não poderão se conectar ao seu servidor
 
