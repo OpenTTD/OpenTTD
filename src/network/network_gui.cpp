@@ -249,15 +249,21 @@ protected:
 		this->servers.clear();
 
 		bool found_current_server = false;
+		bool found_last_joined = false;
 		for (NetworkGameList *ngl = _network_game_list; ngl != nullptr; ngl = ngl->next) {
 			this->servers.push_back(ngl);
 			if (ngl == this->server) {
 				found_current_server = true;
 			}
+			if (ngl == this->last_joined) {
+				found_last_joined = true;
+			}
 		}
 		/* A refresh can cause the current server to be delete; so unselect. */
+		if (!found_last_joined) {
+			this->last_joined = nullptr;
+		}
 		if (!found_current_server) {
-			if (this->server == this->last_joined) this->last_joined = nullptr;
 			this->server = nullptr;
 			this->list_pos = SLP_INVALID;
 		}
