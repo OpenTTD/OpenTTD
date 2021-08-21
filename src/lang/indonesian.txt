@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * PAU
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPAN OTOMATIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MENYIMPAN PERMAINAN  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(Penonton)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Pesan Lampau
@@ -1199,6 +1200,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Kendaraan mogok
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Mengontrol seberapa sering kendaraan yang tidak diservis dapat rusak
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Pengalian jumlah subsidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Menetapkan banyaknya pembayaran untuk koneksi yang disubsidi
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durasi subsidi: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Atur jumlah tahun di mana subsidi diberikan
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} tahun
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Tidak ada subsidi
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Biaya konstruksi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan tingkat biaya konstruksi dan pembelian
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
@@ -1431,6 +1436,10 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Klik ganda
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik sekali (saat tersorot)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik sekali (langsung)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Jika membuat koneksi ke server gagal, seseorang dapat menggunakan layanan relay untuk membuat koneksi. "Jangan pernah" melarang ini, "tanyakan" akan bertanya terlebih dahulu, "izinkan" akan mengizinkannya tanpa bertanya
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Tidak Pernah
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Tanya
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Mengizinkan
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulasikan klik kanan: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Pilih metode untuk meng-emulasi klik kanan mouse
@@ -1784,6 +1793,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi kargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Jaringan
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
@@ -1989,7 +1999,9 @@ STR_FACE_EARRING                                                :Anting-anting:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ubah dasi atau anting-anting
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokal
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Umum
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Hanya diundang
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2024,6 +2036,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versi S
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Alamat Server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Tgl mulai: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Tgl sekarang: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Skrip Permainan: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Terproteksi dengan kata kunci!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER PENUH
@@ -2044,6 +2057,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Mulai se
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Mulai melayani
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Masukkan nama anda
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Masukkan alamat server atau kode undangan
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Mulai permainan bersama baru
@@ -2101,6 +2115,10 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Mengubah
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nama server
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilitas
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Apakah orang lain dapat melihat server Anda di daftar publik
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Kode undangan
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Mengundang kode yang dapat digunakan pemain lain untuk bergabung dengan server ini
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipe koneksi
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Apakah dan bagaimana server Anda dapat dijangkau oleh orang lain
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Pemain
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nama
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Nama pemain Anda
@@ -2119,6 +2137,10 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ini adal
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ini adalah hos permainan
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Pemain jarak jauh tidak dapat terhubung
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Publik
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Melalui relay
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Diusir
@@ -2132,6 +2154,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Apakah 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Anda yakin ingin menghapus perusahaan '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Anda yakin ingin menyetel ulang sandi perusahaan '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Gunakan relay?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} Gagal membuat koneksi antara Anda dan server '{STRING}'.{}Apakah Anda ingin menyampaikan sesi ini melalui '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Tidak
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ya, kali ini
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Iya, Jangan tanya lagi
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klien
@@ -2177,6 +2204,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Tak dapa
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Waktu Koneksi #{NUM} telah habis
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Kesalahan protokol, koneksi ditutup
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Nama permainan belum disetel. Nama bisa diatur di bagian atas jendela Multiplayer
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nama server Anda belum ditetapkan. Nama dapat diatur di bagian atas jendela Multiplayer
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revisi pada klien tidak sama dengan revisi pada server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Kata kunci salah
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server penuh
@@ -2248,6 +2276,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server m
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} telah dikeluarkan. Alasan: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Gagal meregistrasi server
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Server Anda tidak mengizinkan koneksi jarak jauh
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Pemain lain tidak akan bisa tersambung ke severmu
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Mengunduh konten
@@ -3786,6 +3817,7 @@ STR_REPLACE_ROAD_VEHICLES                                       :Kendaraan Jalan
 STR_REPLACE_TRAM_VEHICLES                                       :Kendaraan Jalan Trem
 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Klik juga untuk berlaku ke sub-grup
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

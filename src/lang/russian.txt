@@ -2353,7 +2353,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введ
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не найдены сетевые устройства
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не найдены сетевые игры
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сервер не ответил на запрос
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Время ожидания ответа от сервера истекло. Возможно, сервер отклонил запрос.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Невозможно присоединиться из-за несоответствия NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Синхронизация сетевой игры не удалась
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Соединение сетевой игры потеряно
@@ -2436,6 +2436,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Серв
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Не удалось зарегистрировать сервер
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}В сети есть ещё один сервер с таким же кодом приглашения. Переключаюсь в режим локального сервера.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Клиентские подключения к вашему серверу запрещены
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Другие игроки не смогут подключиться к вашему серверу
 
