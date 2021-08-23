@@ -77,16 +77,22 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
 {
-	/* We try to join a server which is full */
-	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_FULL, INVALID_STRING_ID, WL_CRITICAL);
-	return NETWORK_RECV_STATUS_SERVER_FULL;
+	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	item->status = NGLS_FULL;
+
+	UpdateNetworkGameWindow();
+
+	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p)
 {
-	/* We try to join a server where we are banned */
-	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_BANNED, INVALID_STRING_ID, WL_CRITICAL);
-	return NETWORK_RECV_STATUS_SERVER_BANNED;
+	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	item->status = NGLS_BANNED;
+
+	UpdateNetworkGameWindow();
+
+	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p)
@@ -100,7 +106,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 	/* Check for compatability with the client. */
 	CheckGameCompatibility(item->info);
 	/* Ensure we consider the server online. */
-	item->online = true;
+	item->status = NGLS_ONLINE;
 
 	UpdateNetworkGameWindow();
 
@@ -111,17 +117,21 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
 {
 	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
 
-	/* If we query a server that is 1.11.1 or older, we get an
-	 * NETWORK_ERROR_NOT_EXPECTED on requesting the game info. Show a special
-	 * error popup in that case.
-	 */
+	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+
 	if (error == NETWORK_ERROR_NOT_EXPECTED) {
-		ShowErrorMessage(STR_NETWORK_ERROR_SERVER_TOO_OLD, INVALID_STRING_ID, WL_CRITICAL);
-		return NETWORK_RECV_STATUS_CLOSE_QUERY;
+		/* If we query a server that is 1.11.1 or older, we get an
+		 * NETWORK_ERROR_NOT_EXPECTED on requesting the game info. Show to the
+		 * user this server is too old to query.
+		 */
+		item->status = NGLS_TOO_OLD;
+	} else {
+		item->status = NGLS_OFFLINE;
 	}
 
-	ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
-	return NETWORK_RECV_STATUS_SERVER_ERROR;
+	UpdateNetworkGameWindow();
+
+	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
 /**
