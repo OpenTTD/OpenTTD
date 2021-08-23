@@ -43,6 +43,7 @@ NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
 	}
 
 	item = new NetworkGameList(resolved_connection_string);
+	item->info.gamescript_version = -1;
 	item->version = _network_game_list_version;
 
 	if (prev_item == nullptr) {
