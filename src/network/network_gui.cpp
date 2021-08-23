@@ -407,7 +407,7 @@ protected:
 		DrawString(nwi_name->pos_x + WD_FRAMERECT_LEFT, nwi_name->pos_x + nwi_name->current_x - WD_FRAMERECT_RIGHT, y + text_y_offset, cur_item->info.server_name, TC_BLACK);
 
 		/* only draw details if the server is online */
-		if (cur_item->online) {
+		if (cur_item->status == NGLS_ONLINE) {
 			const NWidgetServerListHeader *nwi_header = this->GetWidget<NWidgetServerListHeader>(WID_NG_HEADER);
 
 			if (nwi_header->IsWidgetVisible(WID_NG_CLIENTS)) {
@@ -609,13 +609,13 @@ public:
 		this->SetWidgetDisabledState(WID_NG_REFRESH, sel == nullptr);
 		/* 'Join' button disabling conditions */
 		this->SetWidgetDisabledState(WID_NG_JOIN, sel == nullptr || // no Selected Server
-				!sel->online || // Server offline
+				sel->status != NGLS_ONLINE || // Server offline
 				sel->info.clients_on >= sel->info.clients_max || // Server full
 				!sel->info.compatible); // Revision mismatch
 
 		/* 'NewGRF Settings' button invisible if no NewGRF is used */
-		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_SEL)->SetDisplayedPlane(sel == nullptr || !sel->online || sel->info.grfconfig == nullptr);
-		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || !sel->online || sel->info.grfconfig == nullptr || !sel->info.version_compatible || sel->info.compatible);
+		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NGLS_ONLINE || sel->info.grfconfig == nullptr);
+		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NGLS_ONLINE || sel->info.grfconfig == nullptr || !sel->info.version_compatible || sel->info.compatible);
 
 #ifdef __EMSCRIPTEN__
 		this->SetWidgetDisabledState(WID_NG_SEARCH_INTERNET, true);
@@ -637,10 +637,20 @@ public:
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + detail_height - 1, PC_DARK_BLUE);
 		if (sel == nullptr) {
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
-		} else if (!sel->online) {
+		} else if (sel->status != NGLS_ONLINE) {
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
 
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + detail_height + 4, STR_NETWORK_SERVER_LIST_SERVER_OFFLINE, TC_FROMSTRING, SA_HOR_CENTER); // server offline
+			StringID message = INVALID_STRING_ID;
+			switch (sel->status) {
+				case NGLS_OFFLINE: message = STR_NETWORK_SERVER_LIST_SERVER_OFFLINE; break;
+				case NGLS_FULL: message = STR_NETWORK_SERVER_LIST_SERVER_FULL; break;
+				case NGLS_BANNED: message = STR_NETWORK_SERVER_LIST_SERVER_BANNED; break;
+				case NGLS_TOO_OLD: message = STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD; break;
+
+				/* Handled by the if-case above. */
+				case NGLS_ONLINE: NOT_REACHED();
+			}
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + detail_height + 4, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
 		} else { // show game info
 
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);

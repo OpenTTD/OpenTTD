@@ -632,7 +632,7 @@ public:
 	void OnFailure() override
 	{
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
-		item->online = false;
+		item->status = NGLS_OFFLINE;
 
 		UpdateNetworkGameWindow();
 	}

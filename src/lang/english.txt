@@ -2046,6 +2046,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Sc
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Password protected!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER FULL
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVER BANNED YOU
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER TOO OLD
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSION MISMATCH
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF MISMATCH
 
@@ -2226,7 +2228,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Your com
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Your computer took too long to download the map
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Your computer took too long to join the server
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Your player name is not valid
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}The queried server is too old for this client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :general error

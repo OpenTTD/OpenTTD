@@ -152,7 +152,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 
 			/* Mark the server as offline. */
 			NetworkGameList *item = NetworkGameListAddItem(detail);
-			item->online = false;
+			item->status = NGLS_OFFLINE;
 
 			UpdateNetworkGameWindow();
 			return true;
@@ -257,7 +257,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p)
 		/* Check for compatability with the client. */
 		CheckGameCompatibility(item->info);
 		/* Mark server as online. */
-		item->online = true;
+		item->status = NGLS_ONLINE;
 		/* Mark the item as up-to-date. */
 		item->version = _network_game_list_version;
 	}
