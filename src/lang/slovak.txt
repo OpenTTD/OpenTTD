@@ -2292,7 +2292,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvoj po�
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvoj počítač sťahoval mapu príliš dlho
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tvoj počítač sa príliš dlho pripájal na server
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Meno vašeho hráča nieje platné
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Nájdený server je príliš starý pre vašeho klienta
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :všeobecná chyba

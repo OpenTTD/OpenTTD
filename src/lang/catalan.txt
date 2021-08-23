@@ -2226,7 +2226,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}El teu o
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}El teu ordinador ha tardat massa a descarregar el mapa
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}El teu ordinador ha tardat massa a unir-se al servidor
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}El vostre nom de jugador no és vàlid.
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}El servidor és massa antic per a aquest client.
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general

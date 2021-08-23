@@ -2220,7 +2220,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}您的�
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}您的计算机下载地图用时过长
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}您的计算机加入服务器用时过长
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}您的玩家名不合法
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}请求的服务器版本过低
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误

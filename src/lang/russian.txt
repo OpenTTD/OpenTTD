@@ -2377,7 +2377,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш �
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ваш компьютер тратит много времени на загрузку карты
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ваш компьютер тратит много времени на подключение к серверу
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Неверно указано имя игрока
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}На сервере запущена устаревшая версия игры
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка

@@ -2218,7 +2218,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Komputer
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Komputer anda terlalu lama untuk mengunduh peta
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Komputer anda terlalu lama untuk bisa bergabung dengan server
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Nama pemain Anda tidak valid
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Server yang diminta terlalu usang untuk klien ini
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Kesalahan umum

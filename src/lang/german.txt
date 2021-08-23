@@ -2225,7 +2225,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser C
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Das Herunterladen der Karte dauerte zu lange
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Der Beitritt zum Server dauerte zu lange
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ihr Spielername ist ungültig
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Der angefragte Server ist für diesen Client zu alt
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Allgemeiner Fehler

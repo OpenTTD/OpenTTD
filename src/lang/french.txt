@@ -2227,7 +2227,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Votre or
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Votre ordinateur a mis trop de temps pour télécharger la carte
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Votre ordinateur a mis trop de temps pour rejoindre le serveur
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Votre nom n'est pas valide
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Le serveur interrogé est trop ancien pour ce client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erreur générale

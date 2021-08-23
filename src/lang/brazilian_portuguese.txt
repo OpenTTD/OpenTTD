@@ -2227,7 +2227,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Seu comp
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Seu computador demorou demais para baixar o mapa
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Seu computador demorou demais para entrar no servidor
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Seu nome de jogador não é válido
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}O servidor requisitado é muito antigo para esse cliente
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro geral

@@ -2254,7 +2254,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A szám�
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Túl sokáig tartott a térkép letöltése a számítógépednek
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Túl sokáig tartott a szerverhez való csatlakozása a számítógépednek
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}A játékos neved nem megfelelő
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}A lekérdezett szerver túl régi ehhez a klienshez
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :általános hiba

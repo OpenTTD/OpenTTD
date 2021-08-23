@@ -2138,7 +2138,6 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}A expira
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Calculatorul dvs. este prea lent pentru a se sincroniza cu serverul
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A expirat timpul pentru descărcarea hărţii
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A expirat timpul pentru conectarea la server
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Serverul solicitat este prea vechi pentru acest client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :eroare generală

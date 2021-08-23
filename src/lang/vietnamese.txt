@@ -2224,7 +2224,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Máy c�
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Thời gian tải bản đồ quá lâu
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Thời gian tham gia máy chủ quá lâu
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Tên người chơi không hợp lệ
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Server được yêu cầu dùng phiên bản cũ hơn so với client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :lỗi chung

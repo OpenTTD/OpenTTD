@@ -2249,7 +2249,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Arvutil 
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Kaardi allalaadimine võttis liiga kaua aega
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Serveriga liitumine võttis liiga kaua aega
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Sinu mängija nimi ei vasta nõuetele
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Päritud server kasutab liiga vana versiooni
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :üldine viga

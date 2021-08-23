@@ -2192,7 +2192,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}サー�
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}マップのダウンロード時間が規定を超過しました
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}タイムアウトによりサーバーへの接続を確立できません
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}プレイヤー名が無効です
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}サーバーが現在使用中のクライアントに対して古すぎます
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般エラー

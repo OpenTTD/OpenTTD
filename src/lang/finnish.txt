@@ -2226,7 +2226,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tietokon
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Kartan lataus kesti liian kauan
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Palvelimelle liittyminen kesti liian kauan
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Pelaajanimesi ei kelpaa
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Kysytty palvelin on liian vanha tälle asiakkaalle
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :yleinen virhe

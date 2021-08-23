@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPARA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPARAR SPEL  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(åskådare)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meddelandehistorik
@@ -1440,6 +1441,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbelklick
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelklick (om redan fokuserad)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelklick (omedelbart)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Använd relätjänst: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Om skapandet av en anslutning till servern misslyckas kan man använda en relätjänst för att skapa en anslutning. "Aldrig" förbjuder detta, "fråga" kommer att fråga först, "tillåt" kommer att tillåta det utan att fråga
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Aldrig
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Fråga
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Tillåt
@@ -2110,7 +2113,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företag
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelare online
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Flera spelare
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Spelare online
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Namn
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Namnet på servern du spelar på
@@ -2144,6 +2147,7 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} kl
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Fjärran belägna spelare kan inte ansluta
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Offentlig
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Bakom NAT
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via relä
 ############ End of ConnectionType
 
@@ -2159,6 +2163,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Är du 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Är du säker på att du vill återställa företaget {COMPANY}s lösenord?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Använd relä?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Misslyckades med att etablera en anslutning mellan dig och servern '{STRING}'.{}Vill du använda '{STRING}' som relä för denna session?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, den här gången
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, fråga inte igen
@@ -2197,7 +2202,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Inget nätverkskort funnet
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunde inte hitta några nätverksspel
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Servern svarade inte på förfrågan
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Anslutning till servern tog för lång tid eller avvisades
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunde inte ansluta på grund av att NewGRF är omaka
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering av nätverks-spel misslyckades
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nätverk, koppling förlorad
@@ -2221,7 +2226,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Din dato
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du tog för lång tid på dig att ladda ner kartan
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du tog för lång tid på dig att ansluta till servern
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ditt spelarnamn är inte tillåtet
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Servern som fick förfrågan är för gammal för denna klient
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :allmänt fel
@@ -2280,6 +2284,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern 
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} kastades ut. Orsak: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistrering misslyckades
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}En annan server med samma inbjudningskod registrerade sig. Växlar till "lokal" speltyp.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Din server tillåter inte fjärranslutningar
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andra spelare kommer ej ha möjlighet att ansluta till din server
 

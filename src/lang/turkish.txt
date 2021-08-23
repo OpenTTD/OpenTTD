@@ -2191,7 +2191,6 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Bilgisay
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Bilgisayarınızın haritayı indirmesi çok uzun sürdü
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Bilgisayarınızın sunucuya katılması çok uzun sürdü
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}İsminiz geçerli değil
-STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Sorgulanan sunucu bu istemci için çok eski
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :genel hata
