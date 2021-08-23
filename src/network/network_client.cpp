@@ -23,7 +23,6 @@
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../rev.h"
-#include "core/game_info.h"
 #include "network.h"
 #include "network_base.h"
 #include "network_client.h"
@@ -328,17 +327,6 @@ static_assert(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
  *   DEF_CLIENT_SEND_COMMAND has no parameters
  ************/
 
-/**
- * Query the server for server information.
- */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendInformationQuery()
-{
-	my_client->status = STATUS_GAME_INFO;
-	my_client->SendPacket(new Packet(PACKET_CLIENT_GAME_INFO));
-
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
 /** Tell the server we would like to join. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
@@ -557,26 +545,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *
 	return NETWORK_RECV_STATUS_SERVER_BANNED;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p)
-{
-	if (this->status != STATUS_GAME_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-
-	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
-
-	/* Clear any existing GRFConfig chain. */
-	ClearGRFConfigList(&item->info.grfconfig);
-	/* Retrieve the NetworkGameInfo from the packet. */
-	DeserializeNetworkGameInfo(p, &item->info);
-	/* Check for compatability with the client. */
-	CheckGameCompatibility(item->info);
-	/* Ensure we consider the server online. */
-	item->online = true;
-
-	UpdateNetworkGameWindow();
-
-	return NETWORK_RECV_STATUS_CLOSE_QUERY;
-}
-
 /* This packet contains info about the client (playas and name)
  *  as client we save this in NetworkClientInfo, linked via 'client_id'
  *  which is always an unique number on a server. */
@@ -664,15 +632,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
 	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
-
-	/* If we query a server that is 1.11.1 or older, we get an
-	 * NETWORK_ERROR_NOT_EXPECTED on requesting the game info. Show a special
-	 * error popup in that case.
-	 */
-	if (error == NETWORK_ERROR_NOT_EXPECTED && this->status == STATUS_GAME_INFO) {
-		ShowErrorMessage(STR_NETWORK_ERROR_SERVER_TOO_OLD, INVALID_STRING_ID, WL_CRITICAL);
-		return NETWORK_RECV_STATUS_CLOSE_QUERY;
-	}
 
 	StringID err = STR_NETWORK_ERROR_LOSTCONNECTION;
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];

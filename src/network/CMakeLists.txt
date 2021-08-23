@@ -22,6 +22,8 @@ add_files(
     network_gui.cpp
     network_gui.h
     network_internal.h
+    network_query.cpp
+    network_query.h
     network_server.cpp
     network_server.h
     network_stun.cpp
