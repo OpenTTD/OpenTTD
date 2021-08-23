@@ -305,7 +305,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 /* static */ bool ServerNetworkGameSocketHandler::AllowConnection()
 {
 	extern byte _network_clients_connected;
-	bool accept = _network_clients_connected < MAX_CLIENTS && _network_game_info.clients_on < _settings_client.network.max_clients;
+	bool accept = _network_clients_connected < MAX_CLIENTS;
 
 	/* We can't go over the MAX_CLIENTS limit here. However, the
 	 * pool must have place for all clients and ourself. */
@@ -803,6 +803,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	if (this->status != STATUS_INACTIVE) {
 		/* Illegal call, return error and ignore the packet */
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	}
+
+	if (_network_game_info.clients_on >= _settings_client.network.max_clients) {
+		/* Turns out we are full. Inform the user about this. */
+		return this->SendError(NETWORK_ERROR_FULL);
 	}
 
 	std::string client_revision = p->Recv_string(NETWORK_REVISION_LENGTH);
