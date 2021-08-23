@@ -378,7 +378,6 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet *p)
 		this->game_connecter = nullptr;
 	}
 
-	Debug(misc, 0, "{}", ticket);
 	this->turn_handlers[token] = ClientNetworkTurnSocketHandler::Turn(token, tracking_number, ticket, connection_string);
 
 	if (!_network_server) {
