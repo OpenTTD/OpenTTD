@@ -78,22 +78,31 @@ enum BuildRailStationWidgets {
 
 /** Widgets of the #BuildSignalWindow class. */
 enum BuildSignalWidgets {
-	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal
-	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal
-	WID_BS_SEMAPHORE_EXIT,     ///< Build a semaphore exit block signal
-	WID_BS_SEMAPHORE_COMBO,    ///< Build a semaphore combo block signal
+	WID_BS_CAPTION,            ///< Caption for the Signal Selection window.
+	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal.
+	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal.
+	WID_BS_SEMAPHORE_EXIT,     ///< Build a semaphore exit block signal.
+	WID_BS_SEMAPHORE_COMBO,    ///< Build a semaphore combo block signal.
 	WID_BS_SEMAPHORE_PBS,      ///< Build a semaphore path signal.
 	WID_BS_SEMAPHORE_PBS_OWAY, ///< Build a semaphore one way path signal.
-	WID_BS_ELECTRIC_NORM,      ///< Build an electric normal block signal
-	WID_BS_ELECTRIC_ENTRY,     ///< Build an electric entry block signal
-	WID_BS_ELECTRIC_EXIT,      ///< Build an electric exit block signal
-	WID_BS_ELECTRIC_COMBO,     ///< Build an electric combo block signal
+	WID_BS_ELECTRIC_NORM,      ///< Build an electric normal block signal.
+	WID_BS_ELECTRIC_ENTRY,     ///< Build an electric entry block signal.
+	WID_BS_ELECTRIC_EXIT,      ///< Build an electric exit block signal.
+	WID_BS_ELECTRIC_COMBO,     ///< Build an electric combo block signal.
 	WID_BS_ELECTRIC_PBS,       ///< Build an electric path signal.
 	WID_BS_ELECTRIC_PBS_OWAY,  ///< Build an electric one way path signal.
 	WID_BS_CONVERT,            ///< Convert the signal.
 	WID_BS_DRAG_SIGNALS_DENSITY_LABEL,    ///< The current signal density.
 	WID_BS_DRAG_SIGNALS_DENSITY_DECREASE, ///< Decrease the signal density.
 	WID_BS_DRAG_SIGNALS_DENSITY_INCREASE, ///< Increase the signal density.
+	WID_BS_SEMAPHORE_NORM_SEL,  ///< NWID_SELECTION for WID_BS_SEMAPHORE_NORM.
+	WID_BS_ELECTRIC_NORM_SEL,   ///< NWID_SELECTION for WID_BS_ELECTRIC_NORM.
+	WID_BS_SEMAPHORE_ENTRY_SEL, ///< NWID_SELECTION for WID_BS_SEMAPHORE_ENTRY.
+	WID_BS_ELECTRIC_ENTRY_SEL,  ///< NWID_SELECTION for WID_BS_ELECTRIC_ENTRY.
+	WID_BS_SEMAPHORE_EXIT_SEL,  ///< NWID_SELECTION for WID_BS_SEMAPHORE_EXIT.
+	WID_BS_ELECTRIC_EXIT_SEL,   ///< NWID_SELECTION for WID_BS_ELECTRIC_EXIT.
+	WID_BS_SEMAPHORE_COMBO_SEL, ///< NWID_SELECTION for WID_BS_SEMAPHORE_COMBO.
+	WID_BS_ELECTRIC_COMBO_SEL,  ///< NWID_SELECTION for WID_BS_ELECTRIC_COMBO.
 };
 
 /** Widgets of the #BuildRailDepotWindow class. */
