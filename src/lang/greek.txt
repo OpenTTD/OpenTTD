@@ -1043,6 +1043,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Πεσος Με
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Δολλάριο Νέας Ταϊβάν (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Ρενμίνμπι Κίνας (CNY)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Ρουπία Ινδίας (INR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ρινγκίτ Μαλαισίας (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδηγούν από αριστερά
@@ -1097,6 +1098,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλ
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 
 
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτί για να ενεργοποιήσετε το v-sync στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Μέγεθος διεπαφής
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Επιλέξτε το μέγεθος στοιχείου διεπαφής
@@ -1113,6 +1115,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Κανονικ�
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Διπλό μέγεθος
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Τετραπλό μέγεθος
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
@@ -1229,6 +1232,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Ρύθμιση 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ρύθμιση παιχνιδιού (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο το τρέχον παιχνίδι)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο νέα παιχνίδια)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο την τρέχουσα εταιρεία)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Αυτή η ενέργεια θα επαναφέρει όλες τις ρυθμίσεις του παιχνιδιού στις προκαθορισμένες τιμές τους.{}Σίγουρα θέλετε να προχωρήσετε;
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Κατηγορία:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Τύπος:
@@ -1433,6 +1437,8 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, η οποία είναι ακτή σε νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Έλεγχος του ύψους στο οποίο ξεκινά το χιόνι στο υπαρκτικό τοπίο. Το χιόνι επηρεάζει επίσης τη δημιουργία βιομηχανιών και τις προυποθέσεις επέκτασης πόλης
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Κάλυψη ερήμου: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis μόνο) Επιλογή της συψνότητας των λόφων: Τα λεία τοπία έχουν λιγότερους, πιο πλατείς λόφους. Τα τραχιά τοπία έχουν πολλούς λόφους που μπορεί να δείχνει μονότονο
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απαλή
@@ -1664,6 +1670,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Ομαλή
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση της δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Όταν είναι ενεργοποιημένη, επιτρέπεται η αγοραπωλησία εταιρικών μετοχών. Οι μετοχές θα είναι διαθέσιμες μόνο όταν οι εταιρείες φτάνουν μια ορισμένη ηλικία
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Ελάχιστη ηλικία εταιρίας για συναλλαγή μετοχών: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Ορίστε την ελάχιστη ηλικία μίας εταιρίας για να μπορούν άλλοι να αγοράσουν ή να πουλήσουν μετοχές από αυτές.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Το ποσοστό κέρδους από το σκέλος μεταφοράς στα συστήματα τροφοδότησης: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Το ποσοστό του εισοδήματος που δίνεται στα ενδιάμεσα σκέλη των συστημάτων τροφοδότησης, δίνοντας μεγαλύτερο έλεγχο στο εισόδημα
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Όταν σύρετε, τοποθετούνται σήματα κάθε: {STRING}
@@ -2080,6 +2087,7 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Αναν
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ανανεώση πληροφοριών του διακομιστή
 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Αναζήτηση στο διαδίκτυο για δημόσιους διακομιστές
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Αναζήτηση LAN
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Προσθήκη διακομιστή
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Προσθέτει ένα διακομιστή στη λίστα ο οποίος θα ελέγχεται κάθε φορά για ενεργά παιχνίδια.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Εκκίνηση διακομιστή
@@ -2137,8 +2145,10 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συ
 ############ Begin of ConnectionType
 ############ End of ConnectionType
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Απαγόρευση
 
 
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Όχι
 
 STR_NETWORK_SERVER                                              :Διακομιστής
 STR_NETWORK_CLIENT                                              :Πελάτης
@@ -2368,6 +2378,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Συνέ
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Κτίσιμο ενός ξεχωριστού σημείου καθοδήγησης
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Απενεργοποιημένο διότι δεν υπάρχουν διαθέσιμα οχήματα για αυτή την υποδομή
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου
@@ -3174,6 +3185,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωρ�
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Στόχοι:
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Καθολικοί στόχοι:
 STR_GOALS_SPECTATOR                                             :Καθολικοί στόχοι
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Εμφάνιση καθολικών στόχων
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3412,6 +3424,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Βιομηχανίες
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Τίποτα -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% μεταφέρθηκαν){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
@@ -3747,12 +3760,14 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Οχήματα 
 STR_REPLACE_TRAM_VEHICLES                                       :Οχήματα τροχιοδρόμου
 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Πατήστε Ctrl+Click για εφαρμογή επίσης στην υπό-ομάδα
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του οχήματος. Με διπλό κλικ θα ακολουθείται το αυτοκίνητο στην κύρια προβολή. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του οχήματος
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του πλοίου. Με διπλό κλικ θα ακολουθείται το πλοίο στην κύρια προβολή. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του πλοίου
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Κεντράρετε την κεντρική προβολή στην τοποθεσία του αεροσκάφους. Με διπλό κλικ θα ακολουθηθεί το αεροσκάφος στην κεντρική προβολή. Το Ctrl+Κλικ ανοίγει μία νέα προβολή στην τοποθεσία του αεροσκάφους
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Στέλνει το τρένο στο αμαξοστάσιο. Με Ctrl+Κλικ κάνει μόνο επισκευή
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Στέλνει το όχημα στο αμαξοστάσιο. Με Ctrl+Κλικ κάνει μόνο επισκευή
@@ -4195,6 +4210,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μ�
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Βγάλτε στιγμιότυπο εικόνας
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Το στιγμιότυπο οθόνης έχει μεγεθυνθεί πλήρως
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγμιότυπο χάρτη υψομετρίας
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
@@ -4460,6 +4476,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Λάθος τύ
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Χωρίς εφαρμογή κανόνων αυτόματης ανανέωσης/αντικατάστασης
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(χρηματικό όριο)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Το νέο όχημα δεν μπορεί να μεταφέρει {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Το καινούριο όχημα δεν μπορεί να επανεξοπλιστεί σε σειρά {NUM}
 
 # Rail construction errors

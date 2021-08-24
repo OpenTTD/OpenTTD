@@ -2047,6 +2047,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script 
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegit per contrasenya!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONNECTAT
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR PLÉ
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}ESTEU EXCLOSOS D'AQUEST SERVIDOR
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVIDOR MASSA ANTIC
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}LA VERSIÓ NO COINCIDEIX
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NO COINCIDÈNCIA DE NEWGRF
 
@@ -2164,6 +2166,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Esteu s
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Esteu segur que voleu restablir la contrasenya de la companyia «{COMPANY}»?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Voleu usar un servei de transmissió?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No s'ha pogut establir una connexió amb el servidor «{STRING}».{}Voleu transmetre aquesta sessió via «{STRING}»?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, aquest una vegada.
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no ho preguntis més.
@@ -2202,7 +2205,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No s'han trobat dispositius de xarxa.
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}No s'ha pogut trobar cap partida en xarxa
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}El servidor no ha contestat a la petició
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}S'ha refusat o s'ha esgotat el temps de connexió amb el servidor.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}No s'ha pogut connectar degut a una diferència de NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Ha fallat la sincronització de la partida en xarxa
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}S'ha perdut la connexió a la partida en xarxa
