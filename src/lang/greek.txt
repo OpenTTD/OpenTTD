@@ -324,6 +324,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ενερ
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
 STR_BUTTON_CANCEL                                               :{BLACK}Ακύρωση
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Προσοχή: Οι διαχειριστές του server μπορεί να έχουν την δυνατότητα να διαβάσουν οποιδήποτε κείμενο εισαχθεί εδώ.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -373,6 +374,7 @@ STR_SORT_BY_RANGE                                               :Εμβέλει�
 STR_SORT_BY_POPULATION                                          :Πληθυσμός
 STR_SORT_BY_RATING                                              :Εκτίμηση
 STR_SORT_BY_NUM_VEHICLES                                        :Αριθμός οχημάτων
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Συνολικό κέρδος προηγούμενου έτους
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Συνολικό κέρδος τρέχοντος έτους
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Μέσος όρος κέρδους τρέχοντος έτους
 
@@ -986,6 +988,10 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο στ�
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G τον τη το} {STRING} πρός {G τον τη το} {STRING} δεν θα επιδοτείται πλέον.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Η επιδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το {STRING} προς το {STRING} δεν επιδοτείται πλέον.
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην υπηρεσία {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει 50% έξτρα για το/α επόμενο/α {NUM} έτος/η!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δώθηκε στην υπηρεσία {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει διπλά ποσά για το επόμενο/α {NUM} έτος/η!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσία που δόθηκε στην υπηρεσία {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει τριπλές τιμές για το/α επόμενο/α {NUM} έτος/η!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας που δόθηκε στην υπηρεσία {STRING}!{}{}{STRING} από {STRING} έως {STRING} θα πληρώνει τετραπλές τιμές για το/α επόμενο/α {NUM} έτος/η!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Μονοπώλιο μεταφορών!
@@ -1117,6 +1123,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Τετραπλ�
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
@@ -1283,6 +1290,8 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Καταρρε�
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά καταρρέουν τα ανεπαρκώς συντηρημένα οχήματα
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Ορίστε τον αριθμό των ετών για τα οποία θα ισχύει η επιδότηση
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Χωρίς επιχορηγήσεις
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
@@ -1294,6 +1303,7 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Εναλλαγ�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Στάση δημοτικού συμβουλίου ως προς τον μετασχηματισμό της περιοχής: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Επιλογή πόσο ο θόρυβος και η περιβαλλοντικη καταστροφή άπο εταιρίες επηρεάζουν τα ποσοστά αποδοχής και περαιτέρω έργα στη περιοχή
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ορίστε το μέγιστο ύψος του εδάφους του χάρτη. Επιλέγοντας "αυτόματο" μία καλή τιμή θα επιλεχθεί μετά την παραγωγή του εδάφους
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE} Δεν μπορείτε να θέσετε το μέγιστο ύψος χάρτη σε αυτή τη τιμή. Τουλάχιστον ένα βουνό στο χάρτη είναι πιο ψηλό.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Επιτρέπεται η διαμόρφωση του εδάφους κάτω από κτίρια και σιδηροτροχιές χωρίς αυτά να αφαιρούνται
@@ -1736,6 +1746,7 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο 
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Το μέγιστο επίπεδο μεγέθυνσης στα παράθυρα προβολών. Σημειώστε ότι ενεργοποιώντας υψηλότερα επίπεδα μεγεθύνσεων αυξάνονται οι απαιτήσεις σε μνήμη
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Μέγιστο επίπεδο σμίκρυνσης: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Το μέγιστο επίπεδο σμίκρυνσης στα παράθυρα προβολών. Υψηλότερα επίπεδα σμικρύνσεων είναι πιθανό να προκαλέσουν υστερήσεις
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Η μεγαλύτερη ανάλυση που χρησιμοποιούν τα sprites: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Κανονικό
@@ -1875,6 +1886,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Έλλη
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Η κατανομή {BYTES} του spritecache απέτυχε. Το spritecache μειώθηκε σε {BYTES}. Αυτό θα μειώσει την απόδοση του OpenTTD. Για να μειώσετε τις ανάγκες μνήμς μπορείτε να απενεργοποιήσετε τα γραφικά 32bpp graphics ή/και τα επίπεδα μεγέθυνσης
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Πρόβλημα με τις ρυθμίσεις βίντεο...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... δεν βρέθηκε συμβατή GPU. Η επιτάχυνση υλικού έχει απενεργοποιηθεί
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2042,6 +2055,7 @@ STR_FACE_EARRING                                                :Σκουλαρ�
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλαγή γραβάτας ή σκουλαρικιού
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Με πρόσκληση μόνο
 ############ End of leave-in-this-order
 
 # Network server list
@@ -2141,13 +2155,18 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η ετ�
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συμμετεχόντων
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Εάν και πως θα είναι διαθέσιμος ο server σας σε άλλους
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Αυτός/η είστε εσείς
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Αυτός/η είναι ο/η οικοδεσπότης του παιχνιδιού
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Δημόσια
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Απαγόρευση
 
 
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Δεν ήταν δυνατή η σύνδεση με τον server '{STRING}'.{}Θέλετε να αναμεταδόσετε αυτή την συνεδρία μέσω '{STRING}';
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Όχι
 
 STR_NETWORK_SERVER                                              :Διακομιστής
@@ -2193,6 +2212,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Δεν �
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Δεν ήταν δυνατή η σύνδεση
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Τελείωσε ο χρόνος της σύνδεσης #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Υπήρξε λάθος πρωτοκόλλου και η σύνδεση έκλεισε
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Το όνομα παίκτη σας δεν έχει ρυθμιστεί. Το όνομα μπορεί να ρυθμιστεί στο πάνω μέρος του παραθύρου Multiplayer
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Η έκδοση του πελάτη δεν ταιριάζει με την έκδοση του διακομιστή
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Λανθασμένος κωδικός
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Ο διακομιστής είναι γεμάτος
@@ -2205,6 +2225,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Χρει
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να διατηρήσει συγχρόνιση με τον διακομιστή
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να κατεβάσει τον χάρτη
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να συνδεθεί με τον διακομιστή
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Το όνομα παίκτη σας δεν είναι έγκυρο
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :γενικό πρόβλημα
@@ -2261,6 +2282,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο δι�
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}Παρακαλώ περιμένετε...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} εκδιώχθηκε. Λόγος: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Η εγγραφή του server απέτυχε
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Περιεχόμενο κατεβαίνει
@@ -2654,6 +2676,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Επιλ
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Πληροφορίες Περιοχής Εδάφους
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Κεντράρετε την κεντρική προβολή στην τοποθεσία του τετραγωνίδιου. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του τετραγωνίδιου
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Κόστος καθαρισμού: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Κέρδος όταν καθαριστεί: {LTBLUE}{CURRENCY_LONG}
@@ -3156,6 +3179,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Μετονομ�
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Τοπική αρχή της πόλης {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Ζώνη
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Εμφάνισης ζώνης μέσα στα όρια της τοπικής αρχής
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ποσοστά εταιρίας μεταφορών:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Διαθέσιμες πράξεις:
@@ -3498,6 +3522,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Μη ομαδο
 STR_GROUP_DEFAULT_SHIPS                                         :Μη ομαδοποιημένα πλοία
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Μη ομαδοποιημένα αεροσκάφη
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ομάδες - πατήστε σε μία ομάδα για να δείτε όλα τα οχήματα που της ανήκουν. Σύρετε ομάδες για να ρυθμίσετε την ιεραρχία.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Πατήστε για δημιουργήσετε ομάδα
@@ -3765,6 +3790,7 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Πα�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Κεντράρετε την κεντρική προβολή στην τοποθεσία του τρένου. Με διπλό κλικ θα ακολουθηθεί το τρένο στην κεντρική προβολή. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του τρένου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του οχήματος. Με διπλό κλικ θα ακολουθείται το αυτοκίνητο στην κύρια προβολή. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του οχήματος
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του πλοίου. Με διπλό κλικ θα ακολουθείται το πλοίο στην κύρια προβολή. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του πλοίου
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Κεντράρετε την κεντρική προβολή στην τοποθεσία του αεροσκάφους. Με διπλό κλικ θα ακολουθηθεί το αεροσκάφος στην κεντρική προβολή. Το Ctrl+Κλικ ανοίγει μία νέα προβολή στην τοποθεσία του αεροσκάφους
@@ -4209,6 +4235,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μ�
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Βγάλτε στιγμιότυπο εικόνας
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Το στιγμιότυπο οθόνης έχει μεγεθυνθεί πλήρως
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Στιγμιότυπο ολόκληρου του χάρτη
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγμιότυπο χάρτη υψομετρίας
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
@@ -4270,6 +4297,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Το αποθη
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Το αρχείο δεν μπορούσε να διαβαστεί
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Το αρχείο δεν είναι εγγράψιμο
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος ακεραιότητας δεδομένων απέτυχε
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Το αποθηκευμένο παιχνίδι είναι φτιαγμένο με πειραγμένη έκδοση
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<μη διαθέσιμο>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει αποθηκευτεί σε έκδοση χωρίς υποστήριξη για τραμ. Όλα τα τραμ έχουν αφαιρεθεί
 
