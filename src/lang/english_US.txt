@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAVING GAME  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Message History
@@ -2045,6 +2046,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Sc
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Password protected!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER FULL
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVER BANNED YOU
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER TOO OLD
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSION MISMATCH
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF MISMATCH
 
@@ -2112,7 +2115,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online Players
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Name
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Name of the server you are playing on
@@ -2162,6 +2165,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Are you
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Are you sure you want to reset the password of company '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Use relay?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Failed to establish a connection between you and server '{STRING}'.{}Would you like to relay this session via '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Yes, this once
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Yes, don't ask again
@@ -2200,7 +2204,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enter te
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No network devices found
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Could not find any network games
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}The server didn't answer the request
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Connection to the server timed out or was refused
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Could not connect due to NewGRF mismatch
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Game synchronization failed
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Game connection lost
@@ -2282,6 +2286,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The serv
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} was kicked. Reason: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server registration failed
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Another server with the same invite-code registered itself. Switching to "local" game-type.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Your server doesn't allow remote connections
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Other players won't be able to connect to your server
 

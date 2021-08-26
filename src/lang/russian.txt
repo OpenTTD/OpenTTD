@@ -2197,6 +2197,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Игр�
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Защищён паролем!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}СЕРВЕР ОТКЛЮЧЁН
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}СЕРВЕР ЗАПОЛНЕН
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}ВЫ ЗАБЛОКИРОВАНЫ НА СЕРВЕРЕ
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}СЕРВЕР УСТАРЕВШЕЙ ВЕРСИИ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}ВЕРСИЯ НЕ ПОДХОДИТ
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}НЕ СОВПАДАЕТ НАБОР NEWGRF
 
