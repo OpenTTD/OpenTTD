@@ -27,9 +27,9 @@
  * "overloaded".
  */
 const uint8 LinkGraphOverlay::LINK_COLOURS[] = {
-	0x0f, 0xd1, 0xd0, 0x57,
-	0x55, 0x53, 0xbf, 0xbd,
-	0xba, 0xb9, 0xb7, 0xb5
+	0x07, 0xc7, 0xc9, 0xcb,
+	0xcd, 0x99, 0x44, 0xbe,
+	0xbb, 0xb9, 0xb7, 0xb5
 };
 
 /**
@@ -285,7 +285,7 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, this->scale, dash);
 	}
 
-	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][1], this->scale);
+	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][2], this->scale);
 }
 
 /**
