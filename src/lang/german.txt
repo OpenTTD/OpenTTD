@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Autosicherung
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEICHERE SPIEL  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(Zuschauer)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Nachrichtenchronik
@@ -2046,6 +2047,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spielsk
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Passwortgeschützt!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER VOLL
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVER HAT SIE VERBANNT
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER ZU ALT
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIONSKONFLIKT
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF-KONFLIKT
 
@@ -2113,7 +2116,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma is
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online-Spieler
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Mehrspieler
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online-Spieler
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Name
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Name des Servers auf dem Sie spielen
@@ -2163,6 +2166,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sind Si
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sind Sie sicher, dass Sie das Passwort der Firma '{COMPANY}' zurücksetzen möchten?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Weiterleitung benutzen?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Verbindung zwischen Ihnen und dem Server „{STRING}“ konnte nicht hergestellt werden.{}Möchten Sie für diese Sitzung eine Weiterleitung via „{STRING}” benutzen?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nein
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, diesmal
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, nicht erneut fragen
@@ -2201,7 +2205,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Chattext
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Keine Netzwerkschnittstellen gefunden oder ohne ENABLE_NETWORK kompiliert
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Keine Netzwerkspiele gefunden
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Der Server antwortet nicht
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Verbindung zum Server gescheitert aufgrund Zeitüberschreitung oder Ablehnung
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Verbindung konnte nicht hergestellt werden, da die NewGRF-Versionen nicht übereinstimmen
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synchronisation des Netzwerkspiels fehlgeschlagen
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Verbindung zum Netzwerkspiel verloren
@@ -2283,6 +2287,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Serv
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} wurde vom Server hinausgeworfen. Grund: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistration fehlgeschlagen
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Ein anderer Server mit dem selben Einladungscode hat sich registriert. Es wird zum „lokalen“ Spieltyp gewechselt.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Dein Server lässt keine nicht-lokalen Verbindungen zu
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andere Spieler werden nicht in der Lage sein, sich zu deinem Server zu verbinden
 

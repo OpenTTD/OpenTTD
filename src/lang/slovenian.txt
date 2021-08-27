@@ -460,6 +460,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Zmogljivost tov
 STR_SORT_BY_RANGE                                               :Domet
 STR_SORT_BY_POPULATION                                          :Prebivalstvo
 STR_SORT_BY_RATING                                              :Ocena
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Povprečni letošnji dobiček
 
 # Group by options for vehicle list
 
@@ -2638,6 +2639,7 @@ STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Sprejet 
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Omejitev hitrosti vlakov: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Omejitev hitrosti na cestah: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Omejitev hitrosti tramvajev: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kamenje

@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  E
 STR_STATUSBAR_AUTOSAVE                                          :{RED}GUARDADO AUTOMÁTICO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GUARDANDO PARTIDA  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(espectador)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensajes
@@ -2046,6 +2047,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script 
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}¡Protegido por contraseña!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR APAGADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR LLENO
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SIN ACCESO AL SERVIDOR
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}EL SERVIDOR ES MUY VIEJO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}INCOMPATIBILIDAD DE VERSIONES
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}INCOMPATIBILIDAD CON NEWGRF
 
@@ -2113,7 +2116,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadores conectados
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jugadores en línea
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nombre
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nombre del servidor en el que estás jugando
@@ -2163,6 +2166,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}¿Elimi
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}¿Restablecer contraseña de la empresa "{COMPANY}"?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}¿Utilizar servicio de retransmisión?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No se pudo establecer una conexión con el servidor "{STRING}".{}¿Deseas retransmitir esta sesión a través de "{STRING}"?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, solo esta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no volver a preguntar
@@ -2201,7 +2205,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduc
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No se encontraron dispositivos de red
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}No se pudo encontrar ninguna partida en red
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}El servidor no responde a la petición
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}El tiempo de espera de conexión con el servidor expiró o se rechazó
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}No se pudo conectar debido a incompatibilidad de NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La sincronización de la partida en red falló
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La conexión con la partida en red se perdió
@@ -2283,6 +2287,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registro del servidor falló
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Otro servidor ya se registró con el mismo código de invitación. Se cambiará el modo de juego a "local".
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Tu servidor no permite conexiones remotas
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Otros jugadores no podrán conectarse a tu servidor
 
