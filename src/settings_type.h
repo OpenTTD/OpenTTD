@@ -280,7 +280,6 @@ struct NetworkSettings {
 	std::string server_password;                          ///< password for joining this server
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	std::string admin_password;                           ///< password for the admin network
-	bool        server_advertise;                         ///< Advertise the server to the game coordinator.
 	std::string client_name;                              ///< name of the player (as client)
 	std::string default_company_pass;                     ///< default password for new companies in encrypted form
 	std::string connect_to_ip;                            ///< default for the "Add server" query

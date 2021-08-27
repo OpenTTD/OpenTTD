@@ -156,6 +156,7 @@ public:
 enum IniFileVersion : uint32 {
 	IFV_0,               ///< 0  All versions prior to introduction.
 	IFV_PRIVATE_SECRETS, ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
+	IFV_GAME_TYPE,       ///< 2  PR#9515  Convert server_advertise to server_game_type.
 
 	IFV_MAX_VERSION,     ///< Highest possible ini-file version.
 };
@@ -1218,6 +1219,19 @@ void LoadFromConfig(bool startup)
 
 	/* Load basic settings only during bootstrap, load other settings not during bootstrap */
 	if (!startup) {
+		/* Convert network.server_advertise to network.server_game_type, but only if network.server_game_type is set to default value. */
+		if (generic_version < IFV_GAME_TYPE) {
+			if (_settings_client.network.server_game_type == SERVER_GAME_TYPE_LOCAL) {
+				IniGroup *network = generic_ini.GetGroup("network", false);
+				if (network != nullptr) {
+					IniItem *server_advertise = network->GetItem("server_advertise", false);
+					if (server_advertise != nullptr && server_advertise->value == "true") {
+						_settings_client.network.server_game_type = SERVER_GAME_TYPE_PUBLIC;
+					}
+				}
+			}
+		}
+
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
 		_grfconfig_static  = GRFLoadConfig(generic_ini, "newgrf-static", true);
 		AILoadConfig(generic_ini, "ai_players");
@@ -1269,6 +1283,14 @@ void SaveToConfig()
 		/* Remove all settings from the generic ini that are now in the secrets ini. */
 		for (auto &table : SecretSettingTables()) {
 			RemoveEntriesFromIni(generic_ini, table);
+		}
+	}
+
+	/* Remove network.server_advertise. */
+	if (generic_version < IFV_GAME_TYPE) {
+		IniGroup *network = generic_ini.GetGroup("network", false);
+		if (network != nullptr) {
+			network->RemoveItem("server_advertise");
 		}
 	}
 
