@@ -784,6 +784,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  D
 STR_STATUSBAR_AUTOSAVE                                          :{RED}OTOMATİK KAYDET
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KAYDEDiYOR  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(izleyici)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Mesaj Geçmişi
@@ -885,6 +886,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Teşvik önerisinin süresi doldu:{}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Teşvik geri çekildi:{}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Hizmet teşviği önerildi:{}{} {STRING} -> {STRING} arası ilk {STRING} taşıma hizmeti belediyeden {NUM} yıllık teşvik alacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Hizmet teşviği {STRING} şirketine verildi!{}{}{STRING} -> {STRING} arasındaki {STRING} taşıma hizmeti gelecek {NUM} yıl boyunca %50 fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Hizmet teşviği {STRING} şirketine verildi!{}{}{STRING} -> {STRING} arasındaki {STRING} taşıma hizmeti gelecek {NUM} yıl boyunca iki kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Hizmet teşviği {STRING} şirketine verildi!{}{}{STRING} -> {STRING} arasındaki {STRING} taşıma hizmeti gelecek {NUM} yıl boyunca üç kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Hizmet teşviği {STRING} şirketine verildi!{}{}{STRING} -> {STRING} arasındaki {STRING} taşıma hizmeti gelecek {NUM} yıl boyunca dört kat fazla gelir sağlayacak!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Taşımacılıkta tekel!
@@ -1200,6 +1206,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Araç bozulmala
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Yetersiz bakım gören araçların ne sıklıkta bozulacağını ayarlayın
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Ödenek çarpanı: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Sübvanse edilen bağlantılar için ne kadar ödeneceğini belirleyin
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Ödenek süresi: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Teşvik verilen yıl süresini ayarla
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} yıl
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Teşvik yok
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :İnşaat maliyetleri: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :İnşaat ve satın alma maliyet seviyesini belirleyin
 STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
@@ -1432,6 +1442,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Çift tık
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Tek tık (odaklanmışken)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Tek tık (anında)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Aktarıcı servisini kullan: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Eğer sunucu ile bağlantı kurmak başarısız olursa, bağlantı oluşturmak için bir aktarıcı servisi kullanılabilir. "Asla" buna izin vermez, "sor" ilk önce sorar, "izin ver" sormadan buna izin verir
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Asla
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Sor
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :İzin ver
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Sağ tıklama öykünümü: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Sağ fare-tıklamalarının hangi yöntemle taklit edileceğini seçin.
@@ -1785,6 +1800,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Endüst
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kargo dağılımı
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rakipler
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Ağ
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
@@ -1874,7 +1890,7 @@ STR_QUIT_NO                                                     :{BLACK}Hayır
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ana Menüye Dön
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinizden emin misiniz?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
@@ -1990,13 +2006,15 @@ STR_FACE_EARRING                                                :Küpe:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı veya küpeyi değiştir
 
 ############ Next lines match ServerGameType
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Yerel
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Halka açık
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Yalnızca davet ile
 ############ End of leave-in-this-order
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Çok Oyunculu
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Oyuncu adı:
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Oyuncuların görecegi adınızı seçin
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Oyuncuların göreceği adınızı seçin
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}İsim
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Oyunun ismi
@@ -2025,9 +2043,12 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Sunucu 
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Sunucu adresi: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Başlama tarihi: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Şimdiki tarih: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Oyun Betiği: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Parola korumalı!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SUNUCU KAPALI
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SUNUCU DOLU
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SUNUCU SİZİ YASAKLADI
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SUNUCU ÇOK ESKİ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}SÜRÜM UYUŞMAZLIĞI
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF UYUŞMAZLIĞI
 
@@ -2040,11 +2061,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}İnterne
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}LAN ara
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Yerel alan ağında sunucu ara
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Sunucu ekle
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Her zaman çalışan oyunlarına bakabilmek için bir sunucu ekle
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Listeye bir sunucu ekler. Bu sunucu adresi ya da bir davet kodu olabilir
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sunucu başlat
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Kendi sunucunu başlat
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}İsminizi girin
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Sunucu adresini veya davet kodunu gir
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Yeni çok oyunculu oyun başlat
@@ -2094,7 +2116,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Şirket 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Aktif oyuncular
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Çok Oyunculu
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Çok Oyunculu{WHITE}Çevrim İçi Oyuncular
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Sunucu
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}İsim
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Oynadığın sunucunun adı
@@ -2102,10 +2124,14 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Sunucunu
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Sunucunun adı
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Görünürlük
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Halka açık listelemede öbür oyuncuların sizin sunucunuzu görüp göremeyeceği
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Davet kodu
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Diğer kullanıcıların bu sunucuya katılmak için kullanabileceği davet kodu
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Bağlantı türü
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Sunucunuzun nasıl erişilip erişilemeyeceği
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Oyuncu
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}İsim
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}İsmin
-STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}İsmini değiştir
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Kullanıcı adını değiştir
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :İsmin
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Client için gerçekleştirilecek yönetici eylemleri
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Şirket için gerçekleştirilecek yönetici eylemleri
@@ -2118,8 +2144,14 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Yeni şirket)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Yeni bir şirket oluştur ve ona katıl
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Bu sensin
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Bu, oyunun ev sahibi
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} oyuncu / {NUM} şirket
 
 ############ Begin of ConnectionType
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Yerel
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Uzak oyuncular bağlanamaz
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Halka açık
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NAT'ın Arkasında
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Aktarıcı ile
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :At
@@ -2133,6 +2165,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}'{STRIN
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' şirketini silmek istediğine emin misin?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}'{COMPANY}' adlı şirketin şifresini sıfırlamak istediğine emin misin?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Aktarıcı kullan?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Sunucu '{STRING}' ile sizin aranızda bağlantı kurma başarısız oldu.{}Bu oturumu '{STRING}' ile aktarmak ister misiniz?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Hayır
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Evet, bu seferliğine
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Evet, bir daha sorma
 
 STR_NETWORK_SERVER                                              :Sunucu
 STR_NETWORK_CLIENT                                              :İstemci
@@ -2168,7 +2205,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohb
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ağ aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Network oyunu bulunamadı
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Sunucu isteğe cevap vermedi
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Sunucu isteğe cevap vermedi{WHITE}Sunucu bağlantısı zaman aşımına uğradı veya reddedildi
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF uyuşmazlığı yüzünden bağlanılamadı
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Oyunu senkronizasyonu başarısız
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Oyunu bağlatısı düştü
@@ -2177,7 +2214,8 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Sunucu b
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Bağlanamadı
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Bağlantı #{NUM} zaman aşımına uğradı
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokol hatası yapıldı ve bağlantı koparıldı
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}İsmin ayarlanmamış. Çok Oyunculu penceresinin üstünden ayarlanabilir
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Kullanıcı adınız ayarlanmamış. Kullanıcı adınız Çok Oyunculu penceresinin üstünden ayarlanabilir
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Sunucu adınız ayarlanmamış. Ad Çok Oyunculu penceresinin üstünden ayarlanabilir
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Bu istemcinin revizyonu sunucununki ile aynı değil
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Yanlış parola
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Sunucu dolu
@@ -2248,6 +2286,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu k
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} atıldı. Sebep: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Sunucu kaydı başarısız oldu
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Başka bir sunucu aynı davet koduyla kendini kaydetmiş. "Yerel" oyun türüne geçiliyor.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Sunucunuz uzak bağlantılara izin vermiyor
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Diğer kullanıcılar sunucunuza bağlanamayacaklar
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}İçerik indirme
@@ -3532,7 +3574,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Grup olu
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Seçili grubu sil
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Seçili grubun ismini değiştir
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Seçien grubun logosunu değiştir
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Bu grubu otomatik yenilemeden ayrı tutmak için tıklayın
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Bu grubu otomatik yenilemeden ayrı tutmak için tıklayın. Alt grupları da ayrı tutmak için Ctrl+Tıklayın.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grubu Sil
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bu ve alt gruplarını silmek istediğinizden emin misiniz?
@@ -3785,7 +3827,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Araçlar
 STR_REPLACE_ROAD_VEHICLES                                       :Yol Araçları
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvay Araçları
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldırma ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır (en önden başlayarak yeterli sayıda vagon silinir)
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Alt gruplara da uygulamak için Ctrl+Tıkla
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4716,27 +4760,27 @@ STR_BASEMUSIC_NONE_DESCRIPTION                                  :Müzik içermey
 
 ##id 0x2000
 # Town building names
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Yüksek ofis binasi
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Ofis binasi
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Yüksek ofis binası
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Ofis binası
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Küçük apartman
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Kilise
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Geniş ofis binasi
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Geniş ofis binası
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Evler
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Otel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Heykel
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fıskiye
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Park
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Ofis binasi
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Ofis binası
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Dükkanlar ve ofisler
-STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Modern ofis binasi
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Modern ofis binası
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Depo
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Ofis binasi
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Ofis binası
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadyum
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Eski evler
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Kulübe
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Evler
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Daireler
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Yüksek ofis binasi
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Yüksek ofis binası
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Dükkan ve ofisler
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Dükkan ve ofisler
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Tiyatro

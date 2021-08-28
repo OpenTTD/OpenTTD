@@ -210,6 +210,7 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}غ
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}ل
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}م3
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}جالون
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP} لتر
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}م3
 
@@ -949,6 +950,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :كل سنة
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}لغة
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}اختر لغة الواجهه
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% مكتمل)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}شاشة كاملة
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}اختر هذا المربع للعب OpenTTD على لشاشة الكاملة
@@ -1090,6 +1092,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايو
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}الإعدادات
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}إسحب الكل
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}اعادة ضبط جميع القيم
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(لا يوجد تفسير متوفر)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
@@ -1180,6 +1183,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :عند التم
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :أعرض عدد السكان مع الاسم على العلامة: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :سمك الخطوط في العرض: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :أضف سطرًا إلى نافذة بناء العربة، لتوضيح اي NewGRF تأتي منه العربة المحددة
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :الارض: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :مولد الأرض: {STRING}
@@ -1234,6 +1238,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :تصغير تك
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :تحريك الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :عدم استخدام
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعة تحريك الخريطة: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :كيبورد على الشاشة: {STRING}
 
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :محاكاة الزر الأيمن : {STRING}
@@ -1370,6 +1375,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :اضافة ال
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :موقع شريط الأدوات الرئيسي: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :موقع شريط المعلومات: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :حدود نعومة النوافذ - غير ملتصقة - :{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :غير مفعل
 STR_CONFIG_SETTING_ZOOM_MIN                                     :اقصى حدود التقريب: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :اقصى حدود التقريب: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :X4
@@ -1706,10 +1712,12 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشر
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :قائمة العملاء
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جديدة)
 
 ############ Begin of ConnectionType
 ############ End of ConnectionType
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 
 
 
@@ -1809,6 +1817,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ق
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}اقفل الخادم الجلسة
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}يتم بدأ الخادم من جديد ...{} الرجاء الأنتظار
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}فشل تسجيل السرفر
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}تنزيل المحتوى
@@ -2027,6 +2036,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}بدل �
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}تحويل / ترقية نوع الطريق. Shift يبدل بين البناء / إظهار تقدير التكلفة
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}تحويل / ترقية نوع الطريق. Shift يبدل بين البناء / إظهار تقدير التكلفة
 
+STR_ROAD_NAME_ROAD                                              :الطريق
 STR_ROAD_NAME_TRAM                                              :خط الترام
 
 # Road depot construction window
@@ -2315,8 +2325,11 @@ STR_ABOUT_VERSION                                               :{BLACK}النس
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-{STRING} فريق النسخة المفتوحة
 
 # Framerate display window
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} صورة في الثانية
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} صورة في الثانية
 ############ Leave those lines in this order!!
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} منافذ العرض للعالم:
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2347,6 +2360,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}لا ت�
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}اضافات جديدة: {WHITE}{STRING}
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}الكتابة على الملف
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (دليل)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}ادخل اسم الحفظ للعبة
 
@@ -2358,6 +2372,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}عدد المدن:
 STR_MAPGEN_DATE                                                 :{BLACK}التاريخ:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد المصانع:
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}مدى تغطيت السحراء:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}مستوى البحر
@@ -2646,6 +2661,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} اشت
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة.{} التكلفة: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} الأهداف
 STR_GOALS_SPECTATOR                                             :الأهداف العالمية
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
@@ -2700,6 +2716,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظها
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}جمع بواسطة
 STR_STATION_VIEW_WAITING_AMOUNT                                 :الكمية: في الانتظار
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :المبلغ: تم تخطيطه
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} من {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} إلى {STATION}
 
@@ -3156,6 +3173,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}عرض �
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}عرض تفاصيل السفينة
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}عرض تفاصيل الطائرة
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}عمل القطار الحالي - اضغط لإيقاف / بدء القطار
 
 
 # Messages in the start stop button in the vehicle view
@@ -3167,6 +3185,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED} متوق�
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}يتوقف , {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}لا توجد طاقة
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}ينتظر لمسار متاح
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}لا يمكن الوصول للمحطة التالية لانها خارج المدى
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}تتوجة الى {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}لا يوجد اوامر وجهات , {VELOCITY}
@@ -3521,6 +3540,7 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}انقل
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}انقل للاسفل
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}انقل الذكاء الاصطناعي المختار للاسفل
 
+STR_AI_CONFIG_AI                                                :{SILVER} الذكاء الاصطناعي
 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK} اعداد
@@ -3572,6 +3592,7 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}الدخل: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}التحويل: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}حول: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}تحويل:{CURRENCY_LONG}{WHITE} / {GREEN}الدخل: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}التكلفة التقديرية {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}الدخل التقديري: {CURRENCY_LONG}
 
