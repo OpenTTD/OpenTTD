@@ -1551,8 +1551,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Sviraj zvučne 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okolina: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Sviraj zvučne efekte okoline pejzaža, industrija i gradova
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Isključi gradnju infrastrukture kada odgovarajuća vozila nisu dostupna: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kada je uključeno, infrastruktura je dostupna samo ako su dostupna i vozila za nju, sprečavajući trošenje vremena i novca na neupotrebljivu infrastrukturu
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Najveći broj vlakova po tvrtki: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Najveći broj vlakova koje tvrtka može imati
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Najveći broj cestovnih vozila po tvrtki: {STRING}
@@ -2045,7 +2043,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni k
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O IGRI
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klijenti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jezik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Krajolik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Veličina karte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzija poslužitelja: {WHITE}{STRING}
@@ -2083,8 +2080,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Odaberi 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} tvrtk{P a e i}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Najveći broj tvrtki:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ograniči poslužitelj na određeni broj tvrtki
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jezik kojim se govori:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači znat će kojim se jezikom govori na poslužitelju
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Upišite ime mrežne igre
 
@@ -2122,8 +2117,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Popis klijenata
 
 
 
-STR_NETWORK_SERVER                                              :Poslužitelj
-STR_NETWORK_CLIENT                                              :Klijent
 STR_NETWORK_SPECTATORS                                          :Promatrači
 
 # Network set password
@@ -2155,15 +2148,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nisu pronađeni mrežni uređaji
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Niti jedna mrežna igra nije pronađena
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Poslužitelj nije odgovorio na zahtjev
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Spajanje nije moguće zbog razlike u NewGRF datotekama
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Neuspješno usklađivanje s mrežnom igrom
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Izgubljena veza s mrežnom igrom
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nije moguće učitati snimljenu igru
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nije moguće pokrenuti poslužitelj
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nije se moguće spojiti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Veza #{NUM} je istekla
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Primijećena je greška u protokolu te je veza prekinuta
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizija ovog klijenta ne odgovara reviziji poslužitelja
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pogrešna zaporka
@@ -2295,7 +2285,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nisam se mogao spojiti na poslužitelj sadržaja
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Preuzimanje nije uspjelo...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... veza izgubljena
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteku nije moguće zapisati
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nije moguća dekompresija preuzete datoteke
 
@@ -2762,8 +2751,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} sličica/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} sličica/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2903,7 +2890,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Učitaj unaprijed odabrane postavke
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Spremi zadano postavljanje
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Spremi trenutni popis kao zadano postavljanje
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Upiši ime zadanog postavljanja
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Obriši zadano postavljanje
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Obriši trenutno odabrano zadano postavljanje
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Dodaj
@@ -3221,7 +3207,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nijedna 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} iz {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervirano za ukrcaj)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvaća
@@ -3786,7 +3771,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pokrenut
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalji)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Ime
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Imenuj vlak
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Imenuj cestovno vozilo
@@ -4469,7 +4453,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Ovdje nije moguće pretvoriti tramvajsku prugu...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nema prikladne ceste
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nema prikladne tramvajske pruge
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nekompatibilna tramvajska pruga
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovdje nije moguće izgraditi kanale...

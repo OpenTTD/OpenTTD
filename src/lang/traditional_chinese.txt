@@ -983,7 +983,6 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
 
 
 
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :其他
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集
@@ -1424,8 +1423,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放運輸工
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和城鎮有關的環境音效
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的運輸工具時，禁止建造基礎建設: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :如啟用此選項，設施只會在有使用它的運輸工具可供選擇時出現，避免玩家浪費時間和金錢去建造無用的設施
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每所公司擁有的列車數量上限
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :公司可擁有最大車輛數量：{STRING}
@@ -1906,7 +1903,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}點選�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}遊戲資訊
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}用戶端：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}語言：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}場景：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地圖大小：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}伺服器版本：{WHITE}{STRING}
@@ -1946,8 +1942,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} 公司
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}公司上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}限制伺服器可以建立的公司數量
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}溝通語言：
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其他人知道這個伺服器使用的溝通語言
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}為連線遊戲輸入一個名稱
 
@@ -1988,8 +1982,6 @@ STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 
 
 
-STR_NETWORK_SERVER                                              :伺服器
-STR_NETWORK_CLIENT                                              :用戶端
 STR_NETWORK_SPECTATORS                                          :旁觀者
 
 # Network set password
@@ -2021,15 +2013,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}輸入�
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}找不到網路裝置，或未以 ENABLE_NETWORK 編譯
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}找不到任何網路遊戲
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}伺服器沒有回應請求
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}因 NewGRF 不符合而無法連線
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}網路遊戲同步失敗
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}網路遊戲失去連線
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}無法載入遊戲
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}無法啟動伺服器
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}無法連線
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}連線 #{NUM} 逾時
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}通訊協定錯誤，連線已關閉
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}用戶端的版本與伺服器不符
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}密碼錯誤
@@ -2160,7 +2149,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}無法連接到內容伺服器...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下載失敗...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 失去連線
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 檔案無法寫入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}無法解壓縮已下載的檔案
 
@@ -2722,7 +2710,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}篩選�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}載入所選的設定值
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}儲存設定值
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}儲存目前清單為設定值
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}輸入設定值名稱
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}刪除設定值
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}刪除目前所選的設定值
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}新增
@@ -3028,7 +3015,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}無任�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} 來自 {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}(已預留裝載{CARGO_SHORT})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受貨物
@@ -3555,7 +3541,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已起�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細資料)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名稱
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}命名列車
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名車輛

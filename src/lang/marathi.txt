@@ -906,7 +906,6 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}ति�
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}वर्ष
 
 
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}भाषा: {WHITE}{STRING}
 
 
 

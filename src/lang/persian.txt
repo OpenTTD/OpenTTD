@@ -1271,7 +1271,6 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال مان
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {STRING}
 
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :غیر فعال کردن ساختمان مربوط به خودرویی که در دسترس نیست: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :بیشترین قطار یک شرکت: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :بیشترین خودروی‌جاده‌ای یک شرکت: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :بیشترین هواپیمای یک شرکت: {STRING}
@@ -1616,7 +1615,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}برای
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}اطلاعات بازی
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}سرویس گیرنده‌ها: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}زبان: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}زمین: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}اندازه نقشه: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}ویرایش سرویس دهنده: {WHITE}{STRING}
@@ -1654,8 +1652,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}بیشت
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} شرک{P ت تها}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}بیشترین تعداد شرکت ها:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}محدود کردن سرویس دهنده به داشتن تعداد مشخصی شرکت
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}زبان گفتگو:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دیگر بازیگران می فهمند که با چه زبانی در این سرویس دهنده گفتگو می شود
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}برای بازی شبکه‌ای یک نام وارد نمایید
 
@@ -1693,8 +1689,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست
 
 
 
-STR_NETWORK_SERVER                                              :سرویس دهنده
-STR_NETWORK_CLIENT                                              :سرویس گیرنده
 STR_NETWORK_SPECTATORS                                          :تماشاگران
 
 # Network set password
@@ -1726,15 +1720,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}متن �
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}هیچ دستگاه شبکه ای یافت نشد یا بازی بدون ENABLE_NETWORK ساخته شده
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}هیچ بازی شبکه ای یافت نشد
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}سرویس دهنده به درخواست پاسخ نمی دهد
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}محتوی NewFGRF یکسان نیست و نمی توان وصل شد
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}هماهنگ سازی بازی شبکه ای با شکست مواجه شد
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}اتصال بازی شبکه از بین رفت
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}فایل ذخیره شده بازی را نمی توان بارگزاری کرد
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}نمی توان سرویس دهنده را راه انداخت
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}نمی توان وصل شد
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}اتصال #{NUM} timed out
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}خطا در پروتکل تشخیص داده شد و اتصال بسته شد
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}ویرایش بازی این سرویس گیرنده با ویرایش سرویس دهنده مطابق نیست
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}رمز اشتباه
@@ -1860,7 +1851,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}امکان برقراری ارتباط با سرور ممکن نیست...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}دانلود ناموفق بود...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ارتباط از بین رفت
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل بارگیری شده ممکن نیست
 
@@ -2398,7 +2388,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}جست�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}مورد از پیش ثبت شده ای که انتخاب شده را بارگذاری می کند
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}ذخیره به عنوان مورد از پیش ثبت شده
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}لیست فعلی را به عنوان موارد از پیش ثبت شده ذخیره کن
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}نام برای موارد از پیش ثبت شده
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}پاک کردن مورد از پیش ثبت شده
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}مورد از پیش ثبت شده ای که انتخاب شده را پاک می کند
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}اضافه
@@ -2679,7 +2668,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}هیچ �
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} منشعب شده از {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول می کند
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
@@ -3014,7 +3002,6 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}برا�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}نام
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین

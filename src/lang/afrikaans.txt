@@ -1448,8 +1448,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel klanke vi
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgewing: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgewingsklankeffekte van die landskap, industriëe en dorpe
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiveer infrastruktuur bouery as geen geskikte voertuie beskikbaar is nie: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :As dit geaktiveer is, is infrastruktuur net beskikbaar as daar ook voertuie beskikbaar is om daardie infrastruktuur te gebruik. Dit is om tyd- en geldmors op onbruikbare infrastruktuur te voorkom.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimum aantal treine per speler: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimum hoeveelheid treine was 'n besigheid kan hê
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimum aantal padvoertuie per maatskappy: {STRING}
@@ -1940,7 +1938,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Die bedi
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPEL INFORMASIE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliënte: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Taal: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landskap: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaart groote: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verskaffer weergawe: {WHITE}{STRING}
@@ -1978,8 +1975,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies die
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Maatskap{P py pye}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimum aantal maatskappye:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Beperk die verskaffer na 'n sekere bedrag van maatskappye
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Taal gepraat:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ander spelers sal weet watter taal op die verskaffer gepraat is
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tik 'n naam in vir die netwerk speeletjie
 
@@ -2017,8 +2012,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
 
 
 
-STR_NETWORK_SERVER                                              :Verskaffer
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Aanskouers
 
 # Network set password
@@ -2050,15 +2043,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tik bood
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Geen netwerk toestelle gevind
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kan nie enige netwerk speletjies vind nie
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Die verskaffer het nie die versoek geantwoord nie
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kan nie konnekteer te danke aan newgrf mispas nie
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netwerk-Spel sinchroniseering gedop
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netwerk-Spel verbinding verloor
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kan nie spaarspel laai nie
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Verskaffer kan nie aangesit word nie
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kan nie verbinding kry nie
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbinding #{NUM} het betyds uitgeloop
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}A protokol-fout was gemaak en die verbinding was verlore
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Die hersiening van die klient is nie gelyk aan die verskaffer se hersiening nie
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Verkeerde wagwoord
@@ -2190,7 +2180,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kon nie na die inhoud diener verbind nie...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Aflaai onsuksesvol...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verloor
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... lêer nie skryfbaar nie
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon nie die afgelaaide lêer dekompakteer
 
@@ -2654,7 +2643,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} rame
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} rame
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2780,7 +2768,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laai die gekose voorafstel
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Stoor voorafinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Stoor die huidige lys as 'n voorafstel
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Sleutel 'n naam vir die voorafstel in
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Vee voorafinstelling uit
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Vee die huidige gekose voorafstel uit
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Voeg
@@ -3093,7 +3080,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Geen vra
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} vanaf {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} gereserveer vir oplaai)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aanvaar
@@ -3655,7 +3641,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Begin
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Aanwyse)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Naam
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Benoem trein
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benoem pad voertuig
@@ -4338,7 +4323,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}kan nie 
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan nie tremtipe hier omskakel nie ...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Geen geskikte pad
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Geen geskikte tremweg nie
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... onversoenbare tremweg
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan nie kanaale hier bou nie...

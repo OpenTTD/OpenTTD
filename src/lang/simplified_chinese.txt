@@ -1027,7 +1027,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}图像
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}显示刷新率
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}选择需要的屏幕刷新率
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :其他
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高于 60Hz 的刷新率可能会影响性能。
 
@@ -1513,8 +1512,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :不显示没有对应车辆的轨道建设面板: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :启用时，将不会显示没有对应车辆的建设面板，避免浪费时间和资金在无用的建设上
 STR_CONFIG_SETTING_MAX_TRAINS                                   :每间公司最大火车数量：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每间公司最多能够拥有的火车数量
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :每间公司最大汽车数量：{STRING}
@@ -2030,7 +2027,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}点击�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}游戏信息
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}客 户 端: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}语　　言： {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景类型: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}服务器版本: {WHITE}{STRING}
@@ -2076,8 +2072,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}选择�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} 公司
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}公司数量：
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}限制服务器上可以创建的公司数量
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}语言选项：
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}其他玩家可以知道服务器的官方语言
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}为您的联机游戏取名
 
@@ -2162,8 +2156,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，本次请求
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，不要再次询问
 
-STR_NETWORK_SERVER                                              :服务器
-STR_NETWORK_CLIENT                                              :客户端
 STR_NETWORK_SPECTATORS                                          :旁观者
 
 # Network set password
@@ -2195,15 +2187,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}请输�
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}未找到网络设备
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}未找到任何联机游戏
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}服务器没有响应
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}因为 NewGRF 不匹配而无法连接
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}联机游戏同步失败
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}联机游戏被断开
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}无法读取存档
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}无法启动服务器模式
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}无法连接
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}连接 #{NUM} 超时
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}传输协议错误，连接断开
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}你没有设置玩家名。玩家名可在联机游戏窗口的上面设置
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}你没有设置服务器名。玩家名可在联机游戏窗口的上面设置
@@ -2345,7 +2334,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}已下�
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}无法链接到下载服务器...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下载失败...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 链接丢失
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文件无法写入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
 
@@ -2829,8 +2817,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} fps
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} fps
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2987,7 +2973,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}过滤�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}装载选定的预定义
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}保存预定义
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}将当前组保存为预定义
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}为预定义组起名
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}删除预定义组
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}删掉当前预定义组
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}增加
@@ -3311,7 +3296,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}选择�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} 转运自 {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} 等待装货)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受
@@ -3891,7 +3875,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已开�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (详细信息)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}给列车命名
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名汽车
@@ -4580,7 +4563,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}无法�
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}无法转换电车道类型
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}没有合适的道路
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}没有合适的电车道
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... 不兼容的电车道
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}不能在这里兴建运河……

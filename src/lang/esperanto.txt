@@ -1250,7 +1250,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Ludu sonefektoj
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ĉirkaŭaĵo: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Ludu ĉirkaŭaĵa sonefektoj de pejzaĝo, industrioj kaj urboj
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Malaktivu fondan konstruon kiam decaj veturiloj ne estas disponebla: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Trajna maksimumo por ĉiu kompanio: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Stratveturila maksimumo por ĉiu kompanio: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Aviadila maksimumo por ĉiu kompanio: {STRING}
@@ -1555,7 +1554,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klaku po
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}LUDINFORMOJ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientoj: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Lingvo: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Pejzaĝo: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mapgrandeco: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versio de servilo: {WHITE}{STRING}
@@ -1593,8 +1591,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elektu k
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanio{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Kompania maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limu la servilon al certa kvanto da kompanioj
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata lingvo:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tajpu nomon por la retludo
 
@@ -1632,8 +1628,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
 
 
 
-STR_NETWORK_SERVER                                              :Servilo
-STR_NETWORK_CLIENT                                              :Kliento
 STR_NETWORK_SPECTATORS                                          :Spektantoj
 
 # Network set password
@@ -1665,15 +1659,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tajpu te
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ne povis trovi ajnan retludon
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La servilo ne respondis al la peto
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ne povis konekti pro miso pri NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Retluda sinkronigado fiaskis
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdis konekton al retludo
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ne povis ŝarĝi konservitan ludon
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ne povis eki la servilon
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ne povis konekti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Konekto #{NUM} ekstertempiĝis
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Okazis protokoleraro kaj la konekto estis fermita
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revidaĵo de la kliento ne kongruas kun la servila revidaĵo
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Malĝusta pasvorto
@@ -1784,7 +1775,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ne povis konekti al la enhavservilo...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Elŝuto fiaskis...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... nekonektis
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosiero ne skribebla
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ne povis malkompaktigi la elŝutitan dosieron
 
@@ -2273,7 +2263,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrot
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ŝarĝu la elektan antaŭaron
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Konservu antaŭaron
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Konservu la nunan liston kiel antaŭaro
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Enigu nomon por la antaŭaro
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Forviŝu antaŭaron
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Forviŝu la kurente elektan antaŭaron
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Aldonu
@@ -2497,7 +2486,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nenia ŝ
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} survoje de {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervita por ŝarĝu)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
@@ -2949,7 +2937,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komenca
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaloj)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nomo
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu trajnon
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi stratveturilon

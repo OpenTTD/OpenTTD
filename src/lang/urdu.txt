@@ -1195,7 +1195,6 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی
 
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :وسیع آواز چلایں
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :موزوں گاڑیاں نہ ہونے کی صورت میں عمارت کو غیر فعال کر دیں: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :کمپنی کی زیادہ سے زیادہ گاڑیاں: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :کمپنی کے زیادہ سے زیادہ ہوائی جہاز: {STRING}
@@ -1507,7 +1506,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}اپنے
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}کھیل کی معلومات
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}زبان: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}منظر کشی: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}نقشے کا سائز: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Server version: {WHITE}{STRING}
@@ -1545,8 +1543,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}زیاد
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} کمپنی{P "" اں}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}زیادہ سے زیادہ کمپنیاں:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}سرور پر کمپنیوں کی زیادہ سے زیادہ تعداد مقرر کریں
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}بولی گئی زبان:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دوسرے کھلاڑی سرور پر بولی جانے والی زبان کے بادے میں جان سکیں گے
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}نیٹ ورک والے کھیل کا نام لکھیں
 
@@ -1584,8 +1580,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 
 
 
-STR_NETWORK_SERVER                                              :سرور
-STR_NETWORK_CLIENT                                              :کلائینٹ
 STR_NETWORK_SPECTATORS                                          :ناظرین
 
 # Network set password
@@ -1617,15 +1611,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}نیٹ �
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}کوئی نیٹ ورک والا آلہ نہیں ملا یا کھیل کو ENABLE_NETWORK کے بغیر بنایا گیا ہے
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}نیٹ ورک پر کوئی کھیل نہیں ملا
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}سرور نے آپ کی درخواست کا جواب نہیں دیا
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF کے فرق کی وجہ سے رابطہ نہیں ہو سکا
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}نیٹ ورک کھیل کو ایک جیسا کرنے کی کوشش ناکام
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}نیٹ ورک کھیل کا رابطہ منقطع
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}بچایا ہوا کھیل لوڈ نہیں ہوسکا
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}سرور شروع نہیں ہو سکا
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}رابطہ نہیں ہوسکا
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}کنکشن #{NUM} کا وقت ختم ہوگیا
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}پروٹوکول کی خرابی کی وجہ سے رابطے کو بند کرنا پڑا
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}کلائینٹ اور سرور کا ورژن ایک جیسا نہیں ہے
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}غلط پاس ورڈ
@@ -1751,7 +1742,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}مواد والے سرور سے رابطہ ممکن نہیں ۔ ۔ ۔
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ڈاون لوڈنگ ناکام ہوگئی ۔ ۔ ۔
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}۔ ۔ ۔ رابطہ ٹوٹ گیا
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE} ۔ ۔ ۔ فائل لکھے جانے کے قابل نہیں
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ڈاون لوڈ شدہ فائل decompress نہیں ہوسکی
 
@@ -2170,7 +2160,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی �
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} سے براستہ ہے {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}{CARGO_LIST}
 

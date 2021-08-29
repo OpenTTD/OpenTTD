@@ -1421,8 +1421,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Chwarae effeith
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Cefndir: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae synau cefndirol y tirwedd, diwydiannau a threfi
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pan y galluogir, nid yw tanadeiledd ar gael nes fod cerbydau ar gael iddo, gan osgoi gwastraff arian ac amser ar danadeiledd na ellir ei ddefnyddio
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uchafswm nifer y trenau i bob cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Nifer uchafsymol y trenau y gall cwmni fod yn berchen arnynt
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uchafswm nifer y cerbydau ffordd i bob cwmni: {STRING}
@@ -1902,7 +1900,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliciwch
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}GWYBODAETH AM Y GÊM
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Gwesteion: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Iaith: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tirwedd: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Maint map: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Fersiwn gweinydd: {WHITE}{STRING}
@@ -1940,8 +1937,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Dewiswch
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} cwmni
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uchafswm nifer cwmnïau:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}rhoi cyfyngiad penodol ar sawl cwmni mae'r gweinydd yn ei ganiatáu
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'w siarad:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Rhowch enw ar gyfer y gêm rhwydwaith
 
@@ -1979,8 +1974,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleienti
 
 
 
-STR_NETWORK_SERVER                                              :Gweinydd
-STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
 
 # Network set password
@@ -2012,15 +2005,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}teipiwch
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni ddaethpwyd o hyd i ddyfeisiau rhwydwaith, neu ni chafodd y gêm ei chrynhoi gyda ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Methu darganfod unrhyw gemau rhwydwaith
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ni atebodd y gweinydd y cais
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Doedd dim modd cysylltu oherwydd nid oedd y NewGRF yn cyfateb
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Methodd y cydamseru rhwng y rhwydwaith a'r gêm
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Collwyd cysylltiad rhwydwaith y gêm
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Doedd dim modd llwytho'r gêm a gadwyd
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Methwyd a chychwyn y gweinydd
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Doedd dim modd cysylltu
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Mae cysylltiad #{NUM} wedi amseru allan
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Caewyd y cyswllt oherwydd gwall protocol
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Nid y fersiwn y gwestai yn cyfateb i fersiwn y gweinydd
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Cyfrinair anghywir
@@ -2150,7 +2140,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Methwyd â chysylltu i'r gweinydd cynnwys...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Methodd y llwytho i lawr...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... collwyd y cysylltiad
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dim modd ysgrifennu'r ffeil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Doedd dim modd datgywasgu'r ffeil
 
@@ -2702,7 +2691,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Llinyn 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Llwytho'r rhagosodiad a ddewiswyd
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Cadw rhagosodiad
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Cadw'r rhestr gyfredol fel rhagosodiad
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Rhoi enw ar gyfer y rhagosodiad
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Dileu rhagosodiad
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Dileu'r rhagosodiad a ddewiswyd
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ychwanegu
@@ -3007,7 +2995,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nid oes 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} o {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} wedi ei gadw ar gyfer llwytho)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Derbyn
@@ -3539,7 +3526,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Wedi dec
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Manylion)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Enw
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Enwi trên
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cerbyd ffordd

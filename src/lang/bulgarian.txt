@@ -1410,8 +1410,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Изпълня�
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Фон: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Изпълнявай фоновите звукови ефекти на ландшафта, индустриите и градовете
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ако тази опция бъде активирана, строенето на инфраструктура е възможно, единствено ако е възможно да построите превозни средства, предотвратявайки загубата на време и пари строеки неизползваема инфраструктура
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Макс. брой влакове за компания: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Максимално количество влакове на компанията
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой коли за компания: {STRING}
@@ -1861,7 +1859,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нати
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФО ЗА ИГРАТА
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Играчи: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Език: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Пейзаж: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Големина на картата: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия на сървъра: {WHITE}{STRING}
@@ -1899,8 +1896,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Избо
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компани{P а ий}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. брой компании:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничаване на играта до определен брой компании
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Говорим език:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Въведете име за мрежовата игра
 
@@ -1938,8 +1933,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с
 
 
 
-STR_NETWORK_SERVER                                              :Сървър
-STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
 # Network set password
@@ -1971,15 +1964,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Въве
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не са открити мрежови устройства или е компилирано без ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не може да открия мрежови игри
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сървърът не отговори на заявката
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Не може да се свърже поради различие в NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Синхронизацията на мрежовата игра се провали
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Връзката с мрежовата игра се загуби
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не може да отвори запазената игра
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Сървъра не може да бъде стартиран
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не може да се свърже
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Връзка #{NUM} изтече времето
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Връзката бе прекъсната поради открита грешка в протокола
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Ревизията на клиента не отговаря на сървъра
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Грешна парола
@@ -2108,7 +2098,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не може да се осъществи връзка със сървъра...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Изтеглянето провалено...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... връзката е прекъсната
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... файла е незаписваем
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не може да се декомпресира изтегления файл
 
@@ -2662,7 +2651,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Фил�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Зареди избрания шаблон
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Запиши шаблон
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Запиши текущия списък като шаблон
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Въведи име на шаблона
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Изтрий шаблон
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Изтрий текущо избрания шаблон
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Добави
@@ -2955,7 +2943,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Няма
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} на път от {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} запазени за товарене)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приема
@@ -3485,7 +3472,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Пусн
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Подробности)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Име
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Име на влак
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Преименувай МПС-то
@@ -4153,7 +4139,6 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не м�
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... тук няма път
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... няма трамвайни линии
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Няма подходящ път
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несъвместима трамвайна линия
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тук не е възможно да се прокопае канал...

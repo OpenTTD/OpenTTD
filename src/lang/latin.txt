@@ -1628,8 +1628,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Sinere vehicula
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambientes: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Sinere sonos ambientes industriarum, oppidorum, terraeque fieri
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Vetare constructionem infrastructurae dum nulla vehicula parabilia sunt: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Electa, infrastructura modo parabilis est si adsunt vehicula parabilia. Itaque non licet absumere pecuniam tempusque struendi infrastructuram inutilem
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Numerus maximus traminum cuiusque societatis: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numerus maximus hamaxostichorum quos societas habere licet
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numerus maximus vehiculorum viariorum cuiusque societatis: {STRING}
@@ -2113,7 +2111,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Eligere 
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}LUDI INDICIA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Lingua: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terra: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Magnitudo tabulae: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Editio servatri: {WHITE}{STRING}
@@ -2151,8 +2148,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Eligere 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} societa{P s tes}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Societates maximae:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Eligere numerum maximum societatum
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua adhibita:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Lingua in servatro adhibita
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Inscribe nomen ludi retis
 
@@ -2190,8 +2185,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
 
 
 
-STR_NETWORK_SERVER                                              :Servatrum
-STR_NETWORK_CLIENT                                              :Cliens
 STR_NETWORK_SPECTATORS                                          :Spectatores
 
 # Network set password
@@ -2223,15 +2216,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inscribe
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nullae res retis inventae
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nulli ludi in rete inventi
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Nulla responsa a servatro
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non potest iungere propter NewGRF imparia
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synchronizatio ludi retis defecit
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Connexus retis amissus
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Non potest legere ludum servatum
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Servatrum non potest incipi
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Non potest coniungere
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connexus #{NUM} defecit
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Error protocolis adfuit atque connexus clausus est
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Editio clientis impar est editioni servatri
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Tessera impar
@@ -2371,7 +2361,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Non poterat iungere ad rerum servatrum...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Transmissio defecit...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexus amissus
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fasciculus non scriptabilis
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Non poterat fasciculum arcessitum decomprimere
 
@@ -2931,7 +2920,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Series 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Legere rationem electam
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Servare rationem
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Servare hanc indicem rationi
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Inscribere nomen rationis
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Delere rationem
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Delere rationem electam
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Addere
@@ -3247,7 +3235,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nullum o
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} a {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservata ad onerandum)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accipit
@@ -3794,7 +3781,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Incohatu
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Indicia)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nominare
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nominare tramen
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nominare vehiculum

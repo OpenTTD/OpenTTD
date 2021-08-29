@@ -1415,8 +1415,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Seinn maisíoch
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :comhthimpeallach: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Seinn maisíochtaí fuaime comhthimpeallach tírdhreacha, tionscail agus bailte
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Má tá seo cumasaithe, ní bhíonn bonneagar ar fáil ach amháin má tá feithiclí ar fáil dó freisin, rud a fhágann nach gcuirfear am agus airgead amú ar bhonneagar neamhoiriúnach
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uaslíon na dtraenacha in aghaidh na cuideachta: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Uaslíon na dtraenacha is féidir a bheith ag cuideachta
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uaslíon na bhfeithiclí bóthair in aghaidh na cuideachta: {STRING}
@@ -1894,7 +1892,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliceái
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}FAISNÉIS FAOIN gCLUICHE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Cliaint: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Teanga: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tírdhreach: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Méid na léarscáile: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Leagan an fhreastalaí: {WHITE}{STRING}
@@ -1932,8 +1929,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Roghnaig
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P ch ch ch gc c}uideachta
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uaslíon na gcuideachtaí:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Déan an freastalaí a theorannú go líon áirithe cuideachtaí
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}An teanga a labhraítear:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beidh a fhios ag imreoirí eile cén teanga a labhraítear ar an bhfreastalaí
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Iontráil ainm don chluiche líonra
 
@@ -1971,8 +1966,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta na gclia
 
 
 
-STR_NETWORK_SERVER                                              :Freastalaí
-STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Féachadóirí
 
 # Network set password
@@ -2004,15 +1997,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Iontrái
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Níor aimsíodh aon ghléas líonra nó tiomsaíodh gan ENABLE_NETWORK é
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Níorbh fhéidir aon chluiche líonra a aimsiú
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Níor thug an freastalaí freagra don iarratas
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Níorbh fhéidir nascadh de bharr mímheaitseáil NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Theip ar sioncronú Líonra-Cluiche
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Cailleadh an nasc idir an líonra agus an cluiche
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Níorbh fhéidir cluiche sábháilte a lódáil
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Níorbh fhéidir an freastalaí a thosú
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Níorbh fhéidir nascadh
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Am istigh ar nasc #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Aimsíodh earráid prótacail agus dúnadh an nasc
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Ní hionann leasú an chliaint seo agus leasú an fhreastalaí
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pasfhocal mícheart
@@ -2142,7 +2132,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Níorbh fhéidir nascadh leis an bhfreastalaí inneachair...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Theip ar an íoslódáil...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... cailleadh an nasc
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... níl an comhad inscríofa
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Níorbh fhéidir an comhad íoslódáilte a dhíchomhbhrú
 
@@ -2685,7 +2674,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Teaghr�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Lódáil an réamhshocrú roghnaithe
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sábháil réamhshocrú
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sábháil an liosta reatha mar réamhshocrú
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Iontráil ainm don réamhshocrú
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Scrios réamhshocrú
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Scrios an réamhshocrú atá roghnaithe faoi láthair
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Cuir leis
@@ -2989,7 +2977,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Níl las
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ar an mbealach ó {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} forchoimeádta i gcomhair lódála)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Glactar le
@@ -3506,7 +3493,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Tosaithe
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Sonraí)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Ainm
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Ainmnith traein
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ainmnigh feithicil bóthair

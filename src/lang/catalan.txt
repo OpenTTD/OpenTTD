@@ -1033,7 +1033,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gràfics
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Rati de refresc de la pantalla
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Seleccioneu el rati de refresc de la pantalla que voleu usar.
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :altres
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratis de refresc major a 60{NBSP}Hz poden causar problemes de rendiment.
 
@@ -1519,8 +1518,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodueix els 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodueix efectes de so ambient del paisatge, les indústries i les poblacions
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infraestructures quan no hi hagi disponibles vehicles adequats: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infraestructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Màxim nombre de trens per companyia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Màxim nombre de trens que pot tenir una companyia
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Màxim nombre d'automòbils per companyia: {STRING}
@@ -2036,7 +2033,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clica pe
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓ DE LA PARTIDA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Escenari: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mida del mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versió del servidor: {WHITE}{STRING}
@@ -2084,8 +2080,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tria el 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} companyi{P a es}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Màxim nombre de companyies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita el servidor a un cert nombre de companyies
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma parlat:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Els altres jugadors sabran quin idioma es parla en aquest servidor.
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Posa el nom de la partida en xarxa
 
@@ -2171,8 +2165,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, aquest una vegada.
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no ho preguntis més.
 
-STR_NETWORK_SERVER                                              :Servidor
-STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
 # Network set password
@@ -2204,15 +2196,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No s'han trobat dispositius de xarxa.
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}No s'ha pogut trobar cap partida en xarxa
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}S'ha refusat o s'ha esgotat el temps de connexió amb el servidor.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}No s'ha pogut connectar degut a una diferència de NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Ha fallat la sincronització de la partida en xarxa
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}S'ha perdut la connexió a la partida en xarxa
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}No s'ha pogut carregar la partida
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}No s'ha pogut iniciar el servidor
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}No s'ha pogut connectar
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexió #{NUM} ha esgotat el temps d'espera
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}S'ha obtingut un error de protocol i s'ha tancat la connexió
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}No s'ha escollit un nom per al vostre jugador. El nom es pot establir a la part superior de la finestra de mode multijugador.
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}No s'ha establit un nom per al vostre servidor. El nom s'estableix a la part superior de la finestra multijugador.
@@ -2355,7 +2344,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}{
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No s'ha pogut connectar amb el servidor de continguts...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}La descàrrega ha fallat...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexió perduda
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no es pot escriure al fitxer
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els arxius descarregats
 
@@ -2839,8 +2827,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{NBSP}fps
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{NBSP}fps
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA}{NBSP}ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}{NBSP}s
 ############ Leave those lines in this order!!
@@ -2997,7 +2983,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa configuració
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Desa la llista actual com a predefinició
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introdueix el nom de la predefinició
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Esborra configuració
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Esborra la predefinició selecciona actualment
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Afegeix
@@ -3321,7 +3306,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Seleccio
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} des de {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}(reservat per carregar: {CARGO_SHORT})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepta
@@ -3901,7 +3885,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Engegat
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalls)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nom
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Anomena tren
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena automòbil
@@ -4590,7 +4573,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Aquí no
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Aquí no es pot convertir el tipus de tramvia...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}No hi ha una carretera adequada.
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}No hi ha vies de tramvia adequades.
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... El tipus de tramvia és incompatible.
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Aquí no es poden construir canals...

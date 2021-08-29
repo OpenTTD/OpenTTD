@@ -1377,7 +1377,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spel lydar frå
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spel omgivelseslydar frå landskap, industri og byar.
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ikkje tillet konstruksjon av infrastruktur om ingen passande køyretøy er tilgjengeleg: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antal tog per firma: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalt antal tog eit firma kan eige.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antal bilar per firma: {STRING}
@@ -1818,7 +1817,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikk fo
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPELOVERSIKT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientar: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Språk: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landskapt: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartstorleik: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tenarversjon: {WHITE}{STRING}
@@ -1856,8 +1854,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel maks
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firma
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. antal firma:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begrens tenaren til eit visst antal firma
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som vert tala på tenaren:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spelarar skal vete kva språk ein talar på denne tenaren
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gje eit namn til nettverksspelet
 
@@ -1895,8 +1891,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klie
 
 
 
-STR_NETWORK_SERVER                                              :Tenar
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
 
 # Network set password
@@ -1928,15 +1922,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv te
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Finn ikkje nettverksadapter eller kompilert utan ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunne ikkje finne nokon nettverksspel
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Tenaren svarte ikkje på spørringa
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunne ikkje koble til grunna NewGRF-filer som ikkje passar saman
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering i nettverksspelet feila
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mista tilkoblinga til nettverksspelet
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunne ikkje laste inn spel
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Klarte ikkje å starte tenaren
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Klarte ikkje å opprette tilkobling
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tilkobling #{NUM} vart tidsavbrote
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Det skjedde ein protokoll-feil, så tilkoblinga ble brote
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klientversjonen er ikkje den same som tenarversjonen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Feil passord
@@ -2066,7 +2057,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikkje koble til innhaldstenar...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Nedlasting mislukkast...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... mista tilkobling
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fila er ikkje skrivbar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ikkje pakka ut den nedlasta fila
 
@@ -2609,7 +2599,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Søkefi
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn det valde førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lagre den noverande lista som eit førehandsoppsett
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skriv inn eit namn på førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Slett førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Slett det valde førehandsoppsett
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Legg til
@@ -2909,7 +2898,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Inga var
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} på veg frå {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservert for lasting)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aksepterer
@@ -3426,7 +3414,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljar)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namn
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Namngje tog
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namngje køyretøy

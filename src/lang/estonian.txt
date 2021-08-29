@@ -1083,7 +1083,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekraani värskendussagedus
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vali, mis värskendussagedust kasutada
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :muu
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Värskendussagedused üle 60Hz võivad jõudlusele löögi anda.
 
@@ -1560,8 +1559,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Kostuvad sõidu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Taustahelid: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tööstustest ja asulatest kostuvad taustahelid
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Sobivate sõidukite puudumisel on taristu ehitamine keelatud: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Sisse lülitamisel on taristu ehitamine võimalik ainult juhul, kui sellega seonduvad sõidukid on juba saadaval. Väldib mõttetut raha ja aja kulu, kui ehitatakse taristu, mida ei saa kasutada
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Ettevõtte rongide ülempiirang: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Ettevõttele kuuluvate rongide arvu ülempiirang
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Ettevõtte mootorsõidukite ülempiirang: {STRING}
@@ -2074,7 +2071,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klõpsa,
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MÄNGU ANDMED
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliente: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Keel: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Maastik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaardi mõõtmed: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serveri versioon: {WHITE}{STRING}
@@ -2120,8 +2116,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määrab
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} ettevõte{P "" t}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Ettevõtteid kuni:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Piirab serveris olevate ettevõtete arvu
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Suhtluskeel:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Teavitab teisi mängijaid, mis keeles serveris rääkida
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sisesta mitmikmängu nimi
 
@@ -2192,8 +2186,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Kas ole
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Kas oled kindel, et soovid nullida ettevõtte '{COMPANY}' salasõna?
 
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
 
 # Network set password
@@ -2225,15 +2217,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sisesta 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Võrgukaarti ei leitud või kompileeritud ilma võtmeta ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ei leidnud ühtegi mitmikmängu
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server ei vastanud päringule
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ühendus ebaõnnestus NewGRF-i sobimatuse tõttu
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Mitmikmängu sünkroonimine ebaõnnestus
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mitmikmängu ühendus katkes
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Salvestatud mängu laadimine ebaõnnestus
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ei saa uut serverit alustada
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ei õnnestu ühendada
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Ühendus nr {NUM} aegus
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tekkis protokolliviga ja ühendus katkes
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Sinu mängijale ei ole nime määratud. Nime saab määrata mitmikmägu akna ülaosas
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Kliendi osa ei vasta serveri osaga
@@ -2371,7 +2360,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Aineste keskserveriga ei õnnestu ühenduda...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Allalaadimine ebaõnnestus...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ühendus katkes
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail pole kirjutatav
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Alla laaditud faili ei saa lahti pakkida
 
@@ -2855,8 +2843,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kaadrit/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kaadrit/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3013,7 +2999,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Märks�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laadi valitud eelseadistused
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvesta eelseadistus
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvesta praegune loend eelseadistusena
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Sisesta eelseadistuse nimi
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Kustuta eelseadistus
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Kustuta hetkel valitud eelseadistus
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Lisa
@@ -3337,7 +3322,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Veoseid 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} jaamast «{STATION}»)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} kinni laadimiseks)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Võtab vastu
@@ -3915,7 +3899,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Started
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (täpsustused)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nimi
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nimeta rong
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeta maanteesõiduk
@@ -4605,7 +4588,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Siin ei 
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Siin ei saa trammiliiki ümber muuta...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Puudub sobilik tee
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Puudub sobiv trammitee
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... mitteühilduv trammitee
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Siia ei saa kanaleid ehitada...

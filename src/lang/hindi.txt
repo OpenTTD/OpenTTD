@@ -596,8 +596,6 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :इस्पा
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -1030,7 +1028,6 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}पट�
 
 
 # Road construction errors
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... असंगत ट्रामवे
 
 # Waterway construction errors
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... पानी पर बनाया जाना चाहिये।

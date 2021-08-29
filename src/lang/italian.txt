@@ -1025,7 +1025,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafica
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Frequenza di aggiornameno dello schermo
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Seleziona la frequenza di aggiornamento dello schermo da utilizzare
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :altro
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Frequenze di aggiornamento maggiori di 60Hz potrebbero impattare le prestazioni.
 
@@ -1521,8 +1520,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Emette gli effe
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambientazione: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Emette i suoni ambientali del paesaggio, delle industrie e delle città
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disabilita costruzione delle infrastrutture quando non sono disponibili veicoli adatti: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Se abilitata, le infrastrutture sono disponibili solo se ci sono veicoli adatta disponibili, evitando così lo spreco di tempo e denaro in infrastrutture inutilizzabili
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Numero massimo di treni per compagnia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numero massimo di treni che una compagnia può possedere
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numero massimo di automezzi per compagnia: {STRING}
@@ -2035,7 +2032,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Fare cli
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMAZIONI PARTITA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Client: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Lingua: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paesaggio: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Dimensione mappa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versione server: {WHITE}{STRING}
@@ -2078,8 +2074,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Imposta 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagni{P a e}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Limite compagnie:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita il server a un certo numero di compagnie
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Inserire il nome della partita
 
@@ -2121,8 +2115,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sei sicuro di voler eliminare la compagnia '{COMPANY}'?
 
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spettatori
 
 # Network set password
@@ -2154,15 +2146,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inserire
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nessun dispositivo di rete trovato
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Impossibile trovare partite in rete
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Il server non ha risposto alla richiesta
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Impossibile connettersi a causa di file NewGRF differenti
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizzazione alla partita in rete non riuscita
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Connessione alla partita in rete persa.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Impossibile caricare la partita salvata
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Impossibile avviare il server
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Impossibile connettersi
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tempo scaduto per la connessione #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Un errore di protocollo ha chiuso la connessione
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revisione di questo client non corrisponde a quella del server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Password errata
@@ -2299,7 +2288,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Impossibile connettersi al server contenuti...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Download non riuscito...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connessione persa
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... impossibile scrivere il file
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossibile decomprimere il file scaricato
 
@@ -2789,8 +2777,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frame/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frame/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2942,7 +2928,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salva profilo
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salva la lista corrente in un profilo
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Inserire il nome del profilo
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Elimina profilo
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Elimina il profilo attualmente selezionato
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Aggiungi
@@ -3265,7 +3250,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non c'è
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {G "da " dall' "dalla "}{STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} riservati per il caricamento)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accetta
@@ -3844,7 +3828,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Avviato
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Dettagli)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nome
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Rinomina il treno
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Rinomina l'automezzo
@@ -4532,7 +4515,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Impossib
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Impossibile convertire il tipo di tram qui...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nessuna strada adatta
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nessuna tranvia adatta
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tranvia non compatibile
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossibile costruire qui il canale...

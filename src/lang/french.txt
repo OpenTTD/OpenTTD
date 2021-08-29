@@ -1033,7 +1033,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK} Graphiq
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK} Taux de rafraîchissement de l'affichage
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK} Sélectionnez la fréquence de rafraîchissement à utiliser
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :autres
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE} Les taux de rafraîchissement supérieurs à 60Hz peuvent avoir un impact sur les performances.
 
@@ -1519,8 +1518,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Jouer les effet
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Jouer les effets sonores d'ambiance du terrain, des industries et des villes
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Désactiver la construction d'infrastructure lorsqu'il n'y a pas de véhicule adapté disponible{NBSP}: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Lorsqu'il est activé, les infrastructures ne sont disponibles que si des véhicules sont disponibles, évitant de gaspiller du temps et de l'argent pour des infrastructures inutilisables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nombre maximum de trains par compagnie{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Nombre maximum de trains qu'une compagnie peut avoir
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nombre maximum de véhicules routiers par compagnie{NBSP}: {STRING}
@@ -2036,7 +2033,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliquer 
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFOS SUR LE SERVEUR
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients{NBSP}: {WHITE}{COMMA}/{COMMA} − {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Langue{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terrain{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Taille de la carte{NBSP}: {WHITE}{COMMA}{NBSP}×{NBSP}{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Version du serveur{NBSP}: {WHITE}{STRING}
@@ -2082,8 +2078,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choisir 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagnie{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Nombre de compagnies maximum{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limiter le serveur à un certain nombre de compagnies
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue utilisée{NBSP}:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Entrer un nom pour la partie en réseau
 
@@ -2169,8 +2163,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Non
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Oui, cette fois uniquement
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Oui, ne plus me demander
 
-STR_NETWORK_SERVER                                              :Serveur
-STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectateurs
 
 # Network set password
@@ -2202,15 +2194,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer l
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Aucun périphérique réseau trouvé
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La connexion au serveur a dépassé le temps d'attente ou a été refusée
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Échec de la connexion{NBSP}: NewGRF requis
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La synchronisation de la partie réseau a échoué
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La connexion de la partie réseau a été perdue
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}La sauvegarde serveur n'a pas pu être chargée
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Le serveur n'a pas pu être démarré
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Échec de la connexion
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexion n°{NBSP}{NUM} a dépassé le temps d'attente
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Une erreur de protocole a été détectée et la connexion a été fermée
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Vous n'avez pas de nom. Il doit être entré en haut de la fenêtre Multijoueur
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Le nom de serveur n'a pas été défini. Le nom peut être défini en haut de la fenêtre multijoueur
@@ -2353,7 +2342,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de modules impossible...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Échec du téléchargement...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexion perdue
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichier non enregistrable
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossible de décompresser le fichier téléchargé
 
@@ -2837,8 +2825,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} images/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} images/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2995,7 +2981,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtre{
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Charger la liste sélectionnée
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sauver la liste
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sauver la liste courante
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Entrer un nom pour la liste
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Supprimer la liste
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Supprimer la liste sélectionnée
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ajouter
@@ -3319,7 +3304,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Pas de m
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} venant de {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} réservé au chargement)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepte
@@ -3899,7 +3883,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Démarr�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Détails)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nom
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renommer le train
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renommer le véhicule
@@ -4588,7 +4571,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Impossib
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Impossible de convertir le type de voie de tramway...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Aucune route convenable
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Aucune voie de tramway convenable
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... voie de tramway incompatible
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossible de construire un canal ici...

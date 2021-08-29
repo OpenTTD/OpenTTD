@@ -1027,7 +1027,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Menampilkan kecepatan refresh
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Pilih laju penyegaran layar yang akan digunakan
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :lain
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Kecepatan refresh yang lebih tinggi dari 60Hz dapat memengaruhi kinerja.
 
@@ -1512,8 +1511,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mainkan efek su
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambien: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Mainkan suara ambien pemandangan, industri dan kota
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Matikan infrastruktur bangunan saat tak ada kendaraan yang tersedia: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Jika diaktifkan, infrastruktur cuma tersedia jika ada kendaraan tersedia, mencegah buang waktu dan uang di infrastruktur yang tidak bisa digunakan
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. kereta tiap pemain: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Batas jumlah kereta yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. kendaraan jalan raya tiap perusahaan: {STRING}
@@ -2029,7 +2026,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik unt
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO PERMAINAN
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Bahasa: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ukuran "Tileset": {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Ukuran Peta: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versi Server: {WHITE}{STRING}
@@ -2075,8 +2071,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pilih ju
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Perusahaan
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimum jumlah perusahaan:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Batasi jumlah perusahaan pada server
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa pembicaraan:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama dari permainan di jaringan
 
@@ -2160,8 +2154,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Tidak
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ya, kali ini
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Iya, Jangan tanya lagi
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penonton
 
 # Network set password
@@ -2193,15 +2185,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Masukkan
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Tak menemukan perangkat jaringan atau kompilasi tanpa "ENABLE_NETWORK"
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Tidak menemukan permainan di jaringan
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server tidak merespon
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Tak dapat tersambung karena NewGRF tidak cocok
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinkronisasi permainan jaringan gagal
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Koneksi ke permainan jaringan terputus
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Tak dapat membuka game tersimpan
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Tak dapat memulai server
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Tak dapat tersambung
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Waktu Koneksi #{NUM} telah habis
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Kesalahan protokol, koneksi ditutup
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Nama permainan belum disetel. Nama bisa diatur di bagian atas jendela Multiplayer
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nama server Anda belum ditetapkan. Nama dapat diatur di bagian atas jendela Multiplayer
@@ -2343,7 +2332,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke server
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Gagal mengunduh...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... koneksi terputus
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapat mengembangkan file terunduh
 
@@ -2827,8 +2815,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} bingkai/detik
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} bingkai/dtk
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2985,7 +2971,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Saring 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Baca kembali setingan terdahulu yang terpilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Simpan daftar ini dalam daftar aturan
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Masukkan nama
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Hapus
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Hapus daftar aturan yang terpilih
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Tambahkan
@@ -3309,7 +3294,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tidak ad
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} dari {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} direservasi untuk memuat)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Menerima
@@ -3888,7 +3872,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Mulai
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detail)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nama
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama kereta
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kendaraan
@@ -4577,7 +4560,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tidak da
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Tidak dapat mengubah tipe tram disini...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Tidak ada jalan yang cocok
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Jalur Tram tidak ada yang cocok
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... Rel trem yang tidak kompatibel
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tidak dapat membangun kanal disini...

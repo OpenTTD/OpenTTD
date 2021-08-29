@@ -1110,7 +1110,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiky
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Obnovovací frekvence obrazovky
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Zvolit obnovovací frekvenci obrazovky
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :ostatní
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Obnovovací frekvence vyšší než 60Hz může mít dopad výkon.
 
@@ -1585,8 +1584,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Přehrávat zvu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Zvuky prostředí: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Přehrávat zvukové efekty terénu, průmyslu a měst
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázat zastávky, když nejsou dostupná příslušná vozidla: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pokud je zapnuto, infrastruktura je dostupná pouze pokud jsou k dispozici vozidla, která ji mohou používat. Zamezí ztrátě času a peněz za budovaní nevyužitelné infrastruktury
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vlaků na společnost: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximální počet vlaků, které může společnost vlastnit
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum silničních vozidel na společnost: {STRING}
@@ -2098,7 +2095,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknut�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O HŘE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientů: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jazyk: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Prostředí: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velikost mapy: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verze hry na serveru: {WHITE}{STRING}
@@ -2140,8 +2136,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol nej
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} společnost{P "" i í}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximální počet společností:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Omezit serverem počet společností
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk ve hře:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadej jméno této síťové hry
 
@@ -2187,8 +2181,6 @@ STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Poslat z
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Jste si jisti, že chcete smazat společnost '{COMPANY}'?
 
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
 # Network set password
@@ -2220,15 +2212,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadej zp
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Žádná síťová zařízení nebyla nalezena
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nenalezena žádná síťová hra
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server neodpověděl na požadavek
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nelze se připojit kvůli rozdílným grafikám
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Síť - synchronizace hry selhala
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Síť - spojení ztraceno
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nelze nahrát uloženou hru ze serveru
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nelze spustit server
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nelze se připojit
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}U spojení č. {NUM} byl překročen čekací limit
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Vznikla chyba v protokolu a naše spojení je přerušeno
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revize hry tohoto klienta neodpovídá revizi hry na serveru
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Špatné heslo
@@ -2365,7 +2354,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nešlo se připojit k serveru s obsahem...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Stahování selhalo...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... spojení bylo ztraceno
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... do souboru nešlo zapsat
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nešlo rozbalit stažený soubor
 
@@ -2855,8 +2843,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} sním{P "ek" "ky" "ků"}/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} sním{P "ek" "ky" "ků"}/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3013,7 +2999,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrov
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložit tento seznam jako předvolbu
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Zadej název předvolby
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Smazat předvolbu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Odstranit vybranou předvolbu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Přidat
@@ -3336,7 +3321,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nečeká
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} z {NBSP}{STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervováno pro naložení)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijímá
@@ -3917,7 +3901,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Puštěn
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaily)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Jméno
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pojmenovat vlak
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pojmenovat silniční vozidlo
@@ -4606,7 +4589,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Zde nelz
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Zde nelze změnit druh tramvajové tratě...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Neexistuje vhodná silnice
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Neexistuje vhodná tramvajová trať
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nevhodný typ tramvajové tratě
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Zde nelze postavit průplav...

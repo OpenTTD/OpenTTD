@@ -1452,8 +1452,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efec
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Son ambiente: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir efectos de son ambiente de paisaxe, industrias e cidades
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactivar construción de infraestruturas cando non haxa vehículos adecuados dispoñíbels: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cando estea activado, unha infraestrutura estará dispoñíbel se hai tamén vehículos dispoñíbels, previndo desperdicios de tempo e cartos nunha infraestrutura inutilizábel
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trens por xogador: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trens que unha compañía pode ter
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de vehículos de estrada por compañía: {STRING}
@@ -1942,7 +1940,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Pincha p
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DA PARTIDA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Lingua: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaxe: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño do mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión do servidor: {WHITE}{STRING}
@@ -1980,8 +1977,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolle 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compañía{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Número máx. de compañías:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros xogadores saberán cal é o idioma que se fala no servidor
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Escribe un nome para a partida en rede
 
@@ -2019,8 +2014,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de client
 
 
 
-STR_NETWORK_SERVER                                              :Servidor
-STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
 # Network set password
@@ -2052,15 +2045,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Non se atoparon dispositivos de rede
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Non se atoparon xogos en rede
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor non respondeu á solicitude
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non se pode conectar debido a un problema cos NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronización da partida en rede fallida
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdeuse a conexión da partida en rede
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Non se pode carga-la partida
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Non se puido inicia-lo servidor
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Non se puido conectar
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Conexión #{NUM} fóra de tempo
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Detectouse un erro de protocolo e pechouse a conexión
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A revisión deste cliente non é igual ca revisión do servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasinal incorrecto
@@ -2191,7 +2181,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Non se pode conectar ó servidor de contidos...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga fallida...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... perdeuse a conexión
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... arquivo non escribible
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Non se puido descomprimi-lo arquivo descargado
 
@@ -2658,8 +2647,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frames por segundo
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frames por segundo
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2799,7 +2786,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrar
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carga-lo perfil seleccionado
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gravar perfil
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Grava-la lista actual coma un perfil
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Escribe un nome para o perfil
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar perfil
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borra-lo perfil seleccionado actualmente
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Engadir
@@ -3117,7 +3103,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non qued
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en ruta dende {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para cargar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
@@ -3678,7 +3663,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Arrancad
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalles)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nome
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear tren
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear vehículo de estrada
@@ -4354,7 +4338,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Non se p
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Non se pode converter o tipo de tranvía aquí...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Estrada inválida
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Vía de tranvía inadecuada
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tranvía incompatible
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Non se poden construír canles aquí...

@@ -1304,7 +1304,6 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Perbelanjaan ku
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembinaan: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Nyahaktif infrastruktur bangunan apabila tiada kenderaan yang sesuai: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Amaun maksimum kereta api setiap syarikat: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Amaun maksimum kenderaan jalanraya setiap syarikat: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Jumlah maksimum kenderaan darat sesebuah syarikat
@@ -1656,7 +1655,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik unt
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MAKLUMAT PERMAINAN
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Bahasa: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Lanskap: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Saiz peta: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versi pelayan: {WHITE}{STRING}
@@ -1694,8 +1692,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tentukan
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} syarikat
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Amaun maksimum syarikat:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Hadkan bilangan syarikat dalam pelayan
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa yang digunakan:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain lain akan tahu bahasa apa yang digunakan di pelayan ini
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama untuk permainan rangkaian
 
@@ -1733,8 +1729,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Senarai klien
 
 
 
-STR_NETWORK_SERVER                                              :Pelayan
-STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penyaksi
 
 # Network set password
@@ -1766,15 +1760,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Masukkan
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Alat rangkaian tidak dijumpa atau dikumpul tanpa ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Tidak boleh jumpa permainan rangkaian
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Pelayan itu tidak menjawabkan permohonan ini
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Tidak boleh sambung kerana NewGRF yang tidak sama
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinkronisasi permainan rangkaian gagal
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Sambungan permainan rangkaian terputus
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Simpanan permainan tidak dapat dibuka
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Tidak boleh memulakan pelayan ini
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Tidak boleh bersambung
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Penyambungan #{NUM} 'timed out'
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Kesilapan protokol telah dikesan dan penyambungan ditutup
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versi klien ini tidak berpadanan dengan versi pelayan
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Kata laluan salah
@@ -1901,7 +1892,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tidak boleh menyambung ke pelayan kontent...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Muat turun gagal...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... sambungan hilang
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail tidak boleh ditulis
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tidak dapat menyahmampat fail yang dimuat turun
 
@@ -2437,7 +2427,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}String 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Buka pratetapan yang dipilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan pratetapan
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Simpan senarai ini sebagai pratetapan
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Masukkan nama untuk pratetapan
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Padamkan pratetapan
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Padamkan pratetapan yang telah dipilih
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Tambah
@@ -2718,7 +2707,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tiada ka
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} dalam perjalanan daripada {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Terima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tunjukkan senarai kargo yang diterima
@@ -3205,7 +3193,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Sudah Mu
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Butiran)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nama
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama keretapi
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kenderaan jalanraya

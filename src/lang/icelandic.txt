@@ -1351,8 +1351,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spila hljóð f
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umlykjandi: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spila umlykjandi hljóð frá landslagi, iðnaði og bæjum
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gera óvirkar byggingar tengd farartækjum sem eru ófáanleg: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ef þessi stilling er virk eru byggingartól fyrir farartæki aðeins virk ef þau farartæki eru í boði, þetta kemur í veg fyrir eyðslu á tíma og peningum og ónothæfar framkvæmdir
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Lestir á leikmann mest: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Hámarksfjöldi járnbrautarlesta sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Bifreiðir á leikmann mest: {STRING}
@@ -1759,7 +1757,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Smelltu 
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}UPPLÝSINGAR UM LEIK
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Notendur: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Tungumál: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landslag: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Stærð korts: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Útgáfa á þjóni: {WHITE}{STRING}
@@ -1797,8 +1794,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Veldu h�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Fyrirtæki
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Hámarksfjöldi fyrirtækja:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Takmarka fjölda fyrirtækja á vefþjóni
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sláðu inn nafn netleiksins
 
@@ -1836,8 +1831,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leik
 
 
 
-STR_NETWORK_SERVER                                              :Þjónn
-STR_NETWORK_CLIENT                                              :Notandi
 STR_NETWORK_SPECTATORS                                          :Áhorfendur
 
 # Network set password
@@ -1869,15 +1862,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sláðu 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Enginn netbúnaður fannst eða vistþýtt án ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Fann enga netleiki
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Þjóninn svaraði ekki fyrirspurninni
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Gat ekki tengst vegna NewGRF misræmis
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Samstilling netleiks mistókst.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tenging við netleik glataðist.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Gat ekki hlaðið vistuðum leik af þjóni.
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Gat ekki ræst þjón
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Gat ekki tengst
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tenging #{NUM} fjaraði út.
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Villa varð í samskiptum og tengingu var lokað
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Útgáfa biðils er ekki sama og útgáfa þjóns
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rangt lykilorð
@@ -2007,7 +1997,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Gat ekki tengst í efnisveitu...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Niðurhal mistókst...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... tenging slitnaði
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... skráin er ekki skrifanleg
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Gat ekki afþjappað niðurhöluðu skránni
 
@@ -2541,7 +2530,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Leitars
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Hlaða valdar stillingu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Vista stillingu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Vista núverandi lista sem stillingu
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skrifaðu nafn á stillingu
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Eyða stillingu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Eyða valinni stillingu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Bæta við
@@ -2815,7 +2803,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Enginn f
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} frá {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} frátekin fyrir hleðslu)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Tekur við
@@ -3292,7 +3279,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Ræst
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Upplýsingar)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nafn
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Skýrðu lestina
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nefna bifreið

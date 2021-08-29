@@ -1177,7 +1177,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Наст
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Частота обновления экрана
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Выбор частоты обновления экрана
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :Другая
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Гц
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Частота обновления выше 60{NBSP}Гц может отрицательно сказаться на производительности.
 
@@ -1669,8 +1668,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Воспрои�
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Фон: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Воспроизводить фоновый шум ландшафта, предприятий и городов
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Отключить создание инфраструктуры, если нет подходящих доступных ТС: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Экономит время и деньги, отключая инструменты создания инфраструктуры, для которой не существует доступных транспортных средств
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Максимальное количество поездов на игрока: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Максимальное количество поездов, которое может иметь транспортная компания
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Максимальное количество автотранспорта на игрока: {STRING}
@@ -2186,7 +2183,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нажм
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Язык: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ландшафт: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Размер карты: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия сервера: {WHITE}{STRING}
@@ -2234,8 +2230,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбо
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компани{P я и й}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. количество компаний:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничить максимальное количество компаний на сервере
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Язык общения:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другие игроки будут знать, на каком языке общаются на сервере
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите название сетевой игры
 
@@ -2321,8 +2315,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Нет
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Да, однократно
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Да, всегда
 
-STR_NETWORK_SERVER                                              :Сервер
-STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Зрители
 
 # Network set password
@@ -2354,15 +2346,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введ
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не найдены сетевые устройства
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не найдены сетевые игры
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Время ожидания ответа от сервера истекло. Возможно, сервер отклонил запрос.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Невозможно присоединиться из-за несоответствия NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Синхронизация сетевой игры не удалась
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Соединение сетевой игры потеряно
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не удалось загрузить сохранение
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Не удалось запустить сервер
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не удалось соединиться
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Истекло время ожидания соединения #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Произошла ошибка протокола, и соединение было закрыто
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Не указано имя игрока. Его можно ввести в верхней части окна «Сетевая игра».
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Не указано имя сервера. Его можно ввести в верхней части окна «Сетевая игра».
@@ -2517,7 +2506,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не удалось соединиться с сервером контента...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Ошибка загрузки...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... соединение утеряно
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... невозможно записать файл
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не удалось распаковать скачанный файл
 
@@ -3013,8 +3001,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" а ов}/с
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадр{P "" а ов}/с
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
@@ -3171,7 +3157,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Фил�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Загрузить выбранный набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Сохранить набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Сохранить этот список как набор
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Название набора
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Удалить набор
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Удалить выбранный набор
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Добавить
@@ -3495,7 +3480,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}На с�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} транзитом из {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарезервировано для погрузки)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Принимает
@@ -4087,7 +4071,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запу
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детали)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Название
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Переименовать поезд
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Переименовать автомобиль
@@ -4776,7 +4759,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Здес
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Невозможно сменить тип трамвайных рельсов...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Нет подходящего дорожного полотна
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Нет подходящих трамвайных путей
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несовместимый тип трамвайных путей
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Здесь невозможно построить канал...

@@ -1477,8 +1477,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Atskaņot trans
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Apkārtne: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Atskaņot ainavas, ražotņu un pilsētu apkārtējās skaņas
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ja ieslēgts, infrastruktūra ir pieejama tikai tad, ja tur ir pieejami arī transportlīdzekļi, novēršot laika un naudas izšķiešanu par nelietojamu infrastruktūru
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimālais vilcienu skaits, kas var piederēt uzņēmumam
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais autotransporta līdzekļu skaits uzņēmumā: {STRING}
@@ -1985,7 +1983,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikšķ
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPĒLES INFORMĀCIJA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Spēlētāji: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Valoda: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ainava: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartes izmērs: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Servera versija: {WHITE}{STRING}
@@ -2027,8 +2024,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlē
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} uzņēmum{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimālais uzņēmumu skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ierobežo serveri noteiktam uzņēmumu skaitam
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valoda, kurā runā:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ievadīt tīkla spēles nosaukumu
 
@@ -2066,8 +2061,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju sa
 
 
 
-STR_NETWORK_SERVER                                              :Serveris
-STR_NETWORK_CLIENT                                              :Spēlētājs
 STR_NETWORK_SPECTATORS                                          :Novērotāji
 
 # Network set password
@@ -2099,15 +2092,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ievadīt
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nav atrasta neviena tīkla ierīce
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nevar atrast nevienu tīkla spēli
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatbild uz pieprasījumu
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nevar pieslēgties sakarā ar NewGRF neatbilstību
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Tīkla spēles sinhronizācija neizdevās
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tīkla spēlei zudis savienojums
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nevar ielādēt saglabāto spēli
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nevar uzsākt servera darbību
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nevar savienot
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Savienojuma #{NUM} laiks ir beidzies
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tika pielaista protokola kļūda un savienojums tika slēgts
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klienta pārskats neatbilst servera pārskatam
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiza parole
@@ -2242,7 +2232,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nav iespējams savienoties ar satura serveri...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Lejupielāde neizdevās...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... pazudis savienojums
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fails nav rakstāms
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Neizdevās atspiest lejupielādēto failu
 
@@ -2724,8 +2713,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kadri/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kadri/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} m
 ############ Leave those lines in this order!!
@@ -2867,7 +2854,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtra 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ielādēt atlasīto iepriekšiestatījumu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Saglabāt iepriekšiestatījumu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Saglabāt šo sarakstu kā iepriekšiestatījumu
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Ievadīt iepriekšiestatījuma nosaukumu
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Dzēst iepriekšiestatījumu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Dzēst šobrīd atlasīto iepriekšiestatījumu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pievienot
@@ -3191,7 +3177,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Neviena 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} no {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervēts iekraušanai)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Pieņem
@@ -3770,7 +3755,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iedarbin
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Sīkāka informācija)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nosaukums
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nosaukt vilcienu
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt autotransporta līdzekli
@@ -4458,7 +4442,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Šeit ne
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Šeit nevar pārveidot tramvaja veidu...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nav piemērota ceļa
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nav piemērotu tramvaju
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nesavietojami tramvaji
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Šeit nevar būvēt kanālus...

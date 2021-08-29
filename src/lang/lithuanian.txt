@@ -1228,7 +1228,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekrano kadrų dažnis
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Pasirinkite pageidaujamą ekrano kadrų dažnį
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :Kitas
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Didesnis nei 60Hz kadrų dažnis gali sulėtinti žaidimą.
 
@@ -1702,8 +1701,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Skleisti transp
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Aplinkos: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Skleisti aplinkos — kraštovaizdžio, pramonės bei miestų — garsus
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Didžiausias traukinių skaičius vienam žaidėjui: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Didžiausias skaičius traukinių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Didžiausias automobilių skaičius vienam žaidėjui: {STRING}
@@ -2229,7 +2226,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Spragtel
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Žaidimo informacija
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Žaidėjai: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Kalba: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Gamtos tipas: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Žemėlapio dydis: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverio versija: {WHITE}{STRING}
@@ -2271,8 +2267,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirink
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanij{P a os ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Daugiausia kompanijų:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Riboti serverį iki tam tikro skaičiaus kompanijų
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Kalba:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Kiti žaidėjai žinos kokia kalba kalbama serveryje
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Įveskite tinklo žaidimo pavadinimą
 
@@ -2310,8 +2304,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Žaidėjų sąr
 
 
 
-STR_NETWORK_SERVER                                              :Serveris
-STR_NETWORK_CLIENT                                              :Žaidėjas
 STR_NETWORK_SPECTATORS                                          :Stebėtojai
 
 # Network set password
@@ -2343,15 +2335,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskit
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nerado nei vieno žaidimo tinkle
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatsakė į užklausą
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl netinkamo plėtinio
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Žaidimo tinkle sinchronizacija nepavyko
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nutruko ryšys
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Negali atverti išsaugoto žaidimo
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Negali paleisti serverio
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Negali prisijungti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Baigėsi prisijungimo #{NUM} laikas
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokolo klaida. Prisijungimas baigtas
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Žaidimo versija neatitinka serverio žaidimo versijos
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Blogas slaptažodis
@@ -2486,7 +2475,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nepavyko prisijungti prie turinio serverio...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Atsisiųsti nepavyko...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Prarastas ryšys
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... failas nėra įrašomas
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nepavyko išpakuoti parsiųsta failą
 
@@ -2970,8 +2958,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} k/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} k/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3128,7 +3114,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtras
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Įkelti pasirinktą plėtinių rinkinį
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Išsaugoti rinkinį
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Išsaugoti esamą sąrašą kaip plėtinių rinkinį
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Įvesti rinkinio pavadinimą
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ištrinti rinkinį
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ištrinti pasirinktą plėtinių rinkinį
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pridėti
@@ -3451,7 +3436,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Jokių k
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} pakeliui iš „{STATION}“)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervuota krovai)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
@@ -4067,7 +4051,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pradėta
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Išsami informacija)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Pavadinimas
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pervadinti traukinį
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pervadinti automobilį
@@ -4774,7 +4757,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Neįmano
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Neįmanoma čia pakeisti tramvajaus bėgių tipo...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE} Nėra tinkamo kelio
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Netinkama tramvajaus vėžė
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nesuderinami tramvajaus bėgiai
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Neimanoma cia iskasti kanalu...

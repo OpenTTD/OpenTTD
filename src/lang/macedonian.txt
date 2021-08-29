@@ -1346,7 +1346,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Не ч�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} пренасочено од {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прифаќа: {WHITE}{CARGO_LIST}
 
@@ -1541,7 +1540,6 @@ STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Пре�
 # Vehicle stopped/started animations
 
 # Vehicle details
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Име
 
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име на авионот
 

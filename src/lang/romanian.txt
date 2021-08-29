@@ -1021,7 +1021,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Afișează rata de reîmprospătare
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți rata de reîmprospătare dorită
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :alta
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele de împrospătare de peste 60Hz ar putea afecta performanța.
 
@@ -1489,8 +1488,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Redă sunetele 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Redă sunetele ambientale ale peisajului, industriei și orașelor
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Dacă este activată, infrastructura este disponibilă doar când există vehicule sau nave, prevenind astfel pierderea de timp si fonduri pe infrastructură inutilă în acel moment
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numărul maxim de trenuri pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nr. max. de autovehicule per companie: {STRING}
@@ -1987,7 +1984,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Click pe
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JOC
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clienţi: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Limba: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Peisaj: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mărimea hărţii: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versiune server: {WHITE}{STRING}
@@ -2031,8 +2027,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P companie companii "de companii"}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companii maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitează serverul la un anumit număr de companii
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduceţi un nume pentru joc
 
@@ -2084,8 +2078,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sigur d
 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nu
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectatori
 
 # Network set password
@@ -2117,15 +2109,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nu am detectat o placă de reţea sau jocul a fost compilat fără ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nu am găsit niciun joc în reţea
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serverul nu a răspuns cererii
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nu m-am putut conecta din cauza unei nepotriviri NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizarea jocului în reţea a eşuat
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Conexiunea jocului în reţea a fost întreruptă
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nu am reuşit să încarc jocul salvat
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Serverul nu a putut fi pornit
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nu pot efectua conectarea
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Conexiunea #{NUM} a expirat
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Eroare de protocol. Conexiunea a fost închisă
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versiunea acestui client este diferită de cea a serverului
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Parolă greşită
@@ -2258,7 +2247,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Conectare la server eşuată...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descărcare eșuată
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexiune întreruptă
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fişierul nu poate fi scris
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Fişierul descărcat nu a putut fi decompresat
 
@@ -2729,8 +2717,6 @@ STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMA
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cadre/s
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2863,7 +2849,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtru:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Încarcă presetarea selectată
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvează presetare
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvează lista curentă ca presetare
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduceţi un nume pentru presetare
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Şterge presetarea
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Şterge presetarea selectată
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adaugă
@@ -3177,7 +3162,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nu este 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} pe drum de la {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervat pentru încărcare)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
@@ -3738,7 +3722,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pornit
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalii)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nume
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Numele trenului
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Numele autovehiculului
@@ -4420,7 +4403,6 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nu ex
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tipul de drum nu poate fi convertit aici...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Niciun drum adecvat
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Niciun tramvai adecvat
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tramvai incompatibil
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nu pot construi un canal aici...

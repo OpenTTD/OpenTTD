@@ -1090,7 +1090,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Képernyőfrissítési frekvencia
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Játékhoz használt képernyőfrissítési frekvencia kiválasztása
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :egyéb
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}A 60 Hz-nél nagyobb frekvencia befolyással lehet a teljesítményre.
 
@@ -1567,8 +1566,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Járműhangok l
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Terület: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Az ipar, városok és tájak környezeti hangjainak lejátszása
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Bekapcsolva az infrastruktúra csak akkor elérhető, ha van megfelelő jármű, megakadályozva a felesleges pénzköltést a kihasználhatatlan infrastruktúrára
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vonat vállalatonként: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Egy vállalat által birtokolható maximális vonatok száma
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum közúti jármű vállalatonként: {STRING}
@@ -2081,7 +2078,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kattints
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}JÁTÉK INFÓ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliensek: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Nyelv: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tájtípus: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}A térkép nagysága: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Szerver verzió: {WHITE}{STRING}
@@ -2125,8 +2121,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}A maxim�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} vállalat
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max. vállalatszám:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}A vállalatok maximális száma a szerveren
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt nyelv:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Add meg a hálózati játékhoz a neved
 
@@ -2197,8 +2191,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Biztos 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Biztos vissza akarod állítani a '{COMPANY}' vállalat jelszavát?
 
 
-STR_NETWORK_SERVER                                              :Szerver
-STR_NETWORK_CLIENT                                              :Kliens
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
 # Network set password
@@ -2230,15 +2222,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Add meg 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nem található a hálózati csatoló
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nem található semmilyen hálózati játék
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}A szerver nem válaszolt a kérésre
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF eltérés miatt nem sikerült kapcsolódni
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Hálózat - Játék szinkronizáció sikertelen
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Hálózat - Játék kapcsolat elveszett
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nem sikerült a szerver játékmentés betöltése
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nem tudtam elindítani a szervert
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nem tudtam kapcsolódni
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}A(z) {NUM}. játékos kapcsolata elveszett
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokoll-hiba keletkezett és megszakadt a kapcsolat
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}A játékos neved nem lett megadva. A nevet a többjátékos ablak tetején tudod beállítani.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
@@ -2376,7 +2365,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}A tartalomszolgáltató szerver nem elérhető...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}A letöltés meghiúsult...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... a kapcsolat megszakadt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... a fájl nem írható
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sikerült kicsomagolni a letöltött fájlt
 
@@ -2860,8 +2848,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} frame/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} frame/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -3018,7 +3004,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Szűren
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Kiválasztott lista betöltése
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lista mentése
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}A kiválasztott elemek listába mentése
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Írj be egy nevet a listának
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Lista törlése
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}A jelenleg kiválasztott lista törlése
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Hozzáad
@@ -3342,7 +3327,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Semmilye
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ideszállítva {STATION} állomásról)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} lefoglalva berakodáshoz)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Elfogadás
@@ -3920,7 +3904,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Elindít
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} adatai
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Név
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Vonat átnevezése
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Közúti jármű átnevezése
@@ -4609,7 +4592,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nem lehe
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nem lehet itt a villamospálya típusát átalakítani...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nincs megfelelő út
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nincs megfelelő villamospálya
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nem kompatibilis a villamospálya
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ide nem lehet csatornát építeni...

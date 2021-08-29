@@ -1378,8 +1378,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :เล่นเ
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :สิ่งแวดล้อม:{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :เปิดเสียงของสิ่งแวดล้อมต่างๆ
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :ปิดการใช้งานในส่วนของสิ่งปลูกสร้างสาธารณูปโภคเมื่อไม่มียานพาหนะที่เหมาะสม: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :เมื่อเปิดใช้งาน สาธารณูประโทค และเส้นทางการคมนาคมที่จะสร้างได้ มีเฉพาะที่เหมาะสมกับประเภทยานพาหนะที่รองรับ
 STR_CONFIG_SETTING_MAX_TRAINS                                   :ขบวนรถไฟมากที่สุดต่อผู้เล่น: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :จำนวนขบวนรถไฟสูงสุดที่บริษัทสามารถมีได้
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :ยานพาหนะทางบกมากที่สุดต่อผู้เล่น: {STRING}
@@ -1845,7 +1843,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}คล�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ข้อมูลเกม
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}ลูกข่าย: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}ภาษา: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}ภูมิทัศน์: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}ขนาดแผนที่: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}เวอร์ชันของเซิร์ฟเวอร์: {WHITE}{STRING}
@@ -1883,8 +1880,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}เล�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} บริษัท
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}จำนวนบริษัทสูงสุด:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}จำกัดจำนวนบริษัทที่อยู่ในเซิร์ฟเวอร์
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}ภาษาที่ใช้พูดคุย:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู้เล่นทุกคนจะสามารถทราบถึงภาษาที่ใช้พูดคุยในเซิร์ฟเวอร์นี้
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}พิมพ์ชื่อสำหรับเล่นในเครือข่าย
 
@@ -1922,8 +1917,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายกา
 
 
 
-STR_NETWORK_SERVER                                              :เซิฟเวอร์
-STR_NETWORK_CLIENT                                              :ลูกข่าย
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
 # Network set password
@@ -1955,15 +1948,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}พิ�
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ไม่พบอุปกรณ์เน็ทเวิร์กหรือได้ผ่านการคอมไพล์โดยไม่ได้ตัวเลือกนี้ ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}ไม่พบเกมในระบบเน็ทเวิร์ก
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}เซิฟเวอร์ไม่ตอบรับคำขอ
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}ไม่สามารถติดต่อได้เนื่องจาก NewGRF ไม่ตรงกัน
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}การประสานเวลากับเกม ไม่สำเร็จ(synchronisation failed)
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}การเชื่อมต่อกับเกมสูญหาย
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}ไม่สามารถโหลดเซฟเกมได้
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}ไม่สามารถเริ่มเซิฟเวอร์ได้
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}ไม่สามารถเชื่อมต่อ
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}เชื่อมต่อครั้งที่ #{NUM} เกินเวลาที่กำหนด
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}ตรวจเจอการขัดข้องของโพรโทคอลและการเชื่อต่อถูกปิดลง
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}revision ของลูกข่ายไม่ตรงกับของเซิฟเวอร์
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}พาสเวิร์ดผิด
@@ -2093,7 +2083,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}ไม่สามารถเชื่อมต่อกับเซิฟเวอร์เนื้อหาเสริมได้..
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ดาวโหลดผิดพลาด...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... การเชื่อมต่อสูญหาย
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ไม่สามารถเขียนทับไฟล์ได้
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ไม่สามารถทำการแตกไฟล์ที่ดาวโหลดมาแล้วได้
 
@@ -2634,7 +2623,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}โหลดข้อมูลกลุ่มที่ตั้งค่าไว้
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}บันทึกกลุ่มที่ตั้งค่า
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}บันทึกรายการปัจจุบันเป็นกลุ่มการตั้งค่า
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}ใส่ค่าของกลุ่ม
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}ลบกลุ่ม
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}ลบกลุ่มที่เลือกไว้ปัจจุบัน
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}เพิ่ม
@@ -2926,7 +2914,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}ไม�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} จาก {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} สำรองไว้สำหรับการขนถ่าย)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}ปิดหน้าต่างความนิยม
@@ -3430,7 +3417,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}เร�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}รายละเอียดของ {VEHICLE}
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}ชื่อ
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}ชื่อ
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}ชื่อ

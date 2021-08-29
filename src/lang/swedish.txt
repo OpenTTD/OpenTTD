@@ -1032,7 +1032,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Visa uppdateringsfrekvens
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Välj skärmens uppdateringsfrekvens
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :annat
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}uppdateringsfrekvenser högre än 60Hz kan påverka prestandan.
 
@@ -1518,8 +1517,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spela ljudeffek
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Bakgrund: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spela bakgrundsljudeffekter för landskap, industrier och städer
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Inaktivera byggande av infrastruktur när inga passande fordon är tillgängliga: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :När det är aktiverat blir infrastruktur bara tillgänglig om det också finns därtill avsedda fordon tillgängliga, vilket förhindrar slöseri med tid och pengar på oanvändbar infrastruktur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max antal tåg per företag: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximalt antal tåg som ett företag kan ha
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max antal vägfordon per företag: {STRING}
@@ -2035,7 +2032,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Välj se
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPELINFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Språk: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Klimat: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartstorlek: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverversion: {WHITE}{STRING}
@@ -2083,8 +2079,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Välj ma
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} företag{P y ies}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max antal företag:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begränsa antalet företag på servern
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som talas:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Mata in ett namn för nätverksspelet
 
@@ -2170,8 +2164,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, den här gången
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, fråga inte igen
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Åskådare
 
 # Network set password
@@ -2203,15 +2195,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Inget nätverkskort funnet
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunde inte hitta några nätverksspel
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Anslutning till servern tog för lång tid eller avvisades
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunde inte ansluta på grund av att NewGRF är omaka
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering av nätverks-spel misslyckades
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nätverk, koppling förlorad
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunde inte ladda det sparade spelet
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Kunde inte starta servern.
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kunde inte ansluta.
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Nätverkskoppling #{NUM} timeout
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Ett protokollfel uppstod och anslutningen stängdes.
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Du har inte angivit något spelarnamn. Namninställning kan göras högst upp i flerspelarfönstret
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Du har inte angivit något servernamn. Namninställning kan göras högst upp i flerspelarfönstret
@@ -2354,7 +2343,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunde inte ansluta till innehållsservern...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Nedladdning misslyckades...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... anslutning förlorad
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kunde inte skriva till fil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunde inte packa upp den nedladdade filen
 
@@ -2838,8 +2826,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} bildrutor/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} bildrutor/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2996,7 +2982,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Sökfil
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ladda markerad förinställning
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Spara förinställning
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Spara denna lista som en förinställning
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Namnge förinställningen
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ta bort förinställningen
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ta bort markerad förinställning
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Lägg till
@@ -3320,7 +3305,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ingen so
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} från {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserverat för lastning)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterar
@@ -3900,7 +3884,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startad
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namn
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Byt namn på tåg
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Byt namn på vägfordon
@@ -4589,7 +4572,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan inte
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan inte konvertera spårvagnstyp här...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen lämplig väg
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen passande spårväg
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... oförenlig spårväg
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan inte bygga kanaler här...

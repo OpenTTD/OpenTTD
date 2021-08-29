@@ -1033,7 +1033,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}그래�
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}화면 주사율
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}사용할 화면 주사율을 선택하세요
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :기타
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz를 넘는 화면 주사율을 사용하면 성능에 영향이 갈 수도 있습니다.
 
@@ -1519,8 +1518,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :차량의 효�
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :주변 소리: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :주변 풍경이나 산업시설, 도시의 효과음을 재생합니다.
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :사용 가능한 차량이 없을 경우 해당 기반시설 비활성화: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :이 설정을 켜면, 불필요하게 시간과 돈을 낭비하지 않도록 사용 가능한 차량이 없는 기반시설은 설치할 수 없게 됩니다.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :회사당 최대 열차 수: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :한 회사가 소유할 수 있는 열차의 최대 수를 제한합니다.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :회사당 최대 자동차/전차 수: {STRING}
@@ -2036,7 +2033,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}최근�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}게임 정보
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}접속현황: {WHITE}{COMMA} / {COMMA}명 - 회사 {COMMA} / {COMMA}개
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}언어: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}기후: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}지도 크기: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}서버 버전: {WHITE}{STRING}
@@ -2082,8 +2078,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}최대 �
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}개
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}최대 회사수:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}서버의 회사의 수를 제한합니다
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}대화 언어:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}서버에서 주로 사용하는 언어를 고르십시오
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}네트워크 게임에서 사용할 이름을 입력하세요
 
@@ -2169,8 +2163,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}아니�
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}이번에만 사용
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}항상 사용
 
-STR_NETWORK_SERVER                                              :서버
-STR_NETWORK_CLIENT                                              :접속자
 STR_NETWORK_SPECTATORS                                          :관전자
 
 # Network set password
@@ -2202,15 +2194,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}채팅 �
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}사용할 수 있는 네트워크 장치가 없습니다.
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}네트워크 게임이 존재하지 않습니다
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}서버 연결 시간이 초과되었거나 요청이 거절되었습니다
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF가 맞지 않아서 연결할 수 없습니다
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}네트워크와 게임을 동기화하는 데 실패하였습니다
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}네트워크와 연결이 끊어졌습니다
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}게임 저장 파일을 불러올 수 없습니다
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}서버를 시작할 수 없습니다
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속할 수 없습니다
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}접속자 #{NUM}의 입력 시간이 초과되었습니다
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}프로토콜 오류가 발생되어 연결이 끊어졌습니다
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}접속자 이름을 지정하지 않았습니다. 접속자 이름은 멀티플레이 창 맨 위에서 설정할 수 있습니다.
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}서버 이름을 지정하지 않았습니다. 서버 이름은 멀티플레이 창 맨 위에서 설정할 수 있습니다.
@@ -2353,7 +2342,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}콘텐츠 서버에 접속할 수 없습니다...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}다운로드 실패...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접속이 끊어졌습니다
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기가 불가능합니다
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
@@ -2837,8 +2825,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} 프레임/초
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 프레임/초
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}초
 ############ Leave those lines in this order!!
@@ -2995,7 +2981,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장합니다
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}프리셋 이름 입력
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}프리셋 제거
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}현재 선택한 프리셋을 삭제합니다
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}추가
@@ -3319,7 +3304,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}화물�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:CARGO_SHORT})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} 적재 예정)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}받음
@@ -3899,7 +3883,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}출발
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (상세정보)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}이름
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 지정
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}차량 이름 지정
@@ -4588,7 +4571,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}이곳�
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}이곳의 전찻길을 바꿀 수 없습니다...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}적합한 도로가 없습니다
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}적합한 전찻길이 없습니다
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... 적합하지 않은 전찻길입니다
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}여기에 운하를 건설할 수 없습니다...

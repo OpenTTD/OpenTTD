@@ -1571,8 +1571,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Predvajaj zvoke
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okolje: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Predvajaj okoljske zvočne efekte pokrajin, industrij in mest
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Onemogoči infrastrukurno stavbo, če ni na voljo nobenih ustreznih vozil: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Če je omogočeno, je samo v primeru vozil na razpolago vidna infrastruktura, za preprečevanje vlaganja časa in denarja v neuporabno infrastrukturo.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Največ vlakov na podjetje: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Največje število vlakov na družbo
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Največ cestnih vozil na podjetje: {STRING}
@@ -2051,7 +2049,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni z
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}IGRA - INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Gosti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jezik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Pokrajina: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velikost ozemlja: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Različica strežnika: {WHITE}{STRING}
@@ -2089,8 +2086,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izberite
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} podjet{P je ji ja ij}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Dovoljeno število podjetij:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Omeji strežnik na določeno število podjetij
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Vpiši ime za mrežno igro
 
@@ -2128,8 +2123,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
 
 
 
-STR_NETWORK_SERVER                                              :Strežnik
-STR_NETWORK_CLIENT                                              :Gost
 STR_NETWORK_SPECTATORS                                          :Gledalci
 
 # Network set password
@@ -2161,15 +2154,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši t
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ni mogoče najti mrežnih iger
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Strežnik ni odgovoril zahtevi
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Povezava ni mogoča zaradi neskladja datotek NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinhronizacija mrežne igre ni uspela
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Povezava mrežne igre je padla
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ni mogoče naložiti shranjene igre
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Strežnika ni mogoče zagnati
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Povezava ni mogoča
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Povezava #{NUM} je potekla
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Narejena je bila napaka protokola in povezava je bila prekinjena
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Različica tega gosta je neskladna s strežnikovo razlicico
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Napačno geslo
@@ -2299,7 +2289,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Povezava do strežnika vsebin ni mogoča...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Prenos ni uspel...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... povezava prekinjena
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteka ni zapisljiva
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No mogoče razpakiranje prenešene datoteke
 
@@ -2843,7 +2832,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrir
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Shrani prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Shrani tekoči seznam kot prednastavitev
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Vpisi ime za prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Izbriši prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Brisanje trenutno izbrane prednastavitve
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Dodaj
@@ -3147,7 +3135,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Noben to
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na poti iz {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervirano za nalaganje
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Sprejema
@@ -3665,7 +3652,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Začeto
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Podrobnosti)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Ime
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Poimenuj vlak
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Poimenuj cestno vozilo

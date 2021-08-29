@@ -1352,8 +1352,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spæl ljóðini
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umhvørvi: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spæl umhvørvis ljóðini frá landslagnum, ídnaðum og bygdum
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ógilda bygging av innankervi á eingi hóskandi flutningstól eru tøk: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Um gilda, er innankervi einans tøkt um flutningstóli eisini eru tøk, og forðar tær tískil at spilla burtur tíð og pening uppá ónýtiligt innankervi
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks tok per fyritøku: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Mest loyvda tali av tokum ein fyritøka kann hava
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks akfør per fyritøku: {STRING}
@@ -1721,7 +1719,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Trýst f
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}KUNNING UM SPÆL
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientar: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Mál: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landslag: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Stødd á korti: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Servara útgáva: {WHITE}{STRING}
@@ -1759,8 +1756,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel mest
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} fyritøk{P a ur}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Mest loyvdar fyritøkur:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Avmarka nøgdina av fyritøkum á servaranum
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir spælarir kunnu síggja hvat mál verður tosa á servaranum
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gev netverks spælinum eitt navn
 
@@ -1798,8 +1793,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klie
 
 
 
-STR_NETWORK_SERVER                                              :Servari
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Eygleiðarar
 
 # Network set password
@@ -1831,15 +1824,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriva t
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Eingi netverks tól funnin ella kompileraði uttan ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Eydnaðist ikki at finna nøkur netverks spøl
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Servarin svaraði ikki fyrispurningi
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Eydnaðist ikki at fáa samband orsakað av at NewGRF samsvaraði ikki
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netverk-Spæl synkronisering miseydnaðist
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netverk-Spæl samband mist
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Eydnaðist ikki at heinta goymt spæl
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Eydnaðist ikki at seta servara í gongd
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Eydnaðist ikki at fáa samband
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Samband #{NUM} rann út
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Ein protokol feilur var funnin og sambandi bleiv lukka
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Útgávan hjá klientinum samsvarar ikki við útgávuna hjá servaranum
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Skeivt loyniorð
@@ -1969,7 +1959,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Eydnaðist ikki at fáa samband við tilfars servaran...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Niðurheintan miseydnaðist...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... samband mist
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kann ikki skriva til fílu
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Eydnaðist ikki at pakka niðurheintaða fíl út
 
@@ -2433,7 +2422,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtur 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Heinta valda preset
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Goym preset
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Goym núverðandi lista sum eitt preset
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skriva eitt navn fyri preset
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Strika preset
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Strika núverðandi valda preset
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Legg til
@@ -2658,7 +2646,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Eingin f
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} frá {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} umbiði til lessing)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Tekur í móti
@@ -3109,7 +3096,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Starta
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Smálutir)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Navn
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Gev tokinum eitt navn
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Gev akfarinum eitt navn

@@ -1023,7 +1023,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Refresh rate uweisen
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wiel d'Refresh rate vum Bildschirm aus
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :aner
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates déi méi grouss wéi 60Hz sinn, kënnen d'Performance beaflossen
 
@@ -1497,8 +1496,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spill Soundeffe
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spillt Ambience Soundeffekter vun der Landschaft, Industrien an Stied of
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gebai ausschalten wann keng passend Gefierer verfügbar sinn: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wann ugeschalt, ass d'Infrastruktur just verfügbar, wann och Gefierer verfügbar sinn, fir dass keen Geld an keng Zäit verschwend gëtt, sënnlos Infrastrukturen ze bauen
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum un Zich pro Firma: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximal Unzuel un Zich déi eng Firma kann hunn
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum un Stroossegefierer pro Firma: {STRING}
@@ -2010,7 +2007,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klick fi
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPILL INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Spiller: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Sprooch: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landschaft: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaartegréisst: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverversioun: {WHITE}{STRING}
@@ -2052,8 +2048,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Maximal 
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Firm{P a en}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximal Firmen:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}D'Unzuel vun de Firme limitéieren
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Geschwate Sprooch:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aner Leit gesinn wéieng Sprooch um Server geschwat gëtt
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gëff en Numm fir d'Spill un
 
@@ -2091,8 +2085,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
 
 
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Spiller
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 # Network set password
@@ -2124,15 +2116,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Text fir
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Keng Netzwierkgeräter fonnt
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Konnt keng Netzwierkspiller fannen
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}De Server huet net op d'Ufro geäntwert
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Konnt sech wéinst ënnerscheedlechen NewGRF net connectéieren
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netzwierksyncronisatiouns-Fehler
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netzwierkverbindung verluer
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Konnt de Spillstand net lueden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Konnt de Server net starten
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Konnt sech net connectéieren
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connectioun #{NUM} ofgelaaf
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}D'Versioun vum Client stëmmt net mat däer vum Server iwwereneen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht Passwuert
@@ -2267,7 +2256,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Konnt net op de Contentserver konnektéiren...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Download mësslong...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Connectioun verluer
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Datei net beschreiwbar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Konnt d'erofgelueden Datei net dekompriméiren
 
@@ -2751,8 +2739,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} Biller/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} Biller/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2909,7 +2895,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}String 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Gewielte Preset lueden
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Preset späichern
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Aktuell Lëscht als Preset späichern
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Presetnumm uginn
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Preset läschen
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Gewielte Preset läschen
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Baifügen
@@ -3232,7 +3217,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Keng Lue
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ënnerwee vun {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservéiert fir gelueden ze ginn)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akzeptéiert
@@ -3810,7 +3794,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Gestart
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detailer)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Numm
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zuch benennen
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroossegefier benennen
@@ -4499,7 +4482,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kann den
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kann den Tramwaytyp hei net konvertéiren...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Keng geeegent Strooss
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Kee passenden Tramway
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... inkompatiblen Tramway
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kann hei keen Kanal bauen...

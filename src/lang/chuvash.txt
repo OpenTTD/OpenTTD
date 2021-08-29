@@ -748,7 +748,6 @@ STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Чӗлх
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ВӐЙЙИ ИНФОРМАЦИ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Вӑйӑҫӑсем: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Чӗлхи: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ҫӗр пичӗ: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Виҫе картти: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Сервер версиӗ: {WHITE}{STRING}

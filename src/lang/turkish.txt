@@ -1033,7 +1033,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikle
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Tazeleme oranını görüntüle
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Kullanılacak tazeleme oranını seç
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :diğer
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz'den yüksek tazeleme oranları performansı etkileyebilir.
 
@@ -1519,8 +1518,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Araçların ses
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ortam: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Yeryüzü, fabrikalar ve kasabaların ortam seslerini oynat
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Uygun araç bulunmadığında ilgili altyapıların yapılmasını engelle: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Etkinleştirildiğinde, eğer kullanılabilecek araçlar mevcutsa altyapıyı kullanılabilir hale getirir, böylece altyapıya boş yere zaman ve para harcanmasını engeller
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Şirket başına azami tren sayısı: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Bir şirketin sahip olabileceği azami tren sayısı
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Şirket başına azami karayolu aracı sayısı: {STRING}
@@ -2036,7 +2033,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Son oyna
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}OYUN BİLGİSİ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}İstemciler: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Dil: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Yer yüzü: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Harita boyutu: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Sunucu sürümü: {WHITE}{STRING}
@@ -2084,8 +2080,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}İzin ve
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} şirket
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}En fazla şirket sayısı:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Sunucudaki şirket sayısını sınırla
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Konuşulan dil:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ağ oyunu için bir isim girin
 
@@ -2171,8 +2165,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Hayır
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Evet, bu seferliğine
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Evet, bir daha sorma
 
-STR_NETWORK_SERVER                                              :Sunucu
-STR_NETWORK_CLIENT                                              :İstemci
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
 # Network set password
@@ -2204,15 +2196,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohb
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ağ aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Network oyunu bulunamadı
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Sunucu isteğe cevap vermedi{WHITE}Sunucu bağlantısı zaman aşımına uğradı veya reddedildi
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF uyuşmazlığı yüzünden bağlanılamadı
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Oyunu senkronizasyonu başarısız
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Oyunu bağlatısı düştü
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kayıtlı oyun yüklenemedi
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Sunucu başlatılamadı
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Bağlanamadı
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Bağlantı #{NUM} zaman aşımına uğradı
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokol hatası yapıldı ve bağlantı koparıldı
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Kullanıcı adınız ayarlanmamış. Kullanıcı adınız Çok Oyunculu penceresinin üstünden ayarlanabilir
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Sunucu adınız ayarlanmamış. Ad Çok Oyunculu penceresinin üstünden ayarlanabilir
@@ -2355,7 +2344,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{1:BYTES
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}İçerik sunucusuna bağlanılamadı...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}İndirme başarısız...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... bağlantı koptu
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosya yazılabilir değil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}İndirilen sıkıştırılmış dosya açılamadı
 
@@ -2839,8 +2827,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kare/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kare/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2997,7 +2983,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Süzge�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Seçili önayarı yükle
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Önayarı kaydet
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Şimdiki listeyi önayar olarak kaydet
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Önayar için isim girin
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Önayarı sil
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Seçili önayarı sil
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ekle
@@ -3321,7 +3306,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Hiç kar
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {STATION}'dan)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} yükleme için rezerve edilmiş)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}İstenen
@@ -3901,7 +3885,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Başlad�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaylar)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}İsim
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Treni adlandır
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Karayolu aracını adlandır
@@ -4590,7 +4573,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Buradaki
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Tramvay türünü burada değiştiremezsiniz
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE} Uygun yol yok
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Uygun olmayan tramvay
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... uyumsuz tramvay
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Buraya kanal yapılamaz...

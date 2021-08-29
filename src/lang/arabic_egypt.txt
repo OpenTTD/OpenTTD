@@ -983,7 +983,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}الرس
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}معدل تحديث الشاشة
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}حدد معدل تحديث الشاشة
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :أخرى
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}هرتز
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}قد تؤثر معدلات التحديث الأعلى من 60 هرتز على الأداء.
 
@@ -1291,7 +1290,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :شغل اصوا
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :مؤثرات: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :شغل مؤثرات صوتية في المناظر و المصانع و المدن
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوات البناء عند عدم وجود عربات متاحة لها: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل شركة: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل شركة: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل شركة: {STRING}
@@ -1642,7 +1640,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}اضغط
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}معلومات اللعبة
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}عملاء:{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}اللغة:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}مجموعة المربعات:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}حجم الخريطة: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}نسخه اللعبه لهذا الخادم: {WHITE}{STRING}
@@ -1680,8 +1677,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM}شركة
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}أقصى عدد شركات:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}حدد العدد الاقصى للشركات في هذا الخادم
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}اللغة المتحدثة:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللاعبين الآخرين سيعرفون اللغة المتحدثة
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}أدخل أسم اللعبة للشبكة
 
@@ -1721,8 +1716,6 @@ STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 
 
 
-STR_NETWORK_SERVER                                              :خادم
-STR_NETWORK_CLIENT                                              :عميل
 STR_NETWORK_SPECTATORS                                          :المشاهدين
 
 # Network set password
@@ -1754,15 +1747,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}ادخل
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}لايوجد أجهزة شبكة او الشبكة معطلة
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}لايوجد ألعاب شبكة
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}الخادم لم يجب على الطلب
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}لم يتم الربط بسبب عدم توافق NewGFR
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}فشل تحديث البيانات
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}انقطع الاتصال بلعبة الشبكة
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}لايمكن تحميل اللعبة المخزنة
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}لايمكن بدء الخادم
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}لايمكن الإتصال
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}الاتصال رقم # {NUM}انهى الوقت المتاح للربط
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}حدث خطأ في البروتوكول و انقطع الاتصال
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}نسخة اللاعب غير مطابقة لنسخة الخادم
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}رقم سري خاطئ
@@ -1878,7 +1868,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}لم يتم الربط مع خادم المحتوى
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}فشل التحميل...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... فقد الاتصال
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... لا يمكن الكتابة على الملف
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}لم يتمكن من فك ضغط الملف المحمل
 
@@ -2437,7 +2426,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}مُر�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}فتح مجموعة الاعدادات المسجلة
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}حفظ مجموعة الاعدادات
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}حفظ القائمة الحالية كمجموعة اعدادات
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}ادخل اسم للمجموعة المسجلة
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}حذف مجموعة الاعدادات المسجلة
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}حذف مجموعة الاعدادات الحالية
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK} اضف
@@ -2703,7 +2691,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}لا ي�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} نهاية الطريق في {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}يستقبل
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}عرض لائحة بالبضائع المقبولة
@@ -3201,7 +3188,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}ابتد
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} تفاصيل
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}اسم
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK} اسم القطار
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}تسمية العربة

@@ -1759,8 +1759,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Прайгра�
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Фон: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Прайграваць фонавы шум ляндшафту, прадпрыемстваў і гарадоў
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Адключыць стварэньне інфраструктуры, калі няма прыдатных даступных ТС: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Калі ўключана, інфраструктура даступна, толькі калі транспарт таксама даступны. Прадухіляе марнаваньне грошай і часу на бескарысную інфраструктуру.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Максымальная колькасьць цягнікоў на гульца: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Максымальная колькасьць цягнікоў, якую можа мець кампанія.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Максымальная колькасьць аўтатранспарту на гульца: {STRING}
@@ -2250,7 +2248,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Клік
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ІНФАРМАЦЫЯ АБ ГУЛЬНІ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Кліенты: {WHITE}{COMMA} / {COMMA} — {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Мова: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ляндшафт: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Памер мапы: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Вэрсія сэрвэра: {WHITE}{STRING}
@@ -2288,8 +2285,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выба
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} кампанi{P я i яў}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. колькасьць кампанiяў:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Абмежаваць максымальную колькасьць кампаніяў на сэрвэры
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова зносінаў:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Іншыя гульцы будуць ведаць, на якой мове размаўляюць на сэрвэры
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Увядзіце назву сеткавай гульні
 
@@ -2327,8 +2322,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кл
 
 
 
-STR_NETWORK_SERVER                                              :Сэрвэр
-STR_NETWORK_CLIENT                                              :Кліент
 STR_NETWORK_SPECTATORS                                          :Назіральнікі
 
 # Network set password
@@ -2360,15 +2353,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Увяд
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ня знойдзена сеткавых прыстасаваньняў
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Сеткавыя гульні ня знойдзеныя
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сэрвэр не адказвае на запыт
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Немагчыма далучыцца з-за неадпаведнасьці NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Сынхранізацыя сеткавай гульні не ўдалася
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Злучэньне сеткавай гульні страчана
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не ўдалося загрузіць захаваную гульню
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Не ўдалося запусьціць сэрвэр
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не ўдалося злучыцца
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Мінуў час чаканьня злучэньня #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Заўважана памылка пратаколу, і злучэньне было закрытае
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Вэрсія кліента (гэтай гульні) не адпавядае вэрсіі сэрвэра
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Няправільны пароль
@@ -2515,7 +2505,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не ўдалося злучыцца з сэрвэрам кантэнту...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Памылка запампоўваньня...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... злучэньне страчана
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... немагчыма запісаць файл
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не ўдалося распакаваць запампаваны файл
 
@@ -2974,7 +2963,6 @@ STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} кадр{P "" а аў}/с
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} кадр{P "" а аў}/с
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} мс
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} с
 ############ Leave those lines in this order!!
@@ -3101,7 +3089,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Філ�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Загрузіць выбраны набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Захаваць набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Захаваць гэты сьпіс як набор
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Назва набору
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Выдаліць набор
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Выдаліць выбраны набор
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Дадаць
@@ -3414,7 +3401,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}На с�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} транзітам з {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарэзэрвавана для грузу)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прымае
@@ -3983,7 +3969,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запу
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Дэталі)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Назва
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Перайменаваць цягнiк
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Перайменаваць аўтамабiль
@@ -4657,7 +4642,6 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...ту�
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...тут няма трамвайных каляiнаў
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Тут немагчыма змяніць тып дарожнага палатна...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Няма прыдатнага дарожнага палатна
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несумяшчальны тып трамвайных каляінаў
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тут немагчыма пабудаваць канал...

@@ -1457,8 +1457,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Afspil køretø
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Afspil omgivelseslyde for landskaber, industrier og byer
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiver bygning af infrastruktur når ingen passende køretøjer er tilgængelige: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Når slået til, er infrastruktur kun tilgængelig hvis der også er køretøjer tilgængelige. Dette forebygger spild af tid og penge grundet ubrugbar infrastruktur.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. antal tog per spiller: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimum antal toge et firma kan have
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. antal køretøjer per spiller: {STRING}
@@ -1954,7 +1952,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik for
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPIL INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Sprog: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Klima: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Størrelse: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Server version: {WHITE}{STRING}
@@ -1992,8 +1989,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vælg de
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} selskab{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. selskaber:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Begræns serveren til et bestemt antal selskaber
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Talt sprog:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Skriv et navn for netværksspillet
 
@@ -2031,8 +2026,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient liste
 
 
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
 # Network set password
@@ -2064,15 +2057,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv te
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ingen netværksheder fundet
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunne ikke finde nogen netværksspil
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveren besvarede ikke denne forspørgsel
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunne ikke tilslutte grundet NewGRF ulighed
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netværks synkroniseringsfejl
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netværksforbindelse mistet
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunne ikke hente gemt spil
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Kunne ikke starte serveren
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kunne ikke forbinde
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Forbindelsen #{NUM} svarer ikke
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Der opstod en protokol-fejl og forbindelsen blev lukket
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revisionen af denne klient passer ikke sammen med serverens revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Forkert kodeord
@@ -2204,7 +2194,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikke tilslutte til indholdsserver...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Download mislykkedes...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... forbindelse afbrudt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kan ikke skrive til fil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ikke udpakke den downloadede fil
 
@@ -2671,8 +2660,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} billeder/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} billeder/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2812,7 +2799,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrer
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Indlæs den valgte indstilling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gem indstilling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Gem den aktuelle liste som indstilling
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Indtast navn til indstilling
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Slet indstilling
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Slet den for tiden valgte indstilling
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Tilføj
@@ -3132,7 +3118,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Der vent
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} undervejs fra {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} forbeholdt lastning)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterer
@@ -3698,7 +3683,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Navn
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Giv toget et navn
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Giv køretøjet et navn
@@ -4383,7 +4367,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan ikke
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan ikke konvertere sporvejstype her...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen passende vej
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen egnet sporvej
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... inkompatibel sporvej
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge en kanal her...

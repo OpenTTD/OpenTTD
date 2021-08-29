@@ -1031,7 +1031,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Hình �
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Tần số quét màn hình
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Chọn tần số quét màn hình
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :khác
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Tần số quét hơn 60Hz có thể làm ảnh hưởng đến hiệu năng
 
@@ -1517,8 +1516,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Phát hiệu �
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Âm thanh nền: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Phát các âm thanh hiệu ứng nền đối với đất, khu công nghiệp và đô thị
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Khi bật, thì cơ sở hạ tầng chỉ sẵn có nếu loại phương tiện tương ứng cũng sẵn có, giúp cho việc tránh xây nhầm hạ tầng không thích hợp
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi công ty: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Số lượng tối đa tàu hỏa mà mỗi công ty có thể có
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi công ty: {STRING}
@@ -2034,7 +2031,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Chọn s
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}THÔNG TIN GAME
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Máy trạm: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Ngôn ngữ: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Địa hình: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Cỡ bản đồ: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Phiên bản server: {WHITE}{STRING}
@@ -2080,8 +2076,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn s
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} công ty
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Số công ty tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Giới hạn số công ty trong server
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ngôn ngữ trò chuyện:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Những người chơi sẽ biết ngôn ngữ dùng để trao đổi trong server
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Nhập tên của ván chơi mạng
 
@@ -2166,8 +2160,6 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Không
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Đồng ý, chỉ lần này
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Đồng ý, đừng hỏi lại
 
-STR_NETWORK_SERVER                                              :Server
-STR_NETWORK_CLIENT                                              :Máy trạm
 STR_NETWORK_SPECTATORS                                          :Người xem
 
 # Network set password
@@ -2199,15 +2191,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập t
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Không có thiết bị kết nối mạng
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Không tìm thấy ván chơi mạng nào
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server không trả lời yêu cầu
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Không thể kết nối vì NewGRF không hợp
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Đồng bộ ván chơi mạng bị lỗi
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Ván chơi mạng mất kết nối
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Không thể nạp savegame
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Không thể bắt đầu chạy server
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Không thể tạo kết nối
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Kết nối #{NUM} quá lâu
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Có lỗi trong giao thức và kết nối bị đóng
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Bạn chưa đặt tên người chơi. Bạn có thể đặt tên này tại phía trên của cửa sổ Chơi trên mạng
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Bạn chưa đặt tên server. Bạn có thể đặt tên này tại phía trên của cửa sổ Chơi trên mạng
@@ -2349,7 +2338,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Không thể kết nối tới server nội dung...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Tải bất thành...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... kết nối bị đứt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... không ghi được file
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nén file đã tải
 
@@ -2833,8 +2821,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} khung/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} khung/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2991,7 +2977,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Lọc g
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nạp các thiết lập đã chọn
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lưu thiết lập
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lưu danh sách này như là thiết lập
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Tên của thiết lập
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Xoá thiết lập
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Xoá thiết lập đã chọn
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Thêm
@@ -3315,7 +3300,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Không c
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} trung chuyển từ {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} đã được trống để dỡ hàng)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Chấp nhận
@@ -3895,7 +3879,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Đã ch�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Chi tiết)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Tên
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Đổi tên tàu
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Đổi tên ôtô
@@ -4584,7 +4567,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Không t
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Không thể chuyển đổi kiểu xe điện ở đây...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Không có đường ô-tô thích hợp
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Không có đường xe điện phù hợp
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... xe điện không phù hợp
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Không thể xây kênh đào ở đây...

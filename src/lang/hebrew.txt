@@ -1440,8 +1440,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :השמע קול
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :רקע: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :השמע קולות רקע של פני השטח, תעשיות וערים
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :מנע בניית תשתיות כאשר אין כלי רכב מתאימים זמינים: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :כאשר מאופשר, תשתיות זמינות רק כאשר ישנם גם כלי רכב זמינים, דבר המונע בזבוז זמן וכסף על תשתיות בלתי שמישות
 STR_CONFIG_SETTING_MAX_TRAINS                                   :מספר רכבות מירבי לשחקן: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :מספר מירבי של רכבות בהן חברה יכולה להחזיק
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :מספר משאיות/אוטובוסים מירבי לשחקן: {STRING}
@@ -1920,7 +1918,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}לחץ �
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}מידע על המשחק
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}לקוחות: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}שפה: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}סוג הקרקע: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}גודל המפה: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}גרסת השרת: {WHITE}{STRING}
@@ -1958,8 +1955,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספ
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} חבר{P "ה" "ות"}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}מספר מקסימלי של חברות:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}הגבל את השרת למספר מסויים של חברות
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}שפת דיבור:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}הזן שם למשחק רשת
 
@@ -1997,8 +1992,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת מש
 
 
 
-STR_NETWORK_SERVER                                              :שרת
-STR_NETWORK_CLIENT                                              :לקוח
 STR_NETWORK_SPECTATORS                                          :צופים
 
 # Network set password
@@ -2030,15 +2023,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}הקלד
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}לא נמצאה רשת
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}לא נמצאו משחקים ברשת
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}השרת אינו מגיב
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Newgrf לא ניתן להתחבר עקב אי התאמת קבצי
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}סינכרון משחק רשת נכשל
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}הקשר לשרת נותק
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}טעינת משחק מקובץ נכשלה
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}הפעלת השרת נכשלה
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}ניסיון חיבור נכשל
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}נכשל #{NUM} ניסיון התקשרות
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}שגיאת התקשרות
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}אי התאמה לגרסת השרת
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}ססמה שגוייה
@@ -2168,7 +2158,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}({2:NUM}
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}ניסיון התחברות לשרת התוכן נכשל...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}הורדת רבצים נכשלה...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... הקשר נותק
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... הקובץ לא ניתן לכתיבה
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}נכשלה פתיחה של קובץ מכווץ
 
@@ -2742,7 +2731,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}מחר�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}טען סביבה גראפית
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}שמור סביבה גראפית
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}שמור את הרשימה הנוכחית כהגדרת סביבה גראפית
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}תן שם לסביבה
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}מחק סביבה גראפית
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}מוחק את הסביבה הגראפית שנבחרה
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}הוסף
@@ -3047,7 +3035,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}שום �
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} בדרך מ{STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} שמור לטעינה)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}מקבל
@@ -3577,7 +3564,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}הותח
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}שם
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}תן שם לרכבת
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן שם לכלי הרכב

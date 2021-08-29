@@ -1026,7 +1026,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}グラ�
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}画面リフレッシュレート
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}使用する画面のリフレッシュレートを選択します
-STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :その他
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hzを超えるリフレッシュレートはパフォーマンスに影響を与える可能性があります。
 
@@ -1504,8 +1503,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :輸送機器関
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境音: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :街や産業、自然環境に関する効果音を鳴らすかどうかを設定します
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :有効なインフラのみ建設可能: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :有効にするとその時点で使用可能な設備のみが建設できます。(例: 電気機関車が購入できないときに電気鉄道は建設不可)
 STR_CONFIG_SETTING_MAX_TRAINS                                   :会社あたりの列車数上限: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :1社が保有できる最大の列車数を設定します
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :会社あたりの車両数上限: {STRING}
@@ -2018,7 +2015,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}クリ�
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ゲーム情報
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}クライアント: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}言語: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}地域: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地図サイズ: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}サーバーバージョン: {WHITE}{STRING}
@@ -2062,8 +2058,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}接続�
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}会社数: {NUM}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}最大会社数:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}このサーバーでの最大会社数を指定します
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}言語:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}このサーバーで使われる主言語を表示します
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}ネットワークゲーム名を入力
 
@@ -2134,8 +2128,6 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}会社 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}会社 '{COMPANY}'のパスワードをリセットしてもよろしいですか？
 
 
-STR_NETWORK_SERVER                                              :サーバー
-STR_NETWORK_CLIENT                                              :クライアント
 STR_NETWORK_SPECTATORS                                          :観覧者
 
 # Network set password
@@ -2167,15 +2159,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}チャ�
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORKなしでゲームがコンパイルされた可能性もあります
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}ネットワークゲームが見つかりませんでした
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}サーバが応答しませんでした
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRFの不一致によって接続できませんでした
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}ネットワークゲームの同期が失敗しました
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}ネットワークゲームへの接続が切断しました
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}保存したゲームが開けませんでした
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}サーバーを開始できませんでした
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}接続できませんでした
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}接続 {NUM} でタイムアウトエラーが発生しました
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}プロトコルエラーによって接続が切断されました
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}あなたのプレイヤー名は設定されていません。名前はマルチプレイヤーウィンドウの上部から設定できます。
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}サーバー名が設定されていません。名前はマルチプレイヤーウィンドウの上部で設定できます
@@ -2314,7 +2303,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}サーバーに接続できませんでした
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ダウンロード失敗...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}接続が切断されました
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}ダウンロード先への書込権限がありません
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ダウンロードしたファイルを展開できませんでした
 
@@ -2798,8 +2786,6 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW} {DECIMAL}フレーム/秒
 STR_FRAMERATE_FPS_BAD                                           :{RED} {DECIMAL}FPS
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-STR_FRAMERATE_BYTES_WARN                                        :{YELLOW} {BYTES}
-STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2956,7 +2942,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}フィ�
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}選択したプリセットを開きます
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}プリセットを保存
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}現在のリストをプリセットとして保存します
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}プリセット名を入力
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}プリセットを削除
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}選択したプリセットを削除します
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}追加
@@ -3280,7 +3265,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}積込�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}(うち、{1:STATION}からの転送{0:CARGO_SHORT})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT}が積込予約済み)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入れ貨物
@@ -3858,7 +3842,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}運用�
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}列車に名前を付ける
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両に名前を付ける
@@ -4547,7 +4530,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}この�
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}ここで路面電車の種類を変更できません...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}適当な道路がありません
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}有効な路面電車がありません
-STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}軌道に互換性がありません
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}ここには運河を建設できません

@@ -1407,8 +1407,6 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Lit lûdseffekt
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omjouwing: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Lit omjouwingslûd fan bygelyks it lânskip, yndustryen en stêden heare
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Stean bouwen fan ynfrastruktuer net ta at der gjin geskikte fiertugen beskikber binne: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :By ynkeakeljen kinst allinnich ynfrastruktuer bouwe foar typen ynfrastruktuer dêr't ek fiertúgen foar beskikber binne.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimaal oantal treinen per bedriuw: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimaal oantal treinen dat in bedriuw hawwe mei
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimaal oantal weinen per bedriuw: {STRING}
@@ -1813,7 +1811,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik om 
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Spul INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliïnten: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Taal: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Lânskip: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Lângrutte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tsjinnerferzje: {WHITE}{STRING}
@@ -1844,7 +1841,6 @@ STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kl
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimaal oantal kliïnten:
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} bedriuw{P "" en}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksimaal tal bedriuwen:
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Sprutsen taal:
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Fier in namme yn foar it networkspul
 
@@ -1881,8 +1877,6 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client l
 
 
 
-STR_NETWORK_SERVER                                              :Tsjinner
-STR_NETWORK_CLIENT                                              :Kliïnt
 STR_NETWORK_SPECTATORS                                          :Taskôgers
 
 # Network set password
@@ -1909,14 +1903,11 @@ STR_NETWORK_CHAT_ALL                                            :[Yderiin] {STRI
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriuw berjocht foar netwurk chat
 
 # Network messages
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Koe gjin networkspullen fine
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Koe gjin ferbyning meitsje fanwegen ferkearde NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Koe net synchronisearje mei netwurkspul
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Networkspul ferbining kwyt
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Koe opslein spul net laden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Koe de tsjinner net starte
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Koe gjin ferbyning meitsje
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Ferbining #{NUM} ferrûn
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}In protokol flater is opmurken en de ferbining is sletten
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ferkeard wachtwurd
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De tsjinner is vol
@@ -1997,7 +1988,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Koe gjin ferbyning mei ynhâldtsjinner meitsje...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Delheljen net slagge...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ferbining kwyt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... bestân koe net opslein wurde
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kin it delhelle bestân net útpakke
 
@@ -2487,7 +2477,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter 
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Selektearre ynstellings lade
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sla ynstellings op
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sla dizze list op as foarynstelling
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Jou dizze ynstellings in namme
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ferwiderje ynstellings
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ferwiderje de selektearre ynstellings
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Tafoeging
@@ -2770,7 +2759,6 @@ STR_STATION_LIST_NONE                                           :{YELLOW}- Gjin 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ûnderweis fan {STATION} ôf)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservearre foar laden)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}
@@ -3187,7 +3175,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Starte
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namme
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Jou trein in namme
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namme fan de wein
