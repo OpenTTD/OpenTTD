@@ -2720,19 +2720,24 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		ClearDockingTilesCheckingNeighbours(tile1);
 		ClearDockingTilesCheckingNeighbours(tile2);
 
-		/* All ships that were going to our station, can't go to it anymore.
-		 * Just clear the order, then automatically the next appropriate order
-		 * will be selected and in case of no appropriate order it will just
-		 * wander around the world. */
-		if (!(st->facilities & FACIL_DOCK)) {
-			for (Ship *s : Ship::Iterate()) {
-				if (s->current_order.IsType(OT_LOADING) && s->current_order.GetDestination() == st->index) {
-					s->LeaveStation();
-				}
+		for (Ship *s : Ship::Iterate()) {
+			/* Find all ships going to our dock. */
+			if (s->current_order.GetDestination() != st->index) {
+				continue;
+			}
 
-				if (s->current_order.IsType(OT_GOTO_STATION) && s->current_order.GetDestination() == st->index) {
-					s->SetDestTile(s->GetOrderStationLocation(st->index));
-				}
+			/* Find ships that are marked as "loading" but are no longer on a
+			 * docking tile. Force them to leave the station (as they were loading
+			 * on the removed dock). */
+			if (s->current_order.IsType(OT_LOADING) && !(IsDockingTile(s->tile) && IsShipDestinationTile(s->tile, st->index))) {
+				s->LeaveStation();
+			}
+
+			/* If we no longer have a dock, mark the order as invalid and send
+			 * the ship to the next order (or, if there is none, make it
+			 * wander the world). */
+			if (s->current_order.IsType(OT_GOTO_STATION) && !(st->facilities & FACIL_DOCK)) {
+				s->SetDestTile(s->GetOrderStationLocation(st->index));
 			}
 		}
 	}
