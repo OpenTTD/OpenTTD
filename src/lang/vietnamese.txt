@@ -783,6 +783,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  T
 STR_STATUSBAR_AUTOSAVE                                          :{RED}LƯU TỰ ĐỘNG
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ĐANG LƯU GAME *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(người xem)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Lịch Sử Thông Điệp
@@ -2041,6 +2042,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Game Sc
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Mật khẩu bảo vệ!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER ĐẦY
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}MÁY CHỦ NGĂN CHẶN BẠN
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}DANH SÁCH MÁY CHỦ ĐÃ CŨ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}SAI PHIÊN BẢN
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}SAI NEWGRF
 
@@ -2156,6 +2159,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Bạn c
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Bạn có muốn đặt lại mật khẩu cho công ty '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Sử dụng chuyển tiếp?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Không thể kết nối giữa bạn tới máy chủ {STRING}.{}Bạn có muốn chuyển tiếp kết nối của bạn thông qua '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Không
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Đồng ý, chỉ lần này
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Đồng ý, đừng hỏi lại
@@ -2191,7 +2195,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập t
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Không có thiết bị kết nối mạng
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server không trả lời yêu cầu
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Kết nối tới máy chủ bị quá hạn hoặc bị từ chối
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Không thể kết nối vì NewGRF không hợp
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Đồng bộ ván chơi mạng bị lỗi
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Ván chơi mạng mất kết nối
@@ -2271,6 +2275,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server k
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} đã bị đá khỏi ván chơi. Lý do: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Đăng ký server thất bại
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Một máy chủ khác đã tự nó đăng ký mã tham gia rồi. Hãy chuyển về chế độ game "local"
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Server của bạn không cho phép kết nối bên ngoài
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Những người chơi khác sẽ không kết nối được vào server của bạn
 
