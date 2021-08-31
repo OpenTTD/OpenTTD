@@ -565,6 +565,9 @@ void RebuildStationKdtree();
 template<typename Func>
 void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 {
+	/* There are no stations, so we will never find anything. */
+	if (Station::GetNumItems() == 0) return;
+
 	/* Not using, or don't have a nearby stations list, so we need to scan. */
 	std::set<StationID> seen_stations;
 
