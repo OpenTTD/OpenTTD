@@ -739,10 +739,7 @@ public:
 		this->profit_this_year = src->profit_this_year;
 		this->profit_last_year = src->profit_last_year;
 
-		GroupStatistics &stats_all = GroupStatistics::GetAllGroup(this);
-		GroupStatistics &stats = GroupStatistics::Get(this);
-		stats_all.profit_last_year += this->GetDisplayProfitLastYear();
-		stats.profit_last_year += this->GetDisplayProfitLastYear();
+		GroupStatistics::AddProfitLastYear(this);
 	}
 
 
