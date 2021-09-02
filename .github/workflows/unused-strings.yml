@@ -1,0 +1,18 @@
+name: Unused strings
+
+on:
+  pull_request:
+
+jobs:
+  unused-strings:
+    name: Unused strings
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Check for unused strings
+      run: |
+        set -ex
+        python3 .github/unused-strings.py
