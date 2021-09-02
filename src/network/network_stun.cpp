@@ -100,15 +100,21 @@ NetworkRecvStatus ClientNetworkStunSocketHandler::CloseConnection(bool error)
 {
 	NetworkStunSocketHandler::CloseConnection(error);
 
-	/* If our connecter is still pending, shut it down too. Otherwise the
-	 * callback of the connecter can call into us, and our object is most
-	 * likely about to be destroyed. */
+	/* Also make sure any pending connecter is killed ASAP. */
 	if (this->connecter != nullptr) {
 		this->connecter->Kill();
 		this->connecter = nullptr;
 	}
 
 	return NETWORK_RECV_STATUS_OKAY;
+}
+
+ClientNetworkStunSocketHandler::~ClientNetworkStunSocketHandler()
+{
+	if (this->connecter != nullptr) {
+		this->connecter->Kill();
+		this->connecter = nullptr;
+	}
 }
 
 /**
