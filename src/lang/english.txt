@@ -2107,6 +2107,8 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectate
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online Players
