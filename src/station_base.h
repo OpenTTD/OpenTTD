@@ -437,11 +437,18 @@ private:
 	}
 };
 
-struct IndustryCompare {
-	bool operator() (const Industry *lhs, const Industry *rhs) const;
+struct IndustryListEntry {
+	uint distance;
+	Industry *industry;
+
+	bool operator== (const IndustryListEntry &other) const { return this->distance == other.distance && this->industry == other.industry; };
 };
 
-typedef std::set<Industry *, IndustryCompare> IndustryList;
+struct IndustryCompare {
+	bool operator() (const IndustryListEntry &lhs, const IndustryListEntry &rhs) const;
+};
+
+typedef std::set<IndustryListEntry, IndustryCompare> IndustryList;
 
 /** Station data structure */
 struct Station FINAL : SpecializedStation<Station, false> {
@@ -500,7 +507,8 @@ public:
 	uint GetCatchmentRadius() const;
 	Rect GetCatchmentRect() const;
 	bool CatchmentCoversTown(TownID t) const;
-	void AddIndustryToDeliver(Industry *ind);
+	void AddIndustryToDeliver(Industry *ind, TileIndex tile);
+	void RemoveIndustryToDeliver(Industry *ind);
 	void RemoveFromAllNearbyLists();
 
 	inline bool TileIsInCatchment(TileIndex tile) const

@@ -357,12 +357,25 @@ Rect Station::GetCatchmentRect() const
 
 /**
  * Add nearby industry to station's industries_near list if it accepts cargo.
- * @param ind Industry
+ * For industries that are already on the list update distance if it's closer.
+ * @param ind  Industry
+ * @param tile Tile of the industry to measure distance to.
  */
-void Station::AddIndustryToDeliver(Industry *ind)
+void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
 {
-	/* Don't check further if this industry is already in the list */
-	if (this->industries_near.find(ind) != this->industries_near.end()) return;
+	/* Using DistanceMax to get about the same order as with previously used CircularTileSearch. */
+	uint distance = DistanceMax(this->xy, tile);
+
+	/* Don't check further if this industry is already in the list but update the distance if it's closer */
+	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
+	if (pos != this->industries_near.end()) {
+		if (pos->distance > distance) {
+			auto node = this->industries_near.extract(pos);
+			node.value().distance = distance;
+			this->industries_near.insert(std::move(node));
+		}
+		return;
+	}
 
 	/* Include only industries that can accept cargo */
 	uint cargo_index;
@@ -371,8 +384,20 @@ void Station::AddIndustryToDeliver(Industry *ind)
 	}
 	if (cargo_index >= lengthof(ind->accepts_cargo)) return;
 
-	this->industries_near.insert(ind);
+	this->industries_near.insert(IndustryListEntry{distance, ind});
 }
+
+/**
+ * Remove nearby industry from station's industries_near list.
+ * @param ind  Industry
+ */
+void Station::RemoveIndustryToDeliver(Industry *ind) {
+	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
+	if (pos != this->industries_near.end()) {
+		this->industries_near.erase(pos);
+	}
+}
+
 
 /**
  * Remove this station from the nearby stations lists of all towns and industries.
@@ -423,11 +448,11 @@ void Station::RecomputeCatchment()
 		}
 		/* The industry's stations_near may have been computed before its neutral station was built so clear and re-add here. */
 		for (Station *st : this->industry->stations_near) {
-			st->industries_near.erase(this->industry);
+			st->RemoveIndustryToDeliver(this->industry);
 		}
 		this->industry->stations_near.clear();
 		this->industry->stations_near.insert(this);
-		this->industries_near.insert(this->industry);
+		this->industries_near.insert(IndustryListEntry{0, this->industry});
 		return;
 	}
 
@@ -462,7 +487,7 @@ void Station::RecomputeCatchment()
 			i->stations_near.insert(this);
 
 			/* Add if we can deliver to this industry as well */
-			this->AddIndustryToDeliver(i);
+			this->AddIndustryToDeliver(i, tile);
 		}
 	}
 }

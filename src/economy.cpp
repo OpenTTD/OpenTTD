@@ -1040,9 +1040,10 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 
 	uint accepted = 0;
 
-	for (Industry *ind : st->industries_near) {
+	for (const auto &i : st->industries_near) {
 		if (num_pieces == 0) break;
 
+		Industry *ind = i.industry;
 		if (ind->index == source) continue;
 
 		uint cargo_index;
