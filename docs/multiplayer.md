@@ -209,17 +209,17 @@ Last updated:    2011-02-16
 
 
 ## 6.0) Troubleshooting
+### My advertising server does not show up in list at servers.openttd.org
+Run openttd with the `-d net=2` parameter.
+That will show which incoming communication is received, whether the replies
+from the master server or communication from an admin tool reach the programme.
+See [1.0) Starting a server](#10-starting-a-server) for the ports and protocols
+used by OpenTTD.
+The ports can be configured in the config file.
 
- - My advertising server does not show up in list at servers.openttd.org
-     Run openttd with the '-d net=2' parameter. That will show which incoming
-     communication is received, whether the replies from the master server or
-     communication from an admin tool reach the programme. See section 1
-     'Starting a server' further up for the ports and protocols used by OpenTTD.
-     The ports can be configured in the config file.
-
- - My advertising server warns a lot about getaddrinfo taking N seconds
-     This could be a transient issue with your (local) DNS server, but if the
-     problem persists there is likely a configuration issue in DNS resolving
-     on your computer. This seems to be a common configuration issue for
-     Docker instances, where the DNS resolving waits for a time out of usually
-     5 seconds.
+### My advertising server warns a lot about getaddrinfo taking N seconds
+This could be a transient issue with your (local) DNS server, but if the
+problem persists there is likely a configuration issue in DNS resolving
+on your computer. This seems to be a common configuration issue for
+Docker instances, where the DNS resolving waits for a time out of usually
+5 seconds.
