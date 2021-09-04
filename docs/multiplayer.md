@@ -219,7 +219,12 @@ The ports can be configured in the config file.
 
 ### My advertising server warns a lot about getaddrinfo taking N seconds
 This could be a transient issue with your (local) DNS server, but if the
-problem persists there is likely a configuration issue in DNS resolving
-on your computer. This seems to be a common configuration issue for
-Docker instances, where the DNS resolving waits for a time out of usually
-5 seconds.
+problem persists there is likely a configuration issue in DNS resolving on your
+computer.
+#### Docker containers
+This is an issue for dual-stack Docker containers, in which there is no default
+IPv6 resolver, when IPv6 traffic is preferred (attempted before) over IPv4,
+where it can be observed name resolution times out after a delay (5 seconds
+default on GNU/Linux).
+The solution is then to force custom name servers for said containers to be a
+list of IPv4 ones.
