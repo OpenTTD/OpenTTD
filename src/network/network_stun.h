@@ -24,6 +24,7 @@ public:
 	NetworkAddress local_addr;         ///< Local addresses of the socket.
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;
+	~ClientNetworkStunSocketHandler() override;
 	void SendReceive();
 
 	void Connect(const std::string &token, uint8 family);

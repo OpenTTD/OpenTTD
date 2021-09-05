@@ -30,6 +30,7 @@ public:
 	ClientNetworkTurnSocketHandler(const std::string &token, uint8 tracking_number, const std::string &connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;
+	~ClientNetworkTurnSocketHandler() override;
 	void SendReceive();
 
 	void Connect();
