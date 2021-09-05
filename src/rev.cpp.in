@@ -73,6 +73,13 @@ const byte _openttd_revision_modified = ${REV_MODIFIED};
 const byte _openttd_revision_tagged = ${REV_ISTAG};
 
 /**
+ * To check compatibility of BaNaNaS content, this version string is used.
+ * It should never contain things like "beta", but only the release version
+ * we are compatible with.
+ */
+const char _openttd_content_version[] = "${REV_MAJOR}.${REV_MINOR}";
+
+/**
  * The NewGRF revision of OTTD:
  * bits  meaning.
  * 24-31 major version + 16

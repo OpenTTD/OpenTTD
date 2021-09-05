@@ -16,6 +16,7 @@ extern const char _openttd_revision_hash[];
 extern const char _openttd_revision_year[];
 extern const byte _openttd_revision_modified;
 extern const byte _openttd_revision_tagged;
+extern const char _openttd_content_version[];
 extern const uint32 _openttd_newgrf_version;
 
 bool IsReleasedVersion();
