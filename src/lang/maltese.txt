@@ -123,7 +123,7 @@ STR_LITERS                                                      :{COMMA} litr{P 
 STR_ITEMS                                                       :{COMMA} oġġett{P "" i i i}
 STR_CRATES                                                      :{COMMA} kaxx{P a i i i}
 
-# Colours, do not shuffle
+###length 17
 STR_COLOUR_DARK_BLUE                                            :Blu Skur
 STR_COLOUR_PALE_GREEN                                           :Aħdar ċar
 STR_COLOUR_PINK                                                 :Roża
@@ -188,7 +188,9 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Faxxa bi
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Waqqa bini, etc.., Ctrl tagħzel zona dijagonali. Shift taqleb bejn bini/turija ta' stima ta' l-ispiza
 
 # Show engines button
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Default
@@ -242,6 +244,7 @@ STR_SORT_BY_POPULATION                                          :Popolazzjoni
 # Group by options for vehicle list
 
 # Tooltips for the main toolbar
+###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Waqfa temporanja mil-logħba
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Għaġġel il-loghba
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Preferenzi
@@ -255,67 +258,67 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 
 # Extra tooltips for the scenario editor toolbar
 
-############ range for SE file menu starts
+# Scenario editor file menu
+###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-############ range for SE file menu starts
 
-############ range for settings menu starts
-############ range ends here
+# Settings menu
+###length 14
 
-############ range for file menu starts
+# File menu
+###length 5
 STR_FILE_MENU_SEPARATOR                                         :
-############ range ends here
 
-# map menu
+# Map menu
+###length 4
 
-############ range for town menu starts
-############ range ends here
+# Town menu
+###length 2
 
-############ range for subsidies menu starts
-############ range ends here
+# Subsidies menu
+###length 1
 
-############ range for graph menu starts
-############ range ends here
+# Graph menu
+###length 6
 
-############ range for company league menu starts
-############ range ends here
+# Company league menu
+###length 3
 
-############ range for industry menu starts
-############ range ends here
+# Industry menu
+###length 3
 
-############ range for railway construction menu starts
-############ range ends here
+# URailway construction menu
+###length 4
 
-############ range for road construction menu starts
-############ range ends here
+# Road construction menu
+###length 2
 
-############ range for waterways construction menu starts
-############ range ends here
+# Waterways construction menu
+###length 1
 
-############ range for airport construction menu starts
-############ range ends here
+# Aairport construction menu
+###length 1
 
-############ range for landscaping menu starts
-############ range ends here
+# Landscaping menu
+###length 3
 
-############ range for music menu starts
-############ range ends here
+# Music menu
+###length 1
 
-############ range for message menu starts
-############ range ends here
+# Message menu
+###length 3
 
-############ range for about menu starts
-############ range ends here
+# About menu
+###length 10
 
-############ range for ordinal numbers used for the place in the highscore window
-############ range for ordinal numbers ends
+# Place in highscore window
+###length 15
 
-############ range for days starts
-############ range for days ends
+###length 31
 
-############ range for months starts
+###length 12
 
-############ range for months ends
+###length 12
 
 # Graph window
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
@@ -334,8 +337,10 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-############ Those following lines need to be in this order!!
-############ End of order list
+
+###length 10
+
+###length 10
 
 # Music window
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
@@ -351,6 +356,8 @@ STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
+
+###length 7
 
 
 
@@ -376,6 +383,8 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 
 
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 # Order review system / warnings
 
@@ -385,23 +394,23 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 
 
+###length 4
 
 
 # Extra view window
 
 # Game options window
 
-############ start of currency region
-############ end of currency region
+###length 42
+
+###length 2
 
 
-
-############ start of townname region
-############ end of townname region
+###length 21
 
 
-############ start of autosave dropdown
-############ end of autosave dropdown
+# Autosave dropdown
+###length 5
 
 
 
@@ -429,45 +438,127 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+###length 5
 
+###length 6
 
+###length 4
 
+###length 3
 
+###length 4
 
+###length 7
 
+###length 3
 
 
 # Settings tree window
 
 
 
+###length 3
 
+###length 3
+
+###length 3
+
+###length 3
+
+###length 3
 
 
 
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stabbilixxi l-kosti għal manutenzjoni u servizzi fuq vetturi u infrastruttura
+
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Veloċita' tal-kostruzzjoni: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Illimita l-ammont massimu ta' kostruzzjonijiet għall-AI
+
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Ħsarat fil-vetturi: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ikkontrolla kemm-il darba vettura li ma ingħatatx servizz riċentament tieqaf
+
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplikatur tas-sussidju: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stabbilixxi kemm jiġi mħallas għal konnessjonijiet sussidjati
+
+
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kosti tal-kostruzzjoni: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stabbilixxi l-livell ta' kostruzzjoni u l-prezz tax-xiri
+
 STR_CONFIG_SETTING_RECESSIONS                                   :Riċessjonijiet: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jekk mixgħula kull ftit snin tista' sseħħ riċessjoni. Waqt riċessjoni, il-produzzjoni ta' kollox tonqos (tirritorna għal kemm kienet qabel kif tgħaddi r-riċessjoni)
+
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tħallix li ferrovija ddur lura fi stazzjon: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jekk tinxtegħel, ferroviji ma jdurux lura fi stazzjonijiet li mhumiex fit-tarf, jekk teżisti rotta iqsar għad-destinazzjoni li jmiss
+
 STR_CONFIG_SETTING_DISASTERS                                    :Diżastri: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ixgħel jew itfi diżastri li xi drabi jistgħu jaffetwaw jew ikissru vetturi jew infrastrutturi
+
 STR_CONFIG_SETTING_CITY_APPROVAL                                :L-attitudni tal-kunsill lokali lejn bidliet fil-viċinanzi: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Iddeċiedi kemm l-ammont ta storbju u danni lill-ambjent ta' kumpanija jaffetwaw il-klassifikazzjoni tagħhom mar-raħal u proġetti oħra tal-futur
+
+###setting-zero-is-special
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###length 3
+
+
+
+###length 3
+
+
+
+###length 3
+
+###length 4
+
+
+
+
+
+
+
+
+###length 3
+
 
 
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jintilef il-vehikolu: {STRING}
 
+###length 3
+
+
+
+
+###length 2
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+###length 2
 
 
 
@@ -475,8 +566,47 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 
 
 
+###length 4
+
+
+
+###length 3
+
+
+###length 2
+
+###length 2
+
+
+
+
+###length 3
+
+###length 4
+
+
+
+###length 3
+
+
+
+###length 3
+
+###length 4
+
+###length 3
+
+###length 3
+
+
+
+###length 3
+
+
+###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :L-ebda azzjoni
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :L-azzjonijiet kollha
+
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uza l-lista avvanzata tal-vetturi: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uzu tal-listi avvanzati tal-vetturi biex tghaqqad il-vetturi fi gruppi
 
@@ -484,6 +614,13 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
+###length 3
+
+
+
+
+
+###setting-zero-is-special
 
 
 
@@ -501,6 +638,87 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
+###length 3
+
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###length 3
+
+
+###setting-zero-is-special
+
+###length 3
+
+
+
+
+
+
+###length 2
+
+###length 2
+
+###length 5
+
+
+
+###length 3
+
+###length 2
+
+###length 4
+
+###setting-zero-is-special
+###setting-zero-is-special
+
+###length 6
+
+###length 3
+
+###length 5
+
+###setting-zero-is-special
+
+
+###length 3
+
+
+
+
+###length 4
+
+###length 3
+
+###length 3
+
+###length 3
+
+###length 3
+
+###length 3
+
+
+###length 2
 
 
 # Config errors
@@ -523,15 +741,18 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is-sena
 
+###length 4
+
 # Livery window
 
 
+###length 23
 
 # Face selection window
 
 
-############ Next lines match ServerGameType
-############ End of leave-in-this-order
+# Matches ServerGameType
+###length 3
 
 # Network server list
 
@@ -550,11 +771,10 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 # Network connecting window
 
-############ Leave those lines in this order!!
-
-############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} imnizzlin s'issa
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} imnizzlin s'issa
+
+###length 8
 
 
 
@@ -562,8 +782,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 # Network client list
 
-############ Begin of ConnectionType
-############ End of ConnectionType
+# Matches ConnectionType
+###length 5
 
 
 
@@ -578,20 +798,23 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 # Network messages
 
-############ Leave those lines in this order!!
+
+###length 21
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :reviżjoni ħażina
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed jintuża
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
-############ End of leave-in-this-order
-
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
+
+###length 12
+
 
 
 # Content downloading window
+
+###length 5
+
 
 # Order of these is important!
 
@@ -693,10 +916,10 @@ STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel i
 # About OpenTTD window
 
 # Framerate display window
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
+
+###length 15
+
+###length 15
 
 
 # Save/load game/scenario
@@ -746,6 +969,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 
 
 # NewGRF status
+###length 3
 
 # NewGRF 'it's broken' warnings
 
@@ -774,15 +998,17 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 # Town local authority window
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
+###length 8
 
+###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
-############ Start of Goal Question button list
-############ End of Goal Question button list
+# Goal Question button list
+###length 18
 
 # Subsidies window
 
@@ -801,8 +1027,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 
 
 
-############ range for rating starts
-############ range for rating ends
+###length 8
 
 
 
@@ -814,6 +1039,9 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 13
+
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
@@ -835,16 +1063,20 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 
 
 # Vehicle lists
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
+###length VEHICLE_TYPES
 
 
 
 
 
 # Group window
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 
 
@@ -853,22 +1085,34 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 
 
 # Build vehicle window
+###length 4
 
 
-############ range for vehicle availability starts
-############ range for vehicle availability ends
+# Vehicle availability
+###length VEHICLE_TYPES
 
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -880,18 +1124,29 @@ STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
+###length VEHICLE_TYPES
 
 
 # Engine preview window
@@ -903,8 +1158,13 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Autoreplace window
 
 
+###length VEHICLE_TYPES
 
 
+
+
+###length 2
+###next-name-looks-similar
 
 
 
@@ -912,32 +1172,41 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
 
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
-
-
-
+###length VEHICLE_TYPES
 
 # Messages in the start stop button in the vehicle view
 
 
 # Vehicle stopped/started animations
+###length 2
+
+###length 2
 
 # Vehicle details
 
-
-# The next two need to stay in this order
-
+###length VEHICLE_TYPES
 
 
 
 
 
 
+
+
+###length VEHICLE_TYPES
 
 # Extra buttons for train details windows
 
@@ -947,8 +1216,11 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 # Vehicle refit
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Order view
 
@@ -964,6 +1236,8 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+###length 8
+###next-name-looks-similar
 
 
 
@@ -974,6 +1248,9 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Hassar l
 
 # String parts to build the order string
 
+
+###length 3
+###next-name-looks-similar
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -986,6 +1263,7 @@ STR_ORDER_IMPLICIT                                              :(Awtomatiku)
 
 
 
+###length 3
 
 
 
@@ -1035,10 +1313,11 @@ STR_AI_CONFIG_CHANGE_NONE                                       :
 
 
 # Textfile window
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценца за {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прикажи ги чита-ми
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Промени се најавите
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценца
+###length 3
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценца за {STRING}
 
 
 # Vehicle loading indicators
@@ -1116,23 +1395,33 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Il-pont 
 
 # Generic vehicle errors
 
+###length VEHICLE_TYPES
 
-
-
-
-
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip ta' vapur...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip t' ajruplan...
-
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ma tistax tbigħ din il-ferrovija...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ma tistax tbigħ din il-karozza...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ma tistax tbigħ dan il-vapur...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ma tistax tbigħ dan l-ajruplan...
-
+###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Din il-vettura mhix disponibbli
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Din il-vettura mhix disponibbli
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Dan il-vapur mhux disponibbli
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Dan l-ajruplan mhux disponibbli
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip ta' vapur...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip t' ajruplan...
+
+###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ma tistax tbigħ din il-ferrovija...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ma tistax tbigħ din il-karozza...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ma tistax tbigħ dan il-vapur...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ma tistax tbigħ dan l-ajruplan...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wisq vetturi fil-logħba
 
@@ -1159,9 +1448,11 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tista
 # Sign related errors
 
 # Translatable comment for OpenTTD's desktop shortcut
+###external 1
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Logħba simulazzjoni bbażata fuq Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+###external 10
 
 ##id 0x2000
 # Town building names
@@ -1207,6 +1498,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Minjiera taz-zo
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
+
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bla isem
@@ -1215,6 +1507,7 @@ STR_SV_ROAD_VEHICLE_NAME                                        :Vettura tat-tri
 STR_SV_SHIP_NAME                                                :Vapur {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Ajruplan {COMMA}
 
+###length 27
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Tramuntana
 STR_SV_STNAME_SOUTH                                             :{STRING} Nofsinhar
@@ -1241,9 +1534,11 @@ STR_SV_STNAME_LOWER                                             :{STRING} t' isf
 STR_SV_STNAME_HELIPORT                                          :Ħeliport {STRING}
 STR_SV_STNAME_FOREST                                            :Foresta {STRING}
 STR_SV_STNAME_FALLBACK                                          :{STRING}, Stazzjon #{NUM}
+
 ############ end of savegame specific region!
 
 ##id 0x8000
+###length 116
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Fwar)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
@@ -1297,6 +1592,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Karru għall-pa
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Karru għall-posta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Karru għall-faħam
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
+
+###length 88
+
+###length 11
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tanker taż-żejt MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Tanker taż-żejt CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Vapur tal-passiġġieri MPS
@@ -1308,6 +1607,8 @@ STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Vapur tal-merka
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Vapur tal-merkanzija Bakewell
 STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Vapur tal-merkanzija MightyMover
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Vapur tal-merkanzija Powernaut
+
+###length 41
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -1359,6 +1660,14 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+###length 2
+
+###length 2
+
+###length 6
+###next-name-looks-similar
+
+# _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :stazzjon mhux magħruf
 STR_DEFAULT_SIGN_NAME                                           :Sinjal

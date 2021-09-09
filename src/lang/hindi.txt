@@ -57,7 +57,7 @@ STR_ABBREV_COAL                                                 :{TINY_FONT}क�
 
 # 'Mode' of transport for cargoes
 
-# Colours, do not shuffle
+###length 17
 STR_COLOUR_PINK                                                 :गुलाबी
 STR_COLOUR_RED                                                  :लाल
 
@@ -77,7 +77,9 @@ STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_TOOLTIP_RESIZE                                              :{BLACK}खिड़की का आकार बदलने के लिये क्लिक करके खींचें
 
 # Show engines button
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Query window
 
@@ -98,85 +100,86 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :पिछले
 # Group by options for vehicle list
 
 # Tooltips for the main toolbar
+###length 31
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}ध्वनि/संगीत विकल्प
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}मानचित्र, नगर निर्देशिका दिखायें
 
-############ range for SE file menu starts
+# Scenario editor file menu
+###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
-############ range for SE file menu starts
 
-############ range for settings menu starts
+# Settings menu
+###length 14
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
-############ range ends here
 
-############ range for file menu starts
+# File menu
+###length 5
 STR_FILE_MENU_SEPARATOR                                         :
-############ range ends here
 
-# map menu
+# Map menu
+###length 4
 
-############ range for town menu starts
-############ range ends here
+# Town menu
+###length 2
 
-############ range for subsidies menu starts
-############ range ends here
+# Subsidies menu
+###length 1
 
-############ range for graph menu starts
-############ range ends here
+# Graph menu
+###length 6
 
-############ range for company league menu starts
-############ range ends here
+# Company league menu
+###length 3
 
-############ range for industry menu starts
+# Industry menu
+###length 3
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :औद्योगिक शृंखला
-############ range ends here
 
-############ range for railway construction menu starts
+# URailway construction menu
+###length 4
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युतिकृत रेलवे निर्माण
-############ range ends here
 
-############ range for road construction menu starts
-############ range ends here
+# Road construction menu
+###length 2
 
-############ range for waterways construction menu starts
-############ range ends here
+# Waterways construction menu
+###length 1
 
-############ range for airport construction menu starts
-############ range ends here
+# Aairport construction menu
+###length 1
 
-############ range for landscaping menu starts
-############ range ends here
+# Landscaping menu
+###length 3
 
-############ range for music menu starts
-############ range ends here
+# Music menu
+###length 1
 
-############ range for message menu starts
-############ range ends here
+# Message menu
+###length 3
 
-############ range for about menu starts
+# About menu
+###length 10
 STR_ABOUT_MENU_SEPARATOR                                        :
-############ range ends here
 
-############ range for ordinal numbers used for the place in the highscore window
+# Place in highscore window
+###length 15
 STR_ORDINAL_NUMBER_2ND                                          :द्वितीय
-############ range for ordinal numbers ends
 
-############ range for days starts
+###length 31
 STR_DAY_NUMBER_14TH                                             :१४
 STR_DAY_NUMBER_15TH                                             :१५
 STR_DAY_NUMBER_23RD                                             :२३
-############ range for days ends
 
-############ range for months starts
+###length 12
 STR_MONTH_ABBREV_JAN                                            :जन
 STR_MONTH_ABBREV_NOV                                            :नव
 
+###length 12
 STR_MONTH_AUG                                                   :अगस्त
-############ range for months ends
 
 # Graph window
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
@@ -193,10 +196,12 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 
 # Performance detail window
-############ Those following lines need to be in this order!!
+
+###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}वाहन:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}माल :
-############ End of order list
+
+###length 10
 
 # Music window
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
@@ -207,6 +212,8 @@ STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKG
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{1:COMPANY} के {0:PRESIDENT_NAME} ने '{2:STRING}' की स्थिति प्राप्त की!
 
 # Smallmap window
+
+###length 7
 
 
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}ट्रक लदान वीथी
@@ -237,6 +244,8 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}{INDUSTRY} के उत्पादन में {COMMA}% कमी आयी!
 
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 # Order review system / warnings
 
@@ -246,32 +255,32 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 
+###length 4
 
 
 # Extra view window
 
 # Game options window
 
-############ start of currency region
+###length 42
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलैंड मार्का (FIM)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना (ISK)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
-############ end of currency region
 
+###length 2
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :दाईं ओर वाहन चलाएँ
 
 
-############ start of townname region
+###length 21
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ़्रेंच
 STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :पोलिश
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :तुर्की
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :इटैलियन
-############ end of townname region
 
 
-############ start of autosave dropdown
+# Autosave dropdown
+###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :प्रत्येक माह
-############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% पूर्ण)
 
@@ -302,52 +311,207 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक �
 
 STR_VARIETY_MEDIUM                                              :मध्यम
 
+###length 5
 STR_AI_SPEED_SLOW                                               :धीमा
 
+###length 6
 
+###length 4
 
+###length 3
 
+###length 4
 
+###length 7
 
+###length 3
 
 
 # Settings tree window
 
 
 
+###length 3
 
+###length 3
+
+###length 3
 STR_CONFIG_SETTING_COMPANIES_OFF                                :बन्द
+
+###length 3
+
+###length 3
+
+
+
+
+
+
+
+
+###setting-zero-is-special
+
+
 
 
 
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :मानचित्र के भूभाग की अधिकतम ऊंचाई निर्धारित करें। "(स्वतः)" चुनने पर भूभाग जनन के बाद एक उपयुक्त संख्या चुन ली जायेगी।
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+###setting-zero-is-special
+
+
+
+
+
+
+
+
+
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :ट्रेन के लिये ढलान की तेजी की स्थापना। ऊँची संख्या से चढ़ान पर चढ़ना अधिक कठिन हो जाता है।
+
+
+
+
+
+
+
+
+###length 3
+
+
+
+###length 3
+
+
+
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :निर्दिष्ट करें कि ट्रेनों को स्टेशन पर कहाँ रुकना चाहिये। स्टेशन में प्रवेश के पास 'समीप का छोर', स्टेशन के बीच में 'मध्य', और प्रवेश की उलटी ओर 'दूर का छोर' है। ध्यान दें कि यह विन्यास केवल नये निर्देशों के लिये मानक स्थापित करता है। प्रत्येक निर्देश को अलग से किसी अन्य व्यवहार के लिये स्थापित किया जा सकता है।
+###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :समीप का छोर
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :मध्य
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :दूर का छोर
+
+###length 4
+
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :कंपनियों को स्थानीय नगर प्रशासन को रिश्वत देने की अनुमति दें। यदि रिश्वत पर किसी निरीक्षक की दृष्टि पड़ती है तो कंपनी छः महीने के लिये नगर में काम नहीं कर पायेगी।
 
 
 
+
+
+
+
+###length 3
+
+
+
+
+
+
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम होने पर वाहनों के निर्देशों की आवधिक जाँच की जाती है, और कुछ सुस्पष्ट मामलों का पता चलते ही एक संदेश द्वारा बताया जाता है।
+###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
 
+
+
+###length 2
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+###length 2
+
+
+
+
+
+
+
+###length 4
+
+
+
+###length 3
+
+
+###length 2
+
+###length 2
+
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :एक स्टेशन के हिस्सों के विस्तार हेतु अधिकतम क्षेत्र निर्धारित करें। ऊंची संख्या खेल को धीमा कर सकती है।
+
+
+
+###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :बैंगनी
+
+###length 4
+
+
+
+###length 3
+
+
+
+###length 3
+
+###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :अक्षम
 
+###length 3
+
+###length 3
+
+
+
+###length 3
+
+
+###length 4
 
 
 
 
 
+
+###length 3
+
+
+
+
+
+###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :सीमाहीन (आपके कंप्यूटर द्वारा सीमित)
 
+
 STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचार पत्र: {STRING}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###length 3
+
+
+
+
+###setting-zero-is-special
 
 
 
@@ -357,26 +521,80 @@ STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचा
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :दुर्घटनायें / आपदायें : {STRING}
 
 
+
+
+
+
+
+
+
+
+
+
+###length 3
+
+
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+###setting-zero-is-special
+
+###length 3
+
+
+
+
+
+
+###length 2
+
+###length 2
+
+###length 5
+
+
+
+###length 3
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :नगर में माल उत्पादन: {STRING}
+###length 2
 
+###length 4
 
+###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+###setting-zero-is-special
+
+###length 6
+
+###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :२x
 
+###length 5
 
+###setting-zero-is-special
+
+
+###length 3
+
+
+
+
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :अंतर्राष्ट्रीय मानक (m/s)
 
+###length 3
 
+###length 3
 
+###length 3
 
+###length 3
 
+###length 3
 
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}सामान्य
 
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :नौकाओं द्वारा उपयोग किया जाने वाला पथान्वेषी
+###length 2
 
 
 # Config errors
@@ -405,17 +623,20 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्�
 
 # Cheat window
 
+###length 4
+
 # Livery window
 
 
+###length 23
 
 # Face selection window
 
 STR_FACE_LOAD_DONE                                              :{WHITE}ओपनटीटीडी प्रारूप पत्र से आपका प्रिय चेहरा भर लिया गया है
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}कॉलर बदलें
 
-############ Next lines match ServerGameType
-############ End of leave-in-this-order
+# Matches ServerGameType
+###length 3
 
 # Network server list
 
@@ -434,9 +655,8 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}सर�
 
 # Network connecting window
 
-############ Leave those lines in this order!!
 
-############ End of leave-in-this-order
+###length 8
 
 
 
@@ -444,8 +664,8 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}सर�
 
 # Network client list
 
-############ Begin of ConnectionType
-############ End of ConnectionType
+# Matches ConnectionType
+###length 5
 
 
 
@@ -460,22 +680,25 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}सर�
 
 # Network messages
 
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}संपर्क विच्छेद संभावित
 
+###length 21
+
 # Network related errors
-############ Leave those lines in this order!!
+
+###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :खेल अभी भी ठहरा हुआ है ({STRING}, {STRING}, {STRING})
-############ End of leave-in-this-order
+
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :छोड़ रहा है
 
 
 # Content downloading window
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}खोजी गयी सामग्री OpenTTD की सामग्री सेवा में उपलब्ध नहीं है, आप OpenTTD से असंबद्ध वेबसाइटों पर खोज सकते हैं
+
+###length 5
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}यह आपके पास पहले से मौजूद है
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}यह सामग्री अज्ञात है और इसे ओपनटीटीडी में प्राप्त नहीं किया जा सकता है
+
 
 # Order of these is important!
 
@@ -596,11 +819,11 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :इस्पा
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-############ Leave those lines in this order!!
+
+###length 15
+
+###length 15
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :माल प्रबंधन
-############ End of leave-in-this-order
 
 
 # Save/load game/scenario
@@ -647,6 +870,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 
 
 # NewGRF status
+###length 3
 
 # NewGRF 'it's broken' warnings
 
@@ -676,8 +900,10 @@ STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}फै�
 
 # Town local authority window
 
+###length 8
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :लघु विज्ञापन अभियान
 
+###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}नगरों के सड़क तंत्र के पुनर्निर्माण में निवेश करें।{}इससे अधिकतम ६ महीने तक यातायात में बहुत विघ्न पड़ता है।{}मूल्य : {CURRENCY_LONG}
 
 # Goal window
@@ -687,8 +913,8 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 
 # Goal question window
 
-############ Start of Goal Question button list
-############ End of Goal Question button list
+# Goal Question button list
+###length 18
 
 # Subsidies window
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}इन सेवाओं के लिये अनुदान प्रस्तावित :
@@ -712,8 +938,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} {STATION} द्वारा
 
 
-############ range for rating starts
-############ range for rating ends
+###length 8
 
 
 
@@ -725,7 +950,10 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 13
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}संपत्ति का रखरखाव
+
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} उधार
@@ -757,16 +985,20 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING
 
 
 # Vehicle lists
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
+###length VEHICLE_TYPES
 
 
 
 
 
 # Group window
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 
 
@@ -775,27 +1007,39 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING
 
 
 # Build vehicle window
+###length 4
 
 
-############ range for vehicle availability starts
+# Vehicle availability
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :नई ट्रेनें
-############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}मूल्य : {GOLD}{CURRENCY_LONG}{BLACK} भार : {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भार : {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}छिपायें
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}नौका प्रकार को छिपायें/दिखायें
 
+###length VEHICLE_TYPES
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -803,18 +1047,29 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
+###length VEHICLE_TYPES
 
 
 # Engine preview window
@@ -827,9 +1082,14 @@ STR_ENGINE_PREVIEW_SHIP                                         :जहाज
 # Autoreplace window
 
 
+###length VEHICLE_TYPES
+
 
 STR_REPLACE_VEHICLES_STOP                                       :वाहन प्रतिस्थापित करना बन्द करें
 
+
+###length 2
+###next-name-looks-similar
 
 
 
@@ -837,33 +1097,42 @@ STR_REPLACE_VEHICLES_STOP                                       :वाहन �
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
 
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
-
-
+###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}वर्तमान ट्रेन व्यवहार - ट्रेन रोकने/चलाने के लिये क्लिक करें
-
 
 # Messages in the start stop button in the vehicle view
 
 
 # Vehicle stopped/started animations
+###length 2
+
+###length 2
 
 # Vehicle details
 
-
-# The next two need to stay in this order
-
+###length VEHICLE_TYPES
 
 
 
 
 
 
+
+
+###length VEHICLE_TYPES
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   निर्माण: {LTBLUE}{NUM}{BLACK} मूल्य: {LTBLUE}{CURRENCY_LONG}
@@ -874,8 +1143,11 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 
 # Vehicle refit
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Order view
 
@@ -892,6 +1164,8 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}इस �
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+###length 8
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :के बराबर है
 
@@ -904,6 +1178,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :के बर�
 
 
 STR_ORDER_NEAREST_DEPOT                                         :निकटतम
+###length 3
+###next-name-looks-similar
+
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -914,6 +1191,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+###length 3
 
 
 
@@ -958,6 +1236,7 @@ STR_AI_CONFIG_CHANGE_NONE                                       :
 
 
 # Textfile window
+###length 3
 
 
 # Vehicle loading indicators
@@ -1044,15 +1323,25 @@ STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... प�
 
 # Generic vehicle errors
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}जहाज का नामकरण नहीं कर सकते...
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रेल वाहन नहीं बेच सकते...
-
 
 
 
@@ -1070,8 +1359,10 @@ STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... व�
 # Sign related errors
 
 # Translatable comment for OpenTTD's desktop shortcut
+###external 1
 
 # Translatable descriptions in media/baseset/*.ob* files
+###external 10
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :ट्रांस्पोर्ट टायिकून डीलक्स के विंडोज संस्करण की मूल ध्वनियां।
 
 ##id 0x2000
@@ -1085,9 +1376,11 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :बैंक
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
+
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 
+###length 27
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} उत्तर
 STR_SV_STNAME_CENTRAL                                           :{STRING} केंद्रीय
@@ -1095,9 +1388,11 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} हव
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+
 ############ end of savegame specific region!
 
 ##id 0x8000
+###length 116
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :कोयला वाहन
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :फल वाहन
@@ -1105,10 +1400,16 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (वि
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :खिलौनों का डब्बा
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :पानी का टैंकर
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :बबल वैन
+
+###length 88
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :प्लॉडीपीहट एमके३ बस
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :मोरलैंड काष्ठ ट्रक
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :फोस्टर कवचयुक्त ट्रक
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :पावरनोट मिष्ठान्न ट्रक
+
+###length 11
+
+###length 41
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बेकवेल कॉट्सवॉल्ड एलबी-३
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बेकवेल लकेट एलबी-९
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बेकवेल लकेट एलबी८०
@@ -1123,6 +1424,14 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+###length 2
+
+###length 2
+
+###length 6
+###next-name-looks-similar
+
+# _SERIAL version of AIRACRAFT doesn't exist
 
 
 

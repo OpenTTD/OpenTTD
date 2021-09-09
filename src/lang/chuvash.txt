@@ -134,7 +134,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ПӖ
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} пассажир{P "" сем}
 
-# Colours, do not shuffle
+###length 17
 STR_COLOUR_DARK_BLUE                                            :Тӗттӗм кӑвак
 STR_COLOUR_PALE_GREEN                                           :Шупка симӗс
 STR_COLOUR_PINK                                                 :Кӗрен
@@ -169,7 +169,9 @@ STR_UNITS_POWER_SI                                              :{COMMA}кВт
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Чӳречене хуп
 
 # Show engines button
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Пӳрнӗ пек
@@ -205,6 +207,7 @@ STR_SORT_BY_POPULATION                                          :Ҫынисем
 # Group by options for vehicle list
 
 # Tooltips for the main toolbar
+###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Вӑййи тӑхтав
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Вӑййи хӑвӑртлат
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Майлаштару
@@ -214,69 +217,71 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Аэро
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Объект вырӑнӗ
 
-############ range for SE file menu starts
+# Scenario editor file menu
+###length 7
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Вӗҫле
-############ range for SE file menu starts
 
-############ range for settings menu starts
+# Settings menu
+###length 14
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи майлаштару
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майлаштару
-############ range ends here
 
-############ range for file menu starts
+# File menu
+###length 5
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Тух
-############ range ends here
 
-# map menu
+# Map menu
+###length 4
 
-############ range for town menu starts
-############ range ends here
+# Town menu
+###length 2
 
-############ range for subsidies menu starts
+# Subsidies menu
+###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Грантсем
-############ range ends here
 
-############ range for graph menu starts
-############ range ends here
+# Graph menu
+###length 6
 
-############ range for company league menu starts
-############ range ends here
+# Company league menu
+###length 3
 
-############ range for industry menu starts
-############ range ends here
+# Industry menu
+###length 3
 
-############ range for railway construction menu starts
-############ range ends here
+# URailway construction menu
+###length 4
 
-############ range for road construction menu starts
-############ range ends here
+# Road construction menu
+###length 2
 
-############ range for waterways construction menu starts
-############ range ends here
+# Waterways construction menu
+###length 1
 
-############ range for airport construction menu starts
+# Aairport construction menu
+###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Аэропорт ҫурт
-############ range ends here
 
-############ range for landscaping menu starts
-############ range ends here
+# Landscaping menu
+###length 3
 
-############ range for music menu starts
+# Music menu
+###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ-кӗвӗ
-############ range ends here
 
-############ range for message menu starts
-############ range ends here
+# Message menu
+###length 3
 
-############ range for about menu starts
+# About menu
+###length 10
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
-############ range ends here
 
-############ range for ordinal numbers used for the place in the highscore window
+# Place in highscore window
+###length 15
 STR_ORDINAL_NUMBER_1ST                                          :1мӗш
 STR_ORDINAL_NUMBER_2ND                                          :2мӗш
 STR_ORDINAL_NUMBER_3RD                                          :3-мӗш
@@ -292,9 +297,8 @@ STR_ORDINAL_NUMBER_12TH                                         :12-мӗш
 STR_ORDINAL_NUMBER_13TH                                         :13-мӗш
 STR_ORDINAL_NUMBER_14TH                                         :14-мӗш
 STR_ORDINAL_NUMBER_15TH                                         :15-мӗш
-############ range for ordinal numbers ends
 
-############ range for days starts
+###length 31
 STR_DAY_NUMBER_1ST                                              :1мӗш
 STR_DAY_NUMBER_2ND                                              :2мӗш
 STR_DAY_NUMBER_3RD                                              :3-мӗш
@@ -326,9 +330,8 @@ STR_DAY_NUMBER_28TH                                             :28-мӗш
 STR_DAY_NUMBER_29TH                                             :29-мӗш
 STR_DAY_NUMBER_30TH                                             :30-мӗш
 STR_DAY_NUMBER_31ST                                             :31-мӗш
-############ range for days ends
 
-############ range for months starts
+###length 12
 STR_MONTH_ABBREV_JAN                                            :Кӑр
 STR_MONTH_ABBREV_FEB                                            :Нар
 STR_MONTH_ABBREV_MAR                                            :Пуш
@@ -342,6 +345,7 @@ STR_MONTH_ABBREV_OCT                                            :Юпа
 STR_MONTH_ABBREV_NOV                                            :Чӳк
 STR_MONTH_ABBREV_DEC                                            :Раш
 
+###length 12
 STR_MONTH_JAN                                                   :Кӑрлач
 STR_MONTH_FEB                                                   :Нарӑс
 STR_MONTH_MAR                                                   :Пуш
@@ -354,7 +358,6 @@ STR_MONTH_SEP                                                   :Авӑн
 STR_MONTH_OCT                                                   :Юпа
 STR_MONTH_NOV                                                   :Чӳк
 STR_MONTH_DEC                                                   :Раштав
-############ range for months ends
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Уҫӑ
@@ -381,14 +384,16 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Вакк
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-############ Those following lines need to be in this order!!
+
+###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ҫул-йӗр:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцисем:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Тиев:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Укҫӑ:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кивҫен:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Пурӗ:
-############ End of order list
+
+###length 10
 
 # Music window
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
@@ -410,9 +415,11 @@ STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STR
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карттӑ - {STRING}
 
+###length 7
 STR_SMALLMAP_TYPE_VEHICLES                                      :Ҫул-йӗр
 STR_SMALLMAP_TYPE_VEGETATION                                    :Йывăç-курӑк
 STR_SMALLMAP_TYPE_OWNERS                                        :Хуҫасем
+
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Ҫулсем
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Чукун ҫулсем
@@ -455,6 +462,8 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 
 
 
+###length VEHICLE_TYPES
+###next-name-looks-similar
 
 # Order review system / warnings
 
@@ -463,19 +472,20 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 
 
 
+###length 4
 
 
 # Extra view window
 
 # Game options window
 
-############ start of currency region
+###length 42
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла тенкӗ (RUR)
-############ end of currency region
+
+###length 2
 
 
-
-############ start of townname region
+###length 21
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Акӑлчан
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францири
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нимӗҫ
@@ -495,13 +505,12 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датчан
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турккӑла
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Итали
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Катталун
-############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
 
-############ start of autosave dropdown
+# Autosave dropdown
+###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Сӳнтер
-############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Чӗлхи
 
@@ -539,64 +548,230 @@ STR_NUM_CUSTOM_NUMBER                                           :Харпӑр х
 
 STR_VARIETY_NONE                                                :Ҫук
 
+###length 5
 
+###length 6
 STR_SEA_LEVEL_CUSTOM                                            :Харпӑр хӑй
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Харпӑр хӑй ({NUM}%)
 
+###length 4
 
+###length 3
 STR_DISASTER_NONE                                               :Ҫук
 
+###length 4
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 7
 
+###length 3
 
 
 # Settings tree window
 
 
 
+###length 3
+
+###length 3
 STR_CONFIG_SETTING_OFF                                          :Сӳнтер
 STR_CONFIG_SETTING_ON                                           :Ҫут
 STR_CONFIG_SETTING_DISABLED                                     :хастар мар
 
+###length 3
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Сӳнтер
 
+###length 3
 STR_CONFIG_SETTING_NONE                                         :Ҫук
 STR_CONFIG_SETTING_ORIGINAL                                     :Чӑн
 STR_CONFIG_SETTING_REALISTIC                                    :Реалисмлӑ
 
+###length 3
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Сулахайра
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Варринче
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмра
 
 
+
+
+
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ҫук
+
+
+
+###length 3
+
+
+
+###length 3
+
+###length 4
+
+
+
+
+
+
+
+
+###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
+
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорт кивел мар: {STRING}
 
 
+###length 3
+
+
+
+
+###length 2
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+###length 2
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Чӑн
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+
+
+
+
+
+
+
+###length 4
+
+
+
+###length 3
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ҫук
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Чӑн
 
+
+###length 2
+
+###length 2
+
+
+
+
+###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Симĕс
+
+###length 4
+
+
+
+###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
+
+
+
+###length 3
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
 
+###length 4
 
+###length 3
+
+###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Сӳнтер
 
 
 
+###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :вӑрӑм (2008 раш 31меш)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :кӗске (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+
+###length 4
+
+
+
+
+
+
+###length 3
+
+
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###length 3
+
+
+
+
+###setting-zero-is-special
+
+
+
+
+
+
+
+
+
 
 
 
@@ -607,28 +782,71 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
 
+###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Сӳнтер
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кӗске
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Тулли
 
 
+###setting-zero-is-special
+
+###length 3
+
+
+
+
+
+
+###length 2
+
+###length 2
+
+###length 5
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :чӑн
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 
 
+
+###length 3
+
+###length 2
+
+###length 4
+
+###setting-zero-is-special
+###setting-zero-is-special
+
+###length 6
+
+###length 3
+
+###length 5
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ҫук
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Вӑрах
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Виҫеллӗ
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Хӑвӑрт
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑвӑрт
 
+###setting-zero-is-special
+
+
+###length 3
 
 
 
 
+###length 4
 
+###length 3
 
+###length 3
+
+###length 3
+
+###length 3
+
+###length 3
 
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Лартӑм
@@ -636,8 +854,8 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ҫул-
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Хуласем
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ӑмӑртуҫӑсем
 
+###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-
 
 
 # Config errors
@@ -666,15 +884,18 @@ STR_QUIT_NO                                                     :{BLACK}Ҫук
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑййи ан килӗш
 
 # Cheat window
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳрлет кун: {ORANGE}{DATE_SHORT}
+
+###length 4
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Виҫеллӗ климат
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Сивӗ климат
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Тропик климат
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Вӑйӑ пахчи
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳрлет кун: {ORANGE}{DATE_SHORT}
 
 # Livery window
 
 
+###length 23
 STR_LIVERY_DEFAULT                                              :Яланхи тӗс
 STR_LIVERY_STEAM                                                :Пӑравус
 STR_LIVERY_DIESEL                                               :Ӑшӑвус(Diesel Engine)
@@ -728,8 +949,8 @@ STR_FACE_COLLAR                                                 :Ҫуха:
 STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Алка:
 
-############ Next lines match ServerGameType
-############ End of leave-in-this-order
+# Matches ServerGameType
+###length 3
 
 # Network server list
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Вӑйӑҫӑ ят:
@@ -775,9 +996,8 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 # Network connecting window
 
-############ Leave those lines in this order!!
 
-############ End of leave-in-this-order
+###length 8
 
 
 
@@ -785,8 +1005,8 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 # Network client list
 
-############ Begin of ConnectionType
-############ End of ConnectionType
+# Matches ConnectionType
+###length 5
 
 
 
@@ -801,17 +1021,20 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 # Network messages
 
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
 
+###length 21
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
+
+###length 12
+
 
 
 # Content downloading window
+
+###length 5
+
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Верси: {WHITE}{STRING}
 
 # Order of these is important!
@@ -965,10 +1188,10 @@ STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Маяк
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD верси {REV}
 
 # Framerate display window
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
+
+###length 15
+
+###length 15
 
 
 # Save/load game/scenario
@@ -1021,6 +1244,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ҫук
+###length 3
 
 # NewGRF 'it's broken' warnings
 
@@ -1048,15 +1272,17 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 # Town local authority window
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
+###length 8
 
+###length 8
 
 # Goal window
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
-############ Start of Goal Question button list
-############ End of Goal Question button list
+# Goal Question button list
+###length 18
 
 # Subsidies window
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ҫук -
@@ -1077,8 +1303,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 
 
 
-############ range for rating starts
-############ range for rating ends
+###length 8
 
 
 
@@ -1090,6 +1315,9 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 13
+
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
@@ -1113,16 +1341,20 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 # Vehicle lists
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
+###length VEHICLE_TYPES
 
 
 
 
 
 # Group window
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 
 
@@ -1131,22 +1363,34 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 # Build vehicle window
+###length 4
 
 
-############ range for vehicle availability starts
-############ range for vehicle availability ends
+# Vehicle availability
+###length VEHICLE_TYPES
 
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -1156,18 +1400,29 @@ STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
+###length VEHICLE_TYPES
 
 
 # Engine preview window
@@ -1179,8 +1434,13 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Autoreplace window
 
 
+###length VEHICLE_TYPES
 
 
+
+
+###length 2
+###next-name-looks-similar
 
 
 
@@ -1188,25 +1448,33 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
 
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
-
-
-
-
+###length VEHICLE_TYPES
 
 # Messages in the start stop button in the vehicle view
 
 
 # Vehicle stopped/started animations
+###length 2
+
+###length 2
 
 # Vehicle details
 
+###length VEHICLE_TYPES
 
-# The next two need to stay in this order
 
 
 
@@ -1215,6 +1483,7 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 
 
+###length VEHICLE_TYPES
 
 # Extra buttons for train details windows
 
@@ -1224,8 +1493,11 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 # Vehicle refit
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
 # Order view
 
@@ -1241,6 +1513,8 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+###length 8
+###next-name-looks-similar
 
 
 
@@ -1250,6 +1524,9 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 # String parts to build the order string
 
+
+###length 3
+###next-name-looks-similar
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -1261,6 +1538,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+###length 3
 
 
 
@@ -1304,6 +1582,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+###length 3
 
 
 # Vehicle loading indicators
@@ -1385,13 +1664,23 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 
 # Generic vehicle errors
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
+
+###length VEHICLE_TYPES
 
 
 
@@ -1408,8 +1697,10 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 # Sign related errors
 
 # Translatable comment for OpenTTD's desktop shortcut
+###external 1
 
 # Translatable descriptions in media/baseset/*.ob* files
+###external 10
 
 ##id 0x2000
 # Town building names
@@ -1422,18 +1713,28 @@ STR_TOWN_BUILDING_NAME_STATUE_1                                 :Палӑк
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
+
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 
+###length 27
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_AIRPORT                                           :{STRING} Аэропорт
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+
 ############ end of savegame specific region!
 
 ##id 0x8000
+###length 116
 # Vehicle names
+
+###length 88
+
+###length 11
+
+###length 41
 
 ##id 0x8800
 # Formatting of some strings
@@ -1443,6 +1744,14 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
+###length 2
+
+###length 2
+
+###length 6
+###next-name-looks-similar
+
+# _SERIAL version of AIRACRAFT doesn't exist
 
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
