@@ -68,7 +68,11 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 
 	uint dependency_count = p->Recv_uint8();
 	ci->dependencies.reserve(dependency_count);
-	for (uint i = 0; i < dependency_count; i++) ci->dependencies.push_back((ContentID)p->Recv_uint32());
+	for (uint i = 0; i < dependency_count; i++) {
+		ContentID dependency_cid = (ContentID)p->Recv_uint32();
+		ci->dependencies.push_back(dependency_cid);
+		this->reverse_dependency_map.insert({ dependency_cid, ci->id });
+	}
 
 	uint tag_count = p->Recv_uint8();
 	ci->tags.reserve(tag_count);
@@ -168,8 +172,10 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	this->infos.push_back(ci);
 
 	/* Incoming data means that we might need to reconsider dependencies */
-	for (ContentInfo *ici : this->infos) {
-		this->CheckDependencyState(ici);
+	ConstContentVector parents;
+	this->ReverseLookupTreeDependency(parents, ci);
+	for (const ContentInfo *ici : parents) {
+		this->CheckDependencyState(const_cast<ContentInfo *>(ici));
 	}
 
 	this->OnReceiveContentInfo(ci);
@@ -833,7 +839,7 @@ void ClientNetworkContentSocketHandler::DownloadContentInfo(ContentID cid)
  * @param cid the ContentID to search for
  * @return the ContentInfo or nullptr if not found
  */
-ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid)
+ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid) const
 {
 	for (ContentInfo *ci : this->infos) {
 		if (ci->id == cid) return ci;
@@ -923,15 +929,10 @@ void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *c
  */
 void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const
 {
-	for (const ContentInfo *ci : this->infos) {
-		if (ci == child) continue;
+	auto range = this->reverse_dependency_map.equal_range(child->id);
 
-		for (auto &dependency : ci->dependencies) {
-			if (dependency == child->id) {
-				parents.push_back(ci);
-				break;
-			}
-		}
+	for (auto iter = range.first; iter != range.second; ++iter) {
+		parents.push_back(GetContent(iter->second));
 	}
 }
 
@@ -1056,6 +1057,7 @@ void ClientNetworkContentSocketHandler::Clear()
 
 	this->infos.clear();
 	this->requested.clear();
+	this->reverse_dependency_map.clear();
 }
 
 /*** CALLBACK ***/
