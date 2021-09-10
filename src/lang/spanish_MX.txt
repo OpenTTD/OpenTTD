@@ -1821,7 +1821,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Elegir entre qu
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de señales: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Elegir qué señales se muestran en la barra de señales
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Solo señales de ruta
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Todas las señales
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Diseño urbano para nuevas localidades: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Diseño de carreteras dentro de las localidades

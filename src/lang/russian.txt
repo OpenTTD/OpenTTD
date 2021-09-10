@@ -1966,12 +1966,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Строить 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Год, начиная с которого на железных дорогах начинают использоваться светофоры. До этого строятся семафоры (которые функционируют точно так же, только выглядят по-другому).
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Выбор сигналов (Ctrl+щелчок): {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Выбор предлагаемых типов сигналов при модификации с помощью Ctrl+щелчка по установленному сигналу
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Выбор предлагаемых типов сигналов при их модификации с помощью Ctrl+щелчка по установленному сигналу
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только маршрутные
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все отображаемые
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Типы сигналов в панели строительства: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Выбор типов сигналов, отображаемых в панели строительства.
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :только маршрутные
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :все
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Тип дорожной сети для новых городов: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Тип дорожной сети в новых городах

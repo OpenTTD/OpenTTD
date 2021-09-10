@@ -1815,12 +1815,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatisch arm
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stelt het jaar in waarin elektrische seinen worden gebruikt voor sporen. Eerder dan dit jaar worden niet-elektrische seinen gebruikt (die exact op dezelfde manier werken, maar een verschillend uiterlijk hebben).
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Door seintypen bladeren: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecteer welke soorten seinen worden gebruikt wanneer je Ctrl + klikt op een bouwsignaal met het seingereedschap
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecteer welke soorten seinen worden gebruikt wanneer je Ctrl + klikt op een bouwsein met het seingereedschap
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Alleen routeseinen
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alles zichtbaar
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Soorten sein weergeven: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Selecteer welke soorten seinen worden weergegeven in de seinenwerkbalk
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Alleen routeseinen
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Alle seinen
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Wegpatroon voor nieuwe steden: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patroon voor het wegennetwerk van steden.

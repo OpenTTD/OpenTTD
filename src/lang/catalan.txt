@@ -1816,12 +1816,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semà
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Canvia a través dels tipus de senyal: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecciona entre quins tipus de senyals es ciclarà, quan es faci Ctrl+clic sobre un senyal amb l'eina de construir senyals
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleccioneu com es commutaran els tipus de senyals quan es faci Ctrl+clic sobre un senyal ja construït amb l'eina de construir senyals.
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Només avançada
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Totes
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tots visibles
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostra els tipus de senyals: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Escolliu quins tipus de senyals s'han de mostrar a la barra de construcció de senyals.
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Només els senyals de ruta
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Tots els senyals
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposició de carreteres per les noves poblacions: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposició per la xarxa de carreteres de les poblacions
