@@ -207,7 +207,20 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 
 	Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_LIST);
 	p->Send_uint8 ((byte)type);
-	p->Send_uint32(_openttd_newgrf_version);
+	p->Send_uint32(0xffffffff);
+	p->Send_uint8 (1);
+	p->Send_string("vanilla");
+	p->Send_string(_openttd_content_version);
+
+	/* Patchpacks can extend the list with one. In BaNaNaS metadata you can
+	 * add a branch in the 'compatibility' list, to filter on this. If you want
+	 * your patchpack to be mentioned in the BaNaNaS web-interface, create an
+	 * issue on https://github.com/OpenTTD/bananas-api asking for this.
+
+	p->Send_string("patchpack"); // Or what-ever the name of your patchpack is.
+	p->Send_string(_openttd_content_version_patchpack);
+
+	*/
 
 	this->SendPacket(p);
 }
