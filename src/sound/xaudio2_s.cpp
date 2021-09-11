@@ -117,6 +117,20 @@ static IXAudio2MasteringVoice* _mastering_voice = nullptr;
 static ComPtr<IXAudio2> _xaudio2;
 static StreamingVoiceContext* _voice_context = nullptr;
 
+/** Create XAudio2 context with SEH exception checking. */
+static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)
+{
+	HRESULT hr;
+	__try {
+		UINT32 flags = 0;
+		hr = xAudio2Create(_xaudio2.GetAddressOf(), flags, XAUDIO2_DEFAULT_PROCESSOR);
+	} __except (EXCEPTION_EXECUTE_HANDLER) {
+		hr = GetExceptionCode();
+	}
+
+	return hr;
+}
+
 /**
 * Initialises the XAudio2 driver.
 *
@@ -156,8 +170,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 	}
 
 	// Create the XAudio engine
-	UINT32 flags = 0;
-	hr = xAudio2Create(_xaudio2.GetAddressOf(), flags, XAUDIO2_DEFAULT_PROCESSOR);
+	hr = CreateXAudio(xAudio2Create);
 
 	if (FAILED(hr))
 	{
