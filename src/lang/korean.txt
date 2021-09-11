@@ -1816,12 +1816,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호기는 기능적으로는 동일하고 모습만 다릅니다.)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :신호기를 CTRL 클릭할 때 바뀌는 신호기의 종류: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :신호기 건설에서 CTRL+클릭할 때 바뀌는 신호기의 종류를 선택합니다.
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :신호기 건설에서 CTRL+클릭할 때 바뀌는 신호기의 종류를 선택합니다
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :경로 신호기만
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모두
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모두 보여주기
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :보여줄 신호기 종류: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :신호기 창에서 보여줄 신호기 종류를 선택하세요
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :경로 신호기만
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :모든 신호기
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :새 도시에서 사용할 도로 설계: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :도시의 도로 설계 구조를 선택합니다.
