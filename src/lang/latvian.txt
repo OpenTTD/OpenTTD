@@ -896,7 +896,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} subsidēšana ir atcelta
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STRING} uz {STRING} turpmāk vairs netiek subsidēti
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsīdiju servisa piedāvājums:{}{}Pirmais {STRING} serviss no {STRING} uz {STRING} sekojošu gadu garumā {NUM} subsīdījas no vietējās vadības!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Servisa subsīdija tiek piešķirta {STRING}!{}{}{STRING} servisam no {STRING} uz {STRING} tiks maksāti papildu 50% {NUM} gad{P u us us}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Servisa subsīdija tiek piešķirta {STRING}!{}{}{STRING} serviss no {STRING} uz {STRING} tiks maksāti dubultā {NUM} gad{P u us us}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Servisa subsīdija tiek piešķirta {STRING}!{}{}{STRING} serviss no {STRING} uz {STRING} tiks maksāti trīskāršs {NUM} gad{P u us us}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Servisa substīdija tiek piešķirta {STRING}!{}{}{STRING} serviss no {STRING} uz {STRING} tik maksātas četrkāršas likmes par nākamo {NUM} gad{P u us us}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Satiksmes haoss {TOWN}!{}{}{STRING} apmaksātie ielu pārbūves darbi rada vājprātu uz ielām pusgada garumā!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Pārvadājumu monopols!
@@ -1015,6 +1020,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aparatū
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK} Atzīmējiet šo izvēlni, lai ļautu OpenTTD izmantot aparatūras paātrinājumu. Mainīts iestatījums tiks piemērots tikai pēc spēles restartēšanas
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Šis iestatījums stāsies spēkā tikai pēc spēles restartēšanas
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Atzīmējiet šo izvēlni, lai sinhronizētu ekrānu. Mainīts iestatījums tiks piemērots tikai pēc spēles restartēšanas. Darbojas tikai ar iespējotu aparatūras paātrinājumu
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Lietotāja saskarnes lielums
@@ -1033,8 +1039,12 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normāls
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Divkāršs izmērs
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Četrkāršs izmērs
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekrāna atsvaidzes intensitāte
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Izvēlieties izmantojamo ekrāna atsvaidzes intensitāti
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Atsvaidzes intensitāte, kas lielāka par 60 Hz, var ietekmēt veiktspēju.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pamata grafikas kopa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata grafikas kopu
@@ -1151,6 +1161,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Iestatī
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtra virkne:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Izvērst visu
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sakļaut visu
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Atiestatīt visas vērtības
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(skaidrojums nav pieejams)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Noklusējuma vērtība: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Iestatījuma veids: {ORANGE}{STRING}
@@ -1226,6 +1237,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Iestatīt, cik 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsīdiju ilgums: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Nosakiet gadu skaitu, par kuru tiek piešķirta subsīdija
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P gads gadu gadus}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subsīdijām
 
@@ -1245,10 +1257,11 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Pilsētu domju 
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izvēlieties, cik lielā mērā trokšņi un vides bojājumi ietekmē uzņēmuma reitingu un turpmākās būvniecības darbības viņu teritorijā
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Kartes augstuma ierobežojums: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Iestatiet kartes reljefa maksimālo augstumu. Izmantojot "(auto)", laba vērtība tiks izvēlēta pēc reljefa ģenerēšanas
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Jūs nevarat izmantot šo maksimālo kartes augstumu. Vismaz viens kalns uz kartes ir augstāks.
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE} Jūs nevarat iestatīt kartes augstuma ierobežojumu uz šo vērtību. Vismaz viens kalns kartē ir augstāks
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
@@ -1451,12 +1464,14 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Naftas industri
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limits, cik tālu no kartes malām drīkst taisīt naftas pārstrādes rūpnīcas un un naftas ieguves platformas. Uz salu kartēm tas nodrošina, ka šīs konstrukcijas tiek būvētas piekrastēs. Uz kartēm, kas ir lielākas par 256 lauciņiem šī vērtība tiek palielināta.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Noteikt, kādā augstumā sākas subarktiskā ainava. Sniegs arī ietekmē industriju rašanos un apdzīvoto vietu pieaugšanas prasības
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrolē, kādā augstumā sākas sniegs subarktiskajā ainavā. Sniegs ietekmē arī nozares ražošanas un pilsētu izaugsmes prasības. Var mainīt tikai, izmantojot scenāriju redaktoru, vai citādi aprēķināts, izmantojot “sniega segumu”
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sniega pārklājums: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kontrolē aptuveno sniega daudzumu subarktiskajā ainavā. Sniegs ietekmē arī nozares ražošanas un pilsētu izaugsmes prasības. Izmanto tikai karšu ģenerēšanas laikā. Zeme tieši virs jūras līmeņa vienmēr ir bez sniega
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Tuksneša pārklājums: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontrolējiet aptuveno tuksneša daudzumu tropiskajā ainavā. Tuksnesis ietekmē arī nozaru veidošanos. Izmanto tikai karšu ģenerēšanas laikā
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums: {STRING}
@@ -1802,12 +1817,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski b�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Izvēlēties gadu, kad ceļiem sāks izmantot elektriskās signālierīces. Pirms šā gada tiks izmantotas neelektriskās signālierīces (kam ir tieši tāda pati funkcija, bet ar atšķirīgu izskatu)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt garām signālu veidiem: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Izvēlieties, caur kuriem signālu veidiem iet cauri, kad uz uzbūvētas signālierīces tiek veikts Ctrl+klikšķis ar signālu rīku
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Atlasiet, kādus signālu veidus izmantot, izmantojot Ctrl+noklikšķinot uz izveidotā signāla, izmantojot signāla rīku
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :visiem
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Redzami visi
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Rādīt signāla tipus: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Izvēlieties signālu veidus, kas tiek parādīti signālu rīkjoslā
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Tikai ceļa signāli
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Visi signāli
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Ceļu izkārtojums jaunajām pilsētām: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Pilsētu ceļu tīkla izkārtojums
@@ -1877,6 +1896,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Izmantojamie augstākās izšķirtspējas spriti: {STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Ierobežojiet sprites maksimālo izšķirtspēju. Ierobežojot sprite izšķirtspēju, netiks izmantota augstas izšķirtspējas grafika, pat ja tā ir pieejama. Tas var palīdzēt saglabāt spēles vienotu izskatu, izmantojot GRF failu kombināciju ar augstas izšķirtspējas grafiku un bez tās.
 ###length 3
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 
@@ -1994,6 +2014,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ražotn
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Tīkls
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vilcienu ceļa meklētājs: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vilcieniem pielietotais ceļa meklētājs
@@ -2205,6 +2226,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 ###length 3
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Vietējs
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Publisks
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Tikai uzaicinājums
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
@@ -2255,7 +2277,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Meklēt 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Meklēt LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Meklēt serverus lokālajā tīklā
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pievienot serveri
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pievienot serveri sarakstam, kurš vienmēr tiks pārbaudīts vai tajā nav palaistas spēles
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pievieno serveri sarakstam. Tā var būt servera adrese vai uzaicinājuma kods
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Palaist serveri
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Palaist jūsu personīgo serveri
 
@@ -2270,6 +2292,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja nevēlaties lai tā būtu publiski pieejama
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Redzamība
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK} Vai citi lietotāji var redzēt jūsu serveri publiskajā sarakstā
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} spēlētāj{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimālais spēlētāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlēties maksimālo spēlētāju skaitu. Ne visiem slotiem ir jābūt aizpildītiem
@@ -2302,23 +2326,29 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ievadiet paroli
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju saraksts
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāji tiešsaistē
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Tiešsaistes spēlētāji
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Serveris
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nosaukums
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Servera nosaukums kurā Jūs spēlējat
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Rediģēt Jūsu servera nosaukumu
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servera nosaukums
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Redzmība
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Vai citi lietotāji var redzēt jūsu serveri publiskajā sarakstā
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Uzaicinājuma kods
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Ielūguma kods, kuru var izmantot citi spēlētāji, lai pievienotos serverim
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Savienojuma tips
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Vai un kā citi var sasniegt jūsu serveri
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Spēlētājs
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nosaukums
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Jūsu spēlētāja vārds
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Rediģēt jūsu spēlētāja vārdu
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Jūsu spēlētāja vārds
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK} Administratīvās darbības, kas jāveic šim klientam
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administratīvās darbības, kuras jāveic šai kompānijai
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Pievienoties šai kompānijai
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Sūtīt ziņu šim spēlētājam
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Sūtīt ziņu visiem šīs kompānijas spēlētājiem
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Sūtīt ziņu visiem skatītājiem
@@ -2326,22 +2356,30 @@ STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Novērotāji
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Jauna kompānija)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Izveidot jaunu kompāniju un pievienoties tai
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tas esat jūs
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Šis ir spēles īpašnieks
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P s а u} / {NUM} kompānij{P a u as}
 
 # Matches ConnectionType
 ###length 5
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Vietējs
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Attalinātie spēlētāji nevar pievienoties
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Publisks
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Aiz NAT
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Caur releju
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Izmest
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bloķēt
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Dzēst
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Paroles atbloķēšana
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratīvās darbības
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Vai esat pārliecināts, ka vēlaties atslēgt spēlētāju '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Vai tiešām vēlaties bloķēt šo spēlētāju '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Vai tiešām vēlaties dzēst kompāniju '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Vai esat pārliecināts, ka vēlaties atiestatīt paroli komānijai '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Izmantot translāciju?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} Neizdevās izveidot savienojumu starp jums un serveri “{STRING}”.{} Vai vēlaties pārraidīt šo sesiju, izmantojot “{STRING}”?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nē
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Jā, vienreiz
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Jā, vairs nejautāt
@@ -2377,7 +2415,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ievadīt
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nav atrasta neviena tīkla ierīce
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatbild uz pieprasījumu
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Savienojumam ar serveri iestājās noildze vai tas tika atteikts
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nevar pieslēgties sakarā ar NewGRF neatbilstību
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Tīkla spēles sinhronizācija neizdevās
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tīkla spēlei zudis savienojums
@@ -2424,6 +2462,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :parole nav saņ
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :vispārējā noildze
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kartes lejupielāde bija pārāk ilga
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kartes apstrāde bija pārāk ilga
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Nederīgs klienta nosaukums
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2449,12 +2488,13 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ir
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojies novērotājiem
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ir nodibinājis jaunu uzņēmumu (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ir pametis spēli ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ir nomainījis savu nosaukumu uz {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ir mainījis nosaukumu uz {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} iedeva {2:CURRENCY_LONG} iekš {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris beidza sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris pārstartējas...{}Lūdzu uzgaidiet...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} tika izmests. Iemesls: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Notikusi kļūda servera reģistrācijā
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE} Cits serveris ar tādu pašu ielūguma kodu reģistrējās pats. Pāreja uz "vietējo" spēles veidu.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Jūsu serveris neatļauj attālinātus savienojumus
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Citiem spēlētājiem nebūs iespējas pievienoties serverim
@@ -2536,6 +2576,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nē, izi
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Lejupielādes kļūda
 STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Grafikas lejupielāde neizdevās.{}Lūzu lejupielādējiet grafiku manuāli.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Iziet no OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Caurspīdības opcijas
@@ -2715,7 +2756,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Būvēt 
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Izvietot boju, kura var kalpot kā pieturas punkts. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Būvēt akveduktu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Norādīt ūdens laukumu.{}Būvēt kanālu. Ja tur nospiestu Ctrl jūras līmenī, tad appludinās apkārtni
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Izvietot upes
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Pievienot updes. Ctrl pievieno apgabalu diagonāli
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Kuģu depo virziens
@@ -3085,12 +3126,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Pilsētu daudzums:
 STR_MAPGEN_DATE                                                 :{BLACK}Datums:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņu daudzums:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Augstākā virsotne:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Palielināt augstāko punktu virsotnes pa vienai
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Pa vienai samazināt kartes augstākās virsotnes maksimālo augstumu
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Sniega pārklājums:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Palielināt sniega segumu par desmit procentiem
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Samazināt sniega pārklājumu par desmit procentiem
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Tuksneša pārklājums:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Palielināt tuksneša pārklājumu par desmit procentiem
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Samazināt tuksneša pārklājumu par desmit procentiem
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Zemes radītājs:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apvidus reljefs:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūras līmenis:
@@ -3116,7 +3162,9 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Augstumu
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Lielums:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Vēlamā augtākā virsotne
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE} Augstākā virsotne
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Sniega pārklājums (iekš %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Tuksneša pārklājums (iekš %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mainīt sākuma gadu
 
@@ -3256,6 +3304,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdināj
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Notikusi fatāla NewGRF kļūda:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Radusies NewGRF kļūda:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nedarbosies kopā ar TTDPatch versiju (par ko ziņoja OpenTTD).
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir TTD {STRING} versijai
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir paredzēts lietošanai kopā ar {STRING}
@@ -3400,12 +3449,12 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Pirkt pārvadā
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Dot kukuli pašvaldībai
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Veikt mazu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Veikt vidēju reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Veikt lielu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansēt ceļu remontdarbus. Rada satiksmes traucējumus līdz pat pusgadam.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Uzbūvēt statuju par godu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansēt jaunu komercēku būvniecību šajā pilsētā.{}Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Sāciet nelielu vietējo reklāmas kampaņu, lai jūsu transporta pakalpojumiem piesaistītu vairāk pasažieru un kravas.{} Nodrošina īslaicīgu uzlabojumu staciju vērtējumam nelielā rādiusā ap pilsētas centru.{} Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Sāciet vidējā mēroga vietējās reklāmas kampaņu, lai jūsu transporta pakalpojumiem piesaistītu vairāk pasažieru un kravas.{} Nodrošina īslaicīgu stacijas reitinga paaugstinājumu vidējā rādiusā ap pilsētas centru.{} Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Sāciet plašu vietējās reklāmas kampaņu, lai jūsu transporta pakalpojumiem piesaistītu vairāk pasažieru un kravas.{} Nodrošina īslaicīgu staciju reitinga palielinājumu lielā rādiusā ap pilsētas centru.{} Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansējiet pilsētas ceļu tīkla rekonstrukciju.{} Līdz 6 mēnešiem rada ievērojamus ceļu satiksmes traucējumus.{} Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Uzceliet statuju par godu savam uzņēmumam.{} Nodrošina pastāvīgu paaugstinājumu staciju vērtējumam šajā pilsētā.{} Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansējiet jaunu ēku celtniecību pilsētā.{} Nodrošina īslaicīgu pilsētas izaugsmi šajā pilsētā.{} Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkt 1 gada izņēmuma tiesības uz pārvadājumiem pilsētā.{}Pašvaldība neatļaus pasažieru un kravu pārvešanai izmantot jūsu sāncenšu stacijas.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Piekukuļot vietējo pašvaldību lai paceltu reitingu, riskējot saņemt lielu sodu.{}Izmaksas: {CURRENCY_LONG}
 
@@ -3414,6 +3463,7 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globālie mērķi
 STR_GOALS_SPECTATOR                                             :Globālie mērķi
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globāli
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Rādīt gobālus mēķus
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Kompānija
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Parādīt komānijas mērķus
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3746,7 +3796,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikšķ
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dzēst izvēlēto grupu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Pārdēvēt izvēlēto grupu
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Mainīt izvēlētās grupas krāsu
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikšķināt, lai pasargātu šo grupu no vispārējās automātiskās aizstāšanas
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK} Noklikšķiniet, lai aizsargātu šo grupu no globālās automātiskās aizstāšanas. Ctrl+Noklikšķiniet, lai aizsargātu arī apakšgrupas.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grupas dzēšana
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Vai tiešām vēlaties dzēst šo grupu un tās atvases (ja ir)?
@@ -4029,6 +4079,7 @@ STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automātiskā aizvietošana saglabās esošo vilciena garumu noņemot vagonus (sākot no priekšgala), ja mainot lokomotīvi tas kļūtu garāks
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Klikšķiniet Ctrl+Click lai iestatītu arī apakšgrupas
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

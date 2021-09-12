@@ -1818,9 +1818,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Gå igenom sign
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Välj vilka signaltyper som ska gås igenom vid Ctrl+klick med signalverktyget på en redan byggd signal
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Endast avancerade
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alla
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alla synliga
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Visa signaltyper: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Välj vilka signaltyper som ska visas signalverktygsfältet
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Endast avancerade
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Alla signaler
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vägnätslayout för nya städer: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout för städernas vägnät

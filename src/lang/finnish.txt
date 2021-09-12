@@ -1818,9 +1818,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vaihda opastint
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Valitse, mitkä opastintyypit ovat käytössä painettaessa Ctrl-näppäintä opastimia rakennettaessa
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Vain reittiopastimet
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kaikki
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Näytä kaikki
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Näytä opastintyypit: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Valitse opastintyökalurivillä näytettävät opastintyypit
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Vain reittiopastimet
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Kaikki opastimet
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uusissa kunnissa käytettävä tiekaava: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kuntien käyttämä tieverkon kaava
