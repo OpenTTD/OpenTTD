@@ -1816,12 +1816,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Usar automatica
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Configurar o ano em que sinais eléctricos podem ser usados para os carris. Antes deste ano, sinais não-eléctricos serão usados (que têm a mesma funcionalidade, mas aspecto diferente)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Trocar tipos de faróis: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Mostrar uma janela para escolher o tipo de sinais a construir, em vez de escolher a rotação de sinais com <Ctrl>+clique em sinais
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecione os tipos de sinais a percorrer ao usar Ctrl+clique num sinal com a ferramenta de sinais
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Apenas sinais de trajeto
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de sinais: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Escolha que tipos de sinais são mostrados na barra de ferramentas de sinais
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Apenas sinais de trajeto
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Todos os sinais
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposição de estradas para novas localidades: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposição da rede de estradas das localidades
