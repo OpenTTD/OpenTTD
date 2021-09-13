@@ -395,6 +395,7 @@ struct NPFSettings {
 	uint32 npf_road_drive_through_penalty;   ///< the penalty for going through a drive-through road stop
 	uint32 npf_road_dt_occupied_penalty;     ///< the penalty multiplied by the fill percentage of a drive-through road stop
 	uint32 npf_road_bay_occupied_penalty;    ///< the penalty multiplied by the fill percentage of a road bay
+	uint32 npf_docking_tile_occupied_penalty; ///< the penalty multiplied by the number of ships on a docking tile
 };
 
 /** Settings related to the yet another pathfinder. */
@@ -437,6 +438,7 @@ struct YAPFSettings {
 	uint32 rail_shorter_platform_per_tile_penalty; ///< penalty for shorter station platform than train (per tile)
 	uint32 ship_curve45_penalty;                   ///< penalty for 45-deg curve for ships
 	uint32 ship_curve90_penalty;                   ///< penalty for 90-deg curve for ships
+	uint32 ship_docking_tile_occupied_penalty;     ///< penalty multiplied by the number of ships on a docking tile
 };
 
 /** Settings related to all pathfinders. */

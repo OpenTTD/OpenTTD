@@ -332,7 +332,7 @@ static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *par
 		/* Check docking tile for occupancy */
 		uint count = 0;
 		HasVehicleOnPos(current->tile, &count, &CountShipProc);
-		cost += count * 3 * _trackdir_length[trackdir];
+		cost += count * _settings_game.pf.npf.npf_docking_tile_occupied_penalty;
 	}
 
 	/* @todo More penalties? */
