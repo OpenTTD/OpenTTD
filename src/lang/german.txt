@@ -1819,9 +1819,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Durchlaufen der
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Lege fest, durch welche Signaltypen mittels Strg-Klick auf vorhandene Signale rotiert wird
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Nur Pfadsignale
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle Sichtbaren
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Signaltypen zeigen: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Wählen, welche Signaltypen in der Signalwerkzeugliste angezeigt werden
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Nur Pfadsignale
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Alle Signale
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Straßenanordnung für neue Städte: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Art des Straßennetzwerks für Städte
