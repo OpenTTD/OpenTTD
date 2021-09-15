@@ -3257,6 +3257,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}برای ایستگاه بعدی خیلی دور است
 
 
+
 # Vehicle stopped/started animations
 ###length 2
 

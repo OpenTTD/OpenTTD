@@ -1802,6 +1802,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Прик
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Премногу далеку за да следната дестинација
 
 
+
 # Vehicle stopped/started animations
 ###length 2
 

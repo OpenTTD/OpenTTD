@@ -1630,6 +1630,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 # Messages in the start stop button in the vehicle view
 
 
+
 # Vehicle stopped/started animations
 ###length 2
 
