@@ -790,6 +790,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  �
 STR_STATUSBAR_AUTOSAVE                                          :{RED}オートセーブ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ゲームセーブ中  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}メッセージ履歴
@@ -1227,8 +1228,11 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金対象の路線に対して、通常の輸送相場の何倍が支払われるかを設定します
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :助成期間: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :助成金が配布される年数を設定
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年{}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :補助金なし
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベルを設定します
@@ -1555,7 +1559,10 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :ダブルクリ
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :クリック(フォーカス後)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :クリック(即時)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :中継サービスを利用: {STRING}
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :二度と
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :聞く
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右クリックのエミュレーション: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :右クリックをエミュレートする方法を指定します
@@ -1806,7 +1813,9 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ctrl+クリッ�
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :パス・一方通行パス
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :すべて
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :信号の種類: {STRING}
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :パス信号のみ
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :街の道路配置: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :街での道路区画計画を設定します
@@ -1992,6 +2001,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}産業
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物配送先
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競争会社
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}コンピュータプレイヤー
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}ネットワーク
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車の経路探索アルゴリズム: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :列車の経路探索アルゴリズムを決めます
@@ -2201,7 +2211,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネク�
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :ローカル
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :公開
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :招待のみ
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}マルチプレイヤーゲーム
@@ -2234,9 +2246,12 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}サー�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}サーバーアドレス: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}開始日: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}現在の日付：{WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}ゲームスクリプト: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}パスワード保護有!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}サーバーがオフラインです
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}サーバーが満員です
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}サーバーから追放されました
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}サーバーが古すぎる
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}バージョンが一致しません
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NewGRFが一致しません
 
@@ -2254,6 +2269,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}サー�
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}自分でサーバーを立ち上げます
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}プレイヤー名を入力
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}サーバーのアドレスまたは招待コードを入力
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}新規マルチプレイヤーゲームを開始
@@ -2308,6 +2324,9 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}サー�
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :サーバー名
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}可視性
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}他のプレイヤーがあなたのサーバーを公開リストで見られるかどうか
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}招待コード
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}他のプレイヤーがこのサーバーに参加するための招待コード
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}接続タイプ
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}プレイヤー
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}名前
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}あなたのプレイヤー名
@@ -2327,6 +2346,9 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲー�
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}ローカル
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}リモートプレイヤーが接続できません
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}公開
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :キック
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :BAN
@@ -2339,6 +2361,9 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}プレ�
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}会社 '{COMPANY}' を削除してもよろしいですか?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}会社 '{COMPANY}'のパスワードをリセットしてもよろしいですか？
 
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} '{STRING}'サーバーとの接続の確立に失敗しました.{}'{STRING}'を経由して中継しますか?
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}一度だけ
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}はい、二度と聞かないでください
 
 STR_NETWORK_SPECTATORS                                          :観覧者
 
@@ -2450,6 +2475,9 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}サー�
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバーは再起動中です…{}しばらくお待ちください…
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING}がキックされました。理由: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}サーバーの登録に失敗しました
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}サーバーがリモート接続を許可していません
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}他のプレイヤーはあなたのサーバーに接続できなくなります
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}コンテンツをダウンロード中
@@ -4091,6 +4119,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOI
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}へ回送中です　{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}へ保守回送中です　{VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE} {DEPOT}車両基地に到達できません, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE} {DEPOT}車両基地に到達できません, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

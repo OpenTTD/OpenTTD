@@ -4324,6 +4324,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Идё�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Идёт в {DEPOT}; {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Обслуж. в {DEPOT}; {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Нет пути до {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Нет пути до {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Нет пути до {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Нет пути до {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
