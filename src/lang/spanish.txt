@@ -791,6 +791,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE} * * EN
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGUARDADO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GUARDANDO JUEGO  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(observador)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensajes
@@ -1252,7 +1253,7 @@ STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STR
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los municipios frente a reestructuraciones en su zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir en que medida el ruido y el daño ambiental causado por las compañías afecta a su calificación y nuevas acciones de construcción en los municipios
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir en que medida el ruido y el daño ambiental causado por las empresas afecta a su calificación y nuevas acciones de construcción en los municipios
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Límite de altura del mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Fija la altura máxima del terreno del mapa. Con "(auto)" será escogido un valor correcto tras la generación del terreno
@@ -1353,7 +1354,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vistas
 
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos a la autoridad local: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el municipio durante seis meses
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las empresas intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la empresa no podrá actuar en el municipio durante seis meses
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar derechos de transporte exclusivos: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una compañía compra derechos de transporte exclusivos en un municipio, las estaciones de sus oponentes (pasajeros o carga) no recibirán ninguna carga para transportar durante un año
@@ -1362,7 +1363,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la con
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite a las compañías dar dinero a los municipios para construir nuevas casas
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir pagar la reconstrucción de las carreteras locales: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite a las compañías dar dinero a los municipios para que reconstruyan sus carreteras, saboteando los servicios de carretera en la zona
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite a las empresas dar dinero a los municipios para que reconstruyan sus carreteras, saboteando los servicios de carretera en la zona
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite la transferencia de dinero entre compañías en modo multijugador
@@ -1384,7 +1385,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construir paradas sobre carreteras de los municipios: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de paso en carreteras que sean propiedad de los municipios
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir pasar a través de las paradas de carretera de los competidores: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de otras compañías
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de otras empresas
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es posible cambiar este ajuste cuando a existen vehículos
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructuras: {STRING}
@@ -1537,14 +1538,14 @@ STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Muestra distancias en número de casillas y las diferencias de altura al arrastrar durante operaciones de construcción
 
 STR_CONFIG_SETTING_LIVERIES                                     :Ver tipos específicos para cada vehículo: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla el uso de esquemas de color específicos para vehículos (en oposición a los específicos para compañías)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla el uso de esquemas de color específicos para vehículos (en oposición a los específicos para empresas)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propia empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas las empresas
 
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Charla de equipo preferida con <ENTER>: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Cambia el acceso al chat interno de la compañía y al chat público entre <ENTER> y <Ctrl+ENTER>
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Cambia el acceso al chat interno de la empresa y al chat público entre <ENTER> y <Ctrl+ENTER>
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidad de la rueda del ratón sobre el mapa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla la sensibilidad de la rueda del ratón
@@ -1564,7 +1565,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doble clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un solo clic (si está enfocado)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un solo clic (inmediatamente)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Usar servicio de transmisión: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Si la conexión al servidor falla, se puede usar el servicio de transmisión para conectar. "Nunca" desactiva esta opción, "Preguntar" consultará en cada ocasión, "Permitir" utilizará esta opción sin preguntar
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nunca
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Preguntar
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permitir
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulación del botón derecho: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona el método para emular los clics con el botón derecho del ratón
@@ -1644,7 +1650,7 @@ STR_CONFIG_SETTING_SOUND_NEWS                                   :Noticias: {STRI
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproducir sonido al mostrar noticias
 
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Final del año: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir sonido al mostrar el resumen anual del rendimiento de la compañía al terminar el año
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir sonido al mostrar el resumen anual del rendimiento de la empresa al terminar el año
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcción: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir sonido al construir con éxito o realizar otras acciones
@@ -1662,16 +1668,16 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiental: {STR
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir sonidos ambientales de terreno, industrias y municipios
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trenes por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trenes que una compañía puede tener
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trenes que una empresa puede tener
 
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de vehículos de carretera por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de vehículos de carretera que una compañía puede tener
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de vehículos de carretera que una empresa puede tener
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Número máximo de aeronaves por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que una compañía puede tener
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que una empresa puede tener
 
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Número máximo de barcos por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de barcos que una compañía puede tener
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de barcos que una empresa puede tener
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactivar trenes para el ordenador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activa esta opción para deshabilitar la construcción de trenes para las IA
@@ -1813,9 +1819,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cambiar entre t
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Permite seleccionar entre qué señales se debe cambiar al usar Ctrl+clic con la herramienta de señales
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas las visibles
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de señales: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Elige qué tipos de señales se van a mostrar en el menú de construcción de señales
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Sólo señales de ruta
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Todas las señales
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Patrón de carreteras para los nuevos municipios: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patrón de carreteras a usar para los municipios
@@ -2001,6 +2011,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución de carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores del ordenador (IA)
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Red
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Enrutador para trenes: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Enrutador a emplear en trenes
@@ -2210,7 +2221,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Sólo con invitación
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
@@ -2238,14 +2251,17 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clica pa
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DEL JUEGO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terreno: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño Mapa: {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión servidor: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección servidor: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Fecha inicio: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño del Mapa: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión del servidor: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección del servidor: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Fecha de inicio: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Fecha actual: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de juego: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}¡Protegido por contraseña!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONECTADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR LLENO
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}EL SERVIDOR TE HA PROHIBIDO EL ACCESO
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVIDOR MUY ANTIGUO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}INCOMPATIBILIDAD DE VERSIONES
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}PROBLEMA CON NEWGRF
 
@@ -2258,11 +2274,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK} Busca s
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Buscar en red de área local
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Busca servidores en red local (LAN)
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Añadir servidor
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Añade el servidor a una lista que siempre será comprobada para buscar juegos en marcha
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Añade un servidor la lista. Puede ser una dirección de servidor o un código de invitación
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Inicia un servidor nuevo
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduce tu nombre
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Introduce la dirección del servidor o el código de invitación
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Empezar nueva partida en multijugador
@@ -2309,7 +2326,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadores en línea
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jugadores en línea
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nombre
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nombre del servidor en el que estás jugando
@@ -2317,25 +2334,35 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modifica
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nombre del servidor
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilidad
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Establece si otras personas pueden ver el servidor en la lista de servidores públicos
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Código de invitación
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Código de invitación con el que otros jugadores pueden unirse a este servidor
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipo de conexión
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Determina si otros jugadores pueden acceder al servidor y de qué manera
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jugador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nombre
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Tu nombre de jugador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modifica tu nombre de jugador
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Tu nombre de jugador
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acciones de administrador a realizar para este cliente
-STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acciones de administrador a realizar para esta compañía
-STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta compañía
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acciones de administrador a realizar para esta empresa
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Manda un mensaje a este jugador
-STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Manda un mensaje a todos los jugadores de esta compañía
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Manda un mensaje a todos los jugadores de esta empresa
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Manda un mensaje a todos los observadores
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Observadores
-STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nueva compañía)
-STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nueva companía y te une a ella
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nueva empresa)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nueva empresa y te une a ella
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Éste eres tú
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Éste es el servidor de la partida
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} / {NUM} empresa{P "" s}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Los jugadores en remoto no pueden conectarse
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Público
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Detrás de NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Vía servicio de transmisión
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Prohibir el acceso
@@ -2345,9 +2372,14 @@ STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Eliminar contra
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acción de administrador
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}¿Estás seguro de que deseas expulsar al jugador '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}¿Estás seguro de que deseas prohibir el acceso al jugador '{STRING}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}¿Estás seguro de que quieres eliminar la compañía '{COMPANY}'?
-STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}¿Estás seguro de que quieres eliminar la contraseña de la compañía '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}¿Estás seguro de que quieres eliminar la empresa '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}¿Estás seguro de que quieres eliminar la contraseña de la empresa '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}¿Utilizar servicio de transmisión?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}La conexión con el servidor '{STRING}' ha fallado.{}¿Deseas transmitir esta conexión vía '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, sólo esta vez
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, y no preguntar de nuevo
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -2380,7 +2412,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduc
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No se han encontrado dispositivos de red
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}El servidor no responde a la petición
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La conexión con el servidor ha agotado el tiempo máximo o ha sido rechazada
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}No se ha podido conectar debido a incompatibilidad de NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La sincronización del juego en red ha fallado
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La conexión con el juego en red se ha perdido
@@ -2459,6 +2491,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servi
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor está reiniciando...{}Espera por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registro del servidor ha fallado
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Ya se ha registrado otro servidor con el mismo código de invitación. Se va a cambiar el modo de juego a "local".
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Tu servidor no permite conexiones remotas
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Los demás jugadores no podrán conectarse a tu servidor
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descarga de contenido
@@ -4102,6 +4138,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Hacia {
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Hacia {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Mantenimiento en {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}No se puede llegar a {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}No se puede llegar a {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}No se puede llegar a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}No se puede llegar a {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

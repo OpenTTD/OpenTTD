@@ -2195,12 +2195,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie b
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ustaw rok, w którym semafory świetlne będą używane. Przed tym rokiem w użyciu będą semafory kształtowe (które mają te same właściwości, tylko inny wygląd)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Przełączaj typy sygnalizatorów: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami semaforów przełączać, po naciśnięciu Ctrl+klik przy budowaniu semaforów
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wybierz, między jakimi typami sygnalizatorów przełączać po naciśnięciu Ctrl+klik przy budowaniu sygnalizatorów
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tylko sygnalizatory trasy
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :wszystkie
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Wszystkie widoczne
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Pokazuj typy sygnalizatorów: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Wybierz, które typy sygnalizatorów mają być wyświetlane na pasku narzędzi sygnalizatorów
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Tylko sygnalizatory trasy
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Wszystkie sygnalizatory
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Układ dróg dla nowych miast: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Układ sieci dróg w miastach
@@ -4519,6 +4523,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Zmierza
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Zmierza do {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Serwisuj w {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nie może dotrzeć do {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nie może dotrzeć do {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nie może dotrzeć do {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               : {LTBLUE}Nie może dotrzeć do {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

@@ -1922,12 +1922,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματ�
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Περιήγηση στους τύπους σηματοδότησης: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές, όταν πατάτε σε ένα τοποθετημένο σήμα κρατώντας πατημένο το Ctrl
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές όταν πατάτε σε ένα τοποθετημένο σήμα κρατώντας πατημένο το Ctrl
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Μόνο σηματοδότες τροχιάς
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλοι
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλα ορατά
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Εμφάνιση τύπων σημάτων: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Επιλέξτε ποιοί τύποι σημάτων εμφανίζονται στην εργαλειοθήκη σημάτων
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Σήματα δρόμων μόνο
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Όλα τα σήματα
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Σχέδιο δρόμων για νέες πόλεις: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Μορφή οδικών δικτύων για τις πόλεις
@@ -4246,6 +4250,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Πορ�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Κατεύθυνση για το {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Επισκευή στο {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Δεν υπάρχει πρόσβαση στο {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Δεν υπάρχει πρόσβαση στο {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Δεν υπάρχει πρόσβαση στο {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Δεν υπάρχει πρόσβαση στο {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
