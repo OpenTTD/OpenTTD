@@ -1809,6 +1809,14 @@ static void AdvanceWagonsAfterSwap(Train *v)
 	}
 }
 
+static bool IsWholeTrainInsideDepot(const Train *v)
+{
+	for (const Train *u = v; u != nullptr; u = u->Next()) {
+		if (u->track != TRACK_BIT_DEPOT || u->tile != v->tile) return false;
+	}
+	return true;
+}
+
 /**
  * Turn a train around.
  * @param v %Train to turn around.
@@ -1816,6 +1824,7 @@ static void AdvanceWagonsAfterSwap(Train *v)
 void ReverseTrainDirection(Train *v)
 {
 	if (IsRailDepotTile(v->tile)) {
+		if (IsWholeTrainInsideDepot(v)) return;
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
