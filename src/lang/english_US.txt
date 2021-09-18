@@ -325,6 +325,8 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit 
 STR_GROUP_BY_NONE                                               :None
 STR_GROUP_BY_SHARED_ORDERS                                      :Shared orders
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game

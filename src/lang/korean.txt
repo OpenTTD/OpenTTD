@@ -326,6 +326,8 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :올해 평균 �
 STR_GROUP_BY_NONE                                               :없음
 STR_GROUP_BY_SHARED_ORDERS                                      :공유된 경로
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임을 일시 정지합니다.
@@ -4138,6 +4140,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}다음 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}다음 목적지: {DEPOT} ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}점검: {DEPOT} ({VELOCITY})
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION}에 갈 수 없음, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT}에 갈 수 없음, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT}에 갈 수 없음, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT}에 갈 수 없음, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

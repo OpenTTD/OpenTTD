@@ -99,6 +99,8 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :पिछले
 
 # Group by options for vehicle list
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}ध्वनि/संगीत विकल्प

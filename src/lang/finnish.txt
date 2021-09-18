@@ -325,6 +325,8 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Keskimääräin
 STR_GROUP_BY_NONE                                               :Ei mitään
 STR_GROUP_BY_SHARED_ORDERS                                      :Jaetut käskyt
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
@@ -4137,10 +4139,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Kohde: 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Suuntana {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Huolto kohteessa {DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Ei pääse asemalle {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Ei pääse reittipisteeseen {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Ei pääse varikolle {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Ei pääse varikolle {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION} ei saavutettavissa, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT} ei saavutettavissa, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT} ei saavutettavissa, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT} ei saavutettavissa, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

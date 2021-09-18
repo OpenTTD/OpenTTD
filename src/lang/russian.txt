@@ -451,6 +451,8 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Средняя 
 STR_GROUP_BY_NONE                                               :Нет
 STR_GROUP_BY_SHARED_ORDERS                                      :Общие задания
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза

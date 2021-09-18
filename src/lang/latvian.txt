@@ -327,6 +327,8 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Vidējā peļņ
 STR_GROUP_BY_NONE                                               :Nav
 STR_GROUP_BY_SHARED_ORDERS                                      :Koplietojamie rīkojumi
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzēt spēli

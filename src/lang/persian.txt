@@ -304,6 +304,8 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :میانگین 
 
 # Group by options for vehicle list
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}وقفه موقت بازی

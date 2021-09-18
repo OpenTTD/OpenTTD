@@ -318,6 +318,8 @@ STR_SORT_BY_RATING                                              :Puntuación
 
 # Group by options for vehicle list
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar partida

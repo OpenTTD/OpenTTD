@@ -315,6 +315,8 @@ STR_SORT_BY_NUM_VEHICLES                                        :வாகங்
 STR_GROUP_BY_NONE                                               :ஒன்றுமில்லை
 STR_GROUP_BY_SHARED_ORDERS                                      :பகிரப்பட்ட கட்டளைகள்
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து

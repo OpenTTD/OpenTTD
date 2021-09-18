@@ -206,6 +206,8 @@ STR_SORT_BY_POPULATION                                          :Ҫынисем
 
 # Group by options for vehicle list
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Вӑййи тӑхтав

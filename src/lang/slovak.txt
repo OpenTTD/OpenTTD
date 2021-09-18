@@ -389,6 +389,8 @@ STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Priemerný prof
 STR_GROUP_BY_NONE                                               :Žiadne
 STR_GROUP_BY_SHARED_ORDERS                                      :Zdieľané príkazy
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pozastaviť hru
