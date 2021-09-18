@@ -204,7 +204,8 @@ static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count
 
 /** Enum for the Company Toolbar's network related buttons */
 static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
-static const int CTMN_SPECTATOR   = -2; ///< Show a company window as spectator
+static const int CTMN_SPECTATE    = -2; ///< Become spectator
+static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
 
 /**
  * Pop up a generic company list menu.
@@ -222,8 +223,11 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 
 			/* Add the client list button for the companies menu */
 			list.emplace_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST, false));
-			break;
 
+			if (_local_company != COMPANY_SPECTATOR) {
+				list.emplace_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, false));
+			}
+			break;
 		case WID_TN_STORY:
 			list.emplace_back(new DropDownListStringItem(STR_STORY_BOOK_SPECTATOR, CTMN_SPECTATOR, false));
 			break;
@@ -602,6 +606,15 @@ static CallBackFunction MenuClickCompany(int index)
 		switch (index) {
 			case CTMN_CLIENT_LIST:
 				ShowClientList();
+				return CBF_NONE;
+
+			case CTMN_SPECTATE:
+				if (_network_server) {
+					NetworkServerDoMove(CLIENT_ID_SERVER, COMPANY_SPECTATOR);
+					MarkWholeScreenDirty();
+				} else {
+					NetworkClientRequestMove(COMPANY_SPECTATOR);
+				}
 				return CBF_NONE;
 		}
 	}
