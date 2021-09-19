@@ -57,6 +57,7 @@ protected:
 	NetworkRecvStatus Receive_SERVER_SYNC(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_COMMAND(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_CHAT(Packet *p) override;
+	NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_QUIT(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_ERROR_QUIT(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_SHUTDOWN(Packet *p) override;

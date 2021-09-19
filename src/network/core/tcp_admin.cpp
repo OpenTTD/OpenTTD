@@ -53,6 +53,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY: return this->Receive_ADMIN_UPDATE_FREQUENCY(p);
 		case ADMIN_PACKET_ADMIN_POLL:             return this->Receive_ADMIN_POLL(p);
 		case ADMIN_PACKET_ADMIN_CHAT:             return this->Receive_ADMIN_CHAT(p);
+		case ADMIN_PACKET_ADMIN_EXTERNAL_CHAT:    return this->Receive_ADMIN_EXTERNAL_CHAT(p);
 		case ADMIN_PACKET_ADMIN_RCON:             return this->Receive_ADMIN_RCON(p);
 		case ADMIN_PACKET_ADMIN_GAMESCRIPT:       return this->Receive_ADMIN_GAMESCRIPT(p);
 		case ADMIN_PACKET_ADMIN_PING:             return this->Receive_ADMIN_PING(p);
@@ -132,6 +133,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet *p) { ret
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_POLL); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_CHAT); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_EXTERNAL_CHAT); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_RCON); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_GAMESCRIPT); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_PING); }

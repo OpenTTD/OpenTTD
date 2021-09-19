@@ -2412,6 +2412,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {RAW_
 STR_NETWORK_CHAT_CLIENT                                         :[Private] {RAW_STRING}: {WHITE}{RAW_STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {RAW_STRING}: {WHITE}{RAW_STRING}
 STR_NETWORK_CHAT_ALL                                            :[All] {RAW_STRING}: {WHITE}{RAW_STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:RAW_STRING}] {0:RAW_STRING}: {WHITE}{1:RAW_STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enter text for network chat
 
 # Network messages

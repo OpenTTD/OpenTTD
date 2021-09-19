@@ -963,6 +963,22 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_EXTERNAL_CHAT(Packet *p)
+{
+	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	std::string source = p->Recv_string(NETWORK_CHAT_LENGTH);
+	TextColour colour = (TextColour)p->Recv_uint16();
+	std::string user = p->Recv_string(NETWORK_CHAT_LENGTH);
+	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
+
+	if (!IsValidConsoleColour(colour)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	NetworkTextMessage(NETWORK_ACTION_EXTERNAL_CHAT, colour, false, user, msg, 0, source);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;

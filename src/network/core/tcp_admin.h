@@ -30,6 +30,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_RCON,             ///< The admin sends a remote console command.
 	ADMIN_PACKET_ADMIN_GAMESCRIPT,       ///< The admin sends a JSON string for the GameScript.
 	ADMIN_PACKET_ADMIN_PING,             ///< The admin sends a ping to the server, expecting a ping-reply (PONG) packet.
+	ADMIN_PACKET_ADMIN_EXTERNAL_CHAT,    ///< The admin sends a chat message from external source.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -162,6 +163,17 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p);
+
+	/**
+	 * Send chat from the external source:
+	 * string  Name of the source this message came from.
+	 * uint16  TextColour to use for the message.
+	 * string  Name of the user who sent the messsage.
+	 * string  Message.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet *p);
 
 	/**
 	 * Execute a command on the servers console:
