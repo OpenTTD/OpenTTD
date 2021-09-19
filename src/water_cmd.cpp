@@ -477,8 +477,8 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		bool water = IsWaterTile(current_tile);
 
-		/* can't make water of water! */
-		if (water && (!IsTileOwner(current_tile, OWNER_WATER) || wc == WATER_CLASS_SEA)) continue;
+		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
+		if (water && IsCanal(current_tile) && _game_mode != GM_EDITOR && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
 		ret = DoCommand(current_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
