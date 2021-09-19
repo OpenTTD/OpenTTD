@@ -327,6 +327,8 @@ STR_GROUP_BY_NONE                                               :Nenhuma
 STR_GROUP_BY_SHARED_ORDERS                                      :Ordens partilhadas
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordens
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a visualização de ordens
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2326,6 +2328,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores "online"
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Assistir
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jogadores "Online"
@@ -4416,7 +4419,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordem in
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horário)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordens
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Mudar para a vista ordenada
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Mudar para visualização de ordens
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário - clique numa ordem para a seleccionar.
 

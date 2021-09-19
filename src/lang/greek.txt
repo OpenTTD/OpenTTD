@@ -387,6 +387,8 @@ STR_GROUP_BY_NONE                                               :Καμία
 STR_GROUP_BY_SHARED_ORDERS                                      :Κοινές εντολές
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Παραγγελίες
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Ανοίξτε την προβολή παραγγελίας
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2432,6 +2434,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η ετ�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Συνδεδεμένοι παίκτες
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Θέαση
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Συνδεδεμένοι Παίκτες

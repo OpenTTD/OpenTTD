@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :None
 STR_GROUP_BY_SHARED_ORDERS                                      :Shared orders
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Orders
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Open the order view
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2325,6 +2327,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectate
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online Players
