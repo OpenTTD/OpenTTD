@@ -5168,6 +5168,11 @@ static void NewSpriteGroup(ByteReader *buf)
 					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u loaded, %u loading",
 							setid, num_loaded, num_loading);
 
+					if (num_loaded + num_loading == 0) {
+						grfmsg(1, "NewSpriteGroup: no result, skipping invalid RealSpriteGroup");
+						break;
+					}
+
 					if (num_loaded + num_loading == 1) {
 						/* Avoid creating 'Real' sprite group if only one option. */
 						uint16 spriteid = buf->ReadWord();
