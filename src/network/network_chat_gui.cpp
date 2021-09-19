@@ -95,7 +95,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::st
 
 	ChatMessage *cmsg = &_chatmsg_list.emplace_front();
 	cmsg->message = message;
-	cmsg->colour = (colour & TC_IS_PALETTE_COLOUR) ? colour : TC_WHITE;
+	cmsg->colour = colour;
 	cmsg->remove_time = std::chrono::steady_clock::now() + std::chrono::seconds(duration);
 
 	_chatmessage_dirty_time = std::chrono::steady_clock::now();

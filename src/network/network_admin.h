@@ -29,6 +29,7 @@ protected:
 	NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet *p) override;
 	NetworkRecvStatus Receive_ADMIN_POLL(Packet *p) override;
 	NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p) override;
+	NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet *p) override;
 	NetworkRecvStatus Receive_ADMIN_RCON(Packet *p) override;
 	NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p) override;
 	NetworkRecvStatus Receive_ADMIN_PING(Packet *p) override;

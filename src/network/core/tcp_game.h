@@ -99,6 +99,7 @@ enum PacketGameType {
 	/* Human communication! */
 	PACKET_CLIENT_CHAT,                  ///< Client said something that should be distributed.
 	PACKET_SERVER_CHAT,                  ///< Server distributing the message of a client (or itself).
+	PACKET_SERVER_EXTERNAL_CHAT,         ///< Server distributing the message from external source.
 
 	/* Remote console. */
 	PACKET_CLIENT_RCON,                  ///< Client asks the server to execute some command.
@@ -377,6 +378,16 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CHAT(Packet *p);
+
+	/**
+	 * Sends a chat-packet for external source to the client:
+	 * string  Name of the source this message came from.
+	 * uint16  TextColour to use for the message.
+	 * string  Name of the user who sent the messsage.
+	 * string  Message (max NETWORK_CHAT_LENGTH).
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet *p);
 
 	/**
 	 * Set the password for the clients current company:
