@@ -170,6 +170,7 @@ STR_LITERS                                                      :{COMMA}{NBSP}�
 STR_ITEMS                                                       :{COMMA}{NBSP}頭
 STR_CRATES                                                      :{COMMA}{NBSP}箱
 
+STR_COLOUR_DEFAULT                                              :預設值
 ###length 17
 STR_COLOUR_DARK_BLUE                                            :暗藍
 STR_COLOUR_PALE_GREEN                                           :淡綠
@@ -231,6 +232,7 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇�
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}選擇排序項目
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}選擇過濾條件
 STR_BUTTON_SORT_BY                                              :{BLACK}排序依照
+STR_BUTTON_CATCHMENT                                            :{BLACK}覆蓋範圍
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉視窗
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
@@ -312,6 +314,7 @@ STR_SORT_BY_RATING                                              :評價
 STR_SORT_BY_NUM_VEHICLES                                        :車輛數量
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :無
 
 # Order button in shared orders vehicle list
 
@@ -1095,6 +1098,7 @@ STR_TERRAIN_TYPE_FLAT                                           :平坦
 STR_TERRAIN_TYPE_HILLY                                          :丘陵
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :高山
 STR_TERRAIN_TYPE_ALPINIST                                       :多山
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :自訂高度（{NUM}）
 
 ###length 3
 STR_CITY_APPROVAL_PERMISSIVE                                    :寬容
@@ -1397,6 +1401,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線高度：
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :此設定控制在「寒帶」地圖中雪地開始出現的高度。除了外觀的不同外，雪地也會影響工業設施的分佈以及市鎮成長的條件
 
 
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形起伏度 (只適用於 TerraGenesis)：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(只適用於 TerraGenesis) 此設定控制地圖上的山丘密度。「平滑」的地形會包含較少而且相互距離較遠的山丘；較粗糙的地形會包含密集的山丘，但可能會使地圖顯得重複
@@ -1693,6 +1698,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :永不
 
 ###length 3
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :原版
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允許購買其它公司的股票：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :啟用此選項以容許公司買賣股票。一所公司必須達到一定的年齡方能買賣股票
@@ -1717,6 +1723,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :僅限路徑號
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有號誌
 
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :僅限路徑號誌
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新市鎮的道路配置：{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :設定市鎮的道路規劃配置
@@ -1776,6 +1783,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 ###length 3
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :市鎮成長速度：{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :市鎮成長速度
@@ -2124,6 +2132,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}伺服�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}伺服器位址：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}開始日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}目前日期：{WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}遊戲腳本：{WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}受密碼保護！
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}伺服器離線
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}伺服器已滿
@@ -2188,12 +2197,15 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :用戶端清單
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}多人遊戲
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}伺服器
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :伺服器名稱
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}可見性
 
 # Matches ConnectionType
 ###length 5
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}你確定要刪除「{COMPANY}」公司嗎？
 
 
 STR_NETWORK_SPECTATORS                                          :旁觀者
@@ -2239,6 +2251,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}密碼�
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}伺服器已滿
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您被伺服器封鎖了
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您被踢出遊戲
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}原因：{STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此伺服器不允許作弊
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}您傳送了太多指令給伺服器了
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}你輸入密碼所需的時間太長
@@ -2375,6 +2388,7 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是，�
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}否，離開 OpenTTD
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}下載失敗
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}離開 OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明度選項
@@ -2665,6 +2679,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}投資�
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}從清單中選擇合適的工業
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :隨機產生多個工業
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}以隨機分佈的工業佈滿地圖
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}你確定要新建大量隨機工業嗎？
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}費用：{YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}探勘
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}設立
@@ -2862,6 +2877,7 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮�
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}將沙漠覆蓋率提高10%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海平面：
@@ -3539,6 +3555,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}購買�
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}購買並改裝車輛
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}購買並改裝車輛
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}購買並改裝飛機
 
 ###length VEHICLE_TYPES
@@ -3731,6 +3748,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :電氣化列車
 STR_REPLACE_MONORAIL_VEHICLES                                   :單軌列車
 STR_REPLACE_MAGLEV_VEHICLES                                     :磁浮列車
 
+STR_REPLACE_ROAD_VEHICLES                                       :車輛
 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
 
@@ -3792,6 +3810,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正前�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前往 {DEPOT}，{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在維護於 {DEPOT}，{VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}無法前往{DEPOT}，{VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
