@@ -2476,6 +2476,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Комп
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список игроков
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Стать зрителем
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Сетевая игра
@@ -2560,6 +2561,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде
 STR_NETWORK_CHAT_CLIENT                                         :[Лично] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] для {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введите текст для сетевого сообщения
 
 # Network messages

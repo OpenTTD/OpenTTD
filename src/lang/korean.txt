@@ -327,6 +327,8 @@ STR_GROUP_BY_NONE                                               :없음
 STR_GROUP_BY_SHARED_ORDERS                                      :공유된 경로
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}경로
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}경로 창 열기
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2326,6 +2328,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}회사 �
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :접속자 목록
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :관전
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}접속 중인 플레이어
@@ -2410,6 +2413,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[팀] {STRING}�
 STR_NETWORK_CHAT_CLIENT                                         :[귓속말] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[귓속말] {STRING}에게: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[모두] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}채팅 메시지를 입력하세요
 
 # Network messages

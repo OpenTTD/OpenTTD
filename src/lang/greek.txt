@@ -2519,6 +2519,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Ομάδα] Σ
 STR_NETWORK_CHAT_CLIENT                                         :[Προσωπικό] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Προσωπικό] Σε {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Όλοι] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισάγετε το κείμενο για δικτυακή συζήτηση
 
 # Network messages
