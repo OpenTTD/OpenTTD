@@ -182,6 +182,8 @@ add_files(
     script_newgrf.hpp
     script_news.hpp
     script_object.hpp
+    script_objecttype.hpp
+    script_objecttypelist.hpp
     script_order.hpp
     script_priorityqueue.hpp
     script_rail.hpp
@@ -250,6 +252,8 @@ add_files(
     script_newgrf.cpp
     script_news.cpp
     script_object.cpp
+    script_objecttype.cpp
+    script_objecttypelist.cpp
     script_order.cpp
     script_priorityqueue.cpp
     script_rail.cpp

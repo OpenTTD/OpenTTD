@@ -26,6 +26,8 @@
  * \li AITile::IsSeaTile
  * \li AITile::IsRiverTile
  * \li AITile::BT_CLEAR_WATER
+ * \li AIObjectTypeList
+ * \li AIObjectType
  *
  * \b 1.11.0
  *
