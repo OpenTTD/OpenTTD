@@ -679,6 +679,15 @@ static void ShipController(Ship *v)
 					DiagDirection exitdir = VehicleExitDir(v->direction, v->state);
 					TileIndex tile = TileAddByDiagDir(v->tile, exitdir);
 					if (TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, exitdir)) == TRACK_BIT_NONE) goto reverse_direction;
+					/* Ask pathfinder for best direction */
+					ProcessOrders(v); // updates next destination
+					bool reverse = false;
+					switch (_settings_game.pf.pathfinder_for_ships) {
+						case VPF_NPF: reverse = NPFShipCheckReverse(v); break;
+						case VPF_YAPF: reverse = YapfShipCheckReverse(v); break;
+						default: NOT_REACHED();
+					}
+					if (reverse) goto reverse_direction;
 				} else if (v->dest_tile != 0) {
 					/* We have a target, let's see if we reached it... */
 					if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
