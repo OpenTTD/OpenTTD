@@ -327,6 +327,8 @@ STR_GROUP_BY_NONE                                               :Nenhum
 STR_GROUP_BY_SHARED_ORDERS                                      :Ordens compartilhadas
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordens
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a visualização de ordens
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1818,12 +1820,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir sinal
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Seleciona o ano a partir do qual semáforos substituirão sinais. Antes desse ano, serão utilizados sinais de placa (diferença puramente estética)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Tipo de sinal a ser exibido: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleciona quais tipos de sinal a exibir, quando Ctrl+Clicar em Construir Sinais com a ferramenta Sinal
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecione quais tipos de sinais mostrar quando Ctrl+Clicar em uma placa de Construir com a ferramenta de Sinal
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :De trajeto apenas
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos visíveis
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostrar tipos de sinais: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Escolha quais tipos de sinais são mostrados na barra de ferramentas de sinais
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Sinal de trajeto apenas
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Todos os sinais
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposição de ruas para novas cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Define como as estradas construídas por cidades serão planejadas
@@ -2322,6 +2328,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jogadores online
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Assistir
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jogadores Online
@@ -2406,6 +2413,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipe] Para {
 STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Coloque o texto para o jogo em rede
 
 # Network messages
@@ -4136,6 +4144,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Indo pa
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Indo para {DEPOT}. {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenção em {DEPOT}. {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Não é possível alcançar {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Não é possível alcançar {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Não é possível alcançar {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Não é possível alcançar {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
