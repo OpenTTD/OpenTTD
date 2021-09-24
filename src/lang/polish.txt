@@ -621,7 +621,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł o
 STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
 STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmień rozmiar okna na domyślny. Ctrl+klik zapisze obecne wymiary jako domyślne
-STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacz to okno jako niezamykalne przyciskiem 'Zamknij Wszystkie Okna'. Ctrl+klik dodatkowo zapisze to ustawienie jako domyślne
+STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacz to okno jako niezamykalne przyciskiem „Zamknij wszystkie okna”. Ctrl+klik dodatkowo zapisze to ustawienie jako domyślne
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij, by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz na duży/mały rozmiar okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Suwak - przesuwa listę w górę/w dół
@@ -705,6 +705,8 @@ STR_GROUP_BY_NONE                                               :Brak
 STR_GROUP_BY_SHARED_ORDERS                                      :Polecenia współdzielone
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Polecenia
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otwórz widok poleceń
 
 # Tooltips for the main toolbar
 ###length 31
@@ -873,7 +875,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz kons
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Pokaż liczbę klatek na sekundę
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informacje o „OpenTTD”
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłącz kolorowanie brudnych bloków
@@ -2674,7 +2676,7 @@ STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Widoczno
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Czy inni ludzie mogą zobaczyć twój serwer na publicznej liście
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna liczba klientów:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie miejsca muszą być zapełnione.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firm{P a y ""}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksymalna liczba firm:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ogranicz serwer do określonej ilości firm
@@ -2705,6 +2707,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma je
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Połączeni gracze
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Obserwuj
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Połączeni gracze
@@ -2789,6 +2792,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespół] Do {
 STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] Do {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz tekst do chat'u
 
 # Network messages
@@ -4916,9 +4920,9 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigur
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfiguruj parametry skryptu
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Dostępny {STRING}
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostępne {STRING}
 STR_AI_LIST_CAPTION_AI                                          :Gracze SI
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Script'y
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripty
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknij, aby wybrać skrypt
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}

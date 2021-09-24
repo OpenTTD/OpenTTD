@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :Geen
 STR_GROUP_BY_SHARED_ORDERS                                      :Gedeelde orders
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Orders
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Open het orderscherm
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2325,6 +2327,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelers online
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Toekijken
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online-spelers
@@ -2409,6 +2412,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privé] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privé] Aan {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Geef tekst voor netwerkchat
 
 # Network messages
