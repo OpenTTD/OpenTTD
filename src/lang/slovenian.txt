@@ -803,6 +803,7 @@ STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Glasba ni na voljo
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Skladba
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Naslov
@@ -2335,6 +2336,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
 ###length 5
 
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Zagotovo želiš brcniti igralca '{STRING}'?
 
 
 STR_NETWORK_SPECTATORS                                          :Gledalci
@@ -2514,6 +2516,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, prenesi grafike
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, zapusti OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Prenos ni uspel
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavitve prozornega pogleda
@@ -3226,6 +3229,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Vpiši i
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Mesta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Brez -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Mesto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena mest - klikni na ime za pogled na mesto. Ctrl+Klik odpre nov pogled na lokaciji mesta
 STR_TOWN_POPULATION                                             :{BLACK}Svetovno prebivalstvo: {COMMA}
 

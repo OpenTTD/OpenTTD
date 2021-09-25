@@ -2413,6 +2413,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Équipe] À {S
 STR_NETWORK_CHAT_CLIENT                                         :[Privé] {STRING}{NBSP}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privé] À {STRING}{NBSP}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Tous] {STRING}{NBSP}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}{NBSP}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer le texte du clavardage
 
 # Network messages

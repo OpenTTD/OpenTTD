@@ -452,6 +452,8 @@ STR_GROUP_BY_NONE                                               :Нет
 STR_GROUP_BY_SHARED_ORDERS                                      :Общие задания
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Заданий
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Показать просмотр заданий
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2590,7 +2592,7 @@ STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ваш �
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Неверно указано имя игрока
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Подключение утеряно
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}В течение {NUM} секунд{P ы "" ""} не получено никаких данных со стороны сервера
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}За последн{P 0 юю ие ие} {NUM} секунд{P у ы ""} от сервера не получено никаких данных
 
 ###length 21
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка

@@ -326,6 +326,7 @@ STR_GROUP_BY_NONE                                               :Keng
 STR_GROUP_BY_SHARED_ORDERS                                      :Gedeelten Opträg
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Opträg
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1152,6 +1153,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Astellun
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter-String:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles erweideren
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles reduzéiren
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}All Wäerter zerécksetzen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(keng Erklärung verfügbar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwäert: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Astellungstyp: {ORANGE}{STRING}
@@ -1160,6 +1162,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spillastellung 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spillastellung (am Save gespäichert; betrëfft just aktuellt Spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmenastellung (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Des Aktioun setzt all Wäerter op hier Standardastellungen zeréck.{}Bass du sécher, fir weiderzefueren?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
@@ -1551,6 +1554,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ee Klick (wann 
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ee Klick (direkt)
 
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nie
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Erlaben
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rietsklickemulatioun: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wiel d'Method aus fir déi riets Maustast ze emuléiren
@@ -2196,6 +2201,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatt 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokal
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Effentlech
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -2257,6 +2264,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Den Numm
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwuert setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}En Passwuert fir d'Spill setzen, dass et net Public accessibel ass
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Sichtbarkeet
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Spiller
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximal Spiller:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Maximal Unzuel vun de Clients. Et muss net all Slot gefëllt sinn.
@@ -2292,11 +2300,20 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma as
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servernumm
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Verbindungstyp
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK} Däin Spillernumm
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Desem Spiller e Message schécken
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Effentlech
 
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Läschen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Password entspären
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Bass du sécher, dass du de Spiller '{STRING}' banne wëlls?
 
 
 STR_NETWORK_SPECTATORS                                          :Zuschauer
@@ -2337,6 +2354,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netzwier
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Konnt de Spillstand net lueden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Konnt de Server net starten
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}De Servernumm gouf net definéiert. Den Numm kann iwwert der Multiplayerfënster gesat ginn.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}D'Versioun vum Client stëmmt net mat däer vum Server iwwereneen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht Passwuert
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De Server ass voll
@@ -2350,14 +2368,14 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Däin Co
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du hues ze laang gebraucht fir d'Kaart rofzelueden
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du hues ze laang gebraucht fir dem Server bäizetrieden
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méiglechen Verbindungsverloscht
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méigleche Verbindungsverloscht
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Déi lescht {NUM} Sekonnen{P "" s} sinn keng Daten vum Server komm
 
 ###length 21
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Fehler
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync Fehler
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :konnt d'Kaart net lueden
-STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Connectioun verluer
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Verbindung verluer
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Protokollfehler
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF ënnerscheedlech
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :net authoriséiert
@@ -2374,6 +2392,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :krut keen Passw
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :generellen Timeout
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :Kaart rofzelueden huet ze laang gedauert
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :Kaart ze verarbëschten huet ze laang gedauert
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Falschen Numm vum Client
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2405,6 +2424,8 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De Serve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De Server gëtt nei gestart...{}W.e.g. waarden...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} gouf gekickt. Grond: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server Registration huet net geklappt
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Aner Spiller wäerte sech net op de Server verbanne kënnen
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Lueden Inhalt erof
@@ -4045,6 +4066,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ennerwe
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ennerwee an den {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisioun am {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kann den {DEPOT} net erreechen, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

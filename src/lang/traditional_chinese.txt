@@ -2293,6 +2293,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :遊戲暫停中
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :遊戲暫停中 ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :遊戲暫停中 ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :遊戲暫停中({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :遊戲暫停中 ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :遊戲取消暫停 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家數量
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :連線用戶端中
@@ -2832,6 +2833,7 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 
 ###length 15
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} 遊戲腳本：
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 
 ###length 15
@@ -2878,6 +2880,7 @@ STR_MAPGEN_DATE                                                 :{BLACK}日期�
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}將沙漠覆蓋率提高10%
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海平面：
@@ -3182,6 +3185,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}冒著�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 遊戲目標
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}全局目標
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}顯示全局目標
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 當前無目標 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3503,6 +3507,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移去所有運
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重新命名群組
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :今年盈利：
 
 # Build vehicle window
 ###length 4
@@ -3810,6 +3815,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正前�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前往 {DEPOT}，{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在維護於 {DEPOT}，{VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}無法前往{WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}無法前往{DEPOT}，{VELOCITY}
 
 # Vehicle stopped/started animations

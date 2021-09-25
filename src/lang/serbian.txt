@@ -514,6 +514,7 @@ STR_GROUP_BY_NONE                                               :Nijedan
 STR_GROUP_BY_SHARED_ORDERS                                      :Deljene naredbe
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Naredbe
 
 # Tooltips for the main toolbar
 ###length 31
@@ -987,6 +988,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-ČUVANJE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ČUVAM PARTIJU  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(posmatrač)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Arhiva Vesti
@@ -1195,6 +1197,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Svakih 12 mesec
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Odaberite jezik koji će se koristiti
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% završeno)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ceo ekran
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pritisnite ovde kako biste igrali OpenTTD na celom ekranu
@@ -1746,6 +1749,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik (ako je u 
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik (odmah)
 
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nikada
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Oponašanje desnog klika: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Odaberite metodu imitiranja klika na desnu dirku miša
@@ -1996,7 +2000,9 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ciklični izbor
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putna
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sva
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Postavi tip signala koji će se prikazati na traci sa alatima
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Svi signali
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Plan gradnje novih puteva u naseljima: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Menja način izgradnje puteva u naseljima
@@ -2391,6 +2397,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promena 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Javno
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mrežna partija
@@ -2426,6 +2433,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Trenutn
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Zaštićeno šifrom!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE VAN MREŽE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE POPUNJEN
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVER VAS JE BLOKIRAO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}NEODGOVARAJUĆA VERZIJA
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF NEPOKLAPANJE
 
@@ -2443,6 +2451,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Pokreni 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Pokrenite sopstveni server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Unesite Vaše ime
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Unesi adresu servera ili kod pozivnice
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Pokreni novu mrežnu partiju
@@ -2485,14 +2494,29 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Preduze�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spisak klijenata
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Posmatranje
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Prisutni igrači
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Naziv
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Naziv servera na kojem igraš
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Kod pozivnice
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Igrač
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ime igrača
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Pošalji poruku svim posmatračima
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokalno
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Zabrana
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Obriši
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratorska akcija
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Da li sigurno želite da promenite lozinku kompanije '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ne
 
 STR_NETWORK_SPECTATORS                                          :Posmatrači
 
@@ -2532,6 +2556,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Veza sa 
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Neuspešno učitavanje sačuvane partije
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Neuspešno pokretanje servera
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Nastala je greška u protokolu i veza je zatvorena
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Ime igrača nije podešeno. Ono se može podesiti na vrhu prozora Partija preko mreže
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizija igre ovog klijenta se ne poklapa sa revizijom servera
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pogrešna lozinka
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server je pun
@@ -2600,6 +2625,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server j
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se ponovo pokreće...{}Molimo sačekajte...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} je izvačen. Razlog: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Neuspešna registracija na serveru
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Dodaci za preuzimanje
@@ -3405,6 +3431,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Greška: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kobno: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Došlo je do neotklonljive NewGRF greške:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Dogodila se greška kod NewGRF-a:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neće raditi sa TTDPatch verzijom prema prijavi OpenTTD-a
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je za {STRING} verziju TTD-a
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je napravljen za korišćenje sa {STRING}
@@ -4256,6 +4283,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ide ka 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ide ka {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servisiranje u {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Ne može dostići {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Ne može dostići {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

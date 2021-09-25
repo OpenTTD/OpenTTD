@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :Ingen
 STR_GROUP_BY_SHARED_ORDERS                                      :Delade order
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordrar
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Öppna order vyn
 
 # Tooltips for the main toolbar
 ###length 31
@@ -2325,6 +2327,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företag
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelare online
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Beskåda
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Spelare online
@@ -2409,6 +2412,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Företaget] Ti
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Till {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in text för nätverkschat
 
 # Network messages
@@ -4139,6 +4143,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}På vä
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På väg mot {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service vid {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE} Kan inte nå {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kan inte nå {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kan inte nå {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kan inte nå {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

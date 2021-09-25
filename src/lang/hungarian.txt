@@ -1631,6 +1631,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Egyszeres katti
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Egyszeres kattintás (azonnal)
 
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Soha
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Jobb egérgomb emuláció: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Jobb egérgomb emulálási módszerének kiválasztása

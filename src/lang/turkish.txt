@@ -1824,6 +1824,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Yalnızca yol s
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Hepsi
 
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Yalnızca yol sinyalleri
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Yeni kasabalar için yol yerleşimi: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Şehirlerin karayolu ağlarını gösteren şema
