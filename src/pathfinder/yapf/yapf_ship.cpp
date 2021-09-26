@@ -337,16 +337,6 @@ struct CYapfShip1 : CYapfT<CYapfShip_TypesT<CYapfShip1, CFollowTrackWater    , C
 /* YAPF type 2 - uses TileIndex/DiagDirection as Node key */
 struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , CShipNodeListExitDir > > {};
 
-static inline bool RequireTrackdirKey()
-{
-	/* If the two curve penalties are not equal, then it is not possible to use the
-	 * ExitDir keyed node list, as it there will be key overlap. Using Trackdir keyed
-	 * nodes means potentially more paths are tested, which would be wasteful if it's
-	 * not necessary.
-	 */
-	return _settings_game.pf.yapf.ship_curve45_penalty != _settings_game.pf.yapf.ship_curve90_penalty;
-}
-
 /** Ship controller helper - path finder invoker */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
 {
@@ -355,7 +345,7 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.yapf.disable_node_optimization || RequireTrackdirKey()) {
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir
 	}
 
@@ -373,7 +363,7 @@ bool YapfShipCheckReverse(const Ship *v)
 	PfnCheckReverseShip pfnCheckReverseShip = CYapfShip2::CheckShipReverse; // default: ExitDir
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.yapf.disable_node_optimization || RequireTrackdirKey()) {
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnCheckReverseShip = &CYapfShip1::CheckShipReverse; // Trackdir
 	}
 
