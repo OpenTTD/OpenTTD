@@ -1100,7 +1100,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidijų pasiūlymas baigėsi:{}{}{STRING.ko} pervežimas iš {STRING.ko} į {STRING.ka} daugiau nebesubsidijuojamas.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidijų laikas baigėsi:{}{}{STRING.ko} transportavimas iš {STRING} į {STRING} daugiau nebesubsidijuojamas.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidijų pasiūlymas:{}{}Pirmasis pervežęs {STRING.ka} iš {STRING} į {STRING} gaus {NUM} metų vietinės valdžios subsidiją!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STRING} į {STRING} artimiausius {NUM} met{P us us ų} bus apmokamas 50% daugiau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STRING} į {STRING} artimiausius {NUM} met{P us us ų} bus apmokamas dvigubai!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STRING} į {STRING} artimiausius {NUM} met{P us us ų} bus apmokamas trigubai!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STRING} į {STRING} artimiausius {NUM} met{P us us ų} bus apmokamas keturgubai!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}: Sutriko susisiekimas keliais!{}{}Kelių rekonstrukcija, finansuojama {STRING}, sutrigdė susisiekimą keliais 6 mėnesiams!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transporto monopolija!
@@ -1166,7 +1171,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kairiąja puse
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dešiniąja puse
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Miestų pavadinimai
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Miestų pavadinimai:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pasirink miestų pavadinimų tipą
 
 ###length 21
@@ -1205,6 +1210,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kas 12 mėnesi�
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% baigtumas)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Per visą ekraną
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visame ekrane
@@ -1218,6 +1224,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aparatin
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Pažymėkite šį langelį, jei norite, kad OpenTTD taikytų aparatinį spartinimą. Kad nuostata įsigaliotų, reiks perkrauti OpenTTD
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Kad pakeitimai įsigaliotų, reikia paleisti OpenTTD iš naujo
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Vertikalioji sinchronizacija (VSync)
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Sąsajos elementų dydis
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pasirinkite vartotojo sąsajos elementų santykinį dydį
@@ -1427,8 +1434,12 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nurodo, kaip da
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidijų daugiklis: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nustato, kiek kartų maršruto įplaukos bus padidintos, gavus subsidiją
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidijų trukmė: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Pasirinkite vietinės valdžios subsidijų trukmę metais
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} met{P ai ai ų}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Be subsidijų
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Statybos kaštų lygis: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nustatykite statybos kaštų lygmenį
@@ -1755,7 +1766,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvikartis spust
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Vienkartis spustelėjimas (jei židinyje)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Vienkartis spustelėjimas (iškart)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Naudojimasis perdavimo paslauga: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Nepavykus prisijungti prie serverio tiesiogiai, žaidėjas gali pasinaudoti tarpinio perdavimo paslauga ir prisijungti prie serverio per kitą žaidėją.
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Neleisti
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Paklausti
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Leisti
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Dešiniojo pelės mygtuko emuliacija: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Pasirinkite būdą, kurį atliks dešinio pelės klavišo paspaudimas
@@ -2004,9 +2020,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pereiti tam tik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pasirinkite, kurie signalų tipai vykdys ciklą, kai Ctrl+paspaudę statyti signalą signalų įrankiuose
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kelio signalų
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus matomus
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Rodyti signalus: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Pasirinkite, kuriuos signalų tipus rodyti įrankių juostoje
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Tik kelio signalus
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Visus
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Kelių išdėstymas naujiems miestams: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kelių tinklų planas miestuose
@@ -2206,6 +2226,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gamyklo
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Žaidimas tinkle
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Traukinių maršrutų paieškos algoritmas: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Maršruto naudojamas ieškotojas traukiniams
@@ -2415,6 +2436,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Pakeisti
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Vietinis
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Viešas
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Tik su kvietimais
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Žaidimas tinkle
@@ -2450,6 +2474,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Dabarti
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Apsaugota slaptazodžiu!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVERIS IŠJUNGTAS
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVERIS PILNAS
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}Serveris jus atjungė (BAN)
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIJŲ NESUTAPIMAS
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEATITINKA PLĖTINYS
 
@@ -2467,6 +2492,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sukurti 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Sukurti savo serverį
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Įrašykite savo vardą
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Įveskite serverio adresą arba pakvietimo kodą
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Pradėti naują daugiažaidėjinį žaidimą
@@ -2476,6 +2502,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Žaidimo
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nustatyti slaptažodi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugokite savo žaidimą slaptažodžiu, jei nenorite, kad jis būtų viešai prieinamas
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Matomumas
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :Serverio matomumo nuostata
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Didžiausias klientų skaičius:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite didžiausią klientų skaičių. Nebūtinai visos jungtys turi būti užpildytos
@@ -2511,12 +2539,19 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanij
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Žaidėjų sąrašas
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Įveskite žaidėjo pavadinimą
 
 # Matches ConnectionType
 ###length 5
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Atjungti
 
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Naudotis tarpiniu perdavimu?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepavyko prisijungti prie serverio '{STRING}'.{}Ar norite pabandyti jungtis per tarpinę stotelę '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ne
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Taip, bet tik šįkart
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Taip, ir prašau nebeklausti
 
 STR_NETWORK_SPECTATORS                                          :Stebėtojai
 
@@ -2556,6 +2591,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nutruko 
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Negali atverti išsaugoto žaidimo
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Negali paleisti serverio
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokolo klaida. Prisijungimas baigtas
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE} Įveskite žaidėjo pavadinimą lango viršuje
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Žaidimo versija neatitinka serverio žaidimo versijos
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Blogas slaptažodis
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris pilnas
@@ -4233,6 +4269,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :„Maglev“ tr
 STR_REPLACE_ROAD_VEHICLES                                       :Automobilius
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvajinės transporto priemonės
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pašalinimas ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant nuo priekio), jeigu pakeitus garvežį traukinys pailgėtų
 
 # Vehicle view
@@ -4302,6 +4339,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Vyksta 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Vyksta į „{DEPOT}“, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Vyksta techninei apžiūrai į „{DEPOT}“, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nepavyksta pasiekti {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nepavyksta pasiekti {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

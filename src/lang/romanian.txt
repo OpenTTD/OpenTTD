@@ -685,6 +685,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Comutato
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afișează fereastra pentru selecția melodiilor
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Program muzical - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lista melodiilor
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
@@ -952,6 +953,7 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruble rusești 
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexican (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Noul Dolar Taiwanez (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinezesc (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indoneziană (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian (MYR)
@@ -1009,6 +1011,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecifi
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accelerare hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bifați căsuța ca OpenTTD să încerce utilizarea accelerației hardware. Modificarea setării va avea efect după repornirea jocului
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Setarea va avea efect doar după repornirea jocului
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
@@ -1149,6 +1152,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Setări
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtru:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Extinde toate
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsează toate
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetează toate valorile
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tip setare: {ORANGE}{STRING}
@@ -1219,6 +1223,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlează c�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator al subvențiilor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Alege cât de mult se plătește pentru conexiuni subvenționate
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stabilește numărul de ani pentru care se acordă o subvenție
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P an ani "de ani"}
 ###setting-zero-is-special
@@ -1787,7 +1792,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ciclu prin tipu
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selectează între care tipuri de semnale să se cicleze când se apasă Ctrl+Click pe un semnal folosind unealta de construcţie
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Doar avansat
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Toate
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Toate vizibile
 
 ###length 2
 
@@ -1802,7 +1807,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Oraşele pot construi drumuri: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite ca orașele să construiască șosele pentru a se dezvolta. Dezactivează pentru a nu permite orașelor să construiască independent șosele
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Oraşele au voie să construiască treceri la nivel cu calea ferată: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Orașele au voie să construiască treceri la nivel cu calea ferată: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Dacă este activată, orașele vor putea să construiască treceri la nivel cu calea ferată
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permite controlarea nivelului de zgomot al aeroportului de către oras: {STRING}
@@ -2272,13 +2277,17 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jucători conec
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nume
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică numele serverului tău
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Vizibilitate
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Cod de invitație
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nume
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică-ți numele
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Numele tău de jucător
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Creează o nouă companie și intră în ea
 
 # Matches ConnectionType
 ###length 5
@@ -2323,7 +2332,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nu am detectat o placă de reţea sau jocul a fost compilat fără ENABLE_NETWORK
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serverul nu a răspuns cererii
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Conexiunea la server nu s-a efectuat în timp util sau a fost refuzată
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nu m-am putut conecta din cauza unei nepotriviri NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizarea jocului în reţea a eşuat
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Conexiunea jocului în reţea a fost întreruptă
@@ -2341,6 +2350,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}A expira
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Calculatorul dvs. este prea lent pentru a se sincroniza cu serverul
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A expirat timpul pentru descărcarea hărţii
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A expirat timpul pentru conectarea la server
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Numele tău de jucător nu este valid
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posibilă pierdere a conexiunii
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}În ultimele {NUM} secunde nu s-au mai primit date de la server
@@ -3359,6 +3369,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Carte de poveste
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Cartea de poveste globală
+STR_STORY_BOOK_SPECTATOR                                        :Cartea de poveste globală
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Sari la o pagină specifică selectând-o din lista derulantă
@@ -3570,6 +3581,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul 
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunţat închiderea iminentă!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Necesită: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesită:
@@ -3688,6 +3700,7 @@ STR_PURCHASE_INFO_NONE                                          :Niciunul
 STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu excepţia {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rază acțiune: {GOLD}{COMMA} pătrățele
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tip de aeronavă: {GOLD}{STRING}
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selectie a componentelor trenului - clic pe vehicule pt. informatii
@@ -3704,6 +3717,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Cumpăr�
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Cumpără și adaptează vehiculul
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Cumpără și repară vehiculul
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Cumpără și recondiționează nava
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Cumpără și schimbă marfa transportată de aeronavă
 
 ###length VEHICLE_TYPES
@@ -4655,6 +4669,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Cale fer
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Mai întâi trebuie înlăturată calea ferată
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Drum cu sens unic sau blocat
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Trecerea la nivel nu este permisă pentru acest tip de cale ferată
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Trecerea la nivel cu calea ferată nu este permisă pe acest tip de drum
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nu se pot plasa semafoare aici...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nu se poate construi cale ferată aici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nu se poate înlătura calea ferată...
