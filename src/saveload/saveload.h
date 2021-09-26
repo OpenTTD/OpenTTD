@@ -337,7 +337,8 @@ enum SaveLoadVersion : uint16 {
 
 	SLV_TABLE_CHUNKS,                       ///< 295  PR#9322 Introduction of CH_TABLE and CH_SPARSE_TABLE.
 	SLV_SCRIPT_INT64,                       ///< 296  PR#9415 SQInteger is 64bit but was saved as 32bit.
-	SLV_LINKGRAPH_TRAVEL_TIME,              ///< 297  PR#9457 v12  Store travel time in the linkgraph.
+	SLV_LINKGRAPH_TRAVEL_TIME,              ///< 297  PR#9457 v12.0-RC1  Store travel time in the linkgraph.
+	SLV_DOCK_DOCKINGTILES,                  ///< 298  PR#9578 v12.0  All tiles around docks may be docking tiles.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
