@@ -1975,6 +1975,71 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConListDirs)
+{
+	struct SubdirNameMap {
+		Subdirectory subdir; ///< Index of subdirectory type
+		const char *name;    ///< UI name for the directory
+		bool default_only;   ///< Whether only the default (first existing) directory for this is interesting
+	};
+	static const SubdirNameMap subdir_name_map[] = {
+		/* Game data directories */
+		{ BASESET_DIR,      "baseset",    false },
+		{ NEWGRF_DIR,       "newgrf",     false },
+		{ AI_DIR,           "ai",         false },
+		{ AI_LIBRARY_DIR,   "ailib",      false },
+		{ GAME_DIR,         "gs",         false },
+		{ GAME_LIBRARY_DIR, "gslib",      false },
+		{ SCENARIO_DIR,     "scenario",   false },
+		{ HEIGHTMAP_DIR,    "heightmap",  false },
+		/* Default save locations for user data */
+		{ SAVE_DIR,         "save",       true  },
+		{ AUTOSAVE_DIR,     "autosave",   true  },
+		{ SCREENSHOT_DIR,   "screenshot", true  },
+	};
+
+	if (argc != 2) {
+		IConsolePrint(CC_HELP, "List all search paths or default directories for various categories.");
+		IConsolePrint(CC_HELP, "Usage: list_dirs <category>");
+		std::string cats = subdir_name_map[0].name;
+		bool first = true;
+		for (const SubdirNameMap &sdn : subdir_name_map) {
+			if (!first) cats = cats + ", " + sdn.name;
+			first = false;
+		}
+		IConsolePrint(CC_HELP, "Valid categories: {}", cats);
+		return true;
+	}
+
+	std::set<std::string> seen_dirs;
+	for (const SubdirNameMap &sdn : subdir_name_map) {
+		if (strcasecmp(argv[1], sdn.name) != 0)  continue;
+		bool found = false;
+		for (Searchpath sp : _valid_searchpaths) {
+			/* Get the directory */
+			std::string path = FioGetDirectory(sp, sdn.subdir);
+			/* Check it hasn't already been listed */
+			if (seen_dirs.find(path) != seen_dirs.end()) continue;
+			seen_dirs.insert(path);
+			/* Check if exists and mark found */
+			bool exists = FileExists(path);
+			found |= exists;
+			/* Print */
+			if (!sdn.default_only || exists) {
+				IConsolePrint(exists ? CC_DEFAULT : CC_INFO, "{} {}", path, exists ? "[ok]" : "[not found]");
+				if (sdn.default_only) break;
+			}
+		}
+		if (!found) {
+			IConsolePrint(CC_ERROR, "No directories exist for category {}", argv[1]);
+		}
+		return true;
+	}
+
+	IConsolePrint(CC_ERROR, "Invalid category name: {}", argv[1]);
+	return false;
+}
+
 DEF_CONSOLE_CMD(ConNewGRFProfile)
 {
 	if (argc == 0) {
@@ -2344,6 +2409,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("list_settings",           ConListSettings);
 	IConsole::CmdRegister("gamelog",                 ConGamelogPrint);
 	IConsole::CmdRegister("rescan_newgrf",           ConRescanNewGRF);
+	IConsole::CmdRegister("list_dirs",               ConListDirs);
 
 	IConsole::AliasRegister("dir",                   "ls");
 	IConsole::AliasRegister("del",                   "rm %+");
