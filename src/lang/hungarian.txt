@@ -390,7 +390,7 @@ STR_GROUP_BY_SHARED_ORDERS                                      :Megosztott utas
 
 # Order button in shared orders vehicle list
 STR_GOTO_ORDER_VIEW                                             :{BLACK}Utasítások
-STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Nyisd meg az utasítás nézetet
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}A járművek utasításainak mutatása
 
 # Tooltips for the main toolbar
 ###length 31
