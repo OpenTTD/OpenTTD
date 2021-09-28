@@ -251,9 +251,9 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
  * Set the start date of the timetable.
  * @param tile Not used.
  * @param flags Operation to perform.
- * @param p2 Various bitstuffed elements
- * - p2 = (bit 0-19) - Vehicle ID.
- * - p2 = (bit 20)   - Set to 1 to set timetable start for all vehicles sharing this order
+ * @param p1 Various bitstuffed elements
+ * - p1 = (bit 0-19) - Vehicle ID.
+ * - p1 = (bit 20)   - Set to 1 to set timetable start for all vehicles sharing this order
  * @param p2 The timetable start date.
  * @param text Not used.
  * @return The error or cost of the operation.

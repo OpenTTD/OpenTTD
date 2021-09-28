@@ -150,7 +150,7 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
  *           bit 2: Allow stations directly adjacent to other stations.
  *           bit 3..4: Entrance direction (#DiagDirection) for normal stops.
  *           bit 3: #Axis of the road for drive-through stops.
- *           bit 5..9: The roadtype.
+ *           bit 5..10: The roadtype.
  *           bit 16..31: Station ID to join (NEW_STATION if build new one).
  * @param cmd Unused.
  * @see CmdBuildRoadStop
@@ -189,7 +189,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, uint32 p2, u
 		SetBit(p2, 1); // It's a drive-through stop.
 		ddir -= DIAGDIR_END; // Adjust picker result to actual direction.
 	}
-	p2 |= ddir << 3; // Set the DiagDirecion into p2 bits 3 and 4.
+	p2 |= ddir << 3; // Set the DiagDirection into p2 bits 3 and 4.
 
 	TileArea ta(start_tile, end_tile);
 	CommandContainer cmdcont = { ta.tile, (uint32)(ta.w | ta.h << 8), p2, cmd, CcRoadStop, "" };
