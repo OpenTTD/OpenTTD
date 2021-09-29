@@ -172,14 +172,14 @@ STR_CRATES                                                      :{COMMA}{NBSP}pe
 
 STR_COLOUR_DEFAULT                                              :Standar
 ###length 17
-STR_COLOUR_DARK_BLUE                                            :Biru tua
-STR_COLOUR_PALE_GREEN                                           :Hijau pucat
-STR_COLOUR_PINK                                                 :Merah muda
+STR_COLOUR_DARK_BLUE                                            :Biru Tua
+STR_COLOUR_PALE_GREEN                                           :Hijau Pucat
+STR_COLOUR_PINK                                                 :Merah Muda
 STR_COLOUR_YELLOW                                               :Kuning
 STR_COLOUR_RED                                                  :Merah
-STR_COLOUR_LIGHT_BLUE                                           :Biru terang
+STR_COLOUR_LIGHT_BLUE                                           :Biru Muda
 STR_COLOUR_GREEN                                                :Hijau
-STR_COLOUR_DARK_GREEN                                           :Hijau tua
+STR_COLOUR_DARK_GREEN                                           :Hijau Tua
 STR_COLOUR_BLUE                                                 :Biru
 STR_COLOUR_CREAM                                                :Krim
 STR_COLOUR_MAUVE                                                :Ungu Muda
@@ -616,7 +616,7 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insinyur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Manajer Lalu lintas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordinator trasportasi
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor rute
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor Rute
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Kepala Eksekutif
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Pimpinan
@@ -789,8 +789,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Tampilka
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tampilkan pesan atau laporan berita terakhir
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  BERHENTI  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * PAUSED (menunggu pembaruan grafik tautan) * *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}* * DIJEDA *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * DIJEDA (menunggu pembaruan grafik tautan) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPAN OTOMATIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MENYIMPAN PERMAINAN  *  *
 
@@ -1152,7 +1152,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Ketinggian Kust
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Ketinggian Kustom ({NUM})
 
 ###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
+STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu Boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
@@ -2396,7 +2396,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Pergunak
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabung
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabung dan bermain sebagai perush. ini
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabung dan bermain sebagai perusahaan ini
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata Sandi
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Atur Kata Sandi Perusahaan
@@ -2470,12 +2470,12 @@ STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nama yang dihub
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 ###length 12
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dihentikan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih dihentikan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Permainan masih dijeda({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dijeda ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih dijeda ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dijeda ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dijeda ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Permainan masih dijeda ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Permainan masih dijeda ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan dilanjutkan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jumlah pemain
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menghubungkan ke klien
@@ -3578,7 +3578,7 @@ STR_CARGO_RATING_MEDIOCRE                                       :Sedang
 STR_CARGO_RATING_GOOD                                           :Baik
 STR_CARGO_RATING_VERY_GOOD                                      :Sangat Baik
 STR_CARGO_RATING_EXCELLENT                                      :Sempurna
-STR_CARGO_RATING_OUTSTANDING                                    :Diatas Sempurna
+STR_CARGO_RATING_OUTSTANDING                                    :Luar Biasa
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ganti nama stasiun
@@ -3637,10 +3637,10 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastr
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Pimpinan)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Manajer)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dilantik : {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Warna tema:
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dilantik: {WHITE}{NUM}
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Tema Warna:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Kendaraan:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} kereta
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} kendaraan jalan raya
@@ -3659,8 +3659,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}nihil
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Kantor Pusat
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Membangun kantor pusat
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lokasi Kantor
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Tampilkan kantor pusat
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lokasi Kantor Pusat
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Tampilkan kantor pusat perusahaan
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Pindah Kantor Pusat
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Membangun kembali kantor pusat perusahaan di tempat lain dengan 1% ongkos dari nilai perusahaan. Shift untuk menampilkan perkiraan biaya
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detail
@@ -3670,12 +3670,12 @@ STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Berikan 
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wajah baru pimpinan
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Warna tema
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Tema Warna
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Ubah warna kendaraan perusahaan
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nama Perusahaan
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ubah nama perusahaan
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nama Pimpinan
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nama pimpinan
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nama Manajer
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nama manajer
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham perusahaan
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham perusahaan
@@ -3683,8 +3683,8 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25%
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya tanpa menjual saham
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
-STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin Anda berikan
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Manajer
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin anda berikan
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
 
@@ -4669,7 +4669,7 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... bata
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... batas penanaman pohon tercapai
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama haruslah unik
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :terhalang {WHITE}{1:STRING}
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak diijinkan saat berhenti
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak diijinkan saat dijeda
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Pemkot {TOWN} tidak mengijinkan anda melakukan ini
