@@ -26,6 +26,9 @@
 #include <list>
 #include <map>
 
+const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
+const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
+
 /** Vehicle status bits in #Vehicle::vehstatus. */
 enum VehStatus {
 	VS_HIDDEN          = 0x01, ///< Vehicle is not visible.
@@ -426,7 +429,7 @@ public:
 	 */
 	inline uint GetAdvanceDistance()
 	{
-		return (this->direction & 1) ? 192 : 256;
+		return (this->direction & 1) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE * 2;
 	}
 
 	/**
