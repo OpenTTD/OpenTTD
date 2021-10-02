@@ -66,6 +66,19 @@ protected:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile)) {
 						cost += Yapf().PfGetSettings().road_crossing_penalty;
+					} else if (IsRoadDepot(tile) && IsExtendedRoadDepot(tile)) {
+						switch (GetDepotReservation(tile, IsDiagDirFacingSouth(TrackdirToExitdir(trackdir)))) {
+							case DEPOT_RESERVATION_FULL_STOPPED_VEH:
+								cost += 16 * YAPF_TILE_LENGTH;
+								break;
+							case DEPOT_RESERVATION_IN_USE:
+								cost += 8 * YAPF_TILE_LENGTH;
+								break;
+							case DEPOT_RESERVATION_EMPTY:
+								cost += YAPF_TILE_LENGTH;
+								break;
+							default: NOT_REACHED();
+						}
 					}
 					break;
 
@@ -135,7 +148,7 @@ public:
 			}
 
 			/* stop if we have just entered the depot */
-			if (IsRoadDepotTile(tile) && trackdir == DiagDirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
+			if (IsRoadDepotTile(tile) && !IsExtendedRoadDepotTile(tile) && trackdir == DiagDirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
 				/* next time we will reverse and leave the depot */
 				break;
 			}
@@ -201,7 +214,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(Node &n)
 	{
-		return IsRoadDepotTile(n.m_segment_last_tile);
+		return PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
 	}
 
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir)
