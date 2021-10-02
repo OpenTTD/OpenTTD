@@ -794,6 +794,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SALVARE AUTOMATĂ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVARE JOC  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia mesajelor
@@ -1029,7 +1030,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Alege m�
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-detecție)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normală
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Mărime dublă
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împătrită
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime cvadruplă
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Dimensiune font
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Alege dimensiunea fontului pentru interfață
@@ -1037,6 +1038,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Alege di
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detecție)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Mărime dublă
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Mărime cvadruplă
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
@@ -1608,10 +1610,10 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Foloseşte indi
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Alege dacă indicatori de încărcare sunt afișați deasupra unor vehicule care sunt în proces de încărcare sau descărcare
 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Arată orarul pe programări în unități de timp interne în loc de zile: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Arată timpii de călatorie în tabela cu timpi a jocului folosind unități de timp interne în loc de zile
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Arată timpii de călătorie în tabela cu timpi a jocului folosind unități de timp interne în loc de zile
 
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afişează plecările şi sosirile în orare: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire în orar
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afișează plecările și sosirile din orare: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire din orar
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a comenzilor pentru vehicule: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselectează cursorul "mergi la" când se deschide fereastra de comenzi
@@ -1782,11 +1784,14 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ştirile color 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anul începând cu care anunțurile din ziar sunt tipărite color. Înainte de acest an, anunturile sunt monocrome (alb/negru)
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anul de început al jocului: {STRING}
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Anul final pentru scor: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :An în care jocul oprește contorizarea scorului. La finalul acestui an, scorul companiei este salvat și tabela celor mai bune scoruri e afișată, însă jucătorii pot continua să se joace.{}Dacă anul e înaintea celui de pornire, tabela celor mai bune scoruri nu va fi afișată.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Niciodată
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipul economiei: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Economia lină face mai des modificări de producție, în pași mai mici. Economia înghețată previne modificările de producție și închiderile industriilor. Setarea ar putea să nu aibă efect dacă tipurile de industrii sunt furnizate de un NewGRF.
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Lin
@@ -1909,7 +1914,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator i
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING}{NBSP}{P 0:2 zi zile "de zile"}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai timp CPU va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai mult timp va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING}{NBSP}{P 0:2 zi zile "de zile"} pentru recalcularea graficului de distribuţie
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
@@ -1925,6 +1930,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetric
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Acurateţea distribuţiei: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Cu cât setezi o valoare mai mare, cu atât mai mult timp va lua calcularea graficului de conexiuni. Dacă durează prea mult, vei sesiza întârzieri. Iar dacă setezi o valoare mică, distribuția va fi imprecisă și ai putea sesiza că anumite mărfuri nu sunt trimise unde te aștepți să ajungă.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efectul distanţei asupra cererii: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Dacă setezi această valoare peste 0, distanța dintre stația origine A al mărfii și o posibilă stație B va afecta cantitatea de marfă trimisă din punctul A în B. Cu cât e mai departe B de A cu atât va fi mai mică cantitatea de marfă transportată. Cu cât mărești această valoare, cu atât mai puțină marfă se livrează spre destinațiile îndepărtate si cu atât mai multă la cele mai apropiate.
@@ -2324,6 +2330,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Numele serverul
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Vizibilitate
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Cod de invitație
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Cod de invitație cu care pot intra pe server alți jucători
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipul conexiunii
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Dacă și cum poate fi găsit serverul tău de alții
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jucător
@@ -2334,12 +2341,14 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Numele tău în
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acțiuni administrative de efectuat pentru acest client
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acțiuni administrative de efectuat pentru această companie
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Intră în această companie
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Trimite un mesaj acestui jucător
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spectatori
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Companie nouă)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Creează o nouă companie și intră în ea
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Aici ești tu
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aceasta este gazda jocului
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} {P client clienți "de clienți"} / {NUM}{P companie companii "de companii"}
 
 # Matches ConnectionType
@@ -2898,7 +2907,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Proprietar al şinei de tramvai: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietar al căii ferate: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nici una
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Niciuna
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data construcţiei: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa staţiei: {LTBLUE}{STRING}
@@ -3040,6 +3049,7 @@ STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Decala
 STR_FRAMERATE_DRAWING                                           :{BLACK}Randare grafică:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vizoare globale:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mixaj de sunet:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Total GS/AI:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script joc:
 STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
@@ -3096,6 +3106,8 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de o
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cel mai înalt vârf:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Crește cu o unitate înălțimea maximă a celui mai înalt vârf al hărții
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Redu cu o unitate înălțimea maximă a celui mai înalt vârf al hărții
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Acoperire cu zăpadă:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Mărește acoperirea cu zăpadă cu zece procente
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Reduce acoperirea cu zăpadă cu zece procente
@@ -3314,6 +3326,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fişiere l
 STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizări şi/sau blocări
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}A modificat starea trenului pentru '{1:ENGINE}' când nu se afla în depou
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}A modificat lungimea vehiculului pentru '{1:ENGINE}' când nu se afla în depou
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}A modificat capacitatea vehiculului pentru '{1:ENGINE}' când nu a fost într-un depou sau în timpul conversiei
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparţinând '{COMPANY}' nu are o lungime validă. Probabil este o problemă cu fişierele NewGRF. Jocul s-ar putea desincroniza sau bloca
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte
@@ -3495,7 +3508,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervat pentru încărcare)
 
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ce acceptă
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afişează lista de încărcături acceptate
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptă: {WHITE}{CARGO_LIST}
 
@@ -3936,9 +3949,9 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest bu
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi fă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+clic va sincroniza comenzile. Shift+clic arată costul estimativ fără a efectua achiziția
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează imaginea pe locaţia depoului. Ctrl+Click deshide o fereastra cu locaţia depoului
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia acestei autobaze. Ctrl+Click deshide o fereastra cu locaţia autobazei
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrează imaginea pe locaţia şantierului. Ctrl+Click deshide o fereastra cu locaţia şantierului
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează vizorul principal pe locația depoului. Ctrl+clic deschide un vizor cu locația depoului
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează vizorul principal pe locația autobazei. Ctrl+clic deschide un vizor cu locația autobazei
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrează vizorul principal pe locația șantierului. Ctrl+clic deschide un vizor cu locația șantierului
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrează vizorul principal pe locația hangarului. Ctrl+clic deschide un vizor nou cu locația hangarului
 
 ###length VEHICLE_TYPES
@@ -4042,7 +4055,8 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrează vizorul principal pe locația trenului. Dublu-clic va urmări trenul în vizorul principal. Ctrl+clic deschide un nou vizor cu locație trenului
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrează vizorul principal pe locația vehiculului. Dublu-clic va urmări vehiculul în vizorul principal. Ctrl+clic deschide un nou vizor cu locația vehiculului
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrează imaginea pe locația navei. Dublu clic va urmări nava în vizorul principal. Ctrl+Clic deschide un nou vizor pe locația navei
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrează vizorul principal pe locația navei. Dublu-clic va urmări nava în vizorul principal. Ctrl+clic deschide un nou vizor pe locația navei
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrează vizorul principal pe locația aeronavei. Dublu-clic va urmări aeronava în vizorul principal. Ctrl+clic deschide un nou vizor cu locația aeronavei
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trimite trenul într-un depou
@@ -4192,7 +4206,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacita
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selectează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Alege vehiculele pentru conversie. Tragerea mausului permite selectarea mai multor vehicule. Clicul pe un spațiu gol va selecta întregul vehicul. Ctrl+clic va selecta un vehicul și lanțul atașat
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren
@@ -4230,24 +4244,24 @@ STR_ORDER_GO_TO                                                 :Du-te la
 STR_ORDER_GO_NON_STOP_TO                                        :Du-te fără oprire la
 STR_ORDER_GO_VIA                                                :Du-te prin
 STR_ORDER_GO_NON_STOP_VIA                                       :Du-te fără oprire prin
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Schimbă comportamentul de oprire pentru ordinul selectat
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Schimbă comportamentul de oprire al comenzii selectate
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Încarcă orice produs
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Încarcă dacă este disponibil
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Încarcă toate produsele
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Încarcă orice produs
 STR_ORDER_DROP_NO_LOADING                                       :Nu încărca
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Schimbă comportamentul de încărcare pentru ordinul selectat
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Schimbă comportamentul de încărcare al comenzii selectate
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarcă tot
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarcă dacă este acceptat
 STR_ORDER_DROP_UNLOAD                                           :Descarcă tot
 STR_ORDER_DROP_TRANSFER                                         :Transferă
 STR_ORDER_DROP_NO_UNLOADING                                     :Nu descărca
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Schimbă comportamentul de descărcare pentru ordinul selectat
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Schimbă comportamentul de descărcare al comenzii selectate
 
 STR_ORDER_REFIT                                                 :{BLACK}Rearanjeaza
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege tipul de marfă pentru rearanjarea în comandă. Ctrl+clic pentru a anula rearanjarea
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege marfă țintă pentru conversie în această comandă. Ctrl+clic pentru a anula instrucțiunea de conversie
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-modificare
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectează marfa țintă pentru conversie în această comandă. Ctrl+clic pentru a elimina instrucțiunea de conversie. Conversia din stații va fi efectuată doar dacă vehiculul permite asta.
 STR_ORDER_DROP_REFIT_AUTO                                       :Tip încărcătură nemodificabil
@@ -4290,7 +4304,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Treci la
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sari peste comanda actuală și preia-o pe următoarea. Ctrl+clic sare la comanda selectată
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Şterge
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Şterge comanda selectată
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Șterge comanda selectată
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Șterge toate comenzile
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Opreşte sincronizarea
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Oprește sincronizarea comenzilor. Ctrl-clic șterge toate comenzile acestui vehicul
@@ -4386,19 +4400,19 @@ STR_TIMETABLE_NO_TRAVEL                                         :NU este calator
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Călătorie (automat; programată după următoarea comandă manuală)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Călătoriți (neplanificat) cu maxim {2:VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Călătorii pentru {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Mergi către {STRING} cu maxim {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Călătorie (pentru {STRING}, neplanificată)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Călătoriți (pentru {STRING}, neprogramat) cu cel mult {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(staționare pentru {STRING}, neprogramată)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(călătorie pentru {STRING}, neprogramată)
 STR_TIMETABLE_STAY_FOR                                          :și staționare pentru {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :şi călătoreşte pentru {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :și călătorește timp de {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}{P zi zile "de zile"}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}{P unitate unități "de unități"} de timp intern{P ă e e}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel puțin {STRING} pentru finalizare (nu în întregime programat)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Acest vehicul se încadrează în timp
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vehiculul are întârziere de {STRING}
@@ -4407,18 +4421,19 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Acest or
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Acest orar va începe la {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dată pornire
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Alege o dată ca punct de pornire pentru acest orar. Ctrl+clic setează punctul de pornire al acestui orar și distribuie uniform comanda tuturor vehiculelor în cu comenzi similare, dacă comenzile au un orar complet
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifică timpul
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată pentru comanda selectată
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată comenzii selectate
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Curata timp
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimină durata de timp pentru comanda selectată
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Schimbă limita de viteză
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Schimbă limita maximă de viteză a ordinului selectat
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Schimbă limita maximă de viteză a comenzii selectate
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Şterge limita de viteză
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Şterge limita maximă de viteză a ordinului selectat
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Șterge limita maximă de viteză a comenzii selectate
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinitializeaza contorul de intarziere
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniţializează contorul de întârziere, astfel ca vehiculul să ajungă la timp
