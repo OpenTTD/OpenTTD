@@ -67,7 +67,7 @@ struct ScriptAllocator {
 	 * @param requested_size The requested size that was requested to be allocated.
 	 * @param p              The pointer to the allocated object, or null if allocation failed.
 	 */
-	void CheckAllocation(size_t requested_size, const void *p)
+	void CheckAllocation(size_t requested_size, void *p)
 	{
 		if (this->allocated_size > this->allocation_limit && !this->error_thrown) {
 			/* Do not allow allocating more than the allocation limit, except when an error is
@@ -77,6 +77,11 @@ struct ScriptAllocator {
 			char buff[128];
 			seprintf(buff, lastof(buff), "Maximum memory allocation exceeded by " PRINTF_SIZE " bytes when allocating " PRINTF_SIZE " bytes",
 				this->allocated_size - this->allocation_limit, requested_size);
+			/* Don't leak the rejected allocation. */
+			free(p);
+			p = nullptr;
+			/* Allocation rejected, don't count it. */
+			this->allocated_size -= requested_size;
 			throw Script_FatalError(buff);
 		}
 
@@ -93,6 +98,8 @@ struct ScriptAllocator {
 			this->error_thrown = true;
 			char buff[64];
 			seprintf(buff, lastof(buff), "Out of memory. Cannot allocate " PRINTF_SIZE " bytes", requested_size);
+			/* Allocation failed, don't count it. */
+			this->allocated_size -= requested_size;
 			throw Script_FatalError(buff);
 		}
 	}
@@ -757,6 +764,11 @@ void Squirrel::Uninitialize()
 	/* Clean up the stuff */
 	sq_pop(this->vm, 1);
 	sq_close(this->vm);
+
+	assert(this->allocator->allocated_size == 0);
+
+	/* Reset memory allocation errors. */
+	this->allocator->error_thrown = false;
 }
 
 void Squirrel::Reset()

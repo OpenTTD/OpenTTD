@@ -62,6 +62,24 @@ struct SQRefCounted
 	SQUnsignedInteger _uiRef;
 	struct SQWeakRef *_weakref;
 	virtual void Release()=0;
+
+	/* Placement new/delete to prevent memory leaks if constructor throws an exception. */
+	inline void *operator new(size_t size, SQRefCounted *place)
+	{
+		place->size = size;
+		return place;
+	}
+
+	inline void operator delete(void *ptr, SQRefCounted *place)
+	{
+		SQ_FREE(ptr, place->size);
+	}
+
+	/* Never used but required. */
+	inline void operator delete(void *ptr) { NOT_REACHED(); }
+
+private:
+	size_t size;
 };
 
 struct SQWeakRef : SQRefCounted
