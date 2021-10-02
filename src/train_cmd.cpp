@@ -2390,6 +2390,7 @@ bool HandleTrainEnterDepot(Train *v)
 		for (Train *u = t; u != nullptr; u = u->Next()) u->track |= TRACK_BIT_DEPOT;
 		t->force_proceed = TFP_NONE;
 		ClrBit(t->flags, VRF_TOGGLE_REVERSE);
+		UpdateExtendedDepotReservation(t, true);
 		v->UpdateViewport(true, true);
 		SetWindowClassesDirty(WC_TRAINS_LIST);
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
@@ -2481,6 +2482,7 @@ static bool CheckTrainStayInDepot(Train *v)
 		v->UpdateAcceleration();
 		ProcessOrders(v);
 		if (CheckReverseTrain(v)) ReverseTrainDirection(v);
+		UpdateExtendedDepotReservation(v, false);
 		InvalidateWindowData(WC_VEHICLE_DEPOT, depot_id);
 
 		/* Check whether it is safe to exit the depot. */
@@ -3315,6 +3317,7 @@ uint Train::Crash(bool flooded)
 				for (Train *v = this; v != nullptr; v = v->Next()) {
 					v->track &= ~TRACK_BIT_DEPOT;
 				}
+				UpdateExtendedDepotReservation(this, false);
 				InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(this->tile));
 			}
 			/* Remove reserved tracks of platform ahead. */
