@@ -339,6 +339,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_SCRIPT_INT64,                       ///< 296  PR#9415 SQInteger is 64bit but was saved as 32bit.
 	SLV_LINKGRAPH_TRAVEL_TIME,              ///< 297  PR#9457 Store travel time in the linkgraph.
 	SLV_DOCK_DOCKINGTILES,                  ///< 298  PR#9578 All tiles around docks may be docking tiles.
+	SLV_REPAIR_OBJECT_DOCKING_TILES,        ///< 299  PR#9594 Fixing issue with docking tiles overlapping objects.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

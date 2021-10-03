@@ -32,6 +32,7 @@
 #include "date_func.h"
 #include "newgrf_debug.h"
 #include "vehicle_func.h"
+#include "station_func.h"
 
 #include "table/strings.h"
 #include "table/object_land.h"
@@ -121,7 +122,9 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 			Company::Get(owner)->infrastructure.water++;
 			DirtyCompanyInfrastructureWindows(owner);
 		}
+		bool remove = IsDockingTile(t);
 		MakeObject(t, owner, o->index, wc, Random());
+		if (remove) RemoveDockingTile(t);
 		MarkTileDirtyByTile(t);
 	}
 
