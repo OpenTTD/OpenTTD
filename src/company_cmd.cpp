@@ -603,7 +603,7 @@ static bool MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		return DoCommandP(0, CCA_NEW_AI | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
+		return DoCommandP(CMD_COMPANY_CTRL, 0, CCA_NEW_AI | INVALID_COMPANY << 16, 0);
 	}
 
 	return false;

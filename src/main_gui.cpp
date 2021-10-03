@@ -326,7 +326,7 @@ struct MainWindow : Window
 
 			case GHK_MONEY: // Gimme money
 				/* You can only cheat for money in singleplayer mode. */
-				if (!_networking) DoCommandP(0, 10000000, 0, CMD_MONEY_CHEAT);
+				if (!_networking) DoCommandP(CMD_MONEY_CHEAT, 0, 10000000, 0);
 				break;
 
 			case GHK_UPDATE_COORDS: // Update the coordinates of all station signs

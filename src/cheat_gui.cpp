@@ -54,7 +54,7 @@ static int32 _money_cheat_amount = 10000000;
  */
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
-	DoCommandP(0, (uint32)(p2 * _money_cheat_amount), 0, CMD_MONEY_CHEAT);
+	DoCommandP(CMD_MONEY_CHEAT, 0, (uint32)(p2 * _money_cheat_amount), 0);
 	return _money_cheat_amount;
 }
 

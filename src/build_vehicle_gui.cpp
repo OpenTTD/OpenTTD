@@ -1458,7 +1458,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
-					DoCommandP(0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)), CMD_SET_VEHICLE_VISIBILITY);
+					DoCommandP(CMD_SET_VEHICLE_VISIBILITY, 0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)));
 				}
 				break;
 			}
@@ -1469,7 +1469,7 @@ struct BuildVehicleWindow : Window {
 					CommandCallback *callback = (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildPrimaryVehicle;
 					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
 					if (cargo == CF_ANY || cargo == CF_ENGINES) cargo = CF_NONE;
-					DoCommandP(this->window_number, sel_eng | (cargo << 24), 0, GetCmdBuildVeh(this->vehicle_type), callback);
+					DoCommandP(GetCmdBuildVeh(this->vehicle_type), callback, this->window_number, sel_eng | (cargo << 24), 0);
 				}
 				break;
 			}
@@ -1634,7 +1634,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type), nullptr, str);
+		DoCommandP(CMD_RENAME_ENGINE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type), 0, this->rename_engine, 0, str);
 	}
 
 	void OnDropdownSelect(int widget, int index) override

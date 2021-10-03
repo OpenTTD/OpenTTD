@@ -265,7 +265,7 @@ static CallBackFunction ToolbarPauseClick(Window *w)
 {
 	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
 
-	if (DoCommandP(0, PM_PAUSED_NORMAL, _pause_mode == PM_UNPAUSED, CMD_PAUSE)) {
+	if (DoCommandP(CMD_PAUSE, 0, PM_PAUSED_NORMAL, _pause_mode == PM_UNPAUSED)) {
 		if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;

@@ -394,7 +394,7 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
 {
 	if (pause == ((_pause_mode & pm) != PM_UNPAUSED)) return;
 
-	DoCommandP(0, pm, pause ? 1 : 0, CMD_PAUSE);
+	DoCommandP(CMD_PAUSE, 0, pm, pause ? 1 : 0);
 }
 
 /**
@@ -1064,7 +1064,7 @@ void NetworkGameLoop()
 		while (f != nullptr && !feof(f)) {
 			if (_date == next_date && _date_fract == next_date_fract) {
 				if (cp != nullptr) {
-					NetworkSendCommand(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, nullptr, cp->text, cp->company);
+					NetworkSendCommand(cp->cmd & ~CMD_FLAGS_MASK, nullptr, cp->company, cp->tile, cp->p1, cp->p2, cp->text);
 					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
