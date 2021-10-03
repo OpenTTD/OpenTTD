@@ -1467,6 +1467,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Grosimea stratu
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlează înălțimea de la care zăpada apare în peisajul sub-arctic. Zăpada afectează și generarea industriilor și cerințele de creștere a orașelor. Se poate modifica doar prin Editorul de scenarii sau este calculat prin „acoperirea cu zăpadă”
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Acoperire cu zăpadă: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controlează cantitatea aproximativă de zăpadă în peisajul subarctic. Zăpada afectează și generarea industriilor și cerințele de creștere a orașelor. Se folosește doar la generarea hărții. Terenul apropiat de nivelul mării este întotdeauna fără zăpadă
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Acoperire cu deșert: {STRING}
@@ -2621,7 +2622,7 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcţie ca
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcţie monoşină
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcţie pernă magnetică
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construieşte cale ferată. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afişare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construiește o cale ferată. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construiește cale ferată în modul automat. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construiește un depou feroviar (pentru achiziție și service de trenuri). Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în punct de tranzit. Ctrl permite alipirea punctelor de tranzit distante. Shift comută între convertire/afişare cost estimat
@@ -2700,7 +2701,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silico
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcţii rutiere
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcţie tramvai
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construieşte secţiune de şosea. Ctrl comută construirea/eliminarea şoselei. Shift comută între construire/afişare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construiește o secțiune de șosea. Ctrl comută construirea/eliminarea șoselei. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construiește șină de tramvai. Ctrl comută construirea/eliminarea șinei. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construiește secțiune de șosea folosind modul Auto-șosea. Ctrl comută construirea/eliminarea șoselei. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construiește secțiune de șină de tramvai folosind modul Auto-tramvai. Ctrl comută construirea/eliminarea șinei. Shift comută între construire/afișare cost estimat
@@ -3141,6 +3142,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume har
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Înălțimea maximă dorită
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Cel mai înalt vârf
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Acoperire cu zăpadă (în %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Acoperire cu deșert (în %)
@@ -3817,7 +3819,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modificabil pentru: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de mărfuri
 STR_PURCHASE_INFO_NONE                                          :Niciunul
-STR_PURCHASE_INFO_ENGINES_ONLY                                  :Doar motoare
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Doar locomotive
 STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu excepţia {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rază acțiune: {GOLD}{COMMA} pătrățele
@@ -4026,7 +4028,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire �
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasă aici pentru a opri înlocuirea motorului selectat în stânga
 
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã între ferestrele de înlocuire motoare si vagoane
-STR_REPLACE_ENGINES                                             :Motoare
+STR_REPLACE_ENGINES                                             :Locomotive
 STR_REPLACE_WAGONS                                              :Vagoane
 STR_REPLACE_ALL_RAILTYPE                                        :Toate vehiculele pe șine
 STR_REPLACE_ALL_ROADTYPE                                        :Toate vehiculele rutiere
@@ -4392,7 +4394,7 @@ STR_INVALID_ORDER                                               :{RED} (Comenzi 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Orar)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Comenzi
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Schimba la panoul de comenzi
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Comută la lista comenzilor
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - click pe un ordin pentru a-l selecta
 
@@ -4689,7 +4691,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu m
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraș nu poate fi șters...{}O stație sau un depou face referire la acest oraș, sau o parcelă deținută de oraș nu poate fi eliminată
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există nici un loc potrivit pentru o statuie în centrul acestui oraş
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există niciun loc potrivit pentru o statuie în centrul acestui oraș
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... prea multe industrii
