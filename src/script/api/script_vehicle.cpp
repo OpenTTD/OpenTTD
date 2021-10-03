@@ -93,7 +93,7 @@
 
 	::VehicleType type = ::Engine::Get(engine_id)->type;
 
-	CommandCost res = ::DoCommand(depot, engine_id | (cargo << 24), 0, DC_QUERY_COST, ::GetCmdBuildVeh(type));
+	CommandCost res = ::DoCommand(DC_QUERY_COST, ::GetCmdBuildVeh(type), depot, engine_id | (cargo << 24), 0);
 	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 
@@ -142,7 +142,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	CommandCost res = ::DoCommand(0, vehicle_id, cargo, DC_QUERY_COST, GetCmdRefitVeh(::Vehicle::Get(vehicle_id)));
+	CommandCost res = ::DoCommand(DC_QUERY_COST, GetCmdRefitVeh(::Vehicle::Get(vehicle_id)), 0, vehicle_id, cargo);
 	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 

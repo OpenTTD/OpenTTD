@@ -315,7 +315,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_WAYPOINT_BUOY]);
 	if (!IsWaterTile(tile)) {
-		CommandCost ret = DoCommand(tile, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
+		CommandCost ret = DoCommand(flags | DC_AUTO, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 	}
