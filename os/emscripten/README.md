@@ -1,6 +1,6 @@
 ## How to build with Emscripten
 
-Building with Emscripten works with emsdk 2.0.10 and above.
+Building with Emscripten works with emsdk 2.0.31 and above.
 
 Currently there is no LibLZMA support upstream; for this we suggest to apply
 the provided patch in this folder to your emsdk installation.

@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:2.0.10
+      image: emscripten/emsdk:2.0.31
 
     steps:
     - name: Checkout
@@ -26,7 +26,12 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 2.0.10-${{ runner.os }}
+        key: 2.0.31-${{ runner.os }}
+
+    - name: Patch Emscripten to support LZMA
+      run: |
+        cd /emsdk/upstream/emscripten
+        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-liblzma.patch
 
     - name: Build (host tools)
       run: |
