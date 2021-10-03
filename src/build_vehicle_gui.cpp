@@ -1226,7 +1226,7 @@ struct BuildVehicleWindow : Window {
 
 		if (!this->listview_mode) {
 			/* Query for cost and refitted capacity */
-			CommandCost ret = DoCommand(DC_QUERY_COST, GetCmdBuildVeh(this->vehicle_type), this->window_number, this->sel_engine | (cargo << 24), 0);
+			CommandCost ret = DoCommand(DC_QUERY_COST, CMD_BUILD_VEHICLE, this->window_number, this->sel_engine | (cargo << 24), 0);
 			if (ret.Succeeded()) {
 				this->te.cost          = ret.GetCost() - e->GetCost();
 				this->te.capacity      = _returned_refit_capacity;
@@ -1469,7 +1469,7 @@ struct BuildVehicleWindow : Window {
 					CommandCallback *callback = (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildPrimaryVehicle;
 					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
 					if (cargo == CF_ANY || cargo == CF_ENGINES) cargo = CF_NONE;
-					DoCommandP(GetCmdBuildVeh(this->vehicle_type), callback, this->window_number, sel_eng | (cargo << 24), 0);
+					DoCommandP(CMD_BUILD_VEHICLE, GetCmdBuildVehMsg(this->vehicle_type), callback, this->window_number, sel_eng | (cargo << 24), 0);
 				}
 				break;
 			}
@@ -1634,7 +1634,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_ENGINE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type), 0, this->rename_engine, 0, str);
+		DoCommandP(CMD_RENAME_ENGINE, STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, 0, this->rename_engine, 0, str);
 	}
 
 	void OnDropdownSelect(int widget, int index) override

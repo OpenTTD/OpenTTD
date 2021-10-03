@@ -287,7 +287,7 @@ public:
 			}
 
 			case WID_TA_EXECUTE:
-				DoCommandP(CMD_DO_TOWN_ACTION | CMD_MSG(STR_ERROR_CAN_T_DO_THIS), this->town->xy, this->window_number, this->sel_index);
+				DoCommandP(CMD_DO_TOWN_ACTION, STR_ERROR_CAN_T_DO_THIS, this->town->xy, this->window_number, this->sel_index);
 				break;
 		}
 	}
@@ -474,12 +474,12 @@ public:
 					_warn_town_no_roads = true;
 				}
 
-				DoCommandP(CMD_EXPAND_TOWN | CMD_MSG(STR_ERROR_CAN_T_EXPAND_TOWN), 0, this->window_number, 0);
+				DoCommandP(CMD_EXPAND_TOWN, STR_ERROR_CAN_T_EXPAND_TOWN, 0, this->window_number, 0);
 				break;
 			}
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
-				DoCommandP(CMD_DELETE_TOWN | CMD_MSG(STR_ERROR_TOWN_CAN_T_DELETE), 0, this->window_number, 0);
+				DoCommandP(CMD_DELETE_TOWN, STR_ERROR_TOWN_CAN_T_DELETE, 0, this->window_number, 0);
 				break;
 		}
 	}
@@ -561,7 +561,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_TOWN | CMD_MSG(STR_ERROR_CAN_T_RENAME_TOWN), 0, this->window_number, 0, str);
+		DoCommandP(CMD_RENAME_TOWN, STR_ERROR_CAN_T_RENAME_TOWN, 0, this->window_number, 0, str);
 	}
 };
 
@@ -1008,7 +1008,7 @@ void ShowTownDirectory()
 	new TownDirectoryWindow(&_town_directory_desc);
 }
 
-void CcFoundTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcFoundTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	if (result.Failed()) return;
 
@@ -1016,7 +1016,7 @@ void CcFoundTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcFoundRandomTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcFoundRandomTown(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
 }
@@ -1162,7 +1162,7 @@ public:
 			if (strcmp(buf, this->townname_editbox.text.buf) != 0) name = this->townname_editbox.text.buf;
 		}
 
-		bool success = DoCommandP(CMD_FOUND_TOWN | CMD_MSG(errstr), cc,
+		bool success = DoCommandP(CMD_FOUND_TOWN, errstr, cc,
 				tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6, townnameparts, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */

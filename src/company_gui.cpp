@@ -435,11 +435,11 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_INCREASE_LOAN: // increase loan
-				DoCommandP(CMD_INCREASE_LOAN | CMD_MSG(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY), 0, 0, _ctrl_pressed);
+				DoCommandP(CMD_INCREASE_LOAN, STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, 0, 0, _ctrl_pressed);
 				break;
 
 			case WID_CF_REPAY_LOAN: // repay loan
-				DoCommandP(CMD_DECREASE_LOAN | CMD_MSG(STR_ERROR_CAN_T_REPAY_LOAN), 0, 0, _ctrl_pressed);
+				DoCommandP(CMD_DECREASE_LOAN, STR_ERROR_CAN_T_REPAY_LOAN, 0, 0, _ctrl_pressed);
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
@@ -2576,11 +2576,11 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_BUY_SHARE:
-				DoCommandP(CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS), 0, this->window_number, 0);
+				DoCommandP(CMD_BUY_SHARE_IN_COMPANY, STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS, 0, this->window_number, 0);
 				break;
 
 			case WID_C_SELL_SHARE:
-				DoCommandP(CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_SELL_25_SHARE_IN), 0, this->window_number, 0);
+				DoCommandP(CMD_SELL_SHARE_IN_COMPANY, STR_ERROR_CAN_T_SELL_25_SHARE_IN, 0, this->window_number, 0);
 				break;
 
 			case WID_C_COMPANY_PASSWORD:
@@ -2613,7 +2613,7 @@ struct CompanyWindow : Window
 
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
-		if (DoCommandP(CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS), tile, OBJECT_HQ, 0) && !_shift_pressed) {
+		if (DoCommandP(CMD_BUILD_OBJECT, STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !_shift_pressed) {
 			ResetObjectToPlace();
 			this->RaiseButtons();
 		}
@@ -2635,16 +2635,16 @@ struct CompanyWindow : Window
 				Money money = (Money)(strtoull(str, nullptr, 10) / _currency->rate);
 				uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
-				DoCommandP(CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_CAN_T_GIVE_MONEY), 0, money_c, this->window_number);
+				DoCommandP(CMD_GIVE_MONEY, STR_ERROR_CAN_T_GIVE_MONEY, 0, money_c, this->window_number);
 				break;
 			}
 
 			case WID_C_PRESIDENT_NAME:
-				DoCommandP(CMD_RENAME_PRESIDENT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_PRESIDENT), 0, 0, 0, str);
+				DoCommandP(CMD_RENAME_PRESIDENT, STR_ERROR_CAN_T_CHANGE_PRESIDENT, 0, 0, 0, str);
 				break;
 
 			case WID_C_COMPANY_NAME:
-				DoCommandP(CMD_RENAME_COMPANY | CMD_MSG(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME), 0, 0, 0, str);
+				DoCommandP(CMD_RENAME_COMPANY, STR_ERROR_CAN_T_CHANGE_COMPANY_NAME, 0, 0, 0, str);
 				break;
 
 			case WID_C_COMPANY_JOIN:
@@ -2771,7 +2771,7 @@ struct BuyCompanyWindow : Window {
 				break;
 
 			case WID_BC_YES:
-				DoCommandP(CMD_BUY_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_COMPANY), 0, this->window_number, 0);
+				DoCommandP(CMD_BUY_COMPANY, STR_ERROR_CAN_T_BUY_COMPANY, 0, this->window_number, 0);
 				break;
 		}
 	}

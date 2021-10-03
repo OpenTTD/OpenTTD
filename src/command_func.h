@@ -32,22 +32,24 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  */
 #define return_cmd_error(errcode) return CommandCost(errcode);
 
-CommandCost DoCommand(DoCommandFlag flags, uint32 cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
+CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
 CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags);
 
-bool DoCommandP(uint32 cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-bool DoCommandP(uint32 cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-bool DoCommandP(const CommandContainer *container, bool my_cmd = true);
+bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
+bool DoCommandP(Commands cmd, StringID err_message, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
+bool DoCommandP(Commands cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
+bool DoCommandP(Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
+bool DoCommandP(const CommandContainer *container, bool my_cmd = true, bool network_command = false);
 
-CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cmd, bool estimate_only, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
+CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
-void NetworkSendCommand(uint32 cmd, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
+void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
 extern Money _additional_cash_required;
 
 bool IsValidCommand(uint32 cmd);
-CommandFlags GetCommandFlags(uint32 cmd);
-const char *GetCommandName(uint32 cmd);
+CommandFlags GetCommandFlags(Commands cmd);
+const char *GetCommandName(Commands cmd);
 Money GetAvailableMoneyForCommand();
 bool IsCommandAllowedWhilePaused(uint32 cmd);
 

@@ -126,6 +126,7 @@ static CommandQueue _local_execution_queue;
 /**
  * Prepare a DoCommand to be send over the network
  * @param cmd The command to execute (a CMD_* value)
+ * @param err_message Message prefix to show on error
  * @param callback A callback function to call after the command is finished
  * @param company The company that wants to send the command
  * @param tile The tile to perform a command on (see #CommandProc)
@@ -133,16 +134,15 @@ static CommandQueue _local_execution_queue;
  * @param p2 Additional data for the command (see #CommandProc)
  * @param text The text to pass
  */
-void NetworkSendCommand(uint32 cmd, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
-	assert((cmd & CMD_FLAGS_MASK) == 0);
-
 	CommandPacket c;
 	c.company  = company;
 	c.tile     = tile;
 	c.p1       = p1;
 	c.p2       = p2;
 	c.cmd      = cmd;
+	c.err_msg  = err_message;
 	c.callback = callback;
 	c.text     = text;
 
@@ -207,8 +207,7 @@ void NetworkExecuteLocalCommandQueue()
 
 		/* We can execute this command */
 		_current_company = cp->company;
-		cp->cmd |= CMD_NETWORK_COMMAND;
-		DoCommandP(cp, cp->my_cmd);
+		DoCommandP(cp, cp->my_cmd, true);
 
 		queue.Pop();
 		delete cp;
@@ -295,10 +294,10 @@ void NetworkDistributeCommands()
 const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *cp)
 {
 	cp->company = (CompanyID)p->Recv_uint8();
-	cp->cmd     = p->Recv_uint32();
+	cp->cmd     = static_cast<Commands>(p->Recv_uint16());
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
 	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "single-player only command";
-	if ((cp->cmd & CMD_FLAGS_MASK) != 0)        return "invalid command flag";
+	cp->err_msg = p->Recv_uint16();
 
 	cp->p1      = p->Recv_uint32();
 	cp->p2      = p->Recv_uint32();
@@ -320,7 +319,8 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 {
 	p->Send_uint8 (cp->company);
-	p->Send_uint32(cp->cmd);
+	p->Send_uint16(cp->cmd);
+	p->Send_uint16(cp->err_msg);
 	p->Send_uint32(cp->p1);
 	p->Send_uint32(cp->p2);
 	p->Send_uint32(cp->tile);

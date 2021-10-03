@@ -2084,7 +2084,7 @@ struct StationViewWindow : public Window {
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_STATION | CMD_MSG(STR_ERROR_CAN_T_RENAME_STATION), 0, this->window_number, 0, str);
+		DoCommandP(CMD_RENAME_STATION, STR_ERROR_CAN_T_RENAME_STATION, 0, this->window_number, 0, str);
 	}
 
 	void OnResize() override

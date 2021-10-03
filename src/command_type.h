@@ -172,7 +172,7 @@ public:
  *
  * @see _command_proc_table
  */
-enum Commands {
+enum Commands : uint16 {
 	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
 	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
 	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
@@ -361,28 +361,6 @@ enum DoCommandFlag {
 DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
 
 /**
- * Used to combine a StringID with the command.
- *
- * This macro can be used to add a StringID (the error message to show) on a command-id
- * (CMD_xxx). Use the binary or-operator "|" to combine the command with the result from
- * this macro.
- *
- * @param x The StringID to combine with a command-id
- */
-#define CMD_MSG(x) ((x) << 16)
-
-/**
- * Defines some flags.
- *
- * This enumeration defines some flags which are binary-or'ed on a command.
- */
-enum FlaggedCommands {
-	CMD_NETWORK_COMMAND       = 0x0100, ///< execute the command without sending it on the network
-	CMD_FLAGS_MASK            = 0xFF00, ///< mask for all command flags
-	CMD_ID_MASK               = 0x00FF, ///< mask for the command ID
-};
-
-/**
  * Command flags for the command table _command_proc_table.
  *
  * This enumeration defines flags for the _command_proc_table.
@@ -471,7 +449,7 @@ struct Command {
  * @param p1 Additional data of the command
  * @see CommandProc
  */
-typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd);
+typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd);
 
 /**
  * Structure for buffering the build command when selecting a station to join.
@@ -480,7 +458,8 @@ struct CommandContainer {
 	TileIndex tile;                  ///< tile command being executed on.
 	uint32 p1;                       ///< parameter p1.
 	uint32 p2;                       ///< parameter p2.
-	uint32 cmd;                      ///< command being executed.
+	Commands cmd;                    ///< command being executed.
+	StringID err_msg;                ///< string ID of error message to use.
 	CommandCallback *callback;       ///< any callback function executed upon successful completion of the command.
 	std::string text;                ///< possible text sent for name changes etc.
 };

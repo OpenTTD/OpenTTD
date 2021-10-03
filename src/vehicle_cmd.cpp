@@ -37,33 +37,33 @@
 
 #include "safeguards.h"
 
-/* Tables used in vehicle.h to find the right command for a certain vehicle type */
-const uint32 _veh_build_proc_table[] = {
-	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN),
-	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_ROAD_VEHICLE),
-	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_SHIP),
-	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_AIRCRAFT),
+/* Tables used in vehicle_func.h to find the right error message for a certain vehicle type */
+const StringID _veh_build_msg_table[] = {
+	STR_ERROR_CAN_T_BUY_TRAIN,
+	STR_ERROR_CAN_T_BUY_ROAD_VEHICLE,
+	STR_ERROR_CAN_T_BUY_SHIP,
+	STR_ERROR_CAN_T_BUY_AIRCRAFT,
 };
 
-const uint32 _veh_sell_proc_table[] = {
-	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_TRAIN),
-	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_ROAD_VEHICLE),
-	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_SHIP),
-	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_AIRCRAFT),
+const StringID _veh_sell_msg_table[] = {
+	STR_ERROR_CAN_T_SELL_TRAIN,
+	STR_ERROR_CAN_T_SELL_ROAD_VEHICLE,
+	STR_ERROR_CAN_T_SELL_SHIP,
+	STR_ERROR_CAN_T_SELL_AIRCRAFT,
 };
 
-const uint32 _veh_refit_proc_table[] = {
-	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN),
-	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE),
-	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP),
-	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT),
+const StringID _veh_refit_msg_table[] = {
+	STR_ERROR_CAN_T_REFIT_TRAIN,
+	STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE,
+	STR_ERROR_CAN_T_REFIT_SHIP,
+	STR_ERROR_CAN_T_REFIT_AIRCRAFT,
 };
 
-const uint32 _send_to_depot_proc_table[] = {
-	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT),
-	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT),
-	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
-	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR),
+const StringID _send_to_depot_msg_table[] = {
+	STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT,
+	STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT,
+	STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT,
+	STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR,
 };
 
 
@@ -182,7 +182,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		/* If we are not in DC_EXEC undo everything */
 		if (flags != subflags) {
-			DoCommand(DC_EXEC, GetCmdSellVeh(v), 0, v->index, 0);
+			DoCommand(DC_EXEC, CMD_SELL_VEHICLE, 0, v->index, 0);
 		}
 	}
 
@@ -689,15 +689,13 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 
 	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 
-	uint sell_command = GetCmdSellVeh(vehicle_type);
-
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
-		CommandCost ret = DoCommand(flags, sell_command, tile, list[i]->index | (1 << 20), 0);
+		CommandCost ret = DoCommand(flags, CMD_SELL_VEHICLE, tile, list[i]->index | (1 << 20), 0);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -875,11 +873,11 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		DoCommandFlag build_flags = flags;
 		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
 
-		CommandCost cost = DoCommand(build_flags, GetCmdBuildVeh(v), tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0);
+		CommandCost cost = DoCommand(build_flags, CMD_BUILD_VEHICLE, tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0);
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != nullptr) DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | (1 << 20), 0);
+			if (w_front != nullptr) DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | (1 << 20), 0);
 			return cost;
 		}
 
@@ -899,8 +897,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | 1 << 20, 0);
-					DoCommand(flags, GetCmdSellVeh(w)      , w_front->tile, w->index       | 1 << 20, 0);
+					DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | 1 << 20, 0);
+					DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w->index       | 1 << 20, 0);
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
@@ -943,7 +941,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				/* Find out what's the best sub type */
 				byte subtype = GetBestFittingSubType(v, w, v->cargo_type);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
-					CommandCost cost = DoCommand(flags, GetCmdRefitVeh(v), 0, w->index, v->cargo_type | 1U << 25 | (subtype << 8));
+					CommandCost cost = DoCommand(flags, CMD_REFIT_VEHICLE, 0, w->index, v->cargo_type | 1U << 25 | (subtype << 8));
 					if (cost.Succeeded()) total_cost.AddCost(cost);
 				}
 
@@ -981,7 +979,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		CommandCost result = DoCommand(flags, CMD_CLONE_ORDER, 0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index);
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | 1 << 20, 0);
+			DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | 1 << 20, 0);
 			return result;
 		}
 
@@ -992,7 +990,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		 * check whether the company has enough money manually. */
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | 1 << 20, 0);
+			DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | 1 << 20, 0);
 			return total_cost;
 		}
 	}
@@ -1017,7 +1015,7 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
-		CommandCost ret = DoCommand(flags, GetCmdSendToDepot(vli.vtype), v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0);
+		CommandCost ret = DoCommand(flags, CMD_SEND_VEHICLE_TO_DEPOT, v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0);
 
 		if (ret.Succeeded()) {
 			had_success = true;

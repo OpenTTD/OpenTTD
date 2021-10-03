@@ -98,7 +98,7 @@ ScriptInfo *AIInstance::FindLibrary(const char *library, int version)
  * @param p2 p2 as given to DoCommandPInternal.
  * @param cmd cmd as given to DoCommandPInternal.
  */
-void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	/*
 	 * The company might not exist anymore. Check for this.

@@ -58,7 +58,7 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * - p2 = (bit 15-16) - transport type.
  * @param cmd unused
  */
-void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
@@ -117,7 +117,7 @@ private:
 			case TRANSPORT_ROAD: _last_roadbridge_type = this->bridges->at(i).index; break;
 			default: break;
 		}
-		DoCommandP(CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge,
+		DoCommandP(CMD_BUILD_BRIDGE, STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, CcBuildBridge,
 					this->end_tile, this->start_tile, this->type | this->bridges->at(i).index);
 	}
 
@@ -383,7 +383,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		default: break; // water ways and air routes don't have bridge types
 	}
 	if (_ctrl_pressed && CheckBridgeAvailability(last_bridge_type, bridge_len).Succeeded()) {
-		DoCommandP(CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge, end, start, type | last_bridge_type);
+		DoCommandP(CMD_BUILD_BRIDGE, STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, CcBuildBridge, end, start, type | last_bridge_type);
 		return;
 	}
 

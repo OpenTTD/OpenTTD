@@ -198,7 +198,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			/* We need to circumvent the "prevention" from this command being executed
 			 * while the game is paused, so use the internal method. Nor do we want
 			 * this command to get its cost estimated when shift is pressed. */
-			DoCommandPInternal(CMD_CLEAR_ORDER_BACKUP, nullptr, true, false, ob->tile, 0, user, {});
+			DoCommandPInternal(CMD_CLEAR_ORDER_BACKUP, STR_NULL, nullptr, true, false, false, ob->tile, 0, user, {});
 		} else {
 			/* The command came from the game logic, i.e. the clearing of a tile.
 			 * In that case we have no need to actually sync this, just do it. */
