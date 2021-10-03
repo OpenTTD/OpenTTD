@@ -1,5 +1,5 @@
 ##name Romanian
-##ownname Românӑ
+##ownname Română
 ##isocode ro_RO
 ##plural 14
 ##textdir ltr
