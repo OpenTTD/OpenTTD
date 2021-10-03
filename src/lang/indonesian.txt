@@ -48,11 +48,11 @@ STR_CARGO_PLURAL_WHEAT                                          :Gandum
 STR_CARGO_PLURAL_RUBBER                                         :Karet
 STR_CARGO_PLURAL_SUGAR                                          :Gula
 STR_CARGO_PLURAL_TOYS                                           :Mainan
-STR_CARGO_PLURAL_SWEETS                                         :Manisan
+STR_CARGO_PLURAL_SWEETS                                         :Gula-gula
 STR_CARGO_PLURAL_COLA                                           :Kola
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Arum Manis
 STR_CARGO_PLURAL_BUBBLES                                        :Gelembung
-STR_CARGO_PLURAL_TOFFEE                                         :Gula-gula
+STR_CARGO_PLURAL_TOFFEE                                         :Permen
 STR_CARGO_PLURAL_BATTERIES                                      :Baterai
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Minuman Ringan
@@ -82,11 +82,11 @@ STR_CARGO_SINGULAR_WHEAT                                        :Gandum
 STR_CARGO_SINGULAR_RUBBER                                       :Karet
 STR_CARGO_SINGULAR_SUGAR                                        :Gula
 STR_CARGO_SINGULAR_TOY                                          :Mainan
-STR_CARGO_SINGULAR_SWEETS                                       :Manisan
+STR_CARGO_SINGULAR_SWEETS                                       :Gula-gula
 STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_CANDYFLOSS                                   :Arum Manis
 STR_CARGO_SINGULAR_BUBBLE                                       :Gelembung
-STR_CARGO_SINGULAR_TOFFEE                                       :Gula-gula
+STR_CARGO_SINGULAR_TOFFEE                                       :Permen
 STR_CARGO_SINGULAR_BATTERY                                      :Baterai
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Ringan
@@ -116,11 +116,11 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} g
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} karet
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} gula
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}mainan
-STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}kantong manisan
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}kantong gula-gula
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} arum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} gula-gula
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} permen
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman ringan
@@ -151,11 +151,11 @@ STR_ABBREV_WHEAT                                                :{TINY_FONT}TG
 STR_ABBREV_RUBBER                                               :{TINY_FONT}KR
 STR_ABBREV_SUGAR                                                :{TINY_FONT}GL
 STR_ABBREV_TOYS                                                 :{TINY_FONT}MA
-STR_ABBREV_SWEETS                                               :{TINY_FONT}MN
+STR_ABBREV_SWEETS                                               :{TINY_FONT}GG
 STR_ABBREV_COLA                                                 :{TINY_FONT}KL
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}AM
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}GL
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}GG
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}PM
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MR
@@ -172,17 +172,17 @@ STR_CRATES                                                      :{COMMA}{NBSP}pe
 
 STR_COLOUR_DEFAULT                                              :Standar
 ###length 17
-STR_COLOUR_DARK_BLUE                                            :Biru tua
-STR_COLOUR_PALE_GREEN                                           :Hijau pucat
-STR_COLOUR_PINK                                                 :Merah muda
+STR_COLOUR_DARK_BLUE                                            :Biru Tua
+STR_COLOUR_PALE_GREEN                                           :Hijau Pucat
+STR_COLOUR_PINK                                                 :Merah Muda
 STR_COLOUR_YELLOW                                               :Kuning
 STR_COLOUR_RED                                                  :Merah
-STR_COLOUR_LIGHT_BLUE                                           :Biru terang
+STR_COLOUR_LIGHT_BLUE                                           :Biru Muda
 STR_COLOUR_GREEN                                                :Hijau
-STR_COLOUR_DARK_GREEN                                           :Hijau tua
+STR_COLOUR_DARK_GREEN                                           :Hijau Tua
 STR_COLOUR_BLUE                                                 :Biru
 STR_COLOUR_CREAM                                                :Krim
-STR_COLOUR_MAUVE                                                :Lembayung muda
+STR_COLOUR_MAUVE                                                :Ungu Muda
 STR_COLOUR_PURPLE                                               :Ungu
 STR_COLOUR_ORANGE                                               :Oranye
 STR_COLOUR_BROWN                                                :Coklat
@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :Tidak ada
 STR_GROUP_BY_SHARED_ORDERS                                      :Perintah bersama
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Perintah
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Buka tampilan perintah
 
 # Tooltips for the main toolbar
 ###length 31
@@ -491,7 +493,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Hapus semua pes
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area daratan
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
-STR_ABOUT_MENU_AI_DEBUG                                         :Debug skrip AI
+STR_ABOUT_MENU_AI_DEBUG                                         :Debug skrip AI/Permainan
 STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Tampilkan laju bingkai
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
@@ -614,7 +616,7 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insinyur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Manajer Lalu lintas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordinator trasportasi
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor rute
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor Rute
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Kepala Eksekutif
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Pimpinan
@@ -787,8 +789,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Tampilka
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tampilkan pesan atau laporan berita terakhir
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  BERHENTI  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * PAUSED (menunggu pembaruan grafik tautan) * *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}* * DIJEDA *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * DIJEDA (menunggu pembaruan grafik tautan) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPAN OTOMATIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MENYIMPAN PERMAINAN  *  *
 
@@ -915,7 +917,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampilan
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Perlihatkan di peta lokasi yang terlihat di viewport
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pengaturan permainan
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opsi permainan
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mata uang
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih mata uang
 
@@ -1017,7 +1019,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Akselerasi perangkat keras
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK} Centang kotak ini untuk mengizinkan OpenTTD mencoba menggunakan akselerasi perangkat keras. Pengaturan yang diubah hanya akan diterapkan saat game dimulai ulang.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK} Centang kotak ini untuk mengizinkan OpenTTD mencoba menggunakan akselerasi perangkat keras. Pengaturan yang diubah hanya akan diterapkan saat permainan dimulai ulang.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Pengaturan hanya akan berlaku setelah game dimulai ulang
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
@@ -1150,7 +1152,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Ketinggian Kust
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Ketinggian Kustom ({NUM})
 
 ###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
+STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu Boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
@@ -1817,12 +1819,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Gunakan sinyal 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Setel tahun saat sinyal elektris digunakan untuk kereta. Sebelum tahun ini, sinyal non-elektris akan digunakan (fungsinya sama, tapi dengan penampilan berbeda)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pergantian jenis sinyal: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pilih tipe sinyal untuk berganti secara memutar, Ctrl+klik saat membangun sinyal
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pilih jenis sinyal mana yang akan digilir saat Ctrl+klik pada sinyal yang dibangun dengan alat sinyal
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Tampilkan jenis sinyal: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Pilih jenis sinyal yang ditampilkan di bilah alat sinyal
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Hanya sinyal jalur
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Semua sinyal
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Tampilan jalan untuk kota baru: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rancangan bentuk jaringan jalan di kota
@@ -2051,27 +2057,27 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... tida
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Permainan baru
+STR_INTRO_NEW_GAME                                              :{BLACK}Permainan Baru
 STR_INTRO_LOAD_GAME                                             :{BLACK}Buka Permainan
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Mainkan Skenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Mainkan Heightmap
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor Skenario
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Bermain bersama
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi Pemain
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
-STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel nilai tertinggi
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel Nilai Tertinggi
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari konten
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Pengaturan AI / Permainan
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari Konten Daring
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Pengaturan Skrip AI/Permainan
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru. Ctrl-klik untuk melewati pengaturan peta
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru. Ctrl-Klik melewatkan konfigurasi peta
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Membuka permainan yang telah disimpan
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Mulai permainan baru, menggunakan heightmap sebagai datarannya
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Mulai permainan baru, menggunakan skenario kustomisasi
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Buat kustomisasi skenario permainan
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Memulai permainan bersama
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Memulai permainan multi pemain
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Pilih gaya lansekap 'sederhana'
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Pilih gaya lansekap 'Sub Antartika'
@@ -2081,7 +2087,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih ga
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan pengaturan
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setelan NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan pengaturan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Tampilkan pengaturan permainan dan AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
@@ -2098,7 +2104,7 @@ STR_QUIT_NO                                                     :{BLACK}Tidak
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Batalkan Permainan
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah anda yakin untuk meninggalkan permainan?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apa anda yakin mau keluar dari skenario ini ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apakan anda yakin untuk mengabaikan skenario ini ?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kode Curang
@@ -2321,6 +2327,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusaha
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Pemain Dalam Jaringan
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Menonton
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Pemain Online
@@ -2389,7 +2396,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Pergunak
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabung
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabung dan bermain sebagai perush. ini
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabung dan bermain sebagai perusahaan ini
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata Sandi
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Atur Kata Sandi Perusahaan
@@ -2405,6 +2412,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] Ke {STRIN
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Ke {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Semua] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Masukkan teks untuk perbincangan jaringan
 
 # Network messages
@@ -2462,12 +2470,12 @@ STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nama yang dihub
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 ###length 12
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dihentikan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih dihentikan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Permainan masih dijeda({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dijeda ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih dijeda ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dijeda ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dijeda ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Permainan masih dijeda ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Permainan masih dijeda ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan dilanjutkan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jumlah pemain
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menghubungkan ke klien
@@ -3570,7 +3578,7 @@ STR_CARGO_RATING_MEDIOCRE                                       :Sedang
 STR_CARGO_RATING_GOOD                                           :Baik
 STR_CARGO_RATING_VERY_GOOD                                      :Sangat Baik
 STR_CARGO_RATING_EXCELLENT                                      :Sempurna
-STR_CARGO_RATING_OUTSTANDING                                    :Diatas Sempurna
+STR_CARGO_RATING_OUTSTANDING                                    :Luar Biasa
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ganti nama stasiun
@@ -3629,10 +3637,10 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastr
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Pimpinan)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Manajer)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dilantik : {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Warna tema:
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dilantik: {WHITE}{NUM}
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Tema Warna:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Kendaraan:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} kereta
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} kendaraan jalan raya
@@ -3651,8 +3659,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}nihil
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Kantor Pusat
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Membangun kantor pusat
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lokasi Kantor
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Tampilkan kantor pusat
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lokasi Kantor Pusat
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Tampilkan kantor pusat perusahaan
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Pindah Kantor Pusat
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Membangun kembali kantor pusat perusahaan di tempat lain dengan 1% ongkos dari nilai perusahaan. Shift untuk menampilkan perkiraan biaya
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detail
@@ -3662,12 +3670,12 @@ STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Berikan 
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wajah baru pimpinan
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Warna tema
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Tema Warna
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Ubah warna kendaraan perusahaan
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nama Perusahaan
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ubah nama perusahaan
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nama Pimpinan
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nama pimpinan
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nama Manajer
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nama manajer
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham perusahaan
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham perusahaan
@@ -3675,8 +3683,8 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25%
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya tanpa menjual saham
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
-STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin Anda berikan
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Manajer
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin anda berikan
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
 
@@ -4135,6 +4143,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Menuju 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Menuju ke {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Perbaikan pada {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Tidak dapat mencapai {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Tidak dapat mencapai {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Tidak dapat mencapai {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Tidak dapat mencapai {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4657,7 +4669,7 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... bata
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... batas penanaman pohon tercapai
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama haruslah unik
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :terhalang {WHITE}{1:STRING}
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak diijinkan saat berhenti
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak diijinkan saat dijeda
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Pemkot {TOWN} tidak mengijinkan anda melakukan ini
@@ -5098,7 +5110,7 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :Pabrik Mainan
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Sumber Mata Air Plastik
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Pabrik Minuman Ringan
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Pembangkit Gelembung
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Tambang gula-gula
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Tambang Permen
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Tambang Gula
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -5193,7 +5205,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Gerbong Buah
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Gerbong Karet
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Gerbong Gula
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Gerbong Harum Manis
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Gerbong Kopi Toffee
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Gerbong Permen
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Gerbong Gelembung
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Gerbong Tangki Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Gerbong Manisan
@@ -5223,7 +5235,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Gerbong Buah
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Gerbong Karet
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Gerbong Gula
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Gerbong Harum Manis
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Gerbong Toffee
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Gerbong Permen
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Gerbong Gelembung
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Gerbong Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Gerbong Manisan
@@ -5255,7 +5267,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Gerbong Buah
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Gerbong Karet
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Gerbong Gula
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Gerbong Harum Manis
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Gerbong Kopi Toffee
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Gerbong Permen
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Gerbong Gelembung
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Gerbong Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Gerbong Manisan
@@ -5332,9 +5344,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Truk Cola Wizzo
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Truk Harum Manis MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Truk Harum Manis Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Truk Harum Manis Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Truk Toffee MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Truk Toffee Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Truk Toffee Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Truk Permen MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Truk Permen Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Truk Permen Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Truk Mainan MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Truk Mainan Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Truk Mainan Wizzowow

@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :Keng
 STR_GROUP_BY_SHARED_ORDERS                                      :Gedeelten Opträg
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Opträg
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Optragsusiicht opmaachen
 
 # Tooltips for the main toolbar
 ###length 31
@@ -335,7 +337,7 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optioune
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spill späicheren, Spill ophalen, Eraus
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Weis d'Kaart, extra Usiicht oder d'Lëscht vun den Zeeschen
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Weis d'Stiedverzeeschnëss
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventiounen uweisen
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsiden uweisen
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Weis d'Lëscht vun de Firmestatiounen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Informatiounen zu de Firmefinanzen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Generell Firmeninformatioun
@@ -427,7 +429,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Stad grënnen
 
 # Subsidies menu
 ###length 1
-STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventiounen
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subside
 
 # Graph menu
 ###length 6
@@ -792,6 +794,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPÄICHEREN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPÄICHERT D'SPILL  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(Zuschauer)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meldungshistorie
@@ -893,9 +896,14 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akzeptéiert elo {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akzeptéiert elo {STRING} an {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subventioun ofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gëtt net méi subventionéiert
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventioun entzunn:{}{}{STRING} Service vun {STRING} op {STRING} gëtt net méi subventionéiert
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subside ofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gëtt net méi subventionéiert
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subside entzunn:{}{}{STRING} Service vun {STRING} op {STRING} gëtt net méi subventionéiert
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subside offréiert:{}{}Eischten {STRING} Service vun {STRING} op {STRING} gëtt mat engem Subside vun {NUM} Joer belount!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer mat 50% Bonus bezuelt!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer duebel bezuelt!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer dräifach bezuelt!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subside geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt déi nächst {NUM} Joer véierfach bezuelt!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroossenneibau deen vun {STRING} finanzéiert ginn ass bréngt 6 Méint Misère fir d'Autosfuerer!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
@@ -961,7 +969,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysesche Rin
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lénks fueren
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Riets fueren
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stiednimm
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stiednimm:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Stil vun de Stiednimm wielen
 
 ###length 21
@@ -1000,6 +1008,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :All 12 Méint
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprooch
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Wielt d'Interfacesprooch aus
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% fäerdeg)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Vollbild
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klick dës Optioun un fir OpenTTD am Vollbild ze spillen
@@ -1013,6 +1022,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Dës Optioun wielen, dass OpenTTD Hardwarebeschleunigung dierf notzen. Wäert just geännert ginn wann d'Spill nei gestart gëtt
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}D'Astellung huet réicht en Afloss no engem Neistart vum Spill
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Wiel des Optioun fir de V-Sync unzeman. Des gëtt eréit no engem Neistart benotzt. Funktionéiert nëmmen wann Hardwarebeschleunigung un ass
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfacegréisst
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wiel d'Gréisst déi fir den Interface soll benotzt ginn
@@ -1152,6 +1163,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Astellun
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter-String:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles erweideren
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles reduzéiren
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}All Wäerter zerécksetzen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(keng Erklärung verfügbar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwäert: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Astellungstyp: {ORANGE}{STRING}
@@ -1160,6 +1172,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spillastellung 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spillastellung (am Save gespäichert; betrëfft just aktuellt Spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmenastellung (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Opgepasst!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Des Aktioun setzt all Wäerter op hier Standardastellungen zeréck.{}Bass du sécher, fir weiderzefueren?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
@@ -1219,11 +1233,15 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitéier d'Un
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Gefierpannen: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontrolléirt wéi oft Gefierer eng Pann hunn déi net ordentlech an der Revisioun waren
 
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subventiounemultiplikator: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidemultiplikator: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixéiert wéivill fir subsidéiert Verbindunge bezuelt gëtt
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidendauer: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Unzuel u Joren fir déi et e Subside gëtt
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} Jo{P er er}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keng Subsiden
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktiounskäschten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Bestëmm den Niveau vu Bau- a Kafkäschten
@@ -1550,7 +1568,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Duebelklick
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ee Klick (wann fokusséiert)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ee Klick (direkt)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Relay-service benotzen: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Wann d'Verbindung op Server net klappt, kann een e Relay-Service benotzen fir eng Verbindung opzebauen. "Nie" verbidd dat, "froen" freed fir d'Eischt no, "erlaben" erlabt et ouni nozefroen.
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nie
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Froen
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Erlaben
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rietsklickemulatioun: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wiel d'Method aus fir déi riets Maustast ze emuléiren
@@ -1750,8 +1773,8 @@ STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Weis d'Zeitung 
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ännerung vun akzeptéierte Luedungen: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Weis Messagen wa Statiounen Gidder akzeptéiren / net méi akzeptéiren
 
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventiounen: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Weis d'Zeitung a Relatioun mat Subventiounen
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subside: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Weis d'Zeitung a Relatioun mat Subside
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell Informatiounen: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Weis Zeitung iwwert generell Evenementer, wéi z.b de Kaf vun exklusiven Transportrechter oder Stroosserenovéierungen
@@ -1795,13 +1818,17 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wielt d'Verhale
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatesch Diksen bauen firun: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Definéiert d'Joer wou elektresch Signaler benotzt ginn. Firun dësem Joer ginn nët-elektresch Signaler benotzt (déi déi selwescht Funktioun hunn, an just anescht ausgesinn)
 
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Wiessel duerch Signal-Typen: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Wiessel duerch Signaltypen: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wielt Signaltypen déi durchgewielt ginn, wann ee mat Ctrl op e gebaute Signal dréckt
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Nëmmen Wee-Signaler
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alleguerten
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alleguerte sichtbar
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Signalltypen uweisen: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Wielt aus wéi eng Signaltypen an der Signaltoolbar ugewise ginn
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Nëmme Wee-Signaler
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :All Signaler
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Stroosselayout an neie Stied: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout fir d'Stroossennetz vun enger Stad
@@ -1987,6 +2014,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Wuereverdeelung
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netzwierk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pfadfinder fir Zich: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pfadfinder dee fir Zich benotzt gëtt
@@ -2196,6 +2224,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatt 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokal
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Effentlech
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Nemmen mat Invitatiounen
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -2228,9 +2259,12 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverv
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradress: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Momentanen Datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spill-Script: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Passwuertgeschützt!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER VOLL
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVER HUET DECH GEBANNT
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER ZE AAL
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIOUNSËNNERSCHEED
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF ËNNERSCHEEDLECH
 
@@ -2243,11 +2277,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Am Inter
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Am LAN sichen
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Am LAN no Server sichen
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Server bäisetzen
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Setzt en Server op d'Lëscht wou ëmmer no enger Partie gesicht gëtt
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Setzt en Server op d'Lëscht. Des kann entweder eng Serveradress oder Invitatiounscode sinn
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server starten
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Eegenen Server starten
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Gëff däin Numm an
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Server Adress oder Invitatiounscode aginn
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Nei Multiplayerpartie starten
@@ -2257,6 +2292,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Den Numm
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwuert setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}En Passwuert fir d'Spill setzen, dass et net Public accessibel ass
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Sichtbarkeet
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Ob aner Leit de Server an der ëffentlecher Lëscht gesinn
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Spiller
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximal Spiller:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Maximal Unzuel vun de Clients. Et muss net all Slot gefëllt sinn.
@@ -2289,15 +2326,64 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server a
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ass geschützt. Passwuert aginn
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spillerlëscht
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online Spiller
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Nokucken
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online Spiller
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Numm
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Numm vum Server op dem's du spills
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Den Numm vun dengem Server änneren
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servernumm
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Sichtbarkeet
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Ob aner Leit de Server an der ëffentlecher Lëscht gesinn
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Invitatiounscode
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Mat dem Invitatiounscode kënnen aner Spliier dem Server bäitrieden
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Verbindungstyp
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Ob a wéi de Server vu bausse kann vun aneren erreecht ginn
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Spiller
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Numm
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK} Däin Spillernumm
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Spillernumm änneren
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Däi Spillernumm
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrativ Actiounen déi fir dese Client ze man sinn
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrativ Actiounen déi ze man sinn fir des Firma
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Deser Firma bäitrieden
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Desem Spiller e Message schécken
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send e Message un all d'Leit vun deser Firma
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}E Message un all Zuschauer schécken
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Zuschauer
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nei Firma)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Eng nei Firma erstellen an hier bäitrieden
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dat bass du
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dest ass den Host vun der Partie
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} Client{P "" en} / {NUM} Firm{P a en}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokal
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Remote Spiller kënnen sech net connectéiren
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Effentlech
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Hannert NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via e Relay
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kicken
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Läschen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Password entspären
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administrativ Actioun
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Bassde sécher dass du de Spiller '{STRING}' kicke wëlls?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Bass du sécher, dass du de Spiller '{STRING}' banne wëlls?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Bass du sécher, dass du d'Firma '{COMPANY}' läsche wëlls?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Bassde sécher dass du d'Password vun der Firma '{COMPANY}' wëlls reseten?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Relay benotzen?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Konnt keng Verbindung tëschend dir an dem Server '{STRING}' opbauen.{}Wëlls du des Verbindung iwwert de Relay '{STRING}' man?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nee
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Jo, des Kéier
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Jo, fro net nach eng Kéier
 
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
@@ -2326,17 +2412,20 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Un: {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Un: {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Text fir Chat aginn
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Keng Netzwierkgeräter fonnt
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}De Server huet net op d'Ufro geäntwert
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Verbindung op de Server krut en Timeout oder gouf refuséiert
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Konnt sech wéinst ënnerscheedlechen NewGRF net connectéieren
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netzwierksyncronisatiouns-Fehler
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netzwierkverbindung verluer
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Konnt de Spillstand net lueden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Konnt de Server net starten
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Däi Spillernumm gouf net definéiert. Den Numm kann iwwert der Multiplayerfënster gesat ginn
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}De Servernumm gouf net definéiert. Den Numm kann iwwert der Multiplayerfënster gesat ginn
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}D'Versioun vum Client stëmmt net mat däer vum Server iwwereneen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht Passwuert
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De Server ass voll
@@ -2349,15 +2438,16 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du hues 
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Däin Computer brauch ze laang fir bäizetrieden
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du hues ze laang gebraucht fir d'Kaart rofzelueden
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du hues ze laang gebraucht fir dem Server bäizetrieden
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Däi Spillernumm ass ongülteg
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méiglechen Verbindungsverloscht
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méigleche Verbindungsverloscht
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Déi lescht {NUM} Sekonnen{P "" s} sinn keng Daten vum Server komm
 
 ###length 21
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Fehler
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync Fehler
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :konnt d'Kaart net lueden
-STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Connectioun verluer
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Verbindung verluer
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Protokollfehler
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF ënnerscheedlech
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :net authoriséiert
@@ -2374,6 +2464,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :krut keen Passw
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :generellen Timeout
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :Kaart rofzelueden huet ze laang gedauert
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :Kaart ze verarbëschten huet ze laang gedauert
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Falschen Numm vum Client
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2405,6 +2496,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De Serve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De Server gëtt nei gestart...{}W.e.g. waarden...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} gouf gekickt. Grond: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server Registration huet net geklappt
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}En anere Server mat dem selweschten Invitatiounscode huet sech registréiert. Wiesselen op Spilltyp "lokal".
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}De Server erlabt keng remote Verbindungen
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Aner Spiller wäerte sech net op de Server verbanne kënnen
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Lueden Inhalt erof
@@ -2663,7 +2758,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Schëffs
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plazéiert eng Boje, déi als Weepunkt kann benotzt ginn. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquadukt bauen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Waasserareal definéieren.{}Mécht en Kanal. Mat Ctrl gedréckt halen um Mieresspigel klicken, iwwerflut d'Géigent
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Plazéier Flëss
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Plazéier Flëss. Ctrl wielt d'Land diagonal aus
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Schëffsschapp Ausriichtung
@@ -3210,6 +3305,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}E fatalen NewGRF Fehler ass geschitt:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}En NewGRF Fehler ass geschitt:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} wärt net mat der TTDPatch Versioun déi vun OpenTTD erkannt gouf funktionéiren
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ass fir {STRING} Versioun vun TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ass designed fir mat {STRING} benotzt ze ginn
@@ -3402,11 +3498,11 @@ STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Opginn
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zouman
 
 # Subsidies window
-STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventiounen
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subventiounen fir de Service:
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Subside
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subside fir de Service:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} vun {STRING} op {STRING}{YELLOW} (bis {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Keng -
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicer mat Subventiounen:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicer mat Subside:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} vun {STRING} op {STRING}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op de Service fir d'Usiicht op d'Industrie/Stad ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie/Stad
 
@@ -3695,7 +3791,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klick fi
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Déi ungewielte Grupp läschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Déi ungewielte Grupp ëmbenennen
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wiessel d'Faarwschema vun dem ausgewielte Grupp
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen. Ctrl+klick protegéiert och Ennergruppen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grupp läschen
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bassde sécher, dass du des Grupp an all Ennergruppen läsche wëlls?
@@ -3976,7 +4072,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Ge
 STR_REPLACE_ROAD_VEHICLES                                       :Stroossegefierer
 STR_REPLACE_TRAM_VEHICLES                                       :Tram-Gefierer
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon raushuelen: ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mécht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem e Waggonen (vu lénks un) wechhëllt, wann d'Lok den Zuch ze laang mécht
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Klick fir och ob Ennergruppen ze applizéiren
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4045,6 +4143,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ennerwe
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ennerwee an den {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisioun am {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Kann {STATION} net erreechen, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kann {WAYPOINT} net erreechen, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kann {DEPOT} net erreechen, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kann den {DEPOT} net erreechen, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

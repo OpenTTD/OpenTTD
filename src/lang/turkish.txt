@@ -327,6 +327,8 @@ STR_GROUP_BY_NONE                                               :Hiçbiri
 STR_GROUP_BY_SHARED_ORDERS                                      :Paylaşılan talimatlar
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Talimatlar
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Emir görünümünü aç
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1818,12 +1820,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bu tarihten ön
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Raylar için elektrikli sinyallerin kullanılmaya başlanacağı yılı belirler. Bu tarihe kadar elektriksiz sinyaller kullanılır (bunlar da aynı işi görür, sadece görünüşleri farklıdır)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Sinyal türleri arasında dön: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ctrl+Tıklama ile sinyal inşa ederken hangi sinyal türlerinin kullanılacağını seç
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Sinyal aracı ile inşa edilmiş bir sinyalin üzerine CTRL+tıklarken hangi sinyal türlerinin kullanılacağını seç
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Yalnızca yol sinyalleri
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Hepsi
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Hepsi görünür
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Sinyal türlerini göster: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Sinyal araç çubuğunda hangi sinyal türlerinin gösterileceğini seç
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Yalnızca yol sinyalleri
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Tüm sinyaller
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Yeni kasabalar için yol yerleşimi: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Şehirlerin karayolu ağlarını gösteren şema
@@ -2322,6 +2328,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Şirket 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Aktif oyuncular
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Seyret
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Çok Oyunculu{WHITE}Çevrim İçi Oyuncular
@@ -2406,6 +2413,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Takım] -> {ST
 STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohbeti için yazı girin
 
 # Network messages
@@ -4136,6 +4144,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Gidilen
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT} istikametine gidiyor, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}'nda bakıma gir, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION} istasyonuna ulaşılamıyor, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT} yerimine ulaşılamıyor, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT} garajına ulaşılamıyor, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT} garajına ulaşılamıyor, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

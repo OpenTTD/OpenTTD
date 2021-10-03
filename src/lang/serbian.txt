@@ -430,7 +430,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov -
 STR_TOOLTIP_SHADE                                               :{BLACK}Zamotaj prozor - prikazuje se samo naslov
 STR_TOOLTIP_DEBUG                                               :{BLACK}Prikazuje NewGRF podatake o otklanjanju grešaka
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Menja veličinu prozora na podrazumevanu. Ctrl+Klik da sačuvate tekuću veličinu kao podrazumevanu
-STR_TOOLTIP_STICKY                                              :{BLACK}Markirajte ovaj prozor kao ne za zatvaranje tipkom 'Zatvaranje svih prozora'. Uz Ctrl+Click to stanje će biti zapamćeno.
+STR_TOOLTIP_STICKY                                              :{BLACK}Markirajte ovaj prozor kao ne za zatvaranje tipkom 'Zatvaranje svih prozora'. Uz Ctrl+klik to stanje će biti zapamćeno.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pritisnite i povucite kako bi prozor promenio veličinu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Izbor velikog/malog prozora
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrol - pomera spisak gore/dole
@@ -514,6 +514,8 @@ STR_GROUP_BY_NONE                                               :Nijedan
 STR_GROUP_BY_SHARED_ORDERS                                      :Deljene naredbe
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Naredbe
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otvori pregled naredbi
 
 # Tooltips for the main toolbar
 ###length 31
@@ -532,7 +534,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Pokaži 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tabele lige preduzeća
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiranje izgradnje nove fabrike, spisak svih fabrika
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova preduzeća. Ctrl+Klik uključuje prikaz spiska grupe/vozila
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova preduzeća. Ctrl+klik uključuje prikaz spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži spisak svih drumskih vozila preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži spisak svih brodova preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži spisak svih letelica preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
@@ -679,7 +681,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Obriši sve por
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemljištu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isključi konzolu
-STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije / skripte partije
+STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije / skripte igre
 STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Prikaži brzinu smenjivaja slika
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O OpenTTD-u
@@ -987,6 +989,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-ČUVANJE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ČUVAM PARTIJU  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(posmatrač)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Arhiva Vesti
@@ -1090,7 +1093,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.gen} iz {STRING} u {STRING} se više neće stimulisati
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.gen} između stanica {STRING} i {STRING} više nije u opticaju
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ponuda subvencije:{}{}Preduzeće koje prvo preveze {STRING.aku} od {STRING} do {STRING} stiče pravo na subvenciju u trajanju od {NUM} godina!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti 50% više u narednih {NUM} godina!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti dvostruko narednih {NUM} godina!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti trostruko narednih {NUM} godina!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti četvorostruko narednih {NUM} godina!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane preduzeća {STRING} donosi vozačima 6 meseci agonije!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Prevoznički monopol!
@@ -1156,8 +1164,8 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezijski ring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Levom stranom
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Desnom stranom
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Imena naselja
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Izaberi stil imena gradova
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Imena naselja:
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Izaberi stil imena naselja
 
 ###length 21
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engleska (Originalna)
@@ -1195,6 +1203,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Svakih 12 mesec
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Odaberite jezik koji će se koristiti
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% završeno)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ceo ekran
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pritisnite ovde kako biste igrali OpenTTD na celom ekranu
@@ -1208,6 +1217,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardvers
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Označavanje ove opcije čini da OpenTTD pokuša da koristi hardversko ubrzanje. Promena ovog podešavanja će imati efekta tek nakon ponvnog pokretanja igre
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Podešavanje će imati efekta tek nakon ponovnog pokretanja igre
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Štikliranjem se uključuje v-sync. Promena ovog podešavanja će biti vidljiva tek nakon ponovnog pokretanja igre. Radi jedino sa uključenim hardverskim ubrzanjem.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veličina interfejsa
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Izaberite većinu elementa koja će se koristiti
@@ -1347,6 +1358,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Podešav
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj po:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Proširi sve
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skupi sve
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetuj sve vrednosti
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema objašnjenja)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Podrazumevana vrednost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta podešavanja: {ORANGE}{STRING}
@@ -1355,6 +1367,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Podešavanja ig
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Podešavanja igre (čuvaju se prilikom snimanja; utiču samo na tekuću igru)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Podešavanja preduzeća (čuvaju se prilikom snimanja; utiču samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Podešavanja preduzeća (čuvaju se prilikom snimanja; utiču samo tekuće preduzeće)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Oprez!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Ovo će resetovati sva podešavanja igre na početne vrednosti{}Da li ste sigurni da želite da nastavite?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Vrsta:
@@ -1417,8 +1431,12 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Koliko često m
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množilac subvencije: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Podešava koliko se plaća za subvencionisane konekcije
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Trajanje subvencije: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Odredi broj godina trajanja subvencije
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} godina
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subvencija
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Troškovi gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Podešava nivo troškova gradnje i kupovine
@@ -1745,7 +1763,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dupli klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik (ako je u fokusu)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik (odmah)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Koristi relejni servis: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Ako uspostavljanje konekcije ka serveru ne uspe, moguće je koristiti relejni servis za uspostavljanje konekcije. Opcija "nikada" ovo ne dozvoljava, "pitaj" traži dozvolu od igrača, "dozvoli" dozvoljava bez pitanja.
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nikada
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Pitaj
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Dozvoli
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Oponašanje desnog klika: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Odaberite metodu imitiranja klika na desnu dirku miša
@@ -1991,12 +2014,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatsko post
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Postavite godinu za početak korištenja električnih signala za pruge. Prije ove godine, koristiti će se neelektrični signali (imaju iste funkcije samo izgledaju drugačije)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ciklični izbor vrste signalizacije: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ciklični izbor vrste signalizacije, kada Ctrl+Klik na izgradnju signala sa alatom signala
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ciklični izbor vrste signalizacije kada Ctrl+klik na izgradnju signala sa alatom signala
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putna
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sva
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sve vidljivo
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Prikaži vrste signala: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Postavi tip signala koji će se prikazati na traci sa alatima
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Samo putna signalizacija
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Svi signali
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Plan gradnje novih puteva u naseljima: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Menja način izgradnje puteva u naseljima
@@ -2182,6 +2209,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija Tovara
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Mreža
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pretraživanje putanja vozova: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritam pronalaženja puta za vozove
@@ -2271,7 +2299,7 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Napuštanje partije
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Da li stvarno želite da napustite ovu partiju?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Da li ste sigurni da želite da izađete iz ovog scenarija?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Da li stvarno želite da izađete iz ovog scenarija?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Varanja
@@ -2391,6 +2419,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promena 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Lokalno
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Javno
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Samo uz pozivnicu
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mrežna partija
@@ -2423,9 +2454,12 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzija
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Početni datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Trenutni datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Skripta igre: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Zaštićeno šifrom!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE VAN MREŽE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE POPUNJEN
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVER VAS JE BLOKIRAO
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER JE ZASTAREO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}NEODGOVARAJUĆA VERZIJA
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF NEPOKLAPANJE
 
@@ -2438,11 +2472,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Pretraž
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Pretraži LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Pronađi servere na lokalnoj mreži
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje server na spisak na kojem se uvek proverava za aktivne partije
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje server na spisak. Može biti adresa servera ili kod pozivnice
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Pokreni server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Pokrenite sopstveni server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Unesite Vaše ime
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Unesi adresu servera ili kod pozivnice
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Pokreni novu mrežnu partiju
@@ -2452,6 +2487,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Naziv pa
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi lozinku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Vidljivost
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Da li drugi igrači mogu videti tvoj server na javnom spisku
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} igrač{P "" a a}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Najviše igrača:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Odaberite koliko najviše može da ima igrača. Nemoraju sva mesta da budu popunjena
@@ -2484,15 +2521,64 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Preduzeće je zaštićeno. Unesite lozinku
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spisak klijenata
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Prisutni igrači
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Posmatranje
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Prisutni igrači
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Naziv
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Naziv servera na kojem igraš
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Promeni naziv servera
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Naziv servera
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Vidljivost
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Da li drugi igrači mogu videti tvoj server na javnom spisku
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Kod pozivnice
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Kod pozivnice koji drugi igrači mogu koristiti da se povežu na server
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Vrsta konekcije
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Da li i na koji način drugi mogu pristupiti serveru
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Igrač
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Ime
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ime igrača
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Promeni svoje ime
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ime igrača
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administratorske akcije za ovaj klijent
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administratorske akcije za ovu kompaniju
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Priključi se ovoj kompaniji
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Pošalji poruku ovom igraču
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Pošalji poruku svim igračima ove kompanije
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Pošalji poruku svim posmatračima
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Posmatrači
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(nova kompanija)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Napravi novu kompaniju i pridruži joj se
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ovo si ti
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ovo je domaćin igre
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klijen{P t ata ata} / {NUM} kompanij{P e a a}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Lokalno
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Spoljni igrači se ne mogu priključiti
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Javno
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Iza NAT-a
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Preko releja
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Izbaci
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Zabrana
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Obriši
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Otključavanje lozinkom
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratorska akcija
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Da li stvarno želite da izbacite igrača '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Da li stvarno želite da blokirate igrača '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Da li stvarno želite da obrišete kompaniju '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Da li stvarno želite da promenite lozinku kompanije '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Koristi relej?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Neuspelo uspostavljanje konekcije sa serverom '{STRING}'.{}Da li želite da uspostavite relejnu konekciju preko '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ne
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Da, jednom
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Da, ne pitaj ponovo
 
 STR_NETWORK_SPECTATORS                                          :Posmatrači
 
@@ -2521,17 +2607,20 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipi] Za {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Unesite tekst poruke za razgovor
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nijedan mrežni uređaj nije nađen ili je igra kompajlirana bez ENABLE_NETWORK
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server nije odgovorio na zahtev
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Konekcija ka serveru je istekla ili nije dozvoljena
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Povezivanje je neuspešno zbog nepoklapanja NewGRF-ova
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Neuspešna sinhronizacija mrežne partije
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Veza sa mrežnom partijom je pukla
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Neuspešno učitavanje sačuvane partije
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Neuspešno pokretanje servera
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Nastala je greška u protokolu i veza je zatvorena
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Ime igrača nije podešeno. Ono se može podesiti na vrhu prozora Partija preko mreže
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Naziv tvog servera nije podešen. Naziv može biti promenjen na vrhu prozora Partija preko mreže
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizija igre ovog klijenta se ne poklapa sa revizijom servera
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pogrešna lozinka
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server je pun
@@ -2544,6 +2633,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Trebalo 
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Računar je suviše spor da bi ispratio rad servera
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Računaru je suviše dugo trebalo da preuzme mapu
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Računaru je suviše dugo trebalo da se priključi serveru
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Vaš naziv igrača nije ispravan
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moguć gubitak veze
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}U poslednj{P 0 oj e ih} {NUM} sekund{P i e i} nije primljen nijedan podatak sa servera
@@ -2569,6 +2659,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :lozinka nije pr
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :istekao veremnski rok
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :preuzimanje terena je previše dugo trajalo
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :obrađivanje terena je previše dugo trajalo
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :neispravan naziv klijenta
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2600,6 +2691,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server j
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se ponovo pokreće...{}Molimo sačekajte...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} je izvačen. Razlog: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Neuspešna registracija na serveru
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Drugi server sa istim kodom pozivnice je već registrovan. Tip igre je promenjen na "lokalno".
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Vaš server ne dozvoljava spoljne konekcije
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Drugi igrači neće moći da pristupe serveru
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Dodaci za preuzimanje
@@ -2785,7 +2880,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izlazna 
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovana Signalizacija (svetlosni semafor){}Kombinovana signalizacija se ponaša kao ulazna i izlazna signalizacija. Ovim se omogućava gradnja velikih "stabala" predsignalizacije
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Putna Signalizacija (svetlosni semafor){}Putna signalizacija omogućava da više vozova istovremeno uđe u istu deonicu, ukoliko mogu da obezbede put do zasebnog zaustavnog koloseka. Standardnu putnu signalizaciju moguće je proći i sa suprotnog smera
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerna Putna Signalizacija (svetlosni semafor){}Putna signalizacija omogućava da više vozova istovremeno uđe u istu deonicu, ukoliko mogu da obezbede put do zasebnog zaustavnog koloseka. Jednosmerna putna signalizacija zabranjuje prolaz sa suprotnog smera
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Promena Signalizacije{}Kada je označeno, klikom na postojeću signalizaciju promeniće je na izabranu vrstu i podvrstu, sa Ctrl+Klik će se označiti postojeća podvrsta. Shift+Klik prikazuje procenu troškova promene
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Promena Signalizacije{}Kada je označeno, klikom na postojeću signalizaciju promeniće je na izabranu vrstu i podvrstu, sa Ctrl+klik će se označiti postojeća podvrsta. Shift+klik prikazuje procenu troškova promene
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Razmak između signalizacija tokom povlačenja
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Smanjivanje razmaka između signalizacija
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećavanje razmaka između signalizacija
@@ -2858,7 +2953,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Gradnja 
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavlja bovu kako bi služila kao putokaz. Shift prebacuje između postavljanja i prikaza procene troškova
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Izgradnja akvadukta. Shift prebacuje između izgradnje i prikaza procene troškova
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vodena površina.{}Napravite kanal, ukoliko držite i Ctrl dok ste na nivou mora, tada popunjavate okolinu vodom
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Postavljanje reka
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Postavljanje reka. Ctrl obeležava dijagonalno područje
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orijentacija brodskog hangara
@@ -2937,7 +3032,7 @@ STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Obnovi r
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Uklanja sve objekte u vlasništvu preduzeća sa terena
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Obnovi reljef
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li sigurno želite da uklonite sve objekte u vlasništvu preduzeća?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li stvarno želite da uklonite sve objekte u vlasništvu preduzeća?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stvaranje naselja
@@ -3405,6 +3500,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Greška: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kobno: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Došlo je do neotklonljive NewGRF greške:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Dogodila se greška kod NewGRF-a:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} neće raditi sa TTDPatch verzijom prema prijavi OpenTTD-a
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je za {STRING} verziju TTD-a
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je napravljen za korišćenje sa {STRING}
@@ -3483,7 +3579,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Uključu
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Unos teksta znaka
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Prebacuje glavni pogled na lokaciju znaka. Ctrl+Klik otvara novi pogled na znak
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Prebacuje glavni pogled na lokaciju znaka. Ctrl+klik otvara novi pogled na znak
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Položaj sledećeg znaka
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Položaj prethodnog znaka
 
@@ -3696,7 +3792,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Spreči 
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Prebacuje glavni pogled na lokaciju čvorišta. Ctrl+Klik otvara novi pogled na čvorište
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Promena naziva putanje
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacuje glavni pogled na lokaciju bove. Ctrl+Klik otvara novi pogled na bovu
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacuje glavni pogled na lokaciju bove. Ctrl+klik otvara novi pogled na bovu
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Promeni naziv bove
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva putanje
@@ -3778,8 +3874,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Promena 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Otkupi 25% udela u preduzeću
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Prodaj 25% udela u preduzeću
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Otkup 25% udela u ovom preduzeću. Shift+Klik prikazuje procenu troškova bez kupovine udela
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaja 25% udela u ovom preduzeću. Shift+Klik prikazuje procenu zarade bez prodaje udela
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Otkup 25% udela u ovom preduzeću. Shift+klik prikazuje procenu troškova bez kupovine udela
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaja 25% udela u ovom preduzeću. Shift+klik prikazuje procenu zarade bez prodaje udela
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime Preduzeća
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ime vlasnika
@@ -3890,10 +3986,10 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikom s
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Briše se označena grupa
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Preimenovanje označene grupe
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Promena boja odabrane grupe
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikom se ova grupa štiti od globalne automatske zamene
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikom se ova grupa štiti od globalne automatske zamene. Ctrl+klik da se zaštite i podgrupe.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Izbriši grupu
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Da li ste sigurni da elite izbrisati ovu grupu i sve podgrupe?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Da li stvarno želite da izbrišete ovu grupu i sve podgrupe?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj deljeno vozilo
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozila
@@ -4027,7 +4123,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vo
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - prevlačenjem se vozila dodaju/uklanjaju iz kompozicije, desni klik na voz za podatke o njemu, CTRL i desni klik za podatke o kompoziciji
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - prevlačenjem se vozila dodaju/uklanjaju iz kompozicije, desni klik na voz za podatke o njemu, Drži Ctrl da primeniš obe funkcije na ceo lanac
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desni klik na vozilo za podatke o njemu
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - desni klik na brod za podatke o njemu
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letilice - desni klik na letilicu za podatke o njoj
@@ -4069,16 +4165,16 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kopiraj 
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kopiraj Letilicu
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ovim ćete kupiti istu kompoziciju. Kliknite na dugme i potom na voz koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe. Shift+Klik prikazuje procenu troškova bez kupovine
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Kliknite na dugme i potom na drumsko vozilo koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe. Shift+Klik prikazuje procenu troškova bez kupovine
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ovim ćete kupiti isti brod. Kliknite na dugme i potom na brod koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe. Shift+Klik prikazuje procenu troškova bez kupovine
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ovim ćete kupiti istu letilicu. Kliknite na dugme i potom na letilicu koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe. Shift+Klik prikazuje procenu troškova bez kupovine
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ovim ćete kupiti istu kompoziciju. Kliknite na dugme i potom na voz koji je u ili van depoa. Sa Ctrl+klik će imati zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Kliknite na dugme i potom na drumsko vozilo koje je u ili van depoa. Sa Ctrl+klik će imati zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ovim ćete kupiti isti brod. Kliknite na dugme i potom na brod koji je u ili van depoa. Sa Ctrl+klik će imati zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ovim ćete kupiti istu letilicu. Kliknite na dugme i potom na letilicu koje je u ili van depoa. Sa Ctrl+klik će imati zajedničke naredbe. Shift+klik prikazuje procenu troškova bez kupovine
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacuje glavni pogled na lokaciju železničkog depoa. Ctrl+Klik otvara novi pogled na železnički depo
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacuje glavni pogled na lokaciju drumskog depoa. Ctrl+Klik otvara novi pogled na drumski depo
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacuje glavni pogled na lokaciju brodskog depoa. Ctrl+Klik otvara novi pogled na brodski depo
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Prebacuje glavni pogled na lokaciju hangara. Ctrl+Klik otvara novi pogled na hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacuje glavni pogled na lokaciju železničkog depoa. Ctrl+klik otvara novi pogled na železnički depo
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacuje glavni pogled na lokaciju drumskog depoa. Ctrl+klik otvara novi pogled na drumski depo
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacuje glavni pogled na lokaciju brodskog depoa. Ctrl+klik otvara novi pogled na brodski depo
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Prebacuje glavni pogled na lokaciju hangara. Ctrl+klik otvara novi pogled na hangar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Dohvata spisak svih vozova sa ovim depoom u naredbama
@@ -4187,7 +4283,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetnošinska
 STR_REPLACE_ROAD_VEHICLES                                       :Drumska vozila
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvajska vozila
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Uklanjanje vagona ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko bi se zamenom kompozicija produžila, automatska obnova će ukloniti vagone (sa početka) kako bi se zadržala dužina kompozicije
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klik da se primeni i na podgrupe
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4256,6 +4354,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ide ka 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ide ka {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servisiranje u {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Ne može dostići {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Ne može dostići {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Ne može dostići {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Ne može dostići {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4619,8 +4721,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za korigovanje VI / Skripte Partije je dostupan samo na serveru
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Podešavanja VI / Skripte Partije
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta parije koja će biti pokrenuta u sledećoj partiji
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Podešavanja VI / skripte igre
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta igre koja će biti pokrenuta u sledećoj partiji
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštačke inteligencije koje će biti pokrenute u sledećoj partiji
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
 STR_AI_CONFIG_RANDOM_AI                                         :Proizvoljna VI
@@ -4631,13 +4733,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pomera o
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Pomeri Naniže
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Pomera obeleženu VI naniže u listi
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta Partije
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta igre
 STR_AI_CONFIG_AI                                                :{SILVER}VIe
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Izaberi {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :VI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta Partije
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta igre
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Podešavanje
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešavanje parametara skripte
