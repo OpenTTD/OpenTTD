@@ -401,6 +401,8 @@ STR_GROUP_BY_NONE                                               :Neseskupovat
 STR_GROUP_BY_SHARED_ORDERS                                      :Sdílené příkazy
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Pokyny
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otevřít okno s úkolem
 
 # Tooltips for the main toolbar
 ###length 31
@@ -879,6 +881,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Automatické ukládání
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SE UKLÁDÁ  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historie zpráv
@@ -982,7 +985,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} nebude dále nabízena
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STRING.gen} do {STRING.gen} již nebude dále poskytována
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nabídka dotace:{}{}Doprava {STRING} z{STRING} do {STRING} bude {NUM} rok dotována místní správou!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po {NUM} rok{P “” ů ů} vynášet 150{NBSP}% normální ceny
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}!{}{} Doprava {STRING} z{NBSP}{STRING} do {STRING} bude po {NUM} rok{P “” “” ů} vynášet dvojnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po {NUM} rok{P “” ů ů} vynášet trojnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po {NUM} rok{P “” ů ů} vynášet čtyřnásobek normální ceny!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} zažívá dopravní chaos!{}{}Program přestavby ulic sponzorovaný {STRING} přináší motoristům 6 měsíců utrpení!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportní monopol!
@@ -1048,7 +1056,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malajsijský Ri
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vlevo
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Vpravo
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Jména měst
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Názvy měst
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Výběr stylu jmen měst
 
 ###length 21
@@ -1087,6 +1095,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 m�
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Zvolit jazyk uživatelského rozhraní
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% dokončeno)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Na celou obrazovku
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaškrtnutím této volby poběží OpenTTD na celé obrazovce
@@ -1100,6 +1109,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardwaro
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Zaškrtni, pokud chceš OpenTTD povolit použití hardwarové akcelerace. Změněné nastavení bude aplikováno po restartu hry
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastavení vstoupí v platnost pouze po restartu hry
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtní tento box pro v-sync obrazovky. Změna se projeví po znovu spuštění hry. Funguje to pouze pro povolenou hardwarovou akceleraci.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Velikost rozhraní
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Zvolit velikost prvků uživatelského rozhraní
@@ -1239,6 +1250,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastaven
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrovat podle:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozbalit vše
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sbalit vše
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Vymazat všechny hodnoty
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(žádné vysvětlení není k dispozici)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Výchozí hodnota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ nastavení: {ORANGE}{STRING}
@@ -1247,6 +1259,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Pozor!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tato akce resetuje všechna nastavení hry na výchozí hodnoty.{}Jste si jistý, že chcete pokračovat?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
@@ -1310,8 +1323,12 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Určuje jak ča
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Výše dotací: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nastavuje jak moc jsou dotovaná spojení dotována
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Doba trvání dotace: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Nastav počet roků, po které je dotace přiznaná
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} rok{P "" y y}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Žádné dotace
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena výstavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastav cenu výstavby a nákupu
@@ -1638,7 +1655,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojklik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Jedno kliknutí (je-li zaměřen)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Jedno kliknutí (okamžitě)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Použít relay službu: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Pokud selže spojení k serveru, je možné použít relay službu pro vytvoření spojení. "Never" to zakáže, "ask" se nejprve zeptá, "allow" to povolí bez ptaní
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nikdy
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Zeptat se
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Povolit
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulace pravého tlačítka: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vybrat metodu emulování stisknutí pravého tlačítka myši
@@ -1887,9 +1909,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vybírat dokola
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vyber které semafory budou nabízeny při Ctrl+klikání při jejich stavbě.
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :pouze dokonalejší (PBS)
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :všechna
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Vše viditelné
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraz signály typu: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Vyber, které signály jsou zobrazené v panelu nástrojů signálů
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Pouze Path signály
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Všechny signály
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Rozvržení silnic pro nová města: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rozložení silniční sítě ve městech
@@ -2075,6 +2101,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Průmys
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuce nákladu
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Síť
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Hledač cesty pro vlaky: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Hledač cesty pro vlaky
@@ -2284,6 +2311,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Změnit 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Místní
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Veřejný
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Pouze pozvánky
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -2316,9 +2346,12 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verze h
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serveru: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Počáteční datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Současné datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Herní skript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Chráněno heslem!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE PLNÝ
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}BYL JSI ZABANOVÁN
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER JE PŘÍLIŠ STARÝ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}NESOUHLASÍ VERZE
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NESOUHLASÍ GRAFIKY
 
@@ -2331,11 +2364,12 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Hledat v
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Prohledat místní siť
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Hledat servery v místní síti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Přidat server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Přidá server do seznamu, ve kterém se budou hledat běžící hry
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Přidá server do seznamu. Může to být adresa serveru nebo kód pozvánky.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustit server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Spustit vlastní server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Zadej své jméno
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Zadej adresu serveru nebo kód pozvánky
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Začít novou hru
@@ -2345,6 +2379,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Jméno h
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavit heslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Viditelnost
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Jestli ostatní mohou vidět tvůj server ve veřejném seznamu
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ů}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nejvyšší počet hráčů:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně
@@ -2378,22 +2414,63 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společn
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam hráčů
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Dívat se
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online hráči
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Jméno
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Název serveru, na kterém hrajete
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Upravte název svého serveru
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Název serveru
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Viditelnost
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Zda mohou ostatní hráči vidět váš server ve veřejném seznamu
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Pozvánkový kód
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Kód pozvánky, který mohou ostatní hráči použít k připojení k tomuto serveru.
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Typ spojení
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Jestli a jak může být tvůj server dostupný pro ostatní
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Hráč
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Jméno
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Jméno vašeho hráče
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Uprav své hráčské jméno
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Tvé herní jméno
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrativní akce pro tohoto klienta
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrativní akce pro tuto firmu
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Připojit se a hrát za tuto společnost
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Poslat zprávu tomuto hráči
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Poslat zprávu všem hráčům této firmy
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Poslat zprávu všem divákům
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Diváci
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nová společnost)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Vytvořit novou společnost a připojit se do ní
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tohle jsi ty
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Toto je hostitel hry
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" i i} / {NUM} společnost{P “” i i}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Místní
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Vzdálení hráči se nemohou připojit
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Veřejný
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Za NATem
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Přes relay
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Vyhodit
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Smazat
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Odemčení hesla
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administrátorská akce
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Opravdu chceš vyhodit hráče '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Opravdu chceš zabanovat hráče '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Jste si jisti, že chcete smazat společnost '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Opravdu chcete obnovit heslo společnosti '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Použít relay?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepodařilo se vytvořit spojení mezi tebou a serverem '{STRING}'.{}Chceš propojit toto sezení přes relay '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ne
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ano, toto jednou
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ano, znovu se neptat
 
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
@@ -2422,6 +2499,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Tým] pro {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Osobní] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Osobní] pro {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Všichni] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadej zprávu
 
 # Network messages
@@ -2433,6 +2511,8 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Síť - 
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nelze nahrát uloženou hru ze serveru
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nelze spustit server
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Vznikla chyba v protokolu a naše spojení je přerušeno
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Tvé herní jméno nebylo nastaveno. Jméno může být nastaveno v horní části okna pro více hráčů.
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Název tvého serveru nebyl nastaven. Název je možné nastavit na horním okraji Multiplayer okna.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revize hry tohoto klienta neodpovídá revizi hry na serveru
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Špatné heslo
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server je plný
@@ -2471,6 +2551,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :neobdrženo ž�
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :všeobecný timeout
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :stahování mapy trvalo příliš dlouho
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :zpracování mapy trvalo příliš dlouho
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :neplatné jméno klienta
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2496,13 +2577,16 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se stává pozorovatelem
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} zakládá novou společnost (č. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opouští hru ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} si mění jméno na {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} si změnil jméno na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} poslal(a) {2:CURRENCY_LONG} společnosti {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil relaci
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} byl vyhozen. Důvod: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrace serveru selhala
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}S tímto zvacím kódem se už zaregistroval jiný server. Přepínám na lokální typ hry.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Váš server neumožňuje vzdálené připojení
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Ostatní hráči se nebudou moci k tvému serveru připojit
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Součásti ke stažení
@@ -2761,7 +2845,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postavit
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umístit bójku použitelnou pro navádění. Stisknutý Shift pro zobrazení odhadu ceny
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postavit akvadukt. Stisknutý Shift pro zobrazení odhadu ceny
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vytvořit vodní plochu.{}Pokud není držen Ctrl, vytvoří se na úrovni moře průplav; v opačném případě se zaplaví ostatní dílky
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Vytvořit řeky
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Vytvořit řeky. Ctrl vybere oblast diagonálně
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientace lodního depa
@@ -3314,6 +3398,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Závažná chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Vyskytla se kritická chyba v NewGRF:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Došlo k chybě v NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pro TTD verzi {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navržen pro práci s {STRING}
@@ -3799,7 +3884,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknut�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Vymazat vybranou skupinu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Přejmenovat vybranou skupinu
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Změnit nátěr vozidel vybrané skupiny
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknutím nebude na tuto skupinu mít vliv automatická výměna vozidel
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknutím se bude chránit tato skupina před globálním automatickým nahrazením. Ctrl+kliknutí chrání také podskupiny.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Smazat Skupinu
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Jste si jist, že chcete smazat tuto skupinu a všechny její podskupiny?
@@ -4083,7 +4168,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotivy Magl
 STR_REPLACE_ROAD_VEHICLES                                       :Silniční vozidla
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaje
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranění vagonu ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylepšování vlaků může udržovat stejnou délku vlaku odstraňovaním vagonů (od začátku vlaku), pokud by změna mašiny vlak prodloužila
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click pro použití také na pod-skupinách
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4152,6 +4239,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Míří
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Míří do {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Údržba v {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nelze dosáhnout {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nelze dosáhnout {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nelze dosáhnout {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Nelze dosáhnout {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4937,7 +5028,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Letadlo 
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vozidlo není dostupné
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vůz není dostupné
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vozidlo není dostupné
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Loď není dostupná
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Letadlo není dostupné
 

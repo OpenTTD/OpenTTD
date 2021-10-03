@@ -328,6 +328,8 @@ STR_GROUP_BY_NONE                                               :Ingen
 STR_GROUP_BY_SHARED_ORDERS                                      :Delte ordre
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordrer
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Åpne ordrevisningen
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1820,12 +1822,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesigna
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Angi året når elektriske signal vil bi tatt i bruk for spor. Før dette året vil ikke-elektriske signal bli brukt (som har nøyaktig samme funksjon, men forskjellig utseende)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Bla gjennom signaltyper: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Velg hvilke signaltyper å gå gjennom når Ctrl+trykke på et bygg signal med signal-verktøyet
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Velg hvilke signaltyper å gå gjennom når Ctrl+klikke på et bygd signal med signalverktøyet
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte signaler
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle synlige
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Vis signaltyper: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Velg hvilke signaltyper som vises i verktøylinjen for signaler
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Kun sporsignaler
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Alle signaler
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Veiløsning for nye byer: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Løsning for veinettverket i byer
@@ -2325,6 +2331,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Påloggede spillere
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Se
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Påloggede Spillere
@@ -2409,6 +2416,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv inn tekst for nettverkssamtale
 
 # Network messages
@@ -4139,6 +4147,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Har kur
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På vei til {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Vedlikehold ved {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Kan ikke nå {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Kan ikke nå {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Kan ikke nå {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Kan ikke nå {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

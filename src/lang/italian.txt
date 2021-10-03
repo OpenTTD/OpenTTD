@@ -1015,6 +1015,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accelera
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Seleziona questa opzione per consentire a OpenTTD di utilizzare l'accelerazione hardware. Eventuali cambiamenti avranno effetto solo dopo un riavvio del gioco
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Le nuove impostazioni avranno effetto solo dopo un riavvio del gioco
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Dimensione interfaccia
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleziona la dimensione deglie elementi dell'interfaccia grafica
@@ -1154,6 +1155,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Impostaz
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtro:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Espandi tutti
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Comprimi tutti
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetta tutti i valori
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrizione non disponibile)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valore predefinito: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo impostazione: {ORANGE}{STRING}
@@ -1249,6 +1251,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Imposta quanto 
 
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Niente sussidi
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costi di costruzione: {STRING.mp}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Imposta il livello dei costi di costruzione e acquisto
@@ -1572,7 +1575,9 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic (con casella di testo attiva)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic (immediato)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Se creare una connessione con il server fallisce, si può usare un servizio di relay per creare una connessione. "Mai" lo disattiverà, "Chiedi" chiederà prima, "Attiva" lo attiverà senza chiedere
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Mai
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Chiedi
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Consenti
 
@@ -2011,6 +2016,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuzione dei carichi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Avversari
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Giocatori controllati dal computer
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rete
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder per i treni: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pathfinder da utilizzare per i treni
@@ -2253,9 +2259,11 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Version
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Indirizzo del server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data di inizio: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data corrente: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script di gioco: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protetto da password!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER PIENO
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SEI STATO BANDITO DA QUESTO SERVER
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIONE DIFFERENTE
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF DIFFERENTI
 
@@ -2318,16 +2326,32 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagni
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nome
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilità
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Se e come i tuoi server possono essere raggiunti da altri
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Giocatore
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Il nome del tuo personaggio
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                : {BLACK}Modifica il nome del tuo personaggio
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Manda un messaggio a tutti gli spettatori
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spettatori
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nuova compagnia e controllala
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Questo è l'host del gioco
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} / {NUM} compan{P y ies}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}I giocatori remoti non possono connettersi
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Dietro NAT
 
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Elimina
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Sblocco con password
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sei sicuro di voler cacciare il giocatore '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sei sicuro di voler bannare il giocatore '{STRING}'
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sei sicuro di voler eliminare la compagnia '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usare il relay?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 
 STR_NETWORK_SPECTATORS                                          :Spettatori
 
@@ -2404,6 +2428,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nessuna passwor
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :timeout generico
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :il download della mappa ha richiesto troppo tempo
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :l'elaborazione della mappa ha richiesto troppo tempo
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Nome del client non valido
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -4079,6 +4104,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Diretto
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Diretto {G "al " all' "alla "}{DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenzione {G "al " all' "alla "}{DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Impossibile raggiungere {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Impossibile raggiungere {WAYPOINT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4575,6 +4602,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}È stato
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Screenshot di grandi dimensioni
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Lo screenshot avrà una risoluzione di {COMMA} x {COMMA} pixel. La creazione dello screenshot può richiedere molto tempo. Continuare?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mappa dell'altezza salvata con successo come '{STRING}'. Il picco massimo è {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot salvato con successo come '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot non riuscito!
 

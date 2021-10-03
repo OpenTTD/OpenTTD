@@ -803,6 +803,7 @@ STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Glasba ni na voljo
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Skladba
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Naslov
@@ -1078,6 +1079,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafriški 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Po meri...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongški dolar (HKD)
 
 ###length 2
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vožnja po levi
@@ -1140,6 +1142,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojna velikost
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Velikost kvadrata
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(samodejno zaznaj)
 
 
 
@@ -1597,6 +1600,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Temno zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Vijolična
 
 ###length 4
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Premikaj zemljevid z desnim klikom
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Gladek premik pogleda: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Način pomika pogleda na določen objekt majhnega zemljevida (centriranje pogleda). Omogočeno - pogled drsi, onemogočeno - pogled preskoči.
@@ -1696,6 +1700,7 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Prikaži stroš
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definiraj obliko za okno stroškov podjetja
 
 
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normalne hitrosti igre
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Povzetek novic: {STRING}
@@ -1888,6 +1893,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prepovedano
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dovoljeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dovoljeno, oblika mesta po meri
 
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Ustvarjanje mestnega tovora: {STRING}
 ###length 2
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Sajenje dreves znotraj igre: {STRING}
@@ -1967,7 +1973,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Količina zavrn
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nastavitev pod 100% naredi simetrično razporeditev bolj podobno asimetrični. Manj tovora bo zavrnjenega, če je do postaje poslana določena količina. Nastavljeno na 0% se vede kot asimetrična.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Nasičenje kratkih poti pred uporabo zmogljivejših: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Večkrat je več možnih poti med postajami. Razpored tovora bo nasičil vedno najkrajšo pot, potem drugo najkrajšo itd... Nasičenje se izračuna glede ne zmogljivost in planirano rabo poti. Če bodo vse zasičene, jih bo prekomerno nasičil. Algoritem ni vedno natančen. Nastavitve določijo procent, do katerega se nasiči pot, preden se išče naslednja. Nastavi procent pod 100, da se izogneš prekomernemu nasičenju postaj.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Pogosto je več možnih poti med postajami. Razpored tovora bo nasičil vedno najkrajšo pot, potem drugo najkrajšo itd... Nasičenje se izračuna glede na zmogljivost in planirano rabo poti. Če bodo vse zasičene, jih bo prekomerno nasičil. Algoritem ni vedno natančen. Nastavitve določijo procent, do katerega se nasiči pot, preden se išče naslednja. Nastavi procent pod 100, da se izogneš prekomernemu nasičenju postaj.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Enote hitrosti: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Ko bo prikazana hitrost vozil na vmesniku, bodo uporabljene izbrane enote.
@@ -1975,6 +1981,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Ko bo prikazana
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Colsko (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrično (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Igralne enote (kvadratov/day)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Moč vozila: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Ko bo prikazana moč vozil na vmesniku, bodo uporabljene izbrane enote.
@@ -2280,6 +2287,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pridruž
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Osveži strežnik
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Osveži informacije strežnika
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Išči LAN
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj strežnik
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Doda strežnik na seznam, ki bo vedno preverjen za pognane igre
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Poženi strežnik
@@ -2330,11 +2338,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Koda za povabilo, katero lahko uporabijo drugi igralci za pridružitev temu strežniku
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Spremeni ime igralca
 
 # Matches ConnectionType
 ###length 5
 
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Zagotovo želiš brcniti igralca '{STRING}'?
 
 
 STR_NETWORK_SPECTATORS                                          :Gledalci
@@ -2514,6 +2525,8 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, prenesi grafike
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, zapusti OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Prenos ni uspel
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Zapuusti OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavitve prozornega pogleda
@@ -2660,6 +2673,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zgradi p
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Preklopi gradnja/rušenje cestnih konstrukcij
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Preklop gradi/odstrani za tramvaj progo
 
+STR_ROAD_NAME_ROAD                                              :Cesta
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Smer garaže
@@ -2973,6 +2987,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Podrobno
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ni informacij na voljo
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Imenik)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Vpiši ime za shranjeno igro
 
@@ -3161,6 +3176,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Prebrana datote
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zahtevani viri GRF niso na voljo (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je bil izklopljen zaradi {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neveljaven/neznan format zapisa sličic (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Preveč elementov v seznamu vrednosti lastnine (sprite {3:NUM}, lastnina {4:HEX})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
@@ -3187,7 +3203,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje N
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni znotraj garaže
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremenila se je dolžina vozila za '{1:ENGINE}' ko ni v garaži
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Spremenila se je zmogljivost vozila za '{1:ENGINE}' ko ni v garaži ali predelavi
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Verjetno vsebuje probleme povezane z NewGRF. Igra se lahko sesuje
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o preureditvi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno
@@ -3226,6 +3242,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Vpiši i
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Mesta
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Brez -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Mesto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena mest - klikni na ime za pogled na mesto. Ctrl+Klik odpre nov pogled na lokaciji mesta
 STR_TOWN_POPULATION                                             :{BLACK}Svetovno prebivalstvo: {COMMA}
 
@@ -3523,6 +3540,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrije
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Brez -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena industrij - klikni na ime za pogled na industrijo. Ctrl+Klik odpre nov pogled na lokaciji industrije
 
 # Industry view
@@ -5210,6 +5228,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_COMPANY_NUM                                          :(Podjetje {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 ###length 2

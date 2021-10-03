@@ -1163,6 +1163,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           ::تعطلات �
 
 
 
+STR_CONFIG_SETTING_CITY_APPROVAL                                :موقف مجلس المدينة من إعادة هيكلة المنطقة: {STRING}
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :حد ارتفاع الخريطة:{STRING}
 ###setting-zero-is-special
@@ -1335,6 +1336,7 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD                             :صيانة ال
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :اربط اداة التضاريس الى اداة السكة /الطرق / اموانئ / المطارات{STRING}
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :لون الارضية المستخدم للخرائط الصغيرة: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :لون الارضية في الخرائط الصغيرة
 ###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :اخضر
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :اخضر غامق
@@ -1559,6 +1561,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :مسموح
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :مسموح - نمط مدينة قابل للتعديل
 
 ###length 2
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :تربيعي (أصلي)
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :اضافة الاشجار اثناء اللعب: {STRING}
 ###length 4
@@ -1597,10 +1600,12 @@ STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :الوقت بي
 
 ###length 3
 
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :كلما قمت بتعليت هذا بشكل اكثر، كلما ازداد وقت الCPU في حساب الرسم البياني الرابط. إذا استغرق الأمر وقتًا طويلاً فقد تلاحظ تأخير في الاستجبة. إذا قمت بتغيره إلى قيمة منخفضة، فسيكون التوزيع غير دقيق، وقد تلاحظ عدم إرسال البضائع إلى الأماكن التي تتوقع أن تذهب إليها.
 
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :ضبط هذا إلى أقل من 100٪ يؤدي إلى جعل التوزيع المتماثل يتصرف مثل التوزيع غير المتماثل. سيتم إعادة شحنات أقل غصبا إذا تم إرسال مبلغ معين إلى المحطة. إذا قمت بتعيينه على 0٪ ، فإن التوزيع المتماثل يتصرف تمامًا مثل التوزيع غير المتماثل
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :وحدات السرعة: {STRING}
 ###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :(متري (كم / ساعة
 
@@ -1643,6 +1648,7 @@ STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاع
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الطريق- قصاص الطريق - للقطارات:{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :مكتشف المسار لاستخدامه لعربات الطرق
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :موجد طريق العبور للسفن: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :العكس عند الإشارات: {STRING}
 ###length 2
@@ -1833,7 +1839,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}غير �
 ###length 3
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}تعدد اللاعبين
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}لعب جماعي
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}أسم اللاعب
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}هذا الآسم الذي ستعرف به في اللعبة
 
@@ -1970,11 +1976,13 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}انقط
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}لايمكن تحميل اللعبة المخزنة
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}لايمكن بدء الخادم
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}حدث خطأ في البروتوكول و انقطع الاتصال
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}لم يتم تحديد اسم اللاعب الخاص بك. يمكنك تحديد الاسم في الجزء العلوي من نافذة العب الجماعي
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}نسخة اللاعب غير مطابقة لنسخة الخادم
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}رقم سري خاطئ
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}الخادم ممتلئ
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}أنت ممنوع من هذا الخادم
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}لقد طردت من اللعبة
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}السبب: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}الغش ليس مسموحا به في هذه اللعبة
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}أنت تقوم بإرسال العديد من الأوامر للخادم
 
@@ -2332,7 +2340,8 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK} اخت�
 STR_TREES_RANDOM_TYPE                                           :{BLACK}شجر عشوائي
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ضع شجر عشوائي
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}زراعة اشجار عشوائيا
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}زراعة اشجار عشوائيا في المنظر
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}زراعة اشجار عشوائيا في الأرض
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :زراعة شجرات منفصلة بالسحب فوق الارض
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}بناء المسطحات الأرضية
@@ -2580,6 +2589,8 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}عدد المدن:
 STR_MAPGEN_DATE                                                 :{BLACK}التاريخ:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد المصانع:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}قم بزيادة أقصى ارتفاع لأعلى قمة على الخريطة بواحد
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}تقليل تغطية الثلوج بنسبة عشرة بالمائة
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}مدى تغطيت السحراء:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
@@ -2898,6 +2909,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}اضغط
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}كتاب القصص
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :الصفحة {NUM}
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}اسم المحطة - اضغط على اسم المحطة لتوسيطها في الشاشة. اضغط + كنترول لفتح شاشة عرض جديدة بمنطقة المحطة.
@@ -3342,6 +3354,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :سفينة
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK} التكلفة: {CURRENCY_LONG} الوزن: {WEIGHT_SHORT}{} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY_LONG} / سنة{} السعة: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}التكلفة {CURRENCY_LONG} الوزن {WEIGHT_SHORT}{}السرعة {VELOCITY}  Power: {POWER}قوة السحب  {6:FORCE}{}التكلفة التشغيلية {4:CURRENCY_LONG}/سنة{}السعة: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK} التكلفة {CURRENCY_LONG} السرعة القصوى {VELOCITY}{} السعة {CARGO_LONG}{} كلفة التشغيل {CURRENCY_LONG} / سنة
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK} التكلفة:  {CURRENCY_LONG} السرعة القصوى: {VELOCITY}{} نوع الطائرة: {STRING} المدى: {COMMA} مربعات{}السعة: {CARGO_LONG}{}كلفة التشغيل: {CURRENCY_LONG}\السنة
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}تبديل {STRING} - {STRING}
@@ -3441,6 +3454,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}متو�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}يتوجة الى {DEPOT} , {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}الصيانة في {DEPOT} , {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}لا يمكن الوصول إلى {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4665,6 +4679,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_COMPANY_NUM                                          :شركة {COMMA}
 STR_FORMAT_GROUP_NAME                                           :مجموعة{COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 ###length 2

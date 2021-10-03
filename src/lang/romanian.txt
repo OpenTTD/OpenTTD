@@ -124,7 +124,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} d
 STR_QUANTITY_BATTERIES                                          :{COMMA} {P baterie baterii "de baterii"}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastic
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} {P bidon bidoane "de bidoane"} cu suc
-STR_QUANTITY_N_A                                                :N/A
+STR_QUANTITY_N_A                                                :indisponibilă
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -317,13 +317,17 @@ STR_SORT_BY_POPULATION                                          :Populaţia
 STR_SORT_BY_RATING                                              :Cotaţie
 STR_SORT_BY_NUM_VEHICLES                                        :Număr de vehicule
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Profit total în anul trecut
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Profit total în acest an
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Profit mediu în anul trecut
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Profit mediu în acest an
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Niciunul
 STR_GROUP_BY_SHARED_ORDERS                                      :Comenzi comune
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Comenzi
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Deschide lista comenzilor
 
 # Tooltips for the main toolbar
 ###length 31
@@ -685,6 +689,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Comutato
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afișează fereastra pentru selecția melodiilor
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Program muzical - '{STRING}'
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lista melodiilor
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
@@ -753,6 +758,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Teren pietros
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Pajişte
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Teren viran
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Pădure tropicală
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Teren agricol
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Copaci
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Pietre
@@ -788,6 +794,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SALVARE AUTOMATĂ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVARE JOC  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia mesajelor
@@ -861,11 +868,11 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 ###next-name-looks-similar
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} are prea puţine ordine în program
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} are prea puține comenzi în program
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} nu are nici un ordin
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} are ordine duplicate
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} are o staţie invalidă în ordine
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} are în ordinele sale un aeroport a cărui pistă este prea scurtă
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} are comenzi duplicat
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} are o stație nevalidă în comenzi
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} are în comenzile sale un aeroport a cărui pistă este prea scurtă
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} este vechi
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} este foarte vechi
@@ -882,6 +889,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Un nou tip de {STRING} este acum disponibil!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Deschide fereastra grupului fixată pe grupul vehiculului
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} nu mai acceptă {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} nu mai acceptă {STRING} sau {STRING}
@@ -952,6 +960,7 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruble rusești 
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexican (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Noul Dolar Taiwanez (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinezesc (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indoneziană (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian (MYR)
@@ -999,6 +1008,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :La fiecare 12 l
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Limba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Alege limba în care doreşti afişată interfaţa
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% finalizat)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ecran întreg
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Bifează această căsuţă pentru a juca pe tot ecranul
@@ -1009,6 +1019,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecifi
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accelerare hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bifați căsuța ca OpenTTD să încerce utilizarea accelerației hardware. Modificarea setării va avea efect după repornirea jocului
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Setarea va avea efect doar după repornirea jocului
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
@@ -1019,7 +1030,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Alege m�
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-detecție)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normală
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Mărime dublă
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împătrită
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime cvadruplă
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Dimensiune font
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Alege dimensiunea fontului pentru interfață
@@ -1027,6 +1038,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Alege di
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detecție)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Mărime dublă
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Mărime cvadruplă
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
@@ -1135,6 +1147,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Deluros
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntos
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
+STR_TERRAIN_TYPE_CUSTOM                                         :Înălțime personalizată
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Înălțime personalizată ({NUM})
 
 ###length 3
@@ -1149,15 +1162,17 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Setări
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtru:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Extinde toate
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsează toate
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetează toate valorile
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tip setare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Setare client (nu se stochează în salvări; se aplică pentru toate jocurile)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Setări joc (stocate în fişierele de salvare; afectează doar jocurile noi)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setări joc (stocate în fişierul de salvare; afectează doar jocul curent)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setări joc (stocate în fișierul de salvare; afectează doar jocul curent)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setări companie (stocate în fişierele de salvare; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setări companie (stocate în fişierul de salvare; afectează doar compania curentă)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atenție!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Această acțiune va reface toate setările jocului la valorile implicite.{}Sigur vrei să continui?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tip:
@@ -1180,6 +1195,7 @@ STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nespec
 ###length 3
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Tipul {BLACK}în {WHITE}Toate tipurile de setări
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Arată toate rezultatele de căutare setând{}{SILVER}Categoria {BLACK}în {WHITE}{STRING} {BLACK}și {SILVER}Tipul {BLACK}ca {WHITE}Toate tipurile de setări
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Inactiv
@@ -1219,9 +1235,12 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlează c�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator al subvențiilor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Alege cât de mult se plătește pentru conexiuni subvenționate
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durată subvenție: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stabilește numărul de ani pentru care se acordă o subvenție
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P an ani "de ani"}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Fără subvenții
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costuri de construcție: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul de construcție și costurile de achiziție
@@ -1239,6 +1258,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea cons
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in zonă
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Înălțimea limită a hărții: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Setează înălțimea maximă a terenului de pe hartă. Cu „(auto)” se va alege automat o valoare bună după generarea terenului
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
@@ -1304,7 +1324,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Zonă plată î
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Suprafaţa zonei plate din jurul industriilor. Aceasta asigură că există spaţiu liber în jurul industriilor pentru construcţia de şine, etc
 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permite mai multe industrii similare în acelaşi oras: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :De obicei, un oraş nu doreşte mai multe industrii de acelaşi tip. Cu această setare, se permin mai multe industrii de acelaşi tip în acelaşi oraş
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :De obicei, un oraș nu dorește mai multe industrii de același tip. Cu această setare, se permit mai multe industrii de același tip în același oraș
 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Arată semnalele: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selectează pe care parte a şinei să fie plasate semnalele
@@ -1316,18 +1336,18 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Pe partea dreap
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afişează finanţele la sfârşitul fiecărui an: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Dacă este activat, fereastra de finanţe apare automat la sfârşitul fiecărui an pentru a permite inspectarea facilă a stării financiale a companiei
 
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ordinele noi sunt implicit 'fără oprire': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :În mod obişnuit, un vehicul va opri în fiecare staţie prin care trece. Prin activarea acestei setări, va trece prin toate staţiile în drumul către destinaţia finală, fără a oprii. Notă: această setare are efect doar asupra valorii implicite pentru comenzile noi. Comenzile individuale pot fi configurate explicit cu oricare din variante
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Comenzile noi sunt implicit „fără oprire”: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :În mod normal, un vehicul va opri în fiecare stație prin care trece. Prin activarea acestei setări, va trece fără oprire prin toate stațiile în drumul către destinația finală. Notă: această setare are efect doar asupra valorii implicite pentru comenzile noi. Comenzile individuale pot fi configurate explicit cu oricare din variante
 
-STR_CONFIG_SETTING_STOP_LOCATION                                :Ordinele noi pentru trenuri opresc implicit la {STRING} platformei
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Locul unde un tren va oprii pe platformă. La 'capătul apropiat' inseamnă că trenul va oprii aproape de locul de intrare, 'mijloc' inseamnă mijlocul platformei, iar 'capătul îndepărtat' înseamnă departe de locul de intrare. Notă: această setare are efect doar pentru comenzile noi. Comenzile individuale pot fi configurate explicit cu oricare din variante
+STR_CONFIG_SETTING_STOP_LOCATION                                :La comenzile noi ale trenurilor, oprirea implicită la platformă se face la {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Locul în care oprește trenul pe platformă. La „capătul apropiat” înseamnă că trenul va opri aproape de locul de intrare, „mijloc” înseamnă mijlocul platformei, iar „capătul îndepărtat” înseamnă departe de punctul de intrare. Notă: această setare are efect doar pentru comenzile noi. Comenzile individuale pot fi configurate explicit cu oricare din variante
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :capătul apropiat al
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mijlocul
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :capătul îndepartat al
 
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Mută imaginea când mouse-ul este la marginea ecranului: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Cand este activată, ecranele se vor deplasa cînd mouse-ul este aproape de margine
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Derulează imaginea când mausul este la marginea ecranului: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Când este activată, vizoarele vor începe derularea când mausul este aproape de marginea ferestrei
 ###length 4
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :dezactivat
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :ecranul principal, doar în mod ecran-complet
@@ -1372,7 +1392,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbar
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mentenanță infrastructură: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cand este activă, infrastructura necesita cheltuieli cu intreținerea. Costurile cresc proporțional cu rețeaua de transport, afectând companiile mari mai mult decât companiile mici
 
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Alegeți culoarea de început pentru companie
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Culoarea de început a companiei: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Alege culoarea de început pentru companie
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroporturile nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activarea acestei opțiuni determina ca fiecare tip de aeroport sa fie disponibil permanent, după ce a fost introdus.
@@ -1380,8 +1401,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activarea acest
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avertisment dacă vehiculul s-a pierdut: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Afișează mesaje despre vehiculele care nu pot găsi o cale către destinația curentă
 
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Verificarea ordinelor vehiculelor: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Dacaă este activată, ordinele vehiculelor sunt verificate periodic, iar unele probleme evidente sunt raportate printr-o notificare
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Verifică comenzile vehiculelor: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Dacă este activată, comenzile vehiculelor sunt verificate periodic, iar unele probleme evidente sunt raportate printr-o notificare
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
@@ -1422,6 +1443,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosimea liniil
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosimea liniilor din grafice. O linie subțire este mai informativă, o linie mai groasă este mai ușor de văzut și are culorile mai usor de distins
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Afișează numele NewGRF în fereastra de construcție a vehiculului: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adaugă o linie în fereastra de construcție a vehiculului, afișând din care NewGRF vine vehiculul selectat.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Peisaj: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Peisajele definesc scenariile de bază a jocului cu cerințe diferite pentru încărcături și dezvoltare a orașelor. NewGRF și scripturile de joc permit un control mai fin
@@ -1501,6 +1523,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
 
+STR_CONFIG_SETTING_SCROLLMODE                                   :Comportament derulare vizor: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamentul derulării hărții
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mută fereastra de vizualizare ținând apăsat click dreapta, poziția cursorului rămânând fixă
@@ -1508,7 +1531,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mută harta ți
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Mută harta cu clic dreapta
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mută harta cu clic stânga
 
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare uşoară ecran: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare ușoară vizor: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează modul de deplasare a imaginii din ecranul principal când se face click pe harta mică sau când se execută o comandă de deplasare către un obiect anume de pe hartă. Dacă este activată, imaginea se deplasează în mod fluid, altfel imaginea sare direct la zona dorită
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
@@ -1542,7 +1565,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Click dublu
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un singur click (când este în focus)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un singur click (instant)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Folosește serviciul releu: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Dacă nu se poate crea conexiunea la server, poți folosi un  serviciu de redirecționare pentru crearea conexiunii. „Niciodată” interzice asta, „întreabă” va întreba mai întâi, iar „permite” va accepta fără confirmare
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Niciodată
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Întreabă
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permite
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulare click-dreapta: {STRING}
@@ -1583,12 +1610,12 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Foloseşte indi
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Alege dacă indicatori de încărcare sunt afișați deasupra unor vehicule care sunt în proces de încărcare sau descărcare
 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Arată orarul pe programări în unități de timp interne în loc de zile: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Arată timpii de călatorie în tabela cu timpi a jocului folosind unități de timp interne în loc de zile
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Arată timpii de călătorie în tabela cu timpi a jocului folosind unități de timp interne în loc de zile
 
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afişează plecările şi sosirile în orare: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire în orar
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afișează plecările și sosirile din orare: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire din orar
 
-STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a ordinelor pentru vehicule: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a comenzilor pentru vehicule: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselectează cursorul "mergi la" când se deschide fereastra de comenzi
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipul implicit de şină (după joc nou/încarcare joc): {STRING}
@@ -1611,6 +1638,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Elimină automa
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimină automat semnalele când construiești căi ferate dacă ele îți vin în cale. Nu uita că asta ar putea conduce la accidente feroviare.
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limita de viteză pentru trecerea timpului: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limitează progresul jocului când este activată trecerea rapidă a timpului. 0 = fără limită (atât de rapid pe cât permite calculatorul tău). Valorile sub 100% încetinesc jocul. Plafonul vitezei depinde de specificațiile calculatorului tău și pot varia în funcție de joc.
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% din viteza normală a jocului
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Fără limită (atât de rapid pe cât permite calculatorul tău)
@@ -1756,11 +1784,14 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ştirile color 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anul începând cu care anunțurile din ziar sunt tipărite color. Înainte de acest an, anunturile sunt monocrome (alb/negru)
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anul de început al jocului: {STRING}
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Anul final pentru scor: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :An în care jocul oprește contorizarea scorului. La finalul acestui an, scorul companiei este salvat și tabela celor mai bune scoruri e afișată, însă jucătorii pot continua să se joace.{}Dacă anul e înaintea celui de pornire, tabela celor mai bune scoruri nu va fi afișată.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Niciodată
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipul economiei: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Economia lină face mai des modificări de producție, în pași mai mici. Economia înghețată previne modificările de producție și închiderile industriilor. Setarea ar putea să nu aibă efect dacă tipurile de industrii sunt furnizate de un NewGRF.
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Lin
@@ -1779,6 +1810,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Când se trage 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Configurează distanța la care se vor construi semnale pe șină până la următorul obstacol (semnal, intersecție), dacă se trage cu mausul
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P 0 pătrățel pătrățele "de pătrățele"}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Alege modul plasării de semnale la Ctrl+tragerea semnalelor. Dacă este dezactivat, semnalele sunt plasate în jurul tunelelor sau podurilor, pentru evitarea segmentelor lungi fără semnale. Dacă este activat, semnalele sunt plasate la fiecare n dale, ușurând alinierea semnalelor pe linii paralele
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
@@ -1787,9 +1819,13 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ciclu prin tipu
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selectează între care tipuri de semnale să se cicleze când se apasă Ctrl+Click pe un semnal folosind unealta de construcţie
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Doar avansat
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Toate
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Toate vizibile
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Arată tipurile de semnal: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Alege ce tipuri de semnal sunt afișate în bara semnalelor
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Doar semnale de cale
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Toate semnalele
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Modelul drumurilor pentru oraşele noi: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Poziţionarea sistemului rutier în oraşe
@@ -1802,7 +1838,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Oraşele pot construi drumuri: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite ca orașele să construiască șosele pentru a se dezvolta. Dezactivează pentru a nu permite orașelor să construiască independent șosele
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Oraşele au voie să construiască treceri la nivel cu calea ferată: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Orașele au voie să construiască treceri la nivel cu calea ferată: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Dacă este activată, orașele vor putea să construiască treceri la nivel cu calea ferată
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permite controlarea nivelului de zgomot al aeroportului de către oras: {STRING}
@@ -1827,12 +1863,14 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlează ap
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Cresc dar nu se extind {RED}(strică fabrica de cherestea)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Cresc dar se extind doar în păduri tropicale
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Cresc și se extind peste tot
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Nu cresc, nu se extind {RED}(strică fabrica de cherestea)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Poziţia barei principale de instrumente: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Poziţia orizontală a barei principale în partea de sus a ecranului
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei de stare: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Poziţia orizontală a barei principale în partea de jos a ecranului
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Raza "magnetică" a ferestrelor: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distanța dintre ferestre înainte ca fereastra mutată să fie alipită automat de ferestrele învecinate
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P 0 pixel pixeli "de pixeli"}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Dezactivat
@@ -1856,6 +1894,7 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Rezoluția maxi
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Viteza de dezvoltare a oraşului: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Viteza creşterii oraşelor
@@ -1875,7 +1914,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator i
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING}{NBSP}{P 0:2 zi zile "de zile"}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai timp CPU va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai mult timp va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING}{NBSP}{P 0:2 zi zile "de zile"} pentru recalcularea graficului de distribuţie
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
@@ -1891,10 +1930,12 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetric
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Acurateţea distribuţiei: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Cu cât setezi o valoare mai mare, cu atât mai mult timp va lua calcularea graficului de conexiuni. Dacă durează prea mult, vei sesiza întârzieri. Iar dacă setezi o valoare mică, distribuția va fi imprecisă și ai putea sesiza că anumite mărfuri nu sunt trimise unde te aștepți să ajungă.
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efectul distanţei asupra cererii: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Dacă setezi această valoare peste 0, distanța dintre stația origine A al mărfii și o posibilă stație B va afecta cantitatea de marfă trimisă din punctul A în B. Cu cât e mai departe B de A cu atât va fi mai mică cantitatea de marfă transportată. Cu cât mărești această valoare, cu atât mai puțină marfă se livrează spre destinațiile îndepărtate si cu atât mai multă la cele mai apropiate.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantitatea de cargo la întoarcere pentru modul simetric: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :O valoare sub 100% face distribuția simetrică să se comporte mai mult ca una asimetrică. Mai puțină marfă va fi trimisă forțat înapoi dacă o anumită cantitate este trimisă spre o stație. Dacă o setezi la 0%, distribuția simetrică se va comporta la fel ca cea asimetrică.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturaţia căilor de capacitate mică înainte de a utiliza căi de capacitate mare: {STRING}
 
@@ -1964,6 +2005,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rețea
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritm de rutare pentru trenuri: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritm de rutare pentru trenuri
@@ -2000,6 +2042,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Fără m
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nu s-au putut rezerva {BYTES} pentru cache al sprite-urilor. Mărimea cache-ului a fost redusă la {BYTES}. Performanța OpenTTD va fi redusă. Pentru a micșora cerințele jocului cu privire la memorie, poți încerca să dezactivezi modul grafic 32bpp și/sau reducerea numărului de nivele zoom
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eroare în setările video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... GPU incompatibil. Accelerarea hardware este dezactivată
 
 # Intro window
@@ -2038,7 +2081,7 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Setări 
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afişează setările pentru Inteligența Artificială şi pentru Scripturi Joc
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieși din 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Setul grafic actual are lipsă {NUM} {P sprite spriteuri "de spriteuri"}. Verificați actualizările pentru setul de bază.
 STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipse{P 0 "şte" "sc" "sc"} {NUM} {P text texte "de texte"}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
@@ -2060,7 +2103,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Bifa vă
 STR_CHEATS_NOTE                                                 :{BLACK}Notă: utilizarea acestor setări va fi memorată în salvarea jocului
 STR_CHEAT_MONEY                                                 :{LTBLUE}Măreşte fondurile cu {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joacă drept compania: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii şi lucruri amovibile): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii și lucruri amovibile): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioanele cu reacţie nu se vor prăbuşi (frecvent) pe aeroporturile mici: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Schimbă înălțimea maximă a hărții: {ORANGE}{NUM}
@@ -2172,7 +2215,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Public
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Doar cu invitație
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -2205,9 +2250,12 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versiun
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serverului: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de început: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data curentă: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script Joc: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protejat cu parolă!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER PLIN
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVERUL ȚI-A INTERZIS ACCESUL
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER PREA VECHI
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIUNE DIFERITĂ
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEPOTRIVIRE NEWGRF
 
@@ -2225,6 +2273,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Porneşt
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Porneşte un server propriu
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduceţi numele dvs.
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Introdu adresa serverului sau codul invitației
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Începe un joc nou
@@ -2269,28 +2318,63 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jucători conectați
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Intră ca spectator
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jucători conectați
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nume
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Numele serverului pe care joci
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică numele serverului tău
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Numele serverului
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Vizibilitate
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Cod de invitație
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Cod de invitație cu care pot intra pe server alți jucători
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipul conexiunii
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Dacă și cum poate fi găsit serverul tău de alții
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jucător
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nume
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Numele tău în joc
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică-ți numele
-STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Numele tău de jucător
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Numele tău în joc
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acțiuni administrative de efectuat pentru acest client
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acțiuni administrative de efectuat pentru această companie
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Intră în această companie
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Trimite un mesaj acestui jucător
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spectatori
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Companie nouă)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Creează o nouă companie și intră în ea
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Aici ești tu
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aceasta este gazda jocului
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} {P client clienți "de clienți"} / {NUM}{P companie companii "de companii"}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Jucătorii de la distanță nu se pot conecta
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Public
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}În spatele NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Prin releu
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Dă afară
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Blochează
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Șterge
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu parolă
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acțiune administrativă
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sigur vrei să dai afară jucătorul '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sigur vrei să blochezi jucătorul '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sigur dorești ștergerea companiei '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sigur vrei să resetezi parola companiei '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Folosești releul?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Conexiunea la server nu s-a putut realiza '{STRING}'.{}Doriți să redirecționați această sesiune prin '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nu
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Da, de data asta
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Da, nu mă mai întreba
 
 STR_NETWORK_SPECTATORS                                          :Spectatori
 
@@ -2299,7 +2383,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola i
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Schimbarea parolei pentru companie
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Parola pentru companie
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Parola implicită pentru companie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Foloseşte implicit parola acestei comanii pentru cele nou create
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Folosește implicit parola acestei companii pentru cele nou create
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Intră
@@ -2319,28 +2403,33 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Echipă] Cătr
 STR_NETWORK_CHAT_CLIENT                                         :[Mesaj privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Mesaj privat] Către {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Toţi] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu textul pentru chat în retea
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nu am detectat o placă de reţea sau jocul a fost compilat fără ENABLE_NETWORK
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serverul nu a răspuns cererii
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Conexiunea la server nu s-a efectuat în timp util sau a fost refuzată
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nu m-am putut conecta din cauza unei nepotriviri NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizarea jocului în reţea a eşuat
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Conexiunea jocului în reţea a fost întreruptă
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nu am reuşit să încarc jocul salvat
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Serverul nu a putut fi pornit
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Eroare de protocol. Conexiunea a fost închisă
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Nu ți-ai setat numele în joc. Numele se setează din partea de sus a ferestrei Multiplayer
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nu ai setat numele serverului. Numele se setează din partea de sus a ferestrei Multiplayer
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versiunea acestui client este diferită de cea a serverului
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Parolă greşită
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serverul este plin
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Accesul tău este interzis pe acest server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ai fost dat afară din joc
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Motiv: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat-urile nu sunt permise pe acest server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Trimiteai prea multe comenzi către server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}A expirat timpul pentru introducerea unei parole
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Calculatorul dvs. este prea lent pentru a se sincroniza cu serverul
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A expirat timpul pentru descărcarea hărţii
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A expirat timpul pentru conectarea la server
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Numele tău de jucător nu este valid
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posibilă pierdere a conexiunii
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}În ultimele {NUM} secunde nu s-au mai primit date de la server
@@ -2366,6 +2455,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :a expirat timpu
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :a expirat timpul alocat
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :a expirat timpul alocat descărcării hărţii
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :a expirat timpul alocat procesării hărţii
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :numele clientului nu este valid
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2382,6 +2472,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :număr de jucă
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectare clienţi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script-ul jocului
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :se așteaptă pentru actualizarea graficului conexiunilor
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :iese
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat în joc
@@ -2396,6 +2487,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm aşteptaţi...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a fost dat afară. Motiv: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Înregistrarea serverului a eșuat
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Alt server cu același cod de invitație este deja înregistrat. Comut pe tipul de joc „local”.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Serverul tău nu permite conexiuni la distanță
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Alți jucători nu se vor putea conecta la serverul tău
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descărcare resurse online
@@ -2462,7 +2557,7 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descărc
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} din {BYTES} descărcaţi ({NUM}%)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Conectare la server eşuată...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Conectarea la serverul de conținut a eșuat...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descărcare eșuată
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fişierul nu poate fi scris
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Fişierul descărcat nu a putut fi decompresat
@@ -2474,6 +2569,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nu, ieș
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Descărcarea a eșuat
 STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Descărcarea graficii a eșuat.{}Vă rugăm descărcați manual grafica.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Ieșire din OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Optiuni transparenţă
@@ -2507,7 +2603,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Activ
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nu arăta aria de acoperire a locaţiei propuse
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Arată aria de acoperire a locaţiei propuse
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acceptă: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Resurse: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Furnizează: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Uneşte staţia
@@ -2517,6 +2613,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneşte 
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construieşte un punct de tranzit separat
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dezactivat, deoarece momentan nu sunt vehicule disponibile pentru acest tip de infrastructură
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcţie cale ferată
@@ -2525,11 +2622,11 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcţie mo
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcţie pernă magnetică
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construieşte cale ferată. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afişare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construieşte cale ferată în modul automat. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afişare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construieşte un depou feroviar (pentru achiziţie şi service de trenuri). Shift comută între construire/afişare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construiește cale ferată în modul automat. Ctrl comută construirea/eliminarea căii ferate. Shift comută între construire/afișare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construiește un depou feroviar (pentru achiziție și service de trenuri). Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în punct de tranzit. Ctrl permite alipirea punctelor de tranzit distante. Shift comută între convertire/afişare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construieşte gară. Ctrl permite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semnale feroviare. Ctrl comută între semafoare/semnale electrice{}Trage cu mouse-ul pentru a construi semnale automat pe o porţiune de şină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncţiune{}Ctrl+Click comută deschiderea ferestrei de selectie a tipului semnalului. Shift comută între construire/afişare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construiește gară. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semnale feroviare. Ctrl comută între semafoare/semnale electrice{}Trage cu mausul pentru a construi automat semnale pe o porțiune de șină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncțiune{}Ctrl+Clic comută deschiderea ferestrei de selecție a tipului de semnal. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construieşte pod de cale ferată. Shift comută între construire/afişare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar. Shift comută între construire/afişare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi din staţii
@@ -2569,17 +2666,17 @@ STR_STATION_CLASS_WAYP                                          :Puncte de tranz
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere semnal
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Semnal standard (semafor){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieşire (semafor){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrare şi cele combinate
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comportă atât ca semnal de intrare, cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieșire (semafor){}Se comportă în același fel ca semnalul normal, dar este necesar pentru declanșarea culorii corecte la presemnalizatoarele de intrare și cele combinate
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comportă atât ca semnal de intrare, cât și de ieșire. Acest lucru permite construcția „arborilor” mari de presemnalizare
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Semnal de cale (semafor){}Un semnal de cale va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire. Semnalele standard de cale permit trecerea din ambele sensuri
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Semnal de cale cu sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur de oprire. Semnalele de cale cu sens unic permit trecerea intr-un singur sens
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Semnal standard (electric){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Semnal de intrare (electric){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Semnal de ieşire (electric){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrare şi cele combinate
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Semnal combinat (electric){}Semnalul combinat se comportă atât ca semnal de intrare cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Semnal standard (electric){}Acesta este cel mai simplu tip de semnal, permițând numai unui tren să fie în același bloc, la un moment dat
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Semnal de intrare (electric){}Verde, atât timp cât există unul sau mai multe semnale verzi de ieșire în secțiunea următoare a căii ferate. Altfel indică roșu
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Semnal de ieșire (electric){}Se comportă în același fel ca semnalul normal, dar este necesar pentru declanșarea culorii corecte la presemnalizatoarele de intrare și cele combinate
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Semnal combinat (electric){}Semnalul combinat se comportă atât ca semnal de intrare, cât și de ieșire. Acest lucru permite construcția „arborilor” mari de presemnalizare
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Semnal de cale (electric){}Un semnal de cale va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire. Semnalele standard de cale permit trecerea din ambele sensuri
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Semnal de cale cu sens unic (electric){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur de oprire. Semnalele de cale cu sens unic permit trecerea intr-un singur sens
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversie semnal{}Când este selectat, click-ul pe un semafor existent îl va converti în tipul şi varianta selectată de semnalizare. Ctrl+Click va comuta varianta existentă. Shift+Click afişează costul estimat al conversiei
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversie semnal{}Când este selectat, clicul pe un semafor existent îl va converti în tipul și varianta selectată de semnalizare. Ctrl+clic va comuta varianta existentă. Shift+clic afișează costul estimat al conversiei
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densitatea semnalelor plasate prin tragerea cu mouse-ul
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Redu distanța semnalelor plasate prin tragerea cu mouse-ul
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte densitatea semnalelor plasate prin tragerea cu mouse-ul
@@ -2604,15 +2701,15 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silico
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcţii rutiere
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcţie tramvai
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construieşte secţiune de şosea. Ctrl comută construirea/eliminarea şoselei. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construieşte şină de tramvai. Ctrl comută construirea/eliminarea şinei. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construieşte secţiune de şosea folosind modul Auto-şosea. Ctrl comută construirea/eliminarea şoselei. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construieşte secţiune de şină de tramvai folosind modul Auto-tramvai. Ctrl comută construirea/eliminarea şinei. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construieşte o autobază (pentru achiziţie şi service vehicule). Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construieşte depou tramvaie (pentru achiziţie şi service vehicule). Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construieşte staţie de autobuz. Ctrl permite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construieşte staţie de tramvai pentru călători. Ctrl permite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construieşte platformă pentru camioane. Ctrl permite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construieşte staţie pentru tramvai de marfă. Ctrl permite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construiește șină de tramvai. Ctrl comută construirea/eliminarea șinei. Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construiește secțiune de șosea folosind modul Auto-șosea. Ctrl comută construirea/eliminarea șoselei. Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construiește secțiune de șină de tramvai folosind modul Auto-tramvai. Ctrl comută construirea/eliminarea șinei. Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construiește o autobază (pentru achiziție și service vehicule). Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construiește depou tramvaie (pentru achiziție și service vehicule). Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construiește staţie de autobuz. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construiește stație de tramvai pentru călători. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construiește platformă pentru camioane. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construiește stație pentru tramvai de marfă. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activare/Dezactivare sensuri unice
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construieşte pod rutier. Shift comută între construire/afişare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construieşte pod pentru tramvaie. Shift comută între construire/afişare cost estimat
@@ -2623,6 +2720,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Comută 
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Convertește/Modernizează tipul drumului. Shift comută construcția/afișarea costului estimat
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convertește/Modernizează tipul tramvaiului. Shift comută construcția/afișarea costului estimat
 
+STR_ROAD_NAME_ROAD                                              :Drum
 STR_ROAD_NAME_TRAM                                              :Șină de tramvai
 
 # Road depot construction window
@@ -2646,7 +2744,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construc
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Rute acvatice
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construieşte canale. Shift comută între construire/afişare cost estimat
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construieşte ecluză. Shift comută între construire/afişare cost estimat
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru achiziţionare şi service nave). Shift comută între construire/afişare cost estimat
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construiește șantier naval (pentru achiziționare și service nave). Shift comută între construire/afișare cost estimat
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construieşte port. Ctrl permite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Amplasează o baliză ce poate fi utilizată pentru direcţionare. Shift comută între amplasare/afişare cost estimat
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieşte apeduct. Shift comută între construire/afişare cost estimat
@@ -2662,7 +2760,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Port
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroporturi
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construieşte aeroport. Ctrl pemite alipirea staţiilor distante. Shift comută între construire/afişare cost estimat
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construiește aeroport. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Alege tipul de aeroport
@@ -2714,6 +2812,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planteaz
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantează copaci trăgându-i peste peisaj.
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Dumbravă
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantează păduri mici trăgându-le peste peisaj.
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Pădure
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantează păduri întinse prin tragerea peste peisaj.
 
@@ -2769,11 +2868,14 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Alege in
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Creează multe industrii aleatoare
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Umple harta cu industrii generate aleator
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Creează multe industrii aleatoare
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Sigure vrei să creezi multe industrii aleatoare?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectează
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieşte
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanţează
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Elimină toate industriile
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Elimină toate industriile prezente acum pe hartă
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Elimină toate industriile
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Sigur vrei să elimini toate industriile?
 
 # Industry cargoes window
@@ -2805,7 +2907,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Proprietar al şinei de tramvai: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietar al căii ferate: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nici una
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Niciuna
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data construcţiei: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa staţiei: {LTBLUE}{STRING}
@@ -2817,6 +2919,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Încărcături acceptate: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tip șină: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tip de drum: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tip de tramvai: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limită viteză pe calea ferată: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Viteza limită a drumului: {LTBLUE}{VELOCITY}
@@ -2926,22 +3029,28 @@ STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Viteza s
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr de evenimente de joc simulate per secundă.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Numărul de cadre video randate per secundă.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factorul actual de viteză a jocului: {DECIMAL}x
+STR_FRAMERATE_CURRENT                                           :{WHITE}Curent
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medie
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorie
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Date bazate pe măsurători {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cadre/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 
 ###length 15
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Manipularea încărcăturilor:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Decalaj grafic de conexiuni:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Randare grafică:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vizoare globale:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
+STR_FRAMERATE_SOUND                                             :{BLACK}Mixaj de sunet:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Total GS/AI:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script joc:
 STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
 
@@ -2951,8 +3060,10 @@ STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea în
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Decalaj grafic de conexiuni
 STR_FRAMETIME_CAPTION_DRAWING                                   :Randare grafică
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Randarea vizorului global
+STR_FRAMETIME_CAPTION_VIDEO                                     :Ieșire video
 STR_FRAMETIME_CAPTION_SOUND                                     :Mixaj de sunet
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Totalul de scripturi GS/AI
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script joc
 STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 
 
@@ -2982,6 +3093,7 @@ STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrare
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Suprascrie fișierul
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Sigur vrei să suprascrii fișierul existent?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (listă)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Director părinte)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduceţi un nume pentru salvare
 
@@ -2994,7 +3106,13 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de o
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cel mai înalt vârf:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Crește cu o unitate înălțimea maximă a celui mai înalt vârf al hărții
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Redu cu o unitate înălțimea maximă a celui mai înalt vârf al hărții
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Acoperire cu zăpadă:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Mărește acoperirea cu zăpadă cu zece procente
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Reduce acoperirea cu zăpadă cu zece procente
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Acoperire cu deșert:
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Mărește întinderea deșertului cu zece procente
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Reduce întinderea deșertului cu zece procente
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
@@ -3067,7 +3185,7 @@ STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Încarc�
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvează presetare
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvează lista curentă ca presetare
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Şterge presetarea
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Şterge presetarea selectată
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Șterge presetarea selectată
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adaugă
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adaugă fişierul NewGRF ales în configuraţie
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Redetectează fişierele
@@ -3112,6 +3230,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatib
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvează presetarea
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista presetărilor disponibile; alegeți una pentru salvare cu numele de mai jos
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Adaugă denumire presetare
+STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Numele selectat pentru salvarea presetării
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Anulează
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nu schimba setarea implicită
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Salvează
@@ -3162,6 +3281,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenţie: 
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O eroare fatală NewGRF a avut loc:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}O eroare NewGRF a avut loc:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nu va funcţiona cu versiunea TTDPatch raportată de OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} este pentru versiunea {STRING} a TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} este conceput pentru a fi folosit cu {STRING}
@@ -3206,6 +3326,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fişiere l
 STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizări şi/sau blocări
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}A modificat starea trenului pentru '{1:ENGINE}' când nu se afla în depou
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}A modificat lungimea vehiculului pentru '{1:ENGINE}' când nu se afla în depou
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}A modificat capacitatea vehiculului pentru '{1:ENGINE}' când nu a fost într-un depou sau în timpul conversiei
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparţinând '{COMPANY}' nu are o lungime validă. Probabil este o problemă cu fişierele NewGRF. Jocul s-ar putea desincroniza sau bloca
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte
@@ -3217,11 +3338,11 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Execuți
 STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargo invalid>
-STR_NEWGRF_INVALID_ENGINE                                       :<model vehicul invalid>
+STR_NEWGRF_INVALID_ENGINE                                       :<model vehicul nevalid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industrie invalid>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
-STR_INVALID_VEHICLE                                             :<vehicul invalid>
+STR_INVALID_VEHICLE                                             :<vehicul nevalid>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
@@ -3273,13 +3394,14 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Schimbă
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Extinde
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Măreşte dimensiunile oraşului
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Şterge
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Şterge acest oraş
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Șterge acest oraș
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Redenumire oraş
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoritatea locală din {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zonă
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Arată zona de acoperire a autorităților locale
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Evaluarea companiilor de transport:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acţiuni disponibile:
@@ -3311,6 +3433,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Mituie�
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Scopuri
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obiective globale
 STR_GOALS_SPECTATOR                                             :Obiective globale
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globale
 STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Afișează obiectivele globale
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Companie
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Afișează obiectivele companiei
@@ -3359,6 +3482,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Carte de poveste
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Cartea de poveste globală
+STR_STORY_BOOK_SPECTATOR                                        :Cartea de poveste globală
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Sari la o pagină specifică selectând-o din lista derulantă
@@ -3384,7 +3508,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervat pentru încărcare)
 
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ce acceptă
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afişează lista de încărcături acceptate
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptă: {WHITE}{CARGO_LIST}
 
@@ -3393,6 +3517,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluări
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afişează evaluările staţiei
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aprovizionare lunară și evaluare locală:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupează după
@@ -3444,8 +3569,8 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permi
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click deshide o fereastra cu locaţia punctului de tranzit
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimba numele haltei
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează fereastra principală pe locaţia balizei. Ctrl+Click deshide o fereastra cu locaţia balizei
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Schimbă numele haltei
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează vizorul principal pe locația balizei. Ctrl+clic deschide un nou vizor cu locația balizei
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Schimbă numele balizei
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editează numele haltei
@@ -3523,15 +3648,16 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Schimbă
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nume companie
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Schimbă numele companiei
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nume preşedinte
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Schimbă numele preşedintelui
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Schimbă numele președintelui
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Cumpără 25% din acţiunile companiei
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vinde 25% din acţiunile companiei
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Cumpără 25% din acţiunile acestei companii. Shift+Click arată costul estimat fără să cumpere acţiuni
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vinde 25% din acţiunile acestei companii. Shift+Click arată costul estimat fără să efectueze vânzarea
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Cumpără 25% din acțiunile acestei companii. Shift+clic arată costul estimat fără să cumpere acțiuni
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vinde 25% din acțiunile acestei companii. Shift+clic arată costul estimat fără să efectueze vânzarea
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Noul nume al companiei
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Noul nume al preşedintelui
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Introdu suma de bani pe care vrei să o dai
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Căutăm o companie de transport care să preia societatea noastră{}{}Doriţi să cumpăraţi {COMPANY} la preţul de {CURRENCY_LONG}?
 
@@ -3540,6 +3666,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Pătrățele de cale ferată:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semnale
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Pătrățele cu drumuri:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Secțiuni de tramvai:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Suprafață apă:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canale
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stații:
@@ -3552,6 +3679,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nimic-
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportat){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} și încă {NUM}...
@@ -3570,6 +3698,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul 
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunţat închiderea iminentă!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Necesită: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesită:
@@ -3632,12 +3761,12 @@ STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COM
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupuri - apasă pe un grup pentru lista completă a vehiculelor acestuia
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Apasă pentru a crea un grup
-STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Şterge grupul selectat
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Șterge grupul selectat
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Redenumeşte grupul selectat
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Schimbă uniforma grupului selectat
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Apasă aici pentru a proteja acest grup de înlocuirile automate globale
 
-STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Şterge Grup
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Șterge grupul
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Sigur dorești ștergerea grupului și a descendenților lui?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adaugă vehicule partajate
@@ -3653,7 +3782,7 @@ STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 # Build vehicle window
 ###length 4
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Noi vehicule feroviare
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Noi Vehicule Electrice pe Sine
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Noi vehicule electrice pe șine
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Noi vehicule monoşină
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Noi vehicule pe Pernă Magnetică
 
@@ -3662,12 +3791,13 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Tramvaie noi
 
 # Vehicle availability
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicule pe şine
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Noi vehicule pe șine
 STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Autovehicule noi
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nave noi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeronavă nouă
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Greutate: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost reparații: {GOLD}{CURRENCY_LONG}{BLACK}) Greutate: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Viteza pe ocean: {GOLD}{VELOCITY}
@@ -3678,16 +3808,20 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(suportă alte 
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An apariţie: {GOLD}{NUM}{BLACK} Durata de viaţă: {GOLD}{COMMA} ani
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienţă max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost reparații: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Viteză: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost de reparații: {GOLD}{CURRENCY_LONG}{BLACK}) Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modificabil pentru: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de mărfuri
 STR_PURCHASE_INFO_NONE                                          :Niciunul
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Doar motoare
 STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu excepţia {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rază acțiune: {GOLD}{COMMA} pătrățele
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tip de aeronavă: {GOLD}{STRING}
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selectie a componentelor trenului - clic pe vehicule pt. informatii
@@ -3704,6 +3838,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Cumpăr�
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Cumpără și adaptează vehiculul
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Cumpără și repară vehiculul
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Cumpără și convertește nava
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Cumpără și schimbă marfa transportată de aeronavă
 
 ###length VEHICLE_TYPES
@@ -3713,9 +3848,10 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Cumpăr�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Cumpără aeronava selectată. Shift+Click arată costul estimativ fără a efectua achiziţia
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Cumpără și repară trenul selectat. Shift+clic arată costul estimat fără achiziție
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Cumpără și repară autovehiculul selectat. Shift+clic arată costul estimat fără achiziție
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Cumpără și repară aeronava selectată. Shift+clic afișează costul estimat fără achiziție
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Cumpără și convertește trenul selectat. Shift+clic arată costul estimat fără achiziție
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Cumpără și convertește autovehiculul selectat. Shift+clic arată costul estimat fără achiziție
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Cumpără și convertește nava selectată. Shift+clic afișează costul estimat fără achiziție
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Cumpără și convertește aeronava selectată. Shift+clic afișează costul estimat fără achiziție
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nume nou
@@ -3724,8 +3860,8 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Nume nou
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Redenumire
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Redenumeste modelul vehiculului
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Redenumeşte modelul de autovehicul
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Redenumește modelul vehiculului feroviar
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Redenumește modelul de autovehicul
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Redenumeşte modelul de navă
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Redenumeşte modelul de aeronavă
 
@@ -3743,20 +3879,20 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Afișeaz
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Comută ascunderea/afișarea tipului de tren
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Comutator pentru afişarea tipului de autovehicul
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Comută ascunderea/afișarea tipului de autovehicul
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Comutator pentru afişarea tipului de navă
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Comutator pentru afişarea tipului de aeronavă
 
 ###length VEHICLE_TYPES
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Redenumeste modelul vehiculului feroviar
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Redenumeşte modelul de autovehicul
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Redenumește modelul vehiculului feroviar
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Redenumește modelul de autovehicul
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Redenumeşte modelul de navă
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Redenumeşte modelul de aeronavă
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Schimba numele depoului
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Schimbă numele depoului
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Redenumire depou
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -3777,7 +3913,7 @@ STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Trage na
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Trage aeronava aici pentru a o vinde
 
 ###length VEHICLE_TYPES
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vinde toate trenurile din the depou
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vinde toate trenurile din depou
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vinde toate autovehiculele din depou
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vinde toate vasele din depou
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vinde toate aeronavele din hangar
@@ -3807,33 +3943,33 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonare 
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonare aeronavă
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi fă click pe un tren din interiorul sau exteriorul depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi fă click pe un autovehicul din interiorul sau afara depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi fă click pe o navă din interiorul sau exteriorul depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi fă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi fă click pe un tren din interiorul sau exteriorul depoului. Ctrl+clic va sincroniza comenzile. Shift+clic arată costul estimativ fără a efectua achiziția
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi fă click pe un autovehicul din interiorul sau afara depoului. Ctrl+clic va sincroniza comenzile. Shift+clic arată costul estimativ fără a efectua achiziția
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi fă click pe o navă din interiorul sau exteriorul depoului. Ctrl+clic va sincroniza comenzile. Shift+clic arată costul estimativ fără a efectua achiziția
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi fă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+clic va sincroniza comenzile. Shift+clic arată costul estimativ fără a efectua achiziția
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează imaginea pe locaţia depoului. Ctrl+Click deshide o fereastra cu locaţia depoului
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia acestei autobaze. Ctrl+Click deshide o fereastra cu locaţia autobazei
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrează imaginea pe locaţia şantierului. Ctrl+Click deshide o fereastra cu locaţia şantierului
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrează imaginea pe locaţia hangarului. Ctrl+Click deshide o fereastra cu locaţia hangarului
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează vizorul principal pe locația depoului. Ctrl+clic deschide un vizor cu locația depoului
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează vizorul principal pe locația autobazei. Ctrl+clic deschide un vizor cu locația autobazei
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrează vizorul principal pe locația șantierului. Ctrl+clic deschide un vizor cu locația șantierului
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrează vizorul principal pe locația hangarului. Ctrl+clic deschide un vizor nou cu locația hangarului
 
 ###length VEHICLE_TYPES
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obtine o lista ordonata a tuturor trenurilor din depoul actual
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obtine o lista ordonata a tuturor autovehiculelor din depoul actual
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Obtine o lista ordonata a tuturor vaselor din depoul actual
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Obtine o lista ordonata a tuturor aeronavelor din orice hangar al acestui aeroport
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obține o listă a tuturor trenurilor care au comenzi în depoul actual
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obține o listă a tuturor autovehiculelor care au comenzi în depoul actual
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Obține o listă a tuturor vaselor care au comenzi în depoul actual
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Obține o listă a tuturor aeronavelor care au comenzi în  aeroportul actual
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Click pt oprirea tuturor trenurilor din depou
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Click pt oprirea tuturor autovehiculelor din depou
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Click pt oprirea tuturor vaselor din depou
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Click pentru oprirea tuturor trenurilor din depou
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Click pentru oprirea tuturor autovehiculelor din depou
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Click pentru oprirea tuturor vaselor din depou
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Click pt oprirea tuturor aeronavelor din hangar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Clic pentru pornirea tuturor trenurilor din depou
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Click pt pornirea tuturor autovehiculelor din depou
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Click pt pornirea tuturor vaselor din depou
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Clic pentru pornirea tuturor autovehiculelor din depou
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Clic pentru pornirea tuturor vaselor din depou
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Click pt pornirea tuturor aeronavelor din hangar
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Trage locomotiva aici pentru a vinde întregul tren
@@ -3854,11 +3990,13 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvai
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronavă
 STR_ENGINE_PREVIEW_SHIP                                         :navă
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY_LONG}/an{}Capacitate: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Cost rulaj: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}{}Mentenanță: {CURRENCY_LONG}/an{}Capacitate: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Mentenanță: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip avion: {STRING}{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip de aeronavă: {STRING}{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip aeronavă: {STRING}{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Viteza maximă: {VELOCITY}{}Tip avion: {STRING} Rază: {COMMA} pătrățele{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip aeronavă: {STRING} Autonomie: {COMMA} dale{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieşte {STRING} - {STRING}
@@ -3894,13 +4032,13 @@ STR_REPLACE_ALL_RAILTYPE                                        :Toate vehiculel
 STR_REPLACE_ALL_ROADTYPE                                        :Toate vehiculele rutiere
 
 ###length 2
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care doreşti să înlocuieşti locomotivele
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care dorești să înlocuiești locomotivele
 STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Alege tipul de drum pentru care vrei să înlocuiești motoarele
 ###next-name-looks-similar
 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arată locomotiva ceva înlocui locomotiva selectată în stânga
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicule feroviare
-STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule Electrificate pe Sine
+STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule electrificate pe șine
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicule Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicule Pernă Magnetică
 
@@ -3909,13 +4047,16 @@ STR_REPLACE_TRAM_VEHICLES                                       :Tramvaie
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din faţă) dacă înlocuirea locomotivei ar face trenul mai lung
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+clic pentru aplicare și la sub-grupuri
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrează vizorul principal pe locația trenului. Dublu-clic va urmări trenul în vizorul principal. Ctrl+clic deschide un nou vizor cu locație trenului
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrează vizorul principal pe locația vehiculului. Dublu-clic va urmări vehiculul în vizorul principal. Ctrl+clic deschide un nou vizor cu locația vehiculului
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrează imaginea pe locația navei. Dublu clic va urmări nava în vizorul principal. Ctrl+Clic deschide un nou vizor pe locația navei
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrează vizorul principal pe locația navei. Dublu-clic va urmări nava în vizorul principal. Ctrl+clic deschide un nou vizor pe locația navei
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrează vizorul principal pe locația aeronavei. Dublu-clic va urmări aeronava în vizorul principal. Ctrl+clic deschide un nou vizor cu locația aeronavei
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trimite trenul într-un depou
@@ -3926,12 +4067,13 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Trimite 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+Click va sincroniza comenzile. Shift+Click va afișa costul estimat fără a achiziționa trenul
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+Click va sincroniza comenzile. Shift+Click va afișa costul estimat fără a achiziționa vehiculul
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+Click va sincroniza comenzile. Shift+Click va afișa costul estimat fără a achiziționa nava
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+Click va sincroniza comenzile. Shift+Click va afișa costul estimat fără a cumpăra aeronava
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+clic va sincroniza comenzile. Shift+clic va afișa costul estimat fără a achiziționa nava
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+clic va sincroniza comenzile. Shift+clic va afișa costul estimat fără a cumpăra aeronava
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forţează trenul să ignore semnalizarea de oprire
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Schimbă sensul de circulaţie al trenului
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forţează vehiculul să întoarcă
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrează vizorul principal pe destinația comenzii. Ctrl+clic deschide un nou vizor pe locația de destinație a comenzii
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Schimba tipul încãrcãturii cãratã de acest tren
@@ -3954,6 +4096,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afişeaz
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acțiunea trenului curent - clic pentru oprirea/pornirea trenului
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Acțiunea vehiculului curent - clic pentru oprirea/pornirea vehiculului
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Acțiunea navei curente - clic pentru oprirea/pornirea navei
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acțiunea avionului curent - clic pentru oprirea/pornirea avionului
 
 # Messages in the start stop button in the vehicle view
@@ -3973,6 +4116,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Merge s
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Merge către {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service la {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nu pot ajunge la {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nu pot ajunge la {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nu pot ajunge la {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Nu pot ajunge la {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -3998,6 +4145,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Tip de aeronavă: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Tip de aeronavă: {LTBLUE}{STRING} {BLACK}Autonomie: {LTBLUE}{COMMA} dale
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
 
@@ -4058,7 +4206,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacita
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selectează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Alege vehiculele pentru conversie. Tragerea mausului permite selectarea mai multor vehicule. Clicul pe un spațiu gol va selecta întregul vehicul. Ctrl+clic va selecta un vehicul și lanțul atașat
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren
@@ -4096,26 +4244,26 @@ STR_ORDER_GO_TO                                                 :Du-te la
 STR_ORDER_GO_NON_STOP_TO                                        :Du-te fără oprire la
 STR_ORDER_GO_VIA                                                :Du-te prin
 STR_ORDER_GO_NON_STOP_VIA                                       :Du-te fără oprire prin
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Schimbă comportamentul de oprire pentru ordinul selectat
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Schimbă comportamentul de oprire al comenzii selectate
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Încarcă orice produs
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Încarcă dacă este disponibil
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Încarcă toate produsele
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Încarcă orice produs
 STR_ORDER_DROP_NO_LOADING                                       :Nu încărca
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Schimbă comportamentul de încărcare pentru ordinul selectat
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Schimbă comportamentul de încărcare al comenzii selectate
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarcă tot
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarcă dacă este acceptat
 STR_ORDER_DROP_UNLOAD                                           :Descarcă tot
 STR_ORDER_DROP_TRANSFER                                         :Transferă
 STR_ORDER_DROP_NO_UNLOADING                                     :Nu descărca
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Schimbă comportamentul de descărcare pentru ordinul selectat
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Schimbă comportamentul de descărcare al comenzii selectate
 
 STR_ORDER_REFIT                                                 :{BLACK}Rearanjeaza
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege tipul de marfă pentru rearanjarea în comandă. Ctrl+clic pentru a anula rearanjarea
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege marfă țintă pentru conversie în această comandă. Ctrl+clic pentru a anula instrucțiunea de conversie
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-modificare
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectează tipul de marfă pentru modificare cu acest ordin. Ctrl+click pentru a elimina o instrucțiune de modificare încărcătură. Modificarea automată va fi efectuată doar dacă vehiculul permite asta.
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectează marfa țintă pentru conversie în această comandă. Ctrl+clic pentru a elimina instrucțiunea de conversie. Conversia din stații va fi efectuată doar dacă vehiculul permite asta.
 STR_ORDER_DROP_REFIT_AUTO                                       :Tip încărcătură nemodificabil
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Încărcătură disponibilă
 
@@ -4156,17 +4304,17 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Treci la
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sari peste comanda actuală și preia-o pe următoarea. Ctrl+clic sare la comanda selectată
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Şterge
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Şterge comanda selectată
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Şterge toate ordinele
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Șterge comanda selectată
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Șterge toate comenzile
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Opreşte sincronizarea
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Opreşte sincronizarea ordinelor. Ctrl-Click şterge toate ordinele pentru acest vehicul
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Oprește sincronizarea comenzilor. Ctrl-clic șterge toate comenzile acestui vehicul
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mergi la
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel mai apropiat depou
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
-STR_ORDER_CONDITIONAL                                           :Salt în ordine condiţionată
-STR_ORDER_SHARE                                                 :Sincronizează ordinele
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul să îşi partajeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el. Un ordin de depou anulează service-ul automat pentru vehicul
+STR_ORDER_CONDITIONAL                                           :Salt condițional
+STR_ORDER_SHARE                                                 :Sincronizează comenzile
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate sau la sfârșitul listei. Ctrl-clic transformă comenzile pentru stații în „încarcă orice tip de marfă”, pentru punctele de tranzit în „non-stop” și pentru depouri în „service”. „Sincronizarea comenzilor” sau Ctrl permite acestui vehicul să își partajeze comenzile cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el. O comandă de depou anulează service-ul automat pentru vehicul
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 
@@ -4252,38 +4400,40 @@ STR_TIMETABLE_NO_TRAVEL                                         :NU este calator
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Călătorie (automat; programată după următoarea comandă manuală)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Călătoriți (neplanificat) cu maxim {2:VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Călătorii pentru {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Mergi către {STRING} cu maxim {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Călătorie (pentru {STRING}, neplanificată)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Călătoriți (pentru {STRING}, neprogramat) cu cel mult {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(staționare pentru {STRING}, neprogramată)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(călătorie pentru {STRING}, neprogramată)
-STR_TIMETABLE_STAY_FOR                                          :şi opreşte pentru {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :şi călătoreşte pentru {STRING}
+STR_TIMETABLE_STAY_FOR                                          :și staționare pentru {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :și călătorește timp de {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}{P zi zile "de zile"}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}{P unitate unități "de unități"} de timp intern{P ă e e}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel puțin {STRING} pentru finalizare (nu în întregime programat)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Acest vehicul se incadreaza in timp
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Acest vehicul se încadrează în timp
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vehiculul are întârziere de {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Momentan, acest vehicul si-a devansat programul {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Momentan, acest vehicul și-a devansat programul {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Acest orar nu a început încă
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Acest orar va începe la {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dată pornire
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Alege o dată ca punct de pornire pentru acest orar. Ctrl+clic setează punctul de pornire al acestui orar și distribuie uniform comanda tuturor vehiculelor în cu comenzi similare, dacă comenzile au un orar complet
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifică timpul
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată pentru comanda selectată
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată comenzii selectate
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Curata timp
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimină durata de timp pentru comanda selectată
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Schimbă limita de viteză
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Schimbă limita maximă de viteză a ordinului selectat
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Schimbă limita maximă de viteză a comenzii selectate
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Şterge limita de viteză
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Şterge limita maximă de viteză a ordinului selectat
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Șterge limita maximă de viteză a comenzii selectate
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinitializeaza contorul de intarziere
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniţializează contorul de întârziere, astfel ca vehiculul să ajungă la timp
@@ -4430,7 +4580,7 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Salvarea
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Auto-salvarea a esuat
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Discul nu a putut fi citit
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvarea jocului eşuată{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ştergerea jocului eşuată
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ștergerea fișierului a eșuat
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Încărcarea jocului eşuată{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Eroare internă: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvare eronată - {STRING}
@@ -4495,9 +4645,9 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nepermis când jocul este în pauză
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Autorităţile locale din {TOWN} refuză să permită această acţiune
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Autoritatea locală din {TOWN} refuză să permită construirea unui nou aeroport în acest oraş
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Autoritatea locală din {TOWN} nu permite construirea unui nou aeroport datorită poluării fonice
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Autoritățile locale din {TOWN} nu permit această acțiune
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Autoritatea locală din {TOWN} nu permite construirea altui aeroport în acest oraș
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Autoritatea locală din {TOWN} refuză autorizarea aeroportului din considerente de poluare fonică
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tentativa de mituire a fost descoperită de un investigator regional
 
 # Levelling errors
@@ -4538,7 +4688,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... prea
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu mai este loc pe hartă
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraş nu poate fi şters...{}O staţie sau un depou face referire la acest oraş, sau o parcelă deţinută de oraş nu poate fi eliminată
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraș nu poate fi șters...{}O stație sau un depou face referire la acest oraș, sau o parcelă deținută de oraș nu poate fi eliminată
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există nici un loc potrivit pentru o statuie în centrul acestui oraş
 
 # Industry related errors
@@ -4560,6 +4710,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... păd
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... poate fi construit doar deasupra liniei zăpezii
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... poate fi construit doar sub linia zăpezii
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nu s-au găsit locuri potrivite pentru industriile '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifică parametrii generatorului ca să obții o hartă mai bună
 
 # Station construction related errors
@@ -4647,6 +4798,7 @@ STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nicio regulă autoînlocuire/reînnoire aplicată
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(fonduri limitate)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Noul vehicul nu poate transporta {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Noul vehicul nu poate fi reparat în comanda {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinaţie de linii imposibilă
@@ -4655,6 +4807,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Cale fer
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Mai întâi trebuie înlăturată calea ferată
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Drum cu sens unic sau blocat
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Trecerea la nivel nu este permisă pentru acest tip de cale ferată
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Trecerea la nivel cu calea ferată nu este permisă pe acest tip de drum
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nu se pot plasa semafoare aici...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nu se poate construi cale ferată aici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nu se poate înlătura calea ferată...
@@ -4675,6 +4828,7 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nu pot �
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...nu există drum aici
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nu există şină de tramvai aici
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tipul de drum nu poate fi convertit aici...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nu pot converti tipul de tramvai aici...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Niciun drum adecvat
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Niciun tramvai adecvat
 
@@ -4725,13 +4879,14 @@ STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nu poţi
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... este deja în proprietatea ta!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nu pot crea grup...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nu pot şterge grup...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nu pot crea grupul...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nu se poate șterge acest grup...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nu pot redenumi grup...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nu pot seta grupul predecesor...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... nu sunt permise buclele în ierarhia de grup
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nu pot elimina toate vehiculele din acest grup...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nu pot adauga vehiculul in acest grup...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nu pot adauga vehicule partajate in grup...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nu pot adăuga vehiculul în acest grup...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nu pot adăuga vehicule partajate în grup...
 
 # Generic vehicle errors
 
@@ -4812,7 +4967,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Aeronava
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Nu mai este loc pentru comenzi
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Prea multe comenzi
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nu se poate adăuga o comandă nouă...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nu se poate şterge această comandă...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nu se poate șterge această comandă...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nu se poate modifica această comandă...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nu pot muta acest ordin...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nu se poate sări peste comanda actuală...
@@ -4822,7 +4977,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehi
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicul care are acest ordin nu poate ajunge la acea staţie
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nu se poate trece la comenzi sincronizate...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nu pot opri sincronizarea listei de ordine...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nu pot opri sincronizarea listei de comenzi...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nu pot copia lista de comenzi...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prea departe de destinaţia precedentă
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... avionul nu are o rază de acțiune suficientă
@@ -4836,7 +4991,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Acest ve
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prea multe semne
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nu se poate plasa un semn aici...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nu se poate schimba numele semnului...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nu pot sterge semnul...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nu pot șterge semnul...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -4936,7 +5091,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mină de zahăr
 
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :NoName
+STR_SV_UNNAMED                                                  :Fără nume
 STR_SV_TRAIN_NAME                                               :Trenul #{COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Autovehiculul #{COMMA}
 STR_SV_SHIP_NAME                                                :Nava #{COMMA}

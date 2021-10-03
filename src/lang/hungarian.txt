@@ -389,6 +389,8 @@ STR_GROUP_BY_NONE                                               :Nincs
 STR_GROUP_BY_SHARED_ORDERS                                      :Megosztott utasítások
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Utasítások
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}A járművek utasításainak mutatása
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1630,7 +1632,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dupla kattintá
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Egyszeres kattintás (amikor előtérben van)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Egyszeres kattintás (azonnal)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Közvetítő szolgáltatás használata: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Ha egy szerverhez nem lehet közvetlenül csatlakozni, próbáljon-e közvetítő szolgáltatást használni a csatlakozáshoz. "Soha" esetén ez meg van tiltva, "Kérdezzen rá" esetén használat előtt rá fog kérdezni, "Mindig engedélyezve" esetén pedig kérdés nélkül használni fogja a szolgáltatást, amennyiben szükség van rá.
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Soha
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Kérdezzen rá
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Mindig engedélyezve
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Jobb egérgomb emuláció: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Jobb egérgomb emulálási módszerének kiválasztása
@@ -1876,12 +1883,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatikusan a
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Az év beállítása, melytől fényjelzők kerülnek alkalmazásra. Azelőtt alakjelzők használatosak (melyek funkciója ugyanaz, csak máshogy néznek ki)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Jelzők típusa átalakításkor: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Jelzőtípusok kiválasztása, melyek között a csere történik Ctrl+kattintással a jelzőépítő eszközzel
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Válaszd ki meg jelzőtípusok közül válassz Ctrl-kattintással egy felépített jelzésen a jelzőépítő eszközzel
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind látható
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Vasúti jelzők mutatása: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Mely jelzők legyenek láthatóak a vasúti jelzők eszköztáron.
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Csak irányjelzők
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Minden jelző
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Új települések úthálózati elrendezése: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Települési úthálózat elrendezése
@@ -2335,6 +2346,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Szerver 
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Saját szervert indít
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Add meg a neved
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Írd be a szerver címét vagy meghívókódját
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Új játékot kezd
@@ -2379,6 +2391,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A válla
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online játékosok
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Csatlakozás a megfigyelőkhöz
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online játékosok
@@ -2400,7 +2413,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}A játé
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Játékos neve
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Adminisztrátori műveletek ehhez a vállalathoz
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Adminisztrátori műveletek ehhez a vállalathoz
-STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :Csatlakozz ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Csatlakozz ehhez a vállalathoz
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Üzenet küldése ennek a játékosnak
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Üzenet küldése az összes játékosnak ebben a vállalatban
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Üzenet küldése az összes megfigyelőnek
@@ -2417,6 +2430,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Helyi
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Távoli játékosok nem tudnak csatlakozni
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Nyilvános
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NAT mögött
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Közvetítőn keresztül
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kirúgás
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Tiltás
@@ -2429,6 +2443,11 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Biztos 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Biztos ki akarod törölni a '{COMPANY}' vállalatot?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Biztos vissza akarod állítani a '{COMPANY}' vállalat jelszavát?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Közvetítő használata
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nem sikerült csatalkozni a '{STRING}' szerverhez.{}Szeretnél igénybe venni közvetítő szolgáltatást a következőn keresztül? '{STRING}'
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nem
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Igen, most az egyszer
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Igen, ne kérdezd újra
 
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
@@ -2441,7 +2460,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Ez a jel
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Csatlakozás
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozz és vezetsd a vállalatot
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozz és vezesd a vállalatot
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Jelszó
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vállalati jelszó beállítása
@@ -2457,6 +2476,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRIN
 STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Add meg a hálózati beszélgetéshez a neved
 
 # Network messages
@@ -2540,7 +2560,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}A szerve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}Türelem...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ki lett rúgva. Oka: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}A szerver regisztrációja sikertelen
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Egy másik szerver már regisztrált ugyanezzel a meghívókóddal. Átváltás a "helyi" kapcsolati módra.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}A szerveredhez nem lehet távolról csatlakozni
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Más játékosok nem fognak tudni csatlakozni a szerveredhez
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Tartalom letöltés
@@ -4184,6 +4207,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Útban 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Útban {DEPOT} felé, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Javítás {DEPOT}ban, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION} nem elérhető, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT} nem elérhető, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT} nem elérhető, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT} nem elérhető, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

@@ -390,6 +390,8 @@ STR_GROUP_BY_NONE                                               :Žiadne
 STR_GROUP_BY_SHARED_ORDERS                                      :Zdieľané príkazy
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Príkazy
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otvoriť okno s príkazmi
 
 # Tooltips for the main toolbar
 ###length 31
@@ -860,6 +862,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  P
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOŽENIE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(sledujúci)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Archív správ
@@ -1889,7 +1892,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Výber návesti
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Iba trasové návestidlá
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Všetky
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraziť typy signálu: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Zvoliť, aké typy signálu sú zobrazené v menu signálov
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Iba Path signály
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Všetky signály
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Návrh ciest pre nové mestá: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rozloženie cestnej siete v mestách.
@@ -2324,6 +2331,8 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Herný 
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Heslo:
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE PLNÝ
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}DOSTAL SI BAN
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER PRÍLIŠ STARÝ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}RÔZNE VERZIE
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF Chyba
 
@@ -2386,9 +2395,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spoločn
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Zoznam pripojených klientov
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Sledovať
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Hra pre viacerých hráčov
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Online hráči
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Meno
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Názov servra, na ktorom práve hráte
@@ -2438,6 +2448,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Ste si 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Ste si istý, že chcete zresetovať heslo pre spoločnosť '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Použiť presmerovanie?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepodarilo sa uskutočniť pripojenie medzi Vami a servrom '{STRING}'.{}Chceli by ste presmerovať toto pripojenie cez '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Áno, tentokrát
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Áno, znova sa nepýtať
@@ -2469,6 +2480,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadajte text pre sieťový chat
 
 # Network messages
@@ -2553,6 +2565,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server s
 STR_NETWORK_MESSAGE_KICKED                                      :*** Hráč {STRING} bol vyhodený. Dôvod: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrácia servra zlyhala
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Iný server s rovnakým kódom pozvánky už existuje. Mením na typ hry na lokálnu.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Váš server nepovoľuje vzdialené pripojenia
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Ostatní hráči sa nebudú môcť pripojiť k vašemu servru
 
@@ -4198,6 +4211,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Smeruje
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Smeruje do {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nedostanem sa do {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nedostanem sa do {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nedostanem sa do {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Nedostanem sa do {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

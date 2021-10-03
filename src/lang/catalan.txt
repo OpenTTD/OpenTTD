@@ -2413,6 +2413,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Equip] a {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] a {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Tothom] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el text pel xat de xarxa
 
 # Network messages

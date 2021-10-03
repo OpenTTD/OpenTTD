@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :Không
 STR_GROUP_BY_SHARED_ORDERS                                      :Lộ trình chia sẻ
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Lộ trình
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Mở bảng lộ trình
 
 # Tooltips for the main toolbar
 ###length 31
@@ -1817,12 +1819,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Xây cờ hiệ
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Thiết lập thời điểm đèn hiệu điện sẽ được sử dụng. Trước thời điểm này chỉ có cờ hiệu được sử dụng (chúng cùng chức năng, chỉ khác hình thức)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Đổi tuần hoàn các kiểu đèn báo: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Chọn kiểu đèn báo để tuần hoàn, khi Ctrl+click vào một đèn báo đã được xây bằng công cụ đèn báo
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Chọn kiểu đèn báo để tuần hoàn khi Ctrl+click vào một đèn báo đã được xây bằng công cụ đèn báo
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Đèn hiệu giành đường
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả có thể thấy
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Hiển thị các kiểu đèn báo: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Chọn kiểu đèn báo hiển thị trên thanh công cụ đèn báo
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Chỉ đèn hiệu giành đường
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Tất cả đèn báo
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Kiểu đường sá của đô thị mới: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kiểu đường sá của đô thị
@@ -2321,6 +2327,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Người chơi trực tuyến
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Quan sát
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Chế độ nhiều người chơi
@@ -2405,6 +2412,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Nhóm] tới {
 STR_NETWORK_CHAT_CLIENT                                         :[Riêng] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Riêng] Tới {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Chung] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập thông điệp tán gẫu
 
 # Network messages
@@ -4135,6 +4143,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Nhắm tới {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Phục vụ tại {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Không thể đi tới {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Không thể đi tới {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Không thể đi tới {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Không thể đi tới {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

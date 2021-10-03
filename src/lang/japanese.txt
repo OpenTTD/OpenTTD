@@ -326,6 +326,8 @@ STR_GROUP_BY_NONE                                               :(なし)
 STR_GROUP_BY_SHARED_ORDERS                                      :共有注文
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}指令
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}指令表示を開けます
 
 # Tooltips for the main toolbar
 ###length 31
@@ -896,7 +898,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}助成金交付案失効:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金交付案は失効しました
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}助成金支払満了:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金は終了しました
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}助成金交付案:{}{}最初に{STRING}から{STRING}へ{STRING}を運んだ会社には地元当局より{NUM}年間助成金を交付されます!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING}が助成金を獲得!{}{}{STRING} から {STRING} に {STRING} を運ぶ便の収入は次の {NUM} 年間50%増えます!!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING}が助成金を獲得!{}{}{STRING} から {STRING} に {STRING} を運ぶ便の収入は次の {NUM} 年間2倍になります!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING}が助成金を獲得!{}{}{STRING} から {STRING} に {STRING} を運ぶ便の収入は次の {NUM} 年間3倍になります!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING}が助成金を獲得!{}{}{STRING} から {STRING} に {STRING} を運ぶ便の収入は次の {NUM} 年間4倍になります!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}混乱する道路交通!{}{}{1:STRING}が{0:TOWN}の街路補修に出資{}地元ドライバーには悪夢の半年に!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}輸送独占!
@@ -1562,9 +1569,11 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :クリック(�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :クリック(即時)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :中継サービスを利用: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :サーバーへの接続に失敗した場合、その人は接続するためにリレーサービスを利用できます。「拒否」でこれを拒絶、「尋ねる」で都度確認、「許可」で確認なしに容認します。
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :二度と
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :聞く
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :許可
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右クリックのエミュレーション: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :右クリックをエミュレートする方法を指定します
@@ -1816,8 +1825,10 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :パス・一方
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :すべて
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :信号の種類: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :信号のツールバーに表示される信号の種類を選択します
 ###length 2
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :パス信号のみ
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :全ての信号
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :街の道路配置: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :街での道路区画計画を設定します
@@ -2266,7 +2277,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}イン�
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}LANで探す
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}ローカルエリアネットワークでサーバーを検索する
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}サーバーを追加
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}検索時、常に稼働確認するサーバーのリストに追加します
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}サーバーをリストに追加します。これはサーバーのアドレスか招待コードのいずれかです。
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}サーバーを開始
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}自分でサーバーを立ち上げます
 
@@ -2316,9 +2327,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :オンラインのプレイヤー
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :観戦
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}マルチプレイヤー
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}オンラインのプレイヤー
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}サーバー
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}名前
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}あなたがプレイしているサーバー名
@@ -2329,6 +2341,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}他の�
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}招待コード
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}他のプレイヤーがこのサーバーに参加するための招待コード
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}接続タイプ
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}他のプレイヤーがあなたのサーバにたどり着けるか、またどのようにたどり着けるか
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}プレイヤー
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}名前
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}あなたのプレイヤー名
@@ -2345,12 +2358,15 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(新規会社�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}新しく会社を設立し参画します
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}これはあなたです
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲームのホストです
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} 個のクライアント / {NUM} 個の企業
 
 # Matches ConnectionType
 ###length 5
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}ローカル
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}リモートプレイヤーが接続できません
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}公開
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NATの向こう側
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}中継サービスて
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :キック
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :BAN
@@ -2363,7 +2379,9 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}プレ�
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}会社 '{COMPANY}' を削除してもよろしいですか?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}会社 '{COMPANY}'のパスワードをリセットしてもよろしいですか？
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}中継サービスを利用しますか？
 STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} '{STRING}'サーバーとの接続の確立に失敗しました.{}'{STRING}'を経由して中継しますか?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}拒否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}一度だけ
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}はい、二度と聞かないでください
 
@@ -2394,11 +2412,12 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』
 STR_NETWORK_CHAT_CLIENT                                         :『個人』{STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :『個人』{STRING}へ: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}チャットメッセージを入力
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORKなしでゲームがコンパイルされた可能性もあります
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}サーバが応答しませんでした
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}サーバーへの接続がタイムアウトしたか拒絶されました。
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRFの不一致によって接続できませんでした
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}ネットワークゲームの同期が失敗しました
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}ネットワークゲームへの接続が切断しました
@@ -2478,6 +2497,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}この�
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING}がキックされました。理由: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}サーバーの登録に失敗しました
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}他のサーバーは同じ招待コードを登録していた。「ローカル」ゲームタイプに入ります。
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}サーバーがリモート接続を許可していません
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}他のプレイヤーはあなたのサーバーに接続できなくなります
 
@@ -3771,7 +3791,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}新規�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}選択したグループを削除します
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}選択したグループの名称を変更します
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}選択したグループのカラーリングを変更する
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}このグループ内の輸送機器を全体を対象とする自動交換の際も交換されないようにします
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}このグループ内の輸送機器を全体を対象とする自動交換の際も交換されないようにします。Ctrl+クリックでサブグループも対象に含みます。
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}グループを削除
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}このグループとそれに属するすべてを削除してもよろしいですか?
@@ -4052,7 +4072,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :リニア車両
 STR_REPLACE_ROAD_VEHICLES                                       :車両
 STR_REPLACE_TRAM_VEHICLES                                       :路面電車の車両
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の短縮({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関車の交換で列車長が長くなる場合、列車長を維持する為に客車/貨車を減らすことができます。外されるのは従属部分の先頭からになります
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+クリックでサブグループにも適用
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4121,6 +4143,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOI
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}へ回送中です　{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}へ保守回送中です　{VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION}に到達できません, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT}に到達できません, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE} {DEPOT}車両基地に到達できません, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE} {DEPOT}車両基地に到達できません, {VELOCITY}
 
