@@ -541,7 +541,7 @@ public:
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
 		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-		DoCommandP(CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform,
+		DoCommandP(CMD_BUILD_OBJECT, STR_ERROR_CAN_T_BUILD_OBJECT, CcTerraform,
 				tile, objclass->GetSpec(_selected_object_index)->Index(), _selected_object_view);
 	}
 

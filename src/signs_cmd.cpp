@@ -114,7 +114,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  * @param p2 unused
  * @param cmd unused
  */
-void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	if (result.Failed()) return;
 
@@ -130,5 +130,5 @@ void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	DoCommandP(CMD_PLACE_SIGN | CMD_MSG(STR_ERROR_CAN_T_PLACE_SIGN_HERE), CcPlaceSign, tile, 0, 0);
+	DoCommandP(CMD_PLACE_SIGN, STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, 0, 0);
 }

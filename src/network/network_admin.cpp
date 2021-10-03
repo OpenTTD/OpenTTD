@@ -593,8 +593,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CMD_NAMES);
 
-	for (uint i = 0; i < CMD_END; i++) {
-		const char *cmdname = GetCommandName(i);
+	for (uint16 i = 0; i < CMD_END; i++) {
+		const char *cmdname = GetCommandName(static_cast<Commands>(i));
 
 		/* Should COMPAT_MTU be exceeded, start a new packet
 		 * (magic 5: 1 bool "more data" and one uint16 "command id", one
@@ -629,7 +629,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID clien
 
 	p->Send_uint32(client_id);
 	p->Send_uint8 (cp->company);
-	p->Send_uint16(cp->cmd & CMD_ID_MASK);
+	p->Send_uint16(cp->cmd);
 	p->Send_uint32(cp->p1);
 	p->Send_uint32(cp->p2);
 	p->Send_uint32(cp->tile);

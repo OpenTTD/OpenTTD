@@ -378,8 +378,6 @@ static const Command _command_proc_table[] = {
  */
 bool IsValidCommand(uint32 cmd)
 {
-	cmd &= CMD_ID_MASK;
-
 	return cmd < lengthof(_command_proc_table) && _command_proc_table[cmd].proc != nullptr;
 }
 
@@ -390,11 +388,11 @@ bool IsValidCommand(uint32 cmd)
  * @param cmd The integer value of the command
  * @return The flags for this command
  */
-CommandFlags GetCommandFlags(uint32 cmd)
+CommandFlags GetCommandFlags(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd & CMD_ID_MASK].flags;
+	return _command_proc_table[cmd].flags;
 }
 
 /*!
@@ -404,11 +402,11 @@ CommandFlags GetCommandFlags(uint32 cmd)
  * @param cmd The integer value of the command
  * @return The name for this command
  */
-const char *GetCommandName(uint32 cmd)
+const char *GetCommandName(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd & CMD_ID_MASK].name;
+	return _command_proc_table[cmd].name;
 }
 
 /**
@@ -433,7 +431,7 @@ bool IsCommandAllowedWhilePaused(uint32 cmd)
 	static_assert(lengthof(command_type_lookup) == CMDT_END);
 
 	assert(IsValidCommand(cmd));
-	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd & CMD_ID_MASK].type] <= _settings_game.construction.command_pause_level;
+	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd].type] <= _settings_game.construction.command_pause_level;
 }
 
 
@@ -449,7 +447,7 @@ static int _docommand_recursive = 0;
  */
 CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags)
 {
-	return DoCommand(flags, container->cmd & CMD_ID_MASK, container->tile, container->p1, container->p2, container->text);
+	return DoCommand(flags, container->cmd, container->tile, container->p1, container->p2, container->text);
 }
 
 /*!
@@ -465,7 +463,7 @@ CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags)
  * @see CommandProc
  * @return the cost
  */
-CommandCost DoCommand(DoCommandFlag flags, uint32 cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CommandCost res;
 
@@ -473,7 +471,7 @@ CommandCost DoCommand(DoCommandFlag flags, uint32 cmd, TileIndex tile, uint32 p1
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return CMD_ERROR;
 
 	/* Chop of any CMD_MSG or other flags; we don't need those here */
-	CommandProc *proc = _command_proc_table[cmd & CMD_ID_MASK].proc;
+	CommandProc *proc = _command_proc_table[cmd].proc;
 
 	_docommand_recursive++;
 
@@ -542,13 +540,14 @@ Money GetAvailableMoneyForCommand()
  * @param cmd The command to execute (a CMD_* value)
  * @param callback A callback function to call after the command is finished
  * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
+ * @param network_command execute the command without sending it on the network
  * @param tile The tile to perform a command on (see #CommandProc)
  * @param p1 Additional data for the command (see #CommandProc)
  * @param p2 Additional data for the command (see #CommandProc)
  * @param text The text to pass
  * @return \c true if the command succeeded, else \c false.
  */
-static bool DoCommandP(uint32 cmd, CommandCallback *callback, bool my_cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+static bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Cost estimation is generally only done when the
 	 * local user presses shift while doing something.
@@ -557,31 +556,30 @@ static bool DoCommandP(uint32 cmd, CommandCallback *callback, bool my_cmd, TileI
 	 * to execute. */
 	bool estimate_only = _shift_pressed && IsLocalCompany() &&
 			!_generating_world &&
-			!(cmd & CMD_NETWORK_COMMAND) &&
+			!network_command &&
 			!(GetCommandFlags(cmd) & CMD_NO_EST);
 
 	/* We're only sending the command, so don't do
 	 * fancy things for 'success'. */
-	bool only_sending = _networking && !(cmd & CMD_NETWORK_COMMAND);
+	bool only_sending = _networking && !network_command;
 
 	/* Where to show the message? */
 	int x = TileX(tile) * TILE_SIZE;
 	int y = TileY(tile) * TILE_SIZE;
 
 	if (_pause_mode != PM_UNPAUSED && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
-		ShowErrorMessage(GB(cmd, 16, 16), STR_ERROR_NOT_ALLOWED_WHILE_PAUSED, WL_INFO, x, y);
+		ShowErrorMessage(err_message, STR_ERROR_NOT_ALLOWED_WHILE_PAUSED, WL_INFO, x, y);
 		return false;
 	}
 
 	/* Only set p2 when the command does not come from the network. */
-	if (!(cmd & CMD_NETWORK_COMMAND) && GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = CLIENT_ID_SERVER;
+	if (!network_command && GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = CLIENT_ID_SERVER;
 
-	CommandCost res = DoCommandPInternal(cmd, callback, my_cmd, estimate_only, tile, p1, p2, text);
+	CommandCost res = DoCommandPInternal(cmd, err_message, callback, my_cmd, estimate_only, network_command, tile, p1, p2, text);
 	if (res.Failed()) {
 		/* Only show the error when it's for us. */
-		StringID error_part1 = GB(cmd, 16, 16);
-		if (estimate_only || (IsLocalCompany() && error_part1 != 0 && my_cmd)) {
-			ShowErrorMessage(error_part1, res.GetErrorMessage(), WL_INFO, x, y, res.GetTextRefStackGRF(), res.GetTextRefStackSize(), res.GetTextRefStack());
+		if (estimate_only || (IsLocalCompany() && err_message != 0 && my_cmd)) {
+			ShowErrorMessage(err_message, res.GetErrorMessage(), WL_INFO, x, y, res.GetTextRefStackGRF(), res.GetTextRefStackSize(), res.GetTextRefStack());
 		}
 	} else if (estimate_only) {
 		ShowEstimatedCostOrIncome(res.GetCost(), x, y);
@@ -605,15 +603,16 @@ static bool DoCommandP(uint32 cmd, CommandCallback *callback, bool my_cmd, TileI
  * Shortcut for the long DoCommandP when having a container with the data.
  * @param container the container with information.
  * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
+ * @param network_command execute the command without sending it on the network
  * @return true if the command succeeded, else false
  */
-bool DoCommandP(const CommandContainer *container, bool my_cmd)
+bool DoCommandP(const CommandContainer *container, bool my_cmd, bool network_command)
 {
-	return DoCommandP(container->cmd, container->callback, my_cmd, container->tile, container->p1, container->p2, container->text);
+	return DoCommandP(container->cmd, container->err_msg, container->callback, my_cmd, network_command, container->tile, container->p1, container->p2, container->text);
 }
 
 /**
- * Shortcut for the long DoCommandP when not using a callback.
+ * Shortcut for the long DoCommandP when not using a callback or error message.
  * @param cmd The command to execute (a CMD_* value)
  * @param tile The tile to perform a command on (see #CommandProc)
  * @param p1 Additional data for the command (see #CommandProc)
@@ -621,16 +620,13 @@ bool DoCommandP(const CommandContainer *container, bool my_cmd)
  * @param text The text to pass
  * @return \c true if the command succeeded, else \c false.
  */
-bool DoCommandP(uint32 cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+bool DoCommandP(Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
-	return DoCommandP(cmd, nullptr, true, tile, p1, p2, text);
+	return DoCommandP(cmd, STR_NULL, nullptr, true, false, tile, p1, p2, text);
 }
 
-/*!
- * Toplevel network safe docommand function for the current company. Must not be called recursively.
- * The callback is called when the command succeeded or failed. The parameters
- * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
- *
+/**
+ * Shortcut for the long DoCommandP when not using an error message.
  * @param cmd The command to execute (a CMD_* value)
  * @param callback A callback function to call after the command is finished
  * @param tile The tile to perform a command on (see #CommandProc)
@@ -639,9 +635,43 @@ bool DoCommandP(uint32 cmd, TileIndex tile, uint32 p1, uint32 p2, const std::str
  * @param text The text to pass
  * @return \c true if the command succeeded, else \c false.
  */
-bool DoCommandP(uint32 cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+bool DoCommandP(Commands cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
-	return DoCommandP(cmd, callback, true, tile, p1, p2, text);
+	return DoCommandP(cmd, STR_NULL, callback, true, false, tile, p1, p2, text);
+}
+
+/**
+ * Shortcut for the long DoCommandP when not using a callback.
+ * @param cmd The command to execute (a CMD_* value)
+ * @param err_message Message prefix to show on error
+ * @param tile The tile to perform a command on (see #CommandProc)
+ * @param p1 Additional data for the command (see #CommandProc)
+ * @param p2 Additional data for the command (see #CommandProc)
+ * @param text The text to pass
+ * @return \c true if the command succeeded, else \c false.
+ */
+bool DoCommandP(Commands cmd, StringID err_message, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+{
+	return DoCommandP(cmd, err_message, nullptr, true, false, tile, p1, p2, text);
+}
+
+/*!
+ * Toplevel network safe docommand function for the current company. Must not be called recursively.
+ * The callback is called when the command succeeded or failed. The parameters
+ * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
+ *
+ * @param cmd The command to execute (a CMD_* value)
+ * @param err_message Message prefix to show on error
+ * @param callback A callback function to call after the command is finished
+ * @param tile The tile to perform a command on (see #CommandProc)
+ * @param p1 Additional data for the command (see #CommandProc)
+ * @param p2 Additional data for the command (see #CommandProc)
+ * @param text The text to pass
+ * @return \c true if the command succeeded, else \c false.
+ */
+bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+{
+	return DoCommandP(cmd, err_message, callback, true, false, tile, p1, p2, text);
 }
 
 /**
@@ -654,6 +684,7 @@ bool DoCommandP(uint32 cmd, CommandCallback *callback, TileIndex tile, uint32 p1
  * Helper function for the toplevel network safe docommand function for the current company.
  *
  * @param cmd The command to execute (a CMD_* value)
+ * @param err_message Message prefix to show on error
  * @param callback A callback function to call after the command is finished
  * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
  * @param estimate_only whether to give only the estimate or also execute the command
@@ -663,7 +694,7 @@ bool DoCommandP(uint32 cmd, CommandCallback *callback, TileIndex tile, uint32 p1
  * @param text The text to pass
  * @return the command cost of this function.
  */
-CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cmd, bool estimate_only, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Prevent recursion; it gives a mess over the network */
 	assert(_docommand_recursive == 0);
@@ -673,10 +704,8 @@ CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cm
 	_additional_cash_required = 0;
 
 	/* Get pointer to command handler */
-	byte cmd_id = cmd & CMD_ID_MASK;
-	assert(cmd_id < lengthof(_command_proc_table));
-
-	CommandProc *proc = _command_proc_table[cmd_id].proc;
+	assert(cmd < lengthof(_command_proc_table));
+	CommandProc *proc = _command_proc_table[cmd].proc;
 	/* Shouldn't happen, but you never know when someone adds
 	 * NULLs to the _command_proc_table. */
 	assert(proc != nullptr);
@@ -725,10 +754,10 @@ CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cm
 	 * we bail out here. */
 	if (res.Failed() || estimate_only ||
 			(!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
-		if (!_networking || _generating_world || (cmd & CMD_NETWORK_COMMAND) != 0) {
+		if (!_networking || _generating_world || network_command) {
 			/* Log the failed command as well. Just to be able to be find
 			 * causes of desyncs due to bad command test implementations. */
-			Debug(desync, 1, "cmdf: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text, GetCommandName(cmd));
+			Debug(desync, 1, "cmdf: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, err_message, text, GetCommandName(cmd));
 		}
 		cur_company.Restore();
 		return_dcpi(res);
@@ -738,8 +767,8 @@ CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cm
 	 * If we are in network, and the command is not from the network
 	 * send it to the command-queue and abort execution
 	 */
-	if (_networking && !_generating_world && !(cmd & CMD_NETWORK_COMMAND)) {
-		NetworkSendCommand(cmd & ~CMD_FLAGS_MASK, callback, _current_company, tile, p1, p2, text);
+	if (_networking && !_generating_world && !network_command) {
+		NetworkSendCommand(cmd, err_message, callback, _current_company, tile, p1, p2, text);
 		cur_company.Restore();
 
 		/* Don't return anything special here; no error, no costs.
@@ -748,7 +777,7 @@ CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cm
 		 * reset the storages as we've not executed the command. */
 		return_dcpi(CommandCost());
 	}
-	Debug(desync, 1, "cmd: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text, GetCommandName(cmd));
+	Debug(desync, 1, "cmd: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, err_message, text, GetCommandName(cmd));
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
@@ -757,7 +786,7 @@ CommandCost DoCommandPInternal(uint32 cmd, CommandCallback *callback, bool my_cm
 	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
-	if (cmd_id == CMD_COMPANY_CTRL) {
+	if (cmd == CMD_COMPANY_CTRL) {
 		cur_company.Trash();
 		/* We are a new company                  -> Switch to new local company.
 		 * We were closed down                   -> Switch to spectator

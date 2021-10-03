@@ -82,24 +82,24 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->mode_instance;
 }
 
-/* static */ void ScriptObject::SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+/* static */ void ScriptObject::SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	ScriptStorage *s = GetStorage();
 	Debug(script, 6, "SetLastCommand company={:02d} tile={:06x} p1={:08x} p2={:08x} cmd={}", s->root_company, tile, p1, p2, cmd);
 	s->last_tile = tile;
 	s->last_p1 = p1;
 	s->last_p2 = p2;
-	s->last_cmd = cmd & CMD_ID_MASK;
+	s->last_cmd = cmd;
 }
 
-/* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+/* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	ScriptStorage *s = GetStorage();
 	Debug(script, 6, "CheckLastCommand company={:02d} tile={:06x} p1={:08x} p2={:08x} cmd={}", s->root_company, tile, p1, p2, cmd);
 	if (s->last_tile != tile) return false;
 	if (s->last_p1 != p1) return false;
 	if (s->last_p2 != p2) return false;
-	if (s->last_cmd != (cmd & CMD_ID_MASK)) return false;
+	if (s->last_cmd != cmd) return false;
 	return true;
 }
 
@@ -298,7 +298,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->callback_value[index];
 }
 
-/* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, Script_SuspendCallbackProc *callback)
+/* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd, const char *text, Script_SuspendCallbackProc *callback)
 {
 	if (!ScriptObject::CanSuspend()) {
 		throw Script_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
@@ -329,7 +329,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	if (!estimate_only && _networking && !_generating_world) SetLastCommand(tile, p1, p2, cmd);
 
 	/* Try to perform the command. */
-	CommandCost res = ::DoCommandPInternal(cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, false, estimate_only, tile, p1, p2, command_text);
+	CommandCost res = ::DoCommandPInternal(cmd, STR_NULL, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, false, estimate_only, false, tile, p1, p2, command_text);
 
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {

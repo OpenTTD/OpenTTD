@@ -47,7 +47,7 @@ private:
 	TileIndex last_tile;             ///< The last tile passed to a command.
 	uint32 last_p1;                  ///< The last p1 passed to a command.
 	uint32 last_p2;                  ///< The last p2 passed to a command.
-	uint32 last_cmd;                 ///< The last cmd passed to a command.
+	Commands last_cmd;               ///< The last cmd passed to a command.
 
 	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
 	SignID new_sign_id;              ///< The ID of the new Sign.

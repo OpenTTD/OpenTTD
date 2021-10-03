@@ -1537,7 +1537,7 @@ private:
 		if (_network_server) {
 			DoCommandP(CMD_COMPANY_CTRL, 0, CCA_NEW, _network_own_client_id);
 		} else {
-			NetworkSendCommand(CMD_COMPANY_CTRL, nullptr, _local_company, 0, CCA_NEW, 0, {});
+			NetworkSendCommand(CMD_COMPANY_CTRL, STR_NULL, nullptr, _local_company, 0, CCA_NEW, 0, {});
 		}
 	}
 

@@ -69,7 +69,7 @@
 
 	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
 
-	if (!ScriptObject::DoCommand(depot, engine_id | (cargo << 24), 0, ::GetCmdBuildVeh(type), nullptr, &ScriptInstance::DoCommandReturnVehicleID)) return VEHICLE_INVALID;
+	if (!ScriptObject::DoCommand(depot, engine_id | (cargo << 24), 0, CMD_BUILD_VEHICLE, nullptr, &ScriptInstance::DoCommandReturnVehicleID)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
 	return 0;
@@ -91,9 +91,7 @@
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	::VehicleType type = ::Engine::Get(engine_id)->type;
-
-	CommandCost res = ::DoCommand(DC_QUERY_COST, ::GetCmdBuildVeh(type), depot, engine_id | (cargo << 24), 0);
+	CommandCost res = ::DoCommand(DC_QUERY_COST, CMD_BUILD_VEHICLE, depot, engine_id | (cargo << 24), 0);
 	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 
@@ -142,7 +140,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	CommandCost res = ::DoCommand(DC_QUERY_COST, GetCmdRefitVeh(::Vehicle::Get(vehicle_id)), 0, vehicle_id, cargo);
+	CommandCost res = ::DoCommand(DC_QUERY_COST, CMD_REFIT_VEHICLE, 0, vehicle_id, cargo);
 	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 
@@ -151,7 +149,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && ScriptCargo::IsValidCargo(cargo));
 
-	return ScriptObject::DoCommand(0, vehicle_id, cargo, GetCmdRefitVeh(::Vehicle::Get(vehicle_id)));
+	return ScriptObject::DoCommand(0, vehicle_id, cargo, CMD_REFIT_VEHICLE);
 }
 
 
@@ -161,7 +159,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return ScriptObject::DoCommand(0, vehicle_id | (v->type == VEH_TRAIN ? 1 : 0) << 20, 0, GetCmdSellVeh(v));
+	return ScriptObject::DoCommand(0, vehicle_id | (v->type == VEH_TRAIN ? 1 : 0) << 20, 0, CMD_SELL_VEHICLE);
 }
 
 /* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, int wagon, bool sell_attached_wagons)
@@ -191,7 +189,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
-	return ScriptObject::DoCommand(0, vehicle_id, 0, GetCmdSendToDepot(::Vehicle::Get(vehicle_id)));
+	return ScriptObject::DoCommand(0, vehicle_id, 0, CMD_SEND_VEHICLE_TO_DEPOT);
 }
 
 /* static */ bool ScriptVehicle::SendVehicleToDepotForServicing(VehicleID vehicle_id)
@@ -199,7 +197,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
-	return ScriptObject::DoCommand(0, vehicle_id | DEPOT_SERVICE, 0, GetCmdSendToDepot(::Vehicle::Get(vehicle_id)));
+	return ScriptObject::DoCommand(0, vehicle_id | DEPOT_SERVICE, 0, CMD_SEND_VEHICLE_TO_DEPOT);
 }
 
 /* static */ bool ScriptVehicle::IsInDepot(VehicleID vehicle_id)

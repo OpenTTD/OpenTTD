@@ -87,7 +87,7 @@ void GameInstance::Died()
  * @param p2 p2 as given to DoCommandPInternal.
  * @param cmd cmd as given to DoCommandPInternal.
  */
-void CcGame(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcGame(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
 {
 	if (Game::GetGameInstance()->DoCommandCallback(result, tile, p1, p2, cmd)) {
 		Game::GetGameInstance()->Continue();

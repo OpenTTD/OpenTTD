@@ -340,7 +340,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	}
 
 	/* Build the new vehicle */
-	cost = DoCommand(DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_veh), old_veh->tile, e | (CT_INVALID << 24), 0);
+	cost = DoCommand(DC_EXEC | DC_AUTOREPLACE, CMD_BUILD_VEHICLE, old_veh->tile, e | (CT_INVALID << 24), 0);
 	if (cost.Failed()) return cost;
 
 	Vehicle *new_veh = Vehicle::Get(_new_vehicle_id);
@@ -350,7 +350,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (refit_cargo != CT_NO_REFIT) {
 		byte subtype = GetBestFittingSubType(old_veh, new_veh, refit_cargo);
 
-		cost.AddCost(DoCommand(DC_EXEC, GetCmdRefitVeh(new_veh), 0, new_veh->index, refit_cargo | (subtype << 8)));
+		cost.AddCost(DoCommand(DC_EXEC, CMD_REFIT_VEHICLE, 0, new_veh->index, refit_cargo | (subtype << 8)));
 		assert(cost.Succeeded()); // This should be ensured by GetNewCargoTypeForReplace()
 	}
 
@@ -466,11 +466,11 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 		}
 
 		/* Sell the old vehicle */
-		cost.AddCost(DoCommand(flags, GetCmdSellVeh(old_v), 0, old_v->index, 0));
+		cost.AddCost(DoCommand(flags, CMD_SELL_VEHICLE, 0, old_v->index, 0));
 
 		/* If we are not in DC_EXEC undo everything */
 		if ((flags & DC_EXEC) == 0) {
-			DoCommand(DC_EXEC, GetCmdSellVeh(new_v), 0, new_v->index, 0);
+			DoCommand(DC_EXEC, CMD_SELL_VEHICLE, 0, new_v->index, 0);
 		}
 	}
 
@@ -597,7 +597,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					assert(RailVehInfo(wagon->engine_type)->railveh_type == RAILVEH_WAGON);
 
 					/* Sell wagon */
-					[[maybe_unused]] CommandCost ret = DoCommand(DC_EXEC, GetCmdSellVeh(wagon), 0, wagon->index, 0);
+					[[maybe_unused]] CommandCost ret = DoCommand(DC_EXEC, CMD_SELL_VEHICLE, 0, wagon->index, 0);
 					assert(ret.Succeeded());
 					new_vehs[i] = nullptr;
 
@@ -629,7 +629,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					/* Sell the vehicle.
 					 * Note: This might temporarily construct new trains, so use DC_AUTOREPLACE to prevent
 					 *       it from failing due to engine limits. */
-					cost.AddCost(DoCommand(flags | DC_AUTOREPLACE, GetCmdSellVeh(w), 0, w->index, 0));
+					cost.AddCost(DoCommand(flags | DC_AUTOREPLACE, CMD_SELL_VEHICLE, 0, w->index, 0));
 					if ((flags & DC_EXEC) != 0) {
 						old_vehs[i] = nullptr;
 						if (i == 0) old_head = nullptr;
@@ -660,7 +660,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		if ((flags & DC_EXEC) == 0) {
 			for (int i = num_units - 1; i >= 0; i--) {
 				if (new_vehs[i] != nullptr) {
-					DoCommand(DC_EXEC, GetCmdSellVeh(new_vehs[i]), 0, new_vehs[i]->index, 0);
+					DoCommand(DC_EXEC, CMD_SELL_VEHICLE, 0, new_vehs[i]->index, 0);
 					new_vehs[i] = nullptr;
 				}
 			}
@@ -691,12 +691,12 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 				}
 
 				/* Sell the old vehicle */
-				cost.AddCost(DoCommand(flags, GetCmdSellVeh(old_head), 0, old_head->index, 0));
+				cost.AddCost(DoCommand(flags, CMD_SELL_VEHICLE, 0, old_head->index, 0));
 			}
 
 			/* If we are not in DC_EXEC undo everything */
 			if ((flags & DC_EXEC) == 0) {
-				DoCommand(DC_EXEC, GetCmdSellVeh(new_head), 0, new_head->index, 0);
+				DoCommand(DC_EXEC, CMD_SELL_VEHICLE, 0, new_head->index, 0);
 			}
 		}
 	}
