@@ -1,3 +1,17 @@
+12.0 (2021-10-17)
+------------------------------------------------------------------------
+Add: [Network] Keep the refresh button in lowered state while refreshing (#9600)
+Add: Console command to list search directories for various things (#9583)
+Fix: Try all possible reverse directions when a ship reaches a dead end (#9610)
+Fix: Incorrect Romanian own name (#9598)
+Fix #9591: Update station docking tiles upon placing a water object on a docking tile (#9594)
+Fix #9548: [Squirrel] Crash during engine cleanup after reaching memory limit on realloc (#9592)
+Fix #9588: [Squirrel] Reaching memory limit during script registration could prevent further script detections (#9589)
+Fix: Make ships more likely to find their destination at the cost of slightly worse paths (#9576)
+Change: Reverse ship when leaving docks if a better path exists (#9610)
+Change: Allow all tiles around docks to be docking tiles (#9578)
+
+
 12.0-RC1 (2021-09-25)
 ------------------------------------------------------------------------
 Feature: Display icon/text whether vehicle is lost in vehicle (list) window (#9543)
