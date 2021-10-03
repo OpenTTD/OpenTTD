@@ -511,7 +511,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		/* Delete all station signs */
 		for (BaseStation *st : BaseStation::Iterate()) {
 			/* There can be buoys, remove them */
-			if (IsBuoyTile(st->xy)) DoCommand(st->xy, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+			if (IsBuoyTile(st->xy)) DoCommand(DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR, st->xy, 0, 0);
 			if (!st->IsInUse()) delete st;
 		}
 

@@ -182,7 +182,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		/* If we are not in DC_EXEC undo everything */
 		if (flags != subflags) {
-			DoCommand(0, v->index, 0, DC_EXEC, GetCmdSellVeh(v));
+			DoCommand(DC_EXEC, GetCmdSellVeh(v), 0, v->index, 0);
 		}
 	}
 
@@ -665,7 +665,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 		if (!vehicle_list_window && !v->IsChainInDepot()) continue;
 
 		/* Just try and don't care if some vehicle's can't be stopped. */
-		DoCommand(tile, v->index, 0, flags, CMD_START_STOP_VEHICLE);
+		DoCommand(flags, CMD_START_STOP_VEHICLE, tile, v->index, 0);
 	}
 
 	return CommandCost();
@@ -697,7 +697,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
-		CommandCost ret = DoCommand(tile, list[i]->index | (1 << 20), 0, flags, sell_command);
+		CommandCost ret = DoCommand(flags, sell_command, tile, list[i]->index | (1 << 20), 0);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -736,7 +736,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsChainInDepot()) continue;
 
-		CommandCost ret = DoCommand(0, v->index, 0, flags, CMD_AUTOREPLACE_VEHICLE);
+		CommandCost ret = DoCommand(flags, CMD_AUTOREPLACE_VEHICLE, 0, v->index, 0);
 
 		if (ret.Succeeded()) cost.AddCost(ret);
 	}
@@ -875,11 +875,11 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		DoCommandFlag build_flags = flags;
 		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
 
-		CommandCost cost = DoCommand(tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0, build_flags, GetCmdBuildVeh(v));
+		CommandCost cost = DoCommand(build_flags, GetCmdBuildVeh(v), tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0);
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != nullptr) DoCommand(w_front->tile, w_front->index | (1 << 20), 0, flags, GetCmdSellVeh(w_front));
+			if (w_front != nullptr) DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | (1 << 20), 0);
 			return cost;
 		}
 
@@ -895,12 +895,12 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			if (v->type == VEH_TRAIN && !v->IsFrontEngine()) {
 				/* this s a train car
 				 * add this unit to the end of the train */
-				CommandCost result = DoCommand(0, w->index | 1 << 20, w_rear->index, flags, CMD_MOVE_RAIL_VEHICLE);
+				CommandCost result = DoCommand(flags, CMD_MOVE_RAIL_VEHICLE, 0, w->index | 1 << 20, w_rear->index);
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
-					DoCommand(w_front->tile, w->index       | 1 << 20, 0, flags, GetCmdSellVeh(w));
+					DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | 1 << 20, 0);
+					DoCommand(flags, GetCmdSellVeh(w)      , w_front->tile, w->index       | 1 << 20, 0);
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
@@ -921,7 +921,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (flags & DC_EXEC) {
 		/* Cloned vehicles belong to the same group */
-		DoCommand(0, v_front->group_id, w_front->index, flags, CMD_ADD_VEHICLE_GROUP);
+		DoCommand(flags, CMD_ADD_VEHICLE_GROUP, 0, v_front->group_id, w_front->index);
 	}
 
 
@@ -943,7 +943,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				/* Find out what's the best sub type */
 				byte subtype = GetBestFittingSubType(v, w, v->cargo_type);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
-					CommandCost cost = DoCommand(0, w->index, v->cargo_type | 1U << 25 | (subtype << 8), flags, GetCmdRefitVeh(v));
+					CommandCost cost = DoCommand(flags, GetCmdRefitVeh(v), 0, w->index, v->cargo_type | 1U << 25 | (subtype << 8));
 					if (cost.Succeeded()) total_cost.AddCost(cost);
 				}
 
@@ -978,10 +978,10 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		 * the vehicle refitted before doing this, otherwise the moved
 		 * cargo types might not match (passenger vs non-passenger)
 		 */
-		CommandCost result = DoCommand(0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, flags, CMD_CLONE_ORDER);
+		CommandCost result = DoCommand(flags, CMD_CLONE_ORDER, 0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index);
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
+			DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | 1 << 20, 0);
 			return result;
 		}
 
@@ -992,7 +992,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		 * check whether the company has enough money manually. */
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
+			DoCommand(flags, GetCmdSellVeh(w_front), w_front->tile, w_front->index | 1 << 20, 0);
 			return total_cost;
 		}
 	}
@@ -1017,7 +1017,7 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
-		CommandCost ret = DoCommand(v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0, flags, GetCmdSendToDepot(vli.vtype));
+		CommandCost ret = DoCommand(flags, GetCmdSendToDepot(vli.vtype), v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0);
 
 		if (ret.Succeeded()) {
 			had_success = true;

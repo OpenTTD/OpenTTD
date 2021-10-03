@@ -2036,7 +2036,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo());
 
 					/* If there is no depot in front, reverse automatically (trains only) */
-					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+					if (v->type == VEH_TRAIN && reverse) DoCommand(DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION, v->tile, v->index, 0);
 
 					if (v->type == VEH_AIRCRAFT) {
 						Aircraft *a = Aircraft::From(v);

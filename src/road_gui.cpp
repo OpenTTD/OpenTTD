@@ -708,7 +708,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
-		DoCommand(tile, _cur_roadtype | (TRANSPORT_ROAD << 8), 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		DoCommand(DC_AUTO, CMD_BUILD_TUNNEL, tile, _cur_roadtype | (TRANSPORT_ROAD << 8), 0);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 

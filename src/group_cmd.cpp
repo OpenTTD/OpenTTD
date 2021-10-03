@@ -356,12 +356,12 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
 	/* Remove all vehicles from the group */
-	DoCommand(0, p1, 0, flags, CMD_REMOVE_ALL_VEHICLES_GROUP);
+	DoCommand(flags, CMD_REMOVE_ALL_VEHICLES_GROUP, 0, p1, 0);
 
 	/* Delete sub-groups */
 	for (const Group *gp : Group::Iterate()) {
 		if (gp->parent == g->index) {
-			DoCommand(0, gp->index, 0, flags, CMD_DELETE_GROUP);
+			DoCommand(flags, CMD_DELETE_GROUP, 0, gp->index, 0);
 		}
 	}
 
@@ -580,7 +580,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
 
 				/* For each shared vehicles add it to the group */
 				for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
-					if (v2->group_id != id_g) DoCommand(tile, id_g, v2->index, flags, CMD_ADD_VEHICLE_GROUP, text);
+					if (v2->group_id != id_g) DoCommand(flags, CMD_ADD_VEHICLE_GROUP, tile, id_g, v2->index, text);
 				}
 			}
 		}
@@ -616,7 +616,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 				if (v->group_id != old_g) continue;
 
 				/* Add The Vehicle to the default group */
-				DoCommand(tile, DEFAULT_GROUP, v->index, flags, CMD_ADD_VEHICLE_GROUP, text);
+				DoCommand(flags, CMD_ADD_VEHICLE_GROUP, tile, DEFAULT_GROUP, v->index, text);
 			}
 		}
 

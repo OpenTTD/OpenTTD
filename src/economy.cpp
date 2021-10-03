@@ -312,7 +312,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			for (i = 0; i < 4; i++) {
 				if (c->share_owners[i] == old_owner) {
 					/* Sell its shares */
-					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
+					CommandCost res = DoCommand(DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY, 0, c->index, 0);
 					/* Because we are in a DoCommand, we can't just execute another one and
 					 *  expect the money to be removed. We need to do it ourself! */
 					SubtractMoneyFromCompany(res);
@@ -332,7 +332,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			} else {
 				cur_company2.Change(c->share_owners[i]);
 				/* Sell the shares */
-				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
+				CommandCost res = DoCommand(DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY, 0, old_owner, 0);
 				/* Because we are in a DoCommand, we can't just execute another one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromCompany(res);
@@ -448,7 +448,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					 * However, do not rely on that behaviour.
 					 */
 					int interval = CompanyServiceInterval(new_company, v->type);
-					DoCommand(v->tile, v->index, interval | (new_company->settings.vehicle.servint_ispercent << 17), DC_EXEC | DC_BANKRUPT, CMD_CHANGE_SERVICE_INT);
+					DoCommand(DC_EXEC | DC_BANKRUPT, CMD_CHANGE_SERVICE_INT, v->tile, v->index, interval | (new_company->settings.vehicle.servint_ispercent << 17));
 				}
 
 				v->owner = new_owner;
@@ -1485,7 +1485,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 			if (st->goods[cid].cargo.HasCargoFor(next_station)) {
 				/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 				 * the returned refit capacity will be greater than zero. */
-				DoCommand(v_start->tile, v_start->index, cid | 1U << 24 | 0xFF << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
+				DoCommand(DC_QUERY_COST, GetCmdRefitVeh(v_start), v_start->tile, v_start->index, cid | 1U << 24 | 0xFF << 8 | 1U << 16); // Auto-refit and only this vehicle including artic parts.
 				/* Try to balance different loadable cargoes between parts of the consist, so that
 				 * all of them can be loaded. Avoid a situation where all vehicles suddenly switch
 				 * to the first loadable cargo for which there is only one packet. If the capacities
@@ -1508,7 +1508,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 		 * "via any station" before reserving. We rather produce some more "any station" cargo than
 		 * misrouting it. */
 		IterateVehicleParts(v_start, ReturnCargoAction(st, INVALID_STATION));
-		CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 24 | 0xFF << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
+		CommandCost cost = DoCommand(DC_EXEC, GetCmdRefitVeh(v_start), v_start->tile, v_start->index, new_cid | 1U << 24 | 0xFF << 8 | 1U << 16); // Auto-refit and only this vehicle including artic parts.
 		if (cost.Succeeded()) v->First()->profit_this_year -= cost.GetCost() << 8;
 	}
 

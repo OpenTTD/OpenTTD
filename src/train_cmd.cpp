@@ -654,7 +654,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
 					!(w->vehstatus & VS_CRASHED)) { ///< Not crashed/flooded
-				if (DoCommand(0, v->index | 1 << 20, w->Last()->index, DC_EXEC, CMD_MOVE_RAIL_VEHICLE).Succeeded()) {
+				if (DoCommand(DC_EXEC, CMD_MOVE_RAIL_VEHICLE, 0, v->index | 1 << 20, w->Last()->index).Succeeded()) {
 					break;
 				}
 			}
@@ -670,9 +670,9 @@ static void NormalizeTrainVehInDepot(const Train *u)
 	for (const Train *v : Train::Iterate()) {
 		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {
-			if (DoCommand(0, v->index | 1 << 20, u->index, DC_EXEC,
-					CMD_MOVE_RAIL_VEHICLE).Failed())
+			if (DoCommand(DC_EXEC, CMD_MOVE_RAIL_VEHICLE, 0, v->index | 1 << 20, u->index).Failed()) {
 				break;
+			}
 		}
 	}
 }

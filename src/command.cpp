@@ -449,23 +449,23 @@ static int _docommand_recursive = 0;
  */
 CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags)
 {
-	return DoCommand(container->tile, container->p1, container->p2, flags, container->cmd & CMD_ID_MASK, container->text);
+	return DoCommand(flags, container->cmd & CMD_ID_MASK, container->tile, container->p1, container->p2, container->text);
 }
 
 /*!
  * This function executes a given command with the parameters from the #CommandProc parameter list.
  * Depending on the flags parameter it execute or test a command.
  *
+ * @param flags Flags for the command and how to execute the command
+ * @param cmd The command-id to execute (a value of the CMD_* enums)
  * @param tile The tile to apply the command on (for the #CommandProc)
  * @param p1 Additional data for the command (for the #CommandProc)
  * @param p2 Additional data for the command (for the #CommandProc)
- * @param flags Flags for the command and how to execute the command
- * @param cmd The command-id to execute (a value of the CMD_* enums)
  * @param text The text to pass
  * @see CommandProc
  * @return the cost
  */
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags, uint32 cmd, const std::string &text)
+CommandCost DoCommand(DoCommandFlag flags, uint32 cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CommandCost res;
 

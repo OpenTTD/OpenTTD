@@ -418,7 +418,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
 
 		/* Try and clear the start landscape */
-		CommandCost ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		CommandCost ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile_start, 0, 0);
 		if (ret.Failed()) return ret;
 		cost = ret;
 
@@ -426,7 +426,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		cost.AddCost(terraform_cost_north);
 
 		/* Try and clear the end landscape */
-		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile_end, 0, 0);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
@@ -498,7 +498,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				default:
 	not_valid_below:;
 					/* try and clear the middle landscape */
-					ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+					ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 					break;
@@ -672,7 +672,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	if (HasTileWaterGround(start_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
-	CommandCost ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, start_tile, 0, 0);
 	if (ret.Failed()) return ret;
 
 	/* XXX - do NOT change 'ret' in the loop, as it is used as the price
@@ -732,7 +732,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	if (HasTileWaterGround(end_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 	/* Clear the tile in any case */
-	ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, end_tile, 0, 0);
 	if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 	cost.AddCost(ret);
 
@@ -764,7 +764,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
 		coa = nullptr;
 
-		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
+		ret = DoCommand(flags, CMD_TERRAFORM_LAND, end_tile, end_tileh & start_tileh, 0);
 		_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
 		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret);
@@ -1846,7 +1846,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 		if (tt == TRANSPORT_RAIL) {
 			/* Since all of our vehicles have been removed, it is safe to remove the rail
 			 * bridge / tunnel. */
-			[[maybe_unused]] CommandCost ret = DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+			[[maybe_unused]] CommandCost ret = DoCommand(DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 			assert(ret.Succeeded());
 		} else {
 			/* In any other case, we can safely reassign the ownership to OWNER_NONE. */
@@ -2037,7 +2037,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 
-	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	return DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 }
 
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {

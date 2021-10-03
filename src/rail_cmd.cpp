@@ -451,7 +451,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			CommandCost ret = CheckTileOwnership(tile);
 			if (ret.Failed()) return ret;
 
-			if (!IsPlainRail(tile)) return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR); // just get appropriate error message
+			if (!IsPlainRail(tile)) return DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0); // just get appropriate error message
 
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
@@ -469,7 +469,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 				for (Track track_it = TRACK_BEGIN; track_it < TRACK_END; track_it++) {
 					if (HasTrack(tile, track_it) && HasSignalOnTrack(tile, track_it)) {
-						CommandCost ret_remove_signals = DoCommand(tile, track_it, 0, flags, CMD_REMOVE_SIGNALS);
+						CommandCost ret_remove_signals = DoCommand(flags, CMD_REMOVE_SIGNALS, tile, track_it, 0);
 						if (ret_remove_signals.Failed()) return ret_remove_signals;
 						cost.AddCost(ret_remove_signals);
 					}
@@ -481,7 +481,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			 * the present rail type are powered on the new rail type. */
 			if (GetRailType(tile) != railtype && !HasPowerOnRail(railtype, GetRailType(tile))) {
 				if (HasPowerOnRail(GetRailType(tile), railtype)) {
-					ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
+					ret = DoCommand(flags, CMD_CONVERT_RAIL, tile, tile, railtype);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 				} else {
@@ -581,7 +581,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 
-			ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 
@@ -691,7 +691,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track)) {
-				cost.AddCost(DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS));
+				cost.AddCost(DoCommand(flags, CMD_REMOVE_SIGNALS, tile, track, 0));
 			}
 
 			if (flags & DC_EXEC) {
@@ -784,7 +784,7 @@ bool FloodHalftile(TileIndex t)
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != 0) {
 			Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
-			flooded = DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL).Succeeded();
+			flooded = DoCommand(DC_EXEC, CMD_REMOVE_SINGLE_RAIL, t, 0, FIND_FIRST_BIT(to_remove)).Succeeded();
 			cur_company.Restore();
 			if (!flooded) return flooded; // not yet floodable
 			rail_bits = rail_bits & ~to_remove;
@@ -903,7 +903,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 	bool had_success = false;
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
-		CommandCost ret = DoCommand(tile, remove ? 0 : railtype, TrackdirToTrack(trackdir) | (auto_remove_signals << 3), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
+		CommandCost ret = DoCommand(flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL, tile, remove ? 0 : railtype, TrackdirToTrack(trackdir) | (auto_remove_signals << 3));
 
 		if (ret.Failed()) {
 			last_error = ret;
@@ -1007,7 +1007,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
+	cost.AddCost(DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0));
 	if (cost.Failed()) return cost;
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -1358,7 +1358,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 		if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
 		if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
-		CommandCost ret = DoCommand(tile, param1, signals, test_only ? flags & ~DC_EXEC : flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+		CommandCost ret = DoCommand(test_only ? flags & ~DC_EXEC : flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS, tile, param1, signals);
 
 		if (test_only) return ret.Succeeded();
 
@@ -1878,7 +1878,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 			TrackBits tracks = GetTrackBits(tile);
 			while (tracks != TRACK_BIT_NONE) {
 				Track track = RemoveFirstTrack(&tracks);
-				CommandCost ret = DoCommand(tile, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
+				CommandCost ret = DoCommand(flags, CMD_REMOVE_SINGLE_RAIL, tile, 0, track);
 				if (ret.Failed()) return ret;
 				cost.AddCost(ret);
 			}
@@ -2952,7 +2952,7 @@ static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_own
 
 		SetTileOwner(tile, new_owner);
 	} else {
-		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+		DoCommand(DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 	}
 }
 
@@ -3140,7 +3140,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, int 
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
 		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
-	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	return DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
 }
 
 

@@ -73,7 +73,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
-		DoCommand(0, v->index | CO_SHARE << 30, this->clone->index, DC_EXEC, CMD_CLONE_ORDER);
+		DoCommand(DC_EXEC, CMD_CLONE_ORDER, 0, v->index | CO_SHARE << 30, this->clone->index);
 	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
 		v->orders.list = new OrderList(this->orders, v);
 		this->orders = nullptr;
@@ -88,7 +88,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
-	DoCommand(0, this->group, v->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP);
+	DoCommand(DC_EXEC, CMD_ADD_VEHICLE_GROUP, 0, this->group, v->index);
 }
 
 /**
