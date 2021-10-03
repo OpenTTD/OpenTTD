@@ -79,6 +79,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
 {
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_FULL;
+	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
 
@@ -89,6 +90,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p
 {
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_BANNED;
+	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
 
@@ -107,6 +109,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 	CheckGameCompatibility(item->info);
 	/* Ensure we consider the server online. */
 	item->status = NGLS_ONLINE;
+	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
 
@@ -128,6 +131,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
 	} else {
 		item->status = NGLS_OFFLINE;
 	}
+	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
 
