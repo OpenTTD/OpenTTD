@@ -473,7 +473,7 @@ jobs:
     name: MacOS
     needs: source
 
-    runs-on: macos-10.15
+    runs-on: macos-11
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.14
 
