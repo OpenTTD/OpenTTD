@@ -613,6 +613,8 @@ public:
 				sel->info.clients_on >= sel->info.clients_max || // Server full
 				!sel->info.compatible); // Revision mismatch
 
+		this->SetWidgetLoweredState(WID_NG_REFRESH, sel != nullptr && sel->refreshing);
+
 		/* 'NewGRF Settings' button invisible if no NewGRF is used */
 		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NGLS_ONLINE || sel->info.grfconfig == nullptr);
 		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NGLS_ONLINE || sel->info.grfconfig == nullptr || !sel->info.version_compatible || sel->info.compatible);
@@ -790,7 +792,7 @@ public:
 				break;
 
 			case WID_NG_REFRESH: // Refresh
-				if (this->server != nullptr) NetworkQueryServer(this->server->connection_string);
+				if (this->server != nullptr && !this->server->refreshing) NetworkQueryServer(this->server->connection_string);
 				break;
 
 			case WID_NG_NEWGRF: // NewGRF Settings
