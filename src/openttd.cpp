@@ -851,7 +851,7 @@ static void MakeNewGameDone()
 	/* In a dedicated server, the server does not play */
 	if (!VideoDriver::GetInstance()->HasGUI()) {
 		OnStartGame(true);
-		if (_settings_client.gui.pause_on_newgame) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		if (_settings_client.gui.pause_on_newgame) DoCommandP(CMD_PAUSE, 0, PM_PAUSED_NORMAL, 1);
 		return;
 	}
 
@@ -880,7 +880,7 @@ static void MakeNewGameDone()
 		NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
 	}
 
-	if (_settings_client.gui.pause_on_newgame) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+	if (_settings_client.gui.pause_on_newgame) DoCommandP(CMD_PAUSE, 0, PM_PAUSED_NORMAL, 1);
 
 	CheckEngines();
 	CheckIndustries();
@@ -1045,7 +1045,7 @@ void SwitchToMode(SwitchMode new_mode)
 				}
 				OnStartGame(_network_dedicated);
 				/* Decrease pause counter (was increased from opening load dialog) */
-				DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
+				DoCommandP(CMD_PAUSE, 0, PM_PAUSED_SAVELOAD, 0);
 			}
 			break;
 		}
@@ -1067,7 +1067,7 @@ void SwitchToMode(SwitchMode new_mode)
 				SetLocalCompany(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
 				/* Cancel the saveload pausing */
-				DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
+				DoCommandP(CMD_PAUSE, 0, PM_PAUSED_SAVELOAD, 0);
 			} else {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);

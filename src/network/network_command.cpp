@@ -125,15 +125,15 @@ static CommandQueue _local_execution_queue;
 
 /**
  * Prepare a DoCommand to be send over the network
+ * @param cmd The command to execute (a CMD_* value)
+ * @param callback A callback function to call after the command is finished
+ * @param company The company that wants to send the command
  * @param tile The tile to perform a command on (see #CommandProc)
  * @param p1 Additional data for the command (see #CommandProc)
  * @param p2 Additional data for the command (see #CommandProc)
- * @param cmd The command to execute (a CMD_* value)
- * @param callback A callback function to call after the command is finished
  * @param text The text to pass
- * @param company The company that wants to send the command
  */
-void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const std::string &text, CompanyID company)
+void NetworkSendCommand(uint32 cmd, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	assert((cmd & CMD_FLAGS_MASK) == 0);
 

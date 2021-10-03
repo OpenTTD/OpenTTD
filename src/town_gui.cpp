@@ -287,7 +287,7 @@ public:
 			}
 
 			case WID_TA_EXECUTE:
-				DoCommandP(this->town->xy, this->window_number, this->sel_index, CMD_DO_TOWN_ACTION | CMD_MSG(STR_ERROR_CAN_T_DO_THIS));
+				DoCommandP(CMD_DO_TOWN_ACTION | CMD_MSG(STR_ERROR_CAN_T_DO_THIS), this->town->xy, this->window_number, this->sel_index);
 				break;
 		}
 	}
@@ -474,12 +474,12 @@ public:
 					_warn_town_no_roads = true;
 				}
 
-				DoCommandP(0, this->window_number, 0, CMD_EXPAND_TOWN | CMD_MSG(STR_ERROR_CAN_T_EXPAND_TOWN));
+				DoCommandP(CMD_EXPAND_TOWN | CMD_MSG(STR_ERROR_CAN_T_EXPAND_TOWN), 0, this->window_number, 0);
 				break;
 			}
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
-				DoCommandP(0, this->window_number, 0, CMD_DELETE_TOWN | CMD_MSG(STR_ERROR_TOWN_CAN_T_DELETE));
+				DoCommandP(CMD_DELETE_TOWN | CMD_MSG(STR_ERROR_TOWN_CAN_T_DELETE), 0, this->window_number, 0);
 				break;
 		}
 	}
@@ -561,7 +561,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_TOWN | CMD_MSG(STR_ERROR_CAN_T_RENAME_TOWN), nullptr, str);
+		DoCommandP(CMD_RENAME_TOWN | CMD_MSG(STR_ERROR_CAN_T_RENAME_TOWN), 0, this->window_number, 0, str);
 	}
 };
 
@@ -1162,8 +1162,8 @@ public:
 			if (strcmp(buf, this->townname_editbox.text.buf) != 0) name = this->townname_editbox.text.buf;
 		}
 
-		bool success = DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6,
-				townnameparts, CMD_FOUND_TOWN | CMD_MSG(errstr), cc, name);
+		bool success = DoCommandP(CMD_FOUND_TOWN | CMD_MSG(errstr), cc,
+				tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6, townnameparts, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */
 		if (success && !_shift_pressed) this->RandomTownName();

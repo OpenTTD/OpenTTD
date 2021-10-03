@@ -382,17 +382,17 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				DoCommandP(0, this->window_number, this->button[0], CMD_GOAL_QUESTION_ANSWER);
+				DoCommandP(CMD_GOAL_QUESTION_ANSWER, 0, this->window_number, this->button[0]);
 				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_2:
-				DoCommandP(0, this->window_number, this->button[1], CMD_GOAL_QUESTION_ANSWER);
+				DoCommandP(CMD_GOAL_QUESTION_ANSWER, 0, this->window_number, this->button[1]);
 				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_3:
-				DoCommandP(0, this->window_number, this->button[2], CMD_GOAL_QUESTION_ANSWER);
+				DoCommandP(CMD_GOAL_QUESTION_ANSWER, 0, this->window_number, this->button[2]);
 				this->Close();
 				break;
 		}

@@ -217,7 +217,7 @@ class ReplaceVehicleWindow : public Window {
 	{
 		EngineID veh_from = this->sel_engine[0];
 		EngineID veh_to = this->sel_engine[1];
-		DoCommandP(0, (replace_when_old ? 1 : 0) | (this->sel_group << 16), veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
+		DoCommandP(CMD_SET_AUTOREPLACE, 0, (replace_when_old ? 1 : 0) | (this->sel_group << 16), veh_from + (veh_to << 16));
 	}
 
 public:
@@ -541,10 +541,10 @@ public:
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
 				const Group *g = Group::GetIfValid(this->sel_group);
 				if (g != nullptr) {
-					DoCommandP(0, this->sel_group | (GroupFlags::GF_REPLACE_WAGON_REMOVAL << 16), (HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL) ? 0 : 1) | (_ctrl_pressed << 1), CMD_SET_GROUP_FLAG);
+					DoCommandP(CMD_SET_GROUP_FLAG, 0, this->sel_group | (GroupFlags::GF_REPLACE_WAGON_REMOVAL << 16), (HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL) ? 0 : 1) | (_ctrl_pressed << 1));
 				} else {
 					// toggle renew_keep_length
-					DoCommandP(0, 0, Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_CHANGE_COMPANY_SETTING, nullptr, "company.renew_keep_length");
+					DoCommandP(CMD_CHANGE_COMPANY_SETTING, 0, 0, Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, "company.renew_keep_length");
 				}
 				break;
 			}
@@ -562,7 +562,7 @@ public:
 
 			case WID_RV_STOP_REPLACE: { // Stop replacing
 				EngineID veh_from = this->sel_engine[0];
-				DoCommandP(0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
+				DoCommandP(CMD_SET_AUTOREPLACE, 0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16));
 				break;
 			}
 
@@ -584,7 +584,7 @@ public:
 				if (click_side == 0 && _ctrl_pressed && e != INVALID_ENGINE &&
 					(GetGroupNumEngines(_local_company, sel_group, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0)) {
 						EngineID veh_from = e;
-						DoCommandP(0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
+						DoCommandP(CMD_SET_AUTOREPLACE, 0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16));
 						break;
 				}
 

@@ -86,7 +86,7 @@ void CheckTrainsLengths()
 
 						if (!_networking && first) {
 							first = false;
-							DoCommandP(0, PM_PAUSED_ERROR, 1, CMD_PAUSE);
+							DoCommandP(CMD_PAUSE, 0, PM_PAUSED_ERROR, 1);
 						}
 						/* Break so we warn only once for each train. */
 						break;

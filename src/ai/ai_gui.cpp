@@ -1290,8 +1290,8 @@ struct AIDebugWindow : public Window {
 			case WID_AID_RELOAD_TOGGLE:
 				if (ai_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				DoCommandP(0, CCA_DELETE | ai_debug_company << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
-				DoCommandP(0, CCA_NEW_AI | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				DoCommandP(CMD_COMPANY_CTRL, 0, CCA_DELETE | ai_debug_company << 16 | CRR_MANUAL << 24, 0);
+				DoCommandP(CMD_COMPANY_CTRL, 0, CCA_NEW_AI | ai_debug_company << 16, 0);
 				break;
 
 			case WID_AID_SETTINGS:
@@ -1330,7 +1330,7 @@ struct AIDebugWindow : public Window {
 						}
 						if (all_unpaused) {
 							/* All scripts have been unpaused => unpause the game. */
-							DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+							DoCommandP(CMD_PAUSE, 0, PM_PAUSED_NORMAL, 0);
 						}
 					}
 				}
@@ -1379,7 +1379,7 @@ struct AIDebugWindow : public Window {
 
 					/* Pause the game. */
 					if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-						DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+						DoCommandP(CMD_PAUSE, 0, PM_PAUSED_NORMAL, 1);
 					}
 
 					/* Highlight row that matched */
