@@ -601,7 +601,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dezactivează tot
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate mărfurile în graficul de plăţi
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa niciun tip de marfă în graficul de plăţi
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului de marfă
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comută ascunderea/afișarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afişează detaliile ratingului performanţei
@@ -735,9 +735,9 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Arată f
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Arată rutele de transport pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Arată vegetaţia pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Arată proprietarii de teren pe hartă
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click pe tipul de industrie pentru a comuta afișarea acestuia. Ctrl+Click dezactivează toate tipurile cu excepția celui selectat. Ctrl+Click din nou pentru a reactiva toate tipurile de industrii
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click pe tipul de industrie pentru a comuta afișarea acestuia. Ctrl+clic dezactivează toate tipurile cu excepția celui selectat. Ctrl+clic din nou pentru a reactiva toate tipurile de industrii
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click pe o companie pentru a comuta afișarea proprietăților acesteia. Ctrl-Click dezactivează toate companiile cu excepția celei selectate. Ctrl-Click din nou pentru a activa toate companiile
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Click pe un tip de încărcătură pentru a afișa sau nu proprietățile. Ctrl+Click dezactivează toate tipurile de încărcături cu excepția celei curente. Ctrl+Click a doua oară pentru a vedea toate tipurile de încărcătură
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Dă clic pe un tip de încărcătură pentru a afișa sau nu proprietățile. Ctrl+clic dezactivează toate tipurile de încărcături cu excepția celei curente. Ctrl+clic a doua oară pentru a vedea toate tipurile de încărcătură
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Drumuri
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Căi ferate
@@ -813,7 +813,7 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cetăţenii sărbătoresc . . .{}Soseşte prima aeronavă la {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Accident feroviar!{}{COMMA} victime în urma coliziunii
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accident rutier!{}Şoferul a decedat în urma coliziunii cu un tren
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accident rutier!{}Șoferul a decedat în urma coliziunii cu un tren
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Accident rutier!{}{COMMA} victime în urma coliziunii cu un tren
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Accident aviatic!{}{COMMA} victime în urma prăbuşirii de la {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accident aviatic!{}Aeronava a rămas fără combustibil, {COMMA} victime în urma dezastrului
@@ -1023,6 +1023,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bifați 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Setarea va avea efect doar după repornirea jocului
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Bifați această căsuță pentru sincronizarea verticală a imaginii. Modificarea setării va fi aplicată doar după repornirea jocului și funcționează doar cu accelerarea hardware activată
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mărime interfată
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Alege mărimea elementelor de interfaţa
@@ -1270,6 +1271,7 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terrafo
 STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite zone diferite de captare pentru tipuri diferite de staţii şi aeroporturi
 
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Stațiile companiei pot deservi industrii cu stații neutre atașate: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Dacă este activată, industriile cu stații atașate (cum ar fi Platforma petrolieră) pot fi deservite și de stațiile alăturate ale companiilor. Dacă e dezactivată, aceste industrii nu vor putea fi servite decât prin intermediul stațiilor atașate. Nicio stație din preajmă a unei companii nu le va putea deservi, iar stația atașată nu va putea deservi decât industria sa.
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {STRING}
@@ -1876,6 +1878,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P 0 pi
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Dezactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Maximul permis de ferestre deschise nefixate înainte ca vechile ferestre să fie închise automat ca să le facă loc celor noi
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :dezactivat
@@ -3028,6 +3031,7 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Viteza simulării: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr de evenimente de joc simulate per secundă.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Rata de reîmprospătare a imaginii: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Numărul de cadre video randate per secundă.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factorul actual de viteză a jocului: {DECIMAL}x
 STR_FRAMERATE_CURRENT                                           :{WHITE}Curent
@@ -3045,6 +3049,7 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 
 ###length 15
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Totalul buclei de joc:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Manipularea încărcăturilor:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Decalaj grafic de conexiuni:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Randare grafică:
@@ -3220,6 +3225,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletă:
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Implicit (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Implicit (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Legacy (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Legacy (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Nimic
 
@@ -3329,12 +3335,13 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Comporta
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}A modificat starea trenului pentru '{1:ENGINE}' când nu se afla în depou
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}A modificat lungimea vehiculului pentru '{1:ENGINE}' când nu se afla în depou
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}A modificat capacitatea vehiculului pentru '{1:ENGINE}' când nu a fost într-un depou sau în timpul conversiei
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparţinând '{COMPANY}' nu are o lungime validă. Probabil este o problemă cu fişierele NewGRF. Jocul s-ar putea desincroniza sau bloca
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparținând '{COMPANY}', nu are o lungime validă. Probabil este o problemă cu fișierele NewGRF. Jocul s-ar putea desincroniza sau bloca
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a cauzat o buclă infinită în funcţia de producţie
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Execuția {1:HEX} a returnat răspunsul invalid/necunoscut {2:HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Execuția {1:HEX} a returnat un răspuns nevalid/necunoscut {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' a returnat un tip nevalid de marfă în retro-apelul produsului la {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
@@ -3882,8 +3889,8 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Afișeaz
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Comută ascunderea/afișarea tipului de tren
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Comută ascunderea/afișarea tipului de autovehicul
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Comutator pentru afişarea tipului de navă
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Comutator pentru afişarea tipului de aeronavă
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Comută ascunderea/afișarea tipului de navă
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Comută ascunderea/afișarea tipului de aeronavă
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Redenumește modelul vehiculului feroviar
