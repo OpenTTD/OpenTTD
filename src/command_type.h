@@ -423,18 +423,17 @@ enum CommandPauseLevel {
  */
 typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text);
 
-/**
- * Define a command with the flags which belongs to it.
- *
- * This struct connect a command handler function with the flags created with
- * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
- */
-struct Command {
-	CommandProc *proc;  ///< The procedure to actually executing
-	const char *name;   ///< A human readable name for the procedure
-	CommandFlags flags; ///< The (command) flags to that apply to this command
-	CommandType type;   ///< The type of command.
-};
+
+/** Defines the traits of a command. */
+template <Commands Tcmd> struct CommandTraits;
+
+#define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
+	template<> struct CommandTraits<cmd_> { \
+		static constexpr auto &proc = proc_; \
+		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
+		static constexpr CommandType type = type_; \
+		static inline constexpr const char *name = #proc_; \
+	};
 
 /**
  * Define a callback function for the client, after the command is finished.

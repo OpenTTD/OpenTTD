@@ -36,6 +36,7 @@
 #include "goal_base.h"
 #include "story_base.h"
 #include "widgets/statusbar_widget.h"
+#include "company_cmd.h"
 
 #include "table/strings.h"
 

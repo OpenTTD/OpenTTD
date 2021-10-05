@@ -17,6 +17,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "core/backup_type.hpp"
+#include "terraform_cmd.h"
 
 #include "table/strings.h"
 

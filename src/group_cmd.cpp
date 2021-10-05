@@ -19,6 +19,7 @@
 #include "company_func.h"
 #include "core/pool_func.hpp"
 #include "order_backup.h"
+#include "group_cmd.h"
 
 #include "table/strings.h"
 

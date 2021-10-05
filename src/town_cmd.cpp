@@ -48,6 +48,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
+#include "town_cmd.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"

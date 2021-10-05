@@ -24,6 +24,7 @@
 #include "command_func.h"
 #include "string_func.h"
 #include "tile_cmd.h"
+#include "subsidy_cmd.h"
 
 #include "table/strings.h"
 

@@ -44,6 +44,7 @@
 #include "newgrf_config.h"
 #include "fios.h"
 #include "fileio_func.h"
+#include "settings_cmd.h"
 
 #include "table/strings.h"
 

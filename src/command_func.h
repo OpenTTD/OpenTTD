@@ -47,11 +47,11 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 
 extern Money _additional_cash_required;
 
-bool IsValidCommand(uint32 cmd);
+bool IsValidCommand(Commands cmd);
 CommandFlags GetCommandFlags(Commands cmd);
 const char *GetCommandName(Commands cmd);
 Money GetAvailableMoneyForCommand();
-bool IsCommandAllowedWhilePaused(uint32 cmd);
+bool IsCommandAllowedWhilePaused(Commands cmd);
 
 /**
  * Extracts the DC flags needed for DoCommand from the flags returned by GetCommandFlags

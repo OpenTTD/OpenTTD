@@ -28,6 +28,7 @@
 #include "company_base.h"
 #include "water.h"
 #include "company_gui.h"
+#include "waypoint_cmd.h"
 
 #include "table/strings.h"
 

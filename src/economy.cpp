@@ -48,6 +48,7 @@
 #include "goal_base.h"
 #include "story_base.h"
 #include "linkgraph/refresh.h"
+#include "economy_cmd.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"

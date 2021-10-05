@@ -31,6 +31,7 @@
 #include "pathfinder/npf/aystar.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
+#include "landscape_cmd.h"
 #include <array>
 #include <list>
 #include <set>

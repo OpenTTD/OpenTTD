@@ -34,7 +34,7 @@ add_files(
     town_land.h
     townname.h
     track_land.h
-    train_cmd.h
+    train_sprites.h
     tree_land.h
     unicode.h
     water_land.h

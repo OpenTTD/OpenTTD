@@ -22,6 +22,7 @@
 #include "tile_map.h"
 #include "texteff.hpp"
 #include "core/backup_type.hpp"
+#include "misc_cmd.h"
 
 #include "table/strings.h"
 

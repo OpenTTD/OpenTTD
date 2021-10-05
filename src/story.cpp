@@ -25,6 +25,7 @@
 #include "game/game.hpp"
 #include "script/api/script_story_page.hpp"
 #include "script/api/script_event_types.hpp"
+#include "story_cmd.h"
 
 #include "safeguards.h"
 

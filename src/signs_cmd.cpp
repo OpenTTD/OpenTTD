@@ -17,6 +17,7 @@
 #include "viewport_kdtree.h"
 #include "window_func.h"
 #include "string_func.h"
+#include "signs_cmd.h"
 
 #include "table/strings.h"
 

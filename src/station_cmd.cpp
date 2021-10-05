@@ -56,6 +56,8 @@
 #include "linkgraph/refresh.h"
 #include "widgets/station_widget.h"
 #include "tunnelbridge_map.h"
+#include "station_cmd.h"
+#include "waypoint_cmd.h"
 
 #include "table/strings.h"
 

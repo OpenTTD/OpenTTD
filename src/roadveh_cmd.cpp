@@ -34,6 +34,7 @@
 #include "newgrf.h"
 #include "zoom_func.h"
 #include "framerate_type.h"
+#include "roadveh_cmd.h"
 
 #include "table/strings.h"
 

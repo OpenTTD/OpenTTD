@@ -37,6 +37,7 @@
 #include "genworld.h"
 #include "company_gui.h"
 #include "road_func.h"
+#include "road_cmd.h"
 
 #include "table/strings.h"
 #include "table/roadtypes.h"
