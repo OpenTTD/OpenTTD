@@ -46,9 +46,10 @@ Track NPFShipChooseTrack(const Ship *v, bool &path_found);
 /**
  * Returns true if it is better to reverse the ship before leaving depot using NPF.
  * @param v the ship leaving the depot
+ * @param trackdir [out] the best of all possible reversed trackdirs
  * @return true if reversing is better
  */
-bool NPFShipCheckReverse(const Ship *v);
+bool NPFShipCheckReverse(const Ship *v, Trackdir *trackdir);
 
 /**
  * Used when user sends train to the nearest depot or if train needs servicing using NPF
