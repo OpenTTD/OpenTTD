@@ -35,6 +35,7 @@
 #include "guitimer_func.h"
 #include "group_gui.h"
 #include "zoom_func.h"
+#include "news_cmd.h"
 
 #include "widgets/news_widget.h"
 

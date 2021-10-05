@@ -29,6 +29,7 @@
 #include "vehicle_func.h"
 #include "articulated_vehicles.h"
 #include "error.h"
+#include "engine_base.h"
 
 #include "table/strings.h"
 #include "table/engines.h"

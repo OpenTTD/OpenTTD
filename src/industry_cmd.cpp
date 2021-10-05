@@ -42,6 +42,7 @@
 #include "error.h"
 #include "cmd_helper.h"
 #include "string_func.h"
+#include "industry_cmd.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"

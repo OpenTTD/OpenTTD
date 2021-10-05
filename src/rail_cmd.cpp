@@ -31,6 +31,7 @@
 #include "strings_func.h"
 #include "company_gui.h"
 #include "object_map.h"
+#include "rail_cmd.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"

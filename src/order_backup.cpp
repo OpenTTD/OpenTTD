@@ -16,6 +16,7 @@
 #include "vehicle_base.h"
 #include "window_func.h"
 #include "station_map.h"
+#include "order_cmd.h"
 
 #include "safeguards.h"
 

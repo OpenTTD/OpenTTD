@@ -23,6 +23,7 @@
 #include "network/network.h"
 #include "network/network_base.h"
 #include "network/network_func.h"
+#include "goal_cmd.h"
 
 #include "safeguards.h"
 

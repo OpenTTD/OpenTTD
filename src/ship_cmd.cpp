@@ -34,6 +34,7 @@
 #include "framerate_type.h"
 #include "industry.h"
 #include "industry_map.h"
+#include "ship_cmd.h"
 
 #include "table/strings.h"
 

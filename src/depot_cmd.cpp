@@ -16,6 +16,7 @@
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 #include "window_func.h"
+#include "depot_cmd.h"
 
 #include "table/strings.h"
 

@@ -30,6 +30,11 @@
 #include "newgrf.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include "vehicle_cmd.h"
+#include "aircraft_cmd.h"
+#include "roadveh_cmd.h"
+#include "train_cmd.h"
+#include "ship_cmd.h"
 #include <sstream>
 #include <iomanip>
 
@@ -66,13 +71,6 @@ const StringID _send_to_depot_msg_table[] = {
 	STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR,
 };
 
-
-CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
-CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
-CommandCost CmdBuildShip       (TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
-CommandCost CmdBuildAircraft   (TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
-
-CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text);
 
 /**
  * Build a vehicle.
@@ -191,8 +189,6 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	return value;
 }
-
-CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data, uint32 user);
 
 /**
  * Sell a vehicle.

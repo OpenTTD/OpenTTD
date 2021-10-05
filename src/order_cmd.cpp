@@ -26,6 +26,7 @@
 #include "company_base.h"
 #include "order_backup.h"
 #include "cheat_type.h"
+#include "order_cmd.h"
 
 #include "table/strings.h"
 

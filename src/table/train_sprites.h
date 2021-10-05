@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file train_cmd.h Sprites to use for trains. */
+/** @file train_sprites.h Sprites to use for trains. */
 
 static const SpriteID _engine_sprite_base[] = {
 0x0B59, 0x0B61, 0x0B69, 0x0BE1, 0x0B71, 0x0B75, 0x0B7D, 0x0B7D,

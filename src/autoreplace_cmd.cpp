@@ -22,6 +22,7 @@
 #include "ai/ai.hpp"
 #include "news_func.h"
 #include "strings_func.h"
+#include "autoreplace_cmd.h"
 
 #include "table/strings.h"
 

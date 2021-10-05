@@ -40,6 +40,7 @@
 #include "water.h"
 #include "company_gui.h"
 #include "station_func.h"
+#include "tunnelbridge_cmd.h"
 
 #include "table/strings.h"
 #include "table/bridge_land.h"

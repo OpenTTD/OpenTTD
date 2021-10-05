@@ -23,6 +23,7 @@
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
 #include "date_func.h"
+#include "tree_cmd.h"
 
 #include "table/strings.h"
 #include "table/tree_land.h"

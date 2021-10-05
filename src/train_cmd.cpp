@@ -34,9 +34,10 @@
 #include "zoom_func.h"
 #include "newgrf_debug.h"
 #include "framerate_type.h"
+#include "train_cmd.h"
 
 #include "table/strings.h"
-#include "table/train_cmd.h"
+#include "table/train_sprites.h"
 
 #include "safeguards.h"
 

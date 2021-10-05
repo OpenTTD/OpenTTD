@@ -38,6 +38,7 @@
 #include "company_gui.h"
 #include "newgrf_generic.h"
 #include "industry.h"
+#include "water_cmd.h"
 
 #include "table/strings.h"
 
