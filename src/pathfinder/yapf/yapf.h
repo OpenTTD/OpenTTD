@@ -31,9 +31,10 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 /**
  * Returns true if it is better to reverse the ship before leaving depot using YAPF.
  * @param v the ship leaving the depot
+ * @param trackdir [out] the best of all possible reversed trackdirs
  * @return true if reversing is better
  */
-bool YapfShipCheckReverse(const Ship *v);
+bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir);
 
 /**
  * Finds the best path for given road vehicle using YAPF.
