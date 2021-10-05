@@ -82,6 +82,15 @@ struct AIPLChunkHandler : ChunkHandler {
 				continue;
 			}
 
+			/* If on the main menu, i.e. loading the title game, disable all AIs */
+			if (_game_mode == GM_MENU) {
+				if (Company::IsValidAiID(index)) {
+					AIInstance::LoadEmpty();
+					Company::Get(index)->is_ai = false;
+				}
+				continue;
+			}
+
 			AIConfig *config = AIConfig::GetConfig(index, AIConfig::SSS_FORCE_GAME);
 			if (_ai_saveload_name.empty()) {
 				/* A random AI. */

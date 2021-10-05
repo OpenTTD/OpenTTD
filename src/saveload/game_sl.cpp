@@ -69,7 +69,8 @@ struct GSDTChunkHandler : ChunkHandler {
 		_game_saveload_version = -1;
 		SlObject(nullptr, slt);
 
-		if (_networking && !_network_server) {
+		/* Network clients don't run the game script, and neither does the title screen game */
+		if ((_networking && !_network_server) || _game_mode == GM_MENU) {
 			GameInstance::LoadEmpty();
 			if (SlIterateArray() != -1) SlErrorCorrupt("Too many GameScript configs");
 			return;
