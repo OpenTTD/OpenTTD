@@ -4075,7 +4075,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Trimite 
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+Click va sincroniza comenzile. Shift+Click va afișa costul estimat fără a achiziționa trenul
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+Click va sincroniza comenzile. Shift+Click va afișa costul estimat fără a achiziționa vehiculul
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va achiziționa o copie a autovehiculului. Ctrl+clic va sincroniza comenzile. Shift+clic va afișa costul estimat fără a achiziționa vehiculul
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+clic va sincroniza comenzile. Shift+clic va afișa costul estimat fără a achiziționa nava
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+clic va sincroniza comenzile. Shift+clic va afișa costul estimat fără a cumpăra aeronava
 
