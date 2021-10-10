@@ -1141,13 +1141,14 @@ static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner o
 /**
  * Opens a 'Rename group' window for newly created group.
  * @param result Did command succeed?
+ * @param cmd Unused.
  * @param tile Unused.
  * @param p1 Vehicle type.
  * @param p2 Unused.
- * @param cmd Unused.
+ * @param text Unused.
  * @see CmdCreateGroup
  */
-void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcCreateGroup(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 	assert(p1 <= VEH_AIRCRAFT);
@@ -1159,17 +1160,18 @@ void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 /**
  * Open rename window after adding a vehicle to a new group via drag and drop.
  * @param result Did command succeed?
+ * @param cmd Unused.
  * @param tile Unused.
  * @param p1 Unused.
  * @param p2 Bit 0-19: Vehicle ID.
- * @param cmd Unused.
+ * @param text Unused.
  */
-void CcAddVehicleNewGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcAddVehicleNewGroup(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 	assert(Vehicle::IsValidID(GB(p2, 0, 20)));
 
-	CcCreateGroup(result, 0, Vehicle::Get(GB(p2, 0, 20))->type, 0, cmd);
+	CcCreateGroup(result, cmd, 0, Vehicle::Get(GB(p2, 0, 20))->type, 0, text);
 }
 
 /**

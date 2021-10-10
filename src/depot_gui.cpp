@@ -112,12 +112,13 @@ extern void DepotSortList(VehicleList *list);
 /**
  * This is the Callback method after the cloning attempt of a vehicle
  * @param result the result of the cloning command
+ * @param cmd unused
  * @param tile unused
  * @param p1 unused
  * @param p2 unused
- * @param cmd unused
+ * @param text unused
  */
-void CcCloneVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcCloneVehicle(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 

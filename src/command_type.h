@@ -443,12 +443,14 @@ template <Commands Tcmd> struct CommandTraits;
  * command succeeded or failed.
  *
  * @param result The result of the executed command
+ * @param cmd The command that was executed
  * @param tile The tile of the command action
  * @param p1 Additional data of the command
  * @param p1 Additional data of the command
+ * @param text Text of the command
  * @see CommandProc
  */
-typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd);
+typedef void CommandCallback(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
 /**
  * Structure for buffering the build command when selecting a station to join.

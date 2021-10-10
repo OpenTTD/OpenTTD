@@ -318,7 +318,7 @@ static bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *call
 	}
 
 	if (!estimate_only && !only_sending && callback != nullptr) {
-		callback(res, tile, p1, p2, cmd);
+		callback(res, cmd, tile, p1, p2, text);
 	}
 
 	return res.Succeeded();

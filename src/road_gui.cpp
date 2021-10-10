@@ -66,7 +66,7 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound_CONSTRUCTION_OTHER(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcPlaySound_CONSTRUCTION_OTHER(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 }
@@ -90,13 +90,14 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
  * Callback executed after a build road tunnel command has been called.
  *
  * @param result Whether the build succeeded.
+ * @param cmd unused
  * @param start_tile Starting tile of the tunnel.
  * @param p1 bit 0-3 railtype or roadtypes
  *           bit 8-9 transport type
  * @param p2 unused
- * @param cmd unused
+ * @param text unused
  */
-void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2, Commands cmd)
+void CcBuildRoadTunnel(const CommandCost &result, Commands cmd, TileIndex start_tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, start_tile);
@@ -129,7 +130,7 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	}
 }
 
-void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcRoadDepot(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 
@@ -142,6 +143,7 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 /**
  * Command callback for building road stops.
  * @param result Result of the build road stop command.
+ * @param cmd Unused.
  * @param tile Start tile.
  * @param p1 bit 0..7: Width of the road stop.
  *           bit 8..15: Length of the road stop.
@@ -152,10 +154,10 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
  *           bit 3: #Axis of the road for drive-through stops.
  *           bit 5..9: The roadtype.
  *           bit 16..31: Station ID to join (NEW_STATION if build new one).
- * @param cmd Unused.
+ * @param text Unused.
  * @see CmdBuildRoadStop
  */
-void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcRoadStop(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 

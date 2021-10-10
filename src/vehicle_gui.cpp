@@ -2616,11 +2616,13 @@ static const StringID _vehicle_msg_translation_table[][4] = {
 /**
  * This is the Callback method after attempting to start/stop a vehicle
  * @param result the result of the start/stop command
+ * @param cmd unused
  * @param tile unused
  * @param p1 vehicle ID
  * @param p2 unused
+ * @param text unused
  */
-void CcStartStopVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcStartStopVehicle(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 
@@ -3119,12 +3121,13 @@ void StopGlobalFollowVehicle(const Vehicle *v)
 /**
  * This is the Callback method after the construction attempt of a primary vehicle
  * @param result indicates completion (or not) of the operation
+ * @param cmd unused
  * @param tile unused
  * @param p1 unused
  * @param p2 unused
- * @param cmd unused
+ * @param text unused
  */
-void CcBuildPrimaryVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcBuildPrimaryVehicle(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 
