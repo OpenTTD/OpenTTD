@@ -86,8 +86,8 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
 
 /**
  * Change timetable data of an order.
- * @param tile Not used.
  * @param flags Operation to perform.
+ * @param tile Not used.
  * @param p1 Various bitstuffed elements
  * - p1 = (bit  0-19) - Vehicle with the orders to change.
  * - p1 = (bit 20-27) - Order index to modify.
@@ -98,7 +98,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdChangeTimetable(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh = GB(p1, 0, 20);
 
@@ -184,15 +184,15 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 /**
  * Clear the lateness counter to make the vehicle on time.
- * @param tile Not used.
  * @param flags Operation to perform.
+ * @param tile Not used.
  * @param p1 Various bitstuffed elements
  * - p1 = (bit  0-19) - Vehicle with the orders to change.
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh = GB(p1, 0, 20);
 
@@ -250,8 +250,8 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 
 /**
  * Set the start date of the timetable.
- * @param tile Not used.
  * @param flags Operation to perform.
+ * @param tile Not used.
  * @param p2 Various bitstuffed elements
  * - p2 = (bit 0-19) - Vehicle ID.
  * - p2 = (bit 20)   - Set to 1 to set timetable start for all vehicles sharing this order
@@ -259,7 +259,7 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
  * @param text Not used.
  * @return The error or cost of the operation.
  */
-CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetTimetableStart(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	bool timetable_all = HasBit(p1, 20);
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
@@ -315,8 +315,8 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
  * Start or stop filling the timetable automatically from the time the vehicle
  * actually takes to complete it. When starting to autofill the current times
  * are cleared and the timetable will start again from scratch.
- * @param tile Not used.
  * @param flags Operation to perform.
+ * @param tile Not used.
  * @param p1 Vehicle index.
  * @param p2 Various bitstuffed elements
  * - p2 = (bit 0) - Set to 1 to enable, 0 to disable autofill.
@@ -324,7 +324,7 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdAutofillTimetable(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh = GB(p1, 0, 20);
 

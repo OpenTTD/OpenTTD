@@ -421,7 +421,7 @@ enum CommandPauseLevel {
  * @param text Additional text
  * @return The CommandCost of the command, which can be succeeded or failed.
  */
-typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text);
+typedef CommandCost CommandProc(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
 
 /** Defines the traits of a command. */

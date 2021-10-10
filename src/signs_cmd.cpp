@@ -37,7 +37,7 @@ SignID _new_sign_id;
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
@@ -76,7 +76,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameSign(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Sign *si = Sign::GetIfValid(p1);
 	if (si == nullptr) return CMD_ERROR;

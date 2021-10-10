@@ -33,8 +33,8 @@ static_assert((LOAN_INTERVAL & 3) == 0);
 
 /**
  * Increase the loan of your company.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 higher half of amount to increase the loan with, multitude of LOAN_INTERVAL. Only used when (p2 & 3) == 2.
  * @param p2 (bit 2-31) - lower half of amount (lower 2 bits assumed to be 0)
  *           (bit 0-1)  - when 0: loans LOAN_INTERVAL
@@ -43,7 +43,7 @@ static_assert((LOAN_INTERVAL & 3) == 0);
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdIncreaseLoan(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Company *c = Company::Get(_current_company);
 
@@ -81,8 +81,8 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 /**
  * Decrease the loan of your company.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 higher half of amount to decrease the loan with, multitude of LOAN_INTERVAL. Only used when (p2 & 3) == 2.
  * @param p2 (bit 2-31) - lower half of amount (lower 2 bits assumed to be 0)
  *           (bit 0-1)  - when 0: pays back LOAN_INTERVAL
@@ -91,7 +91,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDecreaseLoan(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Company *c = Company::Get(_current_company);
 
@@ -144,14 +144,14 @@ static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
  * Set or unset a bit in the pause mode. If pause mode is zero the game is
  * unpaused. A bitset is used instead of a boolean value/counter to have
  * more control over the game when saving/loading, etc.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 the pause mode to change
  * @param p2 1 pauses, 0 unpauses this mode
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdPause(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	switch (p1) {
 		case PM_PAUSED_SAVELOAD:
@@ -196,29 +196,29 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 
 /**
  * Change the financial flow of your company.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 the amount of money to receive (if positive), or spend (if negative)
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdMoneyCheat(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdMoneyCheat(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	return CommandCost(EXPENSES_OTHER, -(int32)p1);
 }
 
 /**
  * Change the bank bank balance of a company by inserting or removing money without affecting the loan.
- * @param tile tile to show text effect on (if not 0)
  * @param flags operation to perform
+ * @param tile tile to show text effect on (if not 0)
  * @param p1 the amount of money to receive (if positive), or spend (if negative)
  * @param p2 (bit 0-7)  - the company ID.
  *           (bit 8-15) - the expenses type which should register the cost/income @see ExpensesType.
  * @param text unused
  * @return zero cost or an error
  */
-CommandCost CmdChangeBankBalance(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdChangeBankBalance(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	int32 delta = (int32)p1;
 	CompanyID company = (CompanyID) GB(p2, 0, 8);

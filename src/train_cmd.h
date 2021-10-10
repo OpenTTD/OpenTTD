@@ -14,7 +14,7 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 
-CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
+CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **v);
 CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data, uint32 user);
 
 CommandProc CmdMoveRailVehicle;

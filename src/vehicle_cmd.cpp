@@ -74,8 +74,8 @@ const StringID _send_to_depot_msg_table[] = {
 
 /**
  * Build a vehicle.
- * @param tile tile of depot where the vehicle is built
  * @param flags for command
+ * @param tile tile of depot where the vehicle is built
  * @param p1 various bitstuffed data
  *  bits  0-15: vehicle type being built.
  *  bits 16-23: vehicle type specific bits passed on to the vehicle build functions.
@@ -84,7 +84,7 @@ const StringID _send_to_depot_msg_table[] = {
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Elementary check for valid location. */
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
@@ -137,10 +137,10 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	Vehicle *v = nullptr;
 	switch (type) {
-		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(tile, subflags, e, GB(p1, 16, 8), &v)); break;
-		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(tile, subflags, e, GB(p1, 16, 8), &v)); break;
-		case VEH_SHIP:     value.AddCost(CmdBuildShip       (tile, subflags, e, GB(p1, 16, 8), &v)); break;
-		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (tile, subflags, e, GB(p1, 16, 8), &v)); break;
+		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(subflags, tile, e, GB(p1, 16, 8), &v)); break;
+		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(subflags, tile, e, GB(p1, 16, 8), &v)); break;
+		case VEH_SHIP:     value.AddCost(CmdBuildShip       (subflags, tile, e, GB(p1, 16, 8), &v)); break;
+		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (subflags, tile, e, GB(p1, 16, 8), &v)); break;
 		default: NOT_REACHED(); // Safe due to IsDepotTile()
 	}
 
@@ -152,7 +152,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		if (refitting) {
 			/* Refit only one vehicle. If we purchased an engine, it may have gained free wagons. */
-			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo | (1 << 16), {}));
+			value.AddCost(CmdRefitVehicle(flags, tile, v->index, cargo | (1 << 16), {}));
 		} else {
 			/* Fill in non-refitted capacities */
 			_returned_refit_capacity = e->GetDisplayDefaultCapacity(&_returned_mail_refit_capacity);
@@ -202,7 +202,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  * @param text unused.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSellVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
 	if (v == nullptr) return CMD_ERROR;
@@ -451,8 +451,8 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 
 /**
  * Refits a vehicle to the specified cargo type.
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 vehicle ID to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7)   - New cargo type to refit to.
@@ -464,7 +464,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRefitVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == nullptr) return CMD_ERROR;
@@ -545,14 +545,14 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 /**
  * Start/Stop a vehicle
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 vehicle to start/stop, don't forget to change CcStartStopVehicle if you modify this!
  * @param p2 bit 0: Shall the start/stop newgrf callback be evaluated (only valid with DC_AUTOREPLACE for network safety)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdStartStopVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Disable the effect of p2 bit 0, when DC_AUTOREPLACE is not set */
 	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
@@ -627,8 +627,8 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 /**
  * Starts or stops a lot of vehicles
- * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param flags type of operation
+ * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param p1 bitmask
  *   - bit 0 set = start vehicles, unset = stop vehicles
  *   - bit 1 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
@@ -636,7 +636,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdMassStartStopVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleList list;
 	bool do_start = HasBit(p1, 0);
@@ -669,14 +669,14 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 
 /**
  * Sells all vehicles in a depot
- * @param tile Tile of the depot where the depot is
  * @param flags type of operation
+ * @param tile Tile of the depot where the depot is
  * @param p1 Vehicle type
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDepotSellAllVehicles(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleList list;
 
@@ -705,14 +705,14 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 
 /**
  * Autoreplace all vehicles in the depot
- * @param tile Tile of the depot where the vehicles are
  * @param flags type of operation
+ * @param tile Tile of the depot where the vehicles are
  * @param p1 Type of vehicle
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
@@ -809,14 +809,14 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 
 /**
  * Clone a vehicle. If it is a train, it will clone all the cars too
- * @param tile tile of the depot where the cloned vehicle is build
  * @param flags type of operation
+ * @param tile tile of the depot where the cloned vehicle is build
  * @param p1 the original vehicle's index
  * @param p2 1 = shared orders, else copied orders
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 
@@ -1029,8 +1029,8 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
 
 /**
  * Send a vehicle to the depot.
- * @param tile unused
  * @param flags for command type
+ * @param tile unused
  * @param p1 bitmask
  * - p1 0-20: bitvehicle ID to send to the depot
  * - p1 bits 25-8  - DEPOT_ flags (see vehicle_type.h)
@@ -1038,7 +1038,7 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSendVehicleToDepot(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (p1 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
@@ -1056,14 +1056,14 @@ CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 /**
  * Give a custom name to your vehicle
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 vehicle ID to name
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
@@ -1094,8 +1094,8 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 /**
  * Change the service interval of a vehicle
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 vehicle ID that is being service-interval-changed
  * @param p2 bitmask
  * - p2 = (bit  0-15) - new service interval
@@ -1104,7 +1104,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdChangeServiceInt(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;

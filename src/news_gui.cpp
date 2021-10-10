@@ -836,8 +836,8 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
 
 /**
  * Create a new custom news item.
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 -  7) - NewsType of the message.
  * - p1 = (bit  8 - 15) - NewsReferenceType of first reference.
@@ -846,7 +846,7 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCustomNewsItem(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 

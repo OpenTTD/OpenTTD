@@ -248,8 +248,8 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 
 /**
  * Build a Bridge
- * @param end_tile end tile
  * @param flags type of operation
+ * @param end_tile end tile
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 7) - bridge type (hi bh)
@@ -258,7 +258,7 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex end_tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CompanyID company = _current_company;
 
@@ -623,15 +623,15 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 /**
  * Build Tunnel.
- * @param start_tile start tile of tunnel
  * @param flags type of operation
+ * @param start_tile start tile of tunnel
  * @param p1 bit 0-5 railtype or roadtype
  *           bit 8-9 transport type
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CompanyID company = _current_company;
 

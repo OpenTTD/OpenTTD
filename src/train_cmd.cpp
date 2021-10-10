@@ -584,13 +584,13 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 
 /**
  * Build a railroad wagon.
- * @param tile     tile of the depot where rail-vehicle is built.
  * @param flags    type of operation.
+ * @param tile     tile of the depot where rail-vehicle is built.
  * @param e        the engine to build.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const Engine *e, Vehicle **ret)
+static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
 	const RailVehicleInfo *rvi = &e->u.rail;
 
@@ -714,18 +714,18 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 
 /**
  * Build a railroad vehicle.
- * @param tile     tile of the depot where rail-vehicle is built.
  * @param flags    type of operation.
+ * @param tile     tile of the depot where rail-vehicle is built.
  * @param e        the engine to build.
  * @param data     bit 0 prevents any free cars from being added to the train.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
+CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **ret)
 {
 	const RailVehicleInfo *rvi = &e->u.rail;
 
-	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(tile, flags, e, ret);
+	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(flags, tile, e, ret);
 
 	/* Check if depot and new engine uses the same kind of tracks *
 	 * We need to see if the engine got power on the tile to avoid electric engines in non-electric depots */
@@ -1159,9 +1159,9 @@ static void NormaliseTrainHead(Train *head)
 
 /**
  * Move a rail vehicle around inside the depot.
- * @param tile unused
  * @param flags type of operation
  *              Note: DC_AUTOREPLACE is set when autoreplace tries to undo its modifications or moves vehicles to temporary locations inside the depot.
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 (bit  0 - 19) source vehicle index
  * - p1 (bit      20) move all vehicles following the source vehicle
@@ -1169,7 +1169,7 @@ static void NormaliseTrainHead(Train *head)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdMoveRailVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID s = GB(p1, 0, 20);
 	VehicleID d = GB(p2, 0, 20);
@@ -1916,7 +1916,7 @@ void ReverseTrainDirection(Train *v)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdReverseTrainDirection(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Train *v = Train::GetIfValid(p1);
 	if (v == nullptr) return CMD_ERROR;
@@ -1982,14 +1982,14 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 
 /**
  * Force a train through a red signal
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 train to ignore the red signal
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdForceTrainProceed(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Train *t = Train::GetIfValid(p1);
 	if (t == nullptr) return CMD_ERROR;

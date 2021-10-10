@@ -708,14 +708,14 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 /**
  * Autoreplaces a vehicle
  * Trains are replaced as a whole chain, free wagons in depot are replaced on their own
- * @param tile not used
  * @param flags type of operation
+ * @param tile not used
  * @param p1 Index of vehicle
  * @param p2 not used
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == nullptr) return CMD_ERROR;
@@ -797,8 +797,8 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 /**
  * Change engine renewal parameters
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 packed data
  *   - bit      0 = replace when engine gets old?
  *   - bits 16-31 = engine group
@@ -808,7 +808,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetAutoReplace(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Company *c = Company::GetIfValid(_current_company);
 	if (c == nullptr) return CMD_ERROR;

@@ -1486,8 +1486,8 @@ const SettingDesc *GetSettingFromName(const std::string_view name)
 
 /**
  * Network-safe changing of settings (server-only).
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 unused
  * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
@@ -1495,7 +1495,7 @@ const SettingDesc *GetSettingFromName(const std::string_view name)
  * @return the cost of this operation or an error
  * @see _settings
  */
-CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdChangeSetting(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (text.empty()) return CMD_ERROR;
 	const SettingDesc *sd = GetSettingFromName(text);
@@ -1515,15 +1515,15 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 /**
  * Change one of the per-company settings.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 unused
  * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
  * @param text the name of the company setting to change
  * @return the cost of this operation or an error
  */
-CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdChangeCompanySetting(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (text.empty()) return CMD_ERROR;
 	const SettingDesc *sd = GetCompanySettingFromName(text.c_str());

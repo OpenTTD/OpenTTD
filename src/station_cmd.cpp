@@ -1237,8 +1237,8 @@ static void RestoreTrainReservation(Train *v)
 
 /**
  * Build rail station
- * @param tile_org northern most position of station dragging/placement
  * @param flags operation to perform
+ * @param tile_org northern most position of station dragging/placement
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0- 5) - railtype
  * - p1 = (bit  6)    - orientation (Axis)
@@ -1252,7 +1252,7 @@ static void RestoreTrainReservation(Train *v)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Unpack parameters */
 	RailType rt    = Extract<RailType, 0, 6>(p1);
@@ -1653,15 +1653,15 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 /**
  * Remove a single tile from a rail station.
  * This allows for custom-built station with holes and weird layouts
- * @param start tile of station piece to remove
  * @param flags operation to perform
+ * @param start tile of station piece to remove
  * @param p1 start_tile
  * @param p2 various bitstuffed elements
  * - p2 = bit 0 - if set keep the rail
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveFromRailStation(DoCommandFlag flags, TileIndex start, uint32 p1, uint32 p2, const std::string &text)
 {
 	TileIndex end = p1 == 0 ? start : p1;
 	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
@@ -1687,15 +1687,15 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 /**
  * Remove a single tile from a waypoint.
  * This allows for custom-built waypoint with holes and weird layouts
- * @param start tile of waypoint piece to remove
  * @param flags operation to perform
+ * @param start tile of waypoint piece to remove
  * @param p1 start_tile
  * @param p2 various bitstuffed elements
  * - p2 = bit 0 - if set keep the rail
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveFromRailWaypoint(DoCommandFlag flags, TileIndex start, uint32 p1, uint32 p2, const std::string &text)
 {
 	TileIndex end = p1 == 0 ? start : p1;
 	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
@@ -1820,8 +1820,8 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
 
 /**
  * Build a bus or truck stop.
- * @param tile Northernmost tile of the stop.
  * @param flags Operation to perform.
+ * @param tile Northernmost tile of the stop.
  * @param p1 bit 0..7: Width of the road stop.
  *           bit 8..15: Length of the road stop.
  * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
@@ -1834,7 +1834,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param text Unused.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
@@ -2075,8 +2075,8 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 
 /**
  * Remove bus or truck stops.
- * @param tile Northernmost tile of the removal area.
  * @param flags Operation to perform.
+ * @param tile Northernmost tile of the removal area.
  * @param p1 bit 0..7: Width of the removal area.
  *           bit 8..15: Height of the removal area.
  * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
@@ -2084,7 +2084,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
  * @param text Unused.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveRoadStop(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	uint8 width = (uint8)GB(p1, 0, 8);
 	uint8 height = (uint8)GB(p1, 8, 8);
@@ -2232,8 +2232,8 @@ void UpdateAirportsNoise()
 
 /**
  * Place an Airport.
- * @param tile tile where airport will be built
  * @param flags operation to perform
+ * @param tile tile where airport will be built
  * @param p1
  * - p1 = (bit  0- 7) - airport type, @see airport.h
  * - p1 = (bit  8-15) - airport layout
@@ -2243,7 +2243,7 @@ void UpdateAirportsNoise()
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	StationID station_to_join = GB(p2, 16, 16);
 	bool reuse = (station_to_join != NEW_STATION);
@@ -2453,14 +2453,14 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 /**
  * Open/close an airport to incoming aircraft.
- * @param tile Unused.
  * @param flags Operation to perform.
+ * @param tile Unused.
  * @param p1 Station ID of the airport.
  * @param p2 Unused.
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdOpenCloseAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdOpenCloseAirport(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (!Station::IsValidID(p1)) return CMD_ERROR;
 	Station *st = Station::Get(p1);
@@ -2508,14 +2508,14 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
 
 /**
  * Build a dock/haven.
- * @param tile tile where dock will be built
  * @param flags operation to perform
+ * @param tile tile where dock will be built
  * @param p1 (bit 0) - allow docks directly adjacent to other docks.
  * @param p2 bit 16-31: station ID to join (NEW_STATION if build new one)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildDock(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	StationID station_to_join = GB(p2, 16, 16);
 	bool reuse = (station_to_join != NEW_STATION);
@@ -3927,14 +3927,14 @@ static bool IsUniqueStationName(const std::string &name)
 
 /**
  * Rename a station
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 station ID that is to be renamed
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameStation(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Station *st = Station::GetIfValid(p1);
 	if (st == nullptr) return CMD_ERROR;

@@ -14,6 +14,6 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 
-CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
+CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **v);
 
 #endif /* AIRCRAFT_CMD_H */

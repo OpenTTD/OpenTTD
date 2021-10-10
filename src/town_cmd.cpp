@@ -1923,8 +1923,8 @@ static bool IsUniqueTownName(const std::string &name)
 
 /**
  * Create a new town.
- * @param tile coordinates where town is built
  * @param flags type of operation
+ * @param tile coordinates where town is built
  * @param p1  0..1 size of the town (@see TownSize)
  *               2 true iff it should be a city
  *            3..5 town road layout (@see TownLayout)
@@ -1933,7 +1933,7 @@ static bool IsUniqueTownName(const std::string &name)
  * @param text Custom name for the town. If empty, the town name parts will be used.
  * @return the cost of this operation or an error
  */
-CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdFoundTown(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	TownSize size = Extract<TownSize, 0, 2>(p1);
 	bool city = HasBit(p1, 2);
@@ -2735,14 +2735,14 @@ void ClearTownHouse(Town *t, TileIndex tile)
 
 /**
  * Rename a town (server-only).
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 town ID to rename
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameTown(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Town *t = Town::GetIfValid(p1);
 	if (t == nullptr) return CMD_ERROR;
@@ -2786,8 +2786,8 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
 
 /**
  * Change the cargo goal of a town.
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - Town ID to cargo game of.
  * - p1 = (bit 16 - 23) - TownEffect to change the game of.
@@ -2795,7 +2795,7 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
  * @param text Unused.
  * @return Empty cost or an error.
  */
-CommandCost CmdTownCargoGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTownCargoGoal(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -2821,14 +2821,14 @@ CommandCost CmdTownCargoGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 /**
  * Set a custom text in the Town window.
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 Town ID to change the text of.
  * @param p2 Unused.
  * @param text The new text (empty to remove the text).
  * @return Empty cost or an error.
  */
-CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTownSetText(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
@@ -2845,14 +2845,14 @@ CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 /**
  * Change the growth rate of the town.
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 Town ID to cargo game of.
  * @param p2 Amount of days between growth, or TOWN_GROWTH_RATE_NONE, or 0 to reset custom growth rate.
  * @param text Unused.
  * @return Empty cost or an error.
  */
-CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTownGrowthRate(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (GB(p2, 16, 16) != 0) return CMD_ERROR;
@@ -2885,14 +2885,14 @@ CommandCost CmdTownGrowthRate(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 /**
  * Change the rating of a company in a town
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 Bit 0..15 = Town ID to change, bit 16..23 = Company ID to change.
  * @param p2 Bit 0..15 = New rating of company (signed int16).
  * @param text Unused.
  * @return Empty cost or an error.
  */
-CommandCost CmdTownRating(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTownRating(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -2914,14 +2914,14 @@ CommandCost CmdTownRating(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 /**
  * Expand a town (scenario editor only).
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 Town ID to expand.
  * @param p2 Amount to grow, or 0 to grow a random size up to the current amount of houses.
  * @param text Unused.
  * @return Empty cost or an error.
  */
-CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdExpandTown(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
@@ -2954,14 +2954,14 @@ CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 /**
  * Delete a town (scenario editor or worldgen only).
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 Town ID to delete.
  * @param p2 Unused.
  * @param text Unused.
  * @return Empty cost or an error.
  */
-CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDeleteTown(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_game_mode != GM_EDITOR && !_generating_world) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
@@ -3340,14 +3340,14 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
  * Do a town action.
  * This performs an action such as advertising, building a statue, funding buildings,
  * but also bribing the town-council
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 town to do the action at
  * @param p2 action to perform, @see _town_action_proc for the list of available actions
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDoTownAction(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Town *t = Town::GetIfValid(p1);
 	if (t == nullptr || p2 >= lengthof(_town_action_proc)) return CMD_ERROR;

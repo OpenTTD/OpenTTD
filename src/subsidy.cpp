@@ -231,8 +231,8 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
 
 /**
  * Create a new subsidy.
- * @param tile unused.
  * @param flags type of operation
+ * @param tile unused.
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 -  7) - SourceType of source.
  * - p1 = (bit  8 - 23) - SourceID of source.
@@ -243,7 +243,7 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
  * @param text unused.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateSubsidy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCreateSubsidy(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (!Subsidy::CanAllocateItem()) return CMD_ERROR;
 

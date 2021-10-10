@@ -875,14 +875,14 @@ void ClearEnginesHiddenFlagOfCompany(CompanyID cid)
 
 /**
  * Set the visibility of an engine.
- * @param tile Unused.
  * @param flags Operation to perform.
+ * @param tile Unused.
  * @param p1 Unused.
  * @param p2 Bit 31: 0=visible, 1=hidden, other bits for the #EngineID.
  * @param text Unused.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdSetVehicleVisibility(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetVehicleVisibility(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Engine *e = Engine::GetIfValid(GB(p2, 0, 31));
 	if (e == nullptr || _current_company >= MAX_COMPANIES) return CMD_ERROR;
@@ -899,14 +899,14 @@ CommandCost CmdSetVehicleVisibility(TileIndex tile, DoCommandFlag flags, uint32 
 /**
  * Accept an engine prototype. XXX - it is possible that the top-company
  * changes while you are waiting to accept the offer? Then it becomes invalid
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 engine-prototype offered
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdWantEnginePreview(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Engine *e = Engine::GetIfValid(p1);
 	if (e == nullptr || !(e->flags & ENGINE_EXCLUSIVE_PREVIEW) || e->preview_company != _current_company) return CMD_ERROR;
@@ -918,8 +918,8 @@ CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 /**
  * Allow or forbid a specific company to use an engine
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 engine id
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0 - 7) - Company to allow/forbid the use of an engine.
@@ -927,7 +927,7 @@ CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1,
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdEngineCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdEngineCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	EngineID engine_id = (EngineID)p1;
@@ -1072,14 +1072,14 @@ static bool IsUniqueEngineName(const std::string &name)
 
 /**
  * Rename an engine.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 engine ID to rename
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameEngine(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Engine *e = Engine::GetIfValid(p1);
 	if (e == nullptr) return CMD_ERROR;

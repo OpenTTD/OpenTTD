@@ -795,8 +795,8 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
 
 /**
  * Control the companies: add, delete, etc.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 various functionality
  * - bits 0..15: CompanyCtrlAction
  * - bits 16..23: CompanyID
@@ -805,7 +805,7 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCompanyCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
@@ -922,14 +922,14 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 /**
  * Change the company manager's face.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 unused
  * @param p2 face bitmasked
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CompanyManagerFace cmf = (CompanyManagerFace)p2;
 
@@ -944,8 +944,8 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
 
 /**
  * Change the company's company-colour
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 bitstuffed:
  * p1 bits 0-7 scheme to set
  * p1 bit 8 set first/second colour
@@ -953,7 +953,7 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetCompanyColour(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Colours colour = Extract<Colours, 0, 8>(p2);
 	LiveryScheme scheme = Extract<LiveryScheme, 0, 8>(p1);
@@ -1057,14 +1057,14 @@ static bool IsUniqueCompanyName(const std::string &name)
 
 /**
  * Change the name of the company.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 unused
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameCompany(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	bool reset = text.empty();
 
@@ -1103,14 +1103,14 @@ static bool IsUniquePresidentName(const std::string &name)
 
 /**
  * Change the name of the president.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 unused
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenamePresident(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	bool reset = text.empty();
 
@@ -1188,14 +1188,14 @@ uint32 CompanyInfrastructure::GetTramTotal() const
  * To prevent abuse in multiplayer games you can only send money to other
  * companies if you have paid off your loan (either explicitly, or implicitly
  * given the fact that you have more money than loan).
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the company to transfer the money to
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdGiveMoney(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
