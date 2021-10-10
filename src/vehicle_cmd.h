@@ -36,4 +36,7 @@ DEF_CMD_TRAIT(CMD_MASS_START_STOP,         CmdMassStartStopVehicle, 0,          
 DEF_CMD_TRAIT(CMD_DEPOT_SELL_ALL_VEHICLES, CmdDepotSellAllVehicles, 0,             CMDT_VEHICLE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,             CMDT_VEHICLE_CONSTRUCTION)
 
+CommandCallback CcBuildPrimaryVehicle;
+CommandCallback CcStartStopVehicle;
+
 #endif /* VEHICLE_CMD_H */

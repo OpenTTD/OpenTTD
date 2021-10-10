@@ -26,6 +26,7 @@
 #include "hotkeys.h"
 #include "vehicle_func.h"
 #include "gui.h"
+#include "airport_cmd.h"
 
 #include "widgets/airport_widget.h"
 

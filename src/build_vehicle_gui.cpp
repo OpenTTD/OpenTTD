@@ -30,6 +30,8 @@
 #include "cargotype.h"
 #include "core/geometry_func.hpp"
 #include "autoreplace_func.h"
+#include "train_cmd.h"
+#include "vehicle_cmd.h"
 
 #include "widgets/build_vehicle_widget.h"
 

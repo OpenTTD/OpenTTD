@@ -42,6 +42,7 @@ add_files(
     aircraft_gui.cpp
     airport.cpp
     airport.h
+    airport_cmd.h
     airport_gui.cpp
     animated_tile.cpp
     animated_tile_func.h
@@ -131,6 +132,7 @@ add_files(
     direction_type.h
     disaster_vehicle.cpp
     disaster_vehicle.h
+    dock_cmd.h
     dock_gui.cpp
     driver.cpp
     driver.h

@@ -36,6 +36,7 @@
 #include "station_base.h"
 #include "tilehighlight_func.h"
 #include "zoom_func.h"
+#include "depot_cmd.h"
 
 #include "safeguards.h"
 

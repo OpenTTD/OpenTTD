@@ -31,7 +31,9 @@
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "terraform_gui.h"
+#include "terraform_cmd.h"
 #include "zoom_func.h"
+#include "rail_cmd.h"
 
 #include "widgets/terraform_widget.h"
 

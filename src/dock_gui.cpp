@@ -25,6 +25,8 @@
 #include "hotkeys.h"
 #include "gui.h"
 #include "zoom_func.h"
+#include "tunnelbridge_cmd.h"
+#include "dock_cmd.h"
 
 #include "widgets/dock_widget.h"
 

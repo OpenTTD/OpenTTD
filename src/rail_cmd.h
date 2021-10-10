@@ -34,4 +34,9 @@ DEF_CMD_TRAIT(CMD_CONVERT_RAIL,          CmdConvertRail,                0,      
 DEF_CMD_TRAIT(CMD_BUILD_SIGNAL_TRACK,    CmdBuildSignalTrack,    CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
 
+CommandCallback CcPlaySound_CONSTRUCTION_RAIL;
+CommandCallback CcRailDepot;
+CommandCallback CcStation;
+CommandCallback CcBuildRailTunnel;
+
 #endif /* RAIL_CMD_H */

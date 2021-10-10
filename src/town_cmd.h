@@ -32,4 +32,7 @@ DEF_CMD_TRAIT(CMD_TOWN_SET_TEXT,    CmdTownSetText,    CMD_DEITY | CMD_STR_CTRL,
 DEF_CMD_TRAIT(CMD_EXPAND_TOWN,      CmdExpandTown,     CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_DELETE_TOWN,      CmdDeleteTown,     CMD_OFFLINE,              CMDT_LANDSCAPE_CONSTRUCTION)
 
+CommandCallback CcFoundTown;
+CommandCallback CcFoundRandomTown;
+
 #endif /* TOWN_CMD_H */

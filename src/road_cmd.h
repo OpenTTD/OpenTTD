@@ -29,4 +29,9 @@ DEF_CMD_TRAIT(CMD_BUILD_ROAD,       CmdBuildRoad,      CMD_AUTO | CMD_NO_WATER |
 DEF_CMD_TRAIT(CMD_BUILD_ROAD_DEPOT, CmdBuildRoadDepot, CMD_AUTO | CMD_NO_WATER,             CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_CONVERT_ROAD,     CmdConvertRoad,    0,                                   CMDT_LANDSCAPE_CONSTRUCTION)
 
+CommandCallback CcPlaySound_CONSTRUCTION_OTHER;
+CommandCallback CcBuildRoadTunnel;
+CommandCallback CcRoadDepot;
+CommandCallback CcRoadStop;
+
 #endif /* ROAD_CMD_H */
