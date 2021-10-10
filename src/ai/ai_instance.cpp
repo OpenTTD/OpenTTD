@@ -93,12 +93,13 @@ ScriptInfo *AIInstance::FindLibrary(const char *library, int version)
 /**
  * DoCommand callback function for all commands executed by AIs.
  * @param result The result of the command.
+ * @param cmd cmd as given to DoCommandPInternal.
  * @param tile The tile on which the command was executed.
  * @param p1 p1 as given to DoCommandPInternal.
  * @param p2 p2 as given to DoCommandPInternal.
- * @param cmd cmd as given to DoCommandPInternal.
+ * @param text text as given to DoCommandPInternal.
  */
-void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcAI(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/*
 	 * The company might not exist anymore. Check for this.

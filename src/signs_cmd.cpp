@@ -110,12 +110,13 @@ CommandCost CmdRenameSign(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32
 /**
  * Callback function that is called after a sign is placed
  * @param result of the operation
+ * @param cmd unused
  * @param tile unused
  * @param p1 unused
  * @param p2 unused
- * @param cmd unused
+ * @param text unused
  */
-void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+void CcPlaceSign(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (result.Failed()) return;
 
