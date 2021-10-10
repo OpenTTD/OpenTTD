@@ -727,8 +727,8 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
 
 /**
  * Add an order to the orderlist of a vehicle.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 19) - ID of the vehicle
  * - p1 = (bit 24 - 31) - the selected order (if any). If the last order is given,
@@ -738,7 +738,7 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdInsertOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh          = GB(p1,  0, 20);
 	VehicleOrderID sel_ord = GB(p1, 20, 8);
@@ -1006,14 +1006,14 @@ static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlag flags)
 
 /**
  * Delete an order from the orderlist of a vehicle.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDeleteOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh_id = GB(p1, 0, 20);
 	VehicleOrderID sel_ord = GB(p2, 0, 8);
@@ -1111,14 +1111,14 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 
 /**
  * Goto order of order-list.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 the selected order to which we want to skip
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSkipToOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh_id = GB(p1, 0, 20);
 	VehicleOrderID sel_ord = GB(p2, 0, 8);
@@ -1148,8 +1148,8 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 /**
  * Move an order inside the orderlist
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 the ID of the vehicle
  * @param p2 order to move and target
  *           bit 0-15  : the order to move
@@ -1159,7 +1159,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @note The target order will move one place down in the orderlist
  *  if you move the order upwards else it'll move it one place down
  */
-CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdMoveOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh = GB(p1, 0, 20);
 	VehicleOrderID moving_order = GB(p2,  0, 16);
@@ -1249,8 +1249,8 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 /**
  * Modify an order in the orderlist of a vehicle.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 19) - ID of the vehicle
  * - p1 = (bit 24 - 31) - the selected order (if any). If the last order is given,
@@ -1262,7 +1262,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdModifyOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleOrderID sel_ord = GB(p1, 20,  8);
 	VehicleID veh          = GB(p1,  0, 20);
@@ -1522,8 +1522,8 @@ static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_o
 
 /**
  * Clone/share/copy an order-list of another vehicle.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0-19) - destination vehicle to clone orders to
  * - p1 = (bit 30-31) - action to perform
@@ -1531,7 +1531,7 @@ static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_o
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCloneOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh_src = GB(p2, 0, 20);
 	VehicleID veh_dst = GB(p1, 0, 20);
@@ -1669,8 +1669,8 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 /**
  * Add/remove refit orders from an order
- * @param tile Not used
  * @param flags operation to perform
+ * @param tile Not used
  * @param p1 VehicleIndex of the vehicle having the order
  * @param p2 bitmask
  *   - bit 0-7 CargoID
@@ -1678,7 +1678,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdOrderRefit(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	VehicleID veh = GB(p1, 0, 20);
 	VehicleOrderID order_number  = GB(p2, 16, 8);

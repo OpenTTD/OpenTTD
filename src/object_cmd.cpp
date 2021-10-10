@@ -196,14 +196,14 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
 
 /**
  * Build an object object
- * @param tile tile where the object will be located
  * @param flags type of operation
+ * @param tile tile where the object will be located
  * @param p1 the object type to build
  * @param p2 the view for the object
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -776,7 +776,7 @@ void GenerateObjects()
 
 				default:
 					uint8 view = RandomRange(spec->views);
-					if (CmdBuildObject(RandomTile(), DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, i, view, {}).Succeeded()) amount--;
+					if (CmdBuildObject(DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, RandomTile(), i, view, {}).Succeeded()) amount--;
 					break;
 			}
 		}

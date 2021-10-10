@@ -379,14 +379,14 @@ void GenerateTrees()
 
 /**
  * Plant a tree.
- * @param tile end tile of area-drag
  * @param flags type of operation
+ * @param tile end tile of area-drag
  * @param p1 tree type, TREE_INVALID means random.
  * @param p2 start tile of area-drag of tree plantation
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);

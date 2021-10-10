@@ -204,7 +204,7 @@ CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) ) {
 		if (_docommand_recursive == 1) _cleared_object_areas.clear();
 		SetTownRatingTestMode(true);
-		res = proc(tile, flags & ~DC_EXEC, p1, p2, text);
+		res = proc(flags & ~DC_EXEC, tile, p1, p2, text);
 		SetTownRatingTestMode(false);
 		if (res.Failed()) {
 			goto error;
@@ -226,7 +226,7 @@ CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 
 	/* Execute the command here. All cost-relevant functions set the expenses type
 	 * themselves to the cost object at some point */
 	if (_docommand_recursive == 1) _cleared_object_areas.clear();
-	res = proc(tile, flags, p1, p2, text);
+	res = proc(flags, tile, p1, p2, text);
 	if (res.Failed()) {
 error:
 		_docommand_recursive--;
@@ -465,7 +465,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	_cleared_object_areas.clear();
 	SetTownRatingTestMode(true);
 	BasePersistentStorageArray::SwitchMode(PSM_ENTER_TESTMODE);
-	CommandCost res = proc(tile, flags, p1, p2, text);
+	CommandCost res = proc(flags, tile, p1, p2, text);
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
 
@@ -508,7 +508,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	 * use the construction one */
 	_cleared_object_areas.clear();
 	BasePersistentStorageArray::SwitchMode(PSM_ENTER_COMMAND);
-	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
+	CommandCost res2 = proc(flags | DC_EXEC, tile, p1, p2, text);
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
 	if (cmd == CMD_COMPANY_CTRL) {

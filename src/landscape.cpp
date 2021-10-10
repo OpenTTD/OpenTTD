@@ -684,14 +684,14 @@ void ClearSnowLine()
 
 /**
  * Clear a piece of landscape
- * @param tile tile to clear
  * @param flags of operation to conduct
+ * @param tile tile to clear
  * @param p1 unused
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool do_clear = false;
@@ -733,15 +733,15 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 /**
  * Clear a big piece of landscape
- * @param tile end tile of area dragging
  * @param flags of operation to conduct
+ * @param tile end tile of area dragging
  * @param p1 start tile of area dragging
  * @param p2 various bitstuffed data.
  *  bit      0: Whether to use the Orthogonal (0) or Diagonal (1) iterator.
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (p1 >= MapSize()) return CMD_ERROR;
 

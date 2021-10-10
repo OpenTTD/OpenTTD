@@ -250,14 +250,14 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
 
 /**
  * Build a road vehicle.
- * @param tile     tile of the depot where road vehicle is built.
  * @param flags    type of operation.
+ * @param tile     tile of the depot where road vehicle is built.
  * @param e        the engine to build.
  * @param data     unused.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
+CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **ret)
 {
 	/* Check that the vehicle can drive on the road in question */
 	RoadType rt = e->u.road.roadtype;
@@ -360,14 +360,14 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 
 /**
  * Turn a roadvehicle around.
- * @param tile unused
  * @param flags operation to perform
+ * @param tile unused
  * @param p1 vehicle ID to turn
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTurnRoadVeh(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
 	if (v == nullptr) return CMD_ERROR;

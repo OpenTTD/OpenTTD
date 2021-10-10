@@ -179,14 +179,14 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 
 /**
  * Terraform land
- * @param tile tile to terraform
  * @param flags for this command type
+ * @param tile tile to terraform
  * @param p1 corners to terraform (SLOPE_xxx)
  * @param p2 direction; eg up (non-zero) or down (zero)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	_terraform_err_tile = INVALID_TILE;
 
@@ -334,8 +334,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 /**
  * Levels a selected (rectangle) area of land
- * @param tile end tile of area-drag
  * @param flags for this command type
+ * @param tile end tile of area-drag
  * @param p1 start tile of area drag
  * @param p2 various bitstuffed data.
  *  bit      0: Whether to use the Orthogonal (0) or Diagonal (1) iterator.
@@ -343,7 +343,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (p1 >= MapSize()) return CMD_ERROR;
 

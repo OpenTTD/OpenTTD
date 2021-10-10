@@ -1973,8 +1973,8 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 
 /**
  * Build/Fund an industry
- * @param tile tile where industry is built
  * @param flags of operations to conduct
+ * @param tile tile where industry is built
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 -  7) - industry type see build_industry.h and see industry.h
  * - p1 = (bit  8 - 15) - first layout to try
@@ -1983,7 +1983,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	IndustryType it = GB(p1, 0, 8);
 	if (it >= NUM_INDUSTRYTYPES) return CMD_ERROR;
@@ -2062,8 +2062,8 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 /**
  * Change industry properties
- * @param tile Unused.
  * @param flags Type of operation.
+ * @param tile Unused.
  * @param p1 IndustryID
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0 - 7) - IndustryAction to perform
@@ -2075,7 +2075,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param text - Additional industry text (only used with set text action)
  * @return Empty cost or an error.
  */
-CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdIndustryCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 

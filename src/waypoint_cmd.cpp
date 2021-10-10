@@ -161,8 +161,8 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
 /**
  * Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
- * @param start_tile northern most tile where waypoint will be built
  * @param flags type of operation
+ * @param start_tile northern most tile where waypoint will be built
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0- 5) - railtype (not used)
  * - p1 = (bit  6)    - orientation (Axis)
@@ -175,7 +175,7 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Unpack parameters */
 	Axis axis      = Extract<Axis, 6, 1>(p1);
@@ -296,14 +296,14 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 /**
  * Build a buoy.
- * @param tile tile where to place the buoy
  * @param flags operation to perform
+ * @param tile tile where to place the buoy
  * @param p1 unused
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (tile == 0 || !HasTileWaterGround(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -407,14 +407,14 @@ static bool IsUniqueWaypointName(const std::string &name)
 
 /**
  * Rename a waypoint.
- * @param tile unused
  * @param flags type of operation
+ * @param tile unused
  * @param p1 id of waypoint
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameWaypoint(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Waypoint *wp = Waypoint::GetIfValid(p1);
 	if (wp == nullptr) return CMD_ERROR;

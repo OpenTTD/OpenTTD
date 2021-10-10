@@ -92,14 +92,14 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 
 /**
  * Build a ship depot.
- * @param tile tile where ship depot is built
  * @param flags type of operation
+ * @param tile tile where ship depot is built
  * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	Axis axis = Extract<Axis, 0, 1>(p1);
 
@@ -411,14 +411,14 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 
 /**
  * Builds a lock.
- * @param tile tile where to place the lock
  * @param flags type of operation
+ * @param tile tile where to place the lock
  * @param p1 unused
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -435,8 +435,8 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
 
 /**
  * Build a piece of canal.
- * @param tile end tile of stretch-dragging
  * @param flags type of operation
+ * @param tile end tile of stretch-dragging
  * @param p1 start tile of stretch-dragging
  * @param p2 various bitstuffed data
  *  bits  0-1: waterclass to build. sea and river can only be built in scenario editor
@@ -444,7 +444,7 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	WaterClass wc = Extract<WaterClass, 0, 2>(p2);
 	if (p1 >= MapSize() || wc == WATER_CLASS_INVALID) return CMD_ERROR;

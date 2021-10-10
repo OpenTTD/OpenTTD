@@ -3466,14 +3466,14 @@ void InitializeSpriteSorter()
 
 /**
  * Scroll players main viewport.
- * @param tile tile to center viewport on
  * @param flags type of operation
+ * @param tile tile to center viewport on
  * @param p1 ViewportScrollTarget of scroll target
  * @param p2 company or client id depending on the target
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdScrollViewport(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	ViewportScrollTarget target = (ViewportScrollTarget)p1;

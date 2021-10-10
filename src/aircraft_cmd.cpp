@@ -259,14 +259,14 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoff
 
 /**
  * Build an aircraft.
- * @param tile     tile of the depot where aircraft is built.
  * @param flags    type of operation.
+ * @param tile     tile of the depot where aircraft is built.
  * @param e        the engine to build.
  * @param data     unused.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
+CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **ret)
 {
 	const AircraftVehicleInfo *avi = &e->u.air;
 	const Station *st = Station::GetByTile(tile);
