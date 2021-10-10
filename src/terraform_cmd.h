@@ -18,4 +18,8 @@ CommandProc CmdLevelLand;
 DEF_CMD_TRAIT(CMD_TERRAFORM_LAND, CmdTerraformLand, CMD_ALL_TILES | CMD_AUTO,               CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_LEVEL_LAND,     CmdLevelLand,     CMD_ALL_TILES | CMD_AUTO | CMD_NO_TEST, CMDT_LANDSCAPE_CONSTRUCTION) // test run might clear tiles multiple times, in execution that only happens once
 
+CommandCallback CcPlaySound_EXPLOSION;
+CommandCallback CcPlaceSign;
+CommandCallback CcTerraform;
+
 #endif /* TERRAFORM_CMD_H */

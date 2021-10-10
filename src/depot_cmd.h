@@ -16,4 +16,6 @@ CommandProc CmdRenameDepot;
 
 DEF_CMD_TRAIT(CMD_RENAME_DEPOT, CmdRenameDepot, 0, CMDT_OTHER_MANAGEMENT)
 
+CommandCallback CcCloneVehicle;
+
 #endif /* DEPOT_CMD_H */

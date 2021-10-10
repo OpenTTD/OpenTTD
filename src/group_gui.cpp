@@ -25,6 +25,7 @@
 #include "company_base.h"
 #include "company_gui.h"
 #include "gui.h"
+#include "group_cmd.h"
 
 #include "widgets/group_widget.h"
 
