@@ -1274,7 +1274,7 @@ STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite zone di
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Stațiile companiei pot deservi industrii cu stații neutre atașate: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Dacă este activată, industriile cu stații atașate (cum ar fi Platforma petrolieră) pot fi deservite și de stațiile alăturate ale companiilor. Dacă e dezactivată, aceste industrii nu vor putea fi servite decât prin intermediul stațiilor atașate. Nicio stație din preajmă a unei companii nu le va putea deservi, iar stația atașată nu va putea deservi decât industria sa.
 
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de drumuri, poduri și tunele deținute de oraș: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitează eliminarea de clădiri şi infrastructură deţinute de oraş
 
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lungimea maximă a trenurilor: {STRING}
@@ -1385,7 +1385,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :niciunul
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redus
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construirea staţiilor pe drumurile din proprietatea oraşului: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construirea stațiilor pe drumurile din proprietatea orașului: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construcția stațiilor pe drumurile construite de un oraș
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permite construirea staţiilor pe drumurile competitorilor: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construcția stațiilor pe drumurile construite de altă companie
@@ -1910,12 +1910,12 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapidă
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Foarte rapidă
 
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporţia oraşelor care vor deveni mari: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Numărul de oraşe care devin mari, astfel un oraş care porneşte prin a fi mai mare şi creşte mai rapid
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Numărul de orașe care devin mari, deci un oraș care pornește mai mare crește mai rapid
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 din {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :deloc
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator iniţial dimensiune oraş: {STRING}
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a orașelor mari față de orașele normale, la începutul jocului
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING}{NBSP}{P 0:2 zi zile "de zile"}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai mult timp va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
@@ -2631,8 +2631,8 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteşte linia în punct de tranzit. Ctrl permite alipirea punctelor de tranzit distante. Shift comută între convertire/afişare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construiește gară. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semnale feroviare. Ctrl comută între semafoare/semnale electrice{}Trage cu mausul pentru a construi automat semnale pe o porțiune de șină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncțiune{}Ctrl+Clic comută deschiderea ferestrei de selecție a tipului de semnal. Shift comută între construire/afișare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construieşte pod de cale ferată. Shift comută între construire/afişare cost estimat
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar. Shift comută între construire/afişare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construiește un pod de cale ferată. Shift comută între construire/afișare cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construiește un tunel feroviar. Shift comută între construire/afișare cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi din staţii
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteşte tipul de cale ferată. Shift comută între convertire/afişare cost estimat
 
@@ -2715,7 +2715,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construiește platformă pentru camioane. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construiește stație pentru tramvai de marfă. Ctrl permite alipirea stațiilor. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activare/Dezactivare sensuri unice
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construieşte pod rutier. Shift comută între construire/afişare cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construiește un pod rutier. Shift comută între construire/afișare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construieşte pod pentru tramvaie. Shift comută între construire/afişare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construieşte tunel rutier. Shift comută între construire/afişare cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construieşte tunel pentru tramvaie. Shift comută între construire/afişare cost estimat
@@ -2856,7 +2856,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Mare
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleator
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Alege mărimea oraşului
 STR_FOUND_TOWN_CITY                                             :{BLACK}Metropolă
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolele cresc mai repede decât oraşele{}În funcţie de setări, sunt mai mari când sunt fondate
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Metropolele cresc mai repede decât orașele{}În funcție de setări, sunt mai mari când sunt fondate
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Modelul drumului în oraş:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Alege modelul de drum folosit pentru acest oraş
@@ -4695,7 +4695,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prea
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... prea aproape de alt oraş
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... prea multe oraşe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu mai este loc pe hartă
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Orașul nu va construi drumuri. Poți activa construirea drumurilor din Setări avansate -> Economie -> Orașe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraș nu poate fi șters...{}O stație sau un depou face referire la acest oraș, sau o parcelă deținută de oraș nu poate fi eliminată
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există niciun loc potrivit pentru o statuie în centrul acestui oraș
