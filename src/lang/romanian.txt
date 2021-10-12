@@ -3034,6 +3034,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr d
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Rata de reîmprospătare a imaginii: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Numărul de cadre video randate per secundă.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factorul actual de viteză a jocului: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Cât de repede merge jocul în comparație cu viteza așteptată pentru o simulație normală.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Curent
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medie
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorie
@@ -3672,9 +3673,9 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Căutăm
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructura {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Pătrățele de cale ferată:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Secțiuni de cale ferată:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semnale
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Pătrățele cu drumuri:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Secțiuni de drum:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Secțiuni de tramvai:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Suprafață apă:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canale
@@ -3806,7 +3807,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nave noi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeronavă nouă
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Greutate: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost reparații: {GOLD}{CURRENCY_LONG}{BLACK}) Greutate: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost de conversie: {GOLD}{CURRENCY_LONG}{BLACK}) Greutate: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Viteza pe ocean: {GOLD}{VELOCITY}
@@ -3820,7 +3821,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {G
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost reparații: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Viteză: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost de reparații: {GOLD}{CURRENCY_LONG}{BLACK}) Viteză: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost de conversie: {GOLD}{CURRENCY_LONG}{BLACK}) Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modificabil pentru: {GOLD}{STRING}
@@ -4280,7 +4281,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Merge mereu
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service dacă este nevoie
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sari peste aceastã comandã dacã nu este necesar un service
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sari peste această comandă dacă nu este necesar un service
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele vehiculului pe care se bazează
 
