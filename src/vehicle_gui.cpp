@@ -3181,12 +3181,22 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 
 	_cursor.sprite_count = 0;
 	int total_width = 0;
-	for (; v != nullptr; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : nullptr) {
+	int y_offset = 0;
+	bool rotor_seq = false; // Whether to draw the rotor of the vehicle in this step.
+
+	while (v != nullptr) {
 		if (total_width >= ScaleGUITrad(2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH)) break;
 
 		PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 		VehicleSpriteSeq seq;
-		v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
+
+		if (rotor_seq) {
+			GetCustomRotorSprite(Aircraft::From(v), true, image_type, &seq);
+			if (!seq.IsValid()) seq.Set(SPR_ROTOR_STOPPED);
+			y_offset = - ScaleGUITrad(5);
+		} else {
+			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
+		}
 
 		if (_cursor.sprite_count + seq.count > lengthof(_cursor.sprite_seq)) break;
 
@@ -3195,11 +3205,17 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 			_cursor.sprite_seq[_cursor.sprite_count].sprite = seq.seq[i].sprite;
 			_cursor.sprite_seq[_cursor.sprite_count].pal = pal2;
 			_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? -total_width : total_width;
-			_cursor.sprite_pos[_cursor.sprite_count].y = 0;
+			_cursor.sprite_pos[_cursor.sprite_count].y = y_offset;
 			_cursor.sprite_count++;
 		}
 
-		total_width += GetSingleVehicleWidth(v, image_type);
+		if (v->type == VEH_AIRCRAFT && v->subtype == AIR_HELICOPTER && !rotor_seq) {
+			/* Draw rotor part in the next step. */
+			rotor_seq = true;
+		} else {
+			total_width += GetSingleVehicleWidth(v, image_type);
+			v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : nullptr;
+		}
 	}
 
 	int offs = (ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH) - total_width) / 2;
