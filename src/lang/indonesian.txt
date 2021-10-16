@@ -875,8 +875,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} memiliki dalam perintahnya sebuah bandara berlandasan yang terlalu pendek
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} mulai menua
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} sudah sangat tua
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} sudah sangat tua dan perlu segera diganti
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} menjadi sangat tua
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} menjadi sangat tua dan perlu segera diganti
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} kehilangan arah
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY_LONG}
@@ -1096,7 +1096,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Jumlah 
 STR_NONE                                                        :Tidak ada
 STR_FUNDING_ONLY                                                :Hanya pendanaan
 STR_MINIMAL                                                     :Minimal
-STR_NUM_VERY_LOW                                                :Sangat sedikit
+STR_NUM_VERY_LOW                                                :Sangat Sedikit
 STR_NUM_LOW                                                     :Sedikit
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Padat
@@ -1104,21 +1104,21 @@ STR_NUM_CUSTOM                                                  :Bebas
 STR_NUM_CUSTOM_NUMBER                                           :Custom ({NUM})
 
 STR_VARIETY_NONE                                                :Tidak ada
-STR_VARIETY_VERY_LOW                                            :Sangat rendah
+STR_VARIETY_VERY_LOW                                            :Sangat Rendah
 STR_VARIETY_LOW                                                 :Rendah
 STR_VARIETY_MEDIUM                                              :Sedang
 STR_VARIETY_HIGH                                                :Tinggi
-STR_VARIETY_VERY_HIGH                                           :Sangat tinggi
+STR_VARIETY_VERY_HIGH                                           :Sangat Tinggi
 
 ###length 5
-STR_AI_SPEED_VERY_SLOW                                          :Sangat lambat
+STR_AI_SPEED_VERY_SLOW                                          :Sangat Lambat
 STR_AI_SPEED_SLOW                                               :Lambat
 STR_AI_SPEED_MEDIUM                                             :Sedang
 STR_AI_SPEED_FAST                                               :Cepat
 STR_AI_SPEED_VERY_FAST                                          :Sangat Cepat
 
 ###length 6
-STR_SEA_LEVEL_VERY_LOW                                          :Sangat rendah
+STR_SEA_LEVEL_VERY_LOW                                          :Sangat Rendah
 STR_SEA_LEVEL_LOW                                               :Rendah
 STR_SEA_LEVEL_MEDIUM                                            :Sedang
 STR_SEA_LEVEL_HIGH                                              :Tinggi
@@ -1479,7 +1479,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kekasaran daratan: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(hanya TerraGenesis) Memilih frekuensi bukit: Bentang darat rata punya bukit yang lebih sedikit dan lebih lebar. Bentang darat bergunung punya lebih banyak bukit, dan ini mungkin akan terlihat lebih membosankan
 ###length 4
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat halus
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat Halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sangat Kasar
@@ -3172,7 +3172,7 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ganti Ta
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Jenis Skenario
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Pulau datar
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Membuat pulau yang sangat datar
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Membuat dataran yang datar
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Pulau bergelombang
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Tinggi daratan:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Turunkan ketinggian dataran satu level. (0 = laut)
@@ -5287,12 +5287,12 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Bus Ploddyphut 
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Truk Batubara Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Truk Batubara Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Truk Batubara DW
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Truk Pos MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Truk Pos Reynard
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Truk Pos Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Truk Pos MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Truk Pos Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Truk Pos Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Truk Surat MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Truk Surat Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Truk Surat Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Truk Surat MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Truk Surat Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Truk Surat Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Truk Tangki minyak Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Truk Tangki minyak Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Truk Tangki minyak Perry
