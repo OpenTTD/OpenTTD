@@ -87,18 +87,15 @@ jobs:
 
     - name: Publish preview
       run: |
-        # setuptools is missing in this Docker image, which breaks installing
-        # awscli. So we need to do this in two steps to recover sanity.
-        pip3 install setuptools
         pip3 install awscli
 
-        ~/.local/bin/aws s3 cp --only-show-errors build/openttd.data s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
-        ~/.local/bin/aws s3 cp --only-show-errors build/openttd.html s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
-        ~/.local/bin/aws s3 cp --only-show-errors build/openttd.js s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
-        ~/.local/bin/aws s3 cp --only-show-errors build/openttd.wasm s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
+        aws s3 cp --only-show-errors build/openttd.data s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
+        aws s3 cp --only-show-errors build/openttd.html s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
+        aws s3 cp --only-show-errors build/openttd.js s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
+        aws s3 cp --only-show-errors build/openttd.wasm s3://${{ secrets.PREVIEW_S3_BUCKET }}/${{ github.event.client_payload.folder }}/
 
         # Invalidate the cache of the CloudFront distribution
-        ~/.local/bin/aws cloudfront create-invalidation --distribution-id ${{ secrets.PREVIEW_CF_DISTRIBUTION_ID }} --paths "/${{ github.event.client_payload.folder }}/*"
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.PREVIEW_CF_DISTRIBUTION_ID }} --paths "/${{ github.event.client_payload.folder }}/*"
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
