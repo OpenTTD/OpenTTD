@@ -316,6 +316,8 @@ protected:
 
 	std::chrono::steady_clock::duration GetDrawInterval()
 	{
+		/* If vsync, draw interval is decided by the display driver */
+		if (_video_vsync && _video_hw_accel) return std::chrono::microseconds(0);
 		return std::chrono::microseconds(1000000 / _settings_client.gui.refresh_rate);
 	}
 
