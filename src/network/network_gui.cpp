@@ -681,7 +681,8 @@ public:
 			y += FONT_HEIGHT_NORMAL;
 
 			SetDParamStr(0, sel->connection_string);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_ADDRESS); // server address
+			StringID invite_or_address = StrStartsWith(sel->connection_string, "+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, invite_or_address); // server address / invite code
 			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.start_date);
