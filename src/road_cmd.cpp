@@ -805,7 +805,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
 			/* Only allow building the outern roadbit, so building long roads stops at existing bridges */
-			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
+			//if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
 			if (HasTileRoadType(tile, rtt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
@@ -929,16 +929,16 @@ do_clear:;
 		}
 
 		/* Update company infrastructure count. */
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) num_pieces *= TUNNELBRIDGE_TRACKBIT_FACTOR;
-		UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), num_pieces);
+if (IsTileType(tile, MP_TUNNELBRIDGE)) num_pieces *= TUNNELBRIDGE_TRACKBIT_FACTOR;
+UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), num_pieces);
 
-		if (rtt == RTT_ROAD && IsNormalRoadTile(tile)) {
-			existing |= pieces;
-			SetDisallowedRoadDirections(tile, IsStraightRoad(existing) ?
-					GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);
-		}
+if (rtt == RTT_ROAD && IsNormalRoadTile(tile)) {
+	existing |= pieces;
+	SetDisallowedRoadDirections(tile, IsStraightRoad(existing) ?
+		GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);
+}
 
-		MarkTileDirtyByTile(tile);
+MarkTileDirtyByTile(tile);
 	}
 	return cost;
 }
@@ -987,6 +987,7 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 	TileIndex end_tile = p1;
+	const int drag_length = DistanceManhattan(start_tile, end_tile) + 1;
 
 	RoadType rt = Extract<RoadType, 3, 6>(p2);
 	if (!ValParamRoadType(rt)) return CMD_ERROR;
@@ -1014,17 +1015,23 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
-	TileIndex tile = start_tile;
-	bool had_bridge = false;
-	bool had_tunnel = false;
 	bool had_success = false;
 	bool is_ai = HasBit(p2, 11);
 
 	/* Start tile is the first tile clicked by the user. */
-	for (;;) {
-		RoadBits bits = AxisToRoadBits(axis);
+	for (int drag_step = 0; drag_step < drag_length; ++drag_step) {
+		const TileIndex tile = start_tile + TileOffsByDiagDir(dir) * drag_step;
+
+		/* Stop if we bump into a bridge or tunnel that's facing the wrong direction. Not relevant when clicking a single tile. */
+		if (drag_step > 0 && IsTileType(tile, TileType::MP_TUNNELBRIDGE) &&
+			GetTunnelBridgeTransportType(tile) == TransportType::TRANSPORT_ROAD && GetTunnelBridgeDirection(tile) != dir)
+		{
+			if (is_ai) return_cmd_error(IsBridgeTile(tile) ? STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST : STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST);
+			break;
+		}
 
 		/* Determine which road parts should be built. */
+		RoadBits bits = AxisToRoadBits(axis);
 		if (!is_ai && start_tile != end_tile) {
 			/* Only build the first and last roadbit if they can connect to something. */
 			if (tile == end_tile && !CanConnectToRoad(tile, rt, dir)) {
@@ -1038,6 +1045,7 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 			if (tile == start_tile && HasBit(p2, 0)) bits &= DiagDirToRoadBits(dir);
 		}
 
+		/* Execute the command to create a single piece of road */
 		CommandCost ret = DoCommand(tile, drd << 11 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (ret.Failed()) {
 			last_error = ret;
@@ -1047,27 +1055,16 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 			}
 		} else {
 			had_success = true;
-			/* Only pay for the upgrade on one side of the bridges and tunnels */
-			if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-				if (IsBridge(tile)) {
-					if (!had_bridge || GetTunnelBridgeDirection(tile) == dir) {
-						cost.AddCost(ret);
-					}
-					had_bridge = true;
-				} else { // IsTunnel(tile)
-					if (!had_tunnel || GetTunnelBridgeDirection(tile) == dir) {
-						cost.AddCost(ret);
-					}
-					had_tunnel = true;
-				}
-			} else {
-				cost.AddCost(ret);
-			}
+			cost.AddCost(ret);
 		}
 
-		if (tile == end_tile) break;
-
-		tile += TileOffsByDiagDir(dir);
+		/* We skip the remainder of the bridge or tunnel */
+		if (drag_length > 1 && IsTileOwner(tile, _current_company) && IsTileType(tile, TileType::MP_TUNNELBRIDGE)
+			&& GetTunnelBridgeTransportType(tile) == TransportType::TRANSPORT_ROAD && GetTunnelBridgeDirection(tile) == dir)
+		{
+			TileIndex otherEnd = GetOtherTunnelBridgeEnd(tile);
+			drag_step += GetTunnelBridgeLength(tile, otherEnd) + 1;
+		}
 	}
 
 	return had_success ? cost : last_error;

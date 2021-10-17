@@ -10,6 +10,8 @@
 #ifndef TILEHIGHLIGHT_TYPE_H
 #define TILEHIGHLIGHT_TYPE_H
 
+#include <unordered_map>
+
 #include "core/geometry_type.hpp"
 #include "window_type.h"
 #include "tile_type.h"
@@ -42,6 +44,13 @@ enum HighLightStyle {
 DECLARE_ENUM_AS_BIT_SET(HighLightStyle)
 
 
+enum SpecialTileHighLightInfo
+{
+	SPECIAL_HL_DRAW_RECT = 0, ///< To highlight tunnel/bridge entrances that were "entered" during selection
+	SPECIAL_HL_IGNORE = 1,    ///< Ignores the tile completely. Used for the middle of a bridge "entered" during selection
+	SPECIAL_HL_INVALID = -1,
+};
+
 /** Metadata about the current highlighting. */
 struct TileHighlightData {
 	Point pos;           ///< Location, in tile "units", of the northern tile of the selected area.
@@ -63,6 +72,8 @@ struct TileHighlightData {
 
 	HighLightStyle drawstyle;      ///< Lower bits 0-3 are reserved for detailed highlight information.
 	HighLightStyle next_drawstyle; ///< Queued, but not yet drawn style.
+
+	std::unordered_map<TileIndex, SpecialTileHighLightInfo> special_selection_tiles; ///< Additional information required for drawing
 
 	HighLightStyle place_mode;     ///< Method which is used to place the selection.
 	WindowClass window_class;      ///< The \c WindowClass of the window that is responsible for the selection mode.

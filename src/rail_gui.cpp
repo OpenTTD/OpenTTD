@@ -682,6 +682,29 @@ struct BuildRailToolbarWindow : Window {
 		/* no dragging if you have pressed the convert button */
 		if (FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr && _convert_signal_button && this->IsWidgetLowered(WID_RAT_BUILD_SIGNALS)) return;
 
+		/* Add special highlighting information for bridge and tunnel tiles */
+		if (!_ctrl_pressed) { // Only relevant for creation, not removal
+			const TileIndex start_tile = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
+			const TileIndex end_tile = TileVirtXY(_thd.selend.x, _thd.selend.y);
+			const DiagDirection dir = DiagdirBetweenTiles(start_tile, end_tile);
+			if (dir != DiagDirection::INVALID_DIAGDIR){
+				for (int step = 0; step < (int)DistanceManhattan(start_tile, end_tile) + 1; ++step) {
+					const TileIndex tile = start_tile + TileOffsByDiagDir(dir) * step;
+					if (IsValidTile(tile) && IsTileType(tile, MP_TUNNELBRIDGE)
+						&& GetTunnelBridgeTransportType(tile) == TransportType::TRANSPORT_RAIL && GetTunnelBridgeDirection(tile) == dir) {
+						const TileIndex other_bridge_end = GetOtherTunnelBridgeEnd(tile);
+						const int tunnel_bridge_length = GetTunnelBridgeLength(tile, other_bridge_end);
+						_thd.special_selection_tiles[tile] = SpecialTileHighLightInfo::SPECIAL_HL_DRAW_RECT;
+						_thd.special_selection_tiles[other_bridge_end] = SpecialTileHighLightInfo::SPECIAL_HL_DRAW_RECT;
+						for (int bridge_step = 0; bridge_step < tunnel_bridge_length; ++bridge_step) {
+							_thd.special_selection_tiles[tile + TileOffsByDiagDir(dir) * (1 + bridge_step)] = SpecialTileHighLightInfo::SPECIAL_HL_IGNORE;
+						}
+						step += tunnel_bridge_length + 1;
+					}
+				}
+			}
+		}
+
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
