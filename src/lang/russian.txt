@@ -2408,6 +2408,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Лан�
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Размер карты: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес сервера: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Код-приглашение: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Дата начала: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Текущая дата: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Игровой скрипт: {WHITE}{STRING} (v{NUM})
