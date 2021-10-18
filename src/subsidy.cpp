@@ -74,13 +74,9 @@ std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Su
 	NewsReferenceType reftype1 = NR_NONE;
 	NewsReferenceType reftype2 = NR_NONE;
 
-	/* Choose whether to use the singular or plural form of the cargo name based on how we're printing the subsidy */
+	/* Always use the plural form of the cargo name - trying to decide between plural or singular causes issues for translations */
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
-	if (mode == SubsidyDecodeParamType::Gui || mode == SubsidyDecodeParamType::NewsWithdrawn) {
-		SetDParam(parameter_offset, cs->name);
-	} else {
-		SetDParam(parameter_offset, cs->name_single);
-	}
+	SetDParam(parameter_offset, cs->name);
 
 	switch (s->src_type) {
 		case ST_INDUSTRY:
