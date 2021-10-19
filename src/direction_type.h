@@ -102,10 +102,12 @@ template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byt
  * @see DirDiff
  */
 enum DiagDirDiff {
+	DIAGDIRDIFF_BEGIN   = 0,        ///< Used for iterations
 	DIAGDIRDIFF_SAME    = 0,        ///< Same directions
 	DIAGDIRDIFF_90RIGHT = 1,        ///< 90 degrees right
 	DIAGDIRDIFF_REVERSE = 2,        ///< Reverse directions
 	DIAGDIRDIFF_90LEFT  = 3,        ///< 90 degrees left
+	DIAGDIRDIFF_END,                ///< Used for iterations
 };
 
 /** Allow incrementing of DiagDirDiff variables */
