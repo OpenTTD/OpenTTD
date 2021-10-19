@@ -858,7 +858,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	/* Test if the server supports this option
 	 *  and if we are at the frame the server is */
-	if (p->pos + 1 < p->size) {
+#ifdef NETWORK_SEND_DOUBLE_SEED
+	if (p->CanReadFromPacket(sizeof(uint32) + sizeof(uint32))) {
+#else
+	if (p->CanReadFromPacket(sizeof(uint32))) {
+#endif
 		_sync_frame = _frame_counter_server;
 		_sync_seed_1 = p->Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
