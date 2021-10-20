@@ -1021,8 +1021,8 @@ static bool FindSpring(TileIndex tile, void *user_data)
 	int referenceHeight;
 	if (!IsTileFlat(tile, &referenceHeight) || IsWaterTile(tile)) return false;
 
-	/* In the tropics rivers start in the rainforest. */
-	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return false;
+	/* In the tropics rivers start in the rainforest, unless there is no rainforest. */
+	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) != TROPICZONE_RAINFOREST && _settings_game.game_creation.desert_coverage < 100) return false;
 
 	/* Are there enough higher tiles to warrant a 'spring'? */
 	uint num = 0;
@@ -1056,7 +1056,7 @@ static bool MakeLake(TileIndex tile, void *user_data)
 {
 	uint height = *(uint*)user_data;
 	if (!IsValidTile(tile) || TileHeight(tile) != height || !IsTileFlat(tile)) return false;
-	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT && _settings_game.game_creation.desert_coverage < 100) return false;
 
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
