@@ -553,7 +553,11 @@ static void RoadVehCrash(RoadVehicle *v)
 
 	SetDParam(0, pass);
 	StringID newsitem = (pass == 1) ? STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH;
-	AddTileNewsItem(newsitem, NT_ACCIDENT, v->tile);
+	// TODO update for current player
+	// TODO add to settings
+	if (v->owner == _local_company || _settings_client.news_display.accident_other_company_vehicle) {
+		AddTileNewsItem(newsitem, NT_ACCIDENT, v->tile);
+	}
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 22);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
