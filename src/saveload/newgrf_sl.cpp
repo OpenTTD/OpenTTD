@@ -81,7 +81,7 @@ struct NGRFChunkHandler : ChunkHandler {
 		int index = 0;
 
 		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
-			if (HasBit(c->flags, GCF_STATIC)) continue;
+			if (HasBit(c->flags, GCF_STATIC) || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 			SlSetArrayIndex(index++);
 			SlObject(c, _grfconfig_desc);
 		}
