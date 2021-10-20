@@ -161,11 +161,11 @@ void FixTitleGameZoom(int zoom_adjust)
 	/* Adjust the zoom in/out.
 	 * Can't simply add, since operator+ is not defined on the ZoomLevel type. */
 	vp->zoom = _gui_zoom;
-	while (zoom_adjust < 0 && vp->zoom != ZOOM_LVL_MIN) {
+	while (zoom_adjust < 0 && vp->zoom != _settings_client.gui.zoom_min) {
 		vp->zoom--;
 		zoom_adjust++;
 	}
-	while (zoom_adjust > 0 && vp->zoom != ZOOM_LVL_MAX) {
+	while (zoom_adjust > 0 && vp->zoom != _settings_client.gui.zoom_max) {
 		vp->zoom++;
 		zoom_adjust--;
 	}
