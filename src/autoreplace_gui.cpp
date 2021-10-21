@@ -578,6 +578,16 @@ public:
 				size_t engine_count = this->engines[click_side].size();
 
 				EngineID e = engine_count > i ? this->engines[click_side][i] : INVALID_ENGINE;
+
+				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
+				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */
+				if (click_side == 0 && _ctrl_pressed && e != INVALID_ENGINE &&
+					(GetGroupNumEngines(_local_company, sel_group, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0)) {
+						EngineID veh_from = e;
+						DoCommandP(0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
+						break;
+				}
+
 				if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
 				this->sel_engine[click_side] = e;
 				if (click_side == 0) {
