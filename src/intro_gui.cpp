@@ -102,6 +102,8 @@ struct SelectGameWindow : public Window {
 	size_t cur_viewport_command_index;
 	/** Time spent (milliseconds) on current viewport command. */
 	uint cur_viewport_command_time;
+	uint mouse_idle_time;
+	Point mouse_idle_pos;
 
 	/**
 	 * Find and parse all viewport command signs.
@@ -181,6 +183,8 @@ struct SelectGameWindow : public Window {
 
 		this->cur_viewport_command_index = (size_t)-1;
 		this->cur_viewport_command_time = 0;
+		this->mouse_idle_time = 0;
+		this->mouse_idle_pos = _cursor.pos;
 	}
 
 	void OnRealtimeTick(uint delta_ms) override
@@ -188,6 +192,17 @@ struct SelectGameWindow : public Window {
 		/* Move the main game viewport according to intro viewport commands. */
 
 		if (intro_viewport_commands.empty()) return;
+
+		bool suppress_panning = true;
+		if (this->mouse_idle_pos.x != _cursor.pos.x || this->mouse_idle_pos.y != _cursor.pos.y) {
+			this->mouse_idle_pos = _cursor.pos;
+			this->mouse_idle_time = 2000;
+		} else if (this->mouse_idle_time > delta_ms) {
+			this->mouse_idle_time -= delta_ms;
+		} else {
+			this->mouse_idle_time = 0;
+			suppress_panning = false;
+		}
 
 		/* Determine whether to move to the next command or stay at current. */
 		bool changed_command = false;
@@ -211,6 +226,9 @@ struct SelectGameWindow : public Window {
 
 		/* Early exit if the current command hasn't elapsed and isn't animated. */
 		if (!changed_command && !vc.pan_to_next && vc.vehicle == INVALID_VEHICLE) return;
+
+		/* Suppress panning commands, while user interacts with GUIs. */
+		if (!changed_command && suppress_panning) return;
 
 		/* Reset the zoom level. */
 		if (changed_command) FixTitleGameZoom(vc.zoom_adjust);
