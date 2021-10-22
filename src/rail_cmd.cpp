@@ -989,24 +989,44 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
-	if (cost.Failed()) return cost;
+	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
+	bool rotate_existing_depot = false;
+	if (IsRailDepotTile(tile) && railtype == GetRailType(tile)) {
+		CommandCost ret = CheckTileOwnership(tile);
+		if (ret.Failed()) return ret;
 
-	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (dir == GetRailDepotDirection(tile)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+		ret = EnsureNoVehicleOnGround(tile);
+		if (ret.Failed()) return ret;
+
+		rotate_existing_depot = true;
+	}
+
+	if (!rotate_existing_depot) {
+		cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
+		if (cost.Failed()) return cost;
+
+		if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+		if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
-		Depot *d = new Depot(tile);
-		d->build_date = TimerGameCalendar::date;
+		if (rotate_existing_depot) {
+			SetRailDepotExitDirection(tile, dir);
+		} else {
+			Depot *d = new Depot(tile);
+			d->build_date = TimerGameCalendar::date;
 
-		MakeRailDepot(tile, _current_company, d->index, dir, railtype);
+			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
+			MakeDefaultName(d);
+
+			Company::Get(_current_company)->infrastructure.rail[railtype]++;
+			DirtyCompanyInfrastructureWindows(_current_company);
+		}
+
 		MarkTileDirtyByTile(tile);
-		MakeDefaultName(d);
-
-		Company::Get(_current_company)->infrastructure.rail[railtype]++;
-		DirtyCompanyInfrastructureWindows(_current_company);
-
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
