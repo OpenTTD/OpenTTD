@@ -3191,7 +3191,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 		VehicleSpriteSeq seq;
 
 		if (rotor_seq) {
-			GetCustomRotorSprite(Aircraft::From(v), true, image_type, &seq);
+			GetCustomRotorSprite(Aircraft::From(v), image_type, &seq);
 			if (!seq.IsValid()) seq.Set(SPR_ROTOR_STOPPED);
 			y_offset = - ScaleGUITrad(5);
 		} else {

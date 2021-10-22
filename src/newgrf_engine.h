@@ -84,9 +84,9 @@ void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction directio
 #define GetCustomVehicleSprite(v, direction, image_type, result) GetCustomEngineSprite(v->engine_type, v, direction, image_type, result)
 #define GetCustomVehicleIcon(et, direction, image_type, result) GetCustomEngineSprite(et, nullptr, direction, image_type, result)
 
-void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info_view, EngineImageType image_type, VehicleSpriteSeq *result);
-#define GetCustomRotorSprite(v, i, image_type, result) GetRotorOverrideSprite(v->engine_type, v, i, image_type, result)
-#define GetCustomRotorIcon(et, image_type, result) GetRotorOverrideSprite(et, nullptr, true, image_type, result)
+void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, EngineImageType image_type, VehicleSpriteSeq *result);
+#define GetCustomRotorSprite(v, image_type, result) GetRotorOverrideSprite(v->engine_type, v, image_type, result)
+#define GetCustomRotorIcon(et, image_type, result) GetRotorOverrideSprite(et, nullptr, image_type, result)
 
 /* Forward declaration of GRFFile, to avoid unnecessary inclusion of newgrf.h
  * elsewhere... */
