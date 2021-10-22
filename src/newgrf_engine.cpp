@@ -1103,7 +1103,7 @@ void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction directio
 }
 
 
-void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info_view, EngineImageType image_type, VehicleSpriteSeq *result)
+void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
 
@@ -1111,6 +1111,7 @@ void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool info
 	assert(e->type == VEH_AIRCRAFT);
 	assert(!(e->u.air.subtype & AIR_CTOL));
 
+	bool info_view = image_type != EIT_ON_MAP;
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_SELF, info_view, CBID_NO_CALLBACK);
 	result->Clear();
 	uint rotor_pos = v == nullptr || info_view ? 0 : v->Next()->Next()->state;
