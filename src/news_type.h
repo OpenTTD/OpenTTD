@@ -22,6 +22,7 @@ enum NewsType {
 	NT_ARRIVAL_COMPANY, ///< First vehicle arrived for company
 	NT_ARRIVAL_OTHER,   ///< First vehicle arrived for competitor
 	NT_ACCIDENT,        ///< An accident or disaster has occurred
+	NT_ACCIDENT_OTHER,  ///< An accident or disaster has occurred
 	NT_COMPANY_INFO,    ///< Company info (new companies, bankruptcy messages)
 	NT_INDUSTRY_OPEN,   ///< Opening of industries
 	NT_INDUSTRY_CLOSE,  ///< Closing of industries
