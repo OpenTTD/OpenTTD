@@ -2258,6 +2258,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terrain
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Taille de la carte{NBSP}: {WHITE}{COMMA}{NBSP}×{NBSP}{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Version du serveur{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresse du serveur{NBSP}: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Code d'invitation{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Date de début{NBSP}: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Date courante{NBSP}: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de jeu{NBSP}: {WHITE}{STRING} (v{NUM})
@@ -2674,6 +2675,7 @@ STR_STATION_CLASS_WAYP                                          :Points de contr
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sélection des signaux
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Basculer l'affichage des types de signaux avancés
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal de bloc (sémaphore){}Ce sont les signaux les plus basiques, n'autorisant qu'un seul train à la fois dans un même bloc
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal d'entrée (sémaphore){}Vert tant qu'au moins un signal de sortie du bloc est vert, rouge dans le cas contraire.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signal de sortie (sémaphore){}Fonctionne comme un signal de bloc, mais est nécessaire pour commander les signaux d'entrée et combinés

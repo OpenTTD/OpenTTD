@@ -2257,6 +2257,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Maasto:
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartan koko: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Palvelimen versio: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Palvelimen osoite: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Kutsukoodi: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Aloitusvuosi: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Päivämäärä: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Peliskripti: {WHITE}{STRING} (v.{NBSP}{NUM})
@@ -2673,6 +2674,7 @@ STR_STATION_CLASS_WAYP                                          :Reittipisteet
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Opastimien valinta
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Edistyneiden opastintyyppien näyttäminen
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Suojastusopastin (siipiopastin){}Kaikkein alkeellisin opastin, joka sallii vain yhden junan samalla osuudella kerrallaan
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Tulo-opastin (siipiopastin){}Näyttää vihreää aina, kun yksi tai useampi seuraavista poistumisopastimista näyttää vihreää. Muutoin se näyttää punaista
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Poistumisopastin (siipiopastin){}Käyttäytyy samalla tavalla kuin suojastusopastin, mutta on välttämätön oikean valon näyttämiseen tulo- ja yhdistelmäopastimissa
