@@ -242,6 +242,7 @@ struct NewsSettings {
 	uint8 arrival_player;                                 ///< NewsDisplay of vehicles arriving at new stations of current player
 	uint8 arrival_other;                                  ///< NewsDisplay of vehicles arriving at new stations of other players
 	uint8 accident;                                       ///< NewsDisplay of accidents that occur
+	uint8 accident_other;                                 ///< NewsDisplay if a vehicle from another company is involved in an accident
 	uint8 company_info;                                   ///< NewsDisplay of general company information
 	uint8 open;                                           ///< NewsDisplay on new industry constructions
 	uint8 close;                                          ///< NewsDisplay about closing industries

@@ -1329,6 +1329,7 @@ static void CrashAirplane(Aircraft *v)
 	const Station *st = GetTargetAirportIfValid(v);
 	StringID newsitem;
 	TileIndex vt;
+	NewsType newstype = NT_ACCIDENT;
 	if (st == nullptr) {
 		newsitem = STR_NEWS_PLANE_CRASH_OUT_OF_FUEL;
 		vt = TileVirtXY(v->x_pos, v->y_pos);
@@ -1341,7 +1342,11 @@ static void CrashAirplane(Aircraft *v)
 	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 
-	AddTileNewsItem(newsitem, NT_ACCIDENT, vt, nullptr, st != nullptr ? st->index : INVALID_STATION);
+	if (v->owner != _local_company) {
+		newstype = NT_ACCIDENT_OTHER;
+	}
+
+	AddTileNewsItem(newsitem, newstype, vt, nullptr, st != nullptr ? st->index : INVALID_STATION);
 
 	ModifyStationRatingAround(vt, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);

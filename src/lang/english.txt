@@ -1743,6 +1743,9 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Display a newsp
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / disasters: {STRING2}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Display a newspaper when accidents or disasters occur
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Accidents of competitor's vehicles: {STRING2}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Display a newspaper about crashed vehicles for competitors
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Company information: {STRING2}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Display a newspaper when a new company starts, or when companies are risking to bankrupt
 
