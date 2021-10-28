@@ -31,8 +31,8 @@ struct is_compatible_element
 <
 	C, E, std::void_t<
 		decltype(std::data(std::declval<C>())),
-		typename std::remove_pointer<decltype(std::data( std::declval<C&>()))>::type(*)[]>
-> : std::is_convertible<typename std::remove_pointer<decltype(std::data(std::declval<C&>()))>::type(*)[], E(*)[]>{};
+		typename std::remove_pointer_t<decltype(std::data( std::declval<C&>()))>(*)[]>
+> : std::is_convertible<typename std::remove_pointer_t<decltype(std::data(std::declval<C&>()))>(*)[], E(*)[]>{};
 
 /* Template to check if a container is compatible. gsl-lite also includes is_array and is_std_array, but as we don't use them, they are omitted. */
 template <class C, class E>
