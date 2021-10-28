@@ -163,20 +163,6 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 
 
 static int _docommand_recursive = 0;
-
-/**
- * Shorthand for calling the long DoCommand with a container.
- *
- * @param container Container with (almost) all information
- * @param flags Flags for the command and how to execute the command
- * @see CommandProc
- * @return the cost
- */
-CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags)
-{
-	return DoCommand(flags, container->cmd, container->tile, container->p1, container->p2, container->text);
-}
-
 /*!
  * This function executes a given command with the parameters from the #CommandProc parameter list.
  * Depending on the flags parameter it execute or test a command.
@@ -324,18 +310,6 @@ static bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *call
 	}
 
 	return res.Succeeded();
-}
-
-/**
- * Shortcut for the long DoCommandP when having a container with the data.
- * @param container the container with information.
- * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
- * @param network_command execute the command without sending it on the network
- * @return true if the command succeeded, else false
- */
-bool DoCommandP(const CommandContainer *container, bool my_cmd, bool network_command)
-{
-	return DoCommandP(container->cmd, container->err_msg, container->callback, my_cmd, network_command, container->tile, container->p1, container->p2, container->text);
 }
 
 /**

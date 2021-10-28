@@ -460,17 +460,4 @@ template <Commands Tcmd> struct CommandTraits;
  */
 typedef void CommandCallback(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
-/**
- * Structure for buffering the build command when selecting a station to join.
- */
-struct CommandContainer {
-	TileIndex tile;                  ///< tile command being executed on.
-	uint32 p1;                       ///< parameter p1.
-	uint32 p2;                       ///< parameter p2.
-	Commands cmd;                    ///< command being executed.
-	StringID err_msg;                ///< string ID of error message to use.
-	CommandCallback *callback;       ///< any callback function executed upon successful completion of the command.
-	std::string text;                ///< possible text sent for name changes etc.
-};
-
 #endif /* COMMAND_TYPE_H */

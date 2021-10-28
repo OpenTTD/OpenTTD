@@ -27,6 +27,7 @@
 #include "zoom_func.h"
 #include "tunnelbridge_cmd.h"
 #include "dock_cmd.h"
+#include "station_cmd.h"
 
 #include "widgets/dock_widget.h"
 
@@ -205,16 +206,25 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_STATION: { // Build station button
-				uint32 p2 = (uint32)INVALID_STATION << 16; // no station to join
-
-				/* tile is always the land tile, so need to evaluate _thd.pos */
-				CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK, STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, "" };
-
 				/* Determine the watery part of the dock. */
 				DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 				TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
 
-				ShowSelectStationIfNeeded(cmdcont, TileArea(tile, tile_to));
+				uint32 p1 = _ctrl_pressed;
+				uint32 p2 = (uint32)INVALID_STATION << 16; // no station to join
+
+				auto proc = [=](bool test, StationID to_join) -> bool {
+					if (test) {
+						return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_DOCK)), CMD_BUILD_DOCK, tile, p1, p2).Succeeded();
+					} else {
+						uint32 p2_final = p2;
+						if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
+
+						return DoCommandP(CMD_BUILD_DOCK, STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, p1, p2_final);
+					}
+				};
+
+				ShowSelectStationIfNeeded(TileArea(tile, tile_to), proc);
 				break;
 			}
 
