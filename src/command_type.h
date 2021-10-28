@@ -424,11 +424,19 @@ enum CommandPauseLevel {
 typedef CommandCost CommandProc(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
 
+template <typename T> struct CommandFunctionTraitHelper;
+template <typename... Targs>
+struct CommandFunctionTraitHelper<CommandCost(*)(DoCommandFlag, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+};
+
 /** Defines the traits of a command. */
 template <Commands Tcmd> struct CommandTraits;
 
 #define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
 	template<> struct CommandTraits<cmd_> { \
+		using Args = typename CommandFunctionTraitHelper<decltype(&proc_)>::Args; \
+		static constexpr Commands cmd = cmd_; \
 		static constexpr auto &proc = proc_; \
 		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
 		static constexpr CommandType type = type_; \

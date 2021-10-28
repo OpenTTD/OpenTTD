@@ -19,6 +19,7 @@
 #include <stdarg.h>
 #include <ctype.h> /* required for tolower() */
 #include <sstream>
+#include <iomanip>
 
 #ifdef _MSC_VER
 #include <errno.h> // required by vsnprintf implementation for MSVC
@@ -158,6 +159,23 @@ char *CDECL str_fmt(const char *str, ...)
 	char *p = MallocT<char>(len + 1);
 	memcpy(p, buf, len + 1);
 	return p;
+}
+
+/**
+ * Format a byte array into a continuous hex string.
+ * @param data Array to format
+ * @return Converted string.
+ */
+std::string FormatArrayAsHex(span<const byte> data)
+{
+	std::ostringstream ss;
+	ss << std::uppercase << std::setfill('0') << std::setw(2) << std::hex;
+
+	for (auto b : data) {
+		ss << b;
+	}
+
+	return ss.str();
 }
 
 /**

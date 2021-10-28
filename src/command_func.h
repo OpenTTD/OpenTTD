@@ -12,6 +12,7 @@
 
 #include "command_type.h"
 #include "company_type.h"
+#include <vector>
 
 /**
  * Define a default return value for a failed command.
@@ -32,6 +33,9 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  */
 #define return_cmd_error(errcode) return CommandCost(errcode);
 
+/** Storage buffer for serialized command data. */
+typedef std::vector<byte> CommandDataBuffer;
+
 CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
 CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags);
 
@@ -41,9 +45,12 @@ bool DoCommandP(Commands cmd, CommandCallback *callback, TileIndex tile, uint32 
 bool DoCommandP(Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
 bool DoCommandP(const CommandContainer *container, bool my_cmd = true, bool network_command = false);
 
+bool InjectNetworkCommand(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
+
 CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
 void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
+void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex location, const CommandDataBuffer &cmd_data);
 
 extern Money _additional_cash_required;
 

@@ -186,6 +186,17 @@ void Packet::Send_string(const std::string_view data)
 }
 
 /**
+ * Copy a sized byte buffer into the packet.
+ * @param data The data to send.
+ */
+void Packet::Send_buffer(const std::vector<byte> &data)
+{
+	assert(this->CanWriteToPacket(sizeof(uint16) + data.size()));
+	this->Send_uint16((uint16)data.size());
+	this->buffer.insert(this->buffer.end(), data.begin(), data.end());
+}
+
+/**
  * Send as many of the bytes as possible in the packet. This can mean
  * that it is possible that not all bytes are sent. To cope with this
  * the function returns the amount of bytes that were actually sent.
@@ -364,6 +375,23 @@ uint64 Packet::Recv_uint64()
 	n += (uint64)this->buffer[this->pos++] << 48;
 	n += (uint64)this->buffer[this->pos++] << 56;
 	return n;
+}
+
+/**
+ * Extract a sized byte buffer from the packet.
+ * @return The extracted buffer.
+ */
+std::vector<byte> Packet::Recv_buffer()
+{
+	uint16 size = this->Recv_uint16();
+	if (size == 0 || !this->CanReadFromPacket(size, true)) return {};
+
+	std::vector<byte> data;
+	while (size-- > 0) {
+		data.push_back(this->buffer[this->pos++]);
+	}
+
+	return data;
 }
 
 /**

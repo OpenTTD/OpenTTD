@@ -15,18 +15,41 @@
 #include "../company_func.h"
 #include "../settings_type.h"
 #include "../airport_cmd.h"
+#include "../aircraft_cmd.h"
+#include "../autoreplace_cmd.h"
+#include "../company_cmd.h"
 #include "../depot_cmd.h"
 #include "../dock_cmd.h"
+#include "../economy_cmd.h"
+#include "../engine_cmd.h"
+#include "../goal_cmd.h"
 #include "../group_cmd.h"
 #include "../industry_cmd.h"
+#include "../landscape_cmd.h"
+#include "../misc_cmd.h"
+#include "../news_cmd.h"
+#include "../object_cmd.h"
+#include "../order_cmd.h"
 #include "../rail_cmd.h"
 #include "../road_cmd.h"
+#include "../roadveh_cmd.h"
+#include "../settings_cmd.h"
+#include "../signs_cmd.h"
+#include "../station_cmd.h"
+#include "../story_cmd.h"
+#include "../subsidy_cmd.h"
 #include "../terraform_cmd.h"
+#include "../timetable_cmd.h"
 #include "../town_cmd.h"
 #include "../train_cmd.h"
+#include "../tree_cmd.h"
 #include "../tunnelbridge_cmd.h"
 #include "../vehicle_cmd.h"
+#include "../viewport_cmd.h"
+#include "../water_cmd.h"
+#include "../waypoint_cmd.h"
 #include "../script/script_cmd.h"
+#include <array>
 
 #include "../safeguards.h"
 
@@ -61,6 +84,23 @@ static CommandCallback * const _callback_table[] = {
 	/* 0x1A */ CcGame,
 	/* 0x1B */ CcAddVehicleNewGroup,
 };
+
+/* Helpers to generate the command dispatch table from the command traits. */
+
+template <Commands Tcmd> static CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data);
+template <Commands Tcmd> static void UnpackNetworkCommand(const CommandPacket *cp);
+struct CommandDispatch {
+	CommandDataBuffer(*Sanitize)(const CommandDataBuffer &);
+	void (*Unpack)(const CommandPacket *);
+};
+
+template<typename T, T... i>
+inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>) noexcept
+{
+	return std::array<CommandDispatch, sizeof...(i)>{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &UnpackNetworkCommand<static_cast<Commands>(i)> }... }};
+}
+static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
+
 
 /**
  * Append a CommandPacket at the end of the queue.
@@ -149,15 +189,28 @@ static CommandQueue _local_execution_queue;
  */
 void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
+	auto data = EndianBufferWriter<CommandDataBuffer>::FromValue(std::make_tuple(tile, p1, p2, text));
+	NetworkSendCommand(cmd, err_message, callback, company, tile, data);
+}
+
+/**
+ * Prepare a DoCommand to be send over the network
+ * @param cmd The command to execute (a CMD_* value)
+ * @param err_message Message prefix to show on error
+ * @param callback A callback function to call after the command is finished
+ * @param company The company that wants to send the command
+ * @param location Location of the command (e.g. for error message position)
+ * @param cmd_data The command proc arguments.
+ */
+void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex location, const CommandDataBuffer &cmd_data)
+{
 	CommandPacket c;
 	c.company  = company;
-	c.tile     = tile;
-	c.p1       = p1;
-	c.p2       = p2;
 	c.cmd      = cmd;
 	c.err_msg  = err_message;
 	c.callback = callback;
-	c.text     = text;
+	c.tile     = location;
+	c.data     = cmd_data;
 
 	if (_network_server) {
 		/* If we are the server, we queue the command in our 'special' queue.
@@ -220,7 +273,7 @@ void NetworkExecuteLocalCommandQueue()
 
 		/* We can execute this command */
 		_current_company = cp->company;
-		DoCommandP(cp, cp->my_cmd, true);
+		_cmd_dispatch[cp->cmd].Unpack(cp);
 
 		queue.Pop();
 		delete cp;
@@ -311,11 +364,8 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
 	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "single-player only command";
 	cp->err_msg = p->Recv_uint16();
-
-	cp->p1      = p->Recv_uint32();
-	cp->p2      = p->Recv_uint32();
 	cp->tile    = p->Recv_uint32();
-	cp->text    = p->Recv_string(NETWORK_COMPANY_NAME_LENGTH, (!_network_server && GetCommandFlags(cp->cmd) & CMD_STR_CTRL) != 0 ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
+	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p->Recv_buffer());
 
 	byte callback = p->Recv_uint8();
 	if (callback >= lengthof(_callback_table))  return "invalid callback";
@@ -331,13 +381,11 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
  */
 void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 {
-	p->Send_uint8 (cp->company);
+	p->Send_uint8(cp->company);
 	p->Send_uint16(cp->cmd);
 	p->Send_uint16(cp->err_msg);
-	p->Send_uint32(cp->p1);
-	p->Send_uint32(cp->p2);
 	p->Send_uint32(cp->tile);
-	p->Send_string(cp->text);
+	p->Send_buffer(cp->data);
 
 	byte callback = 0;
 	while (callback < lengthof(_callback_table) && _callback_table[callback] != cp->callback) {
@@ -349,4 +397,59 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 		callback = 0; // _callback_table[0] == nullptr
 	}
 	p->Send_uint8 (callback);
+}
+
+/**
+ * Insert a client ID into the command data in a command packet.
+ * @param cp Command packet to modify.
+ * @param client_id Client id to insert.
+ */
+void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id)
+{
+	/* Unpack command parameters. */
+	auto params = EndianBufferReader::ToValue<std::tuple<TileIndex, uint32, uint32, std::string>>(cp.data);
+
+	/* Insert client id. */
+	std::get<2>(params) = client_id;
+
+	/* Repack command parameters. */
+	cp.data = EndianBufferWriter<CommandDataBuffer>::FromValue(params);
+}
+
+
+/** Validate a single string argument coming from network. */
+template <class T>
+static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_flags, T &data)
+{
+	if constexpr (std::is_same_v<std::string, T>) {
+		data = StrMakeValid(data.substr(0, NETWORK_COMPANY_NAME_LENGTH), (!_network_server && cmd_flags & CMD_STR_CTRL) != 0 ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
+	}
+}
+
+/** Helper function to perform validation on command data strings. */
+template<class Ttuple, size_t... Tindices>
+static inline void SanitizeStringsHelper(CommandFlags cmd_flags, Ttuple &values, std::index_sequence<Tindices...>)
+{
+	((SanitizeSingleStringHelper(cmd_flags, std::get<Tindices>(values))), ...);
+}
+
+/**
+ * Validate and sanitize strings in command data.
+ * @tparam Tcmd Command this data belongs to.
+ * @param data Command data.
+ * @return Sanitized command data.
+ */
+template <Commands Tcmd>
+CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data)
+{
+	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(data);
+	SanitizeStringsHelper(CommandTraits<Tcmd>::flags, args, std::make_index_sequence<std::tuple_size_v<typename CommandTraits<Tcmd>::Args>>{});
+	return EndianBufferWriter<CommandDataBuffer>::FromValue(args);
+}
+
+template <Commands Tcmd>
+void UnpackNetworkCommand(const CommandPacket *cp)
+{
+	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
+	std::apply(&InjectNetworkCommand, std::tuple_cat(std::make_tuple(Tcmd, cp->err_msg, cp->callback, cp->my_cmd), args));
 }
