@@ -92,6 +92,8 @@ public:
 	constexpr const_iterator cbegin() const noexcept { return const_iterator(first); }
 	constexpr const_iterator cend() const noexcept { return const_iterator(last); }
 
+	constexpr reference operator[](size_type idx) const { return first[idx]; }
+
 private:
 	pointer first;
 	pointer last;

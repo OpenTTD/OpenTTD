@@ -24,6 +24,7 @@
 #include "../genworld.h"
 #include "../company_func.h"
 #include "../company_gui.h"
+#include "../company_cmd.h"
 #include "../roadveh.h"
 #include "../order_backup.h"
 #include "../core/pool_func.hpp"
@@ -1048,14 +1049,15 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	 * to match the company in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
-	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
+	uint32 company_p1 = cp.cmd == CMD_COMPANY_CTRL ? std::get<1>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_CTRL>::Args>(cp.data)) : 0;
+	if (!(cp.cmd == CMD_COMPANY_CTRL && company_p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.",
 		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
 	if (cp.cmd == CMD_COMPANY_CTRL) {
-		if (cp.p1 != 0 || cp.company != COMPANY_SPECTATOR) {
+		if (company_p1 != 0 || cp.company != COMPANY_SPECTATOR) {
 			return this->SendError(NETWORK_ERROR_CHEATER);
 		}
 
@@ -1066,7 +1068,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 		}
 	}
 
-	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) cp.p2 = this->client_id;
+	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) NetworkReplaceCommandClientId(cp, this->client_id);
 
 	this->incoming_queue.Append(&cp);
 	return NETWORK_RECV_STATUS_OKAY;

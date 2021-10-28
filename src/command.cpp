@@ -55,6 +55,8 @@
 #include "viewport_cmd.h"
 #include "water_cmd.h"
 #include "waypoint_cmd.h"
+#include "misc/endian_buffer.hpp"
+#include "string_func.h"
 
 #include <array>
 
@@ -400,10 +402,36 @@ bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, T
 }
 
 /**
+ * Toplevel network safe docommand function for the current company. Must not be called recursively.
+ * The callback is called when the command succeeded or failed. The parameters
+ * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
+ *
+ * @param cmd The command to execute (a CMD_* value)
+ * @param err_message Message prefix to show on error
+ * @param callback A callback function to call after the command is finished
+ * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
+ * @param tile The tile to perform a command on (see #CommandProc)
+ * @param p1 Additional data for the command (see #CommandProc)
+ * @param p2 Additional data for the command (see #CommandProc)
+ * @param text The text to pass
+ * @return \c true if the command succeeded, else \c false.
+ */
+bool InjectNetworkCommand(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+{
+	return DoCommandP(cmd, err_message, callback, my_cmd, true, tile, p1, p2, text);
+}
+
+/**
  * Helper to deduplicate the code for returning.
  * @param cmd   the command cost to return.
  */
 #define return_dcpi(cmd) { _docommand_recursive = 0; return cmd; }
+
+/** Helper to format command parameters into a hex string. */
+static std::string CommandParametersToHexString(TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+{
+	return FormatArrayAsHex(EndianBufferWriter<>::FromValue(std::make_tuple(tile, p1, p2, text)));
+}
 
 /*!
  * Helper function for the toplevel network safe docommand function for the current company.
@@ -482,7 +510,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 		if (!_networking || _generating_world || network_command) {
 			/* Log the failed command as well. Just to be able to be find
 			 * causes of desyncs due to bad command test implementations. */
-			Debug(desync, 1, "cmdf: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, err_message, text, GetCommandName(cmd));
+			Debug(desync, 1, "cmdf: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cmd, err_message, tile, CommandParametersToHexString(tile, p1, p2, text), GetCommandName(cmd));
 		}
 		cur_company.Restore();
 		return_dcpi(res);
@@ -502,7 +530,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 		 * reset the storages as we've not executed the command. */
 		return_dcpi(CommandCost());
 	}
-	Debug(desync, 1, "cmd: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, err_message, text, GetCommandName(cmd));
+	Debug(desync, 1, "cmd: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cmd, err_message, tile, CommandParametersToHexString(tile, p1, p2, text), GetCommandName(cmd));
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */

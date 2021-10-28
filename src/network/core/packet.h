@@ -72,6 +72,7 @@ public:
 	void   Send_uint32(uint32 data);
 	void   Send_uint64(uint64 data);
 	void   Send_string(const std::string_view data);
+	void   Send_buffer(const std::vector<byte> &data);
 	size_t Send_bytes (const byte *begin, const byte *end);
 
 	/* Reading/receiving of packets */
@@ -87,6 +88,7 @@ public:
 	uint16 Recv_uint16();
 	uint32 Recv_uint32();
 	uint64 Recv_uint64();
+	std::vector<byte> Recv_buffer();
 	std::string Recv_string(size_t length, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 
 	size_t RemainingBytesToTransfer() const;
