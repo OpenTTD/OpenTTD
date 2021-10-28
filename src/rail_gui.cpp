@@ -36,6 +36,8 @@
 #include "sortlist_type.h"
 #include "stringfilter_type.h"
 #include "string_func.h"
+#include "station_cmd.h"
+#include "waypoint_cmd.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -198,8 +200,18 @@ static void PlaceRail_Station(TileIndex tile)
 		int h = _settings_client.gui.station_platlength;
 		if (!_railstation.orientation) Swap(w, h);
 
-		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAIL_STATION, STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, "" };
-		ShowSelectStationIfNeeded(cmdcont, TileArea(tile, w, h));
+		auto proc = [=](bool test, StationID to_join) -> bool {
+			if (test) {
+				return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_RAIL_STATION)), CMD_BUILD_RAIL_STATION, tile, p1, p2).Succeeded();
+			} else {
+				uint32 p2_final = p2;
+				if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
+
+				return DoCommandP(CMD_BUILD_RAIL_STATION, STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, tile, p1, p2_final);
+			}
+		};
+
+		ShowSelectStationIfNeeded(TileArea(tile, w, h), proc);
 	}
 }
 
@@ -724,8 +736,18 @@ struct BuildRailToolbarWindow : Window {
 							uint32 p1 = _cur_railtype | (select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y) << 6 | ta.w << 8 | ta.h << 16 | _ctrl_pressed << 24;
 							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
 
-							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT, STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, "" };
-							ShowSelectWaypointIfNeeded(cmdcont, ta);
+							auto proc = [=](bool test, StationID to_join) -> bool {
+								if (test) {
+									return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_RAIL_WAYPOINT)), CMD_BUILD_RAIL_WAYPOINT, ta.tile, p1, p2).Succeeded();
+								} else {
+									uint32 p2_final = p2;
+									if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
+
+									return DoCommandP(CMD_BUILD_RAIL_WAYPOINT, STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, ta.tile, p1, p2_final);
+								}
+							};
+
+							ShowSelectWaypointIfNeeded(ta, proc);
 						}
 					}
 					break;
@@ -883,8 +905,18 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	uint32 p1 = _cur_railtype | _railstation.orientation << 6 | numtracks << 8 | platlength << 16 | _ctrl_pressed << 24;
 	uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
 
-	CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_STATION, STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, "" };
-	ShowSelectStationIfNeeded(cmdcont, ta);
+	auto proc = [=](bool test, StationID to_join) -> bool {
+		if (test) {
+			return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_RAIL_STATION)), CMD_BUILD_RAIL_STATION, ta.tile, p1, p2).Succeeded();
+		} else {
+			uint32 p2_final = p2;
+			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
+
+			return DoCommandP(CMD_BUILD_RAIL_STATION, STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, ta.tile, p1, p2_final);
+		}
+	};
+
+	ShowSelectStationIfNeeded(ta, proc);
 }
 
 /** Enum referring to the Hotkeys in the build rail station window */

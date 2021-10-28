@@ -37,13 +37,11 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
 typedef std::vector<byte> CommandDataBuffer;
 
 CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags);
 
 bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
 bool DoCommandP(Commands cmd, StringID err_message, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
 bool DoCommandP(Commands cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
 bool DoCommandP(Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-bool DoCommandP(const CommandContainer *container, bool my_cmd = true, bool network_command = false);
 
 bool InjectNetworkCommand(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 

@@ -26,7 +26,9 @@
 #include "hotkeys.h"
 #include "vehicle_func.h"
 #include "gui.h"
+#include "command_func.h"
 #include "airport_cmd.h"
+#include "station_cmd.h"
 
 #include "widgets/airport_widget.h"
 
@@ -61,8 +63,19 @@ static void PlaceAirport(TileIndex tile)
 
 	uint32 p1 = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
 	p1 |= _selected_airport_layout << 8;
-	CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_AIRPORT, STR_ERROR_CAN_T_BUILD_AIRPORT_HERE, CcBuildAirport, "" };
-	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE));
+
+	auto proc = [=](bool test, StationID to_join) -> bool {
+		if (test) {
+			return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_AIRPORT)), CMD_BUILD_AIRPORT, tile, p1, p2).Succeeded();
+		} else {
+			uint32 p2_final = p2;
+			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
+
+			return DoCommandP(CMD_BUILD_AIRPORT, STR_ERROR_CAN_T_BUILD_AIRPORT_HERE, CcBuildAirport, tile, p1, p2_final);
+		}
+	};
+
+	ShowSelectStationIfNeeded(TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE), proc);
 }
 
 /** Airport build toolbar window handler. */
