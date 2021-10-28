@@ -26,5 +26,6 @@ add_files(
     smallmatrix_type.hpp
     smallstack_type.hpp
     smallvec_type.hpp
+    span_type.hpp
     string_compare_type.hpp
 )
