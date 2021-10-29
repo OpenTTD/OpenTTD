@@ -26,6 +26,7 @@
 #include "zoom_func.h"
 #include "guitimer_func.h"
 #include "viewport_func.h"
+#include "landscape_cmd.h"
 #include "rev.h"
 
 #include "widgets/misc_widget.h"
@@ -191,7 +192,7 @@ public:
 		Company *c = Company::GetIfValid(_local_company);
 		if (c != nullptr) {
 			assert(_current_company == _local_company);
-			CommandCost costclear = DoCommand(DC_QUERY_COST, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+			CommandCost costclear = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_QUERY_COST, tile, 0, 0, {});
 			if (costclear.Succeeded()) {
 				Money cost = costclear.GetCost();
 				if (cost < 0) {

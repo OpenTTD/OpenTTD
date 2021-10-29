@@ -51,6 +51,10 @@
 #include "linkgraph/linkgraph.h"
 #include "linkgraph/refresh.h"
 #include "framerate_type.h"
+#include "autoreplace_cmd.h"
+#include "misc_cmd.h"
+#include "train_cmd.h"
+#include "vehicle_cmd.h"
 
 #include "table/strings.h"
 
@@ -307,7 +311,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 		SetDParamStr(0, grfconfig->GetName());
 		SetDParam(1, engine);
 		ShowErrorMessage(part1, part2, WL_CRITICAL);
-		if (!_networking) DoCommand(DC_EXEC, CMD_PAUSE, 0, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, 1);
+		if (!_networking) Command<CMD_PAUSE>::Do(DC_EXEC, 0, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, 1, {});
 	}
 
 	/* debug output */
@@ -1055,7 +1059,7 @@ void CallVehicleTicks()
 
 		const Company *c = Company::Get(_current_company);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
-		CommandCost res = DoCommand(DC_EXEC, CMD_AUTOREPLACE_VEHICLE, 0, v->index, 0);
+		CommandCost res = Command<CMD_AUTOREPLACE_VEHICLE>::Do(DC_EXEC, 0, v->index, 0, {});
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
 
 		if (!IsLocalCompany()) continue;
@@ -1561,7 +1565,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (v->current_order.IsRefit()) {
 			Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
-			CommandCost cost = DoCommand(DC_EXEC, CMD_REFIT_VEHICLE, v->tile, v->index, v->current_order.GetRefitCargo() | 0xFF << 8);
+			CommandCost cost = Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, v->tile, v->index, v->current_order.GetRefitCargo() | 0xFF << 8, {});
 			cur_company.Restore();
 
 			if (cost.Failed()) {
@@ -2443,7 +2447,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
 		if (this->type == VEH_TRAIN && (reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
-			DoCommand(DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION, this->tile, this->index, 0);
+			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC, this->tile, this->index, 0, {});
 		}
 
 		if (this->type == VEH_AIRCRAFT) {

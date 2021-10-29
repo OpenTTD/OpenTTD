@@ -37,6 +37,7 @@
 #include "tilehighlight_func.h"
 #include "zoom_func.h"
 #include "depot_cmd.h"
+#include "vehicle_cmd.h"
 
 #include "safeguards.h"
 
@@ -773,8 +774,8 @@ struct RefitWindow : public Window {
 	{
 		assert(_current_company == _local_company);
 		Vehicle *v = Vehicle::Get(this->window_number);
-		CommandCost cost = DoCommand(DC_QUERY_COST, CMD_REFIT_VEHICLE, v->tile, this->selected_vehicle, option->cargo |
-				option->subtype << 8 | this->num_vehicles << 16 | (int)this->auto_refit << 24);
+		CommandCost cost = Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, v->tile, this->selected_vehicle, option->cargo |
+				option->subtype << 8 | this->num_vehicles << 16 | (int)this->auto_refit << 24, {});
 
 		if (cost.Failed()) return INVALID_STRING_ID;
 

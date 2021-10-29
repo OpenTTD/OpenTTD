@@ -215,7 +215,7 @@ struct BuildDocksToolbarWindow : Window {
 
 				auto proc = [=](bool test, StationID to_join) -> bool {
 					if (test) {
-						return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_DOCK)), CMD_BUILD_DOCK, tile, p1, p2).Succeeded();
+						return Command<CMD_BUILD_DOCK>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_DOCK>()), tile, p1, p2, {}).Succeeded();
 					} else {
 						uint32 p2_final = p2;
 						if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);

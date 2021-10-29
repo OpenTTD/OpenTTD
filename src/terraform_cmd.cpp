@@ -18,6 +18,7 @@
 #include "company_func.h"
 #include "core/backup_type.hpp"
 #include "terraform_cmd.h"
+#include "landscape_cmd.h"
 
 #include "table/strings.h"
 
@@ -290,7 +291,7 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, uint32 p1, uin
 			}
 			CommandCost cost;
 			if (indirectly_cleared) {
-				cost = DoCommand(tile_flags, CMD_LANDSCAPE_CLEAR, t, 0, 0);
+				cost = Command<CMD_LANDSCAPE_CLEAR>::Do(tile_flags, t, 0, 0, {});
 			} else {
 				cost = _tile_type_procs[GetTileType(t)]->terraform_tile_proc(t, tile_flags, z_min, tileh);
 			}
@@ -379,7 +380,7 @@ CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 		TileIndex t = *iter;
 		uint curh = TileHeight(t);
 		while (curh != h) {
-			CommandCost ret = DoCommand(flags & ~DC_EXEC, CMD_TERRAFORM_LAND, t, SLOPE_N, (curh > h) ? 0 : 1);
+			CommandCost ret = Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, t, SLOPE_N, (curh > h) ? 0 : 1, {});
 			if (ret.Failed()) {
 				last_error = ret;
 
@@ -395,7 +396,7 @@ CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 					delete iter;
 					return cost;
 				}
-				DoCommand(flags, CMD_TERRAFORM_LAND, t, SLOPE_N, (curh > h) ? 0 : 1);
+				Command<CMD_TERRAFORM_LAND>::Do(flags, t, SLOPE_N, (curh > h) ? 0 : 1, {});
 			} else {
 				/* When we're at the terraform limit we better bail (unneeded) testing as well.
 				 * This will probably cause the terraforming cost to be underestimated, but only

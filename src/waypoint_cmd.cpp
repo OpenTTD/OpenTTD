@@ -29,6 +29,7 @@
 #include "water.h"
 #include "company_gui.h"
 #include "waypoint_cmd.h"
+#include "landscape_cmd.h"
 
 #include "table/strings.h"
 
@@ -316,7 +317,7 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_WAYPOINT_BUOY]);
 	if (!IsWaterTile(tile)) {
-		CommandCost ret = DoCommand(flags | DC_AUTO, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile, 0, 0, {});
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 	}

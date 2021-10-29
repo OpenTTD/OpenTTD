@@ -38,6 +38,8 @@
 #include "company_gui.h"
 #include "road_func.h"
 #include "road_cmd.h"
+#include "landscape_cmd.h"
+#include "rail_cmd.h"
 
 #include "table/strings.h"
 #include "table/roadtypes.h"
@@ -367,7 +369,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
-		if (GetRoadType(tile, OtherRoadTramType(rtt)) == INVALID_ROADTYPE) return DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+		if (GetRoadType(tile, OtherRoadTramType(rtt)) == INVALID_ROADTYPE) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
 
 		CommandCost cost(EXPENSES_CONSTRUCTION);
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -822,7 +824,7 @@ do_clear:;
 	}
 
 	if (need_to_clear) {
-		CommandCost ret = DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 	}
@@ -868,7 +870,7 @@ do_clear:;
 				if (HasPowerOnRoad(rt, existing_rt)) {
 					rt = existing_rt;
 				} else if (HasPowerOnRoad(existing_rt, rt)) {
-					CommandCost ret = DoCommand(flags, CMD_CONVERT_ROAD, tile, tile, rt);
+					CommandCost ret = Command<CMD_CONVERT_ROAD>::Do(flags, tile, tile, rt, {});
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 				} else {
@@ -1039,7 +1041,7 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, uint32 p
 			if (tile == start_tile && HasBit(p2, 0)) bits &= DiagDirToRoadBits(dir);
 		}
 
-		CommandCost ret = DoCommand(flags, CMD_BUILD_ROAD, tile, drd << 11 | rt << 4 | bits, 0);
+		CommandCost ret = Command<CMD_BUILD_ROAD>::Do(flags, tile, drd << 11 | rt << 4 | bits, 0, {});
 		if (ret.Failed()) {
 			last_error = ret;
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
@@ -1130,7 +1132,7 @@ CommandCost CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, uint32 
 				if (flags & DC_EXEC) {
 					money_spent += ret.GetCost();
 					if (money_spent > 0 && money_spent > money_available) {
-						_additional_cash_required = DoCommand(flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD, start_tile, end_tile, p2).GetCost();
+						_additional_cash_required = Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, start_tile, end_tile, p2, {}).GetCost();
 						return cost;
 					}
 					RemoveRoad(tile, flags, bits, rtt, true, false);
@@ -1181,7 +1183,7 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, uint32 p1, ui
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0));
+	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {}));
 	if (cost.Failed()) return cost;
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -1267,7 +1269,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 			}
 
 			if (flags & DC_EXEC) {
-				DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+				Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
 			}
 			return ret;
 		}
@@ -2195,7 +2197,7 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 	if (IsRoadDepot(tile)) {
 		if (GetTileOwner(tile) == old_owner) {
 			if (new_owner == INVALID_OWNER) {
-				DoCommand(DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile, 0, 0, {});
 			} else {
 				/* A road depot has two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
 				RoadType rt = GetRoadTypeRoad(tile);
@@ -2232,7 +2234,7 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 	if (IsLevelCrossing(tile)) {
 		if (GetTileOwner(tile) == old_owner) {
 			if (new_owner == INVALID_OWNER) {
-				DoCommand(DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL, tile, 0, GetCrossingRailTrack(tile));
+				Command<CMD_REMOVE_SINGLE_RAIL>::Do(DC_EXEC | DC_BANKRUPT, tile, 0, GetCrossingRailTrack(tile), {});
 			} else {
 				/* Update infrastructure counts. No need to dirty windows here, we'll redraw the whole screen anyway. */
 				Company::Get(old_owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
@@ -2281,7 +2283,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, int z
 		}
 	}
 
-	return DoCommand(flags, CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
 }
 
 /** Update power of road vehicle under which is the roadtype being converted */

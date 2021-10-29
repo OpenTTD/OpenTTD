@@ -32,6 +32,7 @@
 #include "core/geometry_func.hpp"
 #include "date_func.h"
 #include "station_cmd.h"
+#include "tunnelbridge_cmd.h"
 
 #include "widgets/road_widget.h"
 
@@ -199,7 +200,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, uint32 p2, S
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_ROAD_STOP)), CMD_BUILD_ROAD_STOP, ta.tile, p1, p2).Succeeded();
+			return Command<CMD_BUILD_ROAD_STOP>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_STOP>()), ta.tile, p1, p2, {}).Succeeded();
 		} else {
 			uint32 p2_final = p2;
 			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
@@ -722,7 +723,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
-		DoCommand(DC_AUTO, CMD_BUILD_TUNNEL, tile, _cur_roadtype | (TRANSPORT_ROAD << 8), 0);
+		Command<CMD_BUILD_TUNNEL>::Do(DC_AUTO, tile, _cur_roadtype | (TRANSPORT_ROAD << 8), 0, {});
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 

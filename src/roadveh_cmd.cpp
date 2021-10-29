@@ -35,6 +35,7 @@
 #include "zoom_func.h"
 #include "framerate_type.h"
 #include "roadveh_cmd.h"
+#include "road_cmd.h"
 
 #include "table/strings.h"
 
@@ -1134,7 +1135,7 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadB
 	/* The 'current' company is not necessarily the owner of the vehicle. */
 	Backup<CompanyID> cur_company(_current_company, c, FILE_LINE);
 
-	CommandCost ret = DoCommand(DC_NO_WATER, CMD_BUILD_ROAD, t, rt << 4 | r, 0);
+	CommandCost ret = Command<CMD_BUILD_ROAD>::Do(DC_NO_WATER, t, rt << 4 | r, 0, {});
 
 	cur_company.Restore();
 	return ret.Succeeded();

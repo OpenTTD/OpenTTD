@@ -34,6 +34,7 @@
 #include "terraform_cmd.h"
 #include "zoom_func.h"
 #include "rail_cmd.h"
+#include "landscape_cmd.h"
 
 #include "widgets/terraform_widget.h"
 
@@ -513,7 +514,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		/* Delete all station signs */
 		for (BaseStation *st : BaseStation::Iterate()) {
 			/* There can be buoys, remove them */
-			if (IsBuoyTile(st->xy)) DoCommand(DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR, st->xy, 0, 0);
+			if (IsBuoyTile(st->xy)) Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, st->xy, 0, 0, {});
 			if (!st->IsInUse()) delete st;
 		}
 
