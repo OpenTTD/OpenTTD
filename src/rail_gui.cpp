@@ -37,6 +37,7 @@
 #include "stringfilter_type.h"
 #include "string_func.h"
 #include "station_cmd.h"
+#include "tunnelbridge_cmd.h"
 #include "waypoint_cmd.h"
 
 #include "station_map.h"
@@ -202,7 +203,7 @@ static void PlaceRail_Station(TileIndex tile)
 
 		auto proc = [=](bool test, StationID to_join) -> bool {
 			if (test) {
-				return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_RAIL_STATION)), CMD_BUILD_RAIL_STATION, tile, p1, p2).Succeeded();
+				return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), tile, p1, p2, {}).Succeeded();
 			} else {
 				uint32 p2_final = p2;
 				if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
@@ -738,7 +739,7 @@ struct BuildRailToolbarWindow : Window {
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_RAIL_WAYPOINT)), CMD_BUILD_RAIL_WAYPOINT, ta.tile, p1, p2).Succeeded();
+									return Command<CMD_BUILD_RAIL_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_WAYPOINT>()), ta.tile, p1, p2, {}).Succeeded();
 								} else {
 									uint32 p2_final = p2;
 									if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
@@ -773,7 +774,7 @@ struct BuildRailToolbarWindow : Window {
 
 	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
-		DoCommand(DC_AUTO, CMD_BUILD_TUNNEL, tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0);
+		Command<CMD_BUILD_TUNNEL>::Do(DC_AUTO, tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, {});
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
@@ -907,7 +908,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return DoCommand(CommandFlagsToDCFlags(GetCommandFlags(CMD_BUILD_RAIL_STATION)), CMD_BUILD_RAIL_STATION, ta.tile, p1, p2).Succeeded();
+			return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), ta.tile, p1, p2, {}).Succeeded();
 		} else {
 			uint32 p2_final = p2;
 			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);

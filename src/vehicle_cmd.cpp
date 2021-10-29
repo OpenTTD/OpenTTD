@@ -32,6 +32,9 @@
 #include "core/random_func.hpp"
 #include "vehicle_cmd.h"
 #include "aircraft_cmd.h"
+#include "autoreplace_cmd.h"
+#include "group_cmd.h"
+#include "order_cmd.h"
 #include "roadveh_cmd.h"
 #include "train_cmd.h"
 #include "ship_cmd.h"
@@ -180,7 +183,7 @@ CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 
 		/* If we are not in DC_EXEC undo everything */
 		if (flags != subflags) {
-			DoCommand(DC_EXEC, CMD_SELL_VEHICLE, 0, v->index, 0);
+			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, v->index, 0, {});
 		}
 	}
 
@@ -661,7 +664,7 @@ CommandCost CmdMassStartStopVehicle(DoCommandFlag flags, TileIndex tile, uint32 
 		if (!vehicle_list_window && !v->IsChainInDepot()) continue;
 
 		/* Just try and don't care if some vehicle's can't be stopped. */
-		DoCommand(flags, CMD_START_STOP_VEHICLE, tile, v->index, 0);
+		Command<CMD_START_STOP_VEHICLE>::Do(flags, tile, v->index, 0, {});
 	}
 
 	return CommandCost();
@@ -691,7 +694,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlag flags, TileIndex tile, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
-		CommandCost ret = DoCommand(flags, CMD_SELL_VEHICLE, tile, list[i]->index | (1 << 20), 0);
+		CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(flags, tile, list[i]->index | (1 << 20), 0, {});
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -730,7 +733,7 @@ CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, uint32 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsChainInDepot()) continue;
 
-		CommandCost ret = DoCommand(flags, CMD_AUTOREPLACE_VEHICLE, 0, v->index, 0);
+		CommandCost ret = Command<CMD_AUTOREPLACE_VEHICLE>::Do(flags, 0, v->index, 0, {});
 
 		if (ret.Succeeded()) cost.AddCost(ret);
 	}
@@ -869,11 +872,11 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		DoCommandFlag build_flags = flags;
 		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
 
-		CommandCost cost = DoCommand(build_flags, CMD_BUILD_VEHICLE, tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0);
+		CommandCost cost = Command<CMD_BUILD_VEHICLE>::Do(build_flags, tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0, {});
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != nullptr) DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | (1 << 20), 0);
+			if (w_front != nullptr) Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | (1 << 20), 0, {});
 			return cost;
 		}
 
@@ -889,12 +892,12 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 			if (v->type == VEH_TRAIN && !v->IsFrontEngine()) {
 				/* this s a train car
 				 * add this unit to the end of the train */
-				CommandCost result = DoCommand(flags, CMD_MOVE_RAIL_VEHICLE, 0, w->index | 1 << 20, w_rear->index);
+				CommandCost result = Command<CMD_MOVE_RAIL_VEHICLE>::Do(flags, 0, w->index | 1 << 20, w_rear->index, {});
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | 1 << 20, 0);
-					DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w->index       | 1 << 20, 0);
+					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | 1 << 20, 0, {});
+					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w->index       | 1 << 20, 0, {});
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
@@ -915,7 +918,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 
 	if (flags & DC_EXEC) {
 		/* Cloned vehicles belong to the same group */
-		DoCommand(flags, CMD_ADD_VEHICLE_GROUP, 0, v_front->group_id, w_front->index);
+		Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, 0, v_front->group_id, w_front->index, {});
 	}
 
 
@@ -937,7 +940,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 				/* Find out what's the best sub type */
 				byte subtype = GetBestFittingSubType(v, w, v->cargo_type);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
-					CommandCost cost = DoCommand(flags, CMD_REFIT_VEHICLE, 0, w->index, v->cargo_type | 1U << 25 | (subtype << 8));
+					CommandCost cost = Command<CMD_REFIT_VEHICLE>::Do(flags, 0, w->index, v->cargo_type | 1U << 25 | (subtype << 8), {});
 					if (cost.Succeeded()) total_cost.AddCost(cost);
 				}
 
@@ -972,10 +975,10 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		 * the vehicle refitted before doing this, otherwise the moved
 		 * cargo types might not match (passenger vs non-passenger)
 		 */
-		CommandCost result = DoCommand(flags, CMD_CLONE_ORDER, 0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index);
+		CommandCost result = Command<CMD_CLONE_ORDER>::Do(flags, 0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, {});
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | 1 << 20, 0);
+			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | 1 << 20, 0, {});
 			return result;
 		}
 
@@ -986,7 +989,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		 * check whether the company has enough money manually. */
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(flags, CMD_SELL_VEHICLE, w_front->tile, w_front->index | 1 << 20, 0);
+			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | 1 << 20, 0, {});
 			return total_cost;
 		}
 	}
@@ -1011,7 +1014,7 @@ static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, con
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
 		const Vehicle *v = list[i];
-		CommandCost ret = DoCommand(flags, CMD_SEND_VEHICLE_TO_DEPOT, v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0);
+		CommandCost ret = Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(flags, v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0, {});
 
 		if (ret.Succeeded()) {
 			had_success = true;

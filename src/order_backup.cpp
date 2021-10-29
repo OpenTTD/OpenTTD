@@ -17,6 +17,7 @@
 #include "window_func.h"
 #include "station_map.h"
 #include "order_cmd.h"
+#include "group_cmd.h"
 
 #include "safeguards.h"
 
@@ -74,7 +75,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
-		DoCommand(DC_EXEC, CMD_CLONE_ORDER, 0, v->index | CO_SHARE << 30, this->clone->index);
+		Command<CMD_CLONE_ORDER>::Do(DC_EXEC, 0, v->index | CO_SHARE << 30, this->clone->index, {});
 	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
 		v->orders.list = new OrderList(this->orders, v);
 		this->orders = nullptr;
@@ -89,7 +90,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
-	DoCommand(DC_EXEC, CMD_ADD_VEHICLE_GROUP, 0, this->group, v->index);
+	Command<CMD_ADD_VEHICLE_GROUP>::Do(DC_EXEC, 0, this->group, v->index, {});
 }
 
 /**

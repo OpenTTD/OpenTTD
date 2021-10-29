@@ -435,7 +435,8 @@ template <Commands Tcmd> struct CommandTraits;
 
 #define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
 	template<> struct CommandTraits<cmd_> { \
-		using Args = typename CommandFunctionTraitHelper<decltype(&proc_)>::Args; \
+		using ProcType = decltype(&proc_); \
+		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
 		static constexpr Commands cmd = cmd_; \
 		static constexpr auto &proc = proc_; \
 		static constexpr CommandFlags flags = (CommandFlags)(flags_); \

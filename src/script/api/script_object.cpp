@@ -9,13 +9,13 @@
 
 #include "../../stdafx.h"
 #include "../../script/squirrel.hpp"
-#include "../../command_func.h"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../network/network.h"
 #include "../../genworld.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
+#include "../../command_func.h"
 
 #include "../script_storage.hpp"
 #include "../script_instance.hpp"

@@ -20,6 +20,7 @@
 #include "../../train.h"
 #include "../../vehicle_func.h"
 #include "../../aircraft.h"
+#include "../../vehicle_cmd.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -91,7 +92,7 @@
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	CommandCost res = ::DoCommand(DC_QUERY_COST, CMD_BUILD_VEHICLE, depot, engine_id | (cargo << 24), 0);
+	CommandCost res = ::Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, depot, engine_id | (cargo << 24), 0, {});
 	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 
@@ -140,7 +141,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	CommandCost res = ::DoCommand(DC_QUERY_COST, CMD_REFIT_VEHICLE, 0, vehicle_id, cargo);
+	CommandCost res = ::Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, 0, vehicle_id, cargo, {});
 	return res.Succeeded() ? _returned_refit_capacity : -1;
 }
 

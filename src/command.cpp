@@ -164,64 +164,6 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 	return _game_mode == GM_EDITOR || command_type_lookup[_command_proc_table[cmd].type] <= _settings_game.construction.command_pause_level;
 }
 
-
-/*!
- * This function executes a given command with the parameters from the #CommandProc parameter list.
- * Depending on the flags parameter it execute or test a command.
- *
- * @param flags Flags for the command and how to execute the command
- * @param cmd The command-id to execute (a value of the CMD_* enums)
- * @param tile The tile to apply the command on (for the #CommandProc)
- * @param p1 Additional data for the command (for the #CommandProc)
- * @param p2 Additional data for the command (for the #CommandProc)
- * @param text The text to pass
- * @see CommandProc
- * @return the cost
- */
-CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	CommandCost res;
-
-	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return CMD_ERROR;
-
-	/* Chop of any CMD_MSG or other flags; we don't need those here */
-	CommandProc *proc = _command_proc_table[cmd].proc;
-
-	RecursiveCommandCounter counter{};
-
-	/* only execute the test call if it's toplevel, or we're not execing. */
-	if (counter.IsTopLevel() || !(flags & DC_EXEC) ) {
-		if (counter.IsTopLevel()) _cleared_object_areas.clear();
-		SetTownRatingTestMode(true);
-		res = proc(flags & ~DC_EXEC, tile, p1, p2, text);
-		SetTownRatingTestMode(false);
-		if (res.Failed()) return res;
-
-		if (counter.IsTopLevel() &&
-				!(flags & DC_QUERY_COST) &&
-				!(flags & DC_BANKRUPT) &&
-				!CheckCompanyHasMoney(res)) { // CheckCompanyHasMoney() modifies 'res' to an error if it fails.
-			return res;
-		}
-
-		if (!(flags & DC_EXEC)) return res;
-	}
-
-	/* Execute the command here. All cost-relevant functions set the expenses type
-	 * themselves to the cost object at some point */
-	if (counter.IsTopLevel()) _cleared_object_areas.clear();
-	res = proc(flags, tile, p1, p2, text);
-	if (res.Failed()) return res;
-
-	/* if toplevel, subtract the money. */
-	if (counter.IsTopLevel() && !(flags & DC_BANKRUPT)) {
-		SubtractMoneyFromCompany(res);
-	}
-
-	return res;
-}
-
 /*!
  * This functions returns the money which can be used to execute a command.
  * This is either the money of the current company or INT64_MAX if there
@@ -236,6 +178,40 @@ Money GetAvailableMoneyForCommand()
 	return Company::Get(company)->money;
 }
 
+
+/**
+ * Prepare for calling a command proc.
+ * @param top_level Top level of command execution, i.e. command from a command.
+ * @param test Test run of command?
+ */
+void CommandHelperBase::InternalDoBefore(bool top_level, bool test)
+{
+	if (top_level) _cleared_object_areas.clear();
+	if (test) SetTownRatingTestMode(true);
+}
+
+/**
+ * Process result after calling a command proc.
+ * @param[in,out] res Command result, may be modified.
+ * @param flags Command flags.
+ * @param top_level Top level of command execution, i.e. command from a command.
+ * @param test Test run of command?
+ */
+void CommandHelperBase::InternalDoAfter(CommandCost &res, DoCommandFlag flags, bool top_level, bool test)
+{
+	if (test) {
+		SetTownRatingTestMode(false);
+
+		if (res.Succeeded() && top_level && !(flags & DC_QUERY_COST) && !(flags & DC_BANKRUPT)) {
+			CheckCompanyHasMoney(res); // CheckCompanyHasMoney() modifies 'res' to an error if it fails.
+		}
+	} else {
+		/* If top-level, subtract the money. */
+		if (res.Succeeded() && top_level && !(flags & DC_BANKRUPT)) {
+			SubtractMoneyFromCompany(res);
+		}
+	}
+}
 
 /*!
  * Toplevel network safe docommand function for the current company. Must not be called recursively.

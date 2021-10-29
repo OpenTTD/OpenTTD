@@ -1128,7 +1128,7 @@ CommandCost CmdRenamePresident(DoCommandFlag flags, TileIndex tile, uint32 p1, u
 			c->president_name = text;
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) {
-				DoCommand(DC_EXEC, CMD_RENAME_COMPANY, 0, 0, 0, text + " Transport");
+				Command<CMD_RENAME_COMPANY>::Do(DC_EXEC, 0, 0, 0, text + " Transport");
 			}
 		}
 

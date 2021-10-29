@@ -1228,7 +1228,7 @@ struct BuildVehicleWindow : Window {
 
 		if (!this->listview_mode) {
 			/* Query for cost and refitted capacity */
-			CommandCost ret = DoCommand(DC_QUERY_COST, CMD_BUILD_VEHICLE, this->window_number, this->sel_engine | (cargo << 24), 0);
+			CommandCost ret = Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, this->window_number, this->sel_engine | (cargo << 24), 0, {});
 			if (ret.Succeeded()) {
 				this->te.cost          = ret.GetCost() - e->GetCost();
 				this->te.capacity      = _returned_refit_capacity;
