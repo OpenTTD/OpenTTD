@@ -2257,6 +2257,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landsch
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaartgrootte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverversie: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradres: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Uitnodigingscode: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Huidige datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spelscript: {WHITE}{STRING} (v{NUM})
@@ -2673,6 +2674,7 @@ STR_STATION_CLASS_WAYP                                          :Routepunten
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinselectie
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Wisselen tussen geavanceerde seintypen weergeven-verbergen
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein dat slechts één trein tegelijk in hetzelfde blok toelaat
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (armsein){}Groen als er een groen uitgangssein is uit het volgende blok. Anders rood.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (armsein){}Gedraagt zich hetzelfde als een standaardsein, maar is nodig om ingangs- en combinatie-voorseinen aan te sturen
