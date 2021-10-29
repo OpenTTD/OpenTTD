@@ -65,6 +65,9 @@
 #include "safeguards.h"
 
 
+int RecursiveCommandCounter::_counter = 0;
+
+
 /**
  * Define a command with the flags which belongs to it.
  *
@@ -162,7 +165,6 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 }
 
 
-static int _docommand_recursive = 0;
 /*!
  * This function executes a given command with the parameters from the #CommandProc parameter list.
  * Depending on the flags parameter it execute or test a command.
@@ -186,43 +188,34 @@ CommandCost DoCommand(DoCommandFlag flags, Commands cmd, TileIndex tile, uint32 
 	/* Chop of any CMD_MSG or other flags; we don't need those here */
 	CommandProc *proc = _command_proc_table[cmd].proc;
 
-	_docommand_recursive++;
+	RecursiveCommandCounter counter{};
 
 	/* only execute the test call if it's toplevel, or we're not execing. */
-	if (_docommand_recursive == 1 || !(flags & DC_EXEC) ) {
-		if (_docommand_recursive == 1) _cleared_object_areas.clear();
+	if (counter.IsTopLevel() || !(flags & DC_EXEC) ) {
+		if (counter.IsTopLevel()) _cleared_object_areas.clear();
 		SetTownRatingTestMode(true);
 		res = proc(flags & ~DC_EXEC, tile, p1, p2, text);
 		SetTownRatingTestMode(false);
-		if (res.Failed()) {
-			goto error;
-		}
+		if (res.Failed()) return res;
 
-		if (_docommand_recursive == 1 &&
+		if (counter.IsTopLevel() &&
 				!(flags & DC_QUERY_COST) &&
 				!(flags & DC_BANKRUPT) &&
 				!CheckCompanyHasMoney(res)) { // CheckCompanyHasMoney() modifies 'res' to an error if it fails.
-			goto error;
-		}
-
-		if (!(flags & DC_EXEC)) {
-			_docommand_recursive--;
 			return res;
 		}
+
+		if (!(flags & DC_EXEC)) return res;
 	}
 
 	/* Execute the command here. All cost-relevant functions set the expenses type
 	 * themselves to the cost object at some point */
-	if (_docommand_recursive == 1) _cleared_object_areas.clear();
+	if (counter.IsTopLevel()) _cleared_object_areas.clear();
 	res = proc(flags, tile, p1, p2, text);
-	if (res.Failed()) {
-error:
-		_docommand_recursive--;
-		return res;
-	}
+	if (res.Failed()) return res;
 
 	/* if toplevel, subtract the money. */
-	if (--_docommand_recursive == 0 && !(flags & DC_BANKRUPT)) {
+	if (counter.IsTopLevel() && !(flags & DC_BANKRUPT)) {
 		SubtractMoneyFromCompany(res);
 	}
 
@@ -395,12 +388,6 @@ bool InjectNetworkCommand(Commands cmd, StringID err_message, CommandCallback *c
 	return DoCommandP(cmd, err_message, callback, my_cmd, true, tile, p1, p2, text);
 }
 
-/**
- * Helper to deduplicate the code for returning.
- * @param cmd   the command cost to return.
- */
-#define return_dcpi(cmd) { _docommand_recursive = 0; return cmd; }
-
 /** Helper to format command parameters into a hex string. */
 static std::string CommandParametersToHexString(TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
@@ -423,9 +410,10 @@ static std::string CommandParametersToHexString(TileIndex tile, uint32 p1, uint3
  */
 CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
 {
+	RecursiveCommandCounter counter{};
+
 	/* Prevent recursion; it gives a mess over the network */
-	assert(_docommand_recursive == 0);
-	_docommand_recursive = 1;
+	assert(counter.IsTopLevel());
 
 	/* Reset the state. */
 	_additional_cash_required = 0;
@@ -446,7 +434,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	assert(!(cmd_flags & CMD_CLIENT_ID) || p2 != 0);
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return_dcpi(CMD_ERROR);
+	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return CMD_ERROR;
 
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
@@ -455,7 +443,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
 	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && (cmd_flags & CMD_DEITY) != 0)) {
-		return_dcpi(CMD_ERROR);
+		return CMD_ERROR;
 	}
 
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
@@ -487,7 +475,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 			Debug(desync, 1, "cmdf: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cmd, err_message, tile, CommandParametersToHexString(tile, p1, p2, text), GetCommandName(cmd));
 		}
 		cur_company.Restore();
-		return_dcpi(res);
+		return res;
 	}
 
 	/*
@@ -502,7 +490,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 		 * This way it's not handled by DoCommand and only the
 		 * actual execution of the command causes messages. Also
 		 * reset the storages as we've not executed the command. */
-		return_dcpi(CommandCost());
+		return CommandCost();
 	}
 	Debug(desync, 1, "cmd: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cmd, err_message, tile, CommandParametersToHexString(tile, p1, p2, text), GetCommandName(cmd));
 
@@ -532,7 +520,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	if (!test_and_exec_can_differ) {
 		assert(res.GetCost() == res2.GetCost() && res.Failed() == res2.Failed()); // sanity check
 	} else if (res2.Failed()) {
-		return_dcpi(res2);
+		return res2;
 	}
 
 	/* If we're needing more money and we haven't done
@@ -542,7 +530,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 		 * So make sure the signal buffer is empty even in this case */
 		UpdateSignalsInBuffer();
 		SetDParam(0, _additional_cash_required);
-		return_dcpi(CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY));
+		return CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
 	}
 
 	/* update last build coordinate of company. */
@@ -556,9 +544,8 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
-	return_dcpi(res2);
+	return res2;
 }
-#undef return_dcpi
 
 
 /**
