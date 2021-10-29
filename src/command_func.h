@@ -72,4 +72,15 @@ static inline DoCommandFlag CommandFlagsToDCFlags(CommandFlags cmd_flags)
 	return flags;
 }
 
+/** Helper class to keep track of command nesting level. */
+struct RecursiveCommandCounter {
+	RecursiveCommandCounter() noexcept { _counter++; }
+	~RecursiveCommandCounter() noexcept { _counter--; }
+
+	/** Are we in the top-level command execution? */
+	bool IsTopLevel() const { return _counter == 1; }
+private:
+	static int _counter;
+};
+
 #endif /* COMMAND_FUNC_H */
