@@ -12,7 +12,7 @@
 
 #include "command_type.h"
 #include "company_type.h"
-#include <vector>
+#include "misc/endian_buffer.hpp"
 #include "tile_map.h"
 
 /**
@@ -33,9 +33,6 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  * @param errcode The StringID to return
  */
 #define return_cmd_error(errcode) return CommandCost(errcode);
-
-/** Storage buffer for serialized command data. */
-typedef std::vector<byte> CommandDataBuffer;
 
 CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
@@ -213,7 +210,7 @@ protected:
 		InternalPostResult(res, tile, estimate_only, only_sending, err_message, my_cmd);
 
 		if (!estimate_only && !only_sending && callback != nullptr) {
-			std::apply(callback, std::tuple_cat(std::tuple<const CommandCost &, Commands>{ res, Tcmd }, args));
+			callback(Tcmd, res, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args));
 		}
 
 		return res.Succeeded();

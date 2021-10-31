@@ -13,6 +13,7 @@
 #include "economy_type.h"
 #include "strings_type.h"
 #include "tile_type.h"
+#include <vector>
 
 struct GRFFile;
 
@@ -444,6 +445,9 @@ template <Commands Tcmd> struct CommandTraits;
 		static inline constexpr const char *name = #proc_; \
 	};
 
+/** Storage buffer for serialized command data. */
+typedef std::vector<byte> CommandDataBuffer;
+
 /**
  * Define a callback function for the client, after the command is finished.
  *
@@ -451,14 +455,12 @@ template <Commands Tcmd> struct CommandTraits;
  * are from the #CommandProc callback type. The boolean parameter indicates if the
  * command succeeded or failed.
  *
- * @param result The result of the executed command
  * @param cmd The command that was executed
+ * @param result The result of the executed command
  * @param tile The tile of the command action
- * @param p1 Additional data of the command
- * @param p1 Additional data of the command
- * @param text Text of the command
+ * @param data Additional data of the command
  * @see CommandProc
  */
-typedef void CommandCallback(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
+typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data);
 
 #endif /* COMMAND_TYPE_H */

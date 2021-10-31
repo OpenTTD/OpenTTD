@@ -82,24 +82,22 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->mode_instance;
 }
 
-/* static */ void ScriptObject::SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+/* static */ void ScriptObject::SetLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd)
 {
 	ScriptStorage *s = GetStorage();
-	Debug(script, 6, "SetLastCommand company={:02d} tile={:06x} p1={:08x} p2={:08x} cmd={}", s->root_company, tile, p1, p2, cmd);
+	Debug(script, 6, "SetLastCommand company={:02d} tile={:06x} cmd={} data={}", s->root_company, tile, cmd, FormatArrayAsHex(data));
 	s->last_tile = tile;
-	s->last_p1 = p1;
-	s->last_p2 = p2;
+	s->last_data = data;
 	s->last_cmd = cmd;
 }
 
-/* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd)
+/* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd)
 {
 	ScriptStorage *s = GetStorage();
-	Debug(script, 6, "CheckLastCommand company={:02d} tile={:06x} p1={:08x} p2={:08x} cmd={}", s->root_company, tile, p1, p2, cmd);
+	Debug(script, 6, "CheckLastCommand company={:02d} tile={:06x} cmd={} data={}", s->root_company, tile, cmd, FormatArrayAsHex(data));
 	if (s->last_tile != tile) return false;
-	if (s->last_p1 != p1) return false;
-	if (s->last_p2 != p2) return false;
 	if (s->last_cmd != cmd) return false;
+	if (s->last_data != data) return false;
 	return true;
 }
 
@@ -326,7 +324,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	if (GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = UINT32_MAX;
 
 	/* Store the command for command callback validation. */
-	if (!estimate_only && _networking && !_generating_world) SetLastCommand(tile, p1, p2, cmd);
+	if (!estimate_only && _networking && !_generating_world) SetLastCommand(tile, EndianBufferWriter<CommandDataBuffer>::FromValue(std::make_tuple(tile, p1, p2, command_text)), cmd);
 
 	/* Try to perform the command. */
 	CommandCost res = ::DoCommandPInternal(cmd, STR_NULL, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, false, estimate_only, false, tile, p1, p2, command_text);

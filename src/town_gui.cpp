@@ -1009,7 +1009,7 @@ void ShowTownDirectory()
 	new TownDirectoryWindow(&_town_directory_desc);
 }
 
-void CcFoundTown(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcFoundTown(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Failed()) return;
 
@@ -1017,7 +1017,7 @@ void CcFoundTown(const CommandCost &result, Commands cmd, TileIndex tile, uint32
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcFoundRandomTown(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcFoundRandomTown(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
 }

@@ -75,12 +75,12 @@ protected:
 	/**
 	 * Store the latest command executed by the script.
 	 */
-	static void SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd);
+	static void SetLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd);
 
 	/**
 	 * Check if it's the latest command executed by the script.
 	 */
-	static bool CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd);
+	static bool CheckLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd);
 
 	/**
 	 * Sets the DoCommand costs counter to a value.

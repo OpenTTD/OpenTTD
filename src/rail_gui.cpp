@@ -89,7 +89,7 @@ static bool IsStationAvailable(const StationSpec *statspec)
 	return Convert8bitBooleanCallback(statspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
 }
 
-void CcPlaySound_CONSTRUCTION_RAIL(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcPlaySound_CONSTRUCTION_RAIL(Commands cmd, const CommandCost &result,TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
 }
@@ -135,10 +135,11 @@ static const DiagDirection _place_depot_extra_dir[12] = {
 	DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-void CcRailDepot(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcRailDepot(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
 
+	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_TRAIN_DEPOT>::Args>(data);
 	DiagDirection dir = (DiagDirection)p2;
 
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
@@ -176,7 +177,7 @@ static void PlaceRail_Waypoint(TileIndex tile)
 	}
 }
 
-void CcStation(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcStation(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Failed()) return;
 
@@ -293,7 +294,7 @@ static void PlaceRail_Bridge(TileIndex tile, Window *w)
 }
 
 /** Command callback for building a tunnel */
-void CcBuildRailTunnel(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcBuildRailTunnel(Commands cmd, const CommandCost &result,TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);

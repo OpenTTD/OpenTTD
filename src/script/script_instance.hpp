@@ -178,12 +178,11 @@ public:
 	 * DoCommand callback function for all commands executed by scripts.
 	 * @param result The result of the command.
 	 * @param tile The tile on which the command was executed.
-	 * @param p1 p1 as given to DoCommandPInternal.
-	 * @param p2 p2 as given to DoCommandPInternal.
+	 * @param data Command data as given to DoCommandPInternal.
 	 * @param cmd cmd as given to DoCommandPInternal.
 	 * @return true if we handled result.
 	 */
-	bool DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, Commands cmd);
+	bool DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, Commands cmd);
 
 	/**
 	 * Insert an event for this script.

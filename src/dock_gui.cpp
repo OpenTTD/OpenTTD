@@ -43,7 +43,7 @@ static void ShowBuildDocksDepotPicker(Window *parent);
 
 static Axis _ship_depot_direction;
 
-void CcBuildDocks(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcBuildDocks(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Failed()) return;
 
@@ -51,7 +51,7 @@ void CcBuildDocks(const CommandCost &result, Commands cmd, TileIndex tile, uint3
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcPlaySound_CONSTRUCTION_WATER(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcPlaySound_CONSTRUCTION_WATER(Commands cmd, const CommandCost &result,TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_02_CONSTRUCTION_WATER, tile);
 }
