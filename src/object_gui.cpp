@@ -25,6 +25,7 @@
 #include "window_func.h"
 #include "zoom_func.h"
 #include "terraform_cmd.h"
+#include "object_cmd.h"
 
 #include "widgets/object_widget.h"
 
@@ -542,8 +543,8 @@ public:
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
 		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-		DoCommandP(CMD_BUILD_OBJECT, STR_ERROR_CAN_T_BUILD_OBJECT, CcTerraform,
-				tile, objclass->GetSpec(_selected_object_index)->Index(), _selected_object_view);
+		Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcTerraform,
+				tile, objclass->GetSpec(_selected_object_index)->Index(), _selected_object_view, {});
 	}
 
 	void OnPlaceObjectAbort() override

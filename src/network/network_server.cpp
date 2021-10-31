@@ -29,6 +29,7 @@
 #include "../order_backup.h"
 #include "../core/pool_func.hpp"
 #include "../core/random_func.hpp"
+#include "../company_cmd.h"
 #include "../rev.h"
 #include <mutex>
 #include <condition_variable>
@@ -1555,7 +1556,7 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
 			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && _network_company_states[c->index].password.empty()) {
 				/* Shut the company down */
-				DoCommandP(CMD_COMPANY_CTRL, 0, CCA_DELETE | c->index << 16 | CRR_AUTOCLEAN << 24, 0);
+				Command<CMD_COMPANY_CTRL>::Post(0, CCA_DELETE | c->index << 16 | CRR_AUTOCLEAN << 24, 0, {});
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no password.", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
@@ -1569,7 +1570,7 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
 			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && vehicles_in_company[c->index] == 0) {
 				/* Shut the company down */
-				DoCommandP(CMD_COMPANY_CTRL, 0, CCA_DELETE | c->index << 16 | CRR_AUTOCLEAN << 24, 0);
+				Command<CMD_COMPANY_CTRL>::Post(0, CCA_DELETE | c->index << 16 | CRR_AUTOCLEAN << 24, 0, {});
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no vehicles.", c->index + 1);
 			}
 		} else {

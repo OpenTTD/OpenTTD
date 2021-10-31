@@ -19,6 +19,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "tree_map.h"
+#include "tree_cmd.h"
 
 #include "widgets/tree_widget.h"
 
@@ -230,7 +231,7 @@ public:
 			TileIndex tile = TileVirtXY(pt.x, pt.y);
 
 			if (this->mode == PM_NORMAL) {
-				DoCommandP(CMD_PLANT_TREE, tile, this->tree_to_plant, tile);
+				Command<CMD_PLANT_TREE>::Post(tile, this->tree_to_plant, tile, {});
 			} else {
 				this->DoPlantForest(tile);
 			}
@@ -240,7 +241,7 @@ public:
 	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
-			DoCommandP(CMD_PLANT_TREE, STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, this->tree_to_plant, start_tile);
+			Command<CMD_PLANT_TREE>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, this->tree_to_plant, start_tile, {});
 		}
 	}
 

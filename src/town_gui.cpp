@@ -33,6 +33,7 @@
 #include "stringfilter_type.h"
 #include "widgets/dropdown_func.h"
 #include "town_kdtree.h"
+#include "town_cmd.h"
 
 #include "widgets/town_widget.h"
 
@@ -287,7 +288,7 @@ public:
 			}
 
 			case WID_TA_EXECUTE:
-				DoCommandP(CMD_DO_TOWN_ACTION, STR_ERROR_CAN_T_DO_THIS, this->town->xy, this->window_number, this->sel_index);
+				Command<CMD_DO_TOWN_ACTION>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, this->window_number, this->sel_index, {});
 				break;
 		}
 	}
@@ -474,12 +475,12 @@ public:
 					_warn_town_no_roads = true;
 				}
 
-				DoCommandP(CMD_EXPAND_TOWN, STR_ERROR_CAN_T_EXPAND_TOWN, (TileIndex)0, this->window_number, 0);
+				Command<CMD_EXPAND_TOWN>::Post(STR_ERROR_CAN_T_EXPAND_TOWN, 0, this->window_number, 0, {});
 				break;
 			}
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
-				DoCommandP(CMD_DELETE_TOWN, STR_ERROR_TOWN_CAN_T_DELETE, (TileIndex)0, this->window_number, 0);
+				Command<CMD_DELETE_TOWN>::Post(STR_ERROR_TOWN_CAN_T_DELETE, 0, this->window_number, 0, {});
 				break;
 		}
 	}
@@ -561,7 +562,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_TOWN, STR_ERROR_CAN_T_RENAME_TOWN, 0, this->window_number, 0, str);
+		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, 0, this->window_number, 0, str);
 	}
 };
 
@@ -1162,7 +1163,7 @@ public:
 			if (strcmp(buf, this->townname_editbox.text.buf) != 0) name = this->townname_editbox.text.buf;
 		}
 
-		bool success = DoCommandP(CMD_FOUND_TOWN, errstr, cc,
+		bool success = Command<CMD_FOUND_TOWN>::Post(errstr, cc,
 				tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6, townnameparts, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */

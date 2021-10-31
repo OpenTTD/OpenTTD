@@ -1550,7 +1550,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return DoCommandP(CMD_CHANGE_COMPANY_SETTING, 0, 0, value, setting->GetName());
+			return Command<CMD_CHANGE_COMPANY_SETTING>::Post(0, 0, value, setting->GetName());
 		}
 
 		setting->ChangeValue(&_settings_client.company, value);
@@ -1576,7 +1576,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(CMD_CHANGE_SETTING, 0, 0, value, setting->GetName());
+		return Command<CMD_CHANGE_SETTING>::Post(0, 0, value, setting->GetName());
 	}
 	return false;
 }

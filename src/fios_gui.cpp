@@ -27,6 +27,7 @@
 #include "core/geometry_func.hpp"
 #include "gamelog.h"
 #include "stringfilter_type.h"
+#include "misc_cmd.h"
 
 #include "widgets/fios_widget.h"
 
@@ -358,7 +359,7 @@ public:
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
-			DoCommandP(CMD_PAUSE, 0, PM_PAUSED_SAVELOAD, 1);
+			Command<CMD_PAUSE>::Post(0, PM_PAUSED_SAVELOAD, 1, {});
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
@@ -402,7 +403,7 @@ public:
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-			DoCommandP(CMD_PAUSE, 0, PM_PAUSED_SAVELOAD, 0);
+			Command<CMD_PAUSE>::Post(0, PM_PAUSED_SAVELOAD, 0, {});
 		}
 		this->Window::Close();
 	}

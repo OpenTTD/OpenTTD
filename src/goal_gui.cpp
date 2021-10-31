@@ -23,6 +23,7 @@
 #include "story_base.h"
 #include "command_func.h"
 #include "string_func.h"
+#include "goal_cmd.h"
 
 #include "widgets/goal_widget.h"
 
@@ -382,17 +383,17 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				DoCommandP(CMD_GOAL_QUESTION_ANSWER, 0, this->window_number, this->button[0]);
+				Command<CMD_GOAL_QUESTION_ANSWER>::Post(0, this->window_number, this->button[0], {});
 				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_2:
-				DoCommandP(CMD_GOAL_QUESTION_ANSWER, 0, this->window_number, this->button[1]);
+				Command<CMD_GOAL_QUESTION_ANSWER>::Post(0, this->window_number, this->button[1], {});
 				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_3:
-				DoCommandP(CMD_GOAL_QUESTION_ANSWER, 0, this->window_number, this->button[2]);
+				Command<CMD_GOAL_QUESTION_ANSWER>::Post(0, this->window_number, this->button[2], {});
 				this->Close();
 				break;
 		}

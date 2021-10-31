@@ -132,5 +132,5 @@ void CcPlaceSign(const CommandCost &result, Commands cmd, TileIndex tile, uint32
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	DoCommandP(CMD_PLACE_SIGN, STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, 0, 0);
+	Command<CMD_PLACE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, 0, 0, {});
 }

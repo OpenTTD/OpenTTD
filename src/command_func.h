@@ -37,14 +37,6 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
 /** Storage buffer for serialized command data. */
 typedef std::vector<byte> CommandDataBuffer;
 
-
-bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-bool DoCommandP(Commands cmd, StringID err_message, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-bool DoCommandP(Commands cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-bool DoCommandP(Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text = {});
-
-bool InjectNetworkCommand(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
-
 CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
 
 void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text);
@@ -96,6 +88,8 @@ class CommandHelperBase {
 protected:
 	static void InternalDoBefore(bool top_level, bool test);
 	static void InternalDoAfter(CommandCost &res, DoCommandFlag flags, bool top_level, bool test);
+	static std::tuple<bool, bool, bool> InternalPostBefore(Commands cmd, CommandFlags flags, TileIndex tile, StringID err_message, bool network_command);
+	static void InternalPostResult(const CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd);
 };
 
 /**
@@ -146,6 +140,83 @@ public:
 		InternalDoAfter(res, flags, counter.IsTopLevel(), false);
 
 		return res;
+	}
+
+	/**
+	 * Shortcut for the long Post when not using a callback.
+	 * @param err_message Message prefix to show on error
+	 * @param args Parameters for the command
+	 */
+	static inline bool Post(StringID err_message, Targs... args) { return Post(err_message, nullptr, std::forward<Targs>(args)...); }
+	/**
+	 * Shortcut for the long Post when not using an error message.
+	 * @param callback A callback function to call after the command is finished
+	 * @param args Parameters for the command
+	 */
+	static inline bool Post(CommandCallback *callback, Targs... args) { return Post((StringID)0, callback, std::forward<Targs>(args)...); }
+	/**
+	 * Shortcut for the long Post when not using a callback or an error message.
+	 * @param args Parameters for the command
+	 */
+	static inline bool Post(Targs... args) { return Post((StringID)0, nullptr, std::forward<Targs>(args)...); }
+
+	/**
+	 * Top-level network safe command execution for the current company.
+	 * Must not be called recursively. The callback is called when the
+	 * command succeeded or failed.
+	 *
+	 * @param err_message Message prefix to show on error
+	 * @param callback A callback function to call after the command is finished
+	 * @param args Parameters for the command
+	 * @return \c true if the command succeeded, else \c false.
+	 */
+	static bool Post(StringID err_message, CommandCallback *callback, Targs... args)
+	{
+		return InternalPost(err_message, callback, true, false, std::forward_as_tuple(args...));
+	}
+
+	/**
+	 * Execute a command coming from the network.
+	 * @param err_message Message prefix to show on error
+	 * @param callback A callback function to call after the command is finished
+	 * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
+	 * @param location Tile location for user feedback.
+	 * @param args Parameters for the command
+	 * @return \c true if the command succeeded, else \c false.
+	 */
+	static bool PostFromNet(StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex location, std::tuple<Targs...> args)
+	{
+		return InternalPost(err_message, callback, my_cmd, true, location, std::move(args));
+	}
+
+protected:
+	static bool InternalPost(StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, std::tuple<Targs...> args)
+	{
+		/* Where to show the message? */
+		TileIndex tile{};
+		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, decltype(args)>>) {
+			tile = std::get<0>(args);
+		}
+
+		return InternalPost(err_message, callback, my_cmd, network_command, tile, std::move(args));
+	}
+
+	static bool InternalPost(StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, TileIndex tile, std::tuple<Targs...> args)
+	{
+		auto [err, estimate_only, only_sending] = InternalPostBefore(Tcmd, GetCommandFlags<Tcmd>(), tile, err_message, network_command);
+		if (err) return false;
+
+		/* Only set p2 when the command does not come from the network. */
+		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID && std::get<2>(args) == 0) std::get<2>(args) = CLIENT_ID_SERVER;
+
+		CommandCost res = std::apply(DoCommandPInternal, std::tuple_cat(std::make_tuple(Tcmd, err_message, callback, my_cmd, estimate_only, network_command), args));
+		InternalPostResult(res, tile, estimate_only, only_sending, err_message, my_cmd);
+
+		if (!estimate_only && !only_sending && callback != nullptr) {
+			std::apply(callback, std::tuple_cat(std::tuple<const CommandCost &, Commands>{ res, Tcmd }, args));
+		}
+
+		return res.Succeeded();
 	}
 };
 

@@ -22,6 +22,7 @@
 #include "date_gui.h"
 #include "vehicle_gui.h"
 #include "settings_type.h"
+#include "timetable_cmd.h"
 
 #include "widgets/timetable_widget.h"
 
@@ -142,7 +143,7 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
  */
 static void ChangeTimetableStartCallback(const Window *w, Date date)
 {
-	DoCommandP(CMD_SET_TIMETABLE_START, STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, w->window_number, date);
+	Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, w->window_number, date, {});
 }
 
 
@@ -578,25 +579,25 @@ struct TimetableWindow : Window {
 
 			case WID_VT_CLEAR_TIME: { // Clear waiting time.
 				uint32 p1 = PackTimetableArgs(v, this->sel_index, false);
-				DoCommandP(CMD_CHANGE_TIMETABLE, STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (TileIndex)0, p1, 0);
+				Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, p1, 0, {});
 				break;
 			}
 
 			case WID_VT_CLEAR_SPEED: { // Clear max speed button.
 				uint32 p1 = PackTimetableArgs(v, this->sel_index, true);
-				DoCommandP(CMD_CHANGE_TIMETABLE, STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (TileIndex)0, p1, UINT16_MAX);
+				Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, p1, UINT16_MAX, {});
 				break;
 			}
 
 			case WID_VT_RESET_LATENESS: // Reset the vehicle's late counter.
-				DoCommandP(CMD_SET_VEHICLE_ON_TIME, STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (TileIndex)0, v->index, 0);
+				Command<CMD_SET_VEHICLE_ON_TIME>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, v->index, 0, {});
 				break;
 
 			case WID_VT_AUTOFILL: { // Autofill the timetable.
 				uint32 p2 = 0;
 				if (!HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(p2, 0);
 				if (_ctrl_pressed) SetBit(p2, 1);
-				DoCommandP(CMD_AUTOFILL_TIMETABLE, STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (TileIndex)0, v->index, p2);
+				Command<CMD_AUTOFILL_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, v->index, p2, {});
 				break;
 			}
 
@@ -629,7 +630,7 @@ struct TimetableWindow : Window {
 
 		uint32 p2 = std::min<uint32>(val, UINT16_MAX);
 
-		DoCommandP(CMD_CHANGE_TIMETABLE, STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, p1, p2);
+		Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, 0, p1, p2, {});
 	}
 
 	void OnResize() override

@@ -35,6 +35,8 @@
 #include "zoom_func.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
+#include "terraform_cmd.h"
+#include "object_cmd.h"
 
 #include "widgets/terraform_widget.h"
 
@@ -63,7 +65,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	TileArea ta(start, end);
 	for (TileIndex tile : ta) {
 		SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_NORMAL : TROPICZONE_DESERT);
-		DoCommandP(CMD_LANDSCAPE_CLEAR, tile, 0, 0);
+		Command<CMD_LANDSCAPE_CLEAR>::Post(tile, 0, 0, {});
 		MarkTileDirtyByTile(tile);
 	}
 	old_generating_world.Restore();
@@ -118,16 +120,16 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
-			DoCommandP(CMD_CLEAR_AREA, STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed ? 1 : 0);
+			Command<CMD_CLEAR_AREA>::Post(STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed ? 1 : 0, {});
 			break;
 		case DDSP_RAISE_AND_LEVEL_AREA:
-			DoCommandP(CMD_LEVEL_LAND, STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, LM_RAISE << 1 | (_ctrl_pressed ? 1 : 0));
+			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, LM_RAISE << 1 | (_ctrl_pressed ? 1 : 0), {});
 			break;
 		case DDSP_LOWER_AND_LEVEL_AREA:
-			DoCommandP(CMD_LEVEL_LAND, STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, LM_LOWER << 1 | (_ctrl_pressed ? 1 : 0));
+			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, LM_LOWER << 1 | (_ctrl_pressed ? 1 : 0), {});
 			break;
 		case DDSP_LEVEL_AREA:
-			DoCommandP(CMD_LEVEL_LAND, STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, LM_LEVEL << 1 | (_ctrl_pressed ? 1 : 0));
+			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, LM_LEVEL << 1 | (_ctrl_pressed ? 1 : 0), {});
 			break;
 		case DDSP_CREATE_ROCKS:
 			GenerateRockyArea(end_tile, start_tile);
@@ -241,7 +243,7 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case WID_TT_BUY_LAND: // Buy land button
-				DoCommandP(CMD_BUILD_OBJECT, STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL, tile, OBJECT_OWNED_LAND, 0);
+				Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL, tile, OBJECT_OWNED_LAND, 0, {});
 				break;
 
 			case WID_TT_PLACE_SIGN: // Place sign button
@@ -398,7 +400,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 		StringID msg =
 			mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
 
-		DoCommandP(CMD_TERRAFORM_LAND, msg, CcTerraform, tile, SLOPE_N, (uint32)mode);
+		Command<CMD_TERRAFORM_LAND>::Post(msg, CcTerraform, tile, SLOPE_N, (uint32)mode, {});
 	} else {
 		assert(_terraform_size != 0);
 		TileArea ta(tile, _terraform_size, _terraform_size);
@@ -425,7 +427,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 
 		for (TileIndex tile2 : ta) {
 			if (TileHeight(tile2) == h) {
-				DoCommandP(CMD_TERRAFORM_LAND, tile2, SLOPE_N, (uint32)mode);
+				Command<CMD_TERRAFORM_LAND>::Post(tile2, SLOPE_N, (uint32)mode, {});
 			}
 		}
 	}

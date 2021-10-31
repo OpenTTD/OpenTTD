@@ -28,6 +28,8 @@
 #include "tunnelbridge_cmd.h"
 #include "dock_cmd.h"
 #include "station_cmd.h"
+#include "water_cmd.h"
+#include "waypoint_cmd.h"
 
 #include "widgets/dock_widget.h"
 
@@ -194,7 +196,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_LOCK: // Build lock button
-				DoCommandP(CMD_BUILD_LOCK, STR_ERROR_CAN_T_BUILD_LOCKS, CcBuildDocks, tile, 0, 0);
+				Command<CMD_BUILD_LOCK>::Post(STR_ERROR_CAN_T_BUILD_LOCKS, CcBuildDocks, tile, 0, 0, {});
 				break;
 
 			case WID_DT_DEMOLISH: // Demolish aka dynamite button
@@ -202,7 +204,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_DEPOT: // Build depot button
-				DoCommandP(CMD_BUILD_SHIP_DEPOT, STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction, 0);
+				Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction, 0, {});
 				break;
 
 			case WID_DT_STATION: { // Build station button
@@ -220,7 +222,7 @@ struct BuildDocksToolbarWindow : Window {
 						uint32 p2_final = p2;
 						if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
 
-						return DoCommandP(CMD_BUILD_DOCK, STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, p1, p2_final);
+						return Command<CMD_BUILD_DOCK>::Post(STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, p1, p2_final, {});
 					}
 				};
 
@@ -229,7 +231,7 @@ struct BuildDocksToolbarWindow : Window {
 			}
 
 			case WID_DT_BUOY: // Build buoy button
-				DoCommandP(CMD_BUILD_BUOY, STR_ERROR_CAN_T_POSITION_BUOY_HERE, CcBuildDocks, tile, 0, 0);
+				Command<CMD_BUILD_BUOY>::Post(STR_ERROR_CAN_T_POSITION_BUOY_HERE, CcBuildDocks, tile, 0, 0, {});
 				break;
 
 			case WID_DT_RIVER: // Build river button (in scenario editor)
@@ -237,7 +239,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_BUILD_AQUEDUCT: // Build aqueduct button
-				DoCommandP(CMD_BUILD_BRIDGE, STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER << 15);
+				Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER << 15, {});
 				break;
 
 			default: NOT_REACHED();
@@ -257,10 +259,10 @@ struct BuildDocksToolbarWindow : Window {
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 				case DDSP_CREATE_WATER:
-					DoCommandP(CMD_BUILD_CANAL, STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, (_game_mode == GM_EDITOR && _ctrl_pressed) ? WATER_CLASS_SEA : WATER_CLASS_CANAL);
+					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, (_game_mode == GM_EDITOR && _ctrl_pressed) ? WATER_CLASS_SEA : WATER_CLASS_CANAL, {});
 					break;
 				case DDSP_CREATE_RIVER:
-					DoCommandP(CMD_BUILD_CANAL, STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER | (_ctrl_pressed ? 1 << 2 : 0));
+					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER | (_ctrl_pressed ? 1 << 2 : 0), {});
 					break;
 
 				default: break;

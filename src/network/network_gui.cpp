@@ -36,6 +36,7 @@
 #include "../zoom_func.h"
 #include "../sprite.h"
 #include "../settings_internal.h"
+#include "../company_cmd.h"
 
 #include "../widgets/network_widget.h"
 
@@ -1395,7 +1396,7 @@ static void AdminCompanyResetCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
 		if (NetworkCompanyHasClients(_admin_company_id)) return;
-		DoCommandP(CMD_COMPANY_CTRL, 0, CCA_DELETE | _admin_company_id << 16 | CRR_MANUAL << 24, 0);
+		Command<CMD_COMPANY_CTRL>::Post(0, CCA_DELETE | _admin_company_id << 16 | CRR_MANUAL << 24, 0, {});
 	}
 }
 
@@ -1535,7 +1536,7 @@ private:
 	static void OnClickCompanyNew(NetworkClientListWindow *w, Point pt, CompanyID company_id)
 	{
 		if (_network_server) {
-			DoCommandP(CMD_COMPANY_CTRL, 0, CCA_NEW, _network_own_client_id);
+			Command<CMD_COMPANY_CTRL>::Post(0, CCA_NEW, _network_own_client_id, {});
 		} else {
 			NetworkSendCommand(CMD_COMPANY_CTRL, STR_NULL, nullptr, _local_company, 0, CCA_NEW, 0, {});
 		}

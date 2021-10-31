@@ -30,6 +30,7 @@
 #include "cargotype.h"
 #include "core/geometry_func.hpp"
 #include "autoreplace_func.h"
+#include "engine_cmd.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
 
@@ -1460,7 +1461,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
-					DoCommandP(CMD_SET_VEHICLE_VISIBILITY, 0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)));
+					Command<CMD_SET_VEHICLE_VISIBILITY>::Post(0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)), {});
 				}
 				break;
 			}
@@ -1471,7 +1472,7 @@ struct BuildVehicleWindow : Window {
 					CommandCallback *callback = (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildPrimaryVehicle;
 					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
 					if (cargo == CF_ANY || cargo == CF_ENGINES) cargo = CF_NONE;
-					DoCommandP(CMD_BUILD_VEHICLE, GetCmdBuildVehMsg(this->vehicle_type), callback, this->window_number, sel_eng | (cargo << 24), 0);
+					Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), callback, this->window_number, sel_eng | (cargo << 24), 0, {});
 				}
 				break;
 			}
@@ -1636,7 +1637,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_ENGINE, STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, 0, this->rename_engine, 0, str);
+		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, 0, this->rename_engine, 0, str);
 	}
 
 	void OnDropdownSelect(int widget, int index) override
