@@ -2622,14 +2622,13 @@ static const StringID _vehicle_msg_translation_table[][4] = {
  * @param result the result of the start/stop command
  * @param cmd unused
  * @param tile unused
- * @param p1 vehicle ID
- * @param p2 unused
- * @param text unused
+ * @param data Command data
  */
-void CcStartStopVehicle(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcStartStopVehicle(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
 
+	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_START_STOP_VEHICLE>::Args>(data);
 	const Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == nullptr || !v->IsPrimaryVehicle() || v->owner != _local_company) return;
 
@@ -3127,11 +3126,9 @@ void StopGlobalFollowVehicle(const Vehicle *v)
  * @param result indicates completion (or not) of the operation
  * @param cmd unused
  * @param tile unused
- * @param p1 unused
- * @param p2 unused
- * @param text unused
+ * @param data unused
  */
-void CcBuildPrimaryVehicle(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
 

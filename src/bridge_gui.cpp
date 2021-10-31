@@ -53,17 +53,14 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * @param result Whether the build succeeded
  * @param cmd unused
  * @param end_tile End tile of the bridge.
- * @param p1 packed start tile coords (~ dx)
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 7) - bridge type (hi bh)
- * - p2 = (bit  8-13) - rail type or road types.
- * - p2 = (bit 15-16) - transport type.
- * @param text unused
+ * @param data Additional bitstuffed command data.
  */
-void CcBuildBridge(const CommandCost &result, Commands cmd, TileIndex end_tile, uint32 p1, uint32 p2, const std::string &text)
+void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
+
+	auto [tile, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_BRIDGE>::Args>(data);
 
 	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
 

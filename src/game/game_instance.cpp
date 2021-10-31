@@ -81,16 +81,14 @@ void GameInstance::Died()
 
 /**
  * DoCommand callback function for all commands executed by Game Scripts.
- * @param result The result of the command.
  * @param cmd cmd as given to DoCommandPInternal.
+ * @param result The result of the command.
  * @param tile The tile on which the command was executed.
- * @param p1 p1 as given to DoCommandPInternal.
- * @param p2 p2 as given to DoCommandPInternal.
- * @param text text as given to DoCommandPInternal.
+ * @param data Command data as given to Command<>::Post.
  */
-void CcGame(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcGame(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
-	if (Game::GetGameInstance()->DoCommandCallback(result, tile, p1, p2, cmd)) {
+	if (Game::GetGameInstance()->DoCommandCallback(result, tile, data, cmd)) {
 		Game::GetGameInstance()->Continue();
 	}
 }

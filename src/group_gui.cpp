@@ -1141,38 +1141,47 @@ static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner o
 
 /**
  * Opens a 'Rename group' window for newly created group.
- * @param result Did command succeed?
- * @param cmd Unused.
- * @param tile Unused.
- * @param p1 Vehicle type.
- * @param p2 Unused.
- * @param text Unused.
- * @see CmdCreateGroup
+ * @param veh_type Vehicle type.
  */
-void CcCreateGroup(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+static void CcCreateGroup(VehicleType veh_type)
 {
-	if (result.Failed()) return;
-	assert(p1 <= VEH_AIRCRAFT);
-
-	VehicleGroupWindow *w = FindVehicleGroupWindow((VehicleType)p1, _current_company);
+	VehicleGroupWindow *w = FindVehicleGroupWindow(veh_type, _current_company);
 	if (w != nullptr) w->ShowRenameGroupWindow(_new_group_id, true);
 }
 
 /**
- * Open rename window after adding a vehicle to a new group via drag and drop.
- * @param result Did command succeed?
+ * Opens a 'Rename group' window for newly created group.
  * @param cmd Unused.
+ * @param result Did command succeed?
  * @param tile Unused.
- * @param p1 Unused.
- * @param p2 Bit 0-19: Vehicle ID.
- * @param text Unused.
+ * @param data Command data.
+ * @see CmdCreateGroup
  */
-void CcAddVehicleNewGroup(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcCreateGroup(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
+
+	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_CREATE_GROUP>::Args>(data);
+	assert(p1 <= VEH_AIRCRAFT);
+
+	CcCreateGroup((VehicleType)p1);
+}
+
+/**
+ * Open rename window after adding a vehicle to a new group via drag and drop.
+ * @param cmd Unused.
+ * @param result Did command succeed?
+ * @param tile Unused.
+ * @param data Command data.
+ */
+void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+{
+	if (result.Failed()) return;
+
+	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_ADD_VEHICLE_GROUP>::Args>(data);
 	assert(Vehicle::IsValidID(GB(p2, 0, 20)));
 
-	CcCreateGroup(result, cmd, 0, Vehicle::Get(GB(p2, 0, 20))->type, 0, text);
+	CcCreateGroup(Vehicle::Get(GB(p2, 0, 20))->type);
 }
 
 /**

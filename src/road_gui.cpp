@@ -69,7 +69,7 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound_CONSTRUCTION_OTHER(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcPlaySound_CONSTRUCTION_OTHER(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 }
@@ -92,15 +92,11 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
 /**
  * Callback executed after a build road tunnel command has been called.
  *
- * @param result Whether the build succeeded.
  * @param cmd unused
+ * @param result Whether the build succeeded.
  * @param start_tile Starting tile of the tunnel.
- * @param p1 bit 0-3 railtype or roadtypes
- *           bit 8-9 transport type
- * @param p2 unused
- * @param text unused
  */
-void CcBuildRoadTunnel(const CommandCost &result, Commands cmd, TileIndex start_tile, uint32 p1, uint32 p2, const std::string &text)
+void CcBuildRoadTunnel(Commands cmd, const CommandCost &result, TileIndex start_tile, const CommandDataBuffer &)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, start_tile);
@@ -133,9 +129,11 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	}
 }
 
-void CcRoadDepot(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
+
+	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_DEPOT>::Args>(data);
 
 	DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
@@ -160,9 +158,11 @@ void CcRoadDepot(const CommandCost &result, Commands cmd, TileIndex tile, uint32
  * @param text Unused.
  * @see CmdBuildRoadStop
  */
-void CcRoadStop(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
+
+	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_STOP>::Args>(data);
 
 	DiagDirection dir = (DiagDirection)GB(p2, 3, 2);
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);

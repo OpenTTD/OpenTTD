@@ -22,14 +22,11 @@
 
 /**
  * Callback for building wagons.
- * @param result The result of the command.
  * @param cmd Unused.
+ * @param result The result of the command.
  * @param tile   The tile the command was executed on.
- * @param p1 Additional data for the command (for the #CommandProc)
- * @param p2 Additional data for the command (for the #CommandProc)
- * @param text Unused.
  */
-void CcBuildWagon(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcBuildWagon(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Failed()) return;
 

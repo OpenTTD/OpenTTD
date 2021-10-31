@@ -117,11 +117,8 @@ extern void DepotSortList(VehicleList *list);
  * @param result the result of the cloning command
  * @param cmd unused
  * @param tile unused
- * @param p1 unused
- * @param p2 unused
- * @param text unused
  */
-void CcCloneVehicle(const CommandCost &result, Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+void CcCloneVehicle(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
 {
 	if (result.Failed()) return;
 
