@@ -1329,7 +1329,6 @@ static void CrashAirplane(Aircraft *v)
 	const Station *st = GetTargetAirportIfValid(v);
 	StringID newsitem;
 	TileIndex vt;
-	NewsType newstype = NT_ACCIDENT;
 	if (st == nullptr) {
 		newsitem = STR_NEWS_PLANE_CRASH_OUT_OF_FUEL;
 		vt = TileVirtXY(v->x_pos, v->y_pos);
@@ -1342,6 +1341,7 @@ static void CrashAirplane(Aircraft *v)
 	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 
+	NewsType newstype = NT_ACCIDENT;
 	if (v->owner != _local_company) {
 		newstype = NT_ACCIDENT_OTHER;
 	}
