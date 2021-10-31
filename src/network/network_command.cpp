@@ -451,5 +451,5 @@ template <Commands Tcmd>
 void UnpackNetworkCommand(const CommandPacket *cp)
 {
 	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
-	std::apply(&InjectNetworkCommand, std::tuple_cat(std::make_tuple(Tcmd, cp->err_msg, cp->callback, cp->my_cmd), args));
+	Command<Tcmd>::PostFromNet(cp->err_msg, cp->callback, cp->my_cmd, cp->tile, args);
 }

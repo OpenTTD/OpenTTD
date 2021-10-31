@@ -35,6 +35,7 @@
 #include "newgrf_debug.h"
 #include "framerate_type.h"
 #include "train_cmd.h"
+#include "misc_cmd.h"
 
 #include "table/strings.h"
 #include "table/train_sprites.h"
@@ -87,7 +88,7 @@ void CheckTrainsLengths()
 
 						if (!_networking && first) {
 							first = false;
-							DoCommandP(CMD_PAUSE, 0, PM_PAUSED_ERROR, 1);
+							Command<CMD_PAUSE>::Post(0, PM_PAUSED_ERROR, 1, {});
 						}
 						/* Break so we warn only once for each train. */
 						break;

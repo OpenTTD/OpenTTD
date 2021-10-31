@@ -39,6 +39,7 @@
 #include "widgets/industry_widget.h"
 #include "clear_map.h"
 #include "zoom_func.h"
+#include "industry_cmd.h"
 
 #include "table/strings.h"
 
@@ -679,7 +680,7 @@ public:
 			case WID_DPI_FUND_WIDGET: {
 				if (this->selected_type != INVALID_INDUSTRYTYPE) {
 					if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
-						DoCommandP(CMD_BUILD_INDUSTRY, STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, 0, this->selected_type, InteractiveRandom());
+						Command<CMD_BUILD_INDUSTRY>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, 0, this->selected_type, InteractiveRandom(), {});
 						this->HandleButtonClick(WID_DPI_FUND_WIDGET);
 					} else {
 						HandlePlacePushButton(this, WID_DPI_FUND_WIDGET, SPR_CURSOR_INDUSTRY, HT_RECT);
@@ -716,13 +717,13 @@ public:
 			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
 			_ignore_restrictions = true;
 
-			DoCommandP(CMD_BUILD_INDUSTRY, STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, &CcBuildIndustry, tile, (layout_index << 8) | this->selected_type, seed);
+			Command<CMD_BUILD_INDUSTRY>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, &CcBuildIndustry, tile, (layout_index << 8) | this->selected_type, seed, {});
 
 			cur_company.Restore();
 			old_generating_world.Restore();
 			_ignore_restrictions = false;
 		} else {
-			success = DoCommandP(CMD_BUILD_INDUSTRY, STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, tile, (layout_index << 8) | this->selected_type, seed);
+			success = Command<CMD_BUILD_INDUSTRY>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, tile, (layout_index << 8) | this->selected_type, seed, {});
 		}
 
 		/* If an industry has been built, just reset the cursor and the system */

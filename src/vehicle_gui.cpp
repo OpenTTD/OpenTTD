@@ -38,6 +38,9 @@
 #include "zoom_func.h"
 #include "depot_cmd.h"
 #include "vehicle_cmd.h"
+#include "order_cmd.h"
+#include "roadveh_cmd.h"
+#include "train_cmd.h"
 
 #include "safeguards.h"
 
@@ -1035,9 +1038,9 @@ struct RefitWindow : public Window {
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
 						bool delete_window = this->selected_vehicle == v->index && this->num_vehicles == UINT8_MAX;
-						if (DoCommandP(CMD_REFIT_VEHICLE, GetCmdRefitVehMsg(v), v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16) && delete_window) this->Close();
+						if (Command<CMD_REFIT_VEHICLE>::Post(GetCmdRefitVehMsg(v), v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16, {}) && delete_window) this->Close();
 					} else {
-						if (DoCommandP(CMD_ORDER_REFIT, v->tile, v->index, this->cargo->cargo | this->order << 16)) this->Close();
+						if (Command<CMD_ORDER_REFIT>::Post(v->tile, v->index, this->cargo->cargo | this->order << 16, {})) this->Close();
 					}
 				}
 				break;
@@ -1896,7 +1899,7 @@ public:
 
 			case WID_VL_STOP_ALL:
 			case WID_VL_START_ALL:
-				DoCommandP(CMD_MASS_START_STOP, 0, (1 << 1) | (widget == WID_VL_START_ALL ? (1 << 0) : 0), this->window_number);
+				Command<CMD_MASS_START_STOP>::Post(0, (1 << 1) | (widget == WID_VL_START_ALL ? (1 << 0) : 0), this->window_number, {});
 				break;
 		}
 	}
@@ -1921,7 +1924,7 @@ public:
 						break;
 					case ADI_SERVICE: // Send for servicing
 					case ADI_DEPOT: // Send to Depots
-						DoCommandP(CMD_SEND_VEHICLE_TO_DEPOT, GetCmdSendToDepotMsg(this->vli.vtype), 0, DEPOT_MASS_SEND | (index == ADI_SERVICE ? DEPOT_SERVICE : (DepotCommand)0), this->window_number);
+						Command<CMD_SEND_VEHICLE_TO_DEPOT>::Post(GetCmdSendToDepotMsg(this->vli.vtype), 0, DEPOT_MASS_SEND | (index == ADI_SERVICE ? DEPOT_SERVICE : (DepotCommand)0), this->window_number, {});
 						break;
 
 					default: NOT_REACHED();
@@ -2424,7 +2427,7 @@ struct VehicleDetailsWindow : Window {
 				mod = GetServiceIntervalClamped(mod + v->GetServiceInterval(), v->ServiceIntervalIsPercent());
 				if (mod == v->GetServiceInterval()) return;
 
-				DoCommandP(CMD_CHANGE_SERVICE_INT, STR_ERROR_CAN_T_CHANGE_SERVICING, v->tile, v->index, mod | (1 << 16) | (v->ServiceIntervalIsPercent() << 17));
+				Command<CMD_CHANGE_SERVICE_INT>::Post(STR_ERROR_CAN_T_CHANGE_SERVICING, v->tile, v->index, mod | (1 << 16) | (v->ServiceIntervalIsPercent() << 17), {});
 				break;
 			}
 
@@ -2460,7 +2463,7 @@ struct VehicleDetailsWindow : Window {
 				bool iscustom = index != 0;
 				bool ispercent = iscustom ? (index == 2) : Company::Get(v->owner)->settings.vehicle.servint_ispercent;
 				uint16 interval = GetServiceIntervalClamped(v->GetServiceInterval(), ispercent);
-				DoCommandP(CMD_CHANGE_SERVICE_INT, STR_ERROR_CAN_T_CHANGE_SERVICING, v->tile, v->index, interval | (iscustom << 16) | (ispercent << 17));
+				Command<CMD_CHANGE_SERVICE_INT>::Post(STR_ERROR_CAN_T_CHANGE_SERVICING, v->tile, v->index, interval | (iscustom << 16) | (ispercent << 17), {});
 				break;
 			}
 		}
@@ -2643,7 +2646,7 @@ void CcStartStopVehicle(const CommandCost &result, Commands cmd, TileIndex tile,
 void StartStopVehicle(const Vehicle *v, bool texteffect)
 {
 	assert(v->IsPrimaryVehicle());
-	DoCommandP(CMD_START_STOP_VEHICLE, _vehicle_msg_translation_table[VCT_CMD_START_STOP][v->type], texteffect ? CcStartStopVehicle : nullptr, v->tile, v->index, 0);
+	Command<CMD_START_STOP_VEHICLE>::Post(_vehicle_msg_translation_table[VCT_CMD_START_STOP][v->type], texteffect ? CcStartStopVehicle : nullptr, v->tile, v->index, 0, {});
 }
 
 /** Checks whether the vehicle may be refitted at the moment.*/
@@ -2967,7 +2970,7 @@ public:
 				break;
 
 			case WID_VV_GOTO_DEPOT: // goto hangar
-				DoCommandP(CMD_SEND_VEHICLE_TO_DEPOT, GetCmdSendToDepotMsg(v), v->tile, v->index | (_ctrl_pressed ? DEPOT_SERVICE : 0U), 0);
+				Command<CMD_SEND_VEHICLE_TO_DEPOT>::Post(GetCmdSendToDepotMsg(v), v->tile, v->index | (_ctrl_pressed ? DEPOT_SERVICE : 0U), 0, {});
 				break;
 			case WID_VV_REFIT: // refit
 				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID, this);
@@ -2991,21 +2994,21 @@ public:
 				 * There is no point to it except for starting the vehicle.
 				 * For starting the vehicle the player has to open the depot GUI, which is
 				 * most likely already open, but is also visible in the vehicle viewport. */
-				DoCommandP(CMD_CLONE_VEHICLE, _vehicle_msg_translation_table[VCT_CMD_CLONE_VEH][v->type],
+				Command<CMD_CLONE_VEHICLE>::Post(_vehicle_msg_translation_table[VCT_CMD_CLONE_VEH][v->type],
 										_ctrl_pressed ? nullptr : CcCloneVehicle,
-										v->tile, v->index, _ctrl_pressed ? 1 : 0);
+										v->tile, v->index, _ctrl_pressed ? 1 : 0, {});
 				break;
 			case WID_VV_TURN_AROUND: // turn around
 				assert(v->IsGroundVehicle());
 				if (v->type == VEH_ROAD) {
-					DoCommandP(CMD_TURN_ROADVEH, _vehicle_msg_translation_table[VCT_CMD_TURN_AROUND][v->type], v->tile, v->index, 0);
+					Command<CMD_TURN_ROADVEH>::Post(_vehicle_msg_translation_table[VCT_CMD_TURN_AROUND][v->type], v->tile, v->index, 0, {});
 				} else {
-					DoCommandP(CMD_REVERSE_TRAIN_DIRECTION, _vehicle_msg_translation_table[VCT_CMD_TURN_AROUND][v->type], v->tile, v->index, 0);
+					Command<CMD_REVERSE_TRAIN_DIRECTION>::Post(_vehicle_msg_translation_table[VCT_CMD_TURN_AROUND][v->type], v->tile, v->index, 0, {});
 				}
 				break;
 			case WID_VV_FORCE_PROCEED: // force proceed
 				assert(v->type == VEH_TRAIN);
-				DoCommandP(CMD_FORCE_TRAIN_PROCEED, STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL, v->tile, v->index, 0);
+				Command<CMD_FORCE_TRAIN_PROCEED>::Post(STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL, v->tile, v->index, 0, {});
 				break;
 		}
 	}
@@ -3014,7 +3017,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_VEHICLE, STR_ERROR_CAN_T_RENAME_TRAIN + Vehicle::Get(this->window_number)->type, 0, this->window_number, 0, str);
+		Command<CMD_RENAME_VEHICLE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN + Vehicle::Get(this->window_number)->type, 0, this->window_number, 0, str);
 	}
 
 	void OnMouseOver(Point pt, int widget) override

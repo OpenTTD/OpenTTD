@@ -71,7 +71,7 @@ static void PlaceAirport(TileIndex tile)
 			uint32 p2_final = p2;
 			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
 
-			return DoCommandP(CMD_BUILD_AIRPORT, STR_ERROR_CAN_T_BUILD_AIRPORT_HERE, CcBuildAirport, tile, p1, p2_final);
+			return Command<CMD_BUILD_AIRPORT>::Post(STR_ERROR_CAN_T_BUILD_AIRPORT_HERE, CcBuildAirport, tile, p1, p2_final, {});
 		}
 	};
 

@@ -395,7 +395,7 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
 {
 	if (pause == ((_pause_mode & pm) != PM_UNPAUSED)) return;
 
-	DoCommandP(CMD_PAUSE, 0, pm, pause ? 1 : 0);
+	Command<CMD_PAUSE>::Post(0, pm, pause ? 1 : 0, {});
 }
 
 /**

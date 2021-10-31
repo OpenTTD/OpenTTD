@@ -14,6 +14,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "zoom_func.h"
+#include "train_cmd.h"
 
 #include "table/strings.h"
 
@@ -45,7 +46,7 @@ void CcBuildWagon(const CommandCost &result, Commands cmd, TileIndex tile, uint3
 	if (found != nullptr) {
 		found = found->Last();
 		/* put the new wagon at the end of the loco. */
-		DoCommandP(CMD_MOVE_RAIL_VEHICLE, 0, _new_vehicle_id, found->index);
+		Command<CMD_MOVE_RAIL_VEHICLE>::Post(0, _new_vehicle_id, found->index, {});
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 }

@@ -213,51 +213,50 @@ void CommandHelperBase::InternalDoAfter(CommandCost &res, DoCommandFlag flags, b
 	}
 }
 
-/*!
- * Toplevel network safe docommand function for the current company. Must not be called recursively.
- * The callback is called when the command succeeded or failed. The parameters
- * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
- * The parameter \a my_cmd is used to indicate if the command is from a company or the server.
- *
- * @param cmd The command to execute (a CMD_* value)
- * @param callback A callback function to call after the command is finished
- * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
- * @param network_command execute the command without sending it on the network
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return \c true if the command succeeded, else \c false.
+/**
+ * Decide what to do with the command depending on current game state.
+ * @param cmd Command to execute.
+ * @param flags Command flags.
+ * @param tile Tile of command execution.
+ * @param err_message Message prefix to show on error.
+ * @param network_command Does this command come from the network?
+ * @return error state + do only cost estimation? + send to network only?
  */
-static bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd, CommandFlags flags, TileIndex tile, StringID err_message, bool network_command)
 {
 	/* Cost estimation is generally only done when the
 	 * local user presses shift while doing something.
 	 * However, in case of incoming network commands,
 	 * map generation or the pause button we do want
 	 * to execute. */
-	bool estimate_only = _shift_pressed && IsLocalCompany() &&
-			!_generating_world &&
-			!network_command &&
-			!(GetCommandFlags(cmd) & CMD_NO_EST);
+	bool estimate_only = _shift_pressed && IsLocalCompany() && !_generating_world && !network_command && !(flags & CMD_NO_EST);
 
 	/* We're only sending the command, so don't do
 	 * fancy things for 'success'. */
 	bool only_sending = _networking && !network_command;
 
-	/* Where to show the message? */
+	if (_pause_mode != PM_UNPAUSED && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
+		ShowErrorMessage(err_message, STR_ERROR_NOT_ALLOWED_WHILE_PAUSED, WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+		return { true, estimate_only, only_sending };
+	} else {
+		return { false, estimate_only, only_sending };
+	}
+}
+
+/**
+ * Process result of executing a command, possibly displaying any error to the player.
+ * @param res Command result.
+ * @param tile Tile of command execution.
+ * @param estimate_only Is this just cost estimation?
+ * @param only_sending Was the command only sent to network?
+ * @param err_message Message prefix to show on error.
+ * @param my_cmd Is the command from this client?
+ */
+void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd)
+{
 	int x = TileX(tile) * TILE_SIZE;
 	int y = TileY(tile) * TILE_SIZE;
 
-	if (_pause_mode != PM_UNPAUSED && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
-		ShowErrorMessage(err_message, STR_ERROR_NOT_ALLOWED_WHILE_PAUSED, WL_INFO, x, y);
-		return false;
-	}
-
-	/* Only set p2 when the command does not come from the network. */
-	if (!network_command && GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = CLIENT_ID_SERVER;
-
-	CommandCost res = DoCommandPInternal(cmd, err_message, callback, my_cmd, estimate_only, network_command, tile, p1, p2, text);
 	if (res.Failed()) {
 		/* Only show the error when it's for us. */
 		if (estimate_only || (IsLocalCompany() && err_message != 0 && my_cmd)) {
@@ -273,95 +272,6 @@ static bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *call
 		 * concept of cost, so don't show it there either. */
 		ShowCostOrIncomeAnimation(x, y, GetSlopePixelZ(x, y), res.GetCost());
 	}
-
-	if (!estimate_only && !only_sending && callback != nullptr) {
-		callback(res, cmd, tile, p1, p2, text);
-	}
-
-	return res.Succeeded();
-}
-
-/**
- * Shortcut for the long DoCommandP when not using a callback or error message.
- * @param cmd The command to execute (a CMD_* value)
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return \c true if the command succeeded, else \c false.
- */
-bool DoCommandP(Commands cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	return DoCommandP(cmd, STR_NULL, nullptr, true, false, tile, p1, p2, text);
-}
-
-/**
- * Shortcut for the long DoCommandP when not using an error message.
- * @param cmd The command to execute (a CMD_* value)
- * @param callback A callback function to call after the command is finished
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return \c true if the command succeeded, else \c false.
- */
-bool DoCommandP(Commands cmd, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	return DoCommandP(cmd, STR_NULL, callback, true, false, tile, p1, p2, text);
-}
-
-/**
- * Shortcut for the long DoCommandP when not using a callback.
- * @param cmd The command to execute (a CMD_* value)
- * @param err_message Message prefix to show on error
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return \c true if the command succeeded, else \c false.
- */
-bool DoCommandP(Commands cmd, StringID err_message, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	return DoCommandP(cmd, err_message, nullptr, true, false, tile, p1, p2, text);
-}
-
-/*!
- * Toplevel network safe docommand function for the current company. Must not be called recursively.
- * The callback is called when the command succeeded or failed. The parameters
- * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
- *
- * @param cmd The command to execute (a CMD_* value)
- * @param err_message Message prefix to show on error
- * @param callback A callback function to call after the command is finished
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return \c true if the command succeeded, else \c false.
- */
-bool DoCommandP(Commands cmd, StringID err_message, CommandCallback *callback, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	return DoCommandP(cmd, err_message, callback, true, false, tile, p1, p2, text);
-}
-
-/**
- * Toplevel network safe docommand function for the current company. Must not be called recursively.
- * The callback is called when the command succeeded or failed. The parameters
- * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
- *
- * @param cmd The command to execute (a CMD_* value)
- * @param err_message Message prefix to show on error
- * @param callback A callback function to call after the command is finished
- * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return \c true if the command succeeded, else \c false.
- */
-bool InjectNetworkCommand(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	return DoCommandP(cmd, err_message, callback, my_cmd, true, tile, p1, p2, text);
 }
 
 /** Helper to format command parameters into a hex string. */

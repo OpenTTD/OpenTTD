@@ -25,6 +25,7 @@
 #include "company_base.h"
 #include "tilehighlight_func.h"
 #include "vehicle_base.h"
+#include "story_cmd.h"
 
 #include "widgets/story_widget.h"
 
@@ -566,7 +567,7 @@ protected:
 				this->SetTimeout();
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 
-				DoCommandP(CMD_STORY_PAGE_BUTTON, 0, pe.index, 0);
+				Command<CMD_STORY_PAGE_BUTTON>::Post(0, pe.index, 0, {});
 				break;
 
 			case SPET_BUTTON_TILE:
@@ -921,7 +922,7 @@ public:
 			return;
 		}
 
-		DoCommandP(CMD_STORY_PAGE_BUTTON, tile, pe->index, 0);
+		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, 0, {});
 		ResetObjectToPlace();
 	}
 
@@ -940,7 +941,7 @@ public:
 		VehicleType wanted_vehtype = data.GetVehicleType();
 		if (wanted_vehtype != VEH_INVALID && wanted_vehtype != v->type) return false;
 
-		DoCommandP(CMD_STORY_PAGE_BUTTON, 0, pe->index, v->index);
+		Command<CMD_STORY_PAGE_BUTTON>::Post(0, pe->index, v->index, {});
 		ResetObjectToPlace();
 		return true;
 	}

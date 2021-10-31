@@ -26,6 +26,9 @@
 #include "vehiclelist.h"
 #include "order_backup.h"
 #include "zoom_func.h"
+#include "depot_cmd.h"
+#include "train_cmd.h"
+#include "vehicle_cmd.h"
 
 #include "widgets/depot_widget.h"
 
@@ -142,7 +145,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 	if (wagon == v) return;
 
-	DoCommandP(CMD_MOVE_RAIL_VEHICLE, STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index | (_ctrl_pressed ? 1 : 0) << 20, wagon == nullptr ? INVALID_VEHICLE : wagon->index);
+	Command<CMD_MOVE_RAIL_VEHICLE>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index | (_ctrl_pressed ? 1 : 0) << 20, wagon == nullptr ? INVALID_VEHICLE : wagon->index, {});
 }
 
 static VehicleCellSize _base_block_sizes_depot[VEH_COMPANY_END];    ///< Cell size for vehicle images in the depot view.
@@ -803,7 +806,7 @@ struct DepotWindow : Window {
 			case WID_D_STOP_ALL:
 			case WID_D_START_ALL: {
 				VehicleListIdentifier vli(VL_DEPOT_LIST, this->type, this->owner);
-				DoCommandP(CMD_MASS_START_STOP, this->window_number, (widget == WID_D_START_ALL ? (1 << 0) : 0), vli.Pack());
+				Command<CMD_MASS_START_STOP>::Post(this->window_number, (widget == WID_D_START_ALL ? (1 << 0) : 0), vli.Pack(), {});
 				break;
 			}
 
@@ -826,7 +829,7 @@ struct DepotWindow : Window {
 				break;
 
 			case WID_D_AUTOREPLACE:
-				DoCommandP(CMD_DEPOT_MASS_AUTOREPLACE, this->window_number, this->type, 0);
+				Command<CMD_DEPOT_MASS_AUTOREPLACE>::Post(this->window_number, this->type, 0, {});
 				break;
 
 		}
@@ -837,7 +840,7 @@ struct DepotWindow : Window {
 		if (str == nullptr) return;
 
 		/* Do depot renaming */
-		DoCommandP(CMD_RENAME_DEPOT, STR_ERROR_CAN_T_RENAME_DEPOT, 0, this->GetDepotIndex(), 0, str);
+		Command<CMD_RENAME_DEPOT>::Post(STR_ERROR_CAN_T_RENAME_DEPOT, 0, this->GetDepotIndex(), 0, str);
 	}
 
 	bool OnRightClick(Point pt, int widget) override
@@ -905,10 +908,10 @@ struct DepotWindow : Window {
 	{
 		if (_ctrl_pressed) {
 			/* Share-clone, do not open new viewport, and keep tool active */
-			DoCommandP(CMD_CLONE_VEHICLE, STR_ERROR_CAN_T_BUY_TRAIN + v->type, this->window_number, v->index, 1);
+			Command<CMD_CLONE_VEHICLE>::Post(STR_ERROR_CAN_T_BUY_TRAIN + v->type, this->window_number, v->index, 1, {});
 		} else {
-			/* Copy-clone, open viewport for new vehicle, and deselect the tool (assume player wants to changs things on new vehicle) */
-			if (DoCommandP(CMD_CLONE_VEHICLE, STR_ERROR_CAN_T_BUY_TRAIN + v->type, CcCloneVehicle, this->window_number, v->index, 0)) {
+			/* Copy-clone, open viewport for new vehicle, and deselect the tool (assume player wants to change things on new vehicle) */
+			if (Command<CMD_CLONE_VEHICLE>::Post(STR_ERROR_CAN_T_BUY_TRAIN + v->type, CcCloneVehicle, this->window_number, v->index, 0, {})) {
 				ResetObjectToPlace();
 			}
 		}
@@ -1002,7 +1005,7 @@ struct DepotWindow : Window {
 
 					if (this->GetVehicleFromDepotWndPt(pt.x - nwi->pos_x, pt.y - nwi->pos_y, &v, &gdvp) == MODE_DRAG_VEHICLE && sel != INVALID_VEHICLE) {
 						if (gdvp.wagon != nullptr && gdvp.wagon->index == sel && _ctrl_pressed) {
-							DoCommandP(CMD_REVERSE_TRAIN_DIRECTION, STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true);
+							Command<CMD_REVERSE_TRAIN_DIRECTION>::Post(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true, {});
 						} else if (gdvp.wagon == nullptr || gdvp.wagon->index != sel) {
 							this->vehicle_over = INVALID_VEHICLE;
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
@@ -1027,7 +1030,7 @@ struct DepotWindow : Window {
 				this->SetDirty();
 
 				int sell_cmd = (v->type == VEH_TRAIN && (widget == WID_D_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
-				DoCommandP(CMD_SELL_VEHICLE, GetCmdSellVehMsg(v->type), v->tile, v->index | sell_cmd << 20 | MAKE_ORDER_BACKUP_FLAG, 0);
+				Command<CMD_SELL_VEHICLE>::Post(GetCmdSellVehMsg(v->type), v->tile, v->index | sell_cmd << 20 | MAKE_ORDER_BACKUP_FLAG, 0, {});
 				break;
 			}
 
@@ -1091,7 +1094,7 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 		DepotWindow *w = (DepotWindow*)win;
 		TileIndex tile = w->window_number;
 		byte vehtype = w->type;
-		DoCommandP(CMD_DEPOT_SELL_ALL_VEHICLES, tile, vehtype, 0);
+		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(tile, vehtype, 0, {});
 	}
 }
 

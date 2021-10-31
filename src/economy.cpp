@@ -48,6 +48,7 @@
 #include "goal_base.h"
 #include "story_base.h"
 #include "linkgraph/refresh.h"
+#include "company_cmd.h"
 #include "economy_cmd.h"
 #include "vehicle_cmd.h"
 
@@ -629,7 +630,7 @@ static void CompanyCheckBankrupt(Company *c)
 			 * player we are sure (the above check) that we are not the local
 			 * company and thus we won't be moved. */
 			if (!_networking || _network_server) {
-				DoCommandP(CMD_COMPANY_CTRL, 0, CCA_DELETE | (c->index << 16) | (CRR_BANKRUPT << 24), 0);
+				Command<CMD_COMPANY_CTRL>::Post(0, CCA_DELETE | (c->index << 16) | (CRR_BANKRUPT << 24), 0, {});
 				return;
 			}
 			break;

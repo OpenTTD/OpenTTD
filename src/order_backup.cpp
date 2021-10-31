@@ -171,7 +171,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, uint32 p1, 
 		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 
-		DoCommandP(CMD_CLEAR_ORDER_BACKUP, 0, 0, user);
+		Command<CMD_CLEAR_ORDER_BACKUP>::Post(0, 0, user, {});
 		return;
 	}
 }

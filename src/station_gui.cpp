@@ -31,6 +31,7 @@
 #include "town.h"
 #include "linkgraph/linkgraph.h"
 #include "zoom_func.h"
+#include "station_cmd.h"
 
 #include "widgets/station_widget.h"
 
@@ -1947,7 +1948,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_CLOSE_AIRPORT:
-				DoCommandP(CMD_OPEN_CLOSE_AIRPORT, 0, this->window_number, 0);
+				Command<CMD_OPEN_CLOSE_AIRPORT>::Post(0, this->window_number, 0, {});
 				break;
 
 			case WID_SV_TRAINS:   // Show list of scheduled trains to this station
@@ -2084,7 +2085,7 @@ struct StationViewWindow : public Window {
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_STATION, STR_ERROR_CAN_T_RENAME_STATION, 0, this->window_number, 0, str);
+		Command<CMD_RENAME_STATION>::Post(STR_ERROR_CAN_T_RENAME_STATION, 0, this->window_number, 0, str);
 	}
 
 	void OnResize() override

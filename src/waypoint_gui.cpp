@@ -20,6 +20,7 @@
 #include "company_base.h"
 #include "window_func.h"
 #include "waypoint_base.h"
+#include "waypoint_cmd.h"
 
 #include "widgets/waypoint_widget.h"
 
@@ -138,7 +139,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(CMD_RENAME_WAYPOINT, STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, 0, this->window_number, 0, str);
+		Command<CMD_RENAME_WAYPOINT>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, 0, this->window_number, 0, str);
 	}
 
 };
