@@ -1604,7 +1604,7 @@ void SyncCompanySettings()
 		const SettingDesc *sd = GetSettingDesc(desc);
 		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
 		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
-		if (old_value != new_value) NetworkSendCommand(CMD_CHANGE_COMPANY_SETTING, STR_NULL, nullptr, _local_company, 0, 0, new_value, sd->GetName());
+		if (old_value != new_value) Command<CMD_CHANGE_COMPANY_SETTING>::SendNet(STR_NULL, nullptr, _local_company, 0, 0, new_value, sd->GetName());
 	}
 }
 

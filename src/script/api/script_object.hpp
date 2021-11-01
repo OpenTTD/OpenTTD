@@ -371,7 +371,7 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Tar
 	if (!estimate_only && networking) ScriptObject::SetLastCommand(tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);
 
 	/* Try to perform the command. */
-	CommandCost res = std::apply(&DoCommandPInternal, std::tuple_cat(std::make_tuple(Tcmd, (StringID)0, networking ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, false), args));
+	CommandCost res = ::Command<Tcmd>::Unsafe((StringID)0, networking ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);
 
 	return ScriptObject::DoCommandProcessResult(res, callback, estimate_only);
 }

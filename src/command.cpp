@@ -274,53 +274,26 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 	}
 }
 
-/** Helper to format command parameters into a hex string. */
-static std::string CommandParametersToHexString(TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+/** Helper to make a desync log for a command. */
+void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed)
 {
-	return FormatArrayAsHex(EndianBufferWriter<>::FromValue(std::make_tuple(tile, p1, p2, text)));
+	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", failed ? "cmdf" : "cmd", _date, _date_fract, (int)_current_company, cmd, err_message, tile, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
-/*!
- * Helper function for the toplevel network safe docommand function for the current company.
- *
- * @param cmd The command to execute (a CMD_* value)
- * @param err_message Message prefix to show on error
- * @param callback A callback function to call after the command is finished
- * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
- * @param estimate_only whether to give only the estimate or also execute the command
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- * @return the command cost of this function.
+/**
+ * Prepare for the test run of a command proc call.
+ * @param cmd_flags Command flags.
+ * @param tile Tile of command execution.
+ * @param[in,out] cur_company Backup of current company at start of command execution.
+ * @return True if test run can go ahead, false on error.
  */
-CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company)
 {
-	RecursiveCommandCounter counter{};
-
-	/* Prevent recursion; it gives a mess over the network */
-	assert(counter.IsTopLevel());
-
 	/* Reset the state. */
 	_additional_cash_required = 0;
 
-	/* Get pointer to command handler */
-	assert(cmd < _command_proc_table.size());
-	CommandProc *proc = _command_proc_table[cmd].proc;
-	/* Shouldn't happen, but you never know when someone adds
-	 * NULLs to the _command_proc_table. */
-	assert(proc != nullptr);
-
-	/* Command flags are used internally */
-	CommandFlags cmd_flags = GetCommandFlags(cmd);
-	/* Flags get send to the DoCommand */
-	DoCommandFlag flags = CommandFlagsToDCFlags(cmd_flags);
-
-	/* Make sure p2 is properly set to a ClientID. */
-	assert(!(cmd_flags & CMD_CLIENT_ID) || p2 != 0);
-
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return CMD_ERROR;
+	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
 
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
@@ -329,62 +302,68 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
 	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && (cmd_flags & CMD_DEITY) != 0)) {
-		return CMD_ERROR;
+		return false;
 	}
 
-	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 	if (exec_as_spectator) cur_company.Change(COMPANY_SPECTATOR);
 
-	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
-
-	/* Test the command. */
+	/* Enter test mode. */
 	_cleared_object_areas.clear();
 	SetTownRatingTestMode(true);
 	BasePersistentStorageArray::SwitchMode(PSM_ENTER_TESTMODE);
-	CommandCost res = proc(flags, tile, p1, p2, text);
+	return true;
+}
+
+/**
+ * Validate result of test run and prepare for real execution.
+ * @param cmd_flags Command flags.
+ * @param[in,out] res Command result of test run, may be modified.
+ * @param estimate_only Is this just cost estimation?
+ * @param network_command Does this command come from the network?
+ * @param[in,out] cur_company Backup of current company at start of command execution.
+ * @return True if test run can go ahead, false on error.
+ */
+std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company)
+{
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
 
 	/* Make sure we're not messing things up here. */
-	assert(exec_as_spectator ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
+	assert((cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0 ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
 
 	/* If the command fails, we're doing an estimate
 	 * or the player does not have enough money
 	 * (unless it's a command where the test and
 	 * execution phase might return different costs)
 	 * we bail out here. */
-	if (res.Failed() || estimate_only ||
-			(!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
-		if (!_networking || _generating_world || network_command) {
-			/* Log the failed command as well. Just to be able to be find
-			 * causes of desyncs due to bad command test implementations. */
-			Debug(desync, 1, "cmdf: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cmd, err_message, tile, CommandParametersToHexString(tile, p1, p2, text), GetCommandName(cmd));
-		}
-		cur_company.Restore();
-		return res;
+	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
+	if (res.Failed() || estimate_only || (!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
+		return { true, !_networking || _generating_world || network_command, false };
 	}
 
-	/*
-	 * If we are in network, and the command is not from the network
-	 * send it to the command-queue and abort execution
-	 */
-	if (_networking && !_generating_world && !network_command) {
-		NetworkSendCommand(cmd, err_message, callback, _current_company, tile, p1, p2, text);
-		cur_company.Restore();
+	bool send_net = _networking && !_generating_world && !network_command;
 
-		/* Don't return anything special here; no error, no costs.
-		 * This way it's not handled by DoCommand and only the
-		 * actual execution of the command causes messages. Also
-		 * reset the storages as we've not executed the command. */
-		return CommandCost();
+	if (!send_net) {
+		/* Prepare for command execution. */
+		_cleared_object_areas.clear();
+		BasePersistentStorageArray::SwitchMode(PSM_ENTER_COMMAND);
 	}
-	Debug(desync, 1, "cmd: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cmd, err_message, tile, CommandParametersToHexString(tile, p1, p2, text), GetCommandName(cmd));
 
-	/* Actually try and execute the command. If no cost-type is given
-	 * use the construction one */
-	_cleared_object_areas.clear();
-	BasePersistentStorageArray::SwitchMode(PSM_ENTER_COMMAND);
-	CommandCost res2 = proc(flags | DC_EXEC, tile, p1, p2, text);
+	return { false, _debug_desync_level >= 1, send_net };
+}
+
+/**
+ * Process the result of a command test run and execution run.
+ * @param cmd Command that was executed.
+ * @param cmd_flags Command flags.
+ * @param res_test Command result of test run.
+ * @param tes_exec Command result of real run.
+ * @param tile Tile of command execution.
+ * @param[in,out] cur_company Backup of current company at start of command execution.
+ * @return Final command result.
+ */
+CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, TileIndex tile, Backup<CompanyID> &cur_company)
+{
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
 	if (cmd == CMD_COMPANY_CTRL) {
@@ -395,7 +374,7 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 		_current_company = _local_company;
 	} else {
 		/* Make sure nothing bad happened, like changing the current company. */
-		assert(exec_as_spectator ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
+		assert((cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0 ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
 		cur_company.Restore();
 	}
 
@@ -403,15 +382,16 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 	 * return of the command. Otherwise we can check whether the
 	 * test and execution have yielded the same result,
 	 * i.e. cost and error state are the same. */
+	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
 	if (!test_and_exec_can_differ) {
-		assert(res.GetCost() == res2.GetCost() && res.Failed() == res2.Failed()); // sanity check
-	} else if (res2.Failed()) {
-		return res2;
+		assert(res_test.GetCost() == res_exec.GetCost() && res_test.Failed() == res_exec.Failed()); // sanity check
+	} else if (res_exec.Failed()) {
+		return res_exec;
 	}
 
 	/* If we're needing more money and we haven't done
 	 * anything yet, ask for the money! */
-	if (_additional_cash_required != 0 && res2.GetCost() == 0) {
+	if (_additional_cash_required != 0 && res_exec.GetCost() == 0) {
 		/* It could happen we removed rail, thus gained money, and deleted something else.
 		 * So make sure the signal buffer is empty even in this case */
 		UpdateSignalsInBuffer();
@@ -425,12 +405,12 @@ CommandCost DoCommandPInternal(Commands cmd, StringID err_message, CommandCallba
 		if (c != nullptr) c->last_build_coordinate = tile;
 	}
 
-	SubtractMoneyFromCompany(res2);
+	SubtractMoneyFromCompany(res_exec);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
-	return res2;
+	return res_exec;
 }
 
 
