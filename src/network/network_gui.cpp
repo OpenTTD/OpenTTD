@@ -1538,7 +1538,7 @@ private:
 		if (_network_server) {
 			Command<CMD_COMPANY_CTRL>::Post(0, CCA_NEW, _network_own_client_id, {});
 		} else {
-			NetworkSendCommand(CMD_COMPANY_CTRL, STR_NULL, nullptr, _local_company, 0, CCA_NEW, 0, {});
+			Command<CMD_COMPANY_CTRL>::SendNet(STR_NULL, nullptr, _local_company, 0, CCA_NEW, 0, {});
 		}
 	}
 

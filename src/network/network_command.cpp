@@ -176,22 +176,6 @@ static CommandQueue _local_wait_queue;
 /** Local queue of packets waiting for execution. */
 static CommandQueue _local_execution_queue;
 
-/**
- * Prepare a DoCommand to be send over the network
- * @param cmd The command to execute (a CMD_* value)
- * @param err_message Message prefix to show on error
- * @param callback A callback function to call after the command is finished
- * @param company The company that wants to send the command
- * @param tile The tile to perform a command on (see #CommandProc)
- * @param p1 Additional data for the command (see #CommandProc)
- * @param p2 Additional data for the command (see #CommandProc)
- * @param text The text to pass
- */
-void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
-{
-	auto data = EndianBufferWriter<CommandDataBuffer>::FromValue(std::make_tuple(tile, p1, p2, text));
-	NetworkSendCommand(cmd, err_message, callback, company, tile, data);
-}
 
 /**
  * Prepare a DoCommand to be send over the network
