@@ -12,6 +12,7 @@
 #include "../../settings_internal.h"
 #include "../../settings_type.h"
 #include "../../command_type.h"
+#include "../../settings_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -37,7 +38,7 @@
 
 	if ((sd->flags & SF_NO_NETWORK_SYNC) != 0) return false;
 
-	return ScriptObject::DoCommand(0, 0, value, CMD_CHANGE_SETTING, sd->GetName().c_str());
+	return ScriptObject::Command<CMD_CHANGE_SETTING>::Do(0, 0, value, sd->GetName());
 }
 
 /* static */ bool ScriptGameSettings::IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type)

@@ -296,38 +296,34 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->callback_value[index];
 }
 
-/* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, Commands cmd, const char *text, Script_SuspendCallbackProc *callback)
+/* static */ CommandCallback *ScriptObject::GetDoCommandCallback()
+{
+	return ScriptObject::GetActiveInstance()->GetDoCommandCallback();
+}
+
+std::tuple<bool, bool, bool> ScriptObject::DoCommandPrep()
 {
 	if (!ScriptObject::CanSuspend()) {
 		throw Script_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
-	if (ScriptObject::GetCompany() != OWNER_DEITY && !::Company::IsValidID(ScriptObject::GetCompany())) {
-		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY);
-		return false;
-	}
-
-	std::string command_text = text == nullptr ? std::string{} : text;
-	if (!command_text.empty() && (GetCommandFlags(cmd) & CMD_STR_CTRL) == 0) {
-		/* The string must be valid, i.e. not contain special codes. Since some
-		 * can be made with GSText, make sure the control codes are removed. */
-		command_text = ::StrMakeValid(command_text, SVS_NONE);
-	}
-
-	/* Set the default callback to return a true/false result of the DoCommand */
-	if (callback == nullptr) callback = &ScriptInstance::DoCommandReturn;
-
 	/* Are we only interested in the estimate costs? */
 	bool estimate_only = GetDoCommandMode() != nullptr && !GetDoCommandMode()();
 
-	/* Only set p2 when the command does not come from the network. */
-	if (GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = UINT32_MAX;
+	bool networking = _networking && !_generating_world;
 
-	/* Store the command for command callback validation. */
-	if (!estimate_only && _networking && !_generating_world) SetLastCommand(tile, EndianBufferWriter<CommandDataBuffer>::FromValue(std::make_tuple(tile, p1, p2, command_text)), cmd);
+	if (ScriptObject::GetCompany() != OWNER_DEITY && !::Company::IsValidID(ScriptObject::GetCompany())) {
+		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY);
+		return { true, estimate_only, networking };
+	}
 
-	/* Try to perform the command. */
-	CommandCost res = ::DoCommandPInternal(cmd, STR_NULL, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, false, estimate_only, false, tile, p1, p2, command_text);
+	return { false, estimate_only, networking };
+}
+
+bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only)
+{
+	/* Set the default callback to return a true/false result of the DoCommand */
+	if (callback == nullptr) callback = &ScriptInstance::DoCommandReturn;
 
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {

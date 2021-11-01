@@ -13,6 +13,7 @@
 
 #include "script_error.hpp"
 #include "script_map.hpp"
+#include "../../object_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -41,5 +42,5 @@
 	EnforcePrecondition(false, IsValidObjectType(object_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
-	return ScriptObject::DoCommand(tile, object_type, view, CMD_BUILD_OBJECT);
+	return ScriptObject::Command<CMD_BUILD_OBJECT>::Do(tile, object_type, view, {});
 }
