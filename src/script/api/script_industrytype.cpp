@@ -15,6 +15,7 @@
 #include "../../industry.h"
 #include "../../newgrf_industries.h"
 #include "../../core/random_func.hpp"
+#include "../../industry_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -122,7 +123,7 @@
 
 	uint32 seed = ::InteractiveRandom();
 	uint32 layout_index = ::InteractiveRandomRange((uint32)::GetIndustrySpec(industry_type)->layouts.size());
-	return ScriptObject::DoCommand(tile, (1 << 16) | (layout_index << 8) | industry_type, seed, CMD_BUILD_INDUSTRY);
+	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, (1 << 16) | (layout_index << 8) | industry_type, seed, {});
 }
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
@@ -130,7 +131,7 @@
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
 	uint32 seed = ::InteractiveRandom();
-	return ScriptObject::DoCommand(0, industry_type, seed, CMD_BUILD_INDUSTRY);
+	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(0, industry_type, seed, {});
 }
 
 /* static */ bool ScriptIndustryType::IsBuiltOnWater(IndustryType industry_type)

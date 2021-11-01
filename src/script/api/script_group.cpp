@@ -16,6 +16,9 @@
 #include "../../autoreplace_func.h"
 #include "../../settings_func.h"
 #include "../../vehicle_base.h"
+#include "../../autoreplace_cmd.h"
+#include "../../group_cmd.h"
+#include "../../settings_cmd.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -28,7 +31,7 @@
 
 /* static */ ScriptGroup::GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
 {
-	if (!ScriptObject::DoCommand(0, (::VehicleType)vehicle_type, parent_group_id, CMD_CREATE_GROUP, nullptr, &ScriptInstance::DoCommandReturnGroupID)) return GROUP_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_GROUP>::Do(&ScriptInstance::DoCommandReturnGroupID, 0, (::VehicleType)vehicle_type, parent_group_id, {})) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
 	return (ScriptGroup::GroupID)0;
@@ -38,7 +41,7 @@
 {
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::DoCommand(0, group_id, 0, CMD_DELETE_GROUP);
+	return ScriptObject::Command<CMD_DELETE_GROUP>::Do(0, group_id, 0, {});
 }
 
 /* static */ ScriptVehicle::VehicleType ScriptGroup::GetVehicleType(GroupID group_id)
@@ -58,7 +61,7 @@
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_GROUP_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::DoCommand(0, group_id, 0, CMD_ALTER_GROUP, text);
+	return ScriptObject::Command<CMD_ALTER_GROUP>::Do(0, group_id, 0, text);
 }
 
 /* static */ char *ScriptGroup::GetName(GroupID group_id)
@@ -74,7 +77,7 @@
 	EnforcePrecondition(false, IsValidGroup(group_id));
 	EnforcePrecondition(false, IsValidGroup(parent_group_id));
 
-	return ScriptObject::DoCommand(0, group_id | 1 << 16, parent_group_id, CMD_ALTER_GROUP);
+	return ScriptObject::Command<CMD_ALTER_GROUP>::Do(0, group_id | 1 << 16, parent_group_id, {});
 }
 
 /* static */ ScriptGroup::GroupID ScriptGroup::GetParent(GroupID group_id)
@@ -89,7 +92,7 @@
 {
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::DoCommand(0, group_id | GroupFlags::GF_REPLACE_PROTECTION, enable ? 1 : 0, CMD_SET_GROUP_FLAG);
+	return ScriptObject::Command<CMD_SET_GROUP_FLAG>::Do(0, group_id | GroupFlags::GF_REPLACE_PROTECTION, enable ? 1 : 0, {});
 }
 
 /* static */ bool ScriptGroup::GetAutoReplaceProtection(GroupID group_id)
@@ -120,14 +123,14 @@
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT);
 	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
 
-	return ScriptObject::DoCommand(0, group_id, vehicle_id, CMD_ADD_VEHICLE_GROUP);
+	return ScriptObject::Command<CMD_ADD_VEHICLE_GROUP>::Do(0, group_id, vehicle_id, {});
 }
 
 /* static */ bool ScriptGroup::EnableWagonRemoval(bool enable_removal)
 {
 	if (HasWagonRemoval() == enable_removal) return true;
 
-	return ScriptObject::DoCommand(0, 0, enable_removal ? 1 : 0, CMD_CHANGE_COMPANY_SETTING, "company.renew_keep_length");
+	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do(0, 0, enable_removal ? 1 : 0, "company.renew_keep_length");
 }
 
 /* static */ bool ScriptGroup::HasWagonRemoval()
@@ -140,7 +143,7 @@
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL);
 	EnforcePrecondition(false, ScriptEngine::IsBuildable(engine_id_new));
 
-	return ScriptObject::DoCommand(0, group_id << 16, (engine_id_new << 16) | engine_id_old, CMD_SET_AUTOREPLACE);
+	return ScriptObject::Command<CMD_SET_AUTOREPLACE>::Do(0, group_id << 16, (engine_id_new << 16) | engine_id_old, {});
 }
 
 /* static */ EngineID ScriptGroup::GetEngineReplacement(GroupID group_id, EngineID engine_id)
@@ -154,7 +157,7 @@
 {
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL);
 
-	return ScriptObject::DoCommand(0, group_id << 16, (::INVALID_ENGINE << 16) | engine_id, CMD_SET_AUTOREPLACE);
+	return ScriptObject::Command<CMD_SET_AUTOREPLACE>::Do(0, group_id << 16, (::INVALID_ENGINE << 16) | engine_id, {});
 }
 
 /* static */ Money ScriptGroup::GetProfitThisYear(GroupID group_id)
@@ -204,14 +207,14 @@
 {
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::DoCommand(0, group_id, colour << 16, CMD_SET_GROUP_LIVERY);
+	return ScriptObject::Command<CMD_SET_GROUP_LIVERY>::Do(0, group_id, colour << 16, {});
 }
 
 /* static */ bool ScriptGroup::SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour)
 {
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::DoCommand(0, group_id, (1 << 8) | (colour << 16), CMD_SET_GROUP_LIVERY);
+	return ScriptObject::Command<CMD_SET_GROUP_LIVERY>::Do(0, group_id, (1 << 8) | (colour << 16), {});
 }
 
 /* static */ ScriptCompany::Colours ScriptGroup::GetPrimaryColour(GroupID group_id)
