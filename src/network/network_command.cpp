@@ -89,15 +89,17 @@ static CommandCallback * const _callback_table[] = {
 
 template <Commands Tcmd> static CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data);
 template <Commands Tcmd> static void UnpackNetworkCommand(const CommandPacket *cp);
+template <Commands Tcmd> static void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
 struct CommandDispatch {
 	CommandDataBuffer(*Sanitize)(const CommandDataBuffer &);
+	void (*ReplaceClientId)(CommandPacket &, ClientID);
 	void (*Unpack)(const CommandPacket *);
 };
 
 template<typename T, T... i>
 inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>) noexcept
 {
-	return std::array<CommandDispatch, sizeof...(i)>{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &UnpackNetworkCommand<static_cast<Commands>(i)> }... }};
+	return std::array<CommandDispatch, sizeof...(i)>{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, &UnpackNetworkCommand<static_cast<Commands>(i)> }... }};
 }
 static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
 
@@ -383,6 +385,35 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 	p->Send_uint8 (callback);
 }
 
+/** Helper to process a single ClientID argument. */
+template <class T>
+static inline void SetClientIdHelper(T &data, [[maybe_unused]] ClientID client_id)
+{
+	if constexpr (std::is_same_v<ClientID, T>) {
+		data = client_id;
+	}
+}
+
+/** Set all invalid ClientID's to the proper value. */
+template<class Ttuple, size_t... Tindices>
+static inline void SetClientIds(Ttuple &values, ClientID client_id, std::index_sequence<Tindices...>)
+{
+	((SetClientIdHelper(std::get<Tindices>(values), client_id)), ...);
+}
+
+template <Commands Tcmd>
+static void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id)
+{
+	/* Unpack command parameters. */
+	auto params = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp.data);
+
+	/* Insert client id. */
+	SetClientIds(params, client_id, std::make_index_sequence<std::tuple_size_v<decltype(params)>>{});
+
+	/* Repack command parameters. */
+	cp.data = EndianBufferWriter<CommandDataBuffer>::FromValue(params);
+}
+
 /**
  * Insert a client ID into the command data in a command packet.
  * @param cp Command packet to modify.
@@ -390,14 +421,7 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
  */
 void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id)
 {
-	/* Unpack command parameters. */
-	auto params = EndianBufferReader::ToValue<std::tuple<TileIndex, uint32, uint32, std::string>>(cp.data);
-
-	/* Insert client id. */
-	std::get<2>(params) = client_id;
-
-	/* Repack command parameters. */
-	cp.data = EndianBufferWriter<CommandDataBuffer>::FromValue(params);
+	_cmd_dispatch[cp.cmd].ReplaceClientId(cp, client_id);
 }
 
 

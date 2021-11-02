@@ -604,7 +604,7 @@ static bool MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		return Command<CMD_COMPANY_CTRL>::Post(0, CCA_NEW_AI | INVALID_COMPANY << 16, 0, {});
+		return Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID );
 	}
 
 	return false;
@@ -796,21 +796,16 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
 /**
  * Control the companies: add, delete, etc.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 various functionality
- * - bits 0..15: CompanyCtrlAction
- * - bits 16..23: CompanyID
- * - bits 24..31: CompanyRemoveReason (with CCA_DELETE)
- * @param p2 ClientID
- * @param text unused
+ * @param cca action to perform
+ * @param company_id company to perform the action on
+ * @param client_id ClientID
  * @return the cost of this operation or an error
  */
-CommandCost CmdCompanyCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id)
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
-	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
 
-	switch ((CompanyCtrlAction)GB(p1, 0, 16)) {
+	switch (cca) {
 		case CCA_NEW: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
@@ -818,7 +813,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint3
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			ClientID client_id = (ClientID)p2;
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 			/* Delete multiplayer progress bar */
@@ -873,7 +867,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint3
 		}
 
 		case CCA_DELETE: { // Delete a company
-			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p1, 24, 8);
 			if (reason >= CRR_END) return CMD_ERROR;
 
 			/* We can't delete the last existing company in singleplayer mode. */

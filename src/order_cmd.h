@@ -19,7 +19,7 @@ CommandProc CmdInsertOrder;
 CommandProc CmdOrderRefit;
 CommandProc CmdCloneOrder;
 CommandProc CmdMoveOrder;
-CommandProc CmdClearOrderBackup;
+CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id);
 
 DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       0,             CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       0,             CMDT_ROUTE_MANAGEMENT)

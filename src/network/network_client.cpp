@@ -840,7 +840,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 			 * the server will give us a client-id and let us in */
 			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 			ShowJoinStatusWindow();
-			Command<CMD_COMPANY_CTRL>::SendNet(STR_NULL, nullptr, _local_company, 0, CCA_NEW, 0, {});
+			Command<CMD_COMPANY_CTRL>::SendNet(STR_NULL, nullptr, _local_company, CCA_NEW, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
 		}
 	} else {
 		/* take control over an existing company */

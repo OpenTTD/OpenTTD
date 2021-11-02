@@ -79,15 +79,13 @@ const StringID _send_to_depot_msg_table[] = {
  * Build a vehicle.
  * @param flags for command
  * @param tile tile of depot where the vehicle is built
- * @param p1 various bitstuffed data
- *  bits  0-15: vehicle type being built.
- *  bits 16-23: vehicle type specific bits passed on to the vehicle build functions.
- *  bits 24-31: refit cargo type.
- * @param p2 User
- * @param text unused
+ * @param eid vehicle type being built.
+ * @param use_free_vehicles use free vehicles when building the vehicle.
+ * @param cargo refit cargo type.
+ * @param client_id User
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoID cargo, ClientID client_id)
 {
 	/* Elementary check for valid location. */
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
@@ -95,11 +93,9 @@ CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 	VehicleType type = GetDepotVehicleType(tile);
 
 	/* Validate the engine type. */
-	EngineID eid = GB(p1, 0, 16);
 	if (!IsEngineBuildable(eid, type, _current_company)) return_cmd_error(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type);
 
 	/* Validate the cargo type. */
-	CargoID cargo = GB(p1, 24, 8);
 	if (cargo >= NUM_CARGO && cargo != CT_INVALID) return CMD_ERROR;
 
 	const Engine *e = Engine::Get(eid);
@@ -140,10 +136,10 @@ CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 
 	Vehicle *v = nullptr;
 	switch (type) {
-		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(subflags, tile, e, GB(p1, 16, 8), &v)); break;
-		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(subflags, tile, e, GB(p1, 16, 8), &v)); break;
-		case VEH_SHIP:     value.AddCost(CmdBuildShip       (subflags, tile, e, GB(p1, 16, 8), &v)); break;
-		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (subflags, tile, e, GB(p1, 16, 8), &v)); break;
+		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(subflags, tile, e, use_free_vehicles, &v)); break;
+		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(subflags, tile, e, &v)); break;
+		case VEH_SHIP:     value.AddCost(CmdBuildShip       (subflags, tile, e, &v)); break;
+		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (subflags, tile, e, &v)); break;
 		default: NOT_REACHED(); // Safe due to IsDepotTile()
 	}
 
@@ -176,14 +172,14 @@ CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 
 			if (v->IsPrimaryVehicle()) {
 				GroupStatistics::CountVehicle(v, 1);
-				if (!(subflags & DC_AUTOREPLACE)) OrderBackup::Restore(v, p2);
+				if (!(subflags & DC_AUTOREPLACE)) OrderBackup::Restore(v, client_id);
 			}
 		}
 
 
 		/* If we are not in DC_EXEC undo everything */
 		if (flags != subflags) {
-			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, v->index, 0, {});
+			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, v->index, false, false, INVALID_CLIENT_ID);
 		}
 	}
 
@@ -197,17 +193,16 @@ CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
  * Sell a vehicle.
  * @param tile unused.
  * @param flags for command.
- * @param p1 various bitstuffed data.
- *  bits  0-19: vehicle ID being sold.
- *  bits 20-30: vehicle type specific bits passed on to the vehicle build functions.
- *  bit     31: make a backup of the vehicle's order (if an engine).
- * @param p2 User.
+ * @aram v_id vehicle ID being sold.
+ * @param sell_chain sell the vehicle and all vehicles following it in the chain.
+ * @param backup_order make a backup of the vehicle's order (if an engine).
+ * @param client_id User.
  * @param text unused.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdSellVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSellVehicle(DoCommandFlag flags, TileIndex tile, VehicleID v_id, bool sell_chain, bool backup_order, ClientID client_id)
 {
-	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
+	Vehicle *v = Vehicle::GetIfValid(v_id);
 	if (v == nullptr) return CMD_ERROR;
 
 	Vehicle *front = v->First();
@@ -220,22 +215,22 @@ CommandCost CmdSellVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint3
 	if (!front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 
 	/* Can we actually make the order backup, i.e. are there enough orders? */
-	if (p1 & MAKE_ORDER_BACKUP_FLAG &&
+	if (backup_order &&
 			front->orders.list != nullptr &&
 			!front->orders.list->IsShared() &&
 			!Order::CanAllocateItem(front->orders.list->GetNumOrders())) {
 		/* Only happens in exceptional cases when there aren't enough orders anyhow.
 		 * Thus it should be safe to just drop the orders in that case. */
-		p1 &= ~MAKE_ORDER_BACKUP_FLAG;
+		backup_order = false;
 	}
 
 	if (v->type == VEH_TRAIN) {
-		ret = CmdSellRailWagon(flags, v, GB(p1, 20, 12), p2);
+		ret = CmdSellRailWagon(flags, v, sell_chain, backup_order, client_id);
 	} else {
 		ret = CommandCost(EXPENSES_NEW_VEHICLES, -front->value);
 
 		if (flags & DC_EXEC) {
-			if (front->IsPrimaryVehicle() && p1 & MAKE_ORDER_BACKUP_FLAG) OrderBackup::Backup(front, p2);
+			if (front->IsPrimaryVehicle() && backup_order) OrderBackup::Backup(front, client_id);
 			delete front;
 		}
 	}
@@ -694,7 +689,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlag flags, TileIndex tile, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (uint i = 0; i < list.size(); i++) {
-		CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(flags, tile, list[i]->index | (1 << 20), 0, {});
+		CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(flags, tile, list[i]->index, true, false, INVALID_CLIENT_ID);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -872,11 +867,11 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		DoCommandFlag build_flags = flags;
 		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
 
-		CommandCost cost = Command<CMD_BUILD_VEHICLE>::Do(build_flags, tile, v->engine_type | (1 << 16) | (CT_INVALID << 24), 0, {});
+		CommandCost cost = Command<CMD_BUILD_VEHICLE>::Do(build_flags, tile, v->engine_type, false, CT_INVALID, INVALID_CLIENT_ID);
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != nullptr) Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | (1 << 20), 0, {});
+			if (w_front != nullptr) Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index, true, false, INVALID_CLIENT_ID);
 			return cost;
 		}
 
@@ -896,8 +891,8 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | 1 << 20, 0, {});
-					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w->index       | 1 << 20, 0, {});
+					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index, true, false, INVALID_CLIENT_ID);
+					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w->index,       true, false, INVALID_CLIENT_ID);
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
@@ -978,7 +973,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		CommandCost result = Command<CMD_CLONE_ORDER>::Do(flags, 0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, {});
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | 1 << 20, 0, {});
+			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index, true, false, INVALID_CLIENT_ID);
 			return result;
 		}
 
@@ -989,7 +984,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		 * check whether the company has enough money manually. */
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index | 1 << 20, 0, {});
+			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index, true, false, INVALID_CLIENT_ID);
 			return total_cost;
 		}
 	}
