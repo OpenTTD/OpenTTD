@@ -970,7 +970,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1, uint
 		 * the vehicle refitted before doing this, otherwise the moved
 		 * cargo types might not match (passenger vs non-passenger)
 		 */
-		CommandCost result = Command<CMD_CLONE_ORDER>::Do(flags, 0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, {});
+		CommandCost result = Command<CMD_CLONE_ORDER>::Do(flags, (p2 & 1 ? CO_SHARE : CO_COPY), w_front->index, v_front->index);
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->tile, w_front->index, true, false, INVALID_CLIENT_ID);

@@ -75,7 +75,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
-		Command<CMD_CLONE_ORDER>::Do(DC_EXEC, 0, v->index | CO_SHARE << 30, this->clone->index, {});
+		Command<CMD_CLONE_ORDER>::Do(DC_EXEC, CO_SHARE, v->index, this->clone->index);
 	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
 		v->orders.list = new OrderList(this->orders, v);
 		this->orders = nullptr;

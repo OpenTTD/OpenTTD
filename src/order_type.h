@@ -140,7 +140,7 @@ enum OrderConditionComparator {
 /**
  * Enumeration for the data to set in #CmdModifyOrder.
  */
-enum ModifyOrderFlags {
+enum ModifyOrderFlags : byte {
 	MOF_NON_STOP,        ///< Passes an OrderNonStopFlags.
 	MOF_STOP_LOCATION,   ///< Passes an OrderStopLocation.
 	MOF_UNLOAD,          ///< Passes an OrderUnloadType.
@@ -177,7 +177,7 @@ template <> struct EnumPropsT<ModifyTimetableFlags> : MakeEnumPropsT<ModifyTimet
 
 
 /** Clone actions. */
-enum CloneOptions {
+enum CloneOptions : byte {
 	CO_SHARE   = 0,
 	CO_COPY    = 1,
 	CO_UNSHARE = 2

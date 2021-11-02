@@ -729,27 +729,24 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
 /**
  * Add an order to the orderlist of a vehicle.
  * @param flags operation to perform
- * @param tile unused
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 19) - ID of the vehicle
- * - p1 = (bit 24 - 31) - the selected order (if any). If the last order is given,
+ * @param veh ID of the vehicle
+ * @param sel_ord the selected order (if any). If the last order is given,
  *                        the order will be inserted before that one
  *                        the maximum vehicle order id is 254.
- * @param p2 packed order to insert
- * @param text unused
+ * @param new_order order to insert
  * @return the cost of this operation or an error
  */
-CommandCost CmdInsertOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID sel_ord, const Order &new_order)
 {
-	VehicleID veh          = GB(p1,  0, 20);
-	VehicleOrderID sel_ord = GB(p1, 20, 8);
-	Order new_order(p2);
-
 	Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
+
+	/* Validate properties we don't want to have different from default as they are set by other commands. */
+	if (new_order.GetRefitCargo() != CT_NO_REFIT || new_order.GetWaitTime() != 0 || new_order.GetTravelTime() != 0 || new_order.GetMaxSpeed() != UINT16_MAX) return CMD_ERROR;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
@@ -1008,17 +1005,12 @@ static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlag flags)
 /**
  * Delete an order from the orderlist of a vehicle.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 the ID of the vehicle
- * @param p2 the order to delete (max 255)
- * @param text unused
+ * @param veh_id the ID of the vehicle
+ * @param sel_ord the order to delete (max 255)
  * @return the cost of this operation or an error
  */
-CommandCost CmdDeleteOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdDeleteOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord)
 {
-	VehicleID veh_id = GB(p1, 0, 20);
-	VehicleOrderID sel_ord = GB(p2, 0, 8);
-
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
@@ -1113,17 +1105,12 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 /**
  * Goto order of order-list.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 The ID of the vehicle which order is skipped
- * @param p2 the selected order to which we want to skip
- * @param text unused
+ * @param veh_id The ID of the vehicle which order is skipped
+ * @param sel_ord the selected order to which we want to skip
  * @return the cost of this operation or an error
  */
-CommandCost CmdSkipToOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSkipToOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord)
 {
-	VehicleID veh_id = GB(p1, 0, 20);
-	VehicleOrderID sel_ord = GB(p2, 0, 8);
-
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
 	if (v == nullptr || !v->IsPrimaryVehicle() || sel_ord == v->cur_implicit_order_index || sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
@@ -1150,22 +1137,15 @@ CommandCost CmdSkipToOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint3
 /**
  * Move an order inside the orderlist
  * @param flags operation to perform
- * @param tile unused
- * @param p1 the ID of the vehicle
- * @param p2 order to move and target
- *           bit 0-15  : the order to move
- *           bit 16-31 : the target order
- * @param text unused
+ * @param veh the ID of the vehicle
+ * @param moving_order the order to move
+ * @param target_order the target order
  * @return the cost of this operation or an error
  * @note The target order will move one place down in the orderlist
  *  if you move the order upwards else it'll move it one place down
  */
-CommandCost CmdMoveOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order)
 {
-	VehicleID veh = GB(p1, 0, 20);
-	VehicleOrderID moving_order = GB(p2,  0, 16);
-	VehicleOrderID target_order = GB(p2, 16, 16);
-
 	Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
@@ -1251,25 +1231,16 @@ CommandCost CmdMoveOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 /**
  * Modify an order in the orderlist of a vehicle.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 19) - ID of the vehicle
- * - p1 = (bit 24 - 31) - the selected order (if any). If the last order is given,
- *                        the order will be inserted before that one
- *                        the maximum vehicle order id is 254.
- * @param p2 various bitstuffed elements
- *  - p2 = (bit 0 -  3) - what data to modify (@see ModifyOrderFlags)
- *  - p2 = (bit 4 - 15) - the data to modify
- * @param text unused
+ * @param veh ID of the vehicle
+ * @param sel_ord the selected order (if any). If the last order is given,
+ *                the order will be inserted before that one
+ *                the maximum vehicle order id is 254.
+ * @param mof what data to modify (@see ModifyOrderFlags)
+ * @param data the data to modify
  * @return the cost of this operation or an error
  */
-CommandCost CmdModifyOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID sel_ord, ModifyOrderFlags mof, uint16 data)
 {
-	VehicleOrderID sel_ord = GB(p1, 20,  8);
-	VehicleID veh          = GB(p1,  0, 20);
-	ModifyOrderFlags mof   = Extract<ModifyOrderFlags, 0, 4>(p2);
-	uint16 data            = GB(p2,  4, 11);
-
 	if (mof >= MOF_END) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
@@ -1524,26 +1495,20 @@ static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_o
 /**
  * Clone/share/copy an order-list of another vehicle.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 various bitstuffed elements
- * - p1 = (bit  0-19) - destination vehicle to clone orders to
- * - p1 = (bit 30-31) - action to perform
- * @param p2 source vehicle to clone orders from, if any (none for CO_UNSHARE)
- * @param text unused
+ * @param action action to perform
+ * @param veh_dst destination vehicle to clone orders to
+ * @param veh_src source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @return the cost of this operation or an error
  */
-CommandCost CmdCloneOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID veh_dst, VehicleID veh_src)
 {
-	VehicleID veh_src = GB(p2, 0, 20);
-	VehicleID veh_dst = GB(p1, 0, 20);
-
 	Vehicle *dst = Vehicle::GetIfValid(veh_dst);
 	if (dst == nullptr || !dst->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(dst->owner);
 	if (ret.Failed()) return ret;
 
-	switch (GB(p1, 30, 2)) {
+	switch (action) {
 		case CO_SHARE: {
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
 
@@ -1671,20 +1636,13 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32
 /**
  * Add/remove refit orders from an order
  * @param flags operation to perform
- * @param tile Not used
- * @param p1 VehicleIndex of the vehicle having the order
- * @param p2 bitmask
- *   - bit 0-7 CargoID
- *   - bit 16-23 number of order to modify
- * @param text unused
+ * @param veh VehicleIndex of the vehicle having the order
+ * @param order_number number of order to modify
+ * @param cargo CargoID
  * @return the cost of this operation or an error
  */
-CommandCost CmdOrderRefit(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID order_number, CargoID cargo)
 {
-	VehicleID veh = GB(p1, 0, 20);
-	VehicleOrderID order_number  = GB(p2, 16, 8);
-	CargoID cargo = GB(p2, 0, 8);
-
 	if (cargo >= NUM_CARGO && cargo != CT_NO_REFIT && cargo != CT_AUTO_REFIT) return CMD_ERROR;
 
 	const Vehicle *v = Vehicle::GetIfValid(veh);

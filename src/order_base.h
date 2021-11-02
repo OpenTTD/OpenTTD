@@ -25,6 +25,9 @@ typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
 extern OrderPool _order_pool;
 extern OrderListPool _orderlist_pool;
 
+template <typename, typename>
+class EndianBufferWriter;
+
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
@@ -37,6 +40,10 @@ private:
 	/* So we can use private/protected variables in the saveload code */
 	friend class SlVehicleCommon;
 	friend class SlVehicleDisaster;
+
+	template <typename Tcont, typename Titer>
+	friend EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &data);
+	friend class EndianBufferReader &operator >>(class EndianBufferReader &buffer, Order &order);
 
 	uint8 type;           ///< The type of order + non-stop flags
 	uint8 flags;          ///< Load/unload types, depot order/action types.
@@ -51,7 +58,7 @@ private:
 public:
 	Order *next;          ///< Pointer to next order. If nullptr, end of list
 
-	Order() : flags(0), refit_cargo(CT_NO_REFIT), max_speed(UINT16_MAX) {}
+	Order() : flags(0), refit_cargo(CT_NO_REFIT), wait_time(0), travel_time(0), max_speed(UINT16_MAX) {}
 	~Order();
 
 	Order(uint32 packed);
