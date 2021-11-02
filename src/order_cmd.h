@@ -11,14 +11,16 @@
 #define ORDER_CMD_H
 
 #include "command_type.h"
+#include "order_base.h"
+#include "misc/endian_buffer.hpp"
 
-CommandProc CmdModifyOrder;
-CommandProc CmdSkipToOrder;
-CommandProc CmdDeleteOrder;
-CommandProc CmdInsertOrder;
-CommandProc CmdOrderRefit;
-CommandProc CmdCloneOrder;
-CommandProc CmdMoveOrder;
+CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID sel_ord, ModifyOrderFlags mof, uint16 data);
+CommandCost CmdSkipToOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord);
+CommandCost CmdDeleteOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord);
+CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID sel_ord, const Order &new_order);
+CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID order_number, CargoID cargo);
+CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID veh_dst, VehicleID veh_src);
+CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id);
 
 DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       0,             CMDT_ROUTE_MANAGEMENT)
@@ -29,5 +31,16 @@ DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        0,             CMDT_
 DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        0,             CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         0,             CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CMD_CLIENT_ID, CMDT_SERVER_SETTING)
+
+template <typename Tcont, typename Titer>
+inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)
+{
+	return buffer << order.type << order.flags << order.dest << order.refit_cargo << order.wait_time << order.travel_time << order.max_speed;
+}
+
+inline EndianBufferReader &operator >>(EndianBufferReader &buffer, Order &order)
+{
+	return buffer >> order.type >> order.flags >> order.dest >> order.refit_cargo >> order.wait_time >> order.travel_time >> order.max_speed;
+}
 
 #endif /* ORDER_CMD_H */

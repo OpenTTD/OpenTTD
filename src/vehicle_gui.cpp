@@ -1040,7 +1040,7 @@ struct RefitWindow : public Window {
 						bool delete_window = this->selected_vehicle == v->index && this->num_vehicles == UINT8_MAX;
 						if (Command<CMD_REFIT_VEHICLE>::Post(GetCmdRefitVehMsg(v), v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16, {}) && delete_window) this->Close();
 					} else {
-						if (Command<CMD_ORDER_REFIT>::Post(v->tile, v->index, this->cargo->cargo | this->order << 16, {})) this->Close();
+						if (Command<CMD_ORDER_REFIT>::Post(v->tile, v->index, this->order, this->cargo->cargo)) this->Close();
 					}
 				}
 				break;
