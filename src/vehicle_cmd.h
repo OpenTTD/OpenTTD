@@ -12,8 +12,8 @@
 
 #include "command_type.h"
 
-CommandProc CmdBuildVehicle;
-CommandProc CmdSellVehicle;
+CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoID cargo, ClientID client_id);
+CommandCost CmdSellVehicle(DoCommandFlag flags, TileIndex tile, VehicleID v_id, bool sell_chain, bool backup_order, ClientID client_id);
 CommandProc CmdRefitVehicle;
 CommandProc CmdSendVehicleToDepot;
 CommandProc CmdChangeServiceInt;

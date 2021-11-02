@@ -630,7 +630,7 @@ static void CompanyCheckBankrupt(Company *c)
 			 * player we are sure (the above check) that we are not the local
 			 * company and thus we won't be moved. */
 			if (!_networking || _network_server) {
-				Command<CMD_COMPANY_CTRL>::Post(0, CCA_DELETE | (c->index << 16) | (CRR_BANKRUPT << 24), 0, {});
+				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, c->index, CRR_BANKRUPT, INVALID_CLIENT_ID);
 				return;
 			}
 			break;

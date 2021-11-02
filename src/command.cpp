@@ -75,15 +75,13 @@ int RecursiveCommandCounter::_counter = 0;
  * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
  */
 struct CommandInfo {
-	CommandProc *proc;  ///< The procedure to actually executing
 	const char *name;   ///< A human readable name for the procedure
 	CommandFlags flags; ///< The (command) flags to that apply to this command
 	CommandType type;   ///< The type of command.
 };
 /* Helpers to generate the master command table from the command traits. */
-
 template <typename T>
-inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::proc, T::name, T::flags, T::type }; };
+inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::flags, T::type }; };
 
 template<typename T, T... i>
 inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
@@ -101,14 +99,14 @@ static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_int
 
 
 /*!
- * This function range-checks a cmd, and checks if the cmd is not nullptr
+ * This function range-checks a cmd.
  *
  * @param cmd The integer value of a command
  * @return true if the command is valid (and got a CommandProc function)
  */
 bool IsValidCommand(Commands cmd)
 {
-	return cmd < _command_proc_table.size() && _command_proc_table[cmd].proc != nullptr;
+	return cmd < _command_proc_table.size();
 }
 
 /*!

@@ -11,6 +11,7 @@
 #define COMMAND_FUNC_H
 
 #include "command_type.h"
+#include "network/network_type.h"
 #include "company_type.h"
 #include "company_func.h"
 #include "core/backup_type.hpp"
@@ -225,6 +226,22 @@ public:
 	}
 
 protected:
+	/** Helper to process a single ClientID argument. */
+	template <class T>
+	static inline void SetClientIdHelper(T &data)
+	{
+		if constexpr (std::is_same_v<ClientID, T>) {
+			if (data == INVALID_CLIENT_ID) data = CLIENT_ID_SERVER;
+		}
+	}
+
+	/** Set all invalid ClientID's to the proper value. */
+	template<class Ttuple, size_t... Tindices>
+	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
+	{
+		((SetClientIdHelper(std::get<Tindices>(values))), ...);
+	}
+
 	static bool InternalPost(StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, std::tuple<Targs...> args)
 	{
 		/* Where to show the message? */
@@ -241,8 +258,8 @@ protected:
 		auto [err, estimate_only, only_sending] = InternalPostBefore(Tcmd, GetCommandFlags<Tcmd>(), tile, err_message, network_command);
 		if (err) return false;
 
-		/* Only set p2 when the command does not come from the network. */
-		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID && std::get<2>(args) == 0) std::get<2>(args) = CLIENT_ID_SERVER;
+		/* Only set client IDs when the command does not come from the network. */
+		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) SetClientIds(args, std::index_sequence_for<Targs...>{});
 
 		CommandCost res = Execute(err_message, callback, my_cmd, estimate_only, network_command, tile, args);
 		InternalPostResult(res, tile, estimate_only, only_sending, err_message, my_cmd);
@@ -254,6 +271,24 @@ protected:
 		return res.Succeeded();
 	}
 
+	/** Helper to process a single ClientID argument. */
+	template <class T>
+	static inline bool ClientIdIsSet(T &data)
+	{
+		if constexpr (std::is_same_v<ClientID, T>) {
+			return data != INVALID_CLIENT_ID;
+		} else {
+			return true;
+		}
+	}
+
+	/** Check if all ClientID arguments are set to valid values. */
+	template<class Ttuple, size_t... Tindices>
+	static inline bool AllClientIdsSet(Ttuple &values, std::index_sequence<Tindices...>)
+	{
+		return (ClientIdIsSet(std::get<Tindices>(values)) && ...);
+	}
+
 	static CommandCost Execute(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Prevent recursion; it gives a mess over the network */
@@ -261,10 +296,12 @@ protected:
 		assert(counter.IsTopLevel());
 
 		/* Command flags are used internally */
-		CommandFlags cmd_flags = GetCommandFlags<Tcmd>();
+		constexpr CommandFlags cmd_flags = GetCommandFlags<Tcmd>();
 
-		/* Make sure p2 is properly set to a ClientID also when processing external commands. */
-		assert(!(cmd_flags & CMD_CLIENT_ID) || std::get<2>(args) != 0);
+		if constexpr ((cmd_flags & CMD_CLIENT_ID) != 0) {
+			/* Make sure arguments are properly set to a ClientID also when processing external commands. */
+			assert(AllClientIdsSet(args, std::index_sequence_for<Targs...>{}));
+		}
 
 		Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 		if (!InternalExecutePrepTest(cmd_flags, tile, cur_company)) {

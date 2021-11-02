@@ -1396,7 +1396,7 @@ static void AdminCompanyResetCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
 		if (NetworkCompanyHasClients(_admin_company_id)) return;
-		Command<CMD_COMPANY_CTRL>::Post(0, CCA_DELETE | _admin_company_id << 16 | CRR_MANUAL << 24, 0, {});
+		Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, _admin_company_id, CRR_MANUAL, INVALID_CLIENT_ID);
 	}
 }
 
@@ -1536,9 +1536,9 @@ private:
 	static void OnClickCompanyNew(NetworkClientListWindow *w, Point pt, CompanyID company_id)
 	{
 		if (_network_server) {
-			Command<CMD_COMPANY_CTRL>::Post(0, CCA_NEW, _network_own_client_id, {});
+			Command<CMD_COMPANY_CTRL>::Post(CCA_NEW, INVALID_COMPANY, CRR_NONE, _network_own_client_id);
 		} else {
-			Command<CMD_COMPANY_CTRL>::SendNet(STR_NULL, nullptr, _local_company, 0, CCA_NEW, 0, {});
+			Command<CMD_COMPANY_CTRL>::SendNet(STR_NULL, nullptr, _local_company, CCA_NEW, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
 		}
 	}
 

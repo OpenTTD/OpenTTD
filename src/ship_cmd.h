@@ -14,6 +14,6 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 
-CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **v);
+CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **v);
 
 #endif /* SHIP_CMD_H */

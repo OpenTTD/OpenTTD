@@ -144,15 +144,13 @@ void OrderBackup::DoRestore(Vehicle *v)
  * Clear an OrderBackup
  * @param flags For command.
  * @param tile  Tile related to the to-be-cleared OrderBackup.
- * @param p1    Unused.
- * @param p2    User that had the OrderBackup.
- * @param text  Unused.
+ * @param user_id User that had the OrderBackup.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id)
 {
 	/* No need to check anything. If the tile or user don't exist we just ignore it. */
-	if (flags & DC_EXEC) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, p2);
+	if (flags & DC_EXEC) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, user_id);
 
 	return CommandCost();
 }
@@ -171,7 +169,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, uint32 p1, 
 		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 
-		Command<CMD_CLEAR_ORDER_BACKUP>::Post(0, 0, user, {});
+		Command<CMD_CLEAR_ORDER_BACKUP>::Post(0, static_cast<ClientID>(user));
 		return;
 	}
 }
@@ -200,7 +198,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, uint32 p1, 
 			/* We need to circumvent the "prevention" from this command being executed
 			 * while the game is paused, so use the internal method. Nor do we want
 			 * this command to get its cost estimated when shift is pressed. */
-			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, 0, user, {} });
+			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, static_cast<ClientID>(user) });
 		} else {
 			/* The command came from the game logic, i.e. the clearing of a tile.
 			 * In that case we have no need to actually sync this, just do it. */

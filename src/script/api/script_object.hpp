@@ -347,6 +347,22 @@ namespace ScriptObjectInternal {
 	{
 		((SanitizeSingleStringHelper(std::get<Tindices>(values))), ...);
 	}
+
+	/** Helper to process a single ClientID argument. */
+	template <class T>
+	static inline void SetClientIdHelper(T &data)
+	{
+		if constexpr (std::is_same_v<ClientID, T>) {
+			if (data == INVALID_CLIENT_ID) data = (ClientID)UINT32_MAX;
+		}
+	}
+
+	/** Set all invalid ClientID's to the proper value. */
+	template<class Ttuple, size_t... Tindices>
+	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
+	{
+		((SetClientIdHelper(std::get<Tindices>(values))), ...);
+	}
 }
 
 template <Commands Tcmd, typename... Targs>
@@ -364,8 +380,8 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Tar
 		tile = std::get<0>(args);
 	}
 
-	/* Only set p2 when the command does not come from the network. */
-	if ((::GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) != 0 && std::get<2>(args) == 0) std::get<2>(args) = UINT32_MAX;
+	/* Only set ClientID parameters when the command does not come from the network. */
+	if constexpr ((::GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) != 0) ScriptObjectInternal::SetClientIds(args, std::index_sequence_for<Targs...>{});
 
 	/* Store the command for command callback validation. */
 	if (!estimate_only && networking) ScriptObject::SetLastCommand(tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);

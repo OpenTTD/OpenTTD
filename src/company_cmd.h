@@ -12,7 +12,9 @@
 
 #include "command_type.h"
 
-CommandProc CmdCompanyCtrl;
+enum ClientID : uint32;
+
+CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id);
 CommandProc CmdGiveMoney;
 CommandProc CmdRenameCompany;
 CommandProc CmdRenamePresident;

@@ -254,11 +254,10 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
  * @param flags    type of operation.
  * @param tile     tile of the depot where road vehicle is built.
  * @param e        the engine to build.
- * @param data     unused.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, uint16 data, Vehicle **ret)
+CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
 	/* Check that the vehicle can drive on the road in question */
 	RoadType rt = e->u.road.roadtype;
