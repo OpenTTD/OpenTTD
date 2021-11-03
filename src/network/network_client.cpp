@@ -1055,9 +1055,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
 		/* To throttle the reconnects a bit, every clients waits its
-		 * Client ID modulo 16. This way reconnects should be spread
-		 * out a bit. */
-		_network_reconnect = _network_own_client_id % 16;
+		 * Client ID modulo 16 + 1 (value 0 means no reconnect).
+		 * This way reconnects should be spread out a bit. */
+		_network_reconnect = _network_own_client_id % 16 + 1;
 		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
