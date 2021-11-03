@@ -167,7 +167,7 @@ enum OrderDepotAction {
 /**
  * Enumeration for the data to set in #CmdChangeTimetable.
  */
-enum ModifyTimetableFlags {
+enum ModifyTimetableFlags : byte {
 	MTF_WAIT_TIME,    ///< Set wait time.
 	MTF_TRAVEL_TIME,  ///< Set travel time.
 	MTF_TRAVEL_SPEED, ///< Set max travel speed.
