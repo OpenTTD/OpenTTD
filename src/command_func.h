@@ -79,7 +79,7 @@ private:
 };
 
 
-template<Commands TCmd, typename T> struct CommandHelper;
+template<Commands TCmd, typename T, bool THasTile> struct CommandHelper;
 
 class CommandHelperBase {
 protected:
@@ -100,7 +100,7 @@ protected:
  * @tparam Targs The command parameter types.
  */
 template <Commands Tcmd, typename... Targs>
-struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...)> : protected CommandHelperBase {
+struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true> : protected CommandHelperBase {
 public:
 	/**
 	 * This function executes a given command with the parameters from the #CommandProc parameter list.
@@ -342,7 +342,56 @@ protected:
 	}
 };
 
+/**
+ * Overload for #CommandHelper that exposes additional \c Post variants
+ * for commands that don't take a TileIndex themselves.
+ * @tparam Tcmd The command-id to execute.
+ * @tparam Targs The command parameter types.
+ */
+template <Commands Tcmd, typename... Targs>
+struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), false> : CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>
+{
+	/* Import Post overloads from our base class. */
+	using CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>::Post;
+
+	/**
+	 * Shortcut for Post when not using an error message.
+	 * @param err_message Message prefix to show on error
+	 * @param location Tile location for user feedback.
+	 * @param args Parameters for the command
+	 */
+	static inline bool Post(StringID err_message, TileIndex location, Targs... args) { return Post(err_message, nullptr, location, std::forward<Targs>(args)...); }
+	/**
+	 * Shortcut for Post when not using a callback.
+	 * @param callback A callback function to call after the command is finished
+	 * @param location Tile location for user feedback.
+	 * @param args Parameters for the command
+	 */
+	static inline bool Post(CommandCallback *callback, TileIndex location, Targs... args) { return Post((StringID)0, callback, location, std::forward<Targs>(args)...); }
+	/**
+	 * Shortcut for Post when not using a callback or an error message.
+	 * @param location Tile location for user feedback.
+	 * @param args Parameters for the command*
+	 */
+	static inline bool Post(TileIndex location, Targs... args) { return Post((StringID)0, nullptr, location, std::forward<Targs>(args)...); }
+
+	/**
+	 * Post variant that takes a TileIndex (for error window location and text effects) for
+	 * commands that don't take a TileIndex by themselves.
+	 * @param err_message Message prefix to show on error
+	 * @param callback A callback function to call after the command is finished
+	 * @param location Tile location for user feedback.
+	 * @param args Parameters for the command
+	 * @return \c true if the command succeeded, else \c false.
+	 */
+	static inline bool Post(StringID err_message, CommandCallback *callback, TileIndex location, Targs... args)
+	{
+		return CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>::InternalPost(err_message, callback, true, false, location, std::forward_as_tuple(args...));
+	}
+};
+
+
 template <Commands Tcmd>
-using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType>;
+using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType, std::is_same_v<TileIndex, std::tuple_element_t<0, typename CommandTraits<Tcmd>::Args>>>;
 
 #endif /* COMMAND_FUNC_H */
