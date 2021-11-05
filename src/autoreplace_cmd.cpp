@@ -355,13 +355,13 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (refit_cargo != CT_NO_REFIT) {
 		byte subtype = GetBestFittingSubType(old_veh, new_veh, refit_cargo);
 
-		cost.AddCost(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, 0, new_veh->index, refit_cargo | (subtype << 8), {}));
+		cost.AddCost(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, new_veh->index, refit_cargo, subtype, false, false, 0));
 		assert(cost.Succeeded()); // This should be ensured by GetNewCargoTypeForReplace()
 	}
 
 	/* Try to reverse the vehicle, but do not care if it fails as the new type might not be reversible */
 	if (new_veh->type == VEH_TRAIN && HasBit(Train::From(old_veh)->flags, VRF_REVERSE_DIRECTION)) {
-		Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC, 0, new_veh->index, true, {});
+		Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC, new_veh->index, true);
 	}
 
 	return cost;
@@ -373,9 +373,9 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
  * @param evaluate_callback shall the start/stop callback be evaluated?
  * @return success or error
  */
-static inline CommandCost CmdStartStopVehicle(const Vehicle *v, bool evaluate_callback)
+static inline CommandCost DoCmdStartStopVehicle(const Vehicle *v, bool evaluate_callback)
 {
-	return Command<CMD_START_STOP_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, 0, v->index, evaluate_callback ? 1 : 0, {});
+	return Command<CMD_START_STOP_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, v->index, evaluate_callback);
 }
 
 /**
@@ -388,7 +388,7 @@ static inline CommandCost CmdStartStopVehicle(const Vehicle *v, bool evaluate_ca
  */
 static inline CommandCost CmdMoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlag flags, bool whole_chain)
 {
-	return Command<CMD_MOVE_RAIL_VEHICLE>::Do(flags | DC_NO_CARGO_CAP_CHECK, 0, v->index | (whole_chain ? 1 : 0) << 20, after != nullptr ? after->index : INVALID_VEHICLE, {});
+	return Command<CMD_MOVE_RAIL_VEHICLE>::Do(flags | DC_NO_CARGO_CAP_CHECK, v->index, after != nullptr ? after->index : INVALID_VEHICLE, whole_chain);
 }
 
 /**
@@ -411,10 +411,10 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	if (cost.Succeeded()) {
 		/* Start the vehicle, might be denied by certain things */
 		assert((new_head->vehstatus & VS_STOPPED) != 0);
-		cost.AddCost(CmdStartStopVehicle(new_head, true));
+		cost.AddCost(DoCmdStartStopVehicle(new_head, true));
 
 		/* Stop the vehicle again, but do not care about evil newgrfs allowing starting but not stopping :p */
-		if (cost.Succeeded()) cost.AddCost(CmdStartStopVehicle(new_head, false));
+		if (cost.Succeeded()) cost.AddCost(DoCmdStartStopVehicle(new_head, false));
 	}
 
 	/* Last do those things which do never fail (resp. we do not care about), but which are not undo-able */
@@ -471,11 +471,11 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 		}
 
 		/* Sell the old vehicle */
-		cost.AddCost(Command<CMD_SELL_VEHICLE>::Do(flags, 0, old_v->index, false, false, INVALID_CLIENT_ID));
+		cost.AddCost(Command<CMD_SELL_VEHICLE>::Do(flags, old_v->index, false, false, INVALID_CLIENT_ID));
 
 		/* If we are not in DC_EXEC undo everything */
 		if ((flags & DC_EXEC) == 0) {
-			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, new_v->index, false, false, INVALID_CLIENT_ID);
+			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, new_v->index, false, false, INVALID_CLIENT_ID);
 		}
 	}
 
@@ -602,7 +602,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					assert(RailVehInfo(wagon->engine_type)->railveh_type == RAILVEH_WAGON);
 
 					/* Sell wagon */
-					[[maybe_unused]] CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, wagon->index, false, false, INVALID_CLIENT_ID);
+					[[maybe_unused]] CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, wagon->index, false, false, INVALID_CLIENT_ID);
 					assert(ret.Succeeded());
 					new_vehs[i] = nullptr;
 
@@ -634,7 +634,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					/* Sell the vehicle.
 					 * Note: This might temporarily construct new trains, so use DC_AUTOREPLACE to prevent
 					 *       it from failing due to engine limits. */
-					cost.AddCost(Command<CMD_SELL_VEHICLE>::Do(flags | DC_AUTOREPLACE, 0, w->index, false, false, INVALID_CLIENT_ID));
+					cost.AddCost(Command<CMD_SELL_VEHICLE>::Do(flags | DC_AUTOREPLACE, w->index, false, false, INVALID_CLIENT_ID));
 					if ((flags & DC_EXEC) != 0) {
 						old_vehs[i] = nullptr;
 						if (i == 0) old_head = nullptr;
@@ -665,7 +665,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		if ((flags & DC_EXEC) == 0) {
 			for (int i = num_units - 1; i >= 0; i--) {
 				if (new_vehs[i] != nullptr) {
-					Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, new_vehs[i]->index, false, false, INVALID_CLIENT_ID);
+					Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, new_vehs[i]->index, false, false, INVALID_CLIENT_ID);
 					new_vehs[i] = nullptr;
 				}
 			}
@@ -696,12 +696,12 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 				}
 
 				/* Sell the old vehicle */
-				cost.AddCost(Command<CMD_SELL_VEHICLE>::Do(flags, 0, old_head->index, false, false, INVALID_CLIENT_ID));
+				cost.AddCost(Command<CMD_SELL_VEHICLE>::Do(flags, old_head->index, false, false, INVALID_CLIENT_ID));
 			}
 
 			/* If we are not in DC_EXEC undo everything */
 			if ((flags & DC_EXEC) == 0) {
-				Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, 0, new_head->index, false, false, INVALID_CLIENT_ID);
+				Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, new_head->index, false, false, INVALID_CLIENT_ID);
 			}
 		}
 	}
@@ -764,7 +764,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1
 		bool was_stopped = free_wagon || ((v->vehstatus & VS_STOPPED) != 0);
 
 		/* Stop the vehicle */
-		if (!was_stopped) cost.AddCost(CmdStartStopVehicle(v, true));
+		if (!was_stopped) cost.AddCost(DoCmdStartStopVehicle(v, true));
 		if (cost.Failed()) return cost;
 
 		assert(free_wagon || v->IsStoppedInDepot());
@@ -792,7 +792,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, TileIndex tile, uint32 p1
 		}
 
 		/* Restart the vehicle */
-		if (!was_stopped) cost.AddCost(CmdStartStopVehicle(v, false));
+		if (!was_stopped) cost.AddCost(DoCmdStartStopVehicle(v, false));
 	}
 
 	if (cost.Succeeded() && nothing_to_do) cost = CommandCost(STR_ERROR_AUTOREPLACE_NOTHING_TO_DO);

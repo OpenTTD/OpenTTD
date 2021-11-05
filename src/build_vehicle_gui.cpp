@@ -1461,7 +1461,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
-					Command<CMD_SET_VEHICLE_VISIBILITY>::Post(0, 0, this->sel_engine | (e->IsHidden(_current_company) ? 0 : (1u << 31)), {});
+					Command<CMD_SET_VEHICLE_VISIBILITY>::Post(this->sel_engine, !e->IsHidden(_current_company));
 				}
 				break;
 			}
@@ -1637,7 +1637,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (str == nullptr) return;
 
-		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, 0, this->rename_engine, 0, str);
+		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, this->rename_engine, str);
 	}
 
 	void OnDropdownSelect(int widget, int index) override

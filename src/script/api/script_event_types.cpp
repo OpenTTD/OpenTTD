@@ -112,7 +112,7 @@ int32 ScriptEventEnginePreview::GetVehicleType()
 bool ScriptEventEnginePreview::AcceptPreview()
 {
 	if (!this->IsEngineValid()) return false;
-	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(0, this->engine, 0, {});
+	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
 }
 
 bool ScriptEventCompanyAskMerger::AcceptMerger()

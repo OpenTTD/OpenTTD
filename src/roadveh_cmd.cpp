@@ -361,15 +361,12 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 /**
  * Turn a roadvehicle around.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 vehicle ID to turn
- * @param p2 unused
- * @param text unused
+ * @param veh_id vehicle ID to turn
  * @return the cost of this operation or an error
  */
-CommandCost CmdTurnRoadVeh(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdTurnRoadVeh(DoCommandFlag flags, VehicleID veh_id)
 {
-	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
+	RoadVehicle *v = RoadVehicle::GetIfValid(veh_id);
 	if (v == nullptr) return CMD_ERROR;
 
 	if (!v->IsPrimaryVehicle()) return CMD_ERROR;

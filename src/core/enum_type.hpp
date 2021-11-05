@@ -29,9 +29,9 @@
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 # define DECLARE_ENUM_AS_BIT_SET(mask_t) \
-	inline constexpr mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | m2);} \
-	inline constexpr mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & m2);} \
-	inline constexpr mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ m2);} \
+	inline constexpr mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | (std::underlying_type<mask_t>::type)m2);} \
+	inline constexpr mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & (std::underlying_type<mask_t>::type)m2);} \
+	inline constexpr mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ (std::underlying_type<mask_t>::type)m2);} \
 	inline constexpr mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
 	inline constexpr mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
 	inline constexpr mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
