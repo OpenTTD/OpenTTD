@@ -11,18 +11,21 @@
 #define VEHICLE_CMD_H
 
 #include "command_type.h"
+#include "engine_type.h"
+#include "vehicle_type.h"
+#include "vehiclelist.h"
 
 CommandCost CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoID cargo, ClientID client_id);
-CommandCost CmdSellVehicle(DoCommandFlag flags, TileIndex tile, VehicleID v_id, bool sell_chain, bool backup_order, ClientID client_id);
-CommandProc CmdRefitVehicle;
-CommandProc CmdSendVehicleToDepot;
-CommandProc CmdChangeServiceInt;
-CommandProc CmdRenameVehicle;
-CommandProc CmdCloneVehicle;
-CommandProc CmdStartStopVehicle;
-CommandProc CmdMassStartStopVehicle;
-CommandProc CmdDepotSellAllVehicles;
-CommandProc CmdDepotMassAutoReplace;
+CommandCost CmdSellVehicle(DoCommandFlag flags, VehicleID v_id, bool sell_chain, bool backup_order, ClientID client_id);
+CommandCost CmdRefitVehicle(DoCommandFlag flags, VehicleID veh_id, CargoID new_cid, byte new_subtype, bool auto_refit, bool only_this, uint8 num_vehicles);
+CommandCost CmdSendVehicleToDepot(DoCommandFlag flags, VehicleID veh_id, DepotCommand depot_cmd, const VehicleListIdentifier &vli);
+CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16 serv_int, bool is_custom, bool is_percent);
+CommandCost CmdRenameVehicle(DoCommandFlag flags, VehicleID veh_id, const std::string &text);
+CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, VehicleID veh_id, bool share_orders);
+CommandCost CmdStartStopVehicle(DoCommandFlag flags, VehicleID veh_id, bool evaluate_startstop_cb);
+CommandCost CmdMassStartStopVehicle(DoCommandFlag flags, TileIndex tile, bool do_start, bool vehicle_list_window, const VehicleListIdentifier &vli);
+CommandCost CmdDepotSellAllVehicles(DoCommandFlag flags, TileIndex tile, VehicleType vehicle_type);
+CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, VehicleType vehicle_type);
 
 DEF_CMD_TRAIT(CMD_BUILD_VEHICLE,           CmdBuildVehicle,         CMD_CLIENT_ID, CMDT_VEHICLE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_SELL_VEHICLE,            CmdSellVehicle,          CMD_CLIENT_ID, CMDT_VEHICLE_CONSTRUCTION)
@@ -38,5 +41,16 @@ DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,          
 
 CommandCallback CcBuildPrimaryVehicle;
 CommandCallback CcStartStopVehicle;
+
+template <typename Tcont, typename Titer>
+inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const VehicleListIdentifier &vli)
+{
+	return buffer << vli.type << vli.vtype << vli.company << vli.index;
+}
+
+inline EndianBufferReader &operator >>(EndianBufferReader &buffer, VehicleListIdentifier &vli)
+{
+	return buffer >> vli.type >> vli.vtype >> vli.company >> vli.index;
+}
 
 #endif /* VEHICLE_CMD_H */

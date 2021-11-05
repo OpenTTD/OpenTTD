@@ -126,7 +126,7 @@ struct EnginePreviewWindow : Window {
 	{
 		switch (widget) {
 			case WID_EP_YES:
-				Command<CMD_WANT_ENGINE_PREVIEW>::Post(0, this->window_number, 0, {});
+				Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->window_number);
 				FALLTHROUGH;
 			case WID_EP_NO:
 				if (!_shift_pressed) this->Close();

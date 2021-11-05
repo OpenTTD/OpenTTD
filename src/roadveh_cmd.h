@@ -16,7 +16,7 @@
 
 CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **v);
 
-CommandProc CmdTurnRoadVeh;
+CommandCost CmdTurnRoadVeh(DoCommandFlag flags, VehicleID veh_id);
 
 DEF_CMD_TRAIT(CMD_TURN_ROADVEH, CmdTurnRoadVeh, 0, CMDT_VEHICLE_MANAGEMENT)
 

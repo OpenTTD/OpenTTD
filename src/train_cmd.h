@@ -17,9 +17,9 @@
 CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, bool free_cars, Vehicle **ret);
 CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, bool sell_chain, bool backup_order, ClientID user);
 
-CommandProc CmdMoveRailVehicle;
-CommandProc CmdForceTrainProceed;
-CommandProc CmdReverseTrainDirection;
+CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID dest_veh, bool move_chain);
+CommandCost CmdForceTrainProceed(DoCommandFlag flags, VehicleID veh_id);
+CommandCost CmdReverseTrainDirection(DoCommandFlag flags, VehicleID veh_id, bool reverse_single_veh);
 
 DEF_CMD_TRAIT(CMD_MOVE_RAIL_VEHICLE,       CmdMoveRailVehicle,       0, CMDT_VEHICLE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_FORCE_TRAIN_PROCEED,     CmdForceTrainProceed,     0, CMDT_VEHICLE_MANAGEMENT)
