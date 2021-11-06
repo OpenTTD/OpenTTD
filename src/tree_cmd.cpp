@@ -399,7 +399,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
 
-	TileArea ta(tile, p2);
+	TileArea ta(tile, (TileIndex)p2);
 	for (TileIndex current_tile : ta) {
 		switch (GetTileType(current_tile)) {
 			case MP_TREES:
@@ -528,7 +528,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	/* Do not draw trees when the invisible trees setting is set */
 	if (IsInvisibilitySet(TO_TREES)) return;
 
-	uint tmp = CountBits(ti->tile + ti->x + ti->y);
+	uint tmp = CountBits(static_cast<uint32>(ti->tile + ti->x + ti->y));
 	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
 
 	/* different tree styles above one of the grounds */

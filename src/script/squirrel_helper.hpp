@@ -14,6 +14,7 @@
 #include "../core/smallvec_type.hpp"
 #include "../economy_type.h"
 #include "../string_func.h"
+#include "../tile_type.h"
 #include "squirrel_helper_type.hpp"
 
 template <class CL, ScriptType ST> const char *GetClassName();
@@ -85,6 +86,7 @@ namespace SQConvert {
 	template <> inline int Return<int32>       (HSQUIRRELVM vm, int32 res)       { sq_pushinteger(vm, res); return 1; }
 	template <> inline int Return<int64>       (HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, res); return 1; }
 	template <> inline int Return<Money>       (HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; }
+	template <> inline int Return<TileIndex>   (HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32)res.value); return 1; }
 	template <> inline int Return<bool>        (HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; }
 	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; }
 	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; }
@@ -103,6 +105,7 @@ namespace SQConvert {
 	template <> inline int16       GetParam(ForceType<int16>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline int32       GetParam(ForceType<int32>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline int64       GetParam(ForceType<int64>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
+	template <> inline TileIndex   GetParam(ForceType<TileIndex>   , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return TileIndex((uint32)(int32)tmp); }
 	template <> inline Money       GetParam(ForceType<Money>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline bool        GetParam(ForceType<bool>        , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; }
 	template <> inline void       *GetParam(ForceType<void *>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; }

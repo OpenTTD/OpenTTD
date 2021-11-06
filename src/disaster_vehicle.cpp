@@ -941,7 +941,7 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
 		/* primary disaster vehicles that have chosen target */
 		if (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
-			if (v->current_order.GetDestination() > 0 && v->dest_tile == i) v->current_order.SetDestination(3);
+			if (v->current_order.GetDestination() > 0 && v->dest_tile == (uint32)i) v->current_order.SetDestination(3);
 		}
 	}
 }

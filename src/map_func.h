@@ -204,7 +204,7 @@ static inline TileIndex TileVirtXY(uint x, uint y)
  */
 static inline uint TileX(TileIndex tile)
 {
-	return tile & MapMaxX();
+	return tile.value & MapMaxX();
 }
 
 /**
@@ -214,7 +214,7 @@ static inline uint TileX(TileIndex tile)
  */
 static inline uint TileY(TileIndex tile)
 {
-	return tile >> MapLogX();
+	return tile.value >> MapLogX();
 }
 
 /**

@@ -454,7 +454,7 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32
 
 	/* Outside the editor you can only drag canals, and not areas */
 	if (_game_mode != GM_EDITOR) {
-		TileArea ta(tile, p1);
+		TileArea ta(tile, (TileIndex)p1);
 		if (ta.w != 1 && ta.h != 1) return CMD_ERROR;
 	}
 
@@ -462,9 +462,9 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32
 
 	std::unique_ptr<TileIterator> iter;
 	if (HasBit(p2, 2)) {
-		iter = std::make_unique<DiagonalTileIterator>(tile, p1);
+		iter = std::make_unique<DiagonalTileIterator>(tile, (TileIndex)p1);
 	} else {
-		iter = std::make_unique<OrthogonalTileIterator>(tile, p1);
+		iter = std::make_unique<OrthogonalTileIterator>(tile, (TileIndex)p1);
 	}
 
 	for (; *iter != INVALID_TILE; ++(*iter)) {

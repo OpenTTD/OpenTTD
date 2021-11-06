@@ -641,7 +641,7 @@ public:
 		if (confirmed) {
 			VehicleGroupWindow *w = (VehicleGroupWindow*)win;
 			w->vli.index = ALL_GROUP;
-			DoCommandP(CMD_DELETE_GROUP, STR_ERROR_GROUP_CAN_T_DELETE, 0, w->group_confirm, 0);
+			DoCommandP(CMD_DELETE_GROUP, STR_ERROR_GROUP_CAN_T_DELETE, (TileIndex)0, w->group_confirm, 0);
 		}
 	}
 
@@ -965,7 +965,7 @@ public:
 					case ADI_REMOVE_ALL: // Remove all Vehicles from the selected group
 						assert(Group::IsValidID(this->vli.index));
 
-						DoCommandP(CMD_REMOVE_ALL_VEHICLES_GROUP, STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES, 0, this->vli.index, 0);
+						DoCommandP(CMD_REMOVE_ALL_VEHICLES_GROUP, STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES, (TileIndex)0, this->vli.index, 0);
 						break;
 					default: NOT_REACHED();
 				}
