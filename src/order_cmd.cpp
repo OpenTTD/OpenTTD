@@ -1136,11 +1136,11 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		v->UpdateRealOrderIndex();
 
 		InvalidateVehicleOrder(v, VIWD_MODIFY_ORDERS);
-	}
 
-	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
-	if (v->type == VEH_AIRCRAFT) SetWindowClassesDirty(WC_AIRCRAFT_LIST);
-	if (v->type == VEH_SHIP) SetWindowClassesDirty(WC_SHIPS_LIST);
+		/* We have an aircraft/ship, they have a mini-schedule, so update them all */
+		if (v->type == VEH_AIRCRAFT) SetWindowClassesDirty(WC_AIRCRAFT_LIST);
+		if (v->type == VEH_SHIP) SetWindowClassesDirty(WC_SHIPS_LIST);
+	}
 
 	return CommandCost();
 }
