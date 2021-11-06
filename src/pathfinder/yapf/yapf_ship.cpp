@@ -212,7 +212,13 @@ public:
 		/* create pathfinder instance */
 		Tpf pf;
 		/* set origin and destination nodes */
-		pf.SetOrigin(tile, trackdir == nullptr ? TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2) : DiagdirReachesTrackdirs(ReverseDiagDir(VehicleExitDir(v->direction, v->state))));
+		if (trackdir == nullptr) {
+			pf.SetOrigin(tile, TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2));
+		} else {
+			DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
+			TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
+			pf.SetOrigin(tile, rtds);
+		}
 		pf.SetDestination(v);
 		/* find best path */
 		if (!pf.FindPath(v)) return false;
