@@ -1225,9 +1225,12 @@ bool NPFShipCheckReverse(const Ship *v, Trackdir *best_td)
 
 	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE, 0 };
 	if (best_td != nullptr) {
-		TrackdirBits rtds = DiagdirReachesTrackdirs(ReverseDiagDir(VehicleExitDir(v->direction, v->state)));
+		DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
+		TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(v->tile, TRANSPORT_WATER, 0, entry));
 		Trackdir best = (Trackdir)FindFirstBit2x64(rtds);
-		for (rtds = KillFirstBit(rtds); rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
+		rtds = KillFirstBit(rtds);
+		if (rtds == TRACKDIR_BIT_NONE) return false; /* At most one choice. */
+		for (; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(rtds);
 			ftd = NPFRouteToStationOrTileTwoWay(v->tile, best, false, v->tile, td, false, &fstd, &user);
 			if (ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) best = td;
