@@ -28,4 +28,5 @@ add_files(
     smallvec_type.hpp
     span_type.hpp
     string_compare_type.hpp
+    strong_typedef_type.hpp
 )

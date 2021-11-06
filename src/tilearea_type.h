@@ -147,6 +147,36 @@ public:
 	 * Allocate a new iterator that is a copy of this one.
 	 */
 	virtual TileIterator *Clone() const = 0;
+
+	/**
+	 * Equality comparison.
+	 */
+	bool operator ==(const TileIterator &rhs) const
+	{
+		return this->tile == rhs.tile;
+	}
+	/**
+	 * Inequality comparison.
+	 */
+	bool operator !=(const TileIterator &rhs) const
+	{
+		return this->tile != rhs.tile;
+	}
+
+	/**
+	 * Equality comparison.
+	 */
+	bool operator ==(const TileIndex &rhs) const
+	{
+		return this->tile == rhs;
+	}
+	/**
+	 * Inequality comparison.
+	 */
+	bool operator !=(const TileIndex &rhs) const
+	{
+		return this->tile != rhs;
+	}
 };
 
 /** Iterator to iterate over a tile area (rectangle) of the map. */

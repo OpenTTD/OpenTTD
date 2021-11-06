@@ -474,12 +474,12 @@ public:
 					_warn_town_no_roads = true;
 				}
 
-				DoCommandP(CMD_EXPAND_TOWN, STR_ERROR_CAN_T_EXPAND_TOWN, 0, this->window_number, 0);
+				DoCommandP(CMD_EXPAND_TOWN, STR_ERROR_CAN_T_EXPAND_TOWN, (TileIndex)0, this->window_number, 0);
 				break;
 			}
 
 			case WID_TV_DELETE: // delete town - only available on Scenario editor
-				DoCommandP(CMD_DELETE_TOWN, STR_ERROR_TOWN_CAN_T_DELETE, 0, this->window_number, 0);
+				DoCommandP(CMD_DELETE_TOWN, STR_ERROR_TOWN_CAN_T_DELETE, (TileIndex)0, this->window_number, 0);
 				break;
 		}
 	}

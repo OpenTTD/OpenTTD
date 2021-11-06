@@ -18,7 +18,7 @@
 
 /* virtual */ uint32 RailTypeScopeResolver::GetRandomBits() const
 {
-	uint tmp = CountBits(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE);
+	uint tmp = CountBits(static_cast<uint32>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
 	return GB(tmp, 0, 2);
 }
 

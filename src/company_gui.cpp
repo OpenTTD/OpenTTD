@@ -2576,11 +2576,11 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_BUY_SHARE:
-				DoCommandP(CMD_BUY_SHARE_IN_COMPANY, STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS, 0, this->window_number, 0);
+				DoCommandP(CMD_BUY_SHARE_IN_COMPANY, STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS, (TileIndex)0, this->window_number, 0);
 				break;
 
 			case WID_C_SELL_SHARE:
-				DoCommandP(CMD_SELL_SHARE_IN_COMPANY, STR_ERROR_CAN_T_SELL_25_SHARE_IN, 0, this->window_number, 0);
+				DoCommandP(CMD_SELL_SHARE_IN_COMPANY, STR_ERROR_CAN_T_SELL_25_SHARE_IN, (TileIndex)0, this->window_number, 0);
 				break;
 
 			case WID_C_COMPANY_PASSWORD:
@@ -2771,7 +2771,7 @@ struct BuyCompanyWindow : Window {
 				break;
 
 			case WID_BC_YES:
-				DoCommandP(CMD_BUY_COMPANY, STR_ERROR_CAN_T_BUY_COMPANY, 0, this->window_number, 0);
+				DoCommandP(CMD_BUY_COMPANY, STR_ERROR_CAN_T_BUY_COMPANY, (TileIndex)0, this->window_number, 0);
 				break;
 		}
 	}
