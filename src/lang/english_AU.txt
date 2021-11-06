@@ -1338,7 +1338,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Show tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips can be bound to the right mouse button
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover for {COMMA} second{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover for {COMMA} millisecond{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Right click
 
@@ -2255,6 +2255,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} has started a new company (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} has left the game ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} has changed his/her name to {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gave {2:CURRENCY_LONG} to {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}The server closed the session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The server is restarting...{}Please wait...
 
@@ -3641,6 +3642,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Vehicl
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
 
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer
 
 # Vehicle view
