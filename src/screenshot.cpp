@@ -12,6 +12,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "screenshot.h"
+#include "screenshot_gui.h"
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
 #include "core/endian_func.hpp"
@@ -909,8 +910,10 @@ static bool RealMakeScreenshot(ScreenshotType t, std::string name, uint32 width,
 		 * of the screenshot. This way the screenshot will always show the name
 		 * of the previous screenshot in the 'successful' message instead of the
 		 * name of the new screenshot (or an empty name). */
+		SetScreenshotWindowVisibility(true);
 		UndrawMouseCursor();
 		DrawDirtyBlocks();
+		SetScreenshotWindowVisibility(false);
 	}
 
 	_screenshot_name[0] = '\0';
