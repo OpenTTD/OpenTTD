@@ -294,6 +294,7 @@ STR_SORT_BY_LENGTH                                              :الطول
 STR_SORT_BY_LIFE_TIME                                           :العمر المتبقي
 STR_SORT_BY_TIMETABLE_DELAY                                     :تاخير جدولة الاوامر
 STR_SORT_BY_FACILITY                                            :نوع المحطة
+STR_SORT_BY_WAITING_TOTAL                                       :إجمالي البضائع المنتظرة
 STR_SORT_BY_RATING_MAX                                          :اعلى نسبة شحن
 STR_SORT_BY_RATING_MIN                                          :اقل نسبة شحن
 STR_SORT_BY_ENGINE_ID                                           :نوع المحرك (قياسي)
@@ -1149,6 +1150,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 
 
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :سعر الفائدة على القرض يتحكم أيضًا في التضخم ، إذا تم تمكينه
 
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           ::سرعة البناء {STRING}
@@ -1160,12 +1162,14 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           ::تعطلات �
 ###setting-zero-is-special
 
 
+STR_CONFIG_SETTING_RECESSIONS                                   :حالات الركود: {STRING}
 
 
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :موقف مجلس المدينة من إعادة هيكلة المنطقة: {STRING}
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :حد ارتفاع الخريطة:{STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :اضبط أقصى ارتفاع لتضاريس الخريطة. باستخدام "(أوتوماتيك)" ، سيتم اختيار قيمة جيدة بعد إنشاء التضاريس
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح بتحريك الأرض تحت المباني, الطرق, الخ : {STRING}
@@ -1267,6 +1271,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :عند التم
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {STRING}
 
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} ثانية
 
 ###setting-zero-is-special
 
@@ -1936,6 +1941,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جد�
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}هل أنت متأكد أنك تريد طرد اللاعب '{STRING}'؟
 
 
 STR_NETWORK_SPECTATORS                                          :المشاهدين
@@ -2047,6 +2053,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} ضع ع
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح الكل
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}بحث المواقع الخارجية
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} محتوى البحث غير متوفر في في خدمة محتوى OpenTTD على مواقع الويب غير التابعة لـ OpenTTD
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}مُرَشِح:
 STR_CONTENT_OPEN_URL                                            :{BLACK} زيارة الموقع
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}قم بزيارة الموقع لهذا المحتوى
@@ -2780,6 +2787,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}ملفات
 STR_NEWGRF_BROKEN                                               :{WHITE}حركات NewGFR '{0:STRING}'قد تتسبب في اخطاء او توقف للعبة
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}غير حالة العربات المكهربة ل'{1:ENGINE}' عندما لا تكون داخل ورشة الصيانة.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما لا تكون داخل المستودع
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}غيرت حمولة السيارة ل '{1:ENGINE}' عندما لا تكون داخل مخزن أو تحت التجديد
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار '{VEHICLE}' المملوك ل'{COMPANY}' لدية طول غير مسرح . غالبا نتج عن مشكلة في NewGRF. اللعبة قد تتوقف او تتعطل .
 
 STR_NEWGRF_BUGGY                                                :{WHITE}الرسوميات الجديدة '{0:STRING}' تعطي معلومات غير صحيحة.
@@ -3806,6 +3814,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاش
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}إعدادات الذكاء الصناعي
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}مخطوطت اللعبة الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
 STR_AI_CONFIG_NONE                                              :(لا شيء)

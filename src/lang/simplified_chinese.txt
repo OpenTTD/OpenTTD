@@ -2257,6 +2257,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景�
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}服务器版本: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}该服IP: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}邀请码：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}开始日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}当前日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}游戏脚本：{WHITE}{STRING} (v{NUM})
@@ -2673,6 +2674,7 @@ STR_STATION_CLASS_WAYP                                          :路标
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号灯
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}选择是否显示高级信号灯类型
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通过信号灯（悬臂）{}是最基本的信号灯，只允许一列车进入该信号灯以后的区间
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号灯（悬臂）{}在下一轨道区间上至少有一个出口信号灯是绿色时此信号亮绿灯,否则亮红灯
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号灯（悬臂）{}信号显示条件与通过信号灯相同,但是它的状态可以触发入口及复合信号灯

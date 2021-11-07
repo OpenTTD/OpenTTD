@@ -2258,6 +2258,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landsch
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Spielfeldgröße: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverversion: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradresse: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Einladungscode: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuelles Datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spielskript: {WHITE}{STRING} (v{NUM})
@@ -2674,6 +2675,7 @@ STR_STATION_CLASS_WAYP                                          :Wegpunkte
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalauswahl
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Das Zeigen erweiterter Signaltypen umschalten
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blocksignal (Formsignal){}Dies ist der einfachste Signaltyp. Bei Verwendung dieses Signaltyps darf sich immer nur ein Zug im Signalabschnitt aufhalten
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im nächsten Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes „frei“ zu melden
