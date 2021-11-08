@@ -639,7 +639,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetQuarterlyCompanyValue():      -1
   Quarter: 0
     GetQuarterlyIncome():            0
-    GetQuarterlyExpenses():          -210
+    GetQuarterlyExpenses():          0
     GetQuarterlyCargoDelivered():    0
     GetQuarterlyPerformanceRating(): -1
     GetQuarterlyCompanyValue():      1
