@@ -1739,6 +1739,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Taispeáin nuac
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Timpistí / tubaistí: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Taispeáin nuachtán nuair a thiteann timpistí nó tubaistí amach
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Faisnéis cuideachta: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Taispeáin nuachtán nuair a thosaíonn cuideachta nua, nó nuair atá cuideachta i mbaol féimheachta
 

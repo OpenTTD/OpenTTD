@@ -1599,6 +1599,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :แสดงข
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :ภัยพิบัติ / อุบัติเหตุ: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :แสดงข่าวเกี่ยวกับภัยพิบัติและอุบัติเหตุ
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :ข้อมูลข่าวสารของบริษัท: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :แสดงข่าวเมื่อมีบริษัทเปิดใหม่หรือบริษัทใกล้ล้มละลาย
 

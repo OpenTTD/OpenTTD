@@ -1938,6 +1938,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikazuje novin
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Udesi/nepogode: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikazuje novinske naslove kada se dese nezgode ili katastrofe
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci o preduzeću: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikazuje novinske naslove kada se otvori nova kompanija, ili kada postojeća rizikuje bankrot
 

@@ -1846,6 +1846,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Seall pàipear-
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tubaistean / dunaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Seall pàipear-naidheachd nuair a thachras tubaist no dunaidh
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fiosrachadh na companaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Seall pàipear-naidheachd nuair thèid companaidh ùr a stèidheachadh no nuair a bhios companaidh fo chunnart brisidh
 

@@ -1797,6 +1797,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikaz časopis
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreče / katastrofe: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikaži novice ko se zgodi nesreča
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacije o podjetju: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikaz časopisa, ko se ustanovi novo podjetje ali ko se pripravlja na bankrot
 

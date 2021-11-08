@@ -1941,6 +1941,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rodyti naujienr
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Avarijos / nelaimės: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rodyti naujienraštį atsitikus incidentui ar katastrofai
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompanijos informacija: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rodyti naujienraštį įsikūrus naujai kompanijai (arba esamai susidūrus su sunkumais)
 

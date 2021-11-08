@@ -1749,6 +1749,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra un giorn
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Incidenti / disastri: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra un giornale quando si verificano incidenti o disastri
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informazioni sulla compagnia: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra un giornale quando una compagnia viene lanciata, o quando rischia il fallimento
 

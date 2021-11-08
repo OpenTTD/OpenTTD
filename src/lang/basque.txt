@@ -1595,6 +1595,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Lehenengo garra
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Istripuak / hondamendiak: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien informazioa: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}

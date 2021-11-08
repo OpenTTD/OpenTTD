@@ -1850,6 +1850,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Παρουσί�
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Προβάλλει εφημερίδα όταν συμβαίνουν ατυχήματα ή καταστροφές
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Προβάλλει εφημερίδα όταν αρχίζει νέα εταιρεία ή όταν οι εταιρίες ρισκάρουν χρεωκοπία
 

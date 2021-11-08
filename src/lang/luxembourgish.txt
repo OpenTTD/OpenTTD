@@ -1743,6 +1743,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Weis d'Zeitung 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidenter / Katastrophen: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Weis d'Zeitung wann Accidenter oder Katastrophe geschéien
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmeninformatiounen: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Weis d'Zeitung wann eng nei Firma opgeet, oder wann ee riskéiert Bankrott ze goen
 

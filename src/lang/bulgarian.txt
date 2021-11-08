@@ -1631,6 +1631,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показва�
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Инциденти / бедствия: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показване на вестник при катастрофи или бедствия
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация за компанията: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показване на вестник когато стартира нова компания, или когато компании са запплашени от фалит
 

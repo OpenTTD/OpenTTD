@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Unua veturilo a
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Akcidentoj / katastrofoj: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompaniaj informoj: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Malfermiĝo de industrioj: {STRING}

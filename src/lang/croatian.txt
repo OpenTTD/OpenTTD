@@ -1775,6 +1775,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikaži novost
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreće / katastrofe: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikaži novine kod nesreća ili katastrofa
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci vezani za tvrtku: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikaži novosti kada se pojavi nova tvrtka ili kada tvrtke riskiraju bankrot
 

@@ -1582,6 +1582,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :புதிய
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :விபத்துகள் / பேரழிவுகள்: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :விபத்துகள் அல்லது பேரழிவுகள் நிகழும்போது செய்தித்தாள் ஒன்றினைக் காட்டு
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :நிறுவனத்தின் விவரம்: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :ஒரு புதிய நிறுவனம் தொடங்கும் போது அல்லது நிறுவனங்கள் திவாலாகும் அபாயத்தில் இருக்கும்போது ஒரு செய்தித்தாளைக் காண்பி
 

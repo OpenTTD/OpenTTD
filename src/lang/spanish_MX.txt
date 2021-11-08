@@ -1744,6 +1744,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar noticia
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes y desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar noticia cuando ocurra un accidente o un desastre
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información de la empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar noticia cuando una nueva empresa sea creada o cuando alguna empresa esté en peligro de quiebra
 

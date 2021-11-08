@@ -1807,6 +1807,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Újság megjele
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Balesetek / természeti csapások: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Újság megjelenítése balesetek vagy katasztrófák bekövetkezésekor
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Vállalati információk: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Újság megjelenítése amikor egy új cég alapul vagy csődközelbe kerül
 

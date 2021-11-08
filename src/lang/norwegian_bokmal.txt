@@ -1746,6 +1746,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Vise nyhetsoppd
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ulykker / katastrofer: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vise nyhetsoppdatering når ulykker eller katastrofer inntreffer
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmainformasjon: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vise nyhetsoppdatering når nye selskaper starter opp, eller når selskaper er konkurstruet
 

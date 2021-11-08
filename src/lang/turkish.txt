@@ -1744,6 +1744,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rakibe ait yeni
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kazalar / felaketler: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Kazalar veya felaketler meydana geldiğinde gazete haberi olarak göster
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Şirket bilgisi: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Yeni bir şirket oyuna başladığında veya şirketler iflas etme riski taşıdığında gazete haberi olarak göster
 

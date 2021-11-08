@@ -1676,6 +1676,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Amosa un xornal
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Amosa un xornal cando un accidente ou desastre ocurre
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información da compañía: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Amosa un xornal cando unha nova compañía é creada, ou cando unha compañía está en risco de bancarrota
 

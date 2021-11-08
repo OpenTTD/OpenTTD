@@ -1871,6 +1871,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показат�
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Нещасні випадки / стихійні лиха: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показати газету при аварії або катастрофі
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Інформація щодо компанії: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показати газету коли відкривається нова компанія, або коли компанії ризикують збанкрутувати
 

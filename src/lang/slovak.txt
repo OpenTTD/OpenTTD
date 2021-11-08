@@ -1811,6 +1811,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Zobrazovať spr
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Havárie / Katastrofy: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Zobrazovať správu keď sa vyskytne dopravná nehoda alebo katastrofa
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informácie o spoločnosti: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zobrazovať správu keď vznikla nová spoločnosť alebo keď je spoločnosť v riziku bankrotu
 

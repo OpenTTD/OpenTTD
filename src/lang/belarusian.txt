@@ -1982,6 +1982,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Паказва�
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Здарэньні й катастрофы: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Паказваць ґазэту, калі здараецца аварыя ці катастрофа
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Інфармацыя аб Кампаніі: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Паказваць ґазэту, калі новая кампанія распачынае дзейнасьць або існуючая кампанія рызыкуе банкруцтвам
 

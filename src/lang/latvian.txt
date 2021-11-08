@@ -1745,6 +1745,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rādīt avīzi 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rādīt avīzi, kad notiek nelaimes gadījumi vai katastrofas
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rādīt avīzi kad darbību sāk jauns uzņēmums, vai kad uzņēmumi riskē bankrotēt
 

@@ -1744,6 +1744,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra les not�
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra un diari quan passin accidents i desastres
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de la companyia: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra les notícies de companyies noves que es creen i de companyies en risc de fer fallida
 

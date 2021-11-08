@@ -1743,6 +1743,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afișează un z
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidente / dezastre: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afișează un ziar când există un accident sau un dezastru natural
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informaţii despre companie: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afișează un ziar când o nouă companie este înființată, sau când o companie este pe cale de a intra în faliment
 

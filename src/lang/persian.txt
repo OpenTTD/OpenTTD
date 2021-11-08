@@ -1460,6 +1460,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :رسیدن او
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حوادث / بلایا: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :اطلاعات شرکت: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :بازگشایی صنایع: {STRING}

@@ -1572,6 +1572,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Birta dagblöð
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Slys / hamfarir: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Birta dagblöð þegar slys eða hörmungar gerast
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fyrirtækisupplýsingar: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Birta dagblöð þegar nýtt fyrirtæki byrjar, eða þegar fyrirtæki eru í hættu á gjaldþroti
 

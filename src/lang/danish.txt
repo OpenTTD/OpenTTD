@@ -1743,6 +1743,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Vis en avis nå
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Uheld / katastrofer: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vis en avis når ulykker eller katastrofer forekommer
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Selskabsinformation: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vis en avis når nye selskaber starter, eller når selskaber er i risiko for at gå konkurs
 

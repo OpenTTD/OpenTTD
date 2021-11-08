@@ -1894,6 +1894,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показыв�
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Аварии и катастрофы: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показывать новости об авариях и катастрофах
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о компании: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показывать новости об основании и риске банкротства транспортных компаний
 

@@ -1573,6 +1573,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Vís eitt tíð
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vanlukkur/ Ólukkur: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vís eitt tíðindablað tá vanlukkur ella ólukkur koma fyri
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fyritøku kunning: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vís eitt tíðindablað tá ein nýggj fyritøka byrjar, ella tá fyritøkur eru í vanda fyri at fara á húsagang
 

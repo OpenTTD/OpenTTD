@@ -1035,6 +1035,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Пристиг�
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Несреќи / хаварии: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информации за компанијата: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Отворање на индустрии: {STRING}

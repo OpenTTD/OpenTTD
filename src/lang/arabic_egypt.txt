@@ -360,6 +360,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}بناء
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}بناء المدن
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}بناء المصانع
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}بناء الطرق
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}بناء الترام
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}زراعة اشجار
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}وضع علامة
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}وضع جسم
@@ -758,6 +759,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}عرض �
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}بدل عرض خريطة التضاريس
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}عدم عرض ممتلكات اي شركة على الخارطة
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}عرض جميع املاك الشركة على الخريطة
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}عدم عرض أي بضائع على الخريطة
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}اظهر اخر رسالة / تقرير
@@ -923,7 +925,7 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :(HKD) دولا�
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :القيادة على اليسار
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :القيادة على اليمين
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}اسماء المدن
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}اسماء المدن:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}اختيار طريقة عرض اسماء المدن
 
 ###length 21
@@ -1171,6 +1173,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :موقف مجل
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :حد ارتفاع الخريطة:{STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :اضبط أقصى ارتفاع لتضاريس الخريطة. باستخدام "(أوتوماتيك)" ، سيتم اختيار قيمة جيدة بعد إنشاء التضاريس
 ###setting-zero-is-special
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}لا يمكنك تعيين حد ارتفاع الخريطة لهذه القيمة. يوجد جبل واحد على الأقل أعلى على الخريطة
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح بتحريك الأرض تحت المباني, الطرق, الخ : {STRING}
 
@@ -1194,6 +1197,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :منع القط
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :السماح بربط محطتين غير متجاورتين : {STRING}
 
 STR_CONFIG_SETTING_INFLATION                                    :التضخم: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :تمكين التضخم في الاقتصاد ، حيث ترتفع التكاليف بشكل أسرع قليلاً من المدفوعات
 
 
 
@@ -1222,16 +1226,19 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :النهاية 
 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :حرك الشاشة عندما تكون المؤشر على الحافة: {STRING}
 ###length 4
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :غير مفعل
 
 STR_CONFIG_SETTING_BRIBE                                        :السماح برشوة السلطات االمحليه: {STRING}
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :السماح بشراء حقوق النقل الحصري: {STRING}
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :السماح بتمويل المباني: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :السماح للشركات بإعطاء الأموال للمدن لتمويل المنازل الجديدة
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :السماح بتمويل تعمير الطرق المحلية: {STRING}
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :السماح بتحويل المال للشركات الأخرى: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :السماح بتحويل الأموال بين الشركات في وضع اللعب الجماعي
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {STRING}
 
@@ -1297,7 +1304,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :إختر مقد
 
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :تحكم على اي ارتفاع يبدأ نزول الثلج في المناطق القطبية,تؤثر الثلوج على مستوى تطور القطاع الصناعي ونمو المدن
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :تحكم على اي ارتفاع يبدأ نزول الثلج في المناطق القطبية,تؤثر الثلوج على مستوى تطور القطاع الصناعي ونمو المدن. لا يمكن تعديله إلا عبر معدل السيناريو أو يتم حسابه بطريقة أخرى عبر "تغطية الجليد"
 
 
 
@@ -1380,6 +1387,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :الأوامر
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :للتحكم
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخدام
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :تغلق النافذة عن طريق الطغط على الزر الأيمن في الماوس داخل النافذة. يعطل الملحوظة عند الطغط على الزر الأيمن في الماوس!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :حفظ تلقائي : {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :اختر الوقت بين كل عملية حفظ اتوماتيكية
@@ -1402,6 +1410,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :كل تصرف
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام المجموعات في قائمة العربات : {STRING}
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :تفعيل مؤشر التحميل: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :حدد ما إذا كانت مؤشرات التحميل معروضة فوق تحميل المركبات أو تفريغها
 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :عرض جدولة الأعمال بالمهام بدلا من الأيام: {STRING}
 
@@ -1449,6 +1458,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :مؤثرات: {
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :شغل مؤثرات صوتية في المناظر و المصانع و المدن
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :الحد الأقصى لعدد القطارات التي يمكن أن تمتلكها الشركة
 
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل شركة: {STRING}
 
@@ -1489,6 +1499,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :وصول اول
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :الحوادث/الأزمات: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :معلومات الشركة: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :تشغيل مصنع جديد: {STRING}
@@ -1524,6 +1535,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :ملخص
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار الملونة تظهر في: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :السنة التي تُطبع فيها إعلانات الجريدة بالألوان. قبل هذا العام ، يستخدم اللون أسود / أبيض
 STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
 
 ###setting-zero-is-special
@@ -1542,7 +1554,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة اس
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :الدوران خلال الاشارات: {STRING}
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل واضح
 
 ###length 2
 
@@ -1556,6 +1568,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :السماح للمدن ببناء طرق: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :يسمح للمدن ببناء تقاطعات متعددة: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :تمكين هذا الإعداد يسمح للمدن ببناء تقاطعات متعددة
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :السماح للمدن بالتحكم بضجيج المطارات: {STRING}
 
@@ -1614,6 +1627,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :وحدات ال
 ###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :(متري (كم / ساعة
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :وحدات الطاقة في السيارة: {STRING}
 ###length 3
 
 ###length 3
@@ -1677,6 +1691,7 @@ STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :مجهول
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... نسبة الضغط '{STRING}' غير صحيحة
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... لم يتم العثور على GPU متوافق. تم تعطيل تسريع الأجهزة
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1877,6 +1892,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}الت�
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}كلمت السر محمية!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}الخادم غير موجود
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}الخادم ممتلئ
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}الخادم (سرڤر) قديم جدًا
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}النسخة غير متطابقة
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER} عدم توافق NewGFR
 
@@ -1932,12 +1948,15 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشر
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :قائمة العملاء
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}اللاعبون عبر الإنترنت
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جديدة)
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}عامة
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 
@@ -1980,7 +1999,7 @@ STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}لم ي�
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}فشل تحديث البيانات
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}انقطع الاتصال بلعبة الشبكة
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}لايمكن تحميل اللعبة المخزنة
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}لايمكن بدء الخادم
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}لايمكن بدء الخادم (سرڤر)
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}حدث خطأ في البروتوكول و انقطع الاتصال
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}لم يتم تحديد اسم اللاعب الخاص بك. يمكنك تحديد الاسم في الجزء العلوي من نافذة العب الجماعي
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}نسخة اللاعب غير مطابقة لنسخة الخادم
@@ -2100,7 +2119,7 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}انته
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} من {BYTES} {NUM} %
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}لم يتم الربط مع خادم المحتوى
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}لم يتم الربط مع خادم (سرڤر) المحتوى
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}فشل التحميل...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... لا يمكن الكتابة على الملف
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}لم يتمكن من فك ضغط الملف المحمل
@@ -2110,6 +2129,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}تحتا
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}نعم, حمل الرسومات
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}لا, اغلق اللعبة
 
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}الخروج من OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}خيارات الشفافية
@@ -2349,6 +2369,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ضع ش�
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}زراعة اشجار عشوائيا
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}زراعة اشجار عشوائيا في الأرض
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :زراعة شجرات منفصلة بالسحب فوق الارض
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}غابة
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}بناء المسطحات الأرضية
@@ -2399,7 +2420,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK} عشو�
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}مول بناء مصنع جديد
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}اختر المصنع المناسب من القائمة
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :الكثير من المصانع
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}إنشاء المصانع العشوائية
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}غطي الخريطة عشوائيا بالمصانع
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}التكلفة: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK} الاحتمالية
@@ -2770,6 +2791,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}انت 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}لا يمكن اضافة الملف: نسخة سابقة منه مضافة
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}الملف المطابق غير موجود (ملف متوافق من NewGRFحمل)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}لا يمكن إضافة ملف: تم الوصول إلى الحد الأقصى المسموح به لملف NewGRF
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}تم تحميل ملف GFR مطابق بدلا من المفقود
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}تم تعطيل ملف GRF المفقود
@@ -2895,16 +2917,17 @@ STR_GOALS_SPECTATOR                                             :الأهداف 
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :اسئله
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :معلومات
-STR_GOAL_QUESTION_CAPTION_WARNING                               :تحذير
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :خطا
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}اسئله
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}معلومات
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}تحذير
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}خطا
 
 # Goal Question button list
 ###length 18
 STR_GOAL_QUESTION_BUTTON_YES                                    :نعم
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :إعادة المحاولة
 STR_GOAL_QUESTION_BUTTON_RESTART                                :إعادة تشغيل
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :استسلام
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}العروض
@@ -3506,6 +3529,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترا
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}تغيير نوع الفاصل الزمني للصيانة
 STR_VEHICLE_DETAILS_DAYS                                        :الأيام
 
 ###length VEHICLE_TYPES
@@ -3810,7 +3834,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض �
 
 STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل{} هذه اضافة غبية ولن تفعل شيئا لك{} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط للخادم
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط للخادم (سرڤر)
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}إعدادات الذكاء الصناعي
@@ -4267,6 +4291,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}لا ي�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}لايمكن ايقاف امر المشاركة بالاوامر ...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}لا يمكن نسخ قائمة الأوامر
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}بعيد جدا من محطة/علامة الوصول السابقة
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... الطائرات ليس لها مدى كاف
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}لا يمكن جدولة العربة ...

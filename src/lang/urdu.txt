@@ -1384,6 +1384,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :مقابل کے
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حادثے / تباہیاں: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی معلومات: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
