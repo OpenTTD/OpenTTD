@@ -1744,6 +1744,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afficher un jou
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afficher un journal quand des accidents ou des catastrophes se produisent
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Accidents de véhicules d'un concurrent{NBSP}: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Afficher un journal au sujet des véhicules accidentés des concurrents
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afficher un journal quand une nouvelle compagnie débute, ou quand des compagnies risquent la banqueroute
