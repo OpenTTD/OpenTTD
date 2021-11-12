@@ -84,6 +84,9 @@
 #include "town_kdtree.h"
 #include "viewport_sprite_sorter.h"
 #include "bridge_map.h"
+#include "tunnel_map.h"
+#include "tunnelbridge.h"
+#include "tunnelbridge_map.h"
 #include "company_base.h"
 #include "command_func.h"
 #include "network/network_func.h"
@@ -92,6 +95,7 @@
 #include <forward_list>
 #include <map>
 #include <stack>
+#include <unordered_set>
 
 #include "table/strings.h"
 #include "table/string_colours.h"
@@ -1100,9 +1104,19 @@ static void DrawTileSelection(const TileInfo *ti)
 	/* Inside the inner area? */
 	if (IsInsideBS(ti->x, _thd.pos.x, _thd.size.x) &&
 			IsInsideBS(ti->y, _thd.pos.y, _thd.size.y)) {
-draw_inner:
+	draw_inner:
+
+		/* Handle special highlighting cases */
+		auto it = _thd.special_selection_tiles.find(ti->tile);
+		const SpecialTileHighLightInfo special_hl = (it != _thd.special_selection_tiles.end() ? it->second : SPECIAL_HL_INVALID);
+		if (special_hl == SpecialTileHighLightInfo::SPECIAL_HL_IGNORE) return;
+		if (special_hl == SpecialTileHighLightInfo::SPECIAL_HL_DRAW_RECT) {
+			DrawTileSelectionRect(ti, PAL_NONE);
+			return;
+		}
+
 		if (_thd.drawstyle & HT_RECT) {
-			if (!is_redsq) DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
+			if (!is_redsq ) DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
 		} else if (_thd.drawstyle & HT_POINT) {
 			/* Figure out the Z coordinate for the single dot. */
 			int z = 0;
@@ -2535,6 +2549,8 @@ void UpdateTileSelection()
 	int y1;
 
 	if (_thd.freeze) return;
+
+	_thd.special_selection_tiles.clear();
 
 	HighLightStyle new_drawstyle = HT_NONE;
 	bool new_diagonal = false;

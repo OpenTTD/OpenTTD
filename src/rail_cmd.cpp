@@ -574,6 +574,13 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		default: {
+			/* Just to get clearer error messages */
+			if (GetTileType(tile) == MP_TUNNELBRIDGE || GetTileType(tile) == MP_STATION)
+			{
+				CommandCost ret = CheckTileOwnership(tile);
+				if (ret.Failed()) return ret;
+			}
+
 			/* Will there be flat water on the lower halftile? */
 			bool water_ground = IsTileType(tile, MP_WATER) && IsSlopeWithOneCornerRaised(tileh);
 
@@ -870,6 +877,18 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 	return CommandCost();
 }
 
+static std::pair<TileIndex, Trackdir> getTileAndDirWithOffset(TileIndex start_tile, Trackdir start_trackdir, int offset)
+{
+	TileIndex tile = start_tile;
+	Trackdir trackdir = start_trackdir;
+	for (int i = 0; i < offset; ++i)
+	{
+		tile += ToTileIndexDiff(_trackdelta[trackdir]);
+		trackdir = NextTrackdir(trackdir);
+	}
+	return { tile, trackdir };
+}
+
 /**
  * Build or remove a stretch of railroad tracks.
  * @param tile start tile of drag
@@ -884,47 +903,76 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  * @param text unused
  * @return the cost of this operation or an error
  */
-static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+static CommandCost CmdRailTrackHelper(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-	Track track = Extract<Track, 6, 3>(p2);
-	bool remove = HasBit(p2, 9);
-	bool auto_remove_signals = HasBit(p2, 11);
-	RailType railtype = Extract<RailType, 0, 6>(p2);
+	const Track track = Extract<Track, 6, 3>(p2);
+	const bool remove = HasBit(p2, 9);
+	const bool is_ai = HasBit(p2, 10);
+	const bool auto_remove_signals = HasBit(p2, 11);
+	const RailType railtype = Extract<RailType, 0, 6>(p2);
 
 	if ((!remove && !ValParamRailtype(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;
-	TileIndex end_tile = p1;
-	Trackdir trackdir = TrackToTrackdir(track);
+	const TileIndex end_tile = p1;
+	Trackdir start_trackdir = TrackToTrackdir(track);
 
-	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
+	CommandCost ret = ValidateAutoDrag(&start_trackdir, start_tile, end_tile);
 	if (ret.Failed()) return ret;
 
+	const int drag_length = DistanceManhattan(start_tile, end_tile) + 1;
 	bool had_success = false;
 	CommandCost last_error = CMD_ERROR;
-	for (;;) {
-		CommandCost ret = DoCommand(tile, remove ? 0 : railtype, TrackdirToTrack(trackdir) | (auto_remove_signals << 3), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
 
+	for (int drag_step = 0; drag_step < drag_length; ++drag_step)
+	{
+		const auto [tile, trackdir] = getTileAndDirWithOffset(start_tile, start_trackdir, drag_step);
+		if (!remove)
+		{
+			const bool is_compatible = (IsCompatibleRail(GetRailType(tile), railtype) && IsTileOwner(tile, _current_company));
+
+			/* Allow the user to start dragging from a depot tile */
+			if (drag_step == 0 && IsRailDepotTile(tile) && TrackdirToExitdir(trackdir) == GetRailDepotDirection(tile) && is_compatible) {
+				continue;
+			}
+
+			/* Allow the user to drag through / start dragging in station tiles */
+			if (IsRailStationTile(tile) && GetRailStationTrack(tile) == DiagDirToDiagTrack(TrackdirToExitdir(trackdir)) && is_compatible) {
+				continue;
+			}
+
+			if (IsTileType(tile, TileType::MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(tile) == TransportType::TRANSPORT_RAIL && is_compatible) {
+				/* Allow the user to drag over a bridge or through a tunnel */
+				Trackdir tunnel_bridge_trackdir = DiagDirToDiagTrackdir(GetTunnelBridgeDirection(tile));
+				if (trackdir == tunnel_bridge_trackdir) { // We're entering the tunnel/bridge...
+					drag_step += GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile)) + 1;
+					continue;
+				}
+				else { // We've bumped into a tunnel or bridge tile that we can't enter...
+					/* Allow the user to start dragging on a tunnel/bridge ramp, as long as it's an exit ramp */
+					if (drag_step == 0 && DiagDirToDiagTrackdir(TrackdirToExitdir(trackdir)) == ReverseTrackdir(tunnel_bridge_trackdir)) {
+						continue;
+					}
+				}
+			}
+		}
+
+		/* Execute the command */
+		CommandCost ret = DoCommand(tile, remove ? 0 : railtype, TrackdirToTrack(trackdir) | (auto_remove_signals << 3), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
 		if (ret.Failed()) {
 			last_error = ret;
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
-				if (HasBit(p2, 10)) return last_error;
+				if (is_ai) return last_error;
 				break;
 			}
 
 			/* Ownership errors are more important. */
 			if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
-		} else {
+		}
+		else {
 			had_success = true;
 			total_cost.AddCost(ret);
 		}
-
-		if (tile == end_tile) break;
-
-		tile += ToTileIndexDiff(_trackdelta[trackdir]);
-
-		/* toggle railbit for the non-diagonal tracks */
-		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 	}
 
 	if (had_success) return total_cost;
