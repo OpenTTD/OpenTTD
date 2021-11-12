@@ -4102,7 +4102,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}航空�
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}赤信号を無視して進行させます
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}運転方向を反転させます
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を反転します
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}注文先の中央のメインビュー。Ctrlキーを押しながらクリックすると、注文先の場所に新しいビューポートが開きます
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}移動先の中央のメインビュー。Ctrlキーを押しながらクリックすると移動先の新しいビューポートが開きます
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}現在とは異なる種類の貨物を運送するように列車を改造します
