@@ -14,6 +14,7 @@
 #include "company_func.h"
 #include "date_func.h"
 #include "saveload/saveload.h"
+#include "vehicle_base.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
 #include "string_func.h"
@@ -106,6 +107,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	if (p1 == _cur_year) return _cur_year;
 
 	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
+	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
 	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
 	EnginesMonthlyLoop();
