@@ -683,6 +683,27 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 	return nullptr;
 }
 
+/**
+ * Hide a stopped and visible road vehicle in an extended depot.
+ * @param v The road vehicle
+ * @pre v->IsStoppedInDepot() && IsExtendedRoadDepotTile(v->tile)
+ */
+static void LiftRoadVehicleInDepot(RoadVehicle *v)
+{
+	assert(v->IsStoppedInDepot());
+	assert(IsExtendedRoadDepotTile(v->tile));
+	for (RoadVehicle *rv = v; rv != nullptr; rv = rv->Next()) {
+		rv->vehstatus |= VS_HIDDEN;
+		rv->tile = v->tile;
+		rv->direction = v->direction;
+		rv->x_pos = v->x_pos;
+		rv->y_pos = v->y_pos;
+		rv->UpdatePosition();
+		rv->Vehicle::UpdateViewport(true);
+	}
+	UpdateExtendedDepotReservation(v, false);
+}
+
 static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction dir, bool update_blocked_ctr = true)
 {
 	RoadVehFindData rvf;
@@ -715,6 +736,15 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 	if (update_blocked_ctr && ++front->blocked_ctr > 1480) return nullptr;
 
 	rvf.best = rvf.best->First();
+
+	/* If the best vehicle is a road vehicle stopped in an extended depot,
+	 * it is in the way of the moving vehicle. Hide the stopped vehicle
+	 * inside the depot. */
+	if (rvf.best->IsStoppedInDepot()) {
+		assert(IsExtendedRoadDepotTile(rvf.best->tile));
+		LiftRoadVehicleInDepot(RoadVehicle::From(rvf.best));
+		return nullptr;
+	}
 
 	return RoadVehicle::From(rvf.best);
 }
