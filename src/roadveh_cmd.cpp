@@ -720,6 +720,8 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 
 	if (update_blocked_ctr && ++front->blocked_ctr > 1480) return nullptr;
 
+	rvf.best = rvf.best->First();
+
 	return RoadVehicle::From(rvf.best);
 }
 
@@ -1212,7 +1214,8 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 		if (v->IsFrontEngine()) {
 			const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
 			if (u != nullptr) {
-				v->cur_speed = u->First()->cur_speed;
+				assert(u == u->First());
+				v->cur_speed = u->cur_speed;
 				return false;
 			}
 		}
@@ -1330,7 +1333,8 @@ again:
 		if (v->IsFrontEngine()) {
 			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != nullptr) {
-				v->cur_speed = u->First()->cur_speed;
+				assert(u == u->First());
+				v->cur_speed = u->cur_speed;
 				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
 				v->path.tile.push_front(tile);
 				v->path.td.push_front(dir);
@@ -1446,7 +1450,8 @@ again:
 		if (v->IsFrontEngine()) {
 			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != nullptr) {
-				v->cur_speed = u->First()->cur_speed;
+				assert(u == u->First());
+				v->cur_speed = u->cur_speed;
 				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
 				v->path.tile.push_front(v->tile);
 				v->path.td.push_front(dir);
@@ -1496,7 +1501,7 @@ again:
 		RoadVehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 
 		if (u != nullptr) {
-			u = u->First();
+			assert(u == u->First());
 			/* There is a vehicle in front overtake it if possible */
 			if (v->overtaking == 0) RoadVehCheckOvertake(v, u);
 			if (v->overtaking == 0) v->cur_speed = u->cur_speed;
