@@ -11,9 +11,11 @@
 #define TUNNELBRIDGE_CMD_H
 
 #include "command_type.h"
+#include "transport_type.h"
+#include "bridge.h"
 
-CommandProc CmdBuildBridge;
-CommandProc CmdBuildTunnel;
+CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, byte road_rail_type);
+CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportType transport_type, byte road_rail_type);
 
 DEF_CMD_TRAIT(CMD_BUILD_BRIDGE, CmdBuildBridge, CMD_DEITY | CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_TUNNEL, CmdBuildTunnel, CMD_DEITY | CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)

@@ -11,10 +11,11 @@
 #define WATER_CMD_H
 
 #include "command_type.h"
+#include "water_map.h"
 
 CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis);
-CommandProc CmdBuildCanal;
-CommandProc CmdBuildLock;
+CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal);
+CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile);
 
 DEF_CMD_TRAIT(CMD_BUILD_SHIP_DEPOT, CmdBuildShipDepot, CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_CANAL,      CmdBuildCanal,     CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)

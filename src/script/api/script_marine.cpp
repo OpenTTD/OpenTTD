@@ -108,7 +108,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_LOCK>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_BUILD_LOCK>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::BuildCanal(TileIndex tile)
@@ -116,7 +116,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_CANAL>::Do(tile, tile, WATER_CLASS_CANAL, {});
+	return ScriptObject::Command<CMD_BUILD_CANAL>::Do(tile, tile, WATER_CLASS_CANAL, false);
 }
 
 /* static */ bool ScriptMarine::RemoveWaterDepot(TileIndex tile)

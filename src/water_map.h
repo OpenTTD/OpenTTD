@@ -44,7 +44,7 @@ enum WaterTileType {
 };
 
 /** classes of water (for #WATER_TILE_CLEAR water tile type). */
-enum WaterClass {
+enum WaterClass : byte {
 	WATER_CLASS_SEA,     ///< Sea.
 	WATER_CLASS_CANAL,   ///< Canal.
 	WATER_CLASS_RIVER,   ///< River.

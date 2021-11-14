@@ -251,38 +251,31 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 /**
  * Build a Bridge
  * @param flags type of operation
- * @param end_tile end tile
- * @param p1 packed start tile coords (~ dx)
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 7) - bridge type (hi bh)
- * - p2 = (bit  8-13) - rail type or road types.
- * - p2 = (bit 15-16) - transport type.
- * @param text unused
+ * @param tile_end end tile
+ * @param tile_start start tile
+ * @param transport_type transport type.
+ * @param bridge_type bridge type (hi bh)
+ * @param road_rail_type rail type or road types.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex end_tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, byte road_rail_type)
 {
 	CompanyID company = _current_company;
 
 	RailType railtype = INVALID_RAILTYPE;
 	RoadType roadtype = INVALID_ROADTYPE;
 
-	/* unpack parameters */
-	BridgeType bridge_type = GB(p2, 0, 8);
-
-	if (!IsValidTile(p1)) return_cmd_error(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
-
-	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
+	if (!IsValidTile(tile_start)) return_cmd_error(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
 
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtype = Extract<RoadType, 8, 6>(p2);
+			roadtype = (RoadType)road_rail_type;
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = Extract<RailType, 8, 6>(p2);
+			railtype = (RailType)road_rail_type;
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
@@ -293,8 +286,6 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex end_tile, uint32 p1, u
 			/* Airports don't have bridges. */
 			return CMD_ERROR;
 	}
-	TileIndex tile_start = p1;
-	TileIndex tile_end = end_tile;
 
 	if (company == OWNER_DEITY) {
 		if (transport_type != TRANSPORT_ROAD) return CMD_ERROR;
@@ -627,28 +618,25 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex end_tile, uint32 p1, u
  * Build Tunnel.
  * @param flags type of operation
  * @param start_tile start tile of tunnel
- * @param p1 bit 0-5 railtype or roadtype
- *           bit 8-9 transport type
- * @param p2 unused
- * @param text unused
+ * @param transport_type transport type
+ * @param road_rail_type railtype or roadtype
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportType transport_type, byte road_rail_type)
 {
 	CompanyID company = _current_company;
 
-	TransportType transport_type = Extract<TransportType, 8, 2>(p1);
 	RailType railtype = INVALID_RAILTYPE;
 	RoadType roadtype = INVALID_ROADTYPE;
 	_build_tunnel_endtile = 0;
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
-			railtype = Extract<RailType, 0, 6>(p1);
+			railtype = (RailType)road_rail_type;
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_ROAD:
-			roadtype = Extract<RoadType, 0, 6>(p1);
+			roadtype = (RoadType)road_rail_type;
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 

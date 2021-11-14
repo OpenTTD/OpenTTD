@@ -943,7 +943,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		 * If that fails clear the land, and if that fails exit.
 		 * This is to make sure that we can build a road here later. */
 		RoadType rt = GetTownRoadType(t);
-		if (Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X) | (rt << 4), 0, {}).Failed() &&
+		if (Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, tile, (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X, rt, DRD_NONE, 0).Failed() &&
 				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile, 0, 0, {}).Failed()) {
 			return false;
 		}
@@ -1112,7 +1112,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
 	RoadType rt = GetTownRoadType(t);
-	if (Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile, rcmd | (rt << 4), t->index, {}).Succeeded()) {
+	if (Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile, rcmd, rt, DRD_NONE, t->index).Succeeded()) {
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
@@ -1159,7 +1159,7 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 	if (IsTileType(next_tile, MP_RAILWAY) && !_settings_game.economy.allow_town_level_crossings) return false;
 
 	/* If a road tile can be built, the construction is allowed. */
-	return Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, next_tile, rcmd | (rt << 4), t->index, {}).Succeeded();
+	return Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, next_tile, rcmd, rt, DRD_NONE, t->index).Succeeded();
 }
 
 /**
@@ -1227,8 +1227,8 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 
 		/* Can we actually build the bridge? */
 		RoadType rt = GetTownRoadType(t);
-		if (Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, bridge_type | rt << 8 | TRANSPORT_ROAD << 15, {}).Succeeded()) {
-			Command<CMD_BUILD_BRIDGE>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, bridge_type | rt << 8 | TRANSPORT_ROAD << 15, {});
+		if (Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt).Succeeded()) {
+			Command<CMD_BUILD_BRIDGE>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt);
 			_grow_town_result = GROWTH_SUCCEED;
 			return true;
 		}
@@ -1298,8 +1298,8 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 
 	/* Attempt to build the tunnel. Return false if it fails to let the town build a road instead. */
 	RoadType rt = GetTownRoadType(t);
-	if (Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, rt | (TRANSPORT_ROAD << 8), 0, {}).Succeeded()) {
-		Command<CMD_BUILD_TUNNEL>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, rt | (TRANSPORT_ROAD << 8), 0, {});
+	if (Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
+		Command<CMD_BUILD_TUNNEL>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt);
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
@@ -1739,7 +1739,7 @@ static bool GrowTown(Town *t)
 			if (!IsTileType(tile, MP_HOUSE) && IsTileFlat(tile)) {
 				if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile, 0, 0, {}).Succeeded()) {
 					RoadType rt = GetTownRoadType(t);
-					Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO, tile, GenRandomRoadBits() | (rt << 4), t->index, {});
+					Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO, tile, GenRandomRoadBits(), rt, DRD_NONE, t->index);
 					cur_company.Restore();
 					return true;
 				}
