@@ -15,6 +15,7 @@
 #include "rail_type.h"
 #include "road_func.h"
 #include "tile_map.h"
+#include "road_type.h"
 
 
 /** The different types of road tiles. */
@@ -280,18 +281,6 @@ static inline bool HasTownOwnedRoad(TileIndex t)
 {
 	return HasTileRoadType(t, RTT_ROAD) && IsRoadOwner(t, RTT_ROAD, OWNER_TOWN);
 }
-
-/** Which directions are disallowed ? */
-enum DisallowedRoadDirections {
-	DRD_NONE,       ///< None of the directions are disallowed
-	DRD_SOUTHBOUND, ///< All southbound traffic is disallowed
-	DRD_NORTHBOUND, ///< All northbound traffic is disallowed
-	DRD_BOTH,       ///< All directions are disallowed
-	DRD_END,        ///< Sentinel
-};
-DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections)
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<DisallowedRoadDirections> : MakeEnumPropsT<DisallowedRoadDirections, byte, DRD_NONE, DRD_END, DRD_END, 2> {};
 
 /**
  * Gets the disallowed directions

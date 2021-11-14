@@ -411,12 +411,9 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
  * Builds a lock.
  * @param flags type of operation
  * @param tile tile where to place the lock
- * @param p1 unused
- * @param p2 unused
- * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -435,34 +432,31 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
  * Build a piece of canal.
  * @param flags type of operation
  * @param tile end tile of stretch-dragging
- * @param p1 start tile of stretch-dragging
- * @param p2 various bitstuffed data
- *  bits  0-1: waterclass to build. sea and river can only be built in scenario editor
- *  bit     2: Whether to use the Orthogonal (0) or Diagonal (1) iterator.
- * @param text unused
+ * @param start_tile start tile of stretch-dragging
+ * @param wc waterclass to build. sea and river can only be built in scenario editor
+ * @param diagonal Whether to use the Orthogonal (0) or Diagonal (1) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal)
 {
-	WaterClass wc = Extract<WaterClass, 0, 2>(p2);
-	if (p1 >= MapSize() || wc == WATER_CLASS_INVALID) return CMD_ERROR;
+	if (start_tile >= MapSize() || !IsEnumValid(wc)) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
 	if (wc != WATER_CLASS_CANAL && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	/* Outside the editor you can only drag canals, and not areas */
 	if (_game_mode != GM_EDITOR) {
-		TileArea ta(tile, (TileIndex)p1);
+		TileArea ta(tile, start_tile);
 		if (ta.w != 1 && ta.h != 1) return CMD_ERROR;
 	}
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	std::unique_ptr<TileIterator> iter;
-	if (HasBit(p2, 2)) {
-		iter = std::make_unique<DiagonalTileIterator>(tile, (TileIndex)p1);
+	if (diagonal) {
+		iter = std::make_unique<DiagonalTileIterator>(tile, start_tile);
 	} else {
-		iter = std::make_unique<OrthogonalTileIterator>(tile, (TileIndex)p1);
+		iter = std::make_unique<OrthogonalTileIterator>(tile, start_tile);
 	}
 
 	for (; *iter != INVALID_TILE; ++(*iter)) {

@@ -47,22 +47,10 @@ static void ShowRoadDepotPicker(Window *parent);
 static bool _remove_button_clicked;
 static bool _one_way_button_clicked;
 
-/**
- * Define the values of the RoadFlags
- * @see CmdBuildLongRoad
- */
-enum RoadFlags {
-	RF_NONE             = 0x00,
-	RF_START_HALFROAD_Y = 0x01,    // The start tile in Y-dir should have only a half road
-	RF_END_HALFROAD_Y   = 0x02,    // The end tile in Y-dir should have only a half road
-	RF_DIR_Y            = 0x04,    // The direction is Y-dir
-	RF_DIR_X            = RF_NONE, // Dummy; Dir X is set when RF_DIR_Y is not set
-	RF_START_HALFROAD_X = 0x08,    // The start tile in X-dir should have only a half road
-	RF_END_HALFROAD_X   = 0x10,    // The end tile in X-dir should have only a half road
-};
-DECLARE_ENUM_AS_BIT_SET(RoadFlags)
-
-static RoadFlags _place_road_flag;
+static Axis _place_road_dir;
+static bool _place_road_start_half_x;
+static bool _place_road_start_half_y;
+static bool _place_road_end_half;
 
 static RoadType _cur_roadtype;
 
@@ -124,7 +112,7 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	/* if there is a roadpiece just outside of the station entrance, build a connecting route */
 	if (IsNormalRoadTile(tile)) {
 		if (GetRoadBits(tile, GetRoadTramType(_cur_roadtype)) != ROAD_NONE) {
-			Command<CMD_BUILD_ROAD>::Post(tile, _cur_roadtype << 4 | DiagDirToRoadBits(ReverseDiagDir(direction)), 0, {});
+			Command<CMD_BUILD_ROAD>::Post(tile, DiagDirToRoadBits(ReverseDiagDir(direction)), _cur_roadtype, DRD_NONE, 0);
 		}
 	}
 }
@@ -523,21 +511,21 @@ struct BuildRoadToolbarWindow : Window {
 		_one_way_button_clicked = RoadTypeIsRoad(this->roadtype) ? this->IsWidgetLowered(WID_ROT_ONE_WAY) : false;
 		switch (this->last_started_action) {
 			case WID_ROT_ROAD_X:
-				_place_road_flag = RF_DIR_X;
-				if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
+				_place_road_dir = AXIS_X;
+				_place_road_start_half_x = _tile_fract_coords.x >= 8;
 				VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
 				break;
 
 			case WID_ROT_ROAD_Y:
-				_place_road_flag = RF_DIR_Y;
-				if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
+				_place_road_dir = AXIS_Y;
+				_place_road_start_half_y = _tile_fract_coords.y >= 8;
 				VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
 				break;
 
 			case WID_ROT_AUTOROAD:
-				_place_road_flag = RF_NONE;
-				if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
-				if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
+				_place_road_dir = INVALID_AXIS;
+				_place_road_start_half_x = _tile_fract_coords.x >= 8;
+				_place_road_start_half_y = _tile_fract_coords.y >= 8;
 				VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
 				break;
 
@@ -564,7 +552,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			case WID_ROT_BUILD_TUNNEL:
 				Command<CMD_BUILD_TUNNEL>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRoadTunnel,
-						tile, _cur_roadtype | (TRANSPORT_ROAD << 8), 0, {});
+						tile, TRANSPORT_ROAD, _cur_roadtype);
 				break;
 
 			case WID_ROT_CONVERT_ROAD:
@@ -603,30 +591,26 @@ struct BuildRoadToolbarWindow : Window {
 		 * bits and if needed we set them again. */
 		switch (select_proc) {
 			case DDSP_PLACE_ROAD_X_DIR:
-				_place_road_flag &= ~RF_END_HALFROAD_X;
-				if (pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
+				_place_road_end_half = pt.x & 8;
 				break;
 
 			case DDSP_PLACE_ROAD_Y_DIR:
-				_place_road_flag &= ~RF_END_HALFROAD_Y;
-				if (pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
+				_place_road_end_half = pt.y & 8;
 				break;
 
 			case DDSP_PLACE_AUTOROAD:
-				_place_road_flag &= ~(RF_END_HALFROAD_Y | RF_END_HALFROAD_X);
-				if (pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
-				if (pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
-
 				/* For autoroad we need to update the
 				 * direction of the road */
 				if (_thd.size.x > _thd.size.y || (_thd.size.x == _thd.size.y &&
 						( (_tile_fract_coords.x < _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) < 16) ||
 						(_tile_fract_coords.x > _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) > 16) ))) {
 					/* Set dir = X */
-					_place_road_flag &= ~RF_DIR_Y;
+					_place_road_dir = AXIS_X;
+					_place_road_end_half = pt.x & 8;
 				} else {
 					/* Set dir = Y */
-					_place_road_flag |= RF_DIR_Y;
+					_place_road_dir = AXIS_Y;
+					_place_road_end_half = pt.y & 8;
 				}
 
 				break;
@@ -654,25 +638,18 @@ struct BuildRoadToolbarWindow : Window {
 
 				case DDSP_PLACE_ROAD_X_DIR:
 				case DDSP_PLACE_ROAD_Y_DIR:
-				case DDSP_PLACE_AUTOROAD:
-					/* Flag description:
-					 * Use the first three bits (0x07) if dir == Y
-					 * else use the last 2 bits (X dir has
-					 * not the 3rd bit set) */
-
-					/* Even if _cur_roadtype_id is a uint8 we only use 5 bits so
-					 * we could ignore the last 3 bits and reuse them for other
-					 * flags */
-					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
+				case DDSP_PLACE_AUTOROAD: {
+					bool start_half = _place_road_dir == AXIS_Y ? _place_road_start_half_y : _place_road_start_half_y;
 
 					if (_remove_button_clicked) {
 						Command<CMD_REMOVE_LONG_ROAD>::Post(this->rti->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
-								start_tile, end_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 10), {});
+								start_tile, end_tile, _cur_roadtype, _place_road_dir, start_half, _place_road_end_half);
 					} else {
 						Command<CMD_BUILD_LONG_ROAD>::Post(this->rti->strings.err_build_road, CcPlaySound_CONSTRUCTION_OTHER,
-								start_tile, end_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 10), {});
+								start_tile, end_tile, _cur_roadtype, _place_road_dir, _one_way_button_clicked ? DRD_NORTHBOUND : DRD_NONE, start_tile, _place_road_end_half, false);
 					}
 					break;
+				}
 
 				case DDSP_BUILD_BUSSTOP:
 				case DDSP_REMOVE_BUSSTOP:
@@ -699,7 +676,7 @@ struct BuildRoadToolbarWindow : Window {
 					break;
 
 				case DDSP_CONVERT_ROAD:
-					Command<CMD_CONVERT_ROAD>::Post(rti->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype, {});
+					Command<CMD_CONVERT_ROAD>::Post(rti->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype);
 					break;
 			}
 		}
@@ -707,7 +684,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
-		Command<CMD_BUILD_TUNNEL>::Do(DC_AUTO, tile, _cur_roadtype | (TRANSPORT_ROAD << 8), 0, {});
+		Command<CMD_BUILD_TUNNEL>::Do(DC_AUTO, tile, TRANSPORT_ROAD, _cur_roadtype);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 

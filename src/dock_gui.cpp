@@ -196,7 +196,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_LOCK: // Build lock button
-				Command<CMD_BUILD_LOCK>::Post(STR_ERROR_CAN_T_BUILD_LOCKS, CcBuildDocks, tile, 0, 0, {});
+				Command<CMD_BUILD_LOCK>::Post(STR_ERROR_CAN_T_BUILD_LOCKS, CcBuildDocks, tile);
 				break;
 
 			case WID_DT_DEMOLISH: // Demolish aka dynamite button
@@ -234,7 +234,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_BUILD_AQUEDUCT: // Build aqueduct button
-				Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER << 15, {});
+				Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER, 0, 0);
 				break;
 
 			default: NOT_REACHED();
@@ -254,10 +254,10 @@ struct BuildDocksToolbarWindow : Window {
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 				case DDSP_CREATE_WATER:
-					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, (_game_mode == GM_EDITOR && _ctrl_pressed) ? WATER_CLASS_SEA : WATER_CLASS_CANAL, {});
+					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, (_game_mode == GM_EDITOR && _ctrl_pressed) ? WATER_CLASS_SEA : WATER_CLASS_CANAL, false);
 					break;
 				case DDSP_CREATE_RIVER:
-					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER | (_ctrl_pressed ? 1 << 2 : 0), {});
+					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
 					break;
 
 				default: break;

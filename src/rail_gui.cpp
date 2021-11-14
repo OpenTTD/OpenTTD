@@ -648,7 +648,7 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case WID_RAT_BUILD_TUNNEL:
-				Command<CMD_BUILD_TUNNEL>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, {});
+				Command<CMD_BUILD_TUNNEL>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TRANSPORT_RAIL, _cur_railtype);
 				break;
 
 			case WID_RAT_CONVERT_RAIL:
@@ -746,7 +746,7 @@ struct BuildRailToolbarWindow : Window {
 
 	void OnPlacePresize(Point pt, TileIndex tile) override
 	{
-		Command<CMD_BUILD_TUNNEL>::Do(DC_AUTO, tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, {});
+		Command<CMD_BUILD_TUNNEL>::Do(DC_AUTO, tile, TRANSPORT_RAIL, _cur_railtype);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
