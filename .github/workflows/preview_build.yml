@@ -76,7 +76,7 @@ jobs:
         echo "::group::CMake"
         emcmake cmake .. \
           -DHOST_BINARY_DIR=../build-host \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DCMAKE_BUILD_TYPE=Release \
           # EOF
         echo "::endgroup::"
 
