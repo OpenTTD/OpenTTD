@@ -925,7 +925,7 @@ static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag fl
 							affected_vehicles.push_back(v);
 						}
 					}
-					CommandCost ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, 0, track, {});
+					CommandCost ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 					/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */

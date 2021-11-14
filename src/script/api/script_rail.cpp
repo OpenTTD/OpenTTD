@@ -116,7 +116,7 @@
 	EnforcePrecondition(false, ::IsValidTile(end_tile));
 	EnforcePrecondition(false, IsRailTypeAvailable(convert_to));
 
-	return ScriptObject::Command<CMD_CONVERT_RAIL>::Do(start_tile, end_tile, convert_to, {});
+	return ScriptObject::Command<CMD_CONVERT_RAIL>::Do(start_tile, end_tile, (::RailType)convert_to, false);
 }
 
 /* static */ TileIndex ScriptRail::GetRailDepotFrontTile(TileIndex depot)
@@ -253,7 +253,7 @@
 	EnforcePrecondition(false, KillFirstBit((uint)rail_track) == 0);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 
-	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(tile, tile, GetCurrentRailType() | (FindFirstTrack((::TrackBits)rail_track) << 6), {});
+	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(tile, tile, (::RailType)GetCurrentRailType(), FindFirstTrack((::TrackBits)rail_track), false, false);
 }
 
 /* static */ bool ScriptRail::RemoveRailTrack(TileIndex tile, RailTrack rail_track)
@@ -264,7 +264,7 @@
 	EnforcePrecondition(false, GetRailTracks(tile) & rail_track);
 	EnforcePrecondition(false, KillFirstBit((uint)rail_track) == 0);
 
-	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(tile, tile, FindFirstTrack((::TrackBits)rail_track) << 6, {});
+	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(tile, tile, FindFirstTrack((::TrackBits)rail_track));
 }
 
 /* static */ bool ScriptRail::AreTilesConnected(TileIndex from, TileIndex tile, TileIndex to)
@@ -292,21 +292,21 @@
  * Prepare the second parameter for CmdBuildRailroadTrack and CmdRemoveRailroadTrack. The direction
  * depends on all three tiles. Sometimes the third tile needs to be adjusted.
  */
-static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
+static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 {
 	int diag_offset = abs(abs((int)::TileX(*to) - (int)::TileX(tile)) - abs((int)::TileY(*to) - (int)::TileY(tile)));
-	uint32 p2 = 0;
+	Track track = TRACK_BEGIN;
 	if (::TileY(from) == ::TileY(*to)) {
-		p2 |= (TRACK_X << 6);
+		track = TRACK_X;
 		*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 	} else if (::TileX(from) == ::TileX(*to)) {
-		p2 |= (TRACK_Y << 6);
+		track = TRACK_Y;
 		*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 	} else if (::TileY(from) < ::TileY(tile)) {
 		if (::TileX(*to) < ::TileX(tile)) {
-			p2 |= (TRACK_UPPER << 6);
+			track = TRACK_UPPER;
 		} else {
-			p2 |= (TRACK_LEFT << 6);
+			track = TRACK_LEFT;
 		}
 		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -315,9 +315,9 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		}
 	} else if (::TileY(from) > ::TileY(tile)) {
 		if (::TileX(*to) < ::TileX(tile)) {
-			p2 |= (TRACK_RIGHT << 6);
+			track = TRACK_RIGHT;
 		} else {
-			p2 |= (TRACK_LOWER << 6);
+			track = TRACK_LOWER;
 		}
 		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -326,9 +326,9 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		}
 	} else if (::TileX(from) < ::TileX(tile)) {
 		if (::TileY(*to) < ::TileY(tile)) {
-			p2 |= (TRACK_UPPER << 6);
+			track = TRACK_UPPER;
 		} else {
-			p2 |= (TRACK_RIGHT << 6);
+			track = TRACK_RIGHT;
 		}
 		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -337,9 +337,9 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		}
 	} else if (::TileX(from) > ::TileX(tile)) {
 		if (::TileY(*to) < ::TileY(tile)) {
-			p2 |= (TRACK_LEFT << 6);
+			track = TRACK_LEFT;
 		} else {
-			p2 |= (TRACK_LOWER << 6);
+			track = TRACK_LOWER;
 		}
 		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
@@ -347,7 +347,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 		}
 	}
-	return p2;
+	return track;
 }
 
 /* static */ bool ScriptRail::BuildRail(TileIndex from, TileIndex tile, TileIndex to)
@@ -364,8 +364,8 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
-	uint32 p2 = SimulateDrag(from, tile, &to) | 1 << 10 | ScriptRail::GetCurrentRailType();;
-	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(tile, to, p2, {});
+	Track track = SimulateDrag(from, tile, &to);
+	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(tile, to, (::RailType)ScriptRail::GetCurrentRailType(), track, false, true);
 }
 
 /* static */ bool ScriptRail::RemoveRail(TileIndex from, TileIndex tile, TileIndex to)
@@ -381,8 +381,8 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
-	uint32 p2 = SimulateDrag(from, tile, &to);
-	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(tile, to, p2, {});
+	Track track = SimulateDrag(from, tile, &to);
+	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(tile, to, track);
 }
 
 /**
@@ -461,14 +461,12 @@ static bool IsValidSignalType(int signal_type)
 	}
 	EnforcePrecondition(false, track != INVALID_TRACK);
 
-	uint p1 = track;
 	if (signal < SIGNALTYPE_TWOWAY) {
 		if (signal != SIGNALTYPE_PBS && signal != SIGNALTYPE_PBS_ONEWAY) signal_cycles++;
-		p1 |= (signal_cycles << 15);
 	}
-	p1 |= ((signal >= SIGNALTYPE_TWOWAY ? signal ^ SIGNALTYPE_TWOWAY : signal) << 5);
+	::SignalType sig_type = (::SignalType)(signal >= SIGNALTYPE_TWOWAY ? signal ^ SIGNALTYPE_TWOWAY : signal);
 
-	return ScriptObject::Command<CMD_BUILD_SIGNALS>::Do(tile, p1, 0, {});
+	return ScriptObject::Command<CMD_BUILD_SIGNALS>::Do(tile, track, sig_type, ::SIG_ELECTRIC, false, false, false, ::SIGTYPE_NORMAL, ::SIGTYPE_NORMAL, signal_cycles, 0);
 }
 
 /* static */ bool ScriptRail::RemoveSignal(TileIndex tile, TileIndex front)
@@ -487,7 +485,7 @@ static bool IsValidSignalType(int signal_type)
 	}
 	EnforcePrecondition(false, track != INVALID_TRACK);
 
-	return ScriptObject::Command<CMD_REMOVE_SIGNALS>::Do(tile, track, 0, {});
+	return ScriptObject::Command<CMD_REMOVE_SIGNALS>::Do(tile, track);
 }
 
 /* static */ Money ScriptRail::GetBuildCost(RailType railtype, BuildType build_type)

@@ -94,14 +94,14 @@ void CcPlaySound_CONSTRUCTION_RAIL(Commands cmd, const CommandCost &result,TileI
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
 }
 
-static void GenericPlaceRail(TileIndex tile, int cmd)
+static void GenericPlaceRail(TileIndex tile, Track track)
 {
 	if (_remove_button_clicked) {
 		Command<CMD_REMOVE_SINGLE_RAIL>::Post(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
-				tile, _cur_railtype, cmd | (_settings_client.gui.auto_remove_signals << 3), {});
+				tile, track);
 	} else {
 		Command<CMD_BUILD_SINGLE_RAIL>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
-				tile, _cur_railtype, cmd | (_settings_client.gui.auto_remove_signals << 3), {});
+				tile, _cur_railtype, track, _settings_client.gui.auto_remove_signals);
 	}
 }
 
@@ -118,7 +118,7 @@ static void PlaceExtraDepotRail(TileIndex tile, DiagDirection dir, Track track)
 	if (GetRailTileType(tile) == RAIL_TILE_SIGNALS && !_settings_client.gui.auto_remove_signals) return;
 	if ((GetTrackBits(tile) & DiagdirReachesTracks(dir)) == 0) return;
 
-	Command<CMD_BUILD_SINGLE_RAIL>::Post(tile, _cur_railtype, track | (_settings_client.gui.auto_remove_signals << 3), {});
+	Command<CMD_BUILD_SINGLE_RAIL>::Post(tile, _cur_railtype, track, _settings_client.gui.auto_remove_signals);
 }
 
 /** Additional pieces of track to add at the entrance of a depot. */
@@ -240,39 +240,21 @@ static void GenericPlaceSignals(TileIndex tile)
 	Track track = FindFirstTrack(trackbits);
 
 	if (_remove_button_clicked) {
-		Command<CMD_REMOVE_SIGNALS>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL, tile, track, 0, {});
+		Command<CMD_REMOVE_SIGNALS>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL, tile, track);
 	} else {
-		const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
-
-		/* various bitstuffed elements for CmdBuildSingleSignal() */
-		uint32 p1 = track;
-
 		/* Which signals should we cycle through? */
-		uint8 cycle_types;
+		SignalType cycle_start = _settings_client.gui.cycle_signal_types == SIGNAL_CYCLE_ALL && _settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL ? SIGTYPE_NORMAL : SIGTYPE_PBS;
 
-		if (_settings_client.gui.cycle_signal_types == SIGNAL_CYCLE_ALL && _settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL) {
-			cycle_types = SIGTYPE_NORMAL | (SIGTYPE_LAST << 3);
-		} else {
-			cycle_types = SIGTYPE_PBS | (SIGTYPE_LAST << 3);
-		}
-
-		if (w != nullptr) {
+		if (FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr) {
 			/* signal GUI is used */
-			SB(p1, 3, 1, _ctrl_pressed);
-			SB(p1, 4, 1, _cur_signal_variant);
-			SB(p1, 5, 3, _cur_signal_type);
-			SB(p1, 8, 1, _convert_signal_button);
-			SB(p1, 9, 6, cycle_types);
+			Command<CMD_BUILD_SIGNALS>::Post(_convert_signal_button ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
+				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
 		} else {
-			SB(p1, 3, 1, _ctrl_pressed);
-			SB(p1, 4, 1, (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
-			SB(p1, 5, 3, SIGTYPE_PBS_ONEWAY);
-			SB(p1, 8, 1, 0);
-			SB(p1, 9, 6, cycle_types);
-		}
+			SignalVariant sigvar = _cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
+			Command<CMD_BUILD_SIGNALS>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
+				tile, track, SIGTYPE_PBS_ONEWAY, sigvar, false, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
 
-		Command<CMD_BUILD_SIGNALS>::Post((w != nullptr && _convert_signal_button) ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE,
-				CcPlaySound_CONSTRUCTION_RAIL, tile, p1, 0, {});
+		}
 	}
 }
 
@@ -371,21 +353,20 @@ static void BuildRailClick_Remove(Window *w)
 	}
 }
 
-static void DoRailroadTrack(int mode)
+static void DoRailroadTrack(Track track)
 {
-	uint32 p2 = _cur_railtype | (mode << 6) | (_settings_client.gui.auto_remove_signals << 11);
 	if (_remove_button_clicked) {
 		Command<CMD_REMOVE_RAILROAD_TRACK>::Post(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), p2, {});
+				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track);
 	} else {
 		Command<CMD_BUILD_RAILROAD_TRACK>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), p2, {});
+				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype, track, _settings_client.gui.auto_remove_signals, false);
 	}
 }
 
 static void HandleAutodirPlacement()
 {
-	int trackstat = _thd.drawstyle & HT_DIR_MASK; // 0..5
+	Track trackstat = static_cast<Track>( _thd.drawstyle & HT_DIR_MASK); // 0..5
 
 	if (_thd.drawstyle & HT_RAIL) { // one tile case
 		GenericPlaceRail(TileVirtXY(_thd.selend.x, _thd.selend.y), trackstat);
@@ -403,40 +384,24 @@ static void HandleAutodirPlacement()
  */
 static void HandleAutoSignalPlacement()
 {
-	uint32 p2 = GB(_thd.drawstyle, 0, 3); // 0..5
+	Track track = (Track)GB(_thd.drawstyle, 0, 3); // 0..5
 
 	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(_thd.selend.x, _thd.selend.y));
 		return;
 	}
 
-	const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
-
-	if (w != nullptr) {
-		/* signal GUI is used */
-		SB(p2,  3, 1, 0);
-		SB(p2,  4, 1, _cur_signal_variant);
-		SB(p2,  6, 1, _ctrl_pressed);
-		SB(p2,  7, 3, _cur_signal_type);
-		SB(p2, 24, 8, _settings_client.gui.drag_signals_density);
-		SB(p2, 10, 1, !_settings_client.gui.drag_signals_fixed_distance);
-	} else {
-		SB(p2,  3, 1, 0);
-		SB(p2,  4, 1, (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
-		SB(p2,  6, 1, _ctrl_pressed);
-		SB(p2,  7, 3, SIGTYPE_PBS_ONEWAY);
-		SB(p2, 24, 8, _settings_client.gui.drag_signals_density);
-		SB(p2, 10, 1, !_settings_client.gui.drag_signals_fixed_distance);
-	}
-
 	/* _settings_client.gui.drag_signals_density is given as a parameter such that each user
 	 * in a network game can specify their own signal density */
 	if (_remove_button_clicked) {
 		Command<CMD_REMOVE_SIGNAL_TRACK>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), p2, {});
+				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, _ctrl_pressed);
 	} else {
+		bool sig_gui = FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr;
+		SignalType sigtype = sig_gui ? _cur_signal_type : SIGTYPE_PBS_ONEWAY;
+		SignalVariant sigvar = sig_gui ? _cur_signal_variant : (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 		Command<CMD_BUILD_SIGNAL_TRACK>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), p2, {});
+				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, sigtype, sigvar, false, _ctrl_pressed, !_settings_client.gui.drag_signals_fixed_distance, _settings_client.gui.drag_signals_density);
 	}
 }
 
@@ -725,7 +690,7 @@ struct BuildRailToolbarWindow : Window {
 					break;
 
 				case DDSP_CONVERT_RAIL:
-					Command<CMD_CONVERT_RAIL>::Post(STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype | (_ctrl_pressed ? 1 << 6 : 0), {});
+					Command<CMD_CONVERT_RAIL>::Post(STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _ctrl_pressed);
 					break;
 
 				case DDSP_REMOVE_STATION:
