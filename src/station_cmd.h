@@ -11,15 +11,18 @@
 #define STATION_CMD_H
 
 #include "command_type.h"
+#include "station_type.h"
 
-CommandProc CmdBuildAirport;
-CommandProc CmdBuildDock;
-CommandProc CmdBuildRailStation;
-CommandProc CmdRemoveFromRailStation;
-CommandProc CmdBuildRoadStop;
-CommandProc CmdRemoveRoadStop;
-CommandProc CmdRenameStation;
-CommandProc CmdOpenCloseAirport;
+enum StationClassID : byte;
+
+CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_type, byte layout, StationID station_to_join, bool allow_adjacent);
+CommandCost CmdBuildDock(DoCommandFlag flags, TileIndex tile, StationID station_to_join, bool adjacent);
+CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailType rt, Axis axis, byte numtracks, byte plat_len, StationClassID spec_class, byte spec_index, StationID station_to_join, bool adjacent);
+CommandCost CmdRemoveFromRailStation(DoCommandFlag flags, TileIndex start, TileIndex end, bool keep_rail);
+CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, uint8 length, RoadStopType stop_type, bool is_drive_through, DiagDirection ddir, RoadType rt, StationID station_to_join, bool adjacent);
+CommandCost CmdRemoveRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, uint height, RoadStopType stop_type, bool remove_road);
+CommandCost CmdRenameStation(DoCommandFlag flags, StationID station_id, const std::string &text);
+CommandCost CmdOpenCloseAirport(DoCommandFlag flags, StationID station_id);
 
 DEF_CMD_TRAIT(CMD_BUILD_AIRPORT,            CmdBuildAirport,          CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_DOCK,               CmdBuildDock,             CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)

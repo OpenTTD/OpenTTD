@@ -240,5 +240,5 @@ template<bool Tfrom, bool Tvia>
 	EnforcePrecondition(false, IsValidStation(station_id));
 	EnforcePrecondition(false, HasStationType(station_id, STATION_AIRPORT));
 
-	return ScriptObject::Command<CMD_OPEN_CLOSE_AIRPORT>::Do(0, station_id, 0, {});
+	return ScriptObject::Command<CMD_OPEN_CLOSE_AIRPORT>::Do(station_id);
 }

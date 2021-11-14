@@ -16,7 +16,7 @@ CommandProc CmdBuildRailroadTrack;
 CommandProc CmdRemoveRailroadTrack;
 CommandProc CmdBuildSingleRail;
 CommandProc CmdRemoveSingleRail;
-CommandProc CmdBuildTrainDepot;
+CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir);
 CommandProc CmdBuildSingleSignal;
 CommandProc CmdRemoveSingleSignal;
 CommandProc CmdConvertRail;

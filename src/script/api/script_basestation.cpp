@@ -45,9 +45,9 @@
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	if (::Station::IsValidID(station_id)) {
-		return ScriptObject::Command<CMD_RENAME_STATION>::Do(0, station_id, 0, text);
+		return ScriptObject::Command<CMD_RENAME_STATION>::Do(station_id, text);
 	} else {
-		return ScriptObject::Command<CMD_RENAME_WAYPOINT>::Do(0, station_id, 0, text);
+		return ScriptObject::Command<CMD_RENAME_WAYPOINT>::Do(station_id, text);
 	}
 }
 

@@ -95,15 +95,12 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  * Build a ship depot.
  * @param flags type of operation
  * @param tile tile where ship depot is built
- * @param p1 bit 0 depot orientation (Axis)
- * @param p2 unused
- * @param text unused
+ * @param axis depot orientation (Axis)
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 {
-	Axis axis = Extract<Axis, 0, 1>(p1);
-
+	if (!IsEnumValid(axis)) return CMD_ERROR;
 	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	if (!HasTileWaterGround(tile) || !HasTileWaterGround(tile2)) {

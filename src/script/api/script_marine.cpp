@@ -83,7 +83,7 @@
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, (::TileX(front) == ::TileX(tile)) != (::TileY(front) == ::TileY(tile)));
 
-	return ScriptObject::Command<CMD_BUILD_SHIP_DEPOT>::Do(tile, ::TileX(front) == ::TileX(tile), 0, {});
+	return ScriptObject::Command<CMD_BUILD_SHIP_DEPOT>::Do(tile, ::TileX(front) == ::TileX(tile) ? AXIS_Y : AXIS_X);
 }
 
 /* static */ bool ScriptMarine::BuildDock(TileIndex tile, StationID station_id)
@@ -92,9 +92,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	uint p1 = station_id == ScriptStation::STATION_JOIN_ADJACENT ? 0 : 1;
-	uint p2 = (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
-	return ScriptObject::Command<CMD_BUILD_DOCK>::Do(tile, p1, p2, {});
+	return ScriptObject::Command<CMD_BUILD_DOCK>::Do(tile, ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION, station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptMarine::BuildBuoy(TileIndex tile)
@@ -102,7 +100,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_BUOY>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_BUILD_BUOY>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::BuildLock(TileIndex tile)

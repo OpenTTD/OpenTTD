@@ -58,20 +58,16 @@ void CcBuildAirport(Commands cmd, const CommandCost &result, TileIndex tile, con
 static void PlaceAirport(TileIndex tile)
 {
 	if (_selected_airport_index == -1) return;
-	uint32 p2 = _ctrl_pressed;
-	SB(p2, 16, 16, INVALID_STATION); // no station to join
 
-	uint32 p1 = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
-	p1 |= _selected_airport_layout << 8;
+	byte airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
+	byte layout = _selected_airport_layout;
+	bool adjacent = _ctrl_pressed;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<CMD_BUILD_AIRPORT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_AIRPORT>()), tile, p1, p2, {}).Succeeded();
+			return Command<CMD_BUILD_AIRPORT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_AIRPORT>()), tile, airport_type, layout, INVALID_STATION, adjacent).Succeeded();
 		} else {
-			uint32 p2_final = p2;
-			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
-
-			return Command<CMD_BUILD_AIRPORT>::Post(STR_ERROR_CAN_T_BUILD_AIRPORT_HERE, CcBuildAirport, tile, p1, p2_final, {});
+			return Command<CMD_BUILD_AIRPORT>::Post(STR_ERROR_CAN_T_BUILD_AIRPORT_HERE, CcBuildAirport, tile, airport_type, layout, to_join, adjacent);
 		}
 	};
 

@@ -133,9 +133,8 @@ void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, const 
 {
 	if (result.Failed()) return;
 
-	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_DEPOT>::Args>(data);
+	auto [tile_, rt, dir] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_DEPOT>::Args>(data);
 
-	DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	ConnectRoadToStructure(tile, dir);
@@ -146,32 +145,22 @@ void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, const 
  * @param result Result of the build road stop command.
  * @param cmd Unused.
  * @param tile Start tile.
- * @param p1 bit 0..7: Width of the road stop.
- *           bit 8..15: Length of the road stop.
- * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
- *           bit 1: 0 For normal stops, 1 for drive-through.
- *           bit 2: Allow stations directly adjacent to other stations.
- *           bit 3..4: Entrance direction (#DiagDirection) for normal stops.
- *           bit 3: #Axis of the road for drive-through stops.
- *           bit 5..9: The roadtype.
- *           bit 16..31: Station ID to join (NEW_STATION if build new one).
- * @param text Unused.
+ * @param data Command data.
  * @see CmdBuildRoadStop
  */
 void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
 {
 	if (result.Failed()) return;
 
-	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_STOP>::Args>(data);
+	auto [tile_, width, length, stop_type, is_drive_through, dir, rt, station_to_join, adjacent] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_STOP>::Args>(data);
 
-	DiagDirection dir = (DiagDirection)GB(p2, 3, 2);
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	TileArea roadstop_area(tile, GB(p1, 0, 8), GB(p1, 8, 8));
+	TileArea roadstop_area(tile, width, length);
 	for (TileIndex cur_tile : roadstop_area) {
 		ConnectRoadToStructure(cur_tile, dir);
 		/* For a drive-through road stop build connecting road for other entrance. */
-		if (HasBit(p2, 1)) ConnectRoadToStructure(cur_tile, ReverseDiagDir(dir));
+		if (is_drive_through) ConnectRoadToStructure(cur_tile, ReverseDiagDir(dir));
 	}
 }
 
@@ -179,34 +168,24 @@ void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, const C
  * Place a new road stop.
  * @param start_tile First tile of the area.
  * @param end_tile Last tile of the area.
- * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
- *           bit 2: Allow stations directly adjacent to other stations.
- *           bit 5..10: The roadtypes.
+ * @param stop_type Type of stop (bus/truck).
+ * @param adjacent Allow stations directly adjacent to other stations.
+ * @param rt The roadtypes.
  * @param err_msg Error message to show.
  * @see CcRoadStop()
  */
-static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, uint32 p2, StringID err_msg)
+static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType stop_type, bool adjacent, RoadType rt, StringID err_msg)
 {
 	TileArea ta(start_tile, end_tile);
-	uint32 p1 = (uint32)(ta.w | ta.h << 8);
-
-	uint8 ddir = _road_station_picker_orientation;
-	SB(p2, 16, 16, INVALID_STATION); // no station to join
-
-	if (ddir >= DIAGDIR_END) {
-		SetBit(p2, 1); // It's a drive-through stop.
-		ddir -= DIAGDIR_END; // Adjust picker result to actual direction.
-	}
-	p2 |= ddir << 3; // Set the DiagDirecion into p2 bits 3 and 4.
+	DiagDirection ddir = _road_station_picker_orientation;
+	bool drive_through = ddir >= DIAGDIR_END;
+	if (drive_through) ddir = static_cast<DiagDirection>(ddir - DIAGDIR_END); // Adjust picker result to actual direction.
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<CMD_BUILD_ROAD_STOP>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_STOP>()), ta.tile, p1, p2, {}).Succeeded();
+			return Command<CMD_BUILD_ROAD_STOP>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_STOP>()), ta.tile, ta.w, ta.h, stop_type, drive_through, ddir, rt, INVALID_STATION, adjacent).Succeeded();
 		} else {
-			uint32 p2_final = p2;
-			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
-
-			return Command<CMD_BUILD_ROAD_STOP>::Post(err_msg, CcRoadStop, ta.tile, p1, p2_final, {});
+			return Command<CMD_BUILD_ROAD_STOP>::Post(err_msg, CcRoadStop, ta.tile, ta.w, ta.h, stop_type, drive_through, ddir, rt, to_join, adjacent);
 		}
 	};
 
@@ -568,7 +547,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			case WID_ROT_DEPOT:
 				Command<CMD_BUILD_ROAD_DEPOT>::Post(this->rti->strings.err_depot, CcRoadDepot,
-						tile, _cur_roadtype << 2 | _road_depot_orientation, 0, {});
+						tile, _cur_roadtype, _road_depot_orientation);
 				break;
 
 			case WID_ROT_BUS_STATION:
@@ -700,9 +679,9 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_BUS_STATION)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_BUS], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_BUS, {});
+							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_BUS], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_BUS, _ctrl_pressed);
 						} else {
-							PlaceRoadStop(start_tile, end_tile, _cur_roadtype << 5 | (_ctrl_pressed << 2) | ROADSTOP_BUS, this->rti->strings.err_build_station[ROADSTOP_BUS]);
+							PlaceRoadStop(start_tile, end_tile, ROADSTOP_BUS, _ctrl_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_BUS]);
 						}
 					}
 					break;
@@ -712,9 +691,9 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_TRUCK_STATION)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_TRUCK], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_TRUCK, {});
+							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_TRUCK], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_TRUCK, _ctrl_pressed);
 						} else {
-							PlaceRoadStop(start_tile, end_tile, _cur_roadtype << 5 | (_ctrl_pressed << 2) | ROADSTOP_TRUCK, this->rti->strings.err_build_station[ROADSTOP_TRUCK]);
+							PlaceRoadStop(start_tile, end_tile, ROADSTOP_TRUCK, _ctrl_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_TRUCK]);
 						}
 					}
 					break;

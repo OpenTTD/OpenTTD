@@ -139,8 +139,7 @@ void CcRailDepot(Commands cmd, const CommandCost &result, TileIndex tile, const 
 {
 	if (result.Failed()) return;
 
-	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_TRAIN_DEPOT>::Args>(data);
-	DiagDirection dir = (DiagDirection)p2;
+	auto [tile_, rt, dir] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_TRAIN_DEPOT>::Args>(data);
 
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
@@ -173,7 +172,7 @@ static void PlaceRail_Waypoint(TileIndex tile)
 	} else {
 		/* Tile where we can't build rail waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
-		Command<CMD_BUILD_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, tile, 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, {});
+		Command<CMD_BUILD_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, tile, AXIS_X, 1, 1, STAT_CLASS_WAYP, 0, INVALID_STATION, false);
 	}
 }
 
@@ -199,21 +198,21 @@ static void PlaceRail_Station(TileIndex tile)
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	} else {
-		uint32 p1 = _cur_railtype | _railstation.orientation << 6 | _settings_client.gui.station_numtracks << 8 | _settings_client.gui.station_platlength << 16 | _ctrl_pressed << 24;
-		uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
-
 		int w = _settings_client.gui.station_numtracks;
 		int h = _settings_client.gui.station_platlength;
 		if (!_railstation.orientation) Swap(w, h);
 
+		RailStationGUISettings params = _railstation;
+		RailType rt = _cur_railtype;
+		byte numtracks = _settings_client.gui.station_numtracks;
+		byte platlength = _settings_client.gui.station_platlength;
+		bool adjacent = _ctrl_pressed;
+
 		auto proc = [=](bool test, StationID to_join) -> bool {
 			if (test) {
-				return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), tile, p1, p2, {}).Succeeded();
+				return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), tile, rt, params.orientation, numtracks, platlength, params.station_class, params.station_type, INVALID_STATION, adjacent).Succeeded();
 			} else {
-				uint32 p2_final = p2;
-				if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
-
-				return Command<CMD_BUILD_RAIL_STATION>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, tile, p1, p2_final, {});
+				return Command<CMD_BUILD_RAIL_STATION>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, tile, rt, params.orientation, numtracks, platlength, params.station_class, params.station_type, to_join, adjacent);
 			}
 		};
 
@@ -664,7 +663,7 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case WID_RAT_BUILD_DEPOT:
-				Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction, {});
+				Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, tile, _cur_railtype, _build_depot_direction);
 				break;
 
 			case WID_RAT_BUILD_WAYPOINT:
@@ -734,27 +733,25 @@ struct BuildRailToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) {
 						/* Station */
 						if (_remove_button_clicked) {
-							Command<CMD_REMOVE_FROM_RAIL_STATION>::Post(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _ctrl_pressed ? 0 : 1, {});
+							Command<CMD_REMOVE_FROM_RAIL_STATION>::Post(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _ctrl_pressed);
 						} else {
 							HandleStationPlacement(start_tile, end_tile);
 						}
 					} else {
 						/* Waypoint */
 						if (_remove_button_clicked) {
-							Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _ctrl_pressed ? 0 : 1, {});
+							Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _ctrl_pressed);
 						} else {
 							TileArea ta(start_tile, end_tile);
-							uint32 p1 = _cur_railtype | (select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y) << 6 | ta.w << 8 | ta.h << 16 | _ctrl_pressed << 24;
-							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
+							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
+							bool adjacent = _ctrl_pressed;
+							byte waypoint_type = _cur_waypoint_type;
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<CMD_BUILD_RAIL_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_WAYPOINT>()), ta.tile, p1, p2, {}).Succeeded();
+									return Command<CMD_BUILD_RAIL_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, STAT_CLASS_WAYP, waypoint_type, INVALID_STATION, adjacent).Succeeded();
 								} else {
-									uint32 p2_final = p2;
-									if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
-
-									return Command<CMD_BUILD_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, ta.tile, p1, p2_final, {});
+									return Command<CMD_BUILD_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, ta.tile, axis, ta.w, ta.h, STAT_CLASS_WAYP, waypoint_type, to_join, adjacent);
 								}
 							};
 
@@ -913,17 +910,15 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 	if (_railstation.orientation == AXIS_X) Swap(numtracks, platlength);
 
-	uint32 p1 = _cur_railtype | _railstation.orientation << 6 | numtracks << 8 | platlength << 16 | _ctrl_pressed << 24;
-	uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
+	RailStationGUISettings params = _railstation;
+	RailType rt = _cur_railtype;
+	bool adjacent = _ctrl_pressed;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
-			return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), ta.tile, p1, p2, {}).Succeeded();
+			return Command<CMD_BUILD_RAIL_STATION>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_RAIL_STATION>()), ta.tile, rt, params.orientation, numtracks, platlength, params.station_class, params.station_type, INVALID_STATION, adjacent).Succeeded();
 		} else {
-			uint32 p2_final = p2;
-			if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
-
-			return Command<CMD_BUILD_RAIL_STATION>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, ta.tile, p1, p2_final, {});
+			return Command<CMD_BUILD_RAIL_STATION>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION, CcStation, ta.tile, rt, params.orientation, numtracks, platlength, params.station_class, params.station_type, to_join, adjacent);
 		}
 	};
 

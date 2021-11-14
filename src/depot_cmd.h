@@ -11,8 +11,9 @@
 #define DEPOT_CMD_H
 
 #include "command_type.h"
+#include "depot_type.h"
 
-CommandProc CmdRenameDepot;
+CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::string &text);
 
 DEF_CMD_TRAIT(CMD_RENAME_DEPOT, CmdRenameDepot, 0, CMDT_OTHER_MANAGEMENT)
 
