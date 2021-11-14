@@ -837,7 +837,7 @@ struct DepotWindow : Window {
 		if (str == nullptr) return;
 
 		/* Do depot renaming */
-		Command<CMD_RENAME_DEPOT>::Post(STR_ERROR_CAN_T_RENAME_DEPOT, 0, this->GetDepotIndex(), 0, str);
+		Command<CMD_RENAME_DEPOT>::Post(STR_ERROR_CAN_T_RENAME_DEPOT, this->GetDepotIndex(), str);
 	}
 
 	bool OnRightClick(Point pt, int widget) override

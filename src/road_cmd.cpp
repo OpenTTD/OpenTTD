@@ -1157,21 +1157,16 @@ CommandCost CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, uint32 
  * Build a road depot.
  * @param tile tile where to build the depot
  * @param flags operation to perform
- * @param p1 bit 0..1 entrance direction (DiagDirection)
- *           bit 2..7 road type
- * @param p2 unused
- * @param text unused
+ * @param rt road type
+ * @param dir entrance direction
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
  * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, DiagDirection dir)
 {
-	DiagDirection dir = Extract<DiagDirection, 0, 2>(p1);
-
-	RoadType rt = Extract<RoadType, 2, 6>(p1);
-	if (!ValParamRoadType(rt)) return CMD_ERROR;
+	if (!ValParamRoadType(rt) || !IsEnumValid(dir)) return CMD_ERROR;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 

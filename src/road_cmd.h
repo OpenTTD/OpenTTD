@@ -20,7 +20,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate);
 CommandProc CmdBuildLongRoad;
 CommandProc CmdRemoveLongRoad;
 CommandProc CmdBuildRoad;
-CommandProc CmdBuildRoadDepot;
+CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, DiagDirection dir);
 CommandProc CmdConvertRoad;
 
 DEF_CMD_TRAIT(CMD_BUILD_LONG_ROAD,  CmdBuildLongRoad,  CMD_AUTO | CMD_NO_WATER | CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)

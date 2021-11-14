@@ -12,7 +12,7 @@
 
 #include "command_type.h"
 
-CommandProc CmdBuildShipDepot;
+CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis);
 CommandProc CmdBuildCanal;
 CommandProc CmdBuildLock;
 

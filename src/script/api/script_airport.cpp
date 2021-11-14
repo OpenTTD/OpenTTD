@@ -77,9 +77,7 @@
 	EnforcePrecondition(false, IsValidAirportType(type));
 	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	uint p2 = station_id == ScriptStation::STATION_JOIN_ADJACENT ? 0 : 1;
-	p2 |= (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
-	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(tile, type, p2, {});
+	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(tile, type, 0, (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION), station_id == ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptAirport::RemoveAirport(TileIndex tile)

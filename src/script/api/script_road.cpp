@@ -529,9 +529,9 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	uint entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? 1 : 3) : (::TileX(tile) < ::TileX(front) ? 2 : 0);
+	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DIAGDIR_SE : DIAGDIR_NW) : (::TileX(tile) < ::TileX(front) ? DIAGDIR_SW : DIAGDIR_NE);
 
-	return ScriptObject::Command<CMD_BUILD_ROAD_DEPOT>::Do(tile, entrance_dir | (ScriptObject::GetRoadType() << 2), 0, {});
+	return ScriptObject::Command<CMD_BUILD_ROAD_DEPOT>::Do(tile, ScriptObject::GetRoadType(), entrance_dir);
 }
 
 /* static */ bool ScriptRoad::_BuildRoadStationInternal(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, bool drive_through, StationID station_id)
@@ -545,20 +545,10 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, road_veh_type == ROADVEHTYPE_BUS || road_veh_type == ROADVEHTYPE_TRUCK);
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	uint entrance_dir;
-	if (drive_through) {
-		entrance_dir = ::TileY(tile) != ::TileY(front);
-	} else {
-		entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? 1 : 3) : (::TileX(tile) < ::TileX(front) ? 2 : 0);
-	}
-
-	uint p2 = station_id == ScriptStation::STATION_JOIN_ADJACENT ? 0 : 4;
-	p2 |= drive_through ? 2 : 0;
-	p2 |= road_veh_type == ROADVEHTYPE_TRUCK ? 1 : 0;
-	p2 |= ScriptObject::GetRoadType() << 5;
-	p2 |= entrance_dir << 3;
-	p2 |= (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
-	return ScriptObject::Command<CMD_BUILD_ROAD_STOP>::Do(tile, 1 | 1 << 8, p2, {});
+	DiagDirection entrance_dir = DiagdirBetweenTiles(tile, front);
+	RoadStopType stop_type = road_veh_type == ROADVEHTYPE_TRUCK ? ROADSTOP_TRUCK : ROADSTOP_BUS;
+	StationID to_join = ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION;
+	return ScriptObject::Command<CMD_BUILD_ROAD_STOP>::Do(tile, 1, 1, stop_type, drive_through, entrance_dir, ScriptObject::GetRoadType(), to_join, station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptRoad::BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)
@@ -612,7 +602,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, IsTileType(tile, MP_STATION));
 	EnforcePrecondition(false, IsRoadStop(tile));
 
-	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1 | 1 << 8, GetRoadStopType(tile), {});
+	return ScriptObject::Command<CMD_REMOVE_ROAD_STOP>::Do(tile, 1, 1, GetRoadStopType(tile), false);
 }
 
 /* static */ Money ScriptRoad::GetBuildCost(RoadType roadtype, BuildType build_type)

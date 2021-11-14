@@ -31,4 +31,15 @@ template<typename T, uint S, uint N, typename U> static inline T Extract(U v)
 	return IsInsideMM(masked, EnumPropsT<T>::begin, EnumPropsT<T>::end) ? (T)masked : EnumPropsT<T>::invalid;
 }
 
+/**
+ * Check if an enum value is inside it's valid values.
+ * @tparam T Type of enum.
+ * @param v The value to validate
+ * @return True if enum is valid.
+ */
+template <typename T> static constexpr inline bool IsEnumValid(T v) noexcept
+{
+	return IsInsideMM(v, EnumPropsT<T>::begin, EnumPropsT<T>::end);
+}
+
 #endif /* CMD_HELPER_H */

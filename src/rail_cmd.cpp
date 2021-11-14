@@ -976,23 +976,20 @@ CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex tile, uint32 p
  * Build a train depot
  * @param flags operation to perform
  * @param tile position of the train depot
- * @param p1 rail type
- * @param p2 bit 0..1 entrance direction (DiagDirection)
+ * @param railtype rail type
+ * @param dir entrance direction
  * @param text unused
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
  * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir)
 {
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	RailType railtype = Extract<RailType, 0, 6>(p1);
-	if (!ValParamRailtype(railtype)) return CMD_ERROR;
+	if (!ValParamRailtype(railtype) || !IsEnumValid(dir)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile);
-
-	DiagDirection dir = Extract<DiagDirection, 0, 2>(p2);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 

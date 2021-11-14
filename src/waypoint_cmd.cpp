@@ -164,30 +164,18 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
  * piece of rail
  * @param flags type of operation
  * @param start_tile northern most tile where waypoint will be built
- * @param p1 various bitstuffed elements
- * - p1 = (bit  0- 5) - railtype (not used)
- * - p1 = (bit  6)    - orientation (Axis)
- * - p1 = (bit  8-15) - width of waypoint
- * - p1 = (bit 16-23) - height of waypoint
- * - p1 = (bit 24)    - allow waypoints directly adjacent to other waypoints.
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 7) - custom station class
- * - p2 = (bit  8-15) - custom station id
- * @param text unused
+ * @param axis orientation (Axis)
+ * @param width width of waypoint
+ * @param height height of waypoint
+ * @param spec_class custom station class
+ * @param spec_index custom station id
+ * @param station_to_join station ID to join (NEW_STATION if build new one)
+ * @param adjacent allow waypoints directly adjacent to other waypoints.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, byte width, byte height, StationClassID spec_class, byte spec_index, StationID station_to_join, bool adjacent)
 {
-	/* Unpack parameters */
-	Axis axis      = Extract<Axis, 6, 1>(p1);
-	byte width     = GB(p1,  8, 8);
-	byte height    = GB(p1, 16, 8);
-	bool adjacent  = HasBit(p1, 24);
-
-	StationClassID spec_class = Extract<StationClassID, 0, 8>(p2);
-	byte spec_index           = GB(p2, 8, 8);
-	StationID station_to_join = GB(p2, 16, 16);
-
+	if (!IsEnumValid(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
 	if (spec_class != STAT_CLASS_WAYP) return CMD_ERROR;
 	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
@@ -299,12 +287,9 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, uint
  * Build a buoy.
  * @param flags operation to perform
  * @param tile tile where to place the buoy
- * @param p1 unused
- * @param p2 unused
- * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 {
 	if (tile == 0 || !HasTileWaterGround(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -409,15 +394,13 @@ static bool IsUniqueWaypointName(const std::string &name)
 /**
  * Rename a waypoint.
  * @param flags type of operation
- * @param tile unused
- * @param p1 id of waypoint
- * @param p2 unused
+ * @param waypoint_id id of waypoint
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameWaypoint(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameWaypoint(DoCommandFlag flags, StationID waypoint_id, const std::string &text)
 {
-	Waypoint *wp = Waypoint::GetIfValid(p1);
+	Waypoint *wp = Waypoint::GetIfValid(waypoint_id);
 	if (wp == nullptr) return CMD_ERROR;
 
 	if (wp->owner != OWNER_NONE) {

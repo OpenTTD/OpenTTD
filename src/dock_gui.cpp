@@ -204,7 +204,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_DEPOT: // Build depot button
-				Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction, 0, {});
+				Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, tile, _ship_depot_direction);
 				break;
 
 			case WID_DT_STATION: { // Build station button
@@ -212,17 +212,12 @@ struct BuildDocksToolbarWindow : Window {
 				DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 				TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
 
-				uint32 p1 = _ctrl_pressed;
-				uint32 p2 = (uint32)INVALID_STATION << 16; // no station to join
-
+				bool adjacent = _ctrl_pressed;
 				auto proc = [=](bool test, StationID to_join) -> bool {
 					if (test) {
-						return Command<CMD_BUILD_DOCK>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_DOCK>()), tile, p1, p2, {}).Succeeded();
+						return Command<CMD_BUILD_DOCK>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_DOCK>()), tile, INVALID_STATION, adjacent).Succeeded();
 					} else {
-						uint32 p2_final = p2;
-						if (to_join != INVALID_STATION) SB(p2_final, 16, 16, to_join);
-
-						return Command<CMD_BUILD_DOCK>::Post(STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, p1, p2_final, {});
+						return Command<CMD_BUILD_DOCK>::Post(STR_ERROR_CAN_T_BUILD_DOCK_HERE, CcBuildDocks, tile, to_join, adjacent);
 					}
 				};
 
@@ -231,7 +226,7 @@ struct BuildDocksToolbarWindow : Window {
 			}
 
 			case WID_DT_BUOY: // Build buoy button
-				Command<CMD_BUILD_BUOY>::Post(STR_ERROR_CAN_T_POSITION_BUOY_HERE, CcBuildDocks, tile, 0, 0, {});
+				Command<CMD_BUILD_BUOY>::Post(STR_ERROR_CAN_T_POSITION_BUOY_HERE, CcBuildDocks, tile);
 				break;
 
 			case WID_DT_RIVER: // Build river button (in scenario editor)

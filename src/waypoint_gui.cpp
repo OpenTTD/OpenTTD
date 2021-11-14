@@ -139,7 +139,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		Command<CMD_RENAME_WAYPOINT>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, 0, this->window_number, 0, str);
+		Command<CMD_RENAME_WAYPOINT>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, this->window_number, str);
 	}
 
 };
