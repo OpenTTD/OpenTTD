@@ -11,9 +11,12 @@
 #define AUTOREPLACE_CMD_H
 
 #include "command_type.h"
+#include "vehicle_type.h"
+#include "engine_type.h"
+#include "group_type.h"
 
-CommandProc CmdAutoreplaceVehicle;
-CommandProc CmdSetAutoReplace;
+CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id);
+CommandCost CmdSetAutoReplace(DoCommandFlag flags, GroupID id_g, EngineID old_engine_type, EngineID new_engine_type, bool when_old);
 
 DEF_CMD_TRAIT(CMD_AUTOREPLACE_VEHICLE, CmdAutoreplaceVehicle, 0, CMDT_VEHICLE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_AUTOREPLACE,     CmdSetAutoReplace,     0, CMDT_VEHICLE_MANAGEMENT)

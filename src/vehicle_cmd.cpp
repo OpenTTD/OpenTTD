@@ -707,7 +707,7 @@ CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, Vehicle
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsChainInDepot()) continue;
 
-		CommandCost ret = Command<CMD_AUTOREPLACE_VEHICLE>::Do(flags, 0, v->index, 0, {});
+		CommandCost ret = Command<CMD_AUTOREPLACE_VEHICLE>::Do(flags, v->index);
 
 		if (ret.Succeeded()) cost.AddCost(ret);
 	}
@@ -891,7 +891,7 @@ CommandCost CmdCloneVehicle(DoCommandFlag flags, TileIndex tile, VehicleID veh_i
 
 	if (flags & DC_EXEC) {
 		/* Cloned vehicles belong to the same group */
-		Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, 0, v_front->group_id, w_front->index, {});
+		Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, v_front->group_id, w_front->index, false);
 	}
 
 

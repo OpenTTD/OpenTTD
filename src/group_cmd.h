@@ -11,15 +11,26 @@
 #define GROUP_CMD_H
 
 #include "command_type.h"
+#include "group_type.h"
+#include "vehicle_type.h"
 
-CommandProc CmdCreateGroup;
-CommandProc CmdAlterGroup;
-CommandProc CmdDeleteGroup;
-CommandProc CmdAddVehicleGroup;
-CommandProc CmdAddSharedVehicleGroup;
-CommandProc CmdRemoveAllVehiclesGroup;
-CommandProc CmdSetGroupFlag;
-CommandProc CmdSetGroupLivery;
+enum Colours : byte;
+enum GroupFlags : uint8;
+
+/** Action for \c CmdAlterGroup. */
+enum class AlterGroupMode : byte {
+	Rename,    ///< Change group name.
+	SetParent, ///< Change group parent.
+};
+
+CommandCost CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_group);
+CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID group_id, GroupID parent_id, const std::string &text);
+CommandCost CmdDeleteGroup(DoCommandFlag flags, GroupID group_id);
+CommandCost CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared);
+CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleType type);
+CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id);
+CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlags flag, bool value, bool recursive);
+CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primary, Colours colour);
 
 DEF_CMD_TRAIT(CMD_CREATE_GROUP,              CmdCreateGroup,            0, CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_DELETE_GROUP,              CmdDeleteGroup,            0, CMDT_ROUTE_MANAGEMENT)

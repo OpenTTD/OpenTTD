@@ -642,7 +642,7 @@ public:
 		if (confirmed) {
 			VehicleGroupWindow *w = (VehicleGroupWindow*)win;
 			w->vli.index = ALL_GROUP;
-			Command<CMD_DELETE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_DELETE, 0, w->group_confirm, 0, {});
+			Command<CMD_DELETE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_DELETE, w->group_confirm);
 		}
 	}
 
@@ -773,7 +773,7 @@ public:
 			}
 
 			case WID_GL_CREATE_GROUP: { // Create a new group
-				Command<CMD_CREATE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_CREATE, CcCreateGroup, 0, this->vli.vtype, this->vli.index, {});
+				Command<CMD_CREATE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_CREATE, CcCreateGroup, this->vli.vtype, this->vli.index);
 				break;
 			}
 
@@ -809,7 +809,7 @@ public:
 			case WID_GL_REPLACE_PROTECTION: {
 				const Group *g = Group::GetIfValid(this->vli.index);
 				if (g != nullptr) {
-					Command<CMD_SET_GROUP_FLAG>::Post(0, this->vli.index | (GroupFlags::GF_REPLACE_PROTECTION << 16), (HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION) ? 0 : 1) | (_ctrl_pressed << 1), {});
+					Command<CMD_SET_GROUP_FLAG>::Post(this->vli.index, GroupFlags::GF_REPLACE_PROTECTION, !HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), _ctrl_pressed);
 				}
 				break;
 			}
@@ -824,7 +824,7 @@ public:
 			case WID_GL_ALL_VEHICLES: // All vehicles
 			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles
 				if (g->parent != INVALID_GROUP) {
-					Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_SET_PARENT, 0, this->group_sel | (1 << 16), INVALID_GROUP, {});
+					Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_SET_PARENT, AlterGroupMode::SetParent, this->group_sel, INVALID_GROUP, {});
 				}
 
 				this->group_sel = INVALID_GROUP;
@@ -837,7 +837,7 @@ public:
 				GroupID new_g = id_g >= this->groups.size() ? INVALID_GROUP : this->groups[id_g]->index;
 
 				if (this->group_sel != new_g && g->parent != new_g) {
-					Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_SET_PARENT, 0, this->group_sel | (1 << 16), new_g, {});
+					Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_SET_PARENT, AlterGroupMode::SetParent, this->group_sel, new_g, {});
 				}
 
 				this->group_sel = INVALID_GROUP;
@@ -852,7 +852,7 @@ public:
 	{
 		switch (widget) {
 			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles
-				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, 0, DEFAULT_GROUP, this->vehicle_sel | (_ctrl_pressed || this->grouping == GB_SHARED_ORDERS ? 1 << 31 : 0), {});
+				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, DEFAULT_GROUP, this->vehicle_sel, _ctrl_pressed || this->grouping == GB_SHARED_ORDERS);
 
 				this->vehicle_sel = INVALID_VEHICLE;
 				this->group_over = INVALID_GROUP;
@@ -869,7 +869,7 @@ public:
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP);
 				GroupID new_g = id_g >= this->groups.size() ? NEW_GROUP : this->groups[id_g]->index;
 
-				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr, 0, new_g, vindex | (_ctrl_pressed || this->grouping == GB_SHARED_ORDERS ? 1 << 31 : 0), {});
+				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr, 0, new_g, vindex, _ctrl_pressed || this->grouping == GB_SHARED_ORDERS);
 				break;
 			}
 
@@ -924,7 +924,7 @@ public:
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (str != nullptr) Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_RENAME, 0, this->group_rename, 0, str);
+		if (str != nullptr) Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_RENAME, AlterGroupMode::Rename, this->group_rename, 0, str);
 		this->group_rename = INVALID_GROUP;
 	}
 
@@ -961,12 +961,12 @@ public:
 					case ADI_ADD_SHARED: // Add shared Vehicles
 						assert(Group::IsValidID(this->vli.index));
 
-						Command<CMD_ADD_SHARED_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE, 0, this->vli.index, this->vli.vtype, {});
+						Command<CMD_ADD_SHARED_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE, this->vli.index, this->vli.vtype);
 						break;
 					case ADI_REMOVE_ALL: // Remove all Vehicles from the selected group
 						assert(Group::IsValidID(this->vli.index));
 
-						Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Post(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES, 0, this->vli.index, 0, {});
+						Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Post(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES, this->vli.index);
 						break;
 					default: NOT_REACHED();
 				}
@@ -1161,10 +1161,10 @@ void CcCreateGroup(Commands cmd, const CommandCost &result, TileIndex tile, cons
 {
 	if (result.Failed()) return;
 
-	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_CREATE_GROUP>::Args>(data);
-	assert(p1 <= VEH_AIRCRAFT);
+	auto [vt, parent_group] = EndianBufferReader::ToValue<CommandTraits<CMD_CREATE_GROUP>::Args>(data);
+	assert(vt <= VEH_AIRCRAFT);
 
-	CcCreateGroup((VehicleType)p1);
+	CcCreateGroup(vt);
 }
 
 /**
@@ -1178,10 +1178,10 @@ void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, TileIndex til
 {
 	if (result.Failed()) return;
 
-	auto [tile_, p1, p2, text] = EndianBufferReader::ToValue<CommandTraits<CMD_ADD_VEHICLE_GROUP>::Args>(data);
-	assert(Vehicle::IsValidID(GB(p2, 0, 20)));
+	auto [group_id, veh_id, shared] = EndianBufferReader::ToValue<CommandTraits<CMD_ADD_VEHICLE_GROUP>::Args>(data);
+	assert(Vehicle::IsValidID(veh_id));
 
-	CcCreateGroup(Vehicle::Get(GB(p2, 0, 20))->type);
+	CcCreateGroup(Vehicle::Get(veh_id)->type);
 }
 
 /**
