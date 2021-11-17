@@ -11,16 +11,20 @@
 #define TOWN_CMD_H
 
 #include "command_type.h"
+#include "company_type.h"
+#include "town_type.h"
 
-CommandProc CmdFoundTown;
-CommandProc CmdRenameTown;
-CommandProc CmdDoTownAction;
-CommandProc CmdTownGrowthRate;
-CommandProc CmdTownRating;
-CommandProc CmdTownCargoGoal;
-CommandProc CmdTownSetText;
-CommandProc CmdExpandTown;
-CommandProc CmdDeleteTown;
+enum TownEffect : byte;
+
+CommandCost CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32 townnameparts, const std::string &text);
+CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text);
+CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8 action);
+CommandCost CmdTownGrowthRate(DoCommandFlag flags, TownID town_id, uint16 growth_rate);
+CommandCost CmdTownRating(DoCommandFlag flags, TownID town_id, CompanyID company_id, int16 rating);
+CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownEffect te, uint32 goal);
+CommandCost CmdTownSetText(DoCommandFlag flags, TownID town_id, const std::string &text);
+CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32 grow_amount);
+CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id);
 
 DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CMD_DEITY | CMD_NO_TEST,  CMDT_LANDSCAPE_CONSTRUCTION) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CMD_DEITY | CMD_SERVER,   CMDT_OTHER_MANAGEMENT)

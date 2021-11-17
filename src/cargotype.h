@@ -23,7 +23,7 @@
 typedef uint32 CargoLabel;
 
 /** Town growth effect when delivering cargo. */
-enum TownEffect {
+enum TownEffect : byte {
 	TE_BEGIN = 0,
 	TE_NONE = TE_BEGIN, ///< Cargo has no effect.
 	TE_PASSENGERS,      ///< Cargo behaves passenger-like.

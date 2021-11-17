@@ -16,7 +16,7 @@ typedef uint16 TownID;
 struct Town;
 
 /** Supported initial town sizes */
-enum TownSize {
+enum TownSize : byte {
 	TSZ_SMALL,  ///< Small town.
 	TSZ_MEDIUM, ///< Medium town.
 	TSZ_LARGE,  ///< Large town.
