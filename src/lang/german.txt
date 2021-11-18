@@ -1744,6 +1744,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Zeitung anzeige
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Unfälle und Katastrophen: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Zeitung anzeigen, wenn Unfälle oder Katastrophen auftreten
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Unfälle von Mitbewerberfahrzeugen: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Zeitung anzeigen, wenn Fahrzeuge eines Mitbewerbers Unfälle haben
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmenmitteilungen: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zeitung anzeigen, wenn neue Firmen gegründet werden oder kurz vor dem Bankrott stehen
