@@ -1209,8 +1209,11 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return cost;
 }
 
-static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal_ctr, bool remove)
+static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remove)
 {
+	/* We only process starting tiles of tunnels or bridges so jump to the other end before moving further. */
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) tile = GetOtherTunnelBridgeEnd(tile);
+
 	tile = AddTileIndexDiffCWrap(tile, _trackdelta[trackdir]);
 	if (tile == INVALID_TILE) return false;
 
@@ -1233,35 +1236,21 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 		case MP_RAILWAY:
 			if (IsRailDepot(tile)) return false;
 			if (!remove && HasSignalOnTrack(tile, TrackdirToTrack(trackdir))) return false;
-			signal_ctr++;
-			if (IsDiagonalTrackdir(trackdir)) {
-				signal_ctr++;
-				/* Ensure signal_ctr even so X and Y pieces get signals */
-				ClrBit(signal_ctr, 0);
-			}
-			return true;
+			break;
 
 		case MP_ROAD:
 			if (!IsLevelCrossing(tile)) return false;
-			signal_ctr += 2;
-			return true;
+			break;
 
 		case MP_TUNNELBRIDGE: {
-			TileIndex orig_tile = tile; // backup old value
-
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
 			if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
-
-			/* Skip to end of tunnel or bridge
-			 * note that tile is a parameter by reference, so it must be updated */
-			tile = GetOtherTunnelBridgeEnd(tile);
-
-			signal_ctr += (GetTunnelBridgeLength(orig_tile, tile) + 2) * 2;
-			return true;
+			break;
 		}
 
 		default: return false;
 	}
+	return true;
 }
 
 /**
@@ -1292,7 +1281,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	bool remove = HasBit(p2, 5);
 	bool autofill = HasBit(p2, 6);
 	bool minimise_gaps = HasBit(p2, 10);
-	byte signal_density = GB(p2, 24, 8);
+	int signal_density = GB(p2, 24, 8);
 
 	if (p1 >= MapSize() || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	TileIndex end_tile = p1;
@@ -1300,9 +1289,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 
 	if (!IsPlainRailTile(tile)) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 
-	/* for vertical/horizontal tracks, double the given signals density
-	 * since the original amount will be too dense (shorter tracks) */
-	signal_density *= 2;
+	/* Interpret signal_density as the logical length of said amount of tiles in X/Y direction. */
+	signal_density *= TILE_AXIAL_DISTANCE;
 
 	Trackdir trackdir = TrackToTrackdir(track);
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
@@ -1350,84 +1338,126 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	 *              and convert all others to semaphore/signal
 	 * remove     - 1 remove signals, 0 build signals */
 	int signal_ctr = 0;
-	int last_used_ctr = INT_MIN; // initially INT_MIN to force building/removing at the first tile
+	int last_used_ctr = -signal_density; // to force signal at first tile
 	int last_suitable_ctr = 0;
 	TileIndex last_suitable_tile = INVALID_TILE;
 	Trackdir last_suitable_trackdir = INVALID_TRACKDIR;
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
-	for (;;) {
-		/* only build/remove signals with the specified density */
-		if (remove || minimise_gaps || signal_ctr % signal_density == 0) {
-			uint32 param1 = GB(TrackdirToTrack(trackdir), 0, 3);
-			SB(param1, 3, 1, mode);
-			SB(param1, 4, 1, semaphores);
-			SB(param1, 5, 3, sigtype);
-			if (!remove && signal_ctr == 0) SetBit(param1, 17);
+	uint32 param1 = 0;
+	SB(param1, 3, 1, mode);
+	SB(param1, 4, 1, semaphores);
+	SB(param1, 5, 3, sigtype);
 
-			/* Pick the correct orientation for the track direction */
-			signals = 0;
-			if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
-			if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
+	auto build_signal = [&](TileIndex tile, Trackdir trackdir, bool test_only) {
+		SB(param1, 0, 3, TrackdirToTrack(trackdir));
+		SB(param1, 17, 1, (!remove && signal_ctr == 0 ? 1 : 0));
 
-			/* Test tiles in between for suitability as well if minimising gaps. */
-			bool test_only = !remove && minimise_gaps && signal_ctr < (last_used_ctr + signal_density);
-			CommandCost ret = DoCommand(tile, param1, signals, test_only ? flags & ~DC_EXEC : flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+		/* Pick the correct orientation for the track direction */
+		byte signals = 0;
+		if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
+		if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
-			if (ret.Succeeded()) {
-				/* Remember last track piece where we can place a signal. */
-				last_suitable_ctr = signal_ctr;
-				last_suitable_tile = tile;
-				last_suitable_trackdir = trackdir;
-			} else if (!test_only && last_suitable_tile != INVALID_TILE) {
-				/* If a signal can't be placed, place it at the last possible position. */
-				SB(param1, 0, 3, TrackdirToTrack(last_suitable_trackdir));
-				ClrBit(param1, 17);
+		CommandCost ret = DoCommand(tile, param1, signals, test_only ? flags & ~DC_EXEC : flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
-				/* Pick the correct orientation for the track direction. */
-				signals = 0;
-				if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(last_suitable_trackdir);
-				if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(last_suitable_trackdir);
+		if (test_only) return ret.Succeeded();
 
-				ret = DoCommand(last_suitable_tile, param1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+		if (ret.Succeeded()) {
+			had_success = true;
+			total_cost.AddCost(ret);
+		} else {
+			/* The "No railway" error is the least important one. */
+			if (ret.GetErrorMessage() != STR_ERROR_THERE_IS_NO_RAILROAD_TRACK ||
+					last_error.GetErrorMessage() == INVALID_STRING_ID) {
+				last_error = ret;
 			}
+		}
+		return ret.Succeeded();
+	};
 
-			/* Collect cost. */
-			if (!test_only) {
-				/* Be user-friendly and try placing signals as much as possible */
-				if (ret.Succeeded()) {
-					had_success = true;
-					total_cost.AddCost(ret);
-					last_used_ctr = last_suitable_ctr;
+	for (;;) {
+		if (remove) {
+			/* In remove mode last_* stuff doesn't matter, we simply try to clear every tile. */
+			build_signal(tile, trackdir, false);
+		} else if (minimise_gaps) {
+			/* We're trying to minimize gaps wherever possible, so keep track of last suitable
+			 * position and use it if current gap exceeds required signal density. */
+
+			if (signal_ctr > last_used_ctr + signal_density && last_suitable_tile != INVALID_TILE) {
+				/* We overshot so build a signal in last good location. */
+				if (build_signal(last_suitable_tile, last_suitable_trackdir, false)) {
 					last_suitable_tile = INVALID_TILE;
-				} else {
-					/* The "No railway" error is the least important one. */
-					if (ret.GetErrorMessage() != STR_ERROR_THERE_IS_NO_RAILROAD_TRACK ||
-							last_error.GetErrorMessage() == INVALID_STRING_ID) {
-						last_error = ret;
-					}
+					last_used_ctr = last_suitable_ctr;
 				}
 			}
+
+			if (signal_ctr == last_used_ctr + signal_density) {
+				/* Current gap matches the required density, build a signal.  */
+				if (build_signal(tile, trackdir, false)) {
+					last_used_ctr = signal_ctr;
+					last_suitable_tile = INVALID_TILE;
+				}
+			} else {
+				/* Test tile for a potential signal spot. */
+				if (build_signal(tile, trackdir, true)) {
+					last_suitable_tile = tile;
+					last_suitable_ctr = signal_ctr;
+					last_suitable_trackdir = trackdir;
+				}
+			}
+		} else if(signal_ctr >= last_used_ctr + signal_density) {
+			/* We're always keeping regular interval between signals so doesn't matter whether we succeed or not. */
+			build_signal(tile, trackdir, false);
+			last_used_ctr = signal_ctr;
 		}
 
 		if (autofill) {
-			if (!CheckSignalAutoFill(tile, trackdir, signal_ctr, remove)) break;
+			switch (GetTileType(tile)) {
+				case MP_RAILWAY:
+					signal_ctr += (IsDiagonalTrackdir(trackdir) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE);
+					break;
+
+				case MP_ROAD:
+					signal_ctr += TILE_AXIAL_DISTANCE;
+					break;
+
+				case MP_TUNNELBRIDGE: {
+					uint len = (GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile)) + 2) * TILE_AXIAL_DISTANCE;
+					if (remove || minimise_gaps) {
+						signal_ctr += len;
+					} else {
+						/* To keep regular interval we need to emulate placing signals on a bridge.
+						 * We start with TILE_AXIAL_DISTANCE as one bridge tile gets processed in the main loop. */
+						signal_ctr += TILE_AXIAL_DISTANCE;
+						for(uint i = TILE_AXIAL_DISTANCE; i < len; i += TILE_AXIAL_DISTANCE) {
+							if (signal_ctr >= last_used_ctr + signal_density) last_used_ctr = signal_ctr;
+							signal_ctr += TILE_AXIAL_DISTANCE;
+						}
+					}
+					break;
+				}
+
+				default: break;
+			}
+
+			if (!AdvanceSignalAutoFill(tile, trackdir, remove)) break;
 
 			/* Prevent possible loops */
 			if (tile == start_tile && trackdir == start_trackdir) break;
 		} else {
 			if (tile == end_tile) break;
 
-			tile += ToTileIndexDiff(_trackdelta[trackdir]);
-			signal_ctr++;
-
+			signal_ctr += (IsDiagonalTrackdir(trackdir) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE);
 			/* toggle railbit for the non-diagonal tracks (|, -- tracks) */
-			if (IsDiagonalTrackdir(trackdir)) {
-				signal_ctr++;
-			} else {
-				ToggleBit(trackdir, 0);
-			}
+
+			tile += ToTileIndexDiff(_trackdelta[trackdir]);
+			if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 		}
+	}
+
+	/* We may end up with the current gap exceeding the signal density so fix that if needed. */
+	if (!remove && minimise_gaps && signal_ctr > last_used_ctr + signal_density && last_suitable_tile != INVALID_TILE) {
+		build_signal(last_suitable_tile, last_suitable_trackdir, false);
 	}
 
 	return had_success ? total_cost : last_error;
