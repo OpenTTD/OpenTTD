@@ -545,6 +545,8 @@ public:
 	 */
 	virtual void OnNewDay() {};
 
+	void ShiftDates(int interval);
+
 	/**
 	 * Crash the (whole) vehicle chain.
 	 * @param flooded whether the cause of the crash is flooding or not.
