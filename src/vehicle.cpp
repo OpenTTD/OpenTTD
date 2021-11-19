@@ -764,6 +764,16 @@ uint32 Vehicle::GetGRFID() const
 }
 
 /**
+ * Shift all dates by given interval.
+ * This is useful if the date has been modified with the cheat menu.
+ * @param interval Number of days to be added or substracted.
+ */
+void Vehicle::ShiftDates(int interval)
+{
+	this->date_of_last_service += interval;
+}
+
+/**
  * Handle the pathfinding result, especially the lost status.
  * If the vehicle is now lost and wasn't previously fire an
  * event to the AIs and a news message to the user. If the
