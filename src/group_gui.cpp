@@ -746,17 +746,23 @@ public:
 						NOT_REACHED();
 				}
 				if (v) {
-					if (_ctrl_pressed) {
-						if (this->grouping == GB_NONE) {
-							this->SelectGroup(v->group_id);
-						} else {
-							ShowOrdersWindow(v);
-						}
+					if (_ctrl_pressed && this->grouping == GB_SHARED_ORDERS) {
+						ShowOrdersWindow(v);
 					} else {
 						this->vehicle_sel = v->index;
+
+						if (_ctrl_pressed && this->grouping == GB_NONE) {
+							/*
+							 * It only makes sense to select a group if not using shared orders
+							 * since two vehicles sharing orders can be from different groups.
+							 */
+							this->SelectGroup(v->group_id);
+						}
+
 						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 						SetMouseCursorVehicle(v, EIT_IN_LIST);
 						_cursor.vehchain = true;
+
 						this->SetDirty();
 					}
 				}
