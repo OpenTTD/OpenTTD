@@ -2118,7 +2118,7 @@ CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 
 		default:
-			NOT_REACHED();
+			return CMD_ERROR;
 	}
 
 	return CommandCost();
