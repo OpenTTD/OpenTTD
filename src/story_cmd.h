@@ -11,16 +11,20 @@
 #define STORY_CMD_H
 
 #include "command_type.h"
+#include "company_type.h"
+#include "date_type.h"
+#include "story_type.h"
+#include "vehicle_type.h"
 
-CommandProc CmdCreateStoryPage;
-CommandProc CmdCreateStoryPageElement;
-CommandProc CmdUpdateStoryPageElement;
-CommandProc CmdSetStoryPageTitle;
-CommandProc CmdSetStoryPageDate;
-CommandProc CmdShowStoryPage;
-CommandProc CmdRemoveStoryPage;
-CommandProc CmdRemoveStoryPageElement;
-CommandProc CmdStoryPageButton;
+CommandCost CmdCreateStoryPage(DoCommandFlag flags, CompanyID company, const std::string &text);
+CommandCost CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32 reference, const std::string &text);
+CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageElementID page_element_id, uint32 reference, const std::string &text);
+CommandCost CmdSetStoryPageTitle(DoCommandFlag flags, StoryPageID page_id, const std::string &text);
+CommandCost CmdSetStoryPageDate(DoCommandFlag flags, StoryPageID page_id, Date date);
+CommandCost CmdShowStoryPage(DoCommandFlag flags, StoryPageID page_id);
+CommandCost CmdRemoveStoryPage(DoCommandFlag flags, StoryPageID page_id);
+CommandCost CmdRemoveStoryPageElement(DoCommandFlag flags, StoryPageElementID page_element_id);
+CommandCost CmdStoryPageButton(DoCommandFlag flags, TileIndex tile, StoryPageElementID page_element_id, VehicleID reference);
 
 DEF_CMD_TRAIT(CMD_CREATE_STORY_PAGE,         CmdCreateStoryPage,        CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_CREATE_STORY_PAGE_ELEMENT, CmdCreateStoryPageElement, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
