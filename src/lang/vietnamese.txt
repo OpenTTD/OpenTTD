@@ -1743,6 +1743,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Hiển thị ti
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tai nạn / thiên tai: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Hiển thị tin tức về các vụ tại nạn hoặc thiên tai xảy ra
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Tai nạn của đối thủ: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Hiển thị thông điệp về phương tiện bị tai nạn của đối thủ
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Thông tin công ty: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Hiển thị tin tức khi có một công ty mới khai trương, hoặc các công ty có nguy cơ phá sản
