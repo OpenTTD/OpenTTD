@@ -16,6 +16,7 @@ typedef uint16 StoryPageElementID; ///< ID of a story page element
 typedef uint16 StoryPageID; ///< ID of a story page
 struct StoryPageElement;
 struct StoryPage;
+enum StoryPageElementType : byte;
 
 extern StoryPageElementID _new_story_page_element_id;
 extern StoryPageID _new_story_page_id;

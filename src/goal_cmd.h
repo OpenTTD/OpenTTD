@@ -11,14 +11,16 @@
 #define GOAL_CMD_H
 
 #include "command_type.h"
+#include "command_type.h"
+#include "goal_type.h"
 
-CommandProc CmdCreateGoal;
-CommandProc CmdRemoveGoal;
-CommandProc CmdSetGoalText;
-CommandProc CmdSetGoalProgress;
-CommandProc CmdSetGoalCompleted;
-CommandProc CmdGoalQuestion;
-CommandProc CmdGoalQuestionAnswer;
+CommandCost CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text);
+CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal);
+CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &text);
+CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::string &text);
+CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed);
+CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint16 target, bool is_client, uint32 button_mask, GoalQuestionType type, const std::string &text);
+CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16 uniqueid, uint8 button);
 
 DEF_CMD_TRAIT(CMD_CREATE_GOAL,          CmdCreateGoal,         CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_REMOVE_GOAL,          CmdRemoveGoal,         CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
