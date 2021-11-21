@@ -121,13 +121,13 @@ CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
 
 	bool add_cost = !IsWaterTile(tile);
-	CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile, 0, 0, {});
+	CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret);
 	}
 	add_cost = !IsWaterTile(tile2);
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile2, 0, 0, {});
+	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags | DC_AUTO, tile2);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret);
@@ -305,13 +305,13 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 
 	/* middle tile */
 	WaterClass wc_middle = HasTileWaterGround(tile) ? GetWaterClass(tile) : WATER_CLASS_CANAL;
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
 
 	/* lower tile */
 	if (!IsWaterTile(tile - delta)) {
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile - delta, 0, 0, {});
+		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile - delta);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
@@ -323,7 +323,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 
 	/* upper tile */
 	if (!IsWaterTile(tile + delta)) {
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile + delta, 0, 0, {});
+		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile + delta);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
@@ -473,7 +473,7 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
 		if (water && IsCanal(current_tile) && _game_mode != GM_EDITOR && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile, 0, 0, {});
+		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
 		if (ret.Failed()) return ret;
 
 		if (!water) cost.AddCost(ret);
@@ -1128,7 +1128,7 @@ void DoFloodTile(TileIndex target)
 				FALLTHROUGH;
 
 			case MP_CLEAR:
-				if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, target, 0, 0, {}).Succeeded()) {
+				if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, target).Succeeded()) {
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
 					flooded = true;
@@ -1143,7 +1143,7 @@ void DoFloodTile(TileIndex target)
 		FloodVehicles(target);
 
 		/* flood flat tile */
-		if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, target, 0, 0, {}).Succeeded()) {
+		if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, target).Succeeded()) {
 			MakeSea(target);
 			MarkTileDirtyByTile(target);
 			flooded = true;
@@ -1195,7 +1195,7 @@ static void DoDryUp(TileIndex tile)
 		case MP_WATER:
 			assert(IsCoast(tile));
 
-			if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile, 0, 0, {}).Succeeded()) {
+			if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile).Succeeded()) {
 				MakeClear(tile, CLEAR_GRASS, 3);
 				MarkTileDirtyByTile(tile);
 			}
@@ -1354,7 +1354,7 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	}
 
 	/* Remove depot */
-	if (IsShipDepot(tile)) Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile, 0, 0, {});
+	if (IsShipDepot(tile)) Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile);
 
 	/* Set owner of canals and locks ... and also canal under dock there was before.
 	 * Check if the new owner after removing depot isn't OWNER_WATER. */
@@ -1374,7 +1374,7 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int 
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
 
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile, 0, 0, {});
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile);
 }
 
 

@@ -65,7 +65,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	TileArea ta(start, end);
 	for (TileIndex tile : ta) {
 		SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_NORMAL : TROPICZONE_DESERT);
-		Command<CMD_LANDSCAPE_CLEAR>::Post(tile, 0, 0, {});
+		Command<CMD_LANDSCAPE_CLEAR>::Post(tile);
 		MarkTileDirtyByTile(tile);
 	}
 	old_generating_world.Restore();
@@ -120,16 +120,16 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
-			Command<CMD_CLEAR_AREA>::Post(STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed ? 1 : 0, {});
+			Command<CMD_CLEAR_AREA>::Post(STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed);
 			break;
 		case DDSP_RAISE_AND_LEVEL_AREA:
-			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, LM_RAISE << 1 | (_ctrl_pressed ? 1 : 0), {});
+			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_RAISE);
 			break;
 		case DDSP_LOWER_AND_LEVEL_AREA:
-			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, LM_LOWER << 1 | (_ctrl_pressed ? 1 : 0), {});
+			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LOWER);
 			break;
 		case DDSP_LEVEL_AREA:
-			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, LM_LEVEL << 1 | (_ctrl_pressed ? 1 : 0), {});
+			Command<CMD_LEVEL_LAND>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LEVEL);
 			break;
 		case DDSP_CREATE_ROCKS:
 			GenerateRockyArea(end_tile, start_tile);
@@ -392,15 +392,15 @@ static byte _terraform_size = 1;
  * @todo : Incorporate into game itself to allow for ingame raising/lowering of
  *         larger chunks at the same time OR remove altogether, as we have 'level land' ?
  * @param tile The top-left tile where the terraforming will start
- * @param mode 1 for raising, 0 for lowering land
+ * @param mode true for raising, false for lowering land
  */
-static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
+static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
 {
 	if (_terraform_size == 1) {
 		StringID msg =
 			mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
 
-		Command<CMD_TERRAFORM_LAND>::Post(msg, CcTerraform, tile, SLOPE_N, (uint32)mode, {});
+		Command<CMD_TERRAFORM_LAND>::Post(msg, CcTerraform, tile, SLOPE_N, mode);
 	} else {
 		assert(_terraform_size != 0);
 		TileArea ta(tile, _terraform_size, _terraform_size);
@@ -427,7 +427,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 
 		for (TileIndex tile2 : ta) {
 			if (TileHeight(tile2) == h) {
-				Command<CMD_TERRAFORM_LAND>::Post(tile2, SLOPE_N, (uint32)mode, {});
+				Command<CMD_TERRAFORM_LAND>::Post(tile2, SLOPE_N, mode);
 			}
 		}
 	}
@@ -516,7 +516,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		/* Delete all station signs */
 		for (BaseStation *st : BaseStation::Iterate()) {
 			/* There can be buoys, remove them */
-			if (IsBuoyTile(st->xy)) Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, st->xy, 0, 0, {});
+			if (IsBuoyTile(st->xy)) Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, st->xy);
 			if (!st->IsInUse()) delete st;
 		}
 
@@ -659,11 +659,11 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case WID_ETT_LOWER_LAND: // Lower land button
-				CommonRaiseLowerBigLand(tile, 0);
+				CommonRaiseLowerBigLand(tile, false);
 				break;
 
 			case WID_ETT_RAISE_LAND: // Raise land button
-				CommonRaiseLowerBigLand(tile, 1);
+				CommonRaiseLowerBigLand(tile, true);
 				break;
 
 			case WID_ETT_LEVEL_LAND: // Level land button

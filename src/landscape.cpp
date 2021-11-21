@@ -686,12 +686,9 @@ void ClearSnowLine()
  * Clear a piece of landscape
  * @param flags of operation to conduct
  * @param tile tile to clear
- * @param p1 unused
- * @param p2 unused
- * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool do_clear = false;
@@ -735,15 +732,13 @@ CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile, uint32 p1, ui
  * Clear a big piece of landscape
  * @param flags of operation to conduct
  * @param tile end tile of area dragging
- * @param p1 start tile of area dragging
- * @param p2 various bitstuffed data.
- *  bit      0: Whether to use the Orthogonal (0) or Diagonal (1) iterator.
- * @param text unused
+ * @param start_tile start tile of area dragging
+ * @param diagonal Whether to use the Orthogonal (false) or Diagonal (true) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal)
 {
-	if (p1 >= MapSize()) return CMD_ERROR;
+	if (start_tile >= MapSize()) return CMD_ERROR;
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -753,10 +748,10 @@ CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 	const Company *c = (flags & (DC_AUTO | DC_BANKRUPT)) ? nullptr : Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->clear_limit, 16, 16));
 
-	TileIterator *iter = HasBit(p2, 0) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(tile, p1);
+	TileIterator *iter = diagonal ? (TileIterator *)new DiagonalTileIterator(tile, start_tile) : new OrthogonalTileIterator(tile, start_tile);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
-		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags & ~DC_EXEC, t, 0, 0, {});
+		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags & ~DC_EXEC, t);
 		if (ret.Failed()) {
 			last_error = ret;
 
@@ -773,14 +768,14 @@ CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
 				delete iter;
 				return cost;
 			}
-			Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t, 0, 0, {});
+			Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t);
 
 			/* draw explosion animation...
 			 * Disable explosions when game is paused. Looks silly and blocks the view. */
-			if ((t == tile || t == p1) && _pause_mode == PM_UNPAUSED) {
+			if ((t == tile || t == start_tile) && _pause_mode == PM_UNPAUSED) {
 				/* big explosion in two corners, or small explosion for single tiles */
 				CreateEffectVehicleAbove(TileX(t) * TILE_SIZE + TILE_SIZE / 2, TileY(t) * TILE_SIZE + TILE_SIZE / 2, 2,
-					TileX(tile) == TileX(p1) && TileY(tile) == TileY(p1) ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
+					TileX(tile) == TileX(start_tile) && TileY(tile) == TileY(start_tile) ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
 				);
 			}
 		} else {

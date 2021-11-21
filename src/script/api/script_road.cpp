@@ -593,7 +593,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, IsTileType(tile, MP_ROAD))
 	EnforcePrecondition(false, GetRoadTileType(tile) == ROAD_TILE_DEPOT);
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ bool ScriptRoad::RemoveRoadStation(TileIndex tile)
