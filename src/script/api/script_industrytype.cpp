@@ -123,7 +123,7 @@
 
 	uint32 seed = ::InteractiveRandom();
 	uint32 layout_index = ::InteractiveRandomRange((uint32)::GetIndustrySpec(industry_type)->layouts.size());
-	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, (1 << 16) | (layout_index << 8) | industry_type, seed, {});
+	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
 }
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
@@ -131,7 +131,7 @@
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
 	uint32 seed = ::InteractiveRandom();
-	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(0, industry_type, seed, {});
+	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(0, industry_type, 0, false, seed);
 }
 
 /* static */ bool ScriptIndustryType::IsBuiltOnWater(IndustryType industry_type)

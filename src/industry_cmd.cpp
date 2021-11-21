@@ -1977,17 +1977,14 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
  * Build/Fund an industry
  * @param flags of operations to conduct
  * @param tile tile where industry is built
- * @param p1 various bitstuffed elements
- * - p1 = (bit  0 -  7) - industry type see build_industry.h and see industry.h
- * - p1 = (bit  8 - 15) - first layout to try
- * - p1 = (bit 16     ) - 0 = prospect, 1 = fund (only valid if current company is DEITY)
- * @param p2 seed to use for desyncfree randomisations
- * @param text unused
+ * @param it industry type see build_industry.h and see industry.h
+ * @param first_layout first layout to try
+ * @param fund false = prospect, true = fund (only valid if current company is DEITY)
+ * @param seed seed to use for desyncfree randomisations
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType it, uint32 first_layout, bool fund, uint32 seed)
 {
-	IndustryType it = GB(p1, 0, 8);
 	if (it >= NUM_INDUSTRYTYPES) return CMD_ERROR;
 
 	const IndustrySpec *indspec = GetIndustrySpec(it);
@@ -2006,12 +2003,12 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, uint32 p1, uin
 	}
 
 	Randomizer randomizer;
-	randomizer.SetSeed(p2);
-	uint16 random_initial_bits = GB(p2, 0, 16);
+	randomizer.SetSeed(seed);
+	uint16 random_initial_bits = GB(seed, 0, 16);
 	uint32 random_var8f = randomizer.Next();
 	size_t num_layouts = indspec->layouts.size();
 	CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
-	const bool deity_prospect = _current_company == OWNER_DEITY && !HasBit(p1, 16);
+	const bool deity_prospect = _current_company == OWNER_DEITY && !fund;
 
 	Industry *ind = nullptr;
 	if (deity_prospect || (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry())) {
@@ -2041,7 +2038,7 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, uint32 p1, uin
 			cur_company.Restore();
 		}
 	} else {
-		size_t layout = GB(p1, 8, 8);
+		size_t layout = first_layout;
 		if (layout >= num_layouts) return CMD_ERROR;
 
 		/* Check subsequently each layout, starting with the given layout in p1 */
@@ -2065,40 +2062,31 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, uint32 p1, uin
 /**
  * Change industry properties
  * @param flags Type of operation.
- * @param tile Unused.
- * @param p1 IndustryID
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0 - 7) - IndustryAction to perform
- * - p2 = (bit 8 - 15) - IndustryControlFlags
- *                       (only used with set control flags)
- * - p2 = (bit 16 - 23) - CompanyID to set or INVALID_OWNER (available to everyone) or
- *                        OWNER_NONE (neutral stations only) or OWNER_DEITY (no one)
- *                        (only used with set exclusive supplier / consumer)
+ * @param ind_id IndustryID
+ * @param action IndustryAction to perform
+ * @param ctlflags IndustryControlFlags (only used with set control flags)
+ * @param company_id CompanyID to set or INVALID_OWNER (available to everyone) or
+ *                   OWNER_NONE (neutral stations only) or OWNER_DEITY (no one)
+ *                   (only used with set exclusive supplier / consumer)
  * @param text - Additional industry text (only used with set text action)
  * @return Empty cost or an error.
  */
-CommandCost CmdIndustryCtrl(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdIndustryCtrl(DoCommandFlag flags, IndustryID ind_id, IndustryAction action, IndustryControlFlags ctlflags, Owner company_id, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
-	Industry *ind = Industry::GetIfValid(p1);
+	Industry *ind = Industry::GetIfValid(ind_id);
 	if (ind == nullptr) return CMD_ERROR;
-
-	auto action = static_cast<IndustryAction>(GB(p2, 0, 8));
 
 	switch (action) {
 		case IndustryAction::SetControlFlags: {
-			IndustryControlFlags ctlflags = (IndustryControlFlags)GB(p2, 8, 8) & INDCTL_MASK;
-
-			if (flags & DC_EXEC) ind->ctlflags = ctlflags;
+			if (flags & DC_EXEC) ind->ctlflags = ctlflags & INDCTL_MASK;
 
 			break;
 		}
 
 		case IndustryAction::SetExclusiveSupplier:
 		case IndustryAction::SetExclusiveConsumer: {
-			Owner company_id = (Owner)GB(p2, 16, 8);
-
 			if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY
 				&& !Company::IsValidID(company_id)) return CMD_ERROR;
 

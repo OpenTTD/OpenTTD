@@ -32,12 +32,10 @@ SignID _new_sign_id;
  * but everybody is able to rename/remove it.
  * @param tile tile to place sign at
  * @param flags type of operation
- * @param p1 unused
- * @param p2 unused
- * @param text unused
+ * @param text contents of the sign
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string &text)
 {
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
@@ -69,16 +67,14 @@ CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 
  * Rename a sign. If the new name of the sign is empty, we assume
  * the user wanted to delete it. So delete it. Ownership of signs
  * has no meaning/effect whatsoever except for eyecandy
- * @param tile unused
  * @param flags type of operation
- * @param p1 index of the sign to be renamed/removed
- * @param p2 unused
+ * @param sign_id index of the sign to be renamed/removed
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameSign(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string &text)
 {
-	Sign *si = Sign::GetIfValid(p1);
+	Sign *si = Sign::GetIfValid(sign_id);
 	if (si == nullptr) return CMD_ERROR;
 	if (!CompanyCanRenameSign(si)) return CMD_ERROR;
 
@@ -132,5 +128,5 @@ void CcPlaceSign(Commands cmd, const CommandCost &result, TileIndex tile, const 
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	Command<CMD_PLACE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, 0, 0, {});
+	Command<CMD_PLACE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, {});
 }

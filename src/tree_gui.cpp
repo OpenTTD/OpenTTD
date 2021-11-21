@@ -231,7 +231,7 @@ public:
 			TileIndex tile = TileVirtXY(pt.x, pt.y);
 
 			if (this->mode == PM_NORMAL) {
-				Command<CMD_PLANT_TREE>::Post(tile, this->tree_to_plant, tile, {});
+				Command<CMD_PLANT_TREE>::Post(tile, tile, this->tree_to_plant);
 			} else {
 				this->DoPlantForest(tile);
 			}
@@ -241,7 +241,7 @@ public:
 	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
-			Command<CMD_PLANT_TREE>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, this->tree_to_plant, start_tile, {});
+			Command<CMD_PLANT_TREE>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant);
 		}
 	}
 

@@ -12,7 +12,7 @@
 
 #include "command_type.h"
 
-CommandProc CmdPlantTree;
+CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant);
 
 DEF_CMD_TRAIT(CMD_PLANT_TREE, CmdPlantTree, CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
 

@@ -11,8 +11,9 @@
 #define OBJECT_CMD_H
 
 #include "command_type.h"
+#include "object_type.h"
 
-CommandProc CmdBuildObject;
+CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type, uint8 view);
 
 DEF_CMD_TRAIT(CMD_BUILD_OBJECT, CmdBuildObject, CMD_DEITY | CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
 

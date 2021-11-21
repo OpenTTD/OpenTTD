@@ -382,25 +382,23 @@ void GenerateTrees()
  * Plant a tree.
  * @param flags type of operation
  * @param tile end tile of area-drag
- * @param p1 tree type, TREE_INVALID means random.
- * @param p2 start tile of area-drag of tree plantation
- * @param text unused
+ * @param start_tile start tile of area-drag of tree plantation
+ * @param tree_to_plant tree type, TREE_INVALID means random.
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
-	const byte tree_to_plant = GB(p1, 0, 8); // We cannot use Extract as min and max are climate specific.
 
-	if (p2 >= MapSize()) return CMD_ERROR;
+	if (start_tile >= MapSize()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
 	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
 
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
 
-	TileArea ta(tile, (TileIndex)p2);
+	TileArea ta(tile, start_tile);
 	for (TileIndex current_tile : ta) {
 		switch (GetTileType(current_tile)) {
 			case MP_TREES:
