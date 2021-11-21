@@ -255,7 +255,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, tile < ::MapSize());
 
-	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, slope, 1, {});
+	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, true);
 }
 
 /* static */ bool ScriptTile::LowerTile(TileIndex tile, int32 slope)
@@ -263,7 +263,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, tile < ::MapSize());
 
-	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, slope, 0, {});
+	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, false);
 }
 
 /* static */ bool ScriptTile::LevelTiles(TileIndex start_tile, TileIndex end_tile)
@@ -272,14 +272,14 @@
 	EnforcePrecondition(false, start_tile < ::MapSize());
 	EnforcePrecondition(false, end_tile < ::MapSize());
 
-	return ScriptObject::Command<CMD_LEVEL_LAND>::Do(end_tile, start_tile, LM_LEVEL << 1, {});
+	return ScriptObject::Command<CMD_LEVEL_LAND>::Do(end_tile, start_tile, false, LM_LEVEL);
 }
 
 /* static */ bool ScriptTile::DemolishTile(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ bool ScriptTile::PlantTree(TileIndex tile)

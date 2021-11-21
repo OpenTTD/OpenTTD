@@ -448,7 +448,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType rai
 			CommandCost ret = CheckTileOwnership(tile);
 			if (ret.Failed()) return ret;
 
-			if (!IsPlainRail(tile)) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {}); // just get appropriate error message
+			if (!IsPlainRail(tile)) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile); // just get appropriate error message
 
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
@@ -578,7 +578,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType rai
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 
-			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 
@@ -987,7 +987,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {}));
+	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
 	if (cost.Failed()) return cost;
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -2882,7 +2882,7 @@ static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_own
 
 		SetTileOwner(tile, new_owner);
 	} else {
-		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile, 0, 0, {});
+		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile);
 	}
 }
 
@@ -3070,7 +3070,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, int 
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
 		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
 

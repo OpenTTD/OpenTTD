@@ -845,7 +845,7 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_iter, 0, 0, {});
+		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_iter);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 	}
@@ -932,7 +932,7 @@ static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag fl
 					continue;
 				}
 			}
-			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur, 0, 0, {});
+			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 		}
@@ -1050,7 +1050,7 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 					cost.AddCost(RoadBuildCost(rt) * 2);
 				}
 			} else {
-				ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, cur_tile, 0, 0, {});
+				ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, cur_tile);
 				if (ret.Failed()) return ret;
 				cost.AddCost(ret);
 				cost.AddCost(RoadBuildCost(rt) * 2);
@@ -2489,7 +2489,7 @@ CommandCost CmdBuildDock(DoCommandFlag flags, TileIndex tile, StationID station_
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
 
@@ -2504,7 +2504,7 @@ CommandCost CmdBuildDock(DoCommandFlag flags, TileIndex tile, StationID station_
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
 
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur, 0, 0, {});
+	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
 	if (ret.Failed()) return ret;
 
 	tile_cur += TileOffsByDiagDir(direction);
@@ -4197,7 +4197,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 			/* Change owner of tile and all roadtypes */
 			ChangeTileOwner(tile, old_owner, new_owner);
 		} else {
-			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile, 0, 0, {});
+			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile);
 			/* Set tile owner of water under (now removed) buoy and dock to OWNER_NONE.
 			 * Update owner of buoy if it was not removed (was in orders).
 			 * Do not update when owned by OWNER_WATER (sea and rivers). */
@@ -4314,7 +4314,7 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, in
 			}
 		}
 	}
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
 /**

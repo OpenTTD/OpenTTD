@@ -126,5 +126,5 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsTunnelTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }

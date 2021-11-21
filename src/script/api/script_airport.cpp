@@ -86,7 +86,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile))
 	EnforcePrecondition(false, IsAirportTile(tile) || IsHangarTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ int32 ScriptAirport::GetNumHangars(TileIndex tile)

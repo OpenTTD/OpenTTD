@@ -369,7 +369,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
-		if (GetRoadType(tile, OtherRoadTramType(rtt)) == INVALID_ROADTYPE) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+		if (GetRoadType(tile, OtherRoadTramType(rtt)) == INVALID_ROADTYPE) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 
 		CommandCost cost(EXPENSES_CONSTRUCTION);
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -817,7 +817,7 @@ do_clear:;
 	}
 
 	if (need_to_clear) {
-		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 	}
@@ -1153,7 +1153,7 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {}));
+	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
 	if (cost.Failed()) return cost;
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -1239,7 +1239,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 			}
 
 			if (flags & DC_EXEC) {
-				Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+				Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 			}
 			return ret;
 		}
@@ -2167,7 +2167,7 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 	if (IsRoadDepot(tile)) {
 		if (GetTileOwner(tile) == old_owner) {
 			if (new_owner == INVALID_OWNER) {
-				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile, 0, 0, {});
+				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile);
 			} else {
 				/* A road depot has two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
 				RoadType rt = GetRoadTypeRoad(tile);
@@ -2253,7 +2253,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, int z
 		}
 	}
 
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
 /** Update power of road vehicle under which is the roadtype being converted */

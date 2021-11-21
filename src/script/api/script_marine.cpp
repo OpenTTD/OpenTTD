@@ -125,7 +125,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsWaterDepotTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveDock(TileIndex tile)
@@ -134,7 +134,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsDockTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveBuoy(TileIndex tile)
@@ -143,7 +143,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsBuoyTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveLock(TileIndex tile)
@@ -152,7 +152,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsLockTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveCanal(TileIndex tile)
@@ -161,7 +161,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsCanalTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile, 0, 0, {});
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ Money ScriptMarine::GetBuildCost(BuildType build_type)

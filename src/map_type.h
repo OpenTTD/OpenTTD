@@ -78,7 +78,7 @@ static const uint MAX_MAP_SIZE      = 1 << MAX_MAP_SIZE_BITS; ///< Maximal map s
 #define STRAIGHT_TRACK_LENGTH 7071/10000
 
 /** Argument for CmdLevelLand describing what to do. */
-enum LevelMode {
+enum LevelMode : byte {
 	LM_LEVEL, ///< Level the land.
 	LM_LOWER, ///< Lower the land.
 	LM_RAISE, ///< Raise the land.

@@ -1103,7 +1103,7 @@ static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
 		_industry_sound_tile = tile;
 		if (_settings_client.sound.ambient) SndPlayTileFx(SND_38_LUMBER_MILL_1, tile);
 
-		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile, 0, 0, {});
+		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile);
 
 		cur_company.Restore();
 		return true;
@@ -1485,13 +1485,13 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
 				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
-				CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, cur_tile, 0, 0, {});
+				CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, cur_tile);
 				cur_company.Restore();
 
 				if (ret.Failed()) return ret;
 			} else {
 				/* Clear the tiles, but do not affect town ratings */
-				CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile, 0, 0, {});
+				CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile);
 
 				if (ret.Failed()) return ret;
 			}
@@ -1601,7 +1601,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
-			if (Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, tile_walk, SLOPE_N, (curh > h) ? 0 : 1, {}).Failed()) {
+			if (Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, tile_walk, SLOPE_N, curh <= h).Failed()) {
 				cur_company.Restore();
 				return false;
 			}
@@ -1616,7 +1616,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 				/* We give the terraforming for free here, because we can't calculate
 				 *  exact cost in the test-round, and as we all know, that will cause
 				 *  a nice assert if they don't match ;) */
-				Command<CMD_TERRAFORM_LAND>::Do(flags, tile_walk, SLOPE_N, (curh > h) ? 0 : 1, {});
+				Command<CMD_TERRAFORM_LAND>::Do(flags, tile_walk, SLOPE_N, curh <= h);
 				curh += (curh > h) ? -1 : 1;
 			}
 		}
@@ -1886,7 +1886,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 
 			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
 
-			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile, 0, 0, {});
+			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile);
 
 			MakeIndustry(cur_tile, i->index, it.gfx, Random(), wc);
 
@@ -3062,7 +3062,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, i
 			}
 		}
 	}
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile, 0, 0, {});
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
 extern const TileTypeProcs _tile_type_industry_procs = {
