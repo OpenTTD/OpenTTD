@@ -11,9 +11,14 @@
 #define INDUSTRY_CMD_H
 
 #include "command_type.h"
+#include "company_type.h"
+#include "industry_type.h"
 
-CommandProc CmdBuildIndustry;
-CommandProc CmdIndustryCtrl;
+enum class IndustryAction : byte;
+enum IndustryControlFlags : byte;
+
+CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType it, uint32 first_layout, bool fund, uint32 seed);
+CommandCost CmdIndustryCtrl(DoCommandFlag flags, IndustryID ind_id, IndustryAction action, IndustryControlFlags ctlflags, Owner company_id, const std::string &text);
 
 DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_INDUSTRY_CTRL,  CmdIndustryCtrl,  CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)

@@ -11,9 +11,10 @@
 #define SIGNS_CMD_H
 
 #include "command_type.h"
+#include "signs_type.h"
 
-CommandProc CmdPlaceSign;
-CommandProc CmdRenameSign;
+CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string &text);
+CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string &text);
 
 DEF_CMD_TRAIT(CMD_PLACE_SIGN,  CmdPlaceSign,  CMD_DEITY, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_RENAME_SIGN, CmdRenameSign, CMD_DEITY, CMDT_OTHER_MANAGEMENT)

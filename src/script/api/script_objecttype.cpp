@@ -42,5 +42,5 @@
 	EnforcePrecondition(false, IsValidObjectType(object_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_OBJECT>::Do(tile, object_type, view, {});
+	return ScriptObject::Command<CMD_BUILD_OBJECT>::Do(tile, object_type, view);
 }

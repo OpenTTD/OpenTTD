@@ -11,8 +11,9 @@
 #define VIEWPORT_CMD_H
 
 #include "command_type.h"
+#include "viewport_type.h"
 
-CommandProc CmdScrollViewport;
+CommandCost CmdScrollViewport(DoCommandFlag flags, TileIndex tile, ViewportScrollTarget target, uint32 ref);
 
 DEF_CMD_TRAIT(CMD_SCROLL_VIEWPORT, CmdScrollViewport, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
 
