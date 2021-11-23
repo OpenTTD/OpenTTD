@@ -395,7 +395,7 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
 {
 	if (pause == ((_pause_mode & pm) != PM_UNPAUSED)) return;
 
-	Command<CMD_PAUSE>::Post(0, pm, pause ? 1 : 0, {});
+	Command<CMD_PAUSE>::Post(pm, pause);
 }
 
 /**
@@ -1128,7 +1128,7 @@ void NetworkGameLoop()
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
-				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ 0, PM_PAUSED_NORMAL, 1, "" });
+				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PM_PAUSED_NORMAL, true });
 				_ddc_fastforward = false;
 			} else if (strncmp(p, "sync: ", 6) == 0) {
 				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date, &next_date_fract, &sync_state[0], &sync_state[1]);

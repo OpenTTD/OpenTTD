@@ -88,7 +88,7 @@ void CheckTrainsLengths()
 
 						if (!_networking && first) {
 							first = false;
-							Command<CMD_PAUSE>::Post(0, PM_PAUSED_ERROR, 1, {});
+							Command<CMD_PAUSE>::Post(PM_PAUSED_ERROR, true);
 						}
 						/* Break so we warn only once for each train. */
 						break;

@@ -38,7 +38,7 @@
 
 	if ((sd->flags & SF_NO_NETWORK_SYNC) != 0) return false;
 
-	return ScriptObject::Command<CMD_CHANGE_SETTING>::Do(0, 0, value, sd->GetName());
+	return ScriptObject::Command<CMD_CHANGE_SETTING>::Do(sd->GetName(), value);
 }
 
 /* static */ bool ScriptGameSettings::IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type)

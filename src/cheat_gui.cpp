@@ -55,7 +55,7 @@ static int32 _money_cheat_amount = 10000000;
  */
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
-	Command<CMD_MONEY_CHEAT>::Post(0, (uint32)(p2 * _money_cheat_amount), 0, {});
+	Command<CMD_MONEY_CHEAT>::Post(p2 * _money_cheat_amount);
 	return _money_cheat_amount;
 }
 

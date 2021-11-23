@@ -440,11 +440,11 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_INCREASE_LOAN: // increase loan
-				Command<CMD_INCREASE_LOAN>::Post(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, 0, 0, _ctrl_pressed, {});
+				Command<CMD_INCREASE_LOAN>::Post(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
 			case WID_CF_REPAY_LOAN: // repay loan
-				Command<CMD_DECREASE_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, 0, 0, _ctrl_pressed, {});
+				Command<CMD_DECREASE_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
@@ -1000,7 +1000,7 @@ public:
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
 				if (HasBit(this->sel, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
-					Command<CMD_SET_COMPANY_COLOUR>::Post(0, scheme | (widget == WID_SCL_PRI_COL_DROPDOWN ? 0 : 256), index, {});
+					Command<CMD_SET_COMPANY_COLOUR>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, (Colours)index);
 				}
 			}
 		} else {
@@ -1586,7 +1586,7 @@ public:
 
 			/* OK button */
 			case WID_SCMF_ACCEPT:
-				Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(0, 0, this->face, {});
+				Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(this->face);
 				FALLTHROUGH;
 
 			/* Cancel button */
@@ -2581,11 +2581,11 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_BUY_SHARE:
-				Command<CMD_BUY_SHARE_IN_COMPANY>::Post(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS, 0, this->window_number, 0, {});
+				Command<CMD_BUY_SHARE_IN_COMPANY>::Post(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS, (CompanyID)this->window_number);
 				break;
 
 			case WID_C_SELL_SHARE:
-				Command<CMD_SELL_SHARE_IN_COMPANY>::Post(STR_ERROR_CAN_T_SELL_25_SHARE_IN, 0, this->window_number, 0, {});
+				Command<CMD_SELL_SHARE_IN_COMPANY>::Post(STR_ERROR_CAN_T_SELL_25_SHARE_IN, (CompanyID)this->window_number);
 				break;
 
 			case WID_C_COMPANY_PASSWORD:
@@ -2640,16 +2640,16 @@ struct CompanyWindow : Window
 				Money money = (Money)(strtoull(str, nullptr, 10) / _currency->rate);
 				uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
-				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, 0, money_c, this->window_number, {});
+				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money_c, (CompanyID)this->window_number);
 				break;
 			}
 
 			case WID_C_PRESIDENT_NAME:
-				Command<CMD_RENAME_PRESIDENT>::Post(STR_ERROR_CAN_T_CHANGE_PRESIDENT, 0, 0, 0, str);
+				Command<CMD_RENAME_PRESIDENT>::Post(STR_ERROR_CAN_T_CHANGE_PRESIDENT, str);
 				break;
 
 			case WID_C_COMPANY_NAME:
-				Command<CMD_RENAME_COMPANY>::Post(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME, 0, 0, 0, str);
+				Command<CMD_RENAME_COMPANY>::Post(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME, str);
 				break;
 
 			case WID_C_COMPANY_JOIN:
@@ -2776,7 +2776,7 @@ struct BuyCompanyWindow : Window {
 				break;
 
 			case WID_BC_YES:
-				Command<CMD_BUY_COMPANY>::Post(STR_ERROR_CAN_T_BUY_COMPANY, 0, this->window_number, 0, {});
+				Command<CMD_BUY_COMPANY>::Post(STR_ERROR_CAN_T_BUY_COMPANY, (CompanyID)this->window_number);
 				break;
 		}
 	}

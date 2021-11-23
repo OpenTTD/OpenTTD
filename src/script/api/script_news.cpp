@@ -39,5 +39,5 @@
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
 	if (ref_type == NR_NONE) reference = 0;
-	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do(0, type | (ref_type << 8) | (c << 16), reference, encoded);
+	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, (::NewsReferenceType)ref_type, (::CompanyID)c, reference, encoded);
 }

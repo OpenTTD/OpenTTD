@@ -14,6 +14,7 @@
 #include <string_view>
 #include "../core/span_type.hpp"
 #include "../core/bitmath_func.hpp"
+#include "../core/overflowsafe_type.hpp"
 
 struct StrongTypedefBase;
 
@@ -36,6 +37,9 @@ public:
 	EndianBufferWriter &operator <<(const char *data) { return *this << std::string_view{ data }; }
 	EndianBufferWriter &operator <<(std::string_view data) { this->Write(data); return *this; }
 	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<byte>(data ? 1 : 0); }
+
+	template <typename T>
+	EndianBufferWriter &operator <<(const OverflowSafeInt<T> &data) { return *this << static_cast<T>(data); };
 
 	template <typename... Targs>
 	EndianBufferWriter &operator <<(const std::tuple<Targs...> &data)
@@ -126,6 +130,9 @@ public:
 
 	EndianBufferReader &operator >>(std::string &data) { data = this->ReadStr(); return *this; }
 	EndianBufferReader &operator >>(bool &data) { data = this->Read<byte>() != 0; return *this; }
+
+	template <typename T>
+	EndianBufferReader &operator >>(OverflowSafeInt<T> &data) { data = this->Read<T>(); return *this; };
 
 	template <typename... Targs>
 	EndianBufferReader &operator >>(std::tuple<Targs...> &data)

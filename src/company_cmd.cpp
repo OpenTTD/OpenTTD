@@ -916,16 +916,11 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 /**
  * Change the company manager's face.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 unused
- * @param p2 face bitmasked
- * @param text unused
+ * @param cmf face bitmasked
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, CompanyManagerFace cmf)
 {
-	CompanyManagerFace cmf = (CompanyManagerFace)p2;
-
 	if (!IsValidCompanyManagerFace(cmf)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -938,20 +933,13 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, TileIndex tile, uint32
 /**
  * Change the company's company-colour
  * @param flags operation to perform
- * @param tile unused
- * @param p1 bitstuffed:
- * p1 bits 0-7 scheme to set
- * p1 bit 8 set first/second colour
- * @param p2 new colour for vehicles, property, etc.
- * @param text unused
+ * @param scheme scheme to set
+ * @param primary set first/second colour
+ * @param colour new colour for vehicles, property, etc.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyColour(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool primary, Colours colour)
 {
-	Colours colour = Extract<Colours, 0, 8>(p2);
-	LiveryScheme scheme = Extract<LiveryScheme, 0, 8>(p1);
-	bool second = HasBit(p1, 8);
-
 	if (scheme >= LS_END || (colour >= COLOUR_END && colour != INVALID_COLOUR)) return CMD_ERROR;
 
 	/* Default scheme can't be reset to invalid. */
@@ -960,14 +948,14 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, TileIndex tile, uint32 p1, 
 	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
-	if (scheme == LS_DEFAULT && !second) {
+	if (scheme == LS_DEFAULT && primary) {
 		for (const Company *cc : Company::Iterate()) {
 			if (cc != c && cc->colour == colour) return CMD_ERROR;
 		}
 	}
 
 	if (flags & DC_EXEC) {
-		if (!second) {
+		if (primary) {
 			if (scheme != LS_DEFAULT) SB(c->livery[scheme].in_use, 0, 1, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = (Colours)c->livery[LS_DEFAULT].colour1;
 			c->livery[scheme].colour1 = colour;
@@ -1051,13 +1039,10 @@ static bool IsUniqueCompanyName(const std::string &name)
 /**
  * Change the name of the company.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 unused
- * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameCompany(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text)
 {
 	bool reset = text.empty();
 
@@ -1097,13 +1082,10 @@ static bool IsUniquePresidentName(const std::string &name)
 /**
  * Change the name of the president.
  * @param flags operation to perform
- * @param tile unused
- * @param p1 unused
- * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenamePresident(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text)
 {
 	bool reset = text.empty();
 
@@ -1121,7 +1103,7 @@ CommandCost CmdRenamePresident(DoCommandFlag flags, TileIndex tile, uint32 p1, u
 			c->president_name = text;
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) {
-				Command<CMD_RENAME_COMPANY>::Do(DC_EXEC, 0, 0, 0, text + " Transport");
+				Command<CMD_RENAME_COMPANY>::Do(DC_EXEC, text + " Transport");
 			}
 		}
 
@@ -1182,19 +1164,16 @@ uint32 CompanyInfrastructure::GetTramTotal() const
  * companies if you have paid off your loan (either explicitly, or implicitly
  * given the fact that you have more money than loan).
  * @param flags operation to perform
- * @param tile unused
- * @param p1 the amount of money to transfer; max 20.000.000
- * @param p2 the company to transfer the money to
- * @param text unused
+ * @param money the amount of money to transfer; max 20.000.000
+ * @param dest_company the company to transfer the money to
  * @return the cost of this operation or an error
  */
-CommandCost CmdGiveMoney(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdGiveMoney(DoCommandFlag flags, uint32 money, CompanyID dest_company)
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
 	const Company *c = Company::Get(_current_company);
-	CommandCost amount(EXPENSES_OTHER, std::min<Money>(p1, 20000000LL));
-	CompanyID dest_company = (CompanyID)p2;
+	CommandCost amount(EXPENSES_OTHER, std::min<Money>(money, 20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return_cmd_error(STR_ERROR_INSUFFICIENT_FUNDS);

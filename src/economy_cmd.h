@@ -11,10 +11,11 @@
 #define ECONOMY_CMD_H
 
 #include "command_type.h"
+#include "company_type.h"
 
-CommandProc CmdBuyShareInCompany;
-CommandProc CmdSellShareInCompany;
-CommandProc CmdBuyCompany;
+CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID target_company);
+CommandCost CmdSellShareInCompany(DoCommandFlag flags, CompanyID target_company);
+CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company);
 
 DEF_CMD_TRAIT(CMD_BUY_SHARE_IN_COMPANY,  CmdBuyShareInCompany,  0, CMDT_MONEY_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SELL_SHARE_IN_COMPANY, CmdSellShareInCompany, 0, CMDT_MONEY_MANAGEMENT)
