@@ -11,8 +11,10 @@
 #define NEWS_CMD_H
 
 #include "command_type.h"
+#include "company_type.h"
+#include "news_type.h"
 
-CommandProc CmdCustomNewsItem;
+CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceType reftype1, CompanyID company, uint32 reference, const std::string &text);
 
 DEF_CMD_TRAIT(CMD_CUSTOM_NEWS_ITEM, CmdCustomNewsItem, CMD_STR_CTRL | CMD_DEITY, CMDT_OTHER_MANAGEMENT)
 

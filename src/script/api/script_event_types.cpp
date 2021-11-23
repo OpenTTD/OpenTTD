@@ -117,7 +117,7 @@ bool ScriptEventEnginePreview::AcceptPreview()
 
 bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
-	return ScriptObject::Command<CMD_BUY_COMPANY>::Do(0, this->owner, 0, {});
+	return ScriptObject::Command<CMD_BUY_COMPANY>::Do((::CompanyID)this->owner);
 }
 
 ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :

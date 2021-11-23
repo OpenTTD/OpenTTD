@@ -18,12 +18,12 @@
 
 /* static */ bool ScriptGame::Pause()
 {
-	return ScriptObject::Command<CMD_PAUSE>::Do(0, PM_PAUSED_GAME_SCRIPT, 1, {});
+	return ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_GAME_SCRIPT, true);
 }
 
 /* static */ bool ScriptGame::Unpause()
 {
-	return ScriptObject::Command<CMD_PAUSE>::Do(0, PM_PAUSED_GAME_SCRIPT, 0, {});
+	return ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_GAME_SCRIPT, false);
 }
 
 /* static */ bool ScriptGame::IsPaused()

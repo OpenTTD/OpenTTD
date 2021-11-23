@@ -1332,7 +1332,7 @@ struct AIDebugWindow : public Window {
 						}
 						if (all_unpaused) {
 							/* All scripts have been unpaused => unpause the game. */
-							Command<CMD_PAUSE>::Post(0, PM_PAUSED_NORMAL, 0, {});
+							Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false);
 						}
 					}
 				}
@@ -1381,7 +1381,7 @@ struct AIDebugWindow : public Window {
 
 					/* Pause the game. */
 					if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-						Command<CMD_PAUSE>::Post(0, PM_PAUSED_NORMAL, 1, {});
+						Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 					}
 
 					/* Highlight row that matched */

@@ -315,7 +315,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			for (i = 0; i < 4; i++) {
 				if (c->share_owners[i] == old_owner) {
 					/* Sell its shares */
-					CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, 0, c->index, 0, {});
+					CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, c->index);
 					/* Because we are in a DoCommand, we can't just execute another one and
 					 *  expect the money to be removed. We need to do it ourself! */
 					SubtractMoneyFromCompany(res);
@@ -335,7 +335,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			} else {
 				cur_company2.Change(c->share_owners[i]);
 				/* Sell the shares */
-				CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, 0, old_owner, 0, {});
+				CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, old_owner);
 				/* Because we are in a DoCommand, we can't just execute another one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromCompany(res);
@@ -2013,16 +2013,12 @@ extern int GetAmountOwnedBy(const Company *c, Owner owner);
 /**
  * Acquire shares in an opposing company.
  * @param flags type of operation
- * @param tile unused
  * @param p1 company to buy the shares from
- * @param p2 unused
- * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID target_company)
 {
 	CommandCost cost(EXPENSES_OTHER);
-	CompanyID target_company = (CompanyID)p1;
 	Company *c = Company::GetIfValid(target_company);
 
 	/* Check if buying shares is allowed (protection against modified clients)
@@ -2065,15 +2061,11 @@ CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, uint32 p1,
 /**
  * Sell shares in an opposing company.
  * @param flags type of operation
- * @param tile unused
- * @param p1 company to sell the shares from
- * @param p2 unused
- * @param text unused
+ * @param target_company company to sell the shares from
  * @return the cost of this operation or an error
  */
-CommandCost CmdSellShareInCompany(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdSellShareInCompany(DoCommandFlag flags, CompanyID target_company)
 {
-	CompanyID target_company = (CompanyID)p1;
 	Company *c = Company::GetIfValid(target_company);
 
 	/* Cannot sell own shares */
@@ -2106,15 +2098,11 @@ CommandCost CmdSellShareInCompany(DoCommandFlag flags, TileIndex tile, uint32 p1
  * that company.
  * @todo currently this only works for AI companies
  * @param flags type of operation
- * @param tile unused
- * @param p1 company to buy up
- * @param p2 unused
- * @param text unused
+ * @param target_company company to buy up
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuyCompany(DoCommandFlag flags, TileIndex tile, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company)
 {
-	CompanyID target_company = (CompanyID)p1;
 	Company *c = Company::GetIfValid(target_company);
 	if (c == nullptr) return CMD_ERROR;
 

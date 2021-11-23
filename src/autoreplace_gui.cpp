@@ -547,7 +547,7 @@ public:
 					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlags::GF_REPLACE_WAGON_REMOVAL, !HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL), _ctrl_pressed);
 				} else {
 					// toggle renew_keep_length
-					Command<CMD_CHANGE_COMPANY_SETTING>::Post(0, 0, Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, "company.renew_keep_length");
+					Command<CMD_CHANGE_COMPANY_SETTING>::Post("company.renew_keep_length", Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1);
 				}
 				break;
 			}

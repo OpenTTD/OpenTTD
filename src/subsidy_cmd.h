@@ -11,8 +11,9 @@
 #define SUBSIDY_CMD_H
 
 #include "command_type.h"
+#include "cargo_type.h"
 
-CommandProc CmdCreateSubsidy;
+CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoID cid, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst);
 
 DEF_CMD_TRAIT(CMD_CREATE_SUBSIDY, CmdCreateSubsidy, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
 

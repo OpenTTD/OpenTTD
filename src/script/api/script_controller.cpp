@@ -60,7 +60,7 @@
 	ShowAIDebugWindow(ScriptObject::GetRootCompany());
 
 	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-		ScriptObject::Command<CMD_PAUSE>::Do(0, PM_PAUSED_NORMAL, 1, {});
+		ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_NORMAL, true);
 	}
 }
 

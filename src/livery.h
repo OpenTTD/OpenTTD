@@ -17,7 +17,7 @@ static const byte LIT_COMPANY = 1; ///< Show the liveries of your own company
 static const byte LIT_ALL     = 2; ///< Show the liveries of all companies
 
 /** List of different livery schemes. */
-enum LiveryScheme {
+enum LiveryScheme : byte {
 	LS_BEGIN = 0,
 	LS_DEFAULT = 0,
 

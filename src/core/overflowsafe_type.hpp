@@ -39,9 +39,10 @@ public:
 	constexpr OverflowSafeInt() : m_value(0) { }
 
 	constexpr OverflowSafeInt(const OverflowSafeInt& other) : m_value(other.m_value) { }
-	constexpr OverflowSafeInt(const int64 int_) : m_value(int_) { }
+	constexpr OverflowSafeInt(const T int_) : m_value(int_) { }
 
 	inline constexpr OverflowSafeInt& operator = (const OverflowSafeInt& other) { this->m_value = other.m_value; return *this; }
+	inline constexpr OverflowSafeInt& operator = (T other) { this->m_value = other; return *this; }
 
 	inline constexpr OverflowSafeInt operator - () const { return OverflowSafeInt(this->m_value == T_MIN ? T_MAX : -this->m_value); }
 
@@ -174,7 +175,7 @@ public:
 	inline constexpr bool operator <  (const int other) const { return !(*this >= other); }
 	inline constexpr bool operator <= (const int other) const { return !(*this > other); }
 
-	inline constexpr operator int64 () const { return this->m_value; }
+	inline constexpr operator T () const { return this->m_value; }
 };
 
 

@@ -52,7 +52,7 @@
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::Command<CMD_RENAME_COMPANY>::Do(0, 0, 0, text);
+	return ScriptObject::Command<CMD_RENAME_COMPANY>::Do(text);
 }
 
 /* static */ char *ScriptCompany::GetName(ScriptCompany::CompanyID company)
@@ -73,7 +73,7 @@
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::Command<CMD_RENAME_PRESIDENT>::Do(0, 0, 0, text);
+	return ScriptObject::Command<CMD_RENAME_PRESIDENT>::Do(text);
 }
 
 /* static */ char *ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
@@ -101,7 +101,7 @@
 	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (::InteractiveRandom() & (1 << ETHNICITY_BLACK)));
 	RandomCompanyManagerFaceBits(cmf, ge, false);
 
-	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(0, 0, cmf, {});
+	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
 }
 
 /* static */ ScriptCompany::Gender ScriptCompany::GetPresidentGender(CompanyID company)
@@ -211,9 +211,9 @@
 	Money amount = abs(loan - GetLoanAmount());
 
 	if (loan > GetLoanAmount()) {
-		return ScriptObject::Command<CMD_INCREASE_LOAN>::Do(0, amount >> 32, (amount & 0xFFFFFFFC) | 2, {});
+		return ScriptObject::Command<CMD_INCREASE_LOAN>::Do(LoanCommand::Amount, amount);
 	} else {
-		return ScriptObject::Command<CMD_DECREASE_LOAN>::Do(0, amount >> 32, (amount & 0xFFFFFFFC) | 2, {});
+		return ScriptObject::Command<CMD_DECREASE_LOAN>::Do(LoanCommand::Amount, amount);
 	}
 }
 
@@ -244,7 +244,7 @@
 	EnforcePrecondition(false, company != COMPANY_INVALID);
 
 	/* Network commands only allow 0 to indicate invalid tiles, not INVALID_TILE */
-	return ScriptObject::Command<CMD_CHANGE_BANK_BALANCE>::Do(tile == INVALID_TILE ? (TileIndex)0U : tile, (uint32)(delta), company | expenses_type << 8, {});
+	return ScriptObject::Command<CMD_CHANGE_BANK_BALANCE>::Do(tile == INVALID_TILE ? (TileIndex)0U : tile, delta, (::CompanyID)company, (::ExpensesType)expenses_type);
 }
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
@@ -266,7 +266,7 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewStatus(bool autorenew)
 {
-	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do(0, 0, autorenew ? 1 : 0, "company.engine_renew");
+	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew", autorenew ? 1 : 0);
 }
 
 /* static */ bool ScriptCompany::GetAutoRenewStatus(CompanyID company)
@@ -279,7 +279,7 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewMonths(int16 months)
 {
-	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do(0, 0, months, "company.engine_renew_months");
+	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_months", months);
 }
 
 /* static */ int16 ScriptCompany::GetAutoRenewMonths(CompanyID company)
@@ -294,7 +294,7 @@
 {
 	EnforcePrecondition(false, money >= 0);
 	EnforcePrecondition(false, (int64)money <= UINT32_MAX);
-	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do(0, 0, money, "company.engine_renew_money");
+	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_money", money);
 }
 
 /* static */ Money ScriptCompany::GetAutoRenewMoney(CompanyID company)
@@ -307,12 +307,12 @@
 
 /* static */ bool ScriptCompany::SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
-	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do(0, scheme, colour, {});
+	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do((::LiveryScheme)scheme, true, (::Colours)colour);
 }
 
 /* static */ bool ScriptCompany::SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
-	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do(0, scheme | 1 << 8, colour, {});
+	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do((::LiveryScheme)scheme, false, (::Colours)colour);
 }
 
 /* static */ ScriptCompany::Colours ScriptCompany::GetPrimaryLiveryColour(ScriptCompany::LiveryScheme scheme)
