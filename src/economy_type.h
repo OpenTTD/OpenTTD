@@ -162,11 +162,11 @@ enum ExpensesType : byte {
 	EXPENSES_AIRCRAFT_RUN,        ///< Running costs aircraft.
 	EXPENSES_SHIP_RUN,            ///< Running costs ships.
 	EXPENSES_PROPERTY,            ///< Property costs.
-	EXPENSES_TRAIN_INC,           ///< Income from trains.
-	EXPENSES_ROADVEH_INC,         ///< Income from road vehicles.
-	EXPENSES_AIRCRAFT_INC,        ///< Income from aircraft.
-	EXPENSES_SHIP_INC,            ///< Income from ships.
-	EXPENSES_LOAN_INT,            ///< Interest payments over the loan.
+	EXPENSES_TRAIN_REVENUE,       ///< Revenue from trains.
+	EXPENSES_ROADVEH_REVENUE,     ///< Revenue from road vehicles.
+	EXPENSES_AIRCRAFT_REVENUE,    ///< Revenue from aircraft.
+	EXPENSES_SHIP_REVENUE,        ///< Revenue from ships.
+	EXPENSES_LOAN_INTEREST,       ///< Interest payments over the loan.
 	EXPENSES_OTHER,               ///< Other expenses.
 	EXPENSES_END,                 ///< Number of expense types.
 	INVALID_EXPENSES      = 0xFF, ///< Invalid expense type.

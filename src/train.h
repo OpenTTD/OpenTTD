@@ -109,7 +109,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void MarkDirty();
 	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
+	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
