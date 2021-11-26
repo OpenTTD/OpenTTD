@@ -315,6 +315,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de c
 STR_SORT_BY_RANGE                                               :Autonomía
 STR_SORT_BY_POPULATION                                          :Poboación
 STR_SORT_BY_RATING                                              :Puntuación
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Beneficio promedio deste ano
 
 # Group by options for vehicle list
 
@@ -749,6 +750,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terra
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Herba
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terra deserta
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selva
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Leiras
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Árbores
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rochas
@@ -996,6 +998,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccio
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
 
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca esta caixa para activar o V-sync da pantalla. O cambio só se aplicará tras reiniciar o xogo. Só funciona coa aceleración de hardware habilitada
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño da interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleciona o tamaño de elementos da interface a usar
@@ -1012,6 +1015,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Tamaño doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Tamaño do cadro
 
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Amosar tasa de refresco
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conxunto básico de gráficos
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona o conxunto de gráficos básico a empregar
@@ -1126,6 +1130,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Opcións
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar texto:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todos
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Minimizar todos
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos os valores
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sen explicación dispoñíbel)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de configuración: {ORANGE}{STRING}
@@ -1813,6 +1818,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 ###length 3
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidade de crecemento das cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crecemento das cidades
@@ -2130,6 +2136,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-l
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multixogador
@@ -2165,6 +2172,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data ac
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protexido con contrasinal!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONECTADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR CHEO
+STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}O SERVIDOR PROHIBIUCHE O ACCESO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIÓN INCORRECTA
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}PROBLEMA CON NEWGRF
 
@@ -2172,6 +2180,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Unirse �
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualizar servidor
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiza-la información do servidor
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Buscar servidores públicos en internet
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Engadir servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Engade un servidor á lista que será comprobado sempre para buscar partidas.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
@@ -2222,9 +2231,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compa�
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Código de convite
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar unha mensaxe a todos os espectadores
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este é o anfitrión da partida
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Público
 
 
 
@@ -2331,6 +2345,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} de
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Agarda por favor...
 
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Outro servidor co mesmo código de convite rexistrouse a si mesmo. Cambiando o modo de xogo "local".
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descargando contidos
@@ -2697,6 +2712,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financia
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Elixe a industria apropiada desta lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Moitas industrias aleatorias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cubri-lo mapa con industrias colocadas aleatoriamente
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Estás seguro de que queres crear moitas industrias aleatorias?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Custo: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospección
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construír
@@ -4058,7 +4074,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar 
 STR_ORDER_REFIT                                                 :{BLACK}Reformar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecciona o tipo de carga para reformar nesta orde. CTRL+click para quita-la instrución de reforma
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-reforma
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecciona que tipo de carfa se reformará nesta orde. Ctrl+click para borra-la orde de reforma. A auto-reforma só será feita se o vehículo o permite
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecciona que tipo de carga se reformará nesta orde. Ctrl+click para borra-la orde de reforma. A auto-reforma só será feita se o vehículo o permite
 STR_ORDER_DROP_REFIT_AUTO                                       :Carga fixada
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga dispoñíbel
 
