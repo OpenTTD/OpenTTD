@@ -195,6 +195,7 @@ STR_COLOUR_RANDOM                                               :Ao chou
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cadros/día
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
@@ -315,11 +316,19 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de c
 STR_SORT_BY_RANGE                                               :Autonomía
 STR_SORT_BY_POPULATION                                          :Poboación
 STR_SORT_BY_RATING                                              :Puntuación
+STR_SORT_BY_NUM_VEHICLES                                        :Número de vehículos
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Beneficio total o último ano
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Beneficio total deste ano
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Beneficio promedio do último ano
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Beneficio promedio deste ano
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Ningún
+STR_GROUP_BY_SHARED_ORDERS                                      :Ordes compartidas
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordes
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abre a vista de ordes
 
 # Tooltips for the main toolbar
 ###length 31
@@ -611,7 +620,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de 
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Ruta
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Maquinista
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Xefe Executivo
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Xerente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
@@ -696,7 +705,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pincha n
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Mellores compañías que chegaron a {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Cadro da liga de compañías en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Home de negocios
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Persoa de negocios
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Emprendedor
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalista
@@ -782,9 +791,11 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Amosa t�
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar a última mensaxe ou nova
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN PAUSA  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUSADO (agardando pola actualización do gráfico de ligazóns) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGRAVADO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GRAVANDO PARTIDA  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(espectador)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensaxes
@@ -879,6 +890,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {STRING} dispoñíbel!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abre a fiestra de grupo enfocada no grupo do vehículo.
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} xa non acepta máis {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} xa non acepta máis {STRING} nin {STRING}
@@ -887,7 +899,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvención expirada:{}{}{STRING} dende {STRING} ata {STRING} non será subvencionada.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvención reitrada:{}{}O servizo de transporte de {STRING} dende {STRING} ata {STRING} xa non ten subvención.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvención:{}{}O primeiro servizo de transporte de {STRING} dende {STRING} ata {STRING} será subvencionado con {NUM} durante un ano pola autoridade local!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvención concedida a {STRING}!{}{}Polo servizo de transporte de {STRING} dende {STRING} ata {STRING} pagarase un 50% máis durante {NUM} ano{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvención concedida a {STRING}!{}{}Polo servizo de transporte de {STRING} dende {STRING} ata {STRING} pagarase o dobre durante {NUM} ano{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvención concedida a {STRING}!{}{}Polo servizo de transporte de {STRING} dende {STRING} ata {STRING} pagarase o triplo durante {NUM} ano{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvención concedida a {STRING}!{}{}Polo servizo de transporte de {STRING} dende {STRING} ata {STRING} pagaráse o cuádruplo durante {NUM} ano{P "" s}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Caos no tráfico de {TOWN}!{}{}O programa de reconstrución de estradas financiado por {STRING} trae 6 meses de miseria para os condutores!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolio de transportes!
@@ -945,12 +962,15 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar taiwanés (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinés (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia India (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonesia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malaio(MYR)
 
 ###length 2
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducir pola esquerda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducir pola dereita
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomes das cidades
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomes das localidades:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selecciona o estilo dos nomes das cidades
 
 ###length 21
@@ -989,6 +1009,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingua
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona a lingua para a interface
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completado)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca esta opción para xogar a OpenTTD en modo de pantalla completa
@@ -996,13 +1017,19 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca es
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolución de pantalla
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona a resolución de pantalla a empregar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aceleración por hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marca esta caixa para permitirlle a OpenTTD intentar usar a aceleración por hardware.  O cambio da configuración só se aplicará o reiniciar o xogo
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}O cambio da configuración só se aplicará o reiniciar o xogo
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca esta caixa para activar o V-sync da pantalla. O cambio só se aplicará tras reiniciar o xogo. Só funciona coa aceleración de hardware habilitada
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño da interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleciona o tamaño de elementos da interface a usar
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-detectar)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobre tamaño
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaño do cadro
@@ -1010,12 +1037,17 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaño do cadr
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño da letra
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Escoller o tamaño de fonte da interfaz
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detectar)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Tamaño doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Tamaño do cadro
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Amosar tasa de refresco
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecciona a tasa de refresco de pantalla a usar
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}As tasas de refresco superiores a 60Hz poden afectar o rendemento.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conxunto básico de gráficos
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona o conxunto de gráficos básico a empregar
@@ -1117,6 +1149,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Chan
 STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinista
+STR_TERRAIN_TYPE_CUSTOM                                         :Altitude personalizada
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altitude personalizada ({NUM})
 
 ###length 3
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
@@ -1139,6 +1173,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Configuración 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuración da partida (almacénase nas partidas gravadas; afecta só á partida actual)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configuración da compañía (almacénase nas partidas gravadas; afecta só ás novas partidas)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configuración da compañía (almacénase nas partidas gravadas; afecta só á partida actual)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Coidado!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta acción restablecera todas as configuracións do xogo os seus valores por defecto.{}Estas seguro de que queres continuar?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
@@ -1201,8 +1237,12 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla a frec
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador das subvencións: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa canto se paga polas conexións subvencionadas
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración da subvención: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establece o número de anos durante os cales se concede a subvención.
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} ano{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sen subvencións
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa o nivel de custos de construción e compra
@@ -1219,8 +1259,12 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa os desas
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitude das autoridades locáis cara a restruturacións de áreas: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolle ata que punto o ruido e danos medioambientais producidos polas compañias afectan á súa valoración municipal e ás próximas actividades construtivas na súa área
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Altitude máxima do mapa: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Establece a altitude máxima do terreo do mapa. Con "(auto)" collerase un bo valor despois da xeración do terreo.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Non podes establecer a altura máxima do mapa a este valor. Canda menos un monte do mapa é maior
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Non podes establecer a altura máxima do mapa a este valor. Canda menos un monte do mapa ten máis altura.
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificacións do terreo baixo edificios, vías, etc. (autopendente): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite modificar o terreo baixo edificacións e vías sen retiralos
@@ -1401,9 +1445,11 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Amosa a poboaci
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor das liñas dos gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Ancho de liña nos gráficos. Unha liña fina lese con máis precisión, unha liña grosa é máis doada de ver e as cores son máis fáciles de distinguir
 
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Amosar o nome do NewGRF na fiestra de comprar vehículos: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Engade unha liña a fiestra de compra de vehículos, amosando de que NewGRF ven o vehículo.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paisaxe: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :As paisaxes definen escenarios de xogo con diferentes requirimentos de mercadorías e de crecemento da poboación. Ainda que os scripts de xogo e os NewGRF permiten máis control
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :As paisaxes definen escenarios de xogo con diferentes requerimentos de mercadorías e de crecemento da poboación. Os scripts de xogo e os NewGRF permiten un maior control
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Xerador de terreo: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :O xerador orixinal depende do conxunto base de gráficos, e compón formas fixas de paisaxe. TerraGenesis é un xerador baseado no Ruido Perlin con maiores opcións de control
@@ -1421,9 +1467,15 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxi
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita a qué distancia dos bordes do mundo as refinerías e pozos petrolíferos poden construirse. En mapas con illas asegura que estean situadas preto da costa. En mapas maiores de 256 unidades, o valor escálase acorde ao tamaño do mapa.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Cota de neve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a que altitude comeza a nevar en paisaxes subárticas. A neve afecta tamén á xeración industrial e aos requirimentos de crecemento dos pobos
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a que altitude comeza a nevar en paisaxes subárticas. A neve afecta tamén á xeración industrial e aos requirimentos de crecemento dos pobos. Só se pode modificar no Editor de Escenarios ou se non calcúlase a través da "cobertura de neve".
 
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla a cantidade aproximada de neve nas paisaxes subárticas. A neve afecta tamén á xeración industrial e aos requirimentos de crecemento dos pobos. Só se usa durante a xeración do mapa. O terreo xusto por enriba do nivel do mar nunca ten neve.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cobertura do deserto: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controla a cantidade aproximada de deserto nas paisaxes tropicais. O Deserto tamén afecta a xeración industrial. Só se usa durante a xeración do mapa.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Desigualdade do terreo (só TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(só TerraGenesis) Escolle a frequencia de montes: Suaviza as paisaxes tendo menos montes e máis espallados. Paisaxes escarpadas teñen moitos outos, que poderían semellar repetitivos
@@ -1517,7 +1569,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobre clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic sinxelo (centrado)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic sinxelo (inmediatamente)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Utilizar servizo de relé: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Se falla a creación dunha conexión o servidor, un pode usar o servizo relé para crear unha conexión. "Nunca" impide isto, "preguntar", preguntarache primeiro, "permitir" o permitirá sen preguntar.
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nunca
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Preguntar
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permitir
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulación do botón dereito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona o método para emular clics co botón dereito do rato
@@ -1581,8 +1638,14 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mante-las ferra
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa-los gastos na ventá de finanzas da compañía: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define a apariencia da ventá de gastos da compañía
 
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :orrar automáticamente as sinais durante a construción de ferrocarrís: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Borrar automáticamente as sinais durante a construción de ferrocarrís se as sinais están no medio. Teña en conta que isto pode levar a accidentes de tren.
 
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Límite de velocidade do avance rápido: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite o rápido que vai o xogo cando se activa o avance rápido. 0 = sen límite (tanto como permita o teu equipo). Os valores por debaixo do 100% ralentizan o xogo. O límite superior depende das especificacións do teu ordenador e pode variar dependendo do xogo.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% velocidade normal de xogo
 ###setting-zero-is-special
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sen límite (tan rápido como permita o teu equipo)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Son coas novas: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir son para as mensaxes abreviadas de novas
@@ -1681,6 +1744,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Amosa un xornal
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Amosa un xornal cando un accidente ou desastre ocurre
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Accidentes dos vehículos da competencia: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Amosa no xornal os accidentes de vehículos dos competidores
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información da compañía: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Amosa un xornal cando unha nova compañía é creada, ou cando unha compañía está en risco de bancarrota
@@ -1726,9 +1791,18 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Data de aparici
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano no que os avisos dos xornais son impresos en cor. Antes deste ano, emprégase monocromo branco e negro
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de comezo: {STRING}
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Ano da puntuación final: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :O ano no que remate o xogo a efectos de puntiacións. Ao final deste ano, gárdase cal é a compañía con máis puntuación e amosase a pantalla de puntuacións, pero os xogadores poden seguir xogando despois disto.{}Se é anterior a data de inicio, a pantalla de puntuacións nunca se amosa.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economía: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :A economía suave fai cambios de produción máis a miúdo, e en pequenos pasos. As economías conxeladas paran os cambios de produción e as industrias pechan. Esta configuración non ten efecto se non se provén industrias por un NewGRF.
 ###length 3
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Orixinal
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Conxelado
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permiti-la compra de accións de outras compañías: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cando se activa, permite comprar ou vender accións da compañía. As accións só estarán dispoñíbeis para compañías que acaden certa idade
@@ -1749,12 +1823,16 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construír sina
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Selecciona o ano no que se comezan a empregar sinais eléctricos nas vías. Antes de este ano, empregaranse sinais mecánicos (que teñen exactamente a mesma función, pero distinta apariencia)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Circular polos tipos de sinais: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecciona os tipos de sinal polos que rodará o cursor ao facer Ctrl+clic
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecciona os tipos de sinal polos que rodará o cursor ao facer Ctrl+clic nunha construción coa ferramenta de sinal.
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Só sinais de ruta
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas visibles
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Amosar os tipos de sinais: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Selecciona os tipos de sinais que se mostran na barra de ferramentas de sinais.
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Só sinais de ruta
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Todos os sinais
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Distribución das estradas en novas cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Distribución da rede de estradas de cidades
@@ -1789,6 +1867,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineal
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Colocación de árbores durante a partida: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla a aparición aleatoria de árbores durante a partida. Isto pode afectar ás industrias que dependan do crecemento arbóreo, por exemplo o serradoiro
 ###length 4
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Medra pero non se expande {RED}(Escaralla os aserradoiros)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Medrar pero só expandirse en selvas
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Medrar e expandirse por todas partes
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Non medrar nin expandirse {RED}(Escaralla os aserradoiros)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posición da barra de ferramentas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posición horizontal da barra de ferramentas principal da parte superior da pantalla
@@ -1817,8 +1899,12 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolución máis alta a usar nos sprites: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite a resolución máxima a usar nos sprites. Limitar a resolución dos sprites impide que se usen os gráficos de alta resolución incluso cando están dispoñibles. Isto axuda o xogo a manter unha apariencia unificada cando se usan distintos arquivos GRF con e sen gráficos de alta resolución.
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidade de crecemento das cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crecemento das cidades
@@ -1872,6 +1958,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cando unha velo
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades do xogo (cadros/día)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia dos vehículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cando a potencia dun vehículo se amose na interfaz de usuario, facelo nas unidades seleccionadas
@@ -1931,6 +2018,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución da carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores da computadora
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rede
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Buscador de ruta para trens: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Buscador de ruta empregado polos trens
@@ -1967,6 +2055,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memoria 
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE} Fallo ao reservar {BYTES} de caché de sprites. A caché de sprites reduciuse a {BYTES}. Isto reducirá o rendemento de OpenTTD. Para reducir os requisitos de memoria podes tentar deshabilitar os gráficos 32bpp e/ou niveles de zoom
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error na configuración de vídeo...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... non se atopu unha GPU compatible. Deshabilitarase a aceleración por hardware.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2011,6 +2101,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}A ista t
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Saír
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Estás seguro de que queres saír de OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Si
 STR_QUIT_NO                                                     :{BLACK}Non
 
@@ -2022,6 +2113,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estás 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampulladas
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de confirmación indican se usaches esta trampa antes
+STR_CHEATS_NOTE                                                 :{BLACK}Nota: o uso de calquera de estas opcións constará na partida gardada
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar os cartos en {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Xogando coma compañía: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora máxica (elimina industrias, obxectos non eliminables): {ORANGE}{STRING}
@@ -2137,6 +2229,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-l
 # Matches ServerGameType
 ###length 3
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Local
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Só por invitación
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multixogador
@@ -2167,12 +2261,15 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaxe
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño do mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión do servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección do servidor: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Código de convite: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de comezo: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data actual: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script do xogo: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protexido con contrasinal!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONECTADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR CHEO
 STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}O SERVIDOR PROHIBIUCHE O ACCESO
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVIDOR MOI ANTIGO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIÓN INCORRECTA
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}PROBLEMA CON NEWGRF
 
@@ -2180,13 +2277,17 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Unirse �
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualizar servidor
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiza-la información do servidor
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Buscar en internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Buscar servidores públicos en internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Buscar en LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Buscar servidores na rede local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Engadir servidor
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Engade un servidor á lista que será comprobado sempre para buscar partidas.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Engade un servidor á lista. Isto pode ser unha dirección do servidor ou un código de convite.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Comezar o teu propio servidor
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Escribe o teu nome
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Introduce a dirección do servidor ou o código de convite
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Comezar nova partida multixogador
@@ -2196,6 +2297,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contrasinal
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protexe a túa partida cun contrasinal se non queres ser accesible públicamente
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidade
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Controla se outra xente pode ver o teu servidor no listado público
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolle o máximo número de clientes. Non tódolos ocos teñen que estar cubertos
@@ -2228,20 +2331,64 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}O servid
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compañía está protexida. Introduce o contrasinal
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Xogadores en liña
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Espectador
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Xogadores en liña
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nome
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}O Nome do servidor no que estás xogando
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Edita o nome do teu servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nome do servidor
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilidade
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Controla se a xente pode ver o teu servidor no listado público
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Código de convite
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Código de convite que poden usar outros xogadores para unirse a este servidor
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipo de conexión
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Como e se outros poden conectarse o teu servidor
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Xogador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nome
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}O teu nome de xogador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Editar o teu nome de xogador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :O teu nome de xogador
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Accións administrativas a executar neste cliente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Accións administrativas a executar para esta compañía
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta compañía
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Envía unha mensaxe a este xogador
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Envía unha mensaxe a todos os xogadores desta compañía
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar unha mensaxe a todos os espectadores
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Espectadores
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova compañía)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crear unha nova compañía e unirte a ela
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Este es ti
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este é o anfitrión da partida
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} / {NUM} compañía{P "" "s"}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Os xogadores remotos non se poden conectar
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Público
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Detrás de NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Vía relé
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Expulsar permanentemente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Eliminar
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Desbloquear contrasinal
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acción administrativa
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Estás seguro de que queres expulsar o xogador '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Estás seguro de que queres expulsar permanentemente o xogador '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Estás seguro de querer borrar a compañía '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Estás seguro de querer restablecer o contrasinal da compañía '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Utilizar relé?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Fallou o establecemento da conexión entre ti e o servidor '{STRING}'.{}Gustaríache retransmitir esta sesión vía '{STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Si, esta vez
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Si, non volvas preguntar
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -2270,28 +2417,33 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe o texto para a parola en rede
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Non se atoparon dispositivos de rede
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor non respondeu á solicitude
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor non respondeu á solicitude ou foi rexeitada
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non se pode conectar debido a un problema cos NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronización da partida en rede fallida
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdeuse a conexión da partida en rede
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Non se pode carga-la partida
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Non se puido inicia-lo servidor
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Detectouse un erro de protocolo e pechouse a conexión
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Non se estableceu o teu nome de xogador. O nome pode establecerse na parte superior da fiestra de multixogador
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Non se estableceu o nome do teu servidor. O nome pode establecerse na parte superior da fiestra de multixogador.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A revisión deste cliente non é igual ca revisión do servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasinal incorrecto
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}O servidor está cheo
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Non se che permite o acceso a este servidor
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Chimpáronte da partida
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Motivo: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Non se permite facer trampas neste servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estiveches mandando demasiados comandos ao servidor
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tardaches demasiado en introduci-lo contrasinal
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A túa computadora é demasiado lenta para seguir a velocidade do servidor
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A túa computadora tardou demasiado en descarga-lo mapa
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A túa computadora tardou demasiado en unirse ao servidor
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}O teu nome de xogador non é válido
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posible perda da conexión
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Nos últimos {NUM} segundo{P "" s} non chegaron datos do servidor
@@ -2317,6 +2469,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :non recibiu nin
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :timeout xeral
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :a descarga do mapa tardou demasiado
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :o procesado do mapa tardou demasiado
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nome de cliente inválido
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2327,11 +2480,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partida aínda 
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partida aínda en pausa ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partida aínda en pausa ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Partida aínda en pausa ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Partida aínda en pausa ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Pausa rematada ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de xogadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectando clientes
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script do xogo
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :agargando pola actualización do gráfico de ligazóns
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saíndo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} uniuse á partida
@@ -2344,8 +2499,12 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ca
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Agarda por favor...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi expulsado. Motivo: ({STRING})
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Fallou o rexistro do servidor
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Outro servidor co mesmo código de convite rexistrouse a si mesmo. Cambiando o modo de xogo "local".
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}O teu servidor non permite conexións remotas
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Outros xogadores non se poderán conectar o teu servidor
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descargando contidos
@@ -2422,6 +2581,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Si, descarga os gráficos
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, abandona OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Descarga fallida
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}A descarga dos gráficos fallou.{} Por favor, descargaos manualmente.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Saír de OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcións de Transparencia
@@ -2465,6 +2627,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir pun
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constrúe un un punto de ruta separado
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Deshabilitada xa que non hai vehículos dispoñibles actualmente para esta infraestrutura.
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construción de Ferrocarrís
@@ -2515,6 +2678,7 @@ STR_STATION_CLASS_WAYP                                          :Puntos de ruta
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de sinais
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Activa ou desactiva amosar os tipos de sinais avanzados
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal de bloqueo (mecánico){}Este é o tipo máis básico de sinal, só permite un tren no mesmo cantón ao mesmo tempo.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de entrada (mecánico){}Verde mentras haxa un ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (mecánico){}Actúa igual que un sinal de bloqueo pero é necesaria para activar a cor correcta nas combinacións de sinal avanzado + sinal de entrada
@@ -2600,7 +2764,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Constru�
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boia de posición, pódese empregar para marcar puntos de ruta adicionais. Shift alterna entre construír/amosar estimación de custo
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construír acueduto. Shift alterna entre construír/amosar estimación de custo
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Define a área de auga.{}Fai unha canle, a non ser que manteñas pulsado CTRL ao nivel do mar, entón inundaranse os arredores do lugar
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos. Premendo Crl podes facelos en diagonal.
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientación do depósito de barcos
@@ -2660,6 +2824,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árbores de tipo aleatorio. Shift alterna entre construír e amosa-lo custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árbores aleatorias
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árbores aleatoriamente sobre a paisaxe
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Planta árbores individuais arrastrando sobre a paisaxe.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Arboreda
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planta pequenos bosques arrastrando sobre a paisaxe.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bosque
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar bosques arrastrando sobre a paisaxe.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Xeración de terreo
@@ -2710,13 +2880,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatori
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiar unha nova industria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Elixe a industria apropiada desta lista
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Moitas industrias aleatorias
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Moitas industrias aleatorias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cubri-lo mapa con industrias colocadas aleatoriamente
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Crear industrias aleatorias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Estás seguro de que queres crear moitas industrias aleatorias?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Custo: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospección
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construír
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financiar
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Eliminar todas as industrias
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Eliminar todas as industrias presentes no mapa
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Eliminar todas as industrias
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Estás seguro de querer quitar todas as industrias?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadea de industrias para a industria {STRING}
@@ -2737,6 +2912,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleccio
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información dunha área de terreo
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centrar a vista principal na localización do cadro. Ctrl+Click abre unha nova fiestra na localización do cadro
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Custo de limpar: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Custo de limpar: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ingresos cando se borre: {LTBLUE}{CURRENCY_LONG}
@@ -2944,6 +3120,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}String de filtrado:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobrescribir arquivo
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Estás seguro de que queres rescribir este arquivo?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Directorio)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Directorio pai)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Escribe un nome para a partida
 
@@ -2955,6 +3133,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nº de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nº de industrias:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Maior pico:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumentar a altitude máxima do pico máis alto do mapa nunha unidade.
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Disminuir a altitude máxima do pico máis alto do mapa nunha unidade.
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cobertura de neve:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumenta a cobertura de neve un dez por cento
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Disminuír a cobertura de neve un dez por cento.
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Cobertura do deserto:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Aumenta a cobertura do deserto un dez por cento
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Disminuír a cobertura do deserto un dez por cento.
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Xerador de terreo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreo:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivel do mar:
@@ -2980,6 +3169,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Obxectivo de pico máis alto
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Pico más alto
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cobertura de neve (en %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Cobertura de deserto (en %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Cambia-lo ano de inicio
 
 # SE Map generation
@@ -3118,6 +3311,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Coidado: {
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu un erro fatal de NewGRF:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Ocurriu un erro cun NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funcionará coa versión de TTDPatch reportada por OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versión {STRING} de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} está deseñado para ser usado con {STRING}
@@ -3196,6 +3390,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activar 
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita-lo texto do rótulo
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar a vista principal na localización do sinal. Ctrl+Click abre unha nova ventá na localización do sinal.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir ao seguinte rótulo
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir ao rótulo anterior
 
@@ -3258,19 +3453,23 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra-los dere
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna-la autoridade local
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financia-la reconstrución das rúas da cidade. Provoca unhas considerables interrupcións no tráfico durante seis meses.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construír unha estatua en honor á túa compañía.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financia-la construción de novos edificios comerciais na cidade.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Concede un aumento temporal da puntuación da estación nun pequeno radio arredor do centro da localide.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Concede un aumento temporal da puntuación da estación nun radio medio arredor do centro da localide.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Concede un aumento temporal da puntiación das túas estacións nun gran radio arredor do centro da localidade.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financiar a reconstrución das rúas da localidade.{}Provoca unhas considerables interrupcións no tráfico durante seis meses.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construír unha estatua en honor a túa compañía.{}Condede un aumento permanente da puntuación das túas estacións nesta localide.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financiar a construción de novos edificios comerciais na cidade.{}Concede un aumento temporal do crecemento desta localide.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar os dereitos exclusivos de transporte na cidade durante 1 ano.{}A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna-la autoridade local para mellora-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Obxectivos
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obxectivos globais
 STR_GOALS_SPECTATOR                                             :Obxectivos globais
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Amosar os obxectivos globais
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Compañía
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Amosar os obxectivos da compañía
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ningún -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3278,10 +3477,10 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Pincha nun obxectivo para centra-la vista principal na industria/cidade/cadro. Ctrl+Click abre unha nova ventá na localización da industria/cidade/cadro
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Información
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Aviso
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erro
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Información
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Aviso
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Erro
 
 # Goal Question button list
 ###length 18
@@ -3472,6 +3671,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reposici
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Recontruí-la sede da compañía en calquera outro lugar cun custo do 1% do valor da compañía. Shift+click mostra o custo estimado sen reubica-la sede
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contas detalladas de infraestrutura
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar cartos
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Dar cartos a esta compañía
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecciona-la nova cara do presidente
@@ -3489,6 +3690,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender u
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da compañía
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do presidente
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Introduce a cantidade de cartos que queres dar
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos unha compañía de transportes para adquiri-la nosa compañía{}{}Queres mercar{COMPANY} por {CURRENCY_LONG}?
 
@@ -3515,6 +3717,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} e {NUM} máis...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das industrias - pincha nun nome para centrar a vista nela. Ctrl+Click abre una nova fiestra na situación da industria
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceptada: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carga producida: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tódolos tipos de carga
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ningún
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3591,7 +3797,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Pincha p
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borrar o grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renomear o grupo seleccionado
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Mudar o deseño do grupo seleccionado
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Pincha para protexer a este grupo da autosubstitución global
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Pincha para protexer a este grupo da autosubstitución global. Ctrl+Click para protexer tamén os subgrupos.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Borrar Grupo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Seguro que queres borrar este grupo e calquera descendente?
@@ -3644,6 +3850,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformábel a: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tódolos tipos de carga
 STR_PURCHASE_INFO_NONE                                          :Ningún
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Só motores
 STR_PURCHASE_INFO_ALL_BUT                                       :Todos excepto {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforzo máximo de tracción: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomía: {GOLD}{COMMA} cadros
@@ -3871,12 +4078,18 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos magl
 STR_REPLACE_ROAD_VEHICLES                                       :Vehículos de estrada
 STR_REPLACE_TRAM_VEHICLES                                       :Tranvías
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando pola cabeza), se ao substituír a locomotora o tren se fixera máis longo.
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click para aplicalo tamen ós subgrupos.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :BLACK}Centrar a vista principal na localización do tren. Doble click o seguira na vista principal. Ctrl+Click abrirá unha nova fiestra na localización do tren.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrar a vista principal na localización do vehículo. Doble click o seguira na vista principal. Ctrl+Click abrirá unha nova fiestra na localización do vehículo.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar a vista principal na localización do barco. Doble click o seguira na vista principal. Ctrl+Click abrirá unha nova fiestra na localización da embarcación.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrar a vista principal na localización do avión. Doble click o seguira na vista principal. Ctrl+Click abrirá unha nova fiestra na localización do avión.
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren ao depósito. Ctrl+click para facer só servizo
@@ -3893,6 +4106,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto con
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obligar ao tren a circular sen agardar a que o sinal o autorice
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverti-la marcha do tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar ao vehículo a dar a volta
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal no destino da orde. Ctrl+Click abre unha nova ventá no destino da orde
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Modificar o tren para levar un tipo de carga diferente
@@ -3913,6 +4127,10 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-l
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra-los detalles do avión
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acción do tren actual - Click para parar/arrancar o tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Acción do vehículo actual - Click para parar/arrancar o vehículo
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Acción do barco actual - Click para parar/arrancar o barco
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acción do avión actual - Click para parar/arrancar o avión
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando / Descargando
@@ -3931,6 +4149,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dirixí
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dirixíndose a {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servizo en {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Non pode chegar a {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Non pode chegar a {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Non pode chegar a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Non pode chegar a {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4152,6 +4374,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Reaxustar a {S
 STR_ORDER_STOP_ORDER                                            :(Parar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Non pode usar a estación){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Implícito)
 
@@ -4331,6 +4554,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Seleccio
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non cambia-lo script
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Tomar unha captura de pantalla
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de pantalla normal
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Captura de pantalla co zoom o máximo.
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Captura de pantalla co zoom por defecto
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Captura de pantalla de todo o mapa
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura de pantalla do mapa de alturas
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de pantalla do minimapa
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parámetros
@@ -4391,6 +4621,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A partida gravo
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Arquivo ilexíbel
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Non se pode escribir no arquivo
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Fallou a comprobación de integridade dos datos
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :A Partida fíxose cunha versión modificada
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<non dispoñíbel>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A partida gravouse nunha versión sen soporte para tranvías. Quitáronse tódolos tranvías.
 
@@ -4418,6 +4649,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só se a
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla enorme
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura de pantalla terá unha resolución de {COMMA} x {COMMA} píxeis. Tomar a captura poderá levar un anaco. Queres continuar?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Gardouse a altitude do mapa como '{STRING}'. O pico máis alto é {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla gardada con éxito coma '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Captura de pantalla fallida!
 
@@ -4471,6 +4703,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... non 
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... precisas {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Non se pode devolve-lo préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Non podes da-lo diñeiro prestado polo banco...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Non se poden dar cartos a esta compañía...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Non se pode compra-la compañía...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Non se pode construí-la sede
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Non se pode comprar un 25% das accións desta compañía...
@@ -4597,6 +4830,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósi
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} é demasiado longo despois do reemprazo
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Non se aplicaron as regras de autosubstitución/renovación
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límite de cartos)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}O novo vehículo non pode levar {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}O Novo vehículo non pode reformarse na orde {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinación de vías imposíbel
@@ -4890,10 +5125,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de azucre
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sen nome
-STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de estrada {COMMA}
-STR_SV_SHIP_NAME                                                :Barco {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
+STR_SV_TRAIN_NAME                                               :Tren #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de estrada #{COMMA}
+STR_SV_SHIP_NAME                                                :Barco #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aeronave #{COMMA}
 
 ###length 27
 STR_SV_STNAME                                                   :{STRING}
@@ -5202,6 +5437,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_COMPANY_NUM                                          :(Compañía {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}: {STRING}
 
 ###length 2

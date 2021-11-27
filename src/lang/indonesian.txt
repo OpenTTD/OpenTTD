@@ -1743,6 +1743,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Tampilkan koran
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kecelakaan / bencana: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Tampilkan berita saat ada kecelakaan atau bencana
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Kecelakaan pada moda transportasi kompetitor: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Tampilkan surat kabar jika kompetitor mengalami kecelakaan
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informasi Perusahaan: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Tampilkan koran saat ada perusahaan yang baru berdiri, atau jika ada perusahaan yang akan bangkrut
@@ -3866,9 +3868,9 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kap
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Beli lalu karoseri kendaraan
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Beli lalu karoseri kendaraan
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Beli lalu karoseri kapal yang dipilih
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Beli dan restorasi kendaraan
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Beli dan restorasi kendaraan
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Beli dan restorasi kapal yang dipilih
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Beli dan ubah kargo pesawat
 
 ###length VEHICLE_TYPES
@@ -3879,9 +3881,9 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pes
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Beli lalu karoseri kereta yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya tanpa membelinya
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Beli lalu karoseri kendaraan yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya tanpa membelinya
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Beli lalu karoseri kapal yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya tanpa membelinya
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Beli lalu karoseri Pesawat yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya tanpa membelinya
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Beli dan restorasi kendaraan yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya pembelian
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Beli dan restorasi kapal yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya pembelian
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Beli dan restorasi pesawat yang dipilih. Shift+Klik untuk menampilkan perkiraan biaya pembelian
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ubah Nama
