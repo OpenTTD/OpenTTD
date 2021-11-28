@@ -2081,7 +2081,7 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client. */
 		ci->client_playas = c->index;
 		NetworkUpdateClientInfo(ci->client_id);
-		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, nullptr, c->index, ci->client_name);
+		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
 	}
 
 	/* Announce new company on network. */

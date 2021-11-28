@@ -53,55 +53,95 @@
 
 #include "../safeguards.h"
 
-/** Table with all the callbacks we'll use for conversion*/
-static CommandCallback * const _callback_table[] = {
-	/* 0x00 */ nullptr,
-	/* 0x01 */ CcBuildPrimaryVehicle,
-	/* 0x02 */ CcBuildAirport,
-	/* 0x03 */ CcBuildBridge,
-	/* 0x04 */ CcPlaySound_CONSTRUCTION_WATER,
-	/* 0x05 */ CcBuildDocks,
-	/* 0x06 */ CcFoundTown,
-	/* 0x07 */ CcBuildRoadTunnel,
-	/* 0x08 */ CcBuildRailTunnel,
-	/* 0x09 */ CcBuildWagon,
-	/* 0x0A */ CcRoadDepot,
-	/* 0x0B */ CcRailDepot,
-	/* 0x0C */ CcPlaceSign,
-	/* 0x0D */ CcPlaySound_EXPLOSION,
-	/* 0x0E */ CcPlaySound_CONSTRUCTION_OTHER,
-	/* 0x0F */ CcPlaySound_CONSTRUCTION_RAIL,
-	/* 0x10 */ CcStation,
-	/* 0x11 */ CcTerraform,
-	/* 0x12 */ CcAI,
-	/* 0x13 */ CcCloneVehicle,
-	/* 0x14 */ nullptr,
-	/* 0x15 */ CcCreateGroup,
-	/* 0x16 */ CcFoundRandomTown,
-	/* 0x17 */ CcRoadStop,
-	/* 0x18 */ CcBuildIndustry,
-	/* 0x19 */ CcStartStopVehicle,
-	/* 0x1A */ CcGame,
-	/* 0x1B */ CcAddVehicleNewGroup,
-};
+/** Typed list of all possible callbacks. */
+static constexpr auto _callback_tuple = std::make_tuple(
+	(CommandCallback *)nullptr, // Make sure this is actually a pointer-to-function.
+	&CcBuildPrimaryVehicle,
+	&CcBuildAirport,
+	&CcBuildBridge,
+	&CcPlaySound_CONSTRUCTION_WATER,
+	&CcBuildDocks,
+	&CcFoundTown,
+	&CcBuildRoadTunnel,
+	&CcBuildRailTunnel,
+	&CcBuildWagon,
+	&CcRoadDepot,
+	&CcRailDepot,
+	&CcPlaceSign,
+	&CcPlaySound_EXPLOSION,
+	&CcPlaySound_CONSTRUCTION_OTHER,
+	&CcPlaySound_CONSTRUCTION_RAIL,
+	&CcStation,
+	&CcTerraform,
+	&CcAI,
+	&CcCloneVehicle,
+	&CcCreateGroup,
+	&CcFoundRandomTown,
+	&CcRoadStop,
+	&CcBuildIndustry,
+	&CcStartStopVehicle,
+	&CcGame,
+	&CcAddVehicleNewGroup
+);
+
+#ifdef SILENCE_GCC_FUNCTION_POINTER_CAST
+/*
+ * We cast specialized function pointers to a generic one, but don't use the
+ * converted value to call the function, which is safe, except that GCC
+ * helpfully thinks it is not.
+ *
+ * "Any pointer to function can be converted to a pointer to a different function type.
+ * Calling the function through a pointer to a different function type is undefined,
+ * but converting such pointer back to pointer to the original function type yields
+ * the pointer to the original function." */
+#	pragma GCC diagnostic push
+#	pragma GCC diagnostic ignored "-Wcast-function-type"
+#endif
+
+/* Helpers to generate the callback table from the callback list. */
+
+inline constexpr size_t _callback_tuple_size = std::tuple_size_v<decltype(_callback_tuple)>;
+
+template <size_t... i>
+inline auto MakeCallbackTable(std::index_sequence<i...>) noexcept
+{
+	return std::array<CommandCallback *, sizeof...(i)>{{ reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(std::get<i>(_callback_tuple)))... }}; // MingW64 fails linking when casting a pointer to its own type. To work around, cast it to some other type first.
+}
+
+/** Type-erased table of callbacks. */
+static auto _callback_table = MakeCallbackTable(std::make_index_sequence<_callback_tuple_size>{});
+
 
 /* Helpers to generate the command dispatch table from the command traits. */
 
 template <Commands Tcmd> static CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data);
-template <Commands Tcmd> static void UnpackNetworkCommand(const CommandPacket *cp);
+template <Commands Tcmd, size_t cb> static void UnpackNetworkCommand(const CommandPacket *cp);
 template <Commands Tcmd> static void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
+using UnpackNetworkCommandProc = void (*)(const CommandPacket *);
+using UnpackDispatchT = std::array<UnpackNetworkCommandProc, _callback_tuple_size>;
 struct CommandDispatch {
 	CommandDataBuffer(*Sanitize)(const CommandDataBuffer &);
 	void (*ReplaceClientId)(CommandPacket &, ClientID);
-	void (*Unpack)(const CommandPacket *);
+	UnpackDispatchT Unpack;
 };
 
-template<typename T, T... i>
-inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>) noexcept
+template <Commands Tcmd, size_t... i>
+constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) noexcept
 {
-	return std::array<CommandDispatch, sizeof...(i)>{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, &UnpackNetworkCommand<static_cast<Commands>(i)> }... }};
+	return UnpackDispatchT{{ {&UnpackNetworkCommand<Tcmd, i>}... }};
 }
-static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
+
+template <typename T, T... i, size_t... j>
+inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<j...>) noexcept
+{
+	return std::array<CommandDispatch, sizeof...(i)>{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }};
+}
+/** Command dispatch table. */
+static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{}, std::make_index_sequence<_callback_tuple_size>{});
+
+#ifdef SILENCE_GCC_FUNCTION_POINTER_CAST
+#	pragma GCC diagnostic pop
+#endif
 
 
 /**
@@ -178,6 +218,20 @@ static CommandQueue _local_wait_queue;
 /** Local queue of packets waiting for execution. */
 static CommandQueue _local_execution_queue;
 
+
+/**
+ * Find the callback index of a callback pointer.
+ * @param callback Address of callback to search for.
+ * @return Callback index or std::numeric_limits<size_t>::max() if the function wasn't found in the callback list.
+ */
+static size_t FindCallbackIndex(CommandCallback *callback)
+{
+	if (auto it = std::find(std::cbegin(_callback_table), std::cend(_callback_table), callback); it != std::cend(_callback_table)) {
+		return static_cast<size_t>(std::distance(std::cbegin(_callback_table), it));
+	}
+
+	return std::numeric_limits<size_t>::max();
+}
 
 /**
  * Prepare a DoCommand to be send over the network
@@ -259,7 +313,9 @@ void NetworkExecuteLocalCommandQueue()
 
 		/* We can execute this command */
 		_current_company = cp->company;
-		_cmd_dispatch[cp->cmd].Unpack(cp);
+		size_t cb_index = FindCallbackIndex(cp->callback);
+		assert(cb_index < _callback_tuple_size);
+		_cmd_dispatch[cp->cmd].Unpack[cb_index](cp);
 
 		queue.Pop();
 		delete cp;
@@ -354,7 +410,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p->Recv_buffer());
 
 	byte callback = p->Recv_uint8();
-	if (callback >= lengthof(_callback_table))  return "invalid callback";
+	if (callback >= _callback_table.size())  return "invalid callback";
 
 	cp->callback = _callback_table[callback];
 	return nullptr;
@@ -373,16 +429,12 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 	p->Send_uint32(cp->tile);
 	p->Send_buffer(cp->data);
 
-	byte callback = 0;
-	while (callback < lengthof(_callback_table) && _callback_table[callback] != cp->callback) {
-		callback++;
-	}
-
-	if (callback == lengthof(_callback_table)) {
+	size_t callback = FindCallbackIndex(cp->callback);
+	if (callback > UINT8_MAX) {
 		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp->cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
-	p->Send_uint8 (callback);
+	p->Send_uint8 ((uint8)callback);
 }
 
 /** Helper to process a single ClientID argument. */
@@ -455,9 +507,15 @@ CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data)
 	return EndianBufferWriter<CommandDataBuffer>::FromValue(args);
 }
 
-template <Commands Tcmd>
-void UnpackNetworkCommand(const CommandPacket *cp)
+/**
+ * Unpack a generic command packet into its actual typed components.
+ * @tparam Tcmd Command type to be unpacked.
+ * @tparam Tcb Index into the callback list.
+ * @param cp Command packet to unpack.
+ */
+template <Commands Tcmd, size_t Tcb>
+void UnpackNetworkCommand(const CommandPacket* cp)
 {
 	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
-	Command<Tcmd>::PostFromNet(cp->err_msg, cp->callback, cp->my_cmd, cp->tile, args);
+	Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
 }
