@@ -78,6 +78,20 @@ private:
 	static int _counter;
 };
 
+#if defined(__GNUC__) && !defined(__clang__)
+/*
+ * We cast specialized function pointers to a generic one, but don't use the
+ * converted value to call the function, which is safe, except that GCC
+ * helpfully thinks it is not.
+ *
+ * "Any pointer to function can be converted to a pointer to a different function type.
+ * Calling the function through a pointer to a different function type is undefined,
+ * but converting such pointer back to pointer to the original function type yields
+ * the pointer to the original function." */
+#	pragma GCC diagnostic push
+#	pragma GCC diagnostic ignored "-Wcast-function-type"
+#	define SILENCE_GCC_FUNCTION_POINTER_CAST
+#endif
 
 template<Commands TCmd, typename T, bool THasTile> struct CommandHelper;
 
@@ -148,18 +162,19 @@ public:
 	 * @param err_message Message prefix to show on error
 	 * @param args Parameters for the command
 	 */
-	static inline bool Post(StringID err_message, Targs... args) { return Post(err_message, nullptr, std::forward<Targs>(args)...); }
+	static inline bool Post(StringID err_message, Targs... args) { return Post<CommandCallback>(err_message, nullptr, std::forward<Targs>(args)...); }
 	/**
 	 * Shortcut for the long Post when not using an error message.
 	 * @param callback A callback function to call after the command is finished
 	 * @param args Parameters for the command
 	 */
-	static inline bool Post(CommandCallback *callback, Targs... args) { return Post((StringID)0, callback, std::forward<Targs>(args)...); }
+	template <typename Tcallback>
+	static inline bool Post(Tcallback *callback, Targs... args) { return Post((StringID)0, callback, std::forward<Targs>(args)...); }
 	/**
 	 * Shortcut for the long Post when not using a callback or an error message.
 	 * @param args Parameters for the command
 	 */
-	static inline bool Post(Targs... args) { return Post((StringID)0, nullptr, std::forward<Targs>(args)...); }
+	static inline bool Post(Targs... args) { return Post<CommandCallback>((StringID)0, nullptr, std::forward<Targs>(args)...); }
 
 	/**
 	 * Top-level network safe command execution for the current company.
@@ -171,7 +186,8 @@ public:
 	 * @param args Parameters for the command
 	 * @return \c true if the command succeeded, else \c false.
 	 */
-	static bool Post(StringID err_message, CommandCallback *callback, Targs... args)
+	template <typename Tcallback>
+	static bool Post(StringID err_message, Tcallback *callback, Targs... args)
 	{
 		return InternalPost(err_message, callback, true, false, std::forward_as_tuple(args...));
 	}
@@ -185,7 +201,8 @@ public:
 	 * @param args Parameters for the command
 	 * @return \c true if the command succeeded, else \c false.
 	 */
-	static bool PostFromNet(StringID err_message, CommandCallback *callback, bool my_cmd, TileIndex location, std::tuple<Targs...> args)
+	template <typename Tcallback>
+	static bool PostFromNet(StringID err_message, Tcallback *callback, bool my_cmd, TileIndex location, std::tuple<Targs...> args)
 	{
 		return InternalPost(err_message, callback, my_cmd, true, location, std::move(args));
 	}
@@ -194,11 +211,10 @@ public:
 	 * Prepare a command to be send over the network
 	 * @param cmd The command to execute (a CMD_* value)
 	 * @param err_message Message prefix to show on error
-	 * @param callback A callback function to call after the command is finished
 	 * @param company The company that wants to send the command
 	 * @param args Parameters for the command
 	 */
-	static void SendNet(StringID err_message, CommandCallback *callback, CompanyID company, Targs... args)
+	static void SendNet(StringID err_message, CompanyID company, Targs... args)
 	{
 		auto args_tuple = std::forward_as_tuple(args...);
 
@@ -207,7 +223,7 @@ public:
 			tile = std::get<0>(args_tuple);
 		}
 
-		::NetworkSendCommand(Tcmd, err_message, callback, _current_company, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args_tuple));
+		::NetworkSendCommand(Tcmd, err_message, nullptr, _current_company, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args_tuple));
 	}
 
 	/**
@@ -220,9 +236,10 @@ public:
 	 * @param args Parameters for the command
 	 * @return the command cost of this function.
 	 */
-	static CommandCost Unsafe(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, TileIndex location, std::tuple<Targs...> args)
+	template <typename Tcallback>
+	static CommandCost Unsafe(StringID err_message, Tcallback *callback, bool my_cmd, bool estimate_only, TileIndex location, std::tuple<Targs...> args)
 	{
-		return Execute(err_message, callback, my_cmd, estimate_only, false, location, std::move(args));
+		return Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, false, location, std::move(args));
 	}
 
 protected:
@@ -242,7 +259,8 @@ protected:
 		((SetClientIdHelper(std::get<Tindices>(values))), ...);
 	}
 
-	static bool InternalPost(StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, std::tuple<Targs...> args)
+	template <typename Tcallback>
+	static bool InternalPost(StringID err_message, Tcallback *callback, bool my_cmd, bool network_command, std::tuple<Targs...> args)
 	{
 		/* Where to show the message? */
 		TileIndex tile{};
@@ -253,7 +271,8 @@ protected:
 		return InternalPost(err_message, callback, my_cmd, network_command, tile, std::move(args));
 	}
 
-	static bool InternalPost(StringID err_message, CommandCallback *callback, bool my_cmd, bool network_command, TileIndex tile, std::tuple<Targs...> args)
+	template <typename Tcallback>
+	static bool InternalPost(StringID err_message, Tcallback *callback, bool my_cmd, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		auto [err, estimate_only, only_sending] = InternalPostBefore(Tcmd, GetCommandFlags<Tcmd>(), tile, err_message, network_command);
 		if (err) return false;
@@ -261,7 +280,7 @@ protected:
 		/* Only set client IDs when the command does not come from the network. */
 		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) SetClientIds(args, std::index_sequence_for<Targs...>{});
 
-		CommandCost res = Execute(err_message, callback, my_cmd, estimate_only, network_command, tile, args);
+		CommandCost res = Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, network_command, tile, args);
 		InternalPostResult(res, tile, estimate_only, only_sending, err_message, my_cmd);
 
 		if (!estimate_only && !only_sending && callback != nullptr) {
@@ -360,20 +379,21 @@ struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), false> : Com
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
 	 */
-	static inline bool Post(StringID err_message, TileIndex location, Targs... args) { return Post(err_message, nullptr, location, std::forward<Targs>(args)...); }
+	static inline bool Post(StringID err_message, TileIndex location, Targs... args) { return Post<CommandCallback>(err_message, nullptr, location, std::forward<Targs>(args)...); }
 	/**
 	 * Shortcut for Post when not using a callback.
 	 * @param callback A callback function to call after the command is finished
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
 	 */
-	static inline bool Post(CommandCallback *callback, TileIndex location, Targs... args) { return Post((StringID)0, callback, location, std::forward<Targs>(args)...); }
+	template <typename Tcallback>
+	static inline bool Post(Tcallback *callback, TileIndex location, Targs... args) { return Post((StringID)0, callback, location, std::forward<Targs>(args)...); }
 	/**
 	 * Shortcut for Post when not using a callback or an error message.
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command*
 	 */
-	static inline bool Post(TileIndex location, Targs... args) { return Post((StringID)0, nullptr, location, std::forward<Targs>(args)...); }
+	static inline bool Post(TileIndex location, Targs... args) { return Post<CommandCallback>((StringID)0, nullptr, location, std::forward<Targs>(args)...); }
 
 	/**
 	 * Post variant that takes a TileIndex (for error window location and text effects) for
@@ -384,12 +404,16 @@ struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), false> : Com
 	 * @param args Parameters for the command
 	 * @return \c true if the command succeeded, else \c false.
 	 */
-	static inline bool Post(StringID err_message, CommandCallback *callback, TileIndex location, Targs... args)
+	template <typename Tcallback>
+	static inline bool Post(StringID err_message, Tcallback *callback, TileIndex location, Targs... args)
 	{
 		return CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>::InternalPost(err_message, callback, true, false, location, std::forward_as_tuple(args...));
 	}
 };
 
+#ifdef SILENCE_GCC_FUNCTION_POINTER_CAST
+#	pragma GCC diagnostic pop
+#endif
 
 template <Commands Tcmd>
 using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType, std::is_same_v<TileIndex, std::tuple_element_t<0, typename CommandTraits<Tcmd>::Args>>>;

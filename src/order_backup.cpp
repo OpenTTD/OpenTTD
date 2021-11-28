@@ -198,7 +198,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID us
 			/* We need to circumvent the "prevention" from this command being executed
 			 * while the game is paused, so use the internal method. Nor do we want
 			 * this command to get its cost estimated when shift is pressed. */
-			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, static_cast<ClientID>(user) });
+			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe<CommandCallback>(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, static_cast<ClientID>(user) });
 		} else {
 			/* The command came from the game logic, i.e. the clearing of a tile.
 			 * In that case we have no need to actually sync this, just do it. */
