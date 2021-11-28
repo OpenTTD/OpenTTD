@@ -57,7 +57,7 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound_CONSTRUCTION_OTHER(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
+void CcPlaySound_CONSTRUCTION_OTHER(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 }
@@ -84,7 +84,7 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
  * @param result Whether the build succeeded.
  * @param start_tile Starting tile of the tunnel.
  */
-void CcBuildRoadTunnel(Commands cmd, const CommandCost &result, TileIndex start_tile, const CommandDataBuffer &)
+void CcBuildRoadTunnel(Commands cmd, const CommandCost &result, TileIndex start_tile)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, start_tile);
@@ -117,11 +117,9 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	}
 }
 
-void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, RoadType rt, DiagDirection dir)
 {
 	if (result.Failed()) return;
-
-	auto [tile_, rt, dir] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_DEPOT>::Args>(data);
 
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
@@ -130,17 +128,18 @@ void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, const 
 
 /**
  * Command callback for building road stops.
- * @param result Result of the build road stop command.
  * @param cmd Unused.
+ * @param result Result of the build road stop command.
  * @param tile Start tile.
- * @param data Command data.
+ * @param width Width of the road stop.
+ * @param length Length of the road stop.
+ * @param is_drive_through False for normal stops, true for drive-through.
+ * @param dir Entrance direction (#DiagDirection) for normal stops. Converted to the axis for drive-through stops.
  * @see CmdBuildRoadStop
  */
-void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8 width, uint8 length, RoadStopType, bool is_drive_through, DiagDirection dir, RoadType, StationID, bool)
 {
 	if (result.Failed()) return;
-
-	auto [tile_, width, length, stop_type, is_drive_through, dir, rt, station_to_join, adjacent] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_ROAD_STOP>::Args>(data);
 
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();

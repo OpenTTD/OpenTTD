@@ -53,14 +53,13 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * @param result Whether the build succeeded
  * @param cmd unused
  * @param end_tile End tile of the bridge.
- * @param data Additional bitstuffed command data.
+ * @param tile_start start tile
+ * @param transport_type transport type.
  */
-void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, const CommandDataBuffer &data)
+void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, byte)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
-
-	auto [tile, tile_start, transport_type, bridge_type, road_rail_type] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_BRIDGE>::Args>(data);
 
 	if (transport_type == TRANSPORT_ROAD) {
 		DiagDirection end_direction = ReverseDiagDir(GetTunnelBridgeDirection(end_tile));

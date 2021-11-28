@@ -40,7 +40,7 @@ DEF_CMD_TRAIT(CMD_DEPOT_SELL_ALL_VEHICLES, CmdDepotSellAllVehicles, 0,          
 DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,             CMDT_VEHICLE_CONSTRUCTION)
 
 CommandCallback CcBuildPrimaryVehicle;
-CommandCallback CcStartStopVehicle;
+void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool);
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const VehicleListIdentifier &vli)

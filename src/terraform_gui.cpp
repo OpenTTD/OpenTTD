@@ -44,7 +44,7 @@
 
 #include "safeguards.h"
 
-void CcTerraform(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
+void CcTerraform(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);

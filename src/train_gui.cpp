@@ -26,7 +26,7 @@
  * @param result The result of the command.
  * @param tile   The tile the command was executed on.
  */
-void CcBuildWagon(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
+void CcBuildWagon(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Failed()) return;
 

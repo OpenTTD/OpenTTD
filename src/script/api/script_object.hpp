@@ -326,7 +326,7 @@ private:
 	/* Helper functions for DoCommand. */
 	static std::tuple<bool, bool, bool> DoCommandPrep();
 	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only);
-	static CommandCallback *GetDoCommandCallback();
+	static CommandCallbackData *GetDoCommandCallback();
 };
 
 namespace ScriptObjectInternal {

@@ -235,7 +235,7 @@ protected:
 	/**
 	 * Get the callback handling DoCommands in case of networking.
 	 */
-	virtual CommandCallback *GetDoCommandCallback() = 0;
+	virtual CommandCallbackData *GetDoCommandCallback() = 0;
 
 	/**
 	 * Load the dummy script.
