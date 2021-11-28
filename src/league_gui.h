@@ -5,17 +5,15 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file graph_gui.h Graph GUI functions. */
+/** @file league_gui.h League table GUI functions. */
 
-#ifndef GRAPH_GUI_H
-#define GRAPH_GUI_H
+#ifndef LEAGUE_GUI_H
+#define LEAGUE_GUI_H
 
-void ShowOperatingProfitGraph();
-void ShowIncomeGraph();
-void ShowDeliveredCargoGraph();
-void ShowPerformanceHistoryGraph();
-void ShowCompanyValueGraph();
-void ShowCargoPaymentRates();
-void ShowPerformanceRatingDetail();
+#include "league_type.h"
 
-#endif /* GRAPH_GUI_H */
+void ShowPerformanceLeagueTable();
+void ShowScriptLeagueTable(LeagueTableID table);
+void ShowFirstLeagueTable();
+
+#endif /* LEAGUE_GUI_H */
