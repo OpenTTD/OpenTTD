@@ -12,7 +12,7 @@
 
 #include "../command_type.h"
 
-CommandCallback CcAI;
-CommandCallback CcGame;
+CommandCallbackData CcAI;
+CommandCallbackData CcGame;
 
 #endif /* SCRIPT_CMD_H */

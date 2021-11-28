@@ -507,6 +507,13 @@ CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data)
 	return EndianBufferWriter<CommandDataBuffer>::FromValue(args);
 }
 
+
+template <typename T> struct CallbackArgsHelper;
+template <typename... Targs>
+struct CallbackArgsHelper<void(* const)(Commands, const CommandCost &, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+};
+
 /**
  * Unpack a generic command packet into its actual typed components.
  * @tparam Tcmd Command type to be unpacked.
@@ -517,5 +524,12 @@ template <Commands Tcmd, size_t Tcb>
 void UnpackNetworkCommand(const CommandPacket* cp)
 {
 	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
-	Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
+
+	/* Check if the callback matches with the command arguments. If not, drop the callback. */
+	using Tcallback = std::tuple_element_t<Tcb, decltype(_callback_tuple)>;
+	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || std::is_same_v<Tcallback, CommandCallbackData * const> || std::is_same_v<typename CommandTraits<Tcmd>::Args, typename CallbackArgsHelper<Tcallback>::Args>) {
+		Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
+	} else {
+		Command<Tcmd>::PostFromNet(cp->err_msg, (CommandCallback *)nullptr, cp->my_cmd, cp->tile, args);
+	}
 }

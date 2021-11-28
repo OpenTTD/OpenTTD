@@ -2617,16 +2617,14 @@ static const StringID _vehicle_msg_translation_table[][4] = {
 
 /**
  * This is the Callback method after attempting to start/stop a vehicle
- * @param result the result of the start/stop command
  * @param cmd unused
- * @param tile unused
- * @param data Command data
+ * @param result the result of the start/stop command
+ * @param veh_id Vehicle ID.
  */
-void CcStartStopVehicle(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool)
 {
 	if (result.Failed()) return;
 
-	VehicleID veh_id = std::get<0>(EndianBufferReader::ToValue<CommandTraits<CMD_START_STOP_VEHICLE>::Args>(data));
 	const Vehicle *v = Vehicle::GetIfValid(veh_id);
 	if (v == nullptr || !v->IsPrimaryVehicle() || v->owner != _local_company) return;
 
@@ -3124,9 +3122,8 @@ void StopGlobalFollowVehicle(const Vehicle *v)
  * @param result indicates completion (or not) of the operation
  * @param cmd unused
  * @param tile unused
- * @param data unused
  */
-void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Failed()) return;
 

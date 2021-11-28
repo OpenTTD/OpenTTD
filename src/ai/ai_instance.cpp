@@ -113,7 +113,7 @@ void CcAI(Commands cmd, const CommandCost &result, TileIndex tile, const Command
 	}
 }
 
-CommandCallback *AIInstance::GetDoCommandCallback()
+CommandCallbackData *AIInstance::GetDoCommandCallback()
 {
 	return &CcAI;
 }

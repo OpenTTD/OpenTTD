@@ -1009,7 +1009,7 @@ void ShowTownDirectory()
 	new TownDirectoryWindow(&_town_directory_desc);
 }
 
-void CcFoundTown(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
+void CcFoundTown(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Failed()) return;
 
@@ -1017,7 +1017,7 @@ void CcFoundTown(Commands cmd, const CommandCost &result, TileIndex tile, const 
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcFoundRandomTown(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &)
+void CcFoundRandomTown(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
 }

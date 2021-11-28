@@ -222,13 +222,12 @@ void SortIndustryTypes()
  * @param cmd    Unused.
  * @param result Result of the command.
  * @param tile   Tile where the industry is placed.
- * @param data   Additional data of the #CMD_BUILD_INDUSTRY command.
+ * @param indtype Industry type.
  */
-void CcBuildIndustry(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcBuildIndustry(Commands cmd, const CommandCost &result, TileIndex tile, IndustryType indtype, uint32, bool, uint32)
 {
 	if (result.Succeeded()) return;
 
-	auto [tile_, indtype, first_layout, fund, seed] = EndianBufferReader::ToValue<CommandTraits<CMD_BUILD_INDUSTRY>::Args>(data);
 	if (indtype < NUM_INDUSTRYTYPES) {
 		const IndustrySpec *indsp = GetIndustrySpec(indtype);
 		if (indsp->enabled) {

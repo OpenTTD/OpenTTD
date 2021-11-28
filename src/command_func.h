@@ -284,7 +284,16 @@ protected:
 		InternalPostResult(res, tile, estimate_only, only_sending, err_message, my_cmd);
 
 		if (!estimate_only && !only_sending && callback != nullptr) {
-			callback(Tcmd, res, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args));
+			if constexpr (std::is_same_v<Tcallback, CommandCallback>) {
+				/* Callback that doesn't need any command arguments. */
+				callback(Tcmd, res, tile);
+			} else if constexpr (std::is_same_v<Tcallback, CommandCallbackData>) {
+				/* Generic callback that takes packed arguments as a buffer. */
+				callback(Tcmd, res, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args));
+			} else {
+				/* Callback with arguments. We assume that the tile is only interesting if it actually is in the command arguments. */
+				std::apply(callback, std::tuple_cat(std::make_tuple(Tcmd, res), args));
+			}
 		}
 
 		return res.Succeeded();

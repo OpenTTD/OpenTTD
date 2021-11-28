@@ -296,7 +296,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->callback_value[index];
 }
 
-/* static */ CommandCallback *ScriptObject::GetDoCommandCallback()
+/* static */ CommandCallbackData *ScriptObject::GetDoCommandCallback()
 {
 	return ScriptObject::GetActiveInstance()->GetDoCommandCallback();
 }

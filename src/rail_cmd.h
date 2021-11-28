@@ -38,8 +38,8 @@ DEF_CMD_TRAIT(CMD_BUILD_SIGNAL_TRACK,    CmdBuildSignalTrack,    CMD_AUTO,      
 DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
 
 CommandCallback CcPlaySound_CONSTRUCTION_RAIL;
-CommandCallback CcRailDepot;
 CommandCallback CcStation;
 CommandCallback CcBuildRailTunnel;
+void CcRailDepot(Commands cmd, const CommandCost &result, TileIndex tile, RailType rt, DiagDirection dir);
 
 #endif /* RAIL_CMD_H */

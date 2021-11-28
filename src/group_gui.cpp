@@ -1153,17 +1153,15 @@ static void CcCreateGroup(VehicleType veh_type)
  * Opens a 'Rename group' window for newly created group.
  * @param cmd Unused.
  * @param result Did command succeed?
- * @param tile Unused.
- * @param data Command data.
+ * @param vt Vehicle type.
+ * @param parent_group Parent group of the enw group.
  * @see CmdCreateGroup
  */
-void CcCreateGroup(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcCreateGroup(Commands cmd, const CommandCost &result, VehicleType vt, GroupID parent_group)
 {
 	if (result.Failed()) return;
 
-	auto [vt, parent_group] = EndianBufferReader::ToValue<CommandTraits<CMD_CREATE_GROUP>::Args>(data);
 	assert(vt <= VEH_AIRCRAFT);
-
 	CcCreateGroup(vt);
 }
 
@@ -1171,16 +1169,13 @@ void CcCreateGroup(Commands cmd, const CommandCost &result, TileIndex tile, cons
  * Open rename window after adding a vehicle to a new group via drag and drop.
  * @param cmd Unused.
  * @param result Did command succeed?
- * @param tile Unused.
- * @param data Command data.
+ * @param veh_id vehicle to add to a group
  */
-void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID, VehicleID veh_id, bool)
 {
 	if (result.Failed()) return;
 
-	auto [group_id, veh_id, shared] = EndianBufferReader::ToValue<CommandTraits<CMD_ADD_VEHICLE_GROUP>::Args>(data);
 	assert(Vehicle::IsValidID(veh_id));
-
 	CcCreateGroup(Vehicle::Get(veh_id)->type);
 }
 

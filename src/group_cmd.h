@@ -41,7 +41,7 @@ DEF_CMD_TRAIT(CMD_REMOVE_ALL_VEHICLES_GROUP, CmdRemoveAllVehiclesGroup, 0, CMDT_
 DEF_CMD_TRAIT(CMD_SET_GROUP_FLAG,            CmdSetGroupFlag,           0, CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         0, CMDT_ROUTE_MANAGEMENT)
 
-CommandCallback CcCreateGroup;
-CommandCallback CcAddVehicleNewGroup;
+void CcCreateGroup(Commands cmd, const CommandCost &result, VehicleType vt, GroupID parent_group);
+void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID, VehicleID veh_id, bool);
 
 #endif /* GROUP_CMD_H */

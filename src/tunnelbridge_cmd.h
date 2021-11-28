@@ -20,6 +20,6 @@ CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportT
 DEF_CMD_TRAIT(CMD_BUILD_BRIDGE, CmdBuildBridge, CMD_DEITY | CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_TUNNEL, CmdBuildTunnel, CMD_DEITY | CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)
 
-CommandCallback CcBuildBridge;
+void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, byte);
 
 #endif /* TUNNELBRIDGE_CMD_H */

@@ -23,6 +23,6 @@ CommandCost CmdIndustryCtrl(DoCommandFlag flags, IndustryID ind_id, IndustryActi
 DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_INDUSTRY_CTRL,  CmdIndustryCtrl,  CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 
-CommandCallback CcBuildIndustry;
+void CcBuildIndustry(Commands cmd, const CommandCost &result, TileIndex tile, IndustryType indtype, uint32, bool, uint32);
 
 #endif /* INDUSTRY_CMD_H */
