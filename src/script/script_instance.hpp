@@ -179,10 +179,11 @@ public:
 	 * @param result The result of the command.
 	 * @param tile The tile on which the command was executed.
 	 * @param data Command data as given to DoCommandPInternal.
+	 * @param result_data Extra data return from the command.
 	 * @param cmd cmd as given to DoCommandPInternal.
 	 * @return true if we handled result.
 	 */
-	bool DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, Commands cmd);
+	bool DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd);
 
 	/**
 	 * Insert an event for this script.

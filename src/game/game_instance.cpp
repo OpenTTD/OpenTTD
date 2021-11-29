@@ -13,6 +13,7 @@
 #include "../script/squirrel_class.hpp"
 
 #include "../script/script_storage.hpp"
+#include "../script/script_cmd.h"
 #include "../ai/ai_gui.hpp"
 #include "game_config.hpp"
 #include "game_info.hpp"
@@ -85,10 +86,11 @@ void GameInstance::Died()
  * @param result The result of the command.
  * @param tile The tile on which the command was executed.
  * @param data Command data as given to Command<>::Post.
+ * @param result_data Additional returned data from the command.
  */
-void CcGame(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data)
+void CcGame(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data)
 {
-	if (Game::GetGameInstance()->DoCommandCallback(result, tile, data, cmd)) {
+	if (Game::GetGameInstance()->DoCommandCallback(result, tile, data, std::move(result_data), cmd)) {
 		Game::GetGameInstance()->Continue();
 	}
 }

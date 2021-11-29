@@ -527,7 +527,7 @@ void UnpackNetworkCommand(const CommandPacket* cp)
 
 	/* Check if the callback matches with the command arguments. If not, drop the callback. */
 	using Tcallback = std::tuple_element_t<Tcb, decltype(_callback_tuple)>;
-	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || std::is_same_v<Tcallback, CommandCallbackData * const> || std::is_same_v<typename CommandTraits<Tcmd>::Args, typename CallbackArgsHelper<Tcallback>::Args>) {
+	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || std::is_same_v<Tcallback, CommandCallbackData * const> || std::is_same_v<typename CommandTraits<Tcmd>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args>) {
 		Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
 	} else {
 		Command<Tcmd>::PostFromNet(cp->err_msg, (CommandCallback *)nullptr, cp->my_cmd, cp->tile, args);

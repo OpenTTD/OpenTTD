@@ -62,6 +62,12 @@ public:
 	static void SetLastCommandRes(bool res);
 
 	/**
+	 * Store the extra data return by the last DoCommand.
+	 * @param data Extra data return by the command.
+	 */
+	static void SetLastCommandResData(CommandDataBuffer data);
+
+	/**
 	 * Get the currently active instance.
 	 * @return The instance.
 	 */
@@ -74,10 +80,11 @@ protected:
 	 * Templated wrapper that exposes the command parameter arguments
 	 * on the various DoCommand calls.
 	 * @tparam Tcmd The command-id to execute.
+	 * @tparam Tret Return type of the command.
 	 * @tparam Targs The command parameter types.
 	 */
-	template <Commands Tcmd, typename... Targs>
-	struct ScriptDoCommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...)> {
+	template <Commands Tcmd, typename Tret, typename... Targs>
+	struct ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)> {
 		static bool Do(Script_SuspendCallbackProc *callback, Targs... args)
 		{
 			return Execute(callback, std::forward_as_tuple(args...));
@@ -179,6 +186,11 @@ protected:
 	 * Get the latest result of a DoCommand.
 	 */
 	static bool GetLastCommandRes();
+
+	/**
+	 * Get the extra return data from the last DoCommand.
+	 */
+	static const CommandDataBuffer &GetLastCommandResData();
 
 	/**
 	 * Get the latest stored new_vehicle_id.
@@ -363,10 +375,17 @@ namespace ScriptObjectInternal {
 	{
 		((SetClientIdHelper(std::get<Tindices>(values))), ...);
 	}
+
+	/** Remove the first element of a tuple. */
+	template <template <typename...> typename Tt, typename T1, typename... Ts>
+	static inline Tt<Ts...> RemoveFirstTupleElement(const Tt<T1, Ts...> &tuple)
+	{
+		return std::apply([](auto &&, const auto&... args) { return std::tie(args...); }, tuple);
+	}
 }
 
-template <Commands Tcmd, typename... Targs>
-bool ScriptObject::ScriptDoCommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
+template <Commands Tcmd, typename Tret, typename... Targs>
+bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
 {
 	auto [err, estimate_only, networking] = ScriptObject::DoCommandPrep();
 	if (err) return false;
@@ -387,9 +406,14 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Tar
 	if (!estimate_only && networking) ScriptObject::SetLastCommand(tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);
 
 	/* Try to perform the command. */
-	CommandCost res = ::Command<Tcmd>::Unsafe((StringID)0, networking ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);
+	Tret res = ::Command<Tcmd>::Unsafe((StringID)0, networking ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);
 
-	return ScriptObject::DoCommandProcessResult(res, callback, estimate_only);
+	if constexpr (std::is_same_v<Tret, CommandCost>) {
+		return ScriptObject::DoCommandProcessResult(res, callback, estimate_only);
+	} else {
+		ScriptObject::SetLastCommandResData(EndianBufferWriter<CommandDataBuffer>::FromValue(ScriptObjectInternal::RemoveFirstTupleElement(res)));
+		return ScriptObject::DoCommandProcessResult(std::get<0>(res), callback, estimate_only);
+	}
 }
 
 #endif /* SCRIPT_OBJECT_HPP */

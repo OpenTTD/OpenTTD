@@ -111,10 +111,30 @@ protected:
  * Templated wrapper that exposes the command parameter arguments
  * for the various Command::Do/Post calls.
  * @tparam Tcmd The command-id to execute.
+ * @tparam Tret Return type of the command.
  * @tparam Targs The command parameter types.
  */
-template <Commands Tcmd, typename... Targs>
-struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true> : protected CommandHelperBase {
+template <Commands Tcmd, typename Tret, typename... Targs>
+struct CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true> : protected CommandHelperBase {
+private:
+	/** Extract the \c CommandCost from a command proc result. */
+	static inline CommandCost &ExtractCommandCost(Tret &ret)
+	{
+		if constexpr (std::is_same_v<Tret, CommandCost>) {
+			return ret;
+		} else {
+			return std::get<0>(ret);
+		}
+	}
+
+	/** Make a command proc result from a \c CommandCost. */
+	static inline Tret MakeResult(const CommandCost &cost)
+	{
+		Tret ret{};
+		ExtractCommandCost(ret) = cost;
+		return ret;
+	}
+
 public:
 	/**
 	 * This function executes a given command with the parameters from the #CommandProc parameter list.
@@ -129,12 +149,12 @@ public:
 	 * @see CommandProc
 	 * @return the cost
 	 */
-	static CommandCost Do(DoCommandFlag flags, Targs... args)
+	static Tret Do(DoCommandFlag flags, Targs... args)
 	{
 		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, std::tuple<Targs...>>>) {
 			/* Do not even think about executing out-of-bounds tile-commands. */
 			TileIndex tile = std::get<0>(std::make_tuple(args...));
-			if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return CMD_ERROR;
+			if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return MakeResult(CMD_ERROR);
 		}
 
 		RecursiveCommandCounter counter{};
@@ -142,17 +162,17 @@ public:
 		/* Only execute the test call if it's toplevel, or we're not execing. */
 		if (counter.IsTopLevel() || !(flags & DC_EXEC)) {
 			InternalDoBefore(counter.IsTopLevel(), true);
-			CommandCost res = CommandTraits<Tcmd>::proc(flags & ~DC_EXEC, args...);
-			InternalDoAfter(res, flags, counter.IsTopLevel(), true); // Can modify res.
+			Tret res = CommandTraits<Tcmd>::proc(flags & ~DC_EXEC, args...);
+			InternalDoAfter(ExtractCommandCost(res), flags, counter.IsTopLevel(), true); // Can modify res.
 
-			if (res.Failed() || !(flags & DC_EXEC)) return res;
+			if (ExtractCommandCost(res).Failed() || !(flags & DC_EXEC)) return res;
 		}
 
 		/* Execute the command here. All cost-relevant functions set the expenses type
 		 * themselves to the cost object at some point. */
 		InternalDoBefore(counter.IsTopLevel(), false);
-		CommandCost res = CommandTraits<Tcmd>::proc(flags, args...);
-		InternalDoAfter(res, flags, counter.IsTopLevel(), false);
+		Tret res = CommandTraits<Tcmd>::proc(flags, args...);
+		InternalDoAfter(ExtractCommandCost(res), flags, counter.IsTopLevel(), false);
 
 		return res;
 	}
@@ -237,7 +257,7 @@ public:
 	 * @return the command cost of this function.
 	 */
 	template <typename Tcallback>
-	static CommandCost Unsafe(StringID err_message, Tcallback *callback, bool my_cmd, bool estimate_only, TileIndex location, std::tuple<Targs...> args)
+	static Tret Unsafe(StringID err_message, Tcallback *callback, bool my_cmd, bool estimate_only, TileIndex location, std::tuple<Targs...> args)
 	{
 		return Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, false, location, std::move(args));
 	}
@@ -257,6 +277,13 @@ protected:
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SetClientIdHelper(std::get<Tindices>(values))), ...);
+	}
+
+	/** Remove the first element of a tuple. */
+	template <template <typename...> typename Tt, typename T1, typename... Ts>
+	static inline Tt<Ts...> RemoveFirstTupleElement(const Tt<T1, Ts...> &tuple)
+	{
+		return std::apply([](auto &&, const auto&... args) { return std::tie(args...); }, tuple);
 	}
 
 	template <typename Tcallback>
@@ -280,23 +307,33 @@ protected:
 		/* Only set client IDs when the command does not come from the network. */
 		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) SetClientIds(args, std::index_sequence_for<Targs...>{});
 
-		CommandCost res = Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, network_command, tile, args);
-		InternalPostResult(res, tile, estimate_only, only_sending, err_message, my_cmd);
+		Tret res = Execute(err_message, reinterpret_cast<CommandCallback *>(callback), my_cmd, estimate_only, network_command, tile, args);
+		InternalPostResult(ExtractCommandCost(res), tile, estimate_only, only_sending, err_message, my_cmd);
 
 		if (!estimate_only && !only_sending && callback != nullptr) {
 			if constexpr (std::is_same_v<Tcallback, CommandCallback>) {
 				/* Callback that doesn't need any command arguments. */
-				callback(Tcmd, res, tile);
+				callback(Tcmd, ExtractCommandCost(res), tile);
 			} else if constexpr (std::is_same_v<Tcallback, CommandCallbackData>) {
 				/* Generic callback that takes packed arguments as a buffer. */
-				callback(Tcmd, res, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args));
+				if constexpr (std::is_same_v<Tret, CommandCost>) {
+					callback(Tcmd, ExtractCommandCost(res), tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), {});
+				} else {
+					callback(Tcmd, ExtractCommandCost(res), tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), EndianBufferWriter<CommandDataBuffer>::FromValue(RemoveFirstTupleElement(res)));
+				}
+			} else if constexpr (!std::is_same_v<Tret, CommandCost> && std::is_same_v<Tcallback *, typename CommandTraits<Tcmd>::RetCallbackProc>) {
+				std::apply(callback, std::tuple_cat(std::make_tuple(Tcmd), res));
 			} else {
 				/* Callback with arguments. We assume that the tile is only interesting if it actually is in the command arguments. */
-				std::apply(callback, std::tuple_cat(std::make_tuple(Tcmd, res), args));
+				if constexpr (std::is_same_v<Tret, CommandCost>) {
+					std::apply(callback, std::tuple_cat(std::make_tuple(Tcmd, res), args));
+				} else {
+					std::apply(callback, std::tuple_cat(std::make_tuple(Tcmd), res, args));
+				}
 			}
 		}
 
-		return res.Succeeded();
+		return ExtractCommandCost(res).Succeeded();
 	}
 
 	/** Helper to process a single ClientID argument. */
@@ -317,7 +354,7 @@ protected:
 		return (ClientIdIsSet(std::get<Tindices>(values)) && ...);
 	}
 
-	static CommandCost Execute(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
+	static Tret Execute(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Prevent recursion; it gives a mess over the network */
 		RecursiveCommandCounter counter{};
@@ -334,14 +371,14 @@ protected:
 		Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 		if (!InternalExecutePrepTest(cmd_flags, tile, cur_company)) {
 			cur_company.Trash();
-			return CMD_ERROR;
+			return MakeResult(CMD_ERROR);
 		}
 
 		/* Test the command. */
 		DoCommandFlag flags = CommandFlagsToDCFlags(cmd_flags);
-		CommandCost res = std::apply(CommandTraits<Tcmd>::proc, std::tuple_cat(std::make_tuple(flags), args));
+		Tret res = std::apply(CommandTraits<Tcmd>::proc, std::tuple_cat(std::make_tuple(flags), args));
 
-		auto [exit_test, desync_log, send_net] = InternalExecuteValidateTestAndPrepExec(res, cmd_flags, estimate_only, network_command, cur_company);
+		auto [exit_test, desync_log, send_net] = InternalExecuteValidateTestAndPrepExec(ExtractCommandCost(res), cmd_flags, estimate_only, network_command, cur_company);
 		if (exit_test) {
 			if (desync_log) LogCommandExecution(Tcmd, err_message, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), true);
 			cur_company.Restore();
@@ -358,15 +395,20 @@ protected:
 			 * This way it's not handled by DoCommand and only the
 			 * actual execution of the command causes messages. Also
 			 * reset the storages as we've not executed the command. */
-			return CommandCost();
+			return {};
 		}
 
 		if (desync_log) LogCommandExecution(Tcmd, err_message, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), false);
 
 		/* Actually try and execute the command. */
-		CommandCost res2 = std::apply(CommandTraits<Tcmd>::proc, std::tuple_cat(std::make_tuple(flags | DC_EXEC), args));
+		Tret res2 = std::apply(CommandTraits<Tcmd>::proc, std::tuple_cat(std::make_tuple(flags | DC_EXEC), args));
 
-		return InternalExecuteProcessResult(Tcmd, cmd_flags, res, res2, tile, cur_company);
+		if constexpr (std::is_same_v<Tret, CommandCost>) {
+			return InternalExecuteProcessResult(Tcmd, cmd_flags, res, res2, tile, cur_company);
+		} else {
+			std::get<0>(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), tile, cur_company);
+			return res2;
+		}
 	}
 };
 
@@ -374,13 +416,14 @@ protected:
  * Overload for #CommandHelper that exposes additional \c Post variants
  * for commands that don't take a TileIndex themselves.
  * @tparam Tcmd The command-id to execute.
+ * @tparam Tret Return type of the command.
  * @tparam Targs The command parameter types.
  */
-template <Commands Tcmd, typename... Targs>
-struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), false> : CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>
+template <Commands Tcmd, typename Tret, typename... Targs>
+struct CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), false> : CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true>
 {
 	/* Import Post overloads from our base class. */
-	using CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>::Post;
+	using CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true>::Post;
 
 	/**
 	 * Shortcut for Post when not using an error message.
@@ -416,7 +459,7 @@ struct CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), false> : Com
 	template <typename Tcallback>
 	static inline bool Post(StringID err_message, Tcallback *callback, TileIndex location, Targs... args)
 	{
-		return CommandHelper<Tcmd, CommandCost(*)(DoCommandFlag, Targs...), true>::InternalPost(err_message, callback, true, false, location, std::forward_as_tuple(args...));
+		return CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true>::InternalPost(err_message, callback, true, false, location, std::forward_as_tuple(args...));
 	}
 };
 
