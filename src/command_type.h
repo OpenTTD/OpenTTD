@@ -409,6 +409,14 @@ template <typename T> struct CommandFunctionTraitHelper;
 template <typename... Targs>
 struct CommandFunctionTraitHelper<CommandCost(*)(DoCommandFlag, Targs...)> {
 	using Args = std::tuple<std::decay_t<Targs>...>;
+	using CbArgs = Args;
+	using CbProcType = void(*)(Commands, const CommandCost &);
+};
+template <template <typename...> typename Tret, typename... Tretargs, typename... Targs>
+struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFlag, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+	using CbArgs = std::tuple<std::decay_t<Tretargs>..., std::decay_t<Targs>...>;
+	using CbProcType = void(*)(Commands, const CommandCost &, Tretargs...);
 };
 
 /** Defines the traits of a command. */
@@ -418,6 +426,8 @@ template <Commands Tcmd> struct CommandTraits;
 	template<> struct CommandTraits<cmd_> { \
 		using ProcType = decltype(&proc_); \
 		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
+		using CbArgs = typename CommandFunctionTraitHelper<ProcType>::CbArgs; \
+		using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType; \
 		static constexpr Commands cmd = cmd_; \
 		static constexpr auto &proc = proc_; \
 		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
@@ -453,8 +463,9 @@ typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex 
  * @param result The result of the executed command
  * @param tile The tile of the command action
  * @param data Additional data of the command
+ * @param result_data Additional returned data from the command
  * @see CommandProc
  */
-typedef void CommandCallbackData(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data);
+typedef void CommandCallbackData(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data);
 
 #endif /* COMMAND_TYPE_H */

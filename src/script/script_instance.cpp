@@ -687,7 +687,7 @@ SQInteger ScriptInstance::GetOpsTillSuspend()
 	return this->engine->GetOpsTillSuspend();
 }
 
-bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, Commands cmd)
+bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd)
 {
 	ScriptObject::ActiveInstance active(this);
 
@@ -697,6 +697,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile
 	}
 
 	ScriptObject::SetLastCommandRes(result.Succeeded());
+	ScriptObject::SetLastCommandResData(std::move(result_data));
 
 	if (result.Failed()) {
 		ScriptObject::SetLastError(ScriptError::StringToError(result.GetErrorMessage()));

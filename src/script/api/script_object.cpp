@@ -173,6 +173,16 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->last_command_res;
 }
 
+/* static */ void ScriptObject::SetLastCommandResData(CommandDataBuffer data)
+{
+	GetStorage()->last_cmd_ret = std::move(data);
+}
+
+/* static */ const CommandDataBuffer &ScriptObject::GetLastCommandResData()
+{
+	return GetStorage()->last_cmd_ret;
+}
+
 /* static */ void ScriptObject::SetNewVehicleID(VehicleID vehicle_id)
 {
 	GetStorage()->new_vehicle_id = vehicle_id;

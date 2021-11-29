@@ -47,6 +47,7 @@ private:
 	TileIndex last_tile;             ///< The last tile passed to a command.
 	CommandDataBuffer last_data;     ///< The last data passed to a command.
 	Commands last_cmd;               ///< The last cmd passed to a command.
+	CommandDataBuffer last_cmd_ret;  ///< The extra data returned by the last command.
 
 	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
 	SignID new_sign_id;              ///< The ID of the new Sign.
