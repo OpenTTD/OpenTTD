@@ -99,7 +99,6 @@ const ScoreInfo _score_info[] = {
 int64 _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
 Prices _price;
-Money _additional_cash_required;
 static PriceMultipliers _price_base_multiplier;
 
 /**

@@ -341,9 +341,9 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
  * @param LevelMode Mode of leveling \c LevelMode.
  * @return the cost of this operation or an error
  */
-CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm)
+std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm)
 {
-	if (start_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= MapSize()) return { CMD_ERROR, 0 };
 
 	_terraform_err_tile = INVALID_TILE;
 
@@ -356,11 +356,11 @@ CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 		case LM_LEVEL: break;
 		case LM_RAISE: h++; break;
 		case LM_LOWER: h--; break;
-		default: return CMD_ERROR;
+		default: return { CMD_ERROR, 0 };
 	}
 
 	/* Check range of destination height */
-	if (h > _settings_game.construction.map_height_limit) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
+	if (h > _settings_game.construction.map_height_limit) return { CommandCost(oldh == 0 ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH), 0 };
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -369,7 +369,7 @@ CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 
 	const Company *c = Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->terraform_limit, 16, 16));
-	if (limit == 0) return_cmd_error(STR_ERROR_TERRAFORM_LIMIT_REACHED);
+	if (limit == 0) return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0 };
 
 	TileIterator *iter = diagonal ? (TileIterator *)new DiagonalTileIterator(tile, start_tile) : new OrthogonalTileIterator(tile, start_tile);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
@@ -388,9 +388,8 @@ CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 			if (flags & DC_EXEC) {
 				money -= ret.GetCost();
 				if (money < 0) {
-					_additional_cash_required = ret.GetCost();
 					delete iter;
-					return cost;
+					return { cost, ret.GetCost() };
 				}
 				Command<CMD_TERRAFORM_LAND>::Do(flags, t, SLOPE_N, curh <= h);
 			} else {
@@ -414,5 +413,5 @@ CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 	}
 
 	delete iter;
-	return had_success ? cost : last_error;
+	return { had_success ? cost : last_error, 0 };
 }

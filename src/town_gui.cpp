@@ -1017,7 +1017,7 @@ void CcFoundTown(Commands cmd, const CommandCost &result, TileIndex tile)
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcFoundRandomTown(Commands cmd, const CommandCost &result, TownID town_id)
+void CcFoundRandomTown(Commands cmd, const CommandCost &result, Money, TownID town_id)
 {
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(town_id)->xy);
 }

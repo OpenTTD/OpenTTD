@@ -39,8 +39,6 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
 
 void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex location, const CommandDataBuffer &cmd_data);
 
-extern Money _additional_cash_required;
-
 bool IsValidCommand(Commands cmd);
 CommandFlags GetCommandFlags(Commands cmd);
 const char *GetCommandName(Commands cmd);
@@ -103,7 +101,7 @@ protected:
 	static void InternalPostResult(const CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd);
 	static bool InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company);
 	static std::tuple<bool, bool, bool> InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company);
-	static CommandCost InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, TileIndex tile, Backup<CompanyID> &cur_company);
+	static CommandCost InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company);
 	static void LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed);
 };
 
@@ -354,6 +352,16 @@ protected:
 		return (ClientIdIsSet(std::get<Tindices>(values)) && ...);
 	}
 
+	template<class Ttuple>
+	static inline Money ExtractAdditionalMoney(Ttuple &values)
+	{
+		if constexpr (std::is_same_v<std::tuple_element_t<1, Tret>, Money>) {
+			return std::get<1>(values);
+		} else {
+			return {};
+		}
+	}
+
 	static Tret Execute(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Prevent recursion; it gives a mess over the network */
@@ -403,10 +411,17 @@ protected:
 		/* Actually try and execute the command. */
 		Tret res2 = std::apply(CommandTraits<Tcmd>::proc, std::tuple_cat(std::make_tuple(flags | DC_EXEC), args));
 
+		/* Convention: If the second result element is of type Money,
+		 * this is the additional cash required for the command. */
+		Money additional_money{};
+		if constexpr (!std::is_same_v<Tret, CommandCost>) { // No short-circuiting for 'if constexpr'.
+			additional_money = ExtractAdditionalMoney(res2);
+		}
+
 		if constexpr (std::is_same_v<Tret, CommandCost>) {
-			return InternalExecuteProcessResult(Tcmd, cmd_flags, res, res2, tile, cur_company);
+			return InternalExecuteProcessResult(Tcmd, cmd_flags, res, res2, additional_money, tile, cur_company);
 		} else {
-			std::get<0>(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), tile, cur_company);
+			std::get<0>(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), additional_money, tile, cur_company);
 			return res2;
 		}
 	}

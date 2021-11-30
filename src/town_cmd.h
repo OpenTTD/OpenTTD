@@ -16,7 +16,7 @@
 
 enum TownEffect : byte;
 
-std::tuple<CommandCost, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32 townnameparts, const std::string &text);
+std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32 townnameparts, const std::string &text);
 CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text);
 CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8 action);
 CommandCost CmdTownGrowthRate(DoCommandFlag flags, TownID town_id, uint16 growth_rate);
@@ -37,6 +37,6 @@ DEF_CMD_TRAIT(CMD_EXPAND_TOWN,      CmdExpandTown,     CMD_DEITY,               
 DEF_CMD_TRAIT(CMD_DELETE_TOWN,      CmdDeleteTown,     CMD_OFFLINE,              CMDT_LANDSCAPE_CONSTRUCTION)
 
 CommandCallback CcFoundTown;
-void CcFoundRandomTown(Commands cmd, const CommandCost &result, TownID town_id);
+void CcFoundRandomTown(Commands cmd, const CommandCost &result, Money, TownID town_id);
 
 #endif /* TOWN_CMD_H */
