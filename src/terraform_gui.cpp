@@ -44,13 +44,12 @@
 
 #include "safeguards.h"
 
-void CcTerraform(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcTerraform(Commands cmd, const CommandCost &result, Money, TileIndex tile)
 {
 	if (result.Succeeded()) {
 		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	} else {
-		extern TileIndex _terraform_err_tile;
-		SetRedErrorSquare(_terraform_err_tile);
+		SetRedErrorSquare(tile);
 	}
 }
 

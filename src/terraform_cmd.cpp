@@ -38,8 +38,6 @@ struct TerraformerState {
 	TileIndexToHeightMap tile_to_new_height; ///< The tiles for which the height has changed.
 };
 
-TileIndex _terraform_err_tile; ///< first tile we couldn't terraform
-
 /**
  * Gets the TileHeight (height of north corner) of a tile as of current terraforming progress.
  *
@@ -101,20 +99,20 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
  * @param height Aimed height.
  * @return Error code or cost.
  */
-static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height)
+static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height)
 {
 	assert(tile < MapSize());
 
 	/* Check range of destination height */
-	if (height < 0) return_cmd_error(STR_ERROR_ALREADY_AT_SEA_LEVEL);
-	if (height > _settings_game.construction.map_height_limit) return_cmd_error(STR_ERROR_TOO_HIGH);
+	if (height < 0) return { CommandCost(STR_ERROR_ALREADY_AT_SEA_LEVEL), INVALID_TILE };
+	if (height > _settings_game.construction.map_height_limit) return { CommandCost(STR_ERROR_TOO_HIGH), INVALID_TILE };
 
 	/*
 	 * Check if the terraforming has any effect.
 	 * This can only be true, if multiple corners of the start-tile are terraformed (i.e. the terraforming is done by towns/industries etc.).
 	 * In this case the terraforming should fail. (Don't know why.)
 	 */
-	if (height == TerraformGetHeightOfTile(ts, tile)) return CMD_ERROR;
+	if (height == TerraformGetHeightOfTile(ts, tile)) return { CMD_ERROR, INVALID_TILE };
 
 	/* Check "too close to edge of map". Only possible when freeform-edges is off. */
 	uint x = TileX(tile);
@@ -125,8 +123,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 		 */
 		if (x == 1) x = 0;
 		if (y == 1) y = 0;
-		_terraform_err_tile = TileXY(x, y);
-		return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
+		return { CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP), TileXY(x, y) };
 	}
 
 	/* Mark incident tiles that are involved in the terraforming. */
@@ -168,14 +165,14 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 			if (abs(height_diff) > 1) {
 				/* Terraform the neighboured corner. The resulting height difference should be 1. */
 				height_diff += (height_diff < 0 ? 1 : -1);
-				CommandCost cost = TerraformTileHeight(ts, tile, r + height_diff);
-				if (cost.Failed()) return cost;
+				auto [cost, err_tile] = TerraformTileHeight(ts, tile, r + height_diff);
+				if (cost.Failed()) return { cost, err_tile };
 				total_cost.AddCost(cost);
 			}
 		}
 	}
 
-	return total_cost;
+	return { total_cost, INVALID_TILE };
 }
 
 /**
@@ -186,10 +183,8 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
  * @param dir_up direction; eg up (true) or down (false)
  * @return the cost of this operation or an error
  */
-CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, bool dir_up)
+std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, bool dir_up)
 {
-	_terraform_err_tile = INVALID_TILE;
-
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	int direction = (dir_up ? 1 : -1);
 	TerraformerState ts;
@@ -197,29 +192,29 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
 	/* Compute the costs and the terraforming result in a model of the landscape */
 	if ((slope & SLOPE_W) != 0 && tile + TileDiffXY(1, 0) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(1, 0);
-		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (cost.Failed()) return cost;
+		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
+		if (cost.Failed()) return { cost, 0, err_tile };
 		total_cost.AddCost(cost);
 	}
 
 	if ((slope & SLOPE_S) != 0 && tile + TileDiffXY(1, 1) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(1, 1);
-		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (cost.Failed()) return cost;
+		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
+		if (cost.Failed()) return { cost, 0, err_tile };
 		total_cost.AddCost(cost);
 	}
 
 	if ((slope & SLOPE_E) != 0 && tile + TileDiffXY(0, 1) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(0, 1);
-		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (cost.Failed()) return cost;
+		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
+		if (cost.Failed()) return { cost, 0, err_tile };
 		total_cost.AddCost(cost);
 	}
 
 	if ((slope & SLOPE_N) != 0) {
 		TileIndex t = tile + TileDiffXY(0, 0);
-		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
-		if (cost.Failed()) return cost;
+		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
+		if (cost.Failed()) return { cost, 0, err_tile };
 		total_cost.AddCost(cost);
 	}
 
@@ -259,20 +254,17 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
 
 					/* Check if bridge would take damage. */
 					if (direction == 1 && bridge_height <= z_max) {
-						_terraform_err_tile = t; // highlight the tile under the bridge
-						return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+						return { CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST), 0, t }; // highlight the tile under the bridge
 					}
 
 					/* Is the bridge above not too high afterwards? */
 					if (direction == -1 && bridge_height > (z_min + _settings_game.construction.max_bridge_height)) {
-						_terraform_err_tile = t;
-						return_cmd_error(STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND);
+						return { CommandCost(STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND), 0, t };
 					}
 				}
 				/* Check if tunnel would take damage */
 				if (direction == -1 && IsTunnelInWay(t, z_min)) {
-					_terraform_err_tile = t; // highlight the tile above the tunnel
-					return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
+					return { CommandCost(STR_ERROR_EXCAVATION_WOULD_DAMAGE), 0, t }; // highlight the tile above the tunnel
 				}
 			}
 
@@ -296,8 +288,7 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
 			}
 			old_generating_world.Restore();
 			if (cost.Failed()) {
-				_terraform_err_tile = t;
-				return cost;
+				return { cost, 0, t };
 			}
 			if (pass == 1) total_cost.AddCost(cost);
 		}
@@ -305,7 +296,7 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
 
 	Company *c = Company::GetIfValid(_current_company);
 	if (c != nullptr && GB(c->terraform_limit, 16, 16) < ts.tile_to_new_height.size()) {
-		return_cmd_error(STR_ERROR_TERRAFORM_LIMIT_REACHED);
+		return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0, INVALID_TILE };
 	}
 
 	if (flags & DC_EXEC) {
@@ -328,7 +319,7 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
 
 		if (c != nullptr) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;
 	}
-	return total_cost;
+	return { total_cost, 0, total_cost.Succeeded() ? tile : INVALID_TILE };
 }
 
 
@@ -341,11 +332,9 @@ CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, b
  * @param LevelMode Mode of leveling \c LevelMode.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm)
+std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm)
 {
-	if (start_tile >= MapSize()) return { CMD_ERROR, 0 };
-
-	_terraform_err_tile = INVALID_TILE;
+	if (start_tile >= MapSize()) return { CMD_ERROR, 0, INVALID_TILE };
 
 	/* remember level height */
 	uint oldh = TileHeight(start_tile);
@@ -356,11 +345,11 @@ std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile,
 		case LM_LEVEL: break;
 		case LM_RAISE: h++; break;
 		case LM_LOWER: h--; break;
-		default: return { CMD_ERROR, 0 };
+		default: return { CMD_ERROR, 0, INVALID_TILE };
 	}
 
 	/* Check range of destination height */
-	if (h > _settings_game.construction.map_height_limit) return { CommandCost(oldh == 0 ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH), 0 };
+	if (h > _settings_game.construction.map_height_limit) return { CommandCost(oldh == 0 ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH), 0, INVALID_TILE };
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -369,14 +358,16 @@ std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile,
 
 	const Company *c = Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->terraform_limit, 16, 16));
-	if (limit == 0) return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0 };
+	if (limit == 0) return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0, INVALID_TILE };
 
+	TileIndex error_tile = INVALID_TILE;
 	TileIterator *iter = diagonal ? (TileIterator *)new DiagonalTileIterator(tile, start_tile) : new OrthogonalTileIterator(tile, start_tile);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
 		uint curh = TileHeight(t);
 		while (curh != h) {
-			CommandCost ret = Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, t, SLOPE_N, curh <= h);
+			CommandCost ret;
+			std::tie(ret, std::ignore, error_tile) = Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, t, SLOPE_N, curh <= h);
 			if (ret.Failed()) {
 				last_error = ret;
 
@@ -389,7 +380,7 @@ std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile,
 				money -= ret.GetCost();
 				if (money < 0) {
 					delete iter;
-					return { cost, ret.GetCost() };
+					return { cost, ret.GetCost(), error_tile };
 				}
 				Command<CMD_TERRAFORM_LAND>::Do(flags, t, SLOPE_N, curh <= h);
 			} else {
@@ -413,5 +404,6 @@ std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile,
 	}
 
 	delete iter;
-	return { had_success ? cost : last_error, 0 };
+	CommandCost cc_ret = had_success ? cost : last_error;
+	return { cc_ret, 0, cc_ret.Succeeded() ? tile : error_tile };
 }

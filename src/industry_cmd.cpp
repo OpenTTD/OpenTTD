@@ -1601,7 +1601,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
-			if (Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, tile_walk, SLOPE_N, curh <= h).Failed()) {
+			if (std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, tile_walk, SLOPE_N, curh <= h)).Failed()) {
 				cur_company.Restore();
 				return false;
 			}
