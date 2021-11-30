@@ -161,11 +161,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	GetStorage()->last_command_res = res;
 	/* Also store the results of various global variables */
 	SetNewVehicleID(_new_vehicle_id);
-	SetNewSignID(_new_sign_id);
-	SetNewGroupID(_new_group_id);
-	SetNewGoalID(_new_goal_id);
-	SetNewStoryPageID(_new_story_page_id);
-	SetNewStoryPageElementID(_new_story_page_element_id);
 }
 
 /* static */ bool ScriptObject::GetLastCommandRes()
@@ -191,56 +186,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ VehicleID ScriptObject::GetNewVehicleID()
 {
 	return GetStorage()->new_vehicle_id;
-}
-
-/* static */ void ScriptObject::SetNewSignID(SignID sign_id)
-{
-	GetStorage()->new_sign_id = sign_id;
-}
-
-/* static */ SignID ScriptObject::GetNewSignID()
-{
-	return GetStorage()->new_sign_id;
-}
-
-/* static */ void ScriptObject::SetNewGroupID(GroupID group_id)
-{
-	GetStorage()->new_group_id = group_id;
-}
-
-/* static */ GroupID ScriptObject::GetNewGroupID()
-{
-	return GetStorage()->new_group_id;
-}
-
-/* static */ void ScriptObject::SetNewGoalID(GoalID goal_id)
-{
-	GetStorage()->new_goal_id = goal_id;
-}
-
-/* static */ GroupID ScriptObject::GetNewGoalID()
-{
-	return GetStorage()->new_goal_id;
-}
-
-/* static */ void ScriptObject::SetNewStoryPageID(StoryPageID story_page_id)
-{
-	GetStorage()->new_story_page_id = story_page_id;
-}
-
-/* static */ GroupID ScriptObject::GetNewStoryPageID()
-{
-	return GetStorage()->new_story_page_id;
-}
-
-/* static */ void ScriptObject::SetNewStoryPageElementID(StoryPageElementID story_page_element_id)
-{
-	GetStorage()->new_story_page_element_id = story_page_element_id;
-}
-
-/* static */ GroupID ScriptObject::GetNewStoryPageElementID()
-{
-	return GetStorage()->new_story_page_element_id;
 }
 
 /* static */ void ScriptObject::SetAllowDoCommand(bool allow)

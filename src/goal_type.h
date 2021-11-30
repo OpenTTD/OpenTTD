@@ -37,7 +37,6 @@ static const GoalTypeID INVALID_GOALTYPE = 0xFFFFFFFF; ///< Invalid/unknown inde
 
 typedef uint16 GoalID; ///< ID of a goal
 struct Goal;
-
-extern GoalID _new_goal_id;
+static const GoalID INVALID_GOAL = 0xFFFF; ///< Constant representing a non-existing goal.
 
 #endif /* GOAL_TYPE_H */

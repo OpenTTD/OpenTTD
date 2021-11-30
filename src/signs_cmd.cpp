@@ -23,9 +23,6 @@
 
 #include "safeguards.h"
 
-/** The last built sign. */
-SignID _new_sign_id;
-
 /**
  * Place a sign at the given coordinates. Ownership of sign has
  * no effect whatsoever except for the colour the sign gets for easy recognition,
@@ -33,15 +30,15 @@ SignID _new_sign_id;
  * @param tile tile to place sign at
  * @param flags type of operation
  * @param text contents of the sign
- * @return the cost of this operation or an error
+ * @return the cost of this operation + the ID of the new sign or an error
  */
-CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string &text)
+std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string &text)
 {
 	/* Try to locate a new sign */
-	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
+	if (!Sign::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_SIGNS), INVALID_SIGN };
 
 	/* Check sign text length if any */
-	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
+	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return { CMD_ERROR, INVALID_SIGN };
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
@@ -57,10 +54,10 @@ CommandCost CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string 
 		}
 		si->UpdateVirtCoord();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
-		_new_sign_id = si->index;
+		return { CommandCost(), si->index };
 	}
 
-	return CommandCost();
+	return { CommandCost(), INVALID_SIGN };
 }
 
 /**
@@ -107,13 +104,13 @@ CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string
  * Callback function that is called after a sign is placed
  * @param cmd unused
  * @param result of the operation
- * @param tile unused
+ * @param new_sign ID of the placed sign.
  */
-void CcPlaceSign(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcPlaceSign(Commands cmd, const CommandCost &result, SignID new_sign)
 {
 	if (result.Failed()) return;
 
-	ShowRenameSignWindow(Sign::Get(_new_sign_id));
+	ShowRenameSignWindow(Sign::Get(new_sign));
 	ResetObjectToPlace();
 }
 

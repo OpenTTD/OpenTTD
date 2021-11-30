@@ -18,8 +18,6 @@ struct StoryPageElement;
 struct StoryPage;
 enum StoryPageElementType : byte;
 
-extern StoryPageElementID _new_story_page_element_id;
-extern StoryPageID _new_story_page_id;
 static const StoryPageElementID INVALID_STORY_PAGE_ELEMENT = 0xFFFF; ///< Constant representing a non-existing story page element.
 static const StoryPageID INVALID_STORY_PAGE = 0xFFFF; ///< Constant representing a non-existing story page.
 

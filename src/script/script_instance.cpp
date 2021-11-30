@@ -26,6 +26,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../fileio_func.h"
+#include "../misc/endian_buffer.hpp"
 
 #include "../safeguards.h"
 
@@ -274,27 +275,27 @@ void ScriptInstance::CollectGarbage()
 
 /* static */ void ScriptInstance::DoCommandReturnSignID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewSignID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<SignID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnGroupID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewGroupID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<GroupID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnGoalID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewGoalID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<GoalID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnStoryPageID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewStoryPageID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<StoryPageID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnStoryPageElementID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewStoryPageElementID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<StoryPageElementID>(ScriptObject::GetLastCommandResData()));
 }
 
 ScriptStorage *ScriptInstance::GetStorage()

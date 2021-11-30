@@ -30,8 +30,6 @@
 #include "safeguards.h"
 
 
-StoryPageElementID _new_story_page_element_id;
-StoryPageID _new_story_page_id;
 uint32 _story_page_element_next_sort_value;
 uint32 _story_page_next_sort_value;
 
@@ -202,12 +200,12 @@ bool StoryPageButtonData::ValidateVehicleType() const
  * @param text Title of the story page. Null is allowed in which case a generic page title is provided by OpenTTD.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateStoryPage(DoCommandFlag flags, CompanyID company, const std::string &text)
+std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, CompanyID company, const std::string &text)
 {
-	if (!StoryPage::CanAllocateItem()) return CMD_ERROR;
+	if (!StoryPage::CanAllocateItem()) return { CMD_ERROR, INVALID_STORY_PAGE };
 
-	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
+	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_STORY_PAGE };
+	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_STORY_PAGE };
 
 	if (flags & DC_EXEC) {
 		if (_story_page_pool.items == 0) {
@@ -228,11 +226,11 @@ CommandCost CmdCreateStoryPage(DoCommandFlag flags, CompanyID company, const std
 		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
 		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
-		_new_story_page_id = s->index;
 		_story_page_next_sort_value++;
+		return { CommandCost(), s->index };
 	}
 
-	return CommandCost();
+	return { CommandCost(), INVALID_STORY_PAGE };
 }
 
 /**
@@ -245,20 +243,21 @@ CommandCost CmdCreateStoryPage(DoCommandFlag flags, CompanyID company, const std
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32 reference, const std::string &text)
+std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32 reference, const std::string &text)
 {
-	if (!StoryPageElement::CanAllocateItem()) return CMD_ERROR;
+	if (!StoryPageElement::CanAllocateItem()) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 
 	/* Allow at most 128 elements per page. */
 	uint16 element_count = 0;
 	for (StoryPageElement *iter : StoryPageElement::Iterate()) {
 		if (iter->page == page_id) element_count++;
 	}
-	if (element_count >= 128) return CMD_ERROR;
+	if (element_count >= 128) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 
-	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
-	if (!VerifyElementContentParameters(page_id, type, tile, reference, text.c_str())) return CMD_ERROR;
+	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
+	if (!StoryPage::IsValidID(page_id)) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
+	if (!VerifyElementContentParameters(page_id, type, tile, reference, text.c_str())) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
+
 
 	if (flags & DC_EXEC) {
 		if (_story_page_element_pool.items == 0) {
@@ -274,11 +273,11 @@ CommandCost CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, Story
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
 
-		_new_story_page_element_id = pe->index;
 		_story_page_element_next_sort_value++;
+		return { CommandCost(), pe->index };
 	}
 
-	return CommandCost();
+	return { CommandCost(), INVALID_STORY_PAGE_ELEMENT };
 }
 
 /**

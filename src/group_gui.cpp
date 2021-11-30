@@ -1143,40 +1143,42 @@ static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner o
  * Opens a 'Rename group' window for newly created group.
  * @param veh_type Vehicle type.
  */
-static void CcCreateGroup(VehicleType veh_type)
+static void CcCreateGroup(GroupID gid, VehicleType veh_type)
 {
 	VehicleGroupWindow *w = FindVehicleGroupWindow(veh_type, _current_company);
-	if (w != nullptr) w->ShowRenameGroupWindow(_new_group_id, true);
+	if (w != nullptr) w->ShowRenameGroupWindow(gid, true);
 }
 
 /**
  * Opens a 'Rename group' window for newly created group.
  * @param cmd Unused.
  * @param result Did command succeed?
+ * @param new_group ID of the created group.
  * @param vt Vehicle type.
- * @param parent_group Parent group of the enw group.
+ * @param parent_group Parent group of the new group.
  * @see CmdCreateGroup
  */
-void CcCreateGroup(Commands cmd, const CommandCost &result, VehicleType vt, GroupID parent_group)
+void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group)
 {
 	if (result.Failed()) return;
 
 	assert(vt <= VEH_AIRCRAFT);
-	CcCreateGroup(vt);
+	CcCreateGroup(new_group, vt);
 }
 
 /**
  * Open rename window after adding a vehicle to a new group via drag and drop.
  * @param cmd Unused.
  * @param result Did command succeed?
+ * @param new_group ID of the created group.
  * @param veh_id vehicle to add to a group
  */
-void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID, VehicleID veh_id, bool)
+void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool)
 {
 	if (result.Failed()) return;
 
 	assert(Vehicle::IsValidID(veh_id));
-	CcCreateGroup(Vehicle::Get(veh_id)->type);
+	CcCreateGroup(new_group, Vehicle::Get(veh_id)->type);
 }
 
 /**

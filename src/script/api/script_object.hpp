@@ -198,31 +198,6 @@ protected:
 	static VehicleID GetNewVehicleID();
 
 	/**
-	 * Get the latest stored new_sign_id.
-	 */
-	static SignID GetNewSignID();
-
-	/**
-	 * Get the latest stored new_group_id.
-	 */
-	static GroupID GetNewGroupID();
-
-	/**
-	 * Get the latest stored new_goal_id.
-	 */
-	static GoalID GetNewGoalID();
-
-	/**
-	 * Get the latest stored new_story_page_id.
-	 */
-	static StoryPageID GetNewStoryPageID();
-
-	/**
-	 * Get the latest stored new_story_page_id.
-	 */
-	static StoryPageID GetNewStoryPageElementID();
-
-	/**
 	 * Store a allow_do_command per company.
 	 * @param allow The new allow.
 	 */
@@ -304,36 +279,6 @@ private:
 	 * @param vehicle_id The new VehicleID.
 	 */
 	static void SetNewVehicleID(VehicleID vehicle_id);
-
-	/**
-	 * Store a new_sign_id per company.
-	 * @param sign_id The new SignID.
-	 */
-	static void SetNewSignID(SignID sign_id);
-
-	/**
-	 * Store a new_group_id per company.
-	 * @param group_id The new GroupID.
-	 */
-	static void SetNewGroupID(GroupID group_id);
-
-	/**
-	 * Store a new_goal_id per company.
-	 * @param goal_id The new GoalID.
-	 */
-	static void SetNewGoalID(GoalID goal_id);
-
-	/**
-	 * Store a new_story_page_id per company.
-	 * @param story_page_id The new StoryPageID.
-	 */
-	static void SetNewStoryPageID(StoryPageID story_page_id);
-
-	/**
-	 * Store a new_story_page_id per company.
-	 * @param story_page_id The new StoryPageID.
-	 */
-	static void SetNewStoryPageElementID(StoryPageElementID story_page_element_id);
 
 	/* Helper functions for DoCommand. */
 	static std::tuple<bool, bool, bool> DoCommandPrep();
