@@ -15,7 +15,7 @@
 #include "slope_type.h"
 
 CommandCost CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, bool dir_up);
-CommandCost CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm);
+std::tuple<CommandCost, Money> CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm);
 
 DEF_CMD_TRAIT(CMD_TERRAFORM_LAND, CmdTerraformLand, CMD_ALL_TILES | CMD_AUTO,               CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_LEVEL_LAND,     CmdLevelLand,     CMD_ALL_TILES | CMD_AUTO | CMD_NO_TEST, CMDT_LANDSCAPE_CONSTRUCTION) // test run might clear tiles multiple times, in execution that only happens once

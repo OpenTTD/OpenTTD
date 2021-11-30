@@ -287,9 +287,6 @@ void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, 
  */
 bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company)
 {
-	/* Reset the state. */
-	_additional_cash_required = 0;
-
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
 
@@ -356,11 +353,12 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param cmd_flags Command flags.
  * @param res_test Command result of test run.
  * @param tes_exec Command result of real run.
+ * @param extra_cash Additional cash required for successful command execution.
  * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return Final command result.
  */
-CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, TileIndex tile, Backup<CompanyID> &cur_company)
+CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
@@ -389,11 +387,11 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 
 	/* If we're needing more money and we haven't done
 	 * anything yet, ask for the money! */
-	if (_additional_cash_required != 0 && res_exec.GetCost() == 0) {
+	if (extra_cash != 0 && res_exec.GetCost() == 0) {
 		/* It could happen we removed rail, thus gained money, and deleted something else.
 		 * So make sure the signal buffer is empty even in this case */
 		UpdateSignalsInBuffer();
-		SetDParam(0, _additional_cash_required);
+		SetDParam(0, extra_cash);
 		return CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
 	}
 

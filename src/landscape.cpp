@@ -736,9 +736,9 @@ CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile)
  * @param diagonal Whether to use the Orthogonal (false) or Diagonal (true) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal)
+std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal)
 {
-	if (start_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= MapSize()) return { CMD_ERROR, 0 };
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -764,9 +764,8 @@ CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 		if (flags & DC_EXEC) {
 			money -= ret.GetCost();
 			if (ret.GetCost() > 0 && money < 0) {
-				_additional_cash_required = ret.GetCost();
 				delete iter;
-				return cost;
+				return { cost, ret.GetCost() };
 			}
 			Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t);
 
@@ -786,7 +785,7 @@ CommandCost CmdClearArea(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 	}
 
 	delete iter;
-	return had_success ? cost : last_error;
+	return { had_success ? cost : last_error, 0 };
 }
 
 

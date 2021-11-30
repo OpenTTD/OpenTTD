@@ -1070,16 +1070,16 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, TileInde
  * @param end_half end tile starts in the 2nd half of tile (p2 & 2)
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile, RoadType rt, Axis axis, bool start_half, bool end_half)
+std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile, RoadType rt, Axis axis, bool start_half, bool end_half)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	if (end_tile >= MapSize()) return CMD_ERROR;
-	if (!ValParamRoadType(rt) || !IsEnumValid(axis)) return CMD_ERROR;
+	if (end_tile >= MapSize()) return { CMD_ERROR, 0 };
+	if (!ValParamRoadType(rt) || !IsEnumValid(axis)) return { CMD_ERROR, 0 };
 
 	/* Only drag in X or Y direction dictated by the direction variable */
-	if (axis == AXIS_X && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
-	if (axis == AXIS_Y && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
+	if (axis == AXIS_X && TileY(start_tile) != TileY(end_tile)) return { CMD_ERROR, 0 }; // x-axis
+	if (axis == AXIS_Y && TileX(start_tile) != TileX(end_tile)) return { CMD_ERROR, 0 }; // y-axis
 
 	/* Swap start and ending tile, also the half-tile drag vars. */
 	if (start_tile > end_tile || (start_tile == end_tile && start_half)) {
@@ -1107,8 +1107,7 @@ CommandCost CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, TileInd
 				if (flags & DC_EXEC) {
 					money_spent += ret.GetCost();
 					if (money_spent > 0 && money_spent > money_available) {
-						_additional_cash_required = Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, start_tile, end_tile, rt, axis, start_half, end_half).GetCost();
-						return cost;
+						return { cost, std::get<0>(Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, start_tile, end_tile, rt, axis, start_half, end_half)).GetCost() };
 					}
 					RemoveRoad(tile, flags, bits, rtt, true, false);
 				}
@@ -1125,7 +1124,7 @@ CommandCost CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, TileInd
 		tile += (axis == AXIS_Y) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
-	return had_success ? cost : last_error;
+	return { had_success ? cost : last_error, 0 };
 }
 
 /**
