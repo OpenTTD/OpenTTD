@@ -25,8 +25,6 @@
 
 #include "safeguards.h"
 
-GroupID _new_group_id;
-
 GroupPool _group_pool("Group");
 INSTANTIATE_POOL_METHODS(Group)
 
@@ -299,16 +297,16 @@ Group::Group(Owner owner)
  * @param parent_group parent groupid
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_group)
+std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_group)
 {
-	if (!IsCompanyBuildableVehicleType(vt)) return CMD_ERROR;
+	if (!IsCompanyBuildableVehicleType(vt)) return { CMD_ERROR, INVALID_GROUP };
 
-	if (!Group::CanAllocateItem()) return CMD_ERROR;
+	if (!Group::CanAllocateItem()) return { CMD_ERROR, INVALID_GROUP };
 
 	const Group *pg = Group::GetIfValid(parent_group);
 	if (pg != nullptr) {
-		if (pg->owner != _current_company) return CMD_ERROR;
-		if (pg->vehicle_type != vt) return CMD_ERROR;
+		if (pg->owner != _current_company) return { CMD_ERROR, INVALID_GROUP };
+		if (pg->vehicle_type != vt) return { CMD_ERROR, INVALID_GROUP };
 	}
 
 	if (flags & DC_EXEC) {
@@ -328,13 +326,13 @@ CommandCost CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_g
 			g->flags = pg->flags;
 		}
 
-		_new_group_id = g->index;
-
 		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).Pack());
 		InvalidateWindowData(WC_COMPANY_COLOUR, g->owner, g->vehicle_type);
+
+		return { CommandCost(), g->index };
 	}
 
-	return CommandCost();
+	return { CommandCost(), INVALID_GROUP};
 }
 
 
@@ -497,26 +495,26 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
  * @param add_shared Add shared vehicles as well.
  * @return the cost of this operation or an error
  */
-CommandCost CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared)
+std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 	GroupID new_g = group_id;
 
-	if (v == nullptr || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP)) return CMD_ERROR;
+	if (v == nullptr || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP)) return { CMD_ERROR, INVALID_GROUP };
 
 	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
-		if (g->owner != _current_company || g->vehicle_type != v->type) return CMD_ERROR;
+		if (g->owner != _current_company || g->vehicle_type != v->type) return { CMD_ERROR, INVALID_GROUP };
 	}
 
-	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return { CMD_ERROR, INVALID_GROUP };
 
 	if (new_g == NEW_GROUP) {
 		/* Create new group. */
-		CommandCost ret = CmdCreateGroup(flags, v->type, INVALID_GROUP);
-		if (ret.Failed()) return ret;
+		auto [ret, group_id] = CmdCreateGroup(flags, v->type, INVALID_GROUP);
+		if (ret.Failed()) return { ret, group_id };
 
-		new_g = _new_group_id;
+		new_g = group_id;
 	}
 
 	if (flags & DC_EXEC) {
@@ -541,7 +539,7 @@ CommandCost CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID 
 		InvalidateWindowData(WC_VEHICLE_DETAILS, v->index);
 	}
 
-	return CommandCost();
+	return { CommandCost(), new_g };
 }
 
 /**

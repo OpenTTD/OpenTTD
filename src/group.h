@@ -113,6 +113,4 @@ void RemoveVehicleFromGroup(const Vehicle *v);
 void RemoveAllGroupsForCompany(const CompanyID company);
 bool GroupIsInGroup(GroupID search, GroupID group);
 
-extern GroupID _new_group_id;
-
 #endif /* GROUP_H */

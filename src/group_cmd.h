@@ -23,10 +23,10 @@ enum class AlterGroupMode : byte {
 	SetParent, ///< Change group parent.
 };
 
-CommandCost CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_group);
+std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_group);
 CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID group_id, GroupID parent_id, const std::string &text);
 CommandCost CmdDeleteGroup(DoCommandFlag flags, GroupID group_id);
-CommandCost CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared);
+std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared);
 CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleType type);
 CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id);
 CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlags flag, bool value, bool recursive);
@@ -41,7 +41,7 @@ DEF_CMD_TRAIT(CMD_REMOVE_ALL_VEHICLES_GROUP, CmdRemoveAllVehiclesGroup, 0, CMDT_
 DEF_CMD_TRAIT(CMD_SET_GROUP_FLAG,            CmdSetGroupFlag,           0, CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         0, CMDT_ROUTE_MANAGEMENT)
 
-void CcCreateGroup(Commands cmd, const CommandCost &result, VehicleType vt, GroupID parent_group);
-void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID, VehicleID veh_id, bool);
+void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group);
+void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool);
 
 #endif /* GROUP_CMD_H */

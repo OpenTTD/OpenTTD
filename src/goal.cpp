@@ -28,8 +28,6 @@
 #include "safeguards.h"
 
 
-GoalID _new_goal_id;
-
 GoalPool _goal_pool("Goal");
 INSTANTIATE_POOL_METHODS(Goal)
 
@@ -42,43 +40,43 @@ INSTANTIATE_POOL_METHODS(Goal)
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text)
+std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text)
 {
-	if (!Goal::CanAllocateItem()) return CMD_ERROR;
+	if (!Goal::CanAllocateItem()) return { CMD_ERROR, INVALID_GOAL };
 
-	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (text.empty()) return CMD_ERROR;
-	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
+	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_GOAL };
+	if (text.empty()) return { CMD_ERROR, INVALID_GOAL };
+	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_GOAL };
 
 	switch (type) {
 		case GT_NONE:
-			if (dest != 0) return CMD_ERROR;
+			if (dest != 0) return { CMD_ERROR, INVALID_GOAL };
 			break;
 
 		case GT_TILE:
-			if (!IsValidTile(dest)) return CMD_ERROR;
+			if (!IsValidTile(dest)) return { CMD_ERROR, INVALID_GOAL };
 			break;
 
 		case GT_INDUSTRY:
-			if (!Industry::IsValidID(dest)) return CMD_ERROR;
+			if (!Industry::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
 			break;
 
 		case GT_TOWN:
-			if (!Town::IsValidID(dest)) return CMD_ERROR;
+			if (!Town::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
 			break;
 
 		case GT_COMPANY:
-			if (!Company::IsValidID(dest)) return CMD_ERROR;
+			if (!Company::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
 			break;
 
 		case GT_STORY_PAGE: {
-			if (!StoryPage::IsValidID(dest)) return CMD_ERROR;
+			if (!StoryPage::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
 			CompanyID story_company = StoryPage::Get(dest)->company;
-			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return CMD_ERROR;
+			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return { CMD_ERROR, INVALID_GOAL };
 			break;
 		}
 
-		default: return CMD_ERROR;
+		default: return { CMD_ERROR, INVALID_GOAL };
 	}
 
 	if (flags & DC_EXEC) {
@@ -97,10 +95,10 @@ CommandCost CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type,
 		}
 		if (Goal::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
-		_new_goal_id = g->index;
+		return { CommandCost(), g->index };
 	}
 
-	return CommandCost();
+	return { CommandCost(), INVALID_GOAL };
 }
 
 /**

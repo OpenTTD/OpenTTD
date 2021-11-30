@@ -1017,9 +1017,9 @@ void CcFoundTown(Commands cmd, const CommandCost &result, TileIndex tile)
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
-void CcFoundRandomTown(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcFoundRandomTown(Commands cmd, const CommandCost &result, TownID town_id)
 {
-	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
+	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(town_id)->xy);
 }
 
 static const NWidgetPart _nested_found_town_widgets[] = {
@@ -1150,7 +1150,8 @@ public:
 		this->SetDirty();
 	}
 
-	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, CommandCallback cc)
+	template <typename Tcallback>
+	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, Tcallback cc)
 	{
 		std::string name;
 

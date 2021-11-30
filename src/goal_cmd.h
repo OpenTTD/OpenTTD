@@ -14,7 +14,7 @@
 #include "command_type.h"
 #include "goal_type.h"
 
-CommandCost CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text);
+std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text);
 CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal);
 CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &text);
 CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::string &text);

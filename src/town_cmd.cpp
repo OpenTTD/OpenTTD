@@ -59,8 +59,6 @@
 
 #include "safeguards.h"
 
-TownID _new_town_id;
-
 /* Initialize the town-pool */
 TownPool _town_pool("Town");
 INSTANTIATE_POOL_METHODS(Town)
@@ -1937,41 +1935,41 @@ static bool IsUniqueTownName(const std::string &name)
  * @param text Custom name for the town. If empty, the town name parts will be used.
  * @return the cost of this operation or an error
  */
-CommandCost CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32 townnameparts, const std::string &text)
+std::tuple<CommandCost, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32 townnameparts, const std::string &text)
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
-	if (size >= TSZ_END) return CMD_ERROR;
-	if (layout >= NUM_TLS) return CMD_ERROR;
+	if (size >= TSZ_END) return { CMD_ERROR, INVALID_TOWN };
+	if (layout >= NUM_TLS) return { CMD_ERROR, INVALID_TOWN };
 
 	/* Some things are allowed only in the scenario editor and for game scripts. */
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) {
-		if (_settings_game.economy.found_town == TF_FORBIDDEN) return CMD_ERROR;
-		if (size == TSZ_LARGE) return CMD_ERROR;
-		if (random_location) return CMD_ERROR;
+		if (_settings_game.economy.found_town == TF_FORBIDDEN) return { CMD_ERROR, INVALID_TOWN };
+		if (size == TSZ_LARGE) return { CMD_ERROR, INVALID_TOWN };
+		if (random_location) return { CMD_ERROR, INVALID_TOWN };
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
-			return CMD_ERROR;
+			return { CMD_ERROR, INVALID_TOWN };
 		}
 	} else if (_current_company == OWNER_DEITY && random_location) {
 		/* Random parameter is not allowed for Game Scripts. */
-		return CMD_ERROR;
+		return { CMD_ERROR, INVALID_TOWN };
 	}
 
 	if (text.empty()) {
 		/* If supplied name is empty, townnameparts has to generate unique automatic name */
-		if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		if (!VerifyTownName(townnameparts, &par)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), INVALID_TOWN };
 	} else {
 		/* If name is not empty, it has to be unique custom name */
-		if (Utf8StringLength(text) >= MAX_LENGTH_TOWN_NAME_CHARS) return CMD_ERROR;
-		if (!IsUniqueTownName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		if (Utf8StringLength(text) >= MAX_LENGTH_TOWN_NAME_CHARS) return { CMD_ERROR, INVALID_TOWN };
+		if (!IsUniqueTownName(text)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), INVALID_TOWN };
 	}
 
 	/* Allocate town struct */
-	if (!Town::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_TOWNS);
+	if (!Town::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_TOWNS), INVALID_TOWN };
 
 	if (!random_location) {
 		CommandCost ret = TownCanBePlacedHere(tile);
-		if (ret.Failed()) return ret;
+		if (ret.Failed()) return { ret, INVALID_TOWN };
 	}
 
 	static const byte price_mult[][TSZ_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
@@ -1984,10 +1982,11 @@ CommandCost CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, boo
 	cost.MultiplyCost(mult);
 
 	/* Create the town */
+	TownID new_town = INVALID_TOWN;
 	if (flags & DC_EXEC) {
 		if (cost.GetCost() > GetAvailableMoneyForCommand()) {
 			_additional_cash_required = cost.GetCost();
-			return CommandCost(EXPENSES_OTHER);
+			return { CommandCost(EXPENSES_OTHER), INVALID_TOWN };
 		}
 
 		Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
@@ -1998,7 +1997,7 @@ CommandCost CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, boo
 			if (t == nullptr) {
 				cost = CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN);
 			} else {
-				_new_town_id = t->index;
+				new_town = t->index;
 			}
 		} else {
 			t = new Town(tile);
@@ -2032,7 +2031,7 @@ CommandCost CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, boo
 			Game::NewEvent(new ScriptEventTownFounded(t->index));
 		}
 	}
-	return cost;
+	return { cost, new_town };
 }
 
 /**

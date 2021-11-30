@@ -50,11 +50,6 @@ private:
 	CommandDataBuffer last_cmd_ret;  ///< The extra data returned by the last command.
 
 	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
-	SignID new_sign_id;              ///< The ID of the new Sign.
-	GroupID new_group_id;            ///< The ID of the new Group.
-	GoalID new_goal_id;              ///< The ID of the new Goal.
-	StoryPageID new_story_page_id;   ///< The ID of the new StoryPage.
-	StoryPageID new_story_page_element_id; ///< The ID of the new StoryPageElement.
 
 	std::vector<int> callback_value; ///< The values which need to survive a callback.
 
@@ -79,11 +74,6 @@ public:
 		last_tile         (INVALID_TILE),
 		last_cmd          (CMD_END),
 		new_vehicle_id    (0),
-		new_sign_id       (0),
-		new_group_id      (0),
-		new_goal_id       (0),
-		new_story_page_id (0),
-		new_story_page_element_id(0),
 		/* calback_value (can't be set) */
 		road_type         (INVALID_ROADTYPE),
 		rail_type         (INVALID_RAILTYPE),
