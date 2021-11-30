@@ -25,6 +25,6 @@ DEF_CMD_TRAIT(CMD_MOVE_RAIL_VEHICLE,       CmdMoveRailVehicle,       0, CMDT_VEH
 DEF_CMD_TRAIT(CMD_FORCE_TRAIN_PROCEED,     CmdForceTrainProceed,     0, CMDT_VEHICLE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_REVERSE_TRAIN_DIRECTION, CmdReverseTrainDirection, 0, CMDT_VEHICLE_MANAGEMENT)
 
-CommandCallback CcBuildWagon;
+void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, TileIndex tile, EngineID, bool, CargoID, ClientID);
 
 #endif /* TRAIN_CMD_H */

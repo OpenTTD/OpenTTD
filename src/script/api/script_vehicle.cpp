@@ -94,8 +94,8 @@
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	CommandCost res = ::Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
-	return res.Succeeded() ? _returned_refit_capacity : -1;
+	auto [res, veh_id, refit_capacity, refit_mail] = ::Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
+	return res.Succeeded() ? refit_capacity : -1;
 }
 
 /* static */ VehicleID ScriptVehicle::CloneVehicle(TileIndex depot, VehicleID vehicle_id, bool share_orders)
@@ -143,8 +143,8 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	CommandCost res = ::Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, vehicle_id, cargo, 0, false, false, 0);
-	return res.Succeeded() ? _returned_refit_capacity : -1;
+	auto [res, refit_capacity, refit_mail] = ::Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, vehicle_id, cargo, 0, false, false, 0);
+	return res.Succeeded() ? refit_capacity : -1;
 }
 
 /* static */ bool ScriptVehicle::RefitVehicle(VehicleID vehicle_id, CargoID cargo)

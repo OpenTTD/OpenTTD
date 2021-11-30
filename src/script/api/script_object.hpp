@@ -193,11 +193,6 @@ protected:
 	static const CommandDataBuffer &GetLastCommandResData();
 
 	/**
-	 * Get the latest stored new_vehicle_id.
-	 */
-	static VehicleID GetNewVehicleID();
-
-	/**
 	 * Store a allow_do_command per company.
 	 * @param allow The new allow.
 	 */
@@ -274,12 +269,6 @@ protected:
 	static char *GetString(StringID string);
 
 private:
-	/**
-	 * Store a new_vehicle_id per company.
-	 * @param vehicle_id The new VehicleID.
-	 */
-	static void SetNewVehicleID(VehicleID vehicle_id);
-
 	/* Helper functions for DoCommand. */
 	static std::tuple<bool, bool, bool> DoCommandPrep();
 	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only);

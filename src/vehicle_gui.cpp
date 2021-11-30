@@ -776,17 +776,17 @@ struct RefitWindow : public Window {
 	StringID GetCapacityString(RefitOption *option) const
 	{
 		assert(_current_company == _local_company);
-		CommandCost cost = Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, this->selected_vehicle, option->cargo, option->subtype, this->auto_refit, false, this->num_vehicles);
+		auto [cost, refit_capacity, mail_capacity] = Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, this->selected_vehicle, option->cargo, option->subtype, this->auto_refit, false, this->num_vehicles);
 
 		if (cost.Failed()) return INVALID_STRING_ID;
 
 		SetDParam(0, option->cargo);
-		SetDParam(1, _returned_refit_capacity);
+		SetDParam(1, refit_capacity);
 
 		Money money = cost.GetCost();
-		if (_returned_mail_refit_capacity > 0) {
+		if (mail_capacity > 0) {
 			SetDParam(2, CT_MAIL);
-			SetDParam(3, _returned_mail_refit_capacity);
+			SetDParam(3, mail_capacity);
 			if (this->order != INVALID_VEH_ORDER_ID) {
 				/* No predictable cost */
 				return STR_PURCHASE_INFO_AIRCRAFT_CAPACITY;
@@ -3119,15 +3119,15 @@ void StopGlobalFollowVehicle(const Vehicle *v)
 
 /**
  * This is the Callback method after the construction attempt of a primary vehicle
- * @param result indicates completion (or not) of the operation
  * @param cmd unused
- * @param tile unused
+ * @param result indicates completion (or not) of the operation
+ * @param new_veh_id ID of the new vehicle.
  */
-void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16)
 {
 	if (result.Failed()) return;
 
-	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
+	const Vehicle *v = Vehicle::Get(new_veh_id);
 	ShowVehicleViewWindow(v);
 }
 
