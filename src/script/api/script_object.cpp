@@ -159,8 +159,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ void ScriptObject::SetLastCommandRes(bool res)
 {
 	GetStorage()->last_command_res = res;
-	/* Also store the results of various global variables */
-	SetNewVehicleID(_new_vehicle_id);
 }
 
 /* static */ bool ScriptObject::GetLastCommandRes()
@@ -176,16 +174,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ const CommandDataBuffer &ScriptObject::GetLastCommandResData()
 {
 	return GetStorage()->last_cmd_ret;
-}
-
-/* static */ void ScriptObject::SetNewVehicleID(VehicleID vehicle_id)
-{
-	GetStorage()->new_vehicle_id = vehicle_id;
-}
-
-/* static */ VehicleID ScriptObject::GetNewVehicleID()
-{
-	return GetStorage()->new_vehicle_id;
 }
 
 /* static */ void ScriptObject::SetAllowDoCommand(bool allow)

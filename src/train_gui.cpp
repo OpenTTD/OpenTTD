@@ -24,9 +24,10 @@
  * Callback for building wagons.
  * @param cmd Unused.
  * @param result The result of the command.
+ * @param new_veh_id ID of the ne vehicle.
  * @param tile   The tile the command was executed on.
  */
-void CcBuildWagon(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, TileIndex tile, EngineID, bool, CargoID, ClientID)
 {
 	if (result.Failed()) return;
 
@@ -43,7 +44,7 @@ void CcBuildWagon(Commands cmd, const CommandCost &result, TileIndex tile)
 	if (found != nullptr) {
 		found = found->Last();
 		/* put the new wagon at the end of the loco. */
-		Command<CMD_MOVE_RAIL_VEHICLE>::Post( _new_vehicle_id, found->index, false);
+		Command<CMD_MOVE_RAIL_VEHICLE>::Post(new_veh_id, found->index, false);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 }

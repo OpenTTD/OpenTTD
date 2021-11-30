@@ -641,8 +641,6 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 
 		AddArticulatedParts(v);
 
-		_new_vehicle_id = v->index;
-
 		v->UpdatePosition();
 		v->First()->ConsistChanged(CCF_ARRANGE);
 		UpdateTrainGroupID(v->First());
@@ -762,7 +760,6 @@ CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 		v->max_age = e->GetLifeLengthInDays();
 
 		v->railtype = rvi->railtype;
-		_new_vehicle_id = v->index;
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = _date;

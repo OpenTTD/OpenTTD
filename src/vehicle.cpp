@@ -85,10 +85,6 @@ static const int GEN_HASHY_INC = 1 << GEN_HASHX_BITS;
 static const uint GEN_HASHX_MASK =  (1 << GEN_HASHX_BITS) - 1;
 static const uint GEN_HASHY_MASK = ((1 << GEN_HASHY_BITS) - 1) << GEN_HASHX_BITS;
 
-VehicleID _new_vehicle_id;
-uint _returned_refit_capacity;        ///< Stores the capacity after a refit operation.
-uint16 _returned_mail_refit_capacity; ///< Stores the mail capacity after a refit operation (Aircraft only).
-
 
 /** The pool with all our precious vehicles. */
 VehiclePool _vehicle_pool("Vehicle");
@@ -1565,7 +1561,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (v->current_order.IsRefit()) {
 			Backup<CompanyID> cur_company(_current_company, v->owner, FILE_LINE);
-			CommandCost cost = Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0);
+			CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
 			cur_company.Restore();
 
 			if (cost.Failed()) {

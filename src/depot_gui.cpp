@@ -116,13 +116,13 @@ extern void DepotSortList(VehicleList *list);
  * This is the Callback method after the cloning attempt of a vehicle
  * @param cmd unused
  * @param result the result of the cloning command
- * @param tile unused
+ * @param veh_id cloned vehicle ID
  */
-void CcCloneVehicle(Commands cmd, const CommandCost &result, TileIndex tile)
+void CcCloneVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id)
 {
 	if (result.Failed()) return;
 
-	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
+	const Vehicle *v = Vehicle::Get(veh_id);
 
 	ShowVehicleViewWindow(v);
 }

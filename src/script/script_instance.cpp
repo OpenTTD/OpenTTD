@@ -270,7 +270,7 @@ void ScriptInstance::CollectGarbage()
 
 /* static */ void ScriptInstance::DoCommandReturnVehicleID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewVehicleID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<VehicleID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnSignID(ScriptInstance *instance)

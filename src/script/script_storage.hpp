@@ -49,8 +49,6 @@ private:
 	Commands last_cmd;               ///< The last cmd passed to a command.
 	CommandDataBuffer last_cmd_ret;  ///< The extra data returned by the last command.
 
-	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
-
 	std::vector<int> callback_value; ///< The values which need to survive a callback.
 
 	RoadType road_type;              ///< The current roadtype we build.
@@ -73,7 +71,6 @@ public:
 		last_command_res  (true),
 		last_tile         (INVALID_TILE),
 		last_cmd          (CMD_END),
-		new_vehicle_id    (0),
 		/* calback_value (can't be set) */
 		road_type         (INVALID_ROADTYPE),
 		rail_type         (INVALID_RAILTYPE),

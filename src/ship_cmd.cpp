@@ -879,7 +879,6 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->GetLifeLengthInDays();
-		_new_vehicle_id = v->index;
 
 		v->state = TRACK_BIT_DEPOT;
 
