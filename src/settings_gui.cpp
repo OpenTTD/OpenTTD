@@ -487,6 +487,25 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
+			case WID_GO_BASE_MUSIC_START: {
+				// Attempt to play the title theme. If there is no selected base
+				// music set, or if the title theme does not exist, then don't
+				// play anything.
+				const MusicSet * music_set = BaseMusic::GetUsedSet();
+				if (music_set == nullptr) {
+					return;
+				}
+				MusicSongInfo title_screen_song = music_set->songinfo[0];
+				MusicDriver::GetInstance()->PlaySong(title_screen_song);
+				_settings_client.music.playing = true;
+				break;
+			}
+			case WID_GO_BASE_MUSIC_STOP: {
+				_settings_client.music.playing = false;
+				MusicDriver::GetInstance()->StopSong();
+				break;
+			}
+
 			default: {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
@@ -730,6 +749,8 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_BASE_MUSIC_VOLUME), SetMinimalSize(67, 12), SetFill(0, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_START), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_PLAY_MUSIC, STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_STOP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_STOP_MUSIC, STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
