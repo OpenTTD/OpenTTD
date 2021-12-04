@@ -363,7 +363,10 @@ bool TCPConnecter::CheckActivity()
 		return true;
 	}
 
-	/* Check for errors on any of the sockets. */
+	/* If a socket is writeable, it is either in error-state or connected.
+	 * Remove all sockets that are in error-state and mark the first that is
+	 * not in error-state as the socket we will use for our connection. */
+	SOCKET connected_socket = INVALID_SOCKET;
 	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
 		NetworkError socket_error = GetSocketError(*it);
 		if (socket_error.HasError()) {
@@ -371,34 +374,28 @@ bool TCPConnecter::CheckActivity()
 			closesocket(*it);
 			this->sock_to_address.erase(*it);
 			it = this->sockets.erase(it);
-		} else {
-			it++;
+			continue;
 		}
-	}
 
-	/* In case all sockets had an error, queue a new one. */
-	if (this->sockets.empty()) {
-		if (!this->TryNextAddress()) {
-			/* There were no more addresses to try, so we failed. */
-			this->OnFailure();
-			return true;
-		}
-		return false;
-	}
-
-	/* At least one socket is connected. The first one that does is the one
-	 * we will be using, and we close all other sockets. */
-	SOCKET connected_socket = INVALID_SOCKET;
-	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
+		/* No error but writeable means connected. */
 		if (connected_socket == INVALID_SOCKET && FD_ISSET(*it, &write_fd)) {
 			connected_socket = *it;
-		} else {
+		}
+
+		it++;
+	}
+
+	/* All the writable sockets were in error state. So nothing is connected yet. */
+	if (connected_socket == INVALID_SOCKET) return false;
+
+	/* Close all sockets except the one we picked for our connection. */
+	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
+		if (connected_socket != *it) {
 			closesocket(*it);
 		}
 		this->sock_to_address.erase(*it);
 		it = this->sockets.erase(it);
 	}
-	assert(connected_socket != INVALID_SOCKET);
 
 	Debug(net, 3, "Connected to {}", this->connection_string);
 	if (_debug_net_level >= 5) {
