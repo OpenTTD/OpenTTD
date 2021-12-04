@@ -41,7 +41,7 @@ public:
 	{
 		this->handler->connecter = nullptr;
 
-		handler->sock = s;
+		this->handler->sock = s;
 	}
 };
 
