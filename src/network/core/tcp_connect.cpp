@@ -451,6 +451,8 @@ bool TCPServerConnecter::CheckActivity()
  */
 void TCPServerConnecter::SetConnected(SOCKET sock)
 {
+	assert(sock != INVALID_SOCKET);
+
 	this->socket = sock;
 	this->status = Status::CONNECTED;
 }

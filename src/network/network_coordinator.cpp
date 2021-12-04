@@ -566,6 +566,8 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &to
  */
 void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &token, SOCKET sock, NetworkAddress &address)
 {
+	assert(sock != INVALID_SOCKET);
+
 	/* Connecter will destroy itself. */
 	this->game_connecter = nullptr;
 
