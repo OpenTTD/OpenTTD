@@ -220,6 +220,8 @@ bool NetworkTCPSocketHandler::CanSendReceive()
 	fd_set read_fd, write_fd;
 	struct timeval tv;
 
+	if (this->sock == -1)
+		return false;
 	FD_ZERO(&read_fd);
 	FD_ZERO(&write_fd);
 
