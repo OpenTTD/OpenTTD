@@ -78,15 +78,15 @@ private:
 	 * lock on the game-state.
 	 */
 	enum class Status {
-		INIT,       ///< TCPConnecter is created but resolving hasn't started.
-		RESOLVING,  ///< The hostname is being resolved (threaded).
-		FAILURE,    ///< Resolving failed.
-		CONNECTING, ///< We are currently connecting.
-		CONNECTED,  ///< The connection is established.
+		Init,       ///< TCPConnecter is created but resolving hasn't started.
+		Resolving,  ///< The hostname is being resolved (threaded).
+		Failure,    ///< Resolving failed.
+		Connecting, ///< We are currently connecting.
+		Connected,  ///< The connection is established.
 	};
 
 	std::thread resolve_thread;                         ///< Thread used during resolving.
-	std::atomic<Status> status = Status::INIT;          ///< The current status of the connecter.
+	std::atomic<Status> status = Status::Init;          ///< The current status of the connecter.
 	std::atomic<bool> killed = false;                   ///< Whether this connecter is marked as killed.
 
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
