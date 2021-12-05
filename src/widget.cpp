@@ -933,12 +933,13 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, ui
  * @param widget_data Data component of the widget. @see Widget::data
  * @param tool_tip    Tool tip of the widget. @see Widget::tooltips
  */
-NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
+NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip, const Hotkey* hotkey) : NWidgetResizeBase(tp, fill_x, fill_y)
 {
 	this->colour = colour;
 	this->index = -1;
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
+	this->hotkey = hotkey;
 	this->scrollbar_index = -1;
 	this->text_colour = TC_FROMSTRING;
 	this->align = SA_CENTER;
@@ -2315,7 +2316,7 @@ Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
  * @param data   Data of the widget.
  * @param tip    Tooltip of the widget.
  */
-NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
+NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip, const Hotkey* hotkey) : NWidgetCore(tp, colour, 1, 1, data, tip, hotkey)
 {
 	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);

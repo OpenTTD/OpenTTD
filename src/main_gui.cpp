@@ -8,6 +8,7 @@
 /** @file main_gui.cpp Handling of the main viewport. */
 
 #include "stdafx.h"
+#include "main_gui.h"
 #include "currency.h"
 #include "spritecache.h"
 #include "window_gui.h"
@@ -178,33 +179,7 @@ static const struct NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
-enum {
-	GHK_QUIT,
-	GHK_ABANDON,
-	GHK_CONSOLE,
-	GHK_BOUNDING_BOXES,
-	GHK_DIRTY_BLOCKS,
-	GHK_CENTER,
-	GHK_CENTER_ZOOM,
-	GHK_RESET_OBJECT_TO_PLACE,
-	GHK_DELETE_WINDOWS,
-	GHK_DELETE_NONVITAL_WINDOWS,
-	GHK_DELETE_ALL_MESSAGES,
-	GHK_REFRESH_SCREEN,
-	GHK_CRASH,
-	GHK_MONEY,
-	GHK_UPDATE_COORDS,
-	GHK_TOGGLE_TRANSPARENCY,
-	GHK_TOGGLE_INVISIBILITY = GHK_TOGGLE_TRANSPARENCY + 9,
-	GHK_TRANSPARENCY_TOOLBAR = GHK_TOGGLE_INVISIBILITY + 8,
-	GHK_TRANSPARANCY,
-	GHK_CHAT,
-	GHK_CHAT_ALL,
-	GHK_CHAT_COMPANY,
-	GHK_CHAT_SERVER,
-	GHK_CLOSE_NEWS,
-	GHK_CLOSE_ERROR,
-};
+
 
 struct MainWindow : Window
 {
@@ -361,7 +336,7 @@ struct MainWindow : Window
 				break;
 
 			case GHK_TRANSPARENCY_TOOLBAR:
-				ShowTransparencyToolbar();
+				ShowTransparencyToolbar(hotkeys);
 				break;
 
 			case GHK_TRANSPARANCY:
@@ -558,7 +533,7 @@ void SetupColoursAndInitialWindow()
  */
 void ShowVitalWindows()
 {
-	AllocateToolbar();
+	AllocateToolbar(MainWindow::hotkeys);
 
 	/* Status bad only for normal games */
 	if (_game_mode == GM_EDITOR) return;

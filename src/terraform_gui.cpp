@@ -157,6 +157,7 @@ struct TerraformToolbarWindow : Window {
 		/* This is needed as we like to have the tree available on OnInit. */
 		this->CreateNestedTree();
 		this->FinishInitNested(window_number);
+		this->AssociateHotkeysByWidgetIndex(desc);
 		this->last_user_action = WIDGET_LIST_END;
 	}
 

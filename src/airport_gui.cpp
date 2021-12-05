@@ -72,6 +72,7 @@ struct BuildAirToolbarWindow : Window {
 	{
 		this->InitNested(window_number);
 		this->OnInvalidateData();
+		this->AssociateHotkeysByWidgetIndex(desc);
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 		this->last_user_action = WIDGET_LIST_END;
 	}

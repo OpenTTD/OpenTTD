@@ -671,8 +671,9 @@ struct TooltipsWindow : public Window
 	byte paramcount;                  ///< Number of string parameters in #string_id.
 	uint64 params[5];                 ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
+	const Hotkey* hotkey;
 
-	TooltipsWindow(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
+	TooltipsWindow(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip, const Hotkey* hotkey) : Window(&_tool_tips_desc)
 	{
 		this->parent = parent;
 		this->string_id = str;
@@ -681,6 +682,7 @@ struct TooltipsWindow : public Window
 		if (paramcount > 0) memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
 		this->close_cond = close_tooltip;
+		this->hotkey = hotkey;
 
 		this->InitNested();
 
@@ -712,8 +714,9 @@ struct TooltipsWindow : public Window
 		/* There is only one widget. */
 		for (uint i = 0; i != this->paramcount; i++) SetDParam(i, this->params[i]);
 
-		size->width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
-		size->height = GetStringHeight(this->string_id, size->width);
+		std::string str = AppendHotkeyToString(GetString(string_id), hotkey);
+		size->width  = std::min<uint>(GetStringBoundingBox(str).width, ScaleGUITrad(194));
+		size->height = GetStringHeight(str.c_str(), size->width);
 
 		/* Increase slightly to have some space around the box. */
 		size->width  += 2 + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
@@ -729,7 +732,8 @@ struct TooltipsWindow : public Window
 		for (uint arg = 0; arg < this->paramcount; arg++) {
 			SetDParam(arg, this->params[arg]);
 		}
-		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, this->string_id, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+			AppendHotkeyToString(GetString(this->string_id), this->hotkey), TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnMouseLoop() override
@@ -764,13 +768,13 @@ struct TooltipsWindow : public Window
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
  * @param close_tooltip when the left (true) or right (false) mouse button is released
  */
-void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
+void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip, const Hotkey* hotkey)
 {
 	CloseWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL || !_cursor.in_window) return;
 
-	new TooltipsWindow(parent, str, paramcount, params, close_tooltip);
+	new TooltipsWindow(parent, str, paramcount, params, close_tooltip, hotkey);
 }
 
 void QueryString::HandleEditBox(Window *w, int wid)

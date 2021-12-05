@@ -49,6 +49,7 @@
 #include "framerate_type.h"
 #include "guitimer_func.h"
 #include "screenshot_gui.h"
+#include "main_gui.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -82,6 +83,145 @@ enum CallBackFunction {
 
 static CallBackFunction _last_started_action = CBF_NONE; ///< Last started user action.
 
+static const HotkeyList* _main_gui_hotkeys = nullptr;
+
+/* Here we define which main toolbar widgets are associated with certain hotkeys */
+const std::unordered_map<ToolbarNormalWidgets, MainToolbarHotkeys> _maintoolbar_widget_hotkey_map = {
+	{WID_TN_PAUSE, MTHK_PAUSE},
+	{WID_TN_FAST_FORWARD, MTHK_FASTFORWARD},
+	{WID_TN_SETTINGS, MTHK_SETTINGS},
+	{WID_TN_SAVE, MTHK_SAVEGAME},
+	{WID_TN_SMALL_MAP, MTHK_SMALLMAP},
+	{WID_TN_TOWNS, MTHK_TOWNDIRECTORY},
+	{WID_TN_SUBSIDIES, MTHK_SUBSIDIES},
+	{WID_TN_STATIONS, MTHK_STATIONS},
+	{WID_TN_FINANCES, MTHK_FINANCES},
+	{WID_TN_COMPANIES, MTHK_COMPANIES},
+	{WID_TN_STORY, MTHK_STORY},
+	{WID_TN_GOAL, MTHK_GOAL},
+	{WID_TN_GRAPHS, MTHK_GRAPHS},
+	{WID_TN_LEAGUE, MTHK_LEAGUE},
+	{WID_TN_INDUSTRIES, MTHK_INDUSTRIES},
+	{WID_TN_TRAINS, MTHK_TRAIN_LIST},
+	{WID_TN_ROADVEHS, MTHK_ROADVEH_LIST},
+	{WID_TN_SHIPS, MTHK_SHIP_LIST},
+	{WID_TN_AIRCRAFT, MTHK_AIRCRAFT_LIST},
+	{WID_TN_ZOOM_IN, MTHK_ZOOM_IN},
+	{WID_TN_ZOOM_OUT, MTHK_ZOOM_OUT},
+	{WID_TN_RAILS, MTHK_BUILD_RAIL},
+	{WID_TN_ROADS, MTHK_BUILD_ROAD},
+	{WID_TN_TRAMS, MTHK_BUILD_TRAM},
+	{WID_TN_WATER, MTHK_BUILD_DOCKS},
+	{WID_TN_AIR, MTHK_BUILD_AIRPORT},
+	{WID_TN_LANDSCAPE, MTHK_TERRAFORM},
+	{WID_TN_MUSIC_SOUND, MTHK_MUSIC},
+	{WID_TN_HELP, MTHK_LANDINFO},
+};
+
+/* Here we define which main toolbar dropdown entries are associated with certain hotkeys */
+const std::unordered_map<StringID, MainToolbarHotkeys> _maintoolbar_dropdown_string_hotkey_map = {
+	{STR_TOOLBAR_TOOLTIP_PAUSE_GAME, MTHK_PAUSE},
+	{STR_SETTINGS_MENU_GAME_OPTIONS, MTHK_SETTINGS},
+	{STR_FILE_MENU_SAVE_GAME, MTHK_SAVEGAME},
+	{STR_FILE_MENU_LOAD_GAME, MTHK_LOADGAME},
+	{STR_MAP_MENU_MAP_OF_WORLD, MTHK_SMALLMAP},
+	{STR_TOWN_MENU_TOWN_DIRECTORY, MTHK_TOWNDIRECTORY},
+	{STR_SUBSIDIES_MENU_SUBSIDIES, MTHK_SUBSIDIES},
+	{STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, MTHK_GRAPHS},
+	{STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, MTHK_LEAGUE},
+	{STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MTHK_INDUSTRIES},
+	{STR_LANDSCAPING_MENU_PLANT_TREES, MTHK_BUILD_TREES},
+	{STR_LANDSCAPING_MENU_LANDSCAPING, MTHK_TERRAFORM},
+	{STR_TOOLBAR_SOUND_MUSIC, MTHK_MUSIC},
+	{STR_ABOUT_MENU_LAND_BLOCK_INFO, MTHK_LANDINFO},
+	{STR_ABOUT_MENU_AI_DEBUG, MTHK_AI_DEBUG},
+	{STR_MAP_MENU_EXTRA_VIEWPORT, MTHK_EXTRA_VIEWPORT},
+	{STR_NETWORK_COMPANY_LIST_CLIENT_LIST, MTHK_CLIENT_LIST},
+	{STR_MAP_MENU_SIGN_LIST, MTHK_SIGN_LIST},
+};
+
+/* Here we define which dropdown entries are associated with hotkeys defined in the main gui */
+std::unordered_map<StringID, int> _main_gui_dropdown_string_hotkey_map = {
+	/* Options menu */
+	{STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS, GHK_TRANSPARENCY_TOOLBAR},
+	{STR_SETTINGS_MENU_SIGNS_DISPLAYED, GHK_TOGGLE_INVISIBILITY}, // TODO not showing?
+	{STR_SETTINGS_MENU_TRANSPARENT_SIGNS, GHK_TOGGLE_TRANSPARENCY},
+	{STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS, GHK_TOGGLE_TRANSPARENCY + 2}, // TODO the GUI string should be changed from buildings to houses!
+
+	/* Save menu */
+	{STR_FILE_MENU_EXIT, GHK_QUIT},
+	{STR_FILE_MENU_QUIT_GAME, GHK_ABANDON},
+
+	/* Land info menu */
+	{STR_ABOUT_MENU_TOGGLE_CONSOLE, GHK_CONSOLE},
+	{STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, GHK_BOUNDING_BOXES},
+	{STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS, GHK_DIRTY_BLOCKS},
+};
+
+enum MainToolbarEditorHotkeys {
+	MTEHK_PAUSE,
+	MTEHK_FASTFORWARD,
+	MTEHK_SETTINGS,
+	MTEHK_SAVEGAME,
+	MTEHK_GENLAND,
+	MTEHK_GENTOWN,
+	MTEHK_GENINDUSTRY,
+	MTEHK_BUILD_ROAD,
+	MTEHK_BUILD_TRAM,
+	MTEHK_BUILD_DOCKS,
+	MTEHK_BUILD_TREES,
+	MTEHK_SIGN,
+	MTEHK_MUSIC,
+	MTEHK_LANDINFO,
+	MTEHK_SMALL_SCREENSHOT,
+	MTEHK_ZOOMEDIN_SCREENSHOT,
+	MTEHK_DEFAULTZOOM_SCREENSHOT,
+	MTEHK_GIANT_SCREENSHOT,
+	MTEHK_ZOOM_IN,
+	MTEHK_ZOOM_OUT,
+	MTEHK_TERRAFORM,
+	MTEHK_SMALLMAP,
+	MTEHK_EXTRA_VIEWPORT,
+};
+
+/* Here we define which scenario editor toolbar widgets are associated with certain hotkeys */
+const std::unordered_map<ToolbarEditorWidgets, MainToolbarEditorHotkeys> _scentoolbar_widget_hotkey_map = {
+	{WID_TE_PAUSE, MTEHK_PAUSE},
+	{WID_TE_FAST_FORWARD, MTEHK_FASTFORWARD},
+	{WID_TE_SETTINGS, MTEHK_SETTINGS},
+	{WID_TE_SAVE, MTEHK_SAVEGAME},
+	{WID_TE_LAND_GENERATE, MTEHK_GENLAND},
+	{WID_TE_TOWN_GENERATE, MTEHK_GENTOWN},
+	{WID_TE_INDUSTRY, MTEHK_GENINDUSTRY},
+	{WID_TE_ROADS, MTEHK_BUILD_ROAD},
+	{WID_TE_TRAMS, MTEHK_BUILD_TRAM},
+	{WID_TE_WATER, MTEHK_BUILD_DOCKS},
+	{WID_TE_TREES, MTEHK_BUILD_TREES},
+	{WID_TE_SIGNS, MTEHK_SIGN},
+	{WID_TE_MUSIC_SOUND, MTEHK_MUSIC},
+	{WID_TE_HELP, MTEHK_LANDINFO},
+	{WID_TE_ZOOM_IN, MTEHK_ZOOM_IN},
+	{WID_TE_ZOOM_OUT, MTEHK_ZOOM_OUT},
+	{WID_TE_SMALL_MAP, MTEHK_SMALLMAP},
+};
+
+/* Here we define which scenario editor toolbar dropdown entries are associated with certain hotkeys */
+const std::unordered_map<StringID, MainToolbarEditorHotkeys> _scentoolbar_dropdown_string_hotkey_map = {
+	{STR_SETTINGS_MENU_GAME_OPTIONS, MTEHK_SETTINGS},
+	{STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, MTEHK_SAVEGAME},
+	{STR_TOOLBAR_SOUND_MUSIC, MTEHK_MUSIC},
+	{STR_ABOUT_MENU_LAND_BLOCK_INFO, MTEHK_LANDINFO},
+	{STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION, MTEHK_TERRAFORM}, // ?
+	{STR_MAP_MENU_MAP_OF_WORLD, MTEHK_SMALLMAP},
+	{STR_MAP_MENU_EXTRA_VIEWPORT, MTEHK_EXTRA_VIEWPORT}, // ?
+};
+
+/* Dummy hotkey for displaying the fast forward hotkey */
+#ifdef _DEBUG
+static const Hotkey dummy_fastforward_hotkey(WKC_SHIFT, "dummy_fastforward", 0);
+#else
+static const Hotkey dummy_fastforward_hotkey(WKC_TAB, "dummy_fastforward", 0);
+#endif
 
 /**
  * Drop down list entry for showing a checked/unchecked toggle item.
@@ -173,6 +313,44 @@ public:
 	}
 };
 
+/* Helper struct to resolve some of the circular dependencies in this file */
+struct HotkeyFwd
+{
+	const HotkeyList& GetMainHotkeys() const;
+	const HotkeyList& GetEditorHotkeys() const;
+};
+static const HotkeyFwd _hotkey_fwd;
+
+/* Associates hotkeys to the dropdown items */
+static DropDownList&& AssociateHotkeys(DropDownList&& list)
+{
+	for (std::unique_ptr<const DropDownListItem>& item : list) {
+		auto* string_item = dynamic_cast<const DropDownListStringItem*>(item.get());
+		if (string_item)
+		{
+			if (_game_mode == GM_EDITOR) {
+				if (_scentoolbar_dropdown_string_hotkey_map.count(string_item->String()) > 0) {
+					int hotkey_num = _scentoolbar_dropdown_string_hotkey_map.at(string_item->String());
+					const_cast<DropDownListStringItem*>(string_item)->SetHotkey(_hotkey_fwd.GetEditorHotkeys().GetHotkeyByNum(hotkey_num));
+				}
+			}
+			else {
+				if (_maintoolbar_dropdown_string_hotkey_map.count(string_item->String()) > 0) {
+					int hotkey_num = _maintoolbar_dropdown_string_hotkey_map.at(string_item->String());
+					const_cast<DropDownListStringItem*>(string_item)->SetHotkey(_hotkey_fwd.GetMainHotkeys().GetHotkeyByNum(hotkey_num));
+				}
+			}
+
+			/* Associate main gui hotkeys */
+			if (_main_gui_dropdown_string_hotkey_map.count(string_item->String()) > 0) {
+				int hotkey_num = _main_gui_dropdown_string_hotkey_map.at(string_item->String());
+				const_cast<DropDownListStringItem*>(string_item)->SetHotkey(_main_gui_hotkeys->GetHotkeyByNum(hotkey_num));
+			}
+		}
+	}
+	return std::move(list);
+}
+
 /**
  * Pop up a generic text only menu.
  * @param w Toolbar
@@ -182,7 +360,7 @@ public:
  */
 static void PopupMainToolbMenu(Window *w, int widget, DropDownList &&list, int def)
 {
-	ShowDropDownList(w, std::move(list), def, widget, 0, true, true);
+	ShowDropDownList(w, AssociateHotkeys(std::move(list)), def, widget, 0, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 }
 
@@ -333,7 +511,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list.emplace_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
 	list.emplace_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_SIGNS,       OME_SHOW_STATIONSIGNS, false, IsTransparencySet(TO_SIGNS)));
 
-	ShowDropDownList(w, std::move(list), 0, WID_TN_SETTINGS, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(std::move(list)), 0, WID_TN_SETTINGS, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -351,7 +529,7 @@ static CallBackFunction MenuClickSettings(int index)
 		case OME_SETTINGS:             ShowGameSettings();                              return CBF_NONE;
 		case OME_SCRIPT_SETTINGS:      ShowAIConfigWindow();                            return CBF_NONE;
 		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, &_grfconfig); return CBF_NONE;
-		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
+		case OME_TRANSPARENCIES:       ShowTransparencyToolbar(*_main_gui_hotkeys);     break;
 
 		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);     break;
 		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);  break;
@@ -858,7 +1036,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(GetRailTypeDropDownList()), _last_built_railtype, WID_TN_RAILS, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -880,7 +1058,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(GetRoadTypeDropDownList(RTTB_ROAD)), _last_built_roadtype, WID_TN_ROADS, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -902,7 +1080,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(GetRoadTypeDropDownList(RTTB_TRAM)), _last_built_tramtype, WID_TN_TRAMS, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -926,7 +1104,7 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
 {
 	DropDownList list;
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_BUILD_CANAL, PAL_NONE, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 0, false));
-	ShowDropDownList(w, std::move(list), 0, WID_TN_WATER, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(std::move(list)), 0, WID_TN_WATER, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -949,7 +1127,7 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
 {
 	DropDownList list;
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_AIRPORT, PAL_NONE, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 0, false));
-	ShowDropDownList(w, std::move(list), 0, WID_TN_AIR, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(std::move(list)), 0, WID_TN_AIR, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -974,7 +1152,7 @@ static CallBackFunction ToolbarForestClick(Window *w)
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_LANDSCAPING, PAL_NONE, STR_LANDSCAPING_MENU_LANDSCAPING, 0, false));
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_PLANTTREES, PAL_NONE, STR_LANDSCAPING_MENU_PLANT_TREES, 1, false));
 	list.emplace_back(new DropDownListIconItem(SPR_IMG_SIGN, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_SIGN, 2, false));
-	ShowDropDownList(w, std::move(list), 0, WID_TN_LANDSCAPE, 100, true, true);
+	ShowDropDownList(w, AssociateHotkeys(std::move(list)), 0, WID_TN_LANDSCAPE, 100, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1209,7 +1387,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(GetScenRoadTypeDropDownList(RTTB_ROAD)), _last_built_roadtype, WID_TE_ROADS, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1229,7 +1407,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, true, true);
+	ShowDropDownList(w, AssociateHotkeys(GetScenRoadTypeDropDownList(RTTB_TRAM)), _last_built_tramtype, WID_TE_TRAMS, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1319,6 +1497,23 @@ protected:
 public:
 	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL)
 	{
+	}
+
+	/**
+	 * Associates a particular widget with the provided hotkey.
+	 * @param widget_index Index of the widget.
+	 * @param hotkey Hotkey to be associated. Can be NULL.
+	 */
+	void AssociateHotkey(int widget_index, const Hotkey* hotkey)
+	{
+		for (NWidgetBase* child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+			auto widget_core = dynamic_cast<NWidgetCore*>(child_wid);
+			if (widget_core && widget_core->index == widget_index) {
+				widget_core->hotkey = hotkey;
+				return;
+			}
+		}
+		NOT_REACHED();
 	}
 
 	/**
@@ -2155,6 +2350,8 @@ static Hotkey maintoolbar_hotkeys[] = {
 };
 HotkeyList MainToolbarWindow::hotkeys("maintoolbar", maintoolbar_hotkeys);
 
+const HotkeyList& HotkeyFwd::GetMainHotkeys() const { return MainToolbarWindow::hotkeys; }
+
 static NWidgetBase *MakeMainToolbar(int *biggest_index)
 {
 	/** Sprites to use for the different toolbar buttons */
@@ -2204,10 +2401,19 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 				hor->Add(new NWidgetSpacer(0, 0));
 				break;
 		}
-		NWidgetLeaf *leaf = new NWidgetLeaf(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i);
+
+		const Hotkey* hotkey = nullptr;
+		auto it = _maintoolbar_widget_hotkey_map.find(static_cast<ToolbarNormalWidgets>(i));
+		if (it != _maintoolbar_widget_hotkey_map.end()) hotkey = MainToolbarWindow::hotkeys.GetHotkeyByNum(it->second);
+
+		NWidgetLeaf *leaf = new NWidgetLeaf(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY,
+			i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i, hotkey);
 		leaf->SetMinimalSize(20, 20);
 		hor->Add(leaf);
 	}
+
+	/* Associate a dummy hotkey to the fast forward widget so it is visible to the user */
+	hor->AssociateHotkey(WID_TE_FAST_FORWARD, &dummy_fastforward_hotkey);
 
 	*biggest_index = std::max<int>(*biggest_index, WID_TN_SWITCH_BAR);
 	return hor;
@@ -2278,32 +2484,6 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarMusicClick,
 	ToolbarHelpClick,
 	ToolbarSwitchClick,
-};
-
-enum MainToolbarEditorHotkeys {
-	MTEHK_PAUSE,
-	MTEHK_FASTFORWARD,
-	MTEHK_SETTINGS,
-	MTEHK_SAVEGAME,
-	MTEHK_GENLAND,
-	MTEHK_GENTOWN,
-	MTEHK_GENINDUSTRY,
-	MTEHK_BUILD_ROAD,
-	MTEHK_BUILD_TRAM,
-	MTEHK_BUILD_DOCKS,
-	MTEHK_BUILD_TREES,
-	MTEHK_SIGN,
-	MTEHK_MUSIC,
-	MTEHK_LANDINFO,
-	MTEHK_SMALL_SCREENSHOT,
-	MTEHK_ZOOMEDIN_SCREENSHOT,
-	MTEHK_DEFAULTZOOM_SCREENSHOT,
-	MTEHK_GIANT_SCREENSHOT,
-	MTEHK_ZOOM_IN,
-	MTEHK_ZOOM_OUT,
-	MTEHK_TERRAFORM,
-	MTEHK_SMALLMAP,
-	MTEHK_EXTRA_VIEWPORT,
 };
 
 struct ScenarioEditorToolbarWindow : Window {
@@ -2521,6 +2701,8 @@ static Hotkey scenedit_maintoolbar_hotkeys[] = {
 };
 HotkeyList ScenarioEditorToolbarWindow::hotkeys("scenedit_maintoolbar", scenedit_maintoolbar_hotkeys);
 
+const HotkeyList& HotkeyFwd::GetEditorHotkeys() const { return ScenarioEditorToolbarWindow::hotkeys; }
+
 static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_FAST_FORWARD), SetDataTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
@@ -2558,7 +2740,15 @@ static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 
 static NWidgetBase *MakeScenarioToolbar(int *biggest_index)
 {
-	return MakeNWidgets(_nested_toolb_scen_inner_widgets, lengthof(_nested_toolb_scen_inner_widgets), biggest_index, new NWidgetScenarioToolbarContainer());
+	auto* container = new NWidgetScenarioToolbarContainer();
+	MakeNWidgets(_nested_toolb_scen_inner_widgets, lengthof(_nested_toolb_scen_inner_widgets), biggest_index, container);
+	for (auto& entry : _scentoolbar_widget_hotkey_map) {
+		container->AssociateHotkey(entry.first, ScenarioEditorToolbarWindow::hotkeys.GetHotkeyByNum(entry.second));
+	}
+
+	container->AssociateHotkey(WID_TE_FAST_FORWARD, &dummy_fastforward_hotkey);
+
+	return container;
 }
 
 static const NWidgetPart _nested_toolb_scen_widgets[] = {
@@ -2574,8 +2764,10 @@ static WindowDesc _toolb_scen_desc(
 );
 
 /** Allocate the toolbar. */
-void AllocateToolbar()
+void AllocateToolbar(const HotkeyList& main_hotkeys)
 {
+	_main_gui_hotkeys = &main_hotkeys;
+
 	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
 	_last_built_roadtype = ROADTYPE_ROAD;
 	_last_built_tramtype = ROADTYPE_TRAM;

@@ -434,6 +434,8 @@ struct BuildRailToolbarWindow : Window {
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->last_user_action = WIDGET_LIST_END;
 
+		this->AssociateHotkeysByWidgetIndex(desc);
+
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 

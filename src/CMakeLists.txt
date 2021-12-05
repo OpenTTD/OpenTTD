@@ -212,6 +212,7 @@ add_files(
     language.h
     livery.h
     main_gui.cpp
+    main_gui.h
     map.cpp
     map_func.h
     map_type.h

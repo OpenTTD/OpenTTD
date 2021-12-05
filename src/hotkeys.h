@@ -30,6 +30,8 @@ struct Hotkey {
 	std::vector<uint16> keycodes;
 };
 
+std::string AppendHotkeyToString(const std::string& input, const Hotkey* hotkey);
+
 #define HOTKEY_LIST_END Hotkey((uint16)0, nullptr, -1)
 
 struct IniFile;
@@ -47,6 +49,7 @@ struct HotkeyList {
 	void Save(IniFile *ini) const;
 
 	int CheckMatch(uint16 keycode, bool global_only = false) const;
+	const Hotkey* GetHotkeyByNum(int num) const;
 
 	GlobalHotkeyHandlerFunc global_hotkey_handler;
 private:

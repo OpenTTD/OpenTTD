@@ -104,7 +104,7 @@ std::string _windows_file;
 /** Window description constructor. */
 WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys) :
+			const NWidgetPart *nwid_parts, int16 nwid_length, const HotkeyList *hotkeys) :
 	default_pos(def_pos),
 	cls(window_class),
 	parent_cls(parent_class),
@@ -808,7 +808,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	if (_settings_client.gui.right_mouse_wnd_close && w->nested_root->GetWidgetOfType(WWT_CLOSEBOX)) {
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->index, TCC_RIGHT_CLICK) && wid->tool_tip != 0) {
-		GuiShowTooltips(w, wid->tool_tip, 0, nullptr, TCC_RIGHT_CLICK);
+		GuiShowTooltips(w, wid->tool_tip, 0, nullptr, TCC_RIGHT_CLICK, wid->hotkey);
 	}
 }
 
@@ -829,7 +829,7 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 
 	/* Show the tooltip if there is any */
 	if (!w->OnTooltip(pt, wid->index, TCC_HOVER) && wid->tool_tip != 0) {
-		GuiShowTooltips(w, wid->tool_tip);
+		GuiShowTooltips(w, wid->tool_tip, 0, nullptr, TCC_HOVER, wid->hotkey);
 		return;
 	}
 
@@ -1790,6 +1790,20 @@ void Window::InitNested(WindowNumber window_number)
 {
 	this->CreateNestedTree(false);
 	this->FinishInitNested(window_number);
+}
+
+/**
+ * Associates hotkeys with the widgets simply by looking at the order in which they were added.
+ */
+void Window::AssociateHotkeysByWidgetIndex(WindowDesc* desc)
+{
+	for (uint index = 0; index < this->nested_array_size; ++index) {
+		auto* widget = this->GetWidget<NWidgetBase>(index);
+		if (widget) {
+			auto* widget_core = dynamic_cast<NWidgetCore*>(widget);
+			if (widget_core) widget_core->hotkey = desc->hotkeys->GetHotkeyByNum(index);
+		}
+	}
 }
 
 /**

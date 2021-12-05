@@ -20,6 +20,7 @@
 #include "core/smallvec_type.hpp"
 #include "core/smallmap_type.hpp"
 #include "string_type.h"
+#include "hotkeys.h"
 
 /**
  * Flags to describe the look of the frame
@@ -169,7 +170,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys = nullptr);
+			const NWidgetPart *nwid_parts, int16 nwid_length, const HotkeyList *hotkeys = nullptr);
 
 	~WindowDesc();
 
@@ -180,7 +181,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
-	HotkeyList *hotkeys;           ///< Hotkeys for the window.
+	const HotkeyList *hotkeys;     ///< Hotkeys for the window.
 
 	bool pref_sticky;              ///< Preferred stickyness.
 	int16 pref_width;              ///< User-preferred width of the window. Zero if unset.
@@ -353,6 +354,8 @@ public:
 	void InitNested(WindowNumber number = 0);
 	void CreateNestedTree(bool fill_nested = true);
 	void FinishInitNested(WindowNumber window_number = 0);
+
+	void AssociateHotkeysByWidgetIndex(WindowDesc *desc);
 
 	/**
 	 * Set the timeout flag of the window and initiate the timer.
@@ -946,7 +949,7 @@ Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number, bool return_e
 
 void RelocateAllWindows(int neww, int newh);
 
-void GuiShowTooltips(Window *parent, StringID str, uint paramcount = 0, const uint64 params[] = nullptr, TooltipCloseCondition close_tooltip = TCC_HOVER);
+void GuiShowTooltips(Window *parent, StringID str, uint paramcount = 0, const uint64 params[] = nullptr, TooltipCloseCondition close_tooltip = TCC_HOVER, const Hotkey* hotkey = nullptr);
 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);

@@ -12,6 +12,7 @@
 
 #include "../window_type.h"
 #include "../gfx_func.h"
+#include "../hotkeys.h"
 #include "../core/smallvec_type.hpp"
 #include "table/strings.h"
 
@@ -39,13 +40,16 @@ public:
 class DropDownListStringItem : public DropDownListItem {
 public:
 	StringID string; ///< String ID of item
+	const Hotkey *hotkey; ///< Hotkey of the item
 
-	DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
+	DropDownListStringItem(StringID string, int result, bool masked, const Hotkey* hotkey = nullptr)
+		: DropDownListItem(result, masked), string(string), hotkey(hotkey)  {}
 
 	bool Selectable() const override { return true; }
 	uint Width() const override;
 	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override;
 	virtual StringID String() const { return this->string; }
+	void SetHotkey(const Hotkey* hotkey) { this->hotkey = hotkey;  }
 
 	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second);
 };

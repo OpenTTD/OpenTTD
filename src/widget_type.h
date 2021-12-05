@@ -16,6 +16,7 @@
 #include "strings_type.h"
 #include "gfx_type.h"
 #include "window_type.h"
+#include "hotkeys.h"
 
 static const int WIDGET_LIST_END = -1; ///< indicate the end of widgets' list for vararg functions
 
@@ -310,7 +311,7 @@ DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
  */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip, const Hotkey* hotkey = nullptr);
 
 	void SetIndex(int index);
 	void SetDataTip(uint32 widget_data, StringID tool_tip);
@@ -334,6 +335,7 @@ public:
 	int index;                 ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
 	uint32 widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
+	const Hotkey* hotkey;
 	int scrollbar_index;       ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.
 	TextColour text_colour;    ///< Colour of text within widget.
@@ -814,7 +816,7 @@ private:
  */
 class NWidgetLeaf : public NWidgetCore {
 public:
-	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip);
+	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip, const Hotkey* hotkey = nullptr);
 
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void Draw(const Window *w) override;

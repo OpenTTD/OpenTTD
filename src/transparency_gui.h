@@ -10,6 +10,8 @@
 #ifndef TRANSPARENCY_GUI_H
 #define TRANSPARENCY_GUI_H
 
-void ShowTransparencyToolbar();
+#include "hotkeys.h"
+
+void ShowTransparencyToolbar(const HotkeyList& hotkeys);
 
 #endif /* TRANSPARENCY_GUI_H */

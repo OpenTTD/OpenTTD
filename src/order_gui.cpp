@@ -7,6 +7,8 @@
 
 /** @file order_gui.cpp GUI related to orders. */
 
+#include <unordered_map>
+
 #include "stdafx.h"
 #include "command_func.h"
 #include "viewport_func.h"
@@ -33,7 +35,6 @@
 #include "widgets/order_widget.h"
 
 #include "safeguards.h"
-
 
 /** Order load types that could be given to station orders. */
 static const StringID _station_load_types[][5][5] = {
@@ -439,6 +440,65 @@ enum {
 	OHK_NO_LOAD,
 };
 
+static Hotkey order_hotkeys[] = {
+	Hotkey('D', "skip", OHK_SKIP),
+	Hotkey('F', "delete", OHK_DELETE),
+	Hotkey('G', "goto", OHK_GOTO),
+	Hotkey('H', "nonstop", OHK_NONSTOP),
+	Hotkey('J', "fullload", OHK_FULLLOAD),
+	Hotkey('K', "unload", OHK_UNLOAD),
+	Hotkey((uint16)0, "nearest_depot", OHK_NEAREST_DEPOT),
+	Hotkey((uint16)0, "always_service", OHK_ALWAYS_SERVICE),
+	Hotkey((uint16)0, "transfer", OHK_TRANSFER),
+	Hotkey((uint16)0, "no_unload", OHK_NO_UNLOAD),
+	Hotkey((uint16)0, "no_load", OHK_NO_LOAD),
+	HOTKEY_LIST_END
+};
+
+/* Here we define which widgets are associated with certain hotkeys */
+const std::unordered_map<int, int> _hotkey_widget_map = {
+	{WID_O_NON_STOP, OHK_NONSTOP},
+	{WID_O_FULL_LOAD, OHK_FULLLOAD},
+	{WID_O_UNLOAD, OHK_UNLOAD},
+	{WID_O_SKIP, OHK_SKIP},
+	{WID_O_DELETE, OHK_DELETE},
+	{WID_O_GOTO, OHK_GOTO},
+	{WID_O_SERVICE, OHK_ALWAYS_SERVICE},
+};
+
+/* Here we define which dropdown entries are associated with certain hotkeys */
+const std::unordered_map<StringID, int> _hotkey_dropdown_string_map = {
+	/* Non-stop dropdown */
+	{STR_ORDER_GO_NON_STOP_TO, OHK_NONSTOP},
+
+	/* Service dropdown */
+	{STR_ORDER_DROP_SERVICE_DEPOT, OHK_ALWAYS_SERVICE},
+
+	/* Unload all dropdown */
+	{STR_ORDER_DROP_TRANSFER, OHK_TRANSFER},
+	{STR_ORDER_DROP_NO_UNLOADING, OHK_NO_UNLOAD},
+	{STR_ORDER_DROP_UNLOAD, OHK_UNLOAD},
+
+	/* Full load dropdown */
+	{STR_ORDER_DROP_FULL_LOAD_ANY, OHK_FULLLOAD},
+	{STR_ORDER_DROP_NO_LOADING, OHK_NO_LOAD},
+
+	/* Go to dropdown */
+	{STR_ORDER_GO_TO, OHK_GOTO},
+	{STR_ORDER_GO_TO_NEAREST_DEPOT, OHK_NEAREST_DEPOT},
+	{STR_ORDER_GO_TO_NEAREST_HANGAR, OHK_NEAREST_DEPOT},
+};
+
+/* Returns a vector of hotkeys associates with the provided set of strings */
+static std::vector<const Hotkey*> CreateHotkeyAssociations(const StringID* strings, HotkeyList& hotkeys)
+{
+	std::vector<const Hotkey*> associated_hotkeys;
+	for (uint i = 0; strings[i] != INVALID_STRING_ID; i++) {
+		associated_hotkeys.push_back(_hotkey_dropdown_string_map.count(strings[i]) > 0 ? hotkeys.GetHotkeyByNum(_hotkey_dropdown_string_map.at(strings[i])) : nullptr);
+	}
+	return associated_hotkeys;
+}
+
 /**
  * %Order window code for all vehicles.
  *
@@ -784,6 +844,15 @@ public:
 			if (station_orders < 2) this->OrderClick_Goto(OPOS_GOTO);
 		}
 		this->OnInvalidateData(VIWD_MODIFY_ORDERS);
+
+		/* Associate hotkeys with the widgets */
+		for (uint index = 0; index < this->nested_array_size; ++index) {
+			auto* w = this->GetWidget<NWidgetBase>(index);
+			if (w) {
+				auto* w_core = dynamic_cast<NWidgetCore*>(w);
+				if (w_core && _hotkey_widget_map.count(w_core->index) > 0) w_core->hotkey = desc->hotkeys->GetHotkeyByNum(_hotkey_widget_map.at(w_core->index));
+			}
+		}
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -1218,7 +1287,7 @@ public:
 				} else {
 					const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 					ShowDropDownMenu(this, _order_non_stop_drowdown, o->GetNonStopType(), WID_O_NON_STOP, 0,
-													o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12));
+						o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12), 0, CreateHotkeyAssociations(_order_non_stop_drowdown, hotkeys).data());
 				}
 				break;
 
@@ -1238,7 +1307,8 @@ public:
 						case OPOS_SHARE:       sel =  3; break;
 						default: NOT_REACHED();
 					}
-					ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, sel, WID_O_GOTO, 0, 0);
+					auto* order_goto_items = this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown;
+					ShowDropDownMenu(this, order_goto_items, sel, WID_O_GOTO, 0, 0, 0, CreateHotkeyAssociations(order_goto_items, hotkeys).data());
 				}
 				break;
 
@@ -1246,7 +1316,8 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true);
 				} else {
-					ShowDropDownMenu(this, _order_full_load_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), WID_O_FULL_LOAD, 0, 2);
+					ShowDropDownMenu(this, _order_full_load_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(),
+						WID_O_FULL_LOAD, 0, 2, 0, CreateHotkeyAssociations(_order_full_load_drowdown, hotkeys).data());
 				}
 				break;
 
@@ -1254,7 +1325,8 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Unload(OUFB_UNLOAD, true);
 				} else {
-					ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
+					ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(),
+						WID_O_UNLOAD, 0, 8, 0, CreateHotkeyAssociations(_order_unload_drowdown, hotkeys).data());
 				}
 				break;
 
@@ -1266,7 +1338,8 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Service(-1);
 				} else {
-					ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())), WID_O_SERVICE, 0, 0);
+					ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel())),
+						WID_O_SERVICE, 0, 0, 0, CreateHotkeyAssociations(_order_depot_action_dropdown, hotkeys).data());
 				}
 				break;
 
@@ -1274,7 +1347,8 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Refit(0, true);
 				} else {
-					ShowDropDownMenu(this, _order_refit_action_dropdown, 0, WID_O_REFIT_DROPDOWN, 0, 0);
+					ShowDropDownMenu(this, _order_refit_action_dropdown, 0, WID_O_REFIT_DROPDOWN,
+						0, 0, 0, CreateHotkeyAssociations(_order_refit_action_dropdown, hotkeys).data());
 				}
 				break;
 
@@ -1293,7 +1367,8 @@ public:
 
 			case WID_O_COND_COMPARATOR: {
 				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
-				ShowDropDownMenu(this, _order_conditional_condition, o->GetConditionComparator(), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OCV_REQUIRES_SERVICE) ? 0x3F : 0xC0);
+				ShowDropDownMenu(this, _order_conditional_condition, o->GetConditionComparator(), WID_O_COND_COMPARATOR, 0,
+					(o->GetConditionVariable() == OCV_REQUIRES_SERVICE) ? 0x3F : 0xC0,0, CreateHotkeyAssociations(_order_conditional_condition, hotkeys).data());
 				break;
 			}
 
@@ -1502,21 +1577,6 @@ public:
 	}
 
 	static HotkeyList hotkeys;
-};
-
-static Hotkey order_hotkeys[] = {
-	Hotkey('D', "skip", OHK_SKIP),
-	Hotkey('F', "delete", OHK_DELETE),
-	Hotkey('G', "goto", OHK_GOTO),
-	Hotkey('H', "nonstop", OHK_NONSTOP),
-	Hotkey('J', "fullload", OHK_FULLLOAD),
-	Hotkey('K', "unload", OHK_UNLOAD),
-	Hotkey((uint16)0, "nearest_depot", OHK_NEAREST_DEPOT),
-	Hotkey((uint16)0, "always_service", OHK_ALWAYS_SERVICE),
-	Hotkey((uint16)0, "transfer", OHK_TRANSFER),
-	Hotkey((uint16)0, "no_unload", OHK_NO_UNLOAD),
-	Hotkey((uint16)0, "no_load", OHK_NO_LOAD),
-	HOTKEY_LIST_END
 };
 HotkeyList OrdersWindow::hotkeys("order", order_hotkeys);
 

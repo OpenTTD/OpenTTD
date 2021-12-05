@@ -98,6 +98,7 @@ struct BuildDocksToolbarWindow : Window {
 		this->last_clicked_widget = WID_DT_INVALID;
 		this->InitNested(window_number);
 		this->OnInvalidateData();
+		this->AssociateHotkeysByWidgetIndex(desc);
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
@@ -388,7 +389,8 @@ static WindowDesc _build_docks_scen_toolbar_desc(
 	WDP_AUTO, "toolbar_water_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_docks_scen_toolbar_widgets, lengthof(_nested_build_docks_scen_toolbar_widgets)
+	_nested_build_docks_scen_toolbar_widgets, lengthof(_nested_build_docks_scen_toolbar_widgets),
+	& BuildDocksToolbarWindow::hotkeys
 );
 
 /**

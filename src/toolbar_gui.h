@@ -10,6 +10,8 @@
 #ifndef TOOLBAR_GUI_H
 #define TOOLBAR_GUI_H
 
+#include "hotkeys.h"
+
 enum MainToolbarHotkeys {
 	MTHK_PAUSE,
 	MTHK_FASTFORWARD,
@@ -53,7 +55,7 @@ enum MainToolbarHotkeys {
 	MTHK_SIGN_LIST
 };
 
-void AllocateToolbar();
+void AllocateToolbar(const HotkeyList& hotkeys);
 void ToggleBoundingBoxes();
 void ToggleDirtyBlocks();
 

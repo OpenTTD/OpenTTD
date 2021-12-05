@@ -276,6 +276,9 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		this->Initialize(_cur_roadtype);
 		this->InitNested(window_number);
+
+		this->AssociateHotkeysByWidgetIndex(desc);
+
 		this->SetupRoadToolbar();
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
 

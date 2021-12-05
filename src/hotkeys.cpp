@@ -7,6 +7,8 @@
 
 /** @file hotkeys.cpp Implementation of hotkey related functions */
 
+#include <sstream>
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "hotkeys.h"
@@ -18,6 +20,23 @@
 
 std::string _hotkeys_file;
 
+/*
+ * Returns the actual character on the backquote button (` on US keyboard)
+ * TODO implement for other platforms.
+ */
+#ifdef _WIN32
+#include <Windows.h>
+const char* GetBackquoteButtonCharacter()
+{
+	std::stringstream ss;
+	ss << static_cast<char>(MapVirtualKey(VK_OEM_3, MAPVK_VK_TO_CHAR));
+	static std::string backquote = ss.str();
+	return backquote.c_str();
+}
+#else
+const char* GetBackquoteButtonCharacter() { return "`"; }
+#endif
+
 /**
  * List of all HotkeyLists.
  * This is a pointer to ensure initialisation order with the various static HotkeyList instances.
@@ -26,27 +45,36 @@ static std::vector<HotkeyList*> *_hotkey_lists = nullptr;
 
 /** String representation of a keycode */
 struct KeycodeNames {
-	const char *name;       ///< Name of the keycode
-	WindowKeyCodes keycode; ///< The keycode
+	const char *name;         ///< Name of the keycode
+	WindowKeyCodes keycode;   ///< The keycode
+	const char *display_name; ///< The "pretty" name used to display the hotkey in the GUI
+
+	KeycodeNames(const char *name, WindowKeyCodes keycode, const char *display_name = nullptr)
+	{
+		this->name = name;
+		this->keycode = keycode;
+		this->display_name = display_name;
+	}
 };
 
 /** Array of non-standard keycodes that can be used in the hotkeys config file. */
 static const KeycodeNames _keycode_to_name[] = {
-	{"SHIFT", WKC_SHIFT},
-	{"CTRL", WKC_CTRL},
-	{"ALT", WKC_ALT},
+	{"SHIFT", WKC_SHIFT, "Shift"},
+	{"CTRL", WKC_CTRL, "Ctrl"},
+	{"ALT", WKC_ALT, "Alt"},
 	{"META", WKC_META},
 	{"GLOBAL", WKC_GLOBAL_HOTKEY},
-	{"ESC", WKC_ESC},
-	{"BACKSPACE", WKC_BACKSPACE},
-	{"INS", WKC_INSERT},
-	{"DEL", WKC_DELETE},
-	{"PAGEUP", WKC_PAGEUP},
-	{"PAGEDOWN", WKC_PAGEDOWN},
-	{"END", WKC_END},
-	{"HOME", WKC_HOME},
-	{"RETURN", WKC_RETURN},
-	{"SPACE", WKC_SPACE},
+	{"ESC", WKC_ESC, "Esc"},
+	{"TAB", WKC_TAB, "Tab"},
+	{"BACKSPACE", WKC_BACKSPACE, "Backspace"},
+	{"INS", WKC_INSERT, "Insert"},
+	{"DEL", WKC_DELETE, "Delete"},
+	{"PAGEUP", WKC_PAGEUP, "Page up"},
+	{"PAGEDOWN", WKC_PAGEDOWN, "Page down"},
+	{"END", WKC_END, "End"},
+	{"HOME", WKC_HOME, "Home"},
+	{"RETURN", WKC_RETURN, "Enter"},
+	{"SPACE", WKC_SPACE, "Space"},
 	{"F1", WKC_F1},
 	{"F2", WKC_F2},
 	{"F3", WKC_F3},
@@ -59,32 +87,32 @@ static const KeycodeNames _keycode_to_name[] = {
 	{"F10", WKC_F10},
 	{"F11", WKC_F11},
 	{"F12", WKC_F12},
-	{"BACKQUOTE", WKC_BACKQUOTE},
-	{"PAUSE", WKC_PAUSE},
-	{"NUM_DIV", WKC_NUM_DIV},
-	{"NUM_MUL", WKC_NUM_MUL},
-	{"NUM_MINUS", WKC_NUM_MINUS},
-	{"NUM_PLUS", WKC_NUM_PLUS},
-	{"NUM_ENTER", WKC_NUM_ENTER},
-	{"NUM_DOT", WKC_NUM_DECIMAL},
-	{"SLASH", WKC_SLASH},
+	{"BACKQUOTE", WKC_BACKQUOTE, GetBackquoteButtonCharacter()},
+	{"PAUSE", WKC_PAUSE, "Pause Break"},
+	{"NUM_DIV", WKC_NUM_DIV, "Numpad /"},
+	{"NUM_MUL", WKC_NUM_MUL, "Numpad *"},
+	{"NUM_MINUS", WKC_NUM_MINUS, "Numpad -"},
+	{"NUM_PLUS", WKC_NUM_PLUS, "Numpad +"},
+	{"NUM_ENTER", WKC_NUM_ENTER, "Numpad Enter"},
+	{"NUM_DOT", WKC_NUM_DECIMAL, "Numpad ."},
+	{"SLASH", WKC_SLASH, "/"},
 	{"/", WKC_SLASH}, /* deprecated, use SLASH */
-	{"SEMICOLON", WKC_SEMICOLON},
+	{"SEMICOLON", WKC_SEMICOLON, ";"},
 	{";", WKC_SEMICOLON}, /* deprecated, use SEMICOLON */
-	{"EQUALS", WKC_EQUALS},
+	{"EQUALS", WKC_EQUALS, "="},
 	{"=", WKC_EQUALS}, /* deprecated, use EQUALS */
-	{"L_BRACKET", WKC_L_BRACKET},
+	{"L_BRACKET", WKC_L_BRACKET, "["},
 	{"[", WKC_L_BRACKET}, /* deprecated, use L_BRACKET */
-	{"BACKSLASH", WKC_BACKSLASH},
+	{"BACKSLASH", WKC_BACKSLASH, "\\"},
 	{"\\", WKC_BACKSLASH}, /* deprecated, use BACKSLASH */
-	{"R_BRACKET", WKC_R_BRACKET},
+	{"R_BRACKET", WKC_R_BRACKET, "]"},
 	{"]", WKC_R_BRACKET}, /* deprecated, use R_BRACKET */
-	{"SINGLEQUOTE", WKC_SINGLEQUOTE},
+	{"SINGLEQUOTE", WKC_SINGLEQUOTE, "'"},
 	{"'", WKC_SINGLEQUOTE}, /* deprecated, use SINGLEQUOTE */
-	{"COMMA", WKC_COMMA},
-	{"PERIOD", WKC_PERIOD},
+	{"COMMA", WKC_COMMA, ","},
+	{"PERIOD", WKC_PERIOD, "."},
 	{".", WKC_PERIOD}, /* deprecated, use PERIOD */
-	{"MINUS", WKC_MINUS},
+	{"MINUS", WKC_MINUS, "-"},
 	{"-", WKC_MINUS}, /* deprecated, use MINUS */
 };
 
@@ -216,6 +244,41 @@ static const char *KeycodeToString(uint16 keycode)
 }
 
 /**
+ * Convert a hotkey to it's "pretty" string representation so it can be displayed
+ * @param keycode The keycode to convert to a string.
+ * @return A string representation of this keycode.
+ */
+static std::string KeycodeToDisplayString(uint16 keycode)
+{
+	std::stringstream ss;
+
+	auto append = [&ss](auto text) {
+		if (ss.tellp() > 0) ss << "+";
+		ss << text;
+	};
+
+	///* WKC_GLOBAL_HOTKEY is ignored here */
+	if (keycode & WKC_SHIFT) append("Shift");
+	if (keycode & WKC_CTRL) append("Ctrl");
+	if (keycode & WKC_ALT) append("Alt");
+	if (keycode & WKC_META) append("Meta");
+
+	keycode = keycode & ~WKC_SPECIAL_KEYS;
+	if (keycode == 0) return ss.str();
+
+	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
+		if (_keycode_to_name[i].keycode == keycode) {
+			append(_keycode_to_name[i].display_name ? _keycode_to_name[i].display_name : _keycode_to_name[i].name);
+			return ss.str();
+		}
+	}
+
+	assert(keycode < 128);
+	append((char)keycode);
+	return ss.str();
+}
+
+/**
  * Convert all keycodes attached to a hotkey to a single string. If multiple
  * keycodes are attached to the hotkey they are split by a comma.
  * @param hotkey The keycodes of this hotkey need to be converted to a string.
@@ -273,6 +336,28 @@ Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
 void Hotkey::AddKeycode(uint16 keycode)
 {
 	include(this->keycodes, keycode);
+}
+
+/**
+ * Appends the hotkeys to the provided string.
+ * @param input The original string to append to.
+ * @param hotkey The hotkey to inspect and append. Can be NULL.
+ */
+std::string AppendHotkeyToString(const std::string& input, const Hotkey* hotkey)
+{
+	if (!hotkey) return input;
+
+	std::stringstream ss;
+	ss << input;
+	if (!hotkey->keycodes.empty()) ss << " ";
+	for (uint16 keycode : hotkey->keycodes)
+	{
+		const bool is_global = keycode & WKC_GLOBAL_HOTKEY;
+		ss << (is_global ? "[" : "(");
+		ss << KeycodeToDisplayString(keycode);
+		ss << (is_global ? "]" : ")");
+	}
+	return ss.str();
 }
 
 HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
@@ -334,6 +419,19 @@ int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
 	return -1;
 }
 
+/**
+ * Returns the hotkey corresponding to a given number.
+ * @param num The number to compare against
+ * @return The hotkey if a match was found, NULL otherwise.
+ */
+const Hotkey* HotkeyList::GetHotkeyByNum(int num) const
+{
+	for (const Hotkey* hotkey = this->items; hotkey->name != nullptr; ++hotkey) {
+		if (hotkey->num == num)
+			return hotkey;
+	}
+	return nullptr;
+}
 
 static void SaveLoadHotkeys(bool save)
 {

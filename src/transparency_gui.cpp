@@ -8,10 +8,12 @@
 /** @file transparency_gui.cpp The transparency GUI. */
 
 #include "stdafx.h"
+#include <unordered_map>
 #include "window_gui.h"
 #include "transparency.h"
 #include "sound_func.h"
 #include "settings_type.h"
+#include "main_gui.h"
 
 #include "widgets/transparency_widget.h"
 
@@ -25,12 +27,40 @@ TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping
 TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
 byte _display_opt; ///< What do we want to draw/do?
 
+/* Here we define which widgets are associated with main gui hotkeys */
+const std::unordered_map<TransparencyToolbarWidgets, int> _main_gui_widget_hotkey_map = {
+	{WID_TT_SIGNS, GHK_TOGGLE_TRANSPARENCY},
+	{WID_TT_TREES, GHK_TOGGLE_TRANSPARENCY + 1},
+	{WID_TT_HOUSES, GHK_TOGGLE_TRANSPARENCY + 2},
+	{WID_TT_INDUSTRIES, GHK_TOGGLE_TRANSPARENCY + 3},
+	{WID_TT_BUILDINGS, GHK_TOGGLE_TRANSPARENCY + 4},
+	{WID_TT_BRIDGES, GHK_TOGGLE_TRANSPARENCY + 5},
+	{WID_TT_STRUCTURES, GHK_TOGGLE_TRANSPARENCY + 6},
+	{WID_TT_CATENARY, GHK_TOGGLE_TRANSPARENCY + 7},
+	{WID_TT_LOADING, GHK_TOGGLE_TRANSPARENCY + 8}
+};
+
 class TransparenciesWindow : public Window
 {
 public:
-	TransparenciesWindow(WindowDesc *desc, int window_number) : Window(desc)
+	TransparenciesWindow(WindowDesc *desc, int window_number) : Window(desc), hotkeys(*desc->hotkeys)
 	{
 		this->InitNested(window_number);
+
+		/* Associate hotkeys with the widgets */
+		for (uint index = 0; index < this->nested_array_size; ++index) {
+			auto* w = this->GetWidget<NWidgetBase>(index);
+			if (w) {
+				auto* w_core = dynamic_cast<NWidgetCore*>(w);
+				if (w_core && _main_gui_widget_hotkey_map.count((TransparencyToolbarWidgets)w_core->index) > 0)
+					w_core->hotkey = this->hotkeys.GetHotkeyByNum(_main_gui_widget_hotkey_map.at((TransparencyToolbarWidgets)w_core->index));
+			}
+		}
+	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		return ES_NOT_HANDLED; // All hotkeys of this window are handled by the main gui
 	}
 
 	void OnPaint() override
@@ -102,6 +132,20 @@ public:
 		}
 	}
 
+	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget == WID_TT_BUTTONS) {
+			for (int i = WID_TT_BEGIN; i < WID_TT_END; i++) {
+				const NWidgetBase* nwid = this->GetWidget<NWidgetBase>(i);
+				if (IsInsideBS(pt.x, nwid->pos_x, nwid->current_x)) {
+					GuiShowTooltips(this, STR_TRANSPARENT_INVISIBLE_TOOLTIP, 0, nullptr, close_cond, this->hotkeys.GetHotkeyByNum(GHK_TOGGLE_INVISIBILITY + i));
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
@@ -121,6 +165,9 @@ public:
 			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN)));
 		}
 	}
+
+private:
+	const HotkeyList& hotkeys;
 };
 
 static const NWidgetPart _nested_transparency_widgets[] = {
@@ -146,17 +193,20 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _transparency_desc(
-	WDP_MANUAL, "toolbar_transparency", 0, 0,
-	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
-	0,
-	_nested_transparency_widgets, lengthof(_nested_transparency_widgets)
-);
-
 /**
  * Show the transparency toolbar.
  */
-void ShowTransparencyToolbar()
+void ShowTransparencyToolbar(const HotkeyList& hotkeys)
 {
+	static const HotkeyList& _main_gui_hotkeys = hotkeys;
+
+	static WindowDesc _transparency_desc(
+		WDP_MANUAL, "toolbar_transparency", 0, 0,
+		WC_TRANSPARENCY_TOOLBAR, WC_NONE,
+		0,
+		_nested_transparency_widgets, lengthof(_nested_transparency_widgets),
+		&_main_gui_hotkeys
+	);
+
 	AllocateWindowDescFront<TransparenciesWindow>(&_transparency_desc, 0);
 }

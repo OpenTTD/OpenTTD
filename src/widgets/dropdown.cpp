@@ -32,14 +32,12 @@ void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, 
 
 uint DropDownListStringItem::Width() const
 {
-	char buffer[512];
-	GetString(buffer, this->String(), lastof(buffer));
-	return GetStringBoundingBox(buffer).width;
+	return GetStringBoundingBox(AppendHotkeyToString(GetString(this->String()), this->hotkey)).width;
 }
 
 void DropDownListStringItem::Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
 {
-	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->String(), sel ? TC_WHITE : TC_BLACK);
+	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, AppendHotkeyToString(GetString(this->String()), this->hotkey), sel ? TC_WHITE : TC_BLACK);
 }
 
 /**
@@ -89,7 +87,8 @@ void DropDownListIconItem::Draw(int left, int right, int top, int bottom, bool s
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawSprite(this->sprite, this->pal, rtl ? right - this->dim.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, CenterBounds(top, bottom, this->sprite_y));
-	DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : (this->dim.width + WD_FRAMERECT_LEFT)), right - WD_FRAMERECT_RIGHT - (rtl ? (this->dim.width + WD_FRAMERECT_RIGHT) : 0), CenterBounds(top, bottom, FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
+	DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : (this->dim.width + WD_FRAMERECT_LEFT)), right - WD_FRAMERECT_RIGHT - (rtl ? (this->dim.width + WD_FRAMERECT_RIGHT) : 0),
+		CenterBounds(top, bottom, FONT_HEIGHT_NORMAL), AppendHotkeyToString(GetString(this->String()), this->hotkey), sel ? TC_WHITE : TC_BLACK);
 }
 
 void DropDownListIconItem::SetDimension(Dimension d)
@@ -477,13 +476,14 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are not copied to the dropdown list).
  * @param width         Width of the dropdown menu. If \c 0, use the width of parent widget \a button.
  */
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width, const Hotkey* hotkeys[])
 {
 	DropDownList list;
 
 	for (uint i = 0; strings[i] != INVALID_STRING_ID; i++) {
 		if (!HasBit(hidden_mask, i)) {
-			list.emplace_back(new DropDownListStringItem(strings[i], i, HasBit(disabled_mask, i)));
+			const Hotkey* hotkey = hotkeys ? hotkeys[i] : nullptr;
+			list.emplace_back(new DropDownListStringItem(strings[i], i, HasBit(disabled_mask, i), hotkey));
 		}
 	}
 

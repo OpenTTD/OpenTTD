@@ -1102,6 +1102,7 @@ struct AIDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 		this->InvalidateData(-1);
+		this->AssociateHotkeysByWidgetIndex(desc);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
