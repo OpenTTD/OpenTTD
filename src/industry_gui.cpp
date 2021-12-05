@@ -1324,10 +1324,10 @@ protected:
 	static CargoID produced_cargo_filter;
 
 	enum class SorterType : uint8 {
-		IDW_SORT_BY_NAME,                       ///< Sorter type to sort by name
-		IDW_SORT_BY_TYPE,                       ///< Sorter type to sort by type
-		IDW_SORT_BY_PRODUCTION,                 ///< Sorter type to sort by production amount
-		IDW_SORT_BY_TRANSPORTED,                ///< Sorter type to sort by transported percentage
+		ByName,        ///< Sorter type to sort by name
+		ByType,        ///< Sorter type to sort by type
+		ByProduction,  ///< Sorter type to sort by production amount
+		ByTransported, ///< Sorter type to sort by transported percentage
 	};
 
 	/**
@@ -1552,9 +1552,9 @@ protected:
 		}
 
 		switch (static_cast<IndustryDirectoryWindow::SorterType>(this->industries.SortType())) {
-			case IndustryDirectoryWindow::SorterType::IDW_SORT_BY_NAME:
-			case IndustryDirectoryWindow::SorterType::IDW_SORT_BY_TYPE:
-			case IndustryDirectoryWindow::SorterType::IDW_SORT_BY_PRODUCTION:
+			case IndustryDirectoryWindow::SorterType::ByName:
+			case IndustryDirectoryWindow::SorterType::ByType:
+			case IndustryDirectoryWindow::SorterType::ByProduction:
 				/* Sort by descending production, then descending transported */
 				std::sort(cargos.begin(), cargos.end(), [](const CargoInfo &a, const CargoInfo &b) {
 					if (a.production != b.production) return a.production > b.production;
@@ -1562,7 +1562,7 @@ protected:
 				});
 				break;
 
-			case IndustryDirectoryWindow::SorterType::IDW_SORT_BY_TRANSPORTED:
+			case IndustryDirectoryWindow::SorterType::ByTransported:
 				/* Sort by descending transported, then descending production */
 				std::sort(cargos.begin(), cargos.end(), [](const CargoInfo &a, const CargoInfo &b) {
 					if (a.transported != b.transported) return a.transported > b.transported;
