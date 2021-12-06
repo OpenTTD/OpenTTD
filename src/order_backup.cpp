@@ -189,8 +189,8 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	uint32 user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
 
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
-		/* If it's not a backup of us, ignore it. */
-		if (ob->user != user) continue;
+		/* If this is a GUI action, and it's not a backup of us, ignore it. */
+		if (from_gui && ob->user != user) continue;
 		/* If it's not for our chosen tile either, ignore it. */
 		if (t != INVALID_TILE && t != ob->tile) continue;
 
