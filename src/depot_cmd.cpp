@@ -77,6 +77,23 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 	return CommandCost();
 }
 
+/**
+ * Find a demolished depot close to a tile.
+ * @param ta Tile area to search for.
+ * @param type Depot type.
+ * @param cid Previous owner of the depot.
+ * @return The index of a demolished nearby depot, or INVALID_DEPOT if none.
+ */
+DepotID FindDeletedDepotCloseTo(TileArea ta, VehicleType type, CompanyID cid)
+{
+	for (Depot *depot : Depot::Iterate()) {
+		if (depot->IsInUse() || depot->veh_type != type || depot->owner != cid) continue;
+		if (ta.Contains(depot->xy)) return depot->index;
+	}
+
+	return INVALID_DEPOT;
+}
+
 void OnTick_Depot()
 {
 	if (_game_mode == GM_EDITOR) return;
@@ -128,6 +145,12 @@ CommandCost FindJoiningDepot(TileArea ta, VehicleType veh_type, DepotID &join_to
 			}
 		}
 
+		if (closest_depot == INVALID_DEPOT) {
+			/* Check for close unused depots. */
+			check_area.Expand(7); // total distance of 8
+			closest_depot = FindDeletedDepotCloseTo(check_area, veh_type, _current_company);
+		}
+
 		if (closest_depot != INVALID_DEPOT) {
 			assert(Depot::IsValidID(closest_depot));
 			depot = Depot::Get(closest_depot);
@@ -151,6 +174,7 @@ CommandCost FindJoiningDepot(TileArea ta, VehicleType veh_type, DepotID &join_to
 		depot = Depot::Get(join_to);
 		assert(depot->owner == _current_company);
 		assert(depot->veh_type == veh_type);
+		if (!depot->IsInUse() && (flags & DC_EXEC)) depot->Reuse(ta.tile);
 		return depot->BeforeAddTiles(ta);
 	}
 

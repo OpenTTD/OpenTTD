@@ -66,6 +66,20 @@ Depot::~Depot()
 }
 
 /**
+ * Cancel deletion of this depot (reuse it).
+ * @param xy New location of the depot.
+ * @see Depot::IsInUse
+ * @see Depot::Disuse
+ */
+void Depot::Reuse(TileIndex xy)
+{
+	this->delete_ctr = 0;
+	this->xy = xy;
+	this->ta.tile = xy;
+	this->ta.h = this->ta.w = 1;
+}
+
+/**
  * Schedule deletion of this depot.
  *
  * This method is ought to be called after demolishing last depot part.
@@ -73,6 +87,7 @@ Depot::~Depot()
  * placed again later without messing vehicle orders.
  *
  * @see Depot::IsInUse
+ * @see Depot::Reuse
  */
 void Depot::Disuse()
 {
@@ -112,13 +127,19 @@ CommandCost Depot::BeforeAddTiles(TileArea ta)
 {
 	assert(ta.tile != INVALID_TILE);
 
-	if (this->ta.tile != INVALID_TILE) {
+	if (this->ta.tile != INVALID_TILE && this->IsInUse()) {
 		/* Important when the old rect is completely inside the new rect, resp. the old one was empty. */
 		ta.Add(this->ta.tile);
 		ta.Add(TileAddXY(this->ta.tile, this->ta.w - 1, this->ta.h - 1));
 	}
 
-	if ((ta.w > _settings_game.depot.depot_spread) || (ta.h > _settings_game.depot.depot_spread)) {
+	/* A max depot spread of 1 for VEH_SHIP is a special case,
+	 * as ship depots consist of two tiles. */
+	if (this->veh_type == VEH_SHIP && _settings_game.depot.depot_spread == 1) {
+		/* (ta.w, ta.h) must be equal to (1, 2) or (2, 1).
+		 * This means that ta.w * ta.h must be equal to 2. */
+		if (ta.w * ta.h != 2) return_cmd_error(STR_ERROR_DEPOT_TOO_SPREAD_OUT);
+	} else if (std::max(ta.w, ta.h) > _settings_game.depot.depot_spread) {
 		return_cmd_error(STR_ERROR_DEPOT_TOO_SPREAD_OUT);
 	}
 	return CommandCost();
@@ -158,8 +179,13 @@ void Depot::AfterAddRemove(TileArea ta, bool adding)
 	} else {
 		assert(this->IsInUse());
 		this->Disuse();
+		TileIndex old_tile = this->xy;
+		this->RescanDepotTiles();
+		assert(this->depot_tiles.empty());
+		this->xy = old_tile;
 	}
 
+	InvalidateWindowData(WC_VEHICLE_DEPOT, this->index);
 	InvalidateWindowData(WC_SELECT_DEPOT, veh_type);
 }
 
