@@ -194,6 +194,14 @@ public:
 	void GameLoopPause();
 
 	/**
+	 * Set clipboard contents, the video thread will call the OS clipboard API
+	 */
+	void SetClipboardContents(const std::string &text)
+	{
+		this->set_clipboard_text = text;
+	}
+
+	/**
 	 * Get the currently active instance of the video driver.
 	 */
 	static VideoDriver *GetInstance() {
@@ -344,6 +352,7 @@ protected:
 
 	bool fast_forward_key_pressed; ///< The fast-forward key is being pressed.
 	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
+	std::string set_clipboard_text; ///< New clipboard contents to set
 
 	bool is_game_threaded;
 	std::thread game_thread;
