@@ -111,6 +111,12 @@ inline auto MakeCallbackTable(std::index_sequence<i...>) noexcept
 /** Type-erased table of callbacks. */
 static auto _callback_table = MakeCallbackTable(std::make_index_sequence<_callback_tuple_size>{});
 
+template <typename T> struct CallbackArgsHelper;
+template <typename... Targs>
+struct CallbackArgsHelper<void(*const)(Commands, const CommandCost &, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+};
+
 
 /* Helpers to generate the command dispatch table from the command traits. */
 
@@ -125,10 +131,22 @@ struct CommandDispatch {
 	UnpackDispatchT Unpack;
 };
 
+template <Commands Tcmd, size_t Tcb>
+constexpr UnpackNetworkCommandProc MakeUnpackNetworkCommandCallback() noexcept
+{
+	/* Check if the callback matches with the command arguments. If not, don't generate an Unpack proc. */
+	using Tcallback = std::tuple_element_t<Tcb, decltype(_callback_tuple)>;
+	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || std::is_same_v<Tcallback, CommandCallbackData * const> || std::is_same_v<typename CommandTraits<Tcmd>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args>) {
+		return &UnpackNetworkCommand<Tcmd, Tcb>;
+	} else {
+		return nullptr;
+	}
+}
+
 template <Commands Tcmd, size_t... i>
 constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) noexcept
 {
-	return UnpackDispatchT{{ {&UnpackNetworkCommand<Tcmd, i>}... }};
+	return UnpackDispatchT{{ {MakeUnpackNetworkCommandCallback<Tcmd, i>()}...}};
 }
 
 template <typename T, T... i, size_t... j>
@@ -315,6 +333,7 @@ void NetworkExecuteLocalCommandQueue()
 		_current_company = cp->company;
 		size_t cb_index = FindCallbackIndex(cp->callback);
 		assert(cb_index < _callback_tuple_size);
+		assert(_cmd_dispatch[cp->cmd].Unpack[cb_index] != nullptr);
 		_cmd_dispatch[cp->cmd].Unpack[cb_index](cp);
 
 		queue.Pop();
@@ -410,7 +429,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p->Recv_buffer());
 
 	byte callback = p->Recv_uint8();
-	if (callback >= _callback_table.size())  return "invalid callback";
+	if (callback >= _callback_table.size() || _cmd_dispatch[cp->cmd].Unpack[callback] == nullptr)  return "invalid callback";
 
 	cp->callback = _callback_table[callback];
 	return nullptr;
@@ -430,7 +449,7 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 	p->Send_buffer(cp->data);
 
 	size_t callback = FindCallbackIndex(cp->callback);
-	if (callback > UINT8_MAX) {
+	if (callback > UINT8_MAX || _cmd_dispatch[cp->cmd].Unpack[callback] == nullptr) {
 		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp->cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
@@ -507,13 +526,6 @@ CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data)
 	return EndianBufferWriter<CommandDataBuffer>::FromValue(args);
 }
 
-
-template <typename T> struct CallbackArgsHelper;
-template <typename... Targs>
-struct CallbackArgsHelper<void(* const)(Commands, const CommandCost &, Targs...)> {
-	using Args = std::tuple<std::decay_t<Targs>...>;
-};
-
 /**
  * Unpack a generic command packet into its actual typed components.
  * @tparam Tcmd Command type to be unpacked.
@@ -524,12 +536,5 @@ template <Commands Tcmd, size_t Tcb>
 void UnpackNetworkCommand(const CommandPacket* cp)
 {
 	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
-
-	/* Check if the callback matches with the command arguments. If not, drop the callback. */
-	using Tcallback = std::tuple_element_t<Tcb, decltype(_callback_tuple)>;
-	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || std::is_same_v<Tcallback, CommandCallbackData * const> || std::is_same_v<typename CommandTraits<Tcmd>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args>) {
-		Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
-	} else {
-		Command<Tcmd>::PostFromNet(cp->err_msg, (CommandCallback *)nullptr, cp->my_cmd, cp->tile, args);
-	}
+	Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
 }
