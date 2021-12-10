@@ -328,6 +328,7 @@ public:
 
 		size_t length = SlGetStructListLength(UINT32_MAX);
 		la->change = ReallocT(la->change, length);
+		la->changes = (uint32)length;
 
 		for (size_t i = 0; i < length; i++) {
 			LoggedChange *lc = &la->change[i];
