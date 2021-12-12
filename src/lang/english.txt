@@ -2346,6 +2346,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Invite c
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Invite code other players can use to join this server
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Connection type
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Whether and how your server can be reached by others
+STR_NETWORK_CLIENT_LIST_SERVER_COPY_TO_CLIPBOARD                :{BLACK}Copy to clipboard
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Player
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Name
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Your player name

@@ -83,6 +83,7 @@ enum ClientListWidgets {
 	WID_CL_SERVER_NAME_EDIT,           ///< Edit button for server name.
 	WID_CL_SERVER_VISIBILITY,          ///< Server visibility.
 	WID_CL_SERVER_INVITE_CODE,         ///< Invite code for this server.
+	WID_CL_SERVER_COPY_TO_CLIPBOARD,   ///< Copy invite code to clipboard.
 	WID_CL_SERVER_CONNECTION_TYPE,     ///< The type of connection the Game Coordinator detected for this server.
 	WID_CL_CLIENT_NAME,                ///< Client name.
 	WID_CL_CLIENT_NAME_EDIT,           ///< Edit button for client name.

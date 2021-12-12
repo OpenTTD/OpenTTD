@@ -30,6 +30,7 @@
 #include "../company_func.h"
 #include "../command_func.h"
 #include "../core/geometry_func.hpp"
+#include "../video/video_driver.hpp"
 #include "../genworld.h"
 #include "../map_type.h"
 #include "../guitimer_func.h"
@@ -1320,6 +1321,10 @@ static const NWidgetPart _nested_client_list_widgets[] = {
 						NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_INVITE_CODE), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_RAW_STRING, STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
+						NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0), SetResize(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CL_SERVER_COPY_TO_CLIPBOARD), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_COPY_TO_CLIPBOARD, STR_NETWORK_CLIENT_LIST_SERVER_COPY_TO_CLIPBOARD),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE, STR_NULL),
 						NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 						NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_CONNECTION_TYPE), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_STRING, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
@@ -1797,6 +1802,10 @@ public:
 				this->query_widget = WID_CL_CLIENT_NAME_EDIT;
 				SetDParamStr(0, _settings_client.network.client_name);
 				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION, NETWORK_CLIENT_NAME_LENGTH, this, CS_ALPHANUMERAL, QSF_LEN_IN_CHARS);
+				break;
+
+			case WID_CL_SERVER_COPY_TO_CLIPBOARD:
+				VideoDriver::GetInstance()->SetClipboardContents(_network_server_invite_code);
 				break;
 
 			case WID_CL_SERVER_VISIBILITY:

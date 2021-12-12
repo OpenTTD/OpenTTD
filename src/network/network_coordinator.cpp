@@ -13,7 +13,6 @@
 #include "../rev.h"
 #include "../settings_type.h"
 #include "../strings_func.h"
-#include "../video/video_driver.hpp"
 #include "../window_func.h"
 #include "../window_type.h"
 #include "network.h"
@@ -194,7 +193,6 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 	 * and _settings_client.network.server_invite_code contains the one we will
 	 * attempt to re-use when registering again. */
 	_network_server_invite_code = _settings_client.network.server_invite_code;
-	VideoDriver::GetInstance()->SetClipboardContents(_network_server_invite_code);
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
