@@ -1743,6 +1743,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Visa nyhetstidn
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Olyckor / katastrofer: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Visa nyhetstidning när olyckor eller katastrofer inträffar
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Olyckor med konkurrenters fordon: {STRING}
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Företagsinformation: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Visa nyhetstidning när nya företag startar upp eller när ett befintligt företag riskerar att gå bankrupt

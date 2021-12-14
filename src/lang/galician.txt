@@ -138,7 +138,7 @@ STR_ABBREV_GOODS                                                :{TINY_FONT}ME
 STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
 STR_ABBREV_WOOD                                                 :{TINY_FONT}MA
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}FE
-STR_ABBREV_STEEL                                                :{TINY_FONT}AC
+STR_ABBREV_STEEL                                                :{TINY_FONT}AÇ
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}VA
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
 STR_ABBREV_MAIZE                                                :{TINY_FONT}MI
@@ -845,7 +845,7 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nova {STRING} asentada preto de {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} anuncia o seu peche inminente!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemas de subministración en {STRING} provocan que anuncie o seu peche inminente!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemas de abastecemento en {STRING} provocan que anuncie o seu peche inminente!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}A falta de árbores cercanos provoca que {STRING} anuncie o peche inminente!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Unión Económica e Monetaria Europea!{}{}O Euro introdúcese como a única moeda para as transaccións diarias no teu país!
@@ -2617,7 +2617,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Non resalta-la área de cobertura do sitio proposto
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Resalta-la área de cobertura do sitio proposto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acepta: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suministros: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Abastecementos: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unir estación
@@ -3550,7 +3550,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Puntuacións:
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra-las puntuacións da estación
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Suministro mensual e puntuación local:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Abastecemento mensual e puntuación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
@@ -4136,7 +4136,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acción 
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando / Descargando
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Saíndo
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Estrelado!
-STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Roto
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parando, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sen enerxía
@@ -5102,7 +5102,7 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de diamant
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de ferro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantación de froita
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantación de sobreiras
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Subministro de auga
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Abastecemento de auga
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de auga
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :Granxa
@@ -5198,20 +5198,20 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Coche de Carbó
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Tanque de Petróleo
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Furgón de Gando
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Furgón de Mercadorías
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tolva de Gran
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tremoia de Gran
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagón de Madeira
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Tolva de Hematita
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Tremoia de Hematita
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagón de Aceiro
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Furgón Blindado
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Furgón de Comida
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagón de Papel
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Tolva de Mineral de Cobre
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Tremoia de Mineral de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Tanque de Auga
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagón de Froitas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón de Azucre
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Tolva de Algodón de Azucre
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Tolva de Toffee
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Tremoia de Algodón de Azucre
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Tremoia de Toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Furgón de Burbullas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Tanque de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Furgón de Caramelos
@@ -5228,20 +5228,20 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Coche de Carbó
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Tanque de Petróleo
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Furgón de Gando
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Furgón de Mercadorías
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tolva de Gran
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tremoia de Gran
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Vagón de Madeira
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Tolva de Hematita
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Tremoia de Hematita
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagón de Aceiro
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Furgón Blindado
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Furgón de Comida
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Vagón de Papel
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Tolva de Mineral de Cobre
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Tremoia de Mineral de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Tanque de Auga
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Vagón de Froitas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagón de Azucre
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Tolva de Algodón de Azucre
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Tolva de Toffee
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Tremoia de Algodón de Azucre
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Tremoia de Toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Furgón de Burbullas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Tanque de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Furgón de Caramelos
@@ -5260,20 +5260,20 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Coche de Carbó
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Tanque de Petróleo
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Furgón de Gando
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Furgón de Mercadorías
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tolva de Gran
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tremoia de Gran
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Vagón de Madeira
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Tolva de Hematita
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Tremoia de Hematita
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Vagón de Aceiro
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Furgón Blindado
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Furgón de Comida
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Vagón de Papel
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Tolva de Mineral de Cobre
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Tremoia de Mineral de Cobre
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Tanque de Auga
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Vagón de Froitas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagón de Azucre
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Tolva de Algodón de Azucre
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Tolva de Toffee
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Tremoia de Algodón de Azucre
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Tremoia de Toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Furgón de Burbullas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Tanque de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Furgón de Caramelos

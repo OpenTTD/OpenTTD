@@ -2123,6 +2123,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiado
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy zdarzy się wypadek lub nastąpi katastrofa
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Wypadki pojazdów konkurentów: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Wyświetl wiadomość w gazecie o rozbitych pojazdach konkurentów
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy powstaje nowa firma lub kiedy istniejącym firmom grozi bankructwo
