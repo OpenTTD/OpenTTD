@@ -2782,12 +2782,9 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
 /**
  * Change the cargo goal of a town.
  * @param flags Type of operation.
- * @param tile Unused.
- * @param p1 various bitstuffed elements
  * @param town_id Town ID to cargo game of.
  * @param te TownEffect to change the game of.
  * @param goal The new goal value.
- * @param text Unused.
  * @return Empty cost or an error.
  */
 CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownEffect te, uint32 goal)

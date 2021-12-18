@@ -198,11 +198,10 @@ std::tuple<CommandCost, VehicleID, uint, uint16> CmdBuildVehicle(DoCommandFlag f
 /**
  * Sell a vehicle.
  * @param flags for command.
- * @aram v_id vehicle ID being sold.
+ * @param v_id vehicle ID being sold.
  * @param sell_chain sell the vehicle and all vehicles following it in the chain.
  * @param backup_order make a backup of the vehicle's order (if an engine).
  * @param client_id User.
- * @param text unused.
  * @return the cost of this operation or an error.
  */
 CommandCost CmdSellVehicle(DoCommandFlag flags, VehicleID v_id, bool sell_chain, bool backup_order, ClientID client_id)
