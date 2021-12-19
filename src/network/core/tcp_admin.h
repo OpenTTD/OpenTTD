@@ -56,10 +56,11 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_RCON,            ///< The server's reply to a remove console command.
 	ADMIN_PACKET_SERVER_CONSOLE,         ///< The server gives the admin the data that got printed to its console.
 	ADMIN_PACKET_SERVER_CMD_NAMES,       ///< The server sends out the names of the DoCommands to the admins.
-	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
+	ADMIN_PACKET_SERVER_CMD_LOGGING_OLD, ///< Used to be the type ID of \c ADMIN_PACKET_SERVER_CMD_LOGGING in \c NETWORK_GAME_ADMIN_VERSION 1.
 	ADMIN_PACKET_SERVER_GAMESCRIPT,      ///< The server gives the admin information from the GameScript in JSON.
 	ADMIN_PACKET_SERVER_RCON_END,        ///< The server indicates that the remote console command has completed.
 	ADMIN_PACKET_SERVER_PONG,            ///< The server replies to a ping request from the admin.
+	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
