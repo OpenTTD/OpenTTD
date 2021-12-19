@@ -729,7 +729,6 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
 /**
  * Add an order to the orderlist of a vehicle.
  * @param flags operation to perform
- * @param p1 various bitstuffed elements
  * @param veh ID of the vehicle
  * @param sel_ord the selected order (if any). If the last order is given,
  *                        the order will be inserted before that one

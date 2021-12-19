@@ -659,7 +659,6 @@ static void SetGroupFlag(Group *g, GroupFlags flag, bool set, bool children)
 /**
  * (Un)set group flag from a group
  * @param flags type of operation
- * @param tile unused
  * @param group_id index of group array
  * @param flag flag to set, by value not bit.
  * @param value value to set the flag to.

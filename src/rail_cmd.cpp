@@ -958,7 +958,6 @@ CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex tile, TileInde
  * @param tile position of the train depot
  * @param railtype rail type
  * @param dir entrance direction
- * @param text unused
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
