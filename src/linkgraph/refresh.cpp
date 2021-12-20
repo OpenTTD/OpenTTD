@@ -210,6 +210,8 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			uint cargo_quantity = this->capacities[c];
 			if (cargo_quantity == 0) continue;
 
+			if (this->vehicle->GetDisplayMaxSpeed() == 0) continue;
+
 			/* If not allowed to merge link graphs, make sure the stations are
 			 * already in the same link graph. */
 			if (!this->allow_merge && st->goods[c].link_graph != st_to->goods[c].link_graph) {
