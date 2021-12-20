@@ -136,7 +136,10 @@ constexpr UnpackNetworkCommandProc MakeUnpackNetworkCommandCallback() noexcept
 {
 	/* Check if the callback matches with the command arguments. If not, don't generate an Unpack proc. */
 	using Tcallback = std::tuple_element_t<Tcb, decltype(_callback_tuple)>;
-	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || std::is_same_v<Tcallback, CommandCallbackData * const> || std::is_same_v<typename CommandTraits<Tcmd>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args>) {
+	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || // Callback type is CommandCallback.
+			std::is_same_v<Tcallback, CommandCallbackData * const> || // Callback type is CommandCallbackData.
+			std::is_same_v<typename CommandTraits<Tcmd>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args> || // Callback proc takes all command return values and parameters.
+			(!std::is_void_v<typename CommandTraits<Tcmd>::RetTypes> && std::is_same_v<typename CallbackArgsHelper<typename CommandTraits<Tcmd>::RetCallbackProc const>::Args, typename CallbackArgsHelper<Tcallback>::Args>)) { // Callback return is more than CommandCost and the proc takes all return values.
 		return &UnpackNetworkCommand<Tcmd, Tcb>;
 	} else {
 		return nullptr;

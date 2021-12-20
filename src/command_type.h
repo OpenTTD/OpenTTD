@@ -409,12 +409,14 @@ template <typename T> struct CommandFunctionTraitHelper;
 template <typename... Targs>
 struct CommandFunctionTraitHelper<CommandCost(*)(DoCommandFlag, Targs...)> {
 	using Args = std::tuple<std::decay_t<Targs>...>;
+	using RetTypes = void;
 	using CbArgs = Args;
 	using CbProcType = void(*)(Commands, const CommandCost &);
 };
 template <template <typename...> typename Tret, typename... Tretargs, typename... Targs>
 struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFlag, Targs...)> {
 	using Args = std::tuple<std::decay_t<Targs>...>;
+	using RetTypes = std::tuple<std::decay_t<Tretargs>...>;
 	using CbArgs = std::tuple<std::decay_t<Tretargs>..., std::decay_t<Targs>...>;
 	using CbProcType = void(*)(Commands, const CommandCost &, Tretargs...);
 };
@@ -426,6 +428,7 @@ template <Commands Tcmd> struct CommandTraits;
 	template<> struct CommandTraits<cmd_> { \
 		using ProcType = decltype(&proc_); \
 		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
+		using RetTypes = typename CommandFunctionTraitHelper<ProcType>::RetTypes; \
 		using CbArgs = typename CommandFunctionTraitHelper<ProcType>::CbArgs; \
 		using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType; \
 		static constexpr Commands cmd = cmd_; \
