@@ -186,7 +186,7 @@ public:
 			ret = false;
 		}
 
-		printf("Writing crash savegame...\n");
+		printf("Writing crash screenshot...\n");
 		if (!this->WriteScreenshot(filename_screenshot, lastof(filename_screenshot))) {
 			filename_screenshot[0] = '\0';
 			ret = false;
