@@ -69,7 +69,7 @@ that comes with vcpkg. After that, you can run something similar to this:
 ```powershell
 mkdir build
 cd build
-cmake.exe .. -G'Visual Studio 16 2019' -DCMAKE_TOOLCHAIN_FILE="<location of vcpkg>\vcpkg\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TARGET_TRIPLET="x64-windows-static"
+cmake.exe .. -G"Visual Studio 16 2019" -DCMAKE_TOOLCHAIN_FILE="<location of vcpkg>\vcpkg\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TARGET_TRIPLET="x64-windows-static"
 ```
 
 Change `<location of vcpkg>` to where you have installed vcpkg. After this
