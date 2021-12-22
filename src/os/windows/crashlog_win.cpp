@@ -490,7 +490,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 				CONST PMINIDUMP_CALLBACK_INFORMATION);
 		MiniDumpWriteDump_t funcMiniDumpWriteDump = dbghelp.GetProcAddress("MiniDumpWriteDump");
 		if (funcMiniDumpWriteDump != nullptr) {
-			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir.c_str());
+			this->CreateFileName(filename, filename_last, ".dmp");
 			HANDLE file  = CreateFile(OTTD2FS(filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
 			HANDLE proc  = GetCurrentProcess();
 			DWORD procid = GetCurrentProcessId();
