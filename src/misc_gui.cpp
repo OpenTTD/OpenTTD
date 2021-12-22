@@ -673,7 +673,7 @@ struct TooltipsWindow : public Window
 {
 	StringID string_id;               ///< String to display as tooltip.
 	byte paramcount;                  ///< Number of string parameters in #string_id.
-	uint64 params[5];                 ///< The string parameters.
+	uint64 params[8];                 ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
 	TooltipsWindow(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
@@ -682,6 +682,10 @@ struct TooltipsWindow : public Window
 		this->string_id = str;
 		static_assert(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
+		if (params == nullptr) {
+			_global_string_params.offset = 0;
+			params = _global_string_params.GetDataPointer();
+		}
 		if (paramcount > 0) memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
 		this->close_cond = close_tooltip;
