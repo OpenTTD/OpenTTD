@@ -2969,6 +2969,7 @@ void HandleMouseEvents()
 				click = MC_HOVER;
 				_input_events_this_tick++;
 				_mouse_hovering = true;
+				hover_time = std::chrono::steady_clock::now();
 			}
 		}
 	}
