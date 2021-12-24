@@ -112,23 +112,27 @@ static PriceMultipliers _price_base_multiplier;
  */
 Money CalculateCompanyValue(const Company *c, bool including_loan)
 {
-	Money companyValue = 0;
+	Money companySharesValue = 0;
 
-	Money companyValuesExcludingShares[MAX_COMPANIES];
-
-	for (const Company* co : Company::Iterate()) {
-	  companyValuesExcludingShares[co->index]	= CalculateCompanyValueExcludingShares(co);
-	}
+	int sharesOwned = 0;
 
 	for (const Company* co : Company::Iterate()) {
+
+		sharesOwned = 0;
+
 		for (int i = 0; i < 4; i++){
 			if (co->share_owners[i] == c->index) {
-				companyValue += (companyValuesExcludingShares[co->index] / 4);
+				sharesOwned++;
 			}
 		}
-	}
 
-	return std::max<Money>(companyValue + companyValuesExcludingShares[c->index], 1);
+		if (sharesOwned > 0)
+		{
+			companySharesValue += (CalculateCompanyValueExcludingShares(co) / 4) * sharesOwned;
+		}
+	}
+	
+	return std::max<Money>(companySharesValue + CalculateCompanyValueExcludingShares(c), 1);
 }
 
 Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan)
