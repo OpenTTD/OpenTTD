@@ -112,23 +112,47 @@ static PriceMultipliers _price_base_multiplier;
  */
 Money CalculateCompanyValue(const Company *c, bool including_loan)
 {
+	Money value = 0;
+
+	Money companyValues[8];
+
+	for (const Company* co : Company::Iterate()) {
+	  companyValues[co->index]	= CalculateCompanyValueExcludingShares(co);
+	}
+
+	for (const Company* co : Company::Iterate()) {
+
+		for (int i = 0; i < 4; i++)
+		{
+			if (co->share_owners[i] == c->index)
+			{
+				value += (companyValues[co->index] / 4);
+			}
+		}
+	}
+
+	return std::max<Money>(value + companyValues[c->index], 1);
+}
+
+Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan)
+{
 	Owner owner = c->index;
 
 	uint num = 0;
 
-	for (const Station *st : Station::Iterate()) {
+	for (const Station* st : Station::Iterate()) {
 		if (st->owner == owner) num += CountBits((byte)st->facilities);
 	}
 
 	Money value = num * _price[PR_STATION_VALUE] * 25;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
+	for (const Vehicle* v : Vehicle::Iterate()) {
 		if (v->owner != owner) continue;
 
 		if (v->type == VEH_TRAIN ||
-				v->type == VEH_ROAD ||
-				(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft()) ||
-				v->type == VEH_SHIP) {
+			v->type == VEH_ROAD ||
+			(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft()) ||
+			v->type == VEH_SHIP) {
 			value += v->value * 3 >> 1;
 		}
 	}
