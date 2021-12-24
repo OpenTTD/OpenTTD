@@ -103,35 +103,32 @@ static PriceMultipliers _price_base_multiplier;
 
 /**
  * Calculate the value of the company. That is the value of all
- * assets (vehicles, stations, etc) and money minus the loan,
+ * assets (vehicles, stations, shares) and money minus the loan,
  * except when including_loan is \c false which is useful when
  * we want to calculate the value for bankruptcy.
- * @param c              the company to get the value of.
+ * @param c the company to get the value of.
  * @param including_loan include the loan in the company value.
  * @return the value of the company.
  */
 Money CalculateCompanyValue(const Company *c, bool including_loan)
 {
-	Money value = 0;
+	Money companyValue = 0;
 
-	Money companyValues[8];
+	Money companyValuesExcludingShares[MAX_COMPANIES];
 
 	for (const Company* co : Company::Iterate()) {
-	  companyValues[co->index]	= CalculateCompanyValueExcludingShares(co);
+	  companyValuesExcludingShares[co->index]	= CalculateCompanyValueExcludingShares(co);
 	}
 
 	for (const Company* co : Company::Iterate()) {
-
-		for (int i = 0; i < 4; i++)
-		{
-			if (co->share_owners[i] == c->index)
-			{
-				value += (companyValues[co->index] / 4);
+		for (int i = 0; i < 4; i++){
+			if (co->share_owners[i] == c->index) {
+				companyValue += (companyValuesExcludingShares[co->index] / 4);
 			}
 		}
 	}
 
-	return std::max<Money>(value + companyValues[c->index], 1);
+	return std::max<Money>(companyValue + companyValuesExcludingShares[c->index], 1);
 }
 
 Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan)
@@ -157,8 +154,10 @@ Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan
 		}
 	}
 
-	/* Add real money value */
 	if (including_loan) value -= c->current_loan;
+
+	/* Add real money value */
+
 	value += c->money;
 
 	return std::max<Money>(value, 1);
