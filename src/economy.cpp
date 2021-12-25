@@ -114,13 +114,13 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 {
 	Money owned_shares_value = 0;
 
-	uint shares_owned = 0;
+	uint8 shares_owned = 0;
 
 	for (const Company *co : Company::Iterate()) {
 
 		shares_owned = 0;
 
-		for (int i = 0; i < 4; i++){
+		for (uint8 i = 0; i < 4; i++){
 			if (co->share_owners[i] == c->index) {
 				shares_owned++;
 			}
