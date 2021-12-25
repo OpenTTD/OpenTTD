@@ -116,7 +116,7 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 
 	int sharesOwned = 0;
 
-	for (const Company* co : Company::Iterate()) {
+	for (const Company *co : Company::Iterate()) {
 
 		sharesOwned = 0;
 
@@ -141,13 +141,13 @@ Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan
 
 	uint num = 0;
 
-	for (const Station* st : Station::Iterate()) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->owner == owner) num += CountBits((byte)st->facilities);
 	}
 
 	Money value = num * _price[PR_STATION_VALUE] * 25;
 
-	for (const Vehicle* v : Vehicle::Iterate()) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->owner != owner) continue;
 
 		if (v->type == VEH_TRAIN ||
