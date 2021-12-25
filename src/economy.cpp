@@ -117,7 +117,6 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 	uint8 shares_owned = 0;
 
 	for (const Company *co : Company::Iterate()) {
-
 		shares_owned = 0;
 
 		for (uint8 i = 0; i < 4; i++){
@@ -150,9 +149,9 @@ Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan
 		if (v->owner != owner) continue;
 
 		if (v->type == VEH_TRAIN ||
-			v->type == VEH_ROAD ||
-			(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft()) ||
-			v->type == VEH_SHIP) {
+				v->type == VEH_ROAD ||
+				(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft()) ||
+				v->type == VEH_SHIP) {
 			value += v->value * 3 >> 1;
 		}
 	}
@@ -160,7 +159,6 @@ Money CalculateCompanyValueExcludingShares(const Company* c, bool including_loan
 	if (including_loan) value -= c->current_loan;
 
 	/* Add real money value */
-
 	value += c->money;
 
 	return std::max<Money>(value, 1);
