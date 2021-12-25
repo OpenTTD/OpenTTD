@@ -137,7 +137,7 @@ git checkout upstream/master -b <topic-branch-name>
 ```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) or your code is unlikely to be merged into the main project.
-Use Git's [interactive rebase](https://help.github.com/articles/interactive-rebase) feature to tidy up your commits before making them public.
+Use Git's [interactive rebase](https://docs.github.com/en/get-started/using-git/about-git-rebase) feature to tidy up your commits before making them public.
 
 5. Locally rebase the upstream development branch into your topic branch:
 
