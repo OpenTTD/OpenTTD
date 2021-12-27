@@ -317,34 +317,44 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
  */
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
-	switch (argc) {
-		case 0:
-			IConsolePrint(CC_HELP, "Center the screen on a given tile.");
-			IConsolePrint(CC_HELP, "Usage: 'scrollto <tile>' or 'scrollto <x> <y>'.");
-			IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
-			return true;
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Center the screen on a given tile.");
+		IConsolePrint(CC_HELP, "Usage: 'scrollto [instant] <tile>' or 'scrollto [instant] <x> <y>'.");
+		IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
+		IConsolePrint(CC_HELP, "'instant' will immediately move and redraw viewport without smooth scrolling.");
+		return true;
+	}
+	if (argc < 2) return false;
 
-		case 2: {
+	uint32 arg_index = 1;
+	bool instant = false;
+	if (strcmp(argv[arg_index], "instant") == 0) {
+		++arg_index;
+		instant = true;
+	}
+
+	switch (argc - arg_index) {
+		case 1: {
 			uint32 result;
-			if (GetArgumentInteger(&result, argv[1])) {
+			if (GetArgumentInteger(&result, argv[arg_index])) {
 				if (result >= MapSize()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile((TileIndex)result);
+				ScrollMainWindowToTile((TileIndex)result, instant);
 				return true;
 			}
 			break;
 		}
 
-		case 3: {
+		case 2: {
 			uint32 x, y;
-			if (GetArgumentInteger(&x, argv[1]) && GetArgumentInteger(&y, argv[2])) {
+			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
 				if (x >= MapSizeX() || y >= MapSizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile(TileXY(x, y));
+				ScrollMainWindowToTile(TileXY(x, y), instant);
 				return true;
 			}
 			break;
