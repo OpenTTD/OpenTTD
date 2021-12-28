@@ -43,6 +43,11 @@ macro(compile_flags)
         add_link_options(
             "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
         )
+        if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+            add_link_options(
+                "$<$<CONFIG:Debug>:-Wl,--disable-dynamicbase,--disable-high-entropy-va,--default-image-base-low>" # ASLR somehow breaks linking for x64 Debug builds
+            )
+        endif()
     endif()
 
     # Prepare a generator that checks if we are not a debug, and don't have asserts
