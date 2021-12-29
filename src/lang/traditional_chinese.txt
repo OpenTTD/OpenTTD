@@ -1004,6 +1004,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}硬體加速
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}勾選此方框以允許OpenTTD嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}勾選此方框以啟用V-SYNC。此項設定將會在遊戲重啟後套用。只有在硬體加速存在時可用
@@ -1211,6 +1212,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :控制維修不
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :補助倍率： {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :設定獲補助服務的總利潤金額相對原有利潤的倍率
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :補助持續時間: {STRING}
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :沒有補貼
@@ -1434,6 +1436,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線高度：
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :此設定控制在「寒帶」地圖中雪地開始出現的高度。除了外觀的不同外，雪地也會影響工業設施的分佈以及市鎮成長的條件
 
 
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :沙漠覆蓋率: {STRING}
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形起伏度 (只適用於 TerraGenesis)：{STRING}
@@ -1524,6 +1527,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :雙撳
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :單撳 (選定輸入方塊時)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :單撳 (立刻)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :使用中繼服務: {STRING}
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :允許
 
@@ -1594,6 +1598,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :自動移除軌
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% 正常遊戲速度
 ###setting-zero-is-special
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :無限制(以電腦可行的最快速度)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :新聞提示: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :總結新訊息時播放音效
@@ -1766,6 +1771,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :選擇可透過
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :僅限路徑號誌
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有可見的號誌
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :顯示號誌類型: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :僅限路徑號誌
 
@@ -2150,6 +2156,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變�
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :公開
 STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :僅限邀請加入
 
 # Network server list
@@ -2181,6 +2188,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}場景�
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地圖大小：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}伺服器版本：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}伺服器位址：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}邀請碼: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}開始日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}目前日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}遊戲腳本：{WHITE}{STRING} (v{NUM})
@@ -2214,6 +2222,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定�
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 
 STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}可見性
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}其他玩家是否能在公開列表中看到你的伺服器
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}用戶端上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇連線人數上限，但不是每個名額都要有人連線
@@ -2255,10 +2264,12 @@ STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}伺服�
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}名稱
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :伺服器名稱
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}可見性
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :其他玩家是否能在公開列表中看到你的伺服器
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}其他玩家可使用以進入伺服器的邀請碼
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}連線類型
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}名稱
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}編輯玩家名稱
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :你的玩家名稱
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}加入此公司
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}傳送訊息給此玩家
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}傳送訊息給所有旁觀者
@@ -2272,15 +2283,18 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}公開
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :停權
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :刪除
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :密碼解鎖
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}你確定要踢出玩家: '{STRING}'嗎?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}你確定要將玩家 '{STRING}' 列入黑名單嗎?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}你確定要刪除「{COMPANY}」公司嗎？
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}你確定要重設 '{COMPANY}'的公司密碼嗎?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}是否使用中繼伺服器?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，僅此一次
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，且不再詢問
 
 STR_NETWORK_SPECTATORS                                          :旁觀者
 
@@ -2376,6 +2390,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家數量
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :連線用戶端中
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手動
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :遊戲腳本
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :等待連結圖更新
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :離開中
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入遊戲
@@ -2471,6 +2486,7 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是，�
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}否，離開 OpenTTD
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}下載失敗
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}圖形下載失敗{}請手動下載圖形
 STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}離開 OpenTTD
 
 # Transparency settings window
@@ -2939,6 +2955,8 @@ STR_FRAMERATE_AI                                                :{BLACK}   AI {N
 ###length 15
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :世界刻
 STR_FRAMETIME_CAPTION_DRAWING                                   :圖形彩現
+STR_FRAMETIME_CAPTION_VIDEO                                     :影像輸出
+STR_FRAMETIME_CAPTION_SOUND                                     :混音
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI 腳本總計
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :遊戲腳本
 STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
@@ -2981,6 +2999,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}將地圖上最高峰的最大高度減少1
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}雪地覆蓋率:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}將雪地覆蓋率提高10%
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
@@ -3012,6 +3031,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}大小：
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}雪地覆蓋率 (%)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}沙漠覆蓋率 (以百分比%計算)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}修改開始年份
 
@@ -3264,6 +3284,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :重新命名市
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 地方政府
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}顯示地方政府轄區
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}運輸公司評比：
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}：{ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}可辦理的工作：
@@ -3499,6 +3520,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}搬移�
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}以公司總值的 1% 在其它地方建造新公司總部。按住 Shift 點選則只會顯示預估的建造費用
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}詳情
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}顯示基礎建設數目的詳細資料
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}將資金給予此公司
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新臉孔
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}選擇總經理的新臉孔
@@ -4357,6 +4379,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}取消
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變腳本
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}螢幕截圖
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}預設視野截圖
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}截圖整張地圖
 
 # AI Parameters
@@ -4499,6 +4522,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 不�
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... 需要 {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}無法償還貸款...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}無法把貸款的錢流通出去...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}無法將資金給予此公司...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}無法購買公司...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}無法興建公司總部...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}無法購買這間公司的股份...
@@ -4831,6 +4855,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :原版 Transpor
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :不含任何音效的音效集。
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :原版 Transport Tycoon Deluxe Windows 版的音樂。
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :原版 Transport Tycoon Deluxe DOS 版的音樂。
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :原版 Transport Tycoon (Original/World Editor) DOS 版的音樂。
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :不含任何音樂的音樂集。
 
 ##id 0x2000
