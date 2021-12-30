@@ -90,8 +90,6 @@ static NSDictionary *touchBarFallbackText = @{
 @interface OTTD_CocoaWindow : NSWindow
 #ifdef HAVE_TOUCHBAR_SUPPORT
 	<NSTouchBarDelegate>
-
-- (NSImage *)generateImage:(int)spriteId;
 #endif
 
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;

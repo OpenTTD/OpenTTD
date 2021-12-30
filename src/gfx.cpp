@@ -20,6 +20,7 @@
 #include "window_func.h"
 #include "newgrf_debug.h"
 #include "thread.h"
+#include "core/backup_type.hpp"
 
 #include "table/palettes.h"
 #include "table/string_colours.h"
@@ -1190,39 +1191,40 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
  * Draws a sprite to a new RGBA buffer (see Colour union) instead of drawing to the screen.
  *
  * @param spriteId The sprite to draw.
+ * @param zoom The zoom level at which to draw the sprites.
  * @return Pixel buffer, or nullptr if an 8bpp blitter is being used.
  */
-std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId)
+std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom)
 {
+	/* Invalid zoom level requested? */
+	if (zoom < _settings_client.gui.zoom_min || zoom > _settings_client.gui.zoom_max) return nullptr;
+
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	if (!blitter->Is32BppSupported()) return nullptr;
 
 	/* Gather information about the sprite to write, reserve memory */
 	const SpriteID real_sprite = GB(spriteId, 0, SPRITE_WIDTH);
 	const Sprite *sprite = GetSprite(real_sprite, ST_NORMAL);
-	std::unique_ptr<uint32[]> result(new uint32[sprite->width * sprite->height]);
+	Dimension dim = GetSpriteSize(real_sprite, nullptr, zoom);
+	std::unique_ptr<uint32[]> result(new uint32[dim.width * dim.height]);
+	/* Set buffer to fully transparent. */
+	MemSetT(result.get(), 0, dim.width * dim.height);
 
 	/* Prepare new DrawPixelInfo - Normally this would be the screen but we want to draw to another buffer here.
 	 * Normally, pitch would be scaled screen width, but in our case our "screen" is only the sprite width wide. */
 	DrawPixelInfo dpi;
 	dpi.dst_ptr = result.get();
-	dpi.pitch = sprite->width;
+	dpi.pitch = dim.width;
 	dpi.left = 0;
 	dpi.top = 0;
-	dpi.width = sprite->width;
-	dpi.height = sprite->height;
-	dpi.zoom = ZOOM_LVL_NORMAL;
-
-	/* Zero out the allocated memory, there may be garbage present. */
-	uint32 *writeHead = (uint32*)result.get();
-	for (int i = 0; i < sprite->width * sprite->height; i++) {
-		writeHead[i] = 0;
-	}
+	dpi.width = dim.width;
+	dpi.height = dim.height;
+	dpi.zoom = zoom;
 
 	/* Temporarily disable screen animations while blitting - This prevents 40bpp_anim from writing to the animation buffer. */
-	_screen_disable_anim = true;
-	GfxBlitter<1, false>(sprite, 0, 0, BM_NORMAL, nullptr, real_sprite, ZOOM_LVL_NORMAL, &dpi);
-	_screen_disable_anim = false;
+	Backup<bool> disable_anim(_screen_disable_anim, true, FILE_LINE);
+	GfxBlitter<1, true>(sprite, 0, 0, BM_NORMAL, nullptr, real_sprite, zoom, &dpi);
+	disable_anim.Restore();
 
 	return result;
 }
