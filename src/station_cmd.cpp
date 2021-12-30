@@ -1918,10 +1918,10 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, u
 
 			MarkTileDirtyByTile(cur_tile);
 		}
-	}
 
-	if (st != nullptr) {
-		st->AfterStationTileSetChange(true, is_truck_stop ? STATION_TRUCK: STATION_BUS);
+		if (st != nullptr) {
+			st->AfterStationTileSetChange(true, is_truck_stop ? STATION_TRUCK: STATION_BUS);
+		}
 	}
 	return cost;
 }
