@@ -14,6 +14,10 @@
 #include "toolbar_gui.h"
 #include "table/sprites.h"
 
+#ifdef MAC_OS_X_VERSION_10_12_2
+#	define HAVE_TOUCHBAR_SUPPORT
+#endif
+
 class VideoDriver_Cocoa;
 
 /* Right Mouse Button Emulation enum */
@@ -30,7 +34,7 @@ extern NSString *OTTDMainLaunchGameEngine;
 + (NSCursor *) clearCocoaCursor;
 @end
 
-#ifdef HAVE_OSX_1015_SDK
+#ifdef HAVE_TOUCHBAR_SUPPORT
 /* 9 items can be displayed on the touch bar when using default buttons. */
 static NSArray *touchBarButtonIdentifiers = @[
 	@"openttd.pause",
@@ -83,12 +87,11 @@ static NSDictionary *touchBarFallbackText = @{
 #endif
 
 /** Subclass of NSWindow to cater our special needs */
-#ifdef HAVE_OSX_1015_SDK
-@interface OTTD_CocoaWindow : NSWindow <NSTouchBarDelegate>
-@property (strong) NSSet *touchbarItems;
-- (NSImage*)generateImage:(int)spriteId;
-#else
 @interface OTTD_CocoaWindow : NSWindow
+#ifdef HAVE_TOUCHBAR_SUPPORT
+	<NSTouchBarDelegate>
+
+- (NSImage *)generateImage:(int)spriteId;
 #endif
 
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
