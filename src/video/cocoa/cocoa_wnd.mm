@@ -405,18 +405,25 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	return self;
 }
 
-#ifdef HAVE_OSX_1015_SDK
+/**
+ * Define the rectangle we draw our window in
+ */
+- (void)setFrame:(NSRect)frameRect display:(BOOL)flag
+{
+	[ super setFrame:frameRect display:flag ];
+
+	driver->AllocateBackingStore();
+}
+
+#ifdef HAVE_TOUCHBAR_SUPPORT
 
 - (void)touchBarButtonAction:(id)sender
 {
-	if (@available(macOS 10.15, *)) {
-		NSButtonTouchBarItem *btn = (NSButtonTouchBarItem *)sender;
-		NSNumber *hotkeyIndex = [ touchBarButtonActions objectForKey:btn.identifier ];
-		HandleToolbarHotkey(hotkeyIndex.intValue);
-	}
+	NSButton *btn = (NSButton *)sender;
+	NSNumber *hotkeyIndex = [ touchBarButtonActions objectForKey:btn.identifier ];
+	if (hotkeyIndex != nil) HandleToolbarHotkey(hotkeyIndex.intValue);
 }
 
-#pragma mark NSTouchBarProvider
 - (nullable NSTouchBar *)makeTouchBar
 {
 	NSTouchBar *bar = [ [ NSTouchBar alloc ] init ];
@@ -464,37 +471,32 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	return outImage;
 }
 
-#pragma mark NSTouchBarDelegate
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
 {
-	if (@available(macOS 10.15, *)) {
-		NSButtonTouchBarItem *button = [ [ NSButtonTouchBarItem alloc ] initWithIdentifier:identifier ];
-		button.target = self;
-		button.action = @selector(touchBarButtonAction:);
+	NSNumber *num = touchBarButtonSprites[identifier];
+	NSImage *image = [ self generateImage:num.unsignedIntValue ];
 
-		NSNumber *num = touchBarButtonSprites[identifier];
-		NSImage *generatedImage = [ self generateImage:num.unsignedIntValue ];
-		if (generatedImage != nullptr) {
-			button.image = generatedImage;
-		} else {
-			button.title = NSLocalizedString(touchBarFallbackText[identifier], @"");
+	NSButton *button;
+	if (image != nil) {
+		/* Human Interface Guidelines: Maximum touch bar glyph size 22 pt. */
+		CGFloat max_dim = std::max(image.size.width, image.size.height);
+		if (max_dim > 0.0) {
+			CGFloat scale = 22.0 / max_dim;
+			image.size = NSMakeSize(image.size.width * scale, image.size.height * scale);
 		}
-		return button;
+
+		button = [ NSButton buttonWithImage:image target:self action:@selector(touchBarButtonAction:) ];
 	} else {
-		return nullptr;
+		button = [ NSButton buttonWithTitle:touchBarFallbackText[identifier] target:self action:@selector(touchBarButtonAction:) ];
 	}
+	button.identifier = identifier;
+	button.imageScaling = NSImageScaleProportionallyDown;
+
+	NSCustomTouchBarItem *tb_item = [ [ NSCustomTouchBarItem alloc] initWithIdentifier:identifier ];
+	tb_item.view = button;
+	return tb_item;
 }
 #endif
-
-/**
- * Define the rectangle we draw our window in
- */
-- (void)setFrame:(NSRect)frameRect display:(BOOL)flag
-{
-	[ super setFrame:frameRect display:flag ];
-
-	driver->AllocateBackingStore();
-}
 
 @end
 
