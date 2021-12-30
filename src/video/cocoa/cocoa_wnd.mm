@@ -132,6 +132,37 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 	return unicode_str;
 }
 
+static void CGDataFreeCallback(void *, const void *data, size_t)
+{
+	delete[] (const uint32 *)data;
+}
+
+/**
+ * Render an OTTD sprite to a Cocoa image.
+ * @param sprite_id Sprite to make a NSImage from.
+ * @param zoom Zoom level to render the sprite in.
+ * @return Autorelease'd image or nullptr on any error.
+ */
+static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
+{
+	if (!SpriteExists(sprite_id)) return nullptr;
+
+	/* Fetch the sprite and create a new bitmap */
+	Dimension dim = GetSpriteSize(sprite_id, nullptr, zoom);
+	std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(sprite_id, zoom);
+	if (!buffer) return nullptr; // failed to blit sprite or we're using an 8bpp blitter.
+
+	CFAutoRelease<CGDataProvider> data(CGDataProviderCreateWithData(nullptr, buffer.release(), dim.width * dim.height * 4, &CGDataFreeCallback));
+	if (!data) return nullptr;
+
+	CGBitmapInfo info = kCGImageAlphaFirst | kCGBitmapByteOrder32Host;
+	CFAutoRelease<CGColorSpaceRef> color_space(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
+	CFAutoRelease<CGImage> bitmap(CGImageCreate(dim.width, dim.height, 8, 32, dim.width * 4, color_space.get(), info, data.get(), nullptr, false, kCGRenderingIntentDefault));
+	if (!bitmap) return nullptr;
+
+	return [ [ [ NSImage alloc ] initWithCGImage:bitmap.get() size:NSZeroSize ] autorelease ];
+}
+
 
 /**
  * The main class of the application, the application's delegate.
@@ -433,48 +464,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	return bar;
 }
 
--(NSImage *)generateImage:(int)spriteId
-{
-	if (!SpriteExists(spriteId)) {
-		return nullptr;
-	}
-
-	/* Fetch the sprite and create a new bitmap */
-	const Sprite *fullspr = GetSprite(spriteId, ST_NORMAL);
-	const std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(spriteId);
-	if (!buffer) {
-		return nullptr; // failed to blit sprite or we're using an 8bpp blitter.
-	}
-
-	NSBitmapImageRep *bitmap = [ [ NSBitmapImageRep alloc ] initWithBitmapDataPlanes:nil pixelsWide:fullspr->width pixelsHigh:fullspr->height bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSCalibratedRGBColorSpace bytesPerRow:0 bitsPerPixel:0 ];
-
-	/* Copy the sprite to the NSBitmapImageRep image buffer */
-	const Colour *src = (const Colour *)buffer.get();
-	for (int y = 0; y < fullspr->height; y++) {
-		for (int x = 0; x < fullspr->width; x++) {
-			NSUInteger pixel[4];
-			pixel[0] = src->r;
-			pixel[1] = src->g;
-			pixel[2] = src->b;
-			pixel[3] = src->a;
-			[ bitmap setPixel:pixel atX:x y:y ];
-
-			src += 1;
-		}
-	}
-
-	/* Finally, convert the NSBitmapImageRep we created to a NSimage we can put on the button and clean up. */
-	NSImage *outImage = [ [ NSImage alloc ] initWithSize:NSMakeSize(fullspr->width, fullspr->height) ];
-	[ outImage addRepresentation:bitmap ];
-	[ bitmap release ];
-
-	return outImage;
-}
-
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
 {
 	NSNumber *num = touchBarButtonSprites[identifier];
-	NSImage *image = [ self generateImage:num.unsignedIntValue ];
+	NSImage *image = NSImageFromSprite(num.unsignedIntValue, _settings_client.gui.zoom_min);
 
 	NSButton *button;
 	if (image != nil) {
