@@ -22,7 +22,8 @@ extern bool _cocoa_video_started;
 
 class VideoDriver_Cocoa : public VideoDriver {
 private:
-	Dimension orig_res;   ///< Saved window size for non-fullscreen mode.
+	Dimension orig_res;       ///< Saved window size for non-fullscreen mode.
+	bool refresh_sys_sprites; ///< System sprites need refreshing.
 
 public:
 	bool setup; ///< Window is currently being created.
@@ -44,6 +45,9 @@ public:
 
 	bool ChangeResolution(int w, int h) override;
 	bool ToggleFullscreen(bool fullscreen) override;
+
+	void ClearSystemSprites() override;
+	void PopulateSystemSprites() override;
 
 	void EditBoxLostFocus() override;
 

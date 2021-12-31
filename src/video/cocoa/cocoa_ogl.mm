@@ -234,11 +234,15 @@ void VideoDriver_CocoaOpenGL::Stop()
 
 void VideoDriver_CocoaOpenGL::PopulateSystemSprites()
 {
+	VideoDriver_Cocoa::PopulateSystemSprites();
+
 	OpenGLBackend::Get()->PopulateCursorCache();
 }
 
 void VideoDriver_CocoaOpenGL::ClearSystemSprites()
 {
+	VideoDriver_Cocoa::ClearSystemSprites();
+
 	CGLSetCurrentContext(this->gl_context);
 	OpenGLBackend::Get()->ClearCursorCache();
 }

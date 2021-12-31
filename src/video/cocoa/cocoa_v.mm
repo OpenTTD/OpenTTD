@@ -99,6 +99,8 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 	this->setup         = false;
 	this->buffer_locked = false;
 
+	this->refresh_sys_sprites = true;
+
 	this->window    = nil;
 	this->cocoaview = nil;
 	this->delegate  = nil;
@@ -219,6 +221,19 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	}
 
 	return false;
+}
+
+void VideoDriver_Cocoa::ClearSystemSprites()
+{
+	this->refresh_sys_sprites = true;
+}
+
+void VideoDriver_Cocoa::PopulateSystemSprites()
+{
+	if (this->refresh_sys_sprites && this->window != nil) {
+		[ this->window refreshSystemSprites ];
+		this->refresh_sys_sprites = false;
+	}
 }
 
 /**
