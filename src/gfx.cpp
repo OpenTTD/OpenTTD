@@ -1200,7 +1200,7 @@ std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zo
 	if (zoom < _settings_client.gui.zoom_min || zoom > _settings_client.gui.zoom_max) return nullptr;
 
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-	if (!blitter->Is32BppSupported()) return nullptr;
+	if (blitter->GetScreenDepth() != 8 && blitter->GetScreenDepth() != 32) return nullptr;
 
 	/* Gather information about the sprite to write, reserve memory */
 	const SpriteID real_sprite = GB(spriteId, 0, SPRITE_WIDTH);
@@ -1221,10 +1221,28 @@ std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zo
 	dpi.height = dim.height;
 	dpi.zoom = zoom;
 
+	/* If the current blitter is a paletted blitter, we have to render to an extra buffer and resolve the palette later. */
+	std::unique_ptr<byte[]> pal_buffer{};
+	if (blitter->GetScreenDepth() == 8) {
+		pal_buffer.reset(new byte[dim.width * dim.height]);
+		MemSetT(pal_buffer.get(), 0, dim.width * dim.height);
+
+		dpi.dst_ptr = pal_buffer.get();
+	}
+
 	/* Temporarily disable screen animations while blitting - This prevents 40bpp_anim from writing to the animation buffer. */
 	Backup<bool> disable_anim(_screen_disable_anim, true, FILE_LINE);
 	GfxBlitter<1, true>(sprite, 0, 0, BM_NORMAL, nullptr, real_sprite, zoom, &dpi);
 	disable_anim.Restore();
+
+	if (blitter->GetScreenDepth() == 8) {
+		/* Resolve palette. */
+		uint32 *dst = result.get();
+		const byte *src = pal_buffer.get();
+		for (size_t i = 0; i < dim.height * dim.width; ++i) {
+			*dst++ = _cur_palette.palette[*src++].data;
+		}
+	}
 
 	return result;
 }

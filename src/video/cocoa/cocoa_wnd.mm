@@ -179,7 +179,7 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 	/* Fetch the sprite and create a new bitmap */
 	Dimension dim = GetSpriteSize(sprite_id, nullptr, zoom);
 	std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(sprite_id, zoom);
-	if (!buffer) return nullptr; // failed to blit sprite or we're using an 8bpp blitter.
+	if (!buffer) return nullptr; // Failed to blit sprite for some reason.
 
 	CFAutoRelease<CGDataProvider> data(CGDataProviderCreateWithData(nullptr, buffer.release(), dim.width * dim.height * 4, &CGDataFreeCallback));
 	if (!data) return nullptr;
