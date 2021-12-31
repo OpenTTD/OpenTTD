@@ -414,6 +414,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @implementation OTTD_CocoaWindow {
 	VideoDriver_Cocoa *driver;
+	bool touchbar_created;
 }
 
 /**
@@ -423,6 +424,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
 		self->driver = drv;
+		self->touchbar_created = false;
 
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
 
@@ -461,27 +463,14 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	bar.delegate = self;
 	bar.defaultItemIdentifiers = touchBarButtonIdentifiers;
 
+	self->touchbar_created = true;
+
 	return bar;
 }
 
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
 {
-	NSNumber *num = touchBarButtonSprites[identifier];
-	NSImage *image = NSImageFromSprite(num.unsignedIntValue, _settings_client.gui.zoom_min);
-
-	NSButton *button;
-	if (image != nil) {
-		/* Human Interface Guidelines: Maximum touch bar glyph size 22 pt. */
-		CGFloat max_dim = std::max(image.size.width, image.size.height);
-		if (max_dim > 0.0) {
-			CGFloat scale = 22.0 / max_dim;
-			image.size = NSMakeSize(image.size.width * scale, image.size.height * scale);
-		}
-
-		button = [ NSButton buttonWithImage:image target:self action:@selector(touchBarButtonAction:) ];
-	} else {
-		button = [ NSButton buttonWithTitle:touchBarFallbackText[identifier] target:self action:@selector(touchBarButtonAction:) ];
-	}
+	NSButton *button = [ NSButton buttonWithTitle:touchBarFallbackText[identifier] target:self action:@selector(touchBarButtonAction:) ];
 	button.identifier = identifier;
 	button.imageScaling = NSImageScaleProportionallyDown;
 
@@ -489,7 +478,38 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	tb_item.view = button;
 	return tb_item;
 }
-#endif
+
+#endif /* HAVE_TOUCHBAR_SUPPORT */
+
+- (void)refreshSystemSprites
+{
+#ifdef HAVE_TOUCHBAR_SUPPORT
+	if (!self->touchbar_created || ![ self respondsToSelector:@selector(touchBar) ] || self.touchBar == nil) return;
+
+	/* Re-create button images from OTTD sprites. */
+	for (NSTouchBarItemIdentifier ident in self.touchBar.itemIdentifiers) {
+		NSCustomTouchBarItem *tb_item = [ self.touchBar itemForIdentifier:ident ];
+		NSButton *button = tb_item.view;
+
+		NSNumber *num = touchBarButtonSprites[ident];
+		NSImage *image = NSImageFromSprite(num.unsignedIntValue, _settings_client.gui.zoom_min);
+		if (image != nil) {
+			/* Human Interface Guidelines: Maximum touch bar glyph size 22 pt. */
+			CGFloat max_dim = std::max(image.size.width, image.size.height);
+			if (max_dim > 0.0) {
+				CGFloat scale = 22.0 / max_dim;
+				image.size = NSMakeSize(image.size.width * scale, image.size.height * scale);
+			}
+
+			button.image = image;
+			button.imagePosition = NSImageOnly;
+		} else {
+			button.image = nil;
+			button.imagePosition = NSNoImage;
+		}
+	}
+#endif /* HAVE_TOUCHBAR_SUPPORT */
+}
 
 @end
 
