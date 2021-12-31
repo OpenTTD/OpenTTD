@@ -32,7 +32,11 @@
 #include "../../gfx_func.h"
 #include "../../window_func.h"
 #include "../../window_gui.h"
-#include "spritecache.h"
+#include "../../spritecache.h"
+#include "../../toolbar_gui.h"
+#include <array>
+
+#include "table/sprites.h"
 
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
@@ -55,6 +59,31 @@
  * C++ and objective C code can't be joined in all cases (classes stuff).
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
+
+#ifdef HAVE_TOUCHBAR_SUPPORT
+struct TouchBarButton {
+	NSTouchBarItemIdentifier key;
+	SpriteID                 sprite;
+	MainToolbarHotkeys       hotkey;
+	NSString                *fallback_text;
+
+	bool operator ==(const NSTouchBarItemIdentifier other) const { return this->key == other; }
+};
+
+/* 9 items can be displayed on the touch bar when using default buttons. */
+static const std::array<TouchBarButton, 9> _touchbar_buttons{{
+	{ @"openttd.pause",         SPR_IMG_PAUSE,       MTHK_PAUSE,         @"Pause" },
+	{ @"openttd.fastforward",   SPR_IMG_FASTFORWARD, MTHK_FASTFORWARD,   @"Fast Forward" },
+	{ @"openttd.zoom_in",       SPR_IMG_ZOOMIN,      MTHK_ZOOM_IN,       @"Zoom In" },
+	{ @"openttd.zoom_out",      SPR_IMG_ZOOMOUT,     MTHK_ZOOM_OUT,      @"Zoom Out" },
+	{ @"openttd.build_rail",    SPR_IMG_BUILDRAIL,   MTHK_BUILD_RAIL,    @"Rail" },
+	{ @"openttd.build_road",    SPR_IMG_BUILDROAD,   MTHK_BUILD_ROAD,    @"Road" },
+	{ @"openttd.build_tram",    SPR_IMG_BUILDTRAMS,  MTHK_BUILD_TRAM,    @"Tram" },
+	{ @"openttd.build_docks",   SPR_IMG_BUILDWATER,  MTHK_BUILD_DOCKS,   @"Docks" },
+	{ @"openttd.build_airport", SPR_IMG_BUILDAIR,    MTHK_BUILD_AIRPORT, @"Airport" }
+}};
+
+#endif
 
 bool _allow_hidpi_window = true; // Referenced from table/misc_settings.ini
 
@@ -453,15 +482,24 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (void)touchBarButtonAction:(id)sender
 {
 	NSButton *btn = (NSButton *)sender;
-	NSNumber *hotkeyIndex = [ touchBarButtonActions objectForKey:btn.identifier ];
-	if (hotkeyIndex != nil) HandleToolbarHotkey(hotkeyIndex.intValue);
+	if (auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), (NSTouchBarItemIdentifier)btn.identifier); item != _touchbar_buttons.cend()) {
+		HandleToolbarHotkey(item->hotkey);
+	}
 }
 
 - (nullable NSTouchBar *)makeTouchBar
 {
+	/* Make button identifier array. */
+	NSMutableArray<NSTouchBarItemIdentifier> *button_ids = [ [ NSMutableArray alloc ] init ];
+	for (const auto &button : _touchbar_buttons) {
+		[ button_ids addObject:button.key ];
+	}
+	[ button_ids addObject:NSTouchBarItemIdentifierOtherItemsProxy ];
+
 	NSTouchBar *bar = [ [ NSTouchBar alloc ] init ];
 	bar.delegate = self;
-	bar.defaultItemIdentifiers = touchBarButtonIdentifiers;
+	bar.defaultItemIdentifiers = button_ids;
+	[ button_ids release ];
 
 	self->touchbar_created = true;
 
@@ -470,7 +508,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 - (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
 {
-	NSButton *button = [ NSButton buttonWithTitle:touchBarFallbackText[identifier] target:self action:@selector(touchBarButtonAction:) ];
+	auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), identifier);
+	assert(item != _touchbar_buttons.cend());
+
+	NSButton *button = [ NSButton buttonWithTitle:item->fallback_text target:self action:@selector(touchBarButtonAction:) ];
 	button.identifier = identifier;
 	button.imageScaling = NSImageScaleProportionallyDown;
 
@@ -488,11 +529,13 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	/* Re-create button images from OTTD sprites. */
 	for (NSTouchBarItemIdentifier ident in self.touchBar.itemIdentifiers) {
+		auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), ident);
+		if (item == _touchbar_buttons.cend()) continue;
+
 		NSCustomTouchBarItem *tb_item = [ self.touchBar itemForIdentifier:ident ];
 		NSButton *button = tb_item.view;
 
-		NSNumber *num = touchBarButtonSprites[ident];
-		NSImage *image = NSImageFromSprite(num.unsignedIntValue, _settings_client.gui.zoom_min);
+		NSImage *image = NSImageFromSprite(item->sprite, _settings_client.gui.zoom_min);
 		if (image != nil) {
 			/* Human Interface Guidelines: Maximum touch bar glyph size 22 pt. */
 			CGFloat max_dim = std::max(image.size.width, image.size.height);
