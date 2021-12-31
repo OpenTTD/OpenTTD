@@ -95,6 +95,8 @@ static NSDictionary *touchBarFallbackText = @{
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
 
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
+
+- (void)refreshSystemSprites;
 @end
 
 /** Subclass of NSView to support mouse awareness and text input. */
