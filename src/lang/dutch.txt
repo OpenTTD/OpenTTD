@@ -1741,7 +1741,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Eerste voertuig
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Nieuwsbericht weergeven als het eerste voertuig arriveert op een nieuw station van een concurrent
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukken / rampen: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Nieuwsbericht weergeven bij ongevallen of rampen
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Nieuwsbericht weergeven bij ongelukken of rampen
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedrijfsinformatie: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Nieuwsbericht weergeven als een nieuw bedrijf start en wanneer een bedrijf bijna falliet gaat

@@ -1736,49 +1736,49 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :전기 철도�
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :이 설정을 켜면, 전기 기관차가 일반 철도에서도 달릴 수 있도록 만듭니다.
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :내 회사의 첫 차량 도착: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :나의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :나의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :경쟁사의 첫 차량 도착: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :경쟁자의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :경쟁자의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :사고 / 재앙: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :사고나 재앙이 일어났을 때 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :사고나 재앙이 일어났을 때 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :회사 정보: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :새로운 회사가 열리거나, 파산 위기에 처했을 때 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :새로운 회사가 열리거나, 파산 위기에 처했을 때 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :산업시설 건설: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :새로운 산업시설이 건설되면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :새로운 산업시설이 건설되면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :산업시설 폐쇄: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :산업시설이 폐쇄될 때 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :산업시설이 폐쇄될 때 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :경제 변화: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :거시적인 경제에 변화가 생기면 뉴스 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :경제에 거시적인 변화가 생기면 뉴스 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :내 회사에 의한 산업시설의 생산량 변동: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 수송하는 산업시설의 생산량이 변하면 소식으로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 수송하는 산업시설의 생산량이 변하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :경쟁사에 의한 산업시설의 생산량 변동: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 수송하고 있는 산업시설의 생산량이 변하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 수송하고 있는 산업시설의 생산량이 변하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :기타 산업시설의 생산량 변동: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :아무도 수송하지 않는 산업시설의 생산량이 변하면 소식으로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :아무도 수송하지 않는 산업시설의 생산량이 변하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :내 회사의 차량에 관한 권고 / 정보: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :주의를 기울여야하는 차량에 대한 메시지를 표시합니다.
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :주의를 기울여야하는 차량을 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :새 차량: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :새로운 차량 종류를 사용할 수 있게 되면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :새로운 차량 종류를 사용할 수 있게 되면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :역에서 받는 화물의 변경: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :역사가 받을 수 있는 화물이 변경될 경우 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :역사가 받을 수 있는 화물이 변경될 경우 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :보조금: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :보조금과 관련된 소식을 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :보조금과 관련된 소식을 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :일반 정보: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :도로 재건축 투자나 수송 독점권의 구입 등과 같은 일반적인 사건에 대한 소식을 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :도로 재건축 투자나 수송 독점권의 구입 등과 같은 일반적인 사건에 대한 소식을 메시지로 알려줍니다
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :상태 표시줄로 알림

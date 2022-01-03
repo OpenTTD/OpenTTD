@@ -205,7 +205,7 @@ STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tona
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}{P "th" "th" "th" "dt" "th"}ona
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}{P "th" "th" "th" "dt" "t"}ona
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
@@ -855,7 +855,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Aimsítear síog ghuail nua ag {INDUSTRY}!{}Meastar go dtiocfaidh méadú faoi dhó ar tháirgeadh!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Aimsítear stoc ola nua ag {INDUSTRY}!{}Meastar go dtiocfaidh méadú faoi dhó ar tháirgeadh!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Meastar go dtiocfaidh méadú faoi dhó ar tháirgeadh ag {INDUSTRY} mar gheall ar feabhsuithe sna modhanna feirmeoireachta!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Tagann méadú ar tháirgeadh {STRING} ag {INDUSTRY} de {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Tháing méadú {2:COMMA}% ar tháirgeadh '{0:STRING}' ag {1:INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Tagann laghdú 50% ar tháirgeadh ag {INDUSTRY}
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Déantar robach de bharr inmhíolú feithidí ag {INDUSTRY}!{}Lagdhú 50% ar tháirgeadh
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Tagann laghdú ar tháirgeadh {STRING} ag {INDUSTRY} de {COMMA}%!
@@ -1031,7 +1031,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Roghnaig
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(uath-aimsiú)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Gnáth
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Méid dúbailte
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Méid cheathrúil
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Méid 4x
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Méid na clófhoirne
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Roghnaigh méid na clófhoirne don chomhéadan a úsáidfear
@@ -2251,6 +2251,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tírdhr
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Méid na léarscáile: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Leagan an fhreastalaí: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Seoladh an fhreastalaí: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Cód an chuiridh: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Dáta tosaigh: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Dáta reatha: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script Cluiche: {WHITE}{STRING} (v{NUM})
