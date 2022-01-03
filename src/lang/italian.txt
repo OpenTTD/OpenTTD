@@ -328,6 +328,7 @@ STR_GROUP_BY_NONE                                               :Nessuno
 STR_GROUP_BY_SHARED_ORDERS                                      :Ordini condivisi
 
 # Order button in shared orders vehicle list
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordini
 
 # Tooltips for the main toolbar
 ###length 31
@@ -794,6 +795,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  I
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SALVATAGGIO AUTOMATICO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVATAGGIO PARTITA  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spettatore)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia messaggi
@@ -1481,6 +1483,7 @@ STR_CONFIG_SETTING_SNOW_COVERAGE                                :Aree innevate: 
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Aree desertiche: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Regola la quantità approssimativa di deserto nei paesaggi tropicali. Il deserto influenza anche la generazione di industrie. Usato esclusivamente durante la generazione della mappa
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregolarità del terreno: {STRING}
@@ -1831,6 +1834,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo segnali a 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tutti
 
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Tutti i segnali
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposizione delle strade per le nuove città: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Orgnalizzazione della rete stradale delle città
@@ -2332,6 +2336,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Se e com
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Giocatore
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Il nome del tuo personaggio
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                : {BLACK}Modifica il nome del tuo personaggio
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Nome del tuo personaggio
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Invia un messaggio a questo giocatore
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Manda un messaggio a tutti gli spettatori
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spettatori
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nuova compagnia e controllala
@@ -2461,6 +2467,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il serve
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrazione al server fallita
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Il tuo server non permette connessioni remote
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Altri giocatori non saranno in grado di connettersi al tuo server
 
 # Content downloading window
@@ -3096,6 +3103,8 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numero c
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero industrie:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{WHITE}Picco massimo:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumenta la massima altezza del picco più alto sulla mappa di uno
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuisci la massima altezza del picco più alto sulla mappa di uno
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Aree innevate:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumenta la copertura della neve del dieci per cento
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuisci la copertura della neve del dieci per cento
@@ -3268,6 +3277,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attenzione
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Errore: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Errore irreversibile: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Si è verificato un errore irreversibile nel NewGRF:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Si è verificato un errore in un NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funziona con la versione di TTDPatch riferita da OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} è per la versione {STRING} di TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} è progettato per essere usato con {STRING}
@@ -4106,6 +4116,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manuten
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Impossibile raggiungere {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Impossibile raggiungere {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Impossibile raggiungere {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

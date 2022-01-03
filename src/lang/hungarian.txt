@@ -2321,6 +2321,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tájtí
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}A térkép nagysága: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Szerver verzió: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}A szerver címe: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Meghívókód: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Kezdési dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Jelenlegi dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Játékszkript: {WHITE}{STRING} (v{NUM})
@@ -2736,7 +2737,8 @@ STR_STATION_CLASS_DFLT                                          :Alapértelmezet
 STR_STATION_CLASS_WAYP                                          :Ellenőrző pontok
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Jelző választó
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Jelzőválasztó
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Mutassa vagy ne mutassa az összes jelzőtípust
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Normál jelző (alak){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Bejárati jelző (alak){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Kijárati jelző (alak){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez

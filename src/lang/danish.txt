@@ -2257,6 +2257,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Klima: 
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Størrelse: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Server version: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradresse: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Invitationskode: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Start dato: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Nuværende dato: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spilscript: {WHITE}{STRING} (v{NUM})
@@ -2673,6 +2674,7 @@ STR_STATION_CLASS_WAYP                                          :Waypoints
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvælger
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Vis eller skjul avancerede signaltyper
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Dette er den mest almindelige type signal, og tillader kun et tog ad gangen på den samme signalblok
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Indgangssignal (semafor){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Udgangssignal (semafor){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
