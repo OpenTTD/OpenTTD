@@ -356,6 +356,10 @@ void OneOfManySettingDesc::FormatValue(char *buf, const char *last, const void *
 void ManyOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
 	uint bitmask = (uint)this->Read(object);
+	if (bitmask == 0) {
+		buf[0] = '\0';
+		return;
+	}
 	bool first = true;
 	for (uint id : SetBitIterator(bitmask)) {
 		if (!first) buf = strecpy(buf, "|", last);
