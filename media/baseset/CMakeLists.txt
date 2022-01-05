@@ -17,6 +17,7 @@ set(BASESET_OTHER_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/openttd.grf
         ${CMAKE_CURRENT_SOURCE_DIR}/opntitle.dat
         ${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf
+        ${CMAKE_CURRENT_SOURCE_DIR}/../openttd.32.bmp
 )
 
 # Done by the subdirectories, if nforenum / grfcodec is installed
