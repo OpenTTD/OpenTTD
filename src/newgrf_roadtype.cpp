@@ -74,19 +74,6 @@ uint32 RoadTypeResolverObject::GetDebugID() const
 }
 
 /**
- * Constructor of the roadtype scope resolvers.
- * @param ro Surrounding resolver.
- * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
- * @param context Are we resolving sprites for the upper halftile, or on a bridge?
- */
-RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context) : ScopeResolver(ro)
-{
-	this->tile = tile;
-	this->context = context;
-	this->rti = rti;
-}
-
-/**
  * Resolver object for road types.
  * @param rti Roadtype. nullptr in NewGRF Inspect window.
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
