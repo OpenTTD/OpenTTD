@@ -163,7 +163,7 @@ If you want to compile OpenTTD from source, instructions can be found in [COMPIL
 
 - [OpenTTD website](https://www.openttd.org)
 - IRC chat using #openttd on irc.oftc.net [more info about our irc channel](https://wiki.openttd.org/en/Development/IRC%20channel)
-- [OpenTTD on Github](https://github.com/openTTD/) for code repositories and for reporting issues
+- [OpenTTD on Github](https://github.com/OpenTTD/) for code repositories and for reporting issues
 - [forum.openttd.org](https://forum.openttd.org/) - the primary community forum site for discussing OpenTTD and related games
 - [OpenTTD wiki](https://wiki.openttd.org/) community-maintained wiki, including topics like gameplay guide, detailed explanation of some game mechanics, how to use add-on content (mods) and much more
 
