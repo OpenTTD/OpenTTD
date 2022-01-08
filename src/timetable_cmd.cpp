@@ -13,7 +13,6 @@
 #include "date_func.h"
 #include "window_func.h"
 #include "vehicle_base.h"
-#include "cmd_helper.h"
 #include "timetable_cmd.h"
 
 #include "table/strings.h"

@@ -8,7 +8,6 @@
 /** @file water_cmd.cpp Handling of water tiles. */
 
 #include "stdafx.h"
-#include "cmd_helper.h"
 #include "landscape.h"
 #include "viewport_func.h"
 #include "command_func.h"
@@ -100,7 +99,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  */
 CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 {
-	if (!IsEnumValid(axis)) return CMD_ERROR;
+	if (!IsValidAxis(axis)) return CMD_ERROR;
 	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	if (!HasTileWaterGround(tile) || !HasTileWaterGround(tile2)) {
@@ -439,7 +438,7 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
  */
 CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal)
 {
-	if (start_tile >= MapSize() || !IsEnumValid(wc)) return CMD_ERROR;
+	if (start_tile >= MapSize() || !IsValidWaterClass(wc)) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
 	if (wc != WATER_CLASS_CANAL && _game_mode != GM_EDITOR) return CMD_ERROR;

@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "news_func.h"

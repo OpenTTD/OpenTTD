@@ -20,7 +20,6 @@
 #include "sortlist_type.h"
 #include "widgets/dropdown_func.h"
 #include "core/geometry_func.hpp"
-#include "cmd_helper.h"
 #include "tunnelbridge_map.h"
 #include "road_gui.h"
 #include "tunnelbridge_cmd.h"

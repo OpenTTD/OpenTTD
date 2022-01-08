@@ -8,7 +8,6 @@
 /** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
-#include "cmd_helper.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "depot_base.h"
@@ -966,7 +965,7 @@ CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex tile, TileInde
 CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir)
 {
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	if (!ValParamRailtype(railtype) || !IsEnumValid(dir)) return CMD_ERROR;
+	if (!ValParamRailtype(railtype) || !IsValidDiagDirection(dir)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile);
 

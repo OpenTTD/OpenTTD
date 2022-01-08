@@ -14,7 +14,6 @@
 #include "landscape.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "industry.h"
 #include "station_base.h"

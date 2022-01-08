@@ -11,7 +11,6 @@
 #include "roadveh.h"
 #include "news_func.h"
 #include "airport.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "train.h"

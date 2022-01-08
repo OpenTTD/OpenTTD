@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "aircraft.h"
 #include "bridge_map.h"
-#include "cmd_helper.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
 #include "command_func.h"
@@ -1257,7 +1256,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile_org, flags);
 	if (ret.Failed()) return ret;
 
-	if (!ValParamRailtype(rt) || !IsEnumValid(axis)) return CMD_ERROR;
+	if (!ValParamRailtype(rt) || !IsValidAxis(axis)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
 	if ((uint)spec_class >= StationClass::GetClassCount() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
@@ -1818,7 +1817,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  */
 CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, uint8 length, RoadStopType stop_type, bool is_drive_through, DiagDirection ddir, RoadType rt, StationID station_to_join, bool adjacent)
 {
-	if (!ValParamRoadType(rt) || !IsEnumValid(ddir) || stop_type >= ROADSTOP_END) return CMD_ERROR;
+	if (!ValParamRoadType(rt) || !IsValidDiagDirection(ddir) || stop_type >= ROADSTOP_END) return CMD_ERROR;
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);

@@ -14,7 +14,6 @@
 #include "core/backup_type.hpp"
 #include "town.h"
 #include "news_func.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "network/network.h"
 #include "network/network_func.h"

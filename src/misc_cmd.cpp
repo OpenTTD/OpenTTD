@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "economy_func.h"
-#include "cmd_helper.h"
 #include "window_func.h"
 #include "textbuf_gui.h"
 #include "network/network.h"
