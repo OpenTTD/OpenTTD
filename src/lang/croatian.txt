@@ -2108,6 +2108,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Ovom pri
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Izlaz
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Jesi li siguran da želiš izaći iz OpenTTD-a?
 STR_QUIT_YES                                                    :{BLACK}Da
 STR_QUIT_NO                                                     :{BLACK}Ne
 
@@ -2265,6 +2266,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzija
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa poslužitelja: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Datum početka: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Trenutni datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Skripta Igre: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Zaštićeno zaporkom!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}POSLUŽITELJ NEDOSTUPAN
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}POSLUŽITELJ PUN
@@ -2325,6 +2327,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka j
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Popis klijenata
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ovo je domaćin igre
 
 # Matches ConnectionType
 ###length 5
@@ -2359,6 +2362,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipa] Za {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
 
 # Network messages
@@ -2382,6 +2386,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Trebalo 
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Vaše računalo je presporo za držanje koraka sa serverom
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Vašem računalu je trebalo previše vremena za preuzimanje mape
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Vašem računalu je trebalo previše vremena za pridruživanje na server
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Tvoje ime igrača nije valjano
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moguć gubitak veze
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Zadnjih {NUM} sekundi nisu primljeni podaci sa servera
@@ -2749,6 +2754,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Raznovrs
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Posadi raznovrsno drveće. Shift mijenja prikaz građenje/procjena troškova.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nasumično odabrano drveće
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Nasumce posadi drveće po krajoliku
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Šumarak
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Stvaranje zemljišta

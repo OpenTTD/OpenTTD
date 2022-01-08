@@ -1644,6 +1644,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :เริ่ม
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :เป็นการกำหนดว่าจะเริ่มต้นการใช้งานหนังสือพิมพ์แบบสีเมื่อปีใด
 STR_CONFIG_SETTING_STARTING_YEAR                                :ปีที่เริ่มต้น: {STRING}
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :คะแนนเมื่อจบปี: {STRING}
 ###setting-zero-is-special
 
 ###length 3
@@ -3314,6 +3315,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}ระ�
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}อุตสาหกรรมนี้ได้มีการประกาศปิดตัวลงอย่างเป็นทางการ!
 
 
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} กำลังรอ{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}ปรับเปลี่ยนปริมาณผลผลิต (ระหว่าง 8 ถึง 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}เปลี่ยนระดับการผลิต (เปอร์เซ็นต์เพิ่มมากสุดถึง 800%)
