@@ -8,7 +8,6 @@
 /** @file group_cmd.cpp Handling of the engine groups */
 
 #include "stdafx.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "train.h"
 #include "vehiclelist.h"

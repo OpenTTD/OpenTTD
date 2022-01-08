@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "landscape.h"
 #include "bridge_map.h"
@@ -175,7 +174,7 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
  */
 CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, byte width, byte height, StationClassID spec_class, byte spec_index, StationID station_to_join, bool adjacent)
 {
-	if (!IsEnumValid(axis)) return CMD_ERROR;
+	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
 	if (spec_class != STAT_CLASS_WAYP) return CMD_ERROR;
 	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;

@@ -174,6 +174,17 @@ int GetCharacterHeight(FontSize size);
 
 extern DrawPixelInfo *_cur_dpi;
 
+/**
+ * Checks if a Colours value is valid.
+ *
+ * @param colours The value to check
+ * @return true if the given value is a valid Colours.
+ */
+static inline bool IsValidColours(Colours colours)
+{
+	return colours < COLOUR_END;
+}
+
 TextColour GetContrastColour(uint8 background, uint8 threshold = 128);
 
 /**

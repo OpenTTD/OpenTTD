@@ -53,6 +53,17 @@ enum WaterClass : byte {
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
 
+/**
+ * Checks if a water class is valid.
+ *
+ * @param wc The value to check
+ * @return true if the given value is a valid water class.
+ */
+static inline bool IsValidWaterClass(WaterClass wc)
+{
+	return wc < WATER_CLASS_INVALID;
+}
+
 /** Sections of the water depot. */
 enum DepotPart {
 	DEPOT_PART_NORTH = 0, ///< Northern part of a depot.

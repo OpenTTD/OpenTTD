@@ -8,7 +8,6 @@
 /** @file road_cmd.cpp Commands related to road tiles. */
 
 #include "stdafx.h"
-#include "cmd_helper.h"
 #include "road.h"
 #include "road_internal.h"
 #include "viewport_func.h"
@@ -638,7 +637,7 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 	}
 
 	/* do not allow building 'zero' road bits, code wouldn't handle it */
-	if (pieces == ROAD_NONE || !IsEnumValid(pieces) || !IsEnumValid(toggle_drd)) return CMD_ERROR;
+	if (pieces == ROAD_NONE || !IsValidRoadBits(pieces) || !IsValidDisallowedRoadDirections(toggle_drd)) return CMD_ERROR;
 	if (!ValParamRoadType(rt)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile);
@@ -979,7 +978,7 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, TileInde
 {
 	if (end_tile >= MapSize()) return CMD_ERROR;
 
-	if (!ValParamRoadType(rt) || !IsEnumValid(axis) || !IsEnumValid(drd)) return CMD_ERROR;
+	if (!ValParamRoadType(rt) || !IsValidAxis(axis) || !IsValidDisallowedRoadDirections(drd)) return CMD_ERROR;
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (axis == AXIS_X && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
@@ -1075,7 +1074,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (end_tile >= MapSize()) return { CMD_ERROR, 0 };
-	if (!ValParamRoadType(rt) || !IsEnumValid(axis)) return { CMD_ERROR, 0 };
+	if (!ValParamRoadType(rt) || !IsValidAxis(axis)) return { CMD_ERROR, 0 };
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (axis == AXIS_X && TileY(start_tile) != TileY(end_tile)) return { CMD_ERROR, 0 }; // x-axis
@@ -1140,7 +1139,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
  */
 CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, DiagDirection dir)
 {
-	if (!ValParamRoadType(rt) || !IsEnumValid(dir)) return CMD_ERROR;
+	if (!ValParamRoadType(rt) || !IsValidDiagDirection(dir)) return CMD_ERROR;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 

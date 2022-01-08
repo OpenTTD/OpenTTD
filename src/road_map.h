@@ -283,6 +283,17 @@ static inline bool HasTownOwnedRoad(TileIndex t)
 }
 
 /**
+ * Checks if a DisallowedRoadDirections is valid.
+ *
+ * @param wc The value to check
+ * @return true if the given value is a valid DisallowedRoadDirections.
+ */
+static inline bool IsValidDisallowedRoadDirections(DisallowedRoadDirections drt)
+{
+	return drt < DRD_END;
+}
+
+/**
  * Gets the disallowed directions
  * @param t the tile to get the directions from
  * @return the disallowed directions

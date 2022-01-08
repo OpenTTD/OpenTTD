@@ -14,7 +14,6 @@
 #include "stdafx.h"
 #include "newgrf_object.h"
 #include "viewport_func.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "town.h"
 #include "train.h"

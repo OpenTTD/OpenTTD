@@ -40,7 +40,6 @@
 #include "object_base.h"
 #include "game/game.hpp"
 #include "error.h"
-#include "cmd_helper.h"
 #include "string_func.h"
 #include "industry_cmd.h"
 #include "landscape_cmd.h"

@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "story_base.h"
 #include "core/pool_func.hpp"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
@@ -144,7 +143,9 @@ void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 /** Get the button background colour. */
 Colours StoryPageButtonData::GetColour() const
 {
-	return Extract<Colours, 0, 8>(this->referenced_id);
+	Colours colour = (Colours)GB(this->referenced_id, 0, 8);
+	if (!IsValidColours(colour)) return INVALID_COLOUR;
+	return colour;
 }
 
 StoryPageButtonFlags StoryPageButtonData::GetFlags() const
@@ -155,7 +156,9 @@ StoryPageButtonFlags StoryPageButtonData::GetFlags() const
 /** Get the mouse cursor used while waiting for input for the button. */
 StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 {
-	return Extract<StoryPageButtonCursor, 8, 8>(this->referenced_id);
+	StoryPageButtonCursor cursor = (StoryPageButtonCursor)GB(this->referenced_id, 8, 8);
+	if (!IsValidStoryPageButtonCursor(cursor)) return INVALID_SPBC;
+	return cursor;
 }
 
 /** Get the type of vehicles that are accepted by the button */
