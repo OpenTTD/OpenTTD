@@ -88,6 +88,13 @@ static const Year DEF_START_YEAR = 1950;
 /** The default scoring end year */
 static const Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
 
+/** The default technology progress speed. */
+static const uint8 DEF_TECHNOLOGY_PROGRESS_SPEED = 1;
+/** Frozen technology progress speed. */
+static const uint8 FROZEN_TECHNOLOGY_PROGRESS_SPEED = 0;
+/** The slowest non-frozen technology progress speed, 1/255 times normal. */
+static const uint8 SLOWEST_TECHNOLOGY_PROGRESS_SPEED = 255;
+
 /**
  * MAX_YEAR, nicely rounded value of the number of years that can
  * be encoded in a single 32 bits date, about 2^31 / 366 years.

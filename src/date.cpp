@@ -29,6 +29,10 @@ Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract; ///< Fractional part of the day.
 uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 
+Year      _technology_year;             ///< Current technology year
+Date      _technology_date;             ///< Current technology date in days (day counter)
+uint8     _technology_progress_counter; ///< Counter for advancing the technology date based on the chosen technology progress speed
+
 /**
  * Set the date.
  * @param date  New date
@@ -45,6 +49,12 @@ void SetDate(Date date, DateFract fract)
 	ConvertDateToYMD(date, &ymd);
 	_cur_year = ymd.year;
 	_cur_month = ymd.month;
+
+	_technology_year = _settings_game.economy.technology_year;
+	_technology_date = ConvertYMDToDate(_technology_year, 0, 1);
+
+	/* Set the technology progress counter to the chosen speed setting, chosen by the player in 1/n times normal speed. This counter decrements every game day. */
+	_technology_progress_counter = _settings_game.economy.technology_progress_speed;
 }
 
 #define M(a, b) ((a << 5) | b)
@@ -302,4 +312,30 @@ void IncreaseDate()
 
 	/* yes, call various yearly loops */
 	if (new_year) OnNewYear();
+
+	/* If technology progress is not frozen, increase the technology date. */
+	if (_settings_game.economy.technology_progress_speed != FROZEN_TECHNOLOGY_PROGRESS_SPEED) {
+		/* Increase technology progress at the chosen speed, given as 1/n so larger n means slower progress. */
+		_technology_progress_counter--;
+
+		/* Counter has run out; advance technology date. */
+		if (_technology_progress_counter == 0) {
+			/* First, advance the technology date. */
+			_technology_date++;
+
+			/* Reset counter to the chosen setting. */
+			_technology_progress_counter = _settings_game.economy.technology_progress_speed;
+
+			/* Keep the technology year synced with the technology date. */
+			YearMonthDay tech_ymd;
+			ConvertDateToYMD(_technology_date, &tech_ymd);
+			if (_technology_year != tech_ymd.year) {
+				_technology_year = tech_ymd.year;
+
+				/* Also change the setting value, to keep Settings menu up-to-date. */
+				_settings_game.economy.technology_year = _technology_year;
+				SetWindowClassesDirty(WC_GAME_OPTIONS);
+			}
+		}
+	}
 }

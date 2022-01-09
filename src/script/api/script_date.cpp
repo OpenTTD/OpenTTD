@@ -67,3 +67,13 @@
 	time(&t);
 	return t;
 }
+
+/* static */ int32 ScriptDate::GetTechnologyYear()
+{
+	return (ScriptDate::Date)_technology_year;
+}
+
+/* static */ ScriptDate::Date ScriptDate::GetTechnologyDate()
+{
+	return (ScriptDate::Date)_technology_date;
+}

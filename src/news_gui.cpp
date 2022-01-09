@@ -789,7 +789,7 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
 	string_id(string_id), date(_date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
 {
 	/* show this news message in colour? */
-	if (_cur_year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
+	if (_technology_year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
 	CopyOutDParam(this->params, 0, lengthof(this->params));
 }
 

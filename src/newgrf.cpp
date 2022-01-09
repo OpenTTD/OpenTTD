@@ -6385,6 +6385,14 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 			*value = _cur_year;
 			return true;
 
+		case 0x25: // technology date
+			*value = _technology_date;
+			return true;
+
+		case 0x26: // technology year
+			*value = _technology_year;
+			return true;
+
 		default: return false;
 	}
 }

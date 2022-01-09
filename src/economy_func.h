@@ -36,6 +36,7 @@ void LoadUnloadStation(Station *st);
 
 Money GetPrice(Price index, uint cost_factor, const struct GRFFile *grf_file, int shift = 0);
 
+void ResetInflation();
 void InitializeEconomy();
 void RecomputePrices();
 bool AddInflation(bool check_year = true);

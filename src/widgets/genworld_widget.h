@@ -34,6 +34,10 @@ enum GenerateLandscapeWidgets {
 	WID_GL_START_DATE_TEXT,             ///< Start year.
 	WID_GL_START_DATE_UP,               ///< Increase start year.
 
+	WID_GL_TECHNOLOGY_PROGRESS_SPEED_DOWN, ///< Decrease technology progress speed
+	WID_GL_TECHNOLOGY_PROGRESS_SPEED_TEXT, ///< Technology progress speed
+	WID_GL_TECHNOLOGY_PROGRESS_SPEED_UP,   ///< Increase technology progress speed
+
 	WID_GL_SNOW_COVERAGE_DOWN,          ///< Decrease snow coverage.
 	WID_GL_SNOW_COVERAGE_TEXT,          ///< Snow coverage.
 	WID_GL_SNOW_COVERAGE_UP,            ///< Increase snow coverage.
@@ -77,6 +81,11 @@ enum CreateScenarioWidgets {
 	WID_CS_START_DATE_DOWN,        ///< Decrease start year (start earlier).
 	WID_CS_START_DATE_TEXT,        ///< Clickable start date value.
 	WID_CS_START_DATE_UP,          ///< Increase start year (start later).
+
+	WID_CS_TECHNOLOGY_PROGRESS_SPEED_DOWN, ///< Decrease technology progress speed
+	WID_CS_TECHNOLOGY_PROGRESS_SPEED_TEXT, ///< Technology progress speed
+	WID_CS_TECHNOLOGY_PROGRESS_SPEED_UP,   ///< Increase technology progress speed
+
 	WID_CS_FLAT_LAND_HEIGHT_DOWN,  ///< Decrease flat land height.
 	WID_CS_FLAT_LAND_HEIGHT_TEXT,  ///< Clickable flat land height value.
 	WID_CS_FLAT_LAND_HEIGHT_UP,    ///< Increase flat land height.

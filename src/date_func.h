@@ -18,6 +18,9 @@ extern Date      _date;
 extern DateFract _date_fract;
 extern uint16 _tick_counter;
 
+extern Year      _technology_year;
+extern Date      _technology_date;
+
 void SetDate(Date date, DateFract fract);
 void ConvertDateToYMD(Date date, YearMonthDay *ymd);
 Date ConvertYMDToDate(Year year, Month month, Day day);

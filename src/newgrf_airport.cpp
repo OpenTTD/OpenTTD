@@ -124,9 +124,9 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
 bool AirportSpec::IsAvailable() const
 {
 	if (!this->enabled) return false;
-	if (_cur_year < this->min_year) return false;
+	if (_technology_year < this->min_year) return false;
 	if (_settings_game.station.never_expire_airports) return true;
-	return _cur_year <= this->max_year;
+	return _technology_year <= this->max_year;
 }
 
 /**

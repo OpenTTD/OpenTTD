@@ -248,7 +248,7 @@ static void GenericPlaceSignals(TileIndex tile)
 			Command<CMD_BUILD_SIGNALS>::Post(_convert_signal_button ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
 				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
 		} else {
-			SignalVariant sigvar = _cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
+			SignalVariant sigvar = _technology_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
 			Command<CMD_BUILD_SIGNALS>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
 				tile, track, SIGTYPE_PBS_ONEWAY, sigvar, false, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
 
@@ -397,7 +397,7 @@ static void HandleAutoSignalPlacement()
 	} else {
 		bool sig_gui = FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr;
 		SignalType sigtype = sig_gui ? _cur_signal_type : SIGTYPE_PBS_ONEWAY;
-		SignalVariant sigvar = sig_gui ? _cur_signal_variant : (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
+		SignalVariant sigvar = sig_gui ? _cur_signal_variant : (_technology_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 		Command<CMD_BUILD_SIGNAL_TRACK>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
 				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, sigtype, sigvar, false, _ctrl_pressed, !_settings_client.gui.drag_signals_fixed_distance, _settings_client.gui.drag_signals_density);
 	}
@@ -2178,7 +2178,7 @@ static void SetDefaultRailGui()
  */
 void ResetSignalVariant(int32 new_value)
 {
-	SignalVariant new_variant = (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
+	SignalVariant new_variant = (_technology_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
 	if (new_variant != _cur_signal_variant) {
 		Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);

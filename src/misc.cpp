@@ -73,7 +73,15 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_newgrf_profilers.clear();
 
 	if (reset_date) {
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		/* Start with the technology date synced with the chosen starting year, no matter what. */
+		_settings_game.economy.technology_year = _settings_game.game_creation.starting_year;
+
+		/* If using a non-default technology progress speed, start game at year 1. */
+		if (_settings_game.economy.technology_progress_speed != DEF_TECHNOLOGY_PROGRESS_SPEED) {
+			SetDate(ConvertYMDToDate(1, 0, 1), 0); // Year 1.
+		} else {
+			SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0); // Use the actual year.
+		}
 		InitializeOldNames();
 	}
 

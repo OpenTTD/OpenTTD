@@ -728,7 +728,7 @@ bool AddInflation(bool check_year)
 	 * inflation doesn't add anything after that either; it even makes playing
 	 * it impossible due to the diverging cost and income rates.
 	 */
-	if (check_year && (_cur_year < ORIGINAL_BASE_YEAR || _cur_year >= ORIGINAL_MAX_YEAR)) return true;
+	if (check_year && (_technology_year < ORIGINAL_BASE_YEAR || _technology_year >= ORIGINAL_MAX_YEAR)) return true;
 
 	if (_economy.inflation_prices == MAX_INFLATION || _economy.inflation_payment == MAX_INFLATION) return true;
 
@@ -812,6 +812,7 @@ void RecomputePrices()
 	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
 	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
 	SetWindowClassesDirty(WC_COMPANY_INFRASTRUCTURE);
+	SetWindowClassesDirty(WC_FINANCES);
 	InvalidateWindowData(WC_PAYMENT_RATES, 0);
 }
 
@@ -912,6 +913,28 @@ void StartupIndustryDailyChanges(bool init_counter)
 	}
 }
 
+/**
+ * Set or reset any changes to interest rate or inflation to initial settings.
+ * Note: This is called upon economy startup and whenever the player manually changes
+ * the year (via cheats) or frozen technology year setting.
+ */
+void ResetInflation()
+{
+	if (!_settings_game.economy.inflation) return;
+
+	/* Reset prices to their initial values. */
+	_economy.inflation_prices = _economy.inflation_payment = 1 << 16;
+
+	/* Apply inflation that happened before our game start year. Use the technology year, not the actual year. */
+	int months = (std::min(_technology_year, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR) * MONTHS_IN_YEAR;
+	for (int i = 0; i < months; i++) {
+		AddInflation(false);
+	}
+
+	/* Set up prices */
+	RecomputePrices();
+}
+
 void StartupEconomy()
 {
 	_economy.interest_rate = _settings_game.difficulty.initial_interest;
@@ -919,19 +942,10 @@ void StartupEconomy()
 	_economy.infl_amount_pr = std::max(0, _settings_game.difficulty.initial_interest - 1);
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 
-	if (_settings_game.economy.inflation) {
-		/* Apply inflation that happened before our game start year. */
-		int months = (std::min(_cur_year, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR) * 12;
-		for (int i = 0; i < months; i++) {
-			AddInflation(false);
-		}
-	}
+	ResetInflation();
 
-	/* Set up prices */
-	RecomputePrices();
-
-	StartupIndustryDailyChanges(true); // As we are starting a new game, initialize the counter too
-
+	/* As we are starting a new game, initialize the counter too */
+	StartupIndustryDailyChanges(true);
 }
 
 /**
@@ -1963,7 +1977,8 @@ void LoadUnloadStation(Station *st)
 void CompaniesMonthlyLoop()
 {
 	CompaniesGenStatistics();
-	if (_settings_game.economy.inflation) {
+	/* No point applying inflation if technology progress is frozen. */
+	if (_settings_game.economy.inflation && _settings_game.economy.technology_progress_speed != FROZEN_TECHNOLOGY_PROGRESS_SPEED) {
 		AddInflation();
 		RecomputePrices();
 	}

@@ -643,11 +643,11 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	              e->GetGRFID());
 	uint32 r = Random();
 
-	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
-	 * of engines in early starting games.
+	/* Don't randomise the start-date in the first two years after game start (or frozen technology year, if enabled)
+	 * to ensure availability of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
-	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
-	if (e->intro_date <= _date) {
+	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.economy.technology_year + 2, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
+	if (e->intro_date <= _technology_date) {
 		e->age = (aging_date - e->intro_date) >> 5;
 		e->company_avail = (CompanyMask)-1;
 		e->flags |= ENGINE_AVAILABLE;
@@ -683,7 +683,7 @@ void StartupOneEngine(Engine *e, Date aging_date)
 void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
-	const Date aging_date = std::min(_date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
+	const Date aging_date = std::min(_technology_date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
 
 	for (Engine *e : Engine::Iterate()) {
 		StartupOneEngine(e, aging_date);
@@ -825,6 +825,9 @@ static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
 /** Daily check to offer an exclusive engine preview to the companies. */
 void EnginesDailyLoop()
 {
+	/* Bail out if technology progress is frozen, since no new vehicles will ever be introduced. */
+	if (_settings_game.economy.technology_progress_speed == FROZEN_TECHNOLOGY_PROGRESS_SPEED) return;
+
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, _date);
 		c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes, _date);
@@ -1010,7 +1013,7 @@ static void NewVehicleAvailable(Engine *e)
 /** Monthly update of the availability, reliability, and preview offers of the engines. */
 void EnginesMonthlyLoop()
 {
-	if (_cur_year < _year_engine_aging_stops) {
+	if (_technology_year < _year_engine_aging_stops && _settings_game.economy.technology_progress_speed != FROZEN_TECHNOLOGY_PROGRESS_SPEED) {
 		for (Engine *e : Engine::Iterate()) {
 			/* Age the vehicle */
 			if ((e->flags & ENGINE_AVAILABLE) && e->age != MAX_DAY) {
@@ -1021,10 +1024,10 @@ void EnginesMonthlyLoop()
 			/* Do not introduce invalid engines */
 			if (!e->IsEnabled()) continue;
 
-			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + DAYS_IN_YEAR)) {
+			if (!(e->flags & ENGINE_AVAILABLE) && _technology_date >= (e->intro_date + DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
-			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {
+			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && _technology_date >= e->intro_date) {
 				/* Introduction date has passed...
 				 * Check if it is allowed to build this vehicle type at all
 				 * based on the current game settings. If not, it does not

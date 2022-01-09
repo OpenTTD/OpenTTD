@@ -2177,8 +2177,8 @@ static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
-			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) ||
-			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) ||
+			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _technology_year > 1950) ||
+			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _technology_year < 1960) ||
 			(chance = GetIndustryProbabilityCallback(it, IACT_RANDOMCREATION, chance)) == 0) {
 		*min_number = 0;
 		return 0;

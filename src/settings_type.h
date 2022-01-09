@@ -520,6 +520,8 @@ struct EconomySettings {
 	uint16 town_noise_population[3];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
+	uint8  technology_progress_speed;        ///< the rate of technological progress, in 1/n times normal speed.
+	Year   technology_year;                  ///< choose the technology year, which decides availability of vehicles, houses, road/railtypes, etc.
 };
 
 struct LinkGraphSettings {

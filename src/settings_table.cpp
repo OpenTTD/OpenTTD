@@ -43,6 +43,7 @@
 #include "smallmap_gui.h"
 #include "roadveh.h"
 #include "vehicle_func.h"
+#include "engine_func.h"
 #include "void_map.h"
 
 #include "table/strings.h"
@@ -471,6 +472,21 @@ static void UpdateClientConfigValues()
 {
 	NetworkServerUpdateGameInfo();
 	if (_network_server) NetworkServerSendConfigUpdate();
+}
+
+/* The technology freeze year has changed; update technology date and recalculate vehicle availability and other things. */
+static void TechnologyFreezeYearChanged(int32 new_value)
+{
+	_technology_date = ConvertYMDToDate(_settings_game.economy.technology_year, 0, 1);
+	_technology_year = _settings_game.economy.technology_year;
+
+	StartupEngines();
+	ResetSignalVariant();
+
+	_economy.inflation_prices = _economy.inflation_payment = 1 << 16;
+	ResetInflation();
+
+	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
 }
 
 /* End - Callback Functions */

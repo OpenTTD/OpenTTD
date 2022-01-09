@@ -256,7 +256,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || _technology_date >= e->intro_date + DAYS_IN_YEAR)) {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
@@ -270,7 +270,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRailTypes(rts, _date);
+	if (introduces) return AddDateIntroducedRailTypes(rts, _technology_date);
 	return rts;
 }
 

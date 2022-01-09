@@ -370,6 +370,10 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move the starting date backward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move the starting date forward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Click to enter the starting year
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DECREASE_TECHNOLOGY_SPEED          :{BLACK}Decrease the technology progress speed
+STR_SCENEDIT_TOOLBAR_TOOLTIP_TECHNOLOGY_SPEED                   :{BLACK}1/{NUM}
+STR_SCENEDIT_TOOLBAR_TOOLTIP_TECHNOLOGY_SPEED_FROZEN            :{BLACK}Frozen
+STR_SCENEDIT_TOOLBAR_TOOLTIP_INCREASE_TECHNOLOGY_SPEED          :{BLACK}Increase the technology progress speed
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Display map, town directory
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landscape generation
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Town generation
@@ -1415,6 +1419,16 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING2}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
+
+STR_CONFIG_SETTING_TECHNOLOGY_PROGRESS_SPEED                    :Technology progress speed: {STRING2}
+STR_CONFIG_SETTING_TECHNOLOGY_PROGRESS_SPEED_HELPTEXT           :Choose the rate of technological progression, which determines availability of vehicle models, houses, etc, independently of the actual game year.
+STR_CONFIG_SETTING_TECHNOLOGY_PROGRESS_SPEED_VALUE              :1/{NUM}
+###setting-zero-is-special
+STR_CONFIG_SETTING_TECHNOLOGY_PROGRESS_SPEED_FROZEN             :Frozen
+
+STR_CONFIG_SETTING_TECHNOLOGY_YEAR                              :Technology year: {STRING2}
+STR_CONFIG_SETTING_TECHNOLOGY_YEAR_HELPTEXT                     :Choose the technology year of the game, which determines availability of vehicle models, houses, etc, independently of the actual game year.
+STR_CONFIG_SETTING_TECHNOLOGY_YEAR_VALUE                        :{NUM}
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
@@ -3131,6 +3145,7 @@ STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Select t
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of towns:
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
+STR_MAPGEN_TECHNOLOGY_PROGRESS_SPEED                            :{BLACK}Technology progress speed:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of industries:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Highest peak:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Increase the maximum height of highest peak on the map by one
@@ -3173,6 +3188,7 @@ STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Highest 
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Snow coverage (in %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Desert coverage (in %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
+STR_MAPGEN_TECHNOLOGY_PROGRESS_SPEED_CAPT                       :{WHITE}Change technology progress speed
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type

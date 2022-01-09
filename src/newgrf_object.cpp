@@ -68,7 +68,7 @@ bool ObjectSpec::IsEverAvailable() const
  */
 bool ObjectSpec::WasEverAvailable() const
 {
-	return this->IsEverAvailable() && _date > this->introduction_date;
+	return this->IsEverAvailable() && _technology_date > this->introduction_date;
 }
 
 /**
@@ -78,7 +78,7 @@ bool ObjectSpec::WasEverAvailable() const
 bool ObjectSpec::IsAvailable() const
 {
 	return this->WasEverAvailable() &&
-			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
+			(_technology_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + DAYS_IN_YEAR);
 }
 
 /**

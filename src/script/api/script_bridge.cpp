@@ -23,7 +23,7 @@
 
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)
 {
-	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= _cur_year;
+	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= _technology_year;
 }
 
 /* static */ bool ScriptBridge::IsBridgeTile(TileIndex tile)

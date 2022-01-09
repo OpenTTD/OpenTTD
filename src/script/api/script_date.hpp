@@ -87,6 +87,18 @@ public:
 	 * @note This uses the clock of the host system, which can skew or be set back. Use with caution.
 	 */
 	static int32 GetSystemTime();
+
+	/**
+	 * Get the technology year, which governs the availability of vehicles, houses, industries, etc., independently of the actual game year.
+	 * @return The technology year of the game. If technology progress speed is 1/1, this will be the actual game year.
+	 */
+	static int32 GetTechnologyYear();
+
+	/**
+	 * Get the technology date, which governs the availability of vehicles, houses, industries, etc., independently of the actual game date.
+	 * @return The technology date of the game. If technology progress speed is 1/1, this will be the actual game date.
+	 */
+	static Date GetTechnologyDate();
 };
 
 #endif /* SCRIPT_DATE_HPP */
