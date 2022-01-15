@@ -680,6 +680,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}பிரோகிராம் - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}அழி
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK} மாற்று
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}நிறுவப்பட்ட மற்றொரு தொகுப்பிற்கு இசை தேர்வை மாற்றவும்
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}தற்போதைய பிரோகிராமிலிருந்து இசைத்தடத்தினை நீக்க சொடுக்கவும் (பயனரால் மாற்றப்பட்ட1 அல்லது 2 மட்டும்)
 
 # Highscore window
@@ -928,6 +929,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :புதிய
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :சீன ரென்மின்பி (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :ஹாங்காங் டாலர் (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :இந்திய ரூபாய் (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :இந்தோனேசிய ரூபியா (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :மலேசிய ரிங்கிட்டு (MYR)
 
 ###length 2
@@ -1367,6 +1369,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-க�
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :பனி முழுத் தழுவு அளவு: {STRING}
 
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :நிலப்பகுதியின் சமனில்லாத நிலை (புவிதுவக்கம் மட்டும்) : {STRING}
 ###length 4
@@ -1442,6 +1445,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :ஒரு அ�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :ஒரு அழுத்தம் (உடனடியாக)
 
 ###length 3
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :என்றுமில்லை
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :கேள்
 
 ###length 3
@@ -1471,6 +1475,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :அனைத்
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :அனைத்து செயல்கள்
 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :வாகனப் பட்டியலினைப் பயன்படுத்தவும்: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :வாகனங்களைக் குழுவாக்க மேம்பட்ட வாகனப் பட்டியல்களின் பயன்பாட்டை இயக்கவும்
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :ஏற்றுதல் குறிகாட்டிகளைப் பயன்படுத்தவும்: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :வாகனங்களை ஏற்றுவதற்கு அல்லது இறக்குவதற்கு மேலே ஏற்றுதல் குறிகாட்டிகள் காட்டப்படுகிறதா என்பதைத் தேர்ந்தெடுக்கவும்
@@ -1687,6 +1692,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :status barஇ�
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} பிக்சல்{P 0 "" கள்}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :செயலிழக்க செய்யப்பட்டது
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :ஒட்டாத சாளரங்களின் அதிகபட்ச எண்ணிக்கை: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :செயலிழக்க செய்யப்பட்டது
@@ -1861,6 +1867,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ஆட�
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}புள்ளிகள் பட்டியலினைக் காட்டவும்
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}திரை அமைப்புகள்
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF அமைப்புகளைக் காட்டு
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}பதிவிறக்கம் செய்ய புதிய மற்றும் புதுப்பிக்கப்பட்ட உள்ளடக்கத்தை பார்க்கவும்
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI/வரிவடிவங்கள் அமைப்புகளைக் காட்டு
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} 'OpenTTD'ஐ விட்டு வெளியேறு
 
@@ -2079,9 +2086,11 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}நி�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :இணைய வீரர்கள்
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :பார்வையாளனாக பார்
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}உங்கள் சேவையகத்தின் பெயரைத் திருத்தவும்
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}தெரிவுநிலை
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}உங்கள் சேவையகத்தை மற்றவர்கள் எப்படி அணுகலாம்
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}உங்கள் வீரரின் பெயர்
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}இந்த நிறுவனத்திற்கான நிர்வாக நடவடிக்கைகள்
@@ -2093,11 +2102,15 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} �
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}தொலைக்கோடியான வீரர்களால் இணைய முடியவில்லை
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NAT-யிற்கு பின்னால்
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :தடை செய்
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :நீக்கு
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :கடவுச்சொல் திறத்தல்
 
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPANY}' நிறுவனத்தை நீக்க விரும்புகிறீர்களா?
 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}இல்லை
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}ஆம், இந்த முறை மட்டும்
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}ஆம், ஆனால் மீண்டும் கேட்காதே
 
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
@@ -2276,6 +2289,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ஆம், அசையூட்டங்களை பதிவிறக்கம் செய்
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல்லை, OpenTTD-ஐ விட்டு வெளியேறு
 
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}அசையூட்டம் பதிவிறக்கம் தோல்வியடைந்தது.{}அசையூட்டங்களை கைமுறையாகப் பதிவிறக்கவும்.
 STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTD-ஐ விட்டு வெளியேறு
 
 # Transparency settings window
@@ -2740,6 +2754,7 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}ஏற்கனவே உள்ள கோப்பை மேலெழுத விரும்புகிறீர்களா?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (கோப்பகம்)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (தாய் கோப்புறை)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}பதிவு-ஆட்டத்திற்கு பெயர் ஒன்றினை இடு
 
@@ -3266,9 +3281,11 @@ STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_L
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}ஏற்றுக்கொள்ளப்படும் சரக்குகள்: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}உற்பத்தி செய்யப்பட்ட சரக்குகள்: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :அனைத்து சரக்கு வகைகள்
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :ஒன்றுமில்லை
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3332,6 +3349,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :குழுவ
 STR_GROUP_DEFAULT_SHIPS                                         :குழுவில் இல்லாத கப்பல்கள்
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :குழுவில் இல்லாத விமானம்
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}குழுக்கள் - குழுவில் உள்ள அனைத்து வாகனங்களினை பார்க்க அக்குழுவினை சொடுக்கவும்
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}ஓர் குழுவினை உருவாக்க சொடுக்கவும்
@@ -4036,6 +4054,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}வர�
 STR_SCREENSHOT_CAPTION                                          :{WHITE}ஒரு திரைப்பிடிப்பினை எடுக்கவும்
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}சாதாரண திரைப்பிடிப்பு
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}திரைபிடிப்பு - இயல்பிருப்பு பெரிதாக்குதல்
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}முழு வரைபடத்தின் திரைபிடிப்பு
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}உயர்படத்தின் திரைப்பிடிப்பு
 
 # AI Parameters
