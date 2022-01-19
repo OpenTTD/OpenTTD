@@ -402,8 +402,9 @@ bool Station::CatchmentCoversTown(TownID t) const
 /**
  * Recompute tiles covered in our catchment area.
  * This will additionally recompute nearby towns and industries.
+ * @param redraw Should we redraw the catchment area?
  */
-void Station::RecomputeCatchment()
+void Station::RecomputeCatchment(bool redraw)
 {
 	this->industries_near.clear();
 	this->RemoveFromAllNearbyLists();
@@ -465,6 +466,9 @@ void Station::RecomputeCatchment()
 			this->AddIndustryToDeliver(i);
 		}
 	}
+	/* Redraw the screen when building or removing stations, to update coverage highlights.
+	 * Note: We can't just redraw tiles in this->catchment_tiles, since this would exclude just-removed tiles.*/
+	if (redraw) MarkWholeScreenDirty();
 }
 
 /**
@@ -473,7 +477,7 @@ void Station::RecomputeCatchment()
  */
 /* static */ void Station::RecomputeCatchmentForAll()
 {
-	for (Station *st : Station::Iterate()) { st->RecomputeCatchment(); }
+	for (Station *st : Station::Iterate()) { st->RecomputeCatchment(false); }
 }
 
 /************************************************************************/

@@ -745,7 +745,7 @@ static void DeleteStationIfEmpty(BaseStation *st)
 void Station::AfterStationTileSetChange(bool adding, StationType type)
 {
 	this->UpdateVirtCoord();
-	this->RecomputeCatchment();
+	this->RecomputeCatchment(true);
 	DirtyCompanyInfrastructureWindows(this->owner);
 	if (adding) InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
@@ -1663,7 +1663,7 @@ CommandCost CmdRemoveFromRailStation(DoCommandFlag flags, TileIndex start, TileI
 
 		if (st->train_station.tile == INVALID_TILE) SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		st->MarkTilesDirty(false);
-		st->RecomputeCatchment();
+		st->RecomputeCatchment(true);
 	}
 
 	/* Now apply the rail cost to the number that we deleted */
@@ -1744,7 +1744,7 @@ static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 	Station *st = Station::GetByTile(tile);
 	CommandCost cost = RemoveRailStation(st, flags, _price[PR_CLEAR_STATION_RAIL]);
 
-	if (flags & DC_EXEC) st->RecomputeCatchment();
+	if (flags & DC_EXEC) st->RecomputeCatchment(true);
 
 	return cost;
 }
@@ -4107,7 +4107,7 @@ void BuildOilRig(TileIndex tile)
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 	st->UpdateVirtCoord();
-	st->RecomputeCatchment();
+	st->RecomputeCatchment(true);
 	UpdateStationAcceptance(st, false);
 }
 

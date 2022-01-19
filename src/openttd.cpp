@@ -1286,7 +1286,7 @@ static void CheckCaches()
 
 		/* Check industries_near */
 		IndustryList industries_near = st->industries_near;
-		st->RecomputeCatchment();
+		st->RecomputeCatchment(false);
 		if (st->industries_near != industries_near) {
 			Debug(desync, 2, "station industries near mismatch: station {}", st->index);
 		}

@@ -494,7 +494,7 @@ public:
 
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const override;
 	uint GetPlatformLength(TileIndex tile) const override;
-	void RecomputeCatchment();
+	void RecomputeCatchment(bool redraw);
 	static void RecomputeCatchmentForAll();
 
 	uint GetCatchmentRadius() const;
