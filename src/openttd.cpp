@@ -835,9 +835,9 @@ void HandleExitGameRequest()
  */
 static void OnStartGame(bool dedicated_server)
 {
-	/* Update the local company for a loaded game. It is either always
-	 * company #1 (eg 0) or in the case of a dedicated server a spectator */
-	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : COMPANY_FIRST);
+	/* Update the local company for a loaded game. It is either the first available company
+	 * or in the case of a dedicated server, a spectator */
+	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID());
 
 	/* Update the static game info to set the values from the new game. */
 	NetworkServerUpdateGameInfo();

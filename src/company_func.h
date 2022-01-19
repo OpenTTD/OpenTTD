@@ -56,5 +56,6 @@ static inline bool IsInteractiveCompany(CompanyID company)
 }
 
 int CompanyServiceInterval(const Company *c, VehicleType type);
+CompanyID GetFirstPlayableCompanyID();
 
 #endif /* COMPANY_FUNC_H */
