@@ -52,6 +52,15 @@ public:
 	 * @return True if the object was successfully build.
 	 */
 	static bool BuildObject(ObjectType object_type, uint8 view, TileIndex tile);
+
+	/**
+	 * Get a specific object-type from a grf.
+	 * @param grf_id The ID of the NewGRF.
+	 * @param grf_local_id The ID of the object, local to the NewGRF.
+	 * @pre 0x00 <= grf_local_id < NUM_OBJECTS_PER_GRF.
+	 * @return the object-type ID, local to the current game (this diverges from the grf_local_id).
+	 */
+	static ObjectType ResolveNewGRFID(uint32 grfid, uint16 grf_local_id);
 };
 
 #endif /* SCRIPT_OBJECTTYPE_HPP */
