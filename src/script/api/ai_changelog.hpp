@@ -17,6 +17,7 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * \li AIIndustryType::ResolveNewGRFID
  * \li AIObjectType::ResolveNewGRFID
  *
  * \b 12.0
