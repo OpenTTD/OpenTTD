@@ -1,5 +1,5 @@
 ##name Chinese (Hong Kong)
-##ownname 中文（香港）
+##ownname 繁體中文（香港）
 ##isocode zh_HK
 ##plural 1
 ##textdir ltr
