@@ -525,8 +525,8 @@ struct MpsMachine {
 	Channel channels[16];         ///< playback status for each MIDI channel
 	std::vector<uint32> segments; ///< pointers into songdata to repeatable data segments
 	int16 tempo_ticks;            ///< ticker that increments when playing a frame, decrements before playing a frame
-	int16 current_tempo;         ///< threshold for actually playing a frame
-	int16 initial_tempo;         ///< starting tempo of song
+	int16 current_tempo;          ///< threshold for actually playing a frame
+	int16 initial_tempo;          ///< starting tempo of song
 	bool shouldplayflag;          ///< not-end-of-song flag
 
 	static const int TEMPO_RATE;
@@ -787,10 +787,11 @@ struct MpsMachine {
 	bool PlayInto()
 	{
 		/* Tempo seems to be handled as TEMPO_RATE = 148 ticks per second.
-		 * Use this as the tickdiv, and define the tempo to be one second (1M microseconds) per tickdiv.
+		 * Use this as the tickdiv, and define the tempo to be somewhat less than one second (1M microseconds) per quarter note.
+		 * This value was found experimentally to give a very close approximation of the correct playback speed.
 		 * MIDI software loading exported files will show a bogus tempo, but playback will be correct. */
 		this->target.tickdiv = TEMPO_RATE;
-		this->target.tempos.push_back(MidiFile::TempoChange(0, 1000000));
+		this->target.tempos.push_back(MidiFile::TempoChange(0, 980500));
 
 		/* Initialize playback simulation */
 		this->RestartSong();
