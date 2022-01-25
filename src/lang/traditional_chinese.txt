@@ -1,5 +1,5 @@
-##name Chinese (Traditional)
-##ownname 繁體中文
+##name Chinese (Taiwan)
+##ownname 繁體中文（臺灣）
 ##isocode zh_TW
 ##plural 1
 ##textdir ltr
