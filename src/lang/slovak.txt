@@ -1362,7 +1362,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Strmosť svahu 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Strmosť svahu na diel pre vlaky. Vyššia hodnota spôsobuje väčší problém pri prejazde cez vrcholce.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Strmosť svahu pre voziidlá: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Strmosť svahu pre cestné vozidlá: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Strmosť svahu na diel pre vozidlá. Vyššia hodnota spôsobuje väčší problém pri prejazde cez vrcholce.
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázať vlakom a lodiam otáčanie o 90°: {STRING}
@@ -1811,6 +1811,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Zobrazovať spr
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Havárie / Katastrofy: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Zobrazovať správu keď sa vyskytne dopravná nehoda alebo katastrofa
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Nehody konkurenčných vozidiel: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Zobraziť správy o havarovaných vozidlách pre konkurenciu
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informácie o spoločnosti: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zobrazovať správu keď vznikla nová spoločnosť alebo keď je spoločnosť v riziku bankrotu
@@ -1893,11 +1895,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Výber návesti
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Iba trasové návestidlá
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Všetky
 
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraziť typy signálu: {STRING}
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Zvoliť, aké typy signálu sú zobrazené v menu signálov
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraziť typy návestidiel: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Zvoliť, aké typy návestidiel sú zobrazené pri výbere návestidiel
 ###length 2
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Iba Path signály
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Všetky signály
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Iba trasové návestidlá
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Všetky návestidlá
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Návrh ciest pre nové mestá: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rozloženie cestnej siete v mestách.
@@ -2326,6 +2328,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Krajina
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Veľkosť mapy: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzia servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa servera: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Kód pozvánky: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Počiatočný dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuálny dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Herný skript: {WHITE}{STRING} (v{NUM})
@@ -2742,6 +2745,7 @@ STR_STATION_CLASS_WAYP                                          :Smerové body
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výber návestidla
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Prepnúť zobrazenie zložitejších typov návestidiel
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčajné návestidlo (mechanické){}Základný typ návestidla, povolí iba jeden vlak v jednom úseku v rovnakom čase
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupné návestidlo (mechanické){}Zelená tak dlho, kým je aspoň jedno zelené výstupné návestidlo na nasledujúcom úseku trate. Inak ukazuje červenú
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupné návestidlo (mechanické){}Funguje rovnako ako obyčajné návestidlo, je však nevyhnutné na určenie správnej farby na vstupných a kombinovaných návestidlách umiestnených pred ním
@@ -3860,7 +3864,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Vytvori�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Zrušiť vybranú skupinu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Premenovať vybranú skupinu
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmeniť farebnú schému vybranej skupiny
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Znemožniť automatické nahradzovanie v skupine
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Znemožniť automatické nahradzovanie v skupine. Ctrl+klik znemožní nahradzovanie aj v podskupinách.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Vymazať skupinu
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Ste si istý, že chcete vymazať túto skupinu a jej podskupiny?
@@ -4212,10 +4216,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Smeruje
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Smeruje do {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nedostanem sa do {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nedostanem sa do {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nedostanem sa do {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Nedostanem sa do {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Nedokáže sa dostať do {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Nedokáže sa dostať do {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Nedokáže sa dostať do {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Nedokáže sa dostať do {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2

@@ -4791,11 +4791,11 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}공항�
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}최소한 하나 이상의 경유지와 연결하십시오
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}다른 경유지와 너무 가깝습니다!
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}여기에 열차 경유지를 건설할 수 없습니다
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}여기에 열차 경유지를 설치할 수 없습니다...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}여기에 부표를 설치할 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}경유지의 이름을 변경할 수 없습니다...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}이 열차 경유지를 제거할 수 없습니다
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}이 열차 경유지를 제거할 수 없습니다...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}열차 경유지를 먼저 제거하십시오
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 도중에 부표가 있습니다
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 다른 회사에서 사용 중인 부표입니다!
