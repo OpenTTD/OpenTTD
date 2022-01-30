@@ -871,6 +871,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}ข้อเสนอสำหรับการอุดหนุนสิ้นสุด:{}{}{STRING} จาก {STRING} ถึง {STRING} จะไม่ได้รับการอุดหนุนอีกต่อไป.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}การอุดหนุนถูกถอดถอน:{}{}บริการ {STRING} จาก {STRING} ถึง {STRING} จะไม่ได้รับการสนับสนุนอีกต่อไป.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}มีการสนับสนุนในการทำโครงการ:{}{} ขนส่ง {STRING} จาก {STRING} ถึง {STRING} หากดำเนินการจะได้รับเงินอุดหนุนพิเศษ {NUM}  ปีจากเจ้าหน้าที่ในท้องถิ่น!
 ###length 4
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}การจราจรยุ่งเหยิงใน {TOWN}!{}{}การสร้างถนนใหม่ที่ได้รับการสนับสนุนโดย {STRING} นำมาซึ่งหกเดือนแห่งความสงสัยแก่ผู้ใช้ถนน!
@@ -1364,6 +1365,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :แสดงจ
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :ความหนาของเส้นกราฟ: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :ความกว้างของเส้นกราฟ สามารถปรับขนาดได้เพื่อสะดวกในการมองเห็น
 
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :แสดงชื่อ NewGRF's ในแถบสร้างยานพาหนะ: {STRING}
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :ภูมิประเทศ: {STRING}
 
@@ -1465,6 +1467,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :คลิกส
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :คลิกครั้งเดียว (เมื่อเพ่งความสนใจไป)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :คลิกครั้งเดียว (ทันที)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :กำลังใช้บริการรีเลย์: {STRING}
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :ถาม
 
@@ -1627,6 +1630,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :แสดงข
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :ภัยพิบัติ / อุบัติเหตุ: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :แสดงข่าวเกี่ยวกับภัยพิบัติและอุบัติเหตุ
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :แสดงข้อความเกี่ยวกับอุบัติเหตุต่างๆ
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :ข้อมูลข่าวสารของบริษัท: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :แสดงข่าวเมื่อมีบริษัทเปิดใหม่หรือบริษัทใกล้ล้มละลาย
@@ -1944,6 +1948,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK} กา�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}ออกจากเกม
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}คุณแน่ใจว่าจะออกจากเกม OpenTTD }?
 STR_QUIT_YES                                                    :{BLACK}ใช่
 STR_QUIT_NO                                                     :{BLACK}ไม่
 
@@ -2173,6 +2178,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(สร้า�
 ###length 5
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Behind NAT
 
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :ลบ
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}คุณแน่ใจว่าจะเตะผู้เล่น '{STRING}' ใช่มั้ย?
 
@@ -2594,6 +2600,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}สุ�
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}วางต้นไม้แบบสุ่มชนิด. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}สุ่มต้นไม้
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}ปลูกต้นไม้โดยการสุ่มทั่วทุกบริเวณ
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :ป่าไม้
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}สร้างแผ่นดิน
@@ -2802,6 +2809,7 @@ STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} 
 
 ###length 15
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}เกมลูป :
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  ความหนาแน่นของยานพาหนะ:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  มุมมองของแผนที่:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI ทั้งหมด:
 
@@ -2844,6 +2852,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}จำนวนเมือง
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำนวนอุตสาหกรรม:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}เพิ่มขนาดความสูงที่สุดของยอดเขาบนแผนที่
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}ลดขนาดความสูงที่สุดของยอดเขาบนแผนที่
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}เพิ่มการครอบคลุมหิมะไปถึงสิบเปอร์เซ็นต์
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
@@ -2987,6 +2996,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}เค�
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}แสดง sprite ที่เลือกใหม่อีกครั้ง
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}ย้าย sprite wxiv[q, แก้ไขแกน X และ Y สำหรับความคลาดเคลื่อน
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}รีเซ็ตการตั้งค่าปัจจุบัน
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}ตำแน่ง X: {NUM}, ตำแหน่ง Y: {NUM} (แบบแน่นอน)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}หยิบ sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}หยิบ sprite จากที่ใดก็ตามในหน้าจอ
 
@@ -3144,6 +3154,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}จ่�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} เป้าหมาย
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}เป้าหมายรวม
+STR_GOALS_SPECTATOR                                             :เป้าหมายโดยรวม
 STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :แสดงเป้าหมายโดยรวม
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}แสดงเป้าหมายของบริษัท
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3455,6 +3466,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}ลบ�
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}เปลี่ยนชื่อกลุ่มที่เลือก
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}กดเพื่อป้องกันกลุ่มนี้จากการใช้งาน แทนที่ใหม่อัตโนมัติ
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}ลบกลุ่ม
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :เพิ่มยานพาหนะที่ใช้รายการคำสั่งเดียวกัน
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :ลบยานพาหนะทั้งหมด
@@ -3524,6 +3536,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}ซื�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}ซื้อเครื่องบินที่เลือกไว้ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณโดยไม่ทำการซื้อ
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}ซื้อเรือที่จะแทนที่ไว้ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณโดยไม่ทำการซื้อ
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}เปลี่ยนชื่อ
@@ -3701,6 +3714,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :รถไฟพ
 
 STR_REPLACE_TRAM_VEHICLES                                       :รถราง
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}แทนที่รถจักรและรถพ่วง({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}ทำให้การแทนที่ขบวนรถไฟทำให้ความยาวของขบวนยังเท่าเดิม
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click ที่กลุ่มที่เลือกไว้ สามารถเปิดกลุ่มย่อยได้ด้วยเช่นกัน
 
@@ -4510,6 +4524,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ค�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}ไม่สามารถตั้งกลุ่มได้...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}ไม่สามารถลบกลุ่มนี้ได้...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}ไม่สามารถเปลี่ยนชื่อกลุ่มได้...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}ไม่สามารถสร้างกลุ่มย่อยได้...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}ไม่สามารถลบยานพาหนะทั้งหมดจากกลุ่มนี้ได้...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}ไม่สามารถเพิ่มยานพาหนะเข้าสู่กลุ่มนี้ได้...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}ไม่สามารถเพิ่มยานพาหนะที่ใช้คำสั่งร่วมกันเข้ากลุ่มนี้ได้...
