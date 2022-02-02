@@ -2195,10 +2195,8 @@ static const NWidgetPart _nested_company_widgets[] = {
 
 int GetAmountOwnedBy(const Company *c, Owner owner)
 {
-	return (c->share_owners[0] == owner) +
-				 (c->share_owners[1] == owner) +
-				 (c->share_owners[2] == owner) +
-				 (c->share_owners[3] == owner);
+	auto share_owned_by = [owner](auto share_owner) { return share_owner == owner; };
+	return std::count_if(c->share_owners.begin(), c->share_owners.end(), share_owned_by);
 }
 
 /** Strings for the company vehicle counts */
@@ -2275,13 +2273,8 @@ struct CompanyWindow : Window
 			}
 
 			/* Owners of company */
-			plane = SZSP_HORIZONTAL;
-			for (uint i = 0; i < lengthof(c->share_owners); i++) {
-				if (c->share_owners[i] != INVALID_COMPANY) {
-					plane = 0;
-					break;
-				}
-			}
+			auto invalid_owner = [](auto owner) { return owner == INVALID_COMPANY; };
+			plane = std::all_of(c->share_owners.begin(), c->share_owners.end(), invalid_owner) ? SZSP_HORIZONTAL : 0;
 			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_DESC_OWNERS);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
