@@ -67,7 +67,7 @@ Company::Company(uint16 name_1, bool is_ai)
 	this->clear_limit     = (uint32)_settings_game.construction.clear_frame_burst << 16;
 	this->tree_limit      = (uint32)_settings_game.construction.tree_frame_burst << 16;
 
-	for (uint j = 0; j < 4; j++) this->share_owners[j] = INVALID_OWNER;
+	std::fill(this->share_owners.begin(), this->share_owners.end(), INVALID_OWNER);
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
 
@@ -557,7 +557,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	c->money = c->current_loan = (std::min<int64>(INITIAL_LOAN, _economy.max_loan) * _economy.inflation_prices >> 16) / 50000 * 50000;
 
-	c->share_owners[0] = c->share_owners[1] = c->share_owners[2] = c->share_owners[3] = INVALID_OWNER;
+	std::fill(c->share_owners.begin(), c->share_owners.end(), INVALID_OWNER);
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);

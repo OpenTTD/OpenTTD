@@ -306,42 +306,38 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 	assert(old_owner != new_owner);
 
-	{
-		uint i;
-
-		/* See if the old_owner had shares in other companies */
-		for (const Company *c : Company::Iterate()) {
-			for (i = 0; i < 4; i++) {
-				if (c->share_owners[i] == old_owner) {
-					/* Sell its shares */
-					CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, c->index);
-					/* Because we are in a DoCommand, we can't just execute another one and
-					 *  expect the money to be removed. We need to do it ourself! */
-					SubtractMoneyFromCompany(res);
-				}
-			}
-		}
-
-		/* Sell all the shares that people have on this company */
-		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
-		Company *c = Company::Get(old_owner);
-		for (i = 0; i < 4; i++) {
-			if (c->share_owners[i] == INVALID_OWNER) continue;
-
-			if (c->bankrupt_value == 0 && c->share_owners[i] == new_owner) {
-				/* You are the one buying the company; so don't sell the shares back to you. */
-				c->share_owners[i] = INVALID_OWNER;
-			} else {
-				cur_company2.Change(c->share_owners[i]);
-				/* Sell the shares */
-				CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, old_owner);
+	/* See if the old_owner had shares in other companies */
+	for (const Company *c : Company::Iterate()) {
+		for (auto share_owner : c->share_owners) {
+			if (share_owner == old_owner) {
+				/* Sell its shares */
+				CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, c->index);
 				/* Because we are in a DoCommand, we can't just execute another one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromCompany(res);
 			}
 		}
-		cur_company2.Restore();
 	}
+
+	/* Sell all the shares that people have on this company */
+	Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
+	Company *c = Company::Get(old_owner);
+	for (auto &share_owner : c->share_owners) {
+		if (share_owner == INVALID_OWNER) continue;
+
+		if (c->bankrupt_value == 0 && share_owner == new_owner) {
+			/* You are the one buying the company; so don't sell the shares back to you. */
+			share_owner = INVALID_OWNER;
+		} else {
+			cur_company2.Change(share_owner);
+			/* Sell the shares */
+			CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, old_owner);
+			/* Because we are in a DoCommand, we can't just execute another one and
+			 *  expect the money to be removed. We need to do it ourself! */
+			SubtractMoneyFromCompany(res);
+		}
+	}
+	cur_company2.Restore();
 
 	/* Temporarily increase the company's money, to be sure that
 	 * removing their property doesn't fail because of lack of money.
@@ -2029,9 +2025,9 @@ CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID 
 	if (_cur_year - c->inaugurated_year < _settings_game.economy.min_years_for_shares) return_cmd_error(STR_ERROR_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 0) return cost;
+	if (GetAmountOwnedBy(c, INVALID_OWNER) == 0) return cost;
 
-	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 1) {
+	if (GetAmountOwnedBy(c, INVALID_OWNER) == 1) {
 		if (!c->is_ai) return cost; //  We can not buy out a real company (temporarily). TODO: well, enable it obviously.
 
 		if (GetAmountOwnedBy(c, _current_company) == 3 && !MayCompanyTakeOver(_current_company, target_company)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
@@ -2040,17 +2036,14 @@ CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID 
 
 	cost.AddCost(CalculateCompanyValue(c) >> 2);
 	if (flags & DC_EXEC) {
-		Owner *b = c->share_owners;
+		auto unowned_share = std::find(c->share_owners.begin(), c->share_owners.end(), INVALID_OWNER);
+		assert(unowned_share != c->share_owners.end()); // share owners is guaranteed to contain at least one INVALID_OWNER, i.e. unowned share
+		*unowned_share = _current_company;
 
-		while (*b != COMPANY_SPECTATOR) b++; // share owners is guaranteed to contain at least one COMPANY_SPECTATOR
-		*b = _current_company;
-
-		for (int i = 0; c->share_owners[i] == _current_company;) {
-			if (++i == 4) {
-				c->bankrupt_value = 0;
-				DoAcquireCompany(c);
-				break;
-			}
+		auto current_company_owns_share = [](auto share_owner) { return share_owner == _current_company; };
+		if (std::all_of(c->share_owners.begin(), c->share_owners.end(), current_company_owns_share)) {
+			c->bankrupt_value = 0;
+			DoAcquireCompany(c);
 		}
 		InvalidateWindowData(WC_COMPANY, target_company);
 		CompanyAdminUpdate(c);
@@ -2083,9 +2076,9 @@ CommandCost CmdSellShareInCompany(DoCommandFlag flags, CompanyID target_company)
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
-		Owner *b = c->share_owners;
-		while (*b != _current_company) b++; // share owners is guaranteed to contain company
-		*b = COMPANY_SPECTATOR;
+		auto our_owner = std::find(c->share_owners.begin(), c->share_owners.end(), _current_company);
+		assert(our_owner != c->share_owners.end()); // share owners is guaranteed to contain at least one INVALID_OWNER
+		*our_owner = INVALID_OWNER;
 		InvalidateWindowData(WC_COMPANY, target_company);
 		CompanyAdminUpdate(c);
 	}
