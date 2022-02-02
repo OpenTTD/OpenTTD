@@ -254,6 +254,59 @@ DEF_CONSOLE_CMD(ConResetTile)
 #endif /* _DEBUG */
 
 /**
+ * Zoom map to given level.
+ * param level As defined by ZoomLevel and as limited by zoom_min/zoom_max from GUISettings.
+ * @return True when either console help was shown or a proper amount of parameters given.
+ */
+DEF_CONSOLE_CMD(ConZoomToLevel)
+{
+	switch (argc) {
+		case 0:
+			IConsolePrint(CC_HELP, "Set the current zoom level of the main viewport.");
+			IConsolePrint(CC_HELP, "Usage: 'zoomto <level>'.");
+			IConsolePrint(
+				CC_HELP,
+				ZOOM_LVL_MIN < _settings_client.gui.zoom_min ?
+					"The lowest zoom-in level allowed by current client settings is {}." :
+					"The lowest supported zoom-in level is {}.",
+				std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min)
+			);
+			IConsolePrint(
+				CC_HELP,
+				_settings_client.gui.zoom_max < ZOOM_LVL_MAX ?
+					"The highest zoom-out level allowed by current client settings is {}." :
+					"The highest supported zoom-out level is {}.",
+				std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX)
+			);
+			return true;
+
+		case 2: {
+			uint32 level;
+			if (GetArgumentInteger(&level, argv[1])) {
+				if (level < ZOOM_LVL_MIN) {
+					IConsolePrint(CC_ERROR, "Zoom-in levels below {} are not supported.", ZOOM_LVL_MIN);
+				} else if (level < _settings_client.gui.zoom_min) {
+					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming in below level {}.", _settings_client.gui.zoom_min);
+				} else if (level > ZOOM_LVL_MAX) {
+					IConsolePrint(CC_ERROR, "Zoom-in levels above {} are not supported.", ZOOM_LVL_MAX);
+				} else if (level > _settings_client.gui.zoom_max) {
+					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming out beyond level {}.", _settings_client.gui.zoom_max);
+				} else {
+					Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+					Viewport *vp = w->viewport;
+					while (vp->zoom > level) DoZoomInOutWindow(ZOOM_IN, w);
+					while (vp->zoom < level) DoZoomInOutWindow(ZOOM_OUT, w);
+				}
+				return true;
+			}
+			break;
+		}
+	}
+
+	return false;
+}
+
+/**
  * Scroll to a tile on the map.
  * param x tile number or tile x coordinate.
  * param y optional y coordinate.
@@ -264,34 +317,44 @@ DEF_CONSOLE_CMD(ConResetTile)
  */
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
-	switch (argc) {
-		case 0:
-			IConsolePrint(CC_HELP, "Center the screen on a given tile.");
-			IConsolePrint(CC_HELP, "Usage: 'scrollto <tile>' or 'scrollto <x> <y>'.");
-			IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
-			return true;
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Center the screen on a given tile.");
+		IConsolePrint(CC_HELP, "Usage: 'scrollto [instant] <tile>' or 'scrollto [instant] <x> <y>'.");
+		IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
+		IConsolePrint(CC_HELP, "'instant' will immediately move and redraw viewport without smooth scrolling.");
+		return true;
+	}
+	if (argc < 2) return false;
 
-		case 2: {
+	uint32 arg_index = 1;
+	bool instant = false;
+	if (strcmp(argv[arg_index], "instant") == 0) {
+		++arg_index;
+		instant = true;
+	}
+
+	switch (argc - arg_index) {
+		case 1: {
 			uint32 result;
-			if (GetArgumentInteger(&result, argv[1])) {
+			if (GetArgumentInteger(&result, argv[arg_index])) {
 				if (result >= MapSize()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile((TileIndex)result);
+				ScrollMainWindowToTile((TileIndex)result, instant);
 				return true;
 			}
 			break;
 		}
 
-		case 3: {
+		case 2: {
 			uint32 x, y;
-			if (GetArgumentInteger(&x, argv[1]) && GetArgumentInteger(&y, argv[2])) {
+			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
 				if (x >= MapSizeX() || y >= MapSizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile(TileXY(x, y));
+				ScrollMainWindowToTile(TileXY(x, y), instant);
 				return true;
 			}
 			break;
@@ -2396,6 +2459,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("return",                  ConReturn);
 	IConsole::CmdRegister("screenshot",              ConScreenShot);
 	IConsole::CmdRegister("script",                  ConScript);
+	IConsole::CmdRegister("zoomto",                  ConZoomToLevel);
 	IConsole::CmdRegister("scrollto",                ConScrollToTile);
 	IConsole::CmdRegister("alias",                   ConAlias);
 	IConsole::CmdRegister("load",                    ConLoad);
