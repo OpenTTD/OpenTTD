@@ -458,7 +458,7 @@ public:
 		}
 
 		if (_selected_object_index != -1) {
-			SetObjectToPlaceWnd(SPR_CURSOR_TRANSMITTER, PAL_NONE, HT_RECT, this);
+			SetObjectToPlaceWnd(SPR_CURSOR_TRANSMITTER, PAL_NONE, HT_RECT | HT_DIAGONAL, this);
 		}
 
 		this->UpdateButtons(_selected_object_class, _selected_object_index, _selected_object_view);
@@ -543,9 +543,38 @@ public:
 
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
-		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-		Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
-				tile, objclass->GetSpec(_selected_object_index)->Index(), _selected_object_view);
+		const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
+
+		if (spec->size == OBJECT_SIZE_1X1) {
+			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
+		} else {
+			Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), _selected_object_view);
+		}
+	}
+
+	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
+	{
+		if (pt.x == -1) return;
+
+		switch (select_proc) {
+			default: NOT_REACHED();
+			case DDSP_BUILD_OBJECT:
+				if (!_settings_game.construction.freeform_edges) {
+					/* When end_tile is MP_VOID, the error tile will not be visible to the
+						* user. This happens when terraforming at the southern border. */
+					if (TileX(end_tile) == MapMaxX()) end_tile += TileDiffXY(-1, 0);
+					if (TileY(end_tile) == MapMaxY()) end_tile += TileDiffXY(0, -1);
+				}
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
+				Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
+					end_tile, start_tile, spec->Index(), _selected_object_view, (_ctrl_pressed ? true : false));
+				break;
+		}
 	}
 
 	void OnPlaceObjectAbort() override
