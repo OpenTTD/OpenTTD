@@ -311,6 +311,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	}
 
 	int hq_score = 0;
+	uint build_object_size = 1;
 	switch (type) {
 		case OBJECT_TRANSMITTER:
 		case OBJECT_LIGHTHOUSE:
@@ -349,7 +350,14 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 			return CMD_ERROR;
 
 		default: // i.e. NewGRF provided.
+			build_object_size = size_x * size_y;
 			break;
+	}
+
+	/* Don't allow building more objects if the company has reached its limit. */
+	Company *c = Company::GetIfValid(_current_company);
+	if (c != nullptr && GB(c->build_object_limit, 16, 16) < build_object_size) {
+		return_cmd_error(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
 	}
 
 	if (flags & DC_EXEC) {
@@ -357,12 +365,70 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);
+
+		/* Subtract the tile from the build limit. */
+		if (c != nullptr) c->build_object_limit -= build_object_size << 16;
 	}
 
-	cost.AddCost(ObjectSpec::Get(type)->GetBuildCost() * size_x * size_y);
+	cost.AddCost(spec->GetBuildCost() * build_object_size);
 	return cost;
 }
 
+/**
+ * Construct multiple objects in an area
+ * @param flags of operation to conduct
+ * @param tile end tile of area dragging
+ * @param start_tile start tile of area dragging
+ * @param type the object type to build
+ * @param view the view for the object
+ * @param diagonal Whether to use the Orthogonal (0) or Diagonal (1) iterator.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8 view, bool diagonal)
+{
+	if (start_tile >= MapSize()) return CMD_ERROR;
+
+	if (type >= NUM_OBJECTS) return CMD_ERROR;
+	const ObjectSpec *spec = ObjectSpec::Get(type);
+	if (view >= spec->views) return CMD_ERROR;
+
+	if (spec->size != OBJECT_SIZE_1X1) return CMD_ERROR;
+
+	Money money = GetAvailableMoneyForCommand();
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
+
+	const Company *c = Company::GetIfValid(_current_company);
+	int limit = (c == nullptr ? INT32_MAX : GB(c->build_object_limit, 16, 16));
+
+	TileIterator *iter = diagonal ? (TileIterator *)new DiagonalTileIterator(tile, start_tile) : new OrthogonalTileIterator(tile, start_tile);
+	for (; *iter != INVALID_TILE; ++(*iter)) {
+		TileIndex t = *iter;
+		CommandCost ret = Command<CMD_BUILD_OBJECT>::Do(flags & ~DC_EXEC, t, type, view);
+
+		/* If we've reached the limit, stop building (or testing). */
+		if (c != nullptr && --limit <= 0) break;
+
+		if (ret.Failed()) {
+			last_error = ret;
+			continue;
+		}
+
+		had_success = true;
+		if (flags & DC_EXEC) {
+			money -= ret.GetCost();
+
+			/* If we run out of money, stop building. */
+			if (ret.GetCost() > 0 && money < 0) break;
+			Command<CMD_BUILD_OBJECT>::Do(flags, t, type, view);
+		}
+		cost.AddCost(ret);
+	}
+
+	delete iter;
+	return had_success ? cost : last_error;
+}
 
 static Foundation GetFoundation_Object(TileIndex tile, Slope tileh);
 
