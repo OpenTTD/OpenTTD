@@ -1376,7 +1376,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :화물 무게�
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :열차가 싣고 있는 화물이 열차 속력에 미치는 영향에 대해 설정합니다. 값을 높게 설정하면 화물을 수송하는데 더 큰 힘이 필요합니다. (특히 언덕을 오를 때 심해집니다)
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속력 조절: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수입을 제한하기 위해, 다른 운송 수단의 속력을 1로 보았을 때의 항공기의 속력 비율을 설정합니다.
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수입을 제한하기 위해, 다른 운송 수단의 속력을 1로 보았을 때 항공기의 상대 속력을 설정합니다.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속력) x {COMMA}분의 1
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :항공기 추락 빈도수: {STRING}
