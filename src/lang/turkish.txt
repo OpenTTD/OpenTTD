@@ -2662,7 +2662,7 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Yerimi t
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tren istasyonu Seçimi
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Yön
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Tren istasyonu yönünü seç
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Tren istasyonunun yönünü seç
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ray sayısı
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Tren istasyonu için peron sayısı seç
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform uzunluğu
