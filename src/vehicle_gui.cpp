@@ -3183,6 +3183,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 	int total_width = 0;
 	int y_offset = 0;
 	bool rotor_seq = false; // Whether to draw the rotor of the vehicle in this step.
+	bool is_ground_vehicle = v->IsGroundVehicle();
 
 	while (v != nullptr) {
 		if (total_width >= ScaleGUITrad(2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH)) break;
@@ -3218,10 +3219,13 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 		}
 	}
 
-	int offs = (ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH) - total_width) / 2;
-	if (rtl) offs = -offs;
-	for (uint i = 0; i < _cursor.sprite_count; ++i) {
-		_cursor.sprite_pos[i].x += offs;
+	if (is_ground_vehicle) {
+		/* Center trains and road vehicles on the front vehicle */
+		int offs = (ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH) - total_width) / 2;
+		if (rtl) offs = -offs;
+		for (uint i = 0; i < _cursor.sprite_count; ++i) {
+			_cursor.sprite_pos[i].x += offs;
+		}
 	}
 
 	UpdateCursorSize();
