@@ -211,7 +211,7 @@ static int GetIncompatibleRefitOrderIdForAutoreplace(const Vehicle *v, EngineID 
 	const Order *o;
 	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
 
-	const OrderList *orders = u->orders.list;
+	const OrderList *orders = u->orders;
 	if (orders == nullptr) return -1;
 	for (VehicleOrderID i = 0; i < orders->GetNumOrders(); i++) {
 		o = orders->GetOrderAt(i);

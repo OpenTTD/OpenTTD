@@ -91,7 +91,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	assert(ScriptOrder::IsValidVehicleOrder(vehicle_id, order_position));
 
 	int res = (int)order_position;
-	const Order *order = v->orders.list->GetFirstOrder();
+	const Order *order = v->orders->GetFirstOrder();
 	for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
 	while (order_position > 0) {
 		order_position = (ScriptOrder::OrderPosition)(order_position - 1);

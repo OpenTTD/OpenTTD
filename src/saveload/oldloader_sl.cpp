@@ -1335,7 +1335,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
 			uint max = _savegame_type == SGT_TTO ? 3000 : 5000;
 			uint old_id = RemapOrderIndex(_old_order_ptr);
-			if (old_id < max) v->orders.old = Order::Get(old_id); // don't accept orders > max number of orders
+			if (old_id < max) v->old_orders = Order::Get(old_id); // don't accept orders > max number of orders
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 

@@ -55,8 +55,8 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
 		default:
 			NOT_REACHED();
 	}
-	v->orders.list->UpdateTotalDuration(total_delta);
-	v->orders.list->UpdateTimetableDuration(timetable_delta);
+	v->orders->UpdateTotalDuration(total_delta);
+	v->orders->UpdateTimetableDuration(timetable_delta);
 
 	for (v = v->FirstShared(); v != nullptr; v = v->NextShared()) {
 		if (v->cur_real_order_index == order_number && v->current_order.Equals(*order)) {
@@ -182,7 +182,7 @@ CommandCost CmdChangeTimetable(DoCommandFlag flags, VehicleID veh, VehicleOrderI
 CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders.list == nullptr) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -244,7 +244,7 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool timetable_all, Date start_date)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
-	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders.list == nullptr) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -253,20 +253,20 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 	if (start_date < 0 || start_date > MAX_DAY) return CMD_ERROR;
 	if (start_date - _date > 15 * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (_date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
-	if (timetable_all && !v->orders.list->IsCompleteTimetable()) return CMD_ERROR;
+	if (timetable_all && !v->orders->IsCompleteTimetable()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		std::vector<Vehicle *> vehs;
 
 		if (timetable_all) {
-			for (Vehicle *w = v->orders.list->GetFirstSharedVehicle(); w != nullptr; w = w->NextShared()) {
+			for (Vehicle *w = v->orders->GetFirstSharedVehicle(); w != nullptr; w = w->NextShared()) {
 				vehs.push_back(w);
 			}
 		} else {
 			vehs.push_back(v);
 		}
 
-		int total_duration = v->orders.list->GetTimetableTotalDuration();
+		int total_duration = v->orders->GetTimetableTotalDuration();
 		int num_vehs = (uint)vehs.size();
 
 		if (num_vehs >= 2) {
@@ -304,7 +304,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 CommandCost CmdAutofillTimetable(DoCommandFlag flags, VehicleID veh, bool autofill, bool preserve_wait_time)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders.list == nullptr) return CMD_ERROR;
+	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -441,7 +441,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	 * length of a full cycle till lateness is less than the length of a timetable
 	 * cycle. When the timetable isn't fully filled the cycle will be INVALID_TICKS. */
 	if (v->lateness_counter > (int)timetabled) {
-		Ticks cycle = v->orders.list->GetTimetableTotalDuration();
+		Ticks cycle = v->orders->GetTimetableTotalDuration();
 		if (cycle != INVALID_TICKS && v->lateness_counter > cycle) {
 			v->lateness_counter %= cycle;
 		}
