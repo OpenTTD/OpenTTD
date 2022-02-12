@@ -454,7 +454,7 @@
 	if (!IsValidVehicle(vehicle_id)) return false;
 
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return v->orders.list != nullptr && v->orders.list->GetNumVehicles() > 1;
+	return v->orders != nullptr && v->orders->GetNumVehicles() > 1;
 }
 
 /* static */ int ScriptVehicle::GetReliability(VehicleID vehicle_id)

@@ -263,26 +263,26 @@ void AfterLoadVehicles(bool part_of_load)
 		std::map<Order*, OrderList*> mapping;
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->orders.old != nullptr) {
+			if (v->old_orders != nullptr) {
 				if (IsSavegameVersionBefore(SLV_105)) { // Pre-105 didn't save an OrderList
-					if (mapping[v->orders.old] == nullptr) {
+					if (mapping[v->old_orders] == nullptr) {
 						/* This adds the whole shared vehicle chain for case b */
 
 						/* Creating an OrderList here is safe because the number of vehicles
 						 * allowed in these savegames matches the number of OrderLists. As
 						 * such each vehicle can get an OrderList and it will (still) fit. */
 						assert(OrderList::CanAllocateItem());
-						v->orders.list = mapping[v->orders.old] = new OrderList(v->orders.old, v);
+						v->orders = mapping[v->old_orders] = new OrderList(v->old_orders, v);
 					} else {
-						v->orders.list = mapping[v->orders.old];
+						v->orders = mapping[v->old_orders];
 						/* For old games (case a) we must create the shared vehicle chain */
 						if (IsSavegameVersionBefore(SLV_5, 2)) {
-							v->AddToShared(v->orders.list->GetFirstSharedVehicle());
+							v->AddToShared(v->orders->GetFirstSharedVehicle());
 						}
 					}
 				} else { // OrderList was saved as such, only recalculate not saved values
 					if (v->PreviousShared() == nullptr) {
-						v->orders.list->Initialize(v->orders.list->first, v);
+						v->orders->Initialize(v->orders->first, v);
 					}
 				}
 			}
@@ -302,13 +302,13 @@ void AfterLoadVehicles(bool part_of_load)
 		if (IsSavegameVersionBefore(SLV_105)) {
 			/* Before 105 there was no order for shared orders, thus it messed up horribly */
 			for (Vehicle *v : Vehicle::Iterate()) {
-				if (v->First() != v || v->orders.list != nullptr || v->previous_shared != nullptr || v->next_shared == nullptr) continue;
+				if (v->First() != v || v->orders != nullptr || v->previous_shared != nullptr || v->next_shared == nullptr) continue;
 
 				/* As above, allocating OrderList here is safe. */
 				assert(OrderList::CanAllocateItem());
-				v->orders.list = new OrderList(nullptr, v);
+				v->orders = new OrderList(nullptr, v);
 				for (Vehicle *u = v; u != nullptr; u = u->next_shared) {
-					u->orders.list = v->orders.list;
+					u->orders = v->orders;
 				}
 			}
 		}

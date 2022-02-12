@@ -219,9 +219,9 @@ CommandCost CmdSellVehicle(DoCommandFlag flags, VehicleID v_id, bool sell_chain,
 
 	/* Can we actually make the order backup, i.e. are there enough orders? */
 	if (backup_order &&
-			front->orders.list != nullptr &&
-			!front->orders.list->IsShared() &&
-			!Order::CanAllocateItem(front->orders.list->GetNumOrders())) {
+			front->orders != nullptr &&
+			!front->orders->IsShared() &&
+			!Order::CanAllocateItem(front->orders->GetNumOrders())) {
 		/* Only happens in exceptional cases when there aren't enough orders anyhow.
 		 * Thus it should be safe to just drop the orders in that case. */
 		backup_order = false;

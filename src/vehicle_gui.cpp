@@ -1444,7 +1444,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uin
 		oid++;
 		order = order->next;
 		if (order == nullptr) {
-			order = v->orders.list->GetFirstOrder();
+			order = v->orders->GetFirstOrder();
 			oid = 0;
 		}
 	} while (oid != start);

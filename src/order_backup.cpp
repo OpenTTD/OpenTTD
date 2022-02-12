@@ -77,7 +77,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (this->clone != nullptr) {
 		Command<CMD_CLONE_ORDER>::Do(DC_EXEC, CO_SHARE, v->index, this->clone->index);
 	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
-		v->orders.list = new OrderList(this->orders, v);
+		v->orders = new OrderList(this->orders, v);
 		this->orders = nullptr;
 		/* Make sure buoys/oil rigs are updated in the station list. */
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);

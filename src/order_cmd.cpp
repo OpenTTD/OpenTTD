@@ -637,7 +637,7 @@ void OrderList::DebugCheckSanity() const
 
 	for (const Vehicle *v = this->first_shared; v != nullptr; v = v->NextShared()) {
 		++check_num_vehicles;
-		assert(v->orders.list == this);
+		assert(v->orders == this);
 	}
 	assert(this->num_vehicles == check_num_vehicles);
 	Debug(misc, 6, "... detected {} orders ({} manual), {} vehicles, {} timetabled, {} total",
@@ -715,7 +715,7 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
 		conditional_depth++;
 
 		int dist1 = GetOrderDistance(prev, v->GetOrder(cur->GetConditionSkipToOrder()), v, conditional_depth);
-		int dist2 = GetOrderDistance(prev, cur->next == nullptr ? v->orders.list->GetFirstOrder() : cur->next, v, conditional_depth);
+		int dist2 = GetOrderDistance(prev, cur->next == nullptr ? v->orders->GetFirstOrder() : cur->next, v, conditional_depth);
 		return std::max(dist1, dist2);
 	}
 
@@ -906,7 +906,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 	if (v->GetNumOrders() >= MAX_VEH_ORDER_ID) return_cmd_error(STR_ERROR_TOO_MANY_ORDERS);
 	if (!Order::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
-	if (v->orders.list == nullptr && !OrderList::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
+	if (v->orders == nullptr && !OrderList::CanAllocateItem()) return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 
 	if (flags & DC_EXEC) {
 		Order *new_o = new Order();
@@ -926,16 +926,16 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 void InsertOrder(Vehicle *v, Order *new_o, VehicleOrderID sel_ord)
 {
 	/* Create new order and link in list */
-	if (v->orders.list == nullptr) {
-		v->orders.list = new OrderList(new_o, v);
+	if (v->orders == nullptr) {
+		v->orders = new OrderList(new_o, v);
 	} else {
-		v->orders.list->InsertOrderAt(new_o, sel_ord);
+		v->orders->InsertOrderAt(new_o, sel_ord);
 	}
 
 	Vehicle *u = v->FirstShared();
 	DeleteOrderWarnings(u);
 	for (; u != nullptr; u = u->NextShared()) {
-		assert(v->orders.list == u->orders.list);
+		assert(v->orders == u->orders);
 
 		/* If there is added an order before the current one, we need
 		 * to update the selected order. We do not change implicit/real order indices though.
@@ -1047,12 +1047,12 @@ static void CancelLoadingDueToDeletedOrder(Vehicle *v)
  */
 void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 {
-	v->orders.list->DeleteOrderAt(sel_ord);
+	v->orders->DeleteOrderAt(sel_ord);
 
 	Vehicle *u = v->FirstShared();
 	DeleteOrderWarnings(u);
 	for (; u != nullptr; u = u->NextShared()) {
-		assert(v->orders.list == u->orders.list);
+		assert(v->orders == u->orders);
 
 		if (sel_ord == u->cur_real_order_index && u->current_order.IsType(OT_LOADING)) {
 			CancelLoadingDueToDeletedOrder(u);
@@ -1159,7 +1159,7 @@ CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID movi
 	if (moving_one == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		v->orders.list->MoveOrder(moving_order, target_order);
+		v->orders->MoveOrder(moving_order, target_order);
 
 		/* Update shared list */
 		Vehicle *u = v->FirstShared();
@@ -1199,7 +1199,7 @@ CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID movi
 				u->cur_implicit_order_index++;
 			}
 
-			assert(v->orders.list == u->orders.list);
+			assert(v->orders == u->orders);
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u, moving_order | (target_order << 8));
 		}
@@ -1541,7 +1541,7 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 				return_cmd_error(STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE);
 			}
 
-			if (src->orders.list == nullptr && !OrderList::CanAllocateItem()) {
+			if (src->orders == nullptr && !OrderList::CanAllocateItem()) {
 				return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 			}
 
@@ -1551,7 +1551,7 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 				 * (We mainly do this to keep the order indices valid and in range.) */
 				DeleteVehicleOrders(dst, false, dst->GetNumOrders() != src->GetNumOrders());
 
-				dst->orders.list = src->orders.list;
+				dst->orders = src->orders;
 
 				/* Link this vehicle in the shared-list */
 				dst->AddToShared(src);
@@ -1607,14 +1607,14 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 					(*order_dst)->AssignOrder(*order);
 					order_dst = &(*order_dst)->next;
 				}
-				if (dst->orders.list == nullptr) {
-					dst->orders.list = new OrderList(first, dst);
+				if (dst->orders == nullptr) {
+					dst->orders = new OrderList(first, dst);
 				} else {
-					assert(dst->orders.list->GetFirstOrder() == nullptr);
-					assert(!dst->orders.list->IsShared());
-					delete dst->orders.list;
+					assert(dst->orders->GetFirstOrder() == nullptr);
+					assert(!dst->orders->IsShared());
+					delete dst->orders;
 					assert(OrderList::CanAllocateItem());
-					dst->orders.list = new OrderList(first, dst);
+					dst->orders = new OrderList(first, dst);
 				}
 
 				InvalidateVehicleOrder(dst, VIWD_REMOVE_ALL_ORDERS);
@@ -1734,7 +1734,7 @@ void CheckOrders(const Vehicle *v)
 		if (v->GetNumOrders() > 1) {
 			const Order *last = v->GetLastOrder();
 
-			if (v->orders.list->GetFirstOrder()->Equals(*last)) {
+			if (v->orders->GetFirstOrder()->Equals(*last)) {
 				message = STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY;
 			}
 		}
@@ -1743,7 +1743,7 @@ void CheckOrders(const Vehicle *v)
 		if (n_st < 2 && message == INVALID_STRING_ID) message = STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS;
 
 #ifdef WITH_ASSERT
-		if (v->orders.list != nullptr) v->orders.list->DebugCheckSanity();
+		if (v->orders != nullptr) v->orders->DebugCheckSanity();
 #endif
 
 		/* We don't have a problem */
@@ -1801,9 +1801,9 @@ restart:
 				}
 
 				/* Clear wait time */
-				v->orders.list->UpdateTotalDuration(-order->GetWaitTime());
+				v->orders->UpdateTotalDuration(-order->GetWaitTime());
 				if (order->IsWaitTimetabled()) {
-					v->orders.list->UpdateTimetableDuration(-order->GetTimetabledWait());
+					v->orders->UpdateTimetableDuration(-order->GetTimetabledWait());
 					order->SetWaitTimetabled(false);
 				}
 				order->SetWaitTime(0);
@@ -1854,11 +1854,11 @@ void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist, bool reset_order_indic
 	if (v->IsOrderListShared()) {
 		/* Remove ourself from the shared order list. */
 		v->RemoveFromShared();
-		v->orders.list = nullptr;
-	} else if (v->orders.list != nullptr) {
+		v->orders = nullptr;
+	} else if (v->orders != nullptr) {
 		/* Remove the orders */
-		v->orders.list->FreeChain(keep_orderlist);
-		if (!keep_orderlist) v->orders.list = nullptr;
+		v->orders->FreeChain(keep_orderlist);
+		if (!keep_orderlist) v->orders = nullptr;
 	}
 
 	if (reset_order_indices) {
