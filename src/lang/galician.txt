@@ -496,11 +496,11 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :(Des)Activar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuración IA/script do xogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
-STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Mostrar frame rate
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Amosar o número de imaxes por segundo
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliñador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activa/desactiva caixas delimitadoras
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activa/desactiva o coloreado de bloques modificados
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activa/desactiva a coloración de bloques modificados
 
 # Place in highscore window
 ###length 15
@@ -2108,7 +2108,7 @@ STR_QUIT_NO                                                     :{BLACK}Non
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Saír da partida
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estás seguro de que queres saír desta partida?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estás seguro de que desexas saír deste escenario?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estás seguro de que queres saír deste escenario?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampulladas
@@ -2796,7 +2796,7 @@ STR_AIRPORT_HELISTATION                                         :Heliestación
 STR_AIRPORT_CLASS_SMALL                                         :Aeroportos pequenos
 STR_AIRPORT_CLASS_LARGE                                         :Aeroportos grandes
 STR_AIRPORT_CLASS_HUB                                           :Aeroportos centrais
-STR_AIRPORT_CLASS_HELIPORTS                                     :Aeroportos para helicópteros
+STR_AIRPORT_CLASS_HELIPORTS                                     :Heliportos
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído xerado: {GOLD}{COMMA}
 
@@ -3038,11 +3038,11 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} O equipo de OpenTTD
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
+STR_FRAMERATE_CAPTION                                           :{WHITE}Imaxes por segundo
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Velocidade de simulación: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de ticks do xogo simulados por segundo.
-STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Velocidade de refresco: {STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Imaxes por segundo: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de frames renderizados por segundo.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocidade do xogo actual: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Como de rápido está a correr o xogo, comparado coa velocidade esperada a unha velocidade de simulación normal.
@@ -3447,7 +3447,7 @@ STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pequena campañ
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Campaña publicitaria mediana
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gran campaña publicitaria
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financia-la reparación das fochancas nas rúas da cidade
-STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construír unha estatua a Manuel Fraga
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construír unha estatua ao propietario da compañía
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edificios
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra-los dereitos exclusivos de transporte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna-la autoridade local
@@ -4506,7 +4506,7 @@ STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cando un
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Coincidir maiúsculas
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alterna a coincidencia de maiúsculas ao comparar as mensaxes no log da IA coa cadea de parada
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quita-la pausa e continua-la IA
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quitar a pausa e continuar a IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ve-la saída da depuración desta IA
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script do xogo
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comproba o log do script do xogo
@@ -4537,7 +4537,7 @@ STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script do xogo
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar outro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura-los parámetros do script
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parámetros do script
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Dispoñíbel {STRING}
