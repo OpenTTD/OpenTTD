@@ -741,9 +741,16 @@ static void DeleteStationIfEmpty(BaseStation *st)
 void Station::AfterStationTileSetChange(bool adding, StationType type)
 {
 	this->UpdateVirtCoord();
-	this->RecomputeCatchment();
 	DirtyCompanyInfrastructureWindows(this->owner);
-	if (adding) InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
+
+	if (adding) {
+		this->RecomputeCatchment();
+		MarkCatchmentTilesDirty();
+		InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
+	} else {
+		MarkCatchmentTilesDirty();
+		this->RecomputeCatchment();
+	}
 
 	switch (type) {
 		case STATION_RAIL:
@@ -1639,6 +1646,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 		if (st->train_station.tile == INVALID_TILE) {
 			st->facilities &= ~FACIL_TRAIN;
 			SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
+			MarkCatchmentTilesDirty();
 			st->UpdateVirtCoord();
 			DeleteStationIfEmpty(st);
 		}
@@ -1675,6 +1683,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 
 		if (st->train_station.tile == INVALID_TILE) SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		st->MarkTilesDirty(false);
+		MarkCatchmentTilesDirty();
 		st->RecomputeCatchment();
 	}
 

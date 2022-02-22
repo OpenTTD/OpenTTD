@@ -3496,7 +3496,7 @@ CommandCost CmdScrollViewport(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	return CommandCost();
 }
 
-static void MarkCatchmentTilesDirty()
+void MarkCatchmentTilesDirty()
 {
 	if (_viewport_highlight_town != nullptr) {
 		MarkWholeScreenDirty();
