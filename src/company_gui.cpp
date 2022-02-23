@@ -51,87 +51,126 @@
 /** Company GUI constants. */
 static const uint EXP_LINESPACE  = 2;      ///< Amount of vertical space for a horizontal (sub-)total line.
 static const uint EXP_BLOCKSPACE = 10;     ///< Amount of vertical space between two blocks of numbers.
+static const int  EXP_INDENT     = 10;     ///< Amount of horizontal space for an indented line.
 
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
 
-/** Standard unsorted list of expenses. */
-static ExpensesType _expenses_list_1[] = {
-	EXPENSES_CONSTRUCTION,
-	EXPENSES_NEW_VEHICLES,
-	EXPENSES_TRAIN_RUN,
-	EXPENSES_ROADVEH_RUN,
-	EXPENSES_AIRCRAFT_RUN,
-	EXPENSES_SHIP_RUN,
-	EXPENSES_PROPERTY,
-	EXPENSES_TRAIN_INC,
-	EXPENSES_ROADVEH_INC,
-	EXPENSES_AIRCRAFT_INC,
-	EXPENSES_SHIP_INC,
-	EXPENSES_LOAN_INT,
-	EXPENSES_OTHER,
+/** List of revenues. */
+static ExpensesType _expenses_list_revenue[] = {
+	EXPENSES_TRAIN_REVENUE,
+	EXPENSES_ROADVEH_REVENUE,
+	EXPENSES_AIRCRAFT_REVENUE,
+	EXPENSES_SHIP_REVENUE,
 };
 
-/** Grouped list of expenses. */
-static ExpensesType _expenses_list_2[] = {
-	EXPENSES_TRAIN_INC,
-	EXPENSES_ROADVEH_INC,
-	EXPENSES_AIRCRAFT_INC,
-	EXPENSES_SHIP_INC,
-	INVALID_EXPENSES,
+/** List of operating expenses. */
+static ExpensesType _expenses_list_operating_costs[] = {
 	EXPENSES_TRAIN_RUN,
 	EXPENSES_ROADVEH_RUN,
 	EXPENSES_AIRCRAFT_RUN,
 	EXPENSES_SHIP_RUN,
 	EXPENSES_PROPERTY,
-	EXPENSES_LOAN_INT,
-	INVALID_EXPENSES,
+	EXPENSES_LOAN_INTEREST,
+};
+
+/** List of capital expenses. */
+static ExpensesType _expenses_list_capital_costs[] = {
 	EXPENSES_CONSTRUCTION,
 	EXPENSES_NEW_VEHICLES,
 	EXPENSES_OTHER,
-	INVALID_EXPENSES,
 };
 
 /** Expense list container. */
 struct ExpensesList {
 	const ExpensesType *et;   ///< Expenses items.
 	const uint length;        ///< Number of items in list.
-	const uint num_subtotals; ///< Number of sub-totals in the list.
 
-	ExpensesList(ExpensesType *et, int length, int num_subtotals) : et(et), length(length), num_subtotals(num_subtotals)
+	ExpensesList(ExpensesType *et, int length) : et(et), length(length)
 	{
 	}
 
 	uint GetHeight() const
 	{
-		/* heading + line + texts of expenses + sub-totals + total line + total text */
-		return FONT_HEIGHT_NORMAL + EXP_LINESPACE + this->length * FONT_HEIGHT_NORMAL + num_subtotals * (EXP_BLOCKSPACE + EXP_LINESPACE) + EXP_LINESPACE + FONT_HEIGHT_NORMAL;
+		/* Add up the height of all the lines.  */
+		return this->length * FONT_HEIGHT_NORMAL;
 	}
 
 	/** Compute width of the expenses categories in pixels. */
-	uint GetCategoriesWidth() const
+	uint GetListWidth() const
 	{
 		uint width = 0;
-		bool invalid_expenses_measured = false; // Measure 'Total' width only once.
 		for (uint i = 0; i < this->length; i++) {
 			ExpensesType et = this->et[i];
-			if (et == INVALID_EXPENSES) {
-				if (!invalid_expenses_measured) {
-					width = std::max(width, GetStringBoundingBox(STR_FINANCES_TOTAL_CAPTION).width);
-					invalid_expenses_measured = true;
-				}
-			} else {
-				width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + et).width);
-			}
+			width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + et).width);
 		}
 		return width;
 	}
 };
 
+/** Types of expense lists */
 static const ExpensesList _expenses_list_types[] = {
-	ExpensesList(_expenses_list_1, lengthof(_expenses_list_1), 0),
-	ExpensesList(_expenses_list_2, lengthof(_expenses_list_2), 3),
+	ExpensesList(_expenses_list_revenue, lengthof(_expenses_list_revenue)),
+	ExpensesList(_expenses_list_operating_costs, lengthof(_expenses_list_operating_costs)),
+	ExpensesList(_expenses_list_capital_costs, lengthof(_expenses_list_capital_costs)),
 };
+
+/**
+ * Get the total height of the "categories" column.
+ * @return The total height in pixels.
+ */
+static uint GetTotalCategoriesHeight()
+{
+	/* There's an empty line and blockspace on the year row */
+	uint total_height = FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+
+	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
+		/* Title + expense list + total line + total + blockspace after category */
+		total_height += FONT_HEIGHT_NORMAL + _expenses_list_types[i].GetHeight() + EXP_LINESPACE + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+	}
+
+	/* Total income */
+	total_height += EXP_LINESPACE + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+
+	return total_height;
+}
+
+/**
+ * Get the required width of the "categories" column, equal to the widest element.
+ * @return The required width in pixels.
+ */
+static uint GetMaxCategoriesWidth()
+{
+	uint max_width = 0;
+
+	/* Loop through categories to check max widths. */
+	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
+		/* Title of category */
+		max_width = std::max(max_width, GetStringBoundingBox(STR_FINANCES_REVENUE_TITLE + i).width);
+		/* Entries in category */
+		max_width = std::max(max_width, _expenses_list_types[i].GetListWidth());
+	}
+
+	return max_width;
+}
+
+/**
+ * Draw a category of expenses (revenue, operating expenses, capital expenses).
+ */
+static void DrawCategory(const Rect &r, int start_y, ExpensesList list)
+{
+	int offs_left = _current_text_dir == TD_LTR ? EXP_INDENT : 0;
+	int offs_right = _current_text_dir == TD_LTR ? 0 : EXP_INDENT;
+
+	int y = start_y;
+	ExpensesType et;
+
+	for (uint i = 0; i < list.length; i++) {
+		et = list.et[i];
+		DrawString(r.left + offs_left, r.right - offs_right, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
+		y += FONT_HEIGHT_NORMAL;
+	}
+}
 
 /**
  * Draw the expenses categories.
@@ -140,25 +179,28 @@ static const ExpensesList _expenses_list_types[] = {
  */
 static void DrawCategories(const Rect &r)
 {
-	int y = r.top;
+	/* Start with an empty space in the year row, plus the blockspace under the year. */
+	int y = r.top + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
 
-	DrawString(r.left, r.right, y, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_HOR_CENTER, true);
-	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
+	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
+		/* Draw category title and advance y */
+		DrawString(r.left, r.right, y, (STR_FINANCES_REVENUE_TITLE + i), TC_FROMSTRING, SA_LEFT);
+		y += FONT_HEIGHT_NORMAL;
 
-	int type = _settings_client.gui.expenses_layout;
-	for (uint i = 0; i < _expenses_list_types[type].length; i++) {
-		const ExpensesType et = _expenses_list_types[type].et[i];
-		if (et == INVALID_EXPENSES) {
-			y += EXP_LINESPACE;
-			DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
-			y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
-		} else {
-			DrawString(r.left, r.right, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
-			y += FONT_HEIGHT_NORMAL;
-		}
+		/* Draw category items and advance y */
+		DrawCategory(r, y, _expenses_list_types[i]);
+		y += _expenses_list_types[i].GetHeight();
+
+		/* Advance y by the height of the total and associated total line */
+		y += EXP_LINESPACE + FONT_HEIGHT_NORMAL;
+
+		/* Advance y by a blockspace after this category block */
+		y += EXP_BLOCKSPACE;
 	}
 
-	DrawString(r.left, r.right, y + EXP_LINESPACE, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+	/* Draw total profit/loss */
+	y += EXP_LINESPACE;
+	DrawString(r.left, r.right, y, STR_FINANCES_NET_PROFIT, TC_FROMSTRING, SA_LEFT);
 }
 
 /**
@@ -167,8 +209,9 @@ static void DrawCategories(const Rect &r)
  * @param left   Left coordinate of the space to draw in.
  * @param right  Right coordinate of the space to draw in.
  * @param top    Top coordinate of the space to draw in.
+ * @param colour The TextColour of the string.
  */
-static void DrawPrice(Money amount, int left, int right, int top)
+static void DrawPrice(Money amount, int left, int right, int top, TextColour colour)
 {
 	StringID str = STR_FINANCES_NEGATIVE_INCOME;
 	if (amount < 0) {
@@ -176,8 +219,36 @@ static void DrawPrice(Money amount, int left, int right, int top)
 		str++;
 	}
 	SetDParam(0, amount);
-	DrawString(left, right, top, str, TC_FROMSTRING, SA_RIGHT);
+	DrawString(left, right, top, str, colour, SA_RIGHT);
 }
+
+/**
+ * Draw a category of expenses/revenues in the year column.
+ * @return The income sum of the category.
+ */
+static Money DrawYearCategory (const Rect &r, int start_y, ExpensesList list, const Money(*tbl)[EXPENSES_END])
+{
+	int y = start_y;
+	ExpensesType et;
+	Money sum = 0;
+
+	for (uint i = 0; i < list.length; i++) {
+		et = list.et[i];
+		Money cost = (*tbl)[et];
+		sum += cost;
+		if (cost != 0) DrawPrice(cost, r.left, r.right, y, TC_BLACK);
+		y += FONT_HEIGHT_NORMAL;
+	}
+
+	/* Draw the total at the bottom of the category. */
+	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
+	y += EXP_LINESPACE;
+	if (sum != 0) DrawPrice(sum, r.left, r.right, y, TC_WHITE);
+
+	/* Return the sum for the yearly total. */
+	return sum;
+}
+
 
 /**
  * Draw a column with prices.
@@ -189,35 +260,25 @@ static void DrawPrice(Money amount, int left, int right, int top)
 static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_END])
 {
 	int y = r.top;
+	Money sum;
 
+	/* Year header */
 	SetDParam(0, year);
 	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
-	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
+	y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
 
-	Money sum = 0;
-	Money subtotal = 0;
-	int type = _settings_client.gui.expenses_layout;
-	for (uint i = 0; i < _expenses_list_types[type].length; i++) {
-		const ExpensesType et = _expenses_list_types[type].et[i];
-		if (et == INVALID_EXPENSES) {
-			Money cost = subtotal;
-			subtotal = 0;
-			GfxFillRect(r.left, y, r.right, y, PC_BLACK);
-			y += EXP_LINESPACE;
-			DrawPrice(cost, r.left, r.right, y);
-			y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
-		} else {
-			Money cost = (*tbl)[et];
-			subtotal += cost;
-			sum += cost;
-			if (cost != 0) DrawPrice(cost, r.left, r.right, y);
-			y += FONT_HEIGHT_NORMAL;
-		}
+	/* Categories */
+	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
+		y += FONT_HEIGHT_NORMAL;
+		sum += DrawYearCategory(r, y, _expenses_list_types[i], tbl);
+		/* Expense list + expense category title + expense category total + blockspace after category */
+		y += _expenses_list_types[i].GetHeight() + EXP_LINESPACE + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
 	}
 
+	/* Total income. */
 	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
 	y += EXP_LINESPACE;
-	DrawPrice(sum, r.left, r.right, y);
+	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 }
 
 static const NWidgetPart _nested_company_finances_widgets[] = {
@@ -241,22 +302,24 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT),
 			NWidget(NWID_VERTICAL), // Vertical column with 'bank balance', 'loan'
-				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_BANK_BALANCE_TITLE, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_OWN_FUNDS_TITLE, STR_NULL), SetFill(1, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_LOAN_TITLE, STR_NULL), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_BANK_BALANCE_TITLE, STR_NULL), SetFill(1, 0),
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetFill(0, 0), SetMinimalSize(30, 0),
 			NWidget(NWID_VERTICAL), // Vertical column with bank balance amount, loan amount, and total.
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_BALANCE_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_OWN_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_LOAN_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
-				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_LOAN_LINE), SetMinimalSize(0, 2), SetFill(1, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_TOTAL_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_BALANCE_LINE), SetMinimalSize(0, 2), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_BALANCE_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 			EndContainer(),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_MAXLOAN),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetFill(0, 1), SetMinimalSize(25, 0),
 					NWidget(NWID_VERTICAL), // Max loan information
-						NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_MAXLOAN_GAP), SetFill(0, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_INTEREST_RATE), SetDataTip(STR_FINANCES_INTEREST_RATE, STR_NULL),
 						NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_MAXLOAN_VALUE), SetDataTip(STR_FINANCES_MAX_LOAN, STR_NULL),
 						NWidget(NWID_SPACER), SetFill(0, 1),
 					EndContainer(),
@@ -309,11 +372,15 @@ struct CompanyFinancesWindow : Window {
 				break;
 			}
 
-			case WID_CF_TOTAL_VALUE: {
+			case WID_CF_OWN_VALUE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->money - c->current_loan);
 				break;
 			}
+
+			case WID_CF_INTEREST_RATE:
+				SetDParam(0, _settings_game.difficulty.initial_interest);
+				break;
 
 			case WID_CF_MAXLOAN_VALUE:
 				SetDParam(0, _economy.max_loan);
@@ -328,27 +395,26 @@ struct CompanyFinancesWindow : Window {
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
-		int type = _settings_client.gui.expenses_layout;
 		switch (widget) {
 			case WID_CF_EXPS_CATEGORY:
-				size->width  = _expenses_list_types[type].GetCategoriesWidth();
-				size->height = _expenses_list_types[type].GetHeight();
+				size->width  = GetMaxCategoriesWidth();
+				size->height = GetTotalCategoriesHeight();
 				break;
 
 			case WID_CF_EXPS_PRICE1:
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3:
-				size->height = _expenses_list_types[type].GetHeight();
+				size->height = GetTotalCategoriesHeight();
 				FALLTHROUGH;
 
 			case WID_CF_BALANCE_VALUE:
 			case WID_CF_LOAN_VALUE:
-			case WID_CF_TOTAL_VALUE:
+			case WID_CF_OWN_VALUE:
 				SetDParamMaxValue(0, CompanyFinancesWindow::max_money);
 				size->width = std::max(GetStringBoundingBox(STR_FINANCES_NEGATIVE_INCOME).width, GetStringBoundingBox(STR_FINANCES_POSITIVE_INCOME).width) + padding.width;
 				break;
 
-			case WID_CF_MAXLOAN_GAP:
+			case WID_CF_INTEREST_RATE:
 				size->height = FONT_HEIGHT_NORMAL;
 				break;
 		}
@@ -373,7 +439,7 @@ struct CompanyFinancesWindow : Window {
 				break;
 			}
 
-			case WID_CF_LOAN_LINE:
+			case WID_CF_BALANCE_LINE:
 				GfxFillRect(r.left, r.top, r.right, r.top, PC_BLACK);
 				break;
 		}
@@ -399,8 +465,7 @@ struct CompanyFinancesWindow : Window {
 		if (!this->IsShaded()) {
 			if (!this->small) {
 				/* Check that the expenses panel height matches the height needed for the layout. */
-				int type = _settings_client.gui.expenses_layout;
-				if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(WID_CF_EXPS_CATEGORY)->current_y) {
+				if (GetTotalCategoriesHeight() != this->GetWidget<NWidgetBase>(WID_CF_EXPS_CATEGORY)->current_y) {
 					this->SetupWidgets();
 					this->ReInit();
 					return;
