@@ -1743,6 +1743,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Näytä sanomal
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vahingot/onnettomuudet: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Näytä sanomalehti vahingon tai onnettomuuden sattuessa
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Kilpailijan kulkuneuvojen vahingot: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Näytä sanomalehti vahingon sattuessa kilpailijan kulkuneuvoille
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Yhtiön tiedot: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomalehti kun uusi yhtiö aloittaa toimintansa tai kun jokin yhtiö on lähellä konkurssia
