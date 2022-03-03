@@ -1745,6 +1745,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rādīt avīzi 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rādīt avīzi, kad notiek nelaimes gadījumi vai katastrofas
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Konkuretu transportlīdzekļu negadījumi: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Rādīt avīzi par konkuretu transportlīdzekļu negadījumiem
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rādīt avīzi kad darbību sāk jauns uzņēmums, vai kad uzņēmumi riskē bankrotēt
@@ -2262,6 +2264,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ainava:
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartes izmērs: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Servera versija: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Servera adrese: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Uzaicinājuma kods: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Sākuma datums: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Šībrīža datums: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spēles Skripts: {WHITE}{STRING} (v{NUM})
@@ -2678,6 +2681,7 @@ STR_STATION_CLASS_WAYP                                          :Pieturas punkti
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signāla izvēle
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Pārslēdziet papildu signālu veidu rādīšanu
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloka signālierīce (semafors){}Šis ir pats vienkāršākais signālierīces veids, kas ļauj uz bloka vienlaicīgi atrasties tikai vienam vilcienam
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ieejas signālierīce (semafors){}Zaļš kamēr ir viens vai vairāki zaļi izejas signāli no sekojošās sliežu sekcijas. Citādi signāls būs sarkans
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izejas signālierīce (semafors){}Uzvedas tāpat kā bloka signālierīce, bet tā ir nepieciešama, lai pirmssignālu ierīces rādītu pareizās krāsas
