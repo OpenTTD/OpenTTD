@@ -648,13 +648,8 @@ static void CompaniesGenStatistics()
 
 	Backup<CompanyID> cur_company(_current_company, FILE_LINE);
 
-	if (!_settings_game.economy.infrastructure_maintenance) {
-		for (const Station *st : Station::Iterate()) {
-			cur_company.Change(st->owner);
-			CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
-			SubtractMoneyFromCompany(cost);
-		}
-	} else {
+	/* Pay Infrastructure Maintenance, if enabled */
+	if (_settings_game.economy.infrastructure_maintenance) {
 		/* Improved monthly infrastructure costs. */
 		for (const Company *c : Company::Iterate()) {
 			cur_company.Change(c->index);
