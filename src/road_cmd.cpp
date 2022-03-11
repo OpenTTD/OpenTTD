@@ -1113,8 +1113,14 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 				cost.AddCost(ret);
 				had_success = true;
 			} else {
-				/* Ownership errors are more important. */
-				if (last_error.GetErrorMessage() != STR_ERROR_OWNED_BY) last_error = ret;
+				/* Some errors are more equal than others. */
+				switch (last_error.GetErrorMessage()) {
+					case STR_ERROR_OWNED_BY:
+					case STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS:
+						break;
+					default:
+						last_error = ret;
+				}
 			}
 		}
 
