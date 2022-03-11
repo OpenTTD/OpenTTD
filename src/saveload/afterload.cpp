@@ -798,6 +798,11 @@ bool AfterLoadGame()
 		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 	}
 
+	/* Keep existing industry tile cargo acceptance. */
+	if (IsSavegameVersionBefore(SLV_TRADITIONAL_INDTILE_ACCEPTANCE)) {
+		_settings_game.economy.traditional_industry_acceptance = true;
+	}
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
