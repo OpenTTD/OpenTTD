@@ -682,10 +682,10 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 
 	size_t len = strlen(_screenshot_name);
 
-	/* Handle user-specified filenames ending in %d with automatic numbering */
-	if (StrEndsWith(_screenshot_name, "%d")) {
+	/* Handle user-specified filenames ending in # with automatic numbering */
+	if (StrEndsWith(_screenshot_name, "#")) {
 		generate = true;
-		len -= 2;
+		len -= 1;
 		_screenshot_name[len] = '\0';
 	}
 
