@@ -7046,6 +7046,10 @@ static uint32 GetPatchVariable(uint8 param)
 		case 0x16:
 			return SPR_SHORE_BASE;
 
+		/* Game map seed */
+		case 0x17:
+			return _settings_game.game_creation.generation_seed;
+
 		default:
 			grfmsg(2, "ParamSet: Unknown Patch variable 0x%02X.", param);
 			return 0;
