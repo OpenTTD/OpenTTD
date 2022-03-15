@@ -475,6 +475,7 @@ HandleKeyPressResult Textbuf::HandleKeyPress(WChar key, uint16 keycode)
 		case WKC_RETURN: case WKC_NUM_ENTER: return HKPR_CONFIRM;
 
 		case (WKC_CTRL | 'V'):
+		case (WKC_SHIFT | WKC_INSERT):
 			edited = this->InsertClipboard();
 			break;
 
