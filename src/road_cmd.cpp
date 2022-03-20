@@ -989,7 +989,8 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, TileInde
 	/* Swap direction, also the half-tile drag vars. */
 	if (start_tile > end_tile || (start_tile == end_tile && start_half)) {
 		dir = ReverseDiagDir(dir);
-		std::swap(start_half, end_half);
+		start_half = !start_half;
+		end_half = !end_half;
 		if (drd == DRD_NORTHBOUND || drd == DRD_SOUTHBOUND) drd ^= DRD_BOTH;
 	}
 
