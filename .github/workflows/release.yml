@@ -619,8 +619,8 @@ jobs:
         HOMEBREW_NO_AUTO_UPDATE: 1
         HOMEBREW_NO_INSTALL_CLEANUP: 1
       run: |
-        brew tap mitchellh/gon
-        brew install mitchellh/gon/gon
+        brew tap mistydemeo/gon
+        brew install mistydemeo/gon/gon
 
     - name: Notarize
       env:
