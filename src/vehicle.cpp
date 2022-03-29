@@ -2904,6 +2904,58 @@ bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 }
 
 /**
+ * Get reason string why this station can't be used by the given vehicle.
+ * @param v The vehicle to test.
+ * @param st The station to test for.
+ * @return The string explaining why the vehicle cannot use the station.
+ */
+StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
+{
+	switch (v->type) {
+		case VEH_TRAIN:
+			return STR_ERROR_NO_RAIL_STATION;
+
+		case VEH_ROAD: {
+			const RoadVehicle *rv = RoadVehicle::From(v);
+			RoadStop *rs = st->GetPrimaryRoadStop(rv->IsBus() ? ROADSTOP_BUS : ROADSTOP_TRUCK);
+
+			StringID err = rv->IsBus() ? STR_ERROR_NO_BUS_STATION : STR_ERROR_NO_TRUCK_STATION;
+
+			for (; rs != nullptr; rs = rs->next) {
+				/* Articulated vehicles cannot use bay road stops, only drive-through. Make sure the vehicle can actually use this bay stop */
+				if (HasTileAnyRoadType(rs->xy, rv->compatible_roadtypes) && IsStandardRoadStopTile(rs->xy) && rv->HasArticulatedPart()) {
+					err = STR_ERROR_NO_STOP_ARTICULATED_VEHICLE;
+					continue;
+				}
+
+				/* Bay stop errors take precedence, but otherwise the vehicle may not be compatible with the roadtype/tramtype of this station tile.
+				 * We give bay stop errors precedence because they are usually a bus sent to a tram station or vice versa. */
+				if (!HasTileAnyRoadType(rs->xy, rv->compatible_roadtypes) && err != STR_ERROR_NO_STOP_ARTICULATED_VEHICLE) {
+					err = RoadTypeIsRoad(rv->roadtype) ? STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE : STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE;
+					continue;
+				}
+			}
+
+			return err;
+		}
+
+		case VEH_SHIP:
+			return STR_ERROR_NO_DOCK;
+
+		case VEH_AIRCRAFT:
+			if ((st->facilities & FACIL_AIRPORT) == 0) return STR_ERROR_NO_AIRPORT;
+			if (v->GetEngine()->u.air.subtype & AIR_CTOL) {
+				return STR_ERROR_AIRPORT_NO_PLANES;
+			} else {
+				return STR_ERROR_AIRPORT_NO_HELICOPTERS;
+			}
+
+		default:
+			return INVALID_STRING_ID;
+	}
+}
+
+/**
  * Access the ground vehicle cache of the vehicle.
  * @pre The vehicle is a #GroundVehicle.
  * @return #GroundVehicleCache of the vehicle.

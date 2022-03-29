@@ -758,9 +758,9 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 				if (ret.Failed()) return ret;
 			}
 
-			if (!CanVehicleUseStation(v, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
+			if (!CanVehicleUseStation(v, st)) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, GetVehicleCannotUseStationReason(v, st));
 			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
-				if (!CanVehicleUseStation(u, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER_SHARED);
+				if (!CanVehicleUseStation(u, st)) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER_SHARED, GetVehicleCannotUseStationReason(u, st));
 			}
 
 			/* Non stop only allowed for ground vehicles. */
@@ -847,7 +847,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 				default: return CMD_ERROR;
 
 				case VEH_TRAIN: {
-					if (!(wp->facilities & FACIL_TRAIN)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
+					if (!(wp->facilities & FACIL_TRAIN)) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_NO_RAIL_WAYPOINT);
 
 					ret = CheckOwnership(wp->owner);
 					if (ret.Failed()) return ret;
@@ -855,7 +855,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 				}
 
 				case VEH_SHIP:
-					if (!(wp->facilities & FACIL_DOCK)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
+					if (!(wp->facilities & FACIL_DOCK)) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_NO_BUOY);
 					if (wp->owner != OWNER_NONE) {
 						ret = CheckOwnership(wp->owner);
 						if (ret.Failed()) return ret;
@@ -1533,7 +1533,7 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 				 * are temporarily invalid due to reconstruction. */
 				const Station *st = Station::Get(order->GetDestination());
 				if (CanVehicleUseStation(src, st) && !CanVehicleUseStation(dst, st)) {
-					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
+					return CommandCost(STR_ERROR_CAN_T_COPY_SHARE_ORDER, GetVehicleCannotUseStationReason(dst, st));
 				}
 			}
 
@@ -1577,9 +1577,9 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 			/* Trucks can't copy all the orders from busses (and visa versa),
 			 * and neither can helicopters and aircraft. */
 			for (const Order *order : src->Orders()) {
-				if (OrderGoesToStation(dst, order) &&
-						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
-					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
+				Station *st = Station::Get(order->GetDestination());
+				if (OrderGoesToStation(dst, order) && !CanVehicleUseStation(dst, st)) {
+					return CommandCost(STR_ERROR_CAN_T_COPY_SHARE_ORDER, GetVehicleCannotUseStationReason(dst, st));
 				}
 			}
 

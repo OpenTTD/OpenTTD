@@ -166,6 +166,7 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
 bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);
+StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st);
 
 void ReleaseDisastersTargetingVehicle(VehicleID vehicle);
 
