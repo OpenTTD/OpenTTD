@@ -2104,7 +2104,7 @@ STR_QUIT_NO                                                     :{BLACK}Hayır
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ana Menüye Dön
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinizden emin misiniz?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinize emin misiniz?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz?
 
 # Cheat window
@@ -2258,6 +2258,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Yer yü
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Harita boyutu: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Sunucu sürümü: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Sunucu adresi: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Davet kodu: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Başlama tarihi: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Şimdiki tarih: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Oyun Betiği: {WHITE}{STRING} (v{NUM})
@@ -2658,7 +2659,7 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Yerimi t
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tren istasyonu Seçimi
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Yön
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Tren istasyonu yönünü seç
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Tren istasyonunun yönünü seç
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ray sayısı
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Tren istasyonu için peron sayısı seç
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform uzunluğu
@@ -2674,6 +2675,7 @@ STR_STATION_CLASS_WAYP                                          :Yerimleri
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sinyal Seçimi
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Gelişmiş sinyal türlerini göster
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal türüdür, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir

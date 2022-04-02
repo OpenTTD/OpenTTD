@@ -329,6 +329,7 @@ STR_GROUP_BY_SHARED_ORDERS                                      :Ordini condivis
 
 # Order button in shared orders vehicle list
 STR_GOTO_ORDER_VIEW                                             :{BLACK}Ordini
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Apri la visualizzazione degli ordini
 
 # Tooltips for the main toolbar
 ###length 31
@@ -899,7 +900,9 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà {NUM} anni di sussidio dall'autorità locale!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} anni{P "" s}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione delle strade finanziata dalla {STRING} porterà 6 mesi di disagio agli automobilisti!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolio dei trasporti!
@@ -1004,6 +1007,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Ogni 12 mesi
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingua
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleziona la lingua da utilizzare per l'interfaccia
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completato)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Schermo intero
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Attiva questa casella per giocate a OpenTTD in modalità schermo intero
@@ -1018,6 +1022,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Selezion
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Le nuove impostazioni avranno effetto solo dopo un riavvio del gioco
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Seleziona questa casella per abilitare la sincronizzazione verticale dello schermo. Un'impostazione modificata verrà applicata solo al riavvio del gioco. Funziona solo con l'accelerazione hardware abilitata
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Dimensione interfaccia
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleziona la dimensione deglie elementi dell'interfaccia grafica
@@ -1166,6 +1171,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Impostazione di
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Impostazione di gioco (conservata nel salvataggio; influenza solo la partita corrente)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Impostazione della compagnia (conservata nei salvataggi; influenza solo le nuove partite)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione della compagnia (conservata nel salvataggio; influenza solo la compagnia corrente)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Attenzione!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Questa azione resetterà tutti i settaggi ai loro valori predefiniti.{}Sei sicuro di voler procedere?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
@@ -1251,7 +1257,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlla quant
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Moltiplicatore sussidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Imposta quanto viene pagato per i collegamenti sovvenzionati
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durata sussidio: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Imposta il numero di anni per i quali il sussidio viene aggiudicato
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} anno{P "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Niente sussidi
 
@@ -1270,6 +1279,7 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Controlla l'att
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento della città in merito alle modifiche: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nell'area controllata
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite di altezza della mappa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Imposta l'altezza massima per il terreno. Con l'opzione "(auto)" un valore ottimale verrà scelto automaticamente dopo la generazione del terreno
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1480,6 +1490,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle n
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi sub-artici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Aree innevate: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regola la quantità approssimativa di neve sul paesaggio subartico. La neve influisce anche sulla generazione dell'industria e sui requisiti di crescita della città. Utilizzato solo durante la generazione della mappa. La terra appena sopra il livello del mare è sempre senza neve
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Aree desertiche: {STRING}
@@ -1578,6 +1589,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic (con casella di testo attiva)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic (immediato)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Usa il servizio relay: {STRING}
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Se creare una connessione con il server fallisce, si può usare un servizio di relay per creare una connessione. "Mai" lo disattiverà, "Chiedi" chiederà prima, "Attiva" lo attiverà senza chiedere
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Mai
@@ -1830,10 +1842,13 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Imposta l'anno 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Tipi di segnale fra cui alternare: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleziona fra quali tipi di segnale alternare quando si usa CTRL+clic su un segnale costruito
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo segnali a percorso
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo segnali di percorso
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tutti
 
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostra tipi di segnale: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Scegli quali tipi di segnale mostrare nella barra degli strumenti segnale
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Solo segnali di percorso
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Tutti i segnali
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposizione delle strade per le nuove città: {STRING}
@@ -2231,6 +2246,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia l
 # Matches ServerGameType
 ###length 3
 STR_NETWORK_SERVER_VISIBILITY_LOCAL                             :Locale
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Pubblico
+STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Solo su invito
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multigiocatore
@@ -2261,6 +2278,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paesagg
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Dimensione mappa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versione server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Indirizzo del server: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Codice invito: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data di inizio: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data corrente: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script di gioco: {WHITE}{STRING} (v{NUM})
@@ -2268,6 +2286,7 @@ STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protett
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER PIENO
 STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SEI STATO BANDITO DA QUESTO SERVER
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVER TROPPO VECCHIO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIONE DIFFERENTE
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF DIFFERENTI
 
@@ -2285,6 +2304,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Avvia se
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Avvia il proprio server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Inserire il nome del giocatore
+STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Inserisci l'indirizzo del server o il codice invito
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Avvia nuova partita multigiocatore
@@ -2295,6 +2315,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Imposta 
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegge la partita con una password in modo che non sia accessibile pubblicamente
 
 STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilità
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Se altre persone possono vedere il tuo server nell'elenco pubblico
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Limite client:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Imposta il numero massimo di client. Non tutti i posti dovranno essere occupati
@@ -2328,36 +2349,63 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagni
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spettatore
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Giocatori online
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nome
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nome del server su cui stai giocando
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modifica il nome del tuo server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nome del server
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilità
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Se altre persone possono vedere il tuo server nell'elenco pubblico
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Codice invito
+STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP              :{BLACK}Codice invito che altri giocatori possono utilizzare per unirsi a questo server
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Tipo di connessione
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Se e come i tuoi server possono essere raggiunti da altri
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Giocatore
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nome
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Il nome del tuo personaggio
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                : {BLACK}Modifica il nome del tuo personaggio
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Nome del tuo personaggio
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Azioni amministrative da eseguire per questo cliente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Azioni amministrative da eseguire per questa compagnia
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unisciti a questa compagnia
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Invia un messaggio a questo giocatore
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Invia un messaggio a tutti i giocatori di questa compagnia
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Manda un messaggio a tutti gli spettatori
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spettatori
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nuova compagnia)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nuova compagnia e controllala
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Questo sei tu
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Questo è l'host del gioco
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} / {NUM} compan{P y ies}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Locale
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}I giocatori remoti non possono connettersi
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Pubblico
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Dietro NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Tramite relay
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :espelli
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bandire
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Elimina
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Sblocco con password
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Azione dell'amministratore
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sei sicuro di voler cacciare il giocatore '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sei sicuro di voler bannare il giocatore '{STRING}'
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sei sicuro di voler eliminare la compagnia '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sei sicuro di voler reimpostare la password della compagnia '{COMPANY}'?
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Usare il relay?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Impossibile stabilire una connessione tra te e il server '{STRING}'.{}Vuoi usare un servizio di relay per creare una connessione tramite '{STRING}'?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sì, questa volta
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sì, non chiederlo più
 
 STR_NETWORK_SPECTATORS                                          :Spettatori
 
@@ -2386,6 +2434,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Squadra] A {ST
 STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inserire il messaggio
 
 # Network messages
@@ -2397,6 +2446,8 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Connessi
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Impossibile caricare la partita salvata
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Impossibile avviare il server
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Un errore di protocollo ha chiuso la connessione
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Il tuo nome giocatore non è stato impostato. Il nome può essere impostato nella parte superiore della finestra Multigiocatore
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Il nome del tuo server non è stato impostato. Il nome può essere impostato nella parte superiore della finestra Multigiocatore
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revisione di questo client non corrisponde a quella del server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Password errata
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Il server è pieno
@@ -2409,6 +2460,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Si è im
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Il computer è troppo lento per restare al passo col server
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Il compiuter ha impiegato troppo tempo per il download della mappa
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Il computer ha impiegato troppo tempo per l'ingresso al server
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Il nome del tuo personaggio non è valido
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possibile perdita di connessione
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Per {NUM} second{P o i} non sono stati ricevuti dati dal server
@@ -2467,6 +2519,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il serve
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrazione al server fallita
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Un altro server con lo stesso codice di invito si è registrato. Passaggio al tipo di gioco "locale".
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Il tuo server non permette connessioni remote
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Altri giocatori non saranno in grado di connettersi al tuo server
 
@@ -2648,6 +2701,7 @@ STR_STATION_CLASS_WAYP                                          :Waypoint
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selezione segnale
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Attiva/disattiva la visualizzazione dei tipi di segnale avanzati
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Pre-segnale (semaforico){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione
@@ -3102,7 +3156,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numero città:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero industrie:
-STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{WHITE}Picco massimo:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Picco massimo:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumenta la massima altezza del picco più alto sulla mappa di uno
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuisci la massima altezza del picco più alto sulla mappa di uno
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Aree innevate:
@@ -3110,6 +3164,8 @@ STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumenta 
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuisci la copertura della neve del dieci per cento
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Aree desertiche:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Aumenta la copertura del deserto del dieci percento
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuisci la copertura del deserto del dieci percento
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
@@ -4044,6 +4100,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Veicoli maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Veicoli stradali
 STR_REPLACE_TRAM_VEHICLES                                       :Veicoli tranviari
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click per applicare anche ai sotto-gruppi
 
@@ -4117,6 +4174,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manuten
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Impossibile raggiungere {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Impossibile raggiungere {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}Impossibile raggiungere {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}Impossibile raggiungere {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
