@@ -1365,8 +1365,8 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Om ett företag
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillåt att byggnader bekostas: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillåt företag att ge pengar till städer för att bekosta nybyggnation av hus
 
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokal vägrekonstruktion: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillåt att företag ger pengar till städer för vägbyggen och därmed saboterar för vägtransporter i staden.
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokala vägarbeten: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillåt att företag ger städer pengar till vägarbeten för att sabotera för vägtransporter i staden
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt att skicka pengar till andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillåt överföring av pengar mellan företag i flerspelarläge
@@ -1735,37 +1735,37 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte el
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Om denna inställning aktiveras så tas kravet på att elektrifiera spår för att elektriska lok ska kunna köra på dem bort
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Första fordonets ankomst till spelarens stn.: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Visa nyhetstidning när det första fordonet ankommer till egna nya stationer
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Visa en dagstidning när det första fordonet ankommer till egna nya stationer
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Första fordonets ankomst till konkurrents stn.: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Visa nyhetstidning när det första fordonet ankommer till motståndarnas nya stationer
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Visa en dagstidning när det första fordonet ankommer till motståndares nya stationer
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Olyckor / katastrofer: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Visa nyhetstidning när olyckor eller katastrofer inträffar
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Visa en dagstidning när olyckor eller katastrofer inträffar
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Företagsinformation: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Visa nyhetstidning när nya företag startar upp eller när ett befintligt företag riskerar att gå bankrupt
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Visa en dagstidning när nya företag startas, eller när företag riskerar att gå bankrutt
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Invigning av industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Visa nyhetstidning när nya industrier öppnas
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Visa en dagstidning när nya industrier startas
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nedläggning av Industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Visa nyhetstidning när industrier stängs ner
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Visa en dagstidning när industrier läggs ned
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiska förändringar: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Visa nyhetstidning om förändringar i den globala ekonomin
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Visa en dagstidning om förändringar i den globala ekonomin
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsförändring vid industri som företaget betjänar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som används av det egna företaget
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Visa en dagstidning när produktionsnivån för industrier som betjänas av det egna företaget förändras
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsförändring vid industri som motståndare betjänar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som används av motståndare
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Visa en dagstidning när produktionsnivån för industrier som betjänas av motståndare förändras
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andra produktionsförändringar vid industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som inte används av motståndare eller det egna företaget
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa en dagstidning när produktionsnivån för industrier som varken betjänas av det egna företaget eller av motståndare förändras
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om företagets fordon: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelande ifall att ett fordon behöver uppmärksamhet
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelanden om fordon som behöver åtgärdas
 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nya fordon: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Visa nyhetstidning när en ny typ av fordon blir tillgänglig
@@ -1777,7 +1777,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventioner: {
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Visa nyhetstidning om händelser relaterade till subventioner
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Övergripande information: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Visa nyhetstidning om generella händelser så som köp av exklusiva rättigheter eller finansiering av vägbyggen
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Visa dagstidning om generella händelser, så som köp av exklusiva rättigheter eller finansiering av vägarbeten
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summerad

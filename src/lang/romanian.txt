@@ -1886,6 +1886,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :dezactivat
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivelul maxim de apropiere imagine: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivelul maxim de apropiere a câmpului vizual. Luați aminte că nivelele înalte ridică necesarul de memorie
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivelul maxim de îndepărtare imagine: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nivelul maxim de micșorare pentru ferestrele de vizualizare. Niveluri mai mari de micșorare pot cauza decalaj atunci când sunt utilizate
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :x4
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :x2
@@ -1895,6 +1896,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :x4
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :x8
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Rezoluția maximă pentru sprite-uri: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitați rezoluția maximă de utilizat pentru sprites. Limitarea rezoluției sprite-ului va evita utilizarea graficelor de înaltă rezoluție chiar și atunci când sunt disponibile. Acest lucru poate ajuta la menținerea aspectului jocului unificat atunci când utilizați o combinație de fișiere GRF cu și fără grafică de înaltă rezoluție.
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -1920,12 +1922,14 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea med
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING}{NBSP}{P 0:2 zi zile "de zile"}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai mult timp va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING}{NBSP}{P 0:2 zi zile "de zile"} pentru recalcularea graficului de distribuţie
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Timpul necesar pentru fiecare recalculare a unei componente a graficului de legătură. Când se începe o recalculare, este generat un fir de execuție căruia i se permite să ruleze pentru acest număr de zile. Cu cât setați acest lucru mai scurt, cu atât este mai probabil ca firul să nu fie terminat atunci când trebuie. Apoi jocul se oprește până când este ("lag"). Cu cât îl setați mai mult, cu atât este nevoie de mai mult pentru ca distribuția să fie actualizată când se schimbă rutele.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetric" înseamnă că aproximativ același număr de pasageri va fi transportat din stația A spre stația B, precum de la B la A. "asimetric" presupune transportul unui număr arbitrar de pasageri în fiecare direcție. "manual" înseamnă că repartizarea pasagerilor nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modalitatea de distribuire a poştei: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetric" înseamnă că aproximativ aceeași cantitate de poștă va fi expediată din stația A spre stația B, precum de la B la A. "asimetric" presupune expedierea de cantități arbitrare de poștă în fiecare direcție. "manual" înseamnă că repartizarea poștei nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalitatea de distribuire pentru clasa de cargo BLINDAT: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Clasa de marfă ARMORED conține obiecte de valoare în climat temperat, diamante în climat subtropical sau aur în climat subarctic. NewGRF-urile pot schimba asta. „simetric” înseamnă că aproximativ aceeași cantitate din acea marfă va fi trimisă de la o stație A la o stație B ca de la B la A. „asimetric” înseamnă că cantități arbitrare ale acelei mărfuri pot fi trimise în ambele direcții. „manual” înseamnă că nu va avea loc nicio distribuție automată pentru acea marfă. Este recomandat să setați acest lucru la asimetric sau manual atunci când jucați subarctic, deoarece băncile nu vor trimite aur înapoi la minele de aur. Pentru cele temperate și subtropicale, puteți alege și simetric, deoarece băncile vor trimite obiectele de valoare înapoi la banca de origine a unei încărcături de obiecte de valoare.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modalitatea de distribuire pentru alte clase de cargo: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimetric" înseamnă că pot fi trimise cantități diferite de marfă în ambele direcții. "manual" înseamnă că nu se va face distribuție automată pentru acele mărfuri.
 ###length 3
@@ -1942,6 +1946,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantitatea de c
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :O valoare sub 100% face distribuția simetrică să se comporte mai mult ca una asimetrică. Mai puțină marfă va fi trimisă forțat înapoi dacă o anumită cantitate este trimisă spre o stație. Dacă o setezi la 0%, distribuția simetrică se va comporta la fel ca cea asimetrică.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturaţia căilor de capacitate mică înainte de a utiliza căi de capacitate mare: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Adesea, există mai multe căi între două stații date. Cargodist va satura mai întâi calea cea mai scurtă, apoi va folosi a doua cea mai scurtă cale până când aceasta este saturată și așa mai departe. Saturația este determinată de o estimare a capacității și a utilizării planificate. Odată ce a saturat toate căile, dacă mai rămâne cerere, va supraîncărca toate căile, preferându-le pe cele cu capacitate mare. Totuși, de cele mai multe ori algoritmul nu va estima capacitatea cu acuratețe. Această setare vă permite să specificați până la ce procent o cale mai scurtă trebuie să fie saturată în prima trecere înainte de a alege următoarea mai lungă. Setați-l la mai puțin de 100% pentru a evita stațiile supraaglomerate în caz de capacitate supraestimată.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitate viteză: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Afişează viteza în interfaţă folosind unităţile selectate
@@ -2252,6 +2257,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Peisaj:
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mărimea hărţii: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versiune server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serverului: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Cod de invitație: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de început: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data curentă: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script Joc: {WHITE}{STRING} (v{NUM})
@@ -2668,6 +2674,7 @@ STR_STATION_CLASS_WAYP                                          :Puncte de tranz
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere semnal
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Comută afișarea tipurilor de semnal avansate
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Semnal standard (semafor){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieșire (semafor){}Se comportă în același fel ca semnalul normal, dar este necesar pentru declanșarea culorii corecte la presemnalizatoarele de intrare și cele combinate
@@ -3052,6 +3059,11 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 ###length 15
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Totalul buclei de joc:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Manipularea încărcăturilor:
+STR_FRAMERATE_GL_TRAINS                                         :Bilete de tren:
+STR_FRAMERATE_GL_ROADVEHS                                       :Tifurile vehiculelor rutiere:
+STR_FRAMERATE_GL_SHIPS                                          :Căpușele navei:
+STR_FRAMERATE_GL_AIRCRAFT                                       :Tickurile aeronavei:
+STR_FRAMERATE_GL_LANDSCAPE                                      :Căpușe mondiale:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Decalaj grafic de conexiuni:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Randare grafică:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vizoare globale:
@@ -3064,6 +3076,8 @@ STR_FRAMERATE_AI                                                :{BLACK}   IA {N
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Buclă de joc
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea încărcăturilor
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Căpușe de navă
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticurile aeronavei
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Decalaj grafic de conexiuni
 STR_FRAMETIME_CAPTION_DRAWING                                   :Randare grafică
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Randarea vizorului global
@@ -3310,6 +3324,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire după sf
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a fost dezactivat de {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Structură necunoscută/invalidă pentru elementul grafic (sprite {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Prea multe elemente în lista cu valori de proprietate (sprite {3:NUM}, proprietate {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Reapelare de producție nevalidă (sprite {3:NUM}, „{2:STRING}”)
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!
