@@ -537,7 +537,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 
 ###length 7
 
-###length 3
+###length 4
 
 
 # Settings tree window

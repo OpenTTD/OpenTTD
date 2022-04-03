@@ -1079,10 +1079,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Mendixkekin
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Menditsua
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinista
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Jasanbera
 STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa
+STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
 

@@ -452,7 +452,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 ###length 7
 
-###length 3
+###length 4
 
 
 # Settings tree window

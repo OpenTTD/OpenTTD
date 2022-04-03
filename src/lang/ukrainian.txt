@@ -1279,10 +1279,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :скеляст�
 STR_TERRAIN_TYPE_CUSTOM                                         :Власна висота
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Власна висота ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :допустиме
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :терпиме
 STR_CITY_APPROVAL_HOSTILE                                       :вороже
+STR_CITY_APPROVAL_PERMISSIVE                                    :допустиме
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає відповідних AI...{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернеті'
 

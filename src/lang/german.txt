@@ -1152,10 +1152,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
 STR_TERRAIN_TYPE_CUSTOM                                         :Benutzerdefinierte Höhe
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Benutzerdefinierte Höhe ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
 STR_CITY_APPROVAL_HOSTILE                                       :Gering
+STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden...{}Verschiedene KI sind via „Erweiterungen herunterladen“ verfügbar
 

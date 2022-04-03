@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 STR_TERRAIN_TYPE_CUSTOM                                         :Brugerdefineret højde
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Brugerdefineret højde ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
+STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 

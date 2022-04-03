@@ -1217,10 +1217,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Brežuljkasto
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Brdovito
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
+STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Odgovarajuća UI nije dostupna...{}Možete preuzeti nekoliko UI pomoću sustava 'Online sadržaja'
 

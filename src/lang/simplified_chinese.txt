@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :多山
 STR_TERRAIN_TYPE_CUSTOM                                         :自定义高度
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :自定义高度 ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :宽容
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :隐忍
 STR_CITY_APPROVAL_HOSTILE                                       :对立
+STR_CITY_APPROVAL_PERMISSIVE                                    :宽容
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合适的 AI 可用...{}你可以在线下载各种 AI 。
 

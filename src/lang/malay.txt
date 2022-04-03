@@ -1064,10 +1064,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Berbukit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergunung
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Bertoleransi
 STR_CITY_APPROVAL_HOSTILE                                       :Kurang mengizinkan
+STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tiada AI yang bersesuaian...{}Anda boleh memuat turun beberapa AI dari sistem 'Kandungan Atas Talian'
 

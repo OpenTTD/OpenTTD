@@ -1114,10 +1114,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Koppierig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergagtig
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinis
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Toelaatbaar
 STR_CITY_APPROVAL_HOSTILE                                       :Vyandelik
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen geskikte KI beskikbaar...{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel
 

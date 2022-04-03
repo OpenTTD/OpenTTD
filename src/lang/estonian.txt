@@ -1200,10 +1200,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 STR_TERRAIN_TYPE_CUSTOM                                         :Määratud kõrgus
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Määratud kõrgus ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Salliv
 STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
+STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv AI puudub...{}Mitmesuguseid AI-sid saab alla laadida 'aineste allalaadimise' kaudu
 

@@ -1531,10 +1531,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpejski
 STR_TERRAIN_TYPE_CUSTOM                                         :Niestandardowa wysokość
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Niestandardowa wysokość ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
+STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Dodatki online"
 

@@ -1238,10 +1238,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpské
 STR_TERRAIN_TYPE_CUSTOM                                         :Vlastní výška
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Vlastní výška ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
 STR_CITY_APPROVAL_HOSTILE                                       :zaujatý
+STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Žádná vhodná AI není k dispozici...{}Některé AI lze stáhnout pomocí služby "Stahovat součásti"
 

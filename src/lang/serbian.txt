@@ -1346,10 +1346,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Planinar
 STR_TERRAIN_TYPE_CUSTOM                                         :Posebna visina
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Posebna visina ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Neprijateljski
+STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 

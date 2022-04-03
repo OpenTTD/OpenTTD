@@ -1352,10 +1352,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Statūs kalnai
 STR_TERRAIN_TYPE_CUSTOM                                         :Pasirinktinis
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Pasirinktinis ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
+STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI...{}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
 

@@ -1054,10 +1054,10 @@ STR_TERRAIN_TYPE_FLAT                                           :Flatt
 STR_TERRAIN_TYPE_HILLY                                          :Bakkaríkt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Fjallaríkt
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgevandi
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolsamir
 STR_CITY_APPROVAL_HOSTILE                                       :Fíggjindaligir
+STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgevandi
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 

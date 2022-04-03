@@ -1092,10 +1092,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Bryniog
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mynyddig
 STR_TERRAIN_TYPE_ALPINIST                                       :Mynyddwr
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Hapus
 STR_CITY_APPROVAL_HOSTILE                                       :Gwrthwynebus
+STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Dim AI addas ar gael...{}Gallwch llawrlwytho sawl AI drwy'r system 'Cynnwys Ar-lein'
 

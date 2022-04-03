@@ -1076,10 +1076,10 @@ STR_TERRAIN_TYPE_FLAT                                           :یکدست
 STR_TERRAIN_TYPE_HILLY                                          :تپه مانند
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :کوه مانند
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :سخت گیر
 STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
+STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
 

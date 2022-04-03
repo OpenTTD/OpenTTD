@@ -1089,10 +1089,10 @@ STR_TERRAIN_TYPE_HILLY                                          :хълмист
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :планински
 STR_TERRAIN_TYPE_ALPINIST                                       :Алпинист
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :разрешаващи
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :толерантни
 STR_CITY_APPROVAL_HOSTILE                                       :враждебни
+STR_CITY_APPROVAL_PERMISSIVE                                    :разрешаващи
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма подходящи AI...{}Можете да свалите допълнителни AI чрез системата Online Content (Онлайн Съдържание)
 

@@ -1258,10 +1258,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Αλπικό
 STR_TERRAIN_TYPE_CUSTOM                                         :Προσαρμοσμένο ύψος
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Προσαρμοσμένο ύψος ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτική
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετική
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
+STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτική
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 

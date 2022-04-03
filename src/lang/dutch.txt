@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Berglandschap
 STR_TERRAIN_TYPE_CUSTOM                                         :Aangepaste hoogte
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Aangepaste hoogte ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Neutraal
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
+STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AI's beschikbaar...{}Je kunt diverse AI's downloaden via het 'online-inhoud'-systeem
 

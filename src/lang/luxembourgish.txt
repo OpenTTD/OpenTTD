@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
 STR_TERRAIN_TYPE_CUSTOM                                         :Eegen Héicht
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Eegen Héicht ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Fräizügeg
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
+STR_CITY_APPROVAL_PERMISSIVE                                    :Fräizügeg
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}KI kënnen iwwert den 'Online Content' system downgeload ginn
 

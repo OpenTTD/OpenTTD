@@ -1153,10 +1153,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpint
 STR_TERRAIN_TYPE_CUSTOM                                         :Egendefinert høyde
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Egendefinert høyde ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendtlig
+STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet AI tilgjengelig...{}Du kan laste ned flere AIer fra nettet med spillets nedlastingssystem.
 

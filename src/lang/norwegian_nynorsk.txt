@@ -1091,10 +1091,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Åslendt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Berglendt
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatande
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
+STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatande
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
 

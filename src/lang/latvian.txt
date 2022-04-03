@@ -1153,10 +1153,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpu
 STR_TERRAIN_TYPE_CUSTOM                                         :Pielāgots augstums
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Pielāgots augstums ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :pieļaujoša
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :naidīga
+STR_CITY_APPROVAL_PERMISSIVE                                    :pieļaujoša
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
 

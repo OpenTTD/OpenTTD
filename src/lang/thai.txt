@@ -1109,10 +1109,10 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :ภูเขา
 STR_TERRAIN_TYPE_ALPINIST                                       :นักไต่เขา
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :ความสูงแบบกำหนดเอง ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
 STR_CITY_APPROVAL_HOSTILE                                       :ไม่เป็นมิตร
+STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม่มี AI ที่เหมาะสมปรากฎ...{}คุณสามารถดาวน์โหลด AI จากระบบ 'Online Content'
 

@@ -1152,10 +1152,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alp Meraklısı
 STR_TERRAIN_TYPE_CUSTOM                                         :Özel yükseklik
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Özel yükseklik ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :İzne tabi
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Töleranslı
 STR_CITY_APPROVAL_HOSTILE                                       :Düşman
+STR_CITY_APPROVAL_PERMISSIVE                                    :İzne tabi
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 

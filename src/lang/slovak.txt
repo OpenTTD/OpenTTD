@@ -1219,10 +1219,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinista
 STR_TERRAIN_TYPE_CUSTOM                                         :Vlastná výška
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Vlastná výška ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitívny
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantný
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavý
+STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitívny
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje dostupné žiadne použiteľné AI...{}Niekoľko AI je možné stiahnuť cez 'Online obsah'
 

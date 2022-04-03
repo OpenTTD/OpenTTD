@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Ailpíneach
 STR_TERRAIN_TYPE_CUSTOM                                         :Airde shaincheaptha
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Airde shaincheaptha ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Fulangach
 STR_CITY_APPROVAL_HOSTILE                                       :Naimhdeach
+STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon AI oiriúnach ar fáil...{}Is féidir leat roinnt AI a íoslódáil tríd an gcóras 'Inneachar Ar Líne'
 

@@ -1425,10 +1425,10 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Гарыста�
 STR_TERRAIN_TYPE_ALPINIST                                       :Выключна горны
 STR_TERRAIN_TYPE_CUSTOM                                         :Усталяваць вышыню ўручную
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Дазваляючае
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Памяркоўнае
 STR_CITY_APPROVAL_HOSTILE                                       :Варожае
+STR_CITY_APPROVAL_PERMISSIVE                                    :Дазваляючае
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модулі штучнага інтэлекту (ШІ/AI) адсутнічаюць.{}Іх можна спампаваць праз сістэму праверкі "анлайн-кантэнту".
 

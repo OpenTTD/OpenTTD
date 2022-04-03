@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :山脈地帯
 STR_TERRAIN_TYPE_CUSTOM                                         :カスタム高度
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :カスタム高度 ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :寛容
 STR_CITY_APPROVAL_HOSTILE                                       :対立
+STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}適切なAIがありません...{}AIは「オンライン項目を確認」からダウンロード可能です
 

@@ -1152,10 +1152,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
 STR_TERRAIN_TYPE_CUSTOM                                         :Hauteur personnalisée
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Hauteur personnalisée ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
+STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 

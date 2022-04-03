@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Vuorikiipeilij�
 STR_TERRAIN_TYPE_CUSTOM                                         :Oma korkeus
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Oma korkeus ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen
+STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla...{}Voit ladata tekoälyjä ”online-sisältö” -palvelulla
 

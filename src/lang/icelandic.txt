@@ -1053,10 +1053,10 @@ STR_TERRAIN_TYPE_FLAT                                           :Slétt
 STR_TERRAIN_TYPE_HILLY                                          :Hæðótt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Fjallótt
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd
 STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
+STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
 

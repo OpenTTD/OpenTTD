@@ -1152,10 +1152,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Escarpat
 STR_TERRAIN_TYPE_CUSTOM                                         :Alçada personalitzada
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Alçada personalitzada ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha cap IA disponible...{}Podeu descarregar-ne a través del «Contingut en línia».
 

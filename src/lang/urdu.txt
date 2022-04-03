@@ -1049,10 +1049,10 @@ STR_TERRAIN_TYPE_FLAT                                           :سیدھا
 STR_TERRAIN_TYPE_HILLY                                          :ٹیلوں والا
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :پہاڑی
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :برداشت کرنے والا
 STR_CITY_APPROVAL_HOSTILE                                       :مخالفانہ
+STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
 
 
 # Settings tree window

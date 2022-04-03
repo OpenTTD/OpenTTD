@@ -1074,10 +1074,10 @@ STR_TERRAIN_TYPE_FLAT                                           :Flat
 STR_TERRAIN_TYPE_HILLY                                          :Hilly
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mountainous
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 

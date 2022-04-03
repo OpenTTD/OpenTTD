@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 STR_TERRAIN_TYPE_CUSTOM                                         :Înălțime personalizată
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Înălțime personalizată ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :Ostilă
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligenţă Artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Resurse Online'
 

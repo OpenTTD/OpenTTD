@@ -1106,10 +1106,10 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :மலைகள
 STR_TERRAIN_TYPE_ALPINIST                                       :அல்பைனிசிட்டு
 STR_TERRAIN_TYPE_CUSTOM                                         :தனிப்பயன் உயரம்
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :அனுமதிதரும்
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :பொறுத்துக்கொள்ளும்
 STR_CITY_APPROVAL_HOSTILE                                       :அனுமதிக்காது
+STR_CITY_APPROVAL_PERMISSIVE                                    :அனுமதிதரும்
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}பொருத்தமான AI கிடைக்கவில்லை...{}'ஆன்லைன் உள்ளடக்கம்' அமைப்பு வழியாக பல AIகளை தாங்கள் பதிவிறக்கம் செய்யலாம்
 

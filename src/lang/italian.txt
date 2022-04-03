@@ -1150,10 +1150,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpino
 STR_TERRAIN_TYPE_CUSTOM                                         :Altezza personalizzata
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altezza personalizzata ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tollerante
 STR_CITY_APPROVAL_HOSTILE                                       :Ostile
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nessuna IA adatta disponibile...{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
 

@@ -1215,10 +1215,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpesi
 STR_TERRAIN_TYPE_CUSTOM                                         :Egyéni magasság
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Egyéni magasság ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
 STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
+STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen megfelelő MI...{}Letölthetsz néhány MI-t a tartalomletöltő rendszeren keresztül
 

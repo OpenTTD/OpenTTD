@@ -1108,10 +1108,10 @@ STR_TERRAIN_TYPE_HILLY                                          :مرتفعات 
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :جبال
 STR_TERRAIN_TYPE_ALPINIST                                       :شاهق
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :متساهل
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :متقبل
 STR_CITY_APPROVAL_HOSTILE                                       :معاد
+STR_CITY_APPROVAL_PERMISSIVE                                    :متساهل
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
 

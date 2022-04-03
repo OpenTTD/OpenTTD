@@ -1088,10 +1088,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Heuvelich
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergich
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fijannich
+STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin brûkbere AIs beskikber...{}jo kinne ferskillende AIs downloade fia it 'Online Content' systeem
 

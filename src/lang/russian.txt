@@ -1300,10 +1300,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Исключи�
 STR_TERRAIN_TYPE_CUSTOM                                         :Установить высоту вручную
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Установленная высота ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :дозволяющее
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :терпимое
 STR_CITY_APPROVAL_HOSTILE                                       :отрицательное
+STR_CITY_APPROVAL_PERMISSIVE                                    :дозволяющее
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
 

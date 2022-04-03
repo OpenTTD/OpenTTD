@@ -1108,10 +1108,10 @@ STR_TERRAIN_TYPE_HILLY                                          :נוף גבעו
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :הררי
 STR_TERRAIN_TYPE_ALPINIST                                       :מטפס הרים
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין
+STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
 

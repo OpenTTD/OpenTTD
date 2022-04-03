@@ -1294,10 +1294,10 @@ STR_TERRAIN_TYPE_HILLY                                          :Cnuic
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Beanntan
 STR_TERRAIN_TYPE_ALPINIST                                       :Mòr-bheanntan
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Coibhneil
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Ceadachail
 STR_CITY_APPROVAL_HOSTILE                                       :Nàimhdeil
+STR_CITY_APPROVAL_PERMISSIVE                                    :Coibhneil
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Chan eil IF freagarrach ri fhaighinn...{}’S urrainn dhut roghainn dhe IFan a luchdadh a-nuas leis an t-siostam “Susbaint air loidhne"
 

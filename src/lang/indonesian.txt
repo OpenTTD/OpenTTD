@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Pemanjat Gunung
 STR_TERRAIN_TYPE_CUSTOM                                         :Ketinggian Kustom
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Ketinggian Kustom ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu Boleh
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
+STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu Boleh
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa macam AI lewat "Cari Konten"
 

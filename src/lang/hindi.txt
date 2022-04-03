@@ -326,7 +326,7 @@ STR_AI_SPEED_SLOW                                               :धीमा
 
 ###length 7
 
-###length 3
+###length 4
 
 
 # Settings tree window

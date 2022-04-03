@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Đồi núi
 STR_TERRAIN_TYPE_CUSTOM                                         :Độ cao tùy chọn
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Độ cao tùy chỉnh ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
+STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}Bạn có thể tải các AI từ mục 'Online Content'
 

@@ -1152,10 +1152,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Escarpado
 STR_TERRAIN_TYPE_CUSTOM                                         :Definir altura
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura person. ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron archivos de IA apropiados...{}Se pueden descargar por medio del sistema de 'Contenido en línea'
 

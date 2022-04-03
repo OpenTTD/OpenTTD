@@ -1151,10 +1151,10 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 STR_TERRAIN_TYPE_CUSTOM                                         :Custom height
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Custom height ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 

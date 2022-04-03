@@ -569,7 +569,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 ###length 7
 
-###length 3
+###length 4
 
 
 # Settings tree window
