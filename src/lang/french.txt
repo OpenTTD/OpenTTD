@@ -1153,9 +1153,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Hauteur personn
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Hauteur personnalisée ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Laxiste
 STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
-STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive (pas d'effet sur les actions des compagnies)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 
@@ -1256,8 +1257,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si activé, les
 STR_CONFIG_SETTING_DISASTERS                                    :Catastrophes{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désactiver les catastrophes qui peuvent occasionnellement bloquer ou détruire des véhicules ou des infrastructures
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la zone
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude de l'autorité locale{NBSP}: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la ville
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Hauteur limite de la carte: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Définissez la hauteur maximale du terrain de la carte. Avec "(auto)", une bonne valeur sera choisie après la création du terrain
