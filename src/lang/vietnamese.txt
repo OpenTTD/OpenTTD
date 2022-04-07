@@ -1152,9 +1152,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Độ cao tùy 
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Độ cao tùy chỉnh ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Ôn hoà
 STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
-STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
+STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi (không có tác dụng với hoạt động xây dựng của công ty)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}Bạn có thể tải các AI từ mục 'Online Content'
 
@@ -1255,8 +1256,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Nếu bật th�
 STR_CONFIG_SETTING_DISASTERS                                    :Thảm họa: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Thay đổi tùy chọn để thảm họa đôi lúc ngăn chặn hoặc phá hủy phương tiện và công trình hạ tầng
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Thái độ của hội đồng thành phố với việc xây dựng lại địa phương: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Lựa chọn mức độ ảnh hưởng môi trường và tiếng ồn gây ra bởi các công ty sẽ ảnh hưởng uy tín của công ty đối với chính quyền địa phương và các hoạt động xây dựng của họ trong địa bàn
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Thái độ của chính quyền địa phương: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Lựa chọn mức độ ảnh hưởng môi trường và tiếng ồn gây ra bởi các công ty sẽ ảnh hưởng uy tín của công ty đối với chính quyền địa phương và các hoạt động xây dựng của họ trong thành phố
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Giới hạn độ cao bản đồ: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Tùy chỉnh độ cao tối đa của địa hình. Giá trị "(tự động)" là giá trị sẽ được tự tạo sau khi sinh ra địa hình
