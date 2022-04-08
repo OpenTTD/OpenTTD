@@ -1153,9 +1153,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Alçada persona
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Alçada personalitzada ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Tolerant
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva (les accions de les companyies no l'afecten)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha cap IA disponible...{}Podeu descarregar-ne a través del «Contingut en línia».
 
@@ -1256,8 +1257,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu,
 STR_CONFIG_SETTING_DISASTERS                                    :Catàstrofes: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que passin catàstrofes que puguin bloquejar o destruir ocasionalment vehicles o infraestructures
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població enfront les reestructuracions a la zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Establiu com afecta al prestigi de les companyies el soroll i els danys ambientals que provoquen. Aquest prestigi influirà en la futura acceptació o denegació d'accions de construcció a la zona.
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de les alcaldies de les poblacions: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Establiu com afecta al prestigi de les companyies el soroll i els danys ambientals que provoquen. Aquest prestigi influirà en la futura acceptació o denegació d'accions de construcció a la població.
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Alçada màxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Estableix l'alçada màxima del terreny del mapa. Amb «Automàtica», s'escollirà un valor adequat després que es generi el terreny.

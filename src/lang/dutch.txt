@@ -1152,9 +1152,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Aangepaste hoog
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Aangepaste hoogte ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_TOLERANT                                      :Neutraal
+STR_CITY_APPROVAL_LENIENT                                       :Meegaand
+STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
-STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
+STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk (geen effect op bedrijfsactiviteiten)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AI's beschikbaar...{}Je kunt diverse AI's downloaden via het 'online-inhoud'-systeem
 
@@ -1255,8 +1256,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingescha
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Rampen in-uitschakelen die af en toe voertuigen of infrastructuur kunnen blokkeren of vernietigen
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Houding van gemeentebestuur ten opzichte van herstructurering omgeving: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Bepaalt in hoeverre lawaai en schade aan het milieu door bedrijven de stadswaardering en verdere bouwacties beïnvloeden in hun omgeving
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Houding van gemeentebestuur: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Bepaalt in hoeverre lawaai en schade aan het milieu door bedrijven de stadswaardering en verdere bouwacties beïnvloeden in de stad
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limiet voor kaarthoogte: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Stelt de maximale hoogte voor het terrein op de kaart in. Met '(auto)' wordt een goede waarde genomen nadat het terrein is gegenereerd
