@@ -33,7 +33,7 @@ STR_CARGO_PLURAL_MAIL                                           :{G=f}Posta
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petrolio
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Bestiame
 STR_CARGO_PLURAL_GOODS                                          :{G=m}Beni
-STR_CARGO_PLURAL_GRAIN                                          :{G=m}Grano
+STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereali
 STR_CARGO_PLURAL_WOOD                                           :{G=m}Legname
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Ferro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Acciaio
@@ -67,7 +67,7 @@ STR_CARGO_SINGULAR_MAIL                                         :{G=f}Posta
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petrolio
 STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Bestiame
 STR_CARGO_SINGULAR_GOODS                                        :{G=m}Beni
-STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Grano
+STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Cereali
 STR_CARGO_SINGULAR_WOOD                                         :{G=m}Legname
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Ferro
 STR_CARGO_SINGULAR_STEEL                                        :{G=m}Acciaio
@@ -101,7 +101,7 @@ STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sa
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} di petrolio
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cap{P o i} di bestiame
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}cass{P a e} di beni
-STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} di grano
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} di cereali
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} di legname
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} di ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} di acciaio
@@ -136,7 +136,7 @@ STR_ABBREV_MAIL                                                 :{TINY_FONT}PT
 STR_ABBREV_OIL                                                  :{TINY_FONT}PE
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}BE
 STR_ABBREV_GOODS                                                :{TINY_FONT}BN
-STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
+STR_ABBREV_GRAIN                                                :{TINY_FONT}CE
 STR_ABBREV_WOOD                                                 :{TINY_FONT}LE
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}FE
 STR_ABBREV_STEEL                                                :{TINY_FONT}AC
@@ -902,7 +902,11 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLAC
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà {NUM} anni di sussidio dall'autorità locale!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il 50% in più per il prossimo{NUM} anno{P "" i}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il doppio per il prossimo{NUM} anno{P "" i}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il triplo per il prossimo{NUM} anno{P "" i}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} anni{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE.mp                   :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} anni{P "" i}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione delle strade finanziata dalla {STRING} porterà 6 mesi di disagio agli automobilisti!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolio dei trasporti!
@@ -968,7 +972,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malaysi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Guida a sinistra
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Guida a destra
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomi città
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomi città:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Seleziona lo stile per i nomi delle città
 
 ###length 21
@@ -1151,9 +1155,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Altezza persona
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altezza personalizzata ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tollerante
 STR_CITY_APPROVAL_HOSTILE                                       :Ostile
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo (nessun effetto sulle azioni della compagnia)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nessuna IA adatta disponibile...{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
 
@@ -1260,7 +1265,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Imposta quanto 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durata sussidio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Imposta il numero di anni per i quali il sussidio viene aggiudicato
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} anno{P "" s}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} anno{P "" i}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Niente sussidi
 
@@ -1276,15 +1281,15 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se abilitato, i
 STR_CONFIG_SETTING_DISASTERS                                    :Disastri: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Controlla l'attivazione dei disastri che, occasionalmente, possono bloccare o distruggere i veicoli e le infrastrutture
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento della città in merito alle modifiche: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nell'area controllata
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento dell'autorità locale: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nella città
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite di altezza della mappa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Imposta l'altezza massima per il terreno. Con l'opzione "(auto)" un valore ottimale verrà scelto automaticamente dopo la generazione del terreno
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatico)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Impossibile impostare l'altezza massima della mappa a questo valore. Almeno una delle montagne della mappa è più alta
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Non è possibile impostare il limite di altezza della mappa su questo valore. Almeno una montagna sulla mappa è più alta
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Consenti rimodellazione terreno sotto a edifici, rotaie, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Consente la rimodellazione del terreno sotto edifici e rotaie senza doverli rimuovere
@@ -1487,7 +1492,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanz
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita la distanza dal bordo della mappa entro cui possono essere costruite raffinerie e piattaforme petrolifere. Nelle mappe insulari sono comunque sempre vicino alla costa. Su mappe più grandi di 256 riquadri il valore è aumentato in proporzione.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle nevi perenni: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi sub-artici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi sub-artici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città. Può essere modificato solo tramite l'Editor di scenari o altrimenti calcolato tramite "Aree innevate"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Aree innevate: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regola la quantità approssimativa di neve sul paesaggio subartico. La neve influisce anche sulla generazione dell'industria e sui requisiti di crescita della città. Utilizzato solo durante la generazione della mappa. La terra appena sopra il livello del mare è sempre senza neve
@@ -1846,7 +1851,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Tipi di segnale
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Seleziona fra quali tipi di segnale alternare quando si usa CTRL+clic su un segnale costruito
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo segnali di percorso
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tutti
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tutti visibili
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Mostra tipi di segnale: {STRING}
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Scegli quali tipi di segnale mostrare nella barra degli strumenti segnale
@@ -2302,7 +2307,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Cerca se
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Cerca nella LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Cerca server nella LAN
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Aggiungi server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aggiunge un server alla lista di server in cui cercare sempre partite in corso
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aggiunge un server alla lista. Può essere un indirizzo di server o un codice di invito
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Avvia server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Avvia il proprio server
 
@@ -2351,7 +2356,7 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server p
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserire la password
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Elenco dei client
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Giocatori online
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spettatore
 
 # Network client list
@@ -2442,7 +2447,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inserire
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nessun dispositivo di rete trovato
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Il server non ha risposto alla richiesta
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La connessione al server è scaduta o è stata rifiutata
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Impossibile connettersi a causa di file NewGRF differenti
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronizzazione alla partita in rete non riuscita
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Connessione alla partita in rete persa.
@@ -2515,7 +2520,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} è diventato spettatore
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha avviato una nuova compagnia (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abbandonato la partita ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiato nome in {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiato il loro nome in {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha dato {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il server ha chiuso la sessione
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
@@ -2790,7 +2795,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruis
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint. MAIUSC alterna fra costruzione e stima dei costi
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto. MAIUSC alterna fra costruzione e stima dei costi
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definisce una zona d'acqua.{}Costruisce un canale, a meno che non si tenga premuto CTRL mentre si fa clic al livello del mare, provocando l'allagamento dei dintorni
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea fiumi
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea fiumi. Ctrl seleziona l'area in diagonale
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientamento deposito navale
@@ -3195,6 +3200,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome hei
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dim.:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Livello altezza massima
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Picco massimo
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Aree innevate (in %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Aree desertiche (in %)
@@ -3822,7 +3828,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Fare cli
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina il gruppo selezionato
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rinomina il gruppo selezionato
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Cambia la livrea del gruppo selezionato
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Fare clic per proteggere questo gruppo dal rimpiazzo automatico
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Fare clic per proteggere questo gruppo dal rimpiazzo automatico. Ctrl+Clic per proteggere anche i sottogruppi.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Elimina Gruppo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Si è sicuri di voler eliminare questo gruppo e tutti i gruppi contenuti?
@@ -5223,7 +5229,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Carro per carbo
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Vagone cisterna per petrolio
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagone bestiame
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagone beni
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tramoggia per grano
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tramoggia per cereali
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Tramoggia per ferro
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Carro per acciaio
@@ -5253,7 +5259,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Carro per carbo
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagone cisterna per petrolio
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vagone bestiame
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Vagone beni
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tramoggia per grano
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tramoggia per cereali
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Tramoggia per ferro
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Carro per acciaio
@@ -5285,7 +5291,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Carro per carbo
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Vagone cisterna per petrolio
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Vagone bestiame
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Vagone beni
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tramoggia per grano
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tramoggia per cereali
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Tramoggia per ferro
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Carro per acciaio
@@ -5333,9 +5339,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Carro bestiame 
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camion beni Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camion beni Craighead
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camion beni Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Autocarro grano Hereford
-STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Autocarro grano Thomas
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Autocarro grano Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Autocarro cereali Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Autocarro cereali Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Autocarro cereali Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Autocarro legname Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Autocarro legname Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Autocarro legname Moreland

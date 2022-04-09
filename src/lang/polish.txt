@@ -2178,7 +2178,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nigdy
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ ekonomii: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Płynna ekonomia oznacza, że zmiany w produkcji zachodzą częściej i w mniejszych krokach. Zamrożona gospodarka zatrzymuje zmiany w produkcji i zamykanie przedsiębiorstw. To ustawienie może nie mieć żadnego wpływu, jeśli przemysł jest regulowany przez NewGRFy.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Płynna ekonomia oznacza, że zmiany w produkcji zachodzą częściej i w mniejszych krokach. Zamrożona gospodarka zatrzymuje zmiany w produkcji i zamykanie przedsiębiorstw. To ustawienie może nie mieć żadnego wpływu, jeśli przemysł jest regulowany przez NewGRF-y.
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Oryginalna
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Płynna
@@ -2309,13 +2309,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Przeznacz {STRI
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Czas potrzebny na każde ponowne przeliczenie elementu grafu połączeń. Po rozpoczęciu przeliczania tworzony jest wątek, który może działać przez podaną liczbę dni. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symetryczna" oznacza, że mniej więcej tyle samo pasażerów będzie podróżowało ze stacji A do stacji B, co z B do A. "Asymetryczna" znaczy, że narzucone ilości pasażerów mogą podróżować w obu kierunkach. "Ręczna" oznacza, że nie będzie automatycznej dystrybucji dla pasażerów.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Tryb „symetryczny” oznacza, że mniej więcej tyle samo pasażerów będzie podróżować ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach może podróżować dowolna liczba pasażerów. Tryb „ręczny” oznacza, że dla pasażerów nie będzie przeprowadzana dystrybucja automatyczna.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Tryb dystrybucji dla poczty: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symetryczna" oznacza, że mniej więcej tyle samo poczty będzie wysłane ze stacji A do stacji B, co z B do A. "Asymetryczna" znaczy, że narzucone ilości poczty mogą być wysłane w obu kierunkach. "Ręczna" oznacza, że nie będzie automatycznej dystrybucji dla poczty.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Tryb „symetryczny” oznacza, że mniej więcej taka sama ilość poczty zostanie wysłana ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach może być wysłana dowolna ilość poczty. Tryb „ręczny” oznacza, że dla poczty nie będzie przeprowadzana dystrybucja automatyczna.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Tryb dystrybucji dla klasy ładunków CHRONIONYCH: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :CHRONIONA klasa towarów zawiera kosztowności w umiarkowanym, diamenty w tropikalnym lub złoto w arktycznym klimacie. NewGRF-y mogą to zmieniać. "Symetryczna" oznacza, że mniej więcej tyle samo towaru będzie wysłane ze stacji A do stacji B, co z B do A. "Asymetryczna" znaczy, że narzucone ilości towarów mogą być wysłane w obu kierunkach. "Manualna" oznacza, że nie będzie automatycznej dystrybucji dla tych towarów. Rekomendowane ustawienie to asymetryczne lub ręczne dla klimatu arktycznego, ponieważ banki nie będą wysyłać złota spowrotem do kopalni złota. Dla umiarkowanego i tropikalnego klimatu możesz także wybrać symetryczne, ponieważ banki będą wysyłać kosztowności spowrotem do banku, z którego pochodzi część kosztowności.
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Tryb dystrybucji dla innych typów ładunku: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymetrycznie" oznacza, że określone ilości ładunków mogą być wysłane w obu kierunkach. "manualnie" oznacza, że dystrybucja nie będzie odbywać się automatycznie.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Tryb dystrybucji dla pozostałych klas ładunków: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Tryb „asymetryczny” oznacza, że dowolne ilości ładunków mogą być wysyłane w obu kierunkach. Tryb „ręczny” oznacza, że dla takich ładunków nie będzie przeprowadzana dystrybucja automatyczna.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ręczny
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetryczny
@@ -2419,8 +2419,8 @@ STR_CONFIG_ERROR                                                :{WHITE}Błąd w
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... błąd w tablicy '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nieprawidłowa wartość '{STRING}' dla '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zbędne znaki na końcu ustawienia '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRFa '{STRING}': zduplikowany GRF ID z '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRFów '{STRING}': {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRF-a '{STRING}': zduplikowany GRF ID z '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRF-ów '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie znaleziono
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :{G=n}niebezpieczne w stałym użyciu
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systemowe NewGRF
@@ -3451,10 +3451,10 @@ STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tyknię
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Opóźnienie wykresu połączeń:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderowanie grafiki:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Okna ze światem:
-STR_FRAMERATE_VIDEO                                             :{BLACK}Wyjście video:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Wyjście wideo:
 STR_FRAMERATE_SOUND                                             :{BLACK}Miksowanie dźwięku:
-STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/SI łącznie:
-STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Game script:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK} GS/SI łącznie:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Game Script:
 STR_FRAMERATE_AI                                                :{BLACK} SI {NUM} {STRING}
 
 ###length 15
@@ -3471,7 +3471,7 @@ STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderowanie ok
 STR_FRAMETIME_CAPTION_VIDEO                                     :Wyjście wideo
 STR_FRAMETIME_CAPTION_SOUND                                     :Miksowanie dźwięku
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Wszystkie skrypty GS/SI
-STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Game script
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Game Script
 STR_FRAMETIME_CAPTION_AI                                        :SI {NUM} {STRING}
 
 
@@ -3758,9 +3758,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy
 STR_INVALID_VEHICLE                                             :<nieprawidłowy pojazd>
 
 # NewGRF scanning window
-STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanowanie NewGRFów
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuję NewGRFy. Może to zająć chwilę w zależności od ich ilości...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Przeskanowano {NUM} NewGRF{P "" y ów} z około {NUM} NewGRFów
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanowanie NewGRF-ów
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuję NewGRF-y. Może to zająć chwilę w zależności od ich ilości...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Przeskanowano {NUM} NewGRF{P "" -y -ów} z około {NUM} NewGRF{P "" -y -ów}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skanowanie w poszukiwaniu archiwum
 
 # Sign list window
