@@ -1813,8 +1813,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetla
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Czas wyświetlania komunikatów o błędach w czerwonym oknie. Niektóre (krytyczne) komunikaty o błędach nie zamykają się automatycznie po tym czasie, tylko muszą zostać zamknięte ręcznie
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a y ""}
 
-STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż wskazówki: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Opóźnienie, zanim wskazówka zostanie wyświetlona po najechaniu myszką na element interfejsu. Alternatywnie wskazówki mogą zostać przypisane do prawego przycisku myszki, kiedy ta wartość jest ustawiona na 0.
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż podpowiedzi: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Opóźnienie wyświetlania podpowiedzi po najechaniu myszą na element interfejsu. Ewentualnie podpowiedzi mogą być przypisane do prawego przycisku myszy, jeśli wartość ta będzie ustawiona na 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zatrzymaj kursor przez {COMMA} milisekund{P ę y ""}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :prawy klik
@@ -1825,8 +1825,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Wyświetlaj pop
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grubość linii na wykresie: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grubość linii na wykresach. Cienka linia jest dokładniejsza, grubsza linia jest bardziej widoczna a kolory łatwiejsze do odróżnienia
 
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Pokaż nazwę NewGRF'a w oknie budowy pojazdu: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj linię do okna budowy pojazdów, pokazujących z którego NewGRF'a wybrany pojazd pochodzi.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Pokaż nazwę NewGRF-a w oknie budowy pojazdu: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj wiersz do okna budowy pojazdów, pokazujący z którego NewGRF-a wybrany pojazd pochodzi.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajobraz: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajobrazy określają podstawowe scenariusze gry, które różnią się przedsiębiorstwami, ładunkiem i wymogami dla rozwoju miast. Pliki NewGRF i skrypty umożliwiają dokładniejszą kontrolę warunków rozgrywki
@@ -2048,7 +2048,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Odtwarzaj efekt
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Pojazdy: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Odtwarzaj efekty dźwiękowe pojazdów
 
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :Odgłosy: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Otoczenie: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Odtwarzaj dźwięki otoczenia - środowisko, przedsiębiorstwa i miasta
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Makymalna liczba pociągów na firmę: {STRING}
@@ -2295,18 +2295,18 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :normalna
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :duża
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :bardzo duża
 
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcje miejscowości, które będą miastami: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Liczba miasteczek, które staną się miastami, czyli miasteczka od początku większe i rozwijające się szybciej
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcje miast, które będą metropoliami: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Liczba miast, które staną się metropoliami - czyli miastami, które na początku są większe i szybciej się rozwijają
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar dużych miast w porównaniu do normalnych miast na początku gry
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar metropolii w porównaniu do normalnych miast na początku gry
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizacja grafu dystrybucji co {STRING}{NBSP}{P 0:2 dzień dni dni}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde ponowne przeliczenie obejmuje pojedynczą część grafu. Wartość X dla tego ustawienia nie oznacza, że cały wykres będzie aktualizowany co X dni. Aktualizowane będą tylko niektóre elementy. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach.
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizuj graf dystrybucji co {STRING}{NBSP}{P 0:2 dzień dni dni}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X dni. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Przeznacz {STRING}{NBSP}{P 0:2 dzień dni dni} na przeliczenie grafu dystrybucji
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Czas potrzebny na każde ponowne przeliczenie elementu grafu połączeń. Po rozpoczęciu przeliczania tworzony jest wątek, który może działać przez podaną liczbę dni. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Czas potrzebny na każde przeliczenie komponentu grafu połączeń. Po rozpoczęciu przeliczania tworzony jest wątek, który może działać przez podaną liczbę dni. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Tryb „symetryczny” oznacza, że mniej więcej tyle samo pasażerów będzie podróżować ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach może podróżować dowolna liczba pasażerów. Tryb „ręczny” oznacza, że dla pasażerów nie będzie przeprowadzana dystrybucja automatyczna.
@@ -2487,8 +2487,8 @@ STR_QUIT_NO                                                     :{BLACK}Nie
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Wyjście
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy jesteś pewien, że chcesz skończyć tę grę?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jesteś pewien, że chcesz opuścić ten scenariusz?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy na pewno chcesz porzucić tę rozgrywkę?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy na pewno chcesz porzucić ten scenariusz?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
@@ -3739,7 +3739,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Zachowan
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza halą warsztatów
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu '{1:ENGINE}' , który nie jest zatrzymany w hali
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRF'ami. Gra może się odsychronizować lub zawiesić
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg „{VEHICLE}” należący do „{COMPANY}” ma nieprawidłową długość. Prawdopodobnie jest to spowodowane problemami z NewGRF-ami. Gra może się desychronizować lub zawiesić
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie
