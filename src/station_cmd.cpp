@@ -1245,6 +1245,59 @@ static void RestoreTrainReservation(Train *v)
 }
 
 /**
+ * Calculates cost of new rail stations within the area.
+ * @param tile_area Area to check.
+ * @param flags Operation to perform.
+ * @param axis Rail station axis.
+ * @param station StationID to be queried and returned if available.
+ * @param rt The rail type to check for (overbuilding rail stations over rail).
+ * @param affected_vehicles List of trains with PBS reservations on the tiles
+ * @param spec_class Station class.
+ * @param spec_index Index into the station class.
+ * @param plat_len Platform length.
+ * @param numtracks Number of platforms.
+ * @return The cost in case of success, or an error code if it failed.
+ */
+static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, byte spec_index, byte plat_len, byte numtracks)
+{
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	bool success = false;
+	bool length_price_ready = true;
+	byte tracknum = 0;
+	for (TileIndex cur_tile : tile_area) {
+		/* Clear the land below the station. */
+		CommandCost ret = CheckFlatLandRailStation(TileArea(cur_tile, 1, 1), flags, axis, station, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
+		if (ret.Failed()) return ret;
+
+		/* Only add _price[PR_BUILD_STATION_RAIL_LENGTH] once for each valid plat_len. */
+		if (tracknum == numtracks) {
+			length_price_ready = true;
+			tracknum = 0;
+		} else {
+			tracknum++;
+		}
+
+		/* AddCost for new or rotated rail stations. */
+		if (!IsRailStationTile(cur_tile) || (IsRailStationTile(cur_tile) && GetRailStationAxis(cur_tile) != axis)) {
+
+			cost.AddCost(ret);
+			cost.AddCost(_price[PR_BUILD_STATION_RAIL]);
+			cost.AddCost(RailBuildCost(rt));
+
+			if (length_price_ready) {
+				cost.AddCost(_price[PR_BUILD_STATION_RAIL_LENGTH]);
+				length_price_ready = false;
+			}
+			success = true;
+		}
+	}
+
+	if (!success) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+
+	return cost;
+}
+
+/**
  * Build rail station
  * @param flags operation to perform
  * @param tile_org northern most position of station dragging/placement
@@ -1294,12 +1347,9 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
 	std::vector<Train *> affected_vehicles;
-	/* Clear the land below the station. */
-	CommandCost cost = CheckFlatLandRailStation(new_location, flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
+	/* Add construction and clearing expenses. */
+	CommandCost cost = CalculateRailStationCost(new_location, flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
 	if (cost.Failed()) return cost;
-	/* Add construction expenses. */
-	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
-	cost.AddCost(numtracks * plat_len * RailBuildCost(rt));
 
 	Station *st = nullptr;
 	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
@@ -1812,6 +1862,54 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
 }
 
 /**
+ * Calculates cost of new road stops within the area.
+ * @param tile_area Area to check.
+ * @param flags Operation to perform.
+ * @param is_drive_through True if trying to build a drive-through station.
+ * @param is_truck_stop True when building a truck stop, false otherwise.
+ * @param axis Axis of a drive-through road stop.
+ * @param ddir Entrance direction (#DiagDirection) for normal stops. Converted to the axis for drive-through stops.
+ * @param station StationID to be queried and returned if available.
+ * @param rt Road type to build.
+ * @param unit_cost The cost to build one road stop of the current type.
+ * @return The cost in case of success, or an error code if it failed.
+ */
+static CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlag flags, bool is_drive_through, bool is_truck_stop, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
+{
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	bool success = false;
+	/* Check every tile in the area. */
+	for (TileIndex cur_tile : tile_area) {
+		uint invalid_dirs = 0;
+		if (is_drive_through) {
+			SetBit(invalid_dirs, AxisToDiagDir(axis));
+			SetBit(invalid_dirs, ReverseDiagDir(AxisToDiagDir(axis)));
+		} else {
+			SetBit(invalid_dirs, ddir);
+		}
+		CommandCost ret = CheckFlatLandRoadStop(TileArea(cur_tile, cur_tile), flags, invalid_dirs, is_drive_through, is_truck_stop, axis, est, rt);
+		if (ret.Failed()) return ret;
+
+		bool is_preexisting_roadstop = IsTileType(cur_tile, MP_STATION) && IsRoadStop(cur_tile);
+
+		/* Only add costs if a stop doesn't already exist in the location */
+		if (!is_preexisting_roadstop) {
+			cost.AddCost(ret);
+			cost.AddCost(unit_cost);
+			success = true;
+		} else if (is_preexisting_roadstop && !is_drive_through) {
+			/* Allow rotating non-drive through stops for free */
+			success = true;
+		}
+
+	}
+
+	if (!success) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+
+	return cost;
+}
+
+/**
  * Build a bus or truck stop.
  * @param flags Operation to perform.
  * @param tile Northernmost tile of the stop.
@@ -1874,11 +1972,9 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, u
 	} else {
 		unit_cost = _price[is_truck_stop ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS];
 	}
-	CommandCost cost(EXPENSES_CONSTRUCTION, roadstop_area.w * roadstop_area.h * unit_cost);
 	StationID est = INVALID_STATION;
-	ret = CheckFlatLandRoadStop(roadstop_area, flags, is_drive_through ? 5 << axis : 1 << ddir, is_drive_through, is_truck_stop, axis, &est, rt);
-	if (ret.Failed()) return ret;
-	cost.AddCost(ret);
+	CommandCost cost = CalculateRoadStopCost(roadstop_area, flags, is_drive_through, is_truck_stop, axis, ddir, &est, rt, unit_cost);
+	if (cost.Failed()) return cost;
 
 	Station *st = nullptr;
 	ret = FindJoiningRoadStop(est, station_to_join, adjacent, roadstop_area, &st);
