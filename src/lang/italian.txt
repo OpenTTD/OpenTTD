@@ -3200,7 +3200,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome hei
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dim.:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Livello altezza massima
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Limite altezza massima
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Picco massimo
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Aree innevate (in %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Aree desertiche (in %)
