@@ -1455,7 +1455,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Rinnova solo se
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ammontare minimo di denaro che deve rimanere nel saldo bancario prima prendere in considerazione il rinnovo automatico dei veicoli
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata dei messaggi d'errore: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata di visualizzazione dei messaggi d'errore nelle finestre rosse. Note: alcuni messaggi d'errore (critici) non sono chiusi automaticamente anche allo scadere del tempo, ma devono essere chiusi manualmente
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata di visualizzazione dei messaggi d'errore nelle finestre rosse. Nota: alcuni messaggi d'errore (critici) non sono chiusi automaticamente anche allo scadere del tempo, ma devono essere chiusi manualmente
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 o i}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra suggerimenti: {STRING}
@@ -1587,7 +1587,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scorrimento map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nessuna
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastiera su schermo: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Seleziona il metodo di apertura della tastiera su schermo per l'inserimento di testo col solo uso del dispsitivo di puntamento. Adatto per i dispositivi portatili, privi di tastiera fisica
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Seleziona il metodo di apertura della tastiera su schermo per l'inserimento di testo col solo uso del dispositivo di puntamento. Adatto per i dispositivi portatili, privi di tastiera fisica
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Disabilitata
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
