@@ -37,11 +37,11 @@ struct TileExtended {
 };
 
 /**
- * An offset value between to tiles.
+ * An offset value between two tiles.
  *
  * This value is used for the difference between
- * to tiles. It can be added to a tileindex to get
- * the resulting tileindex of the start tile applied
+ * two tiles. It can be added to a TileIndex to get
+ * the resulting TileIndex of the start tile applied
  * with this saved difference.
  *
  * @see TileDiffXY(int, int)
