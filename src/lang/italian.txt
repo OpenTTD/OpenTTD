@@ -1220,7 +1220,7 @@ STR_CONFIG_SETTING_DISABLED.fs                                  :Disabilitata
 STR_CONFIG_SETTING_DISABLED.fp                                  :Disabilitate
 
 ###length 3
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Off
+STR_CONFIG_SETTING_COMPANIES_OFF                                :No
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Propria compagnia
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Tutte le compagnie
 
@@ -1543,7 +1543,7 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutieni autom
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Effettua la manutenzione degli elicotteri dopo ogni atterraggio, anche se l'aeroporto non ha un deposito
 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Apri strumenti terreno assieme a quelli di costruzione: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :All'apertura degli strumenti di costruzione per un tipo di trasporto, apre anche la barra degli strumenti di modellazione del terreno
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :All'apertura degli strumenti di costruzione per un tipo di trasporto (ferrovie, strade, tranvie, porti, aeroporti), apre anche la barra degli strumenti di modellazione del terreno
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Colore del terreno della mappa: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Colore del terreno sulla minimappa
@@ -1645,7 +1645,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra gli arri
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra gli orari di arrivo e partenza previsti nelle tabelle orarie
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creazione rapida degli ordini dei veicoli: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-seleziona il comando 'Vai a' quando si apre la finestra degli ordini
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preseleziona il comando 'Vai a' quando si apre la finestra degli ordini
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo di rotaie predefinito (a inizio/ripresa partita): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo di rotaie da selezionare dopo l'inizio o il caricamento di una partita. 'Il primo disponibile' seleziona il tipo più vecchio di binari, 'L'ultimo disponibile' seleziona il tipo più nuovo di binari, e 'Il più usato' seleziona il tipo più utilizzato al momento
@@ -2639,8 +2639,8 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Evidenzia area coperta
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}No
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Sì
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Non evidenziare l'area di copertura del sito proposto
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Evidenzia l'area di copertura del sito proposto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accetta: {GOLD}{CARGO_LIST}

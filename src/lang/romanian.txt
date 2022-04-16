@@ -1152,9 +1152,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Înălțime per
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Înălțime personalizată ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Indulgentă
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :Ostilă
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă (fara efect asupra actiunilor companiei)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligenţă Artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Resurse Online'
 
@@ -1255,8 +1256,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Dacă este acti
 STR_CONFIG_SETTING_DISASTERS                                    :Dezastre: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Comută dezastre care ocazional pot bloca sau distruge vehicule sau infrastructură
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea consiliului orașului cu privire la restructurarea zonei: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in zonă
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea consiliului orașului: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in oras
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Înălțimea limită a hărții: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Setează înălțimea maximă a terenului de pe hartă. Cu „(auto)” se va alege automat o valoare bună după generarea terenului
@@ -3079,8 +3080,11 @@ STR_FRAMERATE_AI                                                :{BLACK}   IA {N
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Buclă de joc
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea încărcăturilor
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticurile trenurilor
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticurile vehiculelor de pe drum
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Căpușe de navă
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticurile aeronavei
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticurile lumii
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Decalaj grafic de conexiuni
 STR_FRAMETIME_CAPTION_DRAWING                                   :Randare grafică
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Randarea vizorului global
