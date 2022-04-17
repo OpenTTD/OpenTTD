@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Spessore delle 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Larghezza delle linee nei grafici. Le linee sottili sono più leggibili, quelle più spesse sono più facili da vedere e i colori più facili da distinguere
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostra il nome dei NewGRF nella finestra di costruzione dei veicoli: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Aggiungi una linea alla finestra di costruzione dei veicoli, in modo da mostrare da quale NewGRF proviene il veicolo selezionato.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Viene aggiunta una riga di testo alla finestra di costruzione dei veicoli, che specifica da quale NewGRF proviene il veicolo selezionato.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paesaggio: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :I paesaggi definiscono scenari di gioco di base che differiscono per i carichi disponibili e per i requisiti di crescita delle città. NewGRF e Script offrono tuttavia un controllo più fine su questi aspetti
@@ -1661,7 +1661,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantieni aperte
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantiene aperti dopo l'uso gli strumenti di costruzione di ponti, tunnel, etc.
 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Raggruppa voci nella finestra delle finanze: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Determina l'orginalizzazione della finestra delle finanze della compagnia
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Determina l'organizzazione della finestra delle finanze della compagnia
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Rimuove automaticamente i segnali durante la costruzione di binari: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Rimuove automaticamente i segnali d'intralcio durante la costruzione di binari. Notare che questo può potenzialmente causare incidenti ferroviari.
