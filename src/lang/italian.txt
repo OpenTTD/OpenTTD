@@ -1362,7 +1362,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Sul lato di gui
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Sulla destra
 
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la finestra delle finanze alla fine dell'anno: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se abilitato, la finestra delle finanze si apre automaticamente alla fine di ogni anno, in modo da facilitare la revisione dello stato delle finanze della compagnia
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se abilitato, la finestra delle finanze si apre automaticamente alla fine di ogni anno, facilitando la revisione dello stato delle finanze della compagnia
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Crea sempre i nuovi ordini 'no-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, i veicoli si fermano a tutte le stazioni sul percorso. Abilitando questa impostazione, il veicolo transiterà attraverso tutte le stazioni senza fermarsi fino a destinazione. Nota: questa impostazione definisce solo il valore predefinito per i nuovi ordini. I singoli ordini possono essere regolati esplicitamente per uno quasiasi dei due comportamenti, a prescindere da questa impostazione
@@ -1459,7 +1459,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata di visua
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 o i}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra suggerimenti: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Ritardo con cui i suggerimenti sono mostrati al passaggio del mouse su un elemento del'interfaccia. In alternativa, i messaggi possono essere attivati col pulsante destro del mouse impostando questo valore a 0.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Ritardo con cui i suggerimenti sono mostrati al passaggio del mouse su un elemento dell'interfaccia. In alternativa, i messaggi possono essere attivati col pulsante destro del mouse impostando questo valore a 0.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Al passaggio del mouse dopo {COMMA} millisecond{P 0 o i}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Al clic col pulsante destro
@@ -1761,10 +1761,10 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disabilita ferr
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Abilitando questa impostazione si rimuove l'obbligo di elettrificare i binari per utilizzarli con le locomotive elettriche
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivo del primo veicolo alle stazioni della compagnia: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostra un giornale quando un veicolo arriva per la prima volta a una nuova stazione della compagnia
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostra un giornale quando un veicolo arriva per la prima volta in una nuova stazione della compagnia
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivo del primo veicolo alle stazioni di un avversario: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra un giornale quando un veicolo arriva per la prima volta a una nuova stazione di un avversario
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra un giornale quando un veicolo arriva per la prima volta in una nuova stazione di un avversario
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Incidenti / disastri: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra un giornale quando si verificano incidenti o disastri
@@ -1791,7 +1791,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambiamenti pro
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostra un giornale quando cambia il livello di produzione di un'industria servita da un avversario
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altri cambiamenti di produzione industrie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostra un giornale quando cambia il livello di produzione di un'industria non servita da nessuna compagnia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostra un giornale quando cambia il livello di produzione di un'industria, che non è servita da alcuna compagnia
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consigli / informazioni sui veicoli della compagnia: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra messaggi sui veicoli che richiedono attenzione
@@ -1800,7 +1800,7 @@ STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuovi veicoli: 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostra un giornale quando un nuovo tipo di veicolo diventa disponibile
 
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambiamenti dei carichi accettati: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra messaggi sui cambiamenti delle carichi accettati dalle stazioni
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra messaggi sui cambiamenti dei carichi accettati dalle stazioni
 
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Sussidi: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra un giornale su avvenimenti relativi ai sussidi
@@ -1813,7 +1813,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sommario
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Giornali a colori dal: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anno a partire dal quale le notizie di giornale vengono stampate a colori. Prima di quest'anno, viene utilizzata la monocromia in bianco e nero
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anno a partire dal quale le notizie del giornale vengono mostrate a colori. Prima di quest'anno viene utilizzata la monocromia in bianco e nero
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anno di inizio: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Punteggi a fine anno: {STRING}
