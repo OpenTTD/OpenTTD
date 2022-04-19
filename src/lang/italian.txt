@@ -1421,7 +1421,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenzione in
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Se abilitata, le infrastrutture causano dei costi di manutenzione. I costi crescono in modo più che proporzionale alla dimensione della rete, influenzando maggiormente le compagnie più grandi rispetto alle piccole
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Colore iniziale compagnia: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Sceglie il colore iniziale della compagnia
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Imposta il colore predefinito della compagnia, che volendo potrà essere modificato successivamente, anche  durante la partità.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Non rendere mai obsoleti i tipi di aeroporto: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Abilitando questa impostazione, tutti i tipi di aeroporto rimangono disponibili indefinitamente dopo essere stati introdotti
@@ -1452,7 +1452,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 e i} dopo
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Rinnova solo se disponibile il fondo minimo di {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ammontare minimo di denaro che deve rimanere nel saldo bancario prima prendere in considerazione il rinnovo automatico dei veicoli
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ammontare minimo di denaro che deve esserci nel saldo bancario, affinchè ci possa essere  il rinnovo automatico dei veicoli
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata dei messaggi d'errore: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata di visualizzazione dei messaggi d'errore nelle finestre rosse. Nota: alcuni messaggi d'errore (critici) non sono chiusi automaticamente anche allo scadere del tempo, ma devono essere chiusi manualmente
