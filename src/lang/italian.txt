@@ -196,7 +196,7 @@ STR_COLOUR_RANDOM                                               :Casuale
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}riquadri/giorno
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}caselle/giorno
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
@@ -249,7 +249,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Fare cli
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco su/giù
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco a sinistra/destra
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su un riquadro di terra. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su una casella di terra. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -598,7 +598,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore d
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento carichi
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Giorni di viaggio
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di carico alla distanza di 20 riquadri
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di carico alla distanza di 20 caselle
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Abilita tutti
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disabilita tutti
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra tutti i tipi di carico sul grafico delle tariffe
@@ -905,7 +905,7 @@ STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il 50% in più per il prossimo{NUM} anno{P "" i}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il doppio per il prossimo{NUM} anno{P "" i}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il triplo per il prossimo{NUM} anno{P "" i}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} anni{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} ann{P o i}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE.mp                   :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} anni{P "" i}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione delle strade finanziata dalla {STRING} porterà 6 mesi di disagio agli automobilisti!
@@ -1265,7 +1265,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Imposta quanto 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durata sussidio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Imposta il numero di anni per i quali il sussidio viene aggiudicato
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} anno{P "" i}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} ann{P o i}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Niente sussidi
 
@@ -1305,7 +1305,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Rende più faci
 
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lunghezza massima dei treni: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Imposta la lunghezza massima dei treni
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} riquadr{P 0 o i}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casell{P 0 a e}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantità di fumo/scintille dai veicoli: {STRING.fs}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Imposta la quantità di fumo o scintille emessi dai veicoli
@@ -1317,14 +1317,14 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modello acceler
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleziona il modello della fisica per l'accelerazione degli automezzi. Il modello "Originale" introduce penalità sui pendii in modo uguale per tutti i veicoli. Il modello "Realistico" introduce penalità sui pendii in base a varie proprietà del mezzo, come lo 'sforzo di trazione'
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendenza salite per i treni: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendenza dei riquadri inclinati percepita dai treni. I valori più elevati rendono più difficile risalire le colline
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendenza delle caselle inclinate percepita dai treni. I valori più elevati rendono più difficile risalire le colline
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendenza salite per gli automezzi: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pendenza dei riquadri inclinati percepita dagli automezzi. I valori più elevati rendono più difficile risalire le colline
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pendenza delle caselle inclinate percepita dagli automezzi. I valori più elevati rendono più difficile risalire le colline
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Impedisci ai treni di curvare a 90 gradi: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nel riquadro adiacente, facendo sì che un treno che attraversa il bordo fra i riquadri curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nella casella adiacente, facendo sì che un treno che attraversa il bordo fra le caselle curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Consenti di unire stazioni non direttamente adiacenti: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Consente di aggiungere nuove parti a una stazione senza toccare direttamente le parti esistenti. Richiede l'uso di CTRL+clic per posizionare le nuove parti
@@ -1349,10 +1349,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Come le altre i
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Previa prospezione
 
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Area pianeggiante attorno alle industrie: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantità di spazio pianeggiante attorno a un'industria. In questo modo si assicura che resterà attorno alle industrie dello spazio vuoto disponibile per costruire binari, etc.
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantità di spazio pianeggiante che circonda un'industria, che garantirà un'area piatta per la costruzione di binari, stazioni, etc.
 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Consenti più industrie dello stesso tipo nella stessa città: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, le città non desiderano più di un'industria per ogni tipo. Con questa impostazione, nella stessa città possono essere presenti più industrie dello stesso tipo
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente le città non desiderano più di un'industria per ogni tipo. Attivando questa impostazione possono esserci più industrie dello stesso tipo.
 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostra i segnali: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Seleziona il lato dei binari su cui piazzare i segnali
@@ -1489,7 +1489,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densità delle 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Determina quante industrie sono generate e attorno a quale livello sono mantenute nel corso della partita
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanza delle industrie petrolifere dal bordo della mappa: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita la distanza dal bordo della mappa entro cui possono essere costruite raffinerie e piattaforme petrolifere. Nelle mappe insulari sono comunque sempre vicino alla costa. Su mappe più grandi di 256 riquadri il valore è aumentato in proporzione.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita la distanza dal bordo della mappa entro cui possono essere costruite raffinerie e piattaforme petrolifere. Nelle mappe insulari sono comunque sempre vicino alla costa. Su mappe più grandi di 256 caselle il valore aumenta proporzionalmente.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle nevi perenni: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi sub-artici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città. Può essere modificato solo tramite l'Editor di scenari o altrimenti calcolato tramite "Aree innevate"
@@ -1533,8 +1533,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altitudine delle mappe pianeggianti: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o più caselle sul lato nord non sono vuote
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o più caselle su uno dei bordi non sono d'acqua
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Massima estensione delle stazioni: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area massima su cui possono essere distribuite le parti di una singola stazione. Nota: valori elevati rallentano il gioco
@@ -1564,7 +1564,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scorrimento mor
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlla il modo in cui la visuale principale scorre verso una specifica posizione quando si fa clic sulla minimappa o si ordina di visualizzare un oggetto specifico sulla mappa. Se abilitata, la visuale scorre in modo morbido. Se disabilitata, salta direttamente al punto prescelto
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un tooltip di misura durante la costruzione: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra le distanze in riquadri e le differenze di altezza quando si trascina durante le operazioni di costruzione
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra le distanze in caselle e le differenze di altezza quando si trascina durante le operazioni di costruzione
 
 STR_CONFIG_SETTING_LIVERIES                                     :Mostra le livree specifiche per tipo di veicolo: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlla l'utilizzo delle livree specifiche per il tipo di veicolo (invece di quelle specifiche della compagnia)
@@ -1840,7 +1840,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentuale di 
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Trascinando il cursore, piazza i segnali ogni: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Imposta la distanza da utilizzare, quando si trascina, per costruire i segnali su un binario separandoli dall'ostacolo successivo (segnale, scambio)
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} riquadr{P 0 o i}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casell{P 0 a e}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Trascinando il cursore, mantieni una distanza fissa fra i segnali: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Seleziona il comportamento del piazzamento dei segnali quando si trascina con il tasto CTRL. Se disabilitata, i segnali sono posti alle estremità di tunnel e ponti, in modo da evitare lunghi tratti senza segnali. Se abilitata, i segnali sono posti a distanza fissa, facilitando l'allineamento dei segnali su binari paralleli
 
@@ -1983,7 +1983,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Seleziona le un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiali (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metriche (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unità di gioco (riquadri/giorno)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unità di gioco (caselle/giorno)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unità di potenza veicoli: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Seleziona le unità di misura da utilizzare per mostrare i valori di potenza dei veicoli nell'interfaccia utente
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limiti
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Disastri / incidenti
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generazione del mondo
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorià
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorità
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Città
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrie
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuzione dei carichi
@@ -2843,14 +2843,14 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selezion
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire. MAIUSC alterna fra costruzione e stima dei costi
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Seleziona la classe dell'oggetto da costruire
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Anteprima dell'oggetto
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} riquadri
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} caselle
 
 STR_OBJECT_CLASS_LTHS                                           :Fari
 STR_OBJECT_CLASS_TRNS                                           :Trasmettitori
 
 # Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Alberi
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleziona il tipo di albero da piantare. Se nel riquadro sono già presenti alberi, ne aggiunge altri di vari tipi, indipendentemente dal tipo selezionato
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleziona il tipo di albero da piantare. Se nella casella sono già presenti alberi ne aggiunge altri di vari tipi, indipendentemente dal tipo selezionato
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Alberi casuali
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Pianta alberi di specie a caso. MAIUSC alterna fra costruzione e stima dei costi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Alberi casuali
@@ -2943,7 +2943,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selezion
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informazioni sull'area di terreno
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la visuale principale sulla posizione del riquadro. CTRL+clic la mostra in una mini visuale
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la visuale principale sulla posizione della casella. CTRL+clic la mostra in una mini visuale
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Costo di demolizione: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Costo di demolizione: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ricavo da demolizione: {LTBLUE}{CURRENCY_LONG}
@@ -3159,7 +3159,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Inserire
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generazione mondo
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Area mappa:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleziona l'area della mappa espressa in riquadri. Il numero effettivo di riquadri disponibili sarà leggermente inferiore
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleziona l'area della mappa espressa in caselle. Il numero effettivo di caselle disponibili sarà leggermente inferiore
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numero città:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
@@ -3230,7 +3230,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generazi
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generazione oggetti inamovibili
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generazione aree brulle e rocciose
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Impostazione partita
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Generazione riquadri del terreno
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Generazione caselle del terreno
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Esecuzione script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparazione della partita
 
@@ -3505,7 +3505,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Nessuno -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare clic su un obiettivo per centrare la visuale principale sull'industria, città o riquadro. CTRL+clic mostra l'industria/città/riquadro in una mini visuale
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare clic su un obiettivo per centrare la visuale principale sull'industria, città o casella. CTRL+clic mostra l'industria/città/casella in una mini visuale
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Domanda
@@ -3689,8 +3689,8 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastrutture:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} segment{P o i} ferroviari{P o ""}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} segment{P o i} stradal{P e i}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} riquadr{P o i} d'acqua
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} riquadr{P o i} stazione
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} casell{P a e} d'acqua
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} casell{P a e} stazione
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroport{P o i}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nessuna
 
@@ -3731,10 +3731,10 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Segmenti 
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Segnali
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Segmenti stradali:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Segmenti tram:
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Riquadri d'acqua:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Caselle d'acqua:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stazioni:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Riquadri stazione
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Caselle stazione
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroporti
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/anno
 
@@ -3884,7 +3884,7 @@ STR_PURCHASE_INFO_NONE                                          :Niente
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo motori
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
-STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} riquadr{P o i}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} casell{P a e}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo di aeromobile: {GOLD}{STRING}
 
 ###length VEHICLE_TYPES
@@ -4059,8 +4059,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} riquadr{P o i}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} riquadr{P o i}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING} - {STRING}
@@ -4209,7 +4209,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Velocità max.: {LTBLUE}{VELOCITY} {BLACK}Tipo aeromobile: {LTBLUE}{STRING}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}elocità max.: {LTBLUE}{VELOCITY} {BLACK}Tipo aeromobile: {LTBLUE}{STRING} {BLACK}Autonomia: {LTBLUE}{COMMA} riquadr{P o i}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}elocità max.: {LTBLUE}{VELOCITY} {BLACK}Tipo aeromobile: {LTBLUE}{STRING} {BLACK}Autonomia: {LTBLUE}{COMMA} casell{P a e}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}S.T. max.: {LTBLUE}{FORCE}
 
@@ -4752,7 +4752,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... trop
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non c'è altro spazio sulla mappa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni -> Ambiente -> Città
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o un riquadro di proprietà della città non può essere rimosso
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o una casella di proprietà della città non può essere rimossa
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non ci sono spazi adeguati per una statua nel centro di questa città
 
 # Industry related errors

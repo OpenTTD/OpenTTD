@@ -720,7 +720,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświetl informacje finansowe firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Wyświetl dziennik
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Wyświetl przewodnik
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Wyświetl listę celów
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl ranking firm
@@ -821,7 +821,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki za ładu
 
 # Company league menu
 ###length 3
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking Firm
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking firm
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa tabela wydajności
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
 
@@ -990,7 +990,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda 
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij tutaj aby wł./wył. wyświetlanie danych firmy na wykresie
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking Firm
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking firm
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inżynier
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Administrator Ruchu
@@ -3285,8 +3285,8 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuc
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Wyświetla dostawców i odbiorców dla towaru
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pokaż na mapie
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokazuje aktualnie wyświetlone przedsiębiorstwa na mapie
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Wybierz towar
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Wybierz towar, który chcesz wyświetlić
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Wybierz ładunek
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Wybierz ładunek, który chcesz wyświetlić
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Wybierz zakład
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wybierz zakład, który chcesz wyświetlić
 
