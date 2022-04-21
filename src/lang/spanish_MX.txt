@@ -1153,9 +1153,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Definir altura
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura person. ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Poco severa
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (no afecta las acciones de las empresas)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron archivos de IA apropiados...{}Se pueden descargar por medio del sistema de 'Contenido en línea'
 
@@ -1256,8 +1257,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Al activarse, l
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructura
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los ayuntamientos ante restructuraciones hechas en sus zonas: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Medida en que el ruido y el daño ambiental causado por las empresas afectan su evaluación y futuras acciones de construcción en las mismas zonas
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Postura de los ayuntamientos: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Medida en que el ruido y el daño ambiental causado por las empresas afectan su evaluación y futuras acciones de construcción una localidad
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Límite de altura del mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ajustar la altura máxima de terreno en un mapa. "(automático)" tomará un buen valor tras finalizar la generación del terreno
@@ -1744,6 +1745,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar noticia
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes y desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar noticia cuando ocurra un accidente o un desastre
 
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Accidentes de vehículos de la competencia: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Mostrar noticias sobre accidentes que involucren vehículos de la competencia
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información de la empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar noticia cuando una nueva empresa sea creada o cuando alguna empresa esté en peligro de quiebra
@@ -2259,6 +2262,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Clima: 
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño del mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección del servidor: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Código de invitación: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Fecha de inicio: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Fecha actual: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Script de juego: {WHITE}{STRING} (versión {NUM})
@@ -2675,6 +2679,7 @@ STR_STATION_CLASS_WAYP                                          :Puntos de ruta
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de señales
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Mostrar u ocultar señales avanzadas
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Señal de tramo (mecánica){}Es la señal más básica. Permite a un solo tren ocupar un tramo de vía entre dos señales
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Señal de entrada (mecánica){}Se abre si existe una o más señales de salida en el siguiente tramo, de lo contrario se mostrará cerrada
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Señal de salida (mecánica){}Igual que una señal de tramo pero es necesaria para activar la posición correcta de las señales de entrada y combo
