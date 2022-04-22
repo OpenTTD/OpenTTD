@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_RECESSIONS                                   :Recessioni: {ST
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se abilitato, a intervalli di qualche anno possono verificarsi delle recessioni. Durante una recessione i livelli di produzione sono considerevolmente ridotti (per tornare al livello precedente una volta finita la recessione)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Non consentire inversione dei treni alle stazioni: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se abilitato, i treni non invertono la marcia nelle stazioni passanti, neanche nel caso in cui invertendo la marcia sia possibile raggiungere la destinazione successiva con un percorso più breve
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se abilitata, i treni non invertono la marcia nelle stazioni passanti, neanche nel caso in cui invertendo la marcia sia possibile raggiungere la destinazione successiva con un percorso più breve.
 
 STR_CONFIG_SETTING_DISASTERS                                    :Disastri: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Controlla l'attivazione dei disastri che, occasionalmente, possono bloccare o distruggere i veicoli e le infrastrutture
@@ -1308,13 +1308,13 @@ STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Imposta la lung
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casell{P 0 a e}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantità di fumo/scintille dai veicoli: {STRING.fs}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Imposta la quantità di fumo o scintille emessi dai veicoli
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Imposta la quantità di fumo o scintille emessi dai veicoli.
 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modello accelerazione dei treni: {STRING.ms}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleziona il modello per l'accelerazione dei treni. Il modello "Originale" introduce penalità sui pendii in modo uguale per tutti i veicoli. Il modello "Realistico" introduce penalità sui pendii e in curva in base a varie proprietà della composizione, come la lunghezza e lo sforzo di trazione
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleziona il modello fisico per l'accelerazione dei treni. Il modello "Originale" introduce penalità sui pendii in modo uguale per tutti i veicoli. Il modello "Realistico" introduce penalità sui pendii e in curva in base a varie proprietà della composizione, come la lunghezza e lo sforzo di trazione.
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modello accelerazione automezzi: {STRING.ms}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleziona il modello della fisica per l'accelerazione degli automezzi. Il modello "Originale" introduce penalità sui pendii in modo uguale per tutti i veicoli. Il modello "Realistico" introduce penalità sui pendii in base a varie proprietà del mezzo, come lo 'sforzo di trazione'
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleziona il modello fisico per l'accelerazione degli automezzi. Il modello "Originale" introduce penalità sui pendii in modo uguale per tutti i veicoli. Il modello "Realistico" introduce penalità sui pendii in base a varie proprietà del mezzo, come lo "sforzo di trazione".
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendenza salite per i treni: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendenza delle caselle inclinate percepita dai treni. I valori più elevati rendono più difficile risalire le colline
@@ -1398,10 +1398,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Consenti l'invi
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Consente il trasferimento di denaro fra le compagnie in modalità multigiocatore
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Moltiplicatore di peso per simulare treni merci pesanti: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Seleziona l'impatto del trasporto di merci nei treni. I valori elevati rendono il trasporto di merci più impegnativo per i treni, specialmente in collina
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Seleziona l'impatto del trasporto di merci nei treni. I valori elevati rendono il trasporto di merci più impegnativo per i treni, specialmente in collina.
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fattore di velocità degli aerei: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Imposta la velocità relativa degli aeroplani in confronto agli altri tipi di veicolo, in modo da ridurre i ricavi del trasporto via aria
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Imposta la velocità relativa degli aeroplani in confronto agli altri tipi di veicoli, in modo da ridurre i ricavi del trasporto via aria.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Numero di incidenti aerei: {STRING}
@@ -1540,7 +1540,7 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :Massima estensi
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area massima su cui possono essere distribuite le parti di una singola stazione. Nota: valori elevati rallentano il gioco
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutieni automaticamente gli elicotteri presso gli eliporti: {STRING}
-STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Effettua la manutenzione degli elicotteri dopo ogni atterraggio, anche se l'aeroporto non ha un deposito
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Effettua la manutenzione degli elicotteri dopo ogni atterraggio, anche se l'aeroporto non ha un deposito.
 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Apri strumenti terreno assieme a quelli di costruzione: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :All'apertura degli strumenti di costruzione per un tipo di trasporto (ferrovie, strade, tranvie, porti, aeroporti), apre anche la barra degli strumenti di modellazione del terreno
@@ -1752,10 +1752,10 @@ STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}gi
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabilitato
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Disabilita manutenzione con i guasti veicoli disattivati: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Se abilitata, non vengono manutenuti i veicoli se non possono guastarsi
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Se abilitata, non vengono manutenuti i veicoli che non possono guastarsi.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Abilita limiti di velocità dei vagoni: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Se abilitata, utilizza anche i limiti di velocità dei vagono per determinare la velocità massima di un treno
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando abilitata, tiene conto anche dei limiti di velocità dei vagoni per determinare la velocità massima di un treno.
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disabilita ferrovie elettrificate: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Abilitando questa impostazione si rimuove l'obbligo di elettrificare i binari per utilizzarli con le locomotive elettriche
@@ -2052,7 +2052,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pathfinder da u
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder per le navi: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pathfinder da utilizzare per le navi
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Inversione automatica ai segnali: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Consente ai treni di invertire la marcia dopo aver atteso a lungo a un segnale
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Consente ai treni di invertire la marcia dopo aver atteso a lungo a un segnale.
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(raccomandato)
