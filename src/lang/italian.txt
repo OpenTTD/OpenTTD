@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatico)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Non è possibile impostare il limite di altezza della mappa su questo valore. Almeno una montagna sulla mappa è più alta
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Consenti rimodellazione terreno sotto a edifici, rotaie, etc.: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Consente la rimodellazione del terreno sotto edifici e rotaie senza doverli rimuovere
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Consente la rimodellazione del terreno sotto edifici e rotaie senza doverli rimuovere.
 
 STR_CONFIG_SETTING_CATCHMENT                                    :Consenti aree di copertura più realistiche: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Usa aree di copertura di dimensioni differenti a seconda del tipo di stazione o aeroporto.
@@ -1301,10 +1301,10 @@ STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Le stazioni del
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Se abilitata, le industrie con una stazione incorporata (come le piattaforme petrolifere) possono essere servite anche dalle stazioni di proprietà delle compagnie costruite nelle vicinanze. Se disabilitata, queste industrie possono essere servite dalla loro stazione incorporata. Nessuna stazione vicina potrà servirle, né la stazione incorporata potrà servire altro che la sua industria.
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Consenti la rimozione di strade, ponti, etc. delle città: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Rende più facile la rimozione di infrastrutture ed edifici di proprietà delle città
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Rende più facile la rimozione di infrastrutture ed edifici di proprietà delle città.
 
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lunghezza massima dei treni: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Imposta la lunghezza massima dei treni
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Imposta la lunghezza massima dei treni.
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casell{P 0 a e}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantità di fumo/scintille dai veicoli: {STRING.fs}
@@ -1327,16 +1327,16 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Impedisci ai tr
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nella casella adiacente, facendo sì che un treno che attraversa il bordo fra le caselle curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Consenti di unire stazioni non direttamente adiacenti: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Consente di aggiungere nuove parti a una stazione senza toccare direttamente le parti esistenti. Richiede l'uso di CTRL+clic per posizionare le nuove parti
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Consente di aggiungere nuove parti a una stazione, non attaccate direttamente alle parti esistenti ma che siano comprese all'interno dell'area di estensione massima della stazione. Richiede l'uso di CTRL+clic per posizionare le nuove parti.
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflazione: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Abilita l'inflazione nell'economia, facendo crescere i costi leggermente più in fretta dei compensi
 
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Lunghezza massima dei ponti: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lunghezza massima per la costruzione dei ponti
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lunghezza massima per la costruzione dei ponti.
 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Altezza massima dei ponti: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altezza massima per la costruzione dei ponti
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altezza massima per la costruzione dei ponti.
 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lunghezza massima dei tunnel: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Lunghezza massima per la costruzione dei tunnel
@@ -1412,9 +1412,9 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ridotto
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normale
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Consenti fermate passanti sulle strade delle città: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Consente la costruzione di fermate stradali passanti sulle strade di proprietà della città
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Consente la costruzione di fermate stradali passanti sulle strade di proprietà della città.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Consenti fermate passanti sulle strade di proprietà degli avversari: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Consente la costruzione di fermate stradali passanti sulle strade di proprietà delle altre compagnie
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Consente la costruzione di fermate stradali passanti sulle strade di proprietà delle altre compagnie.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenzione infrastrutture: {STRING}
@@ -1424,7 +1424,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Colore iniziale
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Imposta il colore predefinito della compagnia, che volendo potrà essere modificato successivamente, anche  durante la partità.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Non rendere mai obsoleti i tipi di aeroporto: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Abilitando questa impostazione, tutti i tipi di aeroporto rimangono disponibili indefinitamente dopo essere stati introdotti
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Se abilitata, dopo la loro introduzione, tutti i tipi di aeroporto rimarranno sempre disponibili.
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avvisa se un veicolo si perde: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostra un messaggio quando un veicolo non è in grado di trovare un percorso per la destinazione successiva
@@ -1440,7 +1440,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avvisa se il pr
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Se abilitata, viene inviato un messaggio quando un veicolo non ha ottenuto alcun profitto per un anno
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :I veicoli non diventano mai obsoleti: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, tutti i modelli di veicolo rimangono disponibili indefinitamente dopo essere stati introdotti
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se abilitata, dopo la loro introduzione, tutti i tipi di veicoli rimarranno sempre disponibili.
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Rinnova un veicolo quando diventa vecchio: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se abilitata, un veicolo vicino alla sua età massima viene automaticamente sostituito quando si verificano le condizioni richieste per il rinnovo
@@ -1537,7 +1537,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o pi
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o più caselle su uno dei bordi non sono d'acqua
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Massima estensione delle stazioni: {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area massima su cui possono essere distribuite le parti di una singola stazione. Nota: valori elevati rallentano il gioco
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area massima su cui possono essere distribuite le parti di una singola stazione. Nota: valori elevati rallentano il gioco.
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutieni automaticamente gli elicotteri presso gli eliporti: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Effettua la manutenzione degli elicotteri dopo ogni atterraggio, anche se l'aeroporto non ha un deposito.
@@ -1625,7 +1625,7 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Metti in pausa 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Se abilitata, il gioco andrà automaticamente in pausa all'inizio di una nuova partita, permettendo di esaminare meglio la mappa
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Azioni consentite durante la pausa: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleziona quali azioni possono essere svolte mentre la partita è in pausa
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleziona quali azioni si possono compiere mentre la partita è in pausa.
 ###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nessuna
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Tutte tranne quelle di costruzione
@@ -1697,16 +1697,16 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambientazione: 
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Emette i suoni ambientali del paesaggio, delle industrie e delle città
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Numero massimo di treni per compagnia: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numero massimo di treni che una compagnia può possedere
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numero massimo di treni che una compagnia può possedere.
 
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numero massimo di automezzi per compagnia: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Numero massimo di automezzi che una compagnia può possedere
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Numero massimo di automezzi che una compagnia può possedere.
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Numero massimo di aeromobili per compagnia: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Numero massimo di aeromobili che una compagnia può possedere
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Numero massimo di aeromobili che una compagnia può possedere.
 
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Numero massimo di navi per compagnia: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numero massimo di navi che una compagnia può possedere
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numero massimo di navi che una compagnia può possedere.
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Disabilita treni delle IA: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Abilitando questa impostazione si rende impossibile la costruzione di treni da parte di un giocatore controllato dal computer

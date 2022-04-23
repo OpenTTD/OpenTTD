@@ -236,7 +236,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elegir p
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Elegir criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar u ocultar área de cobertura
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar vista de área de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar ventana
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana (arrastrar para mover)
@@ -475,7 +475,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcción d
 
 # Landscaping menu
 ###length 3
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Terreno
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Alteración de terreno
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árboles
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Poner letrero
 
@@ -621,7 +621,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de R
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Jefe
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Subdirector
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director(a)
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Gerente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
 # Performance detail window
@@ -756,11 +756,11 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parada de autobús
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeropuerto/Helipuerto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Muelle
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreno irregular
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreno rugoso
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Pasto
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreno árido
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selva
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Campos
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Sembradíos
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Árboles
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rocas
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Agua
@@ -805,13 +805,13 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaje
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer autobús llega a {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer camión llega a {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tranvía de pasajeros llega a {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tranvía de carga llega a {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer barco llega a {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primera aeronave llega a {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer tren a {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer autobús a {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer camión a {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer tranvía de pasajeros a {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer tranvía de carga a {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer barco a {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer vuelo a {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}¡Accidente de tren!{}{COMMA} muertos deja explosión después de choque
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}¡Accidente de tráfico!{}Muere conductor en explosión después de choque con el tren
@@ -825,7 +825,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}¡Fábrica destruida misteriosamente cerca de {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}¡Ovni aterriza cerca de {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}¡Hundimiento de mina de carbón deja ola de destrucción cerca de {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}¡Inundación!{}Desaparecidos o muertos al menos {COMMA} después de las terribles inundaciones!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}¡Inundación!{}¡{COMMA} desaparecidos o muertos después de las terribles inundaciones!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}¡Empresa de transporte en problemas!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}¡{STRING} será vendida o declarada en bancarrota de no incrementar su desempeño pronto!
@@ -836,7 +836,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}¡Nueva empresa de transportes!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}¡{STRING} comienza su construcción cerca de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}¡{STRING} ha sido adquirida por {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Gerente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}¡{STRING} patrocinó la creación de la nueva localidad de {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}¡La nueva localidad de {TOWN} ha sido formada!
@@ -846,9 +846,9 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLAC
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}¡La industria {STRING} anuncia su inminente cierre!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}¡La falta de abastecimiento provoca que {STRING} anuncie su inminente cierre!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}¡La falta de árboles hace que {STRING} anuncie su inminente cierre!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}¡La escasez forestal provoca que {STRING} anuncie su inminente cierre!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}¡Unión Monetaria Europea!{}{}¡El Euro es introducido como la nueva moneda oficial de todas las transacciones!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}¡Unión Monetaria Europea!{}{}¡El Euro es ahora la nueva divisa de todas las transacciones en tu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}¡Recesión mundial!{}{}¡Expertos temen lo peor mientras la economía se desploma!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}¡Fin de la recesión!{}{}¡Incremento en el comercio da confianza a las industrias mientras la economía se fortalece!
 
@@ -919,8 +919,8 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copiar u
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones de juego
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidad monetaria
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidad monetaria
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Divisa
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de divisa
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica (GBP)
@@ -948,7 +948,7 @@ STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso (RUR
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona sueca (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turca (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona eslovaca
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona eslovaca (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brasileño (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona estonia (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituana (LTL)
@@ -970,7 +970,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Manejar por la izquierda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Manejar por la derecha
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de pueblos:
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de localidades:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elegir el estilo de nombres para las localidades
 
 ###length 21
@@ -1164,7 +1164,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se en
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar texto:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplegar todo
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plegar todo
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Condensar todo
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos los ajustes
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sin explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
@@ -1267,8 +1267,8 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No se puede establecer el límite de elevación del mapa en el valor indicado. Al menos una montaña ya es más alta
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno debajo edificios, vías férreas, etc.: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Modificar el terreno debajo de edificios y vías de tren sin quitarlos
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Alterar terreno debajo edificios, vías férreas, etc.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir la alteración del terreno debajo de infraestructura sin tener que retirarla
 
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir cambiar el tamaño del área de recolección a una forma más real: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Las áreas de recolección se adecúan a diferentes tamaños, según los tipos de estaciones y aeropuertos
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las l
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar el nombre del GRF en la ventana de construcción de vehículo: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Indicar por medio de una línea adicional en la ventana de construcción de vehículo su NewGRF.
 
-STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
+STR_CONFIG_SETTING_LANDSCAPE                                    :Ambiente: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen mapas con diferentes tipos de carga y requisitos de crecimiento de las localidades, los cuales pueden cambiarse con NewGRF y scripts de juego
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terreno: {STRING}
@@ -1471,15 +1471,15 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlar la altura al que empieza la nieve en geografía de Subártico, lo cual afectará la generación de industrias y los requisitos de crecimiento de localidades. Solo puede cambiarse en el Editor de mapas, si no, se calculará según la "Extensión de nieve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Extensión de nieve: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controlar la cantidad aproximada de nieve al generar un mapa de geografía de Subártico, la cual afectará la generación de industrias y los requisitos de crecimiento de las localidades. La superficie casi al ras del nivel del mar nunca tiene nieve
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controlar la cantidad aproximada de nieve al generar un ambiente Subártico, la cual afectará la generación de industrias y los requisitos de crecimiento de las localidades. La superficie casi al ras del nivel del mar nunca tiene nieve
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Extensión de desierto: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controlar la cantidad aproximada de desierto al generar un mapa de clima tropical, lo cual afectará la generación de industrias también.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controlar la cantidad aproximada de desierto al generar un mapa de ambiente tropical, lo cual afectará la generación de industrias también.
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidad del terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Cantidad de colinas: los terrenos más planos tienen menos colinas, aunque suelen ser más extensas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosidad del terreno: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Cantidad de colinas: los terrenos más planos tienen menos colinas, aunque suelen ser más extensas. Los terrenos más rugosos tienen múltiples colinas, lo cual puede resultar repetitivo
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
@@ -1518,8 +1518,8 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Máxima área q
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Realizar automáticamente el mantenimiento de helicópteros en los helipuertos: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Dar mantenimiento a los helicópteros después de cada aterrizaje, aun sin haber hangar en el aeropuerto
 
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Unir la barra de transformación de terreno con la barra de construcción: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Al abrir alguna de las barras de herramientas de construcción abrir también la barra de transformación de terreno
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Unir la barra de alteración de terreno con la barra de construcción: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Al abrir alguna de las barras de herramientas de construcción abrir también la barra de alteración de terreno
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color de terreno usado en el minimapa: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color para el terreno mostrado en el minimapa
@@ -1604,8 +1604,8 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Al pausar, perm
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Acciones se pueden realizar mientras el juego está en pausa.
 ###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ninguna acción
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas las acciones, excepto construir
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas las acciones, excepto modificar terreno
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas las acciones, menos construir
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas las acciones, menos alterar el terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas las acciones
 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar grupos en la lista de vehículos: {STRING}
@@ -1669,7 +1669,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reproducir efec
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehículos: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efectos de sonido de vehículos
 
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiental: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir sonidos ambientales de terreno, industrias y localidades
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trenes por empresa: {STRING}
@@ -1859,8 +1859,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, diseño urbano personalizado
 
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generación de carga en pueblos: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidad de carga producida por las casas con relación a la población.{}Crecimiento cuadrado: un pueblo de doble tamaño genera el cuádruple de pasajeros.{}Crecimiento lineal: un pueblo de doble tamaño genera el doble de pasajeros.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generación de carga en localidades: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidad de carga producida por las casas con relación a la población.{}Crecimiento cuadrado: una localidad de doble tamaño genera el cuádruple de pasajeros.{}Crecimiento lineal: una localidad de doble tamaño genera el doble de pasajeros.
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Cuadrado
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineal
@@ -2012,7 +2012,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Enrutam
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitaciones
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres y accidentes
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generación de mapa
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Entorno
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Localidades
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
@@ -2084,10 +2084,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comenzar
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crear un mapa personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Empezar una partida multijugador
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Elegir mapa de clima 'Templado'
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elegir mapa de clima 'Subártico'
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elegir mapa de clima 'Subtropical'
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir mapa de clima 'Mundo de juguetes'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Elegir mapa de ambiente Templado
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elegir mapa de ambiente Subártico
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elegir mapa de ambiente Subtropical
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir mapa de ambiente de Mundo de juguetes
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostrar las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabla de puntuaciones
@@ -2127,10 +2127,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir cambiar los valores de producción: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Clima Templado
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Clima Subártico
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Clima Subtropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Clima Mundo de juguetes
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Ambiente Templado
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Ambiente Subártico
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Ambiente Subtropical
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Ambiente de Mundo de juguetes
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cromática
@@ -2258,7 +2258,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clic par
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DE PARTIDA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Clima: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ambiente: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño del mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección del servidor: {WHITE}{STRING}
@@ -2618,7 +2618,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Activado
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No mostrar área de recolección en el sitio planeado
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Mostrar área de recolección en el sitio planeado
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acepta: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provee: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Abastece: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ampliar estación
@@ -2802,7 +2802,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helipuertos
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruido generado: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modificación de terreno
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Alteración de terreno
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Disminuir una esquina del terreno. Al arrastrar el ratón se reduce la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar una esquina del terreno. Al arrastrar el ratón se eleva la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal. Mayús muestra un precio estimado
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar un área de terreno a la altura de la primera esquina seleccionada. Ctrl para seleccionar un área en diagonal. Mayús muestra un precio estimado
@@ -2840,7 +2840,7 @@ STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminuir el tamaño del área de terreno a disminuir o elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generar terreno al azar
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear nuevo mapa
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restaurar terreno
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restablecer terreno
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Eliminar del mapa todas las propiedades de las empresas
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Restaurar terreno
@@ -2897,10 +2897,10 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}¿Segur
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial para la industria de {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena industrial para carga de {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias proveedoras
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias abastecedoras
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias receptoras
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clic en la industria para ver sus industrias proveedoras y receptoras
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clic en la industria para ver sus proveedores y clientes
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clic en la carga para ver sus proveedores y clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadena industrial
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar las industrias que proveen y aceptan la carga
@@ -2943,10 +2943,10 @@ STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Velocida
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocas
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno irregular
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno rugoso
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Tierra árida
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Hierba
-STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Sembradíos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreno nevado
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desierto
 
@@ -3146,7 +3146,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Incremen
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Disminuir extensión de desierto un 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generador de terreno:
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivel del mar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidad:
@@ -3198,7 +3198,7 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generaci
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generación de ríos
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generación de árboles
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generación de objetos
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas irregulares y rocosas
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas rugosas y rocosas
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando partida
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Generando casillas
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Ejecutando script
@@ -3402,7 +3402,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Localida
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (ciudad){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblos. Clic para centrar la vista en el pueblo. Ctrl+Clic abre una vista aparte
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de localidades. Clic para centrar la vista en el pueblo. Ctrl+Clic abre una vista aparte
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
 # Town view window
@@ -3414,13 +3414,13 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga ne
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregado
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerido)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerid{G 1 o a}{P 1 "" s})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregado)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La localidad crece cada {ORANGE}{COMMA}{BLACK}{NBSP}día{P "" s}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La localidad crece cada {ORANGE}{COMMA}{BLACK}{NBSP}días{P "" s} (obra negra)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La localidad {RED}no{BLACK} está creciendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en la localidad: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar la vista en el pueblo. Ctrl+Clic abre una vista aparte
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar la vista en la localidad. Ctrl+Clic abre una vista aparte
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Ayuntamiento
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar información sobre el ayuntamiento local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre de la localidad
@@ -3458,9 +3458,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio mediano alrededor del centro de la localidad.{}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio grande alrededor del centro de la localidad.{}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar la reconstrucción de las carreteras locales.{}Provoca considerables complicaciones al tráfico hasta por 6 meses.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construir una estatua en honor a tu empresa.{}Otorga un aumento permanente a la evaluación estaciones en este pueblo.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el pueblo.{}Otorga un aumento temporal a su crecimiento.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar derechos exclusivos de transporte en este pueblo por un año.{}El ayuntamiento solo permitirá el uso de estaciones que sean de tu empresa.{}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construir una estatua en honor a tu empresa.{}Otorga un aumento permanente a la evaluación estaciones en esta localidad.{}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en la localidad.{}Otorga un aumento temporal a su crecimiento.{}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar los derechos exclusivos de transporte en esta localidad por un año.{}El ayuntamiento solo permitirá el uso de estaciones que sean de tu empresa.{}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar al ayuntamiento para aumentar mejorar tu evaluación, con el riesgo de una severa penalización si llegas a ser descubierto.{}Costo: {CURRENCY_LONG}
 
 # Goal window
@@ -3475,7 +3475,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en una meta para centrar la vista en la industria, pueblo o casilla. Ctrl+Clic abre una vista aparte
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en una meta para centrar la vista en la industria, localidad o casilla. Ctrl+Clic abre una vista aparte
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
@@ -3511,7 +3511,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ninguno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicios con subsidio:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en un servicio para centrar la vista en la industria o pueblo. Ctrl+Clic abre una vista aparte
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en un servicio para centrar la vista en la industria o localidad. Ctrl+Clic abre una vista aparte
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Historial de {COMPANY}
@@ -3540,7 +3540,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}No hay n
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para cargar)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado{P 0 "" s} para cargar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Lista de carga aceptada
@@ -3644,9 +3644,9 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraest
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Gerente)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurada: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguración: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Cromática:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
@@ -3660,7 +3660,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestr
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} tramo{P "" s} de vías férreas
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} tramo{P "" s} de carretera
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} casilla{P "" s} de agua
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} casilla{P "" s} de estación
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} casilla{P "" s} de estaci{P ón ones}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeropuerto{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Ninguna
 
@@ -3676,13 +3676,13 @@ STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transfer
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Transferir capital a esta empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva cara
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el presidente
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el gerente
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Cromática
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambiar la cromática (colores corporativos) de los vehículos
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre empresa
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre de empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar el nombre de la empresa
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nombre presidente
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar el nombre del presidente
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nombre del gerente
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar el nombre del gerente
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar un 25% de las acciones
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender 25% de las acciones
@@ -3690,7 +3690,7 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de las acciones de esta empresa. Mayús+Clic muestra el ingreso estimado sin vender ninguna acción
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nombre de la empresa
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del presidente
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del gerente
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Cantidad de dinero a transferir
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos una empresa de transportes que quiera adquirir la nuestra.{}{}¿Comprar {COMPANY} por {CURRENCY_LONG}?
@@ -3885,7 +3885,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar y reformar el tren elegido. Mayús+Clic muestra un precio estimado sin comprar nada
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar y reformar el vehículo de carretera elegido. Mayús+Clic muestra un precio estimado sin comprar nada
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar y reformar el barco elegido. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar y reformar la areonave seleccionada. Mayús+Clic muestra un precio estimado sin realizar la compra
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar y reformar la areonave seleccionada. Mayús+Clic muestra un costo estimado de compra
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Cambiar nombre
@@ -3977,10 +3977,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren y sus vagones. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del vehículo de carretera. Clic en este botón y después en el vehículo a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará una copia del barco. Clic en este botón y después en el barco a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará una copia de la aeronave. Clic en este botón y después en la aeronave a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un precio estimado sin comprar nada
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren y sus vagones. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del vehículo de carretera. Clic en este botón y después en el vehículo a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará una copia del barco. Clic en este botón y después en el barco a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará una copia de la aeronave. Clic en este botón y después en la aeronave a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar la vista en el depósito de trenes. Ctrl+Clic abre una vista aparte
@@ -4696,10 +4696,10 @@ STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Después
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}No se puede cambiar el nombre de la empresa...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}No se puede cambiar nombre del presidente...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}No se puede cambiar el nombre del gerente...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... el máximo préstamo permitido es de {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}No es posible pedir más préstamo...
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}No se puede pedir más préstamo...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... no hay préstamo que pagar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... se requieren {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No se puede pagar préstamo...
@@ -4794,7 +4794,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiad
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}No se puede construir el punto de ruta aquí...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}No se puede colocar la boya aquí...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se puede cambiar nombre del punto de ruta...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se puede cambiar el nombre del punto de ruta...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede quitar el punto de ruta de aquí...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto de ruta
@@ -4861,8 +4861,8 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No se puede quitar tranvía de aquí...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... no hay carretera
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... no hay tranvía
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}No es posible transformar esta carretera...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}No es posible transformar esta vía de tranvía...
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}No se puede transformar esta carretera...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}No se puede transformar esta vía de tranvía...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Carretera no apta
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Tranvía no apto
 
@@ -4909,7 +4909,7 @@ STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... dema
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No se puede colocar objeto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Otro objeto estorba
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... la sede de la empresa obstaculiza
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No es posible adquirir este terreno...
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No se puede adquirir este terreno...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya fue adquirido por el jugador!
 
 # Group related errors
@@ -4979,7 +4979,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se pu
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No se puede vender aeronave...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Demasiados vehículos en el juego
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No se puede cambiar intervalo de mantenimiento...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No se puede cambiar el intervalo de mantenimiento...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... el vehículo está destruido
 
@@ -5141,7 +5141,7 @@ STR_SV_STNAME_CENTRAL                                           :{STRING} Centro
 STR_SV_STNAME_TRANSFER                                          :Transferencia {STRING}
 STR_SV_STNAME_HALT                                              :Parada {STRING}
 STR_SV_STNAME_VALLEY                                            :Valle de {STRING}
-STR_SV_STNAME_HEIGHTS                                           :Altos de {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Cumbres de {STRING}
 STR_SV_STNAME_WOODS                                             :Bosques de {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Lago de {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Intercambio {STRING}
