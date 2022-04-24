@@ -116,6 +116,7 @@ struct GUISettings {
 	uint16 hover_delay_ms;                   ///< time required to activate a hover event, in milliseconds
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
 	uint8  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
+	uint8  linkgraph_colours;                ///< linkgraph overlay colours
 	uint8  scroll_mode;                      ///< viewport scroll mode
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools

@@ -103,6 +103,13 @@ static void RedrawSmallmap(int32 new_value)
 	SetWindowClassesDirty(WC_SMALLMAP);
 }
 
+/** Redraw linkgraph links after a colour scheme change. */
+static void UpdateLinkgraphColours(int32 new_value)
+{
+	BuildLinkStatsLegend();
+	MarkWholeScreenDirty();
+}
+
 static void StationSpreadChanged(int32 p1)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0);

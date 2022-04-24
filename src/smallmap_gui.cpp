@@ -216,7 +216,7 @@ void BuildLinkStatsLegend()
 
 	for (; i < _smallmap_cargo_count + lengthof(_linkstat_colours_in_legenda); ++i) {
 		_legend_linkstats[i].legend = STR_EMPTY;
-		_legend_linkstats[i].colour = LinkGraphOverlay::LINK_COLOURS[_linkstat_colours_in_legenda[i - _smallmap_cargo_count]];
+		_legend_linkstats[i].colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][_linkstat_colours_in_legenda[i - _smallmap_cargo_count]];
 		_legend_linkstats[i].show_on_map = true;
 	}
 
