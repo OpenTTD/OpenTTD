@@ -1707,6 +1707,7 @@ static void PopulateStationsNearby(Industry *ind)
 
 	ForAllStationsAroundTiles(ind->location, [ind](Station *st, TileIndex tile) {
 		if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) != ind->index) return false;
+		ind->stations_near.insert(st);
 		st->AddIndustryToDeliver(ind, tile);
 		return false;
 	});
