@@ -1527,6 +1527,14 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dark green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Cargo flow overlay colours: {STRING2}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Set the colour scheme used for the cargo flow overlay.
+###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Green to red (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Green to blue
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grey to red
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Greyscale
+
 STR_CONFIG_SETTING_SCROLLMODE                                   :Viewport scroll behaviour: {STRING2}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behaviour when scrolling the map
 ###length 4
