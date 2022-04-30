@@ -17,7 +17,7 @@
 /** The SDL video driver. */
 class VideoDriver_SDL_Base : public VideoDriver {
 public:
-	VideoDriver_SDL_Base() : sdl_window(nullptr), buffer_locked(false) {}
+	VideoDriver_SDL_Base() : sdl_window(nullptr), buffer_locked(false), driver_info(this->GetName()) {}
 
 	const char *Start(const StringList &param) override;
 
@@ -43,11 +43,14 @@ public:
 
 	const char *GetName() const override { return "sdl"; }
 
+	const char *GetInfoString() const override { return this->driver_info.c_str(); }
+
 protected:
 	struct SDL_Window *sdl_window; ///< Main SDL window.
 	Palette local_palette; ///< Current palette to use for drawing.
 	bool buffer_locked; ///< Video buffer was locked by the main thread.
 	Rect dirty_rect; ///< Rectangle encompassing the dirty area of the video buffer.
+	std::string driver_info; ///< Information string about selected driver.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;

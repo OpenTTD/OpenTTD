@@ -310,6 +310,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
 			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->name); break;
 			case WID_GO_BASE_MUSIC_STATUS:     SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
+			case WID_GO_VIDEO_DRIVER_INFO:     SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString()); break;
 			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
@@ -690,6 +691,9 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_VIDEO_VSYNC_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP),
 					EndContainer(),
 #endif
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_VIDEO_DRIVER_INFO), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, STR_NULL),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

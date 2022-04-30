@@ -540,6 +540,11 @@ const char *VideoDriver_SDL_Base::Start(const StringList &param)
 	const char *dname = SDL_GetCurrentVideoDriver();
 	Debug(driver, 1, "SDL2: using driver '{}'", dname);
 
+	this->driver_info = this->GetName();
+	this->driver_info += " (";
+	this->driver_info += dname;
+	this->driver_info += ")";
+
 	MarkWholeScreenDirty();
 
 	SDL_StopTextInput();

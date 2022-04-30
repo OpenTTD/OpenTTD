@@ -178,6 +178,11 @@ public:
 		return ZOOM_LVL_OUT_4X;
 	}
 
+	virtual const char *GetInfoString() const
+	{
+		return this->GetName();
+	}
+
 	/**
 	 * Queue a function to be called on the main thread with game state
 	 * lock held and video buffer locked. Queued functions will be
