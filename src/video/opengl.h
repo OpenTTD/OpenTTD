@@ -92,6 +92,8 @@ public:
 
 	void PrepareContext();
 
+	std::string GetDriverName();
+
 	void UpdatePalette(const Colour *pal, uint first, uint length);
 	bool Resize(int w, int h, bool force = false);
 	void Paint();

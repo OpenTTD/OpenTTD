@@ -37,6 +37,7 @@ enum GameOptionsWidgets {
 	WID_GO_VIDEO_ACCEL_BUTTON,     ///< Toggle for video acceleration.
 	WID_GO_VIDEO_VSYNC_BUTTON,     ///< Toggle for video vsync.
 	WID_GO_REFRESH_RATE_DROPDOWN,  ///< Dropdown for all available refresh rates.
+	WID_GO_VIDEO_DRIVER_INFO,      ///< Label showing details about the current video driver.
 };
 
 /** Widgets of the #GameSettingsWindow class. */

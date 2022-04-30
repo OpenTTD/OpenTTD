@@ -203,6 +203,11 @@ const char *VideoDriver_CocoaOpenGL::Start(const StringList &param)
 		return err;
 	}
 
+	this->driver_info = GetName();
+	this->driver_info += " (";
+	this->driver_info += OpenGLBackend::Get()->GetDriverName();
+	this->driver_info += ")";
+
 	bool fullscreen = _fullscreen;
 	if (!this->MakeWindow(_cur_resolution.width, _cur_resolution.height)) {
 		this->Stop();

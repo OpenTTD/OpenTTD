@@ -745,6 +745,16 @@ void OpenGLBackend::PrepareContext()
 	_glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
+std::string OpenGLBackend::GetDriverName()
+{
+	std::string res{};
+	/* Skipping GL_VENDOR as it tends to be "obvious" from the renderer and version data, and just makes the string pointlessly longer */
+	res += reinterpret_cast<const char *>(_glGetString(GL_RENDERER));
+	res += ", ";
+	res += reinterpret_cast<const char *>(_glGetString(GL_VERSION));
+	return res;
+}
+
 /**
  * Check a shader for compilation errors and log them if necessary.
  * @param shader Shader to check.
