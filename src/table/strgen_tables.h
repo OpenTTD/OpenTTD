@@ -74,7 +74,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"STATION_FEATURES",  EmitSingleChar, SCC_STATION_FEATURES,   1, -1, C_NONE}, // station features string, icons of the features
 	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, -1, C_CASE | C_GENDER}, // industry, takes an industry #, can have cases
 	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2,  1, C_NONE | C_GENDER},
-	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, C_NONE}, // short cargo description, only ### tons, or ### litres
+	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, C_NONE | C_GENDER}, // short cargo description, only ### tons, or ### litres
 	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2,  1, C_NONE}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
 	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, -1, C_CASE},
 	{"POWER",             EmitSingleChar, SCC_POWER,              1,  0, C_NONE},
