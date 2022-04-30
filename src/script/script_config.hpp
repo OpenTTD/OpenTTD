@@ -116,7 +116,7 @@ public:
 	void AnchorUnchangeableSettings();
 
 	/**
-	 * Get the value of a setting for this config. It might fallback to his
+	 * Get the value of a setting for this config. It might fallback to its
 	 *  'info' to find the default value (if not set or if not-custom difficulty
 	 *  level).
 	 * @return The (default) value of the setting, or -1 if the setting was not
@@ -169,13 +169,13 @@ public:
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
 	 */
-	void StringToSettings(const char *value);
+	void StringToSettings(const std::string &value);
 
 	/**
 	 * Convert the custom settings to a string that can be stored in the config
 	 *  file or savegames.
 	 */
-	void SettingsToString(char *string, const char *last) const;
+	std::string SettingsToString() const;
 
 	/**
 	 * Search a textfile file next to this script.

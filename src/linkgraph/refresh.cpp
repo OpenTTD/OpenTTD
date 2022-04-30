@@ -26,10 +26,10 @@
 /* static */ void LinkRefresher::Run(Vehicle *v, bool allow_merge, bool is_full_loading)
 {
 	/* If there are no orders we can't predict anything.*/
-	if (v->orders.list == nullptr) return;
+	if (v->orders == nullptr) return;
 
 	/* Make sure the first order is a useful order. */
-	const Order *first = v->orders.list->GetNextDecisionNode(v->GetOrder(v->cur_implicit_order_index), 0);
+	const Order *first = v->orders->GetNextDecisionNode(v->GetOrder(v->cur_implicit_order_index), 0);
 	if (first == nullptr) return;
 
 	HopSet seen_hops;
@@ -173,9 +173,9 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 		SetBit(flags, USE_NEXT);
 
 		if (next->IsType(OT_CONDITIONAL)) {
-			const Order *skip_to = this->vehicle->orders.list->GetNextDecisionNode(
-					this->vehicle->orders.list->GetOrderAt(next->GetConditionSkipToOrder()), num_hops);
-			if (skip_to != nullptr && num_hops < this->vehicle->orders.list->GetNumOrders()) {
+			const Order *skip_to = this->vehicle->orders->GetNextDecisionNode(
+					this->vehicle->orders->GetOrderAt(next->GetConditionSkipToOrder()), num_hops);
+			if (skip_to != nullptr && num_hops < this->vehicle->orders->GetNumOrders()) {
 				/* Make copies of capacity tracking lists. There is potential
 				 * for optimization here: If the vehicle never refits we don't
 				 * need to copy anything. Also, if we've seen the branched link
@@ -187,8 +187,8 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 
 		/* Reassign next with the following stop. This can be a station or a
 		 * depot.*/
-		next = this->vehicle->orders.list->GetNextDecisionNode(
-				this->vehicle->orders.list->GetNext(next), num_hops++);
+		next = this->vehicle->orders->GetNextDecisionNode(
+				this->vehicle->orders->GetNext(next), num_hops++);
 	}
 	return next;
 }
@@ -218,28 +218,34 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			/* A link is at least partly restricted if a vehicle can't load at its source. */
 			EdgeUpdateMode restricted_mode = (cur->GetLoadType() & OLFB_NO_LOAD) == 0 ?
 						EUM_UNRESTRICTED : EUM_RESTRICTED;
+			Station *st_to = Station::GetIfValid(next_station);
+			/* This estimates the travel time of the link as the time needed
+			 * to travel between the stations at half the max speed of the consist.
+			 * The result is in tiles/tick (= 2048 km-ish/h). */
+			uint32 time_estimate = (st_to != nullptr) ?
+				DistanceManhattan(st->xy, st_to->xy) * 4096U / this->vehicle->GetDisplayMaxSpeed() : 0;
 
 			/* If the vehicle is currently full loading, increase the capacities at the station
 			 * where it is loading by an estimate of what it would have transported if it wasn't
 			 * loading. Don't do that if the vehicle has been waiting for longer than the entire
 			 * order list is supposed to take, though. If that is the case the total duration is
 			 * probably far off and we'd greatly overestimate the capacity by increasing.*/
-			if (this->is_full_loading && this->vehicle->orders.list != nullptr &&
+			if (this->is_full_loading && this->vehicle->orders != nullptr &&
 					st->index == vehicle->last_station_visited &&
-					this->vehicle->orders.list->GetTotalDuration() >
+					this->vehicle->orders->GetTotalDuration() >
 					(Ticks)this->vehicle->current_order_time) {
 				uint effective_capacity = cargo_quantity * this->vehicle->load_unload_ticks;
-				if (effective_capacity > (uint)this->vehicle->orders.list->GetTotalDuration()) {
+				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
 					IncreaseStats(st, c, next_station, effective_capacity /
-							this->vehicle->orders.list->GetTotalDuration(), 0,
+							this->vehicle->orders->GetTotalDuration(), 0, 0,
 							EUM_INCREASE | restricted_mode);
-				} else if (RandomRange(this->vehicle->orders.list->GetTotalDuration()) < effective_capacity) {
-					IncreaseStats(st, c, next_station, 1, 0, EUM_INCREASE | restricted_mode);
+				} else if (RandomRange(this->vehicle->orders->GetTotalDuration()) < effective_capacity) {
+					IncreaseStats(st, c, next_station, 1, 0, 0, EUM_INCREASE | restricted_mode);
 				} else {
-					IncreaseStats(st, c, next_station, cargo_quantity, 0, EUM_REFRESH | restricted_mode);
+					IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, EUM_REFRESH | restricted_mode);
 				}
 			} else {
-				IncreaseStats(st, c, next_station, cargo_quantity, 0, EUM_REFRESH | restricted_mode);
+				IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, EUM_REFRESH | restricted_mode);
 			}
 		}
 	}

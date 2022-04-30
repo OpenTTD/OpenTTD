@@ -53,7 +53,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::string file_new{ filename };
 	file_new.append(".new");
 
-	std::ofstream os(OTTD2FS(file_new));
+	std::ofstream os(OTTD2FS(file_new).c_str());
 	if (os.fail()) return false;
 
 	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
@@ -112,7 +112,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	SHFileOperation(&shfopt);
 #else
 	if (rename(file_new.c_str(), filename.c_str()) < 0) {
-		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new.c_str(), filename.c_str());
+		Debug(misc, 0, "Renaming {} to {} failed; configuration not saved", file_new, filename);
 	}
 #endif
 

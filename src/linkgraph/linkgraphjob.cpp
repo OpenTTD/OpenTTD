@@ -65,7 +65,7 @@ void LinkGraphJob::SpawnThread()
 		 * On the other hand, if you want to play games which make this hang noticeably
 		 * on a platform without threads then you'll probably get other problems first.
 		 * OK:
-		 * If someone comes and tells me that this hangs for him/her, I'll implement a
+		 * If someone comes and tells me that this hangs for them, I'll implement a
 		 * smaller grained "Step" method for all handlers and add some more ticks where
 		 * "Step" is called. No problem in principle. */
 		LinkGraphSchedule::Run(this);
@@ -101,7 +101,7 @@ LinkGraphJob::~LinkGraphJob()
 	/* Link graph has been merged into another one. */
 	if (!LinkGraph::IsValidID(this->link_graph.index)) return;
 
-	uint size = this->Size();
+	uint16 size = this->Size();
 	for (NodeID node_id = 0; node_id < size; ++node_id) {
 		Node from = (*this)[node_id];
 

@@ -12,6 +12,7 @@
 
 #include "core/tcp_content.h"
 #include "core/tcp_http.h"
+#include <unordered_map>
 
 /** Vector with content info */
 typedef std::vector<ContentInfo *> ContentVector;
@@ -68,6 +69,7 @@ protected:
 	std::vector<ContentCallback *> callbacks;     ///< Callbacks to notify "the world"
 	ContentIDList requested;                      ///< ContentIDs we already requested (so we don't do it again)
 	ContentVector infos;                          ///< All content info we received
+	std::unordered_multimap<ContentID, ContentID> reverse_dependency_map; ///< Content reverse dependency map
 	std::vector<char> http_response;              ///< The HTTP response to the requests we've been doing
 	int http_response_index;                      ///< Where we are, in the response, with handling it
 
@@ -81,7 +83,7 @@ protected:
 	bool Receive_SERVER_INFO(Packet *p) override;
 	bool Receive_SERVER_CONTENT(Packet *p) override;
 
-	ContentInfo *GetContent(ContentID cid);
+	ContentInfo *GetContent(ContentID cid) const;
 	void DownloadContentInfo(ContentID cid);
 
 	void OnConnect(bool success) override;
@@ -107,7 +109,7 @@ public:
 
 	void Connect();
 	void SendReceive();
-	void Close() override;
+	NetworkRecvStatus CloseConnection(bool error = true) override;
 
 	void RequestContentList(ContentType type);
 	void RequestContentList(uint count, const ContentID *content_ids);

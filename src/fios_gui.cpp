@@ -27,6 +27,7 @@
 #include "core/geometry_func.hpp"
 #include "gamelog.h"
 #include "stringfilter_type.h"
+#include "misc_cmd.h"
 
 #include "widgets/fios_widget.h"
 
@@ -53,7 +54,7 @@ void LoadCheckData::Clear()
 
 	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
 	this->current_date = 0;
-	memset(&this->settings, 0, sizeof(this->settings));
+	this->settings = {};
 
 	for (auto &pair : this->companies) {
 		delete pair.second;
@@ -249,8 +250,8 @@ static void SortSaveGameList(FileList &file_list)
 	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
 	 * Only sort savegames/scenarios, not directories
 	 */
-	for (const FiosItem *item = file_list.Begin(); item != file_list.End(); item++) {
-		switch (item->type) {
+	for (const auto &item : file_list) {
+		switch (item.type) {
 			case FIOS_TYPE_DIR:    sort_start++; break;
 			case FIOS_TYPE_PARENT: sort_start++; break;
 			case FIOS_TYPE_DRIVE:  sort_end++;   break;
@@ -258,7 +259,7 @@ static void SortSaveGameList(FileList &file_list)
 		}
 	}
 
-	std::sort(file_list.files.begin() + sort_start, file_list.files.end() - sort_end);
+	std::sort(file_list.begin() + sort_start, file_list.end() - sort_end);
 }
 
 struct SaveLoadWindow : public Window {
@@ -358,7 +359,7 @@ public:
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
-			DoCommandP(0, PM_PAUSED_SAVELOAD, 1, CMD_PAUSE);
+			Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, true);
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
@@ -398,12 +399,13 @@ public:
 		}
 	}
 
-	virtual ~SaveLoadWindow()
+	void Close() override
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-			DoCommandP(0, PM_PAUSED_SAVELOAD, 0, CMD_PAUSE);
+			Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
 		}
+		this->Window::Close();
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -437,14 +439,14 @@ public:
 
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint scroll_pos = this->vscroll->GetPosition();
-				for (uint row = 0; row < this->fios_items.Length(); row++) {
+				for (uint row = 0; row < this->fios_items.size(); row++) {
 					if (!this->fios_items_shown[row]) {
 						/* The current item is filtered out : we do not show it */
 						scroll_pos++;
 						continue;
 					}
 					if (row < scroll_pos) continue;
-					const FiosItem *item = this->fios_items.Get(row);
+					const FiosItem *item = &this->fios_items[row];
 
 					if (item == this->selected) {
 						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
@@ -537,7 +539,7 @@ public:
 							const CompanyProperties &c = *pair.second;
 							if (!c.name.empty()) {
 								SetDParam(1, STR_JUST_RAW_STRING);
-								SetDParamStr(2, c.name.c_str());
+								SetDParamStr(2, c.name);
 							} else {
 								SetDParam(1, c.name_1);
 								SetDParam(2, c.name_2);
@@ -617,12 +619,12 @@ public:
 				_file_to_saveload.SetTitle(this->selected->title);
 
 				if (this->abstract_filetype == FT_HEIGHTMAP) {
-					delete this;
+					this->Close();
 					ShowHeightmapLoad();
 				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
 					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 					ClearErrorMessages();
-					delete this;
+					this->Close();
 				}
 				break;
 			}
@@ -651,7 +653,7 @@ public:
 					if (!this->fios_items_shown[i]) y++;
 					i++;
 				}
-				const FiosItem *file = this->fios_items.Get(y);
+				const FiosItem *file = &this->fios_items[y];
 
 				const char *name = FiosBrowseTo(file);
 				if (name == nullptr) {
@@ -688,7 +690,7 @@ public:
 							_file_to_saveload.SetName(name);
 							_file_to_saveload.SetTitle(file->title);
 
-							delete this;
+							this->Close();
 							ShowHeightmapLoad();
 						}
 					}
@@ -734,7 +736,7 @@ public:
 				if (!this->fios_items_shown[i]) y++;
 				i++;
 			}
-			const FiosItem *file = this->fios_items.Get(y);
+			const FiosItem *file = &this->fios_items[y];
 
 			if (file != this->highlighted) {
 				this->highlighted = file;
@@ -749,7 +751,7 @@ public:
 	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		if (keycode == WKC_ESC) {
-			delete this;
+			this->Close();
 			return ES_HANDLED;
 		}
 
@@ -812,7 +814,7 @@ public:
 
 				_fios_path_changed = true;
 				this->fios_items.BuildFileList(this->abstract_filetype, this->fop);
-				this->vscroll->SetCount((uint)this->fios_items.Length());
+				this->vscroll->SetCount((uint)this->fios_items.size());
 				this->selected = nullptr;
 				_load_check_data.Clear();
 
@@ -852,10 +854,10 @@ public:
 
 			case SLIWD_FILTER_CHANGES:
 				/* Filter changes */
-				this->fios_items_shown.resize(this->fios_items.Length());
+				this->fios_items_shown.resize(this->fios_items.size());
 				uint items_shown_count = 0; ///< The number of items shown in the list
 				/* We pass through every fios item */
-				for (uint i = 0; i < this->fios_items.Length(); i++) {
+				for (uint i = 0; i < this->fios_items.size(); i++) {
 					if (this->string_filter.IsEmpty()) {
 						/* We don't filter anything out if the filter editbox is empty */
 						this->fios_items_shown[i] = true;
@@ -867,7 +869,7 @@ public:
 						this->fios_items_shown[i] = this->string_filter.GetState();
 						if (this->fios_items_shown[i]) items_shown_count++;
 
-						if (&(this->fios_items[i]) == this->selected && this->fios_items_shown[i] == false) {
+						if (&(this->fios_items[i]) == this->selected && !this->fios_items_shown[i]) {
 							/* The selected element has been filtered out */
 							this->selected = nullptr;
 							this->OnInvalidateData(SLIWD_SELECTION_CHANGES);
@@ -919,7 +921,7 @@ static WindowDesc _save_dialog_desc(
  */
 void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fop)
 {
-	DeleteWindowById(WC_SAVELOAD, 0);
+	CloseWindowById(WC_SAVELOAD, 0);
 
 	WindowDesc *sld;
 	if (fop == SLO_SAVE) {

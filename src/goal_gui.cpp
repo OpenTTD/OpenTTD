@@ -23,6 +23,7 @@
 #include "story_base.h"
 #include "command_func.h"
 #include "string_func.h"
+#include "goal_cmd.h"
 
 #include "widgets/goal_widget.h"
 
@@ -336,9 +337,8 @@ struct GoalQuestionWindow : public Window {
 		this->question = stredup(question);
 
 		/* Figure out which buttons we have to enable. */
-		uint bit;
 		int n = 0;
-		FOR_EACH_SET_BIT(bit, button_mask) {
+		for (uint bit : SetBitIterator(button_mask)) {
 			if (bit >= GOAL_QUESTION_BUTTON_COUNT) break;
 			this->button[n++] = bit;
 			if (n == 3) break;
@@ -383,18 +383,18 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				DoCommandP(0, this->window_number, this->button[0], CMD_GOAL_QUESTION_ANSWER);
-				delete this;
+				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[0]);
+				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_2:
-				DoCommandP(0, this->window_number, this->button[1], CMD_GOAL_QUESTION_ANSWER);
-				delete this;
+				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[1]);
+				this->Close();
 				break;
 
 			case WID_GQ_BUTTON_3:
-				DoCommandP(0, this->window_number, this->button[2], CMD_GOAL_QUESTION_ANSWER);
-				delete this;
+				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[2]);
+				this->Close();
 				break;
 		}
 	}

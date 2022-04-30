@@ -42,7 +42,7 @@ void SetCurrentGrfLangID(byte language_id);
 std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const std::string &str, StringControlCode byte80 = SCC_NEWGRF_PRINT_WORD_STRING_ID);
 void AddGRFTextToList(GRFTextList &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
 void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
-void AddGRFTextToList(GRFTextWrapper &list, const char *text_to_add);
+void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 

@@ -19,8 +19,7 @@
 
 ScriptCargoList::ScriptCargoList()
 {
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		this->AddItem(cs->Index());
 	}
 }

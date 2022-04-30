@@ -57,7 +57,7 @@ typedef sqvector<ExpState> ExpStateVec;
 class SQCompiler
 {
 public:
-	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(NULL), _lex(_ss(v), rg, up, ThrowError, this), _debugline(0), _debugop(0)
+	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up, ThrowError, this), _debugline(0), _debugop(0)
 	{
 		_vm=v;
 		_sourcename = SQString::Create(_ss(v), sourcename);
@@ -164,7 +164,7 @@ public:
 		_debugline = 1;
 		_debugop = 0;
 
-		SQFuncState funcstate(_ss(_vm), NULL,ThrowError,this);
+		SQFuncState funcstate(_ss(_vm), nullptr,ThrowError,this);
 		funcstate._name = SQString::Create(_ss(_vm), "main");
 		_fs = &funcstate;
 		_fs->AddParameter(_fs->CreateString("this"));
@@ -835,8 +835,7 @@ public:
 			nkeys++;
 			SQInteger val = _fs->PopTarget();
 			SQInteger key = _fs->PopTarget();
-			SQInteger attrs = hasattrs ? _fs->PopTarget():-1;
-			(void)attrs; // assert only
+			[[maybe_unused]] SQInteger attrs = hasattrs ? _fs->PopTarget():-1;
 			assert((hasattrs && attrs == key-1) || !hasattrs);
 			unsigned char flags = (hasattrs?NEW_SLOT_ATTRIBUTES_FLAG:0)|(isstatic?NEW_SLOT_STATIC_FLAG:0);
 			SQInteger table = _fs->TopTarget(); //<<BECAUSE OF THIS NO COMMON EMIT FUNC IS POSSIBLE

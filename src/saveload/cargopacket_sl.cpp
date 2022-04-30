@@ -8,10 +8,12 @@
 /** @file cargopacket_sl.cpp Code handling saving and loading of cargo packets */
 
 #include "../stdafx.h"
-#include "../vehicle_base.h"
-#include "../station_base.h"
 
 #include "saveload.h"
+#include "compat/cargopacket_sl_compat.h"
+
+#include "../vehicle_base.h"
+#include "../station_base.h"
 
 #include "../safeguards.h"
 
@@ -83,7 +85,7 @@
  * some of the variables itself are private.
  * @return the saveload description for CargoPackets.
  */
-const SaveLoad *GetCargoPacketDesc()
+SaveLoadTable GetCargoPacketDesc()
 {
 	static const SaveLoad _cargopacket_desc[] = {
 		     SLE_VAR(CargoPacket, source,          SLE_UINT16),
@@ -94,40 +96,39 @@ const SaveLoad *GetCargoPacketDesc()
 		     SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
 		 SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  SLV_125, SL_MAX_VERSION),
 		 SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, SLV_125, SL_MAX_VERSION),
-
-		/* Used to be paid_for, but that got changed. */
-		SLE_CONDNULL(1, SL_MIN_VERSION, SLV_121),
-
-		SLE_END()
 	};
 	return _cargopacket_desc;
 }
 
-/**
- * Save the cargo packets.
- */
-static void Save_CAPA()
-{
-	for (CargoPacket *cp : CargoPacket::Iterate()) {
-		SlSetArrayIndex(cp->index);
-		SlObject(cp, GetCargoPacketDesc());
+struct CAPAChunkHandler : ChunkHandler {
+	CAPAChunkHandler() : ChunkHandler('CAPA', CH_TABLE) {}
+
+	void Save() const override
+	{
+		SlTableHeader(GetCargoPacketDesc());
+
+		for (CargoPacket *cp : CargoPacket::Iterate()) {
+			SlSetArrayIndex(cp->index);
+			SlObject(cp, GetCargoPacketDesc());
+		}
 	}
-}
 
-/**
- * Load the cargo packets.
- */
-static void Load_CAPA()
-{
-	int index;
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetCargoPacketDesc(), _cargopacket_sl_compat);
 
-	while ((index = SlIterateArray()) != -1) {
-		CargoPacket *cp = new (index) CargoPacket();
-		SlObject(cp, GetCargoPacketDesc());
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			CargoPacket *cp = new (index) CargoPacket();
+			SlObject(cp, slt);
+		}
 	}
-}
-
-/** Chunk handlers related to cargo packets. */
-extern const ChunkHandler _cargopacket_chunk_handlers[] = {
-	{ 'CAPA', Save_CAPA, Load_CAPA, nullptr, nullptr, CH_ARRAY | CH_LAST},
 };
+
+static const CAPAChunkHandler CAPA;
+static const ChunkHandlerRef cargopacket_chunk_handlers[] = {
+	CAPA,
+};
+
+extern const ChunkHandlerTable _cargopacket_chunk_handlers(cargopacket_chunk_handlers);

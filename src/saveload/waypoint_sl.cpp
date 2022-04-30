@@ -103,10 +103,10 @@ void MoveWaypointsToBaseStations()
 		/* Sometimes waypoint (sign) locations became disconnected from their actual location in
 		 * the map array. If this is the case, try to locate the actual location in the map array */
 		if (!IsTileType(t, MP_RAILWAY) || GetRailTileType(t) != 2 /* RAIL_TILE_WAYPOINT */ || _m[t].m2 != wp.index) {
-			DEBUG(sl, 0, "Found waypoint tile %u with invalid position", t);
+			Debug(sl, 0, "Found waypoint tile {} with invalid position", t);
 			for (t = 0; t < MapSize(); t++) {
 				if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 2 /* RAIL_TILE_WAYPOINT */ && _m[t].m2 == wp.index) {
-					DEBUG(sl, 0, "Found actual waypoint position at %u", t);
+					Debug(sl, 0, "Found actual waypoint position at {}", t);
 					break;
 				}
 			}
@@ -180,52 +180,57 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SLV_3, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_17, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_101, SL_MAX_VERSION),
-
-	SLE_END()
 };
 
-static void Load_WAYP()
-{
-	/* Precaution for when loading failed and it didn't get cleared */
-	ResetOldWaypoints();
+struct CHKPChunkHandler : ChunkHandler {
+	CHKPChunkHandler() : ChunkHandler('CHKP', CH_READONLY) {}
 
-	int index;
+	void Load() const override
+	{
+		/* Precaution for when loading failed and it didn't get cleared */
+		ResetOldWaypoints();
 
-	while ((index = SlIterateArray()) != -1) {
-		OldWaypoint *wp = &_old_waypoints.emplace_back();
+		int index;
 
-		wp->index = index;
-		SlObject(wp, _old_waypoint_desc);
+		while ((index = SlIterateArray()) != -1) {
+			OldWaypoint *wp = &_old_waypoints.emplace_back();
+
+			wp->index = index;
+			SlObject(wp, _old_waypoint_desc);
+		}
 	}
-}
 
-static void Ptrs_WAYP()
-{
-	for (OldWaypoint &wp : _old_waypoints) {
-		SlObject(&wp, _old_waypoint_desc);
+	void FixPointers() const override
+	{
+		for (OldWaypoint &wp : _old_waypoints) {
+			SlObject(&wp, _old_waypoint_desc);
 
-		if (IsSavegameVersionBefore(SLV_12)) {
-			wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
-			wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
-		} else if (IsSavegameVersionBefore(SLV_122)) {
-			/* Only for versions 12 .. 122 */
-			if (!Town::IsValidID(wp.town_index)) {
-				/* Upon a corrupted waypoint we'll likely get here. The next step will be to
-				 * loop over all Ptrs procs to nullptr the pointers. However, we don't know
-				 * whether we're in the nullptr or "normal" Ptrs proc. So just clear the list
-				 * of old waypoints we constructed and then this waypoint (and the other
-				 * possibly corrupt ones) will not be queried in the nullptr Ptrs proc run. */
-				_old_waypoints.clear();
-				SlErrorCorrupt("Referencing invalid Town");
+			if (IsSavegameVersionBefore(SLV_12)) {
+				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
+				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
+			} else if (IsSavegameVersionBefore(SLV_122)) {
+				/* Only for versions 12 .. 122 */
+				if (!Town::IsValidID(wp.town_index)) {
+					/* Upon a corrupted waypoint we'll likely get here. The next step will be to
+					 * loop over all Ptrs procs to nullptr the pointers. However, we don't know
+					 * whether we're in the nullptr or "normal" Ptrs proc. So just clear the list
+					 * of old waypoints we constructed and then this waypoint (and the other
+					 * possibly corrupt ones) will not be queried in the nullptr Ptrs proc run. */
+					_old_waypoints.clear();
+					SlErrorCorrupt("Referencing invalid Town");
+				}
+				wp.town = Town::Get(wp.town_index);
 			}
-			wp.town = Town::Get(wp.town_index);
-		}
-		if (IsSavegameVersionBefore(SLV_84)) {
-			wp.name = CopyFromOldName(wp.string_id);
+			if (IsSavegameVersionBefore(SLV_84)) {
+				wp.name = CopyFromOldName(wp.string_id);
+			}
 		}
 	}
-}
-
-extern const ChunkHandler _waypoint_chunk_handlers[] = {
-	{ 'CHKP', nullptr, Load_WAYP, Ptrs_WAYP, nullptr, CH_ARRAY | CH_LAST},
 };
+
+static const CHKPChunkHandler CHKP;
+static const ChunkHandlerRef waypoint_chunk_handlers[] = {
+	CHKP,
+};
+
+extern const ChunkHandlerTable _waypoint_chunk_handlers(waypoint_chunk_handlers);

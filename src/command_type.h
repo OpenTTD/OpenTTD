@@ -13,6 +13,7 @@
 #include "economy_type.h"
 #include "strings_type.h"
 #include "tile_type.h"
+#include <vector>
 
 struct GRFFile;
 
@@ -172,7 +173,7 @@ public:
  *
  * @see _command_proc_table
  */
-enum Commands {
+enum Commands : uint16 {
 	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
 	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
 	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
@@ -324,7 +325,7 @@ enum Commands {
 	CMD_ADD_VEHICLE_GROUP,            ///< add a vehicle to a group
 	CMD_ADD_SHARED_VEHICLE_GROUP,     ///< add all other shared vehicles to a group which are missing
 	CMD_REMOVE_ALL_VEHICLES_GROUP,    ///< remove all vehicles from a group
-	CMD_SET_GROUP_REPLACE_PROTECTION, ///< set the autoreplace-protection for a group
+	CMD_SET_GROUP_FLAG,               ///< set/clear a flag for a group
 	CMD_SET_GROUP_LIVERY,             ///< set the livery for a group
 
 	CMD_MOVE_ORDER,                   ///< move an order
@@ -359,28 +360,6 @@ enum DoCommandFlag {
 	DC_FORCE_CLEAR_TILE      = 0x800, ///< do not only remove the object on the tile, but also clear any water left on it
 };
 DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
-
-/**
- * Used to combine a StringID with the command.
- *
- * This macro can be used to add a StringID (the error message to show) on a command-id
- * (CMD_xxx). Use the binary or-operator "|" to combine the command with the result from
- * this macro.
- *
- * @param x The StringID to combine with a command-id
- */
-#define CMD_MSG(x) ((x) << 16)
-
-/**
- * Defines some flags.
- *
- * This enumeration defines some flags which are binary-or'ed on a command.
- */
-enum FlaggedCommands {
-	CMD_NETWORK_COMMAND       = 0x0100, ///< execute the command without sending it on the network
-	CMD_FLAGS_MASK            = 0xFF00, ///< mask for all command flags
-	CMD_ID_MASK               = 0x00FF, ///< mask for the command ID
-};
 
 /**
  * Command flags for the command table _command_proc_table.
@@ -425,38 +404,42 @@ enum CommandPauseLevel {
 	CMDPL_ALL_ACTIONS,     ///< All actions may be executed.
 };
 
-/**
- * Defines the callback type for all command handler functions.
- *
- * This type defines the function header for all functions which handles a CMD_* command.
- * A command handler use the parameters to act according to the meaning of the command.
- * The tile parameter defines the tile to perform an action on.
- * The flag parameter is filled with flags from the DC_* enumeration. The parameters
- * p1 and p2 are filled with parameters for the command like "which road type", "which
- * order" or "direction". Each function should mentioned in there doxygen comments
- * the usage of these parameters.
- *
- * @param tile The tile to apply a command on
- * @param flags Flags for the command, from the DC_* enumeration
- * @param p1 Additional data for the command
- * @param p2 Additional data for the command
- * @param text Additional text
- * @return The CommandCost of the command, which can be succeeded or failed.
- */
-typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text);
 
-/**
- * Define a command with the flags which belongs to it.
- *
- * This struct connect a command handler function with the flags created with
- * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
- */
-struct Command {
-	CommandProc *proc;  ///< The procedure to actually executing
-	const char *name;   ///< A human readable name for the procedure
-	CommandFlags flags; ///< The (command) flags to that apply to this command
-	CommandType type;   ///< The type of command.
+template <typename T> struct CommandFunctionTraitHelper;
+template <typename... Targs>
+struct CommandFunctionTraitHelper<CommandCost(*)(DoCommandFlag, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+	using RetTypes = void;
+	using CbArgs = Args;
+	using CbProcType = void(*)(Commands, const CommandCost &);
 };
+template <template <typename...> typename Tret, typename... Tretargs, typename... Targs>
+struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFlag, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+	using RetTypes = std::tuple<std::decay_t<Tretargs>...>;
+	using CbArgs = std::tuple<std::decay_t<Tretargs>..., std::decay_t<Targs>...>;
+	using CbProcType = void(*)(Commands, const CommandCost &, Tretargs...);
+};
+
+/** Defines the traits of a command. */
+template <Commands Tcmd> struct CommandTraits;
+
+#define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
+	template<> struct CommandTraits<cmd_> { \
+		using ProcType = decltype(&proc_); \
+		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
+		using RetTypes = typename CommandFunctionTraitHelper<ProcType>::RetTypes; \
+		using CbArgs = typename CommandFunctionTraitHelper<ProcType>::CbArgs; \
+		using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType; \
+		static constexpr Commands cmd = cmd_; \
+		static constexpr auto &proc = proc_; \
+		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
+		static constexpr CommandType type = type_; \
+		static inline constexpr const char *name = #proc_; \
+	};
+
+/** Storage buffer for serialized command data. */
+typedef std::vector<byte> CommandDataBuffer;
 
 /**
  * Define a callback function for the client, after the command is finished.
@@ -465,24 +448,27 @@ struct Command {
  * are from the #CommandProc callback type. The boolean parameter indicates if the
  * command succeeded or failed.
  *
+ * @param cmd The command that was executed
  * @param result The result of the executed command
  * @param tile The tile of the command action
- * @param p1 Additional data of the command
- * @param p1 Additional data of the command
  * @see CommandProc
  */
-typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd);
+typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex tile);
 
 /**
- * Structure for buffering the build command when selecting a station to join.
+ * Define a callback function for the client, after the command is finished.
+ *
+ * Functions of this type are called after the command is finished. The parameters
+ * are from the #CommandProc callback type. The boolean parameter indicates if the
+ * command succeeded or failed.
+ *
+ * @param cmd The command that was executed
+ * @param result The result of the executed command
+ * @param tile The tile of the command action
+ * @param data Additional data of the command
+ * @param result_data Additional returned data from the command
+ * @see CommandProc
  */
-struct CommandContainer {
-	TileIndex tile;                  ///< tile command being executed on.
-	uint32 p1;                       ///< parameter p1.
-	uint32 p2;                       ///< parameter p2.
-	uint32 cmd;                      ///< command being executed.
-	CommandCallback *callback;       ///< any callback function executed upon successful completion of the command.
-	char text[32 * MAX_CHAR_LENGTH]; ///< possible text sent for name changes etc, in bytes including '\0'.
-};
+typedef void CommandCallbackData(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data);
 
 #endif /* COMMAND_TYPE_H */

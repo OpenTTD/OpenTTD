@@ -111,7 +111,7 @@
 		case 0xD5: return this->t->fund_buildings_months;
 	}
 
-	DEBUG(grf, 1, "Unhandled town variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled town variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

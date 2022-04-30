@@ -176,6 +176,7 @@ static const PluralForm _plural_forms[] = {
 	{ 2, "Two forms: cases for numbers ending with a consonant, and with a vowel.", "\"yeong,il,sam,yuk,chil,pal\" \"i,sa,o,gu\"" },
 	{ 4, "Four forms: special cases for 1, 0 and numbers ending in 02 to 10, and numbers ending in 11 to 19.", "\"1\" \"0,2..10,102..110,202..210,...\" \"11..19,111..119,211..219,...\" \"other\"" },
 	{ 4, "Four forms: special cases for 1 and 11, 2 and 12, 3..10 and 13..19.", "\"1,11\" \"2,12\" \"3..10,13..19\" \"other\"" },
+	{ 3, "Three forms: special cases for 1, 0 and numbers ending in 01 to 19.", "\"1\" \"0,2..19,101..119,201..219,...\" \"other\"" },
 };
 
 /* Flags:

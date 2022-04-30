@@ -12,11 +12,7 @@
 
 #include "../../landscape.h"
 #include "../pathfinder_func.h"
-#include "../pf_performance_timer.hpp"
 #include "yapf.h"
-
-//#undef FORCEINLINE
-//#define inline inline
 
 #include "../../misc/fixedsizearray.hpp"
 #include "../../misc/array.hpp"

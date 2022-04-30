@@ -4,7 +4,9 @@ if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
 endif()
 
-project(${BINARY_NAME})
+project(${BINARY_NAME}
+    VERSION 13.0
+)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the build directory. You may need to delete \"${CMAKE_SOURCE_DIR}/CMakeCache.txt\" first.")
@@ -20,7 +22,7 @@ if (EMSCRIPTEN)
 endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
-set(CMAKE_OSX_DEPLOYMENT_TARGET 10.9)
+set(CMAKE_OSX_DEPLOYMENT_TARGET 10.14)
 
 # Use GNUInstallDirs to allow customisation
 # but set our own default data and bin dir
@@ -72,6 +74,9 @@ add_custom_target(find_version
         ${CMAKE_COMMAND}
                 -DFIND_VERSION_BINARY_DIR=${CMAKE_BINARY_DIR}/generated
                 -DCPACK_BINARY_DIR=${CMAKE_BINARY_DIR}
+                -DREV_MAJOR=${PROJECT_VERSION_MAJOR}
+                -DREV_MINOR=${PROJECT_VERSION_MINOR}
+                -DWINDOWS=${WIN32}
                 -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         BYPRODUCTS ${GENERATED_SOURCE_FILES}
@@ -236,6 +241,10 @@ target_link_libraries(openttd
     Threads::Threads
 )
 
+if(HAIKU)
+    target_link_libraries(openttd "be" "network" "midi")
+endif()
+
 if(IPO_FOUND)
     set_target_properties(openttd PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE True)
     set_target_properties(openttd PROPERTIES INTERPROCEDURAL_OPTIMIZATION_MINSIZEREL True)
@@ -296,7 +305,7 @@ if(EMSCRIPTEN)
     add_definitions(-s DISABLE_EXCEPTION_CATCHING=0)
 
     # Export functions to Javascript.
-    target_link_libraries(WASM::WASM INTERFACE "-s EXPORTED_FUNCTIONS='[\"_main\", \"_em_openttd_add_server\"]' -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'")
+    target_link_libraries(WASM::WASM INTERFACE "-s EXPORTED_FUNCTIONS='[\"_main\", \"_em_openttd_add_server\"]' -s EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'")
 
     # Preload all the files we generate during build.
     # As we do not compile with FreeType / FontConfig, we also have no way to
@@ -350,17 +359,20 @@ if(WIN32)
         -DUNICODE
         -D_UNICODE
         -DWITH_UNISCRIBE
+        -DPSAPI_VERSION=1
     )
 
     target_link_libraries(openttd
         ws2_32
         winmm
         imm32
+        usp10
+        psapi
     )
 endif()
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    add_definitions(-D_SQ64)
+    add_definitions(-DPOINTER_IS_64BIT)
 endif()
 
 include(CreateRegression)

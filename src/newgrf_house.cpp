@@ -404,7 +404,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled house variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

@@ -204,14 +204,21 @@ public:
 	 * @param tile Current position
 	 * @param td1 Forward direction
 	 * @param td2 Reverse direction
+	 * @param trackdir [out] the best of all possible reversed trackdirs
 	 * @return true if the reverse direction is better
 	 */
-	static bool CheckShipReverse(const Ship *v, TileIndex tile, Trackdir td1, Trackdir td2)
+	static bool CheckShipReverse(const Ship *v, TileIndex tile, Trackdir td1, Trackdir td2, Trackdir *trackdir)
 	{
 		/* create pathfinder instance */
 		Tpf pf;
 		/* set origin and destination nodes */
-		pf.SetOrigin(tile, TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2));
+		if (trackdir == nullptr) {
+			pf.SetOrigin(tile, TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2));
+		} else {
+			DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
+			TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, entry));
+			pf.SetOrigin(tile, rtds);
+		}
 		pf.SetDestination(v);
 		/* find best path */
 		if (!pf.FindPath(v)) return false;
@@ -226,8 +233,12 @@ public:
 		}
 
 		Trackdir best_trackdir = pNode->GetTrackdir();
-		assert(best_trackdir == td1 || best_trackdir == td2);
-		return best_trackdir == td2;
+		if (trackdir != nullptr) {
+			*trackdir = best_trackdir;
+		} else {
+			assert(best_trackdir == td1 || best_trackdir == td2);
+		}
+		return best_trackdir != td1;
 	}
 };
 
@@ -287,7 +298,7 @@ public:
 
 		if (IsDockingTile(n.GetTile())) {
 			/* Check docking tile for occupancy */
-			uint count = 1;
+			uint count = 0;
 			HasVehicleOnPos(n.GetTile(), &count, &CountShipProc);
 			c += count * 3 * YAPF_TILE_LENGTH;
 		}
@@ -337,16 +348,6 @@ struct CYapfShip1 : CYapfT<CYapfShip_TypesT<CYapfShip1, CFollowTrackWater    , C
 /* YAPF type 2 - uses TileIndex/DiagDirection as Node key */
 struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , CShipNodeListExitDir > > {};
 
-static inline bool RequireTrackdirKey()
-{
-	/* If the two curve penalties are not equal, then it is not possible to use the
-	 * ExitDir keyed node list, as it there will be key overlap. Using Trackdir keyed
-	 * nodes means potentially more paths are tested, which would be wasteful if it's
-	 * not necessary.
-	 */
-	return _settings_game.pf.yapf.ship_curve45_penalty != _settings_game.pf.yapf.ship_curve90_penalty;
-}
-
 /** Ship controller helper - path finder invoker */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, ShipPathCache &path_cache)
 {
@@ -355,7 +356,7 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.yapf.disable_node_optimization || RequireTrackdirKey()) {
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir
 	}
 
@@ -363,21 +364,21 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
 }
 
-bool YapfShipCheckReverse(const Ship *v)
+bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)
 {
 	Trackdir td = v->GetVehicleTrackdir();
 	Trackdir td_rev = ReverseTrackdir(td);
 	TileIndex tile = v->tile;
 
-	typedef bool (*PfnCheckReverseShip)(const Ship*, TileIndex, Trackdir, Trackdir);
+	typedef bool (*PfnCheckReverseShip)(const Ship*, TileIndex, Trackdir, Trackdir, Trackdir*);
 	PfnCheckReverseShip pfnCheckReverseShip = CYapfShip2::CheckShipReverse; // default: ExitDir
 
 	/* check if non-default YAPF type needed */
-	if (_settings_game.pf.yapf.disable_node_optimization || RequireTrackdirKey()) {
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnCheckReverseShip = &CYapfShip1::CheckShipReverse; // Trackdir
 	}
 
-	bool reverse = pfnCheckReverseShip(v, tile, td, td_rev);
+	bool reverse = pfnCheckReverseShip(v, tile, td, td_rev, trackdir);
 
 	return reverse;
 }

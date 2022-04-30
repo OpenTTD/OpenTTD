@@ -55,7 +55,7 @@ public:
 	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
 
 	/**
-	 * A script in multiplayer waits for the server to handle his DoCommand.
+	 * A script in multiplayer waits for the server to handle its DoCommand.
 	 *  It keeps waiting for this until this function is called.
 	 */
 	void Continue();
@@ -68,7 +68,7 @@ public:
 	/**
 	 * Let the VM collect any garbage.
 	 */
-	void CollectGarbage() const;
+	void CollectGarbage();
 
 	/**
 	 * Get the storage of this script.
@@ -178,12 +178,12 @@ public:
 	 * DoCommand callback function for all commands executed by scripts.
 	 * @param result The result of the command.
 	 * @param tile The tile on which the command was executed.
-	 * @param p1 p1 as given to DoCommandPInternal.
-	 * @param p2 p2 as given to DoCommandPInternal.
+	 * @param data Command data as given to DoCommandPInternal.
+	 * @param result_data Extra data return from the command.
 	 * @param cmd cmd as given to DoCommandPInternal.
 	 * @return true if we handled result.
 	 */
-	bool DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd);
+	bool DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd);
 
 	/**
 	 * Insert an event for this script.
@@ -236,7 +236,7 @@ protected:
 	/**
 	 * Get the callback handling DoCommands in case of networking.
 	 */
-	virtual CommandCallback *GetDoCommandCallback() = 0;
+	virtual CommandCallbackData *GetDoCommandCallback() = 0;
 
 	/**
 	 * Load the dummy script.

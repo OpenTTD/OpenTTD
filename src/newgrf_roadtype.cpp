@@ -18,7 +18,7 @@
 
 /* virtual */ uint32 RoadTypeScopeResolver::GetRandomBits() const
 {
-	uint tmp = CountBits(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE);
+	uint tmp = CountBits(static_cast<uint32>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
 	return GB(tmp, 0, 2);
 }
 
@@ -52,17 +52,10 @@
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled road type tile variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled road type tile variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;
-}
-
-/* virtual */ const SpriteGroup *RoadTypeResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (group->num_loading > 0) return group->loading[0];
-	if (group->num_loaded  > 0) return group->loaded[0];
-	return nullptr;
 }
 
 GrfSpecFeature RoadTypeResolverObject::GetFeature() const
@@ -78,19 +71,6 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 uint32 RoadTypeResolverObject::GetDebugID() const
 {
 	return this->roadtype_scope.rti->label;
-}
-
-/**
- * Constructor of the roadtype scope resolvers.
- * @param ro Surrounding resolver.
- * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
- * @param context Are we resolving sprites for the upper halftile, or on a bridge?
- */
-RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context) : ScopeResolver(ro)
-{
-	this->tile = tile;
-	this->context = context;
-	this->rti = rti;
 }
 
 /**

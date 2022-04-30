@@ -14,7 +14,6 @@
 #include "core/backup_type.hpp"
 #include "town.h"
 #include "news_func.h"
-#include "cmd_helper.h"
 #include "command_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
@@ -36,6 +35,7 @@
 #include "goal_base.h"
 #include "story_base.h"
 #include "widgets/statusbar_widget.h"
+#include "company_cmd.h"
 
 #include "table/strings.h"
 
@@ -67,7 +67,7 @@ Company::Company(uint16 name_1, bool is_ai)
 	this->clear_limit     = (uint32)_settings_game.construction.clear_frame_burst << 16;
 	this->tree_limit      = (uint32)_settings_game.construction.tree_frame_burst << 16;
 
-	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
+	std::fill(this->share_owners.begin(), this->share_owners.end(), INVALID_OWNER);
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
 
@@ -76,7 +76,7 @@ Company::~Company()
 {
 	if (CleaningPool()) return;
 
-	DeleteCompanyWindows(this->index);
+	CloseCompanyWindows(this->index);
 }
 
 /**
@@ -115,7 +115,7 @@ void SetLocalCompany(CompanyID new_company)
 	_current_company = _local_company = new_company;
 
 	/* Delete any construction windows... */
-	if (switching_company) DeleteConstructionWindows();
+	if (switching_company) CloseConstructionWindows();
 
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
@@ -219,17 +219,17 @@ static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
 	c->money -= cost.GetCost();
 	c->yearly_expenses[0][cost.GetExpensesType()] += cost.GetCost();
 
-	if (HasBit(1 << EXPENSES_TRAIN_INC    |
-	           1 << EXPENSES_ROADVEH_INC  |
-	           1 << EXPENSES_AIRCRAFT_INC |
-	           1 << EXPENSES_SHIP_INC, cost.GetExpensesType())) {
+	if (HasBit(1 << EXPENSES_TRAIN_REVENUE    |
+	           1 << EXPENSES_ROADVEH_REVENUE  |
+	           1 << EXPENSES_AIRCRAFT_REVENUE |
+	           1 << EXPENSES_SHIP_REVENUE, cost.GetExpensesType())) {
 		c->cur_economy.income -= cost.GetCost();
 	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
-	                  1 << EXPENSES_LOAN_INT, cost.GetExpensesType())) {
+	                  1 << EXPENSES_LOAN_INTEREST, cost.GetExpensesType())) {
 		c->cur_economy.expenses -= cost.GetCost();
 	}
 
@@ -376,8 +376,7 @@ set_name:;
 		MarkWholeScreenDirty();
 
 		if (c->is_ai) {
-			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-			cni->FillData(c);
+			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
 			SetDParam(0, STR_NEWS_COMPANY_LAUNCH_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
@@ -558,7 +557,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	c->money = c->current_loan = (std::min<int64>(INITIAL_LOAN, _economy.max_loan) * _economy.inflation_prices >> 16) / 50000 * 50000;
 
-	c->share_owners[0] = c->share_owners[1] = c->share_owners[2] = c->share_owners[3] = INVALID_OWNER;
+	std::fill(c->share_owners.begin(), c->share_owners.end(), INVALID_OWNER);
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
@@ -571,8 +570,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	GeneratePresidentName(c);
 
 	SetWindowDirty(WC_GRAPH_LEGEND, 0);
-	SetWindowClassesDirty(WC_CLIENT_LIST_POPUP);
-	SetWindowDirty(WC_CLIENT_LIST, 0);
+	InvalidateWindowData(WC_CLIENT_LIST, 0);
 	InvalidateWindowData(WC_LINKGRAPH_LEGEND, 0);
 	BuildOwnerLegend();
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);
@@ -605,7 +603,7 @@ static bool MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		return DoCommandP(0, CCA_NEW_AI | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
+		return Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID );
 	}
 
 	return false;
@@ -756,21 +754,19 @@ void CompaniesYearlyLoop()
  * @param c the current company.
  * @param other the other company (use \c nullptr if not relevant).
  */
-void CompanyNewsInformation::FillData(const Company *c, const Company *other)
+CompanyNewsInformation::CompanyNewsInformation(const Company *c, const Company *other)
 {
 	SetDParam(0, c->index);
-	GetString(this->company_name, STR_COMPANY_NAME, lastof(this->company_name));
+	this->company_name = GetString(STR_COMPANY_NAME);
 
-	if (other == nullptr) {
-		*this->other_company_name = '\0';
-	} else {
+	if (other != nullptr) {
 		SetDParam(0, other->index);
-		GetString(this->other_company_name, STR_COMPANY_NAME, lastof(this->other_company_name));
+		this->other_company_name = GetString(STR_COMPANY_NAME);
 		c = other;
 	}
 
 	SetDParam(0, c->index);
-	GetString(this->president_name, STR_PRESIDENT_NAME_MANAGER, lastof(this->president_name));
+	this->president_name = GetString(STR_PRESIDENT_NAME_MANAGER);
 
 	this->colour = c->colour;
 	this->face = c->face;
@@ -798,22 +794,17 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
 
 /**
  * Control the companies: add, delete, etc.
- * @param tile unused
  * @param flags operation to perform
- * @param p1 various functionality
- * - bits 0..15: CompanyCtrlAction
- * - bits 16..23: CompanyID
- * - bits 24..31: CompanyRemoveReason (with CCA_DELETE)
- * @param p2 ClientID
- * @param text unused
+ * @param cca action to perform
+ * @param company_id company to perform the action on
+ * @param client_id ClientID
  * @return the cost of this operation or an error
  */
-CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id)
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
-	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
 
-	switch ((CompanyCtrlAction)GB(p1, 0, 16)) {
+	switch (cca) {
 		case CCA_NEW: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
@@ -821,11 +812,10 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			ClientID client_id = (ClientID)p2;
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 			/* Delete multiplayer progress bar */
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 			Company *c = DoStartupNewCompany(false);
 
@@ -844,7 +834,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (client_id == _network_own_client_id) {
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
-				if (!StrEmpty(_settings_client.network.default_company_pass)) {
+				if (!_settings_client.network.default_company_pass.empty()) {
 					NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
 				}
 
@@ -876,7 +866,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		case CCA_DELETE: { // Delete a company
-			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p1, 24, 8);
 			if (reason >= CRR_END) return CMD_ERROR;
 
 			/* We can't delete the last existing company in singleplayer mode. */
@@ -888,9 +877,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (!(flags & DC_EXEC)) return CommandCost();
 
 			/* Delete any open window of the company */
-			DeleteCompanyWindows(c->index);
-			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-			cni->FillData(c);
+			CloseCompanyWindows(c->index);
+			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
 
 			/* Show the bankrupt news */
 			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
@@ -909,6 +897,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyAdminRemove(c_index, (CompanyRemoveReason)reason);
 
 			if (StoryPage::GetNumItems() == 0 || Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+			InvalidateWindowData(WC_CLIENT_LIST, 0);
+
 			break;
 		}
 
@@ -924,17 +914,12 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 /**
  * Change the company manager's face.
- * @param tile unused
  * @param flags operation to perform
- * @param p1 unused
- * @param p2 face bitmasked
- * @param text unused
+ * @param cmf face bitmasked
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, CompanyManagerFace cmf)
 {
-	CompanyManagerFace cmf = (CompanyManagerFace)p2;
-
 	if (!IsValidCompanyManagerFace(cmf)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -946,21 +931,14 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
 
 /**
  * Change the company's company-colour
- * @param tile unused
  * @param flags operation to perform
- * @param p1 bitstuffed:
- * p1 bits 0-7 scheme to set
- * p1 bit 8 set first/second colour
- * @param p2 new colour for vehicles, property, etc.
- * @param text unused
+ * @param scheme scheme to set
+ * @param primary set first/second colour
+ * @param colour new colour for vehicles, property, etc.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool primary, Colours colour)
 {
-	Colours colour = Extract<Colours, 0, 8>(p2);
-	LiveryScheme scheme = Extract<LiveryScheme, 0, 8>(p1);
-	bool second = HasBit(p1, 8);
-
 	if (scheme >= LS_END || (colour >= COLOUR_END && colour != INVALID_COLOUR)) return CMD_ERROR;
 
 	/* Default scheme can't be reset to invalid. */
@@ -969,14 +947,14 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
-	if (scheme == LS_DEFAULT && !second) {
+	if (scheme == LS_DEFAULT && primary) {
 		for (const Company *cc : Company::Iterate()) {
 			if (cc != c && cc->colour == colour) return CMD_ERROR;
 		}
 	}
 
 	if (flags & DC_EXEC) {
-		if (!second) {
+		if (primary) {
 			if (scheme != LS_DEFAULT) SB(c->livery[scheme].in_use, 0, 1, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = (Colours)c->livery[LS_DEFAULT].colour1;
 			c->livery[scheme].colour1 = colour;
@@ -1048,7 +1026,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param name Name to search.
  * @return \c true if the name us unique (that is, not in use), else \c false.
  */
-static bool IsUniqueCompanyName(const char *name)
+static bool IsUniqueCompanyName(const std::string &name)
 {
 	for (const Company *c : Company::Iterate()) {
 		if (!c->name.empty() && c->name == name) return false;
@@ -1059,16 +1037,13 @@ static bool IsUniqueCompanyName(const char *name)
 
 /**
  * Change the name of the company.
- * @param tile unused
  * @param flags operation to perform
- * @param p1 unused
- * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text)
 {
-	bool reset = StrEmpty(text);
+	bool reset = text.empty();
 
 	if (!reset) {
 		if (Utf8StringLength(text) >= MAX_LENGTH_COMPANY_NAME_CHARS) return CMD_ERROR;
@@ -1094,7 +1069,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param name Name to search.
  * @return \c true if the name us unique (that is, not in use), else \c false.
  */
-static bool IsUniquePresidentName(const char *name)
+static bool IsUniquePresidentName(const std::string &name)
 {
 	for (const Company *c : Company::Iterate()) {
 		if (!c->president_name.empty() && c->president_name == name) return false;
@@ -1105,16 +1080,13 @@ static bool IsUniquePresidentName(const char *name)
 
 /**
  * Change the name of the president.
- * @param tile unused
  * @param flags operation to perform
- * @param p1 unused
- * @param p2 unused
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text)
 {
-	bool reset = StrEmpty(text);
+	bool reset = text.empty();
 
 	if (!reset) {
 		if (Utf8StringLength(text) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) return CMD_ERROR;
@@ -1130,10 +1102,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			c->president_name = text;
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) {
-				char buf[80];
-
-				seprintf(buf, lastof(buf), "%s Transport", text);
-				DoCommand(0, 0, 0, DC_EXEC, CMD_RENAME_COMPANY, buf);
+				Command<CMD_RENAME_COMPANY>::Do(DC_EXEC, text + " Transport");
 			}
 		}
 
@@ -1193,20 +1162,17 @@ uint32 CompanyInfrastructure::GetTramTotal() const
  * To prevent abuse in multiplayer games you can only send money to other
  * companies if you have paid off your loan (either explicitly, or implicitly
  * given the fact that you have more money than loan).
- * @param tile unused
  * @param flags operation to perform
- * @param p1 the amount of money to transfer; max 20.000.000
- * @param p2 the company to transfer the money to
- * @param text unused
+ * @param money the amount of money to transfer; max 20.000.000
+ * @param dest_company the company to transfer the money to
  * @return the cost of this operation or an error
  */
-CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdGiveMoney(DoCommandFlag flags, uint32 money, CompanyID dest_company)
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
 	const Company *c = Company::Get(_current_company);
-	CommandCost amount(EXPENSES_OTHER, std::min<Money>(p1, 20000000LL));
-	CompanyID dest_company = (CompanyID)p2;
+	CommandCost amount(EXPENSES_OTHER, std::min<Money>(money, 20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return_cmd_error(STR_ERROR_INSUFFICIENT_FUNDS);
@@ -1219,13 +1185,11 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		cur_company.Restore();
 
 		if (_networking) {
-			char dest_company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
 			SetDParam(0, dest_company);
-			GetString(dest_company_name, STR_COMPANY_NAME, lastof(dest_company_name));
+			std::string dest_company_name = GetString(STR_COMPANY_NAME);
 
-			char from_company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
 			SetDParam(0, _current_company);
-			GetString(from_company_name, STR_COMPANY_NAME, lastof(from_company_name));
+			std::string from_company_name = GetString(STR_COMPANY_NAME);
 
 			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
 		}

@@ -113,6 +113,17 @@ enum StoryPageButtonCursor : byte {
 /** Define basic enum properties */
 template <> struct EnumPropsT<StoryPageButtonCursor> : MakeEnumPropsT<StoryPageButtonCursor, byte, SPBC_MOUSE, SPBC_END, INVALID_SPBC, 8> {};
 
+/**
+ * Checks if a StoryPageButtonCursor value is valid.
+ *
+ * @param wc The value to check
+ * @return true if the given value is a valid StoryPageButtonCursor.
+ */
+static inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
+{
+	return cursor < SPBC_END;
+}
+
 /** Helper to construct packed "id" values for button-type StoryPageElement */
 struct StoryPageButtonData {
 	uint32 referenced_id;

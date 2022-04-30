@@ -373,14 +373,16 @@ jobs:
         include:
         - container_image: "ubuntu:18.04"
           bundle_name: "bionic"
+          compiler: "g++-8"
         - container_image: "ubuntu:20.04"
           bundle_name: "focal"
-        - container_image: "ubuntu:20.10"
-          bundle_name: "groovy"
+          compiler: "g++"
         - container_image: "debian:buster"
           bundle_name: "buster"
+          compiler: "g++"
         - container_image: "debian:bullseye"
           bundle_name: "bullseye"
+          compiler: "g++"
 
     runs-on: ubuntu-20.04
     container:
@@ -406,7 +408,7 @@ jobs:
         apt-get install -y --no-install-recommends \
           cmake \
           debhelper \
-          g++ \
+          ${{ matrix.compiler }} \
           git \
           make \
           openssl \
@@ -432,7 +434,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
+        CXX=${{ matrix.compiler }} cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DCMAKE_INSTALL_PREFIX=/usr \
           # EOF
@@ -468,9 +470,9 @@ jobs:
     name: MacOS
     needs: source
 
-    runs-on: macos-10.15
+    runs-on: macos-11
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.9
+      MACOSX_DEPLOYMENT_TARGET: 10.14
 
     steps:
     - name: Download source
@@ -746,6 +748,21 @@ jobs:
       with:
         arch: ${{ matrix.host }}
 
+    - name: Import code signing certificate
+      shell: powershell
+      # If this is run on a fork, there may not be a certificate set up - continue in this case
+      continue-on-error: true
+      run: |
+        $tempFile = [System.IO.Path]::GetTempFileName()
+        $bytes = [System.Convert]::FromBase64String($env:WINDOWS_CERTIFICATE_P12)
+        [IO.File]::WriteAllBytes($tempFile, $bytes)
+        $pwd = ConvertTo-SecureString $env:WINDOWS_CERTIFICATE_PASSWORD -AsPlainText -Force
+        Import-PfxCertificate -FilePath $tempFile -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
+        Remove-Item $tempFile
+      env:
+        WINDOWS_CERTIFICATE_P12: ${{ secrets.WINDOWS_CERTIFICATE_P12 }}
+        WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+
     - name: Build (with installer)
       if: needs.source.outputs.is_tag == 'true'
       shell: bash
@@ -761,12 +778,15 @@ jobs:
           -DOPTION_USE_NSIS=ON \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
         cmake --build .
         echo "::endgroup::"
+      env:
+        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
     - name: Build (without installer)
       if: needs.source.outputs.is_tag != 'true'
@@ -782,12 +802,15 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
         cmake --build .
         echo "::endgroup::"
+      env:
+        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
     - name: Create bundles
       shell: bash
@@ -808,6 +831,17 @@ jobs:
         # the end of this workflow.
         rm -f bundles/*.sha256
         echo "::endgroup::"
+
+    - name: Sign installer
+      if: needs.source.outputs.is_tag == 'true'
+      shell: bash
+      # If this is run on a fork, there may not be a certificate set up - continue in this case
+      continue-on-error: true
+      run: |
+        cd ${GITHUB_WORKSPACE}/build/bundles
+        ../../os/windows/sign.bat *.exe "${WINDOWS_CERTIFICATE_COMMON_NAME}"
+      env:
+        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
     - name: Store bundles
       uses: actions/upload-artifact@v2

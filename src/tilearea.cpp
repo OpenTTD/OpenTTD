@@ -147,6 +147,24 @@ void OrthogonalTileArea::ClampToMap()
 }
 
 /**
+ * Returns an iterator to the beginning of the tile area.
+ * @return The OrthogonalTileIterator.
+ */
+OrthogonalTileIterator OrthogonalTileArea::begin() const
+{
+	return OrthogonalTileIterator(*this);
+}
+
+/**
+ * Returns an iterator to the end of the tile area.
+ * @return The OrthogonalTileIterator.
+ */
+OrthogonalTileIterator OrthogonalTileArea::end() const
+{
+	return OrthogonalTileIterator(OrthogonalTileArea());
+}
+
+/**
  * Create a diagonal tile area from two corners.
  * @param start First corner of the area.
  * @param end Second corner of the area.

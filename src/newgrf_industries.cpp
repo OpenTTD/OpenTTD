@@ -85,7 +85,7 @@ uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32 cur_grfid
 		}
 	}
 	/* The tile has no spritegroup */
-	return 0xFF << 8 | indtsp->grf_prop.subst_id; // so just give him the substitute
+	return 0xFF << 8 | indtsp->grf_prop.subst_id; // so just give it the substitute
 }
 
 static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Industry *current)
@@ -168,7 +168,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			case 0x82: return this->industry->town->index;
 			case 0x83:
 			case 0x84:
-			case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
+			case 0x85: Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 
 			/* Number of the layout */
 			case 0x86: return this->industry->selected_layout;
@@ -199,7 +199,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 	const IndustrySpec *indspec = GetIndustrySpec(this->type);
 
 	if (this->industry == nullptr) {
-		DEBUG(grf, 1, "Unhandled variable 0x%X (no available industry) in callback 0x%x", variable, this->ro.callback);
+		Debug(grf, 1, "Unhandled variable 0x{:X} (no available industry) in callback 0x{:x}", variable, this->ro.callback);
 
 		*available = false;
 		return UINT_MAX;
@@ -281,13 +281,17 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			if (this->tile == INVALID_TILE) break;
 			return GetClosestIndustry(this->tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), this->industry);
 		/* Get town zone and Manhattan distance of closest town */
-		case 0x65:
+		case 0x65: {
 			if (this->tile == INVALID_TILE) break;
-			return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | std::min(DistanceManhattan(this->tile, this->industry->town->xy), 0xFFFFu);
-		/* Get square of Euclidian distance of closes town */
-		case 0x66:
+			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
+			return GetTownRadiusGroup(this->industry->town, tile) << 16 | std::min(DistanceManhattan(tile, this->industry->town->xy), 0xFFFFu);
+		}
+		/* Get square of Euclidian distance of closest town */
+		case 0x66: {
 			if (this->tile == INVALID_TILE) break;
-			return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | std::min(DistanceSquare(this->tile, this->industry->town->xy), 0xFFFFu);
+			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
+			return DistanceSquare(tile, this->industry->town->xy);
+		}
 
 		/* Count of industry, distance of closest instance
 		 * 68 is the same as 67, but with a filtering on selected layout */
@@ -348,7 +352,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0x82: return this->industry->town->index;
 		case 0x83:
 		case 0x84:
-		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
+		case 0x85: Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 		case 0x86: return this->industry->location.w;
 		case 0x87: return this->industry->location.h;// xy dimensions
 
@@ -404,7 +408,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled industry variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled industry variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

@@ -16,6 +16,7 @@
 #include "water.h"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
+#include "landscape_cmd.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -381,7 +382,7 @@ static void ChangeTileOwner_Clear(TileIndex tile, Owner old_owner, Owner new_own
 
 static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
-	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
 extern const TileTypeProcs _tile_type_clear_procs = {

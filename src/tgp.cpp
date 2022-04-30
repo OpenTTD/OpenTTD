@@ -161,11 +161,10 @@ static const int amplitude_decimal_bits = 10;
 /** Height map - allocated array of heights (MapSizeX() + 1) x (MapSizeY() + 1) */
 struct HeightMap
 {
-	height_t *h;         //< array of heights
+	std::vector<height_t> h; //< array of heights
 	/* Even though the sizes are always positive, there are many cases where
 	 * X and Y need to be signed integers due to subtractions. */
 	int      dim_x;      //< height map size_x MapSizeX() + 1
-	int      total_size; //< height map total size
 	int      size_x;     //< MapSizeX()
 	int      size_y;     //< MapSizeY()
 
@@ -182,7 +181,7 @@ struct HeightMap
 };
 
 /** Global height map instance */
-static HeightMap _height_map = {nullptr, 0, 0, 0, 0};
+static HeightMap _height_map = { {}, 0, 0, 0 };
 
 /** Conversion: int to height_t */
 #define I2H(i) ((i) << height_decimal_bits)
@@ -196,10 +195,6 @@ static HeightMap _height_map = {nullptr, 0, 0, 0, 0};
 
 /** Conversion: amplitude_t to height_t */
 #define A2H(a) ((a) >> (amplitude_decimal_bits - height_decimal_bits))
-
-
-/** Walk through all items of _height_map.h */
-#define FOR_ALL_TILES_IN_HEIGHT(h) for (h = _height_map.h; h < &_height_map.h[_height_map.total_size]; h++)
 
 /** Maximum number of TGP noise frequencies. */
 static const int MAX_TGP_FREQUENCIES = 10;
@@ -325,18 +320,15 @@ static inline bool IsValidXY(int x, int y)
  */
 static inline bool AllocHeightMap()
 {
-	height_t *h;
+	assert(_height_map.h.empty());
 
 	_height_map.size_x = MapSizeX();
 	_height_map.size_y = MapSizeY();
 
 	/* Allocate memory block for height map row pointers */
-	_height_map.total_size = (_height_map.size_x + 1) * (_height_map.size_y + 1);
+	size_t total_size = (_height_map.size_x + 1) * (_height_map.size_y + 1);
 	_height_map.dim_x = _height_map.size_x + 1;
-	_height_map.h = CallocT<height_t>(_height_map.total_size);
-
-	/* Iterate through height map and initialise values. */
-	FOR_ALL_TILES_IN_HEIGHT(h) *h = 0;
+	_height_map.h.resize(total_size);
 
 	return true;
 }
@@ -344,8 +336,7 @@ static inline bool AllocHeightMap()
 /** Free height map */
 static inline void FreeHeightMap()
 {
-	free(_height_map.h);
-	_height_map.h = nullptr;
+	_height_map.h.clear();
 }
 
 /**
@@ -369,7 +360,7 @@ static inline height_t RandomHeight(amplitude_t rMax)
 static void HeightMapGenerate()
 {
 	/* Trying to apply noise to uninitialized height map */
-	assert(_height_map.h != nullptr);
+	assert(!_height_map.h.empty());
 
 	int start = std::max(MAX_TGP_FREQUENCIES - (int)std::min(MapLogX(), MapLogY()), 0);
 	bool first = true;
@@ -428,15 +419,15 @@ static void HeightMapGenerate()
 /** Returns min, max and average height from height map */
 static void HeightMapGetMinMaxAvg(height_t *min_ptr, height_t *max_ptr, height_t *avg_ptr)
 {
-	height_t h_min, h_max, h_avg, *h;
+	height_t h_min, h_max, h_avg;
 	int64 h_accu = 0;
 	h_min = h_max = _height_map.height(0, 0);
 
 	/* Get h_min, h_max and accumulate heights into h_accu */
-	FOR_ALL_TILES_IN_HEIGHT(h) {
-		if (*h < h_min) h_min = *h;
-		if (*h > h_max) h_max = *h;
-		h_accu += *h;
+	for (const height_t &h : _height_map.h) {
+		if (h < h_min) h_min = h;
+		if (h > h_max) h_max = h;
+		h_accu += h;
 	}
 
 	/* Get average height */
@@ -452,13 +443,12 @@ static void HeightMapGetMinMaxAvg(height_t *min_ptr, height_t *max_ptr, height_t
 static int *HeightMapMakeHistogram(height_t h_min, height_t h_max, int *hist_buf)
 {
 	int *hist = hist_buf - h_min;
-	height_t *h;
 
 	/* Count the heights and fill the histogram */
-	FOR_ALL_TILES_IN_HEIGHT(h) {
-		assert(*h >= h_min);
-		assert(*h <= h_max);
-		hist[*h]++;
+	for (const height_t &h : _height_map.h){
+		assert(h >= h_min);
+		assert(h <= h_max);
+		hist[h]++;
 	}
 	return hist;
 }
@@ -466,15 +456,13 @@ static int *HeightMapMakeHistogram(height_t h_min, height_t h_max, int *hist_buf
 /** Applies sine wave redistribution onto height map */
 static void HeightMapSineTransform(height_t h_min, height_t h_max)
 {
-	height_t *h;
-
-	FOR_ALL_TILES_IN_HEIGHT(h) {
+	for (height_t &h : _height_map.h) {
 		double fheight;
 
-		if (*h < h_min) continue;
+		if (h < h_min) continue;
 
 		/* Transform height into 0..1 space */
-		fheight = (double)(*h - h_min) / (double)(h_max - h_min);
+		fheight = (double)(h - h_min) / (double)(h_max - h_min);
 		/* Apply sine transform depending on landscape type */
 		switch (_settings_game.game_creation.landscape) {
 			case LT_TOYLAND:
@@ -534,9 +522,9 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 				break;
 		}
 		/* Transform it back into h_min..h_max space */
-		*h = (height_t)(fheight * (h_max - h_min) + h_min);
-		if (*h < 0) *h = I2H(0);
-		if (*h >= h_max) *h = h_max - 1;
+		h = (height_t)(fheight * (h_max - h_min) + h_min);
+		if (h < 0) h = I2H(0);
+		if (h >= h_max) h = h_max - 1;
 	}
 }
 
@@ -658,9 +646,7 @@ static void HeightMapCurves(uint level)
 			for (uint t = 0; t < lengthof(curve_maps); t++) {
 				if (!HasBit(corner_bits, t)) continue;
 
-#ifdef WITH_ASSERT
-				bool found = false;
-#endif
+				[[maybe_unused]] bool found = false;
 				const control_point_t *cm = curve_maps[t].list;
 				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
 					const control_point_t &p1 = cm[i];
@@ -691,7 +677,6 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 {
 	height_t h_min, h_max, h_avg, h_water_level;
 	int64 water_tiles, desired_water_tiles;
-	height_t *h;
 	int *hist;
 
 	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
@@ -716,12 +701,12 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 	 *   values from range: h_water_level..h_max are transformed into 0..h_max_new
 	 *   where h_max_new is depending on terrain type and map size.
 	 */
-	FOR_ALL_TILES_IN_HEIGHT(h) {
+	for (height_t &h : _height_map.h) {
 		/* Transform height from range h_water_level..h_max into 0..h_max_new range */
-		*h = (height_t)(((int)h_max_new) * (*h - h_water_level) / (h_max - h_water_level)) + I2H(1);
+		h = (height_t)(((int)h_max_new) * (h - h_water_level) / (h_max - h_water_level)) + I2H(1);
 		/* Make sure all values are in the proper range (0..h_max_new) */
-		if (*h < 0) *h = I2H(0);
-		if (*h >= h_max_new) *h = h_max_new - 1;
+		if (h < 0) h = I2H(0);
+		if (h >= h_max_new) h = h_max_new - 1;
 	}
 
 	free(hist_buf);

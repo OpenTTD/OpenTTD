@@ -19,7 +19,7 @@ public:
 	 * Creates a "fatal error" exception.
 	 * @param msg The message describing the cause of the fatal error.
 	 */
-	Script_FatalError(const char *msg) :
+	Script_FatalError(const std::string &msg) :
 		msg(msg)
 	{}
 
@@ -27,10 +27,10 @@ public:
 	 * The error message associated with the fatal error.
 	 * @return The error message.
 	 */
-	const char *GetErrorMessage() { return msg; }
+	const std::string &GetErrorMessage() const { return msg; }
 
 private:
-	const char *msg; ///< The error message.
+	const std::string msg; ///< The error message.
 };
 
 #endif /* SCRIPT_FATALERROR_HPP */

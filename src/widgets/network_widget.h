@@ -66,13 +66,6 @@ enum NetworkStartServerWidgets {
 	WID_NSS_COMPANIES_BTND,    ///< 'Max companies' downarrow.
 	WID_NSS_COMPANIES_TXT,     ///< 'Max companies' text.
 	WID_NSS_COMPANIES_BTNU,    ///< 'Max companies' uparrow.
-	WID_NSS_SPECTATORS_LABEL,  ///< Label for 'max spectators'.
-	WID_NSS_SPECTATORS_BTND,   ///< 'Max spectators' downarrow.
-	WID_NSS_SPECTATORS_TXT,    ///< 'Max spectators' text.
-	WID_NSS_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow.
-
-	WID_NSS_LANGUAGE_LABEL,    ///< Label for 'language spoken'.
-	WID_NSS_LANGUAGE_BTN,      ///< 'Language spoken' droplist button.
 
 	WID_NSS_GENERATE_GAME,     ///< New game button.
 	WID_NSS_LOAD_GAME,         ///< Load game button.
@@ -82,29 +75,21 @@ enum NetworkStartServerWidgets {
 	WID_NSS_CANCEL,            ///< 'Cancel' button.
 };
 
-/** Widgets of the #NetworkLobbyWindow class. */
-enum NetworkLobbyWidgets {
-	WID_NL_BACKGROUND, ///< Background of the window.
-	WID_NL_TEXT,       ///< Heading text.
-	WID_NL_HEADER,     ///< Header above list of companies.
-	WID_NL_MATRIX,     ///< List of companies.
-	WID_NL_SCROLLBAR,  ///< Scroll bar.
-	WID_NL_DETAILS,    ///< Company details.
-	WID_NL_JOIN,       ///< 'Join company' button.
-	WID_NL_NEW,        ///< 'New company' button.
-	WID_NL_SPECTATE,   ///< 'Spectate game' button.
-	WID_NL_REFRESH,    ///< 'Refresh server' button.
-	WID_NL_CANCEL,     ///< 'Cancel' button.
-};
-
 /** Widgets of the #NetworkClientListWindow class. */
 enum ClientListWidgets {
-	WID_CL_PANEL, ///< Panel of the window.
-};
-
-/** Widgets of the #NetworkClientListPopupWindow class. */
-enum ClientListPopupWidgets {
-	WID_CLP_PANEL, ///< Panel of the window.
+	WID_CL_PANEL,                      ///< Panel of the window.
+	WID_CL_SERVER_SELECTOR,            ///< Selector to hide the server frame.
+	WID_CL_SERVER_NAME,                ///< Server name.
+	WID_CL_SERVER_NAME_EDIT,           ///< Edit button for server name.
+	WID_CL_SERVER_VISIBILITY,          ///< Server visibility.
+	WID_CL_SERVER_INVITE_CODE,         ///< Invite code for this server.
+	WID_CL_SERVER_CONNECTION_TYPE,     ///< The type of connection the Game Coordinator detected for this server.
+	WID_CL_CLIENT_NAME,                ///< Client name.
+	WID_CL_CLIENT_NAME_EDIT,           ///< Edit button for client name.
+	WID_CL_MATRIX,                     ///< Company/client list.
+	WID_CL_SCROLLBAR,                  ///< Scrollbar for company/client list.
+	WID_CL_COMPANY_JOIN,               ///< Used for QueryWindow when a company has a password.
+	WID_CL_CLIENT_COMPANY_COUNT,       ///< Count of clients and companies.
 };
 
 /** Widgets of the #NetworkJoinStatusWindow class. */
@@ -122,6 +107,15 @@ enum NetworkCompanyPasswordWidgets {
 	WID_NCP_WARNING,                  ///< Warning text about password security
 	WID_NCP_CANCEL,                   ///< Close the window without changing anything.
 	WID_NCP_OK,                       ///< Safe the password etc.
+};
+
+/** Widgets of the #NetworkAskRelayWindow class. */
+enum NetworkAskRelayWidgets {
+	WID_NAR_CAPTION,    ///< Caption of the window.
+	WID_NAR_TEXT,       ///< Text in the window.
+	WID_NAR_NO,         ///< "No" button.
+	WID_NAR_YES_ONCE,   ///< "Yes, once" button.
+	WID_NAR_YES_ALWAYS, ///< "Yes, always" button.
 };
 
 #endif /* WIDGETS_NETWORK_WIDGET_H */

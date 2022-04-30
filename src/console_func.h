@@ -11,6 +11,7 @@
 #define CONSOLE_FUNC_H
 
 #include "console_type.h"
+#include "3rdparty/fmt/format.h"
 
 /* console modes */
 extern IConsoleModes _iconsole_mode;
@@ -21,11 +22,29 @@ void IConsoleFree();
 void IConsoleClose();
 
 /* console output */
-void IConsolePrint(TextColour colour_code, const char *string);
-void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...) WARN_FORMAT(2, 3);
-void IConsoleDebug(const char *dbg, const char *string);
-void IConsoleWarning(const char *string);
-void IConsoleError(const char *string);
+void IConsolePrint(TextColour colour_code, const std::string &string);
+
+/**
+ * Handle the printing of text entered into the console or redirected there
+ * by any other means. Text can be redirected to other clients in a network game
+ * as well as to a logfile. If the network server is a dedicated server, all activities
+ * are also logged. All lines to print are added to a temporary buffer which can be
+ * used as a history to print them onscreen
+ * @param colour_code The colour of the command.
+ * @param format_string The formatting string to tell what to do with the remaining arguments.
+ * @param first_arg The first argument to the format.
+ * @param other_args The other arguments to the format.
+ * @tparam T The type of formatting parameter.
+ * @tparam A The type of the first argument.
+ * @tparam Args The types of the other arguments.
+ */
+template <typename T, typename A, typename ... Args>
+static inline void IConsolePrint(TextColour colour_code, const T &format, A first_arg, Args&&... other_args)
+{
+	/* The separate first_arg argument is added to aid overloading.
+	 * Otherwise the calls that do no need formatting will still use this function. */
+	IConsolePrint(colour_code, fmt::format(format, first_arg, other_args...));
+}
 
 /* Parser */
 void IConsoleCmdExec(const char *cmdstr, const uint recurse_count = 0);

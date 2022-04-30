@@ -25,6 +25,7 @@
 #include "win32_v.h"
 #include <windows.h>
 #include <imm.h>
+#include <versionhelpers.h>
 
 #include "../safeguards.h"
 
@@ -41,8 +42,7 @@ bool _window_maximize;
 static Dimension _bck_resolution;
 DWORD _imm_props;
 
-/** Local copy of the palette for use in the drawing thread. */
-static Palette _local_palette;
+static Palette _local_palette; ///< Current palette to use for drawing.
 
 bool VideoDriver_Win32Base::ClaimMousePointer()
 {
@@ -233,7 +233,7 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 
 	/* Did we get a lead surrogate? If yes, store and exit. */
 	if (Utf16IsLeadSurrogate(charcode)) {
-		if (prev_char != 0) DEBUG(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
+		if (prev_char != 0) Debug(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
 		prev_char = charcode;
 		return 0;
 	}
@@ -243,7 +243,7 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 		if (Utf16IsTrailSurrogate(charcode)) {
 			charcode = Utf16DecodeSurrogate(prev_char, charcode);
 		} else {
-			DEBUG(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
+			Debug(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
 		}
 	}
 	prev_char = 0;
@@ -552,14 +552,6 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			uint scancode = GB(lParam, 16, 8);
 			keycode = scancode == 41 ? (uint)WKC_BACKQUOTE : MapWindowsKey(wParam);
 
-			/* Silently drop all messages handled by WM_CHAR. */
-			MSG msg;
-			if (PeekMessage(&msg, nullptr, 0, 0, PM_NOREMOVE)) {
-				if ((msg.message == WM_CHAR || msg.message == WM_DEADCHAR) && GB(lParam, 16, 8) == GB(msg.lParam, 16, 8)) {
-					return 0;
-				}
-			}
-
 			uint charcode = MapVirtualKey(wParam, MAPVK_VK_TO_CHAR);
 
 			/* No character translation? */
@@ -568,21 +560,26 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				return 0;
 			}
 
-			/* Is the console key a dead key? If yes, ignore the first key down event. */
-			if (HasBit(charcode, 31) && !console) {
-				if (scancode == 41) {
-					console = true;
-					return 0;
+			/* If an edit box is in focus, wait for the corresponding WM_CHAR message. */
+			if (!EditBoxInGlobalFocus()) {
+				/* Is the console key a dead key? If yes, ignore the first key down event. */
+				if (HasBit(charcode, 31) && !console) {
+					if (scancode == 41) {
+						console = true;
+						return 0;
+					}
 				}
+				console = false;
+
+				/* IMEs and other input methods sometimes send a WM_CHAR without a WM_KEYDOWN,
+				 * clear the keycode so a previous WM_KEYDOWN doesn't become 'stuck'. */
+				uint cur_keycode = keycode;
+				keycode = 0;
+
+				return HandleCharMsg(cur_keycode, LOWORD(charcode));
 			}
-			console = false;
 
-			/* IMEs and other input methods sometimes send a WM_CHAR without a WM_KEYDOWN,
-			 * clear the keycode so a previous WM_KEYDOWN doesn't become 'stuck'. */
-			uint cur_keycode = keycode;
-			keycode = 0;
-
-			return HandleCharMsg(cur_keycode, LOWORD(charcode));
+			return 0;
 		}
 
 		case WM_SYSKEYDOWN: // user presses F10 or Alt, both activating the title-menu
@@ -796,7 +793,7 @@ void VideoDriver_Win32Base::Initialize()
 	this->width  = this->width_org  = _cur_resolution.width;
 	this->height = this->height_org = _cur_resolution.height;
 
-	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
+	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 }
 
 void VideoDriver_Win32Base::Stop()
@@ -814,9 +811,7 @@ void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
 
 void VideoDriver_Win32Base::CheckPaletteAnim()
 {
-	if (_cur_palette.count_dirty == 0) return;
-
-	_local_palette = _cur_palette;
+	if (!CopyPalette(_local_palette)) return;
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
@@ -880,10 +875,7 @@ void VideoDriver_Win32Base::ClientSizeChanged(int w, int h, bool force)
 {
 	/* Allocate backing store of the new size. */
 	if (this->AllocateBackingStore(w, h, force)) {
-		/* Mark all palette colours dirty. */
-		_cur_palette.first_dirty = 0;
-		_cur_palette.count_dirty = 256;
-		_local_palette = _cur_palette;
+		CopyPalette(_local_palette, true);
 
 		BlitterFactory::GetCurrentBlitter()->PostResize();
 
@@ -916,24 +908,27 @@ void VideoDriver_Win32Base::EditBoxLostFocus()
 	SetCandidatePos(this->main_wnd);
 }
 
+static BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC hDC, LPRECT rc, LPARAM data)
+{
+	auto &list = *reinterpret_cast<std::vector<int>*>(data);
+
+	MONITORINFOEX monitorInfo = {};
+	monitorInfo.cbSize = sizeof(MONITORINFOEX);
+	GetMonitorInfo(hMonitor, &monitorInfo);
+
+	DEVMODE devMode = {};
+	devMode.dmSize = sizeof(DEVMODE);
+	devMode.dmDriverExtra = 0;
+	EnumDisplaySettings(monitorInfo.szDevice, ENUM_CURRENT_SETTINGS, &devMode);
+
+	if (devMode.dmDisplayFrequency != 0) list.push_back(devMode.dmDisplayFrequency);
+	return true;
+}
+
 std::vector<int> VideoDriver_Win32Base::GetListOfMonitorRefreshRates()
 {
 	std::vector<int> rates = {};
-	EnumDisplayMonitors(nullptr, nullptr, [](HMONITOR hMonitor, HDC hDC, LPRECT rc, LPARAM data) -> BOOL {
-		auto &list = *reinterpret_cast<std::vector<int>*>(data);
-
-		MONITORINFOEX monitorInfo = {};
-		monitorInfo.cbSize = sizeof(MONITORINFOEX);
-		GetMonitorInfo(hMonitor, &monitorInfo);
-
-		DEVMODE devMode = {};
-		devMode.dmSize = sizeof(DEVMODE);
-		devMode.dmDriverExtra = 0;
-		EnumDisplaySettings(monitorInfo.szDevice, ENUM_CURRENT_SETTINGS, &devMode);
-
-		if (devMode.dmDisplayFrequency != 0) list.push_back(devMode.dmDisplayFrequency);
-		return true;
-	}, reinterpret_cast<LPARAM>(&rates));
+	EnumDisplayMonitors(nullptr, nullptr, MonitorEnumProc, reinterpret_cast<LPARAM>(&rates));
 	return rates;
 }
 
@@ -955,10 +950,11 @@ float VideoDriver_Win32Base::GetDPIScale()
 	static bool init_done = false;
 	if (!init_done) {
 		init_done = true;
-
-		_GetDpiForWindow = (PFNGETDPIFORWINDOW)GetProcAddress(GetModuleHandle(L"User32"), "GetDpiForWindow");
-		_GetDpiForSystem = (PFNGETDPIFORSYSTEM)GetProcAddress(GetModuleHandle(L"User32"), "GetDpiForSystem");
-		_GetDpiForMonitor = (PFNGETDPIFORMONITOR)GetProcAddress(LoadLibrary(L"Shcore.dll"), "GetDpiForMonitor");
+		static DllLoader _user32(L"user32.dll");
+		static DllLoader _shcore(L"shcore.dll");
+		_GetDpiForWindow = _user32.GetProcAddress("GetDpiForWindow");
+		_GetDpiForSystem = _user32.GetProcAddress("GetDpiForSystem");
+		_GetDpiForMonitor = _shcore.GetProcAddress("GetDpiForMonitor");
 	}
 
 	UINT cur_dpi = 0;
@@ -1076,9 +1072,7 @@ bool VideoDriver_Win32GDI::AfterBlitterChange()
 
 void VideoDriver_Win32GDI::MakePalette()
 {
-	_cur_palette.first_dirty = 0;
-	_cur_palette.count_dirty = 256;
-	_local_palette = _cur_palette;
+	CopyPalette(_local_palette, true);
 
 	LOGPALETTE *pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
 
@@ -1133,7 +1127,7 @@ void VideoDriver_Win32GDI::Paint()
 	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, this->dib_sect);
 	HPALETTE old_palette = SelectPalette(dc, this->gdi_palette, FALSE);
 
-	if (_cur_palette.count_dirty != 0) {
+	if (_local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
@@ -1152,7 +1146,7 @@ void VideoDriver_Win32GDI::Paint()
 			default:
 				NOT_REACHED();
 		}
-		_cur_palette.count_dirty = 0;
+		_local_palette.count_dirty = 0;
 	}
 
 	BitBlt(dc, 0, 0, this->width, this->height, dc2, 0, 0, SRCCOPY);
@@ -1263,6 +1257,12 @@ static void LoadWGLExtensions()
 		if (rc != nullptr) {
 			wglMakeCurrent(dc, rc);
 
+#ifdef __MINGW32__
+			/* GCC doesn't understand the expected usage of wglGetProcAddress(). */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcast-function-type"
+#endif /* __MINGW32__ */
+
 			/* Get list of WGL extensions. */
 			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
 			if (wglGetExtensionsStringARB != nullptr) {
@@ -1277,6 +1277,9 @@ static void LoadWGLExtensions()
 				}
 			}
 
+#ifdef __MINGW32__
+#pragma GCC diagnostic pop
+#endif
 			wglMakeCurrent(nullptr, nullptr);
 			wglDeleteContext(rc);
 		}
@@ -1293,7 +1296,6 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
 	Dimension old_res = _cur_resolution; // Save current screen resolution in case of errors, as MakeWindow invalidates it.
-	this->vsync = GetDriverParamBool(param, "vsync");
 
 	LoadWGLExtensions();
 
@@ -1309,6 +1311,14 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 	}
 
 	this->ClientSizeChanged(this->width, this->height, true);
+	/* We should have a valid screen buffer now. If not, something went wrong and we should abort. */
+	if (_screen.dst_ptr == nullptr) {
+		this->Stop();
+		_cur_resolution = old_res;
+		return "Can't get pointer to screen buffer";
+	}
+	/* Main loop expects to start with the buffer unmapped. */
+	this->ReleaseVideoPointer();
 
 	MarkWholeScreenDirty();
 
@@ -1338,6 +1348,15 @@ void VideoDriver_Win32OpenGL::DestroyContext()
 	}
 }
 
+void VideoDriver_Win32OpenGL::ToggleVsync(bool vsync)
+{
+	if (_wglSwapIntervalEXT != nullptr) {
+		_wglSwapIntervalEXT(vsync);
+	} else if (vsync) {
+		Debug(driver, 0, "OpenGL: Vsync requested, but not supported by driver");
+	}
+}
+
 const char *VideoDriver_Win32OpenGL::AllocateContext()
 {
 	this->dc = GetDC(this->main_wnd);
@@ -1349,14 +1368,22 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 
 	/* Create OpenGL device context. Try to get an 3.2+ context if possible. */
 	if (_wglCreateContextAttribsARB != nullptr) {
+		/* Try for OpenGL 4.5 first. */
 		int attribs[] = {
-			WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-			WGL_CONTEXT_MINOR_VERSION_ARB, 2,
+			WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
+			WGL_CONTEXT_MINOR_VERSION_ARB, 5,
 			WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= 8 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
 			_hasWGLARBCreateContextProfile ? WGL_CONTEXT_PROFILE_MASK_ARB : 0, WGL_CONTEXT_CORE_PROFILE_BIT_ARB, // Terminate list if WGL_ARB_create_context_profile isn't supported.
 			0
 		};
 		rc = _wglCreateContextAttribsARB(this->dc, nullptr, attribs);
+
+		if (rc == nullptr) {
+			/* Try again for a 3.2 context. */
+			attribs[1] = 3;
+			attribs[3] = 2;
+			rc = _wglCreateContextAttribsARB(this->dc, nullptr, attribs);
+		}
 	}
 
 	if (rc == nullptr) {
@@ -1366,15 +1393,10 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 	}
 	if (!wglMakeCurrent(this->dc, rc)) return "Can't active GL context";
 
-	/* Enable/disable Vsync if supported. */
-	if (_wglSwapIntervalEXT != nullptr) {
-		_wglSwapIntervalEXT(this->vsync ? 1 : 0);
-	} else if (vsync) {
-		DEBUG(driver, 0, "OpenGL: Vsync requested, but not supported by driver");
-	}
+	this->ToggleVsync(_video_vsync);
 
 	this->gl_rc = rc;
-	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
+	return OpenGLBackend::Create(&GetOGLProcAddressCallback, this->GetScreenSize());
 }
 
 bool VideoDriver_Win32OpenGL::ToggleFullscreen(bool full_screen)
@@ -1444,7 +1466,7 @@ void VideoDriver_Win32OpenGL::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (_cur_palette.count_dirty != 0) {
+	if (_local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		/* Always push a changed palette to OpenGL. */
@@ -1453,11 +1475,11 @@ void VideoDriver_Win32OpenGL::Paint()
 			blitter->PaletteAnimate(_local_palette);
 		}
 
-		_cur_palette.count_dirty = 0;
+		_local_palette.count_dirty = 0;
 	}
 
 	OpenGLBackend::Get()->Paint();
-	if (_cursor.in_window) OpenGLBackend::Get()->DrawMouseCursor();
+	OpenGLBackend::Get()->DrawMouseCursor();
 
 	SwapBuffers(this->dc);
 }

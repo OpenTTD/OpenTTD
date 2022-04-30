@@ -50,30 +50,6 @@ bool MyShowCursor(bool show, bool toggle)
 	return !show;
 }
 
-/**
- * Helper function needed by dynamically loading libraries
- */
-bool LoadLibraryList(Function proc[], const char *dll)
-{
-	while (*dll != '\0') {
-		HMODULE lib;
-		lib = LoadLibrary(OTTD2FS(dll).c_str());
-
-		if (lib == nullptr) return false;
-		for (;;) {
-			FARPROC p;
-
-			while (*dll++ != '\0') { /* Nothing */ }
-			if (*dll == '\0') break;
-			p = GetProcAddress(lib, dll);
-			if (p == nullptr) return false;
-			*proc++ = (Function)p;
-		}
-		dll++;
-	}
-	return true;
-}
-
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
@@ -209,7 +185,7 @@ void FiosGetDrives(FileList &file_list)
 
 	GetLogicalDriveStrings(lengthof(drives), drives);
 	for (s = drives; *s != '\0';) {
-		FiosItem *fios = file_list.Append();
+		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
 		seprintf(fios->name, lastof(fios->name),  "%c:", s[0] & 0xFF);
@@ -247,7 +223,7 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 
 	ULARGE_INTEGER bytes_free;
 	bool retval = GetDiskFreeSpaceEx(OTTD2FS(path).c_str(), &bytes_free, nullptr, nullptr);
-	if (retval) *tot = bytes_free.QuadPart;
+	if (retval && tot != nullptr) *tot = bytes_free.QuadPart;
 
 	SetErrorMode(sem); // reset previous setting
 	return retval;
@@ -417,6 +393,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	 * be available between subsequent calls to FS2OTTD(). */
 	char *cmdline = stredup(FS2OTTD(GetCommandLine()).c_str());
 
+	/* Set the console codepage to UTF-8. */
+	SetConsoleOutputCP(CP_UTF8);
+
 #if defined(_DEBUG)
 	CreateConsole();
 #endif
@@ -429,7 +408,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
 
 	/* Make sure our arguments contain only valid UTF-8 characters. */
-	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
+	for (int i = 0; i < argc; i++) StrMakeValidInPlace(argv[i]);
 
 	openttd_main(argc, argv);
 
@@ -495,7 +474,7 @@ void DetermineBasePaths(const char *exe)
 		wchar_t config_dir[MAX_PATH];
 		wcsncpy(path, convert_to_fs(_config_file.c_str(), path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
-			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
+			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
 		} else {
 			std::string tmp(FS2OTTD(config_dir));
@@ -507,13 +486,13 @@ void DetermineBasePaths(const char *exe)
 	}
 
 	if (!GetModuleFileName(nullptr, path, lengthof(path))) {
-		DEBUG(misc, 0, "GetModuleFileName failed (%lu)\n", GetLastError());
+		Debug(misc, 0, "GetModuleFileName failed ({})", GetLastError());
 		_searchpaths[SP_BINARY_DIR].clear();
 	} else {
 		wchar_t exec_dir[MAX_PATH];
 		wcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, nullptr)) {
-			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
+			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_BINARY_DIR].clear();
 		} else {
 			std::string tmp(FS2OTTD(exec_dir));
@@ -629,9 +608,12 @@ wchar_t *convert_to_fs(const char *name, wchar_t *system_buf, size_t buflen)
 /** Determine the current user's locale. */
 const char *GetCurrentLocale(const char *)
 {
+	const LANGID userUiLang = GetUserDefaultUILanguage();
+	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
+
 	char lang[9], country[9];
-	if (GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
-	    GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
+	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
+	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
 		/* Unable to retrieve the locale. */
 		return nullptr;
 	}
@@ -676,7 +658,8 @@ int OTTDStringCompare(const char *s1, const char *s2)
 #endif
 
 	if (first_time) {
-		_CompareStringEx = (PFNCOMPARESTRINGEX)GetProcAddress(GetModuleHandle(L"Kernel32"), "CompareStringEx");
+		static DllLoader _kernel32(L"Kernel32.dll");
+		_CompareStringEx = _kernel32.GetProcAddress("CompareStringEx");
 		first_time = false;
 	}
 
@@ -702,38 +685,6 @@ int OTTDStringCompare(const char *s1, const char *s2)
 	convert_to_fs(s2, s2_buf, lengthof(s2_buf));
 
 	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, s1_buf, -1, s2_buf, -1);
-}
-
-/**
- * Is the current Windows version Vista or later?
- * @return True if the current Windows is Vista or later.
- */
-bool IsWindowsVistaOrGreater()
-{
-	typedef BOOL (WINAPI * LPVERIFYVERSIONINFO)(LPOSVERSIONINFOEX, DWORD, DWORDLONG);
-	typedef ULONGLONG (NTAPI * LPVERSETCONDITIONMASK)(ULONGLONG, DWORD, BYTE);
-#ifdef UNICODE
-	static LPVERIFYVERSIONINFO _VerifyVersionInfo = (LPVERIFYVERSIONINFO)GetProcAddress(GetModuleHandle(_T("Kernel32")), "VerifyVersionInfoW");
-#else
-	static LPVERIFYVERSIONINFO _VerifyVersionInfo = (LPVERIFYVERSIONINFO)GetProcAddress(GetModuleHandle(_T("Kernel32")), "VerifyVersionInfoA");
-#endif
-	static LPVERSETCONDITIONMASK _VerSetConditionMask = (LPVERSETCONDITIONMASK)GetProcAddress(GetModuleHandle(_T("Kernel32")), "VerSetConditionMask");
-
-	if (_VerifyVersionInfo != nullptr && _VerSetConditionMask != nullptr) {
-		OSVERSIONINFOEX osvi = { sizeof(osvi), 0, 0, 0, 0, {0}, 0, 0 };
-		DWORDLONG dwlConditionMask = 0;
-		dwlConditionMask = _VerSetConditionMask(dwlConditionMask, VER_MAJORVERSION, VER_GREATER_EQUAL);
-		dwlConditionMask = _VerSetConditionMask(dwlConditionMask, VER_MINORVERSION, VER_GREATER_EQUAL);
-		dwlConditionMask = _VerSetConditionMask(dwlConditionMask, VER_SERVICEPACKMAJOR, VER_GREATER_EQUAL);
-
-		osvi.dwMajorVersion = 6;
-		osvi.dwMinorVersion = 0;
-		osvi.wServicePackMajor = 0;
-
-		return _VerifyVersionInfo(&osvi, VER_MAJORVERSION | VER_MINORVERSION | VER_SERVICEPACKMAJOR, dwlConditionMask) != FALSE;
-	} else {
-		return LOBYTE(GetVersion()) >= 6;
-	}
 }
 
 #ifdef _MSC_VER

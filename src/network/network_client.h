@@ -15,13 +15,13 @@
 /** Class for handling the client side of the game connection. */
 class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public NetworkGameSocketHandler {
 private:
+	std::string connection_string; ///< Address we are connected to.
 	struct PacketReader *savegame; ///< Packet reader for reading the savegame.
 	byte token;                    ///< The token we need to send back to the server to prove we're the right client.
 
 	/** Status of the connection with the server. */
 	enum ServerStatus {
 		STATUS_INACTIVE,      ///< The client is not connected nor active.
-		STATUS_COMPANY_INFO,  ///< We are trying to get company information.
 		STATUS_JOIN,          ///< We are trying to join a server.
 		STATUS_NEWGRFS_CHECK, ///< Last action was checking NewGRFs.
 		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
@@ -43,7 +43,6 @@ protected:
 	NetworkRecvStatus Receive_SERVER_FULL(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_BANNED(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_ERROR(Packet *p) override;
-	NetworkRecvStatus Receive_SERVER_COMPANY_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p) override;
@@ -58,6 +57,7 @@ protected:
 	NetworkRecvStatus Receive_SERVER_SYNC(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_COMMAND(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_CHAT(Packet *p) override;
+	NetworkRecvStatus Receive_SERVER_EXTERNAL_CHAT(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_QUIT(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_ERROR_QUIT(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_SHUTDOWN(Packet *p) override;
@@ -73,13 +73,11 @@ protected:
 	static NetworkRecvStatus SendMapOk();
 	void CheckConnection();
 public:
-	ClientNetworkGameSocketHandler(SOCKET s);
+	ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string);
 	~ClientNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	void ClientError(NetworkRecvStatus res);
-
-	static NetworkRecvStatus SendCompanyInformationQuery();
 
 	static NetworkRecvStatus SendJoin();
 	static NetworkRecvStatus SendCommand(const CommandPacket *cp);
@@ -87,14 +85,14 @@ public:
 	static NetworkRecvStatus SendQuit();
 	static NetworkRecvStatus SendAck();
 
-	static NetworkRecvStatus SendGamePassword(const char *password);
-	static NetworkRecvStatus SendCompanyPassword(const char *password);
+	static NetworkRecvStatus SendGamePassword(const std::string &password);
+	static NetworkRecvStatus SendCompanyPassword(const std::string &password);
 
-	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data);
-	static NetworkRecvStatus SendSetPassword(const char *password);
-	static NetworkRecvStatus SendSetName(const char *name);
-	static NetworkRecvStatus SendRCon(const char *password, const char *command);
-	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
+	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data);
+	static NetworkRecvStatus SendSetPassword(const std::string &password);
+	static NetworkRecvStatus SendSetName(const std::string &name);
+	static NetworkRecvStatus SendRCon(const std::string &password, const std::string &command);
+	static NetworkRecvStatus SendMove(CompanyID company, const std::string &password);
 
 	static bool IsConnected();
 
@@ -107,11 +105,17 @@ public:
 typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();
-void NetworkClientSetCompanyPassword(const char *password);
+void NetworkClientSetCompanyPassword(const std::string &password);
 
-extern CompanyID _network_join_as;
+/** Information required to join a server. */
+struct NetworkJoinInfo {
+	NetworkJoinInfo() : company(COMPANY_SPECTATOR) {}
+	std::string connection_string; ///< The address of the server to join.
+	CompanyID company;             ///< The company to join.
+	std::string server_password;   ///< The password of the server to join.
+	std::string company_password;  ///< The password of the company to join.
+};
 
-extern const char *_network_join_server_password;
-extern const char *_network_join_company_password;
+extern NetworkJoinInfo _network_join;
 
 #endif /* NETWORK_CLIENT_H */

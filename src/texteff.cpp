@@ -73,7 +73,17 @@ void UpdateTextEffect(TextEffectID te_id, StringID msg)
 	te->params_1 = GetDParam(0);
 	te->params_2 = GetDParam(1);
 
-	te->UpdatePosition(te->center, te->top, msg);
+	te->UpdatePosition(te->center, te->top, te->string_id, te->string_id - 1);
+}
+
+void UpdateAllTextEffectVirtCoords()
+{
+	for (auto &te : _text_effects) {
+		if (te.string_id == INVALID_STRING_ID) continue;
+		SetDParam(0, te.params_1);
+		SetDParam(1, te.params_2);
+		te.UpdatePosition(te.center, te.top, te.string_id, te.string_id - 1);
+	}
 }
 
 void RemoveTextEffect(TextEffectID te_id)

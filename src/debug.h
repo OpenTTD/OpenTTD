@@ -12,9 +12,10 @@
 
 #include "cpu.h"
 #include <chrono>
+#include "3rdparty/fmt/format.h"
 
 /* Debugging messages policy:
- * These should be the severities used for direct DEBUG() calls
+ * These should be the severities used for direct Debug() calls
  * maximum debugging level should be 10 if really deep, deep
  * debugging is needed.
  * (there is room for exceptions, but you have to have a good cause):
@@ -28,11 +29,13 @@
  */
 
 /**
- * Output a line of debugging information.
- * @param name Category
- * @param level Debugging level, higher levels means more detailed information.
+ * Ouptut a line of debugging information.
+ * @param name The category of debug information.
+ * @param level The maximum debug level this message should be shown at. When the debug level for this category is set lower, then the message will not be shown.
+ * @param format_string The formatting string of the message.
  */
-#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(#name, __VA_ARGS__)
+#define Debug(name, level, format_string, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) DebugPrint(#name, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
+void DebugPrint(const char *level, const std::string &message);
 
 extern int _debug_driver_level;
 extern int _debug_grf_level;
@@ -52,8 +55,6 @@ extern int _debug_console_level;
 #ifdef RANDOM_DEBUG
 extern int _debug_random_level;
 #endif
-
-void CDECL debug(const char *dbg, const char *format, ...) WARN_FORMAT(2, 3);
 
 char *DumpDebugFacilityNames(char *buf, char *last);
 void SetDebugString(const char *s);
@@ -94,7 +95,7 @@ const char *GetDebugString();
 #define TOC(str, count)\
 	_sum_ += ottd_rdtsc() - _xxx_;\
 	if (++_i_ == count) {\
-		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " [avg: %.1f]", str, _sum_, _sum_/(double)_i_);\
+		Debug(misc, 0, "[{}] {} [avg: {:.1f}]", str, _sum_, _sum_/(double)_i_);\
 		_i_ = 0;\
 		_sum_ = 0;\
 	}\
@@ -109,7 +110,7 @@ const char *GetDebugString();
 #define TOCC(str, _count_)\
 	_sum_ += (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - _start_)).count();\
 	if (++_i_ == _count_) {\
-		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " us [avg: %.1f us]", str, _sum_, _sum_/(double)_i_);\
+		Debug(misc, 0, "[{}] {} us [avg: {:.1f} us]", str, _sum_, _sum_/(double)_i_);\
 		_i_ = 0;\
 		_sum_ = 0;\
 	}\
@@ -120,5 +121,8 @@ void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...) WARN_FORMAT(1, 2);
 
 const char *GetLogPrefix();
+
+void DebugSendRemoteMessages();
+void DebugReconsiderSendRemoteMessages();
 
 #endif /* DEBUG_H */

@@ -20,72 +20,7 @@
  */
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast);
 
-#if defined(__HAIKU__) /* doesn't have neither getifaddrs or net/if.h */
-/* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
-extern "C" int _netstat(int fd, char **output, int verbose);
-
-int seek_past_header(char **pos, const char *header)
-{
-	char *new_pos = strstr(*pos, header);
-	if (new_pos == 0) {
-		return B_ERROR;
-	}
-	*pos += strlen(header) + new_pos - *pos + 1;
-	return B_OK;
-}
-
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BEOS implementation
-{
-	int sock = socket(AF_INET, SOCK_DGRAM, 0);
-
-	if (sock < 0) {
-		DEBUG(net, 0, "[core] error creating socket");
-		return;
-	}
-
-	char *output_pointer = nullptr;
-	int output_length = _netstat(sock, &output_pointer, 1);
-	if (output_length < 0) {
-		DEBUG(net, 0, "[core] error running _netstat");
-		return;
-	}
-
-	char **output = &output_pointer;
-	if (seek_past_header(output, "IP Interfaces:") == B_OK) {
-		for (;;) {
-			uint32 n;
-			int fields, read;
-			uint8 i1, i2, i3, i4, j1, j2, j3, j4;
-			uint32 ip;
-			uint32 netmask;
-
-			fields = sscanf(*output, "%u: %hhu.%hhu.%hhu.%hhu, netmask %hhu.%hhu.%hhu.%hhu%n",
-												&n, &i1, &i2, &i3, &i4, &j1, &j2, &j3, &j4, &read);
-			read += 1;
-			if (fields != 9) {
-				break;
-			}
-
-			ip      = (uint32)i1 << 24 | (uint32)i2 << 16 | (uint32)i3 << 8 | (uint32)i4;
-			netmask = (uint32)j1 << 24 | (uint32)j2 << 16 | (uint32)j3 << 8 | (uint32)j4;
-
-			if (ip != INADDR_LOOPBACK && ip != INADDR_ANY) {
-				sockaddr_storage address;
-				memset(&address, 0, sizeof(address));
-				((sockaddr_in*)&address)->sin_addr.s_addr = htonl(ip | ~netmask);
-				NetworkAddress addr(address, sizeof(sockaddr));
-				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
-			}
-			if (read < 0) {
-				break;
-			}
-			*output += read;
-		}
-		closesocket(sock);
-	}
-}
-
-#elif defined(HAVE_GETIFADDRS)
+#if defined(HAVE_GETIFADDRS)
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GETIFADDRS implementation
 {
 	struct ifaddrs *ifap, *ifa;
@@ -196,10 +131,10 @@ void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 	NetworkFindBroadcastIPsInternal(broadcast);
 
 	/* Now display to the debug all the detected ips */
-	DEBUG(net, 3, "Detected broadcast addresses:");
+	Debug(net, 3, "Detected broadcast addresses:");
 	int i = 0;
 	for (NetworkAddress &addr : *broadcast) {
 		addr.SetPort(NETWORK_DEFAULT_PORT);
-		DEBUG(net, 3, "%d) %s", i++, addr.GetHostname());
+		Debug(net, 3, "  {}) {}", i++, addr.GetHostname());
 	}
 }

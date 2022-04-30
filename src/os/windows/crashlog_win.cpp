@@ -22,6 +22,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <signal.h>
+#include <psapi.h>
 
 #include "../../safeguards.h"
 
@@ -206,25 +207,19 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 /* virtual */ char *CrashLogWindows::LogModules(char *output, const char *last) const
 {
 	MakeCRCTable(AllocaM(uint32, 256));
-	BOOL (WINAPI *EnumProcessModules)(HANDLE, HMODULE*, DWORD, LPDWORD);
-
 	output += seprintf(output, last, "Module information:\n");
 
-	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0\0")) {
+	HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
+	if (proc != nullptr) {
 		HMODULE modules[100];
 		DWORD needed;
-		BOOL res;
+		BOOL res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
+		CloseHandle(proc);
+		if (res) {
+			size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
 
-		HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
-		if (proc != nullptr) {
-			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
-			CloseHandle(proc);
-			if (res) {
-				size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
-
-				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
-				return output + seprintf(output, last, "\n");
-			}
+			for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
+			return output + seprintf(output, last, "\n");
 		}
 	}
 	output = PrintModuleInfo(output, last, nullptr);
@@ -373,22 +368,7 @@ static const uint MAX_FRAMES     = 64;
 
 char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) const
 {
-#define M(x) x "\0"
-	static const char dbg_import[] =
-		M("dbghelp.dll")
-		M("SymInitialize")
-		M("SymSetOptions")
-		M("SymCleanup")
-		M("StackWalk64")
-		M("SymFunctionTableAccess64")
-		M("SymGetModuleBase64")
-		M("SymGetModuleInfo64")
-		M("SymGetSymFromAddr64")
-		M("SymGetLineFromAddr64")
-		M("")
-		;
-#undef M
-
+	DllLoader dbghelp(L"dbghelp.dll");
 	struct ProcPtrs {
 		BOOL (WINAPI * pSymInitialize)(HANDLE, PCSTR, BOOL);
 		BOOL (WINAPI * pSymSetOptions)(DWORD);
@@ -399,12 +379,22 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		BOOL (WINAPI * pSymGetModuleInfo64)(HANDLE, DWORD64, PIMAGEHLP_MODULE64);
 		BOOL (WINAPI * pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
 		BOOL (WINAPI * pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
-	} proc;
+	} proc = {
+		dbghelp.GetProcAddress("SymInitialize"),
+		dbghelp.GetProcAddress("SymSetOptions"),
+		dbghelp.GetProcAddress("SymCleanup"),
+		dbghelp.GetProcAddress("StackWalk64"),
+		dbghelp.GetProcAddress("SymFunctionTableAccess64"),
+		dbghelp.GetProcAddress("SymGetModuleBase64"),
+		dbghelp.GetProcAddress("SymGetModuleInfo64"),
+		dbghelp.GetProcAddress("SymGetSymFromAddr64"),
+		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
+	};
 
 	buffer += seprintf(buffer, last, "\nDecoded stack trace:\n");
 
 	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
-	if (LoadLibraryList((Function*)&proc, dbg_import)) {
+	if (dbghelp.Success()) {
 		/* Initialize symbol handler. */
 		HANDLE hCur = GetCurrentProcess();
 		proc.pSymInitialize(hCur, nullptr, TRUE);
@@ -491,16 +481,16 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 /* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const
 {
 	int ret = 0;
-	HMODULE dbghelp = LoadLibrary(L"dbghelp.dll");
-	if (dbghelp != nullptr) {
+	DllLoader dbghelp(L"dbghelp.dll");
+	if (dbghelp.Success()) {
 		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
 				MINIDUMP_TYPE,
 				CONST PMINIDUMP_EXCEPTION_INFORMATION,
 				CONST PMINIDUMP_USER_STREAM_INFORMATION,
 				CONST PMINIDUMP_CALLBACK_INFORMATION);
-		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
+		MiniDumpWriteDump_t funcMiniDumpWriteDump = dbghelp.GetProcAddress("MiniDumpWriteDump");
 		if (funcMiniDumpWriteDump != nullptr) {
-			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir.c_str());
+			this->CreateFileName(filename, filename_last, ".dmp");
 			HANDLE file  = CreateFile(OTTD2FS(filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
 			HANDLE proc  = GetCurrentProcess();
 			DWORD procid = GetCurrentProcessId();
@@ -524,7 +514,6 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		} else {
 			ret = -1;
 		}
-		FreeLibrary(dbghelp);
 	}
 	return ret;
 }
@@ -638,7 +627,7 @@ static void CDECL CustomAbort(int signal)
 		mov safe_esp, esp
 	}
 #	else
-	asm("movl %esp, _safe_esp");
+	asm("movl %%esp, %0" : "=rm" (safe_esp));
 #	endif
 	_safe_esp = safe_esp;
 #endif

@@ -25,6 +25,33 @@
 #include "safeguards.h"
 
 /**
+ * Calculate x and y coordinates for an aligned object within a window.
+ * @param r     Rectangle of the widget to be drawn in.
+ * @param d     Dimension of the object to be drawn.
+ * @param align Alignment of the object.
+ * @return A point containing the position at which to draw.
+ */
+static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, StringAlignment align)
+{
+	Point p;
+	/* In case we have a RTL language we swap the alignment. */
+	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
+	switch (align & SA_HOR_MASK) {
+		case SA_LEFT:       p.x = r.left; break;
+		case SA_HOR_CENTER: p.x = CenterBounds(r.left, r.right, d.width); break;
+		case SA_RIGHT:      p.x = r.right - d.width; break;
+		default: NOT_REACHED();
+	}
+	switch (align & SA_VERT_MASK) {
+		case SA_TOP:         p.y = r.top; break;
+		case SA_VERT_CENTER: p.y = CenterBounds(r.top, r.bottom, d.height); break;
+		case SA_BOTTOM:      p.y = r.bottom - d.height; break;
+		default: NOT_REACHED();
+	}
+	return p;
+}
+
+/**
  * Compute the vertical position of the draggable part of scrollbar
  * @param sb     Scrollbar list data
  * @param top    Top position of the scrollbar (top position of the up-button)
@@ -81,6 +108,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 	int pos;
 	int button_size;
 	bool rtl = false;
+	bool changed = false;
 
 	if (sb->type == NWID_HSCROLLBAR) {
 		pos = x;
@@ -95,7 +123,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		SetBit(sb->disp_flags, NDB_SCROLLBAR_UP);
 		if (_scroller_click_timeout <= 1) {
 			_scroller_click_timeout = 3;
-			sb->UpdatePosition(rtl ? 1 : -1);
+			changed = sb->UpdatePosition(rtl ? 1 : -1);
 		}
 		w->mouse_capture_widget = sb->index;
 	} else if (pos >= ma - button_size) {
@@ -104,16 +132,16 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 
 		if (_scroller_click_timeout <= 1) {
 			_scroller_click_timeout = 3;
-			sb->UpdatePosition(rtl ? -1 : 1);
+			changed = sb->UpdatePosition(rtl ? -1 : 1);
 		}
 		w->mouse_capture_widget = sb->index;
 	} else {
 		Point pt = HandleScrollbarHittest(sb, mi, ma, sb->type == NWID_HSCROLLBAR);
 
 		if (pos < pt.x) {
-			sb->UpdatePosition(rtl ? 1 : -1, Scrollbar::SS_BIG);
+			changed = sb->UpdatePosition(rtl ? 1 : -1, Scrollbar::SS_BIG);
 		} else if (pos > pt.y) {
-			sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::SS_BIG);
+			changed = sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::SS_BIG);
 		} else {
 			_scrollbar_start_pos = pt.x - mi - button_size;
 			_scrollbar_size = ma - mi - button_size * 2;
@@ -122,7 +150,13 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		}
 	}
 
-	w->SetDirty();
+	if (changed) {
+		/* Position changed so refresh the window */
+		w->SetDirty();
+	} else {
+		/* No change so only refresh this scrollbar */
+		sb->SetDirty(w);
+	}
 }
 
 /**
@@ -212,15 +246,17 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
  * @param colour  Colour of the button.
  * @param clicked Button is lowered.
  * @param img     Sprite to draw.
+ * @param align   Alignment of the sprite.
  */
-static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img)
+static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img, StringAlignment align)
 {
 	assert(img != 0);
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
 	Dimension d = GetSpriteSize(img);
-	DrawSprite(img, PAL_NONE, CenterBounds(r.left, r.right, d.width) + clicked, CenterBounds(r.top, r.bottom, d.height) + clicked);
+	Point p = GetAlignedPosition(r, d, align);
+	DrawSprite(img, PAL_NONE, p.x + clicked, p.y + clicked);
 }
 
 /**
@@ -228,15 +264,17 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  * @param r       Rectangle of the label background.
  * @param type    Widget type (#WWT_TEXTBTN, #WWT_TEXTBTN_2, or #WWT_LABEL).
  * @param clicked Label is rendered lowered.
+ * @param colour  Colour of the text.
  * @param str     Text to draw.
+ * @param align   Alignment of the text.
  */
-static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, StringID str)
+static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align)
 {
 	if (str == STR_NULL) return;
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 	Dimension d = GetStringBoundingBox(str);
-	int offset = std::max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
-	DrawString(r.left + clicked, r.right + clicked, r.top + offset + clicked, str, TC_FROMSTRING, SA_HOR_CENTER);
+	Point p = GetAlignedPosition(r, d, align);
+	DrawString(r.left + clicked, r.right + clicked, p.y + clicked, str, colour, align);
 }
 
 /**
@@ -244,24 +282,27 @@ static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, Strin
  * @param r      Rectangle of the background.
  * @param colour Colour of the text.
  * @param str    Text to draw.
+ * @param align  Alignment of the text.
  */
-static inline void DrawText(const Rect &r, TextColour colour, StringID str)
+static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align)
 {
 	Dimension d = GetStringBoundingBox(str);
-	int offset = std::max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
-	if (str != STR_NULL) DrawString(r.left, r.right, r.top + offset, str, colour);
+	Point p = GetAlignedPosition(r, d, align);
+	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align);
 }
 
 /**
  * Draw an inset widget.
- * @param r      Rectangle of the background.
- * @param colour Colour of the inset.
- * @param str    Text to draw.
+ * @param r           Rectangle of the background.
+ * @param colour      Colour of the inset.
+ * @param text_colour Colour of the text.
+ * @param str         Text to draw.
+ * @param align       Alignment of the text.
  */
-static inline void DrawInset(const Rect &r, Colours colour, StringID str)
+static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
-	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str);
+	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str, text_colour, align);
 }
 
 /**
@@ -402,15 +443,17 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 
 /**
  * Draw a frame widget.
- * @param r      Rectangle of the frame.
- * @param colour Colour of the frame.
- * @param str    Text of the frame.
+ * @param r           Rectangle of the frame.
+ * @param colour      Colour of the frame.
+ * @param text_colour Colour of the text.
+ * @param str         Text of the frame.
+ * @param align       Alignment of the text in the frame.
  */
-static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
+static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
-	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str);
+	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str, text_colour, align);
 
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
@@ -458,7 +501,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
  */
 static inline void DrawShadeBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_SHADEBOX, colour, clicked, clicked ? SPR_WINDOW_SHADE: SPR_WINDOW_UNSHADE);
+	DrawImageButtons(r, WWT_SHADEBOX, colour, clicked, clicked ? SPR_WINDOW_SHADE: SPR_WINDOW_UNSHADE, SA_CENTER);
 }
 
 /**
@@ -469,7 +512,7 @@ static inline void DrawShadeBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_STICKYBOX, colour, clicked, clicked ? SPR_PIN_UP : SPR_PIN_DOWN);
+	DrawImageButtons(r, WWT_STICKYBOX, colour, clicked, clicked ? SPR_PIN_UP : SPR_PIN_DOWN, SA_CENTER);
 }
 
 /**
@@ -480,7 +523,7 @@ static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawDefSizeBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_DEFSIZEBOX, colour, clicked, SPR_WINDOW_DEFSIZE);
+	DrawImageButtons(r, WWT_DEFSIZEBOX, colour, clicked, SPR_WINDOW_DEFSIZE, SA_CENTER);
 }
 
 /**
@@ -491,7 +534,7 @@ static inline void DrawDefSizeBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_DEBUGBOX, colour, clicked, SPR_WINDOW_DEBUG);
+	DrawImageButtons(r, WWT_DEBUGBOX, colour, clicked, SPR_WINDOW_DEBUG, SA_CENTER);
 }
 
 /**
@@ -530,12 +573,14 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 
 /**
  * Draw a caption bar.
- * @param r      Rectangle of the bar.
- * @param colour Colour of the window.
- * @param owner  'Owner' of the window.
- * @param str    Text to draw in the bar.
+ * @param r           Rectangle of the bar.
+ * @param colour      Colour of the window.
+ * @param owner       'Owner' of the window.
+ * @param text_colour Colour of the text.
+ * @param str         Text to draw in the bar.
+ * @param align       Alignment of the text.
  */
-void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align)
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
@@ -548,8 +593,8 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 
 	if (str != STR_NULL) {
 		Dimension d = GetStringBoundingBox(str);
-		int offset = std::max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
-		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + offset, str, TC_FROMSTRING, SA_HOR_CENTER);
+		Point p = GetAlignedPosition(r, d, align);
+		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, p.y, str, text_colour, align);
 	}
 }
 
@@ -560,10 +605,11 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
  * @param clicked_button   The button-part is lowered.
  * @param clicked_dropdown The drop-down part is lowered.
  * @param str              Text of the button.
+ * @param align            Alignment of the text within the dropdown.
  *
  * @note Magic constants are also used in #NWidgetLeaf::ButtonHit.
  */
-static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str)
+static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str, StringAlignment align)
 {
 	int text_offset = std::max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
 
@@ -575,25 +621,13 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawFrameRect(r.right + 1 - dd_width, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
 		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.right - (dd_width - 2) + clicked_dropdown, r.top + image_offset + clicked_dropdown);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawFrameRect(r.left, r.top, r.left + dd_width - 1, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
 		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + clicked_dropdown, r.top + image_offset + clicked_dropdown);
-		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
+		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
 	}
-}
-
-/**
- * Draw a dropdown #WWT_DROPDOWN widget.
- * @param r       Rectangle containing the widget.
- * @param colour  Background colour of the widget.
- * @param clicked The widget is lowered.
- * @param str     Text of the button.
- */
-static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
-{
-	DrawButtonDropdown(r, colour, false, clicked, str);
 }
 
 /**
@@ -795,6 +829,14 @@ NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
 	return (this->type == tp) ? this : nullptr;
 }
 
+void NWidgetBase::AdjustPaddingForZoom()
+{
+	this->padding_top    = ScaleGUITrad(this->uz_padding_top);
+	this->padding_right  = ScaleGUITrad(this->uz_padding_right);
+	this->padding_bottom = ScaleGUITrad(this->uz_padding_bottom);
+	this->padding_left   = ScaleGUITrad(this->uz_padding_left);
+}
+
 /**
  * Constructor for resizable nested widgets.
  * @param tp     Nested widget type.
@@ -807,6 +849,15 @@ NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : 
 	this->fill_y = fill_y;
 }
 
+void NWidgetResizeBase::AdjustPaddingForZoom()
+{
+	if (!this->absolute) {
+		this->min_x = ScaleGUITrad(this->uz_min_x);
+		this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
+	}
+	NWidgetBase::AdjustPaddingForZoom();
+}
+
 /**
  * Set minimal size of the widget.
  * @param min_x Horizontal minimal size of the widget.
@@ -814,6 +865,20 @@ NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : 
  */
 void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
 {
+	this->uz_min_x = std::max(this->uz_min_x, min_x);
+	this->uz_min_y = std::max(this->uz_min_y, min_y);
+	this->min_x = ScaleGUITrad(this->uz_min_x);
+	this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
+}
+
+/**
+ * Set absolute (post-scaling) minimal size of the widget.
+ * @param min_x Horizontal minimal size of the widget.
+ * @param min_y Vertical minimal size of the widget.
+ */
+void NWidgetResizeBase::SetMinimalSizeAbsolute(uint min_x, uint min_y)
+{
+	this->absolute = true;
 	this->min_x = std::max(this->min_x, min_x);
 	this->min_y = std::max(this->min_y, min_y);
 }
@@ -826,7 +891,10 @@ void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
  */
 void NWidgetResizeBase::SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size)
 {
-	this->min_y = min_lines * GetCharacterHeight(size) + spacing;
+	this->uz_text_lines = min_lines;
+	this->uz_text_spacing = spacing;
+	this->uz_text_size = size;
+	this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
 }
 
 /**
@@ -872,6 +940,8 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
+	this->text_colour = TC_FROMSTRING;
+	this->align = SA_CENTER;
 }
 
 /**
@@ -896,12 +966,30 @@ void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
 }
 
 /**
+ * Set the text colour of the nested widget.
+ * @param colour TextColour to use.
+ */
+void NWidgetCore::SetTextColour(TextColour colour)
+{
+	this->text_colour = colour;
+}
+
+/**
  * Set the tool tip of the nested widget.
  * @param tool_tip Tool tip string to use.
  */
 void NWidgetCore::SetToolTip(StringID tool_tip)
 {
 	this->tool_tip = tool_tip;
+}
+
+/**
+ * Set the text/image alignment of the nested widget.
+ * @param align Alignment to use.
+ */
+void NWidgetCore::SetAlignment(StringAlignment align)
+{
+	this->align = align;
 }
 
 void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
@@ -944,6 +1032,14 @@ NWidgetBase *NWidgetContainer::GetWidgetOfType(WidgetType tp)
 	return nullptr;
 }
 
+void NWidgetContainer::AdjustPaddingForZoom()
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		child_wid->AdjustPaddingForZoom();
+	}
+	NWidgetBase::AdjustPaddingForZoom();
+}
+
 /**
  * Append widget \a wid to container.
  * @param wid Widget to append.
@@ -983,6 +1079,14 @@ NWidgetStacked::NWidgetStacked() : NWidgetContainer(NWID_SELECTION)
 void NWidgetStacked::SetIndex(int index)
 {
 	this->index = index;
+}
+
+void NWidgetStacked::AdjustPaddingForZoom()
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		child_wid->AdjustPaddingForZoom();
+	}
+	NWidgetContainer::AdjustPaddingForZoom();
 }
 
 void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
@@ -1098,6 +1202,14 @@ NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags
 	this->flags = flags;
 }
 
+void NWidgetPIPContainer::AdjustPaddingForZoom()
+{
+	this->pip_pre = ScaleGUITrad(this->uz_pip_pre);
+	this->pip_inter = ScaleGUITrad(this->uz_pip_inter);
+	this->pip_post = ScaleGUITrad(this->uz_pip_post);
+	NWidgetContainer::AdjustPaddingForZoom();
+}
+
 /**
  * Set additional pre/inter/post space for the container.
  *
@@ -1109,9 +1221,13 @@ NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags
  */
 void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 {
-	this->pip_pre = pip_pre;
-	this->pip_inter = pip_inter;
-	this->pip_post = pip_post;
+	this->uz_pip_pre = pip_pre;
+	this->uz_pip_inter = pip_inter;
+	this->uz_pip_post = pip_post;
+
+	this->pip_pre = ScaleGUITrad(this->uz_pip_pre);
+	this->pip_inter = ScaleGUITrad(this->uz_pip_inter);
+	this->pip_post = ScaleGUITrad(this->uz_pip_post);
 }
 
 void NWidgetPIPContainer::Draw(const Window *w)
@@ -1156,9 +1272,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 	}
 	/* 1b. Make the container higher if needed to accommodate all children nicely. */
-#ifdef WITH_ASSERT
-	uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
-#endif
+	[[maybe_unused]] uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
 	uint cur_height = this->smallest_y;
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1323,9 +1437,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
 	}
 	/* 1b. Make the container wider if needed to accommodate all children nicely. */
-#ifdef WITH_ASSERT
-	uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
-#endif
+	[[maybe_unused]] uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
 	uint cur_width = this->smallest_x;
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1443,12 +1555,12 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 
 /**
  * Generic spacer widget.
- * @param length Horizontal size of the spacer widget.
+ * @param width  Horizontal size of the spacer widget.
  * @param height Vertical size of the spacer widget.
  */
-NWidgetSpacer::NWidgetSpacer(int length, int height) : NWidgetResizeBase(NWID_SPACER, 0, 0)
+NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPACER, 0, 0)
 {
-	this->SetMinimalSize(length, height);
+	this->SetMinimalSize(width, height);
 	this->SetResize(0, 0);
 }
 
@@ -1725,6 +1837,7 @@ NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, int index, N
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
 	if (index >= 0) this->SetIndex(index);
 	this->child = child;
+	this->SetAlignment(SA_TOP | SA_LEFT);
 }
 
 NWidgetBackground::~NWidgetBackground()
@@ -1765,6 +1878,12 @@ void NWidgetBackground::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 	this->child->SetPIP(pip_pre, pip_inter, pip_post);
 }
 
+void NWidgetBackground::AdjustPaddingForZoom()
+{
+	if (child != nullptr) child->AdjustPaddingForZoom();
+	NWidgetCore::AdjustPaddingForZoom();
+}
+
 void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 {
 	if (init_array && this->index >= 0) {
@@ -1781,8 +1900,11 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		this->resize_x = this->child->resize_x;
 		this->resize_y = this->child->resize_y;
 
-		/* Account for the size of the frame's text if that exists */
-		if (w != nullptr && this->type == WWT_FRAME) {
+		/* Don't apply automatic padding if there is no child widget. */
+		if (w == nullptr) return;
+
+		if (this->type == WWT_FRAME) {
+			/* Account for the size of the frame's text if that exists */
 			this->child->padding_left   = WD_FRAMETEXT_LEFT;
 			this->child->padding_right  = WD_FRAMETEXT_RIGHT;
 			this->child->padding_top    = std::max((int)WD_FRAMETEXT_TOP, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP / 2 : 0);
@@ -1793,6 +1915,15 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		} else if (this->type == WWT_INSET) {
+			/* Apply automatic padding for bevel thickness. */
+			this->child->padding_left   = WD_BEVEL_LEFT;
+			this->child->padding_right  = WD_BEVEL_RIGHT;
+			this->child->padding_top    = WD_BEVEL_TOP;
+			this->child->padding_bottom = WD_BEVEL_BOTTOM;
+
+			this->smallest_x += this->child->padding_left + this->child->padding_right;
+			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
@@ -1841,11 +1972,7 @@ void NWidgetBackground::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	Rect r;
-	r.left = this->pos_x;
-	r.right = this->pos_x + this->current_x - 1;
-	r.top = this->pos_y;
-	r.bottom = this->pos_y + this->current_y - 1;
+	Rect r = this->GetCurrentRect();
 
 	const DrawPixelInfo *dpi = _cur_dpi;
 	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
@@ -1858,12 +1985,12 @@ void NWidgetBackground::Draw(const Window *w)
 
 		case WWT_FRAME:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrame(r, this->colour, this->widget_data);
+			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_INSET:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawInset(r, this->colour, this->widget_data);
+			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align);
 			break;
 
 		default:
@@ -1913,6 +2040,8 @@ void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
 
 void NWidgetViewport::Draw(const Window *w)
 {
+	if (this->current_x == 0 || this->current_y == 0) return;
+
 	if (this->disp_flags & ND_NO_TRANSPARENCY) {
 		TransparencyOptionBits to_backup = _transparency_opt;
 		_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_LOADING); // Disable all transparency, except textual stuff
@@ -1964,15 +2093,74 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
  * @param w           The window the click was in.
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
- * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
  * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
  */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding, int line_height) const
+int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding) const
 {
-	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
+	uint pos = w->GetRowFromWidget(clickpos, widget, padding, -1);
 	if (pos != INT_MAX) pos += this->GetPosition();
 	return (pos >= this->GetCount()) ? INT_MAX : pos;
 }
+
+/**
+ * Update the given list position as if it were on this scroll bar when the given keycode was pressed.
+ * This does not update the actual position of this scroll bar, that is left to the caller. It does,
+ * however use the capacity and count of the scroll bar for the bounds and amount to scroll.
+ *
+ * When the count is 0 or the return is ES_NOT_HANDLED, then the position is not updated.
+ * With WKC_UP and WKC_DOWN the position goes one up or down respectively.
+ * With WKC_PAGEUP and WKC_PAGEDOWN the position goes one capacity up or down respectively.
+ * With WKC_HOME the first position is selected and with WKC_END the last position is selected.
+ * This function ensures that pos is in the range [0..count).
+ * @param list_position The current position in the list.
+ * @param key_code      The pressed key code.
+ * @return ES_NOT_HANDLED when another key than the 6 specific keys was pressed, otherwise ES_HANDLED.
+ */
+EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const
+{
+	int new_pos = list_position;
+	switch (keycode) {
+		case WKC_UP:
+			/* scroll up by one */
+			new_pos--;
+			break;
+
+		case WKC_DOWN:
+			/* scroll down by one */
+			new_pos++;
+			break;
+
+		case WKC_PAGEUP:
+			/* scroll up a page */
+			new_pos -= this->GetCapacity();
+			break;
+
+		case WKC_PAGEDOWN:
+			/* scroll down a page */
+			new_pos += this->GetCapacity();
+			break;
+
+		case WKC_HOME:
+			/* jump to beginning */
+			new_pos = 0;
+			break;
+
+		case WKC_END:
+			/* jump to end */
+			new_pos = this->GetCount() - 1;
+			break;
+
+		default:
+			return ES_NOT_HANDLED;
+	}
+
+	/* If there are no elements, there is nothing to scroll/update. */
+	if (this->GetCount() != 0) {
+		list_position = Clamp(new_pos, 0, this->GetCount() - 1);
+	}
+	return ES_HANDLED;
+}
+
 
 /**
  * Set capacity of visible elements from the size and resize properties of a widget.
@@ -2001,6 +2189,22 @@ NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : N
 {
 	assert(tp == NWID_HSCROLLBAR || tp == NWID_VSCROLLBAR);
 	this->SetIndex(index);
+
+	switch (this->type) {
+		case NWID_HSCROLLBAR:
+			this->SetResize(1, 0);
+			this->SetFill(1, 0);
+			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+			break;
+
+		case NWID_VSCROLLBAR:
+			this->SetResize(0, 1);
+			this->SetFill(0, 1);
+			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
+			break;
+
+		default: NOT_REACHED();
+	}
 }
 
 void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
@@ -2014,17 +2218,11 @@ void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
 
 	switch (this->type) {
 		case NWID_HSCROLLBAR:
-			this->SetMinimalSize(NWidgetScrollbar::GetHorizontalDimension().width * 3, NWidgetScrollbar::GetHorizontalDimension().height);
-			this->SetResize(1, 0);
-			this->SetFill(1, 0);
-			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+			this->SetMinimalSizeAbsolute(NWidgetScrollbar::GetHorizontalDimension().width * 3, NWidgetScrollbar::GetHorizontalDimension().height);
 			break;
 
 		case NWID_VSCROLLBAR:
-			this->SetMinimalSize(NWidgetScrollbar::GetVerticalDimension().width, NWidgetScrollbar::GetVerticalDimension().height * 3);
-			this->SetResize(0, 1);
-			this->SetFill(0, 1);
-			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
+			this->SetMinimalSizeAbsolute(NWidgetScrollbar::GetVerticalDimension().width, NWidgetScrollbar::GetVerticalDimension().height * 3);
 			break;
 
 		default: NOT_REACHED();
@@ -2038,11 +2236,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	Rect r;
-	r.left = this->pos_x;
-	r.right = this->pos_x + this->current_x - 1;
-	r.top = this->pos_y;
-	r.bottom = this->pos_y + this->current_y - 1;
+	Rect r = this->GetCurrentRect();
 
 	const DrawPixelInfo *dpi = _cur_dpi;
 	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
@@ -2133,6 +2327,11 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 		case WWT_EMPTY:
 			break;
 
+		case WWT_TEXT:
+			this->SetFill(0, 0);
+			this->SetAlignment(SA_LEFT | SA_VERT_CENTER);
+			break;
+
 		case WWT_PUSHBTN:
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
@@ -2141,7 +2340,6 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
 		case WWT_LABEL:
-		case WWT_TEXT:
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
@@ -2157,7 +2355,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 		case WWT_CAPTION:
 			this->SetFill(1, 0);
 			this->SetResize(1, 0);
-			this->min_y = WD_CAPTION_HEIGHT;
+			this->SetMinimalSize(0, WD_CAPTION_HEIGHT);
+			this->SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, FS_NORMAL);
 			this->SetDataTip(data, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 			break;
 
@@ -2169,19 +2368,19 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 
 		case WWT_SHADEBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_SHADEBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetMinimalSize(WD_SHADEBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_SHADE);
 			break;
 
 		case WWT_DEBUGBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_DEBUGBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetMinimalSize(WD_DEBUGBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEBUG);
 			break;
 
 		case WWT_DEFSIZEBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_DEFSIZEBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetMinimalSize(WD_DEFSIZEBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEFSIZE);
 			break;
 
@@ -2199,7 +2398,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 
 		case WWT_DROPDOWN:
 			this->SetFill(0, 0);
-			this->min_y = WD_DROPDOWN_HEIGHT;
+			this->SetMinimalSize(0, WD_DROPDOWN_HEIGHT);
+			this->SetAlignment(SA_TOP | SA_LEFT);
 			break;
 
 		default:
@@ -2415,11 +2615,7 @@ void NWidgetLeaf::Draw(const Window *w)
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &new_dpi;
 
-	Rect r;
-	r.left = this->pos_x;
-	r.right = this->pos_x + this->current_x - 1;
-	r.top = this->pos_y;
-	r.bottom = this->pos_y + this->current_y - 1;
+	Rect r = this->GetCurrentRect();
 
 	bool clicked = this->IsLowered();
 	switch (this->type) {
@@ -2434,7 +2630,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
 		case WWT_IMGBTN_2:
-			DrawImageButtons(r, this->type, this->colour, clicked, this->widget_data);
+			DrawImageButtons(r, this->type, this->colour, clicked, this->widget_data, this->align);
 			break;
 
 		case WWT_TEXTBTN:
@@ -2442,7 +2638,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->widget_data);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_ARROWBTN:
@@ -2455,18 +2651,18 @@ void NWidgetLeaf::Draw(const Window *w)
 				case AWV_RIGHT:    sprite = SPR_ARROW_RIGHT; break;
 				default: NOT_REACHED();
 			}
-			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite);
+			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite, this->align);
 			break;
 		}
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->widget_data);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_TEXT:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, (TextColour)this->colour, this->widget_data);
+			DrawText(r, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_MATRIX:
@@ -2481,7 +2677,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawCaption(r, this->colour, w->owner, this->widget_data);
+			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_SHADEBOX:
@@ -2514,13 +2710,13 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawDropdown(r, this->colour, clicked, this->widget_data);
+			DrawButtonDropdown(r, this->colour, false, clicked, this->widget_data, this->align);
 			break;
 
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data);
+			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data, this->align);
 			break;
 
 		default:
@@ -2645,7 +2841,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
 				if (nwrb != nullptr) {
 					assert(parts->u.xy.x >= 0 && parts->u.xy.y >= 0);
-					nwrb->SetMinimalSize(ScaleGUITrad(parts->u.xy.x), ScaleGUITrad(parts->u.xy.y));
+					nwrb->SetMinimalSize(parts->u.xy.x, parts->u.xy.y);
 				}
 				break;
 			}
@@ -2655,6 +2851,22 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				if (nwrb != nullptr) {
 					assert(parts->u.text_lines.size >= FS_BEGIN && parts->u.text_lines.size < FS_END);
 					nwrb->SetMinimalTextLines(parts->u.text_lines.lines, parts->u.text_lines.spacing, parts->u.text_lines.size);
+				}
+				break;
+			}
+
+			case WPT_TEXTCOLOUR: {
+				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
+				if (nwc != nullptr) {
+					nwc->SetTextColour(parts->u.colour.colour);
+				}
+				break;
+			}
+
+			case WPT_ALIGNMENT: {
+				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
+				if (nwc != nullptr) {
+					nwc->SetAlignment(parts->u.align.align);
 				}
 				break;
 			}
@@ -2675,15 +2887,15 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			}
 
 			case WPT_PADDING:
-				if (*dest != nullptr) (*dest)->SetPadding(ScaleGUITrad(parts->u.padding.top), ScaleGUITrad(parts->u.padding.right), ScaleGUITrad(parts->u.padding.bottom), ScaleGUITrad(parts->u.padding.left));
+				if (*dest != nullptr) (*dest)->SetPadding(parts->u.padding.top, parts->u.padding.right, parts->u.padding.bottom, parts->u.padding.left);
 				break;
 
 			case WPT_PIPSPACE: {
 				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(*dest);
-				if (nwc != nullptr) nwc->SetPIP(ScaleGUITrad(parts->u.pip.pre), ScaleGUITrad(parts->u.pip.inter), ScaleGUITrad(parts->u.pip.post));
+				if (nwc != nullptr) nwc->SetPIP(parts->u.pip.pre, parts->u.pip.inter, parts->u.pip.post);
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
-				if (nwb != nullptr) nwb->SetPIP(ScaleGUITrad(parts->u.pip.pre), ScaleGUITrad(parts->u.pip.inter), ScaleGUITrad(parts->u.pip.post));
+				if (nwb != nullptr) nwb->SetPIP(parts->u.pip.pre, parts->u.pip.inter, parts->u.pip.post);
 				break;
 			}
 
@@ -2880,7 +3092,7 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 	NWidgetHorizontal *hor = nullptr; // Storage for buttons in one row.
 	int hor_length = 0;
 
-	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
+	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X);
 	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
 	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
 

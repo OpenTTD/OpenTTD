@@ -155,6 +155,7 @@ bmno_full_transparency:
 
 				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
 					if (src->a == 0) {
+						/* Complete transparency. */
 					} else if (src->a == 255) {
 						*anim = *(const uint16*) src_mv;
 						*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v) : *src;
@@ -197,7 +198,7 @@ bmno_full_transparency:
 							m_colour = r == 0 ? m_colour : cmap; \
 							m_colour = m != 0 ? m_colour : srcm; \
 							}
-#ifdef _SQ64
+#ifdef POINTER_IS_64BIT
 						uint64 srcs = _mm_cvtsi128_si64(srcABCD);
 						uint64 dsts;
 						if (animated) dsts = _mm_cvtsi128_si64(dstABCD);
@@ -379,7 +380,7 @@ bm_normal:
 					else                           Draw<BM_NORMAL, RM_WITH_SKIP, BT_ODD, true, true>(bp, zoom);
 				}
 			} else {
-#ifdef _SQ64
+#ifdef POINTER_IS_64BIT
 				if (sprite_flags & SF_TRANSLUCENT) {
 					if (sprite_flags & SF_NO_ANIM) Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true, false>(bp, zoom);
 					else                           Draw<BM_NORMAL, RM_WITH_MARGIN, BT_NONE, true, true>(bp, zoom);

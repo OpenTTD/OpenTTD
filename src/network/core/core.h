@@ -20,16 +20,17 @@ void NetworkCoreShutdown();
 
 /** Status of a network client; reasons why a client has quit */
 enum NetworkRecvStatus {
-	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay
-	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur
-	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs
-	NETWORK_RECV_STATUS_SAVEGAME,         ///< Something went wrong (down)loading the savegame
-	NETWORK_RECV_STATUS_CONN_LOST,        ///< The connection is 'just' lost
-	NETWORK_RECV_STATUS_MALFORMED_PACKET, ///< We apparently send a malformed packet
-	NETWORK_RECV_STATUS_SERVER_ERROR,     ///< The server told us we made an error
-	NETWORK_RECV_STATUS_SERVER_FULL,      ///< The server is full
-	NETWORK_RECV_STATUS_SERVER_BANNED,    ///< The server has banned us
-	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done querying the server
+	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay.
+	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur.
+	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs.
+	NETWORK_RECV_STATUS_SAVEGAME,         ///< Something went wrong (down)loading the savegame.
+	NETWORK_RECV_STATUS_CLIENT_QUIT,      ///< The connection is lost gracefully. Other clients are already informed of this leaving client.
+	NETWORK_RECV_STATUS_MALFORMED_PACKET, ///< We apparently send a malformed packet.
+	NETWORK_RECV_STATUS_SERVER_ERROR,     ///< The server told us we made an error.
+	NETWORK_RECV_STATUS_SERVER_FULL,      ///< The server is full.
+	NETWORK_RECV_STATUS_SERVER_BANNED,    ///< The server has banned us.
+	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done querying the server.
+	NETWORK_RECV_STATUS_CONNECTION_LOST,  ///< The connection is lost unexpectedly.
 };
 
 /** Forward declaration due to circular dependencies */
@@ -39,24 +40,24 @@ struct Packet;
  * SocketHandler for all network sockets in OpenTTD.
  */
 class NetworkSocketHandler {
+private:
 	bool has_quit; ///< Whether the current client has quit/send a bad packet
+
 public:
 	/** Create a new unbound socket */
 	NetworkSocketHandler() { this->has_quit = false; }
 
 	/** Close the socket when destructing the socket handler */
-	virtual ~NetworkSocketHandler() { this->Close(); }
-
-	/** Really close the socket */
-	virtual void Close() {}
+	virtual ~NetworkSocketHandler() {}
 
 	/**
-	 * Close the current connection; for TCP this will be mostly equivalent
-	 * to Close(), but for UDP it just means the packet has to be dropped.
-	 * @param error Whether we quit under an error condition or not.
-	 * @return new status of the connection.
+	 * Mark the connection as closed.
+	 *
+	 * This doesn't mean the actual connection is closed, but just that we
+	 * act like it is. This is useful for UDP, which doesn't normally close
+	 * a socket, but its handler might need to pretend it does.
 	 */
-	virtual NetworkRecvStatus CloseConnection(bool error = true) { this->has_quit = true; return NETWORK_RECV_STATUS_OKAY; }
+	void MarkClosed() { this->has_quit = true; }
 
 	/**
 	 * Whether the current client connected to the socket has quit.
@@ -70,10 +71,6 @@ public:
 	 * Reopen the socket so we can send/receive stuff again.
 	 */
 	void Reopen() { this->has_quit = false; }
-
-	void SendGRFIdentifier(Packet *p, const GRFIdentifier *grf);
-	void ReceiveGRFIdentifier(Packet *p, GRFIdentifier *grf);
-	void SendCompanyInformation(Packet *p, const struct Company *c, const struct NetworkCompanyStats *stats, uint max_len = NETWORK_COMPANY_NAME_LENGTH);
 };
 
 #endif /* NETWORK_CORE_CORE_H */

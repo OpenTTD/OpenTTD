@@ -18,9 +18,9 @@
 #include <mutex>
 
 static struct {
-	fluid_settings_t* settings;    ///< FluidSynth settings handle
-	fluid_synth_t* synth;          ///< FluidSynth synthesizer handle
-	fluid_player_t* player;        ///< FluidSynth MIDI player handle
+	fluid_settings_t *settings;    ///< FluidSynth settings handle
+	fluid_synth_t *synth;          ///< FluidSynth synthesizer handle
+	fluid_player_t *player;        ///< FluidSynth MIDI player handle
 	std::mutex synth_mutex;        ///< Guard mutex for synth access
 } _midi; ///< Metadata about the midi we're playing.
 
@@ -54,7 +54,7 @@ static void RenderMusicStream(int16 *buffer, size_t samples)
 {
 	std::unique_lock<std::mutex> lock{ _midi.synth_mutex, std::try_to_lock };
 
-	if (!lock.owns_lock() || !_midi.synth || !_midi.player) return;
+	if (!lock.owns_lock() || _midi.synth == nullptr || _midi.player == nullptr) return;
 	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
 }
 
@@ -65,26 +65,26 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 	const char *sfont_name = GetDriverParam(param, "soundfont");
 	int sfont_id;
 
-	DEBUG(driver, 1, "Fluidsynth: sf %s", sfont_name);
+	Debug(driver, 1, "Fluidsynth: sf {}", sfont_name != nullptr ? sfont_name : "(null)");
 
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
-	if (!_midi.settings) return "Could not create midi settings";
+	if (_midi.settings == nullptr) return "Could not create midi settings";
 	/* Don't try to lock sample data in memory, OTTD usually does not run with privileges allowing that */
 	fluid_settings_setint(_midi.settings, "synth.lock-memory", 0);
 
 	/* Install the music render routine and set up the samplerate */
 	uint32 samplerate = MxSetMusicSource(RenderMusicStream);
 	fluid_settings_setnum(_midi.settings, "synth.sample-rate", samplerate);
-	DEBUG(driver, 1, "Fluidsynth: samplerate %.0f", (float)samplerate);
+	Debug(driver, 1, "Fluidsynth: samplerate {:.0f}", (float)samplerate);
 
 	/* Create the synthesizer. */
 	_midi.synth = new_fluid_synth(_midi.settings);
-	if (!_midi.synth) return "Could not open synth";
+	if (_midi.synth == nullptr) return "Could not open synth";
 
 	/* Load a SoundFont and reset presets (so that new instruments
 	 * get used from the SoundFont) */
-	if (!sfont_name) {
+	if (sfont_name == nullptr) {
 		sfont_id = FLUID_FAILED;
 
 		/* Try loading the default soundfont registered with FluidSynth. */
@@ -142,19 +142,19 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 
 	_midi.player = new_fluid_player(_midi.synth);
-	if (!_midi.player) {
-		DEBUG(driver, 0, "Could not create midi player");
+	if (_midi.player == nullptr) {
+		Debug(driver, 0, "Could not create midi player");
 		return;
 	}
 
 	if (fluid_player_add(_midi.player, filename.c_str()) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not open music file");
+		Debug(driver, 0, "Could not open music file");
 		delete_fluid_player(_midi.player);
 		_midi.player = nullptr;
 		return;
 	}
 	if (fluid_player_play(_midi.player) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not start midi player");
+		Debug(driver, 0, "Could not start midi player");
 		delete_fluid_player(_midi.player);
 		_midi.player = nullptr;
 		return;
@@ -165,12 +165,10 @@ void MusicDriver_FluidSynth::StopSong()
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 
-	if (!_midi.player) return;
+	if (_midi.player == nullptr) return;
 
 	fluid_player_stop(_midi.player);
-	if (fluid_player_join(_midi.player) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not join player");
-	}
+	/* No fluid_player_join needed */
 	delete_fluid_player(_midi.player);
 	fluid_synth_system_reset(_midi.synth);
 	fluid_synth_all_sounds_off(_midi.synth, -1);
@@ -180,7 +178,7 @@ void MusicDriver_FluidSynth::StopSong()
 bool MusicDriver_FluidSynth::IsSongPlaying()
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
-	if (!_midi.player) return false;
+	if (_midi.player == nullptr) return false;
 
 	return fluid_player_get_status(_midi.player) == FLUID_PLAYER_PLAYING;
 }
@@ -196,6 +194,6 @@ void MusicDriver_FluidSynth::SetVolume(byte vol)
 	 * and 0.2. */
 	double gain = (1.0 * vol) / (128.0 * 5.0);
 	if (fluid_settings_setnum(_midi.settings, "synth.gain", gain) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not set volume");
+		Debug(driver, 0, "Could not set volume");
 	}
 }

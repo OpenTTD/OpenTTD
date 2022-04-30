@@ -14,15 +14,16 @@
 
 /** Modes of the in-game console. */
 enum IConsoleModes {
-	ICONSOLE_FULL,   ///< In-game console is closed.
+	ICONSOLE_FULL,   ///< In-game console is opened, whole screen.
 	ICONSOLE_OPENED, ///< In-game console is opened, upper 1/3 of the screen.
-	ICONSOLE_CLOSED, ///< In-game console is opened, whole screen.
+	ICONSOLE_CLOSED, ///< In-game console is closed.
 };
 
 /* Colours of the console messages. */
 static const TextColour CC_DEFAULT = TC_SILVER;      ///< Default colour of the console.
 static const TextColour CC_ERROR   = TC_RED;         ///< Colour for error lines.
 static const TextColour CC_WARNING = TC_LIGHT_BLUE;  ///< Colour for warning lines.
+static const TextColour CC_HELP    = TC_LIGHT_BLUE;  ///< Colour for help lines.
 static const TextColour CC_INFO    = TC_YELLOW;      ///< Colour for information lines.
 static const TextColour CC_DEBUG   = TC_LIGHT_BROWN; ///< Colour for debug output.
 static const TextColour CC_COMMAND = TC_GOLD;        ///< Colour for the console's commands.

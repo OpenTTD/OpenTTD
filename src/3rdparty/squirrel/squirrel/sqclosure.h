@@ -32,7 +32,7 @@ public:
 	bool Save(SQVM *v,SQUserPointer up,SQWRITEFUNC write);
 	static bool Load(SQVM *v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &ret);
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 	void Finalize(){_outervalues.resize(0); }
 #endif
 	SQObjectPtr _env;
@@ -45,7 +45,7 @@ struct SQGenerator : public CHAINABLE_OBJ
 {
 	enum SQGeneratorState{eRunning,eSuspended,eDead};
 private:
-	SQGenerator(SQSharedState *ss,SQClosure *closure){_closure=closure;_state=eRunning;_ci._generator=NULL;INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);}
+	SQGenerator(SQSharedState *ss,SQClosure *closure){_closure=closure;_state=eRunning;_ci._generator=nullptr;INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);}
 public:
 	static SQGenerator *Create(SQSharedState *ss,SQClosure *closure){
 		SQGenerator *nc=(SQGenerator*)SQ_MALLOC(sizeof(SQGenerator));
@@ -66,7 +66,7 @@ public:
 	bool Yield(SQVM *v);
 	bool Resume(SQVM *v,SQInteger target);
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 	void Finalize(){_stack.resize(0);_closure=_null_;}
 #endif
 	SQObjectPtr _closure;
@@ -106,7 +106,7 @@ public:
 		sq_delete(this,SQNativeClosure);
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 	void Finalize(){_outervalues.resize(0);}
 #endif
 	SQInteger _nparamscheck;

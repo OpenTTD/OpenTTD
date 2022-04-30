@@ -144,7 +144,7 @@ void UniscribeResetScriptCache(FontSize size)
 /** Load the matching native Windows font. */
 static HFONT HFontFromFont(Font *font)
 {
-	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect((const PLOGFONT)font->fc->GetOSHandle());
+	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect(reinterpret_cast<PLOGFONT>(const_cast<void *>(font->fc->GetOSHandle())));
 
 	LOGFONT logfont;
 	ZeroMemory(&logfont, sizeof(LOGFONT));

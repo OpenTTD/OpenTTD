@@ -14,6 +14,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "zoom_func.h"
+#include "train_cmd.h"
 
 #include "table/strings.h"
 
@@ -21,13 +22,12 @@
 
 /**
  * Callback for building wagons.
- * @param result The result of the command.
- * @param tile   The tile the command was executed on.
- * @param p1 Additional data for the command (for the #CommandProc)
- * @param p2 Additional data for the command (for the #CommandProc)
  * @param cmd Unused.
+ * @param result The result of the command.
+ * @param new_veh_id ID of the ne vehicle.
+ * @param tile   The tile the command was executed on.
  */
-void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, TileIndex tile, EngineID, bool, CargoID, ClientID)
 {
 	if (result.Failed()) return;
 
@@ -44,7 +44,7 @@ void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
 	if (found != nullptr) {
 		found = found->Last();
 		/* put the new wagon at the end of the loco. */
-		DoCommandP(0, _new_vehicle_id, found->index, CMD_MOVE_RAIL_VEHICLE);
+		Command<CMD_MOVE_RAIL_VEHICLE>::Post(new_veh_id, found->index, false);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 }

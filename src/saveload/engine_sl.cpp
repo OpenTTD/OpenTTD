@@ -8,6 +8,10 @@
 /** @file engine_sl.cpp Code handling saving and loading of engines */
 
 #include "../stdafx.h"
+
+#include "saveload.h"
+#include "compat/engine_sl_compat.h"
+
 #include "saveload_internal.h"
 #include "../engine_base.h"
 #include "../string_func.h"
@@ -28,22 +32,14 @@ static const SaveLoad _engine_desc[] = {
 	     SLE_VAR(Engine, duration_phase_1,    SLE_UINT16),
 	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
 	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
-
-	SLE_CONDNULL(1,                                                        SL_MIN_VERSION, SLV_121),
 	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	SLE_CONDNULL(1,                                                        SL_MIN_VERSION, SLV_179), // old preview_company_rank
 	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                SLV_179, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 SLV_179, SL_MAX_VERSION),
 	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	SLE_CONDNULL(1,                                                        SL_MIN_VERSION,  SLV_45),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SLV_104, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SLV_193, SL_MAX_VERSION),
 	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_84, SL_MAX_VERSION),
-
-	SLE_CONDNULL(16,                                                       SLV_2, SLV_144), // old reserved space
-
-	SLE_END()
 };
 
 static std::vector<Engine*> _temp_engine;
@@ -84,33 +80,41 @@ Engine *GetTempDataEngine(EngineID index)
 	}
 }
 
-static void Save_ENGN()
-{
-	for (Engine *e : Engine::Iterate()) {
-		SlSetArrayIndex(e->index);
-		SlObject(e, _engine_desc);
-	}
-}
+struct ENGNChunkHandler : ChunkHandler {
+	ENGNChunkHandler() : ChunkHandler('ENGN', CH_TABLE) {}
 
-static void Load_ENGN()
-{
-	/* As engine data is loaded before engines are initialized we need to load
-	 * this information into a temporary array. This is then copied into the
-	 * engine pool after processing NewGRFs by CopyTempEngineData(). */
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Engine *e = GetTempDataEngine(index);
-		SlObject(e, _engine_desc);
+	void Save() const override
+	{
+		SlTableHeader(_engine_desc);
 
-		if (IsSavegameVersionBefore(SLV_179)) {
-			/* preview_company_rank was replaced with preview_company and preview_asked.
-			 * Just cancel any previews. */
-			e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
-			e->preview_company = INVALID_COMPANY;
-			e->preview_asked = (CompanyMask)-1;
+		for (Engine *e : Engine::Iterate()) {
+			SlSetArrayIndex(e->index);
+			SlObject(e, _engine_desc);
 		}
 	}
-}
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_desc, _engine_sl_compat);
+
+		/* As engine data is loaded before engines are initialized we need to load
+		 * this information into a temporary array. This is then copied into the
+		 * engine pool after processing NewGRFs by CopyTempEngineData(). */
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Engine *e = GetTempDataEngine(index);
+			SlObject(e, slt);
+
+			if (IsSavegameVersionBefore(SLV_179)) {
+				/* preview_company_rank was replaced with preview_company and preview_asked.
+				 * Just cancel any previews. */
+				e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
+				e->preview_company = INVALID_COMPANY;
+				e->preview_asked = (CompanyMask)-1;
+			}
+		}
+	}
+};
 
 /**
  * Copy data from temporary engine array into the real engine pool.
@@ -152,20 +156,24 @@ void ResetTempEngineData()
 	_temp_engine.clear();
 }
 
-static void Load_ENGS()
-{
-	/* Load old separate String ID list into a temporary array. This
-	 * was always 256 entries. */
-	StringID names[256];
+struct ENGSChunkHandler : ChunkHandler {
+	ENGSChunkHandler() : ChunkHandler('ENGS', CH_READONLY) {}
 
-	SlArray(names, lengthof(names), SLE_STRINGID);
+	void Load() const override
+	{
+		/* Load old separate String ID list into a temporary array. This
+		 * was always 256 entries. */
+		StringID names[256];
 
-	/* Copy each string into the temporary engine array. */
-	for (EngineID engine = 0; engine < lengthof(names); engine++) {
-		Engine *e = GetTempDataEngine(engine);
-		e->name = CopyFromOldName(names[engine]);
+		SlCopy(names, lengthof(names), SLE_STRINGID);
+
+		/* Copy each string into the temporary engine array. */
+		for (EngineID engine = 0; engine < lengthof(names); engine++) {
+			Engine *e = GetTempDataEngine(engine);
+			e->name = CopyFromOldName(names[engine]);
+		}
 	}
-}
+};
 
 /** Save and load the mapping between the engine id in the pool, and the grf file it came from. */
 static const SaveLoad _engine_id_mapping_desc[] = {
@@ -173,31 +181,43 @@ static const SaveLoad _engine_id_mapping_desc[] = {
 	SLE_VAR(EngineIDMapping, internal_id,   SLE_UINT16),
 	SLE_VAR(EngineIDMapping, type,          SLE_UINT8),
 	SLE_VAR(EngineIDMapping, substitute_id, SLE_UINT8),
-	SLE_END()
 };
 
-static void Save_EIDS()
-{
-	uint index = 0;
-	for (EngineIDMapping &eid : _engine_mngr) {
-		SlSetArrayIndex(index);
-		SlObject(&eid, _engine_id_mapping_desc);
-		index++;
+struct EIDSChunkHandler : ChunkHandler {
+	EIDSChunkHandler() : ChunkHandler('EIDS', CH_TABLE) {}
+
+	void Save() const override
+	{
+		SlTableHeader(_engine_id_mapping_desc);
+
+		uint index = 0;
+		for (EngineIDMapping &eid : _engine_mngr) {
+			SlSetArrayIndex(index);
+			SlObject(&eid, _engine_id_mapping_desc);
+			index++;
+		}
 	}
-}
 
-static void Load_EIDS()
-{
-	_engine_mngr.clear();
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_id_mapping_desc, _engine_id_mapping_sl_compat);
 
-	while (SlIterateArray() != -1) {
-		EngineIDMapping *eid = &_engine_mngr.emplace_back();
-		SlObject(eid, _engine_id_mapping_desc);
+		_engine_mngr.clear();
+
+		while (SlIterateArray() != -1) {
+			EngineIDMapping *eid = &_engine_mngr.emplace_back();
+			SlObject(eid, slt);
+		}
 	}
-}
-
-extern const ChunkHandler _engine_chunk_handlers[] = {
-	{ 'EIDS', Save_EIDS, Load_EIDS, nullptr, nullptr, CH_ARRAY          },
-	{ 'ENGN', Save_ENGN, Load_ENGN, nullptr, nullptr, CH_ARRAY          },
-	{ 'ENGS', nullptr,   Load_ENGS, nullptr, nullptr, CH_RIFF | CH_LAST },
 };
+
+static const EIDSChunkHandler EIDS;
+static const ENGNChunkHandler ENGN;
+static const ENGSChunkHandler ENGS;
+static const ChunkHandlerRef engine_chunk_handlers[] = {
+	EIDS,
+	ENGN,
+	ENGS,
+};
+
+extern const ChunkHandlerTable _engine_chunk_handlers(engine_chunk_handlers);

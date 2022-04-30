@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!-- derived from Iron Horse branch at https://github.com/andythenorth/iron-horse/tree/company_colour_indexes -->
+<head>
+	<title>OpenTTD Company Colour Indexes</title>
+	<meta charset="UTF-8" />
+<style>
+th { 
+	vertical-align: top; 
+	border-bottom:  solid 1px #ddd; 
+	padding-top:    30px; 
+	padding-right:  15px; 
+	text-align:     right;
+}
+tr.top td {
+	padding-top:    20px;
+}
+tr.bottom td {
+	border-bottom:  solid 1px #ddd; 
+	padding-bottom: 10px;
+}
+td {
+	text-align:     right;
+}
+span {
+	border:         solid 1px #000;
+	width:          32px;
+	height:         32px;
+	display:        inline-block;
+	vertical-align: top;
+	margin-left:    0px;
+}
+</style>
+</head>
+<body>
+	<h1>Company Colour Indexes</h1>
+	<p>Hex / dec indexes into the DOS palette</p>
+	<p>
+		Visual representation of values derived from <a href="https://github.com/frosch123/TTDViewer/blob/master/src/recolor.xml#L186">https://github.com/frosch123/TTDViewer/blob/master/src/recolor.xml#L186</a>
+	</p>
+	<table style="margin-top:30px;">
+		<tbody>
+			<tr class="top">
+				<th rowspan="3">COLOUR_DARK_BLUE</th>
+				<td><span style="background-color:rgb(  8,  24,  88)"></span></td>
+				<td><span style="background-color:rgb( 12,  36, 104)"></span></td>
+				<td><span style="background-color:rgb( 20,  52, 124)"></span></td>
+				<td><span style="background-color:rgb( 28,  68, 140)"></span></td>
+				<td><span style="background-color:rgb( 40,  92, 164)"></span></td>
+				<td><span style="background-color:rgb( 56, 120, 188)"></span></td>
+				<td><span style="background-color:rgb( 72, 152, 216)"></span></td>
+				<td><span style="background-color:rgb(100, 172, 224)"></span></td>
+			</tr>
+			<tr>
+				<td>0xc6</td>
+				<td>0xc7</td>
+				<td>0xc8</td>
+				<td>0xc9</td>
+				<td>0xca</td>
+				<td>0xcb</td>
+				<td>0xcc</td>
+				<td>0xcd</td>
+			</tr>
+			<tr class="bottom">
+				<td>198</td>
+				<td>199</td>
+				<td>200</td>
+				<td>201</td>
+				<td>202</td>
+				<td>203</td>
+				<td>204</td>
+				<td>205</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_PALE_GREEN</th>
+				<td><span style="background-color:rgb( 16,  52,  24)"></span></td>
+				<td><span style="background-color:rgb( 32,  72,  44)"></span></td>
+				<td><span style="background-color:rgb( 56,  96,  72)"></span></td>
+				<td><span style="background-color:rgb( 76, 116,  88)"></span></td>
+				<td><span style="background-color:rgb( 96, 136, 108)"></span></td>
+				<td><span style="background-color:rgb(120, 164, 136)"></span></td>
+				<td><span style="background-color:rgb(152, 192, 168)"></span></td>
+				<td><span style="background-color:rgb(184, 220, 200)"></span></td>
+			</tr>
+			<tr>
+				<td>0x60</td>
+				<td>0x61</td>
+				<td>0x62</td>
+				<td>0x63</td>
+				<td>0x64</td>
+				<td>0x65</td>
+				<td>0x66</td>
+				<td>0x67</td>
+			</tr>
+			<tr class="bottom">
+				<td>96</td>
+				<td>97</td>
+				<td>98</td>
+				<td>99</td>
+				<td>100</td>
+				<td>101</td>
+				<td>102</td>
+				<td>103</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_PINK</th>
+				<td><span style="background-color:rgb(112,  16,  32)"></span></td>
+				<td><span style="background-color:rgb(136,  32,  52)"></span></td>
+				<td><span style="background-color:rgb(160,  56,  76)"></span></td>
+				<td><span style="background-color:rgb(188,  84, 108)"></span></td>
+				<td><span style="background-color:rgb(204, 104, 124)"></span></td>
+				<td><span style="background-color:rgb(220, 132, 144)"></span></td>
+				<td><span style="background-color:rgb(236, 156, 164)"></span></td>
+				<td><span style="background-color:rgb(252, 188, 192)"></span></td>
+			</tr>
+			<tr>
+				<td>0x2a</td>
+				<td>0x2b</td>
+				<td>0x2c</td>
+				<td>0x2d</td>
+				<td>0x2e</td>
+				<td>0x2f</td>
+				<td>0x30</td>
+				<td>0x31</td>
+			</tr>
+			<tr class="bottom">
+				<td>42</td>
+				<td>43</td>
+				<td>44</td>
+				<td>45</td>
+				<td>46</td>
+				<td>47</td>
+				<td>48</td>
+				<td>49</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_YELLOW</th>
+				<td><span style="background-color:rgb(128,  68,   8)"></span></td>
+				<td><span style="background-color:rgb(156,  96,  16)"></span></td>
+				<td><span style="background-color:rgb(184, 120,  24)"></span></td>
+				<td><span style="background-color:rgb(212, 156,  32)"></span></td>
+				<td><span style="background-color:rgb(232, 184,  16)"></span></td>
+				<td><span style="background-color:rgb(252, 212,   0)"></span></td>
+				<td><span style="background-color:rgb(252, 248, 128)"></span></td>
+				<td><span style="background-color:rgb(252, 252, 192)"></span></td>
+			</tr>
+			<tr>
+				<td>0x3e</td>
+				<td>0x3f</td>
+				<td>0x40</td>
+				<td>0x41</td>
+				<td>0x42</td>
+				<td>0x43</td>
+				<td>0x44</td>
+				<td>0x45</td>
+			</tr>
+			<tr class="bottom">
+				<td>62</td>
+				<td>63</td>
+				<td>64</td>
+				<td>65</td>
+				<td>66</td>
+				<td>67</td>
+				<td>68</td>
+				<td>69</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_RED</th>
+				<td><span style="background-color:rgb( 92,   0,   0)"></span></td>
+				<td><span style="background-color:rgb(128,   0,   0)"></span></td>
+				<td><span style="background-color:rgb(160,   0,   0)"></span></td>
+				<td><span style="background-color:rgb(196,   0,   0)"></span></td>
+				<td><span style="background-color:rgb(224,   0,   0)"></span></td>
+				<td><span style="background-color:rgb(252,  52,  52)"></span></td>
+				<td><span style="background-color:rgb(252, 100,  88)"></span></td>
+				<td><span style="background-color:rgb(252, 144, 124)"></span></td>
+			</tr>
+			<tr>
+				<td>0xb3</td>
+				<td>0xb4</td>
+				<td>0xb5</td>
+				<td>0xb6</td>
+				<td>0xb7</td>
+				<td>0xa4</td>
+				<td>0xa5</td>
+				<td>0xa6</td>
+			</tr>
+			<tr class="bottom">
+				<td>179</td>
+				<td>180</td>
+				<td>181</td>
+				<td>182</td>
+				<td>183</td>
+				<td>164</td>
+				<td>165</td>
+				<td>166</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_LIGHT_BLUE</th>
+				<td><span style="background-color:rgb( 16,  64,  96)"></span></td>
+				<td><span style="background-color:rgb( 24,  80, 108)"></span></td>
+				<td><span style="background-color:rgb( 40,  96, 120)"></span></td>
+				<td><span style="background-color:rgb( 52, 112, 132)"></span></td>
+				<td><span style="background-color:rgb( 80, 140, 160)"></span></td>
+				<td><span style="background-color:rgb(116, 172, 192)"></span></td>
+				<td><span style="background-color:rgb(156, 204, 220)"></span></td>
+				<td><span style="background-color:rgb(204, 240, 252)"></span></td>
+			</tr>
+			<tr>
+				<td>0x9a</td>
+				<td>0x9b</td>
+				<td>0x9c</td>
+				<td>0x9d</td>
+				<td>0x9e</td>
+				<td>0x9f</td>
+				<td>0xa0</td>
+				<td>0xa1</td>
+			</tr>
+			<tr class="bottom">
+				<td>154</td>
+				<td>155</td>
+				<td>156</td>
+				<td>157</td>
+				<td>158</td>
+				<td>159</td>
+				<td>160</td>
+				<td>161</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_GREEN</th>
+				<td><span style="background-color:rgb( 32,  80,   4)"></span></td>
+				<td><span style="background-color:rgb( 48,  96,   4)"></span></td>
+				<td><span style="background-color:rgb( 64, 112,  12)"></span></td>
+				<td><span style="background-color:rgb( 84, 132,  20)"></span></td>
+				<td><span style="background-color:rgb( 92, 156,  52)"></span></td>
+				<td><span style="background-color:rgb(108, 176,  64)"></span></td>
+				<td><span style="background-color:rgb(124, 200,  76)"></span></td>
+				<td><span style="background-color:rgb(144, 224,  92)"></span></td>
+			</tr>
+			<tr>
+				<td>0x52</td>
+				<td>0x53</td>
+				<td>0x54</td>
+				<td>0x55</td>
+				<td>0xce</td>
+				<td>0xcf</td>
+				<td>0xd0</td>
+				<td>0xd1</td>
+			</tr>
+			<tr class="bottom">
+				<td>82</td>
+				<td>83</td>
+				<td>84</td>
+				<td>85</td>
+				<td>206</td>
+				<td>207</td>
+				<td>208</td>
+				<td>209</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_DARK_GREEN</th>
+				<td><span style="background-color:rgb( 28,  52,  24)"></span></td>
+				<td><span style="background-color:rgb( 44,  68,  32)"></span></td>
+				<td><span style="background-color:rgb( 60,  88,  48)"></span></td>
+				<td><span style="background-color:rgb( 80, 104,  60)"></span></td>
+				<td><span style="background-color:rgb(104, 124,  76)"></span></td>
+				<td><span style="background-color:rgb(128, 148,  92)"></span></td>
+				<td><span style="background-color:rgb(152, 176, 108)"></span></td>
+				<td><span style="background-color:rgb(180, 204, 124)"></span></td>
+			</tr>
+			<tr>
+				<td>0x58</td>
+				<td>0x59</td>
+				<td>0x5a</td>
+				<td>0x5b</td>
+				<td>0x5c</td>
+				<td>0x5d</td>
+				<td>0x5e</td>
+				<td>0x5f</td>
+			</tr>
+			<tr class="bottom">
+				<td>88</td>
+				<td>89</td>
+				<td>90</td>
+				<td>91</td>
+				<td>92</td>
+				<td>93</td>
+				<td>94</td>
+				<td>95</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_BLUE</th>
+				<td><span style="background-color:rgb(  0,  52, 160)"></span></td>
+				<td><span style="background-color:rgb(  0,  72, 184)"></span></td>
+				<td><span style="background-color:rgb(  0,  96, 212)"></span></td>
+				<td><span style="background-color:rgb( 24, 120, 220)"></span></td>
+				<td><span style="background-color:rgb( 56, 144, 232)"></span></td>
+				<td><span style="background-color:rgb( 88, 168, 240)"></span></td>
+				<td><span style="background-color:rgb(128, 196, 252)"></span></td>
+				<td><span style="background-color:rgb(188, 224, 252)"></span></td>
+			</tr>
+			<tr>
+				<td>0x92</td>
+				<td>0x93</td>
+				<td>0x94</td>
+				<td>0x95</td>
+				<td>0x96</td>
+				<td>0x97</td>
+				<td>0x98</td>
+				<td>0x99</td>
+			</tr>
+			<tr class="bottom">
+				<td>146</td>
+				<td>147</td>
+				<td>148</td>
+				<td>149</td>
+				<td>150</td>
+				<td>151</td>
+				<td>152</td>
+				<td>153</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_CREAM</th>
+				<td><span style="background-color:rgb(116,  68,  40)"></span></td>
+				<td><span style="background-color:rgb(136,  84,  56)"></span></td>
+				<td><span style="background-color:rgb(164,  96,  64)"></span></td>
+				<td><span style="background-color:rgb(184, 112,  80)"></span></td>
+				<td><span style="background-color:rgb(204, 128,  96)"></span></td>
+				<td><span style="background-color:rgb(212, 148, 112)"></span></td>
+				<td><span style="background-color:rgb(224, 168, 128)"></span></td>
+				<td><span style="background-color:rgb(236, 188, 148)"></span></td>
+			</tr>
+			<tr>
+				<td>0x72</td>
+				<td>0x73</td>
+				<td>0x74</td>
+				<td>0x75</td>
+				<td>0x76</td>
+				<td>0x77</td>
+				<td>0x78</td>
+				<td>0x79</td>
+			</tr>
+			<tr class="bottom">
+				<td>114</td>
+				<td>115</td>
+				<td>116</td>
+				<td>117</td>
+				<td>118</td>
+				<td>119</td>
+				<td>120</td>
+				<td>121</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_MAUVE</th>
+				<td><span style="background-color:rgb( 36,  40,  68)"></span></td>
+				<td><span style="background-color:rgb( 48,  52,  84)"></span></td>
+				<td><span style="background-color:rgb( 64,  64, 100)"></span></td>
+				<td><span style="background-color:rgb( 80,  80, 116)"></span></td>
+				<td><span style="background-color:rgb(100, 100, 136)"></span></td>
+				<td><span style="background-color:rgb(132, 132, 164)"></span></td>
+				<td><span style="background-color:rgb(172, 172, 192)"></span></td>
+				<td><span style="background-color:rgb(212, 212, 224)"></span></td>
+			</tr>
+			<tr>
+				<td>0x80</td>
+				<td>0x81</td>
+				<td>0x82</td>
+				<td>0x83</td>
+				<td>0x84</td>
+				<td>0x85</td>
+				<td>0x86</td>
+				<td>0x87</td>
+			</tr>
+			<tr class="bottom">
+				<td>128</td>
+				<td>129</td>
+				<td>130</td>
+				<td>131</td>
+				<td>132</td>
+				<td>133</td>
+				<td>134</td>
+				<td>135</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_PURPLE</th>
+				<td><span style="background-color:rgb( 40,  20, 112)"></span></td>
+				<td><span style="background-color:rgb( 64,  44, 144)"></span></td>
+				<td><span style="background-color:rgb( 88,  64, 172)"></span></td>
+				<td><span style="background-color:rgb(104,  76, 196)"></span></td>
+				<td><span style="background-color:rgb(120,  88, 224)"></span></td>
+				<td><span style="background-color:rgb(140, 104, 252)"></span></td>
+				<td><span style="background-color:rgb(160, 136, 252)"></span></td>
+				<td><span style="background-color:rgb(188, 168, 252)"></span></td>
+			</tr>
+			<tr>
+				<td>0x88</td>
+				<td>0x89</td>
+				<td>0x8a</td>
+				<td>0x8b</td>
+				<td>0x8c</td>
+				<td>0x8d</td>
+				<td>0x8e</td>
+				<td>0x8f</td>
+			</tr>
+			<tr class="bottom">
+				<td>136</td>
+				<td>137</td>
+				<td>138</td>
+				<td>139</td>
+				<td>140</td>
+				<td>141</td>
+				<td>142</td>
+				<td>143</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_ORANGE</th>
+				<td><span style="background-color:rgb(184, 120,  24)"></span></td>
+				<td><span style="background-color:rgb(204, 136,   8)"></span></td>
+				<td><span style="background-color:rgb(228, 144,   4)"></span></td>
+				<td><span style="background-color:rgb(252, 156,   0)"></span></td>
+				<td><span style="background-color:rgb(252, 176,  48)"></span></td>
+				<td><span style="background-color:rgb(252, 196, 100)"></span></td>
+				<td><span style="background-color:rgb(252, 216, 152)"></span></td>
+				<td><span style="background-color:rgb(244, 220, 176)"></span></td>
+			</tr>
+			<tr>
+				<td>0x40</td>
+				<td>0xc0</td>
+				<td>0xc1</td>
+				<td>0xc2</td>
+				<td>0xc3</td>
+				<td>0xc4</td>
+				<td>0xc5</td>
+				<td>0x27</td>
+			</tr>
+			<tr class="bottom">
+				<td>64</td>
+				<td>192</td>
+				<td>193</td>
+				<td>194</td>
+				<td>195</td>
+				<td>196</td>
+				<td>197</td>
+				<td>39</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_BROWN</th>
+				<td><span style="background-color:rgb( 72,  44,   4)"></span></td>
+				<td><span style="background-color:rgb( 88,  60,  20)"></span></td>
+				<td><span style="background-color:rgb(104,  80,  44)"></span></td>
+				<td><span style="background-color:rgb(124, 104,  72)"></span></td>
+				<td><span style="background-color:rgb(152, 132,  92)"></span></td>
+				<td><span style="background-color:rgb(184, 160, 120)"></span></td>
+				<td><span style="background-color:rgb(212, 188, 148)"></span></td>
+				<td><span style="background-color:rgb(244, 220, 176)"></span></td>
+			</tr>
+			<tr>
+				<td>0x20</td>
+				<td>0x21</td>
+				<td>0x22</td>
+				<td>0x23</td>
+				<td>0x24</td>
+				<td>0x25</td>
+				<td>0x26</td>
+				<td>0x27</td>
+			</tr>
+			<tr class="bottom">
+				<td>32</td>
+				<td>33</td>
+				<td>34</td>
+				<td>35</td>
+				<td>36</td>
+				<td>37</td>
+				<td>38</td>
+				<td>39</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_GREY</th>
+				<td><span style="background-color:rgb( 64,  64,  64)"></span></td>
+				<td><span style="background-color:rgb( 80,  80,  80)"></span></td>
+				<td><span style="background-color:rgb(100, 100, 100)"></span></td>
+				<td><span style="background-color:rgb(116, 116, 116)"></span></td>
+				<td><span style="background-color:rgb(132, 132, 132)"></span></td>
+				<td><span style="background-color:rgb(148, 148, 148)"></span></td>
+				<td><span style="background-color:rgb(168, 168, 168)"></span></td>
+				<td><span style="background-color:rgb(184, 184, 184)"></span></td>
+			</tr>
+			<tr>
+				<td>0x4</td>
+				<td>0x5</td>
+				<td>0x6</td>
+				<td>0x7</td>
+				<td>0x8</td>
+				<td>0x9</td>
+				<td>0xa</td>
+				<td>0xb</td>
+			</tr>
+			<tr class="bottom">
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+				<td>11</td>
+			</tr>
+			
+			<tr class="top">
+				<th rowspan="3">COLOUR_WHITE</th>
+				<td><span style="background-color:rgb(132, 132, 132)"></span></td>
+				<td><span style="background-color:rgb(148, 148, 148)"></span></td>
+				<td><span style="background-color:rgb(168, 168, 168)"></span></td>
+				<td><span style="background-color:rgb(184, 184, 184)"></span></td>
+				<td><span style="background-color:rgb(200, 200, 200)"></span></td>
+				<td><span style="background-color:rgb(216, 216, 216)"></span></td>
+				<td><span style="background-color:rgb(232, 232, 232)"></span></td>
+				<td><span style="background-color:rgb(252, 252, 252)"></span></td>
+			</tr>
+			<tr>
+				<td>0x8</td>
+				<td>0x9</td>
+				<td>0xa</td>
+				<td>0xb</td>
+				<td>0xc</td>
+				<td>0xd</td>
+				<td>0xe</td>
+				<td>0xf</td>
+			</tr>
+			<tr class="bottom">
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>14</td>
+				<td>15</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

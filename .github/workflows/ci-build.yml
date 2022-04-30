@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:2.0.10
+      image: emscripten/emsdk:2.0.31
 
     steps:
     - name: Checkout
@@ -26,7 +26,12 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 2.0.10-${{ runner.os }}
+        key: 2.0.31-${{ runner.os }}
+
+    - name: Patch Emscripten to support LZMA
+      run: |
+        cd /emsdk/upstream/emscripten
+        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-liblzma.patch
 
     - name: Build (host tools)
       run: |
@@ -77,7 +82,7 @@ jobs:
           libsdl: libsdl1.2-dev
         - compiler: gcc
           cxxcompiler: g++
-          extra-cmake-parameters: -DOPTION_DEDICATED=ON
+          extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG"
 
     runs-on: ubuntu-20.04
     env:
@@ -143,7 +148,7 @@ jobs:
     - name: Test
       run: |
         cd build
-        ctest -j $(nproc)
+        ctest -j $(nproc) --timeout 120
 
   macos:
     name: Mac OS
@@ -157,7 +162,7 @@ jobs:
 
     runs-on: macos-latest
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.9
+      MACOSX_DEPLOYMENT_TARGET: 10.14
 
     steps:
     - name: Checkout
@@ -224,7 +229,7 @@ jobs:
     - name: Test
       run: |
         cd build
-        ctest -j $(sysctl -n hw.logicalcpu)
+        ctest -j $(sysctl -n hw.logicalcpu) --timeout 120
 
   windows:
     name: Windows
@@ -232,7 +237,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, windows-2016]
+        os: [windows-latest, windows-2019]
         arch: [x86, x64]
 
     runs-on: ${{ matrix.os }}
@@ -314,4 +319,93 @@ jobs:
       shell: bash
       run: |
         cd ${GITHUB_WORKSPACE}/build
-        ctest
+        ctest --timeout 120
+
+
+  msys2:
+    name: msys2
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - msystem: MINGW64
+            arch: x86_64
+          - msystem: MINGW32
+            arch: i686
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{ matrix.msystem }}
+        release: false
+        install: >-
+          git
+          make
+          mingw-w64-${{ matrix.arch }}-cmake
+          mingw-w64-${{ matrix.arch }}-gcc
+          mingw-w64-${{ matrix.arch }}-lzo2
+          mingw-w64-${{ matrix.arch }}-libpng
+
+    - name: Install OpenGFX
+      shell: bash
+      run: |
+        mkdir -p "C:/Users/Public/Documents/OpenTTD/baseset"
+        cd "C:/Users/Public/Documents/OpenTTD/baseset"
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      shell: msys2 {0}
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. -G"MSYS Makefiles"
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
+
+    - name: Test
+      shell: msys2 {0}
+      run: |
+        cd build
+        ctest -j $(nproc) --timeout 120
+
+  check_annotations:
+    name: Check Annotations
+    needs:
+    - emscripten
+    - linux
+    - macos
+    - windows
+    - msys2
+
+    if: always() && github.event_name == 'pull_request'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check annotations
+      uses: OpenTTD/actions/annotation-check@v2

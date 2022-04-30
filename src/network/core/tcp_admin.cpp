@@ -30,18 +30,12 @@ static_assert((int)CRR_END       == (int)ADMIN_CRR_END);
 NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s) : status(ADMIN_STATUS_INACTIVE)
 {
 	this->sock = s;
-	this->admin_name[0] = '\0';
-	this->admin_version[0] = '\0';
-}
-
-NetworkAdminSocketHandler::~NetworkAdminSocketHandler()
-{
 }
 
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool error)
 {
 	delete this;
-	return NETWORK_RECV_STATUS_CONN_LOST;
+	return NETWORK_RECV_STATUS_CLIENT_QUIT;
 }
 
 /**
@@ -59,6 +53,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY: return this->Receive_ADMIN_UPDATE_FREQUENCY(p);
 		case ADMIN_PACKET_ADMIN_POLL:             return this->Receive_ADMIN_POLL(p);
 		case ADMIN_PACKET_ADMIN_CHAT:             return this->Receive_ADMIN_CHAT(p);
+		case ADMIN_PACKET_ADMIN_EXTERNAL_CHAT:    return this->Receive_ADMIN_EXTERNAL_CHAT(p);
 		case ADMIN_PACKET_ADMIN_RCON:             return this->Receive_ADMIN_RCON(p);
 		case ADMIN_PACKET_ADMIN_GAMESCRIPT:       return this->Receive_ADMIN_GAMESCRIPT(p);
 		case ADMIN_PACKET_ADMIN_PING:             return this->Receive_ADMIN_PING(p);
@@ -93,9 +88,9 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[tcp/admin] received invalid packet type %d from '%s' (%s)", type, this->admin_name, this->admin_version);
+				Debug(net, 0, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
 			} else {
-				DEBUG(net, 0, "[tcp/admin] received illegal packet from '%s' (%s)", this->admin_name, this->admin_version);
+				Debug(net, 0, "[tcp/admin] Received illegal packet from '{}' ({})", this->admin_name, this->admin_version);
 			}
 
 			this->CloseConnection();
@@ -129,7 +124,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
  */
 NetworkRecvStatus NetworkAdminSocketHandler::ReceiveInvalidPacket(PacketAdminType type)
 {
-	DEBUG(net, 0, "[tcp/admin] received illegal packet type %d from admin %s (%s)", type, this->admin_name, this->admin_version);
+	Debug(net, 0, "[tcp/admin] Received illegal packet type {} from admin {} ({})", type, this->admin_name, this->admin_version);
 	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 
@@ -138,6 +133,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet *p) { ret
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_POLL); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_CHAT); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_EXTERNAL_CHAT); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_RCON); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_GAMESCRIPT); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_PING); }

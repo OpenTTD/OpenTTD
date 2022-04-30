@@ -303,8 +303,8 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 		/* Get town zone and Manhattan distance of closest town */
 		case 0x45: return GetTownRadiusGroup(t, this->tile) << 16 | std::min(DistanceManhattan(this->tile, t->xy), 0xFFFFu);
 
-		/* Get square of Euclidian distance of closes town */
-		case 0x46: return GetTownRadiusGroup(t, this->tile) << 16 | std::min(DistanceSquare(this->tile, t->xy), 0xFFFFu);
+		/* Get square of Euclidian distance of closest town */
+		case 0x46: return DistanceSquare(this->tile, t->xy);
 
 		/* Object colour */
 		case 0x47: return this->obj->colour;
@@ -335,7 +335,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 	}
 
 unhandled:
-	DEBUG(grf, 1, "Unhandled object variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled object variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;
@@ -554,7 +554,7 @@ void TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const Obj
 {
 	if (!HasBit(spec->animation.triggers, trigger)) return;
 
-	TILE_AREA_LOOP(tile, o->location) {
+	for (TileIndex tile : o->location) {
 		TriggerObjectTileAnimation(o, tile, trigger, spec);
 	}
 }

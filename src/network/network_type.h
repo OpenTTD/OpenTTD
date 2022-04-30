@@ -10,8 +10,6 @@
 #ifndef NETWORK_TYPE_H
 #define NETWORK_TYPE_H
 
-#include "core/game.h"
-
 /** How many clients can we have */
 static const uint MAX_CLIENTS = 255;
 
@@ -33,6 +31,16 @@ enum NetworkVehicleType {
 	NETWORK_VEH_SHIP,
 
 	NETWORK_VEH_END
+};
+
+/**
+ * Game type the server can be using.
+ * Used on the network protocol to communicate with Game Coordinator.
+ */
+enum ServerGameType : uint8 {
+	SERVER_GAME_TYPE_LOCAL = 0,
+	SERVER_GAME_TYPE_PUBLIC,
+	SERVER_GAME_TYPE_INVITE_ONLY,
 };
 
 /** 'Unique' identifier to be given to clients */
@@ -62,8 +70,8 @@ struct NetworkCompanyStats {
 
 /** Some state information of a company, especially for servers */
 struct NetworkCompanyState {
-	char password[NETWORK_PASSWORD_LENGTH];         ///< The password for the company
-	uint16 months_empty;                            ///< How many months the company is empty
+	std::string password; ///< The password for the company
+	uint16 months_empty;  ///< How many months the company is empty
 };
 
 struct NetworkClientInfo;
@@ -101,6 +109,7 @@ enum NetworkAction {
 	NETWORK_ACTION_COMPANY_JOIN,
 	NETWORK_ACTION_COMPANY_NEW,
 	NETWORK_ACTION_KICKED,
+	NETWORK_ACTION_EXTERNAL_CHAT,
 };
 
 /**
@@ -132,6 +141,7 @@ enum NetworkErrorCode {
 	NETWORK_ERROR_TIMEOUT_COMPUTER,
 	NETWORK_ERROR_TIMEOUT_MAP,
 	NETWORK_ERROR_TIMEOUT_JOIN,
+	NETWORK_ERROR_INVALID_CLIENT_NAME,
 
 	NETWORK_ERROR_END,
 };

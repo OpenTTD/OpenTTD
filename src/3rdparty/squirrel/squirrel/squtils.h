@@ -18,7 +18,7 @@ template<typename T> class sqvector
 public:
 	sqvector()
 	{
-		_vals = NULL;
+		_vals = nullptr;
 		_size = 0;
 		_allocated = 0;
 	}

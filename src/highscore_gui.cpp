@@ -21,6 +21,7 @@
 #include "strings_func.h"
 #include "hotkeys.h"
 #include "zoom_func.h"
+#include "misc_cmd.h"
 
 #include "widgets/highscore_widget.h"
 
@@ -64,7 +65,7 @@ struct EndGameHighScoreBaseWindow : Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		delete this;
+		this->Close();
 	}
 
 	EventState OnKeyPress(WChar key, uint16 keycode) override
@@ -79,7 +80,7 @@ struct EndGameHighScoreBaseWindow : Window {
 			case WKC_RETURN:
 			case WKC_ESC:
 			case WKC_SPACE:
-				delete this;
+				this->Close();
 				return ES_HANDLED;
 
 			default:
@@ -96,7 +97,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 	EndGameWindow(WindowDesc *desc) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* Pause in single-player to have a look at the highscore at your own leisure */
-		if (!_networking) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		if (!_networking) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 
 		this->background_img = SPR_TYCOON_IMG1_BEGIN;
 
@@ -122,10 +123,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		MarkWholeScreenDirty();
 	}
 
-	~EndGameWindow()
+	void Close() override
 	{
-		if (!_networking) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
+		if (!_networking) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false); // unpause
 		ShowHighscoreTable(this->window_number, this->rank);
+		this->EndGameHighScoreBaseWindow::Close();
 	}
 
 	void OnPaint() override
@@ -158,7 +160,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	{
 		/* pause game to show the chart */
 		this->game_paused_by_player = _pause_mode == PM_PAUSED_NORMAL;
-		if (!_networking && !this->game_paused_by_player) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		if (!_networking && !this->game_paused_by_player) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 
 		/* Close all always on-top windows to get a clean screen */
 		if (_game_mode != GM_MENU) HideVitalWindows();
@@ -169,11 +171,13 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->rank = ranking;
 	}
 
-	~HighScoreWindow()
+	void Close() override
 	{
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
-		if (!_networking && !this->game_paused_by_player) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
+		if (!_networking && !this->game_paused_by_player) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false); // unpause
+
+		this->EndGameHighScoreBaseWindow::Close();
 	}
 
 	void OnPaint() override
@@ -205,7 +209,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 };
 
 static const NWidgetPart _nested_highscore_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetMinimalSize(641, 481), SetResize(1, 1), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
 static WindowDesc _highscore_desc(
@@ -229,7 +233,7 @@ static WindowDesc _endgame_desc(
  */
 void ShowHighscoreTable(int difficulty, int8 ranking)
 {
-	DeleteWindowByClass(WC_HIGHSCORE);
+	CloseWindowByClass(WC_HIGHSCORE);
 	new HighScoreWindow(&_highscore_desc, difficulty, ranking);
 }
 
@@ -243,6 +247,6 @@ void ShowEndGameChart()
 	if (_network_dedicated || (!_networking && !Company::IsValidID(_local_company))) return;
 
 	HideVitalWindows();
-	DeleteWindowByClass(WC_ENDSCREEN);
+	CloseWindowByClass(WC_ENDSCREEN);
 	new EndGameWindow(&_endgame_desc);
 }

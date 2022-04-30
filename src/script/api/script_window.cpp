@@ -20,11 +20,11 @@
 	if (ScriptGame::IsMultiplayer()) return;
 
 	if (number == NUMBER_ALL) {
-		DeleteWindowByClass((::WindowClass)window);
+		CloseWindowByClass((::WindowClass)window);
 		return;
 	}
 
-	DeleteWindowById((::WindowClass)window, number);
+	CloseWindowById((::WindowClass)window, number);
 }
 
 /* static */ bool ScriptWindow::IsOpen(WindowClass window, uint32 number)

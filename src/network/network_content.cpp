@@ -56,27 +56,31 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	ci->id       = (ContentID)p->Recv_uint32();
 	ci->filesize = p->Recv_uint32();
 
-	p->Recv_string(ci->name, lengthof(ci->name));
-	p->Recv_string(ci->version, lengthof(ci->version));
-	p->Recv_string(ci->url, lengthof(ci->url));
-	p->Recv_string(ci->description, lengthof(ci->description), SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	ci->name        = p->Recv_string(NETWORK_CONTENT_NAME_LENGTH);
+	ci->version     = p->Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
+	ci->url         = p->Recv_string(NETWORK_CONTENT_URL_LENGTH);
+	ci->description = p->Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p->Recv_uint32();
 	for (uint j = 0; j < sizeof(ci->md5sum); j++) {
 		ci->md5sum[j] = p->Recv_uint8();
 	}
 
-	ci->dependency_count = p->Recv_uint8();
-	ci->dependencies = MallocT<ContentID>(ci->dependency_count);
-	for (uint i = 0; i < ci->dependency_count; i++) ci->dependencies[i] = (ContentID)p->Recv_uint32();
+	uint dependency_count = p->Recv_uint8();
+	ci->dependencies.reserve(dependency_count);
+	for (uint i = 0; i < dependency_count; i++) {
+		ContentID dependency_cid = (ContentID)p->Recv_uint32();
+		ci->dependencies.push_back(dependency_cid);
+		this->reverse_dependency_map.insert({ dependency_cid, ci->id });
+	}
 
-	ci->tag_count = p->Recv_uint8();
-	ci->tags = MallocT<char[32]>(ci->tag_count);
-	for (uint i = 0; i < ci->tag_count; i++) p->Recv_string(ci->tags[i], lengthof(*ci->tags));
+	uint tag_count = p->Recv_uint8();
+	ci->tags.reserve(tag_count);
+	for (uint i = 0; i < tag_count; i++) ci->tags.push_back(p->Recv_string(NETWORK_CONTENT_TAG_LENGTH));
 
 	if (!ci->IsValid()) {
 		delete ci;
-		this->Close();
+		this->CloseConnection();
 		return false;
 	}
 
@@ -143,16 +147,15 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 		if (ici->type == ci->type && ici->unique_id == ci->unique_id &&
 				memcmp(ci->md5sum, ici->md5sum, sizeof(ci->md5sum)) == 0) {
 			/* Preserve the name if possible */
-			if (StrEmpty(ci->name)) strecpy(ci->name, ici->name, lastof(ci->name));
+			if (ci->name.empty()) ci->name = ici->name;
 			if (ici->IsSelected()) ci->state = ici->state;
 
 			/*
 			 * As ici might be selected by the content window we cannot delete that.
 			 * However, we want to keep most of the values of ci, except the values
 			 * we (just) already preserved.
-			 * So transfer data and ownership of allocated memory from ci to ici.
 			 */
-			ici->TransferFrom(ci);
+			*ici = *ci;
 			delete ci;
 
 			this->OnReceiveContentInfo(ici);
@@ -169,8 +172,10 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	this->infos.push_back(ci);
 
 	/* Incoming data means that we might need to reconsider dependencies */
-	for (ContentInfo *ici : this->infos) {
-		this->CheckDependencyState(ici);
+	ConstContentVector parents;
+	this->ReverseLookupTreeDependency(parents, ci);
+	for (const ContentInfo *ici : parents) {
+		this->CheckDependencyState(const_cast<ContentInfo *>(ici));
 	}
 
 	this->OnReceiveContentInfo(ci);
@@ -202,7 +207,20 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 
 	Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_LIST);
 	p->Send_uint8 ((byte)type);
-	p->Send_uint32(_openttd_newgrf_version);
+	p->Send_uint32(0xffffffff);
+	p->Send_uint8 (1);
+	p->Send_string("vanilla");
+	p->Send_string(_openttd_content_version);
+
+	/* Patchpacks can extend the list with one. In BaNaNaS metadata you can
+	 * add a branch in the 'compatibility' list, to filter on this. If you want
+	 * your patchpack to be mentioned in the BaNaNaS web-interface, create an
+	 * issue on https://github.com/OpenTTD/bananas-api asking for this.
+
+	p->Send_string("patchpack"); // Or what-ever the name of your patchpack is.
+	p->Send_string(_openttd_content_version_patchpack);
+
+	*/
 
 	this->SendPacket(p);
 }
@@ -221,9 +239,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16 for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
 
-		Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_ID);
+		Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -248,10 +266,10 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
 			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
 
-	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID);
+	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
@@ -343,8 +361,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
 
 	this->http_response_index = -1;
 
-	NetworkAddress address(NETWORK_CONTENT_MIRROR_HOST, NETWORK_CONTENT_MIRROR_PORT);
-	new NetworkHTTPContentConnecter(address, this, NETWORK_CONTENT_MIRROR_URL, content_request);
+	new NetworkHTTPContentConnecter(NetworkContentMirrorConnectionString(), this, NETWORK_CONTENT_MIRROR_URL, content_request);
 	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
 }
 
@@ -363,9 +380,9 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16 for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
 
-		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT);
+		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -411,7 +428,8 @@ static bool GunzipFile(const ContentInfo *ci)
 	FILE *ftmp = fopen(GetFullFilename(ci, true).c_str(), "rb");
 	if (ftmp == nullptr) return false;
 	/* Duplicate the handle, and close the FILE*, to avoid double-closing the handle later. */
-	gzFile fin = gzdopen(dup(fileno(ftmp)), "rb");
+	int fdup = dup(fileno(ftmp));
+	gzFile fin = gzdopen(fdup, "rb");
 	fclose(ftmp);
 
 	FILE *fout = fopen(GetFullFilename(ci, false).c_str(), "wb");
@@ -450,13 +468,30 @@ static bool GunzipFile(const ContentInfo *ci)
 		}
 	}
 
-	if (fin != nullptr) gzclose(fin);
+	if (fin != nullptr) {
+		gzclose(fin);
+	} else if (fdup != -1) {
+		/* Failing gzdopen does not close the passed file descriptor. */
+		close(fdup);
+	}
 	if (fout != nullptr) fclose(fout);
 
 	return ret;
 #else
 	NOT_REACHED();
 #endif /* defined(WITH_ZLIB) */
+}
+
+/**
+ * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
+ * @param file   The file to write data to.
+ * @param buffer The buffer to write to the file.
+ * @param amount The number of bytes to write.
+ * @return The number of bytes that were written.
+ */
+static inline ssize_t TransferOutFWrite(FILE *file, const char *buffer, size_t amount)
+{
+	return fwrite(buffer, 1, amount, file);
 }
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
@@ -468,19 +503,19 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		this->curInfo->type     = (ContentType)p->Recv_uint8();
 		this->curInfo->id       = (ContentID)p->Recv_uint32();
 		this->curInfo->filesize = p->Recv_uint32();
-		p->Recv_string(this->curInfo->filename, lengthof(this->curInfo->filename));
+		this->curInfo->filename = p->Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
 
 		if (!this->BeforeDownload()) {
-			this->Close();
+			this->CloseConnection();
 			return false;
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
-		size_t toRead = (size_t)(p->size - p->pos);
-		if (fwrite(p->buffer + p->pos, 1, toRead, this->curFile) != toRead) {
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
+		size_t toRead = p->RemainingBytesToTransfer();
+		if (toRead != 0 && (size_t)p->TransferOut(TransferOutFWrite, this->curFile) != toRead) {
+			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
-			this->Close();
+			this->CloseConnection();
 			fclose(this->curFile);
 			this->curFile = nullptr;
 
@@ -512,7 +547,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 		std::string filename = GetFullFilename(this->curInfo, true);
 		if (filename.empty() || (this->curFile = fopen(filename.c_str(), "wb")) == nullptr) {
 			/* Unless that fails of course... */
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
+			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			return false;
 		}
@@ -687,7 +722,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		}
 
 		/* Copy the string, without extension, to the filename. */
-		strecpy(this->curInfo->filename, tmp, lastof(this->curInfo->filename));
+		this->curInfo->filename = tmp;
 
 		/* Request the next file. */
 		if (!this->BeforeDownload()) {
@@ -732,7 +767,7 @@ public:
 	 * Initiate the connecting.
 	 * @param address The address of the server.
 	 */
-	NetworkContentConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+	NetworkContentConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_CONTENT_SERVER_PORT) {}
 
 	void OnFailure() override
 	{
@@ -758,18 +793,22 @@ void ClientNetworkContentSocketHandler::Connect()
 {
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
 	this->isConnecting = true;
-	new NetworkContentConnecter(NetworkAddress(NETWORK_CONTENT_SERVER_HOST, NETWORK_CONTENT_SERVER_PORT, AF_UNSPEC));
+	new NetworkContentConnecter(NetworkContentServerConnectionString());
 }
 
 /**
  * Disconnect from the content server.
  */
-void ClientNetworkContentSocketHandler::Close()
+NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
 {
-	if (this->sock == INVALID_SOCKET) return;
-	NetworkContentSocketHandler::Close();
+	NetworkContentSocketHandler::CloseConnection();
 
+	if (this->sock == INVALID_SOCKET) return NETWORK_RECV_STATUS_OKAY;
+
+	this->CloseSocket();
 	this->OnDisconnect();
+
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /**
@@ -781,7 +820,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	if (this->sock == INVALID_SOCKET || this->isConnecting) return;
 
 	if (std::chrono::steady_clock::now() > this->lastActivity + IDLE_TIMEOUT) {
-		this->Close();
+		this->CloseConnection();
 		return;
 	}
 
@@ -813,7 +852,7 @@ void ClientNetworkContentSocketHandler::DownloadContentInfo(ContentID cid)
  * @param cid the ContentID to search for
  * @return the ContentInfo or nullptr if not found
  */
-ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid)
+ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid) const
 {
 	for (ContentInfo *ci : this->infos) {
 		if (ci->id == cid) return ci;
@@ -903,15 +942,10 @@ void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *c
  */
 void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const
 {
-	for (const ContentInfo *ci : this->infos) {
-		if (ci == child) continue;
+	auto range = this->reverse_dependency_map.equal_range(child->id);
 
-		for (uint i = 0; i < ci->dependency_count; i++) {
-			if (ci->dependencies[i] == child->id) {
-				parents.push_back(ci);
-				break;
-			}
-		}
+	for (auto iter = range.first; iter != range.second; ++iter) {
+		parents.push_back(GetContent(iter->second));
 	}
 }
 
@@ -948,10 +982,10 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		/* Selection is easy; just walk all children and set the
 		 * autoselected state. That way we can see what we automatically
 		 * selected and thus can unselect when a dependency is removed. */
-		for (uint i = 0; i < ci->dependency_count; i++) {
-			ContentInfo *c = this->GetContent(ci->dependencies[i]);
+		for (auto &dependency : ci->dependencies) {
+			ContentInfo *c = this->GetContent(dependency);
 			if (c == nullptr) {
-				this->DownloadContentInfo(ci->dependencies[i]);
+				this->DownloadContentInfo(dependency);
 			} else if (c->state == ContentInfo::UNSELECTED) {
 				c->state = ContentInfo::AUTOSELECTED;
 				this->CheckDependencyState(c);
@@ -974,10 +1008,10 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		this->Unselect(c->id);
 	}
 
-	for (uint i = 0; i < ci->dependency_count; i++) {
-		const ContentInfo *c = this->GetContent(ci->dependencies[i]);
+	for (auto &dependency : ci->dependencies) {
+		const ContentInfo *c = this->GetContent(dependency);
 		if (c == nullptr) {
-			DownloadContentInfo(ci->dependencies[i]);
+			DownloadContentInfo(dependency);
 			continue;
 		}
 		if (c->state != ContentInfo::AUTOSELECTED) continue;
@@ -989,9 +1023,9 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		/* First check whether anything depends on us */
 		int sel_count = 0;
 		bool force_selection = false;
-		for (const ContentInfo *ci : parents) {
-			if (ci->IsSelected()) sel_count++;
-			if (ci->state == ContentInfo::SELECTED) force_selection = true;
+		for (const ContentInfo *parent_ci : parents) {
+			if (parent_ci->IsSelected()) sel_count++;
+			if (parent_ci->state == ContentInfo::SELECTED) force_selection = true;
 		}
 		if (sel_count == 0) {
 			/* Nothing depends on us */
@@ -1006,8 +1040,8 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		this->ReverseLookupTreeDependency(parents, c);
 
 		/* Is there anything that is "force" selected?, if so... we're done. */
-		for (const ContentInfo *ci : parents) {
-			if (ci->state != ContentInfo::SELECTED) continue;
+		for (const ContentInfo *parent_ci : parents) {
+			if (parent_ci->state != ContentInfo::SELECTED) continue;
 
 			force_selection = true;
 			break;
@@ -1036,6 +1070,7 @@ void ClientNetworkContentSocketHandler::Clear()
 
 	this->infos.clear();
 	this->requested.clear();
+	this->reverse_dependency_map.clear();
 }
 
 /*** CALLBACK ***/

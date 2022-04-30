@@ -75,7 +75,7 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
 		source_id(source_id),
 		source(source),
 		source_xy(source_xy),
-		loaded_at_xy(loaded_at_xy)
+		loaded_at_xy(loaded_at_xy.value)
 {
 	assert(count != 0);
 	this->source_type = source_type;

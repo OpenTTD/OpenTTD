@@ -121,13 +121,13 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 				const char *err = newd->Start({});
 				if (err == nullptr) {
-					DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name);
+					Debug(driver, 1, "Successfully probed {} driver '{}'", GetDriverTypeName(type), d->name);
 					delete oldd;
 					return true;
 				}
 
 				*GetActiveDriver(type) = oldd;
-				DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name, err);
+				Debug(driver, 1, "Probing {} driver '{}' failed with error: {}", GetDriverTypeName(type), d->name, err);
 				delete newd;
 
 				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
@@ -170,7 +170,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				usererror("Unable to load driver '%s'. The error was: %s", d->name, err);
 			}
 
-			DEBUG(driver, 1, "Successfully loaded %s driver '%s'", GetDriverTypeName(type), d->name);
+			Debug(driver, 1, "Successfully loaded {} driver '{}'", GetDriverTypeName(type), d->name);
 			delete *GetActiveDriver(type);
 			*GetActiveDriver(type) = newd;
 			return true;

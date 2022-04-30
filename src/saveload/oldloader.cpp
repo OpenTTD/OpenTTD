@@ -56,7 +56,7 @@ static byte ReadByteFromFile(LoadgameState *ls)
 
 		/* We tried to read, but there is nothing in the file anymore.. */
 		if (count == 0) {
-			DEBUG(oldloader, 0, "Read past end of file, loading failed");
+			Debug(oldloader, 0, "Read past end of file, loading failed");
 			throw std::exception();
 		}
 
@@ -132,7 +132,7 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 						break;
 
 					case OC_ASSERT:
-						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, (uint)(size_t)chunk->ptr + _bump_assert_value);
+						Debug(oldloader, 4, "Assert point: 0x{:X} / 0x{:X}", ls->total_read, (uint)(size_t)chunk->ptr + _bump_assert_value);
 						if (ls->total_read != (size_t)chunk->ptr + _bump_assert_value) throw std::exception();
 					default: break;
 				}
@@ -234,7 +234,7 @@ static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, u
 
 	bool ret = VerifyOldNameChecksum(temp, len);
 	temp[len - 2] = '\0'; // name is null-terminated in savegame, but it's better to be sure
-	str_validate(temp, last);
+	StrMakeValidInPlace(temp, last);
 
 	return ret;
 }
@@ -273,7 +273,7 @@ bool LoadOldSaveGame(const std::string &file)
 {
 	LoadgameState ls;
 
-	DEBUG(oldloader, 3, "Trying to load a TTD(Patch) savegame");
+	Debug(oldloader, 3, "Trying to load a TTD(Patch) savegame");
 
 	InitLoading(&ls);
 
@@ -281,7 +281,7 @@ bool LoadOldSaveGame(const std::string &file)
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
 	if (ls.file == nullptr) {
-		DEBUG(oldloader, 0, "Cannot open file '%s'", file.c_str());
+		Debug(oldloader, 0, "Cannot open file '{}'", file);
 		return false;
 	}
 

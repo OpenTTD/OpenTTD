@@ -10,45 +10,26 @@
 #ifndef SETTINGS_INTERNAL_H
 #define SETTINGS_INTERNAL_H
 
+#include <variant>
 #include "saveload/saveload.h"
 
-/**
- * Convention/Type of settings. This is then further specified if necessary
- * with the SLE_ (SLE_VAR/SLE_FILE) enums in saveload.h
- * @see VarTypes
- * @see SettingDescBase
- */
-enum SettingDescType : byte {
-	/* 4 bytes allocated a maximum of 16 types for GenericType */
-	SDT_BEGIN       = 0,
-	SDT_NUMX        = 0, ///< any number-type
-	SDT_BOOLX       = 1, ///< a boolean number
-	SDT_ONEOFMANY   = 2, ///< bitmasked number where only ONE bit may be set
-	SDT_MANYOFMANY  = 3, ///< bitmasked number where MULTIPLE bits may be set
-	SDT_INTLIST     = 4, ///< list of integers separated by a comma ','
-	SDT_STRING      = 5, ///< string with a pre-allocated buffer
-	SDT_STDSTRING   = 6, ///< \c std::string
-	SDT_END,
-	/* 9 more possible primitives */
+enum SettingFlag : uint16 {
+	SF_NONE = 0,
+	SF_GUI_0_IS_SPECIAL        = 1 <<  0, ///< A value of zero is possible and has a custom string (the one after "strval").
+	SF_GUI_NEGATIVE_IS_SPECIAL = 1 <<  1, ///< A negative value has another string (the one after "strval").
+	SF_GUI_DROPDOWN            = 1 <<  2, ///< The value represents a limited number of string-options (internally integer) presented as dropdown.
+	SF_GUI_CURRENCY            = 1 <<  3, ///< The number represents money, so when reading value multiply by exchange rate.
+	SF_NETWORK_ONLY            = 1 <<  4, ///< This setting only applies to network games.
+	SF_NO_NETWORK              = 1 <<  5, ///< This setting does not apply to network games; it may not be changed during the game.
+	SF_NEWGAME_ONLY            = 1 <<  6, ///< This setting cannot be changed in a game.
+	SF_SCENEDIT_TOO            = 1 <<  7, ///< This setting can be changed in the scenario editor (only makes sense when SF_NEWGAME_ONLY is set).
+	SF_SCENEDIT_ONLY           = 1 <<  8, ///< This setting can only be changed in the scenario editor.
+	SF_PER_COMPANY             = 1 <<  9, ///< This setting can be different for each company (saved in company struct).
+	SF_NOT_IN_SAVE             = 1 << 10, ///< Do not save with savegame, basically client-based.
+	SF_NOT_IN_CONFIG           = 1 << 11, ///< Do not save to config file.
+	SF_NO_NETWORK_SYNC         = 1 << 12, ///< Do not synchronize over network (but it is saved if SF_NOT_IN_SAVE is not set).
 };
-
-
-enum SettingGuiFlag : uint16 {
-	/* 1 byte allocated for a maximum of 8 flags
-	 * Flags directing saving/loading of a variable */
-	SGF_NONE = 0,
-	SGF_0ISDISABLED   = 1 << 0, ///< a value of zero means the feature is disabled
-	SGF_DISPLAY_ABS   = 1 << 1, ///< display absolute value of the setting
-	SGF_MULTISTRING   = 1 << 2, ///< the value represents a limited number of string-options (internally integer)
-	SGF_NETWORK_ONLY  = 1 << 3, ///< this setting only applies to network games
-	SGF_CURRENCY      = 1 << 4, ///< the number represents money, so when reading value multiply by exchange rate
-	SGF_NO_NETWORK    = 1 << 5, ///< this setting does not apply to network games; it may not be changed during the game
-	SGF_NEWGAME_ONLY  = 1 << 6, ///< this setting cannot be changed in a game
-	SGF_SCENEDIT_TOO  = 1 << 7, ///< this setting can be changed in the scenario editor (only makes sense when SGF_NEWGAME_ONLY is set)
-	SGF_PER_COMPANY   = 1 << 8, ///< this setting can be different for each company (saved in company struct)
-	SGF_SCENEDIT_ONLY = 1 << 9, ///< this setting can only be changed in the scenario editor
-};
-DECLARE_ENUM_AS_BIT_SET(SettingGuiFlag)
+DECLARE_ENUM_AS_BIT_SET(SettingFlag)
 
 /**
  * A SettingCategory defines a grouping of the settings.
@@ -85,48 +66,265 @@ enum SettingType {
 	ST_ALL,       ///< Used in setting filter to match all types.
 };
 
-typedef bool OnChange(int32 var);           ///< callback prototype on data modification
-typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
+struct IniItem;
 
 /** Properties of config file settings. */
-struct SettingDescBase {
-	const char *name;       ///< name of the setting. Used in configuration file and for console
-	const void *def;        ///< default value given when none is present
-	SettingDescType cmd;    ///< various flags for the variable
-	SettingGuiFlag flags;   ///< handles how a setting would show up in the GUI (text/currency, etc.)
-	int32 min;              ///< minimum values
-	uint32 max;             ///< maximum values
-	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
-	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
-	StringID str;           ///< (translated) string with descriptive text; gui and console
-	StringID str_help;      ///< (Translated) string with help text; gui only.
-	StringID str_val;       ///< (Translated) first string describing the value.
-	OnChange *proc;         ///< callback procedure for when the value is changed
-	OnConvert *proc_cnvt;   ///< callback procedure when loading value mechanism fails
-	SettingCategory cat;    ///< assigned categories of the setting
-	bool startup;           ///< setting has to be loaded directly at startup?
-};
-
 struct SettingDesc {
-	SettingDescBase desc;   ///< Settings structure (going to configuration file)
-	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
+	SettingDesc(SaveLoad save, SettingFlag flags, bool startup) :
+		flags(flags), startup(startup), save(save) {}
+	virtual ~SettingDesc() {}
+
+	SettingFlag flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
+	bool startup;       ///< Setting has to be loaded directly at startup?.
+	SaveLoad save;      ///< Internal structure (going to savegame, parts to config).
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
+
+	/**
+	 * Get the name of this setting.
+	 * @return The name of the setting.
+	 */
+	constexpr const std::string &GetName() const
+	{
+		return this->save.name;
+	}
+
+	/**
+	 * Check whether this setting is an integer type setting.
+	 * @return True when the underlying type is an integer.
+	 */
+	virtual bool IsIntSetting() const { return false; }
+
+	/**
+	 * Check whether this setting is an string type setting.
+	 * @return True when the underlying type is a string.
+	 */
+	virtual bool IsStringSetting() const { return false; }
+
+	const struct IntSettingDesc *AsIntSetting() const;
+	const struct StringSettingDesc *AsStringSetting() const;
+
+	/**
+	 * Format the value of the setting associated with this object.
+	 * @param buf The before of the buffer to format into.
+	 * @param last The end of the buffer to format into.
+	 * @param object The object the setting is in.
+	 */
+	virtual void FormatValue(char *buf, const char *last, const void *object) const = 0;
+
+	/**
+	 * Parse/read the value from the Ini item into the setting associated with this object.
+	 * @param item The Ini item with the content of this setting.
+	 * @param object The object the setting is in.
+	 */
+	virtual void ParseValue(const IniItem *item, void *object) const = 0;
+
+	/**
+	 * Check whether the value in the Ini item is the same as is saved in this setting in the object.
+	 * It might be that determining whether the value is the same is way more expensive than just
+	 * writing the value. In those cases this function may unconditionally return false even though
+	 * the value might be the same as in the Ini item.
+	 * @param item The Ini item with the content of this setting.
+	 * @param object The object the setting is in.
+	 * @return True if the value is definitely the same (might be false when the same).
+	 */
+	virtual bool IsSameValue(const IniItem *item, void *object) const = 0;
 };
 
-/* NOTE: The only difference between SettingDesc and SettingDescGlob is
- * that one uses global variables as a source and the other offsets
- * in a struct which are bound to a certain variable during runtime.
- * The only way to differentiate between these two is to check if an object
- * has been passed to the function or not. If not, then it is a global variable
- * and save->variable has its address, otherwise save->variable only holds the
- * offset in a certain struct */
-typedef SettingDesc SettingDescGlobVarList;
+/** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
+struct IntSettingDesc : SettingDesc {
+	/**
+	 * A check to be performed before the setting gets changed. The passed integer may be
+	 * changed by the check if that is important, for example to remove some unwanted bit.
+	 * The return value denotes whether the value, potentially after the changes,
+	 * is allowed to be used/set in the configuration.
+	 * @param value The prospective new value for the setting.
+	 * @return True when the setting is accepted.
+	 */
+	typedef bool PreChangeCheck(int32 &value);
+	/**
+	 * A callback to denote that a setting has been changed.
+	 * @param The new value for the setting.
+	 */
+	typedef void PostChangeCallback(int32 value);
 
-const SettingDesc *GetSettingFromName(const char *name, uint *i);
-bool SetSettingValue(uint index, int32 value, bool force_newgame = false);
-bool SetSettingValue(uint index, const char *value, bool force_newgame = false);
-void SetCompanySetting(uint index, int32 value);
+	IntSettingDesc(SaveLoad save, SettingFlag flags, bool startup, int32 def,
+			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
+			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback) :
+		SettingDesc(save, flags, startup), def(def), min(min), max(max), interval(interval),
+			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
+			post_callback(post_callback) {}
+	virtual ~IntSettingDesc() {}
+
+	int32 def;              ///< default value given when none is present
+	int32 min;              ///< minimum values
+	uint32 max;             ///< maximum values
+	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
+	StringID str;           ///< (translated) string with descriptive text; gui and console
+	StringID str_help;      ///< (Translated) string with help text; gui only.
+	StringID str_val;       ///< (Translated) first string describing the value.
+	SettingCategory cat;    ///< assigned categories of the setting
+	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
+	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
+
+	/**
+	 * Check whether this setting is a boolean type setting.
+	 * @return True when the underlying type is an integer.
+	 */
+	virtual bool IsBoolSetting() const { return false; }
+	bool IsIntSetting() const override { return true; }
+
+	void ChangeValue(const void *object, int32 newvalue) const;
+	void MakeValueValidAndWrite(const void *object, int32 value) const;
+
+	virtual size_t ParseValue(const char *str) const;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+	void ParseValue(const IniItem *item, void *object) const override;
+	bool IsSameValue(const IniItem *item, void *object) const override;
+	int32 Read(const void *object) const;
+
+private:
+	void MakeValueValid(int32 &value) const;
+	void Write(const void *object, int32 value) const;
+};
+
+/** Boolean setting. */
+struct BoolSettingDesc : IntSettingDesc {
+	BoolSettingDesc(SaveLoad save, SettingFlag flags, bool startup, bool def,
+			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+			PreChangeCheck pre_check, PostChangeCallback post_callback) :
+		IntSettingDesc(save, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
+			pre_check, post_callback) {}
+	virtual ~BoolSettingDesc() {}
+
+	bool IsBoolSetting() const override { return true; }
+	size_t ParseValue(const char *str) const override;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+};
+
+/** One of many setting. */
+struct OneOfManySettingDesc : IntSettingDesc {
+	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
+
+	OneOfManySettingDesc(SaveLoad save, SettingFlag flags, bool startup, int32 def,
+			int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+			PreChangeCheck pre_check, PostChangeCallback post_callback,
+			std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		IntSettingDesc(save, flags, startup, def, 0, max, 0, str, str_help, str_val, cat,
+			pre_check, post_callback), many_cnvt(many_cnvt)
+	{
+		for (auto one : many) this->many.push_back(one);
+	}
+
+	virtual ~OneOfManySettingDesc() {}
+
+	std::vector<std::string> many; ///< possible values for this type
+	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
+
+	static size_t ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many);
+	char *FormatSingleValue(char *buf, const char *last, uint id) const;
+
+	size_t ParseValue(const char *str) const override;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+};
+
+/** Many of many setting. */
+struct ManyOfManySettingDesc : OneOfManySettingDesc {
+	ManyOfManySettingDesc(SaveLoad save, SettingFlag flags, bool startup,
+		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+		PreChangeCheck pre_check, PostChangeCallback post_callback,
+		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		OneOfManySettingDesc(save, flags, startup, def, (1 << many.size()) - 1, str, str_help,
+			str_val, cat, pre_check, post_callback, many, many_cnvt) {}
+	virtual ~ManyOfManySettingDesc() {}
+
+	size_t ParseValue(const char *str) const override;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+};
+
+/** String settings. */
+struct StringSettingDesc : SettingDesc {
+	/**
+	 * A check to be performed before the setting gets changed. The passed string may be
+	 * changed by the check if that is important, for example to remove unwanted white
+	 * space. The return value denotes whether the value, potentially after the changes,
+	 * is allowed to be used/set in the configuration.
+	 * @param value The prospective new value for the setting.
+	 * @return True when the setting is accepted.
+	 */
+	typedef bool PreChangeCheck(std::string &value);
+	/**
+	 * A callback to denote that a setting has been changed.
+	 * @param The new value for the setting.
+	 */
+	typedef void PostChangeCallback(const std::string &value);
+
+	StringSettingDesc(SaveLoad save, SettingFlag flags, bool startup, const char *def,
+			uint32 max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
+		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
+			pre_check(pre_check), post_callback(post_callback) {}
+	virtual ~StringSettingDesc() {}
+
+	std::string def;                   ///< Default value given when none is present
+	uint32 max_length;                 ///< Maximum length of the string, 0 means no maximum length
+	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
+	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
+
+	bool IsStringSetting() const override { return true; }
+	void ChangeValue(const void *object, std::string &newval) const;
+
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+	void ParseValue(const IniItem *item, void *object) const override;
+	bool IsSameValue(const IniItem *item, void *object) const override;
+	const std::string &Read(const void *object) const;
+
+private:
+	void MakeValueValid(std::string &str) const;
+	void Write(const void *object, const std::string &str) const;
+};
+
+/** List/array settings. */
+struct ListSettingDesc : SettingDesc {
+	ListSettingDesc(SaveLoad save, SettingFlag flags, bool startup, const char *def) :
+		SettingDesc(save, flags, startup), def(def) {}
+	virtual ~ListSettingDesc() {}
+
+	const char *def;        ///< default value given when none is present
+
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+	void ParseValue(const IniItem *item, void *object) const override;
+	bool IsSameValue(const IniItem *item, void *object) const override;
+};
+
+/** Placeholder for settings that have been removed, but might still linger in the savegame. */
+struct NullSettingDesc : SettingDesc {
+	NullSettingDesc(SaveLoad save) :
+		SettingDesc(save, SF_NOT_IN_CONFIG, false) {}
+	virtual ~NullSettingDesc() {}
+
+	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }
+	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
+	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
+};
+
+typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;
+
+/**
+ * Helper to convert the type of the iterated settings description to a pointer to it.
+ * @param desc The type of the iterator of the value in SettingTable.
+ * @return The actual pointer to SettingDesc.
+ */
+static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
+{
+	return std::visit([](auto&& arg) -> const SettingDesc * { return &arg; }, desc);
+}
+
+typedef span<const SettingVariant> SettingTable;
+
+const SettingDesc *GetSettingFromName(const std::string_view name);
+void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);
+bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
+bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
 
 #endif /* SETTINGS_INTERNAL_H */

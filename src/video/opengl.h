@@ -65,11 +65,19 @@ private:
 	PaletteID last_sprite_pal = (PaletteID)-1; ///< Last uploaded remap palette.
 	bool clear_cursor_cache = false;           ///< A clear of the cursor cache is pending.
 
+	Point cursor_pos;                    ///< Cursor position
+	bool cursor_in_window;               ///< Cursor inside this window
+	PalSpriteID cursor_sprite_seq[16];   ///< Current image of cursor
+	Point cursor_sprite_pos[16];         ///< Relative position of individual cursor sprites
+	uint cursor_sprite_count;            ///< Number of cursor sprites to draw
+
 	OpenGLBackend();
 	~OpenGLBackend();
 
-	const char *Init();
+	const char *Init(const Dimension &screen_res);
 	bool InitShaders();
+
+	void InternalClearCursorCache();
 
 	void RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom);
 
@@ -79,7 +87,7 @@ public:
 	{
 		return OpenGLBackend::instance;
 	}
-	static const char *Create(GetOGLProcAddressProc get_proc);
+	static const char *Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res);
 	static void Destroy();
 
 	void PrepareContext();

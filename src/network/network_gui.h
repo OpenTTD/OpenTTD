@@ -11,9 +11,11 @@
 #define NETWORK_GUI_H
 
 #include "../company_type.h"
+#include "../date_type.h"
 #include "../economy_type.h"
 #include "../window_type.h"
 #include "network_type.h"
+#include "network_gamelist.h"
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 void ShowNetworkChatQueryWindow(DestType type, int dest);
@@ -21,20 +23,20 @@ void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();
 void ShowClientList();
 void ShowNetworkCompanyPasswordWindow(Window *parent);
+void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token);
 
 
 /** Company information stored at the client side */
 struct NetworkCompanyInfo : NetworkCompanyStats {
-	char company_name[NETWORK_COMPANY_NAME_LENGTH]; ///< Company name
-	Year inaugurated_year;                          ///< What year the company started in
-	Money company_value;                            ///< The company value
-	Money money;                                    ///< The amount of money the company has
-	Money income;                                   ///< How much did the company earned last year
-	uint16 performance;                             ///< What was his performance last month?
-	bool use_password;                              ///< Is there a password
-	char clients[NETWORK_CLIENTS_LENGTH];           ///< The clients that control this company (Name1, name2, ..)
+	std::string company_name; ///< Company name
+	Year inaugurated_year;    ///< What year the company started in
+	Money company_value;      ///< The company value
+	Money money;              ///< The amount of money the company has
+	Money income;             ///< How much did the company earn last year
+	uint16 performance;       ///< What was his performance last month?
+	bool use_password;        ///< Is there a password
+	std::string clients;      ///< The clients that control this company (Name1, name2, ..)
 };
 
-NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company);
 
 #endif /* NETWORK_GUI_H */

@@ -92,7 +92,7 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 
 	/* Discard all temporary changes */
 	for (std::set<BasePersistentStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
-		DEBUG(desync, 1, "Discarding persistent storage changes: Feature %d, GrfID %08X, Tile %d", (*it)->feature, BSWAP32((*it)->grfid), (*it)->tile);
+		Debug(desync, 1, "Discarding persistent storage changes: Feature {}, GrfID {:08X}, Tile {}", (*it)->feature, BSWAP32((*it)->grfid), (*it)->tile);
 		(*it)->ClearChanges();
 	}
 	_changed_storage_arrays->clear();

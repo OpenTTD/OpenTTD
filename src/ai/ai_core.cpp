@@ -114,7 +114,7 @@
 	cur_company.Restore();
 
 	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
-	DeleteWindowById(WC_AI_SETTINGS, company);
+	CloseWindowById(WC_AI_SETTINGS, company);
 }
 
 /* static */ void AI::Pause(CompanyID company)
@@ -207,7 +207,7 @@
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (_settings_game.ai_config[c] != nullptr && _settings_game.ai_config[c]->HasScript()) {
 			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
-				DEBUG(script, 0, "After a reload, the AI by the name '%s' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
+				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
 				_settings_game.ai_config[c]->Change(nullptr);
 				if (Company::IsValidAiID(c)) {
 					/* The code belonging to an already running AI was deleted. We can only do
@@ -224,7 +224,7 @@
 		}
 		if (_settings_newgame.ai_config[c] != nullptr && _settings_newgame.ai_config[c]->HasScript()) {
 			if (!_settings_newgame.ai_config[c]->ResetInfo(false)) {
-				DEBUG(script, 0, "After a reload, the AI by the name '%s' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
+				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
 				_settings_newgame.ai_config[c]->Change(nullptr);
 			}
 		}

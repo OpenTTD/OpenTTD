@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include <math.h>
+#include <mutex>
 #include "core/math_func.hpp"
 #include "framerate_type.h"
 #include "settings_type.h"
@@ -39,6 +40,7 @@ static MixerChannel _channels[8];
 static uint32 _play_rate = 11025;
 static uint32 _max_size = UINT_MAX;
 static MxStreamCallback _music_stream = nullptr;
+static std::mutex _music_stream_mutex;
 
 /**
  * The theoretical maximum volume for a single sound sample. Multiple sound
@@ -152,8 +154,11 @@ void MxMixSamples(void *buffer, uint samples)
 	/* Clear the buffer */
 	memset(buffer, 0, sizeof(int16) * 2 * samples);
 
-	/* Fetch music if a sampled stream is available */
-	if (_music_stream) _music_stream((int16*)buffer, samples);
+	{
+		std::lock_guard<std::mutex> lock{ _music_stream_mutex };
+		/* Fetch music if a sampled stream is available */
+		if (_music_stream) _music_stream((int16*)buffer, samples);
+	}
 
 	/* Apply simple x^3 scaling to master effect volume. This increases the
 	 * perceived difference in loudness to better match expectations. effect_vol
@@ -236,6 +241,7 @@ void MxActivateChannel(MixerChannel *mc)
  */
 uint32 MxSetMusicSource(MxStreamCallback music_callback)
 {
+	std::lock_guard<std::mutex> lock{ _music_stream_mutex };
 	_music_stream = music_callback;
 	return _play_rate;
 }
@@ -243,6 +249,7 @@ uint32 MxSetMusicSource(MxStreamCallback music_callback)
 
 bool MxInitialize(uint rate)
 {
+	std::lock_guard<std::mutex> lock{ _music_stream_mutex };
 	_play_rate = rate;
 	_max_size  = UINT_MAX / _play_rate;
 	_music_stream = nullptr; /* rate may have changed, any music source is now invalid */

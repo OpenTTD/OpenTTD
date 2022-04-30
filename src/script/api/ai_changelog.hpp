@@ -13,9 +13,26 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 1.12.0
+ * \b 13.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ *
+ * \li AIIndustryType::ResolveNewGRFID
+ * \li AIObjectType::ResolveNewGRFID
+ *
+ * \b 12.0
+ *
+ * API additions:
+ * \li AINewGRF
+ * \li AINewGRFList
+ * \li AIGroup::GetNumVehicles
+ * \li AIMarine::BT_LOCK
+ * \li AIMarine::BT_CANAL
+ * \li AITile::IsSeaTile
+ * \li AITile::IsRiverTile
+ * \li AITile::BT_CLEAR_WATER
+ * \li AIObjectTypeList
+ * \li AIObjectType
  *
  * \b 1.11.0
  *

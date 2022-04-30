@@ -36,7 +36,7 @@ protected:
 public:
 	/**
 	 * Creating instance of this class switches the build mode to Testing.
-	 * @note When the instance is destroyed, he restores the mode that was
+	 * @note When the instance is destroyed, it restores the mode that was
 	 *   current when the instance was created!
 	 */
 	ScriptTestMode();

@@ -76,7 +76,7 @@ static void CleanupGeneration()
 	_gw.proc     = nullptr;
 	_gw.abortp   = nullptr;
 
-	DeleteWindowByClass(WC_MODAL_PROGRESS);
+	CloseWindowByClass(WC_MODAL_PROGRESS);
 	ShowFirstError();
 	MarkWholeScreenDirty();
 }
@@ -91,9 +91,8 @@ static void _GenerateWorld()
 
 	try {
 		_generating_world = true;
-		if (_network_dedicated) DEBUG(net, 1, "Generating map, please wait...");
+		if (_network_dedicated) Debug(net, 3, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
-		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
 		_random.SetSeed(_settings_game.game_creation.generation_seed);
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
@@ -188,8 +187,8 @@ static void _GenerateWorld()
 
 		ShowNewGRFError();
 
-		if (_network_dedicated) DEBUG(net, 1, "Map generated, starting game");
-		DEBUG(desync, 1, "new_map: %08x", _settings_game.game_creation.generation_seed);
+		if (_network_dedicated) Debug(net, 3, "Map generated, starting game");
+		Debug(desync, 1, "new_map: {:08x}", _settings_game.game_creation.generation_seed);
 
 		if (_debug_desync_level > 0) {
 			char name[MAX_PATH];
@@ -204,7 +203,7 @@ static void _GenerateWorld()
 
 		if (_network_dedicated) {
 			/* Exit the game to prevent a return to main menu.  */
-			DEBUG(net, 0, "Generating map failed, aborting");
+			Debug(net, 0, "Generating map failed; closing server");
 			_exit_game = true;
 		} else {
 			SwitchToMode(_switch_mode);
@@ -302,6 +301,8 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 		_settings_game.construction.map_height_limit = std::max(MAP_HEIGHT_LIMIT_AUTO_MINIMUM, std::min(MAX_MAP_HEIGHT_LIMIT, estimated_height + MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM));
 	}
 
+	if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
+
 	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
 	LoadStringWidthTable();
@@ -314,7 +315,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
 	UnshowCriticalError();
-	DeleteAllNonVitalWindows();
+	CloseAllNonVitalWindows();
 	HideVitalWindows();
 
 	ShowGenerateWorldProgress();

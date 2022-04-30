@@ -36,7 +36,7 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
 	if (ci == nullptr) return nullptr;
-	return stredup(ci->client_name);
+	return stredup(ci->client_name.c_str());
 }
 
 /* static */ ScriptCompany::CompanyID ScriptClient::GetCompany(ScriptClient::ClientID client)

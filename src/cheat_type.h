@@ -28,12 +28,9 @@ struct Cheats {
 	Cheat switch_company;   ///< change to another company
 	Cheat money;            ///< get rich or poor
 	Cheat crossing_tunnels; ///< allow tunnels that cross each other
-	Cheat dummy1;           ///< empty cheat (build while in pause mode)
 	Cheat no_jetcrash;      ///< no jet will crash on small airports anymore
-	Cheat dummy2;           ///< empty cheat (change the climate of the map)
 	Cheat change_date;      ///< changes date ingame
 	Cheat setup_prod;       ///< setup raw-material production in game
-	Cheat dummy3;           ///< empty cheat (enable running el-engines on normal rail)
 	Cheat edit_max_hl;      ///< edit the maximum heightlevel; this is a cheat because of the fact that it needs to reset NewGRF game state and doing so as a simple configuration breaks the expectation of many
 };
 
