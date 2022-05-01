@@ -917,6 +917,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 ###length 4
 
+###length 4
+
 
 
 ###length 3
@@ -946,7 +948,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 ###length 3
-
 
 
 
@@ -1443,17 +1444,17 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 
 # Finances window
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}खर्च/कमाई
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}विमान चालवण्याचा खर्च
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}विमानाची कमाई
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}अन्य
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}संपूर्ण:
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}कर्ज
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 

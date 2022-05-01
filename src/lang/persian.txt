@@ -1338,6 +1338,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفش
 
 ###length 4
 
+###length 4
+
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تصویر صاف در نمای اضافه: {STRING}
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {STRING}
@@ -1408,8 +1410,6 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :نمونه با
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :نمایش ریلهای محفوظ: {STRING}
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال ماندن ابزار ساخت و ساز پس از استفاده: {STRING}
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {STRING}
 
 
 ###setting-zero-is-special
@@ -2946,8 +2946,10 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}تغیی
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
 
 # Finances window
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}هزینه/دریافتی
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}ساخت و ساز
@@ -2956,8 +2958,6 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}هزین�
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}هزینه های نگهداری خودروهای جاده
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}هزینه های نگهداری هواپیما
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}هزینه های نگهداری کشتی
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}هزینه های نگهداری مستغلات
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}درآمد قطارها
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}

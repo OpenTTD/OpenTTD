@@ -1265,6 +1265,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفشی
 
 ###length 4
 
+###length 4
+
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :تعمیراتی کام کے دوران پیمائشی ٹول ٹپ دکھائیں: {STRING}
 
@@ -1331,8 +1333,6 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :زیادہ اس
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :مخصوص پٹریاں دکھائیں: {STRING}
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :تعمیراتی ٹول کو استعمال کے بعد فعال رکھیں: {STRING}
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی مالیاتی ونڈو میں اخراجات کو اکٹھا دکھائیں: {STRING}
 
 
 ###setting-zero-is-special
@@ -2404,8 +2404,10 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
+###length 3
+
+
 ###length 13
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}پراپرٹی کی بحالی
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}

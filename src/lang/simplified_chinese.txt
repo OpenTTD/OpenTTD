@@ -1527,6 +1527,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
 
+###length 4
+
 STR_CONFIG_SETTING_SCROLLMODE                                   :视点滚动方式：{STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :滚动地图的行为
 ###length 4
@@ -1634,9 +1636,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :让预留的铁
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建造工具使用后仍选中： {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :“打开”时在桥梁、隧道等建造工具使用后保持选中，方便继续使用
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :企业财政窗口中的组群支出：{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :“打开”时公司财务报表将分组显示
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :建造铁路时自动移除信号灯：{STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :建造铁路时自动移除路过的信号灯。注意，这可能导致火车事故。
@@ -3610,8 +3609,10 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}收入/支出
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
@@ -3620,17 +3621,11 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}铁路运
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}汽车运行费用
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空运行费用
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶运行费用
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}固定资产维护
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}铁路运输收入
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}公路运输收入
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}航空运输收入
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}水上运输收入
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}贷款利息
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}其他费用
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}总计：
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}流动资金
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}已贷款额
 STR_FINANCES_MAX_LOAN                                           :{WHITE}最大贷款额度：{BLACK}{CURRENCY_LONG}

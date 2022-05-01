@@ -1454,6 +1454,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :สีเขี
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :สีม่วง
 
 ###length 4
+
+###length 4
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :ย้ายแผนที่ด้วย RMB
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :เลื่อนอย่างนิ่มนวลบนจอภาพ: {STRING}
@@ -1551,9 +1553,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :แสดงก
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :ให้คงการแสดงเครื่องมือการสร้างหลังการใช้: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :ไม่ปิดเครื่องมือสร้างสะพาน หรืออุโมง หลังจากใช้งาน
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :จัดกลุ่มแยกประเภท รายรับ/รายจ่าย ในหน้าต่างแสดงข้อมูลการเงินของบริษัท: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :จัดการแยกประเภท รายรับ/รายจ่าย เพื่อให้ง่ายต่อการตรวจทาน ในหน้าต่างแสดงสถานะการเงินบริษัท
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :ลบเสาอาณัติสัญญาณโดยอัตโนมัติเมื่อมีการก่อสร้างทางรถไฟหากเสาอาณัติสัญญาณขวางทางอยู่ และโปรดทราบด้วยว่าการกระทำนี้อาจจะทำให้รถไฟชนกันเองได้!
 
@@ -3380,8 +3379,10 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}เป�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE} สภาวะการเงินของ {COMPANY}{BLACK}{COMPANY_NUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}รายจ่าย/รายรับ
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}ค่าก่อสร้างต่างๆ
@@ -3390,17 +3391,11 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}ค่า
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}ค่าปฏิบัติการต่างๆเกี่ยวกับรถยนต์
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}ค่าปฏิบัติการต่างๆเกี่ยวกับอากาศยาน
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}ค่าปฏิบัติการต่างๆเกี่ยวกับเรือ
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}ค่าบำรุงรักษาอสังหาริมทรัพย์
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}รายได้จากการให้บริการเดินรถไฟ
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}รายได้จากการให้บริการขนส่งทางรถยนต์
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}รายได้จากการให้บริการขนส่งทางอากาศ
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}รายได้จากการให้บริการขนส่งทางน้ำ
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}ดอกเบี้ยเงินกู้
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}อื่นๆ
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}รวมทั้งสิ้น:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}ยอดเงินในธนาคาร
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}เงินกู้
 STR_FINANCES_MAX_LOAN                                           :{WHITE}สามารถกู้เงินได้สูงสุด: {BLACK}{CURRENCY_LONG}

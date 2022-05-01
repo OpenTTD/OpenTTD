@@ -455,6 +455,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :बैंगन
 
 ###length 4
 
+###length 4
+
 
 
 ###length 3
@@ -483,7 +485,6 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :अक्षम
 
 
 ###length 3
-
 
 
 
@@ -954,8 +955,10 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
+###length 3
+
+
 ###length 13
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}संपत्ति का रखरखाव
 
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
