@@ -1678,7 +1678,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Цвета потоков грузоперевозок: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Выберите цветовую схему для графического отображения потоков грузоперевозок.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :зелёный и красный (оригинальный)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :зелёный и синий
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :серый и красный
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :оттенки серого
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Перемещение обзора: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Способ перемещения по игровому полю
@@ -3787,22 +3793,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}Фина
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доход
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Эксплуатационные расходы
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Капитальные расходы
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуж. поездов
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуж. автомобилей
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиации
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Поезда
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Автотранспорт
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Авиация
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. судов
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Инфраструктура
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Поезда
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Автотранспорт
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Авиация
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Суда
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Проценты по займу
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Прочие расходы
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Чистая прибыль
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс:
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Собственные средства
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Заём
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Проценты по кредитам: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. сумма займа: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Занять {CURRENCY_LONG}
