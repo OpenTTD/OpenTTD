@@ -1224,7 +1224,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo présta
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una empresa puede pedir prestada (sin tener en cuenta la inflación)
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de interés de los préstamos; controla también la inflación, en caso de estar activada
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasa de interés de los préstamos; controla también la inflación, en caso de estar activada
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nivel de costos de mantenimiento y operación de vehículos e infraestructura
@@ -1528,9 +1528,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Gradiente de flujos de carga: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colores de flujos de carga: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Gradiente de colores del flujo de carga
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :De verde a rojo (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :De verde a azul
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :De gris a rojo
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de grises
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Desplazamiento de vista: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Modo de recorrer la vista sobre el mapa
@@ -3615,6 +3619,9 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finanzas
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingresos
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Gastos operativos
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Gasto de capital
 
 
 ###length 13
@@ -3624,13 +3631,21 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trenes
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vehículos de carretera
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Barcos
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intereses por préstamo
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestructura
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trenes
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vehículos de carretera
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronaves
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Barcos
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Tasa de intereses del préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Utilidad neta
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo en banco
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fondos propios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Tasa de interés del préstamo: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstamo máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir préstamo de {CURRENCY_LONG}

@@ -434,7 +434,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
 
 # Graph menu
 ###length 6
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Benefícios operativos
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico do lucro operacional
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Rendimentos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Carga entregue
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Histórico de avaliação
@@ -589,7 +589,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico de Benefícios Operativos
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico do Lucro Operacional
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Rendimentos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregues
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Avaliações da empresa (máximo=1000)
@@ -1528,7 +1528,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde Escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Cores de sobreposição de fluxo de carga: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Define o esquema de cores usado para a sobreposição do fluxo de carga.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Verde para vermelho (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Verde para azul
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Cinza para vermelho
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de cinza
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento de deslocação da janela de exibição: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento na deslocação do mapa
@@ -3613,22 +3619,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finança
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Receita
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Despesas Operacionais
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Despesas de Capital
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construção
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Veículos
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Circulação de Comboios
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Circulação de Veículos
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Circulação de Aeronaves
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Circulação de navios
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Comboios
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Veículos Rodoviários
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaves
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navios
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestrutura
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Comboios
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Veículos Rodoviários
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronave
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navios
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Juros do Empréstimo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Outros
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Lucro Líquido
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanço bancário
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fundos Próprios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Empréstimo
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Juro do Empréstimo: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Empréstimo Máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir empréstimo {CURRENCY_LONG}
