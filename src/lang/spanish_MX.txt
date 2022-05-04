@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Esta con
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Sincronización vertical
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Activar esta casilla para realizar sincronización vertical de pantalla (VSync). Este cambio solo tiene efecto tras reiniciar el juego y si la aceleración por hardware está activada.
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el tamaño de los elementos de la interfaz
 

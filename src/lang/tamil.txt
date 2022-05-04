@@ -989,6 +989,7 @@ STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}இடைமுக அளவு
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}பயன்படுத்த இடைமுக உறுப்பு அளவை தேர்ந்தெடுக்கவும்
 

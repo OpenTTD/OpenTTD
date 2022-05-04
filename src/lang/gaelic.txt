@@ -1182,6 +1182,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Meud na h-eadar-aghaidh
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Tagh am meud airson rud san eadar-aghaidh
 

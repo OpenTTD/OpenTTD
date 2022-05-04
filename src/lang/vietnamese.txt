@@ -1025,6 +1025,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Thiết 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Đánh dấu vào ô này để bật tính năng v-sync cho màn hình. Sẽ có tác dụng sau khi khởi động lại trò chơi. Chỉ có thể hoạt động khi tăng tốc phần cứng được bật
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Kích thước giao diện
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Chọn kích thước của các đối tượng trên giao diện
 

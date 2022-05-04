@@ -994,6 +994,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :ปกติ

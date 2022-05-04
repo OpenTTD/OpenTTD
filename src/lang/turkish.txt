@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ayar sad
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Arayüz boyutu
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kullanmak üzere arayüz bileşen boyutunu seçin
 

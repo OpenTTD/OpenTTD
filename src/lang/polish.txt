@@ -1405,6 +1405,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ustawien
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Synchronizacja pionowa
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz to pole aby włączyć synchronizację pionową. Zmiany zostaną zastosowane po restarcie gry. Działa tylko z włączoną akceleracją sprzętową.
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Rozmiar interfejsu
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz rozmiar elementów interfejsu
 

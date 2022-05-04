@@ -1025,6 +1025,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Indstill
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}grænseflade størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vælg den grænseflade størrelse du ønsker at benytte
 

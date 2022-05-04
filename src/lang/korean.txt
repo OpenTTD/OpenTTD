@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}이 설�
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}수직 동기화
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}화면과 수직 동기화하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다. 하드웨어 가속을 켠 경우에만 작동합니다.
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
 

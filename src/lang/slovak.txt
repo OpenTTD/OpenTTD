@@ -1093,6 +1093,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastaven
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtnite toto políčko, aby ste povolili vertikálnu synchronizáciu. Zmeny budú uplatnené až po reštarte hry. Funguje iba ak je zapnutá hardvérová akcelerácia.
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
 
