@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A defini
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar "V-Sync" no ecrã. Uma configuração alterada só terá efeito quando reiniciar o jogo. Só funciona com a aceleração por hardware ativada
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}"Driver" atual: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamanho interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleccionar tamanho do elemento de interface a usar

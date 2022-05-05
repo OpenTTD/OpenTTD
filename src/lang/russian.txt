@@ -545,7 +545,7 @@ STR_FILE_MENU_EXIT                                              :Выход
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Доп. окно просмотра
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Легенда грузоперевозок
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Схема грузопотоков
 STR_MAP_MENU_SIGN_LIST                                          :Список табличек
 
 # Town menu
@@ -1170,6 +1170,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Эта �
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальная синхронизация
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Включить/выключить вертикальную синхронизацию. После этого игру потребуется перезапустить. Работает только при включённом аппаратном ускорении.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Видеодрайвер: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Размер элементов интерфейса
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберите размер элементов интерфейса
@@ -1680,9 +1681,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зе
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Цвета потоков грузоперевозок: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Выберите цветовую схему для графического отображения потоков грузоперевозок.
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Выберите цветовую схему графического отображения потоков движения грузов.
 ###length 4
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :зелёный и красный (оригинальный)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :зелёный и красный (оригинальные)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :зелёный и синий
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :серый и красный
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :оттенки серого
