@@ -1060,7 +1060,7 @@ void CallVehicleTicks()
 
 		if (!IsLocalCompany()) continue;
 
-		if (res.Succeeded() && res.GetCost() != 0) {
+		if (res.Succeeded()) {
 			ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
 			continue;
 		}
