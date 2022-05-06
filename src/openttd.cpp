@@ -201,6 +201,8 @@ static void ShowHelp()
 		"  -x                  = Never save configuration changes to disk\n"
 		"  -X                  = Don't use global folders to search for files\n"
 		"  -q savegame         = Write some information about the savegame and exit\n"
+		"  -Q                  = Don't scan for/load NewGRF files on startup\n"
+		"  -QQ                 = Disable NewGRF scanning/loading entirely\n"
 		"\n",
 		lastof(buf)
 	);
@@ -512,6 +514,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_NOVAL('X'),
 	 GETOPT_SHORT_VALUE('q'),
 	 GETOPT_SHORT_NOVAL('h'),
+	 GETOPT_SHORT_NOVAL('Q'),
 	GETOPT_END()
 };
 
@@ -639,6 +642,11 @@ int openttd_main(int argc, char *argv[])
 
 			WriteSavegameInfo(title);
 			return ret;
+		}
+		case 'Q': {
+			extern int _skip_all_newgrf_scanning;
+			_skip_all_newgrf_scanning += 1;
+			break;
 		}
 		case 'G': scanner->generation_seed = strtoul(mgo.opt, nullptr, 10); break;
 		case 'c': _config_file = mgo.opt; break;
