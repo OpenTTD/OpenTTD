@@ -575,6 +575,10 @@ compatible_grf:
 	return res;
 }
 
+
+/** Set this flag to prevent any NewGRF scanning from being done. */
+int _skip_all_newgrf_scanning = 0;
+
 /** Helper for scanning for files with GRF as extension */
 class GRFFileScanner : FileScanner {
 	std::chrono::steady_clock::time_point next_update; ///< The next moment we do update the screen.
@@ -591,6 +595,11 @@ public:
 	/** Do the scan for GRFs. */
 	static uint DoScan()
 	{
+		if (_skip_all_newgrf_scanning > 0) {
+			if (_skip_all_newgrf_scanning == 1) _skip_all_newgrf_scanning = 0;
+			return 0;
+		}
+
 		GRFFileScanner fs;
 		int ret = fs.Scan(".grf", NEWGRF_DIR);
 		/* The number scanned and the number returned may not be the same;
