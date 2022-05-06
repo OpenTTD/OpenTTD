@@ -311,8 +311,8 @@ STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potenza
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Sforzo di trazione
 STR_SORT_BY_INTRO_DATE                                          :Data introduzione
-STR_SORT_BY_RUNNING_COST                                        :Costo d'esercizio
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza / Costo d'esercizio
+STR_SORT_BY_RUNNING_COST                                        :Costo di esercizio
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza/Costo di esercizio
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacità di carico
 STR_SORT_BY_RANGE                                               :{G=f}Autonomia
 STR_SORT_BY_POPULATION                                          :Popolazione
@@ -1028,6 +1028,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Le nuove
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Seleziona questa casella per abilitare la sincronizzazione verticale dello schermo. Un'impostazione modificata verrà applicata solo al riavvio del gioco. Funziona solo con l'accelerazione hardware abilitata
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver attuale: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Dimensione interfaccia
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleziona la dimensione deglie elementi dell'interfaccia grafica
@@ -1262,7 +1263,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Ammontare massi
 STR_CONFIG_SETTING_INTEREST_RATE                                :Tasso d'interesse: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasso d'interesse sul prestito; controlla anche l'abilitazione dell'inflazione.
 
-STR_CONFIG_SETTING_RUNNING_COSTS                                :Costi d'esercizio: {STRING.mp}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Costi di esercizio: {STRING.mp}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Imposta il livello dei costi di manutenzione ed esercizio di veicoli e infrastrutture.
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocità di costruzione: {STRING.fs}
@@ -3890,7 +3891,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocit�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocità sull'oceano: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocità su canali/fiumi: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo d'esercizio: {GOLD}{CURRENCY_LONG}/anno
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo di esercizio: {GOLD}{CURRENCY_LONG}/anno
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacità: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(riadattabile)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} ann{P o i}
@@ -4078,11 +4079,11 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}veicolo tr
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo d'esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}  S.T. max.: {6:FORCE}{}Costo d'esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo di esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}  S.T. max.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 
@@ -4227,7 +4228,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Rinomina
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rinomina la nave
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Rinomina l'aeromobile
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo d'esercizio: {LTBLUE}{CURRENCY_LONG}/anno
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo di esercizio: {LTBLUE}{CURRENCY_LONG}/anno
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P o i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P o i} ({COMMA})
 
