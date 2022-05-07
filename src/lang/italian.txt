@@ -858,7 +858,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppio della produzione!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Migliori tecniche di coltivazione alla {INDUSTRY} raddoppieranno la produzione!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è aumentata del {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}La produzione a {INDUSTRY} scende del 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK} {INDUSTRY} la produzione scende del 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestazione di insetti devasta la {INDUSTRY}!{}Produzione scesa del 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è diminuita del {COMMA}%!
 
