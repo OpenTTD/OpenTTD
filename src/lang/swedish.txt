@@ -3622,6 +3622,8 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Kostnad f
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kostnad för vägfordon
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Kostnad för flygplan
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kostnad för skepp
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vägfordon
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Skepp
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Ränta på lån
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Övrigt
 

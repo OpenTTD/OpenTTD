@@ -259,7 +259,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Mostrar 
 
 ###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Activar para mostrar también los trenes ocultos
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Activar para mostrar también los vehículos de carretera ocultos
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Activar para mostrar también los autotransportes ocultos
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Activar para mostrar también los barcos ocultos
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activar para mostrar también las aeronaves ocultas
 
@@ -348,7 +348,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabla de evaluación de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listar todas las industrias o aportar fondos para una nueva
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa. Ctrl+Clic oculta la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de vehículos de carretera de la empresa. Ctrl+Clic oculta la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de autotransportes de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Acercar
@@ -746,7 +746,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Edificios e industrias
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Vehículos
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trenes
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Vehículos de carretera
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Autotransportes
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Barcos
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aeronaves
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rutas de transporte
@@ -1291,15 +1291,15 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Cantidad de hum
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleración para trenes: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Elegir el modelo de simulación física para emplear en la aceleración de trenes. El modelo 'Original' penaliza las pendientes de forma idéntica para todos los vehículos. El modelo 'Simulado' penaliza pendientes y curvas según las características del tren como longitud, fuerza de tracción, etc.
 
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleración para vehículos de carretera: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Elegir el modelo de simulación física para emplear en la aceleración de vehículos de carretera. El modelo 'Original' penaliza las pendientes de forma idéntica para todos los vehículos. El modelo 'Simulado' penaliza pendientes y curvas según las características del vehículo como potencia, fuerza de tracción, etc.
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleración para autotransportes: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Elegir el modelo de simulación física para emplear en la aceleración de autotransportes. El modelo 'Original' penaliza las pendientes de forma idéntica a todos los vehículos. El modelo 'Simulado' penaliza pendientes y curvas según las características del vehículo como potencia, fuerza de tracción, etc.
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinación de pendientes para trenes: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Grado de inclinación de una casilla con pendiente para un tren. Los valores altos hacen que sea más difícil subir las colinas
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinación de pendientes para vehículos de carretera: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Grado de inclinación de una casilla con pendiente para un vehículo de carretera. Los valores altos hacen que sea más difícil subir las colinas
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinación de pendientes para autotransportes: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Grado de inclinación de una casilla con pendiente para un autotransporte. Los valores altos hacen que sea más difícil subir las colinas
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibir a trenes realizar giros de 90°: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Los giros de 90° ocurren en vías férreas perpendiculares donde el tren gira 90° al pasar de una casilla a otra, en lugar de los 45° habituales en otras combinaciones de vías.
@@ -1501,7 +1501,7 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ninguno
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Mejorado
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Autotransportes: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Elegir el lado de la circulación
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotar mapa de alturas: {STRING}
@@ -1682,8 +1682,8 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir soni
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trenes por empresa: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trenes que una empresa puede tener
 
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de vehículos de carretera por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de vehículos de carretera que una empresa puede tener
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de autotransportes por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de autotransportes que una empresa puede tener
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Número máximo de aeronaves por empresa: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que una empresa puede tener
@@ -1694,7 +1694,7 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactivar trenes para la computadora: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activar esta opción deshabilita la construcción de trenes por jugadores no humanos
 
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar vehículos de carretera para la computadora: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar autotransportes para la computadora: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activar esta opción deshabilita la construcción de vehículos de carretera por jugadores no humanos
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aeroplanos para la computadora: {STRING}
@@ -1724,8 +1724,8 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escoger si el m
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento por defecto para trenes: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Intervalo de mantenimiento por defecto para nuevos trenes, en caso de no definirse otro explícitamente
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para vehículos de carretera: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Intervalo de mantenimiento por defecto para nuevos vehículos de carretera, en caso de no definirse otro explícitamente
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para autotransportes: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Intervalo de mantenimiento por defecto para nuevos autotransportes, en caso de no definirse otro explícitamente
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de mantenimiento por defecto para aeronaves: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Intervalo de mantenimiento por defecto para nuevas aeronaves, en caso de no definirse otro explícitamente
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantenimiento por defecto para barcos: {STRING}
@@ -2030,8 +2030,8 @@ STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Red
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritmo de rutas para trenes: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritmo de búsqueda de rutas para trenes
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritmo de rutas para vehículos de carretera: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algoritmo de búsqueda de rutas para para vehículos de carretera
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritmo de rutas para autotransportes: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algoritmo de búsqueda de rutas para autotransportes
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Algoritmo de rutas para barcos: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algoritmo de búsqueda de rutas para barcos
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Cambio de sentido automático en señales: {STRING}
@@ -2144,7 +2144,7 @@ STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostrar cromática general
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostrar cromáticas para trenes
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostrar cromáticas para vehículos de carretera
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostrar cromáticas de autotransportes
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostrar cromáticas para barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostrar cromáticas para aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elegir el color principal para la cromática elegida. Ctrl+Clic para establecerlo como cromática general
@@ -2748,7 +2748,7 @@ STR_ROAD_NAME_TRAM                                              :Tranvía
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientación del depósito
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elegir la orientación del depósito de vehículos de carretera
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elegir la orientación del depósito de autotransportes
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientación del depósito
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elegir la orientación del depósito de tranvías
 
@@ -2984,7 +2984,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito (tren
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Carretera
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Carretera con alumbrado
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Carretera con árboles
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depósito de vehículos de carretera
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depósito de autotransportes
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Paso a nivel
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tranvía
 
@@ -3072,7 +3072,7 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Bucles de juego totales:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Manejo de carga:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Ticks de trenes:
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Ticks de vehículos de carretera:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Ticks de autotransportes:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Ticks de barcos:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Ticks de aeronaves:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Ticks de mapa:
@@ -3089,7 +3089,7 @@ STR_FRAMERATE_AI                                                :{BLACK} IA {NUM
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle de juego
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manejo de carga
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
-STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks de vehículos de carretera
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks de autotransportes
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks de areonaves
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticks de mapa
@@ -3598,7 +3598,7 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar 
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar nombre de la estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar aquellos trenes que tienen esta estación en su itinerario
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar aquellos vehículos de carretera que tienen esta parada en su itinerario
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar los autotransportes con esta parada en su itinerario
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar aquellas aeronaves que tienen este aeropuerto en su horario
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar aquellos barcos que tienen este muelle en su horario
 
@@ -3700,7 +3700,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar un 25% de las acciones
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender 25% de las acciones
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% de las acciones de esta empresa. Mayús+Clic muestra un precio estimado sin comprar nada
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% de las acciones de esta empresa. Mayús+Clic muestra un precio estimado de compra
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de las acciones de esta empresa. Mayús+Clic muestra el ingreso estimado sin vender ninguna acción
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nombre de la empresa
@@ -3771,7 +3771,7 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos de carretera disponibles
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Autotransportes disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves disponibles
 
@@ -3795,13 +3795,13 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Recorrid
 # Group window
 ###length VEHICLE_TYPES
 STR_GROUP_ALL_TRAINS                                            :Todos los trenes
-STR_GROUP_ALL_ROAD_VEHICLES                                     :Todos los vehículos de carretera
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Todos los autotransportes
 STR_GROUP_ALL_SHIPS                                             :Todos los barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Todas las aeronaves
 
 ###length VEHICLE_TYPES
 STR_GROUP_DEFAULT_TRAINS                                        :Trenes sin agrupar
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehículos de carretera sin agrupar
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Autotransportes sin agrupar
 STR_GROUP_DEFAULT_SHIPS                                         :Barcos sin agrupar
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sin agrupar
 
@@ -3834,13 +3834,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuevos trenes e
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos monorrieles
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos trenes maglev
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos vehículos de carretera
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos autotransportes
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nuevos tranvías
 
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuevos trenes
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nuevos vehículos de carretera
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nuevos autotransportes
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuevas aeronaves
 
@@ -3873,7 +3873,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de 
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección trenes. Clic en un tren para más información. Ctrl+Clic para mostrar u ocultar el tipo de tren
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera. Clic en un vehículo para más información. Ctrl+Clic para mostrar u ocultar el tipo del vehículo
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de autotransportes. Clic en un vehículo para más información. Ctrl+Clic para mostrar u ocultar el tipo del vehículo
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos. Clic en un barco para más información. Ctrl+Clic para mostrar u ocultar el tipo de barco
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de aeronaves. Clic en un aeronave para más información. Ctrl+Clic para mostrar u ocultar el tipo de aeronave
 
@@ -3890,15 +3890,15 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar y reformar aeronave
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el tren elegido. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el vehículo de carretera elegido. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco elegido. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave elegida. Mayús+Clic muestra un precio estimado sin comprar nada
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el tren elegido. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el autotransporte elegido. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco elegido. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave elegida. Mayús+Clic muestra un precio estimado de compra
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar y reformar el tren elegido. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar y reformar el vehículo de carretera elegido. Mayús+Clic muestra un precio estimado sin comprar nada
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar y reformar el barco elegido. Mayús+Clic muestra un precio estimado sin comprar nada
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar y reformar el tren elegido. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar y reformar el autotransporte elegido. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar y reformar el barco elegido. Mayús+Clic muestra un precio estimado de compra
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar y reformar la areonave seleccionada. Mayús+Clic muestra un costo estimado de compra
 
 ###length VEHICLE_TYPES
@@ -3927,13 +3927,13 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Mostrar
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Mostrar u ocultar este tipo de tren
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Mostrar u ocultar este tipo de vehículo de carretera
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Mostrar u ocultar este tipo de autotransporte
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Mostrar u ocultar este tipo de barco
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Mostrar u ocultar este tipo de aeronave
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Cambiar el nombre del tren
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Cambiar el nombre del vehículo de carretera
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Cambiar el nombre del autotransporte
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Cambiar el nombre del barco
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Cambiar el nombre de la aeronave
 
@@ -3956,19 +3956,19 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrastrar aquí un vehículo para venderlo
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastrar aquí el vehículo de carretera para venderlo
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastrar aquí el autotransporte para venderlo
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrastrar aquí el barco para venderlo
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrastrar aquí la aeronave para venderla
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vender todos los trenes del depósito
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender todos los vehículos de carretera del depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender todos los autotransportes del depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vender todos los barcos del astillero
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vender todas las aeronaves del hangar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Reemplazar automáticamente todos los trenes en el depósito
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Reemplazar automáticamente todos los vehículos de carretera en el depósito
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Reemplazar automáticamente todos los autotransportes en el depósito
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Reemplazar automáticamente todos los barcos en el astillero
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Reemplaza automáticamente todas las aeronaves en el hangar
 
@@ -3980,7 +3980,7 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nueva ae
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar nuevo tren
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar nuevo vehículo de carretera
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar nuevo autotransporte
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Comprar nuevo barco
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Comprar nueva aeronave
 
@@ -4032,7 +4032,7 @@ STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora elé
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotora de monorriel
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotora maglev
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}vehículo de carretera
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}autotransporte
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tranvía
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
@@ -4056,7 +4056,7 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}Esta col
 
 ###length VEHICLE_TYPES
 STR_REPLACE_VEHICLE_TRAIN                                       :Tren
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehículo de carretera
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransporte
 STR_REPLACE_VEHICLE_SHIP                                        :Barco
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
@@ -4077,7 +4077,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambiar 
 STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagones
 STR_REPLACE_ALL_RAILTYPE                                        :Todos los vehículos ferroviarios
-STR_REPLACE_ALL_ROADTYPE                                        :Todos los vehículos de carretera
+STR_REPLACE_ALL_ROADTYPE                                        :Todos los autotransportes
 
 ###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Elegir el tipo de vías férreas para las que se desea reemplazar locomotoras
@@ -4090,7 +4090,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Trenes eléctri
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trenes de monorriel
 STR_REPLACE_MAGLEV_VEHICLES                                     :Trenes maglev
 
-STR_REPLACE_ROAD_VEHICLES                                       :Vehículos de carretera
+STR_REPLACE_ROAD_VEHICLES                                       :Autotransportes
 STR_REPLACE_TRAM_VEHICLES                                       :Vehículos de tranvía
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagó ({STRING}): {ORANGE}{STRING}
@@ -4113,10 +4113,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar b
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave al hangar. Ctrl+Clic para realizar solamente mantenimiento
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esto comprará una copia idéntica del tren, incluyendo todos sus vagones y carros. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado sin realizar la compra
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esto comprará una copia idéntica del vehículo. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado sin realizar la compra
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esto comprará una copia idéntica del barco. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado sin realizar la compra
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto comprará una copia idéntica de la aeronave. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado sin realizar la compra
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esto comprará una copia idéntica del tren, incluyendo todos sus vagones y carros. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esto comprará una copia idéntica del vehículo. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esto comprará una copia idéntica del barco. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto comprará una copia idéntica de la aeronave. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forzar al tren a proceder sin esperar a que la señal le ceda vía libre
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cambiar dirección del tren
@@ -4254,7 +4254,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nueva ca
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo por reformar: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir los vehículos de ferrocarril a reformar. Arrastrar con el ratón para elegir más de un vehículo. Clic en un espacio vacío para elegir el tren completo. Ctrl+Clic para elegir una unidad del tren y los vagones subsecuentes
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir los vehículos a reformar. Arrastrar con el ratón para elegir más de un vehículo. Clic en un espacio vacío para elegir el tren completo. Ctrl+Clic para elegir una unidad del tren y los vagones subsecuentes
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir el tipo de carga para el tren
@@ -4264,7 +4264,7 @@ STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elegir e
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reformar tren
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reformar vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reformar autotransporte
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Reformar barco
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reformar aeronave
 
@@ -4377,7 +4377,7 @@ STR_ORDER_NEAREST_DEPOT                                         :el más cercano
 STR_ORDER_NEAREST_HANGAR                                        :el hangar más cercano
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :depósito de trenes
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :depósito de vehículos de carretera
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de autotransportes
 STR_ORDER_SHIP_DEPOT                                            :astillero de barcos
 ###next-name-looks-similar
 
@@ -4689,7 +4689,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... lím
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... límite de casillas despejadas alcanzado
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantación de árboles alcanzado
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nombre debe ser único
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} obstaculiza
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} estorba
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permitido en pausa
 
 # Local authority errors
@@ -4812,7 +4812,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se pu
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede quitar el punto de ruta de aquí...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar el punto de ruta
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... una boya obstaculiza
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... una boya estorba
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ¡boya en uso por otra empresa!
 
 # Depot related errors
@@ -4913,7 +4913,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}El puent
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}No se puede construir túnel aquí...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lugar no apto para entrada de túnel
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Primero se debe demoler el túnel
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Otro túnel obstaculiza
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Otro túnel se interpone
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel se extendería más allá del mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}No se puede excavar la tierra al otro lado del túnel
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel demasiado largo
@@ -4922,7 +4922,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tún
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objetos
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No se puede colocar objeto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Otro objeto estorba
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... la sede de la empresa obstaculiza
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... la sede de la empresa estorba
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No se puede adquirir este terreno...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya fue adquirido por el jugador!
 
@@ -4940,9 +4940,9 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}No se pu
 
 ###length VEHICLE_TYPES
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tren estorba
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vehículo de carretera estorba
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Autotransporte estorba
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Barco estorba
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave obstaculiza
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave estorba
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vehículo no disponible
@@ -4952,7 +4952,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronave
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se puede reformar tren...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No se puede reformar vehículo de carretera...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No se puede reformar autotransporte...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No se puede reformar barco...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No se puede reformar aeronave...
 
@@ -5007,7 +5007,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}El tren 
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se puede cambiar la dirección del tren...
 STR_ERROR_TRAIN_START_NO_POWER                                  :El tren no tiene potencia
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No se puede girar vehículo de carretera...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No se puede girar autotransporte...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}La aeronave está en vuelo
 
@@ -5466,8 +5466,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto de ruta #
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes, {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA}, {0:TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de vehículos de carretera, {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de vehículos de carretera #{1:COMMA}, {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de autotransportes, {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de autotransportes #{1:COMMA}, {0:TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Astillero, {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Astillero #{1:COMMA}, {0:TOWN}
 ###next-name-looks-similar
