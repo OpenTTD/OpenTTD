@@ -1695,7 +1695,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactivar tren
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activar esta opción deshabilita la construcción de trenes por jugadores no humanos
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar autotransportes para la computadora: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activar esta opción deshabilita la construcción de vehículos de carretera por jugadores no humanos
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activar esta opción deshabilita la construcción de autotransportes por jugadores no humanos
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aeroplanos para la computadora: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activar esta opción deshabilita la construcción de aeronaves por jugadores no humanos
@@ -3630,12 +3630,12 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Gasto de
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuevos vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trenes
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vehículos de carretera
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autotransportes
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Barcos
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestructura
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trenes
-STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vehículos de carretera
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Autotransportes
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronaves
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Barcos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Tasa de intereses del préstamo
@@ -3765,7 +3765,7 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes. Clic para más información
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de carretera. Clic para más información
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransportes. Clic para más información
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos. Clic para más información
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave. Clic para más información
 
@@ -3992,7 +3992,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren y sus vagones. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del vehículo de carretera. Clic en este botón y después en el vehículo a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del autotransporte. Clic en este botón y después en el vehículo a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará una copia del barco. Clic en este botón y después en el barco a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará una copia de la aeronave. Clic en este botón y después en la aeronave a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
 
@@ -4125,7 +4125,7 @@ STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar 
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reformar tren para llevar otro tipo de carga
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reformar vehículo de carretera para llevar otro tipo de carga
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reformar autotransporte para llevar otro tipo de carga
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reformar barco para llevar otro tipo de carga
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reformar aeronave para llevar otro tipo de carga
 
@@ -4258,7 +4258,7 @@ STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir l
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir el tipo de carga para el tren
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elegir el tipo de carga para el vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elegir el tipo de carga para el autotransporte
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elegir el tipo de carga para el barco
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elegir el tipo de carga para la aeronave
 
@@ -4270,7 +4270,7 @@ STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reformar
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reformar el tren para transportar la carga elegida
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reformar el vehículo de carretera para transportar la carga elegida
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reformar el autotransporte para llevar la carga elegida
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reformar el barco para transportar la carga elegida
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar la aeronave para transportar la carga elegida
 
@@ -5141,7 +5141,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de az
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sin nombre
 STR_SV_TRAIN_NAME                                               :Tren #{COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de carretera #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Autotransporte #{COMMA}
 STR_SV_SHIP_NAME                                                :Barco #{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave #{COMMA}
 
