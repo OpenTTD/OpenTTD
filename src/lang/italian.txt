@@ -3663,8 +3663,8 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Entrate
-STR_FINANCES_OPERATING_EXPENSES_TITLE                           :Costi di esercizio
-STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :Costi di impianto
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Costi di esercizio
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Costi di impianto
 
 
 ###length 13
@@ -3675,9 +3675,9 @@ STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Automezzi
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeromobili
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navi
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastrutture
-STR_FINANCES_SECTION_TRAIN_REVENUE                              :Treni
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Treni
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Automezzi
-STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :Aeromobili
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeromobili
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navi
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessi sul prestito
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altro
@@ -3686,7 +3686,7 @@ STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}Profitto netto
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
-STR_FINANCES_OWN_FUNDS_TITLE                                    :Capitale netto
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Capitale netto
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prestito
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Interesse sul prestito: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Prestito massimo: {BLACK}{CURRENCY_LONG}
@@ -4084,8 +4084,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING} - {STRING}
