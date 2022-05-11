@@ -1025,6 +1025,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Inställ
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Markera den här rutan för att v-synka skärmen. Ändringar i den här inställningen kommer bara att tillämpas vid omstart av spelet. Fungerar bara med hårdvaruacceleration aktiverad.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuvarande drivrutin: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som ska användas
@@ -3613,6 +3614,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Inkomst
 
 
 ###length 13
@@ -3622,6 +3624,8 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Kostnad f
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kostnad för vägfordon
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Kostnad för flygplan
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kostnad för skepp
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastruktur
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Tåg
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vägfordon
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Skepp
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Ränta på lån
@@ -3631,6 +3635,7 @@ STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURREN
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Ränta på lån: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maxlån: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {CURRENCY_LONG}
