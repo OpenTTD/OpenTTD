@@ -1566,7 +1566,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde scuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Viola
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colori rotte commerciali in sovrimpressione:{STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Imposta la combinazione di colori utilizzata per le rotte commerciali, sia delle linee che compaiono in sovripressione sulla schermata di gioco, sia nella finestra "Legenda rotte commerciali" da cui è possibile selezionarle (si trova nel menu "Mappa" della barra degli strumenti principale).
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Imposta la combinazione di colori utilizzata per le rotte commerciali, sia delle linee che compaiono in sovrimpressione sulla schermata di gioco, sia nella finestra "Legenda rotte commerciali" da cui è possibile selezionarle (si trova nel menu "Mappa" della barra degli strumenti principale).
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Verde a rosso (originale)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Verde a blu
@@ -2796,7 +2796,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selezion
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientamento stazione
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Seleziona l'orientamento della stazione degli autobus
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientamento area carico
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientamento area di carico
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Seleziona l'orientamento dell'area di carico per camion
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orient. stazione tram passeggeri
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Seleziona l'orientamento della stazione tram passeggeri
@@ -3670,7 +3670,7 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Costi di
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Costruzioni
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuovi veicoli
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Costi di esercizio treni
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Treni
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Automezzi
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeromobili
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navi
