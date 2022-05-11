@@ -3325,7 +3325,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {1:ST
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oväntat spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd Action 0-egenskap {4:HEX} (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att använda ett ogiltligt ID (spriteobjekt {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller ett skadat spriteobjekt. Alla korrupta spriteobjekt kommer att visas som röda frågetecken (?)
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller ett skadat spriteobjekt. Alla korrupta spriteobjekt kommer att visas som frågetecken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
