@@ -495,11 +495,14 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 					FALLTHROUGH;
 
 				default:
-					MakeCanal(current_tile, _current_company, Random());
-					if (Company::IsValidID(_current_company)) {
+					/* If we overbuild a water object with a canal, don't update the infrastructure total. */
+					bool is_existing_canal = IsTileType(current_tile, MP_WATER) && IsCanal(current_tile);
+					if (Company::IsValidID(_current_company) && !is_existing_canal) {
 						Company::Get(_current_company)->infrastructure.water++;
 						DirtyCompanyInfrastructureWindows(_current_company);
 					}
+
+					MakeCanal(current_tile, _current_company, Random());
 					break;
 			}
 			MarkTileDirtyByTile(current_tile);
