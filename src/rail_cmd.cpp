@@ -922,8 +922,8 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
  * Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
  * @param flags operation to perform
- * @param tile start tile of drag
  * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
  * @param railtype railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev), only used for building
  * @param track track-orientation
  * @param auto_remove_signals false = build up to an obstacle, true = fail if an obstacle is found (used for AIs).
@@ -931,9 +931,9 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
 
  * @see CmdRailTrackHelper
  */
-CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, RailType railtype, Track track, bool auto_remove_signals, bool fail_on_obstacle)
+CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RailType railtype, Track track, bool auto_remove_signals, bool fail_on_obstacle)
 {
-	return CmdRailTrackHelper(flags, tile, end_tile, railtype, track, false, auto_remove_signals, fail_on_obstacle);
+	return CmdRailTrackHelper(flags, start_tile, end_tile, railtype, track, false, auto_remove_signals, fail_on_obstacle);
 }
 
 /**
