@@ -365,7 +365,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
 	Track track = SimulateDrag(from, tile, &to);
-	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(tile, to, (::RailType)ScriptRail::GetCurrentRailType(), track, false, true);
+	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(to, tile, (::RailType)ScriptRail::GetCurrentRailType(), track, false, true);
 }
 
 /* static */ bool ScriptRail::RemoveRail(TileIndex from, TileIndex tile, TileIndex to)
@@ -382,7 +382,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
 	Track track = SimulateDrag(from, tile, &to);
-	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(tile, to, track);
+	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(to, tile, track);
 }
 
 /**

@@ -962,8 +962,8 @@ static bool CanConnectToRoad(TileIndex tile, RoadType rt, DiagDirection dir)
 /**
  * Build a long piece of road.
  * @param flags operation to perform
- * @param start_tile start tile of drag (the building cost will appear over this tile)
  * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
  * @param rt road type
  * @param axis direction
  * @param drd set road direction
@@ -974,7 +974,7 @@ static bool CanConnectToRoad(TileIndex tile, RoadType rt, DiagDirection dir)
  *      - true = Fail if an obstacle is found. Always take into account start_half and end_half. This behavior is used for scripts
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai)
+CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai)
 {
 	if (end_tile >= MapSize()) return CMD_ERROR;
 
@@ -1062,15 +1062,15 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, TileInde
 /**
  * Remove a long piece of road.
  * @param flags operation to perform
- * @param start_tile start tile of drag
  * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
  * @param rt road type
  * @param axis direction
  * @param start_half start tile starts in the 2nd half of tile
  * @param end_half end tile starts in the 2nd half of tile (p2 & 2)
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile, RoadType rt, Axis axis, bool start_half, bool end_half)
+std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, bool start_half, bool end_half)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -1107,7 +1107,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 				if (flags & DC_EXEC) {
 					money_spent += ret.GetCost();
 					if (money_spent > 0 && money_spent > money_available) {
-						return { cost, std::get<0>(Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, start_tile, end_tile, rt, axis, start_half, end_half)).GetCost() };
+						return { cost, std::get<0>(Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, end_tile, start_tile, rt, axis, start_half, end_half)).GetCost() };
 					}
 					RemoveRoad(tile, flags, bits, rtt, true, false);
 				}
