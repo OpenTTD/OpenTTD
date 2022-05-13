@@ -79,7 +79,7 @@ SQInstructionDesc g_InstrDesc[]={
 	{"_OP_NEWSLOTA"},
 	{"_OP_SCOPE_END"}
 };
-#endif
+
 void DumpLiteral(SQObjectPtr &o)
 {
 	switch(type(o)){
@@ -90,6 +90,7 @@ void DumpLiteral(SQObjectPtr &o)
 		default: printf("(%s %p)",GetTypeName(o),(void*)_rawval(o));break; break; //shut up compiler
 	}
 }
+#endif
 
 SQFuncState::SQFuncState(SQSharedState *ss,SQFuncState *parent,CompilerErrorFunc efunc,void *ed)
 {

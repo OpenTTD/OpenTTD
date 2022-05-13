@@ -11,7 +11,7 @@
 #include <stdarg.h>
 #include "window_gui.h"
 #include "window_func.h"
-#include "fileio_func.h"
+#include "random_access_file_type.h"
 #include "spritecache.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -736,7 +736,7 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	if (feature == GSF_INVALID) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	DeleteWindowById(WC_NEWGRF_INSPECT, wno);
+	CloseWindowById(WC_NEWGRF_INSPECT, wno);
 
 	/* Reinitialise the land information window to remove the "debug" sprite if needed.
 	 * Note: Since we might be called from a command here, it is important to not execute
@@ -828,7 +828,7 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_CAPTION:
 				SetDParam(0, this->current_sprite);
-				SetDParamStr(1, FioGetFilename(GetOriginFileSlot(this->current_sprite)));
+				SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
 				break;
 
 			case WID_SA_OFFSETS_ABS:
@@ -863,8 +863,9 @@ struct SpriteAlignerWindow : Window {
 				size->height = ScaleGUITrad(200);
 				break;
 			case WID_SA_LIST:
-				resize->height = std::max(11, FONT_HEIGHT_NORMAL + 1);
+				resize->height = FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				resize->width  = 1;
+				fill->height = resize->height;
 				break;
 			default:
 				break;

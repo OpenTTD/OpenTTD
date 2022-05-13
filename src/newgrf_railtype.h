@@ -49,8 +49,6 @@ struct RailTypeResolverObject : public ResolverObject {
 		}
 	}
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
-
 	GrfSpecFeature GetFeature() const override;
 	uint32 GetDebugID() const override;
 };

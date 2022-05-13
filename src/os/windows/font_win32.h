@@ -21,6 +21,7 @@ private:
 	HDC dc = nullptr;     ///< Cached GDI device context.
 	HGDIOBJ old_font;     ///< Old font selected into the GDI context.
 	SIZE glyph_size;      ///< Maximum size of regular glyphs.
+	std::string fontname; ///< Cached copy of this->logfont.lfFaceName
 
 	void SetFontSize(FontSize fs, int pixels);
 
@@ -33,7 +34,7 @@ public:
 	~Win32FontCache();
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(WChar key) override;
-	const char *GetFontName() override { return FS2OTTD(this->logfont.lfFaceName); }
+	const char *GetFontName() override { return this->fontname.c_str(); }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 

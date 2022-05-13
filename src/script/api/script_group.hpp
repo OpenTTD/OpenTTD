@@ -129,6 +129,20 @@ public:
 	static int32 GetNumEngines(GroupID group_id, EngineID engine_id);
 
 	/**
+	 * Get the total number of vehicles in a given group and its sub-groups.
+	 * @param group_id The group to get the number of vehicles in.
+	 * @param vehicle_type The type of vehicle of the group.
+	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
+	 * @pre IsValidGroup(group_id) || vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL ||
+	 *   vehicle_type == ScriptVehicle::VT_WATER || vehicle_type == ScriptVehicle::VT_AIR
+	 * @return The total number of vehicles in the group with id group_id and it's sub-groups.
+	 * @note If the group is valid (neither GROUP_ALL nor GROUP_DEFAULT), the value of
+	 *  vehicle_type is retrieved from the group itself and not from the input value.
+	 *  But if the group is GROUP_ALL or GROUP_DEFAULT, then vehicle_type must be valid.
+	 */
+	static int32 GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type);
+
+	/**
 	 * Move a vehicle to a group.
 	 * @param group_id The group to move the vehicle to.
 	 * @param vehicle_id The vehicle to move to the group.

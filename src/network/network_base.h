@@ -14,6 +14,7 @@
 #include "core/address.h"
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
+#include "../date_type.h"
 
 /** Type for the pool with client information. */
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;
@@ -21,11 +22,10 @@ extern NetworkClientInfoPool _networkclientinfo_pool;
 
 /** Container for all information known about a client. */
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {
-	ClientID client_id;                             ///< Client identifier (same as ClientState->client_id)
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
-	byte client_lang;                               ///< The language of the client
-	CompanyID client_playas;                        ///< As which company is this client playing (CompanyID)
-	Date join_date;                                 ///< Gamedate the client has joined
+	ClientID client_id;      ///< Client identifier (same as ClientState->client_id)
+	std::string client_name; ///< Name of the client
+	CompanyID client_playas; ///< As which company is this client playing (CompanyID)
+	Date join_date;          ///< Gamedate the client has joined
 
 	/**
 	 * Create a new client.

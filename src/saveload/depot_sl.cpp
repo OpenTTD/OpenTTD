@@ -8,10 +8,12 @@
 /** @file depot_sl.cpp Code handling saving and loading of depots */
 
 #include "../stdafx.h"
-#include "../depot_base.h"
-#include "../town.h"
 
 #include "saveload.h"
+#include "compat/depot_sl_compat.h"
+
+#include "../depot_base.h"
+#include "../town.h"
 
 #include "../safeguards.h"
 
@@ -20,43 +22,53 @@ static TownID _town_index;
 static const SaveLoad _depot_desc[] = {
 	 SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
 	 SLE_CONDVAR(Depot, xy,         SLE_UINT32,                 SLV_6, SL_MAX_VERSION),
-	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 SL_MIN_VERSION, SLV_141),
+	SLEG_CONDVAR("town_index", _town_index, SLE_UINT16,       SL_MIN_VERSION, SLV_141),
 	 SLE_CONDREF(Depot, town,       REF_TOWN,                 SLV_141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               SLV_141, SL_MAX_VERSION),
 	SLE_CONDSSTR(Depot, name,       SLE_STR,                  SLV_141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_142, SL_MAX_VERSION),
-	 SLE_END()
 };
 
-static void Save_DEPT()
-{
-	for (Depot *depot : Depot::Iterate()) {
-		SlSetArrayIndex(depot->index);
-		SlObject(depot, _depot_desc);
+struct DEPTChunkHandler : ChunkHandler {
+	DEPTChunkHandler() : ChunkHandler('DEPT', CH_TABLE) {}
+
+	void Save() const override
+	{
+		SlTableHeader(_depot_desc);
+
+		for (Depot *depot : Depot::Iterate()) {
+			SlSetArrayIndex(depot->index);
+			SlObject(depot, _depot_desc);
+		}
 	}
-}
 
-static void Load_DEPT()
-{
-	int index;
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_depot_desc, _depot_sl_compat);
 
-	while ((index = SlIterateArray()) != -1) {
-		Depot *depot = new (index) Depot();
-		SlObject(depot, _depot_desc);
+		int index;
 
-		/* Set the town 'pointer' so we can restore it later. */
-		if (IsSavegameVersionBefore(SLV_141)) depot->town = (Town *)(size_t)_town_index;
+		while ((index = SlIterateArray()) != -1) {
+			Depot *depot = new (index) Depot();
+			SlObject(depot, slt);
+
+			/* Set the town 'pointer' so we can restore it later. */
+			if (IsSavegameVersionBefore(SLV_141)) depot->town = (Town *)(size_t)_town_index;
+		}
 	}
-}
 
-static void Ptrs_DEPT()
-{
-	for (Depot *depot : Depot::Iterate()) {
-		SlObject(depot, _depot_desc);
-		if (IsSavegameVersionBefore(SLV_141)) depot->town = Town::Get((size_t)depot->town);
+	void FixPointers() const override
+	{
+		for (Depot *depot : Depot::Iterate()) {
+			SlObject(depot, _depot_desc);
+			if (IsSavegameVersionBefore(SLV_141)) depot->town = Town::Get((size_t)depot->town);
+		}
 	}
-}
-
-extern const ChunkHandler _depot_chunk_handlers[] = {
-	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, nullptr, CH_ARRAY | CH_LAST},
 };
+
+static const DEPTChunkHandler DEPT;
+static const ChunkHandlerRef depot_chunk_handlers[] = {
+	DEPT,
+};
+
+extern const ChunkHandlerTable _depot_chunk_handlers(depot_chunk_handlers);

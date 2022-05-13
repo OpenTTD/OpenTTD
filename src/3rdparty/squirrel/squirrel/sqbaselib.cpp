@@ -248,29 +248,29 @@ static SQRegFunction base_funcs[]={
 	{"getconsttable",base_getconsttable,1, NULL},
 	{"setconsttable",base_setconsttable,2, NULL},
 #endif
-	{"assert",base_assert,2, NULL},
-	{"print",base_print,2, NULL},
+	{"assert",base_assert,2, nullptr},
+	{"print",base_print,2, nullptr},
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	{"compilestring",base_compilestring,-2, ".ss"},
 	{"newthread",base_newthread,2, ".c"},
 	{"suspend",base_suspend,-1, NULL},
 #endif
 	{"array",base_array,-2, ".n"},
-	{"type",base_type,2, NULL},
+	{"type",base_type,2, nullptr},
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	{"dummy",base_dummy,0,NULL},
 #ifndef NO_GARBAGE_COLLECTOR
 	{"collectgarbage",base_collectgarbage,1, "t"},
 #endif
 #endif
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 void sq_base_register(HSQUIRRELVM v)
 {
 	SQInteger i=0;
 	sq_pushroottable(v);
-	while(base_funcs[i].name!=0) {
+	while(base_funcs[i].name!=nullptr) {
 		sq_pushstring(v,base_funcs[i].name,-1);
 		sq_newclosure(v,base_funcs[i].f,0);
 		sq_setnativeclosurename(v,-1,base_funcs[i].name);
@@ -415,10 +415,10 @@ SQRegFunction SQSharedState::_table_default_delegate_funcz[]={
 	{"rawset",table_rawset,3, "t"},
 	{"rawdelete",table_rawdelete,2, "t"},
 	{"rawin",container_rawexists,2, "t"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"clear",obj_clear,1, "."},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 //ARRAY DEFAULT DELEGATE///////////////////////////////////////
@@ -624,10 +624,10 @@ SQRegFunction SQSharedState::_array_default_delegate_funcz[]={
 	{"reverse",array_reverse,1, "a"},
 	{"sort",array_sort,-1, "ac"},
 	{"slice",array_slice,-1, "ann"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"clear",obj_clear,1, "."},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 //STRING DEFAULT DELEGATE//////////////////////////
@@ -687,8 +687,8 @@ SQRegFunction SQSharedState::_string_default_delegate_funcz[]={
 	{"find",string_find,-2, "s s n "},
 	{"tolower",string_tolower,1, "s"},
 	{"toupper",string_toupper,1, "s"},
-	{"weakref",obj_delegate_weakref,1, NULL },
-	{0,0,0,0}
+	{"weakref",obj_delegate_weakref,1, nullptr },
+	{nullptr,nullptr,0,nullptr}
 };
 
 //INTEGER DEFAULT DELEGATE//////////////////////////
@@ -697,8 +697,8 @@ SQRegFunction SQSharedState::_number_default_delegate_funcz[]={
 	{"tofloat",default_delegate_tofloat,1, "n|b"},
 	{"tostring",default_delegate_tostring,1, "."},
 	{"tochar",number_delegate_tochar,1, "n|b"},
-	{"weakref",obj_delegate_weakref,1, NULL },
-	{0,0,0,0}
+	{"weakref",obj_delegate_weakref,1, nullptr },
+	{nullptr,nullptr,0,nullptr}
 };
 
 //CLOSURE DEFAULT DELEGATE//////////////////////////
@@ -782,11 +782,11 @@ SQRegFunction SQSharedState::_closure_default_delegate_funcz[]={
 	{"pcall",closure_pcall,-1, "c"},
 	{"acall",closure_acall,2, "ca"},
 	{"pacall",closure_pacall,2, "ca"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"bindenv",closure_bindenv,2, "c x|y|t"},
 	{"getinfos",closure_getinfos,1, "c"},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 //GENERATOR DEFAULT DELEGATE
@@ -803,9 +803,9 @@ static SQInteger generator_getstatus(HSQUIRRELVM v)
 
 SQRegFunction SQSharedState::_generator_default_delegate_funcz[]={
 	{"getstatus",generator_getstatus,1, "g"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 //THREAD DEFAULT DELEGATE
@@ -889,9 +889,9 @@ SQRegFunction SQSharedState::_thread_default_delegate_funcz[] = {
 	{"call", thread_call, -1, "v"},
 	{"wakeup", thread_wakeup, -1, "v"},
 	{"getstatus", thread_getstatus, 1, "v"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
-	{0,0,0,0},
+	{nullptr,nullptr,0,nullptr},
 };
 
 static SQInteger class_getattributes(HSQUIRRELVM v)
@@ -919,10 +919,10 @@ SQRegFunction SQSharedState::_class_default_delegate_funcz[] = {
 	{"getattributes", class_getattributes, 2, "y."},
 	{"setattributes", class_setattributes, 3, "y.."},
 	{"rawin",container_rawexists,2, "y"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"instance",class_instance,1, "y"},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 static SQInteger instance_getclass(HSQUIRRELVM v)
@@ -935,9 +935,9 @@ static SQInteger instance_getclass(HSQUIRRELVM v)
 SQRegFunction SQSharedState::_instance_default_delegate_funcz[] = {
 	{"getclass", instance_getclass, 1, "x"},
 	{"rawin",container_rawexists,2, "x"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 static SQInteger weakref_ref(HSQUIRRELVM v)
@@ -949,9 +949,9 @@ static SQInteger weakref_ref(HSQUIRRELVM v)
 
 SQRegFunction SQSharedState::_weakref_default_delegate_funcz[] = {
 	{"ref",weakref_ref,1, "r"},
-	{"weakref",obj_delegate_weakref,1, NULL },
+	{"weakref",obj_delegate_weakref,1, nullptr },
 	{"tostring",default_delegate_tostring,1, "."},
-	{0,0,0,0}
+	{nullptr,nullptr,0,nullptr}
 };
 
 

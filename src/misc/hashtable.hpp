@@ -239,7 +239,7 @@ public:
 	/** non-const item search & removal */
 	void Pop(Titem_ &item)
 	{
-		bool ret = TryPop(item);
+		[[maybe_unused]] bool ret = TryPop(item);
 		assert(ret);
 	}
 

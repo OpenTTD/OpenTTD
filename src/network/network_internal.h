@@ -11,9 +11,12 @@
 #define NETWORK_INTERNAL_H
 
 #include "network_func.h"
+#include "core/tcp_coordinator.h"
 #include "core/tcp_game.h"
 
 #include "../command_type.h"
+#include "../command_func.h"
+#include "../misc/endian_buffer.hpp"
 
 #ifdef RANDOM_DEBUG
 /**
@@ -62,47 +65,6 @@ enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_END,
 };
 
-/** Language ids for server_lang and client_lang. Do NOT modify the order. */
-enum NetworkLanguage {
-	NETLANG_ANY = 0,
-	NETLANG_ENGLISH,
-	NETLANG_GERMAN,
-	NETLANG_FRENCH,
-	NETLANG_BRAZILIAN,
-	NETLANG_BULGARIAN,
-	NETLANG_CHINESE,
-	NETLANG_CZECH,
-	NETLANG_DANISH,
-	NETLANG_DUTCH,
-	NETLANG_ESPERANTO,
-	NETLANG_FINNISH,
-	NETLANG_HUNGARIAN,
-	NETLANG_ICELANDIC,
-	NETLANG_ITALIAN,
-	NETLANG_JAPANESE,
-	NETLANG_KOREAN,
-	NETLANG_LITHUANIAN,
-	NETLANG_NORWEGIAN,
-	NETLANG_POLISH,
-	NETLANG_PORTUGUESE,
-	NETLANG_ROMANIAN,
-	NETLANG_RUSSIAN,
-	NETLANG_SLOVAK,
-	NETLANG_SLOVENIAN,
-	NETLANG_SPANISH,
-	NETLANG_SWEDISH,
-	NETLANG_TURKISH,
-	NETLANG_UKRAINIAN,
-	NETLANG_AFRIKAANS,
-	NETLANG_CROATIAN,
-	NETLANG_CATALAN,
-	NETLANG_ESTONIAN,
-	NETLANG_GALICIAN,
-	NETLANG_GREEK,
-	NETLANG_LATVIAN,
-	NETLANG_COUNT
-};
-
 extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 extern uint32 _frame_counter_max; // To where we may go with our clients
 extern uint32 _frame_counter;
@@ -123,48 +85,57 @@ extern NetworkJoinStatus _network_join_status;
 extern uint8 _network_join_waiting;
 extern uint32 _network_join_bytes;
 extern uint32 _network_join_bytes_total;
+extern ConnectionType _network_server_connection_type;
+extern std::string _network_server_invite_code;
+
+/* Variable available for clients. */
+extern std::string _network_server_name;
 
 extern uint8 _network_reconnect;
 
-extern bool _network_udp_server;
-extern uint16 _network_udp_broadcast;
-
-extern uint8 _network_advertise_retries;
-
 extern CompanyMask _network_company_passworded;
 
-void NetworkTCPQueryServer(NetworkAddress address);
+void NetworkQueryServer(const std::string &connection_string);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
-void NetworkAddServer(const char *b);
+struct NetworkGameList *NetworkAddServer(const std::string &connection_string, bool manually = true, bool never_expire = false);
 void NetworkRebuildHostList();
 void UpdateNetworkGameWindow();
-
-bool IsNetworkCompatibleVersion(const char *version);
 
 /* From network_command.cpp */
 /**
  * Everything we need to know about a command to be able to execute it.
  */
-struct CommandPacket : CommandContainer {
+struct CommandPacket {
 	/** Make sure the pointer is nullptr. */
-	CommandPacket() : next(nullptr), company(INVALID_COMPANY), frame(0), my_cmd(false) {}
+	CommandPacket() : next(nullptr), company(INVALID_COMPANY), frame(0), my_cmd(false), tile(0) {}
 	CommandPacket *next; ///< the next command packet (if in queue)
 	CompanyID company;   ///< company that is executing the command
 	uint32 frame;        ///< the frame in which this packet is executed
 	bool my_cmd;         ///< did the command originate from "me"
+
+	Commands cmd;              ///< command being executed.
+	StringID err_msg;          ///< string ID of error message to use.
+	CommandCallback *callback; ///< any callback function executed upon successful completion of the command.
+	TileIndex tile;            ///< location of the command (for e.g. error message or effect display).
+	CommandDataBuffer data;    ///< command parameters.
 };
 
 void NetworkDistributeCommands();
 void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();
 void NetworkSyncCommandQueue(NetworkClientSocket *cs);
+void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
 
-void NetworkError(StringID error_string);
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const char *name, const char *str = "", int64 data = 0);
+void ShowNetworkError(StringID error_string);
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str = "", int64 data = 0, const std::string &data_str = "");
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
-bool NetworkFindName(char *new_name, const char *last);
-const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
+bool NetworkMakeClientNameUnique(std::string &new_name);
+std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32 password_game_seed);
+
+std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id);
+NetworkAddress ParseConnectionString(const std::string &connection_string, uint16 default_port);
+std::string NormalizeConnectionString(const std::string &connection_string, uint16 default_port);
 
 #endif /* NETWORK_INTERNAL_H */

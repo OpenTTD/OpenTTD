@@ -23,6 +23,40 @@
 #include "safeguards.h"
 
 /**
+ * Maximum number of pixels for one dimension of a heightmap image.
+ * Do not allow images for which the longest side is twice the maximum number of
+ * tiles along the longest side of the (tile) map.
+ */
+static const uint MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS = 2 * MAX_MAP_SIZE;
+
+/*
+ * Maximum size in pixels of the heightmap image.
+ */
+static const uint MAX_HEIGHTMAP_SIZE_PIXELS = 256 << 20; // ~256 million
+/*
+ * When loading a PNG or BMP the 24 bpp variant requires at least 4 bytes per pixel
+ * of memory to load the data. Make sure the "reasonable" limit is well within the
+ * maximum amount of memory allocatable on 32 bit platforms.
+ */
+static_assert(MAX_HEIGHTMAP_SIZE_PIXELS < UINT32_MAX / 8);
+
+/**
+ * Check whether the loaded dimension of the heightmap image are considered valid enough
+ * to attempt to load the image. In other words, the width and height are not beyond the
+ * #MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS limit and the total number of pixels does not
+ * exceed #MAX_HEIGHTMAP_SIZE_PIXELS. A width or height less than 1 are disallowed too.
+ * @param width The width of the to be loaded height map.
+ * @param height The height of the to be loaded height map.
+ * @return True iff the dimensions are within the limits.
+ */
+static inline bool IsValidHeightmapDimension(size_t width, size_t height)
+{
+	return (uint64)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
+		width > 0 && width <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS &&
+		height > 0 && height <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS;
+}
+
+/**
  * Convert RGB colours to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
  *  (average luminosity formula, NTSC Colour Space)
  */
@@ -146,8 +180,7 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, byte **map)
 	uint width = png_get_image_width(png_ptr, info_ptr);
 	uint height = png_get_image_height(png_ptr, info_ptr);
 
-	/* Check if image dimensions don't overflow a size_t to avoid memory corruption. */
-	if ((uint64)width * height >= (size_t)-1) {
+	if (!IsValidHeightmapDimension(width, height)) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
 		fclose(fp);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
@@ -255,8 +288,7 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, byte **map)
 		return false;
 	}
 
-	/* Check if image dimensions don't overflow a size_t to avoid memory corruption. */
-	if ((uint64)info.width * info.height >= (size_t)-1 / (info.bpp == 24 ? 3 : 1)) {
+	if (!IsValidHeightmapDimension(info.width, info.height)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
 		fclose(f);
 		BmpDestroyData(&data);
@@ -295,6 +327,8 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 {
 	/* Defines the detail of the aspect ratio (to avoid doubles) */
 	const uint num_div = 16384;
+	/* Ensure multiplication with num_div does not cause overflows. */
+	static_assert(num_div <= std::numeric_limits<uint>::max() / MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS);
 
 	uint width, height;
 	uint row, col;
@@ -480,7 +514,7 @@ bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x,
 }
 
 /**
- * Load a heightmap from file and change the map in his current dimensions
+ * Load a heightmap from file and change the map in its current dimensions
  *  to a landscape representing the heightmap.
  * It converts pixels to height. The brighter, the higher.
  * @param dft Type of image file.

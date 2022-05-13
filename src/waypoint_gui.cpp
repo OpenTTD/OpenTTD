@@ -20,6 +20,7 @@
 #include "company_base.h"
 #include "window_func.h"
 #include "waypoint_base.h"
+#include "waypoint_cmd.h"
 
 #include "widgets/waypoint_widget.h"
 
@@ -74,9 +75,10 @@ public:
 		this->OnInvalidateData(0);
 	}
 
-	~WaypointWindow()
+	void Close() override
 	{
-		DeleteWindowById(GetWindowClassForVehicleType(this->vt), VehicleListIdentifier(VL_STATION_LIST, this->vt, this->owner, this->window_number).Pack(), false);
+		CloseWindowById(GetWindowClassForVehicleType(this->vt), VehicleListIdentifier(VL_STATION_LIST, this->vt, this->owner, this->window_number).Pack(), false);
+		this->Window::Close();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -137,7 +139,7 @@ public:
 	{
 		if (str == nullptr) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME), nullptr, str);
+		Command<CMD_RENAME_WAYPOINT>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, this->window_number, str);
 	}
 
 };
@@ -155,7 +157,7 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_INSET, COLOUR_GREY), SetPadding(2, 2, 2, 2),
-			NWidget(NWID_VIEWPORT, COLOUR_GREY, WID_W_VIEWPORT), SetMinimalSize(256, 88), SetPadding(1, 1, 1, 1), SetResize(1, 1),
+			NWidget(NWID_VIEWPORT, COLOUR_GREY, WID_W_VIEWPORT), SetMinimalSize(256, 88), SetResize(1, 1),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),

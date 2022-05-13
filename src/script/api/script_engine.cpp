@@ -17,6 +17,7 @@
 #include "../../engine_base.h"
 #include "../../engine_func.h"
 #include "../../articulated_vehicles.h"
+#include "../../engine_cmd.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -285,7 +286,7 @@
 	EnforcePrecondition(false, IsValidEngine(engine_id));
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::DoCommand(0, engine_id, (uint32)company | (1 << 31), CMD_ENGINE_CTRL);
+	return ScriptObject::Command<CMD_ENGINE_CTRL>::Do(engine_id, (::CompanyID)company, true);
 }
 
 /* static */ bool ScriptEngine::DisableForCompany(EngineID engine_id, ScriptCompany::CompanyID company)
@@ -296,5 +297,5 @@
 	EnforcePrecondition(false, IsValidEngine(engine_id));
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::DoCommand(0, engine_id, company, CMD_ENGINE_CTRL);
+	return ScriptObject::Command<CMD_ENGINE_CTRL>::Do(engine_id, (::CompanyID)company, false);
 }

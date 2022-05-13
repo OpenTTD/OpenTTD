@@ -78,7 +78,6 @@ public:
  * groups. */
 struct RealSpriteGroup : SpriteGroup {
 	RealSpriteGroup() : SpriteGroup(SGT_REAL) {}
-	~RealSpriteGroup();
 
 	/* Loaded = in motion, loading = not moving
 	 * Each group contains several spritesets, for various loading stages */
@@ -87,10 +86,8 @@ struct RealSpriteGroup : SpriteGroup {
 	 * with small amount of cargo whilst loading is for stations with a lot
 	 * of da stuff. */
 
-	byte num_loaded;       ///< Number of loaded groups
-	byte num_loading;      ///< Number of loading groups
-	const SpriteGroup **loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
-	const SpriteGroup **loading; ///< List of loading groups (can be SpriteIDs or Callback results)
+	std::vector<const SpriteGroup *> loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
+	std::vector<const SpriteGroup *> loading; ///< List of loading groups (can be SpriteIDs or Callback results)
 
 protected:
 	const SpriteGroup *Resolve(ResolverObject &object) const;
@@ -169,15 +166,12 @@ struct DeterministicSpriteGroupRange {
 
 struct DeterministicSpriteGroup : SpriteGroup {
 	DeterministicSpriteGroup() : SpriteGroup(SGT_DETERMINISTIC) {}
-	~DeterministicSpriteGroup();
 
 	VarSpriteGroupScope var_scope;
 	DeterministicSpriteGroupSize size;
-	uint num_adjusts;
-	uint num_ranges;
 	bool calculated_result;
-	DeterministicSpriteGroupAdjust *adjusts;
-	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
+	std::vector<DeterministicSpriteGroupAdjust> adjusts;
+	std::vector<DeterministicSpriteGroupRange> ranges; // Dynamically allocated
 
 	/* Dynamically allocated, this is the sole owner */
 	const SpriteGroup *default_group;
@@ -195,7 +189,6 @@ enum RandomizedSpriteGroupCompareMode {
 
 struct RandomizedSpriteGroup : SpriteGroup {
 	RandomizedSpriteGroup() : SpriteGroup(SGT_RANDOMIZED) {}
-	~RandomizedSpriteGroup();
 
 	VarSpriteGroupScope var_scope;  ///< Take this object:
 
@@ -204,9 +197,8 @@ struct RandomizedSpriteGroup : SpriteGroup {
 	byte count;
 
 	byte lowest_randbit; ///< Look for this in the per-object randomized bitmask:
-	byte num_groups; ///< must be power of 2
 
-	const SpriteGroup **groups; ///< Take the group with appropriate index:
+	std::vector<const SpriteGroup *> groups; ///< Take the group with appropriate index:
 
 protected:
 	const SpriteGroup *Resolve(ResolverObject &object) const;

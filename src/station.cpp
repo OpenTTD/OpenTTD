@@ -55,10 +55,10 @@ BaseStation::~BaseStation()
 
 	if (CleaningPool()) return;
 
-	DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->index).Pack());
-	DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     this->owner, this->index).Pack());
-	DeleteWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     this->owner, this->index).Pack());
-	DeleteWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->index).Pack());
+	CloseWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->index).Pack());
+	CloseWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     this->owner, this->index).Pack());
+	CloseWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     this->owner, this->index).Pack());
+	CloseWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->index).Pack());
 
 	this->sign.MarkDirty();
 }
@@ -143,7 +143,7 @@ Station::~Station()
 		InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 	}
 
-	DeleteWindowById(WC_STATION_VIEW, index);
+	CloseWindowById(WC_STATION_VIEW, index);
 
 	/* Now delete all orders that go to the station */
 	RemoveOrderFromAllVehicles(OT_GOTO_STATION, this->index);
@@ -357,12 +357,25 @@ Rect Station::GetCatchmentRect() const
 
 /**
  * Add nearby industry to station's industries_near list if it accepts cargo.
- * @param ind Industry
+ * For industries that are already on the list update distance if it's closer.
+ * @param ind  Industry
+ * @param tile Tile of the industry to measure distance to.
  */
-void Station::AddIndustryToDeliver(Industry *ind)
+void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
 {
-	/* Don't check further if this industry is already in the list */
-	if (this->industries_near.find(ind) != this->industries_near.end()) return;
+	/* Using DistanceMax to get about the same order as with previously used CircularTileSearch. */
+	uint distance = DistanceMax(this->xy, tile);
+
+	/* Don't check further if this industry is already in the list but update the distance if it's closer */
+	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
+	if (pos != this->industries_near.end()) {
+		if (pos->distance > distance) {
+			auto node = this->industries_near.extract(pos);
+			node.value().distance = distance;
+			this->industries_near.insert(std::move(node));
+		}
+		return;
+	}
 
 	/* Include only industries that can accept cargo */
 	uint cargo_index;
@@ -371,8 +384,20 @@ void Station::AddIndustryToDeliver(Industry *ind)
 	}
 	if (cargo_index >= lengthof(ind->accepts_cargo)) return;
 
-	this->industries_near.insert(ind);
+	this->industries_near.insert(IndustryListEntry{distance, ind});
 }
+
+/**
+ * Remove nearby industry from station's industries_near list.
+ * @param ind  Industry
+ */
+void Station::RemoveIndustryToDeliver(Industry *ind) {
+	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
+	if (pos != this->industries_near.end()) {
+		this->industries_near.erase(pos);
+	}
+}
+
 
 /**
  * Remove this station from the nearby stations lists of all towns and industries.
@@ -416,18 +441,18 @@ void Station::RecomputeCatchment()
 	if (!_settings_game.station.serve_neutral_industries && this->industry != nullptr) {
 		/* Station is associated with an industry, so we only need to deliver to that industry. */
 		this->catchment_tiles.Initialize(this->industry->location);
-		TILE_AREA_LOOP(tile, this->industry->location) {
+		for (TileIndex tile : this->industry->location) {
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->industry->index) {
 				this->catchment_tiles.SetTile(tile);
 			}
 		}
 		/* The industry's stations_near may have been computed before its neutral station was built so clear and re-add here. */
 		for (Station *st : this->industry->stations_near) {
-			st->industries_near.erase(this->industry);
+			st->RemoveIndustryToDeliver(this->industry);
 		}
 		this->industry->stations_near.clear();
 		this->industry->stations_near.insert(this);
-		this->industries_near.insert(this->industry);
+		this->industries_near.insert(IndustryListEntry{0, this->industry});
 		return;
 	}
 
@@ -435,7 +460,7 @@ void Station::RecomputeCatchment()
 
 	/* Loop finding all station tiles */
 	TileArea ta(TileXY(this->rect.left, this->rect.top), TileXY(this->rect.right, this->rect.bottom));
-	TILE_AREA_LOOP(tile, ta) {
+	for (TileIndex tile : ta) {
 		if (!IsTileType(tile, MP_STATION) || GetStationIndex(tile) != this->index) continue;
 
 		uint r = GetTileCatchmentRadius(tile, this);
@@ -443,7 +468,7 @@ void Station::RecomputeCatchment()
 
 		/* This tile sub-loop doesn't need to test any tiles, they are simply added to the catchment set. */
 		TileArea ta2 = TileArea(tile, 1, 1).Expand(r);
-		TILE_AREA_LOOP(tile2, ta2) this->catchment_tiles.SetTile(tile2);
+		for (TileIndex tile2 : ta2) this->catchment_tiles.SetTile(tile2);
 	}
 
 	/* Search catchment tiles for towns and industries */
@@ -462,7 +487,7 @@ void Station::RecomputeCatchment()
 			i->stations_near.insert(this);
 
 			/* Add if we can deliver to this industry as well */
-			this->AddIndustryToDeliver(i);
+			this->AddIndustryToDeliver(i, tile);
 		}
 	}
 }
@@ -567,7 +592,7 @@ CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRect
 /* static */ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
 {
 	TileArea ta(TileXY(left_a, top_a), TileXY(right_a, bottom_a));
-	TILE_AREA_LOOP(tile, ta) {
+	for (TileIndex tile : ta) {
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
 	}
 

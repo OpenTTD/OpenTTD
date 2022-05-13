@@ -85,6 +85,8 @@ protected:
 	char *LogGamelog(char *buffer, const char *last) const;
 	char *LogRecentNews(char *buffer, const char *list) const;
 
+	int CreateFileName(char *filename, const char *filename_last, const char *ext, bool with_dir = true) const;
+
 public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() {}

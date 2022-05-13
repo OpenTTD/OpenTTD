@@ -138,7 +138,7 @@ void SaveToHighScore()
 						fwrite(hs->company, length, 1, fp)           >  1 || // Yes... could be 0 bytes too
 						fwrite(&hs->score, sizeof(hs->score), 1, fp) != 1 ||
 						fwrite("  ", 2, 1, fp)                       != 1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
-					DEBUG(misc, 1, "Could not save highscore.");
+					Debug(misc, 1, "Could not save highscore.");
 					i = SP_SAVED_HIGHSCORE_END;
 					break;
 				}
@@ -166,11 +166,11 @@ void LoadFromHighScore()
 						fread(hs->company, std::min<int>(lengthof(hs->company), length), 1, fp) >   1 || // Yes... could be 0 bytes too
 						fread(&hs->score, sizeof(hs->score), 1, fp)                        !=  1 ||
 						fseek(fp, 2, SEEK_CUR)                                             == -1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
-					DEBUG(misc, 1, "Highscore corrupted");
+					Debug(misc, 1, "Highscore corrupted");
 					i = SP_SAVED_HIGHSCORE_END;
 					break;
 				}
-				str_validate(hs->company, lastof(hs->company), SVS_NONE);
+				StrMakeValidInPlace(hs->company, lastof(hs->company), SVS_NONE);
 				hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 			}
 		}

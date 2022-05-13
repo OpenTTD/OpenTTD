@@ -12,13 +12,13 @@
 
 /** Some enums need to have allowed incrementing (i.e. StationClassID) */
 #define DECLARE_POSTFIX_INCREMENT(enum_type) \
-	inline enum_type operator ++(enum_type& e, int) \
+	inline constexpr enum_type operator ++(enum_type& e, int) \
 	{ \
 		enum_type e_org = e; \
 		e = (enum_type)((std::underlying_type<enum_type>::type)e + 1); \
 		return e_org; \
 	} \
-	inline enum_type operator --(enum_type& e, int) \
+	inline constexpr enum_type operator --(enum_type& e, int) \
 	{ \
 		enum_type e_org = e; \
 		e = (enum_type)((std::underlying_type<enum_type>::type)e - 1); \
@@ -29,13 +29,13 @@
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 # define DECLARE_ENUM_AS_BIT_SET(mask_t) \
-	inline mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | m2);} \
-	inline mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & m2);} \
-	inline mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ m2);} \
-	inline mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
-	inline mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
-	inline mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
-	inline mask_t operator ~(mask_t m) {return (mask_t)(~(std::underlying_type<mask_t>::type)m);}
+	inline constexpr mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | (std::underlying_type<mask_t>::type)m2);} \
+	inline constexpr mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & (std::underlying_type<mask_t>::type)m2);} \
+	inline constexpr mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ (std::underlying_type<mask_t>::type)m2);} \
+	inline constexpr mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
+	inline constexpr mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
+	inline constexpr mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
+	inline constexpr mask_t operator ~(mask_t m) {return (mask_t)(~(std::underlying_type<mask_t>::type)m);}
 
 
 /**

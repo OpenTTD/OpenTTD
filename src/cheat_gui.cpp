@@ -14,6 +14,7 @@
 #include "company_func.h"
 #include "date_func.h"
 #include "saveload/saveload.h"
+#include "vehicle_base.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
 #include "string_func.h"
@@ -27,6 +28,7 @@
 #include "tile_map.h"
 #include "newgrf.h"
 #include "error.h"
+#include "misc_cmd.h"
 
 #include "widgets/cheat_widget.h"
 
@@ -53,7 +55,7 @@ static int32 _money_cheat_amount = 10000000;
  */
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
-	DoCommandP(0, (uint32)(p2 * _money_cheat_amount), 0, CMD_MONEY_CHEAT);
+	Command<CMD_MONEY_CHEAT>::Post(p2 * _money_cheat_amount);
 	return _money_cheat_amount;
 }
 
@@ -106,6 +108,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	if (p1 == _cur_year) return _cur_year;
 
 	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
+	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
 	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
 	EnginesMonthlyLoop();
@@ -415,6 +418,6 @@ static WindowDesc _cheats_desc(
 /** Open cheat window. */
 void ShowCheatWindow()
 {
-	DeleteWindowById(WC_CHEATS, 0);
+	CloseWindowById(WC_CHEATS, 0);
 	new CheatWindow(&_cheats_desc);
 }

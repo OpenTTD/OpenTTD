@@ -12,6 +12,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#ifdef MAC_OS_X_VERSION_10_12_2
+#	define HAVE_TOUCHBAR_SUPPORT
+#endif
+
 class VideoDriver_Cocoa;
 
 /* Right Mouse Button Emulation enum */
@@ -30,10 +34,15 @@ extern NSString *OTTDMainLaunchGameEngine;
 
 /** Subclass of NSWindow to cater our special needs */
 @interface OTTD_CocoaWindow : NSWindow
+#ifdef HAVE_TOUCHBAR_SUPPORT
+	<NSTouchBarDelegate>
+#endif
+
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
 
-- (void)display;
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
+
+- (void)refreshSystemSprites;
 @end
 
 /** Subclass of NSView to support mouse awareness and text input. */

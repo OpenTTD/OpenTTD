@@ -8,9 +8,11 @@
 /** @file goal_sl.cpp Code handling saving and loading of goals */
 
 #include "../stdafx.h"
-#include "../goal_base.h"
 
 #include "saveload.h"
+#include "compat/goal_sl_compat.h"
+
+#include "../goal_base.h"
 
 #include "../safeguards.h"
 
@@ -21,26 +23,36 @@ static const SaveLoad _goals_desc[] = {
 	    SLE_STR(Goal, text,      SLE_STR | SLF_ALLOW_CONTROL, 0),
 	SLE_CONDSTR(Goal, progress,  SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_182, SL_MAX_VERSION),
 	SLE_CONDVAR(Goal, completed, SLE_BOOL, SLV_182, SL_MAX_VERSION),
-	    SLE_END()
 };
 
-static void Save_GOAL()
-{
-	for (Goal *s : Goal::Iterate()) {
-		SlSetArrayIndex(s->index);
-		SlObject(s, _goals_desc);
-	}
-}
+struct GOALChunkHandler : ChunkHandler {
+	GOALChunkHandler() : ChunkHandler('GOAL', CH_TABLE) {}
 
-static void Load_GOAL()
-{
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Goal *s = new (index) Goal();
-		SlObject(s, _goals_desc);
-	}
-}
+	void Save() const override
+	{
+		SlTableHeader(_goals_desc);
 
-extern const ChunkHandler _goal_chunk_handlers[] = {
-	{ 'GOAL', Save_GOAL, Load_GOAL, nullptr, nullptr, CH_ARRAY | CH_LAST},
+		for (Goal *s : Goal::Iterate()) {
+			SlSetArrayIndex(s->index);
+			SlObject(s, _goals_desc);
+		}
+	}
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_goals_desc, _goals_sl_compat);
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Goal *s = new (index) Goal();
+			SlObject(s, slt);
+		}
+	}
 };
+
+static const GOALChunkHandler GOAL;
+static const ChunkHandlerRef goal_chunk_handlers[] = {
+	GOAL,
+};
+
+extern const ChunkHandlerTable _goal_chunk_handlers(goal_chunk_handlers);

@@ -88,7 +88,7 @@ public:
 	 * @param ... Optional arguments for this string.
 	 */
 	ScriptText(StringID string, ...);
-#endif
+#endif /* DOXYGEN_API */
 	~ScriptText();
 
 #ifndef DOXYGEN_API

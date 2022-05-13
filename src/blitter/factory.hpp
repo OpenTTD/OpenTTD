@@ -61,15 +61,16 @@ protected:
 			name(name), description(description)
 	{
 		if (usable) {
+			Blitters &blitters = GetBlitters();
+			assert(blitters.find(this->name) == blitters.end());
 			/*
 			 * Only add when the blitter is usable. Do not bail out or
 			 * do more special things since the blitters are always
 			 * instantiated upon start anyhow and freed upon shutdown.
 			 */
-			std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(this->name, this));
-			assert(P.second);
+			blitters.insert(Blitters::value_type(this->name, this));
 		} else {
-			DEBUG(driver, 1, "Not registering blitter %s as it is not usable", name);
+			Debug(driver, 1, "Not registering blitter {} as it is not usable", name);
 		}
 	}
 
@@ -90,7 +91,7 @@ public:
 	}
 
 	/**
-	 * Find the requested blitter and return his class.
+	 * Find the requested blitter and return its class.
 	 * @param name the blitter to select.
 	 * @post Sets the blitter so GetCurrentBlitter() returns it too.
 	 */
@@ -103,7 +104,7 @@ public:
 		delete *GetActiveBlitter();
 		*GetActiveBlitter() = newb;
 
-		DEBUG(driver, 1, "Successfully %s blitter '%s'", name.empty() ? "probed" : "loaded", newb->GetName());
+		Debug(driver, 1, "Successfully {} blitter '{}'", name.empty() ? "probed" : "loaded", newb->GetName());
 		return newb;
 	}
 

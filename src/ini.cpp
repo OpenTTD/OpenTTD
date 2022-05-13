@@ -53,7 +53,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::string file_new{ filename };
 	file_new.append(".new");
 
-	std::ofstream os(OTTD2FS(file_new.c_str()));
+	std::ofstream os(OTTD2FS(file_new).c_str());
 	if (os.fail()) return false;
 
 	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
@@ -94,8 +94,8 @@ bool IniFile::SaveToDisk(const std::string &filename)
 #if defined(_WIN32)
 	/* Allocate space for one more \0 character. */
 	wchar_t tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
-	wcsncpy(tfilename, OTTD2FS(filename.c_str()), MAX_PATH);
-	wcsncpy(tfile_new, OTTD2FS(file_new.c_str()), MAX_PATH);
+	wcsncpy(tfilename, OTTD2FS(filename).c_str(), MAX_PATH);
+	wcsncpy(tfile_new, OTTD2FS(file_new).c_str(), MAX_PATH);
 	/* SHFileOperation wants a double '\0' terminated string. */
 	tfilename[MAX_PATH - 1] = '\0';
 	tfile_new[MAX_PATH - 1] = '\0';
@@ -112,7 +112,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	SHFileOperation(&shfopt);
 #else
 	if (rename(file_new.c_str(), filename.c_str()) < 0) {
-		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new.c_str(), filename.c_str());
+		Debug(misc, 0, "Renaming {} to {} failed; configuration not saved", file_new, filename);
 	}
 #endif
 

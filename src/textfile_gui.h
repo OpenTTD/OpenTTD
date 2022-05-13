@@ -19,12 +19,22 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {
+	struct Line {
+		int top;          ///< Top scroll position.
+		int bottom;       ///< Bottom scroll position.
+		const char *text; ///< Pointer to text buffer.
+
+		Line(int top, const char *text) : top(top), bottom(top + 1), text(text) {}
+	};
+
 	TextfileType file_type;          ///< Type of textfile to view.
 	Scrollbar *vscroll;              ///< Vertical scrollbar.
 	Scrollbar *hscroll;              ///< Horizontal scrollbar.
 	char *text;                      ///< Lines of text from the NewGRF's textfile.
-	std::vector<const char *> lines; ///< #text, split into lines in a table with lines.
+	std::vector<Line> lines;         ///< #text, split into lines in a table with lines.
 	uint search_iterator;            ///< Iterator for the font check search.
+
+	uint max_length;                 ///< Maximum length of unwrapped text line.
 
 	static const int TOP_SPACING    = WD_FRAMETEXT_TOP;    ///< Additional spacing at the top of the #WID_TF_BACKGROUND widget.
 	static const int BOTTOM_SPACING = WD_FRAMETEXT_BOTTOM; ///< Additional spacing at the bottom of the #WID_TF_BACKGROUND widget.
@@ -36,6 +46,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	void OnClick(Point pt, int widget, int click_count) override;
 	void DrawWidget(const Rect &r, int widget) const override;
 	void OnResize() override;
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 
 	void Reset() override;
 	FontSize DefaultSize() override;
@@ -46,8 +57,9 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	virtual void LoadTextfile(const char *textfile, Subdirectory dir);
 
 private:
+	uint ReflowContent();
 	uint GetContentHeight();
-	void SetupScrollbars();
+	void SetupScrollbars(bool force_reflow);
 };
 
 #endif /* TEXTFILE_GUI_H */

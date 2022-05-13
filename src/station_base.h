@@ -21,9 +21,6 @@
 #include <map>
 #include <set>
 
-typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
-extern StationPool _station_pool;
-
 static const byte INITIAL_STATION_RATING = 175;
 
 /**
@@ -440,11 +437,18 @@ private:
 	}
 };
 
-struct IndustryCompare {
-	bool operator() (const Industry *lhs, const Industry *rhs) const;
+struct IndustryListEntry {
+	uint distance;
+	Industry *industry;
+
+	bool operator== (const IndustryListEntry &other) const { return this->distance == other.distance && this->industry == other.industry; };
 };
 
-typedef std::set<Industry *, IndustryCompare> IndustryList;
+struct IndustryCompare {
+	bool operator() (const IndustryListEntry &lhs, const IndustryListEntry &rhs) const;
+};
+
+typedef std::set<IndustryListEntry, IndustryCompare> IndustryList;
 
 /** Station data structure */
 struct Station FINAL : SpecializedStation<Station, false> {
@@ -503,7 +507,8 @@ public:
 	uint GetCatchmentRadius() const;
 	Rect GetCatchmentRect() const;
 	bool CatchmentCoversTown(TownID t) const;
-	void AddIndustryToDeliver(Industry *ind);
+	void AddIndustryToDeliver(Industry *ind, TileIndex tile);
+	void RemoveIndustryToDeliver(Industry *ind);
 	void RemoveFromAllNearbyLists();
 
 	inline bool TileIsInCatchment(TileIndex tile) const
@@ -568,6 +573,9 @@ void RebuildStationKdtree();
 template<typename Func>
 void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 {
+	/* There are no stations, so we will never find anything. */
+	if (Station::GetNumItems() == 0) return;
+
 	/* Not using, or don't have a nearby stations list, so we need to scan. */
 	std::set<StationID> seen_stations;
 
@@ -575,7 +583,7 @@ void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 	 * to find the possible nearby stations. */
 	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
 	TileArea ta_ext = TileArea(ta).Expand(max_c);
-	TILE_AREA_LOOP(tile, ta_ext) {
+	for (TileIndex tile : ta_ext) {
 		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
 	}
 
@@ -587,7 +595,7 @@ void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 		if (!_settings_game.station.serve_neutral_industries && st->industry != nullptr) continue;
 
 		/* Test if the tile is within the station's catchment */
-		TILE_AREA_LOOP(tile, ta) {
+		for (TileIndex tile : ta) {
 			if (st->TileIsInCatchment(tile)) {
 				if (func(st, tile)) break;
 			}

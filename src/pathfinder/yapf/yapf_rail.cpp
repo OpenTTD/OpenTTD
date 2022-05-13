@@ -28,13 +28,11 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	FILE *f2 = fopen("yapf2.txt", "wt");
 	assert(f1 != nullptr);
 	assert(f2 != nullptr);
-	fwrite(dmp1.m_out.Data(), 1, dmp1.m_out.Size(), f1);
-	fwrite(dmp2.m_out.Data(), 1, dmp2.m_out.Size(), f2);
+	fwrite(dmp1.m_out.c_str(), 1, dmp1.m_out.size(), f1);
+	fwrite(dmp2.m_out.c_str(), 1, dmp2.m_out.size(), f2);
 	fclose(f1);
 	fclose(f2);
 }
-
-int _total_pf_time_us = 0;
 
 template <class Types>
 class CYapfReserveTrack
@@ -243,7 +241,7 @@ public:
 			pf2.DisableCache(true);
 			FindDepotData result2 = pf2.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty);
 			if (result1.tile != result2.tile || (result1.reverse != result2.reverse)) {
-				DEBUG(desync, 2, "CACHE ERROR: FindNearestDepotTwoWay() = [%s, %s]",
+				Debug(desync, 2, "CACHE ERROR: FindNearestDepotTwoWay() = [{}, {}]",
 						result1.tile != INVALID_TILE ? "T" : "F",
 						result2.tile != INVALID_TILE ? "T" : "F");
 				DumpState(pf1, pf2);
@@ -327,7 +325,7 @@ public:
 			pf2.DisableCache(true);
 			result1 = pf2.FindNearestSafeTile(v, t1, td, override_railtype, false);
 			if (result1 != result2) {
-				DEBUG(desync, 2, "CACHE ERROR: FindSafeTile() = [%s, %s]", result2 ? "T" : "F", result1 ? "T" : "F");
+				Debug(desync, 2, "CACHE ERROR: FindSafeTile() = [{}, {}]", result2 ? "T" : "F", result1 ? "T" : "F");
 				DumpState(pf1, pf2);
 			}
 		}
@@ -411,7 +409,7 @@ public:
 			pf2.DisableCache(true);
 			Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target);
 			if (result1 != result2) {
-				DEBUG(desync, 2, "CACHE ERROR: ChooseRailTrack() = [%d, %d]", result1, result2);
+				Debug(desync, 2, "CACHE ERROR: ChooseRailTrack() = [{}, {}]", result1, result2);
 				DumpState(pf1, pf2);
 			}
 		}
@@ -469,7 +467,7 @@ public:
 			pf2.DisableCache(true);
 			bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 			if (result1 != result2) {
-				DEBUG(desync, 2, "CACHE ERROR: CheckReverseTrain() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
+				Debug(desync, 2, "CACHE ERROR: CheckReverseTrain() = [{}, {}]", result1 ? "T" : "F", result2 ? "T" : "F");
 				DumpState(pf1, pf2);
 			}
 		}

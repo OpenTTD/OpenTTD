@@ -185,10 +185,11 @@ struct IConsoleWindow : Window
 		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 
-	~IConsoleWindow()
+	void Close() override
 	{
 		_iconsole_mode = ICONSOLE_CLOSED;
 		VideoDriver::GetInstance()->EditBoxLostFocus();
+		this->Window::Close();
 	}
 
 	/**
@@ -286,7 +287,7 @@ struct IConsoleWindow : Window
 				/* We always want the ] at the left side; we always force these strings to be left
 				 * aligned anyway. So enforce this in all cases by adding a left-to-right marker,
 				 * otherwise it will be drawn at the wrong side with right-to-left texts. */
-				IConsolePrintF(CC_COMMAND, LRM "] %s", _iconsole_cmdline.buf);
+				IConsolePrint(CC_COMMAND, LRM "] {}", _iconsole_cmdline.buf);
 				const char *cmd = IConsoleHistoryAdd(_iconsole_cmdline.buf);
 				IConsoleClearCommand();
 
@@ -398,10 +399,10 @@ void IConsoleGUIInit()
 	IConsoleLine::Reset();
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
-	IConsolePrintF(CC_WARNING, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
-	IConsolePrint(CC_WHITE,  "------------------------------------");
-	IConsolePrint(CC_WHITE,  "use \"help\" for more information");
-	IConsolePrint(CC_WHITE,  "");
+	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
+	IConsolePrint(CC_WHITE, "------------------------------------");
+	IConsolePrint(CC_WHITE, "use \"help\" for more information.");
+	IConsolePrint(CC_WHITE, "");
 	IConsoleClearCommand();
 }
 
@@ -442,7 +443,7 @@ void IConsoleSwitch()
 			break;
 
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
-			DeleteWindowById(WC_CONSOLE, 0);
+			CloseWindowById(WC_CONSOLE, 0);
 			break;
 	}
 

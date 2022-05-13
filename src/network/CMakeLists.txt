@@ -14,14 +14,22 @@ add_files(
     network_content.h
     network_content_gui.cpp
     network_content_gui.h
+    network_coordinator.cpp
+    network_coordinator.h
     network_func.h
     network_gamelist.cpp
     network_gamelist.h
     network_gui.cpp
     network_gui.h
     network_internal.h
+    network_query.cpp
+    network_query.h
     network_server.cpp
     network_server.h
+    network_stun.cpp
+    network_stun.h
+    network_turn.cpp
+    network_turn.h
     network_type.h
     network_udp.cpp
     network_udp.h

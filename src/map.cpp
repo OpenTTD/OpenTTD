@@ -47,7 +47,7 @@ void AllocateMap(uint size_x, uint size_y)
 		error("Invalid map size");
 	}
 
-	DEBUG(map, 1, "Allocating map of size %dx%d", size_x, size_y);
+	Debug(map, 1, "Allocating map of size {}x{}", size_x, size_y);
 
 	_map_log_x = FindFirstBit(size_x);
 	_map_log_y = FindFirstBit(size_y);
@@ -84,7 +84,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 		char buf[512];
 
 		seprintf(buf, lastof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
-			exp, tile, add);
+			exp, (uint32)tile, add);
 #if !defined(_MSC_VER)
 		fprintf(stderr, "%s:%d %s\n", file, line, buf);
 #else

@@ -356,7 +356,7 @@ static int _gamelog_print_level = 0; ///< gamelog debug level we need to print s
 
 static void GamelogPrintDebugProc(const char *s)
 {
-	DEBUG(gamelog, _gamelog_print_level, "%s", s);
+	Debug(gamelog, _gamelog_print_level, "{}", s);
 }
 
 
@@ -483,14 +483,14 @@ void GamelogOldver()
  * @param oldval old setting value
  * @param newval new setting value
  */
-void GamelogSetting(const char *name, int32 oldval, int32 newval)
+void GamelogSetting(const std::string &name, int32 oldval, int32 newval)
 {
 	assert(_gamelog_action_type == GLAT_SETTING);
 
 	LoggedChange *lc = GamelogChange(GLCT_SETTING);
 	if (lc == nullptr) return;
 
-	lc->setting.name = stredup(name);
+	lc->setting.name = stredup(name.c_str());
 	lc->setting.oldval = oldval;
 	lc->setting.newval = newval;
 }

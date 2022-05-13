@@ -33,6 +33,7 @@
 #include "guitimer_func.h"
 #include "error.h"
 #include "news_gui.h"
+#include "misc_cmd.h"
 
 #include "saveload/saveload.h"
 
@@ -76,7 +77,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyl
 }
 
 
-void CcPlaySound_EXPLOSION(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcPlaySound_EXPLOSION(Commands cmd, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
@@ -152,12 +153,24 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
-void FixTitleGameZoom()
+void FixTitleGameZoom(int zoom_adjust)
 {
 	if (_game_mode != GM_MENU) return;
 
 	Viewport *vp = FindWindowByClass(WC_MAIN_WINDOW)->viewport;
+
+	/* Adjust the zoom in/out.
+	 * Can't simply add, since operator+ is not defined on the ZoomLevel type. */
 	vp->zoom = _gui_zoom;
+	while (zoom_adjust < 0 && vp->zoom != _settings_client.gui.zoom_min) {
+		vp->zoom--;
+		zoom_adjust++;
+	}
+	while (zoom_adjust > 0 && vp->zoom != _settings_client.gui.zoom_max) {
+		vp->zoom++;
+		zoom_adjust--;
+	}
+
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 }
@@ -303,18 +316,18 @@ struct MainWindow : Window
 			}
 
 			case GHK_RESET_OBJECT_TO_PLACE: ResetObjectToPlace(); break;
-			case GHK_DELETE_WINDOWS: DeleteNonVitalWindows(); break;
-			case GHK_DELETE_NONVITAL_WINDOWS: DeleteAllNonVitalWindows(); break;
+			case GHK_DELETE_WINDOWS: CloseNonVitalWindows(); break;
+			case GHK_DELETE_NONVITAL_WINDOWS: CloseAllNonVitalWindows(); break;
 			case GHK_DELETE_ALL_MESSAGES: DeleteAllMessages(); break;
 			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
 
 			case GHK_CRASH: // Crash the game
-				*(volatile byte *)0 = 0;
+				*(volatile byte *)nullptr = 0;
 				break;
 
 			case GHK_MONEY: // Gimme money
 				/* You can only cheat for money in singleplayer mode. */
-				if (!_networking) DoCommandP(0, 10000000, 0, CMD_MONEY_CHEAT);
+				if (!_networking) Command<CMD_MONEY_CHEAT>::Post(10000000);
 				break;
 
 			case GHK_UPDATE_COORDS: // Update the coordinates of all station signs

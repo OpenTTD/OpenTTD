@@ -28,6 +28,8 @@
 #include "../hotkeys.h"
 #include "../core/geometry_func.hpp"
 #include "../guitimer_func.h"
+#include "../company_cmd.h"
+#include "../misc_cmd.h"
 
 #include "ai.hpp"
 #include "ai_gui.hpp"
@@ -182,7 +184,7 @@ struct AIListWindow : public Window {
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_AI_SETTINGS);
-		DeleteWindowByClass(WC_QUERY_STRING);
+		CloseWindowByClass(WC_QUERY_STRING);
 		InvalidateWindowClassesData(WC_TEXTFILE);
 	}
 
@@ -190,13 +192,13 @@ struct AIListWindow : public Window {
 	{
 		switch (widget) {
 			case WID_AIL_LIST: { // Select one of the AIs
-				int sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_AIL_LIST, 0, this->line_height) - 1;
+				int sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_AIL_LIST) - 1;
 				if (sel < (int)this->info_list->size()) {
 					this->selected = sel;
 					this->SetDirty();
 					if (click_count > 1) {
 						this->ChangeAI();
-						delete this;
+						this->Close();
 					}
 				}
 				break;
@@ -204,12 +206,12 @@ struct AIListWindow : public Window {
 
 			case WID_AIL_ACCEPT: {
 				this->ChangeAI();
-				delete this;
+				this->Close();
 				break;
 			}
 
 			case WID_AIL_CANCEL:
-				delete this;
+				this->Close();
 				break;
 		}
 	}
@@ -227,7 +229,7 @@ struct AIListWindow : public Window {
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
-			delete this;
+			this->Close();
 			return;
 		}
 
@@ -276,7 +278,7 @@ static WindowDesc _ai_list_desc(
  */
 static void ShowAIListWindow(CompanyID slot)
 {
-	DeleteWindowByClass(WC_AI_LIST);
+	CloseWindowByClass(WC_AI_LIST);
 	new AIListWindow(&_ai_list_desc, slot);
 }
 
@@ -444,7 +446,7 @@ struct AISettingsWindow : public Window {
 				if (!this->IsEditableItem(config_item)) return;
 
 				if (this->clicked_row != num) {
-					DeleteChildWindows(WC_QUERY_STRING);
+					this->CloseChildWindows(WC_QUERY_STRING);
 					HideDropDownMenu(this);
 					this->clicked_row = num;
 					this->clicked_dropdown = false;
@@ -518,7 +520,7 @@ struct AISettingsWindow : public Window {
 			}
 
 			case WID_AIS_ACCEPT:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_AIS_RESET:
@@ -584,7 +586,7 @@ struct AISettingsWindow : public Window {
 	{
 		this->RebuildVisibleSettings();
 		HideDropDownMenu(this);
-		DeleteChildWindows(WC_QUERY_STRING);
+		this->CloseChildWindows(WC_QUERY_STRING);
 	}
 
 private:
@@ -628,8 +630,8 @@ static WindowDesc _ai_settings_desc(
  */
 static void ShowAISettingsWindow(CompanyID slot)
 {
-	DeleteWindowByClass(WC_AI_LIST);
-	DeleteWindowByClass(WC_AI_SETTINGS);
+	CloseWindowByClass(WC_AI_LIST);
+	CloseWindowByClass(WC_AI_SETTINGS);
 	new AISettingsWindow(&_ai_settings_desc, slot);
 }
 
@@ -655,7 +657,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 	{
 		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
 		if (textfile == nullptr) {
-			delete this;
+			this->Close();
 		} else {
 			this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
 		}
@@ -669,7 +671,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
  */
 void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
 {
-	DeleteWindowById(WC_TEXTFILE, file_type);
+	CloseWindowById(WC_TEXTFILE, file_type);
 	new ScriptTextfileWindow(file_type, slot);
 }
 
@@ -704,16 +706,16 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 			NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIC_GAMELIST), SetMinimalSize(288, 14), SetFill(1, 0), SetMatrixDataTip(1, 1, STR_AI_CONFIG_GAMELIST_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CHANGE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CHANGE, STR_AI_CONFIG_CHANGE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONFIGURE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CLOSE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
-			EndContainer(),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CHANGE), SetFill(1, 0), SetMinimalSize(93, 0), SetDataTip(STR_AI_CONFIG_CHANGE, STR_AI_CONFIG_CHANGE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONFIGURE), SetFill(1, 0), SetMinimalSize(93, 0), SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CLOSE), SetFill(1, 0), SetMinimalSize(93, 0), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_NULL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_NULL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_NULL),
 		EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONTENT_DOWNLOAD), SetFill(1, 0), SetMinimalSize(279, 12), SetPadding(0, 7, 9, 7), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONTENT_DOWNLOAD), SetFill(1, 0), SetMinimalSize(279, 0), SetPadding(0, 7, 9, 7), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 	EndContainer(),
 };
 
@@ -744,10 +746,11 @@ struct AIConfigWindow : public Window {
 		this->OnInvalidateData(0);
 	}
 
-	~AIConfigWindow()
+	void Close() override
 	{
-		DeleteWindowByClass(WC_AI_LIST);
-		DeleteWindowByClass(WC_AI_SETTINGS);
+		CloseWindowByClass(WC_AI_LIST);
+		CloseWindowByClass(WC_AI_SETTINGS);
+		this->Window::Close();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -784,6 +787,7 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_LIST:
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				resize->height = this->line_height;
 				size->height = 8 * this->line_height;
 				break;
 
@@ -895,7 +899,7 @@ struct AIConfigWindow : public Window {
 			}
 
 			case WID_AIC_LIST: { // Select a slot
-				this->selected_slot = (CompanyID)this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget, 0, this->line_height);
+				this->selected_slot = (CompanyID)this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 				this->InvalidateData();
 				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
 				break;
@@ -928,7 +932,7 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_CLOSE:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_AIC_CONTENT_DOWNLOAD:
@@ -970,7 +974,7 @@ struct AIConfigWindow : public Window {
 /** Open the AI config window. */
 void ShowAIConfigWindow()
 {
-	DeleteWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WC_GAME_OPTIONS);
 	new AIConfigWindow();
 }
 
@@ -1262,7 +1266,7 @@ struct AIDebugWindow : public Window {
 		this->highlight_row = -1; // The highlight of one AI make little sense for another AI.
 
 		/* Close AI settings window to prevent confusion */
-		DeleteWindowByClass(WC_AI_SETTINGS);
+		CloseWindowByClass(WC_AI_SETTINGS);
 
 		this->InvalidateData(-1);
 
@@ -1288,8 +1292,8 @@ struct AIDebugWindow : public Window {
 			case WID_AID_RELOAD_TOGGLE:
 				if (ai_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				DoCommandP(0, CCA_DELETE | ai_debug_company << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
-				DoCommandP(0, CCA_NEW_AI | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, ai_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, ai_debug_company, CRR_NONE, INVALID_CLIENT_ID);
 				break;
 
 			case WID_AID_SETTINGS:
@@ -1328,7 +1332,7 @@ struct AIDebugWindow : public Window {
 						}
 						if (all_unpaused) {
 							/* All scripts have been unpaused => unpause the game. */
-							DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+							Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false);
 						}
 					}
 				}
@@ -1377,7 +1381,7 @@ struct AIDebugWindow : public Window {
 
 					/* Pause the game. */
 					if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-						DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+						Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 					}
 
 					/* Highlight row that matched */

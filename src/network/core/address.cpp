@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 
 #include "address.h"
+#include "../network_internal.h"
 #include "../../debug.h"
 
 #include "../../safeguards.h"
@@ -19,11 +20,13 @@
  * IPv4 dotted representation is given.
  * @return the hostname
  */
-const char *NetworkAddress::GetHostname()
+const std::string &NetworkAddress::GetHostname()
 {
-	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
+	if (this->hostname.empty() && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), nullptr, 0, NI_NUMERICHOST);
+		char buffer[NETWORK_HOSTNAME_LENGTH];
+		getnameinfo((struct sockaddr *)&this->address, this->address_length, buffer, sizeof(buffer), nullptr, 0, NI_NUMERICHOST);
+		this->hostname = buffer;
 	}
 	return this->hostname;
 }
@@ -69,26 +72,17 @@ void NetworkAddress::SetPort(uint16 port)
 }
 
 /**
- * Get the address as a string, e.g. 127.0.0.1:12345.
- * @param buffer the buffer to write to
- * @param last the last element in the buffer
- * @param with_family whether to add the family (e.g. IPvX).
+ * Helper to get the formatting string of an address for a given family.
+ * @param family The family to get the address format for.
+ * @param with_family Whether to add the familty to the address (e.g. IPv4).
+ * @return The format string for the address.
  */
-void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool with_family)
+static const char *GetAddressFormatString(uint16 family, bool with_family)
 {
-	if (this->GetAddress()->ss_family == AF_INET6) buffer = strecpy(buffer, "[", last);
-	buffer = strecpy(buffer, this->GetHostname(), last);
-	if (this->GetAddress()->ss_family == AF_INET6) buffer = strecpy(buffer, "]", last);
-	buffer += seprintf(buffer, last, ":%d", this->GetPort());
-
-	if (with_family) {
-		char family;
-		switch (this->address.ss_family) {
-			case AF_INET:  family = '4'; break;
-			case AF_INET6: family = '6'; break;
-			default:       family = '?'; break;
-		}
-		seprintf(buffer, last, " (IPv%c)", family);
+	switch (family) {
+		case AF_INET: return with_family ? "{}:{} (IPv4)" : "{}:{}";
+		case AF_INET6: return with_family ? "[{}]:{} (IPv6)" : "[{}]:{}";
+		default: return with_family ? "{}:{} (IPv?)" : "{}:{}";
 	}
 }
 
@@ -99,10 +93,7 @@ void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool wit
  */
 std::string NetworkAddress::GetAddressAsString(bool with_family)
 {
-	/* 6 = for the : and 5 for the decimal port number */
-	char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
-	this->GetAddressAsString(buf, lastof(buf), with_family);
-	return buf;
+	return fmt::format(GetAddressFormatString(this->GetAddress()->ss_family, with_family), this->GetHostname(), this->GetPort());
 }
 
 /**
@@ -153,7 +144,7 @@ bool NetworkAddress::IsFamily(int family)
  * @note netmask without /n assumes all bits need to match.
  * @return true if this IP is within the netmask.
  */
-bool NetworkAddress::IsInNetmask(const char *netmask)
+bool NetworkAddress::IsInNetmask(const std::string &netmask)
 {
 	/* Resolve it if we didn't do it already */
 	if (!this->IsResolved()) this->GetAddress();
@@ -163,16 +154,15 @@ bool NetworkAddress::IsInNetmask(const char *netmask)
 	NetworkAddress mask_address;
 
 	/* Check for CIDR separator */
-	const char *chr_cidr = strchr(netmask, '/');
-	if (chr_cidr != nullptr) {
-		int tmp_cidr = atoi(chr_cidr + 1);
+	auto cidr_separator_location = netmask.find('/');
+	if (cidr_separator_location != std::string::npos) {
+		int tmp_cidr = atoi(netmask.substr(cidr_separator_location + 1).c_str());
 
 		/* Invalid CIDR, treat as single host */
-		if (tmp_cidr > 0 || tmp_cidr < cidr) cidr = tmp_cidr;
+		if (tmp_cidr > 0 && tmp_cidr < cidr) cidr = tmp_cidr;
 
 		/* Remove the / so that NetworkAddress works on the IP portion */
-		std::string ip_str(netmask, chr_cidr - netmask);
-		mask_address = NetworkAddress(ip_str.c_str(), 0, this->address.ss_family);
+		mask_address = NetworkAddress(netmask.substr(0, cidr_separator_location), 0, this->address.ss_family);
 	} else {
 		mask_address = NetworkAddress(netmask, 0, this->address.ss_family);
 	}
@@ -232,20 +222,31 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	/* Setting both hostname to nullptr and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
-	if (StrEmpty(this->hostname) && this->address_length == 0 && this->GetPort() == 0) {
+	if (this->hostname.empty() && this->address_length == 0 && this->GetPort() == 0) {
 		reset_hostname = true;
 		int fam = this->address.ss_family;
 		if (fam == AF_UNSPEC) fam = family;
-		strecpy(this->hostname, fam == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
+		this->hostname = fam == AF_INET ? "0.0.0.0" : "::";
 	}
 
-	int e = getaddrinfo(StrEmpty(this->hostname) ? nullptr : this->hostname, port_name, &hints, &ai);
+	static bool _resolve_timeout_error_message_shown = false;
+	auto start = std::chrono::steady_clock::now();
+	int e = getaddrinfo(this->hostname.empty() ? nullptr : this->hostname.c_str(), port_name, &hints, &ai);
+	auto end = std::chrono::steady_clock::now();
+	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
+		Debug(net, 0, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} took {} seconds",
+				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), duration.count());
+		Debug(net, 0, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
+		_resolve_timeout_error_message_shown = true;
+	}
 
-	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
+
+	if (reset_hostname) this->hostname.clear();
 
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
-			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
+			Debug(net, 0, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} failed: {}",
 				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
 		}
 		return INVALID_SOCKET;
@@ -292,109 +293,57 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 }
 
 /**
- * Helper function to resolve a connected socket.
- * @param runp information about the socket to try not
- * @return the opened socket or INVALID_SOCKET
- */
-static SOCKET ConnectLoopProc(addrinfo *runp)
-{
-	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
-	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-	char address[NETWORK_HOSTNAME_LENGTH + 6 + 7];
-	NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString(address, lastof(address));
-
-	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
-	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 1, "[%s] could not create %s socket: %s", type, family, strerror(errno));
-		return INVALID_SOCKET;
-	}
-
-	if (!SetNoDelay(sock)) DEBUG(net, 1, "[%s] setting TCP_NODELAY failed", type);
-
-	int err = connect(sock, runp->ai_addr, (int)runp->ai_addrlen);
-#ifdef __EMSCRIPTEN__
-	/* Emscripten is asynchronous, and as such a connect() is still in
-	 * progress by the time the call returns. */
-	if (err != 0 && errno != EINPROGRESS)
-#else
-	if (err != 0)
-#endif
-	{
-		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, strerror(errno));
-		closesocket(sock);
-		return INVALID_SOCKET;
-	}
-
-	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed", type);
-
-	DEBUG(net, 1, "[%s] connected to %s", type, address);
-
-	return sock;
-}
-
-/**
- * Connect to the given address.
- * @return the connected socket or INVALID_SOCKET.
- */
-SOCKET NetworkAddress::Connect()
-{
-	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString().c_str());
-
-	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ConnectLoopProc);
-}
-
-/**
  * Helper function to resolve a listening.
  * @param runp information about the socket to try not
  * @return the opened socket or INVALID_SOCKET
  */
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
-	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
-	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-	char address[NETWORK_HOSTNAME_LENGTH + 6 + 7];
-	NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString(address, lastof(address));
+	std::string address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address, strerror(errno));
+		const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
+		const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
+		Debug(net, 0, "Could not create {} {} socket: {}", type, family, NetworkError::GetLast().AsString());
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		DEBUG(net, 3, "[%s] setting TCP_NODELAY failed for port %s", type, address);
+		Debug(net, 1, "Setting no-delay mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
-	int on = 1;
-	/* The (const char*) cast is needed for windows!! */
-	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address, strerror(errno));
+	if (!SetReusePort(sock)) {
+		Debug(net, 0, "Setting reuse-address mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
 #ifndef __OS2__
+	int on = 1;
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
+		Debug(net, 3, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
 	}
 #endif
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address, strerror(errno));
+		Debug(net, 0, "Could not bind socket on {}: {}", address, NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address, strerror(errno));
+		Debug(net, 0, "Could not listen on socket: {}", NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed for %s port %s", type, family, address);
 
-	DEBUG(net, 1, "[%s] listening on %s port %s", type, family, address);
+	if (!SetNonBlocking(sock)) {
+		Debug(net, 0, "Setting non-blocking mode failed: {}", NetworkError::GetLast().AsString());
+	}
+
+	Debug(net, 3, "Listening on {}", address);
 	return sock;
 }
 
@@ -407,11 +356,11 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	assert(sockets != nullptr);
 
-	/* Setting both hostname to nullptr and port to 0 is not allowed.
+	/* Setting both hostname to "" and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
 	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC &&
-			StrEmpty(this->hostname) && this->GetPort() == 0) {
+			this->hostname.empty() && this->GetPort() == 0) {
 		this->Resolve(AF_INET,  socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 		this->Resolve(AF_INET6, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 	} else {
@@ -448,4 +397,68 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 		case AF_INET6:  return "IPv6";
 		default:        return "unsupported";
 	}
+}
+
+/**
+ * Get the peer address of a socket as NetworkAddress.
+ * @param sock The socket to get the peer address of.
+ * @return The NetworkAddress of the peer address.
+ */
+/* static */ NetworkAddress NetworkAddress::GetPeerAddress(SOCKET sock)
+{
+	sockaddr_storage addr = {};
+	socklen_t addr_len = sizeof(addr);
+	if (getpeername(sock, (sockaddr *)&addr, &addr_len) != 0) {
+		Debug(net, 0, "Failed to get address of the peer: {}", NetworkError::GetLast().AsString());
+		return NetworkAddress();
+	}
+	return NetworkAddress(addr, addr_len);
+}
+
+/**
+ * Get the local address of a socket as NetworkAddress.
+ * @param sock The socket to get the local address of.
+ * @return The NetworkAddress of the local address.
+ */
+/* static */ NetworkAddress NetworkAddress::GetSockAddress(SOCKET sock)
+{
+	sockaddr_storage addr = {};
+	socklen_t addr_len = sizeof(addr);
+	if (getsockname(sock, (sockaddr *)&addr, &addr_len) != 0) {
+		Debug(net, 0, "Failed to get address of the socket: {}", NetworkError::GetLast().AsString());
+		return NetworkAddress();
+	}
+	return NetworkAddress(addr, addr_len);
+}
+
+/**
+ * Get the peer name of a socket in string format.
+ * @param sock The socket to get the peer name of.
+ * @return The string representation of the peer name.
+ */
+/* static */ const std::string NetworkAddress::GetPeerName(SOCKET sock)
+{
+	return NetworkAddress::GetPeerAddress(sock).GetAddressAsString();
+}
+
+/**
+ * Convert a string containing either "hostname", "hostname:port" or invite code
+ * to a ServerAddress, where the string can be postfixed with "#company" to
+ * indicate the requested company.
+ *
+ * @param connection_string The string to parse.
+ * @param default_port The default port to set port to if not in connection_string.
+ * @param company Pointer to the company variable to set iff indicated.
+ * @return A valid ServerAddress of the parsed information.
+ */
+/* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16 default_port, CompanyID *company_id)
+{
+	if (StrStartsWith(connection_string, "+")) {
+		std::string_view invite_code = ParseCompanyFromConnectionString(connection_string, company_id);
+		return ServerAddress(SERVER_ADDRESS_INVITE_CODE, std::string(invite_code));
+	}
+
+	uint16 port = default_port;
+	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
+	return ServerAddress(SERVER_ADDRESS_DIRECT, std::string(ip) + ":" + std::to_string(port));
 }

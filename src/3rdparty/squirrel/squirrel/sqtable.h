@@ -27,7 +27,7 @@ struct SQTable : public SQDelegable
 private:
 	struct _HashNode
 	{
-		_HashNode() { next = NULL; }
+		_HashNode() { next = nullptr; }
 		SQObjectPtr val;
 		SQObjectPtr key;
 		_HashNode *next;
@@ -47,20 +47,20 @@ public:
 	{
 		SQTable *newtable = (SQTable*)SQ_MALLOC(sizeof(SQTable));
 		new (newtable) SQTable(ss, nInitialSize);
-		newtable->_delegate = NULL;
+		newtable->_delegate = nullptr;
 		return newtable;
 	}
-	void Finalize();
+	void Finalize() override;
 	SQTable *Clone();
 	~SQTable()
 	{
-		SetDelegate(NULL);
+		SetDelegate(nullptr);
 		REMOVE_FROM_CHAIN(&_sharedstate->_gc_chain, this);
 		for (SQInteger i = 0; i < _numofnodes; i++) _nodes[i].~_HashNode();
 		SQ_FREE(_nodes, _numofnodes * sizeof(_HashNode));
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
 	inline _HashNode *_Get(const SQObjectPtr &key,SQHash hash)
 	{
@@ -70,7 +70,7 @@ public:
 				return n;
 			}
 		}while((n = n->next));
-		return NULL;
+		return nullptr;
 	}
 	bool Get(const SQObjectPtr &key,SQObjectPtr &val);
 	void Remove(const SQObjectPtr &key);
@@ -81,7 +81,11 @@ public:
 
 	SQInteger CountUsed(){ return _usednodes;}
 	void Clear();
-	void Release()
+	void Release() override
+	{
+		this->_sharedstate->DelayFinalFree(this);
+	}
+	void FinalFree() override
 	{
 		sq_delete(this, SQTable);
 	}

@@ -153,7 +153,7 @@ public:
 	{
 		if (this->IsFull()) {
 			overflowed = true;
-			DEBUG(misc, 0, "SignalSegment too complex. Set %s is full (maximum %d)", name, items);
+			Debug(misc, 0, "SignalSegment too complex. Set {} is full (maximum {})", name, items);
 			return false; // set is full
 		}
 
@@ -216,9 +216,7 @@ static inline bool CheckAddToTodoSet(TileIndex t1, DiagDirection d1, TileIndex t
 
 	assert(!_tbdset.IsIn(t1, d1)); // it really shouldn't be there already
 
-	if (_tbdset.Remove(t2, d2)) return false;
-
-	return true;
+	return !_tbdset.Remove(t2, d2);
 }
 
 

@@ -9,7 +9,15 @@ Module['websocket'] = { url: function(host, port, proto) {
      * If you run your own server you can setup your own WebSocket proxy in
      * front of it and let people connect to your server via the proxy. You
      * are best to add another "if" statement as above for this. */
-    return null;
+
+    if (location.protocol === 'https:') {
+        /* Insecure WebSockets do not work over HTTPS, so we force
+         * secure ones. */
+        return 'wss://';
+    } else {
+        /* Use the default provided by Emscripten. */
+        return null;
+    }
 } };
 
 Module.preRun.push(function() {
@@ -65,10 +73,14 @@ Module.preRun.push(function() {
     }
 
     window.openttd_server_list = function() {
-        add_server = Module.cwrap("em_openttd_add_server", null, ["string", "number"]);
+        add_server = Module.cwrap("em_openttd_add_server", null, ["string"]);
 
-        /* Add servers that support WebSocket here. Example:
-         *  add_server("localhost", 3979); */
+        /* Add servers that support WebSocket here. Examples:
+         *  add_server("localhost");
+         *  add_server("localhost:3979");
+         *  add_server("127.0.0.1:3979");
+         *  add_server("[::1]:3979");
+         */
     }
 
     var leftButtonDown = false;

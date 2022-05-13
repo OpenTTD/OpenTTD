@@ -108,7 +108,7 @@ static void CreateWindowsConsoleThread()
 	_hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, nullptr, 0, &dwThreadId);
 	if (_hThread == nullptr) usererror("Cannot create console thread!");
 
-	DEBUG(driver, 2, "Windows console thread started");
+	Debug(driver, 2, "Windows console thread started");
 }
 
 static void CloseWindowsConsoleThread()
@@ -116,7 +116,7 @@ static void CloseWindowsConsoleThread()
 	CloseHandle(_hThread);
 	CloseHandle(_hInputReady);
 	CloseHandle(_hWaitForInputHandling);
-	DEBUG(driver, 2, "Windows console thread shut down");
+	Debug(driver, 2, "Windows console thread shut down");
 }
 
 #endif
@@ -164,7 +164,7 @@ const char *VideoDriver_Dedicated::Start(const StringList &parm)
 	OS2_SwitchToConsoleMode();
 #endif
 
-	DEBUG(driver, 1, "Loading dedicated server");
+	Debug(driver, 1, "Loading dedicated server");
 	return nullptr;
 }
 
@@ -229,7 +229,7 @@ static void DedicatedHandleKeyInput()
 			break;
 		}
 	}
-	str_validate(input_line, lastof(input_line));
+	StrMakeValidInPlace(input_line, lastof(input_line));
 
 	IConsoleCmdExec(input_line); // execute command
 }
@@ -256,7 +256,7 @@ void VideoDriver_Dedicated::MainLoop()
 		 *  intro game... */
 		if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, BASE_DIR) == SL_ERROR) {
 			/* Loading failed, pop out.. */
-			DEBUG(net, 0, "Loading requested map failed, aborting");
+			Debug(net, 0, "Loading requested map failed; closing server.");
 			return;
 		} else {
 			/* We can load this game, so go ahead */
@@ -270,6 +270,7 @@ void VideoDriver_Dedicated::MainLoop()
 
 	while (!_exit_game) {
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
+		this->DrainCommandQueue();
 
 		ChangeGameSpeed(_ddc_fastforward);
 		this->Tick();

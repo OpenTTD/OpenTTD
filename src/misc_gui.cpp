@@ -26,11 +26,15 @@
 #include "zoom_func.h"
 #include "guitimer_func.h"
 #include "viewport_func.h"
+#include "landscape_cmd.h"
 #include "rev.h"
 
 #include "widgets/misc_widget.h"
 
 #include "table/strings.h"
+
+#include <sstream>
+#include <iomanip>
 
 #include "safeguards.h"
 
@@ -61,16 +65,10 @@ static WindowDesc _land_info_desc(
 );
 
 class LandInfoWindow : public Window {
-	enum LandInfoLines {
-		LAND_INFO_CENTERED_LINES   = 32,                       ///< Up to 32 centered lines (arbitrary limit)
-		LAND_INFO_MULTICENTER_LINE = LAND_INFO_CENTERED_LINES, ///< One multicenter line
-		LAND_INFO_LINE_END,
-	};
-
-	static const uint LAND_INFO_LINE_BUFF_SIZE = 512;
+	StringList  landinfo_data;    ///< Info lines to show.
+	std::string cargo_acceptance; ///< Centered multi-line string for cargo acceptance.
 
 public:
-	char landinfo_data[LAND_INFO_LINE_END][LAND_INFO_LINE_BUFF_SIZE];
 	TileIndex tile;
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -78,16 +76,14 @@ public:
 		if (widget != WID_LI_BACKGROUND) return;
 
 		uint y = r.top + WD_TEXTPANEL_TOP;
-		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
-			if (StrEmpty(this->landinfo_data[i])) break;
-
+		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
 			DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_HOR_CENTER);
 			y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 			if (i == 0) y += 4;
 		}
 
-		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
-			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
+		if (!this->cargo_acceptance.empty()) {
+			SetDParamStr(0, this->cargo_acceptance);
 			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, r.bottom - WD_TEXTPANEL_BOTTOM, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 		}
 	}
@@ -97,9 +93,7 @@ public:
 		if (widget != WID_LI_BACKGROUND) return;
 
 		size->height = WD_TEXTPANEL_TOP + WD_TEXTPANEL_BOTTOM;
-		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
-			if (StrEmpty(this->landinfo_data[i])) break;
-
+		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
 			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
 			size->width = std::max(size->width, width);
 
@@ -107,10 +101,10 @@ public:
 			if (i == 0) size->height += 4;
 		}
 
-		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
-			uint width = GetStringBoundingBox(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+		if (!this->cargo_acceptance.empty()) {
+			uint width = GetStringBoundingBox(this->cargo_acceptance).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
 			size->width = std::max(size->width, std::min(300u, width));
-			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
+			SetDParamStr(0, cargo_acceptance);
 			size->height += GetStringHeight(STR_JUST_RAW_STRING, size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
 		}
 	}
@@ -124,17 +118,17 @@ public:
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-		DEBUG(misc, LANDINFOD_LEVEL, "TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
-		DEBUG(misc, LANDINFOD_LEVEL, "type   = %#x", _m[tile].type);
-		DEBUG(misc, LANDINFOD_LEVEL, "height = %#x", _m[tile].height);
-		DEBUG(misc, LANDINFOD_LEVEL, "m1     = %#x", _m[tile].m1);
-		DEBUG(misc, LANDINFOD_LEVEL, "m2     = %#x", _m[tile].m2);
-		DEBUG(misc, LANDINFOD_LEVEL, "m3     = %#x", _m[tile].m3);
-		DEBUG(misc, LANDINFOD_LEVEL, "m4     = %#x", _m[tile].m4);
-		DEBUG(misc, LANDINFOD_LEVEL, "m5     = %#x", _m[tile].m5);
-		DEBUG(misc, LANDINFOD_LEVEL, "m6     = %#x", _me[tile].m6);
-		DEBUG(misc, LANDINFOD_LEVEL, "m7     = %#x", _me[tile].m7);
-		DEBUG(misc, LANDINFOD_LEVEL, "m8     = %#x", _me[tile].m8);
+		Debug(misc, LANDINFOD_LEVEL, "TILE: {:#x} ({},{})", tile, TileX(tile), TileY(tile));
+		Debug(misc, LANDINFOD_LEVEL, "type   = {:#x}", _m[tile].type);
+		Debug(misc, LANDINFOD_LEVEL, "height = {:#x}", _m[tile].height);
+		Debug(misc, LANDINFOD_LEVEL, "m1     = {:#x}", _m[tile].m1);
+		Debug(misc, LANDINFOD_LEVEL, "m2     = {:#x}", _m[tile].m2);
+		Debug(misc, LANDINFOD_LEVEL, "m3     = {:#x}", _m[tile].m3);
+		Debug(misc, LANDINFOD_LEVEL, "m4     = {:#x}", _m[tile].m4);
+		Debug(misc, LANDINFOD_LEVEL, "m5     = {:#x}", _m[tile].m5);
+		Debug(misc, LANDINFOD_LEVEL, "m6     = {:#x}", _me[tile].m6);
+		Debug(misc, LANDINFOD_LEVEL, "m7     = {:#x}", _me[tile].m7);
+		Debug(misc, LANDINFOD_LEVEL, "m8     = {:#x}", _me[tile].m8);
 #undef LANDINFOD_LEVEL
 	}
 
@@ -178,12 +172,11 @@ public:
 		AddAcceptedCargo(tile, acceptance, nullptr);
 		GetTileDesc(tile, &td);
 
-		uint line_nr = 0;
+		this->landinfo_data.clear();
 
 		/* Tiletype */
 		SetDParam(0, td.dparam[0]);
-		GetString(this->landinfo_data[line_nr], td.str, lastof(this->landinfo_data[line_nr]));
-		line_nr++;
+		this->landinfo_data.push_back(GetString(td.str));
 
 		/* Up to four owners */
 		for (uint i = 0; i < 4; i++) {
@@ -191,8 +184,7 @@ public:
 
 			SetDParam(0, STR_LAND_AREA_INFORMATION_OWNER_N_A);
 			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) GetNameOfOwner(td.owner[i], tile);
-			GetString(this->landinfo_data[line_nr], td.owner_type[i], lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(td.owner_type[i]));
 		}
 
 		/* Cost to clear/revenue when cleared */
@@ -200,7 +192,7 @@ public:
 		Company *c = Company::GetIfValid(_local_company);
 		if (c != nullptr) {
 			assert(_current_company == _local_company);
-			CommandCost costclear = DoCommand(tile, 0, 0, DC_QUERY_COST, CMD_LANDSCAPE_CLEAR);
+			CommandCost costclear = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_QUERY_COST, tile);
 			if (costclear.Succeeded()) {
 				Money cost = costclear.GetCost();
 				if (cost < 0) {
@@ -212,18 +204,18 @@ public:
 				SetDParam(0, cost);
 			}
 		}
-		GetString(this->landinfo_data[line_nr], str, lastof(this->landinfo_data[line_nr]));
-		line_nr++;
+		this->landinfo_data.push_back(GetString(str));
 
 		/* Location */
-		char tmp[16];
-		seprintf(tmp, lastof(tmp), "0x%.4X", tile);
+		std::stringstream tile_ss;
+		tile_ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << std::uppercase << tile; // 0x%.4X
+		std::string tile_str = tile_ss.str(); // Can't pass it directly to SetDParamStr as the string is only a temporary and would be destructed before the GetString call.
+
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
 		SetDParam(2, GetTileZ(tile));
-		SetDParamStr(3, tmp);
-		GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, lastof(this->landinfo_data[line_nr]));
-		line_nr++;
+		SetDParamStr(3, tile_str);
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS));
 
 		/* Local authority */
 		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
@@ -231,126 +223,112 @@ public:
 			SetDParam(0, STR_TOWN_NAME);
 			SetDParam(1, t->index);
 		}
-		GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY, lastof(this->landinfo_data[line_nr]));
-		line_nr++;
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY));
 
 		/* Build date */
 		if (td.build_date != INVALID_DATE) {
 			SetDParam(0, td.build_date);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_BUILD_DATE, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_BUILD_DATE));
 		}
 
 		/* Station class */
 		if (td.station_class != STR_NULL) {
 			SetDParam(0, td.station_class);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_CLASS, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_STATION_CLASS));
 		}
 
 		/* Station type name */
 		if (td.station_name != STR_NULL) {
 			SetDParam(0, td.station_name);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_TYPE, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_STATION_TYPE));
 		}
 
 		/* Airport class */
 		if (td.airport_class != STR_NULL) {
 			SetDParam(0, td.airport_class);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORT_CLASS, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORT_CLASS));
 		}
 
 		/* Airport name */
 		if (td.airport_name != STR_NULL) {
 			SetDParam(0, td.airport_name);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORT_NAME, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORT_NAME));
 		}
 
 		/* Airport tile name */
 		if (td.airport_tile_name != STR_NULL) {
 			SetDParam(0, td.airport_tile_name);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME));
 		}
 
 		/* Rail type name */
 		if (td.railtype != STR_NULL) {
 			SetDParam(0, td.railtype);
-			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_TYPE, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_TYPE));
 		}
 
 		/* Rail speed limit */
 		if (td.rail_speed != 0) {
 			SetDParam(0, td.rail_speed);
-			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT));
 		}
 
 		/* Road type name */
 		if (td.roadtype != STR_NULL) {
 			SetDParam(0, td.roadtype);
-			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_ROAD_TYPE, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_TYPE));
 		}
 
 		/* Road speed limit */
 		if (td.road_speed != 0) {
 			SetDParam(0, td.road_speed);
-			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT));
 		}
 
 		/* Tram type name */
 		if (td.tramtype != STR_NULL) {
 			SetDParam(0, td.tramtype);
-			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_TRAM_TYPE, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_TYPE));
 		}
 
 		/* Tram speed limit */
 		if (td.tram_speed != 0) {
 			SetDParam(0, td.tram_speed);
-			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT));
 		}
 
 		/* NewGRF name */
 		if (td.grf != nullptr) {
 			SetDParamStr(0, td.grf);
-			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
-			line_nr++;
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_NEWGRF_NAME));
 		}
 
-		assert(line_nr < LAND_INFO_CENTERED_LINES);
-
-		/* Mark last line empty */
-		this->landinfo_data[line_nr][0] = '\0';
-
 		/* Cargo acceptance is displayed in a extra multiline */
-		char *strp = GetString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE], STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
-		bool found = false;
+		std::stringstream line;
+		line << GetString(STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED);
 
+		bool found = false;
 		for (CargoID i = 0; i < NUM_CARGO; ++i) {
 			if (acceptance[i] > 0) {
 				/* Add a comma between each item. */
-				if (found) strp = strecpy(strp, ", ", lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
+				if (found) line << ", ";
 				found = true;
 
 				/* If the accepted value is less than 8, show it in 1/8:ths */
 				if (acceptance[i] < 8) {
 					SetDParam(0, acceptance[i]);
 					SetDParam(1, CargoSpec::Get(i)->name);
-					strp = GetString(strp, STR_LAND_AREA_INFORMATION_CARGO_EIGHTS, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
+					line << GetString(STR_LAND_AREA_INFORMATION_CARGO_EIGHTS);
 				} else {
-					strp = GetString(strp, CargoSpec::Get(i)->name, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
+					line << GetString(CargoSpec::Get(i)->name);
 				}
 			}
 		}
-		if (!found) this->landinfo_data[LAND_INFO_MULTICENTER_LINE][0] = '\0';
+		if (found) {
+			this->cargo_acceptance = line.str();
+		} else {
+			this->cargo_acceptance.clear();
+		}
 	}
 
 	bool IsNewGRFInspectable() const override
@@ -399,7 +377,7 @@ public:
  */
 void ShowLandInfo(TileIndex tile)
 {
-	DeleteWindowById(WC_LAND_INFO, 0);
+	CloseWindowById(WC_LAND_INFO, 0);
 	new LandInfoWindow(tile);
 }
 
@@ -445,7 +423,6 @@ static const char * const _credits[] = {
 	u8"  Ingo von Borstel (planetmaker) - General, Support (since 1.1)",
 	u8"  Remko Bijker (Rubidium) - Lead coder and way more (since 0.4.5)",
 	u8"  Jos\u00e9 Soler (Terkhen) - General coding (since 1.0)",
-	u8"  Leif Linse (Zuu) - AI/Game Script (since 1.2)",
 	u8"",
 	u8"Inactive Developers:",
 	u8"  Jean-Fran\u00e7ois Claeys (Belugas) - GUI, NewGRF and more (0.4.5 - 1.0)",
@@ -458,6 +435,7 @@ static const char * const _credits[] = {
 	u8"  Christoph Mallon (Tron) - Programmer, code correctness police (0.3 - 0.5)",
 	u8"  Patric Stout (TrueBrain) - NoAI, NoGo, Network (0.3 - 1.2), sys op (active)",
 	u8"  Thijs Marinussen (Yexo) - AI Framework, General (0.6 - 1.3)",
+	u8"  Leif Linse (Zuu) - AI/Game Script (1.2 - 1.6)",
 	u8"",
 	u8"Retired Developers:",
 	u8"  Tam\u00e1s Farag\u00f3 (Darkvater) - Ex-Lead coder (0.3 - 0.5)",
@@ -497,7 +475,7 @@ struct AboutWindow : public Window {
 	int line_height;                         ///< The height of a single line
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
-	static const uint TIMER_INTERVAL = 150;  ///< Scrolling interval in ms
+	static const uint TIMER_INTERVAL = 2100; ///< Scrolling interval, scaled by line text line height. This value chosen to maintain parity: 2100 / FONT_HEIGHT_NORMAL = 150ms
 	GUITimer timer;
 
 	AboutWindow() : Window(&_about_desc)
@@ -505,7 +483,6 @@ struct AboutWindow : public Window {
 		this->InitNested(WN_GAME_OPTIONS_ABOUT);
 
 		this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
-		this->timer.SetInterval(TIMER_INTERVAL);
 	}
 
 	void SetStringParameters(int widget) const override
@@ -528,6 +505,10 @@ struct AboutWindow : public Window {
 			d.width = std::max(d.width, GetStringBoundingBox(_credits[i]).width);
 		}
 		*size = maxdim(*size, d);
+
+		/* Set scroll interval based on required speed. To keep scrolling smooth,
+		 * the interval is adjusted rather than the distance moved. */
+		this->timer.SetInterval(TIMER_INTERVAL / FONT_HEIGHT_NORMAL);
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -554,14 +535,14 @@ struct AboutWindow : public Window {
 			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
 				this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 			}
-			this->SetDirty();
+			this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
 		}
 	}
 };
 
 void ShowAboutWindow()
 {
-	DeleteWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WC_GAME_OPTIONS);
 	new AboutWindow();
 }
 
@@ -756,16 +737,22 @@ struct TooltipsWindow : public Window
 	{
 		/* Always close tooltips when the cursor is not in our window. */
 		if (!_cursor.in_window) {
-			delete this;
+			this->Close();
 			return;
 		}
 
 		/* We can show tooltips while dragging tools. These are shown as long as
 		 * we are dragging the tool. Normal tooltips work with hover or rmb. */
 		switch (this->close_cond) {
-			case TCC_RIGHT_CLICK: if (!_right_button_down) delete this; break;
-			case TCC_HOVER: if (!_mouse_hovering) delete this; break;
+			case TCC_RIGHT_CLICK: if (!_right_button_down) this->Close(); break;
+			case TCC_HOVER: if (!_mouse_hovering) this->Close(); break;
 			case TCC_NONE: break;
+
+			case TCC_EXIT_VIEWPORT: {
+				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+				if (w == nullptr || IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y) == nullptr) this->Close();
+				break;
+			}
 		}
 	}
 };
@@ -780,9 +767,9 @@ struct TooltipsWindow : public Window
  */
 void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
 {
-	DeleteWindowById(WC_TOOLTIPS, 0);
+	CloseWindowById(WC_TOOLTIPS, 0);
 
-	if (str == STR_NULL) return;
+	if (str == STR_NULL || !_cursor.in_window) return;
 
 	new TooltipsWindow(parent, str, paramcount, params, close_tooltip);
 }
@@ -988,7 +975,7 @@ struct QueryStringWindow : public Window
 	{
 		char *last_of = &this->editbox.text.buf[this->editbox.text.max_bytes - 1];
 		GetString(this->editbox.text.buf, str, last_of);
-		str_validate(this->editbox.text.buf, last_of, SVS_NONE);
+		StrMakeValidInPlace(this->editbox.text.buf, last_of, SVS_NONE);
 
 		/* Make sure the name isn't too long for the text buffer in the number of
 		 * characters (not bytes). max_chars also counts the '\0' characters. */
@@ -1081,18 +1068,19 @@ struct QueryStringWindow : public Window
 				FALLTHROUGH;
 
 			case WID_QS_CANCEL:
-				delete this;
+				this->Close();
 				break;
 		}
 	}
 
-	~QueryStringWindow()
+	void Close() override
 	{
 		if (!this->editbox.handled && this->parent != nullptr) {
 			Window *parent = this->parent;
-			this->parent = nullptr; // so parent doesn't try to delete us again
+			this->parent = nullptr; // so parent doesn't try to close us again
 			parent->OnQueryTextFinished(nullptr);
 		}
+		this->Window::Close();
 	}
 };
 
@@ -1132,7 +1120,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
 {
 	assert(parent != nullptr);
 
-	DeleteWindowByClass(WC_QUERY_STRING);
+	CloseWindowByClass(WC_QUERY_STRING);
 	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, &_query_string_desc, parent, afilter, flags);
 }
 
@@ -1153,17 +1141,23 @@ struct QueryWindow : public Window {
 		this->caption = caption;
 		this->message = message;
 		this->proc    = callback;
+		this->parent  = parent;
 
 		this->InitNested(WN_CONFIRM_POPUP_QUERY);
-
-		this->parent = parent;
-		this->left = parent->left + (parent->width / 2) - (this->width / 2);
-		this->top = parent->top + (parent->height / 2) - (this->height / 2);
 	}
 
-	~QueryWindow()
+	void Close() override
 	{
 		if (this->proc != nullptr) this->proc(this->parent, false);
+		this->Window::Close();
+	}
+
+	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	{
+		/* Position query window over the calling window, ensuring it's within screen bounds. */
+		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
+		this->top = Clamp(parent->top + (parent->height / 2) - (this->height / 2), 0, _screen.height - this->height);
+		this->SetDirty();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -1203,12 +1197,12 @@ struct QueryWindow : public Window {
 		switch (widget) {
 			case WID_Q_YES: {
 				/* in the Generate New World window, clicking 'Yes' causes
-				 * DeleteNonVitalWindows() to be called - we shouldn't be in a window then */
+				 * CloseNonVitalWindows() to be called - we shouldn't be in a window then */
 				QueryCallbackProc *proc = this->proc;
 				Window *parent = this->parent;
 				/* Prevent the destructor calling the callback function */
 				this->proc = nullptr;
-				delete this;
+				this->Close();
 				if (proc != nullptr) {
 					proc(parent, true);
 					proc = nullptr;
@@ -1216,7 +1210,7 @@ struct QueryWindow : public Window {
 				break;
 			}
 			case WID_Q_NO:
-				delete this;
+				this->Close();
 				break;
 		}
 	}
@@ -1234,7 +1228,7 @@ struct QueryWindow : public Window {
 				FALLTHROUGH;
 
 			case WKC_ESC:
-				delete this;
+				this->Close();
 				return ES_HANDLED;
 		}
 		return ES_NOT_HANDLED;
@@ -1275,14 +1269,13 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 {
 	if (parent == nullptr) parent = FindWindowById(WC_MAIN_WINDOW, 0);
 
-	const Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
+	for (Window *w : Window::Iterate()) {
 		if (w->window_class != WC_CONFIRM_POPUP_QUERY) continue;
 
-		const QueryWindow *qw = (const QueryWindow *)w;
+		QueryWindow *qw = dynamic_cast<QueryWindow *>(w);
 		if (qw->parent != parent || qw->proc != callback) continue;
 
-		delete qw;
+		qw->Close();
 		break;
 	}
 

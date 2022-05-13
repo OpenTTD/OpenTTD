@@ -44,7 +44,7 @@ enum WaterTileType {
 };
 
 /** classes of water (for #WATER_TILE_CLEAR water tile type). */
-enum WaterClass {
+enum WaterClass : byte {
 	WATER_CLASS_SEA,     ///< Sea.
 	WATER_CLASS_CANAL,   ///< Canal.
 	WATER_CLASS_RIVER,   ///< River.
@@ -52,6 +52,17 @@ enum WaterClass {
 };
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
+
+/**
+ * Checks if a water class is valid.
+ *
+ * @param wc The value to check
+ * @return true if the given value is a valid water class.
+ */
+static inline bool IsValidWaterClass(WaterClass wc)
+{
+	return wc < WATER_CLASS_INVALID;
+}
 
 /** Sections of the water depot. */
 enum DepotPart {

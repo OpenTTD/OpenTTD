@@ -45,6 +45,7 @@
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
+#include "landscape_cmd.h"
 
 #include "table/strings.h"
 
@@ -61,7 +62,7 @@ static void DisasterClearSquare(TileIndex tile)
 		case MP_RAILWAY:
 			if (Company::IsHumanID(GetTileOwner(tile)) && !IsRailDepot(tile)) {
 				Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
-				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile);
 				cur_company.Restore();
 
 				/* update signals in buffer */
@@ -71,7 +72,7 @@ static void DisasterClearSquare(TileIndex tile)
 
 		case MP_HOUSE: {
 			Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
-			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, tile);
 			cur_company.Restore();
 			break;
 		}
@@ -456,7 +457,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddTileNewsItem(news_message, NT_ACCIDENT, v->dest_tile);
+			AddIndustryNewsItem(news_message, NT_ACCIDENT, i->index);
 			if (_settings_client.sound.disaster) SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
@@ -941,7 +942,7 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
 		/* primary disaster vehicles that have chosen target */
 		if (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
-			if (v->current_order.GetDestination() > 0 && v->dest_tile == i) v->current_order.SetDestination(3);
+			if (v->current_order.GetDestination() > 0 && v->dest_tile == (uint32)i) v->current_order.SetDestination(3);
 		}
 	}
 }

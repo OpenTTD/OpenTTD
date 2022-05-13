@@ -19,6 +19,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "tree_map.h"
+#include "tree_cmd.h"
 
 #include "widgets/tree_widget.h"
 
@@ -29,7 +30,7 @@
 #include "safeguards.h"
 
 void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count);
+uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
 
 /** Tree Sprites with their palettes */
 const PalSpriteID tree_sprites[] = {
@@ -133,7 +134,8 @@ class BuildTreesWindow : public Window
 		}
 		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
 		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
-		PlaceTreeGroupAroundTile(tile, treetype, radius, count);
+		// Create tropic zones only when the tree type is selected by the user and not picked randomly.
+		PlaceTreeGroupAroundTile(tile, treetype, radius, count, this->tree_to_plant != TREE_INVALID);
 	}
 
 public:
@@ -229,7 +231,7 @@ public:
 			TileIndex tile = TileVirtXY(pt.x, pt.y);
 
 			if (this->mode == PM_NORMAL) {
-				DoCommandP(tile, this->tree_to_plant, tile, CMD_PLANT_TREE);
+				Command<CMD_PLANT_TREE>::Post(tile, tile, this->tree_to_plant);
 			} else {
 				this->DoPlantForest(tile);
 			}
@@ -239,7 +241,7 @@ public:
 	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (_game_mode != GM_EDITOR && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
-			DoCommandP(end_tile, this->tree_to_plant, start_tile, CMD_PLANT_TREE | CMD_MSG(STR_ERROR_CAN_T_PLANT_TREE_HERE));
+			Command<CMD_PLANT_TREE>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant);
 		}
 	}
 

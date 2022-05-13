@@ -174,7 +174,7 @@ int CDECL main(int argc, char *argv[])
 	SetRandomSeed(time(nullptr));
 
 	/* Make sure our arguments contain only valid UTF-8 characters. */
-	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
+	for (int i = 0; i < argc; i++) StrMakeValidInPlace(argv[i]);
 
 	return openttd_main(argc, argv);
 }
@@ -203,13 +203,10 @@ bool GetClipboardContents(char *buffer, const char *last)
 }
 
 
-const char *FS2OTTD(const char *name) {return name;}
-const char *OTTD2FS(const char *name) {return name;}
-
 void OSOpenBrowser(const char *url)
 {
 	// stub only
-	DEBUG(misc, 0, "Failed to open url: %s", url);
+	Debug(misc, 0, "Failed to open url: {}", url);
 }
 
 void SetCurrentThreadName(const char *)

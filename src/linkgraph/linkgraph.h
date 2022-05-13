@@ -16,10 +16,10 @@
 #include "../station_base.h"
 #include "../cargotype.h"
 #include "../date_func.h"
+#include "../saveload/saveload.h"
 #include "linkgraph_type.h"
 #include <utility>
 
-struct SaveLoad;
 class LinkGraph;
 
 /**
@@ -62,6 +62,7 @@ public:
 	struct BaseEdge {
 		uint capacity;                 ///< Capacity of the link.
 		uint usage;                    ///< Usage of the link.
+		uint64 travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
 		Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
 		Date last_restricted_update;   ///< When the restricted part of the link was last updated.
 		NodeID next_edge;              ///< Destination of next valid edge starting at the same source node.
@@ -96,6 +97,12 @@ public:
 		 * @return Usage.
 		 */
 		uint Usage() const { return this->edge.usage; }
+
+		/**
+		 * Get edge's average travel time.
+		 * @return Travel time, in ticks.
+		 */
+		uint32 TravelTime() const { return this->edge.travel_time_sum / this->edge.capacity; }
 
 		/**
 		 * Get the date of the last update to the edge's unrestricted capacity.
@@ -296,7 +303,7 @@ public:
 		 * @param edge Edge to be wrapped.
 		 */
 		Edge(BaseEdge &edge) : EdgeWrapper<BaseEdge>(edge) {}
-		void Update(uint capacity, uint usage, EdgeUpdateMode mode);
+		void Update(uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
 		void Restrict() { this->edge.last_unrestricted_update = INVALID_DATE; }
 		void Release() { this->edge.last_restricted_update = INVALID_DATE; }
 	};
@@ -429,8 +436,8 @@ public:
 			this->node.demand = demand;
 		}
 
-		void AddEdge(NodeID to, uint capacity, uint usage, EdgeUpdateMode mode);
-		void UpdateEdge(NodeID to, uint capacity, uint usage, EdgeUpdateMode mode);
+		void AddEdge(NodeID to, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
+		void UpdateEdge(NodeID to, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
 		void RemoveEdge(NodeID to);
 	};
 
@@ -439,6 +446,9 @@ public:
 
 	/** Minimum effective distance for timeout calculation. */
 	static const uint MIN_TIMEOUT_DISTANCE = 32;
+
+	/** Number of days before deleting links served only by vehicles stopped in depot. */
+	static const uint STALE_LINK_DEPOT_TIMEOUT = 1024;
 
 	/** Minimum number of days between subsequent compressions of a LG. */
 	static const uint COMPRESSION_INTERVAL = 256;
@@ -495,7 +505,7 @@ public:
 	 * Get the current size of the component.
 	 * @return Size.
 	 */
-	inline uint Size() const { return (uint)this->nodes.size(); }
+	inline NodeID Size() const { return (NodeID)this->nodes.size(); }
 
 	/**
 	 * Get date of last compression.
@@ -525,9 +535,10 @@ public:
 protected:
 	friend class LinkGraph::ConstNode;
 	friend class LinkGraph::Node;
-	friend const SaveLoad *GetLinkGraphDesc();
-	friend const SaveLoad *GetLinkGraphJobDesc();
-	friend void SaveLoad_LinkGraph(LinkGraph &lg);
+	friend SaveLoadTable GetLinkGraphDesc();
+	friend SaveLoadTable GetLinkGraphJobDesc();
+	friend class SlLinkgraphNode;
+	friend class SlLinkgraphEdge;
 
 	CargoID cargo;         ///< Cargo of this component's link graph.
 	Date last_compression; ///< Last time the capacities and supplies were compressed.

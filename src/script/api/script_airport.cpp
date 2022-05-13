@@ -12,6 +12,8 @@
 #include "script_station.hpp"
 #include "../../station_base.h"
 #include "../../town.h"
+#include "../../landscape_cmd.h"
+#include "../../station_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -75,9 +77,7 @@
 	EnforcePrecondition(false, IsValidAirportType(type));
 	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	uint p2 = station_id == ScriptStation::STATION_JOIN_ADJACENT ? 0 : 1;
-	p2 |= (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
-	return ScriptObject::DoCommand(tile, type, p2, CMD_BUILD_AIRPORT);
+	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(tile, type, 0, (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION), station_id == ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptAirport::RemoveAirport(TileIndex tile)
@@ -86,7 +86,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile))
 	EnforcePrecondition(false, IsAirportTile(tile) || IsHangarTile(tile));
 
-	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
 /* static */ int32 ScriptAirport::GetNumHangars(TileIndex tile)

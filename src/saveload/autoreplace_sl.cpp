@@ -8,9 +8,11 @@
 /** @file autoreplace_sl.cpp Code handling saving and loading of autoreplace rules */
 
 #include "../stdafx.h"
-#include "../autoreplace_base.h"
 
 #include "saveload.h"
+#include "compat/autoreplace_sl_compat.h"
+
+#include "../autoreplace_base.h"
 
 #include "../safeguards.h"
 
@@ -21,41 +23,51 @@ static const SaveLoad _engine_renew_desc[] = {
 	    SLE_REF(EngineRenew, next,     REF_ENGINE_RENEWS),
 	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, SLV_60, SL_MAX_VERSION),
 	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_175, SL_MAX_VERSION),
-	SLE_END()
 };
 
-static void Save_ERNW()
-{
-	for (EngineRenew *er : EngineRenew::Iterate()) {
-		SlSetArrayIndex(er->index);
-		SlObject(er, _engine_renew_desc);
-	}
-}
+struct ERNWChunkHandler : ChunkHandler {
+	ERNWChunkHandler() : ChunkHandler('ERNW', CH_TABLE) {}
 
-static void Load_ERNW()
-{
-	int index;
+	void Save() const override
+	{
+		SlTableHeader(_engine_renew_desc);
 
-	while ((index = SlIterateArray()) != -1) {
-		EngineRenew *er = new (index) EngineRenew();
-		SlObject(er, _engine_renew_desc);
-
-		/* Advanced vehicle lists, ungrouped vehicles got added */
-		if (IsSavegameVersionBefore(SLV_60)) {
-			er->group_id = ALL_GROUP;
-		} else if (IsSavegameVersionBefore(SLV_71)) {
-			if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
+		for (EngineRenew *er : EngineRenew::Iterate()) {
+			SlSetArrayIndex(er->index);
+			SlObject(er, _engine_renew_desc);
 		}
 	}
-}
 
-static void Ptrs_ERNW()
-{
-	for (EngineRenew *er : EngineRenew::Iterate()) {
-		SlObject(er, _engine_renew_desc);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_renew_desc, _engine_renew_sl_compat);
+
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			EngineRenew *er = new (index) EngineRenew();
+			SlObject(er, slt);
+
+			/* Advanced vehicle lists, ungrouped vehicles got added */
+			if (IsSavegameVersionBefore(SLV_60)) {
+				er->group_id = ALL_GROUP;
+			} else if (IsSavegameVersionBefore(SLV_71)) {
+				if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
+			}
+		}
 	}
-}
 
-extern const ChunkHandler _autoreplace_chunk_handlers[] = {
-	{ 'ERNW', Save_ERNW, Load_ERNW, Ptrs_ERNW, nullptr, CH_ARRAY | CH_LAST},
+	void FixPointers() const override
+	{
+		for (EngineRenew *er : EngineRenew::Iterate()) {
+			SlObject(er, _engine_renew_desc);
+		}
+	}
 };
+
+static const ERNWChunkHandler ERNW;
+static const ChunkHandlerRef autoreplace_chunk_handlers[] = {
+	ERNW,
+};
+
+extern const ChunkHandlerTable _autoreplace_chunk_handlers(autoreplace_chunk_handlers);

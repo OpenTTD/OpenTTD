@@ -15,16 +15,7 @@
 #include "direction_func.h"
 #include "slope_func.h"
 
-/**
- * Iterate through each set Track in a TrackBits value.
- * For more information see FOR_EACH_SET_BIT_EX.
- *
- * @param var Loop index variable that stores fallowing set track. Must be of type Track.
- * @param track_bits The value to iterate through (any expression).
- *
- * @see FOR_EACH_SET_BIT_EX
- */
-#define FOR_EACH_SET_TRACK(var, track_bits) FOR_EACH_SET_BIT_EX(Track, var, TrackBits, track_bits)
+using SetTrackBitIterator = SetBitIterator<Track, TrackBits>;
 
 /**
  * Checks if a Track is valid.

@@ -49,8 +49,6 @@ struct CanalResolverObject : public ResolverObject {
 		}
 	}
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
-
 	GrfSpecFeature GetFeature() const override;
 	uint32 GetDebugID() const override;
 };
@@ -102,18 +100,10 @@ struct CanalResolverObject : public ResolverObject {
 		case 0x83: return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 	}
 
-	DEBUG(grf, 1, "Unhandled canal variable 0x%02X", variable);
+	Debug(grf, 1, "Unhandled canal variable 0x{:02X}", variable);
 
 	*available = false;
 	return UINT_MAX;
-}
-
-
-/* virtual */ const SpriteGroup *CanalResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (group->num_loaded == 0) return nullptr;
-
-	return group->loaded[0];
 }
 
 GrfSpecFeature CanalResolverObject::GetFeature() const

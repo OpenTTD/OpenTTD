@@ -23,7 +23,7 @@ class ScriptLog : public ScriptObject {
 
 public:
 	/**
-	 * Log levels; The value is also feed to DEBUG() lvl.
+	 * Log levels; The value is also feed to Debug() lvl.
 	 *  This has no use for you, as script writer.
 	 * @api -all
 	 */

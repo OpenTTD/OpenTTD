@@ -26,6 +26,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../fileio_func.h"
+#include "../misc/endian_buffer.hpp"
 
 #include "../safeguards.h"
 
@@ -100,7 +101,7 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 		ScriptObject::SetAllowDoCommand(true);
 	} catch (Script_FatalError &e) {
 		this->is_dead = true;
-		this->engine->ThrowError(e.GetErrorMessage());
+		this->engine->ThrowError(e.GetErrorMessage().c_str());
 		this->engine->ResumeError();
 		this->Died();
 	}
@@ -116,8 +117,7 @@ bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirect
 {
 	char script_name[32];
 	seprintf(script_name, lastof(script_name), "compat_%s.nut", api_version);
-	Searchpath sp;
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		std::string buf = FioGetDirectory(sp, dir);
 		buf += script_name;
 		if (!FileExists(buf)) continue;
@@ -125,7 +125,7 @@ bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirect
 		if (this->engine->LoadScript(buf.c_str())) return true;
 
 		ScriptLog::Error("Failed to load API compatibility script");
-		DEBUG(script, 0, "Error compiling / running API compatibility script: %s", buf.c_str());
+		Debug(script, 0, "Error compiling / running API compatibility script: {}", buf);
 		return false;
 	}
 
@@ -153,7 +153,7 @@ void ScriptInstance::Continue()
 
 void ScriptInstance::Died()
 {
-	DEBUG(script, 0, "The script died unexpectedly.");
+	Debug(script, 0, "The script died unexpectedly.");
 	this->is_dead = true;
 	this->in_shutdown = true;
 
@@ -228,7 +228,7 @@ void ScriptInstance::GameLoop()
 			this->callback = e.GetSuspendCallback();
 		} catch (Script_FatalError &e) {
 			this->is_dead = true;
-			this->engine->ThrowError(e.GetErrorMessage());
+			this->engine->ThrowError(e.GetErrorMessage().c_str());
 			this->engine->ResumeError();
 			this->Died();
 		}
@@ -249,15 +249,18 @@ void ScriptInstance::GameLoop()
 		this->callback = e.GetSuspendCallback();
 	} catch (Script_FatalError &e) {
 		this->is_dead = true;
-		this->engine->ThrowError(e.GetErrorMessage());
+		this->engine->ThrowError(e.GetErrorMessage().c_str());
 		this->engine->ResumeError();
 		this->Died();
 	}
 }
 
-void ScriptInstance::CollectGarbage() const
+void ScriptInstance::CollectGarbage()
 {
-	if (this->is_started && !this->IsDead()) this->engine->CollectGarbage();
+	if (this->is_started && !this->IsDead()) {
+		ScriptObject::ActiveInstance active(this);
+		this->engine->CollectGarbage();
+	}
 }
 
 /* static */ void ScriptInstance::DoCommandReturn(ScriptInstance *instance)
@@ -267,32 +270,32 @@ void ScriptInstance::CollectGarbage() const
 
 /* static */ void ScriptInstance::DoCommandReturnVehicleID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewVehicleID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<VehicleID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnSignID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewSignID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<SignID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnGroupID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewGroupID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<GroupID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnGoalID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewGoalID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<GoalID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnStoryPageID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewStoryPageID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<StoryPageID>(ScriptObject::GetLastCommandResData()));
 }
 
 /* static */ void ScriptInstance::DoCommandReturnStoryPageElementID(ScriptInstance *instance)
 {
-	instance->engine->InsertResult(ScriptObject::GetNewStoryPageElementID());
+	instance->engine->InsertResult(EndianBufferReader::ToValue<StoryPageElementID>(ScriptObject::GetLastCommandResData()));
 }
 
 ScriptStorage *ScriptInstance::GetStorage()
@@ -343,8 +346,7 @@ static byte _script_sl_byte; ///< Used as source/target by the script saveload c
 
 /** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _script_byte[] = {
-	SLEG_VAR(_script_sl_byte, SLE_UINT8),
-	SLE_END()
+	SLEG_VAR("type", _script_sl_byte, SLE_UINT8),
 };
 
 /* static */ bool ScriptInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)
@@ -363,8 +365,8 @@ static const SaveLoad _script_byte[] = {
 			SQInteger res;
 			sq_getinteger(vm, index, &res);
 			if (!test) {
-				int value = (int)res;
-				SlArray(&value, 1, SLE_INT32);
+				int64 value = (int64)res;
+				SlCopy(&value, 1, SLE_INT64);
 			}
 			return true;
 		}
@@ -384,7 +386,7 @@ static const SaveLoad _script_byte[] = {
 			if (!test) {
 				_script_sl_byte = (byte)len;
 				SlObject(nullptr, _script_byte);
-				SlArray(const_cast<char *>(buf), len, SLE_CHAR);
+				SlCopy(const_cast<char *>(buf), len, SLE_CHAR);
 			}
 			return true;
 		}
@@ -505,7 +507,7 @@ void ScriptInstance::Save()
 			/* If we don't mark the script as dead here cleaning up the squirrel
 			 * stack could throw Script_FatalError again. */
 			this->is_dead = true;
-			this->engine->ThrowError(e.GetErrorMessage());
+			this->engine->ThrowError(e.GetErrorMessage().c_str());
 			this->engine->ResumeError();
 			SaveEmpty();
 			/* We can't kill the script here, so mark it as crashed (not dead) and
@@ -563,16 +565,17 @@ bool ScriptInstance::IsPaused()
 	SlObject(nullptr, _script_byte);
 	switch (_script_sl_byte) {
 		case SQSL_INT: {
-			int value;
-			SlArray(&value, 1, SLE_INT32);
+			int64 value;
+			SlCopy(&value, 1, IsSavegameVersionBefore(SLV_SCRIPT_INT64) ? SLE_FILE_I32 | SLE_VAR_I64 : SLE_INT64);
 			if (vm != nullptr) sq_pushinteger(vm, (SQInteger)value);
 			return true;
 		}
 
 		case SQSL_STRING: {
 			SlObject(nullptr, _script_byte);
-			static char buf[256];
-			SlArray(buf, _script_sl_byte, SLE_CHAR);
+			static char buf[std::numeric_limits<decltype(_script_sl_byte)>::max()];
+			SlCopy(buf, _script_sl_byte, SLE_CHAR);
+			StrMakeValidInPlace(buf, buf + _script_sl_byte);
 			if (vm != nullptr) sq_pushstring(vm, buf, -1);
 			return true;
 		}
@@ -685,16 +688,17 @@ SQInteger ScriptInstance::GetOpsTillSuspend()
 	return this->engine->GetOpsTillSuspend();
 }
 
-bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd)
 {
 	ScriptObject::ActiveInstance active(this);
 
-	if (!ScriptObject::CheckLastCommand(tile, p1, p2, cmd)) {
-		DEBUG(script, 1, "DoCommandCallback terminating a script, last command does not match expected command");
+	if (!ScriptObject::CheckLastCommand(tile, data, cmd)) {
+		Debug(script, 1, "DoCommandCallback terminating a script, last command does not match expected command");
 		return false;
 	}
 
 	ScriptObject::SetLastCommandRes(result.Succeeded());
+	ScriptObject::SetLastCommandResData(std::move(result_data));
 
 	if (result.Failed()) {
 		ScriptObject::SetLastError(ScriptError::StringToError(result.GetErrorMessage()));
@@ -703,7 +707,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile
 		ScriptObject::SetLastCost(result.GetCost());
 	}
 
-	ScriptObject::SetLastCommand(INVALID_TILE, 0, 0, CMD_END);
+	ScriptObject::SetLastCommand(INVALID_TILE, {}, CMD_END);
 
 	return true;
 }

@@ -26,6 +26,14 @@
 #define HAVE_OSX_1011_SDK
 #endif
 
+#ifdef MAC_OS_X_VERSION_10_12
+#define HAVE_OSX_1012_SDK
+#endif
+
+#ifdef MAC_OS_X_VERSION_10_15
+#define HAVE_OSX_1015_SDK
+#endif
+
 /* It would seem that to ensure backward compatibility we have to ensure that we have defined MAC_OS_X_VERSION_10_x everywhere */
 #ifndef MAC_OS_X_VERSION_10_3
 #define MAC_OS_X_VERSION_10_3 1030
@@ -73,8 +81,8 @@
 #endif
 
 /* Check for mismatching 'architectures' */
-#if !defined(STRGEN) && !defined(SETTINGSGEN) && ((defined(__LP64__) && !defined(_SQ64)) || (!defined(__LP64__) && defined(_SQ64)))
-#	error "Compiling 64 bits without _SQ64 set! (or vice versa)"
+#if !defined(STRGEN) && !defined(SETTINGSGEN) && ((defined(__LP64__) && !defined(POINTER_IS_64BIT)) || (!defined(__LP64__) && defined(POINTER_IS_64BIT)))
+#	error "Compiling 64 bits without POINTER_IS_64BIT set! (or vice versa)"
 #endif
 
 /* Name conflict */

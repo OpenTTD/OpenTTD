@@ -39,7 +39,7 @@ private:
 	~LinkGraphSchedule();
 	typedef std::list<LinkGraph *> GraphList;
 	typedef std::list<LinkGraphJob *> JobList;
-	friend const SaveLoad *GetLinkGraphScheduleDesc();
+	friend SaveLoadTable GetLinkGraphScheduleDesc();
 
 protected:
 	ComponentHandler *handlers[6]; ///< Handlers to be run for each job.

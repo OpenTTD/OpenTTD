@@ -137,7 +137,7 @@ git checkout upstream/master -b <topic-branch-name>
 ```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) or your code is unlikely to be merged into the main project.
-Use Git's [interactive rebase](https://help.github.com/articles/interactive-rebase) feature to tidy up your commits before making them public.
+Use Git's [interactive rebase](https://docs.github.com/en/get-started/using-git/about-git-rebase) feature to tidy up your commits before making them public.
 
 5. Locally rebase the upstream development branch into your topic branch:
 
@@ -265,5 +265,5 @@ If you would not like to accept this risk, please do either commit anonymously o
 
 ### Attribution of this Contributing Guide
 
-This contributing guide is adapted from [Bootstrap](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) under the [Creative Commons Attribution 3.0 Unported License](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE) terms for Bootstrap documentation.
+This contributing guide is adapted from [Bootstrap](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md) under the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/) terms for Bootstrap documentation.
 The GDPR notice is adapted from [rsyslog](https://github.com/rsyslog/rsyslog/blob/master/CONTRIBUTING.md) under the [GNU General Public License](https://github.com/rsyslog/rsyslog/blob/master/COPYING).

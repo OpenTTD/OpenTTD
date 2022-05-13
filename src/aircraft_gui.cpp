@@ -100,7 +100,7 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 	if (helicopter) {
 		const Aircraft *a = Aircraft::From(v);
 		VehicleSpriteSeq rotor_seq;
-		GetCustomRotorSprite(a, true, image_type, &rotor_seq);
+		GetCustomRotorSprite(a, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
 		heli_offs = ScaleGUITrad(5);
 		rotor_seq.Draw(x, y + y_offs - heli_offs, PAL_NONE, false);

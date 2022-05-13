@@ -30,6 +30,42 @@ class TCPListenHandler {
 	static SocketList sockets;
 
 public:
+	static bool ValidateClient(SOCKET s, NetworkAddress &address)
+	{
+		/* Check if the client is banned. */
+		for (const auto &entry : _network_ban_list) {
+			if (address.IsInNetmask(entry)) {
+				Packet p(Tban_packet);
+				p.PrepareToSend();
+
+				Debug(net, 2, "[{}] Banned ip tried to join ({}), refused", Tsocket::GetName(), entry);
+
+				if (p.TransferOut<int>(send, s, 0) < 0) {
+					Debug(net, 0, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
+				}
+				closesocket(s);
+				return false;
+			}
+		}
+
+		/* Can we handle a new client? */
+		if (!Tsocket::AllowConnection()) {
+			/* No more clients allowed?
+			 * Send to the client that we are full! */
+			Packet p(Tfull_packet);
+			p.PrepareToSend();
+
+			if (p.TransferOut<int>(send, s, 0) < 0) {
+				Debug(net, 0, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
+			}
+			closesocket(s);
+
+			return false;
+		}
+
+		return true;
+	}
+
 	/**
 	 * Accepts clients from the sockets.
 	 * @param ls Socket to accept clients from.
@@ -49,45 +85,11 @@ public:
 			SetNonBlocking(s); // XXX error handling?
 
 			NetworkAddress address(sin, sin_len);
-			DEBUG(net, 1, "[%s] Client connected from %s on frame %d", Tsocket::GetName(), address.GetHostname(), _frame_counter);
+			Debug(net, 3, "[{}] Client connected from {} on frame {}", Tsocket::GetName(), address.GetHostname(), _frame_counter);
 
 			SetNoDelay(s); // XXX error handling?
 
-			/* Check if the client is banned */
-			bool banned = false;
-			for (const auto &entry : _network_ban_list) {
-				banned = address.IsInNetmask(entry.c_str());
-				if (banned) {
-					Packet p(Tban_packet);
-					p.PrepareToSend();
-
-					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry.c_str());
-
-					if (send(s, (const char*)p.buffer, p.size, 0) < 0) {
-						DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
-					}
-					closesocket(s);
-					break;
-				}
-			}
-			/* If this client is banned, continue with next client */
-			if (banned) continue;
-
-			/* Can we handle a new client? */
-			if (!Tsocket::AllowConnection()) {
-				/* no more clients allowed?
-				 * Send to the client that we are full! */
-				Packet p(Tfull_packet);
-				p.PrepareToSend();
-
-				if (send(s, (const char*)p.buffer, p.size, 0) < 0) {
-					DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
-				}
-				closesocket(s);
-
-				continue;
-			}
-
+			if (!Tsocket::ValidateClient(s, address)) continue;
 			Tsocket::AcceptConnection(s, address);
 		}
 	}
@@ -150,8 +152,8 @@ public:
 		}
 
 		if (sockets.size() == 0) {
-			DEBUG(net, 0, "[server] could not start network: could not create listening socket");
-			NetworkError(STR_NETWORK_ERROR_SERVER_START);
+			Debug(net, 0, "Could not start network: could not create listening socket");
+			ShowNetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;
 		}
 
@@ -165,7 +167,7 @@ public:
 			closesocket(s.second);
 		}
 		sockets.clear();
-		DEBUG(net, 1, "[%s] closed listeners", Tsocket::GetName());
+		Debug(net, 5, "[{}] Closed listeners", Tsocket::GetName());
 	}
 };
 

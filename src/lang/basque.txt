@@ -170,7 +170,8 @@ STR_LITERS                                                      :{COMMA}{NBSP}li
 STR_ITEMS                                                       :{COMMA}{NBSP}objektu{P "" ak}
 STR_CRATES                                                      :{COMMA}{NBSP}kaxa{P "" k}
 
-# Colours, do not shuffle
+STR_COLOUR_DEFAULT                                              :Lehenetsia
+###length 17
 STR_COLOUR_DARK_BLUE                                            :Urdin Iluna
 STR_COLOUR_PALE_GREEN                                           :Berde Zurbila
 STR_COLOUR_PINK                                                 :Larrosa
@@ -187,7 +188,6 @@ STR_COLOUR_ORANGE                                               :Laranja
 STR_COLOUR_BROWN                                                :Marroia
 STR_COLOUR_GREY                                                 :Grisa
 STR_COLOUR_WHITE                                                :Zuria
-STR_COLOUR_DEFAULT                                              :Lehenetsia
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -245,11 +245,13 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra mu
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikinak etab. edo lur karratu bat eraistea. Ctrl area diagonalki aukeratzen du. Mayus eraikinaren kostu estimatua erakusten du.
 
 # Show engines button
+###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Ezkutuak erakutsi
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE                    :{BLACK}Ezkutuak erakutsi
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP                            :{BLACK}Ezkutuak erakutsi
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Ezkutuak erakutsi
 
+###length VEHICLE_TYPES
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Botoi hau gaituz, ezkutuak dauden trenak erakusten dira
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Botoi hau gaituz, ezkutuko itsasontziak ere erakusten dira
 
@@ -308,7 +310,10 @@ STR_SORT_BY_RATING                                              :Balorazioa
 
 # Group by options for vehicle list
 
+# Order button in shared orders vehicle list
+
 # Tooltips for the main toolbar
+###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Jokoa bizkortu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Ezarpenak
@@ -355,7 +360,8 @@ STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Zuhaitza
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Seinalea ezarri
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektua ipini. Mayus eraikinaren kostu estimatua aktibatzen du
 
-############ range for SE file menu starts
+# Scenario editor file menu
+###length 7
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Eszenarioa gorde
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Eszenarioa kargatu
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Garaiera mapa gorde
@@ -363,9 +369,9 @@ STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Garaiera-mapa k
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Eszenario editoretik irten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
-############ range for SE file menu starts
 
-############ range for settings menu starts
+# Settings menu
+###length 14
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ezarpenak
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :IA/Jokoaren scriptaren ezaugarriak
@@ -380,87 +386,88 @@ STR_SETTINGS_MENU_FULL_ANIMATION                                :Animazio betea
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Geheienzko detailea
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Eraikin transparenteak
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Geltoki errotulu transparenteak
-############ range ends here
 
-############ range for file menu starts
+# File menu
+###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Jokoa gorde
 STR_FILE_MENU_LOAD_GAME                                         :Jokoa kargatu
 STR_FILE_MENU_QUIT_GAME                                         :Jokoa utzi
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Irten
-############ range ends here
 
-# map menu
+# Map menu
+###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Munduko mapa
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :lehio extra
 STR_MAP_MENU_SIGN_LIST                                          :Seinale zerrenda
 
-############ range for town menu starts
+# Town menu
+###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Herri direktorioa
 STR_TOWN_MENU_FOUND_TOWN                                        :Herria eraiki
-############ range ends here
 
-############ range for subsidies menu starts
+# Subsidies menu
+###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidioak
-############ range ends here
 
-############ range for graph menu starts
+# Graph menu
+###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Operazio benefizioen grafikoa
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Irabazien grafikoa
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Entregatutako zama grafikoa
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Errendimendu historiako grafikoa
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Konpaniako balioaren grafikoa
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Zama salneurriak
-############ range ends here
 
-############ range for company league menu starts
+# Company league menu
+###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Konpanien ligaren tabloia
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Errendimentu xehetuaren tasa
 STR_GRAPH_MENU_HIGHSCORE                                        :Puntuazio taula
-############ range ends here
 
-############ range for industry menu starts
+# Industry menu
+###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industria direktorioa
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industri katea
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Industria berri bat eraiki
-############ range ends here
 
-############ range for railway construction menu starts
+# URailway construction menu
+###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Trenbidea eraiki
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Trenbide elektrikoa eraiki
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail trenbidea eraiki
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Trenbide magnetikoa eraiki
-############ range ends here
 
-############ range for road construction menu starts
+# Road construction menu
+###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Errepidea eraiki
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tranbia eraiki
-############ range ends here
 
-############ range for waterways construction menu starts
+# Waterways construction menu
+###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Urbideak eraiki
-############ range ends here
 
-############ range for airport construction menu starts
+# Aairport construction menu
+###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Aireportua eraiki
-############ range ends here
 
-############ range for landscaping menu starts
+# Landscaping menu
+###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisai editorea
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Zuhaitzak landatu
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Kartela jarri
-############ range ends here
 
-############ range for music menu starts
+# Music menu
+###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Soinua/musika
-############ range ends here
 
-############ range for message menu starts
+# Message menu
+###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Azken mezua/albiste erreportaia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mezuen historia
-############ range ends here
 
-############ range for about menu starts
+# About menu
+###length 10
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Lur arearen informazioa
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsola aktibatu
@@ -470,9 +477,9 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'-ri bu
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprit" lerrokatzailea
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kaxen neurriak aldatu
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Txandakatu bloke zikinen kolorea
-############ range ends here
 
-############ range for ordinal numbers used for the place in the highscore window
+# Place in highscore window
+###length 15
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -488,9 +495,8 @@ STR_ORDINAL_NUMBER_12TH                                         :12.
 STR_ORDINAL_NUMBER_13TH                                         :13.
 STR_ORDINAL_NUMBER_14TH                                         :14.
 STR_ORDINAL_NUMBER_15TH                                         :15.
-############ range for ordinal numbers ends
 
-############ range for days starts
+###length 31
 STR_DAY_NUMBER_1ST                                              :1.
 STR_DAY_NUMBER_2ND                                              :2.
 STR_DAY_NUMBER_3RD                                              :3.
@@ -522,9 +528,8 @@ STR_DAY_NUMBER_28TH                                             :28.
 STR_DAY_NUMBER_29TH                                             :29.
 STR_DAY_NUMBER_30TH                                             :30.
 STR_DAY_NUMBER_31ST                                             :31.
-############ range for days ends
 
-############ range for months starts
+###length 12
 STR_MONTH_ABBREV_JAN                                            :Urt
 STR_MONTH_ABBREV_FEB                                            :Ots
 STR_MONTH_ABBREV_MAR                                            :Mar
@@ -538,6 +543,7 @@ STR_MONTH_ABBREV_OCT                                            :Urr
 STR_MONTH_ABBREV_NOV                                            :Aza
 STR_MONTH_ABBREV_DEC                                            :Abe
 
+###length 12
 STR_MONTH_JAN                                                   :Urtarrila
 STR_MONTH_FEB                                                   :Otsaila
 STR_MONTH_MAR                                                   :Martxoa
@@ -550,7 +556,6 @@ STR_MONTH_SEP                                                   :Iraila
 STR_MONTH_OCT                                                   :Urria
 STR_MONTH_NOV                                                   :Azaroa
 STR_MONTH_DEC                                                   :Abendua
-############ range for months ends
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Giltza
@@ -602,7 +607,8 @@ STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURREN
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Konpainia honen xehetasunak ikusi
-############ Those following lines need to be in this order!!
+
+###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ibilgailuak:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Geltokiak:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Gutxienezko irabaziak
@@ -613,7 +619,8 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Zama:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dirua:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Mailegua:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Guztira:
-############ End of order list
+
+###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Azken urtean irabaziak lortu dituzten ibilgailuak; honek errepideko garraioak, trenak, itsasontziak eta hegazkinak sartzen ditu
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Oraintsu zerbitzatuta dauden geltokien zatien zenbakia. Geltokiko edozein zati (adib. tren geltokia, autobuseko geldialdia, aireportua) zenbatuta dago, nahiz eta beste geltoki batekin konektatuta egon
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Irabazi gutxien eduki duen garraioa (bakarrik 2 urte baino zaharragoak dira kontuan hartuta)
@@ -685,12 +692,14 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHIT
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 
+###length 7
 STR_SMALLMAP_TYPE_CONTOURS                                      :Inguruak
 STR_SMALLMAP_TYPE_VEHICLES                                      :Garraioak
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industriak
 STR_SMALLMAP_TYPE_ROUTES                                        :Ibilbideak
 STR_SMALLMAP_TYPE_VEGETATION                                    :Begetazioa
 STR_SMALLMAP_TYPE_OWNERS                                        :Jabeak
+
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Erakutsi lurraren inguruak mapan
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Erakutsi garraioak mapan
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Erakutsi industriak mapan
@@ -752,6 +761,7 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  GELDITUTA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-GORDEA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  JOKOA GORDETZEN  *  *
+
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Mezu Historia
@@ -816,10 +826,12 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}¡Intsektuek eragindako hondamena {INDUSTRY}-an!{}Ekoizpena %50 jaitsi da
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}¡ {INDUSTRY}-an %{COMMA} jaitsi da ekoizpena!
 
+###length VEHICLE_TYPES
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} deposituan itxaroten dago
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} deposituan itxaroten dago
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} deposituan itxaroten dago
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} hegazkin deposituan itxaroten dago
+###next-name-looks-similar
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} agindu gutxiegi ditu zerrendan
@@ -850,11 +862,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidio eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago subsidiorik orain.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidioa kenduta:{}{}{STRING} Ez dago subsidiorik {STRING}(e)tik {STRING}(e)ra garraiatzeagatik.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Diru-laguntza eskaintza:{}{} {STRING} {STRING}tik {STRING}ra doan lehenengoari bertako udalak diru-laguntza emango dio urte batetan zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Diru-laguntza{STRING}entzako!{}{}{STRING} {STRING}tik {STRING}ra egindako serbitzuak %50-a gehiago irabaziko dute hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra egiten duen serbitzuak bikoitza irabaziko du hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan serbitzuak hirukoitza irabaziko du hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan zerbitzuak laukoitza irabaziko du hurrengo urtean zehar!
+###length 4
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Garraio monopolia!!
@@ -872,7 +880,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Jokoaren
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Diru unitateak
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Diru unitatearen aukeraketa
 
-############ start of currency region
+###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerikarrak (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa (EUR)
@@ -907,15 +915,15 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Hego Afrikako R
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
-############ end of currency region
 
+###length 2
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerretik gidatu
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eskuinetik gidatu
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Herrien izenak
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Herrien izenen estiloak aukeratu
 
-############ start of townname region
+###length 21
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelesa (Jatorrizkoa)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frantsesak
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemaniarrak
@@ -937,18 +945,17 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danierarrak
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiarrak
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiarrak
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanak
-############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokoa automatikoki gordetzeko denbora
 
-############ start of autosave dropdown
+# Autosave dropdown
+###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ez
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hilabetero
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3 hilabetero
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6 hilabetero
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 hilabetero
-############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Hizkuntza
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Aukeratu interfazean erabiltzeko hizkuntza
@@ -959,6 +966,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Markatu 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantailaren resoluzioa
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
+
 
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfaze tamaina
@@ -1032,12 +1040,14 @@ STR_VARIETY_MEDIUM                                              :Erdia
 STR_VARIETY_HIGH                                                :Altu
 STR_VARIETY_VERY_HIGH                                           :Oso Altu
 
+###length 5
 STR_AI_SPEED_VERY_SLOW                                          :Oso Motela
 STR_AI_SPEED_SLOW                                               :Motela
 STR_AI_SPEED_MEDIUM                                             :Arrunta
 STR_AI_SPEED_FAST                                               :Azkarra
 STR_AI_SPEED_VERY_FAST                                          :Oso azkarra
 
+###length 6
 STR_SEA_LEVEL_VERY_LOW                                          :Oso baxua
 STR_SEA_LEVEL_LOW                                               :Baxua
 STR_SEA_LEVEL_MEDIUM                                            :Ertaina
@@ -1045,29 +1055,34 @@ STR_SEA_LEVEL_HIGH                                              :Altua
 STR_SEA_LEVEL_CUSTOM                                            :Pertsonalizatua
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :(%{NUM}) pertsonalizatua
 
+###length 4
 STR_RIVERS_NONE                                                 :Bat ere ez
 STR_RIVERS_FEW                                                  :Gutxi
 STR_RIVERS_MODERATE                                             :Ez asko ez gutxi
 STR_RIVERS_LOT                                                  :Asko
 
+###length 3
 STR_DISASTER_NONE                                               :Ezer ez
 STR_DISASTER_REDUCED                                            :Mugatua
 STR_DISASTER_NORMAL                                             :Normala
 
+###length 4
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Oso laua
 STR_TERRAIN_TYPE_FLAT                                           :Laua
 STR_TERRAIN_TYPE_HILLY                                          :Mendixkekin
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Menditsua
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinista
 
-STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Jasanbera
 STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa
+STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
 
@@ -1097,131 +1112,190 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdina
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Bezero ezarpenak (ez dira partidatan gordetzen; joko guztiei eragiten die)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Jokoaren ezarpenak (gordetako partidetan bilduta; bakarrik partida berriei eragiten die)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Enpresa ezarpenak (partidan gordeta; bakarrik uneko enpresari eragiten dio)
-STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ezer ez -
 
+STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ezer ez -
+###length 3
+
+###length 3
 STR_CONFIG_SETTING_OFF                                          :Itzalita
 STR_CONFIG_SETTING_ON                                           :Piztuta
 STR_CONFIG_SETTING_DISABLED                                     :Desgaitua
 
+###length 3
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Itzalita
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Nire konpainia
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Konpainia guztiak
 
+###length 3
 STR_CONFIG_SETTING_NONE                                         :Bat ere ez
 STR_CONFIG_SETTING_ORIGINAL                                     :Jatorrizkoa
 STR_CONFIG_SETTING_REALISTIC                                    :Errealista
 
+###length 3
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ezkerra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Erdia
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Eskuina
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Gehienezko mailegua joko hasieran: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Konpainiek eskatu dezaketen gehienezko mailegua(inflazioa kontua hartu gabe)
+
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interes tasa: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Maileguen interes tasa; inflazioa ere kontrolatuko du, gaitzen bada
+
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Mantenimendu kostea: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ibilgailu eta azpigiturak mantentzea kostatuko duena ezarri
+
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Eraikitzeko abiadura: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :IA-en eraikuntza ekintza kopurua mugatu
+
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Ibilgailuen matxurak: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontrolatu mantenimendu ezegokia jasotzen duten ibilgailuek zenbatero matxuratuko diren
+
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidio biderkatzailea: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Subsidio garraio batengatik ordainduko dena ezarri
+
+
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Eraikuntza kosteak: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta eraikuntza kostuak ezarri
+
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
+
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Gaitua dagoenean, trenak ezingo dute geltoki ez-finaletan buelta eman, nahiz eta biderik motzena izan helmugara iristeko
+
 STR_CONFIG_SETTING_DISASTERS                                    :Hondamendiak: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Azpiegiturak eta ibilgailuak suntsitu edo blokeatu ditzaketen hondamendiak txandakatu
+
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Udaletxearen jarrera bere lurrak berregituratzeko: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Aukeratu zenbateraino eragingo dion konpainia bati herri batean zarata sortzea eta ingurumena kaltetzea, herrian duen balorazioa txartuz eta eraikin berriak egiteko baimena mugatuz
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Eraikin eta bideen azpian paisaia aldatzea baimendu hauek kendu gabe
+
 STR_CONFIG_SETTING_CATCHMENT                                    :Geltokien irismen eremu hedapena errealagoa egitea baimendu: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Tamaina ezberdinetako jasotze eremuak izan mota ezberdinetako geltoki eta aireportuentzat
+
+
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Herrien eraikin eta infraestrukturak kentzea errazago egin.
+
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Gehienezko tren luzera: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ezarri gehienezko tren luzera
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} lauki
+
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Trenaren ke/txinparta kantitatea: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ezarri zenbat ke edo zenbat txinparta igorriko duten ibilgailuek
+
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trenen azelerazio modeloa: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Aukeratu trenen azeleraziorako fisika eredua. "Jatorrizko" ereduak ibilgailu guztiak berdin moteltzen ditu. Eredu "Errealista"k mendi magaletan eta kurbetan jasaten den moteldura propietate ezberdinetan oinarritzen da, ibilgailuaren luzeran eta trakzioan adibidez
+
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ibilgailuen azelerazio modelua: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Aukeratu errepide ibilgailuen azeleraziorako fisika eredua. "Jatorrizko" ereduak ibilgailu guztiak berdin moteltzen ditu. Eredu "Errealista"k mendi magaletan eta kurbetan jasaten den moteldura propietate ezberdinetan oinarritzen da, trakzioan adibidez
+
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Mendi magalen inklinazioa trenentzako: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Mendi magal laukien inklinazioa trenentzako. Balio altuak maldak igotzea zailtzen dute
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mendi magaleren inklinazioa errepide ibilgailuentzako: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Mendi magal laukien inklinazioa errepide ibilgailuentzako. Balio altuak maldak igotzea zailtzen dute.
+
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Itsasontzi eta trenei 90 graduko biraketak debekatu: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graduko bihurgunek trenbide horizontalari trenbide bertikala jarraitzen dionean gertatzen da, trenak 90 graduko bihurgunea egingo du ohiko 45 graduko bihurguneen ordez. Honako hau itsasuntzientzat aplikatzen da ere
+
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Geltoki bati zatiak gehitu dauden zatiak ukitu gabe. Zati berriak gehitzerakoan Crtl+klikatu sakatu beharko da.
+
 STR_CONFIG_SETTING_INFLATION                                    :Inflazioa: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Gaitu inflazioa ekonomiari, kosteak salneurriak baino pixka bat azkarrago igoko dira
+
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Zubien gehienezko luzera: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Zubiak eraikitzeko gehienezko luzera
+
+
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tunel baten gehienezko luzera: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tunelak eraikitzeko gehienezko luzera
+
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Erauzketa industria eraikitzeko modua: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Erauzketa industriak sortzeko modua. "Ez" haukeratuz gero ezingo dira eraiki. "Erauzketa" haukeratuz gero eraikitzeko aukera dago baina maparen edozein tokitan agertu daiteke erauzketa industria, erauzketak huts egin dezake ere. "Beste industriak bezala" haukeratuz gero erauzketa industriak eraldaketa industriak bezala eraiki ahalko dira, nahi den tokian.
+###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ezer ez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Beste industriak bezala
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erauzketa
+
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Lursail laua industrien inguruan: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Lursail lau kopurua indutriaren inguruan. Honek industrien inguruan bideak, geletokiak, etab. eraikitzeko lursaila egongo dela bermatzen du
+
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Indutria berdin asko baimendu hiri bakoitzean: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalean, herri batek ez du industria mota errepikatuak onartzen. Ezarpen honekin herrietan industria mota errepikatuak eraiki ahalko dira.
+
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Seinaleak erakutsi: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Aukeratu trenbidearen ze aldean jarri nahi den seinalea
+###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Ezkerrean
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Gidatzeko aldean
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Eskuinaldean
+
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Finantzien informazio taula urtearen bukaeran agertu: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Gaitua badago, finantza lehioa urte bakoitzaren amaieran agertuko da konpainiaren finantza egoeraren azterketa errazteko
+
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Agindu berriak "ez gelditu" dira beti: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalean, ibilgailuek zeharkatzen duten geltoki bakoitzean geldialdia egiten dute. Aukera hau gaituz gero, bere helmugara iritsiko dira beste geltokietan geldialdirik egin gabe. Kontuan hartu aukera honek agindu berrientzako balio lehentsi bat zehazten duela. Aginduak portaera ezberdinetara egokitu daitezke
+
 STR_CONFIG_SETTING_STOP_LOCATION                                :Trenak geltokiaren {STRING} geldituko dira
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Lehenezpenez trena geltokian non kokatuko den. 'Hasieran' esan nahi du sarreratik gertu, 'Erdian' esan nahi du geltokiaren erdialdean, 'Amaieran' esan nahi du sarreratik hurruti. Kontuan hartu agindu berrientzako balio lehentsi bat zehazten duela. Aginduak portaera ezberdinetara egokitu daitezke
+###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :amaieratik gertu
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :erdian
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urrun
+
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Leihoa mugitu sagua ertzean dagoenean: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Gaitua dagoenean, sagua lehioen ertzara hurbiltzerakoan mapa mugitzen hasiko da
+###length 4
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desgaitua
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Ikuspegi lehio nagusia, bakarrik pantaila osoan
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Ikuspegi lehio nagusia
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Ikuspegi lehio guztiak
+
 STR_CONFIG_SETTING_BRIBE                                        :Udaletxeko agintariak erostea baimendu: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Konpainiei utzi udaletxeak sobornatzen. Inspektore batek sobornoa antzematen badu, konpainiak sei hilabetez debekatua izango du herrian aritzea
+
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Garraioaren eskubide esklusiboen erosketa baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Konpainia batek erabateko garraio eskubideak erosten baditu, aukarien geltokiek (bidaiari zehin ondasun) ez dute inolako ondasunik jasoko urte oso batez
+
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Eraikinak ordaintzea baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Konpainiek herriei eraikin berriak eraikitzeko dirua eman ahalko diete
+
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Bertako errepideak hobetzea utzi: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Konpainiei onartu herriei errepideen berrerakuntzarako dirua ematea, errepide garraioan oinarritutako zerbitzuak boikoteatzeko
+
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Beste empresei dirua bidaltzea baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Konpainien arteko diru transferentziak onartu jokalari anitzeko modua
+
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Trenek zamak eramatea eragiten dien moteldura zehaztu. Balio altuek moteldura areagotzen dute, batez ere maldetan
+
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Hegazkinen abiadura faktorea: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Hegazkinen abiadura erlatiboa zehaztu beste ibilgailuekin alderatuta, hegazkinen irabaziak murrizteko
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
+
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Hegazkinen istripu kopurua : {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Hegazkien istripu aukerak zehaztu
+###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ezer ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Mugatua
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Arrunta
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Herrien errepideetan zehar-pasatzeko geltokiak baimendu: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Herrien menpe dauden errepideetan zehar-pasatzeko geltokiak baimendu
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Arerioen errepideetan zehar-pasatzeko geltokiak baimendu: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Beste konpainien menpe dauden errepideetan zehar-pasatzeko geltokiak bahimendu
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin da aldatu ibilgailuak daudenean
+
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Azpiegituren mantentze-lana: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Gaitua dagoenean, azpiegiturek mantentze kostuak eragiten dituzte. Kostuak garraio sarearekin proportzionalki hazten dira, hau da, kostu handiagoak izango dituzten konpainia handiagoek
 
@@ -1231,102 +1305,156 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Gaitua badago, 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Abisatu ibilgailu bat galduta badagoen: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mezuak aktibatu ibilgailuek ez dutenean bere helmugara iristeko bidea aurkitzen
+
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Ibilgailuen aginduak aztertu: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Gaitua dagoenean, aginduak periodikoki egiaztatuko dira, bestelako arazoak gertatzen badira mezuen bidez jakinaraziko dira
+###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ez
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Bai, baina geldituta dauden ibilgailuak ezik
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Ibilgailu guztientzat
+
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ohartarazi ibilgailu baten irabaziak negatiboak badira: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Gaitua dagoenean, mezu bidez urte oso batean irabazirik lortu ez dituzten ibilgailuez ohartaraziko da
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ibilgailuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenean, ibilgailu modelo ezberdinak betirako egongo dira erabilgarri
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zahartzen denean automatikoki berritu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
+
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ibilgailuak automatikoki berritu bere adina {STRING} denean
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Ibilgailu bat atomatikoki berritzeko kontuan hartu behar den urte kopuru erlatiboa
+###length 2
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} hilabete lehenago
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} hilabete beranduago
+
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Ibilgailuak berritzeko behar den gutxienezko dirua: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bankuan gutxienez eduki beharko den diru kopurua ibilgailuen berritze automatikoa erabiltzen hasteko
+
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Akats mezuen iraupena: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Lehio gorrian agertzen diren akats mezuen iraupena automatikoki itxi baino lehen. Kontuan hartu zeinbait akats mezu (Kritikoak) ez direla automatikoki itxiko ezarritako denbora pasa eta gero, eskuz itxi behako dira
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundu
+
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Erakutsi argibideak: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Sagua, interfazeko elementu batzuen gainean jartzerakoan, argibideak bistaratu aurretik pasa beharko den denbora. Elementu batzuetan saguko eskuineko botoia sakatu beharko da
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sagua gainean mantendu milisegundu {COMMA}
+###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klikatu eskuineko botoiarekin
+
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Herriaren bistanleria herriaren izen kartelan ikusgai izan: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Herriaren bistanleria herriaren izen kartelan ikusgai izan
+
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Marren lodiera grafikoetan: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikoen marren lodiera. Marra fina irakurtzeko errazagoa da, marra lodia ikusteko errazagoa da eta koloreak hobeto ezberdinduko dira
 
+
+
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
+###length 2
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Jatorrizkoa
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis bakarrik) Maparen menditsutasuna
+
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industria dentsitatea: {STRING}
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo findegietatik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
+
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Elur garaiera: {STRING}
+
+
+
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Eremuaren malkartasun maila: {STRING}
+###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
+
 STR_CONFIG_SETTING_VARIETY                                      :Barietateen distribuzioa: {STRING}
+
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Ibai kantitatea: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Aukeratu zenbat ibai sortuko diren
+
 STR_CONFIG_SETTING_TREE_PLACER                                  :Zuhaitz kokatzeko algoritmoa: {STRING}
+###length 3
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Jatorrizkoa
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
+
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Errepideko garraioak: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Gidatzeko aldea aukeratu
+
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera maparen norabidea: {STRING}
+###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
+
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Eszenario mapa lauak hartzen duten garaiera: {STRING}
+###length 2
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ipar ertzean dauden laukitxoetako bat, edo bat baino gehiago ez daude hutsik
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Edozein ertzean dauden laukitxo bat edo bat baino gehiagotan ez da urik egongo
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Geltokien gehienezko hedapena: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Geltoki zati baten gehienezko hedapen azalera. Balio altuek jokoa motelduko dute
+
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Heliportuetan helikopteroen mantenimendua automatikoki egin: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Helikopteroen mantenimendua egin lurreratze bakoitzean, nahiz eta tailerrik ez egon
+
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Paisaia eraldatzeko lanabesak tren/ura/errepide/aireportu eraikitzeko tauletan agertzea: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Garraio mota baten eraikuntza lanabesak irekitzerakoan ireki paisaia eraldatzeko lanabesak ere
+
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Mapa txikian erabiltzeko lur kolorea: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Mapa txikiaren lur kolorea
+###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Berde iluna
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Bioleta
+
+###length 4
+
+###length 4
+
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mapan zehar mugitzerakoan, abiadura moteltzea: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolatu nola mugituko den ikuspegia lehio nagusitik zehar, puntu jakin batera joateko mapa txikian sakatzen denean edo objektu zehatz batera joateko agintzen denean
+
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Eraikitze tresna ezberdinak erabiltzerakoan neurtresna erakutsi: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Erakutsi lauki kopuruak eta garaiera ezberdintasunak eraikuntza ekintzetan sagua arrastatzerakoan
+
 STR_CONFIG_SETTING_LIVERIES                                     :Konpainien geltokiak erakutsi: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrolatu ibilgailu mota zehatzen liburutegiak ibilgailuentzako (konpainia zehatzen ordez)
+###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ezer ez
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Nire Konpainia
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Konpainia guztiak
+
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Talde txat-a <ENTER> rekin: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Aldatu konpainiaren barne txataren eta txat publikoaren arteko lotura <Ctrl+ENTER>-tik <ENTER>-era
+
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mapan zehar mugitzerakoan saguaren gurpilaren abiadura: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrolatu sagu gurpilaren sentsibilitatea
+
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Saguaren gurpilaren eginkizuna: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Gaitu mapan zehar mugitzea bi dimentsiotako sagu gurpilekin
+###length 3
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mapari zoom egin
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mapa mugitu
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Itzalita
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mapan zehar mugitzerakoan saguaren gurpilaren abiadura: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrolatu sagu gurpilaren sentsibilitatea
+
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teklatu pantaila aktibatu: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Aukeratu nola irekiko den teklatu pantaila textuak sartzeko. Aukera hau teklatua ez duten aparatuentzat da
+###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Desgaitua
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Klik bikoitza
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik bakarra (enfokatua dagoenean)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik bakarra (Berehala)
 
+###length 3
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Xaguaren eskuineko botoiaren emulazioa: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Aukeratu saguaren eskuineko botoiaren klikak emulatzeko modua
+###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
@@ -1337,114 +1465,160 @@ STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Partida gordetz
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gordetako jokoen izenetan {STRING} data fomatua erabili
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Gordetako fitxeroen dataren formatoa
+###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko Abe 31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikoki jokoa pausan jarri joko berri bat hastearakoan: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Gaitua dagoenean, joko berria hasterakoan automatikoki pausatua egongo da, aldez aurretik mapa aztertzeko
+
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Jokoa geldituta dagoenean baimendu: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Aukeratu baimenduta dauden ekintzak jokoa pausatua dagoenean
+###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ekintzarik ez
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Eraikitzeko ez diren ekintza guztiak
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Guztia paisaia eraldatzeko ekintzak ezik
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Ekintza guztiak
+
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Taldeak erabili ibilgailu zerrendan: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Gaitu ibilgailu zerrenda aurreratuak erabiltzea ibilgailu taldeentzako
+
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Zama adierazleak erabili: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Aukeratu ibilgailuen zama lanen adierazlea ikusgai dagoen ibilgailuen gainean
+
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Ordutegiak tick-etan erakutsi egunetan erakutsi ordez: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Erakutsi denbora tauletako denbora jokoaren uniteetan egunak erabili ordez
+
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Iritsierak eta irteerak ordutegietan erakutsi: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Erakutsi aurreikusitako iritsiera eta irteera denborak denbora tauletan
+
 STR_CONFIG_SETTING_QUICKGOTO                                    :Ibilgailu aginduen sorrera azkarra: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :'Nora joan' aurrez hautatu agindu lehioak irekitzerakoan
+
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Lehenetsitako trenbide mota (joko berria hastean/jokoa kargatzean): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jokoa hasi edo jokoa kargatu eta gero trenbide lanabesetan lehenetsiko den trenbide mota. 'Zaharrena' trenbide mota zaharrena lehenetsiko da, 'Berriena' trenbide mota berriena lehenetsiko da, 'Erabiliena' trenbide mota erabiliena lehenetsiko da
+###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia
+
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Erreserbatutako trenbide zatiak erakutsi: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenbide erreserbatuak kolore ezberdinarekin jarri blokeetan oinarritutako ibilbideetan sartzera ukatzen diren trenei laguntzeko
+
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Eraikitze tresnak aktibaturik utzi erabili eta gero: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantendu zubi, tunel, etabarren lanabesak irekita erabili eta gero
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Talde gastuak konpainiaren finantza leihoan: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Konpainiako gastuen lehioaren diseinua
+
+
+###setting-zero-is-special
+
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Periodikoa: {STRING}
+
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Amaiera urtea: {STRING}
+
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Eraikuntza: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Eraikuntza arrakastatsua edo beste akzioekin soinu bat egin
+
+
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastreak/istripuak: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Istripu edo desastreen soinu efektuak aktibatu
+
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Garraioak: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiturak eraikitzea debekatu ibilgailu egokiak ez daudenean eskuragarri: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Gaitua dagoenean, ezingo da azpiegiturarik eraiki azpiegitura horren ibilgailuak ez badaude eskuragarri, denbora eta dirua aurreztuz
+
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Konpainiek eduki ditzaketen gehienezko tren kopurua: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Konpainiek eduki ditzaketen gehienezko tren kopurua
+
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Konpainiek eduki ditzaketen gehienezko errepide ibilgailu kopurua: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Konpainiek eduki ditzaketen gehienezko errepide ibilgailu kopurua
+
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Konpainiek eduki ditzaketen gehienezko hegazkin kopurua: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Konpainiek eduki ditzaketen gehienezko hegazkin kopurua
+
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Konpainiek eduki ditzaketen gehienezko itsasontzi kopurua: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Konpainiek eduki ditzaketen gehienezko itsasontzi kopurua
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Ordenagailuak kontrolatutako konpainiei trenak erabiltzea eragotzi: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Gaitua dagoenean, ordenagailu jokalariek ezingo dute tren sarerik eraiki
+
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Ordenagailuak kontrolatutako konpainiei errepide ibilgailuak erabiltzea eragotzi {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Gaitua dagoenean, ordenagailu jokalariek ezingo dute errepide ibilgailu sarerik eraiki
+
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Ordenagailuak kontrolatutako konpainiei hegazkinak erabiltzea eragotzi: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Gaitua dagoenean, ordenagailu jokalariek ezingo dute hegazkin sarerik eraiki
+
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ordenagailuak kontrolatutako konpainiei itsasontziak erabiltzea eragotzi: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Gaitua dagoenean, ordenagailu jokalariek ezingo dute itsasontzi sarerik eraiki
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Profilentzako ezarpen lehenetsia: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Aukeratu ze ezarpen profil erabiliko diren ausazko IAentzat edo hasierako balioak IA edo Script joko bat geitzen denean
+###length 3
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Erraza
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Arrunta
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Zaila
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Multijokalari moduan IA baimentzea: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Baimendu ordenagailu jokalariak (IA) jokalari anitzeko jokoetan parte hartzera
+
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode kopurua scriptak itzali baino lehen: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Script batek eman ditzakeen gehienezko konputazio pausuak txanda bakoitzean
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Mantenimendurako denbora tarteak ehunekoetan ematea: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Aukeratu ibilgailuen mantenimendua azken zerbitzutik pasatutako denboragatik aktibatzea edo fidegarritasun ehunekoaren gutxiengo jakin batera iristeagatik aktibatzea
+
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Trenen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ezarri tren berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}egun{P 0 "" ak}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desgaitua
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Errepide ibilgailuen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Ezarri errepide ibilgailu berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Hegazkinen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ezarri hegazkin berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Itsaontzien mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ezarri itsasontzi berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}egun{P 0 "" ak}/%
+###setting-zero-is-special
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desgaitua
+
 STR_CONFIG_SETTING_NOSERVICE                                    :Mantenimendua desgaitu ibilgailuen matxurak kenduta daudenean: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Gaitua dagoenean, ibilgailuek ez dute mantenimendurik jasoko ezin badira matxuratu
+
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bagoiaren abiadura mugak aktibatu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Gaitua dagoenean, bagoien gehienezko abiadura erabili trenen geheienezko abiadura zehazteko
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Trenbide elektrikoa desaktibatu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Gaitua dagoenean, ez da beharrezkoa izango trenbideak elektrifikatzea tren elektrikoak funtzionatzeko
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Lehenengo garraioaren etorrera jokalariaren geltokira: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Lehenengo garraioaren etorrera lehiakidearen geltokira: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Istripuak / hondamendiak: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien informazioa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrien itxierak: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomia aldaketak: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Beste indutria ekoizpen aldaketak: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konpainiaren ibilgailuei buruzko informazioa/aholkuak: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Garraio berriak: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Aldaketak zama onarpenean: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidioak: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazio generala: {STRING}
 
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Lehenengo garraioaren etorrera lehiakidearen geltokira: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Istripuak / hondamendiak: {STRING}
+
+
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien informazioa: {STRING}
+
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrien itxierak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomia aldaketak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan: {STRING}
+
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan: {STRING}
+
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Beste indutria ekoizpen aldaketak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konpainiaren ibilgailuei buruzko informazioa/aholkuak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Garraio berriak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Aldaketak zama onarpenean: {STRING}
+
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidioak: {STRING}
+
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazio generala: {STRING}
+###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumarioa
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea
@@ -1452,52 +1626,65 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kolorezko albisteak {STRING}. urtean agertzen dira
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Egunkarien mezuak kolorean imprimatuko diren urtea. Urte hau baino lehenago txuri/beltz monokromoa erabiliko da
 STR_CONFIG_SETTING_STARTING_YEAR                                :Hasierako urtea: {STRING}
+
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+###setting-zero-is-special
+
+###length 3
+
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Beste konpainien akzioak erostea baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Gaitua dagoenean, konpainiaren akzioak erostea eta saltzea baimendu. Konpainiak akzioak izateko gutxiengo adin batera iritsi beharko dira
+
+
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Elikadura sistemetan ordaindu beharreko irabazien ehunekoa: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Elikadura sistemetan eman beharreko irabazien ehunekoa, irabaziengain kontrol gehiago emanez
+
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Arrastratzerakoan, seinaleak jarri: {STRING} laukitik behin
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Aukeratu trenbide seinaleak arrastratzerakoan eraikitzeko distantzia hurrengo oztopoarekin topo egin arte (Seinalea, bidegurutzea)
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} laukia
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Arrastratzekoan mantedu seinaleen arteko distantzia finkoa: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Aukeratu seinaleak eraikitzearen portaera Krtl+arrastratu erabiltzen denean
+
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatikoki seinale mkanikoak eraiki {STRING} baino lehen
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Aukeratu trenentzako seinale elektrikoak noiz egongo diren erabilgarri. Urte hau baino lehengo seinale mekanikoak erabiliko dira (funtzio berdinak dituzte)
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Gaitu GUI seinaleak: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Erakutsi seinale ezberdinak eraikitzeko lehioa, lehiorik gabeko aukera ordez non Krtl+klik bidez seinale ezberdinak eraikitzen diren
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Eraikiko den seinale lehenetsia: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Erabiliko den seinale lehenetsia
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokeo seinaleak
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Bide-seinaleak
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Joaneko bide-seinaleak
+
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Aldatu seinale mota ezberdinen artean: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Aukeratu ze seinale ezberdinen artean aldatuko den seinale lanabesarekin Ktrl+klik eginez eraikitako seinale baten gainean
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Blokeo seinaleak bakarrik
+###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Bide-seinaleak bakarrik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Denak
 
+###length 2
+
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Errepide diseinua herri berrientzako: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Herrien errepide sarearen diseinua
+###length 5
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Jatorrizkoa
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Errepide hobeak
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 sarea
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 sarea
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Ausazkoa
+
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Herriek errepideak eraiki ditzakete: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Baimendu herriek beraien hazkunderako errepideak erakitzea. Desgaitu herriek errepiderik ez eraikitzeko
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Hirietan maila bereko pasaguneak egin daitezke : {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Gaitua dagoenean herriek trenbideetatik pasabideak eraiki ahalko dituzte
+
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Herriek aireportuen soinu kantitatea kontrolatzea baimendu: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Aukera hau desgaitua dagoenean bi aireportu egon daitezke herri bakoitzean. Gaitua dagoenean, herrien aireportu kopurua soinu kantitean, biztalerian, aireportuaren tamainan eta herritik dagoen distantzian oinarrituko da
+
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Herriak sortzea baimendu: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Gaitua dagoenean jokalariek herri berriak sortu ahalko dituzte
+###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Debekatua
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Onartua
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Gaitua herrien diseinu pertsonalizatuan
 
+###length 2
+
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Zuhaitzen landaketa jokoan: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Jokoa bitartean zuhaitzen ausazko landatzea kontrolatu. Zuhaitzen landatzean oinarritzen diren industriei eragin dezake, zerrategiei adibidez
+###length 4
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tresna barra nagusiaren kokapena: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Tresna barra nagusia posizio horizontalean pantailaren goiko aldean
@@ -1506,68 +1693,89 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Tresna barra na
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Leiho atxikitze erradioa: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Mugitzen ari den lehioa gertu dagoenarekin automatikoki lerrokatu aurretik onartuko den gutxiengo distantzia
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel
+###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desgaitu
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Lehio ez itsaskorren gehienezko kopurua: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Irekitako lehio ez itsakorren kopurua irekitako lehengo lehioa automatikoki itxi baino lehen
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Desgaitu
+
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Gehienezko hurbiltasun zoom-a: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Lehioen gehienezko hurbiltasun zoom-a. Hurbiltasun zoom balio altuak erabiltzea memoria beharrak handiagotuko ditu
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Gehienezko urruntasun zoom-a : {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Lehioen gehienezko urruntasun zoom-a. Urruntasun zoom balio altuak erabiltzea grafikoen moteltzea eragin dezake
+###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normala
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+
+###length 3
+
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Herriaren hazkuntza-abiadura: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Herrien hazkuntza abiadura
+###length 5
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motela
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Azkarra
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Oso azkarra
+
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Hiri bilakatuko diren herrien proportzioa: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Hiri bilakatuko diren herrien kopurua, herri hauek handiagoak eta azkarrago hazten dira
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}-tik bat
+###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Bat ere ez
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Herrien hasierako tamainaren biderkatzailea: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Joko hasieran hirien bataz besteko tamaina herri normalekin alderatuta
 
+
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Bidaiariek banaketa modua: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Korreoaren banaketa modua: {STRING}
+###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :eskuz egin
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrikoa
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetrikoa
-STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Bidaiariek banaketa modua: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Korreoaren banaketa modua: {STRING}
+
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Banaketen zehaztasuna: {STRING}
 
+
+
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Abiadura unitateak: {STRING}
+###length 4
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Inperiala (milia/orduko)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrikoa (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Ibilgailuen indar unitateak: {STRING}
+###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Inperiala (zp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrikoa (zp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Pisu unitateak: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Pisu bat erabiltzaile interfazean erakusten denean, aukeratutako unitateetan erakutsi
+###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (ton/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrikoa (t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Bolumen unitateak: {STRING}
+###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Inperiala (galoi)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrikoa (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperiala (libra)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrikoa (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Garaiera unitateak: {STRING}
+###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inperiala (oin)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikoa (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -1595,9 +1803,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama ba
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 
-STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
-
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenen ibilbide bilatzailea: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenek erabiliko duten ibilbide bilatzailea
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Errepide ibilgailuen ibilbide bilatzailea: {STRING}
@@ -1606,6 +1811,9 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Itsasontzien ib
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Itsasontziek erabiliko duten ibilbide bilatzailea
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Seinaletan automatikoki buelta ematea: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Trenak seinaleetan buelta ematea baimendu, denbora luzez itxaroten ari badira
+###length 2
+STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
+STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
@@ -1688,13 +1896,15 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE} {ORANG
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magikoa (edozer ezabatzen du): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelak bata bestea gurutzatu dezakete: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Hegazkinek ez dute (maiz) istripurik izango aireportu txikietan lurreratzerakoan: {ORANGE}{STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Data aldatu: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
+
+###length 4
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Klima epeleko paisaia
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Klima artikoko paisaia
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klima tropikaleko paisaia
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Jostailu munduko paisaia
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Data aldatu: {ORANGE}{DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
 
 # Livery window
 
@@ -1707,6 +1917,7 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Aukeratu
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Aukeratu bigarren kolorea aukeratutako eskemarentzat. Krtl+Klik eginez kolorea eskema guztientzat erabiliko da
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Aukeratu aldatu nahi den kolore eskema, edo eskema aunitz Krtl+klik eginez. Klikatu laukitxoan eskema aldatzeko.
 
+###length 23
 STR_LIVERY_DEFAULT                                              :Oinarrizko liburutegia
 STR_LIVERY_STEAM                                                :Lurrinezko lokomotora
 STR_LIVERY_DIESEL                                               :Diesel motorea
@@ -1789,6 +2000,9 @@ STR_FACE_TIE                                                    :Korbata:
 STR_FACE_EARRING                                                :Belarritakoak:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Aldatu korbata eta belarritakoak
 
+# Matches ServerGameType
+###length 3
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijokalaria
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Jokalariaren izena:
@@ -1814,7 +2028,6 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikatu 
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}JOKOAREN INFORMAZIOA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Bezeroak: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Hizkuntza: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaia: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Maparen tamaina: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Zerbitzariaren bertsioa: {WHITE}{STRING}
@@ -1837,7 +2050,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Zerbitza
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Zure zerbitzaria sortu
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Sartu zure izena
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sartu antolatzailearen helbidea
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Multijokalari joko berri bat hasi
@@ -1847,104 +2059,31 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Jokoaren
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pasahitza ezarri
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Babestu zure jokoa pasahitz batekin ez baduzu nahi publikoa izatea
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Ez
-STR_NETWORK_START_SERVER_ADVERTISED                             :Bai
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Bezero
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Gehienezko bezeroak:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Gehienezko bezero kopurua aukeratu. Ez da beharrezkoa guztia betetzea
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} konpainia
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Gehienezko konpainia kopurua:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Zerbitzaria konpainia kupuru zehatz batera mugatu
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ikusle
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Gehienezko ikusle kopurua:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Zerbitzaria ikusle kupuru zehatz batera mugatu
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Hitzegiten den hizkuntza:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beste jokalariek erabiltzen ari den hizkuntza ezagutu ahalko dute
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sare joko batentzako izena sartu
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Edozein
-STR_NETWORK_LANG_ENGLISH                                        :Ingelera
-STR_NETWORK_LANG_GERMAN                                         :Alemaniera
-STR_NETWORK_LANG_FRENCH                                         :Frantsesa
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilera
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgariera
-STR_NETWORK_LANG_CHINESE                                        :Txinera
-STR_NETWORK_LANG_CZECH                                          :Txekiera
-STR_NETWORK_LANG_DANISH                                         :Danimarkiera
-STR_NETWORK_LANG_DUTCH                                          :Holandera
-STR_NETWORK_LANG_ESPERANTO                                      :Esperantoa
-STR_NETWORK_LANG_FINNISH                                        :Finlandera
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungariera
-STR_NETWORK_LANG_ICELANDIC                                      :Islandiera
-STR_NETWORK_LANG_ITALIAN                                        :Italiera
-STR_NETWORK_LANG_JAPANESE                                       :Japoniera
-STR_NETWORK_LANG_KOREAN                                         :Koreera
-STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniera
-STR_NETWORK_LANG_NORWEGIAN                                      :Norbegiera
-STR_NETWORK_LANG_POLISH                                         :Poloniera
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugesa
-STR_NETWORK_LANG_ROMANIAN                                       :Errumaniera
-STR_NETWORK_LANG_RUSSIAN                                        :Errusiera
-STR_NETWORK_LANG_SLOVAK                                         :Eslabiera
-STR_NETWORK_LANG_SLOVENIAN                                      :Eslobeniera
-STR_NETWORK_LANG_SPANISH                                        :Gaztelera
-STR_NETWORK_LANG_SWEDISH                                        :Suediera
-STR_NETWORK_LANG_TURKISH                                        :Turkiera
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainera
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaanera
-STR_NETWORK_LANG_CROATIAN                                       :Kroatiera
-STR_NETWORK_LANG_CATALAN                                        :Katalana
-STR_NETWORK_LANG_ESTONIAN                                       :Estoniera
-STR_NETWORK_LANG_GALICIAN                                       :Galiziera
-STR_NETWORK_LANG_GREEK                                          :Greziera
-STR_NETWORK_LANG_LATVIAN                                        :Letoniera
-############ End of leave-in-this-order
-
-# Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multijokalari joko itxia
-
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Sartzeko prestatzen: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Joko honetan egun dauden konpainien zerrenda. Konpainia batera batu zaitezke edo konpainia berria sortu dezakezu lekua badago
-
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}KONPAINIA INFORMAZIOA
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Konpainia izena: {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Sortutako urtea: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Konpainiaren balioa: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Egungo balorazioa: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Iazko diru sarrerak: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Errendimendua: {WHITE}{NUM}
-
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Ibilgailuak: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Geltokiak: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Jokalariak: {WHITE}{STRING}
-
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Konpainia berria
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Konpainia berria sortu
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Ikusle jokoa
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Jokoan ikusle bezala sartu
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Konpainian sartu
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Konpainia hau kudeatzen lagundu
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Konektatzen...
 
-############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} bezero zure aurrean
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} orain arte deskargatuta
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} orain arte deskargatuta
+
+###length 8
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Konektatzen...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Baimentzen...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Itxoiten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Mapa deskargatzen...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Datuak kudeatzen...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Erregistratzen...
-
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Jokoaren xehetasunak jasotzen...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Konpainiaren xehetasunak jasotzen...
-############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} bezero zure aurrean
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} orain arte deskargatuta
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} orain arte deskargatuta
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deskonektatua
 
@@ -1953,18 +2092,15 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Konpaini
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Ikusle
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Konpainia berria
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Kanporatu
-STR_NETWORK_CLIENTLIST_BAN                                      :Debekatu
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Guztiei hitz egin
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Konpainiari hitz egin
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mezu pribatua
 
-STR_NETWORK_SERVER                                              :Zerbitzaria
-STR_NETWORK_CLIENT                                              :Bezeroa
+# Matches ConnectionType
+###length 5
+
+
+
+
 STR_NETWORK_SPECTATORS                                          :Ikusleak
 
 # Network set password
@@ -1996,15 +2132,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sare txa
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ezin da sare gailurik aurkitu edo konpilatu SAREA_GAITU gabe
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ezin izan da sare jokorik aurkitu
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Zerbitzriak ez dio eskariari erantzun
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ezin izan da konektatu NewGRF-a ez datorrelako bat duzunarekin
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sare jokoaren sinkronizazioak huts egin du
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Sare jokoaren konexioa galdu da
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ezin izan da gordetako jokoa kargatu
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ezin izan da zerbitzari berria hasi
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ezin izan da konektatu
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Konexioa #{NUM} denboraz kanpo
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokolo akatsa aurkitu da, konexioa itxiz
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Bezero honen bertsioa ez dator bat zerbitzariaren bertsioarekin
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pasahitz okerra
@@ -2018,7 +2151,10 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Zure ord
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Zure ordenagailuak denbora gehiegi egon da mapa daskargatzen
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Zure ordenagailuak denbora gehiegi egon da zerbitzarian sartzeko
 
-############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Konexio galera posiblea
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Azkeneko {NUM} segunduetan ez da zerbitzaritik daturik jaso
+
+###length 21
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Akats orokorra
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Sinkronizazio akatsa
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Ezin izan da mapa kargatu
@@ -2039,14 +2175,11 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ez da garaiz pa
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :Itxaron denbora orokorra
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :mapa deskargatzeko denbora gehiegi erabili da
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :mapa prozesatzeko denbora gehiegi erabili da
-############ End of leave-in-this-order
-
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Konexio galera posiblea
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Azkeneko {NUM} segunduetan ez da zerbitzaritik daturik jaso
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-############ Leave those lines in this order!!
+
+###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Jokoa pausatua ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jokoa pausatua jarraitzen du ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jokoa pausatua jarraitzen du ({STRING}, {STRING})
@@ -2057,7 +2190,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Jokalari kopuru
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :bezeroak konektatzen
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :eskuz
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script jokoa
-############ End of leave-in-this-order
+
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :uzten
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} jokora batu da
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} jokora batu da (Client #{2:NUM})
@@ -2068,6 +2201,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} jo
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING}-k bere izena {STRING}-ra aldatu du
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Zebitzariak saioa itxi du
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Zerbitzaria berriro hasten ari da...{}Mesedez itxaron...
+
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Edukiak deskargatzen
@@ -2091,11 +2225,14 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Deskarga
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aukeratutako edukiak deskargatzen hasi
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Deskargatzeko tamaina: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}EDUKIAREN XEHETASUNAK
+
+###length 5
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ez duzu aukeratu deskargatzeko
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Desgarkatzeko aukeratu duzu
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Mendekotasun hau deskargatzeko aukeratua izan da
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Iada eduki hau daukazu
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Edukia ezezaguna da eta ezin da OpenTTD-n deskargatu
+
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER} {STRING} ordezkoa da
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Izena: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Bertsioa: {WHITE}{STRING}
@@ -2131,7 +2268,6 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ezin izan da eduki zerbitzarira konektatu...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Deskargak huts egin du...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... konexioa galdu da
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... idatzi ezin daitekeen artxiboa
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ezin izan da deskonprimitu deskargatutako artxiboa
 
@@ -2570,14 +2706,14 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} koadroak/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
-############ Leave those lines in this order!!
+
+###length 15
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Zama kudeaketa:
 STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Trenen tick-ak:
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Itsasontzien tick-ak:
-############ End of leave-in-this-order
-############ Leave those lines in this order!!
+
+###length 15
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Jokoaren scripta
-############ End of leave-in-this-order
 
 
 # Save/load game/scenario
@@ -2677,7 +2813,6 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Iragazl
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Aurretik aukeratutako ezarpenak kargatu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Aurre ezarpenak gorde
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Gorde zerrenda aurre ezarpena bezala
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Aurre ezarpenaren izena ezarri
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Aurre ezarpenak ezabatu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ezabatu aukeratutako aurre ezarpenak
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Gehitu
@@ -2798,6 +2933,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pausa ke
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Bat ere ez
+###length 3
 STR_NEWGRF_LIST_ALL_FOUND                                       :Artxibo guztiak presente
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Artxibo baterakideak aurkituta
 STR_NEWGRF_LIST_MISSING                                         :{RED}Artxiboak faltatzen dira
@@ -2883,6 +3019,7 @@ STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Herri ho
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Egin
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Goiko zerrendan piztutako ekintza egin
 
+###length 8
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Iragarki kanpaina txikia
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Iragarki kanpaina ertaina
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Iragarki kanpaina handia
@@ -2892,6 +3029,7 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Eraikin berriak
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Garraioaren eskubide esklusiboen erosketa
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Udaletxea sobornatu
 
+###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iragarki kanpaina txikia hasi, bidaiari eta zama gehiago zure geltokietara erakartzeko .{}Kostua: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iragarki kanpaina ertaina hasi, bidaiari eta zama gehiago zure geltokietara erakartzeko .{}Kostua: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iragarki kanpaina handia hasi, bidaiari eta zama gehiago zure geltokietara erakartzeko .{}Kostua: {CURRENCY_LONG}
@@ -2916,7 +3054,8 @@ STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informazioa
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Kontuz
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Akats
 
-############ Start of Goal Question button list
+# Goal Question button list
+###length 18
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Ezeztatu
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :EZ
@@ -2935,7 +3074,6 @@ STR_GOAL_QUESTION_BUTTON_RESTART                                :Restart
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :atzeratzeko
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :errendizioaren
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Itxi
-############ End of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidioak
@@ -2971,7 +3109,6 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ez dago 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {STATION}-(e)tik garraiatua)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} kargarako erreserbatua)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Onartu
@@ -3007,7 +3144,7 @@ STR_STATION_VIEW_GROUP_V_D_S                                    :Bidea-Helburua-
 STR_STATION_VIEW_GROUP_D_S_V                                    :Helburua-Abiapuntua-Bidea
 STR_STATION_VIEW_GROUP_D_V_S                                    :Helburua-Bidea-Abiapuntua
 
-############ range for rating starts
+###length 8
 STR_CARGO_RATING_APPALLING                                      :Negargarria
 STR_CARGO_RATING_VERY_POOR                                      :Oso txarra
 STR_CARGO_RATING_POOR                                           :Txarra
@@ -3016,7 +3153,6 @@ STR_CARGO_RATING_GOOD                                           :Ona
 STR_CARGO_RATING_VERY_GOOD                                      :Oso ona
 STR_CARGO_RATING_EXCELLENT                                      :Bikaina
 STR_CARGO_RATING_OUTSTANDING                                    :Ezin hobea
-############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Ikuspegi nagusi geltokian kokatu. Ktrl+Klik ikuspegi lehio berria irekiko da geltokiaren kokapenean
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Geltokiaren izena aldatu
@@ -3042,24 +3178,23 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Bidepunt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finantzak {BLACK}{COMPANY_NUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Gastuak/Sarrerak
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
+
+###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Eraikitze lanak
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Ibilgailu berriak
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trenen funtzionamendu kosteak
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Errepide ibilgailuen funtzionamendu kosteak
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Hegazkinen funtzionamendu kosteak
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Itsasontzien funtzionamendu kosteak
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Jabegoen mantenimendua
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Trenen diru sarrerak
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Errepide ibilgailuen diru sarrerak
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Hegazkinen diru sarrerak
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Itsasontzien diru sarrerak
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Maileguaren interesak
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Bestelakoak
+
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Guztira:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balantzea
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Mailegua
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Gehienezko Mailegua: {BLACK}{CURRENCY_LONG}
@@ -3152,28 +3287,29 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ekoizpen
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ekoizpen ehunekoa aldatu (ehunekoa, %800 arte)
 
 # Vehicle lists
+###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Errepide ibilgailu
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Itsasontzi
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Hegazkin
 
+###length VEHICLE_TYPES
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenak - klikatu xehetasunak ikusteko
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Errepide ibilgailuak - klikatu ibilgailuan xehetasunak ikusteko
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Itsasontziak - klikatu itsasontzian xehetasunak ikusteko
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Hegazkinak - klikatu hegazkinean xehetasunak ikusteko
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Urte honetako irabaziak: {CURRENCY_LONG} (iaz: {CURRENCY_LONG})
-
+###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tren eskuragarriak
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Errepide ibilgailu eskuragarriak
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Itsasontzi eskuragarriak
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Hegazkin eskuragarriak
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ibilgailu honentzako motore moten zerrenda ikusi
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zerrenda kudeatu
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Zerrendako ibilgailu guztiei aginduak bidali
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Ibilgailuak ordezkatu
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Mantenimendua egitera bidali
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Urte honetako irabaziak: {CURRENCY_LONG} (iaz: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Gordailura bidali
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Gordailura bidali
@@ -3182,15 +3318,18 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Hangarrera bida
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klikatu zerrendan dauden ibilgailu guztiak gelditzeko
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klikatu zerrendan dauden ibilgailu guztiak abiarazteko
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ibilgailu honentzako motore moten zerrenda ikusi
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} ibilgailuaren aginduak konpartitu
 
 # Group window
+###length VEHICLE_TYPES
 STR_GROUP_ALL_TRAINS                                            :Tren guztiak
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Errepide ibilgailu guztiak
 STR_GROUP_ALL_SHIPS                                             :Itsasontzi guztiak
 STR_GROUP_ALL_AIRCRAFTS                                         :Hegazkin guztiak
 
+###length VEHICLE_TYPES
 STR_GROUP_DEFAULT_TRAINS                                        :Taldeetan ez dauden trenak
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Taldeetan ez dauden errepide ibilgailuak
 STR_GROUP_DEFAULT_SHIPS                                         :Taldeetan ez dauden itsasontziak
@@ -3212,6 +3351,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Taldea b
 
 
 # Build vehicle window
+###length 4
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Tren berriak
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Tren elektriko berriak
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Monorail tren berriak
@@ -3219,11 +3359,11 @@ STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Tren magnetiko 
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Errepide ibilgailu berriak
 
-############ range for vehicle availability starts
+# Vehicle availability
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tren berriak
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Itsasontzi berriak
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Hegazkin berriak
-############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosteak: {GOLD}{CURRENCY_LONG}{BLACK} Pisua: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Abiadura: {GOLD}{VELOCITY}{BLACK} Potentzia: {GOLD}{POWER}
@@ -3246,44 +3386,55 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Guztia {CARGO_L
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Gehienezko trakzio indarra: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Irismena: {GOLD}{COMMA} lauki
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trenak aukeratzeko zerrenda - Klik xehetasunak ikusteko. Ctrl+Klik ibilgailu motaren ezkutapenaren artean aukeratzeko
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Errepide ibilbideak aukeratzeko zerrenda - Klik xehetasunak ikusteko
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Itsasontzi aukeratzeko zerrenda - Klik xehetasunak ikusteko
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Hegazkinak aukeratzeko zerrenda - Klik xehetasunak ikusteko
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Ibilgailua erosi
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Ibilgailua erosi
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Itsasontia erosi
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Hegazkina erosi
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Aukeratuta dagoen ibilgailua erosi. Shift+Klik gutxi gora beherako kostea erakutsi
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Aukeratuta dagoen ibilgailua erosi. Shift+Klik gutxi gora beherako kostea erakutsi
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Aukeratuta dagoen itsasontzia erosi. Shift+Klik gutxi gora beherako kostea erakutsi
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Aukeratuta dagoen hegazkina erosi. Shift+Klik gutxi gora beherako kostea erakutsi
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Berrizendatu
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Berrizendatu
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Berrizendatu
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Berrizendatu
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Tren ibilgailua berrizendatu
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Errepide ibilgailua berrizendatu
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Itsasontzia berrizendatu
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Hegazkina berrizendatu
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Ezkutatu
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Ezkutatu
 STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Ezkutatu
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Ezkutatu
 
+###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Erakutsi
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Erakutsi
 STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Erakutsi
 STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Erakutsi
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren ibilgailua berrizendatu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Errepide ibilgailua berrizendatu
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Itasontzia berrizendatu
@@ -3300,68 +3451,79 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ibilgailu{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
+###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenak - ezkerreko botoiarekin arrastratu, eskuineko botoiaren xehetasunak ikusi
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ibilgailuak - Klikatu eskuineko botoiarekin xehetasunak ikusteko
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Itsasontziak - Klikatu eskuineko botoiarekin xehetasunak ikusteko
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Hegazkinak - Klikatu eskuineko botoiarekin xehetasunak ikusteko
 
+###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Honera arrastratu trena saltzeko
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Honera arrastratu ibilgailua saltzeko
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Honera arrastratu itasontzia saltzeko
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Honera arrastratu hegazkina saltzeko
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Tren motorea honera arrastratu tren osoa saltzeko
-
+###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Gordailuko tren guztiak saldu
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Gordailuko errepide ibilgailu guztiak saldu
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Gordailukoitsasontzi guztiak saldu
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Hangarreko hegazkin guztiak saldu
 
+###length VEHICLE_TYPES
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Gordailuko tren guztiak ordezkatu
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Gordailuko errepide ibilgailu guztiak ordezkatu
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Gordailuko itsasontzi guztiak ordezkatu
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Hangarreko hegazkin guztiak ordezkatu
 
+###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Ibilgailu berriak
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Ibilgailu berriak
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Itsasontzi berriak
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Hegazkin berriak
 
+###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Tren ibilgailu berria erosi
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Errepide ibilgailu berria erosi
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Itasontzi berria erosi
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Hegazkin berria erosi
 
+###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Trena klonatu
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Errepide ibilgailua klonatu
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Itsasontzia klonatu
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Hegazkina klonatu
 
+###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Trena eta bagoi guztien kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen tren batean klikatu. Ctrl+klik aginduak konpartitzeko. Mayus+Klik batez besteko kostua erakusten du, erosi gabe
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Errepide ibilgauaren kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen ibilgailu batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Itsasontzi kopia erosiko du. Klikatu botoia eta gero gordailu barnean edo kanpoen dagoen itsasontzi batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hegazkinaren kopia erosiko du. Klikatu botoia eta gero hangar barnean edo kanpoan dagoen hegazkin batean klikatu. Ktrl+klik aginduak konpartitzeko. Shift+Klik gutxi gora behera kostea erakutsi
 
+###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Ikuspegi nagusia gordailuan kokatu. Ktrl+klik ikuspegi lehio berria irekiko du gordailuaren kokapenarekin
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Ikuspegi nagusia gordailuan kokatu. Ktrl+klik ikuspegi lehio berria irekiko du gordailuaren kokapenarekin
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Ikuspegi nagusia gordailuan kokatu. Ktrl+klik ikuspegi lehio berria irekiko du gordailuaren kokapenarekin
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Ikuspegi nagusia hangarrean kokatu. Ktrl+klik ikuspegi lehio berria irekiko du hangarraren kokapenarekin
 
+###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Gordailua ibilbide aginduetan duten trenak zerrendatu
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Gordailua ibilbide aginduetan duten errepide ibilgailuak zerrendatu
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Gordailua ibilbide aginduetan duten itsasontziak zerrendatu
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Hangarra ibilbide aginduetan duten hegazkinak zerrendatu
 
+###length VEHICLE_TYPES
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klikatu gordailu barnean dauden trenak geldiarazteko
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klikatu gordailu barnean dauden errepide ibilgailuak geldiarazteko
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klikatu gordailu barnean dauden itsasontziak geldiarazteko
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klikatu hangar barnean dauden hegazkinak geldiarazteko
 
+###length VEHICLE_TYPES
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}klikatu gordailu barnean dauden trenak abiarazteko
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}klikatu gordailu barnean dauden errepide ibilgailuak abiarazteko
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}klikatu gordailu barnean dauden itsasontziak abiarazteko
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}klikatu hangar barnean dauden hegazkinak abiarazteko
 
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Tren motorea honera arrastratu tren osoa saltzeko
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Gordailuko ibilgailuak saldu behar dituzu. Ziur zaude?
 
 # Engine preview window
@@ -3383,13 +3545,15 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostea: 
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ordezkatu {STRING} - {STRING}
+
+STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Erabilitako garraioak
+STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Garraio eskuragarriak
+
+###length VEHICLE_TYPES
 STR_REPLACE_VEHICLE_TRAIN                                       :Trena
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Errepide ibilgailua
 STR_REPLACE_VEHICLE_SHIP                                        :Itsasontzia
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Hegazkina
-
-STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}Erabilitako garraioak
-STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}Garraio eskuragarriak
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Aukeratu aldatu beharreko motore mota
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK} Aukeratu motore mota zaharra ordezkatuko duen motore berria
@@ -3408,7 +3572,10 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Aldatu m
 STR_REPLACE_ENGINES                                             :Motoreak
 STR_REPLACE_WAGONS                                              :Bagoiak
 
+###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Aukeratu trenbide mota ezberdinen artean
+###next-name-looks-similar
+
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ezkerrean aukeratutako motorea ordezkatzen ari den motorearekin erakutsi
 STR_REPLACE_RAIL_VEHICLES                                       :Tren ibilgailuak
 STR_REPLACE_ELRAIL_VEHICLES                                     :Tren ibilgailu elektrikoak
@@ -3417,44 +3584,48 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Tren magnetikoa
 
 STR_REPLACE_TRAM_VEHICLES                                       :Tranbia ibilgailuak
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Bagoiak ezabatu: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ordezkatze automatikoari agindu trenaren luzera errespetatzea, bagoiak ezabatuz luzera handitzen badute (trenaren hasierako bagoietik hasita)
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+###length VEHICLE_TYPES
 
+###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trena gordailura bidali. Ktrl+klik bakarrik mantenimendua egiteko
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Errepide ibilgailua gordailura bidali. Ktrl+klik bakarrik mantenimendua egiteko
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Itsasontzia gordailura bidali. Ktrl+klik bakarrik mantenimendua egiteko
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hegazkina hangarrera bidali. Ktrl+klik bakarrik mantenimendua egiteko
 
+###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Trenaren kopia erosi, bagoiak barne. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Errepide ibilgailuaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Itsasontziaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hegazkinaren kopia erosi. Ktrl+klik aginduak konpartitzeko. Shift+klik gutxi gora berako kostea
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Trena gelditzeko esaten dion seinalea pasatzera behartu
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Trenaren norabidea aldatu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Ibilgailua buelta ematera behartu
 
+###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Trena birmoldatu zama mota ezberdina eramateko
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Errepide ibilgailua birmoldatu zama mota ezberdina eramateko
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Itsasontzia birmoldatu zama mota ezberdina eramateko
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Hegazkina birmoldatu zama mota ezberdina eramateko
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Trenaren norabidea aldatu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Ibilgailua buelta ematera behartu
-
+###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenaren aginduak ikusi. Ktrl+Klik trenaren ordutegiak ikusteko
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ibilgailuaren aginduak ikusi. Ktrl+Klik ibilgailuaren ordutegiak ikusteko
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Itsasontziaren aginduak ikusi. Ktrl+Klik itsasontziaren ordutegiak ikusteko
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Hegazkinaren aginduak ikusi. Ktrl+Klik hegazkinaren ordutegiak ikusteko
 
+###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Trenaren xehetasunak ikusi
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Errepide ibilgailuaren xehetasunak ikusi
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Itsasontziaren xehetasunak ikusi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Hegazkinaren xehetasunak ikusi
 
-
+###length VEHICLE_TYPES
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Kargatzen/Deskargatzen
@@ -3473,23 +3644,26 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {WAYPO
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} {DEPOT}-ra joaten, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Berrikuspena {DEPOT}-an, {VELOCITY}
 
+
 # Vehicle stopped/started animations
+###length 2
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Geldituta
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Geldituta
+
+###length 2
 STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Hasita
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Hasita
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Xehetasunak)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Izena
 
+###length VEHICLE_TYPES
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Trena izendatu
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Errepide ibilgailua izendatu
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Itsasontzia izendatu
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Hegazkina izendatu
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Adina: {LTBLUE}{STRING}{BLACK}   Mantenimendua: {LTBLUE}{CURRENCY_LONG}/urtero
-# The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} urte ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} urte ({COMMA})
 
@@ -3517,6 +3691,7 @@ STR_VEHICLE_DETAILS_DEFAULT                                     :Lehenetsia
 STR_VEHICLE_DETAILS_DAYS                                        :Egunak
 STR_VEHICLE_DETAILS_PERCENT                                     :Ehunekoa
 
+###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Trena izendatu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Errepide ibilgailua izendatu
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Itsasontzia izendatu
@@ -3554,16 +3729,19 @@ STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Edukiera
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Gaitasun berria: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Onuren berritzea: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Birmoldatzeko ibilgailuak aukeratu. Arrastazeak ibilgailu aunitz aukeratze ahalbidetzen du. Hutsune batean klik egintean ibilgailu osoa aukeratzen da. Krtl+klik ibilgailu eta ondorengo katea aukeratzen du
 
+###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenak eramango duen zama aukeratu
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ibilgailuak eramango duen zama aukeratu
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Itsasontziak eramango duen zama aukeratu
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Hegazkinak eramango duen zama aukeratu
 
+###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Trena birmoldatu
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Errepide ibilgailua birmoldatu
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Itsasontzia birmoldatu
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Hegazkina birmoldatu
 
+###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Trena birmoldatu piztuta dagoen zama eramateko
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Errepide ibilgailua birmoldatu piztuta dagoen zama eramateko
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Itsasontzia birmoldatu piztuta dagoen zama eramateko
@@ -3619,6 +3797,7 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Agindua 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Ibilgailuaren xehetasunak jauzia oinarritzeko
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+###length 8
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Kargatutako ehunekoa
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidagarritasuna
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Gehienezko abiadua
@@ -3626,6 +3805,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Adina (urteetan
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Mantenimendua beharrezkoa du
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Beti
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Geratzen zaion bizitza (urteetan)
+###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Nola alderatu ibilgailuaren xehetasunak emandako balioarekin
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :berdin
@@ -3667,9 +3847,12 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Gelditu gabeko 
 
 STR_ORDER_NEAREST_DEPOT                                         :hurbilena
 STR_ORDER_NEAREST_HANGAR                                        :Hangar hurbilena
+###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Tren gordailua
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Errepide ibilgailu gordailua
 STR_ORDER_SHIP_DEPOT                                            :Itsasontzi gordailua
+###next-name-looks-similar
+
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -3712,6 +3895,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ez deskargatu 
 
 STR_ORDER_AUTO_REFIT_ANY                                        :Zama eskuragarria
 
+###length 3
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[bukaeratik hurbil]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[erdian]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[hurrun]
@@ -3863,13 +4047,14 @@ STR_AI_SETTINGS_START_DELAY                                     :IA hau abiarazt
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} ren "irakur nazazu" artxiboa
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}-aren aldaketak
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} rako lizentzia
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Testua trinkotu
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ikusi "irakur nazazu"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Aldaketak
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizentzia
+###length 3
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} ren "irakur nazazu" artxiboa
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}-aren aldaketak
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} rako lizentzia
 
 
 # Vehicle loading indicators
@@ -4195,50 +4380,60 @@ STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ezin da 
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ezin da taldeari ibilgailu konpartitua gehitu...
 
 # Generic vehicle errors
+
+###length VEHICLE_TYPES
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trena bidean
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Errepide ibilgailua bidean
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Itasontzia bidean
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Hegazkina bidean
 
+###length VEHICLE_TYPES
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ibilgailua ez dago eskuragarri
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ibilgailua ez dago eskuragarri
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Itsasontzia ez dago eskuragarri
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Hegazkina ez dago eskuragarri
+
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ezin da trena birmoldatu...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ezin da errepide ibilgailua birmoldatu...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Ezin da itsasontzia birmoldatu...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ezin da hegazkina birmoldatu...
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ezin da trena izendatu...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ezin da errepide ibilgailua izendatu...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ezin da itsasontzia izendatu...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Ezin da hegazkina izendatu...
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ezin da trena gelditu/abiarazi...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ezin da errepide ibilgailua gelditu/abiarazi...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ezin da itsasontzia gelditu/abiarazi...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Ezin da hegazkina gelditu/abiarazi...
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Ezin da trena gordailura eraman...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ezin da errepide ibilgailua gordailura eraman...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Ezin da itsasontzia gordailura eraman...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ezin da hegazkina hangarrera eraman...
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Ezin da trenbide ibilgailua erosi...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ezin da errepide ibilgailua erosi...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ezin da itsasontzia erosi...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ezin da hegazkina erosi...
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ezin da tren mota berrizendatu...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ezin da errepide ibilgailu mota berrizendatu...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ezin da itsasontzi mota berrizendatu...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ezin da hegazkin mota berrizendatu...
 
+###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ezin da trenbide ibilgailua saldu...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ezin da errepide ibilgailua saldu...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ezin da itsasontzia saldu...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ezin da hegazkina saldu...
-
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ibilgailua ez dago eskuragarri
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ibilgailua ez dago eskuragarri
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Itsasontzia ez dago eskuragarri
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Hegazkina ez dago eskuragarri
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Jokoan ibilgailu gehiegi
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ezin da garraio tartea aldatu...
@@ -4289,9 +4484,11 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ezin da 
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ezin da seinalea ezabatu...
 
 # Translatable comment for OpenTTD's desktop shortcut
+###external 1
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe-ren simulazio bat
 
 # Translatable descriptions in media/baseset/*.ob* files
+###external 10
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Transport Tycoon Deluxe originaleko DOS edizioko grafikoak.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Transport Tycoon Deluxe originaleko DOS edizioko soinuak.
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe originaleko Windows edizioko grafikoak.
@@ -4376,6 +4573,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Azukre Harrobia
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
+
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Izengabea
@@ -4384,6 +4582,7 @@ STR_SV_ROAD_VEHICLE_NAME                                        :Errepide ibilga
 STR_SV_SHIP_NAME                                                :Itsasontzia {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Hegazkina {COMMA}
 
+###length 27
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Iparraldea
 STR_SV_STNAME_SOUTH                                             :{STRING} Hegoaldea
@@ -4412,9 +4611,11 @@ STR_SV_STNAME_LOWER                                             :{STRING} beheal
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliportua
 STR_SV_STNAME_FOREST                                            :{STRING} Basoa
 STR_SV_STNAME_FALLBACK                                          :{STRING} Geltokia #{NUM}
+
 ############ end of savegame specific region!
 
 ##id 0x8000
+###length 116
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Lurrina)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
@@ -4532,6 +4733,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Jostailu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Pila bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Edari Burbuilatsu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastiko bagoia
+
+###length 88
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Autobusa
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Autobusa
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Autobusa
@@ -4620,6 +4823,8 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plasti
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Burbuila Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Burbuila Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Burbuila Kamioia
+
+###length 11
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Petroliontzia
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Petroliontzia
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Bidaiari Ferry-a
@@ -4631,6 +4836,8 @@ STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Zamaontzia
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Zamaontzia
 STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover Zamaontzia
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Zamaontzia
+
+###length 41
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -4680,21 +4887,29 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{TOWN} Buia
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Buia #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA} Konpainia)
 STR_FORMAT_GROUP_NAME                                           :Taldea {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+###length 2
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Buia
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Buia #{COMMA}
+
+###length 2
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Bidepuntua
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Bidepuntua #{COMMA}
 
+###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren gordailua
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tren gordailua #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Errepide ibilgailu gordailua(n)
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Errepide ibilgailu gordailua #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Itsasontzi gordailua
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Itsasontzi gordailua #{COMMA}
+###next-name-looks-similar
+
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangarra
+# _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :Geltoki ezezaguna
 STR_DEFAULT_SIGN_NAME                                           :Seinale

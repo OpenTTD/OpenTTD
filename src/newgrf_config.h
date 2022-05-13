@@ -113,6 +113,9 @@ struct GRFError {
 	GRFError(StringID severity, StringID message = 0);
 	GRFError(const GRFError &error);
 
+	/* Remove the copy assignment, as the default implementation will not do the right thing. */
+	GRFError &operator=(GRFError &rhs) = delete;
+
 	std::string custom_message; ///< Custom message (if present)
 	std::string data;           ///< Additional data for message and custom_message
 	StringID message;           ///< Default message
@@ -153,6 +156,9 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig(const char *filename = nullptr);
 	GRFConfig(const GRFConfig &config);
 	~GRFConfig();
+
+	/* Remove the copy assignment, as the default implementation will not do the right thing. */
+	GRFConfig &operator=(GRFConfig &rhs) = delete;
 
 	GRFIdentifier ident;                        ///< grfid and md5sum to uniquely identify newgrfs
 	uint8 original_md5sum[16];                  ///< MD5 checksum of original file if only a 'compatible' file was loaded
@@ -228,11 +234,7 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
 
-/** For communication about GRFs over the network */
-#define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
-GRFTextWrapper FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
-
 void UpdateNewGRFScanStatus(uint num, const char *name);
-bool UpdateNewGRFConfigPalette(int32 p1 = 0);
+void UpdateNewGRFConfigPalette(int32 new_value = 0);
 
 #endif /* NEWGRF_CONFIG_H */

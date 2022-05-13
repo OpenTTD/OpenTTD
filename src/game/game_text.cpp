@@ -32,7 +32,7 @@ void CDECL strgen_warning(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	DEBUG(script, 0, "%s:%d: warning: %s", _file, _cur_line, buf);
+	Debug(script, 0, "{}:{}: warning: {}", _file, _cur_line, buf);
 	_warnings++;
 }
 
@@ -43,7 +43,7 @@ void CDECL strgen_error(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	DEBUG(script, 0, "%s:%d: error: %s", _file, _cur_line, buf);
+	Debug(script, 0, "{}:{}: error: {}", _file, _cur_line, buf);
 	_errors++;
 }
 
@@ -54,7 +54,7 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	DEBUG(script, 0, "%s:%d: FATAL: %s", _file, _cur_line, buf);
+	Debug(script, 0, "{}:{}: FATAL: {}", _file, _cur_line, buf);
 	throw std::exception();
 }
 
@@ -231,7 +231,7 @@ GameStrings *LoadTranslations()
 	basename.erase(e + 1);
 
 	std::string filename = basename + "lang" PATHSEP "english.txt";
-	if (!FioCheckFileExists(filename.c_str() , GAME_DIR)) return nullptr;
+	if (!FioCheckFileExists(filename, GAME_DIR)) return nullptr;
 
 	auto ls = ReadRawLanguageStrings(filename);
 	if (!ls.IsValid()) return nullptr;
@@ -249,16 +249,15 @@ GameStrings *LoadTranslations()
 		if (!tar_filename.empty() && (iter = _tar_list[GAME_DIR].find(tar_filename)) != _tar_list[GAME_DIR].end()) {
 			/* The main script is in a tar file, so find all files that
 			 * are in the same tar and add them to the langfile scanner. */
-			TarFileList::iterator tar;
-			FOR_ALL_TARS(tar, GAME_DIR) {
+			for (const auto &tar : _tar_filelist[GAME_DIR]) {
 				/* Not in the same tar. */
-				if (tar->second.tar_filename != iter->first) continue;
+				if (tar.second.tar_filename != iter->first) continue;
 
 				/* Check the path and extension. */
-				if (tar->first.size() <= ldir.size() || tar->first.compare(0, ldir.size(), ldir) != 0) continue;
-				if (tar->first.compare(tar->first.size() - 4, 4, ".txt") != 0) continue;
+				if (tar.first.size() <= ldir.size() || tar.first.compare(0, ldir.size(), ldir) != 0) continue;
+				if (tar.first.compare(tar.first.size() - 4, 4, ".txt") != 0) continue;
 
-				scanner.AddFile(tar->first, 0, tar_filename);
+				scanner.AddFile(tar.first, 0, tar_filename);
 			}
 		} else {
 			/* Scan filesystem */

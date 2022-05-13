@@ -152,6 +152,13 @@ void ExpandTown(Town *t);
 
 void RebuildTownKdtree();
 
+/** Settings for town council attitudes. */
+enum TownCouncilAttitudes {
+	TOWN_COUNCIL_LENIENT    = 0,
+	TOWN_COUNCIL_TOLERANT   = 1,
+	TOWN_COUNCIL_HOSTILE    = 2,
+	TOWN_COUNCIL_PERMISSIVE = 3,
+};
 
 /**
  * Action types that a company must ask permission for to a town authority.
@@ -228,7 +235,6 @@ enum TownActions {
 DECLARE_ENUM_AS_BIT_SET(TownActions)
 
 extern const byte _town_action_costs[TACT_COUNT];
-extern TownID _new_town_id;
 
 /**
  * Set the default name for a depot/waypoint

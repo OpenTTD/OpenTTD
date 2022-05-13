@@ -1,0 +1,29 @@
+add_files(
+    ai_sl_compat.h
+    autoreplace_sl_compat.h
+    cargomonitor_sl_compat.h
+    cargopacket_sl_compat.h
+    cheat_sl_compat.h
+    company_sl_compat.h
+    depot_sl_compat.h
+    economy_sl_compat.h
+    engine_sl_compat.h
+    game_sl_compat.h
+    goal_sl_compat.h
+    group_sl_compat.h
+    industry_sl_compat.h
+    labelmaps_sl_compat.h
+    map_sl_compat.h
+    misc_sl_compat.h
+    newgrf_sl_compat.h
+    object_sl_compat.h
+    order_sl_compat.h
+    settings_sl_compat.h
+    signs_sl_compat.h
+    station_sl_compat.h
+    storage_sl_compat.h
+    story_sl_compat.h
+    subsidy_sl_compat.h
+    town_sl_compat.h
+    vehicle_sl_compat.h
+)

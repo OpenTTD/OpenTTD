@@ -59,7 +59,7 @@ public:
 	}
 	void Finalize();
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable ** );
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 #endif
 	SQInteger Next(const SQObjectPtr &refpos, SQObjectPtr &outkey, SQObjectPtr &outval);
 	SQInstance *CreateInstance();
@@ -126,31 +126,33 @@ public:
 		}
 		return false;
 	}
-	void Release() {
+	void Release() override {
 		_uiRef++;
 		try {
 			if (_hook) { _hook(_userpointer,0);}
 		} catch (...) {
 			_uiRef--;
 			if (_uiRef == 0) {
-				SQInteger size = _memsize;
-				this->~SQInstance();
-				SQ_FREE(this, size);
+				this->_sharedstate->DelayFinalFree(this);
 			}
 			throw;
 		}
 		_uiRef--;
 		if(_uiRef > 0) return;
+		this->_sharedstate->DelayFinalFree(this);
+	}
+	void FinalFree() override
+	{
 		SQInteger size = _memsize;
 		this->~SQInstance();
 		SQ_FREE(this, size);
 	}
-	void Finalize();
+	void Finalize() override;
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable ** );
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
 	bool InstanceOf(SQClass *trg);
-	bool GetMetaMethod(SQVM *v,SQMetaMethod mm,SQObjectPtr &res);
+	bool GetMetaMethod(SQVM *v,SQMetaMethod mm,SQObjectPtr &res) override;
 
 	SQClass *_class;
 	SQUserPointer _userpointer;

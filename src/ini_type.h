@@ -31,7 +31,7 @@ struct IniItem {
 	IniItem(struct IniGroup *parent, const std::string &name);
 	~IniItem();
 
-	void SetValue(const char *value);
+	void SetValue(const std::string_view value);
 };
 
 /** A group within an ini file. */
@@ -47,6 +47,7 @@ struct IniGroup {
 	~IniGroup();
 
 	IniItem *GetItem(const std::string &name, bool create);
+	void RemoveItem(const std::string &name);
 	void Clear();
 };
 

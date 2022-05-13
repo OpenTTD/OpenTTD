@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "landscape.h"
+#include "company_func.h"
 #include "signs_base.h"
 #include "signs_func.h"
 #include "strings_func.h"
@@ -60,4 +61,15 @@ void UpdateAllSignVirtCoords()
 	for (Sign *si : Sign::Iterate()) {
 		si->UpdateVirtCoord();
 	}
+}
+
+/**
+ * Check if the current company can rename a given sign.
+ * @param *si The sign in question.
+ * @return true if the sign can be renamed, else false.
+ */
+bool CompanyCanRenameSign(const Sign *si)
+{
+	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return false;
+	return true;
 }

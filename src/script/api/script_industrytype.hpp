@@ -181,6 +181,15 @@ public:
 	 * @return True when this type has a dock.
 	 */
 	static bool HasDock(IndustryType industry_type);
+
+	/**
+	 * Get a specific industry-type from a grf.
+	 * @param grf_id The ID of the NewGRF.
+	 * @param grf_local_id The ID of the industry, local to the NewGRF.
+	 * @pre 0x00 <= grf_local_id < NUM_INDUSTRYTYPES_PER_GRF.
+	 * @return the industry-type ID, local to the current game (this diverges from the grf_local_id).
+	 */
+	static IndustryType ResolveNewGRFID(uint32 grfid, uint16 grf_local_id);
 };
 
 #endif /* SCRIPT_INDUSTRYTYPE_HPP */

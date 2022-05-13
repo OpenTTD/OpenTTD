@@ -20,7 +20,17 @@ struct RoadTypeScopeResolver : public ScopeResolver {
 	TileContext context; ///< Are we resolving sprites for the upper halftile, or on a bridge?
 	const RoadTypeInfo *rti;
 
-	RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context);
+	/**
+	* Constructor of the roadtype scope resolvers.
+	* @param ro Surrounding resolver.
+	* @param rti Associated RoadTypeInfo.
+	* @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
+	* @param context Are we resolving sprites for the upper halftile, or on a bridge?
+	*/
+	RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context)
+		: ScopeResolver(ro), tile(tile), context(context), rti(rti)
+	{
+	}
 
 	/* virtual */ uint32 GetRandomBits() const;
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
@@ -39,8 +49,6 @@ struct RoadTypeResolverObject : public ResolverObject {
 			default:             return ResolverObject::GetScope(scope, relative);
 		}
 	}
-
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
 
 	GrfSpecFeature GetFeature() const override;
 	uint32 GetDebugID() const override;
