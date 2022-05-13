@@ -51,12 +51,12 @@ STR_CARGO_PLURAL_SUGAR                                          :Sucre
 STR_CARGO_PLURAL_TOYS                                           :Jouets
 STR_CARGO_PLURAL_SWEETS                                         :Bonbons
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_CANDYFLOSS                                     :Barbe à papa
-STR_CARGO_PLURAL_BUBBLES                                        :Bulles
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=f}Barbes à papa
+STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Bulles
 STR_CARGO_PLURAL_TOFFEE                                         :Caramel
-STR_CARGO_PLURAL_BATTERIES                                      :Batteries
+STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Batteries
 STR_CARGO_PLURAL_PLASTIC                                        :Plastique
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Boissons gazeuses
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}Boissons gazeuses
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -85,12 +85,12 @@ STR_CARGO_SINGULAR_SUGAR                                        :Sucre
 STR_CARGO_SINGULAR_TOY                                          :Jouet
 STR_CARGO_SINGULAR_SWEETS                                       :Bonbon
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_CANDYFLOSS                                   :Barbe à papa
-STR_CARGO_SINGULAR_BUBBLE                                       :Bulle
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=f}Barbe à papa
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Bulle
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramel
-STR_CARGO_SINGULAR_BATTERY                                      :Batterie
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Batterie
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastique
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Boisson gazeuse
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Boisson gazeuse
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -98,8 +98,8 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pa
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de charbon
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sac{P "" s} posta{P l ux}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de pétrole
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}tête{P "" s} de bétail
-STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caisse{P "" s} de biens
+STR_QUANTITY_LIVESTOCK                                          :{G=f}{COMMA}{NBSP}tête{P "" s} de bétail
+STR_QUANTITY_GOODS                                              :{G=f}{COMMA}{NBSP}caisse{P "" s} de biens
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de céréales
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de bois
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minerai de fer
@@ -120,11 +120,11 @@ STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}jo
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sac{P "" s} de bonbons
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de barbe à papa
-STR_QUANTITY_BUBBLES                                            :{COMMA} bulle{P "" s}
+STR_QUANTITY_BUBBLES                                            :{G=f}{COMMA} bulle{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel
-STR_QUANTITY_BATTERIES                                          :{COMMA} batterie{P "" s}
+STR_QUANTITY_BATTERIES                                          :{G=f}{COMMA} batterie{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastique
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} boisson{P "" s} gazeuse{P "" s}
+STR_QUANTITY_FIZZY_DRINKS                                       :{G=f}{COMMA} boisson{P "" s} gazeuse{P "" s}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -166,10 +166,10 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}TOUT
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passager{P "" s}
 STR_BAGS                                                        :{COMMA}{NBSP}sac{P 0 "" s}
-STR_TONS                                                        :{COMMA}{NBSP}tonne{P "" s}
+STR_TONS                                                        :{G=f}{COMMA}{NBSP}tonne{P "" s}
 STR_LITERS                                                      :{COMMA}{NBSP}litre{P "" s}
-STR_ITEMS                                                       :{COMMA}{NBSP}unité{P "" s}
-STR_CRATES                                                      :{COMMA}{NBSP}caisse{P "" s}
+STR_ITEMS                                                       :{G=f}{COMMA}{NBSP}unité{P "" s}
+STR_CRATES                                                      :{G=f}{COMMA}{NBSP}caisse{P "" s}
 
 STR_COLOUR_DEFAULT                                              :Défaut
 ###length 17
@@ -201,12 +201,12 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ch
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{G=f}{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{G=f}{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}tonne{P "" s}{NBSP}courte{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonne{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{G=f}{COMMA}{NBSP}tonne{P "" s}{NBSP}courte{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{G=f}{COMMA}{NBSP}tonne{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}gal
@@ -3547,7 +3547,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Pas de m
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} réservé au chargement)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} réservé{G 0 "" "" "e"}{P 0 "" "s"} au chargement)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepte
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afficher les marchandises acceptées
@@ -3586,8 +3586,8 @@ STR_STATION_VIEW_GROUP_D_V_S                                    :Destination-Rou
 
 ###length 8
 STR_CARGO_RATING_APPALLING                                      :Épouvantable
-STR_CARGO_RATING_VERY_POOR                                      :Très pauvre
-STR_CARGO_RATING_POOR                                           :Pauvre
+STR_CARGO_RATING_VERY_POOR                                      :Très mauvais
+STR_CARGO_RATING_POOR                                           :Mauvais
 STR_CARGO_RATING_MEDIOCRE                                       :Médiocre
 STR_CARGO_RATING_GOOD                                           :Bon
 STR_CARGO_RATING_VERY_GOOD                                      :Très bon
@@ -4229,8 +4229,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacité totale de ce train{NBSP}:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}− {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}− {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vide
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}

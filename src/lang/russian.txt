@@ -1385,7 +1385,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Скорост�
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ограничьте количество строительных мероприятий для ИИ
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Вероятность поломки транспорта: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Частота поломок недостаточно качественно обслуживаемого транспорта
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Вероятность поломок редко обслуживаемого транспорта
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множитель субсидий: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Установите множитель оплаты за субсидируемые перевозки
@@ -1400,8 +1400,8 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :субсиди�
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Затраты на строительство: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Установите уровень затрат на строительство и приобретение
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Спады: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :При включении раз в несколько лет в экономике может начаться кризис. В это время объём производства значительно уменьшается (он возвращается к прежнему уровню, когда спад заканчивается).
+STR_CONFIG_SETTING_RECESSIONS                                   :Экономические кризисы: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :При включении раз в несколько лет в экономике может начаться кризис. В это время объёмы производства значительно снижаются (они возвращаются к прежнему уровню, когда спад заканчивается).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Запретить разворот поездов на станциях: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Если включено, поезда не будут разворачиваться на проходных станциях, даже если это позволит сократить путь к следующему пункту назначения
@@ -4415,8 +4415,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Общая загруженность состава:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} (Всего: {CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (×{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} (Всего: {CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (×{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Пусто
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} из {STATION}
