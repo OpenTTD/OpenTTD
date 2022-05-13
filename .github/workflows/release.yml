@@ -174,14 +174,14 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-source
         path: build/bundles/*
         retention-days: 5
 
     - name: Store source (for other jobs)
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: internal-source
         path: source.tar.gz
@@ -258,7 +258,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-docs
         path: build/bundles/*.tar.xz
@@ -355,7 +355,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-linux-generic
         path: build/bundles
@@ -460,7 +460,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-linux-${{ matrix.bundle_name }}
         path: build/bundles
@@ -651,7 +651,7 @@ jobs:
         mv _CPack_Packages/*/Bundle/openttd-*.zip bundles/
 
     - name: Store bundles
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-macos-universal
         path: build-x64/bundles
@@ -844,7 +844,7 @@ jobs:
         WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
     - name: Store bundles
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-windows-${{ matrix.arch }}
         path: build/bundles
@@ -1025,7 +1025,7 @@ jobs:
         SignTool sign /fd sha256 /a /f cert.pfx /p password "output\OpenTTD.appxbundle"
 
     - name: Store appx
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: openttd-windows-store
         path: |
