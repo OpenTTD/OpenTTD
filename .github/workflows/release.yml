@@ -195,7 +195,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: internal-source
 
@@ -276,7 +276,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: internal-source
 
@@ -390,7 +390,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: internal-source
 
@@ -476,7 +476,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: internal-source
 
@@ -676,7 +676,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: internal-source
 
@@ -861,7 +861,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: internal-source
 
@@ -871,17 +871,17 @@ jobs:
         tar -xf source.tar.gz --strip-components=1
 
     - name: Download x86 build
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: openttd-windows-x86
 
     - name: Download x64 build
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: openttd-windows-x64
 
     - name: Download arm64 build
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: openttd-windows-arm64
 
@@ -1054,7 +1054,7 @@ jobs:
 
     steps:
     - name: Download all bundles
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
 
     - name: Calculate checksums
       run: |
@@ -1107,7 +1107,7 @@ jobs:
 
     steps:
     - name: Download all bundles
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
 
     - name: Setup steamcmd
       uses: CyberAndrii/setup-steamcmd@v1
