@@ -31,7 +31,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PREVIEW_GITHUB_TOKEN }}
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: ${{ github.event.client_payload.sha }}
 
