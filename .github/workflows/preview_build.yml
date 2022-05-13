@@ -41,7 +41,7 @@ jobs:
         git checkout -b ${name}
 
     - name: Setup cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: /emsdk/upstream/emscripten/cache
         key: 2.0.31-${{ runner.os }}
