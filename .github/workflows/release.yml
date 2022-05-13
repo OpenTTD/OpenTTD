@@ -1086,7 +1086,7 @@ jobs:
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
     - name: Trigger 'New OpenTTD release'
-      uses: peter-evans/repository-dispatch@v1
+      uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ secrets.DEPLOYMENT_TOKEN }}
         repository: OpenTTD/workflows
