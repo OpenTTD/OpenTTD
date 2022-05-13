@@ -59,7 +59,7 @@ jobs:
 
     - if: steps.core_developer.outcome == 'success'
       name: Trigger 'preview build'
-      uses: peter-evans/repository-dispatch@v1
+      uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ secrets.PREVIEW_GITHUB_TOKEN }}
         event-type: "Preview build #${{ github.event.number }}"
