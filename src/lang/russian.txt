@@ -545,7 +545,7 @@ STR_FILE_MENU_EXIT                                              :Выход
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Доп. окно просмотра
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Легенда грузоперевозок
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Схема грузопотоков
 STR_MAP_MENU_SIGN_LIST                                          :Список табличек
 
 # Town menu
@@ -776,9 +776,9 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мин. 
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мин. доход:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Макс. доход:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Доставлено:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Груз:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Типы грузов:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Деньги:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Займ:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Сумма кредита:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всего:
 
 ###length 10
@@ -788,9 +788,9 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Приб
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наибольший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Количество груза, доставленного за последние 4 квартала
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Количество типов груза, доставленного за последний квартал
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Количество видов груза, доставленных за последний квартал
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Количество денег на банковском счету компании
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Размер займа, полученного этой компанией в банке
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Размер кредита, взятого этой компанией в банке
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Всего пунктов из общего количества возможных
 
 # Music window
@@ -1170,6 +1170,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Эта �
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальная синхронизация
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Включить/выключить вертикальную синхронизацию. После этого игру потребуется перезапустить. Работает только при включённом аппаратном ускорении.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Видеодрайвер: {STRING}
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Размер элементов интерфейса
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберите размер элементов интерфейса
 
@@ -1370,11 +1372,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма займа: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма займа для компании (без учета инфляции)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма кредита: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма кредита для компании (без учета инфляции)
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентная ставка: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по займам; также устанавливает уровень инфляции, если та включена.
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по кредитам; также устанавливает уровень инфляции, если та включена.
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуатационные расходы: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Установите уровень стоимости обслуживания и эксплуатации транспорта и инфраструктуры
@@ -1678,7 +1680,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Цвета потоков грузоперевозок: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Выберите цветовую схему графического отображения потоков движения грузов.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :зелёный и красный (оригинальные)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :зелёный и синий
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :серый и красный
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :оттенки серого
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Перемещение обзора: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Способ перемещения по игровому полю
@@ -3787,28 +3795,39 @@ STR_FINANCES_CAPTION                                            :{WHITE}Фина
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доход
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Эксплуатационные расходы
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Капитальные расходы
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуж. поездов
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуж. автомобилей
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиации
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. судов
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Проценты по займу
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Поезда
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Автотранспорт
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Авиация
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Суда
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Инфраструктура
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Поезда
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Автотранспорт
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Авиация
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Суда
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Платёж по кредиту
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Прочие расходы
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Чистая прибыль
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс:
-STR_FINANCES_LOAN_TITLE                                         :{WHITE}Заём
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. сумма займа: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Собственные средства
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Взято в кредит
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Проценты по кредиту: {BLACK}{NUM}%
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. сумма кредита: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Занять {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги взаймы. Ctrl+щелчок - увеличить заём до максимума.
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги в кредит. Ctrl+щелчок - взять максимально возможную сумму.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Отдать {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть займа. Ctrl+щелчок - вернуть всё, по возможности.
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть кредита. Ctrl+щелчок - вернуть всё, по возможности.
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Инфраструктура
 
 # Company view
@@ -4879,11 +4898,11 @@ STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Посл
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Невозможно изменить имя директора...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимально допустимый размер займа - {CURRENCY_LONG}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимально допустимая сумма кредита - {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Невозможно занять больше денег...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... заём полностью погашен
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... кредит полностью погашен.
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... требуется {CURRENCY_LONG}
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно погасить заём...
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно выплатить сумму...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Невозможно отдать занятые у банка деньги...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Невозможно передать деньги этой компании...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Невозможно приобрести компанию...

@@ -291,6 +291,7 @@ STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}
 
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :सामान्य
 
 

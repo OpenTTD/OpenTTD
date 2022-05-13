@@ -1026,6 +1026,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Les para
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cochez cette case pour activer la synchronisation verticale de l'écran. La modification de ce paramètres ne sera effective qu'après le redémarrage du jeu. Fonctionne uniquement si l’accélération matérielle est active
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pilote actif{NBSP}: {STRING}
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Taille d'interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Choisir la taille d'élément d'interface à utiliser
 
@@ -1528,7 +1530,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vert
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Vert foncé
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Couleurs du flux de marchandises{NBSP}: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Définir le jeu de couleur utilisé pour l'affichage des flux de marchandises.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Vert à rouge (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Vert à bleu
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Gris à rouge
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Niveaux de gris
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Défilement de la vue{NBSP}: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportement lors du défilement de la carte
@@ -3613,22 +3621,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finances
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Revenus
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Dépenses de fonctionnement
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Dépenses en capitaux
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construction
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nouveaux véhicules
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Entretien des trains
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Entretien des véhicules
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Entretien des aéronefs
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Entretien des navires
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trains
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Véhicules routiers
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aéronefs
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navires
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastructure
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trains
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Véhicules routiers
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aéronefs
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navires
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intérêts du prêt
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Autres
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Bénéfice net
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Solde bancaire
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fonds propres
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Emprunt
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Taux d'intérêt de l'emprunt{NBSP}: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Emprunt maximum{NBSP}: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Emprunter {CURRENCY_LONG}
@@ -3815,7 +3834,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nouveaux véhic
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nouveaux véhicules monorail
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nouveaux véhicules magnétiques
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nouveaux véhicules
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nouveaux véhicules routiers
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nouveaux tramways
 
 # Vehicle availability

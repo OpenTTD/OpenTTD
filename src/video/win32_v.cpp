@@ -1310,6 +1310,11 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 		return err;
 	}
 
+	this->driver_info = GetName();
+	this->driver_info += " (";
+	this->driver_info += OpenGLBackend::Get()->GetDriverName();
+	this->driver_info += ")";
+
 	this->ClientSizeChanged(this->width, this->height, true);
 	/* We should have a valid screen buffer now. If not, something went wrong and we should abort. */
 	if (_screen.dst_ptr == nullptr) {

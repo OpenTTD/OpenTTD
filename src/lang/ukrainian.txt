@@ -1153,6 +1153,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Нала
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Вертикальна синхронізація
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Увімкнутий прапорець дозволить вертикальну синхронізацію екрану. Налаштування запрацює тільки після перезапуску гри. Працює тільки за увімкнутого прискорення апаратного забезпечення.
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Оберіть розмір елементів інтерфейсу
 

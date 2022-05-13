@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfaze tamaina
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala

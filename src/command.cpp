@@ -262,7 +262,7 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 		}
 	} else if (estimate_only) {
 		ShowEstimatedCostOrIncome(res.GetCost(), x, y);
-	} else if (!only_sending && res.GetCost() != 0 && tile != 0 && IsLocalCompany() && _game_mode != GM_EDITOR) {
+	} else if (!only_sending && tile != 0 && IsLocalCompany() && _game_mode != GM_EDITOR) {
 		/* Only show the cost animation when we did actually
 		 * execute the command, i.e. we're not sending it to
 		 * the server, when it has cost the local company

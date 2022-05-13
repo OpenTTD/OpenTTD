@@ -1089,6 +1089,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ez a be�
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync (Vertikális Szinkronizáció)
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Jelöld be ezt a négyzetet hogy engedélyezd a v-sync-et. A változtatás csak a játék újraindítása után fog érvényesülni. Kizárólag hardware gyorsítással működik!
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Felület mérete
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Használni kívánt felületméret kiválasztása
 

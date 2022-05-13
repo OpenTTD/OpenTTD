@@ -1188,7 +1188,7 @@ CargoPayment::~CargoPayment()
 	if (this->visual_transfer != 0) {
 		ShowFeederIncomeAnimation(this->front->x_pos, this->front->y_pos,
 				this->front->z_pos, this->visual_transfer, -this->visual_profit);
-	} else if (this->visual_profit != 0) {
+	} else {
 		ShowCostOrIncomeAnimation(this->front->x_pos, this->front->y_pos,
 				this->front->z_pos, -this->visual_profit);
 	}

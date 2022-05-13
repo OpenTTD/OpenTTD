@@ -1026,6 +1026,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}이 설�
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}수직 동기화
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}화면과 수직 동기화하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다. 하드웨어 가속을 켠 경우에만 작동합니다.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}현재 드라이버: {STRING}
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
 
@@ -1528,7 +1530,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :녹색
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :어두운 녹색
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :보라색
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :화물 흐름 오버레이 색상: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :화물 흐름 오버레이에 사용할 색상을 설정합니다.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :녹색 & 적색 (기본값)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :녹색 & 청색
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :회색 & 적색
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :흑백
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :외부 화면 스크롤 행동: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :지도를 스크롤 할 때의 행동을 선택합니다.
@@ -3613,22 +3621,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}수익
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}운영 비용
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}자본 비용
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}건설
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}신규 차량 구입
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}열차 유지비
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}차량 유지비
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}항공기 유지비
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}선박 유지비
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}열차
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}자동차
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}항공기
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}선박
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}기반시설
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}열차
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}자동차
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}항공기
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}선박
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}이자
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}기타
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}순이익
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}현 보유 금액
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}보유 자금
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}대출
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}대출 금리: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}최대 대출: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} 빌리기
@@ -3821,7 +3840,7 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :새 전차 차�
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :새 열차
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :새 차량
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :새 자동차
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :새 선박
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 

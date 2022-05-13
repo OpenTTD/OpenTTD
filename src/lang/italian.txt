@@ -311,8 +311,8 @@ STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potenza
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Sforzo di trazione
 STR_SORT_BY_INTRO_DATE                                          :Data introduzione
-STR_SORT_BY_RUNNING_COST                                        :Costo d'esercizio
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza / Costo d'esercizio
+STR_SORT_BY_RUNNING_COST                                        :Costo di esercizio
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza/Costo di esercizio
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacità di carico
 STR_SORT_BY_RANGE                                               :{G=f}Autonomia
 STR_SORT_BY_POPULATION                                          :Popolazione
@@ -858,7 +858,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppio della produzione!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Migliori tecniche di coltivazione alla {INDUSTRY} raddoppieranno la produzione!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è aumentata del {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}La produzione a {INDUSTRY} scende del 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK} {INDUSTRY} la produzione scende del 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Infestazione di insetti devasta la {INDUSTRY}!{}Produzione scesa del 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è diminuita del {COMMA}%!
 
@@ -1028,6 +1028,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Le nuove
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Seleziona questa casella per abilitare la sincronizzazione verticale dello schermo. Un'impostazione modificata verrà applicata solo al riavvio del gioco. Funziona solo con l'accelerazione hardware abilitata
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver attuale: {STRING}
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Dimensione interfaccia
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleziona la dimensione deglie elementi dell'interfaccia grafica
 
@@ -1103,12 +1105,18 @@ STR_MINIMAL.mp                                                  :Minimi
 STR_MINIMAL.fs                                                  :Minima
 STR_MINIMAL.fp                                                  :Minime
 STR_NUM_VERY_LOW                                                :Molto basso
+STR_NUM_VERY_LOW.mp                                             :Molto bassi
+STR_NUM_VERY_LOW.fs                                             :Molto bassa
+STR_NUM_VERY_LOW.fp                                             :Molto basse
 STR_NUM_LOW                                                     :Basso
 STR_NUM_LOW.mp                                                  :Bassi
-STR_NUM_LOW.fs                                                  :Basse
+STR_NUM_LOW.fs                                                  :Bassa
 STR_NUM_LOW.fp                                                  :Basse
 STR_NUM_NORMAL                                                  :Normale
 STR_NUM_HIGH                                                    :Alto
+STR_NUM_HIGH.mp                                                 :Alti
+STR_NUM_HIGH.fs                                                 :Alta
+STR_NUM_HIGH.fp                                                 :Alte
 STR_NUM_CUSTOM                                                  :Personalizzati
 STR_NUM_CUSTOM_NUMBER                                           :Personalizzati ({NUM})
 
@@ -1235,7 +1243,6 @@ STR_CONFIG_SETTING_NONE                                         :Nessuno
 STR_CONFIG_SETTING_NONE.ms                                      :Nessuno
 STR_CONFIG_SETTING_NONE.fs                                      :Nessuna
 STR_CONFIG_SETTING_ORIGINAL                                     :Originale
-STR_CONFIG_SETTING_ORIGINAL.ms                                  :Originale
 STR_CONFIG_SETTING_ORIGINAL.mp                                  :Originali
 STR_CONFIG_SETTING_ORIGINAL.fs                                  :Originale
 STR_CONFIG_SETTING_ORIGINAL.fp                                  :Originali
@@ -1256,7 +1263,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Ammontare massi
 STR_CONFIG_SETTING_INTEREST_RATE                                :Tasso d'interesse: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasso d'interesse sul prestito; controlla anche l'abilitazione dell'inflazione.
 
-STR_CONFIG_SETTING_RUNNING_COSTS                                :Costi d'esercizio: {STRING.mp}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Costi di esercizio: {STRING.mp}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Imposta il livello dei costi di manutenzione ed esercizio di veicoli e infrastrutture.
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocità di costruzione: {STRING.fs}
@@ -1558,7 +1565,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde scuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Viola
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colori rotte commerciali in sovrimpressione:{STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Imposta la combinazione di colori utilizzata per le rotte commerciali, sia delle linee che compaiono in sovrimpressione sulla schermata di gioco, sia nella finestra "Legenda rotte commerciali" da cui è possibile selezionarle (si trova nel menu "Mappa" della barra degli strumenti principale).
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Verde a rosso (originale)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Verde a blu
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grigio a rosso
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Scala di grigi
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Scorrimento delle visuali: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento dello scorrimento della mappa
@@ -2783,7 +2796,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selezion
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientamento stazione
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Seleziona l'orientamento della stazione degli autobus
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientamento area carico
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientamento area di carico
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Seleziona l'orientamento dell'area di carico per camion
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orient. stazione tram passeggeri
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Seleziona l'orientamento della stazione tram passeggeri
@@ -3649,22 +3662,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finanze 
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Entrate
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Costi di esercizio
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Costi di impianto
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Costruzioni
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuovi veicoli
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Costi d'esercizio treni
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Costi d'esercizio automezzi
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Costi d'esercizio aeromobili
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Costi d'esercizio navi
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Treni
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Automezzi
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeromobili
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navi
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastrutture
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Treni
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Automezzi
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeromobili
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navi
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessi sul prestito
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altro
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Profitto netto
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Capitale netto
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prestito
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Interesse sul prestito: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Prestito massimo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Chiedi in prestito {CURRENCY_LONG}
@@ -3867,7 +3891,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocit�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocità sull'oceano: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocità su canali/fiumi: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo d'esercizio: {GOLD}{CURRENCY_LONG}/anno
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo di esercizio: {GOLD}{CURRENCY_LONG}/anno
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacità: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(riadattabile)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} ann{P o i}
@@ -4055,13 +4079,13 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=m}veicolo tr
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo d'esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}  S.T. max.: {6:FORCE}{}Costo d'esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo di esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}  S.T. max.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING} Autonomia: {COMMA} casell{P a e}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING} - {STRING}
@@ -4204,7 +4228,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Rinomina
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rinomina la nave
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Rinomina l'aeromobile
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo d'esercizio: {LTBLUE}{CURRENCY_LONG}/anno
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo di esercizio: {LTBLUE}{CURRENCY_LONG}/anno
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P o i} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P o i} ({COMMA})
 

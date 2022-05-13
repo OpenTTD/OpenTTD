@@ -1026,6 +1026,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}La confi
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selecciona aquesta casella per activar la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mida de la interfície
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Escull la mida dels elements de la interfície
 
@@ -1528,7 +1530,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verd fosc
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violat
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colors de la representació del flux de càrrega: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Escolliu l'esquema de color usat per la representació del flux de càrrega.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :De verd a vermell (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :De verd a blau
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :De gris a vermell
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de grisos
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Desplaçament del mapa: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportament quan es desplaça el mapa.
@@ -3613,6 +3621,9 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finances
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingressos
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Despeses operatives
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Despeses de capital
 
 
 ###length 13
@@ -3622,13 +3633,21 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Desp. de 
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Desp. de circ. de vehicles
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Desp. de circ. d'aeronaus
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Desp. de circ. de vaixells
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestructura
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vehicles de carretera
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronaus
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Vaixells
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessos del préstec
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altres
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Benefici net
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanç bancari
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fons propis
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstec
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Interès del préstec: {BLACK}{NUM}{NBSP}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstec màxim: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Demana {CURRENCY_LONG}

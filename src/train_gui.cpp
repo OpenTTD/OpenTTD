@@ -180,8 +180,9 @@ struct CargoSummaryItem {
 	}
 };
 
-static const uint TRAIN_DETAILS_MIN_INDENT = 32; ///< Minimum indent level in the train details window
-static const uint TRAIN_DETAILS_MAX_INDENT = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
+static const uint TRAIN_DETAILS_MIN_INDENT  = 32; ///< Minimum indent level in the train details window
+static const uint TRAIN_DETAILS_MAX_INDENT  = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
+static const int  TRAIN_DETAILS_LIST_INDENT = 10; ///< Indent for list items in the Total Cargo window
 
 /** Container for the cargo summary information. */
 typedef std::vector<CargoSummaryItem> CargoSummary;
@@ -363,6 +364,10 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 	/* get rid of awkward offset */
 	y -= WD_MATRIX_TOP;
 
+	/* Indent the total cargo capacity details */
+	int offs_left = _current_text_dir == TD_LTR ? TRAIN_DETAILS_LIST_INDENT : 0;
+	int offs_right = _current_text_dir == TD_LTR ? 0 : TRAIN_DETAILS_LIST_INDENT;
+
 	int sprite_height = ScaleGUITrad(GetVehicleHeight(VEH_TRAIN));
 	int line_height = std::max(sprite_height, WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM);
 	int sprite_y_offset = line_height / 2;
@@ -465,7 +470,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				SetDParam(4, _settings_game.vehicle.freight_trains);
-				DrawString(left, right, y + text_y_offset, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
+				DrawString(left + offs_left, right - offs_right, y + text_y_offset, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
 				y += line_height;
 			}
 		}
