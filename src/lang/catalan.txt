@@ -899,12 +899,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvenció caducada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} no tindrà subvenció
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvenció retirada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} ja no està subvencionat
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}La primera companyia en transportar {STRING} des de {STRING} fins a {STRING} tindrà una subvenció de {NUM} any{P "" s} per part de l'autoritat local
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}El primer {STRING} des de {STRING} fins a {STRING} tindrà una subvenció de {NUM} any{P "" s} per part de l'autoritat local
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {NUM} any{P "" s}
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {NUM} any{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {NUM} any{P "" s}
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {NUM} any{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {NUM} any{P "" s}
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trànsit caòtic a {TOWN}{}{}El programa de reconstrucció dels carrers patrocinat per {STRING} porta 6 mesos de misèria als automobilistes
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli de transports
@@ -1470,7 +1470,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màx
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita a quina distància del mapa es poden construir refineries de petroli i plataformes petrolíferes. En mapes amb illes, serveix per assegurar que estan prop de la costa. En mapes de més de 256 caselles, aquest valor s'escala automàticament.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada dels estatges amb neu: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a quina alçada la neu comença en el paisatge subàrtic. La neu també afecta la generació d'indústries i els requisits per al creixement de les poblacions. Només es pot modificar a l'editor d'escenaris; altrament, es calcula fent servir la proporció de terreny nevat.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a partir de quina alçada apareix la neu en el paisatge subàrtic. La neu també afecta la generació d'indústries i els requisits per al creixement de les poblacions. Només es pot modificar a l'editor d'escenaris; altrament, es calcula fent servir la proporció de terreny nevat.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Terreny nevat: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla la quantitat aproximada de terreny nevat que hi ha en els paisatges subàrtics. La neu afecta a la generació d'indústries i el creixement de les poblacions. Només s'usa durant la generació de mapes. El terreny d'alçada propera al nivell del mar mai està nevat.
@@ -1704,7 +1704,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva els v
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells als jugadors IA.
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de paràmetres predeterminat: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolliu el perfil de paràmetres de les IA aleatòries o els valors inicials quan s'afegeix una nova IA o script de partida.
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolliu el perfil de paràmetres de les IA aleatòries o els seus valors inicials quan s'afegeix una nova IA o script de partida.
 ###length 3
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fàcil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mitjà
@@ -2343,7 +2343,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadors en lí
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :Mira
 
 # Network client list
-STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Jugadors en línia
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nom
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nom del servidor on esteu jugant
@@ -2855,7 +2855,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs s
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de poblacions
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Població nova
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Crea una població nova
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una població. Shift+Clic en mostra el cost estimat.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Crea una població aleatòria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
@@ -3629,10 +3629,10 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Despeses
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcció
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Compra de vehicles
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Desp. de circ. de trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Desp. de circ. de vehicles
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Desp. de circ. d'aeronaus
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Desp. de circ. de vaixells
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vehicles de carretera
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaus
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Vaixells
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestructura
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trens
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vehicles de carretera
@@ -4528,7 +4528,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra e
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA que no fa res.{}Podeu descarregar diverses IA via el sistema de «Contingut en línia».
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts que s'estava executant ha fallat. Si us plau, informeu l'autor de l'script amb una captura de pantalla de la finestra de depuració de l'script d'IA/partida.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració de les IA i l'script de partida només està disponible al servidor.
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració dels scripts d'IA/partida només està disponible al servidor.
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració dels scripts de les IA/partida

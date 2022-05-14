@@ -900,11 +900,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà {NUM} anni di sussidio dall'autorità locale!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà {NUM} ann{P o i} di sussidio dall'autorità locale!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il 50% in più per il prossimo{NUM} anno{P "" i}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il doppio per il prossimo{NUM} anno{P "" i}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il triplo per il prossimo{NUM} anno{P "" i}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il 50% in più per il prossimo{NUM} ann{P o i}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il doppio per il prossimo{NUM} ann{P o i}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il triplo per il prossimo{NUM} ann{P o i}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} ann{P o i}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE.mp                   :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per i prossimi {NUM} anni{P "" i}!
 
@@ -1295,10 +1295,10 @@ STR_CONFIG_SETTING_DISASTERS                                    :Disastri: {STRI
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Consente il verificarsi o meno di occasionali eventi negativi che possono bloccare o distruggere veicoli e infrastrutture.
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento dell'autorità locale: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nella città
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione in esse.
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite di altezza della mappa: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Imposta l'altezza massima per il terreno. Con l'opzione "(auto)" un valore ottimale verrà scelto automaticamente dopo la generazione del terreno
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Imposta l'altezza massima per il terreno. Con l'opzione "(automatico)" un valore ottimale verrà scelto automaticamente dopo la generazione del terreno.
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatico)
@@ -1330,14 +1330,14 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modello acceler
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleziona il modello fisico per l'accelerazione degli automezzi. Il modello "Originale" introduce penalità sui pendii in modo uguale per tutti i veicoli. Il modello "Realistico" introduce penalità sui pendii in base a varie proprietà del mezzo, come lo "sforzo di trazione".
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendenza salite per i treni: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendenza delle caselle inclinate percepita dai treni. I valori più elevati rendono più difficile risalire le colline
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendenza delle caselle inclinate percepita dai treni. I valori più elevati rendono più difficile risalire le colline.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendenza salite per gli automezzi: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pendenza delle caselle inclinate percepita dagli automezzi. I valori più elevati rendono più difficile risalire le colline
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pendenza delle caselle inclinate percepita dagli automezzi. I valori più elevati rendono più difficile risalire le colline.
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Impedisci ai treni di curvare a 90 gradi: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nella casella adiacente, facendo sì che un treno che attraversa il bordo fra le caselle curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Le curve a 90 gradi avvengono quando un binario orizzontale è seguito direttamente da un binario verticale nella casella adiacente, facendo sì che un treno che attraversa il bordo fra le caselle curvi di 90 gradi invece dei 45 gradi delle altre combinazioni di binari.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Consenti di unire stazioni non direttamente adiacenti: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Consente di aggiungere nuove parti a una stazione, non attaccate direttamente alle parti esistenti ma che siano comprese all'interno dell'area di estensione massima della stazione. Richiede l'uso di CTRL+clic per posizionare le nuove parti.
@@ -1505,7 +1505,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanz
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita la distanza dal bordo della mappa entro cui possono essere costruite raffinerie e piattaforme petrolifere. Nelle mappe insulari sono comunque sempre vicino alla costa. Su mappe più grandi di 256 caselle il valore aumenta proporzionalmente.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle nevi perenni: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi sub-artici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città. Può essere modificato solo tramite l'Editor di scenari o altrimenti calcolato tramite "Aree innevate"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi subartici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città. Può essere modificato solo tramite l'Editor di scenari o altrimenti calcolato tramite "Aree innevate".
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Aree innevate: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regola la quantità approssimativa di neve presente nel paesaggio subartico. La neve influisce anche sulla generazione dell'industria e sui requisiti di crescita della città. Si può impostare solo durante la generazione della mappa o nelle impostazioni prima dell'inizio di una nuova partita. La terra appena sopra il livello del mare non è mai innevata.
@@ -1976,7 +1976,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :In modalità "S
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modalità di distribuzione della posta: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :In modalità "Simmetrica" la quantità di posta spedita da una stazione A ad una stazione B è approssimativamente la stessa di quella spedita da B ad A. In modalità "Asimmetrica" è consentita la spedizione di quantità di posta arbitrarie in entrambe le direzioni. In modalità "Manuale" non viene effettuata alcuna distribuzione automatica della posta.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalità di distribuzione dei carichi della classe ARMOURED: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe di carico ARMOURED comprende i Valori nel clima temperato, i Diamanti nel clima sub-tropicale e l'Oro nel clima sub-artico. I NewGRF possono modificare questa impostazione. In modalità "Simmetrica" la quantità di carico inviata da una stazione A ad una stazione B è approssimativamente la stessa di quella inviata da B ad A. In modalità "Asimmetrica" è consentito l'invio di quantità di carico arbitrarie in entrambe le direzioni. In modalità "Manuale" non viene effettuata alcuna distribuzione automatica dei carichi interessati. Si raccomanda di impostare su "Asimmetrica" o "Manuale" per le partite nel clima sub-artico, in quanto le banche non restituiscono Oro alle miniere. Per i climi temperato e sub-tropicale è possibile scegliere "Simmetrica" poiché le banche restituiscono un carico di valori equivalente a quello ricevuto dalla banca di origine.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe di carico ARMOURED comprende i Valori nel clima temperato, i Diamanti nel clima subtropicale e l'Oro nel clima subartico. I NewGRF possono modificare questa impostazione. In modalità "Simmetrica" la quantità di carico inviata da una stazione A ad una stazione B è approssimativamente la stessa di quella inviata da B ad A. In modalità "Asimmetrica" è consentito l'invio di quantità di carico arbitrarie in entrambe le direzioni. In modalità "Manuale" non viene effettuata alcuna distribuzione automatica dei carichi interessati. Si raccomanda di impostare su "Asimmetrica" o "Manuale" per le partite nel clima subartico, in quanto le banche non restituiscono Oro alle miniere. Per i climi temperato e subtropicale è possibile scegliere "Simmetrica" poiché le banche restituiscono un carico di valori equivalente a quello ricevuto dalla banca di origine.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modalità di distribuzione dei carichi delle altre classi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :In modalità "Asimmetrica" è consentito l'invio di quantità di carico arbitrarie in entrambe le direzioni. In modalità "Manuale" non viene effettuata alcuna distribuzione automatica dei carichi interessati.
 ###length 3
@@ -3906,7 +3906,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni m
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_NONE                                          :Niente
-STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo motori
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo motrici
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} casell{P a e}
@@ -4080,7 +4080,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo di esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}  S.T. max.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}  S.T. max.: {6:FORCE}{}Costo di esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno

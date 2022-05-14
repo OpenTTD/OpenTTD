@@ -1886,10 +1886,10 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatikusan a
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Az év beállítása, melytől fényjelzők kerülnek alkalmazásra. Azelőtt alakjelzők használatosak (melyek funkciója ugyanaz, csak máshogy néznek ki)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Jelzők típusa átalakításkor: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Válaszd ki meg jelzőtípusok közül válassz Ctrl-kattintással egy felépített jelzésen a jelzőépítő eszközzel
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Jelzőtípusok kiválasztása, hogy melyek legyenek elérhetőek a jelzőépítés eszközzel Ctrl+kattintás hatására.
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind látható
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Minden jelző
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Vasúti jelzők mutatása: {STRING}
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Mely jelzők legyenek láthatóak a vasúti jelzők eszköztáron.

@@ -899,7 +899,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} agora não irá atrair um subsídio
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não é mais subsidiado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{}Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de {NUM} anos da autoridade local!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{}Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de {NUM} ano{P "" s} da autoridade local!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio de serviço concedido à {STRING}!{}{}Serviço de {STRING} de {STRING} para {STRING} pagará 50% extra durante o{P 4 "" s} próximo{P 4 "" s} {NUM} ano{P "" s}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido à {STRING}!{}{}Serviço de {STRING} de {STRING} para {STRING} pagará o dobro de tarifas durante o{P 4 "" s} próximo{P 4 "" s} {NUM} ano{P "" s}!
@@ -1154,6 +1154,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Altura personal
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Brando
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
@@ -3878,7 +3879,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra a
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compra e troque o trem destacado. Shift+Click mostra o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Compre e troque o veículo terrestre destacado. Shift+Clique mostra o custo estimado sem comprá-lo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Compra e reequipa o automóvel destacado. Shift+Clique mostra o custo estimado
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :Compre e reequipa o navio selecionado. Shift+Clique mostra o custo estimado
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Compra e reequipa a aeronave selecionada. Shift+Clique mostra o custo estimado
 

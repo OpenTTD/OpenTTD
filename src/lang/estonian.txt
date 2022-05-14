@@ -671,12 +671,12 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insener
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Liikluskorraldaja
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transpordikorraldaja
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Logistik
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Logistikajuht
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Tegevjuht
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Esimees
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Ärioligarh
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Ärihai
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Täpsustatud tulemushinnang
@@ -864,7 +864,7 @@ STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Rahvas tervitab . . .{}Esimene reisitramm saabus trammijaama {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Rahvas tervitab . . .{}Esimene kaubatramm saabus trammijaama {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Rahvas tervitab . . .{}{STATION} terminali saabus esimene laev!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Rahvas tervitab. . .{}{STATION} terminali saabus esimene lennuk!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Rahvas tervitab. . .{}{STATION} terminali saabus esimene õhusõiduk!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}RONGIKOKKUPÕRGE!{}{COMMA} surid tules peale kokkusõitmist
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Rongikokkupõrge!{}Juht hukkus kokkupõrgest põhjustatud tulekeras
@@ -892,7 +892,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(President)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahastas uue asustuse {TOWN} rajamist!
-STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uus linn nimega {TOWN} on asutatud!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uus asustus nimega {TOWN} on rajatud!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Uus {STRING} on asustuse {TOWN} lähedal ehitamisel!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Uus {STRING} on istutatud asustuse {TOWN} lähedale!
@@ -1018,7 +1018,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaisia ringit
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Parempoolne liiklus
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Asulate nimed
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Asulanimed:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vali asulanimede stiil
 
 ###length 21
@@ -1494,7 +1494,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näita sõiduki
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisa sõidukiehitusaknasse uus rida, mis näitab millisest NewGRF-ist sõiduk on pärit.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maastik: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maastikud määravad põhilised mängustsenaariumid erinevate veoste ja nõuetega linnade kasvamiseks. NewGRF ja GameScript abil saab siiski täpsemalt kontrollida
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maastikud määravad põhilised mängustsenaariumid erinevate veoste ja nõuetega asulate kasvamiseks. NewGRF ja GameScript abil saab siiski täpsemalt kontrollida
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maatekituse meetod: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originaalne generaator sõltub lähtegraafikast ja tekitab kindlaksmääratud maastikuvorme. TerraGenesis on Perlini müral põhinev generaator, mida saab täpsemalt seadistada
@@ -1512,7 +1512,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimaalne kau
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftatöötlemistehased ehitatakse ainult kaardi piirile, see on rannikul saartega mängitaval kaardil.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumepiiri kõrgus: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määra, millisel kõrgusel algab sub-arktiline maastik. Lumi mõjutab ka tööstuste loomist ja asulate kasvamise nõudeid
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määra, millisel kõrgusel algab lähisarktiline maastik. Lumi mõjutab ka tööstuste tekitamist ja asulate kasvuvajadusi. Saab muuta ainult stsenaariumiredaktoris, muidu arvutatakse «lumekatvusega».
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Lumekatvus: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Mõjutab umbkaudset lume osakaalu lähisartikilisel maastikul. Lumi mõjutab ka tööstuste tekitamist ja asulate kasvuvajadusi. Kasutatakse vaid kaardi tekitamisel. Vahetult merepiiri kohal on maa alati lumevaba
@@ -1628,7 +1628,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Aken suletakse paremklõpsuga: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Sulgeb akna, kui selles paremklõps teha. Lülitab välja paremklõpsuga vihjed!
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Välpsalvestus: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE                                     :Salvestusväłp: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vali välpsalvestuste vaheline ajavahemik
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Salvestatud mängu nimes kasutatakse {STRING} kuupäevavormingut
@@ -1653,7 +1653,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Põhjalikku sõ
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Laseb kasutada põhjalikke sõidukiregistreid sõidukite jaotamiseks
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Kasuta laadimisnäidikuid: {STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vali, kas koorma peale- ja mahalaadimisel näidatakse laadimisnäidikuid
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vali, kas koorma laadimisel ja tühjendamisel näidatakse laadimisnäidikuid
 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Graafik on sammudes, mitte päevades: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Graafikus on ajad märgitud mitte päevades, vaid sammudes
@@ -1662,7 +1662,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Graafikus on sa
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sõiduki graafikus esitatakse eeldatavaid saabumis- ja väljumisaegu
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Sõiduki korralduste kiirloomine: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Sõiduki sihtide avamisel saab kohe «Mine» korraldusi anda
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Siht-osuti on kohe aktiivne, kui korralduste aken avada
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Algne rööbastee liik (mängu alustamisel/jätkamisel): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Määrab mängu alguses või selle jätkamisel käibel oleva rööbastee liigi. «Vanim» valib kõige vanema rööbastee liigi, «Uusim» valib kõige uuema rööbastee liigi, ning «Enim kasutatud» valib kõige rohkem kasutatud rööbastee liigi
@@ -1717,7 +1717,7 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Ettevõtte moot
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Ettevõttele kuuluvate mootorsõidukite arvu ülempiirang
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Ettevõtte õhusõidukite ülempiirang: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Ettevõttele kuuluvate lennukite arvu ülempiirang
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Ettevõttele kuuluvate õhusõidukite arvu ülempiirang
 
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Ettevõtte laevade ülempiirang: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Ettevõttele kuuluvate laevade arvu ülempiirang
@@ -1882,7 +1882,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Asulatel on lub
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Selle seade sisse lülitamine lubab asulatel ehitada ülesõidukohti
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lennujaamade mürapiirangud asulates: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui seade ei ole sisse lülitatud, siis igasse asulasse on lubatud ehitada kuni kaks lennuvälja. Kui see seade on lubatud, siis lennuväljade arvu ülempiiri määrab asustuse müratundlikkus, mis sõltub rahvaarvust ja lennuvälja suurusest ja kaugusest
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui seade ei ole sisse lülitatud, siis igasse asulasse on lubatud ehitada kuni kaks lennuvälja. Kui see seade on lubatud, siis lennuväljade arvu ülempiirang määrab asustuse müratundlikkus, mis sõltub rahvaarvust ja lennuvälja suurusest ja kaugusest
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Asulate rajamine keset mängu: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Võimaldab ettevõttel uusi asulaid rajada
@@ -1902,7 +1902,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Juhib suvalist 
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Kasvavad, aga ei laiene {RED}(saeveski kasutamatu)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Kasvavad, kuid laienevad vaid vihmametsas
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Kasvab ja laieneb kõikjal
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Kasvavad ja laienevad kõikjal
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Ei kasva, ei laiene {RED}(saeveski kasutamatu)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Peamine tarvikuriba paikneb: {STRING}
@@ -2675,7 +2675,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vali rau
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Lohistamine
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita jaam kasutades hiirega lohistamist
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vali näidatav jaamarühm
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vali näidatav jaamajärk
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vali näidatav jaamaliik
 
 STR_STATION_CLASS_DFLT                                          :Esialgne jaam
@@ -2917,8 +2917,8 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vali tö
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-ala andmed
 STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Keskenda vaade ruudu asukohale. Ctrl+klõps avab asukohas uue vaate
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Tühjendamise hind: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Tühjendamise hind: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Tühjendamise kulu: {LTBLUE}N/A
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Tühjendamise kulu: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Tühjendamise tulu: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :puudub
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Omanik: {LTBLUE}{STRING}
@@ -2931,7 +2931,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Jaama järk: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jaama liik: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lennuvälja liik: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lennuvälja järk: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Lennujaama nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lennujaama osa nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
@@ -3426,14 +3426,14 @@ STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapii
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade asustusele. Ctrl+klõps avab asustuse kohal uue vaate
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Omavalitsus
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Näita teavet kohaliku omavalitsuse kohta
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda linna nime
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda asustuse nime
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laienda
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Asustuse suurendamine
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Kustuta
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hävita see asustus täielikult
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ümbernimeta linn
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ümbernimeta asustus
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} kohalik omavalitsus
@@ -3457,14 +3457,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta monopoolse
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Paku kohalikule omavalitsusele altkäemaksu
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Pisikese kohaliku reklaamikampaania korraldamine meelitab rohkem reisijaid ja kaupu sinu veoteenuseid kasutama.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Keskmise reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Suure reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Linna teedevõrgu ümberehituse rahastamine. Põhjustab liikluses tõsiseid häireid kuni 6 kuuks.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Oma ettevõtte auks kuju ehitamine.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Uute ärihoonete ehitamise rahastamine selles asulas.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Üheks aastaks monopoolsete veoõiguste ostmine selles asulas. Asula omavalitsus lubab reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Maksumus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Kohalikule omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Pisikese kohaliku reklaamikampaania korraldamine meelitab rohkem reisijaid ja kaupu sinu veoteenuseid kasutama.{}Tõstab asulakeskuse lähiümbruses ajutiselt jaamade tegevushinnanguid.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Keskmise reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{}Tõstab ajutiselt asulakeskuse ümbruses jaamade tegevushinnanguid.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Suure reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{}Tõstab asulakeskuse kaugümbruses ajutiselt jaamade tegevushinnanguid.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Asula teedevõrgu ümberehituse rahastamine.{}Põhjustab liikluses tõsiseid häireid kuni 6 kuuks.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Oma ettevõtte auks kuju ehitamine.{}Tõstab püsivalt jaamade tegevushinnanguid selles asulas.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Uute hooneehituste rahastamine selles asulas.{}Tõstab ajutiselt asula kasvutempot selles asulas.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Üheks aastaks monopoolsete veoõiguste ostmine selles asulas.{}Asula omavalitsus lubab reisijate ja kauba veoks kasutada ainult sinu jaamasid.{}Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kohalikule omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{}Maksumus: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} eesmärgid
@@ -3792,7 +3792,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Jaotamata õhus
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Jagu - jaol klõpsates loetletakse kõik jakku kuuluvad sõidukit. Jagusid lohistades saab luua hierarhia.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Jagu - jaol klõpsates loetletakse kõik jakku kuuluvad sõidukid. Jagusid lohistades saab luua hierarhia.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klõpsa jao loomiseks
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eemalda valitud jagu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ümbernimeta valitud jagu
@@ -3872,7 +3872,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Ehita õ
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Osta ja ümberseadista sõiduk
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Osta ja ümberseadista sõiduk
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Osta ja ümberseadista laev
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Osta ja ümberseadista lennuk
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Osta ja ümberseadista õhusõiduk
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Osta valitud raudteesõiduk. Shift+klõpsuga kuvatakse eeldatav ostuhind
@@ -3979,7 +3979,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klooni �
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ostetakse samasugune rong koos kõikide vagunitega. Vajuta sellele nupule, ning seejärel rongile depoo sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ostetakse samasugune mootorsõiduk. Vajuta sellele nupule, ning seejärel mootorsõidukil depoos või sellest väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostetakse samasugune laev. Vajuta sellele nupule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostetakse samasugune õhusõiduk. Vajuta sellele nupule, ning seejärel lennukile angaari sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostetakse samasugune õhusõiduk. Vajuta sellele nupule, ning seejärel õhusõidukile angaari sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
@@ -4020,7 +4020,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnethõljukve
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :mootorsõiduki
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramm
 
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :lennuki
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :õhusõiduki
 STR_ENGINE_PREVIEW_SHIP                                         :laeva
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hind: {CURRENCY_LONG} Tühimass: {WEIGHT_SHORT}{}Tippkiirus: {VELOCITY}  Võimsus: {POWER}{}Käituskulud: {CURRENCY_LONG}/aastas{}Kandevõime: {CARGO_LONG}
@@ -4116,7 +4116,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ümberse
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Näita rongi korraldusi. «Ctrl»+klõps näitab rongi graafikut
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Näita mootorsõiduki korraldusi. «Ctrl»+klõps näitab mootorsõiduki graafikut
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Näita laeva korraldusi. «Ctrl»+klõps näitab laeva graafikut
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Näita lennuki korraldusi. «Ctrl»+klõps näitab õhusõiduki graafikut
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Näita õhusõiduki korraldusi. «Ctrl»+klõps näitab õhusõiduki graafikut
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Näita rongi täpsustusi
@@ -4201,7 +4201,7 @@ STR_VEHICLE_DETAILS_PERCENT                                     :Protsendid
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nimeta rong
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nimeta maanteesõiduk
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nimeta laev
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nimeta lennuk
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nimeta õhusõiduk
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY_LONG}
@@ -4270,21 +4270,21 @@ STR_ORDER_NON_STOP                                              :{BLACK}Vahepeat
 STR_ORDER_GO_TO                                                 :Siht
 STR_ORDER_GO_NON_STOP_TO                                        :Siht vahepeatusteta
 STR_ORDER_GO_VIA                                                :Siht läbi
-STR_ORDER_GO_NON_STOP_VIA                                       :Siht peatumata läbi
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Valitud korralduse peatumisprotseduuri muutmine
+STR_ORDER_GO_NON_STOP_VIA                                       :Siht vahepeatusteta läbi
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Muuda valitud korralduse peatumisprotseduuri
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Täislaadi üks veos
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laadi peale
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Täislaadi kõik veosed
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Täislaadi üks veos
 STR_ORDER_DROP_NO_LOADING                                       :Ei laadi
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Valitud korralduse pealelaadimisprotseduuri muutmine
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Muuda valitud korralduse laadimisprotseduuri
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Mahalaadi kõik
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Mahalaadi nõudlusel
-STR_ORDER_DROP_UNLOAD                                           :Mahalaadi kõik
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Tühjenda kõik
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Tühjenda nõudlusel
+STR_ORDER_DROP_UNLOAD                                           :Tühjenda kõik
 STR_ORDER_DROP_TRANSFER                                         :Ümberlaadi
-STR_ORDER_DROP_NO_UNLOADING                                     :Ei mahalaadi
+STR_ORDER_DROP_NO_UNLOADING                                     :Ei tühjenda
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud korralduse tühjendusprotseduuri muutmine
 
 STR_ORDER_REFIT                                                 :{BLACK}Ümberseadista
@@ -4347,7 +4347,7 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näita k
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Siht läbida {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Siht peatumata läbida {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Siht vahepeatusteta läbi {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Hooldus
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Hooldus vahepeatusteta
@@ -4375,31 +4375,31 @@ STR_ORDER_IMPLICIT                                              :(Automaatne)
 STR_ORDER_FULL_LOAD                                             :(Täislaadi kõik)
 STR_ORDER_FULL_LOAD_ANY                                         :(Täislaadi üks veos)
 STR_ORDER_NO_LOAD                                               :(Ei laadi)
-STR_ORDER_UNLOAD                                                :(Mahalaadi, laadi)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Mahalaadi, täislaadi kõik)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Mahalaadi, täislaadi üks)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Mahalaadi, jäta tühjaks)
+STR_ORDER_UNLOAD                                                :(Tühjenda, laadi veosed)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Tühjenda, täislaadi kõik)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Tühjenda, täislaadi üks)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Tühjenda, ei laadi)
 STR_ORDER_TRANSFER                                              :(Ümberlaadi, laadi)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Ümberlaadi, täislaadi kõik)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Ümberlaadi, täislaadi üks)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Ümberlaadi, jäta tühjaks)
-STR_ORDER_NO_UNLOAD                                             :(Ei mahalaadi, laadi)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei mahalaadi, täislaadi kõik)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei mahalaadi, täislaadi üks)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei mahalaadi, ei laadi)
+STR_ORDER_NO_UNLOAD                                             :(Ei tühjenda, laadi veosed)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei tühjenda, täislaadi kõik)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei tühjenda, täislaadi üks)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei tühjenda, ei laadi)
 
 STR_ORDER_AUTO_REFIT                                            :(Ümberseadistamine: {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Täislaadi kõik, ümberseadista: {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Täislaadi üks veos, ümberseadista: {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Mahalaadi, laadi, ümberseadista: {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Mahalaadi, täislaadi kõik, ümberseadista: {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Mahalaadi, täislaadi üks, ümberlaadi: {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Tühjenda, laadi, ümberseadista: {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Tühjenda, täislaadi kõik, ümberseadista: {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Tühjenda, täislaadi üks, ümberseadista: {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Ümberlaadi, laadi, ümberseadista: {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Ümberlaadi, täislaadi kõik, ümberseadista: {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Ümberlaadi, täislaadi üks, ümberseadista: {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei mahalaadi, laadi veos, ümberseadista: {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei mahalaadi, täislaadi kõik, ümberseadista: {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei mahalaadi, täislaadi üks, ümberseadista: {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei tühjenda, laadi veos, ümberseadista: {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei tühjenda, täislaadi kõik, ümberseadista: {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei tühjenda, täislaadi üks, ümberseadista: {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :võimalikud kaubad
 
@@ -4491,7 +4491,7 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skripti nimi
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Seaded
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Skripti seadistamine
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi AI uuesti
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Taaslaadi AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Sulge AI, laadi skript uuesti ning taaskäivita AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Võimalda/ei võimalda peatamist kui AI logisõnum sisaldab peatamiskirjet
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Vahe sees:
@@ -4518,9 +4518,9 @@ STR_AI_CONFIG_RANDOM_AI                                         :Suvaline AI
 STR_AI_CONFIG_NONE                                              :(mitte ühtegi)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Tõsta
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Valitud AI liigutamine loendis ülespoole
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Tõsta valitud AI loendis kõrgemale
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Langeta
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Valitud AI liigutamine loendis allapoole
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Langeta valitud AI loendis madalamale
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
 STR_AI_CONFIG_AI                                                :{SILVER}AI-d
@@ -4707,7 +4707,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}See ette
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ei saa ühtegi asulat ehitada...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ei saa linna ümbernimetada...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ei saa asulat ümbernimetada...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Siia ei saa asulat rajada...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Asulat ei saa laiendada...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liiga lähedal kaardi servale
@@ -5447,7 +5447,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Meldepunkt {TOW
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Rongi depoo
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Rongi depoo nr {COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Maanteesõidukite depoo
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Teesõidukite depoo nr {COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Maanteesõidukite depoo nr {COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Laeva depoo
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laeva depoo nr {COMMA}
 ###next-name-looks-similar

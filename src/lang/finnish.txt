@@ -1864,7 +1864,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Neliöllinen (a
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin, jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin, jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi subtrooppisen ilmaston sahat.
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Puut kasvavat, mutta eivät leviä {RED}(rikkoo subtrooppisen sahan)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Puut kasvavat, mutta leviävät vain sademetsissä
@@ -2281,7 +2281,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Etsi jul
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Etsi lähiverkosta
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Etsi palvelimia lähiverkosta
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisää palvelin
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelimen luetteloon. Tämä voi olla palvelimen osoite tai kutsukoodi.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelin luetteloon. Tämä voi olla palvelimen osoite tai kutsukoodi.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Käynnistä palvelin
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Käynnistä oma palvelin
 

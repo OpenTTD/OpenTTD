@@ -874,7 +874,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
-STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Pokaż liczbę klatek na sekundę
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Wyświetl liczbę klatek na sekundę
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informacje o „OpenTTD”
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
@@ -1116,7 +1116,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Pokaż r
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Pokaż teren mający właściciela
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik na typie przedsiębiorstwa przełącza jego wyświetlanie. Ctrl+klik wyłącza wszystkie typy prócz wybranego. Ponowne Ctrl+klik włącza wszystkie typy przedsiębiorstw
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik na firmie wyświetla jej własność. Ctrl+klik wyłącza wszystkie firmy prócz wybranej. Ponowne Ctrl+klik włącza wszystkie firmy
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klik na towar przełącza jego wyświetlanie jego przepływu. Ctrl+klik wyłącza wszystkie towary oprócz zaznaczonego. Ponowny Ctrl+klik włącza wszystkie towary
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kliknij na ładunek, aby przełączyć wyświetlanie jego przepływu. Ctrl+klik wyłącza wszystkie ładunki oprócz wybranego. Ponowny Ctrl+klik włącza wszystkie ładunki
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Drogi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Kolej
@@ -1671,7 +1671,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model przyspies
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wybierz model fizyki przyspieszania pociągów. Przy włączonym modelu oryginalnym, wszystkie pociągi jednakowo zwalniają na stokach. Realistyczny model sprawia, że pociągi zwalniają na stokach i zakrętach, biorąc pod uwagę różne właściwości, takie jak długość i siłę pociągową
 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model przyspieszania samochodów: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wybierz model fizyki przyspieszania pojazdów drogowych. Przy włączonym modelu oryginalnym, wszystkie pojazdy jednakowo zwalniają na stokach. Realistyczny model sprawia, że pojazdy zwalniają, biorąc pod uwagę różne parametry silnika, siła pociągowa
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wybierz model fizyki przyspieszania pojazdów drogowych. Przy włączonym modelu oryginalnym, wszystkie pojazdy jednakowo zwalniają na stokach. Realistyczny model sprawia, że pojazdy zwalniają, biorąc pod uwagę różne parametry silnika, jak np. siła pociągowa
 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nachylenie stoków dla pociągów: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pochylenie pola stoku dla pociągów. Wyższa wartość utrudnia podjazd pod górę
@@ -1699,7 +1699,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna dłu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksymalna długość budowanych tuneli
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Budowa przedsiębiorstw wydobywczych: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda finansowania podstawowych przedsiębiorstw. 'Niedostępna' oznacza brak możliwości finansowania czegokolwiek, 'poszukiwania' oznacza, że finansowanie jest możliwe, ale konstrukcja pojawi się w losowym miejscu na mapie (oraz losowo budowa może zakończyć się porażką), 'jak inne przedsiębiorstwa' oznacza, że przemysł wydobywczy może być budowany tak jak fabryki przetwórcze, w dowolnym miejscu
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda finansowania podstawowych przedsiębiorstw. „Niedostępna” oznacza brak możliwości finansowania czegokolwiek, „poszukiwania” oznacza, że finansowanie jest możliwe, ale konstrukcja pojawi się w losowym miejscu na mapie (oraz losowo budowa może zakończyć się porażką), „jak inne przedsiębiorstwa” oznacza, że przemysł wydobywczy może być budowany tak jak fabryki przetwórcze, w dowolnym miejscu
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Jak inne przedsiębiorstwa
@@ -2488,7 +2488,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Tej wers
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Wyjście
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Czy jesteś pewien, że chcesz wyjść z OpenTTD?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Czy na pewno chcesz wyjść z OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Tak
 STR_QUIT_NO                                                     :{BLACK}Nie
 
@@ -2669,7 +2669,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Znajdź 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Przeszukaj LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Znajdź serwery w sieci lokalnej
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zapisz serwer
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Zapisz serwer na liście serwerów, które będą zawsze sprawdzane w poszukiwaniu uruchomionych gier
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje serwer do listy. Może to być adres serwera lub kod zaproszenia
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
 
@@ -3840,12 +3840,12 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kup wyłączno�
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Daj łapówkę lokalnym władzom
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Rozpocznij małą kampanię reklamową aby zachęcić trochę pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Rozpocznij średnią kampanię reklamową aby zachęcić więcej pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Rozpocznij dużą kampanię reklamową aby zachęcić mnóstwo pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Rozpocznij małą kampanię reklamową aby zachęcić trochę pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Zapewnia tymczasowy wzrost oceny stacji w małym promieniu wokół centrum miasta.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Rozpocznij średnią kampanię reklamową, aby zachęcić więcej pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Zapewnia tymczasowy wzrost oceny stacji w średnim promieniu wokół centrum miasta.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Rozpocznij dużą kampanię reklamową aby zachęcić mnóstwo pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Zapewnia tymczasowy wzrost oceny stacji w dużym promieniu wokół centrum miasta.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Ufunduj remont sieci dróg.{}Spowoduje to zakłócenia w ruchu ulicznym do 6 miesięcy.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj pomnik dla uczczenia Twojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufunduj nowe budynki komercyjne w mieście.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj pomnik dla uczczenia twojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufunduj nowe budynki komercyjne w mieście.{}Daje jednorazowy impuls do szybszego wzrostu miasta.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście.{} Lokalne władze nie pozwolą pasażerom ani przedsiębiorstwom korzystać z usług innych firm.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom. Powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
 
@@ -4194,7 +4194,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień k
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby chronić tę grupę przed globalną zamianą pojazdów. Ctrl+klik, aby chronić również podgrupy
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj grupę
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Jesteś pewien, że chcesz skasować tę grupę i wszystkich jej członków?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Czy na pewno chcesz skasować tę grupę i wszystkie podrzędne?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
@@ -4979,7 +4979,7 @@ STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
 ###length 3
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Plik 'ReadMe' dla {STRING} {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} - plik readme.txt
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} - lista zmian
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} - licencja
 

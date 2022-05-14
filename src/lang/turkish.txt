@@ -2108,7 +2108,7 @@ STR_QUIT_NO                                                     :{BLACK}Hayır
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ana Menüye Dön
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinize emin misiniz?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinize emin misiniz?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler

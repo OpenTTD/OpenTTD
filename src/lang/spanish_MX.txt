@@ -332,7 +332,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir ve
 
 # Tooltips for the main toolbar
 ###length 31
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar juego
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opciones
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar partida y salir del juego
@@ -756,7 +756,7 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parada de autobús
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeropuerto/Helipuerto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Muelle
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreno rugoso
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Suelo irregular
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Pasto
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreno árido
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selva
@@ -771,7 +771,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nieve
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar nombres de localidades
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrar la vista en la ubicación actual
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrar en ubicación actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -899,12 +899,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subsidio vencida:{}{}{STRING} de {STRING} a {STRING} ya no está subsidiado
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidio retirado:{}{}El servicio de {STRING} de {STRING} hacia {STRING} ya no está subsidiado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Se ofrece subsidio.{}{}¡El primer servicio de {STRING} desde {STRING} a {STRING} tendrá subsidio de {NUM} año{P "" s} por parte del ayuntamiento local!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Se ofrece subsidio.{}{}¡El primer transporte de {STRING} desde {STRING} a {STRING} tendrá subsidio por {NUM} año{P "" s} por parte del ayuntamiento local!
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} generará un 50% extra por {NUM} año{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} generará tasa doble por {NUM} año{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} generará tasa triple por {NUM} año{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} generará tasa cuádruple por {NUM} año{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El transporte de {STRING} desde {STRING} a {STRING} generará 50% extra por {NUM} año{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El transporte de {STRING} desde {STRING} a {STRING} generará tasa doble por {NUM} año{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El transporte de {STRING} desde {STRING} a {STRING} generará tasa triple por {NUM} año{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El transporte de {STRING} desde {STRING} a {STRING} generará tasa cuádruple por {NUM} año{P "" s}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}¡Caos por el tráfico en {TOWN}!{}{}¡Obras de reconstrucción de caminos por parte de {STRING} provocan 6 meses de dolores de cabeza a conductores!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}¡Monopolio de transportes!
@@ -1036,7 +1036,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Cuádruple
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño de tipografía
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño de texto
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Elegir el tamaño de letra de la interfaz
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detectar)
@@ -1166,7 +1166,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se en
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar texto:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplegar todo
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Condensar todo
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Compactar todo
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos los ajustes
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sin explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
@@ -1226,7 +1226,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo présta
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una empresa puede pedir prestada (sin tener en cuenta la inflación)
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasa de interés de los préstamos; controla también la inflación, en caso de estar activada
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasa de interés del préstamo; controla también la inflación, en caso de estar activada
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos de operación: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nivel de costos de mantenimiento y operación de vehículos e infraestructura
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No se puede establecer el límite de elevación del mapa en el valor indicado. Al menos una montaña ya es más alta
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Alterar terreno debajo edificios, vías férreas, etc.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Alterar terreno debajo de edificios, vías férreas, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir la alteración del terreno debajo de infraestructura sin tener que retirarla
 
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir cambiar el tamaño del área de recolección a una forma más real: {STRING}
@@ -1342,7 +1342,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la derecha
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar ventana de finanzas al final del año: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para permitir realizar una inspección más fácil del estado financiero de la empresa
 
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Toda nuevo recorrido es 'Sin paradas' por defecto: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Todo nuevo recorrido es 'Sin paradas' por defecto: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Cada vehículo hace parada en cada estación por la que pasa, pero al activar esta opción el vehículo seguirá de largo hasta llegar a su destino. Esta opción solo define el valor por defecto para nuevos recorridos, pero cada recorrido individual puede ajustarse independientemente
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Todos los nuevos trenes paran por defecto en el {STRING} del andén
@@ -1470,7 +1470,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxi
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Distancia límite desde el borde del mapa a partir del cual se pueden construir refinerías y plataformas de petróleo. En mapas con forma de isla esto garantiza que se ubiquen cerca de la costa. En mapas de más de 256 casillas el valor se amplía.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio de nieve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlar la altura al que empieza la nieve en geografía de Subártico, lo cual afectará la generación de industrias y los requisitos de crecimiento de localidades. Solo puede cambiarse en el Editor de mapas, si no, se calculará según la "Extensión de nieve"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlar la altitud donde inicia la nieve en un ambiente Subártico, lo cual afectará la generación de industrias y los requisitos de crecimiento de localidades. Solo puede cambiarse en el Editor de mapas, si no, se calculará según la "Extensión de nieve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Extensión de nieve: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controlar la cantidad aproximada de nieve al generar un ambiente Subártico, la cual afectará la generación de industrias y los requisitos de crecimiento de las localidades. La superficie casi al ras del nivel del mar nunca tiene nieve
@@ -1531,7 +1531,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colores de flujos de carga: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Gradiente de colores del flujo de carga
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Colores de la gradiente en los indicadores visuales del flujo de carga.
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :De verde a rojo (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :De verde a azul
@@ -1806,7 +1806,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economía: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía suave provoca cambios menores pero continuos en la producción. La economía congelada impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye tipos de industrias.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía estable provoca cambios menores pero continuos en la producción. La economía rígida impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye otras industrias
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Estable
@@ -1941,7 +1941,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribu
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribución para el correo: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución "Simétrica" se envía la misma cantidad de correo entre dos estaciones. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de correo en ambas direcciones. "Manual" significa que no hay distribución automática para el correo
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para cargamento de valores: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :El cargamento de valores contiene objetos de valor en el clima Templado, diamantes en el Subtropical y oro en el Subártico. Algún NewGRF puede modificar esto. En una distribución "Simétrica", se envía la misma cantidad de carga entre dos estaciones. En una distribución "Asimétrica", se envían cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no hay distribución automática para esta carga. Se recomienda la distribución "Asimétrica" o "Manual" al jugar en clima Subártico, ya que los bancos no regresan oro a las minas. En los climas Templado y Subtropical se puede escoger "Simétrica", ya que los bancos pueden regresar algunos objetos de valor a su banco de origen.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :El cargamento de valores contiene objetos de valor en el ambiente Templado, diamantes en el Subtropical y oro en el Subártico. Algún NewGRF puede modificar esto. En una distribución "Simétrica", se envía la misma cantidad de carga entre dos estaciones. En una distribución "Asimétrica", se envían cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no hay distribución automática para esta carga. Se recomienda la distribución "Asimétrica" o "Manual" al jugar en ambiente Subártico, ya que los bancos no regresan oro a las minas. En los ambiente Templado y Subtropical se puede escoger "Simétrica", ya que los bancos pueden regresar algunos objetos de valor a su banco de origen.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otra carga: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrica" significa que se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para esta clase de carga.
 ###length 3
@@ -1953,7 +1953,7 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de l
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Si el valor es alto, se requerirá mayor tiempo para calcular la gráfica de distribución (si se lleva demasiado tiempo, se notará desfase en el juego). Si es muy bajo, la distribución será imprecisa, pudiendo hacer que la carga no vaya al lugar indicado
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor mayor de 0, la distancia entre una estación de origen A y una estación de destino B afectará la cantidad de carga que se envíe desde A a B, enviando menos carga cuanto más lejos est. Cuanto mayor sea el valor de esta opción, menos carga se enviará a estaciones distantes en favor de estaciones cercanas.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor mayor de 0, la distancia entre una estación de origen A y una estación de destino B afectará la cantidad de carga que se envíe desde A a B, enviando menos carga cuanto más lejos esté. Cuanto mayor sea el valor de esta opción, menos carga se enviará a estaciones distantes en favor de estaciones cercanas.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantidad de carga en retorno en modo simétrico: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Con un valor menor de 100% la distribución simétrica de carga será más asimétrica, lo cual obligará a enviar menos carga en retorno en función de la enviada a una estación. Si es 0%, la distribución simétrica igual que la asimétrica.
 
@@ -2646,7 +2646,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción d
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de vías férreas en una orientación. Ctrl quita o coloca vías. Mayús muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramo de vías férreas con orientación automática. Ctrl quita o coloca vías. Mayús muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús muestra un costo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre vías férreas. Ctrl activa la unión de puntos de ruta. Mayús muestra una estimación del precio
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre vías férreas. Ctrl activa la unión de puntos de ruta. Mayús muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir señales. Ctrl alterna entre señales mecánicas y eléctricas{}Arrastrar sobre un tramo recto permite poner señales intercaladas. Ctrl pone señales hasta una desviación u otra señal{}Ctrl+Clic cambia al modo de selección de señales. Mayús muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril. Mayús muestra un costo estimado
@@ -2769,7 +2769,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construi
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir esclusa. Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para comprar y dar mantenimiento a barcos). Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya para utilizar como punto de ruta marítimo. Mayús muestra una estimación del precio
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya para utilizar como punto de ruta marítimo. Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir acueducto. Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definir cuerpo de agua.{}Crea un canal, a menos que se pulse Ctrl en un área al nivel del mar, en cuyo caso se inundarán los alrededores
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos. Ctrl para seleccionar un área en diagonal
@@ -2811,13 +2811,13 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruido ge
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Alteración de terreno
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebajar una esquina del terreno. Al arrastrar el ratón se rebaja la primera esquina elegida y el resto del terreno seleccionado se nivela a dicha altura. Ctrl para seleccionar un área en diagonal.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar una esquina del terreno. Al arrastrar el ratón se eleva la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal. Mayús muestra un precio estimado
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar un área de terreno a la altura de la primera esquina seleccionada. Ctrl para seleccionar un área en diagonal. Mayús muestra un precio estimado
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para usos futuros. Mayús muestra un precio estimado
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar una esquina del terreno. Al arrastrar el ratón se eleva la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar un área de terreno a la altura de la primera esquina seleccionada. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para usos futuros. Mayús muestra un costo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección de objeto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Elegir una estructura u objeto a construir. Mayús muestra un precio estimado
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Elegir una estructura u objeto a construir. Mayús muestra un costo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Elegir el tipo de objeto o estructura a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vista previa del objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM}×{NUM} casillas
@@ -2910,7 +2910,7 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clic en la industria para ver sus proveedores y clientes
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clic en la carga para ver sus proveedores y clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadena industrial
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar las industrias que proveen y aceptan la carga
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar las industrias que abastecen y aceptan la carga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ver en minimapa
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Elegir y ver en el minimapa las industrias mostradas en el mapa principal
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Elegir carga
@@ -2950,7 +2950,7 @@ STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Velocida
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocas
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno rugoso
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Suelo irregular
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Tierra árida
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Hierba
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Sembradíos
@@ -3370,7 +3370,7 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren {VEHICLE} de {COMPANY} tiene una longitud no válida. Quizá es por problemas de los NewGRF, y puede provocar que el juego falle
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga o reequipamiento para '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga el reequipamiento correcto
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga o reforma de '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga la reforma correcta
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causado un bucle sin fin en la llamada de producción
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}La llamada {1:HEX} devolvió un resultado desconocido o no válido {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retornó un tipo inválido de carga en la callback de producción en {2:HEX}
@@ -3638,7 +3638,7 @@ STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trenes
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Autotransportes
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronaves
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Barcos
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Tasa de intereses del préstamo
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}T. de interés del préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
@@ -3683,7 +3683,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver edificio de las oficinas centrales de la empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reubicar sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reubicar la sede de la empresa pagando el 1% del valor total de la empresa. Mayús+Clic muestra un precio estimado sin reubicar la sede
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reubicar la sede de la empresa pagando el 1% del valor total de la empresa. Mayús+Clic muestra un costo estimado de reubicación
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informe detallado de infraestructura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transferir capital
@@ -3693,7 +3693,7 @@ STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva ca
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el gerente
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Cromática
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambiar la cromática (colores corporativos) de los vehículos
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre de empresa
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nombre de la empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar el nombre de la empresa
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nombre del gerente
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar el nombre del gerente
@@ -3891,9 +3891,9 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar 
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el tren elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el autotransporte elegido. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el autotransporte elegido. Mayús+Clic muestra un costo estimado de compra
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave elegida. Mayús+Clic muestra un precio estimado de compra
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave elegida. Mayús+Clic muestra un costo estimado de compra
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar y reformar el tren elegido. Mayús+Clic muestra un precio estimado de compra
@@ -3991,10 +3991,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren y sus vagones. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del autotransporte. Clic en este botón y después en el vehículo a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará una copia del barco. Clic en este botón y después en el barco a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará una copia de la aeronave. Clic en este botón y después en la aeronave a copiar. Ctrl+Clic para compartir las órdenes. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto comprará una copia del tren y sus vagones. Clic en este botón y después en el tren a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto comprará una copia del autotransporte. Clic en este botón y después en el vehículo a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará una copia del barco. Clic en este botón y después en el barco a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará una copia de la aeronave. Clic en este botón y después en la aeronave a copiar. Ctrl+Clic para compartir los recorridos. Mayús+Clic muestra un costo estimado de compra
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar la vista en el depósito de trenes. Ctrl+Clic abre una vista aparte
@@ -4121,7 +4121,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto com
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forzar al tren a proceder sin esperar a que la señal le ceda vía libre
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cambiar dirección del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar al vehículo a girar en sentido opuesto
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar la vista en el destino de la orden. Ctrl+Clic abre una vista aparte
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar la vista en el destino del recorrido. Ctrl+Clic abre una vista aparte
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reformar tren para llevar otro tipo de carga
@@ -4279,7 +4279,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Itinerario
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar a la ventana de itinerarios
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes. Clic para resaltar. Ctrl+Clic para ir al destino de la orden
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de recorridos. Clic para resaltar. Ctrl+Clic para ir al destino del recorrido
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -4309,7 +4309,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :No descargar
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar la forma de descargar en el recorrido resaltado
 
 STR_ORDER_REFIT                                                 :{BLACK}Reformar
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elegir el tipo de carga a reformar en esta orden. Ctrl+Clic para eliminar la orden
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elegir la reforma de carga en este recorrido. Ctrl+Clic para eliminar
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Reformar en estación
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elegir la reforma de carga en este recorrido. Ctrl+Clic para eliminar. La reforma en estaciones solo será posible si el vehículo lo permite
 STR_ORDER_DROP_REFIT_AUTO                                       :Carga fija
@@ -4442,7 +4442,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Recorridos
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Cambiar a la ventana de recorridos
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Itinerarios. Clic en una orden para resaltarla
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Itinerarios. Clic en un recorrido para resaltarlo
 
 STR_TIMETABLE_NO_TRAVEL                                         :No viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado según la siguiente instrucción manual)
@@ -4734,7 +4734,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... dema
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cerca de otra localidad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas localidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ya no hay espacio en el mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La localidad no construirá carreteras. Se puede activar esta función en Configuración->Ambiente->Localidades
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La localidad no construirá carreteras. Se puede activar esta función en Configuración->Entorno->Localidades
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar esta localidad...{}Aún tiene una estación o depósito, o una de sus casillas no se puede quitar
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hay lugar apto para una estatua en el centro de esta localidad

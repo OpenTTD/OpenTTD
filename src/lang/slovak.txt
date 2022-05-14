@@ -1893,7 +1893,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Prepínanie med
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Výber návestidiel použitých v zámene pomocou Ctrl+kliku na návestidlo počas umiestňovania návestidiel
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Iba trasové návestidlá
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Všetky
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Všetky viditeľné
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraziť typy návestidiel: {STRING}
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Zvoliť, aké typy návestidiel sú zobrazené pri výbere návestidiel
@@ -2464,7 +2464,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neuklada
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nastaviť spoločnosti nové heslo
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Heslo spoločnosti
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Predvolené heslo spoločnosti
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Použit toto heslo ako predvolené pre nové spoločnosti
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Použiť toto heslo ako predvolené pre nové spoločnosti
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pridať sa
@@ -2489,7 +2489,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadajte 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nebolo nájdené žiadne sieťové zariadenie, alebo je hra kompilovaná bez ENABLE_NETWORK
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server neodpovedá na žiadosť
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Pokus o pripojenie k servru vypršal, alebo bol zamietnutý
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Pripojenie zlyhalo kvôli nesprávnemu NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sieť - Chyba synchronizácie hry
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Sieť - Stratené spojenie
@@ -2830,7 +2830,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postavi�
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postaviť prístav. Ctrl umožní spájanie staníc. Shift zobrazí odhadovanú cenu
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umiestniť bóju na vyznačenie trasy. Shift zobrazí odhadovanú cenu
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postaviť akvadukt. Shift zobrazí odhadovanú cenu
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definovať oblasť vody.{}Vytvorí vodný kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definovať oblasť vody.{}Vytvorí vodný kanál, pri stlačení CTRL na úrovni mora zaplaví okolie
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umiestniť rieku. Ctrl označí oblasť diagonálne
 
 # Ship depot construction window
@@ -3064,7 +3064,7 @@ STR_LAI_STATION_DESCRIPTION_BUOY                                :Bója
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Smerový bod
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Voda
-STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanál
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Vodný kanál
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Stavidlo
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rieka
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Pobrežie alebo nábrežie
@@ -3313,8 +3313,8 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: 
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Predvolená (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Predvolená (D) / 32 bpp
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Zdedené (W)
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Zdedené (W) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Dedičná (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Dedičná (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametre: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Žiadne
 
@@ -4357,7 +4357,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Nevykladaj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmeniť spôsob vykladania pre označený príkaz
 
 STR_ORDER_REFIT                                                 :{BLACK}Prestavba
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyberte druh nákladu na prestavbu v tomto poradí. Ctrl+klik na odstránenie príkazu prestavby
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyberte druh nákladu na prestavbu v tomto príkaze. Ctrl+klik pre odstránenie pokynu na prestavbu
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Prestavba na stanici
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vyberte druh nákladu na prestavbu v tomto príkaze. Ctrl+klik pre odstránenie pokynu na prestavbu. Prestavba na staniciach je možná iba ak ju vozidlo podporuje
 STR_ORDER_DROP_REFIT_AUTO                                       :Fixný náklad
@@ -4929,7 +4929,7 @@ STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Žiadna 
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Žiadna použiteľná električková trať
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa nedá postaviť vodný kanál...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nemôžete tu postaviť vodný kanál...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nemôžete tu postaviť stavidlá...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tu nie je možné umiestniť rieku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musíš postaviť na vode
