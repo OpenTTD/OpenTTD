@@ -34,7 +34,7 @@ struct Economy {
 	uint32 industry_daily_change_counter; ///< Bits 31-16 are number of industry to be performed, 15-0 are fractional collected daily
 	uint32 industry_daily_increment;      ///< The value which will increment industry_daily_change_counter. Computed value. NOSAVE
 	uint64 inflation_prices;              ///< Cumulated inflation of prices since game start; 16 bit fractional part
-	uint64 inflation_payment;             ///< Cumulated inflation of cargo paypent since game start; 16 bit fractional part
+	uint64 inflation_payment;             ///< Cumulated inflation of cargo payment since game start; 16 bit fractional part
 
 	/* Old stuff for savegame conversion only */
 	Money old_max_loan_unround;           ///< Old: Unrounded max loan
@@ -162,11 +162,11 @@ enum ExpensesType : byte {
 	EXPENSES_AIRCRAFT_RUN,        ///< Running costs aircraft.
 	EXPENSES_SHIP_RUN,            ///< Running costs ships.
 	EXPENSES_PROPERTY,            ///< Property costs.
-	EXPENSES_TRAIN_INC,           ///< Income from trains.
-	EXPENSES_ROADVEH_INC,         ///< Income from road vehicles.
-	EXPENSES_AIRCRAFT_INC,        ///< Income from aircraft.
-	EXPENSES_SHIP_INC,            ///< Income from ships.
-	EXPENSES_LOAN_INT,            ///< Interest payments over the loan.
+	EXPENSES_TRAIN_REVENUE,       ///< Revenue from trains.
+	EXPENSES_ROADVEH_REVENUE,     ///< Revenue from road vehicles.
+	EXPENSES_AIRCRAFT_REVENUE,    ///< Revenue from aircraft.
+	EXPENSES_SHIP_REVENUE,        ///< Revenue from ships.
+	EXPENSES_LOAN_INTEREST,       ///< Interest payments over the loan.
 	EXPENSES_OTHER,               ///< Other expenses.
 	EXPENSES_END,                 ///< Number of expense types.
 	INVALID_EXPENSES      = 0xFF, ///< Invalid expense type.

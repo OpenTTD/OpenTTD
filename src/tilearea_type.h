@@ -12,6 +12,8 @@
 
 #include "map_func.h"
 
+class OrthogonalTileIterator;
+
 /** Represents the covered area of e.g. a rail station */
 struct OrthogonalTileArea {
 	TileIndex tile; ///< The base tile of the area
@@ -58,6 +60,10 @@ struct OrthogonalTileArea {
 	{
 		return TILE_ADDXY(this->tile, this->w / 2, this->h / 2);
 	}
+
+	OrthogonalTileIterator begin() const;
+
+	OrthogonalTileIterator end() const;
 };
 
 /** Represents a diagonal tile area. */
@@ -124,6 +130,15 @@ public:
 	}
 
 	/**
+	 * Get the tile we are currently at.
+	 * @return The tile we are at, or INVALID_TILE when we're done.
+	 */
+	inline TileIndex operator *() const
+	{
+		return this->tile;
+	}
+
+	/**
 	 * Move ourselves to the next tile in the rectangle on the map.
 	 */
 	virtual TileIterator& operator ++() = 0;
@@ -132,6 +147,36 @@ public:
 	 * Allocate a new iterator that is a copy of this one.
 	 */
 	virtual TileIterator *Clone() const = 0;
+
+	/**
+	 * Equality comparison.
+	 */
+	bool operator ==(const TileIterator &rhs) const
+	{
+		return this->tile == rhs.tile;
+	}
+	/**
+	 * Inequality comparison.
+	 */
+	bool operator !=(const TileIterator &rhs) const
+	{
+		return this->tile != rhs.tile;
+	}
+
+	/**
+	 * Equality comparison.
+	 */
+	bool operator ==(const TileIndex &rhs) const
+	{
+		return this->tile == rhs;
+	}
+	/**
+	 * Inequality comparison.
+	 */
+	bool operator !=(const TileIndex &rhs) const
+	{
+		return this->tile != rhs;
+	}
 };
 
 /** Iterator to iterate over a tile area (rectangle) of the map. */
@@ -222,13 +267,5 @@ public:
 		return new DiagonalTileIterator(*this);
 	}
 };
-
-/**
- * A loop which iterates over the tiles of a TileArea.
- * @param var The name of the variable which contains the current tile.
- *            This variable will be allocated in this \c for of this loop.
- * @param ta  The tile area to search over.
- */
-#define TILE_AREA_LOOP(var, ta) for (OrthogonalTileIterator var(ta); var != INVALID_TILE; ++var)
 
 #endif /* TILEAREA_TYPE_H */

@@ -144,14 +144,14 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 		/* Re-add it in the openlist_queue. */
 		this->openlist_queue.Push(check, new_f);
 	} else {
-		/* A new node, add him to the OpenList */
+		/* A new node, add it to the OpenList */
 		this->OpenListAdd(closedlist_parent, current, new_f, new_g);
 	}
 }
 
 /**
  * This function is the core of %AyStar. It handles one item and checks
- * his neighbour items. If they are valid, they are added to be checked too.
+ * its neighbour items. If they are valid, they are added to be checked too.
  * @return Possible values:
  *  - #AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path has been found.
  *  - #AYSTAR_LIMIT_REACHED : Indicates that the max_search_nodes limit has been reached.

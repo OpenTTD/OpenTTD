@@ -24,6 +24,7 @@
 /** Window to select a date graphically by using dropdowns */
 struct SetDateWindow : Window {
 	SetDateCallback *callback; ///< Callback to call when a date has been selected
+	void *callback_data;       ///< Callback data pointer.
 	YearMonthDay date; ///< The currently selected date
 	Year min_year;     ///< The minimum year in the year dropdown
 	Year max_year;     ///< The maximum year (inclusive) in the year dropdown
@@ -38,9 +39,10 @@ struct SetDateWindow : Window {
 	 * @param max_year the maximum year (inclusive) to show in the year dropdown
 	 * @param callback the callback to call once a date has been selected
 	 */
-	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback) :
+	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback, void *callback_data) :
 			Window(desc),
 			callback(callback),
+			callback_data(callback_data),
 			min_year(std::max(MIN_YEAR, min_year)),
 			max_year(std::min(MAX_YEAR, max_year))
 	{
@@ -146,8 +148,8 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_SET_DATE:
-				if (this->callback != nullptr) this->callback(this, ConvertYMDToDate(this->date.year, this->date.month, this->date.day));
-				delete this;
+				if (this->callback != nullptr) this->callback(this, ConvertYMDToDate(this->date.year, this->date.month, this->date.day), this->callback_data);
+				this->Close();
 				break;
 		}
 	}
@@ -209,9 +211,10 @@ static WindowDesc _set_date_desc(
  * @param min_year the minimum year to show in the year dropdown
  * @param max_year the maximum year (inclusive) to show in the year dropdown
  * @param callback the callback to call once a date has been selected
+ * @param callback_data extra callback data
  */
-void ShowSetDateWindow(Window *parent, int window_number, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback)
+void ShowSetDateWindow(Window *parent, int window_number, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback, void *callback_data)
 {
-	DeleteWindowByClass(WC_SET_DATE);
-	new SetDateWindow(&_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback);
+	CloseWindowByClass(WC_SET_DATE);
+	new SetDateWindow(&_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback, callback_data);
 }

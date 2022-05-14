@@ -8,46 +8,75 @@
 /** @file cheat_sl.cpp Code handling saving and loading of cheats */
 
 #include "../stdafx.h"
-#include "../cheat_type.h"
 
 #include "saveload.h"
+#include "compat/cheat_sl_compat.h"
+
+#include "../cheat_type.h"
 
 #include "../safeguards.h"
 
-/**
- * Save the cheat values.
- */
-static void Save_CHTS()
-{
-	/* Cannot use lengthof because _cheats is of type Cheats, not Cheat */
-	byte count = sizeof(_cheats) / sizeof(Cheat);
-	Cheat *cht = (Cheat*) &_cheats;
-	Cheat *cht_last = &cht[count];
-
-	SlSetLength(count * 2);
-	for (; cht != cht_last; cht++) {
-		SlWriteByte(cht->been_used);
-		SlWriteByte(cht->value);
-	}
-}
-
-/**
- * Load the cheat values.
- */
-static void Load_CHTS()
-{
-	Cheat *cht = (Cheat*)&_cheats;
-	size_t count = SlGetFieldLength() / 2;
-	/* Cannot use lengthof because _cheats is of type Cheats, not Cheat */
-	if (count > sizeof(_cheats) / sizeof(Cheat)) SlErrorCorrupt("Too many cheat values");
-
-	for (uint i = 0; i < count; i++) {
-		cht[i].been_used = (SlReadByte() != 0);
-		cht[i].value     = (SlReadByte() != 0);
-	}
-}
-
-/** Chunk handlers related to cheats. */
-extern const ChunkHandler _cheat_chunk_handlers[] = {
-	{ 'CHTS', Save_CHTS, Load_CHTS, nullptr, nullptr, CH_RIFF | CH_LAST},
+static const SaveLoad _cheats_desc[] = {
+	SLE_VAR(Cheats, magic_bulldozer.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, magic_bulldozer.value, SLE_BOOL),
+	SLE_VAR(Cheats, switch_company.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, switch_company.value, SLE_BOOL),
+	SLE_VAR(Cheats, money.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, money.value, SLE_BOOL),
+	SLE_VAR(Cheats, crossing_tunnels.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, crossing_tunnels.value, SLE_BOOL),
+	SLE_VAR(Cheats, no_jetcrash.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, no_jetcrash.value, SLE_BOOL),
+	SLE_VAR(Cheats, change_date.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, change_date.value, SLE_BOOL),
+	SLE_VAR(Cheats, setup_prod.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, setup_prod.value, SLE_BOOL),
+	SLE_VAR(Cheats, edit_max_hl.been_used, SLE_BOOL),
+	SLE_VAR(Cheats, edit_max_hl.value, SLE_BOOL),
 };
+
+
+struct CHTSChunkHandler : ChunkHandler {
+	CHTSChunkHandler() : ChunkHandler('CHTS', CH_TABLE) {}
+
+	void Save() const override
+	{
+		SlTableHeader(_cheats_desc);
+
+		SlSetArrayIndex(0);
+		SlObject(&_cheats, _cheats_desc);
+	}
+
+	void Load() const override
+	{
+		std::vector<SaveLoad> slt = SlCompatTableHeader(_cheats_desc, _cheats_sl_compat);
+
+		if (IsSavegameVersionBefore(SLV_TABLE_CHUNKS)) {
+			size_t count = SlGetFieldLength();
+			std::vector<SaveLoad> oslt;
+
+			/* Cheats were added over the years without a savegame bump. They are
+			 * stored as 2 SLE_BOOLs per entry. "count" indicates how many SLE_BOOLs
+			 * are stored for this savegame. So read only "count" SLE_BOOLs (and in
+			 * result "count / 2" cheats). */
+			for (auto &sld : slt) {
+				count--;
+				oslt.push_back(sld);
+
+				if (count == 0) break;
+			}
+			slt = oslt;
+		}
+
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		SlObject(&_cheats, slt);
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
+	}
+};
+
+static const CHTSChunkHandler CHTS;
+static const ChunkHandlerRef cheat_chunk_handlers[] = {
+	CHTS,
+};
+
+extern const ChunkHandlerTable _cheat_chunk_handlers(cheat_chunk_handlers);

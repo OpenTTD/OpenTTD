@@ -43,6 +43,7 @@ static BITMAP *_allegro_screen;
 #define MAX_DIRTY_RECTS 100
 static PointDimension _dirty_rects[MAX_DIRTY_RECTS];
 static int _num_dirty_rects;
+static Palette _local_palette; ///< Current palette to use for drawing.
 
 void VideoDriver_Allegro::MakeDirty(int left, int top, int width, int height)
 {
@@ -80,9 +81,9 @@ static void UpdatePalette(uint start, uint count)
 
 	uint end = start + count;
 	for (uint i = start; i != end; i++) {
-		pal[i].r = _cur_palette.palette[i].r / 4;
-		pal[i].g = _cur_palette.palette[i].g / 4;
-		pal[i].b = _cur_palette.palette[i].b / 4;
+		pal[i].r = _local_palette.palette[i].r / 4;
+		pal[i].g = _local_palette.palette[i].g / 4;
+		pal[i].b = _local_palette.palette[i].b / 4;
 		pal[i].filler = 0;
 	}
 
@@ -96,25 +97,24 @@ static void InitPalette()
 
 void VideoDriver_Allegro::CheckPaletteAnim()
 {
-	if (_cur_palette.count_dirty != 0) {
-		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+	if (!CopyPalette(_local_palette)) return;
 
-		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				UpdatePalette(_cur_palette.first_dirty, _cur_palette.count_dirty);
-				break;
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
-			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_cur_palette);
-				break;
+	switch (blitter->UsePaletteAnimation()) {
+		case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+			UpdatePalette(_local_palette.first_dirty, _local_palette.count_dirty);
+			break;
 
-			case Blitter::PALETTE_ANIMATION_NONE:
-				break;
+		case Blitter::PALETTE_ANIMATION_BLITTER:
+			blitter->PaletteAnimate(_local_palette);
+			break;
 
-			default:
-				NOT_REACHED();
-		}
-		_cur_palette.count_dirty = 0;
+		case Blitter::PALETTE_ANIMATION_NONE:
+			break;
+
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -191,7 +191,7 @@ static bool CreateMainSurface(uint w, uint h)
 
 	GetAvailableVideoMode(&w, &h);
 	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) {
-		DEBUG(driver, 0, "Allegro: Couldn't allocate a window to draw on '%s'", allegro_error);
+		Debug(driver, 0, "Allegro: Couldn't allocate a window to draw on '{}'", allegro_error);
 		return false;
 	}
 
@@ -327,8 +327,8 @@ static uint32 ConvertAllegroKeyIntoMy(WChar *character)
 	if (key_shifts & KB_CTRL_FLAG)  key |= WKC_CTRL;
 	if (key_shifts & KB_ALT_FLAG)   key |= WKC_ALT;
 #if 0
-	DEBUG(driver, 0, "Scancode character pressed %u", scancode);
-	DEBUG(driver, 0, "Unicode character pressed %u", unicode);
+	Debug(driver, 0, "Scancode character pressed {}", scancode);
+	Debug(driver, 0, "Unicode character pressed {}", unicode);
 #endif
 
 	*character = unicode;
@@ -425,7 +425,7 @@ int _allegro_instance_count = 0;
 const char *VideoDriver_Allegro::Start(const StringList &param)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
-		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
+		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;

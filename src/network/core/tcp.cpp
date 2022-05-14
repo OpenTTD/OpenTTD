@@ -29,25 +29,45 @@ NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
 
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
-	this->CloseConnection();
+	this->EmptyPacketQueue();
+	this->CloseSocket();
+}
 
+/**
+ * Free all pending and partially received packets.
+ */
+void NetworkTCPSocketHandler::EmptyPacketQueue()
+{
+	while (this->packet_queue != nullptr) {
+		delete Packet::PopFromQueue(&this->packet_queue);
+	}
+	delete this->packet_recv;
+	this->packet_recv = nullptr;
+}
+
+/**
+ * Close the actual socket of the connection.
+ * Please make sure CloseConnection is called before CloseSocket, as
+ * otherwise not all resources might be released.
+ */
+void NetworkTCPSocketHandler::CloseSocket()
+{
 	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
 	this->sock = INVALID_SOCKET;
 }
 
+/**
+ * This will put this socket handler in a close state. It will not
+ * actually close the OS socket; use CloseSocket for this.
+ * @param error Whether we quit under an error condition or not.
+ * @return new status of the connection.
+ */
 NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection(bool error)
 {
+	this->MarkClosed();
 	this->writable = false;
-	NetworkSocketHandler::CloseConnection(error);
 
-	/* Free all pending and partially received packets */
-	while (this->packet_queue != nullptr) {
-		Packet *p = this->packet_queue->next;
-		delete this->packet_queue;
-		this->packet_queue = p;
-	}
-	delete this->packet_recv;
-	this->packet_recv = nullptr;
+	this->EmptyPacketQueue();
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -60,26 +80,10 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection(bool error)
  */
 void NetworkTCPSocketHandler::SendPacket(Packet *packet)
 {
-	Packet *p;
 	assert(packet != nullptr);
 
 	packet->PrepareToSend();
-
-	/* Reallocate the packet as in 99+% of the times we send at most 25 bytes and
-	 * keeping the other 1400+ bytes wastes memory, especially when someone tries
-	 * to do a denial of service attack! */
-	packet->buffer = ReallocT(packet->buffer, packet->size);
-
-	/* Locate last packet buffered for the client */
-	p = this->packet_queue;
-	if (p == nullptr) {
-		/* No packets yet */
-		this->packet_queue = packet;
-	} else {
-		/* Skip to the last packet */
-		while (p->next != nullptr) p = p->next;
-		p->next = packet;
-	}
+	Packet::AddToQueue(&this->packet_queue, packet);
 }
 
 /**
@@ -101,15 +105,14 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 	if (!this->writable) return SPS_NONE_SENT;
 	if (!this->IsConnected()) return SPS_CLOSED;
 
-	p = this->packet_queue;
-	while (p != nullptr) {
-		res = send(this->sock, (const char*)p->buffer + p->pos, p->size - p->pos, 0);
+	while ((p = this->packet_queue) != nullptr) {
+		res = p->TransferOut<int>(send, this->sock, 0);
 		if (res == -1) {
-			int err = GET_LAST_ERROR();
-			if (err != EWOULDBLOCK) {
+			NetworkError err = NetworkError::GetLast();
+			if (!err.WouldBlock()) {
 				/* Something went wrong.. close client! */
 				if (!closing_down) {
-					DEBUG(net, 0, "send failed with error %d", err);
+					Debug(net, 0, "Send failed: {}", err.AsString());
 					this->CloseConnection();
 				}
 				return SPS_CLOSED;
@@ -122,14 +125,10 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 			return SPS_CLOSED;
 		}
 
-		p->pos += res;
-
 		/* Is this packet sent? */
-		if (p->pos == p->size) {
+		if (p->RemainingBytesToTransfer() == 0) {
 			/* Go to the next packet */
-			this->packet_queue = p->next;
-			delete p;
-			p = this->packet_queue;
+			delete Packet::PopFromQueue(&this->packet_queue);
 		} else {
 			return SPS_PARTLY_SENT;
 		}
@@ -149,21 +148,20 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 	if (!this->IsConnected()) return nullptr;
 
 	if (this->packet_recv == nullptr) {
-		this->packet_recv = new Packet(this);
+		this->packet_recv = new Packet(this, TCP_MTU);
 	}
 
 	Packet *p = this->packet_recv;
 
 	/* Read packet size */
-	if (p->pos < sizeof(PacketSize)) {
-		while (p->pos < sizeof(PacketSize)) {
-		/* Read the size of the packet */
-			res = recv(this->sock, (char*)p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
+	if (!p->HasPacketSizeData()) {
+		while (p->RemainingBytesToTransfer() != 0) {
+			res = p->TransferIn<int>(recv, this->sock, 0);
 			if (res == -1) {
-				int err = GET_LAST_ERROR();
-				if (err != EWOULDBLOCK) {
-					/* Something went wrong... (104 is connection reset by peer) */
-					if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
+				NetworkError err = NetworkError::GetLast();
+				if (!err.WouldBlock()) {
+					/* Something went wrong... */
+					if (!err.IsConnectionReset()) Debug(net, 0, "Recv failed: {}", err.AsString());
 					this->CloseConnection();
 					return nullptr;
 				}
@@ -175,26 +173,23 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 				this->CloseConnection();
 				return nullptr;
 			}
-			p->pos += res;
 		}
 
-		/* Read the packet size from the received packet */
-		p->ReadRawPacketSize();
-
-		if (p->size > SEND_MTU) {
+		/* Parse the size in the received packet and if not valid, close the connection. */
+		if (!p->ParsePacketSize()) {
 			this->CloseConnection();
 			return nullptr;
 		}
 	}
 
 	/* Read rest of packet */
-	while (p->pos < p->size) {
-		res = recv(this->sock, (char*)p->buffer + p->pos, p->size - p->pos, 0);
+	while (p->RemainingBytesToTransfer() != 0) {
+		res = p->TransferIn<int>(recv, this->sock, 0);
 		if (res == -1) {
-			int err = GET_LAST_ERROR();
-			if (err != EWOULDBLOCK) {
-				/* Something went wrong... (104 is connection reset by peer) */
-				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
+			NetworkError err = NetworkError::GetLast();
+			if (!err.WouldBlock()) {
+				/* Something went wrong... */
+				if (!err.IsConnectionReset()) Debug(net, 0, "Recv failed: {}", err.AsString());
 				this->CloseConnection();
 				return nullptr;
 			}
@@ -206,8 +201,6 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 			this->CloseConnection();
 			return nullptr;
 		}
-
-		p->pos += res;
 	}
 
 	/* Prepare for receiving a new packet */
@@ -224,6 +217,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
  */
 bool NetworkTCPSocketHandler::CanSendReceive()
 {
+	assert(this->sock != INVALID_SOCKET);
+
 	fd_set read_fd, write_fd;
 	struct timeval tv;
 

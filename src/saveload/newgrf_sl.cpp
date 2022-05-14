@@ -8,10 +8,12 @@
 /** @file newgrf_sl.cpp Code handling saving and loading of newgrf config */
 
 #include "../stdafx.h"
-#include "../fios.h"
 
 #include "saveload.h"
+#include "compat/newgrf_sl_compat.h"
+
 #include "newgrf_sl.h"
+#include "../fios.h"
 
 #include "../safeguards.h"
 
@@ -20,37 +22,40 @@ static const SaveLoad _newgrf_mapping_desc[] = {
 	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
 	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),
 	SLE_VAR(EntityIDMapping, substitute_id, SLE_UINT8),
-	SLE_END()
 };
 
 /**
  * Save a GRF ID + local id -> OpenTTD's id mapping.
- * @param mapping The mapping to save.
  */
-void Save_NewGRFMapping(const OverrideManagerBase &mapping)
+void NewGRFMappingChunkHandler::Save() const
 {
-	for (uint i = 0; i < mapping.GetMaxMapping(); i++) {
+	SlTableHeader(_newgrf_mapping_desc);
+
+	for (uint i = 0; i < this->mapping.GetMaxMapping(); i++) {
+		if (this->mapping.mapping_ID[i].grfid == 0 &&
+			this->mapping.mapping_ID[i].entity_id == 0) continue;
 		SlSetArrayIndex(i);
-		SlObject(&mapping.mapping_ID[i], _newgrf_mapping_desc);
+		SlObject(&this->mapping.mapping_ID[i], _newgrf_mapping_desc);
 	}
 }
 
 /**
  * Load a GRF ID + local id -> OpenTTD's id mapping.
- * @param mapping The mapping to load.
  */
-void Load_NewGRFMapping(OverrideManagerBase &mapping)
+void NewGRFMappingChunkHandler::Load() const
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_newgrf_mapping_desc, _newgrf_mapping_sl_compat);
+
 	/* Clear the current mapping stored.
 	 * This will create the manager if ever it is not yet done */
-	mapping.ResetMapping();
+	this->mapping.ResetMapping();
 
-	uint max_id = mapping.GetMaxMapping();
+	uint max_id = this->mapping.GetMaxMapping();
 
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		if ((uint)index >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
-		SlObject(&mapping.mapping_ID[index], _newgrf_mapping_desc);
+		SlObject(&this->mapping.mapping_ID[index], slt);
 	}
 }
 
@@ -63,54 +68,64 @@ static const SaveLoad _grfconfig_desc[] = {
 	    SLE_ARR(GRFConfig, param,            SLE_UINT32, 0x80),
 	    SLE_VAR(GRFConfig, num_params,       SLE_UINT8),
 	SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  SLV_101, SL_MAX_VERSION),
-	SLE_END()
 };
 
 
-static void Save_NGRF()
-{
-	int index = 0;
+struct NGRFChunkHandler : ChunkHandler {
+	NGRFChunkHandler() : ChunkHandler('NGRF', CH_TABLE) {}
 
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
-		if (HasBit(c->flags, GCF_STATIC)) continue;
-		SlSetArrayIndex(index++);
-		SlObject(c, _grfconfig_desc);
+	void Save() const override
+	{
+		SlTableHeader(_grfconfig_desc);
+
+		int index = 0;
+
+		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+			if (HasBit(c->flags, GCF_STATIC) || HasBit(c->flags, GCF_INIT_ONLY)) continue;
+			SlSetArrayIndex(index++);
+			SlObject(c, _grfconfig_desc);
+		}
 	}
-}
 
 
-static void Load_NGRF_common(GRFConfig *&grfconfig)
-{
-	ClearGRFConfigList(&grfconfig);
-	while (SlIterateArray() != -1) {
-		GRFConfig *c = new GRFConfig();
-		SlObject(c, _grfconfig_desc);
-		if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
-		AppendToGRFConfigList(&grfconfig, c);
+	void LoadCommon(GRFConfig *&grfconfig) const
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_grfconfig_desc, _grfconfig_sl_compat);
+
+		ClearGRFConfigList(&grfconfig);
+		while (SlIterateArray() != -1) {
+			GRFConfig *c = new GRFConfig();
+			SlObject(c, slt);
+			if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
+			AppendToGRFConfigList(&grfconfig, c);
+		}
 	}
-}
 
-static void Load_NGRF()
-{
-	Load_NGRF_common(_grfconfig);
+	void Load() const override
+	{
+		this->LoadCommon(_grfconfig);
 
-	if (_game_mode == GM_MENU) {
-		/* Intro game must not have NewGRF. */
-		if (_grfconfig != nullptr) SlErrorCorrupt("The intro game must not use NewGRF");
+		if (_game_mode == GM_MENU) {
+			/* Intro game must not have NewGRF. */
+			if (_grfconfig != nullptr) SlErrorCorrupt("The intro game must not use NewGRF");
 
-		/* Activate intro NewGRFs (townnames) */
-		ResetGRFConfig(false);
-	} else {
-		/* Append static NewGRF configuration */
-		AppendStaticGRFConfigs(&_grfconfig);
+			/* Activate intro NewGRFs (townnames) */
+			ResetGRFConfig(false);
+		} else {
+			/* Append static NewGRF configuration */
+			AppendStaticGRFConfigs(&_grfconfig);
+		}
 	}
-}
 
-static void Check_NGRF()
-{
-	Load_NGRF_common(_load_check_data.grfconfig);
-}
-
-extern const ChunkHandler _newgrf_chunk_handlers[] = {
-	{ 'NGRF', Save_NGRF, Load_NGRF, nullptr, Check_NGRF, CH_ARRAY | CH_LAST }
+	void LoadCheck(size_t) const override
+	{
+		this->LoadCommon(_load_check_data.grfconfig);
+	}
 };
+
+static const NGRFChunkHandler NGRF;
+static const ChunkHandlerRef newgrf_chunk_handlers[] = {
+	NGRF,
+};
+
+extern const ChunkHandlerTable _newgrf_chunk_handlers(newgrf_chunk_handlers);

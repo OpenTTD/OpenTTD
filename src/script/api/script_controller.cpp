@@ -21,6 +21,7 @@
 #include "../../ai/ai_gui.hpp"
 #include "../../settings_type.h"
 #include "../../network/network.h"
+#include "../../misc_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -54,12 +55,12 @@
 	seprintf(log_message, lastof(log_message), "Break: %s", message);
 	ScriptLog::Log(ScriptLog::LOG_SQ_ERROR, log_message);
 
-	/* Inform script developer that his script has been paused and
+	/* Inform script developer that their script has been paused and
 	 * needs manual action to continue. */
 	ShowAIDebugWindow(ScriptObject::GetRootCompany());
 
 	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-		ScriptObject::DoCommand(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_NORMAL, true);
 	}
 }
 

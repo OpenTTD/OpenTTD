@@ -10,6 +10,7 @@ notifications:
     only-by:
     - DorpsGek
   commit-comment:
+  discussion:
   pull-request:
   issue:
   tag-created:

@@ -62,13 +62,19 @@ struct GroupStatistics {
 	static void UpdateAutoreplace(CompanyID company);
 };
 
+enum GroupFlags : uint8 {
+	GF_REPLACE_PROTECTION,    ///< If set to true, the global autoreplace has no effect on the group
+	GF_REPLACE_WAGON_REMOVAL, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
+	GF_END,
+};
+
 /** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
 	std::string name;           ///< Group Name
 	Owner owner;                ///< Group Owner
 	VehicleType vehicle_type;   ///< Vehicle type of the group
 
-	bool replace_protection;    ///< If set to true, the global autoreplace have no effect on the group
+	uint8 flags;                ///< Group flags
 	Livery livery;              ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
@@ -106,7 +112,5 @@ void UpdateTrainGroupID(Train *v);
 void RemoveVehicleFromGroup(const Vehicle *v);
 void RemoveAllGroupsForCompany(const CompanyID company);
 bool GroupIsInGroup(GroupID search, GroupID group);
-
-extern GroupID _new_group_id;
 
 #endif /* GROUP_H */

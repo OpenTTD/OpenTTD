@@ -34,7 +34,7 @@ if(NOT OPTION_DEDICATED)
     add_files(
         bemidi.cpp
         bemidi.h
-        CONDITION OPTION_HAIKU
+        CONDITION HAIKU
     )
 
     add_files(

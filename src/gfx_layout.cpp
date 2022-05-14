@@ -696,7 +696,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			if (line.layout == nullptr) {
 				static bool warned = false;
 				if (!warned) {
-					DEBUG(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
+					Debug(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
 					warned = true;
 				}
 
@@ -888,6 +888,12 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(const char *str, siz
 		linecache = new LineCache();
 	}
 
+	if (auto match = linecache->find(LineCacheQuery{state, std::string_view{str, len}});
+		match != linecache->end()) {
+		return match->second;
+	}
+
+	/* Create missing entry */
 	LineCacheKey key;
 	key.state_before = state;
 	key.str.assign(str, len);

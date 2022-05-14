@@ -25,6 +25,7 @@
 #include "company_base.h"
 #include "tilehighlight_func.h"
 #include "vehicle_base.h"
+#include "story_cmd.h"
 
 #include "widgets/story_widget.h"
 
@@ -566,7 +567,7 @@ protected:
 				this->SetTimeout();
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 
-				DoCommandP(0, pe.index, 0, CMD_STORY_PAGE_BUTTON);
+				Command<CMD_STORY_PAGE_BUTTON>::Post(0, pe.index, 0);
 				break;
 
 			case SPET_BUTTON_TILE:
@@ -776,7 +777,7 @@ public:
 			case WID_SB_SEL_PAGE: {
 
 				/* Get max title width. */
-				for (uint16 i = 0; i < this->story_pages.size(); i++) {
+				for (size_t i = 0; i < this->story_pages.size(); i++) {
 					const StoryPage *s = this->story_pages[i];
 
 					if (s->title != nullptr) {
@@ -822,7 +823,7 @@ public:
 				if (!list.empty()) {
 					/* Get the index of selected page. */
 					int selected = 0;
-					for (uint16 i = 0; i < this->story_pages.size(); i++) {
+					for (size_t i = 0; i < this->story_pages.size(); i++) {
 						const StoryPage *p = this->story_pages[i];
 						if (p->index == this->selected_page_id) break;
 						selected++;
@@ -921,7 +922,7 @@ public:
 			return;
 		}
 
-		DoCommandP(tile, pe->index, 0, CMD_STORY_PAGE_BUTTON);
+		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, 0);
 		ResetObjectToPlace();
 	}
 
@@ -940,7 +941,7 @@ public:
 		VehicleType wanted_vehtype = data.GetVehicleType();
 		if (wanted_vehtype != VEH_INVALID && wanted_vehtype != v->type) return false;
 
-		DoCommandP(0, pe->index, v->index, CMD_STORY_PAGE_BUTTON);
+		Command<CMD_STORY_PAGE_BUTTON>::Post(0, pe->index, v->index);
 		ResetObjectToPlace();
 		return true;
 	}

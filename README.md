@@ -34,7 +34,7 @@ Both 'stable' and 'nightly' versions are available for download:
 - most people should choose the 'stable' version, as this has been more extensively tested
 - the 'nightly' version includes the latest changes and features, but may sometimes be less reliable
 
-On some platforms OpenTTD will also be available via your OS package manager or a similar service.
+OpenTTD is also available for free on [Steam](https://store.steampowered.com/app/1536610/OpenTTD/), [GOG.com](https://www.gog.com/game/openttd), and the [Microsoft Store](https://www.microsoft.com/p/openttd-official/9ncjg5rvrr1c). On some platforms OpenTTD will be available via your OS package manager or a similar service.
 
 
 ## 1.2) OpenTTD gameplay manual
@@ -46,15 +46,13 @@ OpenTTD has a [community-maintained wiki](https://wiki.openttd.org/), including 
 
 OpenTTD has been ported to several platforms and operating systems.
 
-The currently working platforms are:
+The currently supported platforms are:
 
-- FreeBSD (SDL)
-- Haiku (SDL)
-- Linux (SDL)
-- macOS (universal) (Cocoa video and sound drivers)
-- OpenBSD (SDL)
-- OS/2 (SDL)
-- Windows (Win32 GDI (faster) or SDL)
+- Linux (SDL (OpenGL and non-OpenGL))
+- macOS (universal) (Cocoa)
+- Windows (Win32 GDI / OpenGL)
+
+Other platforms may also work (in particular various BSD systems), but we don't actively test or maintain these.
 
 ### 1.3.1) Legacy support
 Platforms, languages and compilers change.
@@ -79,9 +77,9 @@ For some platforms, you will need to refer to [the installation guide](https://w
 The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
 OpenMSX for music can be found at:
 
-- https://www.openttd.org/download-opengfx for OpenGFX
-- https://www.openttd.org/download-opensfx for OpenSFX
-- https://www.openttd.org/download-openmsx for OpenMSX
+- https://www.openttd.org/downloads/opengfx-releases/latest for OpenGFX
+- https://www.openttd.org/downloads/opensfx-releases/latest for OpenSFX
+- https://www.openttd.org/downloads/openmsx-releases/latest for OpenMSX
 
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
@@ -165,7 +163,7 @@ If you want to compile OpenTTD from source, instructions can be found in [COMPIL
 
 - [OpenTTD website](https://www.openttd.org)
 - IRC chat using #openttd on irc.oftc.net [more info about our irc channel](https://wiki.openttd.org/en/Development/IRC%20channel)
-- [OpenTTD on Github](https://github.com/openTTD/) for code repositories and for reporting issues
+- [OpenTTD on Github](https://github.com/OpenTTD/) for code repositories and for reporting issues
 - [forum.openttd.org](https://forum.openttd.org/) - the primary community forum site for discussing OpenTTD and related games
 - [OpenTTD wiki](https://wiki.openttd.org/) community-maintained wiki, including topics like gameplay guide, detailed explanation of some game mechanics, how to use add-on content (mods) and much more
 
@@ -206,6 +204,9 @@ See the comments in the source files in `src/3rdparty/md5` for the complete lice
 
 The implementations of Posix `getaddrinfo` and `getnameinfo` for OS/2 in `src/3rdparty/os2` are distributed partly under the GNU Lesser General Public License 2.1, and partly under the (3-clause) BSD license.
 The exact licensing terms can be found in `src/3rdparty/os2/getaddrinfo.c` resp. `src/3rdparty/os2/getnameinfo.c`.
+
+The fmt implementation in `src/3rdparty/fmt` is licensed under the MIT license.
+See `src/3rdparty/fmt/LICENSE.rst` for the complete license text.
 
 
 ## 4.0 Credits

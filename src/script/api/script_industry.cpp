@@ -19,6 +19,7 @@
 #include "../../strings_func.h"
 #include "../../station_base.h"
 #include "../../newgrf_industries.h"
+#include "../../industry_cmd.h"
 #include "table/strings.h"
 #include <numeric>
 
@@ -59,7 +60,7 @@
 	}
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 
-	return ScriptObject::DoCommand(0, industry_id, static_cast<uint32>(IndustryAction::SetText), CMD_INDUSTRY_CTRL, encoded_text);
+	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetText, INDCTL_NONE, INVALID_OWNER, std::string{ encoded_text ? encoded_text : "" });
 }
 
 /* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
@@ -186,7 +187,7 @@
 	if (!HasHeliport(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	TILE_AREA_LOOP(tile_cur, ind->location) {
+	for (TileIndex tile_cur : ind->location) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}
@@ -208,7 +209,7 @@
 	if (!HasDock(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	TILE_AREA_LOOP(tile_cur, ind->location) {
+	for (TileIndex tile_cur : ind->location) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}
@@ -257,7 +258,7 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 	if (ScriptObject::GetCompany() != OWNER_DEITY) return false;
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return ScriptObject::DoCommand(0, industry_id, 0 | ((control_flags & ::INDCTL_MASK) << 8), CMD_INDUSTRY_CTRL);
+	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetControlFlags, (::IndustryControlFlags)control_flags & ::INDCTL_MASK, INVALID_OWNER, {});
 }
 
 /* static */ ScriptCompany::CompanyID ScriptIndustry::GetExclusiveSupplier(IndustryID industry_id)
@@ -276,7 +277,7 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
 	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
-	return ScriptObject::DoCommand(0, industry_id, 1 | (((uint8)owner) << 16), CMD_INDUSTRY_CTRL);
+	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetExclusiveSupplier, INDCTL_NONE, owner, {});
 }
 
 /* static */ ScriptCompany::CompanyID ScriptIndustry::GetExclusiveConsumer(IndustryID industry_id)
@@ -295,5 +296,5 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
 	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
-	return ScriptObject::DoCommand(0, industry_id, 2 | (((uint8)owner) << 16), CMD_INDUSTRY_CTRL);
+	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetExclusiveConsumer, INDCTL_NONE, owner, {});
 }

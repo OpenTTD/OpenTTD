@@ -10,6 +10,8 @@
 #ifndef TILE_TYPE_H
 #define TILE_TYPE_H
 
+#include "core/strong_typedef_type.hpp"
+
 static const uint TILE_SIZE           = 16;                    ///< Tile size in world coordinates.
 static const uint TILE_UNIT_MASK      = TILE_SIZE - 1;         ///< For masking in/out the inner-tile world coordinate units.
 static const uint TILE_PIXELS         = 32;                    ///< Pixel distance between tile columns/rows in #ZOOM_LVL_BASE.
@@ -80,11 +82,29 @@ enum TropicZone {
 /**
  * The index/ID of a Tile.
  */
-typedef uint32 TileIndex;
+struct TileIndex : StrongIntegralTypedef<uint32, TileIndex> {
+	using StrongIntegralTypedef<uint32, TileIndex>::StrongIntegralTypedef;
+
+	/** Implicit conversion to the base type for e.g. array indexing. */
+	constexpr operator uint32() const { return this->value; }
+
+	/* Import operators from the base class into our overload set. */
+	using StrongIntegralTypedef::operator ==;
+	using StrongIntegralTypedef::operator !=;
+	using StrongIntegralTypedef::operator +;
+	using StrongIntegralTypedef::operator -;
+
+	/* Add comparison and add/sub for signed ints as e.g. 0 is signed and will
+	 * match ambiguously when only unsigned overloads are present. */
+	constexpr bool operator ==(int rhs) const { return this->value == (uint32)rhs; }
+	constexpr bool operator !=(int rhs) const { return this->value != (uint32)rhs; }
+	constexpr TileIndex operator +(int rhs) const { return { (uint32)(this->value + rhs) }; }
+	constexpr TileIndex operator -(int rhs) const { return { (uint32)(this->value - rhs) }; }
+};
 
 /**
  * The very nice invalid tile marker
  */
-static const TileIndex INVALID_TILE = (TileIndex)-1;
+static inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32)-1 };
 
 #endif /* TILE_TYPE_H */

@@ -44,7 +44,7 @@
  * @param classes      Classes of this cargo type. @see CargoClass
  */
 #define MK(bt, label, colour, weight, mult, ip, td1, td2, freight, te, str_plural, str_singular, str_volume, classes) \
-		{bt, label, colour, colour, weight, mult, ip, {td1, td2}, freight, te, 0, 0, \
+		{bt, label, colour, colour, weight, mult, ip, {td1, td2}, freight, te, 0, \
 		MK_STR_CARGO_PLURAL(str_plural), MK_STR_CARGO_SINGULAR(str_singular), str_volume, MK_STR_QUANTITY(str_plural), MK_STR_ABBREV(str_plural), \
 		MK_SPRITE(str_plural), classes, nullptr, nullptr, 0}
 
@@ -96,7 +96,7 @@ static const CargoSpec _default_cargo[] = {
 
 
 /** Table of cargo types available in each climate, by default */
-static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][12] = {
+static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][NUM_ORIGINAL_CARGO] = {
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'GRAI', 'WOOD', 'IORE', 'STEL', 'VALU',     33, },
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'WHEA', 'WOOD',     34, 'PAPR', 'GOLD', 'FOOD', },
 	{ 'PASS', 'RUBR', 'MAIL',      4, 'FRUT', 'GOOD', 'MAIZ',     11, 'CORE', 'WATR', 'DIAM', 'FOOD', },

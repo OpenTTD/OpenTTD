@@ -22,6 +22,7 @@
 
 #define GL_GLEXT_PROTOTYPES
 #if defined(__APPLE__)
+#	define GL_SILENCE_DEPRECATION
 #	include <OpenGL/gl3.h>
 #else
 #	include <GL/gl.h>
@@ -146,7 +147,7 @@ GetOGLProcAddressProc GetOGLProcAddress;
  */
 const char *FindStringInExtensionList(const char *string, const char *substring)
 {
-	while (1) {
+	while (true) {
 		/* Is the extension string present at all? */
 		const char *pos = strstr(string, substring);
 		if (pos == nullptr) break;
@@ -428,7 +429,7 @@ void APIENTRY DebugOutputCallback(GLenum source, GLenum type, GLuint id, GLenum 
 		case GL_DEBUG_TYPE_PORTABILITY:         type_str = "Portability"; break;
 	}
 
-	DEBUG(driver, 6, "OpenGL: %s (%s) - %s", type_str, severity_str, message);
+	Debug(driver, 6, "OpenGL: {} ({}) - {}", type_str, severity_str, message);
 }
 
 /** Enable OpenGL debug messages if supported. */
@@ -464,16 +465,17 @@ void SetupDebugOutput()
 /**
  * Create and initialize the singleton back-end class.
  * @param get_proc Callback to get an OpenGL function from the OS driver.
+ * @param screen_res Current display resolution.
  * @return nullptr on success, error message otherwise.
  */
-/* static */ const char *OpenGLBackend::Create(GetOGLProcAddressProc get_proc)
+/* static */ const char *OpenGLBackend::Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res)
 {
 	if (OpenGLBackend::instance != nullptr) OpenGLBackend::Destroy();
 
 	GetOGLProcAddress = get_proc;
 
 	OpenGLBackend::instance = new OpenGLBackend();
-	return OpenGLBackend::instance->Init();
+	return OpenGLBackend::instance->Init(screen_res);
 }
 
 /**
@@ -510,7 +512,7 @@ OpenGLBackend::~OpenGLBackend()
 		_glDeleteBuffers(1, &this->anim_pbo);
 	}
 	if (_glDeleteTextures != nullptr) {
-		ClearCursorCache();
+		this->InternalClearCursorCache();
 		OpenGLSprite::Destroy();
 
 		_glDeleteTextures(1, &this->vid_texture);
@@ -521,9 +523,10 @@ OpenGLBackend::~OpenGLBackend()
 
 /**
  * Check for the needed OpenGL functionality and allocate all resources.
+ * @param screen_res Current display resolution.
  * @return Error string or nullptr if successful.
  */
-const char *OpenGLBackend::Init()
+const char *OpenGLBackend::Init(const Dimension &screen_res)
 {
 	if (!BindBasicInfoProcs()) return "OpenGL not supported";
 
@@ -534,7 +537,7 @@ const char *OpenGLBackend::Init()
 
 	if (ver == nullptr || vend == nullptr || renderer == nullptr) return "OpenGL not supported";
 
-	DEBUG(driver, 1, "OpenGL driver: %s - %s (%s)", vend, renderer, ver);
+	Debug(driver, 1, "OpenGL driver: {} - {} ({})", vend, renderer, ver);
 
 #ifndef GL_ALLOW_SOFTWARE_RENDERER
 	/* Don't use MESA software rendering backends as they are slower than
@@ -545,6 +548,12 @@ const char *OpenGLBackend::Init()
 	const char *minor = strchr(ver, '.');
 	_gl_major_ver = atoi(ver);
 	_gl_minor_ver = minor != nullptr ? atoi(minor + 1) : 0;
+
+#ifdef _WIN32
+	/* Old drivers on Windows (especially if made by Intel) seem to be
+	 * unstable, so cull the oldest stuff here.  */
+	if (!IsOpenGLVersionAtLeast(3, 2)) return "Need at least OpenGL version 3.2 on Windows";
+#endif
 
 	if (!BindBasicOpenGLProcs()) return "Failed to bind basic OpenGL functions.";
 
@@ -576,17 +585,22 @@ const char *OpenGLBackend::Init()
 #endif
 
 	if (this->persistent_mapping_supported && !BindPersistentBufferExtensions()) {
-		DEBUG(driver, 1, "OpenGL claims to support persistent buffer mapping but doesn't export all functions, not using persistent mapping.");
+		Debug(driver, 1, "OpenGL claims to support persistent buffer mapping but doesn't export all functions, not using persistent mapping.");
 		this->persistent_mapping_supported = false;
 	}
-	if (this->persistent_mapping_supported) DEBUG(driver, 3, "OpenGL: Using persistent buffer mapping");
+	if (this->persistent_mapping_supported) Debug(driver, 3, "OpenGL: Using persistent buffer mapping");
+
+	/* Check maximum texture size against screen resolution. */
+	GLint max_tex_size = 0;
+	_glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_tex_size);
+	if (std::max(screen_res.width, screen_res.height) > (uint)max_tex_size) return "Max supported texture size is too small";
 
 	/* Check available texture units. */
 	GLint max_tex_units = 0;
 	_glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
 	if (max_tex_units < 4) return "Not enough simultaneous textures supported";
 
-	DEBUG(driver, 2, "OpenGL shading language version: %s, texture units = %d", (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
+	Debug(driver, 2, "OpenGL shading language version: {}, texture units = {}", (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
 
 	if (!this->InitShaders()) return "Failed to initialize shaders";
 
@@ -731,6 +745,16 @@ void OpenGLBackend::PrepareContext()
 	_glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
+std::string OpenGLBackend::GetDriverName()
+{
+	std::string res{};
+	/* Skipping GL_VENDOR as it tends to be "obvious" from the renderer and version data, and just makes the string pointlessly longer */
+	res += reinterpret_cast<const char *>(_glGetString(GL_RENDERER));
+	res += ", ";
+	res += reinterpret_cast<const char *>(_glGetString(GL_VERSION));
+	return res;
+}
+
 /**
  * Check a shader for compilation errors and log them if necessary.
  * @param shader Shader to check.
@@ -748,7 +772,7 @@ static bool VerifyShader(GLuint shader)
 	_glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_len);
 	if (log_len > 0) {
 		_glGetShaderInfoLog(shader, log_len, nullptr, log_buf.Allocate(log_len));
-		DEBUG(driver, result != GL_TRUE ? 0 : 2, "%s", log_buf.GetBuffer()); // Always print on failure.
+		Debug(driver, result != GL_TRUE ? 0 : 2, "{}", log_buf.GetBuffer()); // Always print on failure.
 	}
 
 	return result == GL_TRUE;
@@ -771,7 +795,7 @@ static bool VerifyProgram(GLuint program)
 	_glGetProgramiv(program, GL_INFO_LOG_LENGTH, &log_len);
 	if (log_len > 0) {
 		_glGetProgramInfoLog(program, log_len, nullptr, log_buf.Allocate(log_len));
-		DEBUG(driver, result != GL_TRUE ? 0 : 2, "%s", log_buf.GetBuffer()); // Always print on failure.
+		Debug(driver, result != GL_TRUE ? 0 : 2, "{}", log_buf.GetBuffer()); // Always print on failure.
 	}
 
 	return result == GL_TRUE;
@@ -1053,18 +1077,20 @@ void OpenGLBackend::Paint()
  */
 void OpenGLBackend::DrawMouseCursor()
 {
+	if (!this->cursor_in_window) return;
+
 	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
-	for (uint i = 0; i < _cursor.sprite_count; ++i) {
-		SpriteID sprite = _cursor.sprite_seq[i].sprite;
+	for (uint i = 0; i < this->cursor_sprite_count; ++i) {
+		SpriteID sprite = this->cursor_sprite_seq[i].sprite;
 
 		/* Sprites are cached by PopulateCursorCache(). */
 		if (this->cursor_cache.Contains(sprite)) {
-			const Sprite *spr = GetSprite(sprite, ST_NORMAL);
+			Sprite *spr = this->cursor_cache.Get(sprite);
 
-			this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.sprite_seq[i].pal,
-					_cursor.pos.x + _cursor.sprite_pos[i].x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
-					_cursor.pos.y + _cursor.sprite_pos[i].y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
+			this->RenderOglSprite((OpenGLSprite *)spr->data, this->cursor_sprite_seq[i].pal,
+					this->cursor_pos.x + this->cursor_sprite_pos[i].x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
+					this->cursor_pos.y + this->cursor_sprite_pos[i].y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
 					ZOOM_LVL_GUI);
 		}
 	}
@@ -1072,20 +1098,24 @@ void OpenGLBackend::DrawMouseCursor()
 
 void OpenGLBackend::PopulateCursorCache()
 {
+	static_assert(lengthof(_cursor.sprite_seq) == lengthof(this->cursor_sprite_seq));
+	static_assert(lengthof(_cursor.sprite_pos) == lengthof(this->cursor_sprite_pos));
+
 	if (this->clear_cursor_cache) {
 		/* We have a pending cursor cache clear to do first. */
 		this->clear_cursor_cache = false;
 		this->last_sprite_pal = (PaletteID)-1;
 
-		Sprite *sp;
-		while ((sp = this->cursor_cache.Pop()) != nullptr) {
-			OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
-			sprite->~OpenGLSprite();
-			free(sp);
-		}
+		this->InternalClearCursorCache();
 	}
 
+	this->cursor_pos = _cursor.pos;
+	this->cursor_sprite_count = _cursor.sprite_count;
+	this->cursor_in_window = _cursor.in_window;
+
 	for (uint i = 0; i < _cursor.sprite_count; ++i) {
+		this->cursor_sprite_seq[i] = _cursor.sprite_seq[i];
+		this->cursor_sprite_pos[i] = _cursor.sprite_pos[i];
 		SpriteID sprite = _cursor.sprite_seq[i].sprite;
 
 		if (!this->cursor_cache.Contains(sprite)) {
@@ -1101,6 +1131,19 @@ void OpenGLBackend::PopulateCursorCache()
 
 /**
  * Clear all cached cursor sprites.
+ */
+void OpenGLBackend::InternalClearCursorCache()
+{
+	Sprite *sp;
+	while ((sp = this->cursor_cache.Pop()) != nullptr) {
+		OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
+		sprite->~OpenGLSprite();
+		free(sp);
+	}
+}
+
+/**
+ * Queue a request for cursor cache clear.
  */
 void OpenGLBackend::ClearCursorCache()
 {
@@ -1118,10 +1161,11 @@ void OpenGLBackend::ClearCursorCache()
 void *OpenGLBackend::GetVideoBuffer()
 {
 #ifndef NO_GL_BUFFER_SYNC
-	if (this->sync_vid_mapping != nullptr) _glClientWaitSync(this->sync_vid_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 10000000);
+	if (this->sync_vid_mapping != nullptr) _glClientWaitSync(this->sync_vid_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 100000000); // 100ms timeout.
 #endif
 
 	if (!this->persistent_mapping_supported) {
+		assert(this->vid_buffer == nullptr);
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
 		this->vid_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
 	} else if (this->vid_buffer == nullptr) {
@@ -1141,7 +1185,7 @@ uint8 *OpenGLBackend::GetAnimBuffer()
 	if (this->anim_pbo == 0) return nullptr;
 
 #ifndef NO_GL_BUFFER_SYNC
-	if (this->sync_anim_mapping != nullptr) _glClientWaitSync(this->sync_anim_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 10000000);
+	if (this->sync_anim_mapping != nullptr) _glClientWaitSync(this->sync_anim_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 100000000); // 100ms timeout.
 #endif
 
 	if (!this->persistent_mapping_supported) {
@@ -1276,7 +1320,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 			_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
 			_glBufferSubData(GL_PIXEL_UNPACK_BUFFER, 0, 256, GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1);
-			_glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RED, GL_UNSIGNED_BYTE, 0);
+			_glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 

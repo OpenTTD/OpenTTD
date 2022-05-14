@@ -34,6 +34,7 @@
 #include "framerate_type.h"
 #include "industry.h"
 #include "industry_map.h"
+#include "ship_cmd.h"
 
 #include "table/strings.h"
 
@@ -257,7 +258,7 @@ Trackdir Ship::GetVehicleTrackdir() const
 	}
 
 	if (this->state == TRACK_BIT_WORMHOLE) {
-		/* ship on aqueduct, so just use his direction and assume a diagonal track */
+		/* ship on aqueduct, so just use its direction and assume a diagonal track */
 		return DiagDirToDiagTrackdir(DirToDiagDir(this->direction));
 	}
 
@@ -335,6 +336,18 @@ static Vehicle *EnsureNoMovingShipProc(Vehicle *v, void *data)
 	return v->type == VEH_SHIP && (v->vehstatus & (VS_HIDDEN | VS_STOPPED)) == 0 ? v : nullptr;
 }
 
+static bool CheckReverseShip(const Ship *v, Trackdir *trackdir = nullptr)
+{
+	/* Ask pathfinder for best direction */
+	bool reverse = false;
+	switch (_settings_game.pf.pathfinder_for_ships) {
+		case VPF_NPF: reverse = NPFShipCheckReverse(v, trackdir); break;
+		case VPF_YAPF: reverse = YapfShipCheckReverse(v, trackdir); break;
+		default: NOT_REACHED();
+	}
+	return reverse;
+}
+
 static bool CheckShipLeaveDepot(Ship *v)
 {
 	if (!v->IsChainInDepot()) return false;
@@ -364,14 +377,7 @@ static bool CheckShipLeaveDepot(Ship *v)
 	TrackBits north_tracks = DiagdirReachesTracks(north_dir) & GetTileShipTrackStatus(north_neighbour);
 	TrackBits south_tracks = DiagdirReachesTracks(south_dir) & GetTileShipTrackStatus(south_neighbour);
 	if (north_tracks && south_tracks) {
-		/* Ask pathfinder for best direction */
-		bool reverse = false;
-		switch (_settings_game.pf.pathfinder_for_ships) {
-			case VPF_NPF: reverse = NPFShipCheckReverse(v); break;
-			case VPF_YAPF: reverse = YapfShipCheckReverse(v); break;
-			default: NOT_REACHED();
-		}
-		if (reverse) north_tracks = TRACK_BIT_NONE;
+		if (CheckReverseShip(v)) north_tracks = TRACK_BIT_NONE;
 	}
 
 	if (north_tracks) {
@@ -510,38 +516,53 @@ static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
 	return tracks;
 }
 
-static const byte _ship_subcoord[4][6][3] = {
+/** Structure for ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track. */
+struct ShipSubcoordData {
+	byte x_subcoord; ///< New X sub-coordinate on the new tile
+	byte y_subcoord; ///< New Y sub-coordinate on the new tile
+	Direction dir;   ///< New Direction to move in on the new track
+};
+/** Ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track.
+ * Array indexes are Diagdir, Track.
+ * There will always be three possible tracks going into an adjacent tile via a Diagdir,
+ * so each Diagdir sub-array will have three valid and three invalid structures per Track.
+ */
+static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
+	// DIAGDIR_NE
 	{
-		{15, 8, 1},
-		{ 0, 0, 0},
-		{ 0, 0, 0},
-		{15, 8, 2},
-		{15, 7, 0},
-		{ 0, 0, 0},
+		{15,  8, DIR_NE},      // TRACK_X
+		{ 0,  0, INVALID_DIR}, // TRACK_Y
+		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
+		{15,  8, DIR_E},       // TRACK_LOWER
+		{15,  7, DIR_N},       // TRACK_LEFT
+		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
 	},
+	// DIAGDIR_SE
 	{
-		{ 0, 0, 0},
-		{ 8, 0, 3},
-		{ 7, 0, 2},
-		{ 0, 0, 0},
-		{ 8, 0, 4},
-		{ 0, 0, 0},
+		{ 0,  0, INVALID_DIR}, // TRACK_X
+		{ 8,  0, DIR_SE},      // TRACK_Y
+		{ 7,  0, DIR_E},       // TRACK_UPPER
+		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
+		{ 8,  0, DIR_S},       // TRACK_LEFT
+		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
 	},
+	// DIAGDIR_SW
 	{
-		{ 0, 8, 5},
-		{ 0, 0, 0},
-		{ 0, 7, 6},
-		{ 0, 0, 0},
-		{ 0, 0, 0},
-		{ 0, 8, 4},
+		{ 0,  8, DIR_SW},      // TRACK_X
+		{ 0,  0, INVALID_DIR}, // TRACK_Y
+		{ 0,  7, DIR_W},       // TRACK_UPPER
+		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
+		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
+		{ 0,  8, DIR_S},       // TRACK_RIGHT
 	},
+	// DIAGDIR_NW
 	{
-		{ 0, 0, 0},
-		{ 8, 15, 7},
-		{ 0, 0, 0},
-		{ 8, 15, 6},
-		{ 0, 0, 0},
-		{ 7, 15, 0},
+		{ 0,  0, INVALID_DIR}, // TRACK_X
+		{ 8, 15, DIR_NW},      // TRACK_Y
+		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
+		{ 8, 15, DIR_W},       // TRACK_LOWER
+		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
+		{ 7, 15, DIR_N},       // TRACK_RIGHT
 	}
 };
 
@@ -621,9 +642,9 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 static void ShipController(Ship *v)
 {
 	uint32 r;
-	const byte *b;
 	Track track;
 	TrackBits tracks;
+	GetNewVehiclePosResult gp;
 
 	v->tick_counter++;
 	v->current_order_time++;
@@ -632,7 +653,8 @@ static void ShipController(Ship *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	ProcessOrders(v);
+	if (ProcessOrders(v) && CheckReverseShip(v)) goto reverse_direction;
+
 	v->HandleLoading();
 
 	if (v->current_order.IsType(OT_LOADING)) return;
@@ -657,7 +679,7 @@ static void ShipController(Ship *v)
 
 	if (!ShipAccelerate(v)) return;
 
-	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
+	gp = GetNewVehiclePos(v);
 	if (v->state != TRACK_BIT_WORMHOLE) {
 		/* Not on a bridge */
 		if (gp.old_tile == gp.new_tile) {
@@ -718,16 +740,28 @@ static void ShipController(Ship *v)
 			DiagDirection diagdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
 			assert(diagdir != INVALID_DIAGDIR);
 			tracks = GetAvailShipTracks(gp.new_tile, diagdir);
-			if (tracks == TRACK_BIT_NONE) goto reverse_direction;
+			if (tracks == TRACK_BIT_NONE) {
+				Trackdir trackdir = INVALID_TRACKDIR;
+				CheckReverseShip(v, &trackdir);
+				if (trackdir == INVALID_TRACKDIR) goto reverse_direction;
+				static const Direction _trackdir_to_direction[] = {
+					DIR_NE, DIR_SE, DIR_E, DIR_E, DIR_S, DIR_S, INVALID_DIR, INVALID_DIR,
+					DIR_SW, DIR_NW, DIR_W, DIR_W, DIR_N, DIR_N, INVALID_DIR, INVALID_DIR,
+				};
+				v->direction = _trackdir_to_direction[trackdir];
+				assert(v->direction != INVALID_DIR);
+				v->state = TrackdirBitsToTrackBits(TrackdirToTrackdirBits(trackdir));
+				goto direction_changed;
+			}
 
 			/* Choose a direction, and continue if we find one */
 			track = ChooseShipTrack(v, gp.new_tile, diagdir, tracks);
 			if (track == INVALID_TRACK) goto reverse_direction;
 
-			b = _ship_subcoord[diagdir][track];
+			const ShipSubcoordData &b = _ship_subcoord[diagdir][track];
 
-			gp.x = (gp.x & ~0xF) | b[0];
-			gp.y = (gp.y & ~0xF) | b[1];
+			gp.x = (gp.x & ~0xF) | b.x_subcoord;
+			gp.y = (gp.y & ~0xF) | b.y_subcoord;
 
 			/* Call the landscape function and tell it that the vehicle entered the tile */
 			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
@@ -743,7 +777,7 @@ static void ShipController(Ship *v)
 				if (old_wc != new_wc) v->UpdateCache();
 			}
 
-			Direction new_direction = (Direction)b[2];
+			Direction new_direction = b.dir;
 			DirDiff diff = DirDifference(new_direction, v->direction);
 			switch (diff) {
 				case DIRDIFF_SAME:
@@ -789,6 +823,7 @@ getout:
 
 reverse_direction:
 	v->direction = ReverseDir(v->direction);
+direction_changed:
 	/* Remember our current location to avoid movement glitch */
 	v->rotation_x_pos = v->x_pos;
 	v->rotation_y_pos = v->y_pos;
@@ -817,14 +852,13 @@ void Ship::SetDestTile(TileIndex tile)
 
 /**
  * Build a ship.
- * @param tile     tile of the depot where ship is built.
  * @param flags    type of operation.
+ * @param tile     tile of the depot where ship is built.
  * @param e        the engine to build.
- * @param data     unused.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
+CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
 	tile = GetShipDepotNorthTile(tile);
 	if (flags & DC_EXEC) {
@@ -859,7 +893,6 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->GetLifeLengthInDays();
-		_new_vehicle_id = v->index;
 
 		v->state = TRACK_BIT_DEPOT;
 

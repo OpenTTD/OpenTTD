@@ -13,7 +13,7 @@
 #include "newgrf_config.h"
 
 /** The actions we log. */
-enum GamelogActionType {
+enum GamelogActionType : uint8 {
 	GLAT_START,        ///< Game created
 	GLAT_LOAD,         ///< Game loaded
 	GLAT_GRF,          ///< GRF changed
@@ -48,7 +48,7 @@ bool GamelogTestEmergency();
 void GamelogRevision();
 void GamelogMode();
 void GamelogOldver();
-void GamelogSetting(const char *name, int32 oldval, int32 newval);
+void GamelogSetting(const std::string &name, int32 oldval, int32 newval);
 
 void GamelogGRFUpdate(const GRFConfig *oldg, const GRFConfig *newg);
 void GamelogGRFAddList(const GRFConfig *newg);

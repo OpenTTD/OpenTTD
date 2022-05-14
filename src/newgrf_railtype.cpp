@@ -18,7 +18,7 @@
 
 /* virtual */ uint32 RailTypeScopeResolver::GetRandomBits() const
 {
-	uint tmp = CountBits(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE);
+	uint tmp = CountBits(static_cast<uint32>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
 	return GB(tmp, 0, 2);
 }
 
@@ -52,17 +52,10 @@
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled rail type tile variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled rail type tile variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;
-}
-
-/* virtual */ const SpriteGroup *RailTypeResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (group->num_loading > 0) return group->loading[0];
-	if (group->num_loaded  > 0) return group->loaded[0];
-	return nullptr;
 }
 
 GrfSpecFeature RailTypeResolverObject::GetFeature() const

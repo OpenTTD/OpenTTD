@@ -264,7 +264,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 
 	if (ind_id == invalid_ID) {
 		/* Not found.
-		 * Or it has already been overridden, so you've lost your place old boy.
+		 * Or it has already been overridden, so you've lost your place.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
 		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
@@ -319,7 +319,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 
 	if (type == invalid_ID) {
 		/* Not found.
-		 * Or it has already been overridden, so you've lost your place old boy.
+		 * Or it has already been overridden, so you've lost your place.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
 		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid, OBJECT_TRANSMITTER);
@@ -530,12 +530,12 @@ void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
 
 	SetDParamStr(0, grfconfig->GetName());
 	GetString(buffer, STR_NEWGRF_BUGGY, lastof(buffer));
-	DEBUG(grf, 0, "%s", buffer + 3);
+	Debug(grf, 0, "{}", buffer + 3);
 
 	SetDParam(1, cbid);
 	SetDParam(2, cb_res);
 	GetString(buffer, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, lastof(buffer));
-	DEBUG(grf, 0, "%s", buffer + 3);
+	Debug(grf, 0, "{}", buffer + 3);
 }
 
 /**

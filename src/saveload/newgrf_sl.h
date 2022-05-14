@@ -12,7 +12,12 @@
 
 #include "../newgrf_commons.h"
 
-void Save_NewGRFMapping(const OverrideManagerBase &mapping);
-void Load_NewGRFMapping(OverrideManagerBase &mapping);
+struct NewGRFMappingChunkHandler : ChunkHandler {
+	OverrideManagerBase &mapping;
+
+	NewGRFMappingChunkHandler(uint32 id, OverrideManagerBase &mapping) : ChunkHandler(id, CH_TABLE), mapping(mapping) {}
+	void Save() const override;
+	void Load() const override;
+};
 
 #endif /* SAVELOAD_NEWGRF_SL_H */

@@ -16,6 +16,7 @@
 #include "../framerate_type.h"
 #include "../command_func.h"
 #include "../network/network.h"
+#include "../misc_cmd.h"
 
 #include "../safeguards.h"
 
@@ -173,7 +174,7 @@ void StateGameLoop_LinkGraphPauseControl()
 	if (_pause_mode & PM_PAUSED_LINK_GRAPH) {
 		/* We are paused waiting on a job, check the job every tick. */
 		if (!LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
-			DoCommandP(0, PM_PAUSED_LINK_GRAPH, 0, CMD_PAUSE);
+			Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, false);
 		}
 	} else if (_pause_mode == PM_UNPAUSED &&
 			_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
@@ -181,7 +182,7 @@ void StateGameLoop_LinkGraphPauseControl()
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 		/* Perform check two _date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
-		DoCommandP(0, PM_PAUSED_LINK_GRAPH, 1, CMD_PAUSE);
+		Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, true);
 	}
 }
 

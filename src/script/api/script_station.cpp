@@ -15,6 +15,7 @@
 #include "../../station_base.h"
 #include "../../roadstop_base.h"
 #include "../../town.h"
+#include "../../station_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -239,5 +240,5 @@ template<bool Tfrom, bool Tvia>
 	EnforcePrecondition(false, IsValidStation(station_id));
 	EnforcePrecondition(false, HasStationType(station_id, STATION_AIRPORT));
 
-	return ScriptObject::DoCommand(0, station_id, 0, CMD_OPEN_CLOSE_AIRPORT);
+	return ScriptObject::Command<CMD_OPEN_CLOSE_AIRPORT>::Do(station_id);
 }

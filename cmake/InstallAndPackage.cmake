@@ -26,11 +26,13 @@ install(TARGETS openttd
 install(DIRECTORY
                 ${CMAKE_BINARY_DIR}/lang
                 ${CMAKE_BINARY_DIR}/baseset
-                ${CMAKE_SOURCE_DIR}/bin/ai
-                ${CMAKE_SOURCE_DIR}/bin/game
+                ${CMAKE_BINARY_DIR}/ai
+                ${CMAKE_BINARY_DIR}/game
                 ${CMAKE_SOURCE_DIR}/bin/scripts
         DESTINATION ${DATA_DESTINATION_DIR}
-        COMPONENT language_files)
+        COMPONENT language_files
+        REGEX "ai/[^\.]+$" EXCLUDE # Ignore subdirs in ai dir
+)
 
 install(FILES
                 ${CMAKE_SOURCE_DIR}/COPYING.md
@@ -127,7 +129,7 @@ if(APPLE)
         set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macos-universal")
     else()
         set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macos-${CPACK_SYSTEM_NAME}")
-	endif()
+    endif()
 elseif(WIN32)
     set(CPACK_GENERATOR "ZIP")
     if(OPTION_USE_NSIS)
@@ -136,6 +138,13 @@ elseif(WIN32)
     endif()
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-windows-${CPACK_SYSTEM_NAME}")
+
+    if(WINDOWS_CERTIFICATE_COMMON_NAME)
+      add_custom_command(TARGET openttd
+        POST_BUILD
+        COMMAND "${CMAKE_SOURCE_DIR}/os/windows/sign.bat" "$<TARGET_FILE:openttd>" "${WINDOWS_CERTIFICATE_COMMON_NAME}"
+      )
+    endif()
 elseif(UNIX)
     # With FHS, we can create deb/rpm/... Without it, they would be horribly broken
     # and not work. The other way around is also true; with FHS they are not
@@ -172,6 +181,10 @@ elseif(UNIX)
             if(DISTRO_ID STREQUAL "arch")
                 set(PLATFORM "arch")
                 set(CPACK_GENERATOR "TXZ")
+            elseif(DISTRO_ID STREQUAL "fedora" OR DISTRO_ID STREQUAL "rhel")
+                set(PLATFORM "fedora")
+                set(CPACK_GENERATOR "RPM")
+                include(PackageRPM)
             else()
                 set(UNSUPPORTED_PLATFORM_NAME "Linux distribution '${DISTRO_ID}' from /etc/os-release")
             endif()

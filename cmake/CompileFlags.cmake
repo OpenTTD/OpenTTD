@@ -4,28 +4,32 @@
 #
 macro(compile_flags)
     if(MSVC)
-        # Switch to MT (static) instead of MD (dynamic) binary
+        if(VCPKG_TARGET_TRIPLET MATCHES "-static" AND NOT VCPKG_TARGET_TRIPLET MATCHES "-md")
+            # Switch to MT (static) instead of MD (dynamic) binary
 
-        # For MSVC two generators are available
-        # - a command line generator (Ninja) using CMAKE_BUILD_TYPE to specify the
-        #   configuration of the build tree
-        # - an IDE generator (Visual Studio) using CMAKE_CONFIGURATION_TYPES to
-        #   specify all configurations that will be available in the generated solution
-        list(APPEND MSVC_CONFIGS "${CMAKE_BUILD_TYPE}" "${CMAKE_CONFIGURATION_TYPES}")
+            # For MSVC two generators are available
+            # - a command line generator (Ninja) using CMAKE_BUILD_TYPE to specify the
+            #   configuration of the build tree
+            # - an IDE generator (Visual Studio) using CMAKE_CONFIGURATION_TYPES to
+            #   specify all configurations that will be available in the generated solution
+            list(APPEND MSVC_CONFIGS "${CMAKE_BUILD_TYPE}" "${CMAKE_CONFIGURATION_TYPES}")
 
-        # Set usage of static runtime for all configurations
-        foreach(MSVC_CONFIG ${MSVC_CONFIGS})
-            string(TOUPPER "CMAKE_CXX_FLAGS_${MSVC_CONFIG}" MSVC_FLAGS)
-            string(REPLACE "/MD" "/MT" ${MSVC_FLAGS} "${${MSVC_FLAGS}}")
-        endforeach()
+            # Set usage of static runtime for all configurations
+            foreach(MSVC_CONFIG ${MSVC_CONFIGS})
+                string(TOUPPER "CMAKE_CXX_FLAGS_${MSVC_CONFIG}" MSVC_FLAGS)
+                string(REPLACE "/MD" "/MT" ${MSVC_FLAGS} "${${MSVC_FLAGS}}")
+            endforeach()
+        endif()
 
         # "If /Zc:rvalueCast is specified, the compiler follows section 5.4 of the
         # C++11 standard". We need C++11 for the way we use threads.
         add_compile_options(/Zc:rvalueCast)
 
         if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-            # Enable multi-threaded compilation.
-            add_compile_options(/MP)
+            add_compile_options(
+                /MP # Enable multi-threaded compilation.
+                /FC # Display the full path of source code files passed to the compiler in diagnostics.
+            )
         endif()
     endif()
 
@@ -39,6 +43,11 @@ macro(compile_flags)
         add_link_options(
             "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
         )
+        if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+            add_link_options(
+                "$<$<CONFIG:Debug>:-Wl,--disable-dynamicbase,--disable-high-entropy-va,--default-image-base-low>" # ASLR somehow breaks linking for x64 Debug builds
+            )
+        endif()
     endif()
 
     # Prepare a generator that checks if we are not a debug, and don't have asserts
@@ -154,7 +163,7 @@ macro(compile_flags)
         message(FATAL_ERROR "No warning flags are set for this compiler yet; please consider creating a Pull Request to add support for this compiler.")
     endif()
 
-    if(NOT WIN32)
+    if(NOT WIN32 AND NOT HAIKU)
         # rdynamic is used to get useful stack traces from crash reports.
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -rdynamic")
     endif()

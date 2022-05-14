@@ -109,12 +109,13 @@ enum StationRandomTrigger {
 	SRT_PATH_RESERVATION, ///< Trigger platform when train reserves path.
 };
 
-/* Station layout for given dimensions - it is a two-dimensional array
- * where index is computed as (x * platforms) + platform. */
-typedef byte *StationLayout;
-
 /** Station specification. */
 struct StationSpec {
+	StationSpec() : cls_id(STAT_CLASS_DFLT), name(0),
+		disallowed_platforms(0), disallowed_lengths(0),
+		cargo_threshold(0), cargo_triggers(0),
+		callback_mask(0), flags(0), pylons(0), wires(0), blocked(0),
+		animation({0, 0, 0, 0}) {}
 	/**
 	 * Properties related the the grf file.
 	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
@@ -144,8 +145,7 @@ struct StationSpec {
 	 * 4-5 = platform with roof, left side
 	 * 6-7 = platform with roof, right side
 	 */
-	uint tiles;
-	NewGRFSpriteLayout *renderdata; ///< Array of tile layouts.
+	std::vector<NewGRFSpriteLayout> renderdata; ///< Array of tile layouts.
 
 	/**
 	 * Cargo threshold for choosing between little and lots of cargo
@@ -165,10 +165,15 @@ struct StationSpec {
 
 	AnimationInfo animation;
 
-	byte lengths;
-	byte *platforms;
-	StationLayout **layouts;
-	bool copied_layouts;
+	/**
+	 * Custom platform layouts.
+	 * This is a 2D array containing an array of tiles.
+	 * 1st layer is platform lengths.
+	 * 2nd layer is tracks (width).
+	 * These can be sparsely populated, and the upper limit is not defined but
+	 * limited to 255.
+	 */
+	std::vector<std::vector<std::vector<byte>>> layouts;
 };
 
 /** Struct containing information relating to station classes. */

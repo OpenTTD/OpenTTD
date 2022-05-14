@@ -106,35 +106,30 @@ static void UpdatePalette(bool init = false)
 
 static void InitPalette()
 {
-	_local_palette = _cur_palette;
-	_local_palette.first_dirty = 0;
-	_local_palette.count_dirty = 256;
+	CopyPalette(_local_palette, true);
 	UpdatePalette(true);
 }
 
 void VideoDriver_SDL::CheckPaletteAnim()
 {
-	_local_palette = _cur_palette;
+	if (!CopyPalette(_local_palette)) return;
 
-	if (_cur_palette.count_dirty != 0) {
-		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
-		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				UpdatePalette();
-				break;
+	switch (blitter->UsePaletteAnimation()) {
+		case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+			UpdatePalette();
+			break;
 
-			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_local_palette);
-				break;
+		case Blitter::PALETTE_ANIMATION_BLITTER:
+			blitter->PaletteAnimate(_local_palette);
+			break;
 
-			case Blitter::PALETTE_ANIMATION_NONE:
-				break;
+		case Blitter::PALETTE_ANIMATION_NONE:
+			break;
 
-			default:
-				NOT_REACHED();
-		}
-		_cur_palette.count_dirty = 0;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -236,7 +231,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 
 	GetAvailableVideoMode(&w, &h);
 
-	DEBUG(driver, 1, "SDL: using mode %ux%ux%d", w, h, bpp);
+	Debug(driver, 1, "SDL: using mode {}x{}x{}", w, h, bpp);
 
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
@@ -282,7 +277,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 		want_hwpalette = _use_hwpalette;
 	}
 
-	if (want_hwpalette) DEBUG(driver, 1, "SDL: requesting hardware palette");
+	if (want_hwpalette) Debug(driver, 1, "SDL: requesting hardware palette");
 
 	/* Free any previously allocated shadow surface */
 	if (_sdl_surface != nullptr && _sdl_surface != _sdl_realscreen) SDL_FreeSurface(_sdl_surface);
@@ -297,7 +292,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 			 * windowed), we restart the entire video
 			 * subsystem to force creating a new window.
 			 */
-			DEBUG(driver, 0, "SDL: Restarting SDL video subsystem, to force hwpalette change");
+			Debug(driver, 0, "SDL: Restarting SDL video subsystem, to force hwpalette change");
 			SDL_QuitSubSystem(SDL_INIT_VIDEO);
 			SDL_InitSubSystem(SDL_INIT_VIDEO);
 			ClaimMousePointer();
@@ -313,7 +308,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	/* DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK */
 	newscreen = SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE | (want_hwpalette ? SDL_HWPALETTE : 0) | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
 	if (newscreen == nullptr) {
-		DEBUG(driver, 0, "SDL: Couldn't allocate a window to draw on");
+		Debug(driver, 0, "SDL: Couldn't allocate a window to draw on");
 		return false;
 	}
 	_sdl_realscreen = newscreen;
@@ -337,10 +332,10 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 		 * This shadow surface will have SDL_HWPALLETE set, so
 		 * we won't create a second shadow surface in this case.
 		 */
-		DEBUG(driver, 1, "SDL: using shadow surface");
+		Debug(driver, 1, "SDL: using shadow surface");
 		newscreen = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, bpp, 0, 0, 0, 0);
 		if (newscreen == nullptr) {
-			DEBUG(driver, 0, "SDL: Couldn't allocate a shadow surface to draw on");
+			Debug(driver, 0, "SDL: Couldn't allocate a shadow surface to draw on");
 			return false;
 		}
 	}
@@ -594,7 +589,7 @@ const char *VideoDriver_SDL::Start(const StringList &param)
 	}
 
 	SDL_VideoDriverName(buf, sizeof buf);
-	DEBUG(driver, 1, "SDL: using driver '%s'", buf);
+	Debug(driver, 1, "SDL: using driver '{}'", buf);
 
 	MarkWholeScreenDirty();
 	SetupKeyboard();

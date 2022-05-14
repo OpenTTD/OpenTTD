@@ -16,6 +16,8 @@
 #include "vehicle_base.h"
 #include "window_func.h"
 #include "station_map.h"
+#include "order_cmd.h"
+#include "group_cmd.h"
 
 #include "safeguards.h"
 
@@ -73,9 +75,9 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
-		DoCommand(0, v->index | CO_SHARE << 30, this->clone->index, DC_EXEC, CMD_CLONE_ORDER);
+		Command<CMD_CLONE_ORDER>::Do(DC_EXEC, CO_SHARE, v->index, this->clone->index);
 	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
-		v->orders.list = new OrderList(this->orders, v);
+		v->orders = new OrderList(this->orders, v);
 		this->orders = nullptr;
 		/* Make sure buoys/oil rigs are updated in the station list. */
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);
@@ -88,7 +90,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
-	DoCommand(0, this->group, v->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP);
+	Command<CMD_ADD_VEHICLE_GROUP>::Do(DC_EXEC, this->group, v->index, false);
 }
 
 /**
@@ -140,17 +142,15 @@ void OrderBackup::DoRestore(Vehicle *v)
 
 /**
  * Clear an OrderBackup
- * @param tile  Tile related to the to-be-cleared OrderBackup.
  * @param flags For command.
- * @param p1    Unused.
- * @param p2    User that had the OrderBackup.
- * @param text  Unused.
+ * @param tile  Tile related to the to-be-cleared OrderBackup.
+ * @param user_id User that had the OrderBackup.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id)
 {
 	/* No need to check anything. If the tile or user don't exist we just ignore it. */
-	if (flags & DC_EXEC) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, p2);
+	if (flags & DC_EXEC) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, user_id);
 
 	return CommandCost();
 }
@@ -169,7 +169,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 
-		DoCommandP(0, 0, user, CMD_CLEAR_ORDER_BACKUP);
+		Command<CMD_CLEAR_ORDER_BACKUP>::Post(0, static_cast<ClientID>(user));
 		return;
 	}
 }
@@ -189,8 +189,8 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	uint32 user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
 
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
-		/* If it's not a backup of us, ignore it. */
-		if (ob->user != user) continue;
+		/* If this is a GUI action, and it's not a backup of us, ignore it. */
+		if (from_gui && ob->user != user) continue;
 		/* If it's not for our chosen tile either, ignore it. */
 		if (t != INVALID_TILE && t != ob->tile) continue;
 
@@ -198,7 +198,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			/* We need to circumvent the "prevention" from this command being executed
 			 * while the game is paused, so use the internal method. Nor do we want
 			 * this command to get its cost estimated when shift is pressed. */
-			DoCommandPInternal(ob->tile, 0, user, CMD_CLEAR_ORDER_BACKUP, nullptr, nullptr, true, false);
+			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe<CommandCallback>(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, static_cast<ClientID>(user) });
 		} else {
 			/* The command came from the game logic, i.e. the clearing of a tile.
 			 * In that case we have no need to actually sync this, just do it. */

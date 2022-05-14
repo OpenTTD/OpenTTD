@@ -122,8 +122,6 @@ public:
 		return (int32)this->GetInt64(type);
 	}
 
-	void ShiftParameters(uint amount);
-
 	/** Get a pointer to the current element in the data array. */
 	uint64 *GetDataPointer() const
 	{
@@ -172,13 +170,12 @@ public:
 extern StringParameters _global_string_params;
 
 char *GetString(char *buffr, StringID string, const char *last);
+std::string GetString(StringID string);
 char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index = 0, bool game_script = false);
 const char *GetStringPtr(StringID string);
 
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed);
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed);
-
-void InjectDParam(uint amount);
 
 /**
  * Set a string parameter \a v at index \a n in a given array \a s.
@@ -205,6 +202,7 @@ void SetDParamMaxValue(uint n, uint64 max_value, uint min_count = 0, FontSize si
 void SetDParamMaxDigits(uint n, uint count, FontSize size = FS_NORMAL);
 
 void SetDParamStr(uint n, const char *str);
+void SetDParamStr(uint n, const std::string &str);
 
 void CopyInDParam(int offs, const uint64 *src, int num);
 void CopyOutDParam(uint64 *dst, int offs, int num);

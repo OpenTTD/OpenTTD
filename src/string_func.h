@@ -28,27 +28,34 @@
 #include <iosfwd>
 
 #include "core/bitmath_func.hpp"
+#include "core/span_type.hpp"
 #include "string_type.h"
 
-char *strecat(char *dst, const char *src, const char *last);
-char *strecpy(char *dst, const char *src, const char *last);
-char *stredup(const char *src, const char *last = nullptr);
+char *strecat(char *dst, const char *src, const char *last) NOACCESS(3);
+char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
+char *stredup(const char *src, const char *last = nullptr) NOACCESS(2);
 
-int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4);
-int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap) WARN_FORMAT(3, 0);
+int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4) NOACCESS(2);
+int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap) WARN_FORMAT(3, 0) NOACCESS(2);
 
 char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 
-void str_validate(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
-std::string str_validate(const std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
-void ValidateString(const char *str);
+std::string FormatArrayAsHex(span<const byte> data);
 
-void str_fix_scc_encoded(char *str, const char *last);
+void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
+[[nodiscard]] std::string StrMakeValid(const std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+void StrMakeValidInPlace(char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+
+void str_fix_scc_encoded(char *str, const char *last) NOACCESS(2);
 void str_strip_colours(char *str);
 bool strtolower(char *str);
 bool strtolower(std::string &str, std::string::size_type offs = 0);
 
-bool StrValid(const char *str, const char *last);
+bool StrValid(const char *str, const char *last) NOACCESS(2);
+void StrTrimInPlace(std::string &str);
+
+bool StrStartsWith(const std::string_view str, const std::string_view prefix);
+bool StrEndsWith(const std::string_view str, const std::string_view suffix);
 
 /**
  * Check if a string buffer is empty.
@@ -165,6 +172,7 @@ static inline const char *Utf8PrevChar(const char *s)
 }
 
 size_t Utf8StringLength(const char *s);
+size_t Utf8StringLength(const std::string &str);
 
 /**
  * Is the given character a lead surrogate code point?

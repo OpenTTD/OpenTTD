@@ -18,11 +18,15 @@
 #include "station_type.h"
 #include "vehicle_type.h"
 #include "date_type.h"
+#include "saveload/saveload.h"
 
 typedef Pool<Order, OrderID, 256, 0xFF0000> OrderPool;
 typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
 extern OrderPool _order_pool;
 extern OrderListPool _orderlist_pool;
+
+template <typename, typename>
+class EndianBufferWriter;
 
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
@@ -31,9 +35,15 @@ extern OrderListPool _orderlist_pool;
  */
 struct Order : OrderPool::PoolItem<&_order_pool> {
 private:
-	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt); ///< Saving and loading the current order of vehicles.
-	friend void Load_VEHS();                                             ///< Loading of ancient vehicles.
-	friend const struct SaveLoad *GetOrderDescription();                 ///< Saving and loading of orders.
+	friend struct VEHSChunkHandler;                             ///< Loading of ancient vehicles.
+	friend SaveLoadTable GetOrderDescription();                 ///< Saving and loading of orders.
+	/* So we can use private/protected variables in the saveload code */
+	friend class SlVehicleCommon;
+	friend class SlVehicleDisaster;
+
+	template <typename Tcont, typename Titer>
+	friend EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &data);
+	friend class EndianBufferReader &operator >>(class EndianBufferReader &buffer, Order &order);
 
 	uint8 type;           ///< The type of order + non-stop flags
 	uint8 flags;          ///< Load/unload types, depot order/action types.
@@ -48,7 +58,7 @@ private:
 public:
 	Order *next;          ///< Pointer to next order. If nullptr, end of list
 
-	Order() : flags(0), refit_cargo(CT_NO_REFIT), max_speed(UINT16_MAX) {}
+	Order() : flags(0), refit_cargo(CT_NO_REFIT), wait_time(0), travel_time(0), max_speed(UINT16_MAX) {}
 	~Order();
 
 	Order(uint32 packed);
@@ -250,7 +260,7 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord);
 struct OrderList : OrderListPool::PoolItem<&_orderlist_pool> {
 private:
 	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
-	friend const struct SaveLoad *GetOrderListDescription(); ///< Saving and loading of order lists.
+	friend SaveLoadTable GetOrderListDescription(); ///< Saving and loading of order lists.
 
 	StationID GetBestLoadableNext(const Vehicle *v, const Order *o1, const Order *o2) const;
 

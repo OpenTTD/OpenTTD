@@ -88,7 +88,7 @@ static SQRegFunction mathlib_funcs[] = {
 #endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 	_DECL_FUNC(fabs,2,".n"),
 	_DECL_FUNC(abs,2,".n"),
-	{0,0,0,0},
+	{nullptr,nullptr,0,nullptr},
 };
 
 #ifndef M_PI
@@ -98,7 +98,7 @@ static SQRegFunction mathlib_funcs[] = {
 SQRESULT sqstd_register_mathlib(HSQUIRRELVM v)
 {
 	SQInteger i=0;
-	while(mathlib_funcs[i].name!=0)	{
+	while(mathlib_funcs[i].name!=nullptr)	{
 		sq_pushstring(v,mathlib_funcs[i].name,-1);
 		sq_newclosure(v,mathlib_funcs[i].f,0);
 		sq_setparamscheck(v,mathlib_funcs[i].nparamscheck,mathlib_funcs[i].typemask);

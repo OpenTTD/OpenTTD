@@ -53,23 +53,6 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 	}
 }
 
-RealSpriteGroup::~RealSpriteGroup()
-{
-	free(this->loaded);
-	free(this->loading);
-}
-
-DeterministicSpriteGroup::~DeterministicSpriteGroup()
-{
-	free(this->adjusts);
-	free(this->ranges);
-}
-
-RandomizedSpriteGroup::~RandomizedSpriteGroup()
-{
-	free(this->groups);
-}
-
 static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32 parameter, bool *available)
 {
 	uint32 value;
@@ -122,7 +105,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  */
 /* virtual */ uint32 ScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
-	DEBUG(grf, 1, "Unhandled scope variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled scope variable 0x{:X}", variable);
 	*available = false;
 	return UINT_MAX;
 }
@@ -141,6 +124,9 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  */
 /* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
+	if (!group->loaded.empty())  return group->loaded[0];
+	if (!group->loading.empty()) return group->loading[0];
+
 	return nullptr;
 }
 
@@ -158,18 +144,18 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver *scope, U last_value, uint32 value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32 value)
 {
-	value >>= adjust->shift_num;
-	value  &= adjust->and_mask;
+	value >>= adjust.shift_num;
+	value  &= adjust.and_mask;
 
-	switch (adjust->type) {
-		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust->add_val) / (S)adjust->divmod_val; break;
-		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust->add_val) % (S)adjust->divmod_val; break;
+	switch (adjust.type) {
+		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val; break;
+		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val; break;
 		case DSGA_TYPE_NONE: break;
 	}
 
-	switch (adjust->operation) {
+	switch (adjust.operation) {
 		case DSGA_OP_ADD:  return last_value + value;
 		case DSGA_OP_SUB:  return last_value - value;
 		case DSGA_OP_SMIN: return std::min<S>(last_value, value);
@@ -207,17 +193,14 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 {
 	uint32 last_value = 0;
 	uint32 value = 0;
-	uint i;
 
 	ScopeResolver *scope = object.GetScope(this->var_scope);
 
-	for (i = 0; i < this->num_adjusts; i++) {
-		DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
-
+	for (const auto &adjust : this->adjusts) {
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
-		if (adjust->variable == 0x7E) {
-			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, object, false);
+		if (adjust.variable == 0x7E) {
+			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
 			if (subgroup == nullptr) {
 				value = CALLBACK_FAILED;
 			} else {
@@ -225,10 +208,10 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 			}
 
 			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
-		} else if (adjust->variable == 0x7B) {
-			value = GetVariable(object, scope, adjust->parameter, last_value, &available);
+		} else if (adjust.variable == 0x7B) {
+			value = GetVariable(object, scope, adjust.parameter, last_value, &available);
 		} else {
-			value = GetVariable(object, scope, adjust->variable, adjust->parameter, &available);
+			value = GetVariable(object, scope, adjust.variable, adjust.parameter, &available);
 		}
 
 		if (!available) {
@@ -256,16 +239,16 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		return &nvarzero;
 	}
 
-	if (this->num_ranges > 4) {
-		DeterministicSpriteGroupRange *lower = std::lower_bound(this->ranges + 0, this->ranges + this->num_ranges, value, RangeHighComparator);
-		if (lower != this->ranges + this->num_ranges && lower->low <= value) {
+	if (this->ranges.size() > 4) {
+		const auto &lower = std::lower_bound(this->ranges.begin(), this->ranges.end(), value, RangeHighComparator);
+		if (lower != this->ranges.end() && lower->low <= value) {
 			assert(lower->low <= value && value <= lower->high);
 			return SpriteGroup::Resolve(lower->group, object, false);
 		}
 	} else {
-		for (i = 0; i < this->num_ranges; i++) {
-			if (this->ranges[i].low <= value && value <= this->ranges[i].high) {
-				return SpriteGroup::Resolve(this->ranges[i].group, object, false);
+		for (const auto &range : this->ranges) {
+			if (range.low <= value && value <= range.high) {
+				return SpriteGroup::Resolve(range.group, object, false);
 			}
 		}
 	}
@@ -284,11 +267,11 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 
 		if (res) {
 			object.used_triggers |= match;
-			object.reseed[this->var_scope] |= (this->num_groups - 1) << this->lowest_randbit;
+			object.reseed[this->var_scope] |= (this->groups.size() - 1) << this->lowest_randbit;
 		}
 	}
 
-	uint32 mask  = (this->num_groups - 1) << this->lowest_randbit;
+	uint32 mask = ((uint)this->groups.size() - 1) << this->lowest_randbit;
 	byte index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
 
 	return SpriteGroup::Resolve(this->groups[index], object, false);

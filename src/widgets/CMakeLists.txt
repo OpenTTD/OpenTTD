@@ -44,6 +44,8 @@ add_files(
     screenshot_widget.h
     settings_widget.h
     sign_widget.h
+    slider.cpp
+    slider_func.h
     smallmap_widget.h
     station_widget.h
     statusbar_widget.h

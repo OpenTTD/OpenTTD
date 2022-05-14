@@ -40,7 +40,7 @@ public:
 	typedef std::map<StationID, StationLinkMap> LinkMap;
 	typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
 
-	static const uint8 LINK_COLOURS[];
+	static const uint8 LINK_COLOURS[][12];
 
 	/**
 	 * Create a link graph overlay for the specified window.

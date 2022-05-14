@@ -53,7 +53,7 @@ bool VehicleListIdentifier::UnpackIfValid(uint32 data)
 /* static */ VehicleListIdentifier VehicleListIdentifier::UnPack(uint32 data)
 {
 	VehicleListIdentifier result;
-	bool ret = result.UnpackIfValid(data);
+	[[maybe_unused]] bool ret = result.UnpackIfValid(data);
 	assert(ret);
 	return result;
 }

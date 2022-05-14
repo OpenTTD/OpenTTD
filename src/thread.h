@@ -14,6 +14,7 @@
 #include "crashlog.h"
 #include <system_error>
 #include <thread>
+#include <mutex>
 
 /**
  * Sleep on the current thread for a defined time.
@@ -46,7 +47,17 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 {
 #ifndef NO_THREADS
 	try {
+		static std::mutex thread_startup_mutex;
+		std::lock_guard<std::mutex> lock(thread_startup_mutex);
+
 		std::thread t([] (const char *name, TFn&& F, TArgs&&... A) {
+				/* Delay starting the thread till the main thread is finished
+				 * with the administration. This prevent race-conditions on
+				 * startup. */
+				{
+					std::lock_guard<std::mutex> lock(thread_startup_mutex);
+				}
+
 				SetCurrentThreadName(name);
 				CrashLog::InitThread();
 				try {
@@ -66,7 +77,7 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 		return true;
 	} catch (const std::system_error& e) {
 		/* Something went wrong, the system we are running on might not support threads. */
-		DEBUG(misc, 1, "Can't create thread '%s': %s", name, e.what());
+		Debug(misc, 1, "Can't create thread '{}': {}", name, e.what());
 	}
 #endif
 

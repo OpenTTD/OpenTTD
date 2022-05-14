@@ -11,12 +11,14 @@
 #include "error.h"
 #include "gui.h"
 #include "window_gui.h"
+#include "window_func.h"
 #include "textbuf_gui.h"
 #include "network/network.h"
 #include "genworld.h"
 #include "network/network_gui.h"
 #include "network/network_content.h"
 #include "landscape_type.h"
+#include "landscape.h"
 #include "strings_func.h"
 #include "fios.h"
 #include "ai/ai_gui.hpp"
@@ -25,6 +27,10 @@
 #include "language.h"
 #include "rev.h"
 #include "highscore.h"
+#include "signs_base.h"
+#include "viewport_func.h"
+#include "vehicle_base.h"
+#include <regex>
 
 #include "widgets/intro_widget.h"
 
@@ -33,13 +39,221 @@
 
 #include "safeguards.h"
 
+
+/**
+ * A viewport command for the main menu background (intro game).
+ */
+struct IntroGameViewportCommand {
+	/** Horizontal alignment value. */
+	enum AlignmentH : byte {
+		LEFT,
+		CENTRE,
+		RIGHT,
+	};
+	/** Vertical alignment value. */
+	enum AlignmentV : byte {
+		TOP,
+		MIDDLE,
+		BOTTOM,
+	};
+
+	int command_index = 0;               ///< Sequence number of the command (order they are performed in).
+	Point position{ 0, 0 };              ///< Calculated world coordinate to position viewport top-left at.
+	VehicleID vehicle = INVALID_VEHICLE; ///< Vehicle to follow, or INVALID_VEHICLE if not following a vehicle.
+	uint delay = 0;                      ///< Delay until next command.
+	int zoom_adjust = 0;                 ///< Adjustment to zoom level from base zoom level.
+	bool pan_to_next = false;            ///< If true, do a smooth pan from this position to the next.
+	AlignmentH align_h = CENTRE;         ///< Horizontal alignment.
+	AlignmentV align_v = MIDDLE;         ///< Vertical alignment.
+
+	/**
+	 * Calculate effective position.
+	 * This will update the position field if a vehicle is followed.
+	 * @param vp Viewport to calculate position for.
+	 * @return Calculated position in the viewport.
+	 */
+	Point PositionForViewport(const Viewport *vp)
+	{
+		if (this->vehicle != INVALID_VEHICLE) {
+			const Vehicle *v = Vehicle::Get(this->vehicle);
+			this->position = RemapCoords(v->x_pos, v->y_pos, v->z_pos);
+		}
+
+		Point p;
+		switch (this->align_h) {
+			case LEFT: p.x = this->position.x; break;
+			case CENTRE: p.x = this->position.x - vp->virtual_width / 2; break;
+			case RIGHT: p.x = this->position.x - vp->virtual_width; break;
+		}
+		switch (this->align_v) {
+			case TOP: p.y = this->position.y; break;
+			case MIDDLE: p.y = this->position.y - vp->virtual_height / 2; break;
+			case BOTTOM: p.y = this->position.y - vp->virtual_height; break;
+		}
+		return p;
+	}
+};
+
+
 struct SelectGameWindow : public Window {
+	/** Vector of viewport commands parsed. */
+	std::vector<IntroGameViewportCommand> intro_viewport_commands;
+	/** Index of currently active viewport command. */
+	size_t cur_viewport_command_index;
+	/** Time spent (milliseconds) on current viewport command. */
+	uint cur_viewport_command_time;
+	uint mouse_idle_time;
+	Point mouse_idle_pos;
+
+	/**
+	 * Find and parse all viewport command signs.
+	 * Fills the intro_viewport_commands vector and deletes parsed signs from the world.
+	 */
+	void ReadIntroGameViewportCommands()
+	{
+		intro_viewport_commands.clear();
+
+		/* Regular expression matching the commands: T, spaces, integer, spaces, flags, spaces, integer */
+		const char *sign_langauge = "^T\\s*([0-9]+)\\s*([-+A-Z0-9]+)\\s*([0-9]+)";
+		std::regex re(sign_langauge, std::regex_constants::icase);
+
+		/* List of signs successfully parsed to delete afterwards. */
+		std::vector<SignID> signs_to_delete;
+
+		for (const Sign *sign : Sign::Iterate()) {
+			std::smatch match;
+			if (std::regex_search(sign->name, match, re)) {
+				IntroGameViewportCommand vc;
+				/* Sequence index from the first matching group. */
+				vc.command_index = std::stoi(match[1].str());
+				/* Sign coordinates for positioning. */
+				vc.position = RemapCoords(sign->x, sign->y, sign->z);
+				/* Delay from the third matching group. */
+				vc.delay = std::stoi(match[3].str()) * 1000; // milliseconds
+
+				/* Parse flags from second matching group. */
+				enum IdType {
+					ID_NONE, ID_VEHICLE
+				} id_type = ID_NONE;
+				for (char c : match[2].str()) {
+					if (isdigit(c)) {
+						if (id_type == ID_VEHICLE) {
+							vc.vehicle = vc.vehicle * 10 + (c - '0');
+						}
+					} else {
+						id_type = ID_NONE;
+						switch (toupper(c)) {
+							case '-': vc.zoom_adjust = +1; break;
+							case '+': vc.zoom_adjust = -1; break;
+							case 'T': vc.align_v = IntroGameViewportCommand::TOP; break;
+							case 'M': vc.align_v = IntroGameViewportCommand::MIDDLE; break;
+							case 'B': vc.align_v = IntroGameViewportCommand::BOTTOM; break;
+							case 'L': vc.align_h = IntroGameViewportCommand::LEFT; break;
+							case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
+							case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
+							case 'P': vc.pan_to_next = true; break;
+							case 'V': id_type = ID_VEHICLE; vc.vehicle = 0; break;
+						}
+					}
+				}
+
+				/* Successfully parsed, store. */
+				intro_viewport_commands.push_back(vc);
+				signs_to_delete.push_back(sign->index);
+			}
+		}
+
+		/* Sort the commands by sequence index. */
+		std::sort(intro_viewport_commands.begin(), intro_viewport_commands.end(), [](const IntroGameViewportCommand &a, const IntroGameViewportCommand &b) { return a.command_index < b.command_index; });
+
+		/* Delete all the consumed signs, from last ID to first ID. */
+		std::sort(signs_to_delete.begin(), signs_to_delete.end(), [](SignID a, SignID b) { return a > b; });
+		for (SignID sign_id : signs_to_delete) {
+			delete Sign::Get(sign_id);
+		}
+	}
 
 	SelectGameWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->FinishInitNested(0);
 		this->OnInvalidateData();
+
+		this->ReadIntroGameViewportCommands();
+
+		this->cur_viewport_command_index = (size_t)-1;
+		this->cur_viewport_command_time = 0;
+		this->mouse_idle_time = 0;
+		this->mouse_idle_pos = _cursor.pos;
+	}
+
+	void OnRealtimeTick(uint delta_ms) override
+	{
+		/* Move the main game viewport according to intro viewport commands. */
+
+		if (intro_viewport_commands.empty()) return;
+
+		bool suppress_panning = true;
+		if (this->mouse_idle_pos.x != _cursor.pos.x || this->mouse_idle_pos.y != _cursor.pos.y) {
+			this->mouse_idle_pos = _cursor.pos;
+			this->mouse_idle_time = 2000;
+		} else if (this->mouse_idle_time > delta_ms) {
+			this->mouse_idle_time -= delta_ms;
+		} else {
+			this->mouse_idle_time = 0;
+			suppress_panning = false;
+		}
+
+		/* Determine whether to move to the next command or stay at current. */
+		bool changed_command = false;
+		if (this->cur_viewport_command_index >= intro_viewport_commands.size()) {
+			/* Reached last, rotate back to start of the list. */
+			this->cur_viewport_command_index = 0;
+			changed_command = true;
+		} else {
+			/* Check if current command has elapsed and switch to next. */
+			this->cur_viewport_command_time += delta_ms;
+			if (this->cur_viewport_command_time >= intro_viewport_commands[this->cur_viewport_command_index].delay) {
+				this->cur_viewport_command_index = (this->cur_viewport_command_index + 1) % intro_viewport_commands.size();
+				this->cur_viewport_command_time = 0;
+				changed_command = true;
+			}
+		}
+
+		IntroGameViewportCommand &vc = intro_viewport_commands[this->cur_viewport_command_index];
+		Window *mw = FindWindowByClass(WC_MAIN_WINDOW);
+		Viewport *vp = mw->viewport;
+
+		/* Early exit if the current command hasn't elapsed and isn't animated. */
+		if (!changed_command && !vc.pan_to_next && vc.vehicle == INVALID_VEHICLE) return;
+
+		/* Suppress panning commands, while user interacts with GUIs. */
+		if (!changed_command && suppress_panning) return;
+
+		/* Reset the zoom level. */
+		if (changed_command) FixTitleGameZoom(vc.zoom_adjust);
+
+		/* Calculate current command position (updates followed vehicle coordinates). */
+		Point pos = vc.PositionForViewport(vp);
+
+		/* Calculate panning (linear interpolation between current and next command position). */
+		if (vc.pan_to_next) {
+			size_t next_command_index = (this->cur_viewport_command_index + 1) % intro_viewport_commands.size();
+			IntroGameViewportCommand &nvc = intro_viewport_commands[next_command_index];
+			Point pos2 = nvc.PositionForViewport(vp);
+			const double t = this->cur_viewport_command_time / (double)vc.delay;
+			pos.x = pos.x + (int)(t * (pos2.x - pos.x));
+			pos.y = pos.y + (int)(t * (pos2.y - pos.y));
+		}
+
+		/* Update the viewport position. */
+		mw->viewport->dest_scrollpos_x = mw->viewport->scrollpos_x = pos.x;
+		mw->viewport->dest_scrollpos_y = mw->viewport->scrollpos_y = pos.y;
+		UpdateViewportPosition(mw);
+		mw->SetDirty(); // Required during panning, otherwise logo graphics disappears
+
+		/* If there is only one command, we just executed it and don't need to do any more */
+		if (intro_viewport_commands.size() == 1 && vc.vehicle == INVALID_VEHICLE) intro_viewport_commands.clear();
 	}
 
 	/**

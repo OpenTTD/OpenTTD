@@ -1,6 +1,6 @@
 ## How to build with Emscripten
 
-Building with Emscripten works with emsdk 2.0.10 and above.
+Building with Emscripten works with emsdk 2.0.31 and above.
 
 Currently there is no LibLZMA support upstream; for this we suggest to apply
 the provided patch in this folder to your emsdk installation.
@@ -24,7 +24,7 @@ Next, build the game with emscripten:
 
 ```
   mkdir build
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emcmake cmake .. -DHOST_BINARY_DIR=$(pwd)/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPTION_USE_ASSERTS=OFF
+  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emcmake cmake .. -DHOST_BINARY_DIR=../build-host -DCMAKE_BUILD_TYPE=Release -DOPTION_USE_ASSERTS=OFF
   docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emmake make -j5
 ```
 

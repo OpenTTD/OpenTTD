@@ -32,11 +32,25 @@
 #include "../../gfx_func.h"
 #include "../../window_func.h"
 #include "../../window_gui.h"
+#include "../../spritecache.h"
+#include "../../toolbar_gui.h"
+#include <array>
 
+#include "table/sprites.h"
 
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
 
+/* The 10.12 SDK added new names for some enum constants and
+ * deprecated the old ones. As there's no functional change in any
+ * way, just use a define for older SDKs to the old names. */
+#ifndef HAVE_OSX_1012_SDK
+#	define NSEventModifierFlagCommand NSCommandKeyMask
+#	define NSEventModifierFlagControl NSControlKeyMask
+#	define NSEventModifierFlagOption NSAlternateKeyMask
+#	define NSEventModifierFlagShift NSShiftKeyMask
+#	define NSEventModifierFlagCapsLock NSAlphaShiftKeyMask
+#endif
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -45,6 +59,31 @@
  * C++ and objective C code can't be joined in all cases (classes stuff).
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
+
+#ifdef HAVE_TOUCHBAR_SUPPORT
+struct TouchBarButton {
+	NSTouchBarItemIdentifier key;
+	SpriteID                 sprite;
+	MainToolbarHotkeys       hotkey;
+	NSString                *fallback_text;
+
+	bool operator ==(const NSTouchBarItemIdentifier other) const { return this->key == other; }
+};
+
+/* 9 items can be displayed on the touch bar when using default buttons. */
+static const std::array<TouchBarButton, 9> _touchbar_buttons{{
+	{ @"openttd.pause",         SPR_IMG_PAUSE,       MTHK_PAUSE,         @"Pause" },
+	{ @"openttd.fastforward",   SPR_IMG_FASTFORWARD, MTHK_FASTFORWARD,   @"Fast Forward" },
+	{ @"openttd.zoom_in",       SPR_IMG_ZOOMIN,      MTHK_ZOOM_IN,       @"Zoom In" },
+	{ @"openttd.zoom_out",      SPR_IMG_ZOOMOUT,     MTHK_ZOOM_OUT,      @"Zoom Out" },
+	{ @"openttd.build_rail",    SPR_IMG_BUILDRAIL,   MTHK_BUILD_RAIL,    @"Rail" },
+	{ @"openttd.build_road",    SPR_IMG_BUILDROAD,   MTHK_BUILD_ROAD,    @"Road" },
+	{ @"openttd.build_tram",    SPR_IMG_BUILDTRAMS,  MTHK_BUILD_TRAM,    @"Tram" },
+	{ @"openttd.build_docks",   SPR_IMG_BUILDWATER,  MTHK_BUILD_DOCKS,   @"Docks" },
+	{ @"openttd.build_airport", SPR_IMG_BUILDAIR,    MTHK_BUILD_AIRPORT, @"Airport" }
+}};
+
+#endif
 
 bool _allow_hidpi_window = true; // Referenced from table/misc_settings.ini
 
@@ -122,6 +161,37 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 	return unicode_str;
 }
 
+static void CGDataFreeCallback(void *, const void *data, size_t)
+{
+	delete[] (const uint32 *)data;
+}
+
+/**
+ * Render an OTTD sprite to a Cocoa image.
+ * @param sprite_id Sprite to make a NSImage from.
+ * @param zoom Zoom level to render the sprite in.
+ * @return Autorelease'd image or nullptr on any error.
+ */
+static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
+{
+	if (!SpriteExists(sprite_id)) return nullptr;
+
+	/* Fetch the sprite and create a new bitmap */
+	Dimension dim = GetSpriteSize(sprite_id, nullptr, zoom);
+	std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(sprite_id, zoom);
+	if (!buffer) return nullptr; // Failed to blit sprite for some reason.
+
+	CFAutoRelease<CGDataProvider> data(CGDataProviderCreateWithData(nullptr, buffer.release(), dim.width * dim.height * 4, &CGDataFreeCallback));
+	if (!data) return nullptr;
+
+	CGBitmapInfo info = kCGImageAlphaFirst | kCGBitmapByteOrder32Host;
+	CFAutoRelease<CGColorSpaceRef> color_space(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
+	CFAutoRelease<CGImage> bitmap(CGImageCreate(dim.width, dim.height, 8, 32, dim.width * 4, color_space.get(), info, data.get(), nullptr, false, kCGRenderingIntentDefault));
+	if (!bitmap) return nullptr;
+
+	return [ [ [ NSImage alloc ] initWithCGImage:bitmap.get() size:NSZeroSize ] autorelease ];
+}
+
 
 /**
  * The main class of the application, the application's delegate.
@@ -135,7 +205,12 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 	[ NSApp stop:self ];
 
 	/* Send an empty event to return from the run loop. Without that, application is stuck waiting for an event. */
-	NSEvent *event = [ NSEvent otherEventWithType:NSApplicationDefined location:NSMakePoint(0, 0) modifierFlags:0 timestamp:0.0 windowNumber:0 context:nil subtype:0 data1:0 data2:0 ];
+#ifdef HAVE_OSX_1012_SDK
+	NSEventType type = NSEventTypeApplicationDefined;
+#else
+	NSEventType type = NSApplicationDefined;
+#endif
+	NSEvent *event = [ NSEvent otherEventWithType:type location:NSMakePoint(0, 0) modifierFlags:0 timestamp:0.0 windowNumber:0 context:nil subtype:0 data1:0 data2:0 ];
 	[ NSApp postEvent:event atStart:YES ];
 }
 
@@ -207,7 +282,7 @@ static void setApplicationMenu()
 	[ appleMenu addItemWithTitle:title action:@selector(hide:) keyEquivalent:@"h" ];
 
 	NSMenuItem *menuItem = [ appleMenu addItemWithTitle:@"Hide Others" action:@selector(hideOtherApplications:) keyEquivalent:@"h" ];
-	[ menuItem setKeyEquivalentModifierMask:(NSAlternateKeyMask | NSCommandKeyMask) ];
+	[ menuItem setKeyEquivalentModifierMask:(NSEventModifierFlagOption | NSEventModifierFlagCommand) ];
 
 	[ appleMenu addItemWithTitle:@"Show All" action:@selector(unhideAllApplications:) keyEquivalent:@"" ];
 
@@ -273,7 +348,7 @@ bool CocoaSetupApplication()
 
 	/* Tell the dock about us */
 	OSStatus returnCode = TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-	if (returnCode != 0) DEBUG(driver, 0, "Could not change to foreground application. Error %d", (int)returnCode);
+	if (returnCode != 0) Debug(driver, 0, "Could not change to foreground application. Error {}", (int)returnCode);
 
 	/* Disable the system-wide tab feature as we only have one window. */
 	if ([ NSWindow respondsToSelector:@selector(setAllowsAutomaticWindowTabbing:) ]) {
@@ -329,7 +404,11 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	@autoreleasepool {
 		NSAlert *alert = [ [ NSAlert alloc ] init ];
+#ifdef HAVE_OSX_1012_SDK
+		[ alert setAlertStyle: NSAlertStyleCritical ];
+#else
 		[ alert setAlertStyle: NSCriticalAlertStyle ];
+#endif
 		[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
 		[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
 		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
@@ -364,6 +443,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @implementation OTTD_CocoaWindow {
 	VideoDriver_Cocoa *driver;
+	bool touchbar_created;
 }
 
 /**
@@ -373,6 +453,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
 		self->driver = drv;
+		self->touchbar_created = false;
 
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
 
@@ -387,23 +468,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 
 /**
- * This method fires just before the window deminaturizes from the Dock.
- * We'll save the current visible surface, let the window manager redraw any
- * UI elements, and restore the surface. This way, no expose event
- * is required, and the deminiaturize works perfectly.
- */
-- (void)display
-{
-	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
-
-	/* let the window manager redraw controls, border, etc */
-	[ super display ];
-
-	/* restore visible surface */
-	[ self restoreCachedImage ];
-}
-/**
  * Define the rectangle we draw our window in
  */
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag
@@ -411,6 +475,83 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	[ super setFrame:frameRect display:flag ];
 
 	driver->AllocateBackingStore();
+}
+
+#ifdef HAVE_TOUCHBAR_SUPPORT
+
+- (void)touchBarButtonAction:(id)sender
+{
+	NSButton *btn = (NSButton *)sender;
+	if (auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), (NSTouchBarItemIdentifier)btn.identifier); item != _touchbar_buttons.cend()) {
+		HandleToolbarHotkey(item->hotkey);
+	}
+}
+
+- (nullable NSTouchBar *)makeTouchBar
+{
+	/* Make button identifier array. */
+	NSMutableArray<NSTouchBarItemIdentifier> *button_ids = [ [ NSMutableArray alloc ] init ];
+	for (const auto &button : _touchbar_buttons) {
+		[ button_ids addObject:button.key ];
+	}
+	[ button_ids addObject:NSTouchBarItemIdentifierOtherItemsProxy ];
+
+	NSTouchBar *bar = [ [ NSTouchBar alloc ] init ];
+	bar.delegate = self;
+	bar.defaultItemIdentifiers = button_ids;
+	[ button_ids release ];
+
+	self->touchbar_created = true;
+
+	return bar;
+}
+
+- (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
+{
+	auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), identifier);
+	assert(item != _touchbar_buttons.cend());
+
+	NSButton *button = [ NSButton buttonWithTitle:item->fallback_text target:self action:@selector(touchBarButtonAction:) ];
+	button.identifier = identifier;
+	button.imageScaling = NSImageScaleProportionallyDown;
+
+	NSCustomTouchBarItem *tb_item = [ [ NSCustomTouchBarItem alloc] initWithIdentifier:identifier ];
+	tb_item.view = button;
+	return tb_item;
+}
+
+#endif /* HAVE_TOUCHBAR_SUPPORT */
+
+- (void)refreshSystemSprites
+{
+#ifdef HAVE_TOUCHBAR_SUPPORT
+	if (!self->touchbar_created || ![ self respondsToSelector:@selector(touchBar) ] || self.touchBar == nil) return;
+
+	/* Re-create button images from OTTD sprites. */
+	for (NSTouchBarItemIdentifier ident in self.touchBar.itemIdentifiers) {
+		auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), ident);
+		if (item == _touchbar_buttons.cend()) continue;
+
+		NSCustomTouchBarItem *tb_item = [ self.touchBar itemForIdentifier:ident ];
+		NSButton *button = tb_item.view;
+
+		NSImage *image = NSImageFromSprite(item->sprite, _settings_client.gui.zoom_min);
+		if (image != nil) {
+			/* Human Interface Guidelines: Maximum touch bar glyph size 22 pt. */
+			CGFloat max_dim = std::max(image.size.width, image.size.height);
+			if (max_dim > 0.0) {
+				CGFloat scale = 22.0 / max_dim;
+				image.size = NSMakeSize(image.size.width * scale, image.size.height * scale);
+			}
+
+			button.image = image;
+			button.imagePosition = NSImageOnly;
+		} else {
+			button.image = nil;
+			button.imagePosition = NSNoImage;
+		}
+	}
+#endif /* HAVE_TOUCHBAR_SUPPORT */
 }
 
 @end
@@ -536,8 +677,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (BOOL)emulateRightButton:(NSEvent *)event
 {
 	uint32 keymask = 0;
-	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
-	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
+	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSEventModifierFlagCommand;
+	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSEventModifierFlagControl;
 
 	return (event.modifierFlags & keymask) != 0;
 }
@@ -653,18 +794,18 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 		case QZ_RETURN:
 		case QZ_f:
-			if (down && (modifiers & NSCommandKeyMask)) {
+			if (down && (modifiers & NSEventModifierFlagCommand)) {
 				VideoDriver::GetInstance()->ToggleFullscreen(!_fullscreen);
 			}
 			break;
 
 		case QZ_v:
-			if (down && EditBoxInGlobalFocus() && (modifiers & (NSCommandKeyMask | NSControlKeyMask))) {
+			if (down && EditBoxInGlobalFocus() && (modifiers & (NSEventModifierFlagCommand | NSEventModifierFlagControl))) {
 				HandleKeypress(WKC_CTRL | 'V', unicode);
 			}
 			break;
 		case QZ_u:
-			if (down && EditBoxInGlobalFocus() && (modifiers & (NSCommandKeyMask | NSControlKeyMask))) {
+			if (down && EditBoxInGlobalFocus() && (modifiers & (NSEventModifierFlagCommand | NSEventModifierFlagControl))) {
 				HandleKeypress(WKC_CTRL | 'U', unicode);
 			}
 			break;
@@ -676,10 +817,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const CocoaVkMapping &m) { return m.vk_from == keycode; });
 		uint32 pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
 
-		if (modifiers & NSShiftKeyMask)     pressed_key |= WKC_SHIFT;
-		if (modifiers & NSControlKeyMask)   pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
-		if (modifiers & NSAlternateKeyMask) pressed_key |= WKC_ALT;
-		if (modifiers & NSCommandKeyMask)   pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
+		if (modifiers & NSEventModifierFlagShift)   pressed_key |= WKC_SHIFT;
+		if (modifiers & NSEventModifierFlagControl) pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
+		if (modifiers & NSEventModifierFlagOption)  pressed_key |= WKC_ALT;
+		if (modifiers & NSEventModifierFlagCommand) pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
 
 		static bool console = false;
 
@@ -700,9 +841,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		if (!EditBoxInGlobalFocus() || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
 			HandleKeypress(pressed_key, unicode);
 		}
-		DEBUG(driver, 3, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
+		Debug(driver, 3, "cocoa_v: QZ_KeyEvent: {:x} ({:x}), down, mapping: {:x}", keycode, (int)unicode, pressed_key);
 	} else {
-		DEBUG(driver, 3, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
+		Debug(driver, 3, "cocoa_v: QZ_KeyEvent: {:x} ({:x}), up", keycode, (int)unicode);
 	}
 
 	return interpret_keys;
@@ -715,7 +856,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		case QZ_q:
 		case QZ_h:
 		case QZ_m:
-			if (event.modifierFlags & NSCommandKeyMask) {
+			if (event.modifierFlags & NSEventModifierFlagCommand) {
 				[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 			}
 			break;
@@ -744,7 +885,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		case QZ_q:
 		case QZ_h:
 		case QZ_m:
-			if (event.modifierFlags & NSCommandKeyMask) {
+			if (event.modifierFlags & NSEventModifierFlagCommand) {
 				[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 			}
 			break;
@@ -765,7 +906,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (self->_current_mods == newMods) return;
 
 	/* Iterate through the bits, testing each against the current modifiers */
-	for (unsigned int i = 0, bit = NSAlphaShiftKeyMask; bit <= NSCommandKeyMask; bit <<= 1, ++i) {
+	for (unsigned int i = 0, bit = NSEventModifierFlagCapsLock; bit <= NSEventModifierFlagCommand; bit <<= 1, ++i) {
 		unsigned int currentMask, newMask;
 
 		currentMask = self->_current_mods & bit;

@@ -58,10 +58,10 @@ public:
 		return this->sock != INVALID_SOCKET;
 	}
 
-	NetworkRecvStatus CloseConnection(bool error = true) override;
+	void CloseSocket();
 
 	NetworkHTTPSocketHandler(SOCKET sock, HTTPCallback *callback,
-			const char *host, const char *url, const char *data, int depth);
+			const std::string &host, const char *url, const char *data, int depth);
 
 	~NetworkHTTPSocketHandler();
 
@@ -73,6 +73,7 @@ public:
 
 /** Connect with a HTTP server and do ONE query. */
 class NetworkHTTPContentConnecter : TCPConnecter {
+	std::string hostname;   ///< Hostname we are connecting to.
 	HTTPCallback *callback; ///< Callback to tell that we received some data (or won't).
 	const char *url;        ///< The URL we want to get at the server.
 	const char *data;       ///< The data to send
@@ -81,16 +82,15 @@ class NetworkHTTPContentConnecter : TCPConnecter {
 public:
 	/**
 	 * Start the connecting.
-	 * @param address  the address to connect to
-	 * @param callback the callback for HTTP retrieval
-	 * @param url      the url at the server
-	 * @param data     the data to send
-	 * @param depth    the depth (redirect recursion) of the queries
+	 * @param hostname The hostname to connect to.
+	 * @param callback The callback for HTTP retrieval.
+	 * @param url The url at the server.
+	 * @param data The data to send.
+	 * @param depth The depth (redirect recursion) of the queries.
 	 */
-	NetworkHTTPContentConnecter(const NetworkAddress &address,
-			HTTPCallback *callback, const char *url,
-			const char *data = nullptr, int depth = 0) :
-		TCPConnecter(address),
+	NetworkHTTPContentConnecter(const std::string &hostname, HTTPCallback *callback, const char *url, const char *data = nullptr, int depth = 0) :
+		TCPConnecter(hostname, 80),
+		hostname(hostname),
 		callback(callback),
 		url(stredup(url)),
 		data(data),
@@ -112,7 +112,7 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
-		new NetworkHTTPSocketHandler(s, this->callback, this->address.GetHostname(), this->url, this->data, this->depth);
+		new NetworkHTTPSocketHandler(s, this->callback, this->hostname, this->url, this->data, this->depth);
 		/* We've relinquished control of data now. */
 		this->data = nullptr;
 	}

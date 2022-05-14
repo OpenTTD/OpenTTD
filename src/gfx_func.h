@@ -68,6 +68,7 @@ extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
+void HandleToolbarHotkey(int hotkey);
 void HandleKeypress(uint keycode, WChar key);
 void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
 void HandleCtrlChanged();
@@ -90,31 +91,16 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 Dimension GetSpriteSize(SpriteID sprid, Point *offset = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
 void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr);
 void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
-
-/** How to align the to-be drawn text. */
-enum StringAlignment {
-	SA_LEFT        = 0 << 0, ///< Left align the text.
-	SA_HOR_CENTER  = 1 << 0, ///< Horizontally center the text.
-	SA_RIGHT       = 2 << 0, ///< Right align the text (must be a single bit).
-	SA_HOR_MASK    = 3 << 0, ///< Mask for horizontal alignment.
-
-	SA_TOP         = 0 << 2, ///< Top align the text.
-	SA_VERT_CENTER = 1 << 2, ///< Vertically center the text.
-	SA_BOTTOM      = 2 << 2, ///< Bottom align the text.
-	SA_VERT_MASK   = 3 << 2, ///< Mask for vertical alignment.
-
-	SA_CENTER      = SA_HOR_CENTER | SA_VERT_CENTER, ///< Center both horizontally and vertically.
-
-	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
-};
-DECLARE_ENUM_AS_BIT_SET(StringAlignment)
+std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom = ZOOM_LVL_GUI);
 
 int DrawString(int left, int right, int top, const char *str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
+int DrawString(int left, int right, int top, const std::string &str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
+int DrawStringMultiLine(int left, int right, int top, int bottom, const std::string &str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 
-void DrawCharCentered(WChar c, int x, int y, TextColour colour);
+void DrawCharCentered(WChar c, const Rect &r, TextColour colour);
 
 void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode = FILLRECT_OPAQUE);
 void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mode = FILLRECT_OPAQUE);
@@ -122,6 +108,7 @@ void GfxDrawLine(int left, int top, int right, int bottom, int colour, int width
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize = FS_NORMAL);
+Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(StringID strid);
 int GetStringHeight(const char *str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
@@ -136,6 +123,7 @@ void DrawDirtyBlocks();
 void AddDirtyBlock(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
+bool CopyPalette(Palette &local_palette, bool force_copy = false);
 void GfxInitPalettes();
 void CheckBlitter();
 
@@ -186,6 +174,17 @@ int GetCharacterHeight(FontSize size);
 
 extern DrawPixelInfo *_cur_dpi;
 
+/**
+ * Checks if a Colours value is valid.
+ *
+ * @param colours The value to check
+ * @return true if the given value is a valid Colours.
+ */
+static inline bool IsValidColours(Colours colours)
+{
+	return colours < COLOUR_END;
+}
+
 TextColour GetContrastColour(uint8 background, uint8 threshold = 128);
 
 /**
@@ -193,8 +192,6 @@ TextColour GetContrastColour(uint8 background, uint8 threshold = 128);
  * 8 colours per gradient from darkest (0) to lightest (7)
  */
 extern byte _colour_gradient[COLOUR_END][8];
-
-extern bool _palette_remap_grf[];
 
 /**
  * Return the colour for a particular greyscale level.

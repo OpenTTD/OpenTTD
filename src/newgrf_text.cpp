@@ -398,7 +398,6 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 							int index = (code == 0x10 ? *src++ : 0);
 							if (mapping->strings.find(index) != mapping->strings.end()) {
 								grfmsg(1, "duplicate choice list string, ignoring");
-								d++;
 							} else {
 								d = std::ostreambuf_iterator<char>(mapping->strings[index]);
 							}
@@ -540,10 +539,10 @@ void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allo
  * @param list The list where the text should be added to.
  * @param text_to_add The text to add to the list.
  */
-void AddGRFTextToList(GRFTextWrapper &list, const char *text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
-	AddGRFTextToList(*list, GRFLX_UNSPECIFIED, std::string(text_to_add));
+	AddGRFTextToList(*list, GRFLX_UNSPECIFIED, text_to_add);
 }
 
 /**
@@ -885,7 +884,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
 			if (argv_size < 1) {
-				DEBUG(misc, 0, "Too many NewGRF string parameters.");
+				Debug(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
 			}
 			break;
@@ -894,7 +893,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
 			if (argv_size < 2) {
-				DEBUG(misc, 0, "Too many NewGRF string parameters.");
+				Debug(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
 			}
 			break;
@@ -950,7 +949,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {
 				CargoID cargo = GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile);
-				*argv = cargo < NUM_CARGO ? 1 << cargo : 0;
+				*argv = cargo < NUM_CARGO ? 1ULL << cargo : 0;
 				break;
 			}
 		}

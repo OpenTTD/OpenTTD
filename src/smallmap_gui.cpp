@@ -22,6 +22,7 @@
 #include "window_func.h"
 #include "company_base.h"
 #include "guitimer_func.h"
+#include "zoom_func.h"
 
 #include "smallmap_gui.h"
 
@@ -215,7 +216,7 @@ void BuildLinkStatsLegend()
 
 	for (; i < _smallmap_cargo_count + lengthof(_linkstat_colours_in_legenda); ++i) {
 		_legend_linkstats[i].legend = STR_EMPTY;
-		_legend_linkstats[i].colour = LinkGraphOverlay::LINK_COLOURS[_linkstat_colours_in_legenda[i - _smallmap_cargo_count]];
+		_legend_linkstats[i].colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][_linkstat_colours_in_legenda[i - _smallmap_cargo_count]];
 		_legend_linkstats[i].show_on_map = true;
 	}
 
@@ -749,7 +750,7 @@ inline uint32 SmallMapWindow::GetTileColours(const TileArea &ta) const
 	TileIndex tile = INVALID_TILE; // Position of the most important tile.
 	TileType et = MP_VOID;         // Effective tile type at that position.
 
-	TILE_AREA_LOOP(ti, ta) {
+	for (TileIndex ti : ta) {
 		TileType ttype = GetTileType(ti);
 
 		switch (ttype) {
@@ -1094,7 +1095,12 @@ SmallMapWindow::SmallMapWindow(WindowDesc *desc, int window_number) : Window(des
 SmallMapWindow::~SmallMapWindow()
 {
 	delete this->overlay;
+}
+
+/* virtual */ void SmallMapWindow::Close()
+{
 	this->BreakIndustryChainLink();
+	this->Window::Close();
 }
 
 /**
@@ -1177,8 +1183,11 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 		this->min_number_of_columns = std::max(this->min_number_of_columns, num_columns);
 	}
 
+	/* Width of the legend blob. */
+	this->legend_width = (FONT_HEIGHT_SMALL - ScaleFontTrad(1)) * 8 / 5;
+
 	/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
-	this->column_width = min_width + LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+	this->column_width = min_width + this->legend_width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 }
 
 /* virtual */ void SmallMapWindow::OnPaint()
@@ -1216,11 +1225,12 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 			uint y = y_org;
 			uint i = 0; // Row counter for industry legend.
 			uint row_height = FONT_HEIGHT_SMALL;
+			int padding = ScaleFontTrad(1);
 
-			uint text_left  = rtl ? 0 : LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT;
-			uint text_right = this->column_width - 1 - (rtl ? LEGEND_BLOB_WIDTH + WD_FRAMERECT_RIGHT : 0);
-			uint blob_left  = rtl ? this->column_width - 1 - LEGEND_BLOB_WIDTH : 0;
-			uint blob_right = rtl ? this->column_width - 1 : LEGEND_BLOB_WIDTH;
+			uint text_left  = rtl ? 0 : this->legend_width + WD_FRAMERECT_LEFT;
+			uint text_right = this->column_width - padding - (rtl ? this->legend_width + WD_FRAMERECT_RIGHT : 0);
+			uint blob_left  = rtl ? this->column_width - padding - this->legend_width : 0;
+			uint blob_right = rtl ? this->column_width - padding : this->legend_width;
 
 			StringID string = STR_NULL;
 			switch (this->map_type) {
@@ -1272,7 +1282,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 								DrawString(x + text_left, x + text_right, y, string, TC_GREY);
 							} else {
 								DrawString(x + text_left, x + text_right, y, string, TC_BLACK);
-								GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
+								GfxFillRect(x + blob_left, y + padding, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
 							}
 							break;
 						}
@@ -1281,11 +1291,11 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 					default:
 						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
 						/* Anything that is not an industry or a company is using normal process */
-						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK);
+						GfxFillRect(x + blob_left, y + padding, x + blob_right, y + row_height - 1, PC_BLACK);
 						DrawString(x + text_left, x + text_right, y, tbl->legend);
 						break;
 				}
-				GfxFillRect(x + blob_left + 1, y + 2, x + blob_right - 1, y + row_height - 2, legend_colour); // Legend colour
+				GfxFillRect(x + blob_left + 1, y + padding + 1, x + blob_right - 1, y + row_height - 2, legend_colour); // Legend colour
 
 				y += row_height;
 			}
@@ -1431,8 +1441,8 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 		case WID_SM_ZOOM_IN:
 		case WID_SM_ZOOM_OUT: {
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-			Point pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
-			this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
+			Point zoom_pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
+			this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &zoom_pt);
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 			break;
 		}

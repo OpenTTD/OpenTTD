@@ -17,6 +17,7 @@
 #include "win32_s.h"
 #include <windows.h>
 #include <mmsystem.h>
+#include <versionhelpers.h>
 #include "../os/windows/win32.h"
 #include "../thread.h"
 
@@ -69,7 +70,7 @@ const char *SoundDriver_Win32::Start(const StringList &parm)
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
 	/* Limit buffer size to prevent overflows. */
-	_bufsize = GetDriverParamInt(parm, "bufsize", (GB(GetVersion(), 0, 8) > 5) ? 8192 : 4096);
+	_bufsize = GetDriverParamInt(parm, "bufsize", IsWindowsVistaOrGreater() ? 8192 : 4096);
 	_bufsize = std::min<int>(_bufsize, UINT16_MAX);
 
 	try {

@@ -21,6 +21,7 @@
 #include "video_driver.hpp"
 
 bool _video_hw_accel; ///< Whether to consider hardware accelerated video drivers.
+bool _video_vsync; ///< Whether we should use vsync (only if _video_hw_accel is enabled).
 
 void VideoDriver::GameLoop()
 {
@@ -86,7 +87,7 @@ void VideoDriver::StartGameThread()
 		this->is_game_threaded = StartNewThread(&this->game_thread, "ottd:game", &VideoDriver::GameThreadThunk, this);
 	}
 
-	DEBUG(driver, 1, "using %sthread for game-loop", this->is_game_threaded ? "" : "no ");
+	Debug(driver, 1, "using {}thread for game-loop", this->is_game_threaded ? "" : "no ");
 }
 
 void VideoDriver::StopGameThread()
@@ -94,27 +95,6 @@ void VideoDriver::StopGameThread()
 	if (!this->is_game_threaded) return;
 
 	this->game_thread.join();
-}
-
-void VideoDriver::RealChangeBlitter(const char *repl_blitter)
-{
-	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
-
-	DEBUG(driver, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
-	Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
-	if (new_blitter == nullptr) NOT_REACHED();
-	DEBUG(driver, 1, "Successfully switched to %s.", repl_blitter);
-
-	if (!this->AfterBlitterChange()) {
-		/* Failed to switch blitter, let's hope we can return to the old one. */
-		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !this->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
-	}
-
-	/* Clear caches that might have sprites for another blitter. */
-	this->ClearSystemSprites();
-	ClearFontCache();
-	GfxClearSpriteCache();
-	ReInitAllWindows();
 }
 
 void VideoDriver::Tick()
@@ -136,34 +116,32 @@ void VideoDriver::Tick()
 		/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 		if (this->next_draw_tick < now - ALLOWED_DRIFT * this->GetDrawInterval()) this->next_draw_tick = now;
 
-		/* Keep the interactive randomizer a bit more random by requesting
-		 * new values when-ever we can. */
-		InteractiveRandom();
-
-		this->InputLoop();
-
-		/* Check if the fast-forward button is still pressed. */
-		if (fast_forward_key_pressed && !_networking && _game_mode != GM_MENU) {
-			ChangeGameSpeed(true);
-			this->fast_forward_via_key = true;
-		} else if (this->fast_forward_via_key) {
-			ChangeGameSpeed(false);
-			this->fast_forward_via_key = false;
-		}
+		/* Locking video buffer can block (especially with vsync enabled), do it before taking game state lock. */
+		this->LockVideoBuffer();
 
 		{
 			/* Tell the game-thread to stop so we can have a go. */
 			std::lock_guard<std::mutex> lock_wait(this->game_thread_wait_mutex);
 			std::lock_guard<std::mutex> lock_state(this->game_state_mutex);
 
-			this->LockVideoBuffer();
+			/* Keep the interactive randomizer a bit more random by requesting
+			 * new values when-ever we can. */
+			InteractiveRandom();
 
-			if (this->change_blitter != nullptr) {
-				this->RealChangeBlitter(this->change_blitter);
-				this->change_blitter = nullptr;
-			}
+			this->DrainCommandQueue();
 
 			while (this->PollEvent()) {}
+			this->InputLoop();
+
+			/* Check if the fast-forward button is still pressed. */
+			if (fast_forward_key_pressed && !_networking && _game_mode != GM_MENU) {
+				ChangeGameSpeed(true);
+				this->fast_forward_via_key = true;
+			} else if (this->fast_forward_via_key) {
+				ChangeGameSpeed(false);
+				this->fast_forward_via_key = false;
+			}
+
 			::InputLoop();
 
 			/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */

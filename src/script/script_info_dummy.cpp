@@ -15,7 +15,7 @@
 
 #include "../safeguards.h"
 
-/* The reason this exists in C++, is that a user can trash his ai/ or game/ dir,
+/* The reason this exists in C++, is that a user can trash their ai/ or game/ dir,
  *  leaving no Scripts available. The complexity to solve this is insane, and
  *  therefore the alternative is used, and make sure there is always a Script
  *  available, no matter what the situation is. By defining it in C++, there

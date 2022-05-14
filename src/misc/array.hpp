@@ -11,7 +11,7 @@
 #define ARRAY_HPP
 
 #include "fixedsizearray.hpp"
-#include "str.hpp"
+#include "../string_func.h"
 
 /**
  * Flexible array with size limit. Implemented as fixed size
@@ -103,14 +103,14 @@ public:
 	 */
 	template <typename D> void Dump(D &dmp) const
 	{
-		dmp.WriteLine("capacity = %d", Tcapacity);
+		dmp.WriteValue("capacity", Tcapacity);
 		uint num_items = Length();
-		dmp.WriteLine("num_items = %d", num_items);
-		CStrA name;
+		dmp.WriteValue("num_items", num_items);
 		for (uint i = 0; i < num_items; i++) {
 			const T &item = (*this)[i];
-			name.Format("item[%d]", i);
-			dmp.WriteStructT(name.Data(), &item);
+			char name[32];
+			seprintf(name, lastof(name), "item[%d]", i);
+			dmp.WriteStructT(name, &item);
 		}
 	}
 };

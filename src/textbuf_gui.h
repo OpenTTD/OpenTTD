@@ -37,8 +37,7 @@ static const uint OSK_KEYBOARD_ENTRIES = 50;
 /**
  * The number of characters has to be OSK_KEYBOARD_ENTRIES. However, these
  * have to be UTF-8 encoded, which means up to 4 bytes per character.
- * Furthermore the string needs to be '\0'-terminated.
  */
-extern char _keyboard_opt[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
+extern std::string _keyboard_opt[2];
 
 #endif /* TEXTBUF_GUI_H */

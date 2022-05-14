@@ -68,9 +68,9 @@ enum CompanyFinancesWidgets {
 	WID_CF_SEL_MAXLOAN,    ///< Selection of maxloan column.
 	WID_CF_BALANCE_VALUE,  ///< Bank balance value.
 	WID_CF_LOAN_VALUE,     ///< Loan.
-	WID_CF_LOAN_LINE,      ///< Line for summing bank balance and loan.
-	WID_CF_TOTAL_VALUE,    ///< Total.
-	WID_CF_MAXLOAN_GAP,    ///< Gap above max loan widget.
+	WID_CF_BALANCE_LINE,   ///< Available cash.
+	WID_CF_OWN_VALUE,      ///< Own funds, not including loan.
+	WID_CF_INTEREST_RATE,  ///< Loan interest rate.
 	WID_CF_MAXLOAN_VALUE,  ///< Max loan widget.
 	WID_CF_SEL_BUTTONS,    ///< Selection of buttons.
 	WID_CF_INCREASE_LOAN,  ///< Increase loan.

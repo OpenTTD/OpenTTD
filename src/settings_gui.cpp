@@ -21,6 +21,7 @@
 #include "string_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
+#include "widgets/slider_func.h"
 #include "highscore.h"
 #include "base_media_base.h"
 #include "company_base.h"
@@ -35,7 +36,9 @@
 #include "querystring_gui.h"
 #include "fontcache.h"
 #include "zoom_func.h"
+#include "rev.h"
 #include "video/video_driver.hpp"
+#include "music/music_driver.hpp"
 
 #include <vector>
 #include <iterator>
@@ -71,7 +74,7 @@ static const StringID _font_zoom_dropdown[] = {
 
 static Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
 
-static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd);
+static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd);
 
 /**
  * Get index of the current screen resolution.
@@ -120,7 +123,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, content_type);
-			SetDParamStr(1, this->baseset->name.c_str());
+			SetDParamStr(1, this->baseset->name);
 		}
 	}
 };
@@ -134,7 +137,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 template <class TBaseSet>
 void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet* baseset, StringID content_type)
 {
-	DeleteWindowById(WC_TEXTFILE, file_type);
+	CloseWindowById(WC_TEXTFILE, file_type);
 	new BaseSetTextfileWindow<TBaseSet>(file_type, baseset, content_type);
 }
 
@@ -169,11 +172,12 @@ struct GameOptionsWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	~GameOptionsWindow()
+	void Close() override
 	{
-		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
-		DeleteWindowByClass(WC_TEXTFILE);
+		CloseWindowById(WC_CUSTOM_CURRENCY, 0);
+		CloseWindowByClass(WC_TEXTFILE);
 		if (this->reload) _switch_mode = SM_MENU;
+		this->Window::Close();
 	}
 
 	/**
@@ -215,7 +219,10 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_LANG_DROPDOWN: { // Setup interface language dropdown
 				for (uint i = 0; i < _languages.size(); i++) {
-					auto item = new DropDownListParamStringItem(STR_JUST_RAW_STRING, i, false);
+					bool hide_language = IsReleasedVersion() && !_languages[i].IsReasonablyFinished();
+					if (hide_language) continue;
+					bool hide_percentage = IsReleasedVersion() || _languages[i].missing < _settings_client.gui.missing_strings_threshold;
+					auto item = new DropDownListParamStringItem(hide_percentage ? STR_JUST_RAW_STRING : STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, i, false);
 					if (&_languages[i] == _current_language) {
 						*selected_index = i;
 						item->SetParamStr(0, _languages[i].own_name);
@@ -227,6 +234,7 @@ struct GameOptionsWindow : Window {
 						 * entries in the dropdown list. */
 						item->SetParamStr(0, _languages[i].name);
 					}
+					item->SetParam(1, (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS);
 					list.emplace_back(item);
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
@@ -297,11 +305,12 @@ struct GameOptionsWindow : Window {
 			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_GUI_ZOOM_DROPDOWN:     SetDParam(0, _gui_zoom_dropdown[_gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom_cfg + 1 : 0]); break;
 			case WID_GO_FONT_ZOOM_DROPDOWN:    SetDParam(0, _font_zoom_dropdown[_font_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _font_zoom_cfg + 1 : 0]); break;
-			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->name.c_str()); break;
+			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case WID_GO_BASE_GRF_STATUS:       SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
-			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->name.c_str()); break;
-			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->name.c_str()); break;
+			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
+			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->name); break;
 			case WID_GO_BASE_MUSIC_STATUS:     SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
+			case WID_GO_VIDEO_DRIVER_INFO:     SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString()); break;
 			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
@@ -334,6 +343,14 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_MUSIC_DESCRIPTION:
 				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
 				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				break;
+
+			case WID_GO_BASE_SFX_VOLUME:
+				DrawVolumeSliderWidget(r, _settings_client.music.effect_vol);
+				break;
+
+			case WID_GO_BASE_MUSIC_VOLUME:
+				DrawVolumeSliderWidget(r, _settings_client.music.music_vol);
 				break;
 		}
 	}
@@ -431,15 +448,44 @@ struct GameOptionsWindow : Window {
 					ShowErrorMessage(STR_ERROR_FULLSCREEN_FAILED, INVALID_STRING_ID, WL_ERROR);
 				}
 				this->SetWidgetLoweredState(WID_GO_FULLSCREEN_BUTTON, _fullscreen);
-				this->SetDirty();
+				this->SetWidgetDirty(WID_GO_FULLSCREEN_BUTTON);
 				break;
 
 			case WID_GO_VIDEO_ACCEL_BUTTON:
 				_video_hw_accel = !_video_hw_accel;
 				ShowErrorMessage(STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART, INVALID_STRING_ID, WL_INFO);
 				this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
-				this->SetDirty();
+				this->SetWidgetDirty(WID_GO_VIDEO_ACCEL_BUTTON);
+#ifndef __APPLE__
+				this->SetWidgetDisabledState(WID_GO_VIDEO_VSYNC_BUTTON, !_video_hw_accel);
+				this->SetWidgetDirty(WID_GO_VIDEO_VSYNC_BUTTON);
+#endif
 				break;
+
+			case WID_GO_VIDEO_VSYNC_BUTTON:
+				if (!_video_hw_accel) break;
+
+				_video_vsync = !_video_vsync;
+				VideoDriver::GetInstance()->ToggleVsync(_video_vsync);
+
+				this->SetWidgetLoweredState(WID_GO_VIDEO_VSYNC_BUTTON, _video_vsync);
+				this->SetWidgetDirty(WID_GO_VIDEO_VSYNC_BUTTON);
+				this->SetWidgetDisabledState(WID_GO_REFRESH_RATE_DROPDOWN, _video_vsync);
+				this->SetWidgetDirty(WID_GO_REFRESH_RATE_DROPDOWN);
+				break;
+
+			case WID_GO_BASE_SFX_VOLUME:
+			case WID_GO_BASE_MUSIC_VOLUME: {
+				byte &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
+					if (widget == WID_GO_BASE_MUSIC_VOLUME) MusicDriver::GetInstance()->SetVolume(vol);
+					this->SetWidgetDirty(widget);
+					SetWindowClassesDirty(WC_MUSIC_WINDOW);
+				}
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
+			}
 
 			default: {
 				int selected;
@@ -479,7 +525,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_CURRENCY_DROPDOWN: // Currency
 				if (index == CURRENCY_CUSTOM) ShowCustCurrency();
 				this->opt->locale.currency = index;
-				ReInitAllWindows();
+				ReInitAllWindows(false);
 				break;
 
 			case WID_GO_AUTOSAVE_DROPDOWN: // Autosave options
@@ -489,12 +535,12 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_LANG_DROPDOWN: // Change interface language
 				ReadLanguagePack(&_languages[index]);
-				DeleteWindowByClass(WC_QUERY_STRING);
+				CloseWindowByClass(WC_QUERY_STRING);
 				CheckForMissingGlyphs();
 				ClearAllCachedNames();
 				UpdateAllVirtCoords();
 				CheckBlitter();
-				ReInitAllWindows();
+				ReInitAllWindows(false);
 				break;
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Change resolution
@@ -522,7 +568,7 @@ struct GameOptionsWindow : Window {
 					UpdateCursorSize();
 					UpdateAllVirtCoords();
 					FixTitleGameZoom();
-					ReInitAllWindows();
+					ReInitAllWindows(true);
 				}
 				break;
 			}
@@ -536,6 +582,7 @@ struct GameOptionsWindow : Window {
 					ClearFontCache();
 					LoadStringWidthTable();
 					UpdateAllVirtCoords();
+					ReInitAllWindows(true);
 				}
 				break;
 			}
@@ -564,6 +611,12 @@ struct GameOptionsWindow : Window {
 		if (!gui_scope) return;
 		this->SetWidgetLoweredState(WID_GO_FULLSCREEN_BUTTON, _fullscreen);
 		this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
+		this->SetWidgetDisabledState(WID_GO_REFRESH_RATE_DROPDOWN, _video_vsync);
+
+#ifndef __APPLE__
+		this->SetWidgetLoweredState(WID_GO_VIDEO_VSYNC_BUTTON, _video_vsync);
+		this->SetWidgetDisabledState(WID_GO_VIDEO_VSYNC_BUTTON, !_video_hw_accel);
+#endif
 
 		bool missing_files = BaseGraphics::GetUsedSet()->GetNumMissing() == 0;
 		this->GetWidget<NWidgetCore>(WID_GO_BASE_GRF_STATUS)->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL);
@@ -610,22 +663,36 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GRAPHICS, STR_NULL), SetPadding(0, 10, 0, 10),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL), SetPadding(0, 0, 2, 0),
-					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_REFRESH_RATE, STR_NULL), SetPadding(0, 0, 2, 0),
-					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL), SetPadding(0, 0, 2, 0),
-					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_VIDEO_ACCELERATION, STR_NULL),
-				EndContainer(),
-				NWidget(NWID_VERTICAL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_RESOLUTION_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_RESOLUTION_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 2, 0),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_REFRESH_RATE_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 2, 0),
-					NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 2, 0),
+				NWidget(NWID_VERTICAL), SetPIP(0, 2, 0),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12),SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL),
+						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_RESOLUTION_DROPDOWN), SetMinimalSize(200, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_RESOLUTION_TOOLTIP),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_REFRESH_RATE, STR_NULL),
+						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_REFRESH_RATE_DROPDOWN), SetMinimalSize(200, 12), SetDataTip(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL),
 						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_VIDEO_ACCELERATION, STR_NULL),
 						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_VIDEO_ACCEL_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP),
+					EndContainer(),
+#ifndef __APPLE__
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_VIDEO_VSYNC, STR_NULL),
+						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_VIDEO_VSYNC_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP),
+					EndContainer(),
+#endif
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_VIDEO_DRIVER_INFO), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, STR_NULL),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -645,9 +712,10 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		EndContainer(),
 
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL), SetPadding(0, 10, 0, 10),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP),
-				NWidget(NWID_SPACER), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(150, 12), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_BASE_SFX_VOLUME), SetMinimalSize(67, 12), SetFill(0, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_SFX_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
@@ -658,9 +726,10 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		EndContainer(),
 
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_MUSIC, STR_NULL), SetPadding(0, 10, 0, 10),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_BASE_MUSIC_VOLUME), SetMinimalSize(67, 12), SetFill(0, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
@@ -682,7 +751,7 @@ static WindowDesc _game_options_desc(
 /** Open the game options window. */
 void ShowGameOptions()
 {
-	DeleteWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WC_GAME_OPTIONS);
 	new GameOptionsWindow(&_game_options_desc);
 }
 
@@ -733,6 +802,7 @@ struct BaseSettingEntry {
 	virtual void Init(byte level = 0);
 	virtual void FoldAll() {}
 	virtual void UnFoldAll() {}
+	virtual void ResetAll() = 0;
 
 	/**
 	 * Set whether this is the last visible entry of the parent node.
@@ -762,13 +832,13 @@ protected:
 
 /** Standard setting */
 struct SettingEntry : BaseSettingEntry {
-	const char *name;           ///< Name of the setting
-	const SettingDesc *setting; ///< Setting description of the setting
-	uint index;                 ///< Index of the setting in the settings table
+	const char *name;              ///< Name of the setting
+	const IntSettingDesc *setting; ///< Setting description of the setting
 
 	SettingEntry(const char *name);
 
 	virtual void Init(byte level = 0);
+	virtual void ResetAll();
 	virtual uint Length() const;
 	virtual uint GetMaxHelpHeight(int maxw);
 	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible);
@@ -781,7 +851,7 @@ struct SettingEntry : BaseSettingEntry {
 	 */
 	inline StringID GetHelpText() const
 	{
-		return this->setting->desc.str_help;
+		return this->setting->str_help;
 	}
 
 	void SetValueDParams(uint first_param, int32 value) const;
@@ -806,6 +876,7 @@ struct SettingsContainer {
 	}
 
 	void Init(byte level = 0);
+	void ResetAll();
 	void FoldAll();
 	void UnFoldAll();
 
@@ -828,6 +899,7 @@ struct SettingsPage : BaseSettingEntry, SettingsContainer {
 	SettingsPage(StringID title);
 
 	virtual void Init(byte level = 0);
+	virtual void ResetAll();
 	virtual void FoldAll();
 	virtual void UnFoldAll();
 
@@ -865,8 +937,7 @@ void BaseSettingEntry::Init(byte level)
 bool BaseSettingEntry::IsVisible(const BaseSettingEntry *item) const
 {
 	if (this->IsFiltered()) return false;
-	if (this == item) return true;
-	return false;
+	return this == item;
 }
 
 /**
@@ -956,7 +1027,6 @@ SettingEntry::SettingEntry(const char *name)
 {
 	this->name = name;
 	this->setting = nullptr;
-	this->index = 0;
 }
 
 /**
@@ -966,8 +1036,13 @@ SettingEntry::SettingEntry(const char *name)
 void SettingEntry::Init(byte level)
 {
 	BaseSettingEntry::Init(level);
-	this->setting = GetSettingFromName(this->name, &this->index);
-	assert(this->setting != nullptr);
+	this->setting = GetSettingFromName(this->name)->AsIntSetting();
+}
+
+/* Sets the given setting entry to its default value */
+void SettingEntry::ResetAll()
+{
+	SetSettingValue(this->setting, this->setting->def);
 }
 
 /**
@@ -1007,34 +1082,31 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 	/* There shall not be any restriction, i.e. all settings shall be visible. */
 	if (mode == RM_ALL) return true;
 
-	GameSettings *settings_ptr = &GetGameSettings();
-	const SettingDesc *sd = this->setting;
+	const IntSettingDesc *sd = this->setting;
 
-	if (mode == RM_BASIC) return (this->setting->desc.cat & SC_BASIC_LIST) != 0;
-	if (mode == RM_ADVANCED) return (this->setting->desc.cat & SC_ADVANCED_LIST) != 0;
+	if (mode == RM_BASIC) return (this->setting->cat & SC_BASIC_LIST) != 0;
+	if (mode == RM_ADVANCED) return (this->setting->cat & SC_ADVANCED_LIST) != 0;
 
 	/* Read the current value. */
-	const void *var = ResolveVariableAddress(settings_ptr, sd);
-	int64 current_value = ReadValue(var, sd->save.conv);
-
+	const void *object = ResolveObject(&GetGameSettings(), sd);
+	int64 current_value = sd->Read(object);
 	int64 filter_value;
 
 	if (mode == RM_CHANGED_AGAINST_DEFAULT) {
 		/* This entry shall only be visible, if the value deviates from its default value. */
 
 		/* Read the default value. */
-		filter_value = ReadValue(&sd->desc.def, sd->save.conv);
+		filter_value = sd->def;
 	} else {
 		assert(mode == RM_CHANGED_AGAINST_NEW);
 		/* This entry shall only be visible, if the value deviates from
 		 * its value is used when starting a new game. */
 
 		/* Make sure we're not comparing the new game settings against itself. */
-		assert(settings_ptr != &_settings_newgame);
+		assert(&GetGameSettings() != &_settings_newgame);
 
 		/* Read the new game's value. */
-		var = ResolveVariableAddress(&_settings_newgame, sd);
-		filter_value = ReadValue(var, sd->save.conv);
+		filter_value = sd->Read(ResolveObject(&_settings_newgame, sd));
 	}
 
 	return current_value != filter_value;
@@ -1052,15 +1124,13 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 
 	bool visible = true;
 
-	const SettingDesc *sd = this->setting;
+	const IntSettingDesc *sd = this->setting;
 	if (!force_visible && !filter.string.IsEmpty()) {
 		/* Process the search text filter for this item. */
 		filter.string.ResetState();
 
-		const SettingDescBase *sdb = &sd->desc;
-
 		SetDParam(0, STR_EMPTY);
-		filter.string.AddLine(sdb->str);
+		filter.string.AddLine(sd->str);
 		filter.string.AddLine(this->GetHelpText());
 
 		visible = filter.string.GetState();
@@ -1081,18 +1151,15 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	return visible;
 }
 
-
-static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd)
+static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd)
 {
-	if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+	if ((sd->flags & SF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return GetVariableAddress(&Company::Get(_local_company)->settings, &sd->save);
-		} else {
-			return GetVariableAddress(&_settings_client.company, &sd->save);
+			return &Company::Get(_local_company)->settings;
 		}
-	} else {
-		return GetVariableAddress(settings_ptr, &sd->save);
+		return &_settings_client.company;
 	}
+	return settings_ptr;
 }
 
 /**
@@ -1102,17 +1169,16 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
  */
 void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 {
-	const SettingDescBase *sdb = &this->setting->desc;
-	if (sdb->cmd == SDT_BOOLX) {
+	if (this->setting->IsBoolSetting()) {
 		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
-		if ((sdb->flags & SGF_MULTISTRING) != 0) {
-			SetDParam(first_param++, sdb->str_val - sdb->min + value);
-		} else if ((sdb->flags & SGF_DISPLAY_ABS) != 0) {
-			SetDParam(first_param++, sdb->str_val + ((value >= 0) ? 1 : 0));
+		if ((this->setting->flags & SF_GUI_DROPDOWN) != 0) {
+			SetDParam(first_param++, this->setting->str_val - this->setting->min + value);
+		} else if ((this->setting->flags & SF_GUI_NEGATIVE_IS_SPECIAL) != 0) {
+			SetDParam(first_param++, this->setting->str_val + ((value >= 0) ? 1 : 0));
 			value = abs(value);
 		} else {
-			SetDParam(first_param++, sdb->str_val + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
+			SetDParam(first_param++, this->setting->str_val + ((value == 0 && (this->setting->flags & SF_GUI_0_IS_SPECIAL) != 0) ? 1 : 0));
 		}
 		SetDParam(first_param++, value);
 	}
@@ -1128,9 +1194,7 @@ void SettingEntry::SetValueDParams(uint first_param, int32 value) const
  */
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
-	const SettingDesc *sd = this->setting;
-	const SettingDescBase *sdb = &sd->desc;
-	const void *var = ResolveVariableAddress(settings_ptr, sd);
+	const IntSettingDesc *sd = this->setting;
 	int state = this->flags & SEF_BUTTONS_MASK;
 
 	bool rtl = _current_text_dir == TD_RTL;
@@ -1143,20 +1207,20 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	bool editable = sd->IsEditable();
 
 	SetDParam(0, highlight ? STR_ORANGE_STRING1_WHITE : STR_ORANGE_STRING1_LTBLUE);
-	int32 value = (int32)ReadValue(var, sd->save.conv);
-	if (sdb->cmd == SDT_BOOLX) {
+	int32 value = sd->Read(ResolveObject(settings_ptr, sd));
+	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
 		DrawBoolButton(buttons_left, button_y, value != 0, editable);
-	} else if ((sdb->flags & SGF_MULTISTRING) != 0) {
+	} else if ((sd->flags & SF_GUI_DROPDOWN) != 0) {
 		/* Draw [v] button for settings of an enum-type */
 		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
-				editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
+				editable && value != (sd->flags & SF_GUI_0_IS_SPECIAL ? 0 : sd->min), editable && (uint32)value != sd->max);
 	}
 	this->SetValueDParams(1, value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, sdb->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, sd->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -1169,6 +1233,14 @@ void SettingsContainer::Init(byte level)
 {
 	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
 		(*it)->Init(level);
+	}
+}
+
+/** Resets all settings to their default values */
+void SettingsContainer::ResetAll()
+{
+	for (auto settings_entry : this->entries) {
+		settings_entry->ResetAll();
 	}
 }
 
@@ -1321,6 +1393,14 @@ void SettingsPage::Init(byte level)
 {
 	BaseSettingEntry::Init(level);
 	SettingsContainer::Init(level + 1);
+}
+
+/** Resets all settings to their default values */
+void SettingsPage::ResetAll()
+{
+	for (auto settings_entry : this->entries) {
+		settings_entry->ResetAll();
+	}
 }
 
 /** Recursively close all (filtered) folds of sub-pages */
@@ -1497,6 +1577,7 @@ static SettingsContainer &GetSettingsTree()
 			graphics->Add(new SettingEntry("gui.zoom_max"));
 			graphics->Add(new SettingEntry("gui.sprite_zoom_min"));
 			graphics->Add(new SettingEntry("gui.smallmap_land_colour"));
+			graphics->Add(new SettingEntry("gui.linkgraph_colours"));
 			graphics->Add(new SettingEntry("gui.graph_line_thickness"));
 		}
 
@@ -1549,7 +1630,6 @@ static SettingsContainer &GetSettingsTree()
 			SettingsPage *construction = interface->Add(new SettingsPage(STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION));
 			{
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
-				construction->Add(new SettingEntry("gui.enable_signal_gui"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
 				construction->Add(new SettingEntry("gui.quick_goto"));
 				construction->Add(new SettingEntry("gui.default_rail_type"));
@@ -1563,7 +1643,6 @@ static SettingsContainer &GetSettingsTree()
 			interface->Add(new SettingEntry("gui.advanced_vehicle_list"));
 			interface->Add(new SettingEntry("gui.timetable_in_ticks"));
 			interface->Add(new SettingEntry("gui.timetable_arrival_departure"));
-			interface->Add(new SettingEntry("gui.expenses_layout"));
 			interface->Add(new SettingEntry("gui.show_newgrf_name"));
 		}
 
@@ -1573,6 +1652,7 @@ static SettingsContainer &GetSettingsTree()
 			advisors->Add(new SettingEntry("news_display.general"));
 			advisors->Add(new SettingEntry("news_display.new_vehicles"));
 			advisors->Add(new SettingEntry("news_display.accident"));
+			advisors->Add(new SettingEntry("news_display.accident_other"));
 			advisors->Add(new SettingEntry("news_display.company_info"));
 			advisors->Add(new SettingEntry("news_display.acceptance"));
 			advisors->Add(new SettingEntry("news_display.arrival_player"));
@@ -1594,8 +1674,8 @@ static SettingsContainer &GetSettingsTree()
 		SettingsPage *company = main->Add(new SettingsPage(STR_CONFIG_SETTING_COMPANY));
 		{
 			company->Add(new SettingEntry("gui.semaphore_build_before"));
-			company->Add(new SettingEntry("gui.default_signal_type"));
 			company->Add(new SettingEntry("gui.cycle_signal_types"));
+			company->Add(new SettingEntry("gui.signal_gui_mode"));
 			company->Add(new SettingEntry("gui.drag_signals_fixed_distance"));
 			company->Add(new SettingEntry("gui.auto_remove_signals"));
 			company->Add(new SettingEntry("gui.new_nonstop"));
@@ -1617,6 +1697,7 @@ static SettingsContainer &GetSettingsTree()
 			accounting->Add(new SettingEntry("difficulty.initial_interest"));
 			accounting->Add(new SettingEntry("difficulty.max_loan"));
 			accounting->Add(new SettingEntry("difficulty.subsidy_multiplier"));
+			accounting->Add(new SettingEntry("difficulty.subsidy_duration"));
 			accounting->Add(new SettingEntry("economy.feeder_payment_share"));
 			accounting->Add(new SettingEntry("economy.infrastructure_maintenance"));
 			accounting->Add(new SettingEntry("difficulty.vehicle_costs"));
@@ -1772,6 +1853,11 @@ static SettingsContainer &GetSettingsTree()
 			ai->Add(new SettingEntry("economy.min_years_for_shares"));
 		}
 
+		SettingsPage *network = main->Add(new SettingsPage(STR_CONFIG_SETTING_NETWORK));
+		{
+			network->Add(new SettingEntry("network.use_relay_service"));
+		}
+
 		main->Init();
 	}
 	return *main;
@@ -1793,6 +1879,20 @@ enum WarnHiddenResult {
 	WHR_TYPE,          ///< Type setting filtered matches away.
 	WHR_CATEGORY_TYPE, ///< Both category and type settings filtered matches away.
 };
+
+/**
+ * Callback function for the reset all settings button
+ * @param w Window which is calling this callback
+ * @param confirmed boolean value, true when yes was clicked, false otherwise
+ */
+static void ResetAllSettingsConfirmationCallback(Window *w, bool confirmed)
+{
+	if (confirmed) {
+		GetSettingsTree().ResetAll();
+		GetSettingsTree().FoldAll();
+		w->InvalidateData();
+	}
+}
 
 /** Window to edit settings of the game. */
 struct GameSettingsWindow : Window {
@@ -1980,7 +2080,7 @@ struct GameSettingsWindow : Window {
 
 			case WID_GS_HELP_TEXT:
 				if (this->last_clicked != nullptr) {
-					const SettingDesc *sd = this->last_clicked->setting;
+					const IntSettingDesc *sd = this->last_clicked->setting;
 
 					int y = r.top;
 					switch (sd->GetType()) {
@@ -1992,8 +2092,7 @@ struct GameSettingsWindow : Window {
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
 					y += FONT_HEIGHT_NORMAL;
 
-					int32 default_value = ReadValue(&sd->desc.def, sd->save.conv);
-					this->last_clicked->SetValueDParams(0, default_value);
+					this->last_clicked->SetValueDParams(0, sd->def);
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 
@@ -2029,6 +2128,15 @@ struct GameSettingsWindow : Window {
 				this->manually_changed_folding = true;
 				GetSettingsTree().FoldAll();
 				this->InvalidateData();
+				break;
+
+			case WID_GS_RESET_ALL:
+				ShowQuery(
+					STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION,
+					STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT,
+					this,
+					ResetAllSettingsConfirmationCallback
+				);
 				break;
 
 			case WID_GS_RESTRICT_DROPDOWN: {
@@ -2075,7 +2183,7 @@ struct GameSettingsWindow : Window {
 
 		SettingEntry *pe = dynamic_cast<SettingEntry*>(clicked_entry);
 		assert(pe != nullptr);
-		const SettingDesc *sd = pe->setting;
+		const IntSettingDesc *sd = pe->setting;
 
 		/* return if action is only active in network, or only settable by server */
 		if (!sd->IsEditable()) {
@@ -2083,12 +2191,10 @@ struct GameSettingsWindow : Window {
 			return;
 		}
 
-		const void *var = ResolveVariableAddress(settings_ptr, sd);
-		int32 value = (int32)ReadValue(var, sd->save.conv);
+		int32 value = sd->Read(ResolveObject(settings_ptr, sd));
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
-		if (x < SETTING_BUTTON_WIDTH && (sd->desc.flags & SGF_MULTISTRING)) {
-			const SettingDescBase *sdb = &sd->desc;
+		if (x < SETTING_BUTTON_WIDTH && (sd->flags & SF_GUI_DROPDOWN)) {
 			this->SetDisplayedHelpText(pe);
 
 			if (this->valuedropdown_entry == pe) {
@@ -2116,8 +2222,8 @@ struct GameSettingsWindow : Window {
 					this->valuedropdown_entry->SetButtons(SEF_LEFT_DEPRESSED);
 
 					DropDownList list;
-					for (int i = sdb->min; i <= (int)sdb->max; i++) {
-						list.emplace_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
+					for (int i = sd->min; i <= (int)sd->max; i++) {
+						list.emplace_back(new DropDownListStringItem(sd->str_val + i - sd->min, i, false));
 					}
 
 					ShowDropDownListAt(this, std::move(list), value, -1, wi_rect, COLOUR_ORANGE, true);
@@ -2126,71 +2232,61 @@ struct GameSettingsWindow : Window {
 			this->SetDirty();
 		} else if (x < SETTING_BUTTON_WIDTH) {
 			this->SetDisplayedHelpText(pe);
-			const SettingDescBase *sdb = &sd->desc;
 			int32 oldvalue = value;
 
-			switch (sdb->cmd) {
-				case SDT_BOOLX: value ^= 1; break;
-				case SDT_ONEOFMANY:
-				case SDT_NUMX: {
-					/* Add a dynamic step-size to the scroller. In a maximum of
-					 * 50-steps you should be able to get from min to max,
-					 * unless specified otherwise in the 'interval' variable
-					 * of the current setting. */
-					uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
-					if (step == 0) step = 1;
+			if (sd->IsBoolSetting()) {
+				value ^= 1;
+			} else {
+				/* Add a dynamic step-size to the scroller. In a maximum of
+				 * 50-steps you should be able to get from min to max,
+				 * unless specified otherwise in the 'interval' variable
+				 * of the current setting. */
+				uint32 step = (sd->interval == 0) ? ((sd->max - sd->min) / 50) : sd->interval;
+				if (step == 0) step = 1;
 
-					/* don't allow too fast scrolling */
-					if ((this->flags & WF_TIMEOUT) && this->timeout_timer > 1) {
-						_left_button_clicked = false;
-						return;
-					}
-
-					/* Increase or decrease the value and clamp it to extremes */
-					if (x >= SETTING_BUTTON_WIDTH / 2) {
-						value += step;
-						if (sdb->min < 0) {
-							assert((int32)sdb->max >= 0);
-							if (value > (int32)sdb->max) value = (int32)sdb->max;
-						} else {
-							if ((uint32)value > sdb->max) value = (int32)sdb->max;
-						}
-						if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
-					} else {
-						value -= step;
-						if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
-					}
-
-					/* Set up scroller timeout for numeric values */
-					if (value != oldvalue) {
-						if (this->clicked_entry != nullptr) { // Release previous buttons if any
-							this->clicked_entry->SetButtons(0);
-						}
-						this->clicked_entry = pe;
-						this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
-						this->SetTimeout();
-						_left_button_clicked = false;
-					}
-					break;
+				/* don't allow too fast scrolling */
+				if ((this->flags & WF_TIMEOUT) && this->timeout_timer > 1) {
+					_left_button_clicked = false;
+					return;
 				}
 
-				default: NOT_REACHED();
+				/* Increase or decrease the value and clamp it to extremes */
+				if (x >= SETTING_BUTTON_WIDTH / 2) {
+					value += step;
+					if (sd->min < 0) {
+						assert((int32)sd->max >= 0);
+						if (value > (int32)sd->max) value = (int32)sd->max;
+					} else {
+						if ((uint32)value > sd->max) value = (int32)sd->max;
+					}
+					if (value < sd->min) value = sd->min; // skip between "disabled" and minimum
+				} else {
+					value -= step;
+					if (value < sd->min) value = (sd->flags & SF_GUI_0_IS_SPECIAL) ? 0 : sd->min;
+				}
+
+				/* Set up scroller timeout for numeric values */
+				if (value != oldvalue) {
+					if (this->clicked_entry != nullptr) { // Release previous buttons if any
+						this->clicked_entry->SetButtons(0);
+					}
+					this->clicked_entry = pe;
+					this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
+					this->SetTimeout();
+					_left_button_clicked = false;
+				}
 			}
 
 			if (value != oldvalue) {
-				if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-					SetCompanySetting(pe->index, value);
-				} else {
-					SetSettingValue(pe->index, value);
-				}
+				SetSettingValue(sd, value);
 				this->SetDirty();
 			}
 		} else {
 			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
-			if (this->last_clicked == pe && sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+			if (this->last_clicked == pe && !sd->IsBoolSetting() && !(sd->flags & SF_GUI_DROPDOWN)) {
 				int64 value64 = value;
 				/* Show the correct currency-translated value */
-				if (sd->desc.flags & SGF_CURRENCY) value64 *= _currency->rate;
+				if (sd->flags & SF_GUI_CURRENCY) value64 *= _currency->rate;
 
 				this->valuewindow_entry = pe;
 				SetDParam(0, value64);
@@ -2216,25 +2312,21 @@ struct GameSettingsWindow : Window {
 		if (str == nullptr) return;
 
 		assert(this->valuewindow_entry != nullptr);
-		const SettingDesc *sd = this->valuewindow_entry->setting;
+		const IntSettingDesc *sd = this->valuewindow_entry->setting;
 
 		int32 value;
 		if (!StrEmpty(str)) {
 			long long llvalue = atoll(str);
 
 			/* Save the correct currency-translated value */
-			if (sd->desc.flags & SGF_CURRENCY) llvalue /= _currency->rate;
+			if (sd->flags & SF_GUI_CURRENCY) llvalue /= _currency->rate;
 
 			value = (int32)ClampToI32(llvalue);
 		} else {
-			value = (int32)(size_t)sd->desc.def;
+			value = sd->def;
 		}
 
-		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-			SetCompanySetting(this->valuewindow_entry->index, value);
-		} else {
-			SetSettingValue(this->valuewindow_entry->index, value);
-		}
+		SetSettingValue(this->valuewindow_entry->setting, value);
 		this->SetDirty();
 	}
 
@@ -2267,15 +2359,10 @@ struct GameSettingsWindow : Window {
 				if (widget < 0) {
 					/* Deal with drop down boxes on the panel. */
 					assert(this->valuedropdown_entry != nullptr);
-					const SettingDesc *sd = this->valuedropdown_entry->setting;
-					assert(sd->desc.flags & SGF_MULTISTRING);
+					const IntSettingDesc *sd = this->valuedropdown_entry->setting;
+					assert(sd->flags & SF_GUI_DROPDOWN);
 
-					if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-						SetCompanySetting(this->valuedropdown_entry->index, index);
-					} else {
-						SetSettingValue(this->valuedropdown_entry->index, index);
-					}
-
+					SetSettingValue(sd, index);
 					this->SetDirty();
 				}
 				break;
@@ -2387,6 +2474,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GS_EXPAND_ALL), SetDataTip(STR_CONFIG_SETTING_EXPAND_ALL, STR_NULL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GS_COLLAPSE_ALL), SetDataTip(STR_CONFIG_SETTING_COLLAPSE_ALL, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GS_RESET_ALL), SetDataTip(STR_CONFIG_SETTING_RESET_ALL, STR_NULL),
 		NWidget(WWT_PANEL, COLOUR_MAUVE), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
@@ -2403,7 +2491,7 @@ static WindowDesc _settings_selection_desc(
 /** Open advanced settings window. */
 void ShowGameSettings()
 {
-	DeleteWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WC_GAME_OPTIONS);
 	new GameSettingsWindow(&_settings_selection_desc);
 }
 
@@ -2557,7 +2645,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_SEPARATOR:
 				SetDParamStr(0, _custom_currency.separator);
 				str = STR_JUST_RAW_STRING;
-				len = 1;
+				len = 7;
 				line = WID_CC_SEPARATOR;
 				break;
 
@@ -2565,7 +2653,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_PREFIX:
 				SetDParamStr(0, _custom_currency.prefix);
 				str = STR_JUST_RAW_STRING;
-				len = 12;
+				len = 15;
 				line = WID_CC_PREFIX;
 				break;
 
@@ -2573,7 +2661,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_SUFFIX:
 				SetDParamStr(0, _custom_currency.suffix);
 				str = STR_JUST_RAW_STRING;
-				len = 12;
+				len = 15;
 				line = WID_CC_SUFFIX;
 				break;
 
@@ -2617,15 +2705,15 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_SEPARATOR: // Thousands separator
-				strecpy(_custom_currency.separator, str, lastof(_custom_currency.separator));
+				_custom_currency.separator = str;
 				break;
 
 			case WID_CC_PREFIX:
-				strecpy(_custom_currency.prefix, str, lastof(_custom_currency.prefix));
+				_custom_currency.prefix = str;
 				break;
 
 			case WID_CC_SUFFIX:
-				strecpy(_custom_currency.suffix, str, lastof(_custom_currency.suffix));
+				_custom_currency.suffix = str;
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
@@ -2695,6 +2783,6 @@ static WindowDesc _cust_currency_desc(
 /** Open custom currency window. */
 static void ShowCustCurrency()
 {
-	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+	CloseWindowById(WC_CUSTOM_CURRENCY, 0);
 	new CustomCurrencyWindow(&_cust_currency_desc);
 }

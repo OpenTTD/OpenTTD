@@ -309,7 +309,7 @@ bool Convert8bitBooleanCallback(const struct GRFFile *grffile, uint16 cbid, uint
  */
 template <size_t Tcnt>
 struct GRFFilePropsBase {
-	GRFFilePropsBase() : local_id(0), grffile(0)
+	GRFFilePropsBase() : local_id(0), grffile(nullptr)
 	{
 		/* The lack of some compilers to provide default constructors complying to the specs
 		 * requires us to zero the stuff ourself. */

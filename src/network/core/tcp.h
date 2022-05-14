@@ -16,6 +16,9 @@
 #include "packet.h"
 
 #include <atomic>
+#include <chrono>
+#include <map>
+#include <thread>
 
 /** The states of sending the packets. */
 enum SendPacketsState {
@@ -30,6 +33,8 @@ class NetworkTCPSocketHandler : public NetworkSocketHandler {
 private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
 	Packet *packet_recv;      ///< Partially received packet
+
+	void EmptyPacketQueue();
 public:
 	SOCKET sock;              ///< The socket currently connected to
 	bool writable;            ///< Can we write to this socket?
@@ -40,7 +45,9 @@ public:
 	 */
 	bool IsConnected() const { return this->sock != INVALID_SOCKET; }
 
-	NetworkRecvStatus CloseConnection(bool error = true) override;
+	virtual NetworkRecvStatus CloseConnection(bool error = true);
+	void CloseSocket();
+
 	virtual void SendPacket(Packet *packet);
 	SendPacketsState SendPackets(bool closing_down = false);
 
@@ -63,23 +70,53 @@ public:
  */
 class TCPConnecter {
 private:
-	std::atomic<bool> connected;///< Whether we succeeded in making the connection
-	std::atomic<bool> aborted;  ///< Whether we bailed out (i.e. connection making failed)
-	bool killed;                ///< Whether we got killed
-	SOCKET sock;                ///< The socket we're connecting with
+	/**
+	 * The current status of the connecter.
+	 *
+	 * We track the status like this to ensure everything is executed from the
+	 * game-thread, and not at another random time where we might not have the
+	 * lock on the game-state.
+	 */
+	enum class Status {
+		Init,       ///< TCPConnecter is created but resolving hasn't started.
+		Resolving,  ///< The hostname is being resolved (threaded).
+		Failure,    ///< Resolving failed.
+		Connecting, ///< We are currently connecting.
+		Connected,  ///< The connection is established.
+	};
 
-	void Connect();
+	std::thread resolve_thread;                         ///< Thread used during resolving.
+	std::atomic<Status> status = Status::Init;          ///< The current status of the connecter.
+	std::atomic<bool> killed = false;                   ///< Whether this connecter is marked as killed.
 
-	static void ThreadEntry(TCPConnecter *param);
+	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
+	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
+	std::map<SOCKET, NetworkAddress> sock_to_address;   ///< Mapping of a socket to the real address it is connecting to. USed for DEBUG statements.
+	size_t current_address = 0;                         ///< Current index in addresses we are trying.
 
-protected:
-	/** Address we're connecting to */
-	NetworkAddress address;
+	std::vector<SOCKET> sockets;                        ///< Pending connect() attempts.
+	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
+
+	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
+	NetworkAddress bind_address;                        ///< Address we're binding to, if any.
+	int family = AF_UNSPEC;                             ///< Family we are using to connect with.
+
+	void Resolve();
+	void OnResolved(addrinfo *ai);
+	bool TryNextAddress();
+	void Connect(addrinfo *address);
+	virtual bool CheckActivity();
+
+	/* We do not want any other derived classes from this class being able to
+	 * access these private members, but it is okay for TCPServerConnecter. */
+	friend class TCPServerConnecter;
+
+	static void ResolveThunk(TCPConnecter *connecter);
 
 public:
-	TCPConnecter(const NetworkAddress &address);
-	/** Silence the warnings */
-	virtual ~TCPConnecter() {}
+	TCPConnecter() {};
+	TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address = {}, int family = AF_UNSPEC);
+	virtual ~TCPConnecter();
 
 	/**
 	 * Callback when the connection succeeded.
@@ -92,8 +129,25 @@ public:
 	 */
 	virtual void OnFailure() {}
 
+	void Kill();
+
 	static void CheckCallbacks();
 	static void KillAll();
+};
+
+class TCPServerConnecter : public TCPConnecter {
+private:
+	SOCKET socket = INVALID_SOCKET; ///< The socket when a connection is established.
+
+	bool CheckActivity() override;
+
+public:
+	ServerAddress server_address; ///< Address we are connecting to.
+
+	TCPServerConnecter(const std::string &connection_string, uint16 default_port);
+
+	void SetConnected(SOCKET sock);
+	void SetFailure();
 };
 
 #endif /* NETWORK_CORE_TCP_H */

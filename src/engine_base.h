@@ -15,6 +15,12 @@
 #include "core/pool_type.hpp"
 #include "newgrf_commons.h"
 
+struct WagonOverride {
+	std::vector<EngineID> engines;
+	CargoID cargo;
+	const SpriteGroup *group;
+};
+
 typedef Pool<Engine, EngineID, 64, 64000> EnginePool;
 extern EnginePool _engine_pool;
 
@@ -56,13 +62,11 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * evaluating callbacks.
 	 */
 	GRFFilePropsBase<NUM_CARGO + 2> grf_prop;
-	uint16 overrides_count;
-	struct WagonOverride *overrides;
+	std::vector<WagonOverride> overrides;
 	uint16 list_position;
 
-	Engine();
+	Engine() {}
 	Engine(VehicleType type, EngineID base);
-	~Engine();
 	bool IsEnabled() const;
 
 	/**

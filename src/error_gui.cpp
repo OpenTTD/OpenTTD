@@ -164,6 +164,16 @@ void ErrorMessageData::SetDParamStr(uint n, const char *str)
 	this->strings[n] = stredup(str);
 }
 
+/**
+ * Set a rawstring parameter.
+ * @param n Parameter index
+ * @param str Raw string
+ */
+void ErrorMessageData::SetDParamStr(uint n, const std::string &str)
+{
+	this->SetDParamStr(n, str.c_str());
+}
+
 /** Define a queue with errors. */
 typedef std::list<ErrorMessageData> ErrorList;
 /** The actual queue with errors. */
@@ -250,7 +260,7 @@ public:
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		/* If company gets shut down, while displaying an error about it, remove the error message. */
-		if (this->face != INVALID_COMPANY && !Company::IsValidID(this->face)) delete this;
+		if (this->face != INVALID_COMPANY && !Company::IsValidID(this->face)) this->Close();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -298,20 +308,21 @@ public:
 	void OnMouseLoop() override
 	{
 		/* Disallow closing the window too easily, if timeout is disabled */
-		if (_right_button_down && !this->display_timer.HasElapsed()) delete this;
+		if (_right_button_down && !this->display_timer.HasElapsed()) this->Close();
 	}
 
 	void OnRealtimeTick(uint delta_ms) override
 	{
 		if (this->display_timer.CountElapsed(delta_ms) == 0) return;
 
-		delete this;
+		this->Close();
 	}
 
-	~ErrmsgWindow()
+	void Close() override
 	{
 		SetRedErrorSquare(INVALID_TILE);
 		if (_window_system_initialized) ShowFirstError();
+		this->Window::Close();
 	}
 
 	/**
@@ -354,7 +365,7 @@ void UnshowCriticalError()
 	if (_window_system_initialized && w != nullptr) {
 		if (w->IsCritical()) _error_list.push_front(*w);
 		_window_system_initialized = false;
-		delete w;
+		w->Close();
 	}
 }
 
@@ -388,10 +399,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 		if (textref_stack_size > 0) StopTextRefStackUsage();
 
-		switch (wl) {
-			case WL_WARNING: IConsolePrint(CC_WARNING, buf); break;
-			default:         IConsoleError(buf); break;
-		}
+		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, buf);
 	}
 
 	bool no_timeout = wl == WL_CRITICAL;
@@ -403,18 +411,20 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	data.CopyOutDParams();
 
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
-	if (w != nullptr && w->IsCritical()) {
-		/* A critical error is currently shown. */
-		if (wl == WL_CRITICAL) {
-			/* Push another critical error in the queue of errors,
-			 * but do not put other errors in the queue. */
-			_error_list.push_back(data);
+	if (w != nullptr) {
+		if (w->IsCritical()) {
+			/* A critical error is currently shown. */
+			if (wl == WL_CRITICAL) {
+				/* Push another critical error in the queue of errors,
+				 * but do not put other errors in the queue. */
+				_error_list.push_back(data);
+			}
+			return;
 		}
-	} else {
-		/* Nothing or a non-critical error was shown. */
-		delete w;
-		new ErrmsgWindow(data);
+		/* A non-critical error was shown. */
+		w->Close();
 	}
+	new ErrmsgWindow(data);
 }
 
 
@@ -425,7 +435,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 bool HideActiveErrorMessage() {
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
 	if (w == nullptr) return false;
-	delete w;
+	w->Close();
 	return true;
 }
 

@@ -38,7 +38,7 @@ bool ScriptScanner::AddFile(const std::string &filename, size_t basepath_length,
 	try {
 		this->engine->LoadScript(filename.c_str());
 	} catch (Script_FatalError &e) {
-		DEBUG(script, 0, "Fatal error '%s' when trying to load the script '%s'.", e.GetErrorMessage(), filename.c_str());
+		Debug(script, 0, "Fatal error '{}' when trying to load the script '{}'.", e.GetErrorMessage(), filename);
 		return false;
 	}
 	return true;
@@ -106,7 +106,7 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 
 	/* Check if GetShortName follows the rules */
 	if (strlen(info->GetShortName()) != 4) {
-		DEBUG(script, 0, "The script '%s' returned a string from GetShortName() which is not four characaters. Unable to load the script.", info->GetName());
+		Debug(script, 0, "The script '{}' returned a string from GetShortName() which is not four characaters. Unable to load the script.", info->GetName());
 		delete info;
 		return;
 	}
@@ -123,10 +123,10 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 			return;
 		}
 
-		DEBUG(script, 1, "Registering two scripts with the same name and version");
-		DEBUG(script, 1, "  1: %s", this->info_list[script_name]->GetMainScript());
-		DEBUG(script, 1, "  2: %s", info->GetMainScript());
-		DEBUG(script, 1, "The first is taking precedence.");
+		Debug(script, 1, "Registering two scripts with the same name and version");
+		Debug(script, 1, "  1: {}", this->info_list[script_name]->GetMainScript());
+		Debug(script, 1, "  2: {}", info->GetMainScript());
+		Debug(script, 1, "The first is taking precedence.");
 
 		delete info;
 		return;
@@ -182,7 +182,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 		byte tmp_md5sum[16];
 
 		/* Open the file ... */
-		FILE *f = FioFOpenFile(filename.c_str(), "rb", this->dir, &size);
+		FILE *f = FioFOpenFile(filename, "rb", this->dir, &size);
 		if (f == nullptr) return false;
 
 		/* ... calculate md5sum... */
@@ -224,16 +224,15 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 	if (!tar_filename.empty() && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that
 		 * are in the same tar and add them to the MD5 checksumming. */
-		TarFileList::iterator tar;
-		FOR_ALL_TARS(tar, dir) {
+		for (const auto &tar : _tar_filelist[dir]) {
 			/* Not in the same tar. */
-			if (tar->second.tar_filename != iter->first) continue;
+			if (tar.second.tar_filename != iter->first) continue;
 
 			/* Check the extension. */
-			const char *ext = strrchr(tar->first.c_str(), '.');
+			const char *ext = strrchr(tar.first.c_str(), '.');
 			if (ext == nullptr || strcasecmp(ext, ".nut") != 0) continue;
 
-			checksum.AddFile(tar->first, 0, tar_filename);
+			checksum.AddFile(tar.first, 0, tar_filename);
 		}
 	} else {
 		char path[MAX_PATH];

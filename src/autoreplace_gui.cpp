@@ -25,6 +25,9 @@
 #include "rail_gui.h"
 #include "road_gui.h"
 #include "widgets/dropdown_func.h"
+#include "autoreplace_cmd.h"
+#include "group_cmd.h"
+#include "settings_cmd.h"
 
 #include "widgets/autoreplace_widget.h"
 
@@ -81,7 +84,7 @@ class ReplaceVehicleWindow : public Window {
 	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
-	int details_height;           ///< Minimal needed height of the details panels (found so far).
+	int details_height;           ///< Minimal needed height of the details panels, in text lines (found so far).
 	byte sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
@@ -217,7 +220,7 @@ class ReplaceVehicleWindow : public Window {
 	{
 		EngineID veh_from = this->sel_engine[0];
 		EngineID veh_to = this->sel_engine[1];
-		DoCommandP(0, (replace_when_old ? 1 : 0) | (this->sel_group << 16), veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
+		Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, veh_to, replace_when_old);
 	}
 
 public:
@@ -229,7 +232,7 @@ public:
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
-		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9);
 		this->sel_engine[0] = INVALID_ENGINE;
 		this->sel_engine[1] = INVALID_ENGINE;
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
@@ -274,7 +277,7 @@ public:
 
 			case WID_RV_LEFT_DETAILS:
 			case WID_RV_RIGHT_DETAILS:
-				size->height = this->details_height;
+				size->height = FONT_HEIGHT_NORMAL * this->details_height + padding.height;
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
@@ -375,8 +378,18 @@ public:
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
-				const Company *c = Company::Get(_local_company);
-				SetDParam(0, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+				bool remove_wagon;
+				const Group *g = Group::GetIfValid(this->sel_group);
+				if (g != nullptr) {
+					remove_wagon = HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
+					SetDParam(0, STR_GROUP_NAME);
+					SetDParam(1, sel_group);
+				} else {
+					const Company *c = Company::Get(_local_company);
+					remove_wagon = c->settings.renew_keep_length;
+					SetDParam(0, STR_GROUP_DEFAULT_TRAINS + this->window_number);
+				}
+				SetDParam(2, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				break;
 			}
 
@@ -475,7 +488,7 @@ public:
 					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS);
 					int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
 							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side], ted);
-					needed_height = std::max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+					needed_height = std::max(needed_height, (text_end - (int)nwi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL);
 				}
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
@@ -528,9 +541,16 @@ public:
 				}
 				break;
 
-			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
-				DoCommandP(0, GetCompanySettingIndex("company.renew_keep_length"), Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_CHANGE_COMPANY_SETTING);
+			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
+				const Group *g = Group::GetIfValid(this->sel_group);
+				if (g != nullptr) {
+					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlags::GF_REPLACE_WAGON_REMOVAL, !HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL), _ctrl_pressed);
+				} else {
+					// toggle renew_keep_length
+					Command<CMD_CHANGE_COMPANY_SETTING>::Post("company.renew_keep_length", Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1);
+				}
 				break;
+			}
 
 			case WID_RV_START_REPLACE: { // Start replacing
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
@@ -545,7 +565,7 @@ public:
 
 			case WID_RV_STOP_REPLACE: { // Stop replacing
 				EngineID veh_from = this->sel_engine[0];
-				DoCommandP(0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
+				Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, INVALID_ENGINE, false);
 				break;
 			}
 
@@ -561,6 +581,16 @@ public:
 				size_t engine_count = this->engines[click_side].size();
 
 				EngineID e = engine_count > i ? this->engines[click_side][i] : INVALID_ENGINE;
+
+				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
+				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */
+				if (click_side == 0 && _ctrl_pressed && e != INVALID_ENGINE &&
+					(GetGroupNumEngines(_local_company, sel_group, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0)) {
+						EngineID veh_from = e;
+						Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, INVALID_ENGINE, false);
+						break;
+				}
+
 				if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
 				this->sel_engine[click_side] = e;
 				if (click_side == 0) {
@@ -626,6 +656,20 @@ public:
 				this->ReplaceClick_StartReplace(index != 0);
 				break;
 		}
+	}
+
+	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget != WID_RV_TRAIN_WAGONREMOVE_TOGGLE) return false;
+
+		if (Group::IsValidID(this->sel_group)) {
+			uint64 params[1];
+			params[0] = STR_REPLACE_REMOVE_WAGON_HELP;
+			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_GROUP_HELP, 1, params, close_cond);
+		} else {
+			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_HELP, 0, nullptr, close_cond);
+		}
+		return true;
 	}
 
 	void OnResize() override
@@ -833,7 +877,7 @@ static WindowDesc _replace_vehicle_desc(
  */
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
-	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
+	CloseWindowById(WC_REPLACE_VEHICLE, vehicletype);
 	WindowDesc *desc;
 	switch (vehicletype) {
 		case VEH_TRAIN: desc = &_replace_rail_vehicle_desc; break;

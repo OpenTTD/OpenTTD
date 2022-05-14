@@ -18,7 +18,7 @@ SQTable::SQTable(SQSharedState *ss,SQInteger nInitialSize)
 	while(nInitialSize>pow2size)pow2size=pow2size<<1;
 	AllocNodes(pow2size);
 	_usednodes = 0;
-	_delegate = NULL;
+	_delegate = nullptr;
 	INIT_CHAIN();
 	ADD_TO_CHAIN(&_sharedstate->_gc_chain,this);
 }
@@ -39,7 +39,7 @@ void SQTable::AllocNodes(SQInteger nSize)
 	_HashNode *nodes=(_HashNode *)SQ_MALLOC(sizeof(_HashNode)*nSize);
 	for(SQInteger i=0;i<nSize;i++){
 		new (&nodes[i]) _HashNode;
-		nodes[i].next=NULL;
+		nodes[i].next=nullptr;
 	}
 	_numofnodes=nSize;
 	_nodes=nodes;
@@ -120,7 +120,7 @@ bool SQTable::NewSlot(const SQObjectPtr &key,const SQObjectPtr &val)
 		if (mp > n && (othern = &_nodes[mph]) != mp){
 			/* yes; move colliding node into free position */
 			while (othern->next != mp){
-				assert(othern->next != NULL);
+				assert(othern->next != nullptr);
 				othern = othern->next;  /* find previous */
 			}
 			othern->next = n;  /* redo the chain with `n' in place of `mp' */
@@ -129,7 +129,7 @@ bool SQTable::NewSlot(const SQObjectPtr &key,const SQObjectPtr &val)
 			n->next = mp->next;
 			mp->key = _null_;
 			mp->val = _null_;
-			mp->next = NULL;  /* now `mp' is free */
+			mp->next = nullptr;  /* now `mp' is free */
 		}
 		else{
 			/* new node will go into free position */
@@ -141,7 +141,7 @@ bool SQTable::NewSlot(const SQObjectPtr &key,const SQObjectPtr &val)
 	mp->key = key;
 
 	for (;;) {  /* correct `firstfree' */
-		if (type(_firstfree->key) == OT_NULL && _firstfree->next == NULL) {
+		if (type(_firstfree->key) == OT_NULL && _firstfree->next == nullptr) {
 			mp->val = val;
 			_usednodes++;
 			return true;  /* OK; table still has a free place */
@@ -190,7 +190,7 @@ void SQTable::_ClearNodes()
 void SQTable::Finalize()
 {
 	_ClearNodes();
-	SetDelegate(NULL);
+	SetDelegate(nullptr);
 }
 
 void SQTable::Clear()

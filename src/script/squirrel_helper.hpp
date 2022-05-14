@@ -14,6 +14,7 @@
 #include "../core/smallvec_type.hpp"
 #include "../economy_type.h"
 #include "../string_func.h"
+#include "../tile_type.h"
 #include "squirrel_helper_type.hpp"
 
 template <class CL, ScriptType ST> const char *GetClassName();
@@ -34,38 +35,6 @@ namespace SQConvert {
 		}
 	};
 
-	template <bool Y> struct YesT {
-		static const bool Yes = Y;
-		static const bool No = !Y;
-	};
-
-	/**
-	 * Helper class to recognize if the given type is void. Usage: 'IsVoidT<T>::Yes'
-	 */
-	template <typename T> struct IsVoidT : YesT<false> {};
-	template <> struct IsVoidT<void> : YesT<true> {};
-
-	/**
-	 * Helper class to recognize if the function/method return type is void.
-	 */
-	template <typename Tfunc> struct HasVoidReturnT;
-	/* functions */
-	template <typename Tretval> struct HasVoidReturnT<Tretval (*)()> : IsVoidT<Tretval> {};
-	template <typename Tretval, typename Targ1> struct HasVoidReturnT<Tretval (*)(Targ1)> : IsVoidT<Tretval> {};
-	template <typename Tretval, typename Targ1, typename Targ2> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2)> : IsVoidT<Tretval> {};
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3)> : IsVoidT<Tretval> {};
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4)> : IsVoidT<Tretval> {};
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5)> : IsVoidT<Tretval> {};
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10> struct HasVoidReturnT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10)> : IsVoidT<Tretval> {};
-	/* methods */
-	template <class Tcls, typename Tretval> struct HasVoidReturnT<Tretval (Tcls::*)()> : IsVoidT<Tretval> {};
-	template <class Tcls, typename Tretval, typename Targ1> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1)> : IsVoidT<Tretval> {};
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2)> : IsVoidT<Tretval> {};
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3)> : IsVoidT<Tretval> {};
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4)> : IsVoidT<Tretval> {};
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5)> : IsVoidT<Tretval> {};
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10> struct HasVoidReturnT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10)> : IsVoidT<Tretval> {};
-
 
 	/**
 	 * Special class to make it possible for the compiler to pick the correct GetParam().
@@ -85,6 +54,7 @@ namespace SQConvert {
 	template <> inline int Return<int32>       (HSQUIRRELVM vm, int32 res)       { sq_pushinteger(vm, res); return 1; }
 	template <> inline int Return<int64>       (HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, res); return 1; }
 	template <> inline int Return<Money>       (HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; }
+	template <> inline int Return<TileIndex>   (HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32)res.value); return 1; }
 	template <> inline int Return<bool>        (HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; }
 	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; }
 	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; }
@@ -103,6 +73,7 @@ namespace SQConvert {
 	template <> inline int16       GetParam(ForceType<int16>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline int32       GetParam(ForceType<int32>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline int64       GetParam(ForceType<int64>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
+	template <> inline TileIndex   GetParam(ForceType<TileIndex>   , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return TileIndex((uint32)(int32)tmp); }
 	template <> inline Money       GetParam(ForceType<Money>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
 	template <> inline bool        GetParam(ForceType<bool>        , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; }
 	template <> inline void       *GetParam(ForceType<void *>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; }
@@ -116,7 +87,7 @@ namespace SQConvert {
 		char *tmp_str = stredup(tmp);
 		sq_poptop(vm);
 		ptr->push_back((void *)tmp_str);
-		str_validate(tmp_str, tmp_str + strlen(tmp_str));
+		StrMakeValidInPlace(tmp_str);
 		return tmp_str;
 	}
 
@@ -158,568 +129,76 @@ namespace SQConvert {
 	 * for SQ callback. The partial specializations for the second arg (Tis_void_retval) are not possible
 	 * on the function. Therefore the class is used instead.
 	 */
-	template <typename Tfunc, bool Tis_void_retval = HasVoidReturnT<Tfunc>::Yes> struct HelperT;
+	template <typename Tfunc> struct HelperT;
 
 	/**
-	 * The real C++ caller for function with return value and 0 params.
+	 * The real C++ caller for functions.
 	 */
-	template <typename Tretval>
-	struct HelperT<Tretval (*)(), false> {
-		static int SQCall(void *instance, Tretval (*func)(), HSQUIRRELVM vm)
+	template <typename Tretval, typename... Targs>
+	struct HelperT<Tretval (*)(Targs...)> {
+		static int SQCall(void *instance, Tretval(*func)(Targs...), HSQUIRRELVM vm)
 		{
-			return Return(vm, (*func)());
+			return SQCall(instance, func, vm, std::index_sequence_for<Targs...>{});
+		}
+
+	private:
+		template <size_t... i>
+		static int SQCall(void *instance, Tretval(*func)(Targs...), [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
+		{
+			[[maybe_unused]] SQAutoFreePointers ptr;
+			if constexpr (std::is_void_v<Tretval>) {
+				(*func)(
+					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+				);
+				return 0;
+			} else {
+				Tretval ret = (*func)(
+					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+				);
+				return Return(vm, ret);
+			}
 		}
 	};
 
 	/**
-	 * The real C++ caller for function with no return value and 0 params.
+	 * The real C++ caller for methods.
 	 */
-	template <typename Tretval>
-	struct HelperT<Tretval (*)(), true> {
-		static int SQCall(void *instance, Tretval (*func)(), HSQUIRRELVM vm)
+	template <class Tcls, typename Tretval, typename... Targs>
+	struct HelperT<Tretval(Tcls:: *)(Targs...)> {
+		static int SQCall(Tcls *instance, Tretval(Tcls:: *func)(Targs...), HSQUIRRELVM vm)
 		{
-			(*func)();
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 0 params.
-	 */
-	template <class Tcls, typename Tretval>
-	struct HelperT<Tretval (Tcls::*)(), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(), HSQUIRRELVM vm)
-		{
-			return Return(vm, (instance->*func)());
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 0 params.
-	 */
-	template <class Tcls, typename Tretval>
-	struct HelperT<Tretval (Tcls::*)(), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(), HSQUIRRELVM vm)
-		{
-			(instance->*func)();
-			return 0;
+			return SQCall(instance, func, vm, std::index_sequence_for<Targs...>{});
 		}
 
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(), HSQUIRRELVM vm)
+		static Tcls *SQConstruct(Tcls *instance, Tretval(Tcls:: *func)(Targs...), HSQUIRRELVM vm)
 		{
-			return new Tcls();
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with return value and 1 param.
-	 */
-	template <typename Tretval, typename Targ1>
-	struct HelperT<Tretval (*)(Targ1), false> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with no return value and 1 param.
-	 */
-	template <typename Tretval, typename Targ1>
-	struct HelperT<Tretval (*)(Targ1), true> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
-			);
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 1 param.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1>
-	struct HelperT<Tretval (Tcls::*)(Targ1), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 1 param.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1>
-	struct HelperT<Tretval (Tcls::*)(Targ1), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
-			);
-			return 0;
+			return SQConstruct(instance, func, vm, std::index_sequence_for<Targs...>{});
 		}
 
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1), HSQUIRRELVM vm)
+	private:
+		template <size_t... i>
+		static int SQCall(Tcls *instance, Tretval(Tcls:: *func)(Targs...), [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
 		{
-			SQAutoFreePointers ptr;
+			[[maybe_unused]] SQAutoFreePointers ptr;
+			if constexpr (std::is_void_v<Tretval>) {
+				(instance->*func)(
+					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+				);
+				return 0;
+			} else {
+				Tretval ret = (instance->*func)(
+					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+				);
+				return Return(vm, ret);
+			}
+		}
+
+		template <size_t... i>
+		static Tcls *SQConstruct(Tcls *, Tretval(Tcls:: *func)(Targs...), [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
+		{
+			[[maybe_unused]] SQAutoFreePointers ptr;
 			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
-			);
-
-			return inst;
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with return value and 2 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2>
-	struct HelperT<Tretval (*)(Targ1, Targ2), false> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with no return value and 2 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2>
-	struct HelperT<Tretval (*)(Targ1, Targ2), true> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
-			);
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 2 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 2 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
-			);
-			return 0;
-		}
-
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
-			);
-
-			return inst;
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with return value and 3 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3), false> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with no return value and 3 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3), true> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
-			);
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 3 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 3 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
-			);
-			return 0;
-		}
-
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
-			);
-
-			return inst;
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with return value and 4 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4), false> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with no return value and 4 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4), true> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
-			);
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 4 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 4 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
-			);
-			return 0;
-		}
-
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
-			);
-
-			return inst;
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with return value and 5 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5), false> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4, Targ5), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with no return value and 5 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5), true> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4, Targ5), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
-			);
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 5 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 5 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
-			);
-			return 0;
-		}
-
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
-			);
-
-			return inst;
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with return value and 10 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), false> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
-				GetParam(ForceType<Targ6>(), vm, 7, &ptr),
-				GetParam(ForceType<Targ7>(), vm, 8, &ptr),
-				GetParam(ForceType<Targ8>(), vm, 9, &ptr),
-				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
-				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for function with no return value and 10 params.
-	 */
-	template <typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10>
-	struct HelperT<Tretval (*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), true> {
-		static int SQCall(void *instance, Tretval (*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
-				GetParam(ForceType<Targ6>(), vm, 7, &ptr),
-				GetParam(ForceType<Targ7>(), vm, 8, &ptr),
-				GetParam(ForceType<Targ8>(), vm, 9, &ptr),
-				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
-				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
-			);
-			return 0;
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with return value and 10 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), false> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tretval ret = (instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
-				GetParam(ForceType<Targ6>(), vm, 7, &ptr),
-				GetParam(ForceType<Targ7>(), vm, 8, &ptr),
-				GetParam(ForceType<Targ8>(), vm, 9, &ptr),
-				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
-				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
-			);
-			return Return(vm, ret);
-		}
-	};
-
-	/**
-	 * The real C++ caller for method with no return value and 10 params.
-	 */
-	template <class Tcls, typename Tretval, typename Targ1, typename Targ2, typename Targ3, typename Targ4, typename Targ5, typename Targ6, typename Targ7, typename Targ8, typename Targ9, typename Targ10>
-	struct HelperT<Tretval (Tcls::*)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), true> {
-		static int SQCall(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			(instance->*func)(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
-				GetParam(ForceType<Targ6>(), vm, 7, &ptr),
-				GetParam(ForceType<Targ7>(), vm, 8, &ptr),
-				GetParam(ForceType<Targ8>(), vm, 9, &ptr),
-				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
-				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
-			);
-			return 0;
-		}
-
-		static Tcls *SQConstruct(Tcls *instance, Tretval (Tcls::*func)(Targ1, Targ2, Targ3, Targ4, Targ5, Targ6, Targ7, Targ8, Targ9, Targ10), HSQUIRRELVM vm)
-		{
-			SQAutoFreePointers ptr;
-			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
-				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
-				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
-				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
-				GetParam(ForceType<Targ5>(), vm, 6, &ptr),
-				GetParam(ForceType<Targ6>(), vm, 7, &ptr),
-				GetParam(ForceType<Targ7>(), vm, 8, &ptr),
-				GetParam(ForceType<Targ8>(), vm, 9, &ptr),
-				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
-				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
+				GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
 			);
 
 			return inst;
@@ -754,9 +233,9 @@ namespace SQConvert {
 		sq_pop(vm, 3);
 
 		/* Get the 'real' instance of this class */
-		sq_getinstanceup(vm, 1, &real_instance, 0);
+		sq_getinstanceup(vm, 1, &real_instance, nullptr);
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 		if (real_instance == nullptr) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
@@ -796,9 +275,9 @@ namespace SQConvert {
 		sq_pop(vm, 3);
 
 		/* Get the 'real' instance of this class */
-		sq_getinstanceup(vm, 1, &real_instance, 0);
+		sq_getinstanceup(vm, 1, &real_instance, nullptr);
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 		if (real_instance == nullptr) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
@@ -820,7 +299,7 @@ namespace SQConvert {
 		SQUserPointer ptr = nullptr;
 
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 
 		try {
 			/* Delegate it to a template that can handle this specific function */
@@ -844,7 +323,7 @@ namespace SQConvert {
 		SQUserPointer ptr = nullptr;
 
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 

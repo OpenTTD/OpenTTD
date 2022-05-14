@@ -16,6 +16,8 @@
 #include "../../engine_base.h"
 #include "../../articulated_vehicles.h"
 #include "../../string_func.h"
+#include "../../economy_cmd.h"
+#include "../../engine_cmd.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -110,23 +112,18 @@ int32 ScriptEventEnginePreview::GetVehicleType()
 bool ScriptEventEnginePreview::AcceptPreview()
 {
 	if (!this->IsEngineValid()) return false;
-	return ScriptObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
+	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
 }
 
 bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
-	return ScriptObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
+	return ScriptObject::Command<CMD_BUY_COMPANY>::Do((::CompanyID)this->owner);
 }
 
-ScriptEventAdminPort::ScriptEventAdminPort(const char *json) :
+ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
 		ScriptEvent(ET_ADMIN_PORT),
-		json(stredup(json))
+		json(json)
 {
-}
-
-ScriptEventAdminPort::~ScriptEventAdminPort()
-{
-	free(this->json);
 }
 
 #define SKIP_EMPTY(p) while (*(p) == ' ' || *(p) == '\n' || *(p) == '\r') (p)++;
@@ -134,7 +131,7 @@ ScriptEventAdminPort::~ScriptEventAdminPort()
 
 SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 {
-	char *p = this->json;
+	const char *p = this->json.c_str();
 
 	if (this->ReadTable(vm, p) == nullptr) {
 		sq_pushnull(vm);
@@ -144,9 +141,9 @@ SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 	return 1;
 }
 
-char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, char *p)
+const char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, const char *p)
 {
-	char *value = p;
+	const char *value = p;
 
 	bool escape = false;
 	for (;;) {
@@ -168,14 +165,14 @@ char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, char *p)
 		p++;
 	}
 
-	*p = '\0';
-	sq_pushstring(vm, value, -1);
-	*p++ = '"';
+	size_t len = p - value;
+	sq_pushstring(vm, value, len);
+	p++; // Step past the end-of-string marker (")
 
 	return p;
 }
 
-char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, char *p)
+const char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, const char *p)
 {
 	sq_newtable(vm);
 
@@ -218,7 +215,7 @@ char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, char *p)
 	return p;
 }
 
-char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
+const char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, const char *p)
 {
 	SKIP_EMPTY(p);
 
@@ -257,7 +254,7 @@ char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
 			sq_newarray(vm, 0);
 
 			/* Empty array? */
-			char *p2 = p + 1;
+			const char *p2 = p + 1;
 			SKIP_EMPTY(p2);
 			if (*p2 == ']') {
 				p = p2 + 1;

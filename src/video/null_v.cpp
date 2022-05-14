@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../gfx_func.h"
 #include "../blitter/factory.hpp"
+#include "../saveload/saveload.h"
 #include "../window_func.h"
 #include "null_v.h"
 
@@ -34,7 +35,7 @@ const char *VideoDriver_Null::Start(const StringList &parm)
 	ScreenSizeChanged();
 
 	/* Do not render, nor blit */
-	DEBUG(misc, 1, "Forcing blitter 'null'...");
+	Debug(misc, 1, "Forcing blitter 'null'...");
 	BlitterFactory::SelectBlitter("null");
 	return nullptr;
 }
@@ -51,6 +52,12 @@ void VideoDriver_Null::MainLoop()
 		::GameLoop();
 		::InputLoop();
 		::UpdateWindows();
+	}
+
+	/* If requested, make a save just before exit. The normal exit-flow is
+	 * not triggered from this driver, so we have to do this manually. */
+	if (_settings_client.gui.autosave_on_exit) {
+		DoExitSave();
 	}
 }
 

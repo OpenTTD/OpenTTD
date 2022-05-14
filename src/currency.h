@@ -70,11 +70,11 @@ enum Currencies {
 
 /** Specification of a currency. */
 struct CurrencySpec {
-	uint16 rate;
-	char separator[8];
-	Year to_euro;      ///< %Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
-	char prefix[16];
-	char suffix[16];
+	uint16 rate;           ///< The conversion rate compared to the base currency.
+	std::string separator; ///< The thousands separator for this currency.
+	Year to_euro;          ///< %Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
+	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
+	std::string suffix;    ///< Suffix to apply when formatting money in this currency.
 	/**
 	 * The currency symbol is represented by two possible values, prefix and suffix
 	 * Usage of one or the other is determined by #symbol_pos.
@@ -89,11 +89,9 @@ struct CurrencySpec {
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16 rate, const char *separator, Year to_euro, const char *prefix, const char *suffix, byte symbol_pos, StringID name) : rate(rate), to_euro(to_euro), symbol_pos(symbol_pos), name(name)
+	CurrencySpec(uint16 rate, const char *separator, Year to_euro, const char *prefix, const char *suffix, byte symbol_pos, StringID name) :
+		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), symbol_pos(symbol_pos), name(name)
 	{
-		strecpy(this->separator, separator, lastof(this->separator));
-		strecpy(this->prefix, prefix, lastof(this->prefix));
-		strecpy(this->suffix, suffix, lastof(this->suffix));
 	}
 };
 

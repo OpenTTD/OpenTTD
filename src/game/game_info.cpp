@@ -23,7 +23,7 @@
  */
 static bool CheckAPIVersion(const char *api_version)
 {
-	static const std::set<std::string> versions = { "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "1.12" };
+	static const std::set<std::string> versions = { "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13" };
 	return versions.find(api_version) != versions.end();
 }
 
@@ -54,7 +54,7 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 {
 	/* Get the GameInfo */
 	SQUserPointer instance = nullptr;
-	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
+	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, nullptr)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
 	GameInfo *info = (GameInfo *)instance;
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
@@ -75,7 +75,7 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 	if (!info->CheckMethod("GetAPIVersion")) return SQ_ERROR;
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 	if (!CheckAPIVersion(info->api_version)) {
-		DEBUG(script, 1, "Loading info.nut from (%s.%d): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
+		Debug(script, 1, "Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
 		return SQ_ERROR;
 	}
 

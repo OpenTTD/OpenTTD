@@ -96,7 +96,7 @@ jobs:
         TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
         cat .ottdrev | cut -f 1 -d$'\t' > .version
 
-        if [ $(cat .ottdrev | cut -f 6 -d$'\t') = '1' ]; then
+        if [ $(cat .ottdrev | cut -f 5 -d$'\t') = '1' ]; then
           # Assume that all tags are always releases. Why else make a tag?
           IS_TAG="true"
 
@@ -373,12 +373,16 @@ jobs:
         include:
         - container_image: "ubuntu:18.04"
           bundle_name: "bionic"
+          compiler: "g++-8"
         - container_image: "ubuntu:20.04"
           bundle_name: "focal"
-        - container_image: "ubuntu:20.10"
-          bundle_name: "groovy"
+          compiler: "g++"
         - container_image: "debian:buster"
           bundle_name: "buster"
+          compiler: "g++"
+        - container_image: "debian:bullseye"
+          bundle_name: "bullseye"
+          compiler: "g++"
 
     runs-on: ubuntu-20.04
     container:
@@ -404,7 +408,7 @@ jobs:
         apt-get install -y --no-install-recommends \
           cmake \
           debhelper \
-          g++ \
+          ${{ matrix.compiler }} \
           git \
           make \
           openssl \
@@ -430,7 +434,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
+        CXX=${{ matrix.compiler }} cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DCMAKE_INSTALL_PREFIX=/usr \
           # EOF
@@ -466,9 +470,9 @@ jobs:
     name: MacOS
     needs: source
 
-    runs-on: macos-10.15
+    runs-on: macos-11
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.9
+      MACOSX_DEPLOYMENT_TARGET: 10.14
 
     steps:
     - name: Download source
@@ -744,6 +748,21 @@ jobs:
       with:
         arch: ${{ matrix.host }}
 
+    - name: Import code signing certificate
+      shell: powershell
+      # If this is run on a fork, there may not be a certificate set up - continue in this case
+      continue-on-error: true
+      run: |
+        $tempFile = [System.IO.Path]::GetTempFileName()
+        $bytes = [System.Convert]::FromBase64String($env:WINDOWS_CERTIFICATE_P12)
+        [IO.File]::WriteAllBytes($tempFile, $bytes)
+        $pwd = ConvertTo-SecureString $env:WINDOWS_CERTIFICATE_PASSWORD -AsPlainText -Force
+        Import-PfxCertificate -FilePath $tempFile -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
+        Remove-Item $tempFile
+      env:
+        WINDOWS_CERTIFICATE_P12: ${{ secrets.WINDOWS_CERTIFICATE_P12 }}
+        WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+
     - name: Build (with installer)
       if: needs.source.outputs.is_tag == 'true'
       shell: bash
@@ -759,12 +778,15 @@ jobs:
           -DOPTION_USE_NSIS=ON \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
         cmake --build .
         echo "::endgroup::"
+      env:
+        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
     - name: Build (without installer)
       if: needs.source.outputs.is_tag != 'true'
@@ -780,12 +802,15 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
         cmake --build .
         echo "::endgroup::"
+      env:
+        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
 
     - name: Create bundles
       shell: bash
@@ -807,11 +832,205 @@ jobs:
         rm -f bundles/*.sha256
         echo "::endgroup::"
 
+    - name: Sign installer
+      if: needs.source.outputs.is_tag == 'true'
+      shell: bash
+      # If this is run on a fork, there may not be a certificate set up - continue in this case
+      continue-on-error: true
+      run: |
+        cd ${GITHUB_WORKSPACE}/build/bundles
+        ../../os/windows/sign.bat *.exe "${WINDOWS_CERTIFICATE_COMMON_NAME}"
+      env:
+        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
+
     - name: Store bundles
       uses: actions/upload-artifact@v2
       with:
         name: openttd-windows-${{ matrix.arch }}
         path: build/bundles
+        retention-days: 5
+
+  windows-appx:
+    name: Windows Store
+    needs:
+    - source
+    - windows
+
+    if: needs.source.outputs.is_tag == 'true'
+    runs-on: windows-latest
+
+    steps:
+    - name: Download source
+      uses: actions/download-artifact@v2
+      with:
+        name: internal-source
+
+    - name: Unpack source
+      shell: bash
+      run: |
+        tar -xf source.tar.gz --strip-components=1
+
+    - name: Download x86 build
+      uses: actions/download-artifact@v2
+      with:
+        name: openttd-windows-x86
+
+    - name: Download x64 build
+      uses: actions/download-artifact@v2
+      with:
+        name: openttd-windows-x64
+
+    - name: Download arm64 build
+      uses: actions/download-artifact@v2
+      with:
+        name: openttd-windows-arm64
+
+    - name: Unpack builds
+      shell: bash
+      run: |
+        mkdir builds
+        cd builds
+
+        function extract {
+            mkdir $1
+
+            # Extract the zip version of the release
+            unzip ../openttd-*-windows-$2.zip -d $1
+
+            # Remove the extraneous directory
+            mv $1/openttd-*-windows-$2/* $1/
+            rmdir $1/openttd-*-windows-$2
+
+            # Move the openttd.exe to the '{arch}-binaries' folder
+            mkdir $1-binaries
+            mv $1/openttd.exe $1-binaries/
+        }
+
+        extract x86 win32
+        extract x64 win64
+        extract arm64 arm64
+
+        # Use the "x86" folder as the source of the common binaries (lang files, etc) and remove the others
+        mv x86 common-binaries
+        rm -rf x64 arm64
+
+    - name: Install OpenGFX
+      shell: bash
+      run: |
+        mkdir -p builds/common-binaries/baseset
+        cd builds/common-binaries/baseset
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/7.1/opengfx-7.1-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        tar xf opengfx-*.tar
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip opengfx-*.tar
+
+    - name: Install OpenMSX
+      shell: bash
+      run: |
+        mkdir -p builds/common-binaries/baseset
+        cd builds/common-binaries/baseset
+
+        echo "::group::Download OpenMSX"
+        curl -L https://cdn.openttd.org/openmsx-releases/0.4.2/openmsx-0.4.2-all.zip -o openmsx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip openmsx-all.zip
+        tar xf openmsx-*.tar
+        echo "::endgroup::"
+
+        rm -f openmsx-all.zip openmsx-*.tar
+
+    - name: Install OpenSFX
+      shell: bash
+      run: |
+        mkdir -p builds/common-binaries/baseset/opensfx
+        cd builds/common-binaries/baseset/opensfx
+
+        echo "::group::Download OpenSFX"
+        curl -L https://cdn.openttd.org/opensfx-releases/1.0.3/opensfx-1.0.3-all.zip -o opensfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenSFX"
+        unzip opensfx-all.zip
+        tar xf opensfx-*.tar
+        echo "::endgroup::"
+
+        rm -f opensfx-all.zip opensfx-*.tar
+
+    - name: Generate signing certificate
+      shell: cmd
+      run: |
+        cd builds
+
+        REM We need to provide a signed .appx to the Windows Store, so generate a certificate with password 'password'
+        call ..\os\windows\winstore\generate-key.bat "CN=78024DA8-4BE4-4C77-B12E-547BBF7359D2" password cert.pfx
+
+    - name: Generate assets
+      shell: cmd
+      run: |
+        cd os\windows\winstore
+        call generate-assets.bat
+
+    - name: Prepare manifests
+      shell: cmd
+      run: |
+        cd builds
+        mkdir manifests
+
+        REM Set the version environment variable
+        call ..\os\windows\winstore\set-version.bat x86-binaries\openttd.exe
+
+        call ..\os\windows\winstore\prepare-manifests.bat manifests "CN=78024DA8-4BE4-4C77-B12E-547BBF7359D2" "57420OpenTTDDevelopers.OpenTTDofficial"
+
+    - name: Prepare binaries
+      shell: bash
+      run: |
+        cd builds
+
+        # Copy the Windows Store assets
+        mkdir common-binaries/Assets
+        cp -R ../os/windows/winstore/assets-common/* common-binaries/Assets/
+
+        mkdir Assets
+        cp -R ../os/windows/winstore/assets/* Assets/
+
+        cp manifests/*.xml .
+
+    - name: Build
+      shell: cmd
+      run: |
+        REM Add the Windows SDK tools to the PATH
+
+        echo|set /p="SET VS_INSTALLDIR=" > _vspath.bat
+        vswhere -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath >> _vspath.bat
+        call _vspath.bat
+        call "%VS_INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
+
+        REM Set the version environment variable
+        call os\windows\winstore\set-version.bat builds\x86-binaries\openttd.exe
+
+        cd builds
+        mkdir output
+
+        REM Build and sign the package
+        makeappx build /v /f PackagingLayout.xml /op output\ /bv %OTTD_VERSION% /pv %OTTD_VERSION% /ca
+        SignTool sign /fd sha256 /a /f cert.pfx /p password "output\OpenTTD.appxbundle"
+
+    - name: Store appx
+      uses: actions/upload-artifact@v2
+      with:
+        name: openttd-windows-store
+        path: |
+          builds/output/OpenTTD.appxbundle
+          builds/cert.pfx
         retention-days: 5
 
   upload:

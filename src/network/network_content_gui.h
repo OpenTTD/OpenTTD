@@ -22,8 +22,8 @@ protected:
 	uint total_files;      ///< Number of files to download
 	uint downloaded_files; ///< Number of files downloaded
 
-	uint32 cur_id; ///< The current ID of the downloaded file
-	char name[48]; ///< The current name of the downloaded file
+	uint32 cur_id;    ///< The current ID of the downloaded file
+	std::string name; ///< The current name of the downloaded file
 
 public:
 	/**
@@ -32,11 +32,7 @@ public:
 	 */
 	BaseNetworkContentDownloadStatusWindow(WindowDesc *desc);
 
-	/**
-	 * Free everything associated with this window.
-	 */
-	~BaseNetworkContentDownloadStatusWindow();
-
+	void Close() override;
 	void DrawWidget(const Rect &r, int widget) const override;
 	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
 };

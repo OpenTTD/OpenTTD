@@ -190,7 +190,7 @@ public:
 	 * @note This will only work just after a function-call from within Squirrel
 	 *  to your C++ function.
 	 */
-	static bool GetRealInstance(HSQUIRRELVM vm, SQUserPointer *ptr) { return SQ_SUCCEEDED(sq_getinstanceup(vm, 1, ptr, 0)); }
+	static bool GetRealInstance(HSQUIRRELVM vm, SQUserPointer *ptr) { return SQ_SUCCEEDED(sq_getinstanceup(vm, 1, ptr, nullptr)); }
 
 	/**
 	 * Get the Squirrel-instance pointer.
