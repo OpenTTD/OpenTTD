@@ -567,7 +567,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 {
 	if (argc == 0) {
 		IConsoleHelp("Unban a client from a network game. Usage: 'unban <ip | banlist-index>'");
-		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
+		IConsoleHelp("For a list of banned IPs, see the command 'banlist'");
 		return true;
 	}
 
@@ -591,7 +591,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 		_network_ban_list.erase(_network_ban_list.begin() + index);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Invalid list index or IP not in ban-list.");
-		IConsolePrint(CC_DEFAULT, "For a list of banned IP's, see the command 'banlist'");
+		IConsolePrint(CC_DEFAULT, "For a list of banned IPs, see the command 'banlist'");
 	}
 
 	return true;
@@ -600,7 +600,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 DEF_CONSOLE_CMD(ConBanList)
 {
 	if (argc == 0) {
-		IConsoleHelp("List the IP's of banned clients: Usage 'banlist'");
+		IConsoleHelp("List the IPs of banned clients: Usage 'banlist'");
 		return true;
 	}
 
@@ -620,9 +620,9 @@ DEF_CONSOLE_CMD(ConBanList)
 * @param path The path to load the ban list from.
 * @return The number of entries loaded from the file or -1 if an error occurred while loading entries.
 */
-static int LoadBanList(const std::string& path)
+static int LoadBanList(const std::string &path)
 {
-	const char* const group_names[] = {
+	const char * const group_names[] = {
 		"bans",
 		nullptr
 	};
@@ -635,7 +635,7 @@ static int LoadBanList(const std::string& path)
 
 	int loaded_count = 0;
 	for (const IniItem *item = ban_group->item; item != nullptr; item = item->next) {
-		// banned clients are added to global ban list when kicked or banned
+		/* Add IP address to the ban list and kick clients using that IP address */
 		NetworkServerKickOrBanIP(item->name.c_str(), true, nullptr);
 		loaded_count++;
 	}
@@ -649,7 +649,7 @@ static int LoadBanList(const std::string& path)
 DEF_CONSOLE_CMD(ConBanListLoad)
 {
 	if (argc == 0) {
-		IConsoleHelp("Loads the IP's of banned clients from a file: Usage 'banlist_load <path_to_file>'");
+		IConsoleHelp("Load the IPs of banned clients from a file and add them to the ban list: Usage 'banlist_load <path_to_file>'");
 		return true;
 	}
 
