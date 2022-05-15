@@ -3905,7 +3905,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni m
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_NONE                                          :Niente
-STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo motrici
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo locomotive
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} casell{P a e}
