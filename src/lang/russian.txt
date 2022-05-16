@@ -436,7 +436,7 @@ STR_SORT_BY_POWER                                               :Мощност�
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Тяговое усилие
 STR_SORT_BY_INTRO_DATE                                          :Время начала производства
 STR_SORT_BY_RUNNING_COST                                        :Стоимость обслуживания
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощность/стоимость обслуж.
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощность/стоимость обслуживания
 STR_SORT_BY_CARGO_CAPACITY                                      :Вместимость
 STR_SORT_BY_RANGE                                               :Дальность полёта
 STR_SORT_BY_POPULATION                                          :Население
@@ -452,8 +452,8 @@ STR_GROUP_BY_NONE                                               :Нет
 STR_GROUP_BY_SHARED_ORDERS                                      :Общие задания
 
 # Order button in shared orders vehicle list
-STR_GOTO_ORDER_VIEW                                             :{BLACK}Заданий
-STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Показать просмотр заданий
+STR_GOTO_ORDER_VIEW                                             :{BLACK}Маршрут
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Показать общий маршрут этой группы транспорта
 
 # Tooltips for the main toolbar
 ###length 31
@@ -4384,7 +4384,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего осмотра: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% {BLACK}Поломок после ТО: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмкость: {LTBLUE}отсутствует{STRING}
@@ -4394,10 +4394,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмко
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA}{NBSP}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Осмотр каждые {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}ТО каждые {LTBLUE}{COMMA}{NBSP}дней{BLACK}. Последний раз: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}ТО каждые {LTBLUE}{COMMA}%{BLACK}. Последний раз: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал технического обслуживания на 10. Ctrl+щелчок увеличивает интервал на 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал технического обслуживания на 10. Ctrl+щелчок уменьшает интервал на 5.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Изменить тип интервала прохождения технического обслуживания
 STR_VEHICLE_DETAILS_DEFAULT                                     :По умолчанию
@@ -4501,11 +4501,11 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Выбе
 STR_ORDER_DROP_REFIT_AUTO                                       :Определённый груз
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступный груз
 
-STR_ORDER_SERVICE                                               :{BLACK}Обслуживание
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда идти
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Идти, если требуется обслуживание
+STR_ORDER_SERVICE                                               :{BLACK}Тех. обслуживание
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Если требуется
 STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустить это задание, если обслуживание не требуется
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустить это задание, если тех. обслуживание не требуется
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
 

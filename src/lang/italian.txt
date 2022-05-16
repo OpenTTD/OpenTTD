@@ -2020,7 +2020,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unità di volum
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Seleziona le unità di misura da utilizzare per mostrare i volumi nell'interfaccia utente
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperiali (gal)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metriche (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metriche (L)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unità di sforzo di trazione: {STRING}

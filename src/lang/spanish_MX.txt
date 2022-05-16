@@ -32,9 +32,9 @@ STR_CARGO_PLURAL_MAIL                                           :{G=m}Correo
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petróleo
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Ganado
 STR_CARGO_PLURAL_GOODS                                          :{G=f}Mercancías
-STR_CARGO_PLURAL_GRAIN                                          :{G=m}Grano
+STR_CARGO_PLURAL_GRAIN                                          :{G=m}Granos
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madera
-STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Mineral de hierro
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minerales de hierro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Acero
 STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Valores
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Mineral de cobre
@@ -50,12 +50,12 @@ STR_CARGO_PLURAL_RUBBER                                         :{G=m}Caucho
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Azúcar
 STR_CARGO_PLURAL_TOYS                                           :{G=m}Juguetes
 STR_CARGO_PLURAL_SWEETS                                         :{G=m}Dulces
-STR_CARGO_PLURAL_COLA                                           :{G=f}Bebida de cola
-STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=m}Algodón de azúcar
+STR_CARGO_PLURAL_COLA                                           :{G=f}Bebidas de cola
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=m}Algodones de azúcar
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Burbujas
 STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Caramelos suaves
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Pilas
-STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Plástico
+STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Plásticos
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=m}Refrescos
 
 # Singular cargo name
@@ -164,12 +164,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NADA
 STR_ABBREV_ALL                                                  :{TINY_FONT}TODO
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA}{NBSP}pasajero{P "" s}
-STR_BAGS                                                        :{COMMA}{NBSP}bolsa{P "" s}
+STR_PASSENGERS                                                  :{G=m}{COMMA}{NBSP}pasajero{P "" s}
+STR_BAGS                                                        :{G=f}{COMMA}{NBSP}bolsa{P "" s}
 STR_TONS                                                        :{G=f}{COMMA}{NBSP}tonelada{P "" s}
-STR_LITERS                                                      :{COMMA}{NBSP}litro{P "" s}
-STR_ITEMS                                                       :{COMMA}{NBSP}artículo{P "" s}
-STR_CRATES                                                      :{COMMA}{NBSP}caja{P "" s}
+STR_LITERS                                                      :{G=m}{COMMA}{NBSP}litro{P "" s}
+STR_ITEMS                                                       :{G=m}{COMMA}{NBSP}artículo{P "" s}
+STR_CRATES                                                      :{G=f}{COMMA}{NBSP}caja{P "" s}
 
 STR_COLOUR_DEFAULT                                              :Predefinido
 ###length 17
@@ -234,7 +234,7 @@ STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Elegir o
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elegir orden descendiente o ascendiente
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elegir patrón de ordenamiento
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Elegir criterio de filtrado
-STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
+STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar vista de área de cobertura
 
@@ -3409,7 +3409,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Localida
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (ciudad){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de localidades. Clic para centrar la vista en el pueblo. Ctrl+Clic abre una vista aparte
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de las localidades. Clic para centrar la vista en la localidad. Ctrl+Clic abre una vista aparte
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
 # Town view window
@@ -3418,11 +3418,11 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mes: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregado
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} (requerida)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} (requerida en invierno)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} (entregada)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerid{G 1 o a}{P 1 "" s})
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregado)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregad{G 1 o a}{P 1 "" s})
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La localidad crece cada {ORANGE}{COMMA}{BLACK}{NBSP}día{P "" s}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La localidad crece cada {ORANGE}{COMMA}{BLACK}{NBSP}días{P "" s} (obra negra)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La localidad {RED}no{BLACK} está creciendo
@@ -3547,7 +3547,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}No hay n
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado{P 0 "" s} para cargar)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservad{G 0 o a}{P 0 "" s} para cargar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Lista de carga aceptada
@@ -3725,7 +3725,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ninguna -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportado){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportad{G 0 o a}{P 0 "" s}){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
@@ -3740,7 +3740,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ninguno
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción último mes:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a}{P 0 "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar la vista en la industria. Ctrl+Clic abre una vista aparte
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}¡La industria ha anunciado su cierre inminente!
@@ -4229,8 +4229,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidad total de este tren:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (×{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vacío
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} desde {STATION}
