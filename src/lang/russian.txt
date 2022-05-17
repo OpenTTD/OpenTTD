@@ -4395,7 +4395,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмко
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}ТО каждые {LTBLUE}{COMMA}{NBSP}дней{BLACK}. Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}ТО каждые {LTBLUE}{COMMA}%{BLACK}. Последний раз: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}ТО при сниж. на {LTBLUE}{COMMA}%{BLACK}. Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал технического обслуживания на 10. Ctrl+щелчок увеличивает интервал на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал технического обслуживания на 10. Ctrl+щелчок уменьшает интервал на 5.
 

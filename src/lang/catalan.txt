@@ -899,12 +899,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvenció caducada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} no tindrà subvenció
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvenció retirada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} ja no està subvencionat
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}El primer {STRING} des de {STRING} fins a {STRING} tindrà una subvenció de {NUM} any{P "" s} per part de l'autoritat local
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}La primera companyia en transportar {STRING} des de {STRING} fins a {STRING} rebrà una subvenció de {NUM} any{P "" s} per part de l'autoritat local
 ###length 4
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {NUM} any{P "" s}
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {NUM} any{P "" s}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {NUM} any{P "" s}
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}{STRING} de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {NUM} any{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {NUM} any{P "" s}
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trànsit caòtic a {TOWN}{}{}El programa de reconstrucció dels carrers patrocinat per {STRING} porta 6 mesos de misèria als automobilistes
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli de transports

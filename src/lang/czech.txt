@@ -1112,6 +1112,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastaven
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtní tento box pro v-sync obrazovky. Změna se projeví po znovu spuštění hry. Funguje to pouze pro povolenou hardwarovou akceleraci.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuální ovladač: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Velikost rozhraní
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Zvolit velikost prvků uživatelského rozhraní
@@ -1240,6 +1241,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Vlastní výšk
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Vlastní výška ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Shovívavý
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
 STR_CITY_APPROVAL_HOSTILE                                       :zaujatý
 STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
@@ -1614,7 +1616,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :tmavě zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fialová
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Barva překrytí toku nákladu: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Nastavit barevná schéma překrytí toku nákladu.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Zelená na červenou (originální)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Zelená na modrou
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Šedá až červená
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Stupně šedi
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Reakce pohledů na scrollování: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Reakce na scrollování v mapě
@@ -3704,6 +3712,9 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finance 
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Příjmy
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Provozní náklady
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitálové Výdaje
 
 
 ###length 13
@@ -3713,12 +3724,19 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Provoz vl
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Provoz silničních vozidel
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Provoz letadel
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Provoz lodí
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastruktura
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Vlaky
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Silniční Vozidla
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Letadla
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Lodě
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Úroky z půjček
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Další
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Čistý zisk
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Stav na účtu
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Vlastní Prostředky
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Půjčka
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximální půjčka: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}

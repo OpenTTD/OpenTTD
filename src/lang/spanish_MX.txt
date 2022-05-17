@@ -98,31 +98,31 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pa
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carbón
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}bolsa{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cabeza{P "" s} de ganado
-STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}caja{P "" s} de mercancías
+STR_QUANTITY_LIVESTOCK                                          :{G=f}{COMMA}{NBSP}cabeza{P "" s} de ganado
+STR_QUANTITY_GOODS                                              :{G=f}{COMMA}{NBSP}caja{P "" s} de mercancías
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de grano
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de madera
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de mineral de hierro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de acero
-STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}bolsa{P "" s} de objetos de valor
+STR_QUANTITY_VALUABLES                                          :{G=f}{COMMA}{NBSP}bolsa{P "" s} de objetos de valor
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de mineral de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maíz
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}bolsa{P "" s} de diamantes
+STR_QUANTITY_DIAMONDS                                           :{G=f}{COMMA}{NBSP}bolsa{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimento
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papel
-STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}bolsa{P "" s} de oro
+STR_QUANTITY_GOLD                                               :{G=f}{COMMA}{NBSP}bolsa{P "" s} de oro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de agua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de caucho
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de azúcar
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}juguete{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}bolsa{P "" s} de dulces
+STR_QUANTITY_SWEETS                                             :{G=f}{COMMA}{NBSP}bolsa{P "" s} de dulces
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algo{P dón dones} de azúcar
-STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
+STR_QUANTITY_BUBBLES                                            :{G=f}{COMMA} burbuja{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramelo suave
-STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
+STR_QUANTITY_BATTERIES                                          :{G=f}{COMMA} pila{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plásticos
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refresco{P "" s}
 STR_QUANTITY_N_A                                                :N/A
