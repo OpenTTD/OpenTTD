@@ -96,7 +96,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refresco
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}pasajero{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carbón
-STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}bolsa{P "" s} de correo
+STR_QUANTITY_MAIL                                               :{G=f}{COMMA}{NBSP}bolsa{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{G=f}{COMMA}{NBSP}cabeza{P "" s} de ganado
 STR_QUANTITY_GOODS                                              :{G=f}{COMMA}{NBSP}caja{P "" s} de mercancías
