@@ -32,7 +32,7 @@ STR_CARGO_PLURAL_COAL                                           :{G=m}Carbone
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Posta
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petrolio
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Bestiame
-STR_CARGO_PLURAL_GOODS                                          :{G=m}Beni
+STR_CARGO_PLURAL_GOODS                                          :{G=f}Merci
 STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereali
 STR_CARGO_PLURAL_WOOD                                           :{G=m}Legname
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Ferro
@@ -66,7 +66,7 @@ STR_CARGO_SINGULAR_COAL                                         :{G=m}Carbone
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Posta
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petrolio
 STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Bestiame
-STR_CARGO_SINGULAR_GOODS                                        :{G=m}Beni
+STR_CARGO_SINGULAR_GOODS                                        :{G=f}Merci
 STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Cereali
 STR_CARGO_SINGULAR_WOOD                                         :{G=m}Legname
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Ferro
@@ -100,7 +100,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} d
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sacc{P o hi} postal{P e i}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} di petrolio
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cap{P o i} di bestiame
-STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}cass{P a e} di beni
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}cass{P a e} di merci
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} di cereali
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} di legname
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} di ferro
@@ -2199,7 +2199,7 @@ STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carrozza passeg
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carrozza passeggeri (E)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Carrozza passeggeri (MR)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Carrozza passeggeri (ML)
-STR_LIVERY_FREIGHT_WAGON                                        :Vagone merci
+STR_LIVERY_FREIGHT_WAGON                                        :Carro merci
 STR_LIVERY_BUS                                                  :Autobus
 STR_LIVERY_TRUCK                                                :Camion
 STR_LIVERY_PASSENGER_SHIP                                       :Traghetto
@@ -5250,9 +5250,9 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Ele
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Carrozza passeggeri
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vagone postale
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Carro per carbone
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Vagone cisterna per petrolio
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagone bestiame
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagone beni
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Carro cisterna (petrolio)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Carro bestiame
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Carro merci
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tramoggia per cereali
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Tramoggia per ferro
@@ -5261,14 +5261,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Vagone blindato
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagone alimentari
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Tramoggia per rame
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Vagone cisterna per acqua
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Carro cisterna (acqua)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Carro per frutta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Carro per gomma
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Tramoggia per toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagone bollicine
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Vagone cisterna per Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Carro cisterna per Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagone caramelle
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagone giocattoli
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Carro per batterie
@@ -5280,9 +5280,9 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Carrozza passeggeri
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Vagone postale
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Carro per carbone
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagone cisterna per petrolio
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vagone bestiame
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Vagone beni
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Carro cisterna (petrolio)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Carro bestiame
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Carro merci
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tramoggia per cereali
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Tramoggia per ferro
@@ -5291,14 +5291,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Vagone blindato
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagone alimentari
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Tramoggia per rame
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vagone cisterna per acqua
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Carro cisterna (acqua)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Carro per frutta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Carro per gomma
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Tramoggia per toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagone bollicine
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagone cisterna per Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Carro cisterna per Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagone caramelle
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagone giocattoli
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Carro per batterie
@@ -5312,9 +5312,9 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocket
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Carrozza passeggeri
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Vagone postale
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Carro per carbone
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Vagone cisterna per petrolio
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Vagone bestiame
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Vagone beni
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Carro cisterna (petrolio)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Carro bestiame
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Carro merci
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tramoggia per cereali
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Tramoggia per ferro
@@ -5323,14 +5323,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Vagone blindato
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagone alimentari
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Tramoggia per rame
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vagone cisterna per acqua
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Carro cisterna (acqua)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Carro per frutta
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Carro per gomma
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Tramoggia per toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagone bollicine
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagone cisterna per Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Carro cisterna per Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagone caramelle
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagone giocattoli
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Carro per batterie
@@ -5360,9 +5360,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Autocisterna Pe
 STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Carro bestiame Talbott
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Carro bestiame Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Carro bestiame Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camion beni Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camion beni Craighead
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camion beni Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camion merci Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camion merci Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camion merci Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Autocarro cereali Hereford
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Autocarro cereali Thomas
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Autocarro cereali Goss
