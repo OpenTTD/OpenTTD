@@ -1525,8 +1525,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Позволи�
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Разрешить передачу денег другим компаниям: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Позволить компаниям в сетевой игре передавать друг другу деньги
 
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Множитель веса груза для товарных поездов: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Множитель веса груза, перевозимого поездами. Высокие значения увеличат нагрузку на локомотивы, особенно при подъёме в гору.
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Множитель массы груза для поездов: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Множитель массы груза, перевозимого поездами. Высокие значения увеличат нагрузку на локомотивы, особенно при подъёме в гору.
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Множитель скорости самолётов: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ограничение скорости воздушных судов относительно другого транспорта для снижения сверхприбылей от использования самолётов
@@ -3518,7 +3518,7 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Неверна�
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы собираетесь внести изменения в запущенную игру; это может привести к нестабильной работе или к аварийному завершению OpenTTD. В этом случае не надо присылать отчёты с ошибками.{}Вы действительно хотите это сделать?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы собираетесь внести изменения в запущенную игру. Это может привести к нестабильной работе или к аварийному завершению OpenTTD. В этом случае не надо присылать отчёты об ошибках.{}Вы действительно хотите это сделать?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл: дублируются GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый GRF)
@@ -3537,7 +3537,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Най�
 STR_NEWGRF_LIST_MISSING                                         :{RED}Файлы отсутствуют
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» может привести к потере синхронизации и вылету игры.
+STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» может привести к потере синхронизации и/или к аварийному завершению игры.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Меняется состояние локомотива «{1:ENGINE}», находящегося вне депо
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Он изменил ёмкость ТС «{1:ENGINE}» за пределами депо или без задания на переоборудование
@@ -4018,8 +4018,8 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Новые ав
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новые суда
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новые воздушные суда
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Вес: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Стоимость переоборудования: {GOLD}{CURRENCY_LONG}{BLACK}) Вес: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Масса: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Стоимость переоборудования: {GOLD}{CURRENCY_LONG}{BLACK}) Масса: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость в море: {GOLD}{VELOCITY}
@@ -4031,11 +4031,11 @@ STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Разр
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Макс. надёжность: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Цена: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Стоимость переоборудования: {GOLD}{CURRENCY_LONG}{BLACK})
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Масса: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} (Стоимость переоборудования: {GOLD}{CURRENCY_LONG}{BLACK}) Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмкость: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Масса: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Может перевозить: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
 STR_PURCHASE_INFO_NONE                                          :Нет
@@ -4220,8 +4220,8 @@ STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушн�
 STR_ENGINE_PREVIEW_SHIP                                         :судно
 STR_ENGINE_PREVIEW_SHIP.gen                                     :судна
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY_LONG}/год{}Ёмкость: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER} Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Масса: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY_LONG}/год{}Ёмкость: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Масса: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER} Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Тип: {STRING}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Тип: {STRING}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
@@ -4380,8 +4380,8 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Тип возд. судна: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Тип: {LTBLUE}{STRING} {BLACK}Дальность: {LTBLUE}{COMMA} клеток
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Масса: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Масса: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% {BLACK}Поломок после ТО: {LTBLUE}{COMMA}

@@ -3860,7 +3860,7 @@ STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}가격: 
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} 속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} (개조 비용: {GOLD}{CURRENCY_LONG}{BLACK}) 속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용량: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수송량: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 화물
@@ -4228,9 +4228,9 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공�
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}이 열차의 총 수용량:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}이 열차의 총 수송량:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어있음
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (출발지: {STATION})
@@ -4240,7 +4240,7 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}화물
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}현재 싣고 있는 화물 정보를 보여줍니다
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}정보
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}각 차량의 상세 정보를 보여줍니다
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}수용량
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}수송량
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}각 차량의 수송량 정보를 보여줍니다
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}총 화물량
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}각 화물 종류에 따른 총 수송량을 보여줍니다
