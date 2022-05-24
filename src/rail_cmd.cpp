@@ -1819,9 +1819,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 
 				/* The track was removed, and left a coast tile. Now also clear the water. */
 				if (flags & DC_EXEC) {
-					bool remove = IsDockingTile(tile);
 					DoClearSquare(tile);
-					if (remove) RemoveDockingTile(tile);
 				}
 				cost.AddCost(_price[PR_CLEAR_WATER]);
 			}

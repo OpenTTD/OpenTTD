@@ -32,6 +32,7 @@
 #include "saveload/saveload.h"
 #include "framerate_type.h"
 #include "landscape_cmd.h"
+#include "station_func.h"
 #include <array>
 #include <list>
 #include <set>
@@ -574,8 +575,10 @@ void DoClearSquare(TileIndex tile)
 	/* If the tile can have animation and we clear it, delete it from the animated tile list. */
 	if (_tile_type_procs[GetTileType(tile)]->animate_tile_proc != nullptr) DeleteAnimatedTile(tile);
 
+	bool remove = IsDockingTile(tile);
 	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
+	if (remove) RemoveDockingTile(tile);
 }
 
 /**
