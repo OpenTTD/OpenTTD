@@ -493,7 +493,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Ta bort alla me
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
-STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av datorspelare / spelskript
+STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av datorspelare/spelskript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Visa bildfrekvens
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
@@ -1530,6 +1530,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grön till röd (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grön till blå
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grå till röd
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gråskala
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Vyfönsters skrollningsbeteende: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan
@@ -3615,24 +3619,26 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Inkomst
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitalkostnader
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruktioner
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nya fordon
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Kostnad för tåg
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kostnad för vägfordon
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Kostnad för flygplan
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kostnad för skepp
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Tåg
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vägfordon
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Flygplan
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skepp
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastruktur
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Tåg
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vägfordon
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Flygplan
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Skepp
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Ränta på lån
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Övrigt
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Ränta på lån: {BLACK}{NUM}%
@@ -4218,7 +4224,7 @@ STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tågets totala kapacitet:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tom
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} från {STATION}
@@ -4495,7 +4501,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Välj å
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare / spelskript
+STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare/spelskript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namn på datorspelaren
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Inställningar
