@@ -968,9 +968,6 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 			if (v != nullptr) FreeTrainTrackReservation(v);
 		}
 
-		bool removetile = false;
-		bool removeendtile = false;
-
 		/* Update company infrastructure counts. */
 		if (rail) {
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
@@ -980,16 +977,12 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RTT_TRAM), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 		} else { // Aqueduct
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.water -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
-			removetile    = IsDockingTile(tile);
-			removeendtile = IsDockingTile(endtile);
 		}
 		DirtyCompanyInfrastructureWindows(owner);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
 
-		if (removetile)    RemoveDockingTile(tile);
-		if (removeendtile) RemoveDockingTile(endtile);
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
 			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
