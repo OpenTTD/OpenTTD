@@ -309,8 +309,8 @@ STR_SORT_BY_COST                                                :Kostnad
 STR_SORT_BY_POWER                                               :Kraft
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Dragkraft
 STR_SORT_BY_INTRO_DATE                                          :Introduktionsdatum
-STR_SORT_BY_RUNNING_COST                                        :Driftskostnad
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftskostnad
+STR_SORT_BY_RUNNING_COST                                        :Driftkostnad
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftkostnad
 STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapacitet
 STR_SORT_BY_RANGE                                               :Räckvidd
 STR_SORT_BY_POPULATION                                          :Folkmängd
@@ -419,7 +419,7 @@ STR_FILE_MENU_EXIT                                              :Avsluta
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Världskarta
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Nytt vyfönster
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legend för Godsflöden
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legend för godsflöden
 STR_MAP_MENU_SIGN_LIST                                          :Skyltlista
 
 # Town menu
@@ -1228,7 +1228,7 @@ STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {S
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftskostnader för fordon och infrastruktur
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftkostnader för fordon och infrastruktur
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för datorspelare
@@ -1529,6 +1529,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Färger på godsflödesöverlägg: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Ställ in det färgschema som ska användas på godsflödesöverlägget.
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grön till röd (original)
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grön till blå
@@ -3619,6 +3621,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Inkomst
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Löpande kostnader
 STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitalkostnader
 
 
@@ -3639,7 +3642,9 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Övrigt
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Nettoförtjänst
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Egna medel
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Ränta på lån: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maxlån: {BLACK}{CURRENCY_LONG}
@@ -3844,7 +3849,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighe
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hastighet i hav: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hastighet i kanal/flod: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftkostnader: {GOLD}{CURRENCY_LONG}/år
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftkostnad: {GOLD}{CURRENCY_LONG}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitet: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(anpassningsbart)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designår: {GOLD}{NUM}{BLACK} Livslängd: {GOLD}{COMMA} år
@@ -4032,13 +4037,13 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :spårvägsfordo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :flygplan
 STR_ENGINE_PREVIEW_SHIP                                         :skepp
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Effekt: {POWER}  Max. T.E.: {6:FORCE}{}Löpande kostnad: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING}{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING}{}Kapacitet: {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING} Räckvidd: {COMMA} rutor{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING} Räckvidd: {COMMA} rutor{}Kapacitet: {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY} Kraft {POWER}{}Driftkostnad: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Effekt: {POWER} Max. T.E.: {6:FORCE}{}Driftkostnad: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO_LONG}{}Driftkostnad: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING}{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Driftkostnad: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING}{}Kapacitet: {CARGO_LONG}{}Driftkostnad: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING} Räckvidd: {COMMA} rutor{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Driftkostnad: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY}{}Flygplanstyp: {STRING} Räckvidd: {COMMA} rutor{}Kapacitet: {CARGO_LONG}{}Driftkostnad: {CURRENCY_LONG}/år
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING} - {STRING}
@@ -4181,7 +4186,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Byt namn
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Byt namn på skepp
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Byt namn på flygplan
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Körkostnad: {LTBLUE}{CURRENCY_LONG}/år
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK} Driftkostnad: {LTBLUE}{CURRENCY_LONG}/år
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
 
