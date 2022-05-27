@@ -7411,8 +7411,32 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRailTile():                  false
     BuildRailTrack():              true
     BuildSignal():                 true
+    GetSignalType():               4
+    GetSignalType():               255
+    RemoveSignal():                true
+    BuildSignal():                 true
+    GetSignalType():               255
+    GetSignalType():               1
+    RemoveSignal():                true
+    BuildSignal():                 true
+    GetSignalType():               10
+    GetSignalType():               10
     RemoveRailTrack():             false
     RemoveRailTrack():             true
+    BuildRailTrack():              true
+    BuildSignal():                 false
+    GetSignalType():               255
+    GetSignalType():               255
+    RemoveSignal():                false
+    BuildSignal():                 true
+    GetSignalType():               255
+    GetSignalType():               1
+    RemoveSignal():                true
+    BuildSignal():                 true
+    GetSignalType():               255
+    GetSignalType():               10
+    RemoveRailTrack():             true
+    RemoveRailTrack():             false
     BuildRail():                   true
     HasTransportType():            true
     HasTransportType():            false
@@ -9272,12 +9296,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():       33417
     GetEngineType():     153
     GetUnitNumber():     1
-    GetAge():            1
+    GetAge():            0
     GetMaxAge():         5490
-    GetAgeLeft():        5489
+    GetAgeLeft():        5490
     GetCurrentSpeed():   7
     GetRunningCost():    421
-    GetProfitThisYear(): -1
+    GetProfitThisYear(): 0
     GetProfitLastYear(): 0
     GetCurrentValue():   5947
     GetVehicleType():    1
@@ -9287,7 +9311,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsInDepot():         false
     GetNumWagons():      1
     GetWagonEngineType(): 153
-    GetWagonAge():       1
+    GetWagonAge():       0
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -9360,11 +9384,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    17 => 1
+    16 => 1
+    14 => 1
     13 => 1
     12 => 1
-    17 => 0
-    16 => 0
-    14 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -9372,9 +9396,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10980
-    14 => 10980
-    17 => 7320
+    16 => 10979
+    14 => 10979
+    17 => 7319
     13 => 5489
     12 => 5489
   CurrentSpeed ListDump:
