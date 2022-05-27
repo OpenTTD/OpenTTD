@@ -463,6 +463,8 @@ static bool IsValidSignalType(int signal_type)
 
 	if (signal < SIGNALTYPE_TWOWAY) {
 		if (signal != SIGNALTYPE_PBS && signal != SIGNALTYPE_PBS_ONEWAY) signal_cycles++;
+	} else {
+		signal_cycles = 0;
 	}
 	::SignalType sig_type = (::SignalType)(signal >= SIGNALTYPE_TWOWAY ? signal ^ SIGNALTYPE_TWOWAY : signal);
 
