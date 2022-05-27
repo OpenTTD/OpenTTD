@@ -32,7 +32,7 @@ STR_CARGO_PLURAL_COAL                                           :{G=m}Carbone
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Posta
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petrolio
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Bestiame
-STR_CARGO_PLURAL_GOODS                                          :{G=f}Merci
+STR_CARGO_PLURAL_GOODS                                          :{G=m}Beni
 STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereali
 STR_CARGO_PLURAL_WOOD                                           :{G=m}Legname
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Ferro
@@ -66,7 +66,7 @@ STR_CARGO_SINGULAR_COAL                                         :{G=m}Carbone
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Posta
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petrolio
 STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Bestiame
-STR_CARGO_SINGULAR_GOODS                                        :{G=f}Merci
+STR_CARGO_SINGULAR_GOODS                                        :{G=m}Beni
 STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Cereali
 STR_CARGO_SINGULAR_WOOD                                         :{G=m}Legname
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Ferro
@@ -100,7 +100,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} d
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}sacc{P o hi} postal{P e i}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} di petrolio
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}cap{P o i} di bestiame
-STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}cass{P a e} di merci
+STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}cass{P a e} di beni
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} di cereali
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} di legname
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} di ferro
@@ -5360,9 +5360,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Autocisterna Pe
 STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Carro bestiame Talbott
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Carro bestiame Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Carro bestiame Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camion merci Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camion merci Craighead
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camion merci Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camion beni Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camion beni Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camion beni Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Autocarro cereali Hereford
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Autocarro cereali Thomas
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Autocarro cereali Goss
