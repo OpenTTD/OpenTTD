@@ -2113,8 +2113,8 @@ STR_QUIT_YES                                                    :{BLACK}Đồng 
 STR_QUIT_NO                                                     :{BLACK}Không đồng ý
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Thoát
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn thoát khỏi trò chơi không?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Bỏ Màn Chơi
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn bỏ màn chơi này không?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
 
 # Cheat window
