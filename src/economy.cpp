@@ -123,10 +123,10 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 			}
 		}
 
-		owned_shares_value += (CalculateCompanyValueExcludingShares(co) / 4) * shares_owned;
+		if (shares_owned > 0) owned_shares_value += (CalculateCompanyValueExcludingShares(co) / 4) * shares_owned;
 	}
 
-	return std::max<Money>(owned_shares_value + CalculateCompanyValueExcludingShares(c), 1);
+	return owned_shares_value + CalculateCompanyValueExcludingShares(c);
 }
 
 Money CalculateCompanyValueExcludingShares(const Company *c, bool including_loan)
