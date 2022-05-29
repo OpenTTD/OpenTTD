@@ -325,20 +325,30 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 	assert(old_owner != new_owner);
 
+	/* We're going to check if there are shares to sell, and if there are
+	 * we're not selling them immediately, as that would create different
+	 * company values for the same company while the command is still running.
+	 * Instead, we will first gather the costs from selling the shares and
+	 * their owners, and only after that we actually sell them. */
+	Money money[MAX_COMPANIES] = {};
+	std::array<Owner, MAX_COMPANY_SHARE_OWNERS> shares[MAX_COMPANIES] = {};
+	for (CompanyID id = COMPANY_FIRST; id < MAX_COMPANIES; id++) std::fill(shares[id].begin(), shares[id].end(), INVALID_OWNER);
+
 	/* See if the old_owner had shares in other companies */
 	for (const Company *c : Company::Iterate()) {
 		for (auto share_owner : c->share_owners) {
 			if (share_owner == old_owner) {
-				/* Sell its shares */
-				CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, c->index);
-				/* Because we are in a DoCommand, we can't just execute another one and
-				 *  expect the money to be removed. We need to do it ourself! */
-				SubtractMoneyFromCompany(res);
+				/* Gather cost from selling its shares */
+				CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_BANKRUPT, c->index);
+				money[_current_company] += res.GetCost();
+				/* Gather its share owner */
+				auto unowned_share = std::find(shares[c->index].begin(), shares[c->index].end(), INVALID_OWNER);
+				*unowned_share = _current_company;
 			}
 		}
 	}
 
-	/* Sell all the shares that people have on this company */
+	/* Collect all the shares that people have on this company */
 	Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
 	Company *c = Company::Get(old_owner);
 	for (auto &share_owner : c->share_owners) {
@@ -349,13 +359,30 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			share_owner = INVALID_OWNER;
 		} else {
 			cur_company2.Change(share_owner);
-			/* Sell the shares */
-			CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, old_owner);
-			/* Because we are in a DoCommand, we can't just execute another one and
-			 *  expect the money to be removed. We need to do it ourself! */
-			SubtractMoneyFromCompany(res);
+			/* Gather cost from selling the shares */
+			CommandCost res = Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_BANKRUPT, old_owner);
+			money[_current_company] += res.GetCost();
+			/* Gather the share owner */
+			auto unowned_share = std::find(shares[c->index].begin(), shares[c->index].end(), INVALID_OWNER);
+			*unowned_share = _current_company;
 		}
 	}
+
+	/* Actually sell all shares here */
+	for (Company *c : Company::Iterate()) {
+		CommandCost cost(EXPENSES_OTHER);
+		cost.AddCost(money[c->index]);
+		cur_company2.Change(c->index);
+		/* Because we are in a DoCommand, we can't just execute another one and
+		 *  expect the money to be removed. We need to do it ourself! */
+		if (cost.GetCost() != 0) SubtractMoneyFromCompany(cost);
+		for (auto share_owner : shares[c->index]) {
+			if (share_owner == INVALID_OWNER) continue;
+			cur_company2.Change(share_owner);
+			Command<CMD_SELL_SHARE_IN_COMPANY>::Do(DC_EXEC | DC_BANKRUPT, c->index);
+		}
+	}
+
 	cur_company2.Restore();
 
 	/* Temporarily increase the company's money, to be sure that
