@@ -101,6 +101,8 @@ Economy _economy;
 Prices _price;
 static PriceMultipliers _price_base_multiplier;
 
+extern int GetAmountOwnedBy(const Company *c, Owner owner);
+
 /**
  * Calculate the value of the company. That is the value of all
  * assets (vehicles, stations, shares) and money minus the loan,
@@ -115,13 +117,7 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 	Money owned_shares_value = 0;
 
 	for (const Company *co : Company::Iterate()) {
-		uint8 shares_owned = 0;
-
-		for (uint8 i = 0; i < 4; i++) {
-			if (co->share_owners[i] == c->index) {
-				shares_owned++;
-			}
-		}
+		int shares_owned = GetAmountOwnedBy(co, c->index);
 
 		if (shares_owned > 0) owned_shares_value += (CalculateCompanyValueExcludingShares(co) / 4) * shares_owned;
 	}
@@ -2017,8 +2013,6 @@ static void DoAcquireCompany(Company *c)
 
 	delete c;
 }
-
-extern int GetAmountOwnedBy(const Company *c, Owner owner);
 
 /**
  * Acquire shares in an opposing company.
