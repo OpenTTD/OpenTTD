@@ -2222,7 +2222,7 @@ static const NWidgetPart _nested_company_widgets[] = {
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_DESC_OWNERS),
 						NWidget(NWID_VERTICAL), SetPIP(5, 5, 4),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_OWNERS), SetMinimalTextLines(3, 0),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_OWNERS), SetMinimalTextLines(MAX_COMPANY_SHARE_OWNERS, 0),
 							NWidget(NWID_SPACER), SetFill(0, 1),
 						EndContainer(),
 					EndContainer(),
