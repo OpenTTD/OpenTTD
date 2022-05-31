@@ -1254,7 +1254,7 @@ STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {ST
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Al activarse, habrá recesiones cada cierto año en las que toda la producción decaerá considerablemente, restableciéndose al final de cada recesión
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir a los trenes que den reversa en estaciones: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Al activarse, los trenes no podrán dar reversa en estaciones intermedias, aun si detrás hay una ruta más corta a su próximo destino
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Al activarse, los trenes no podrán dar reversa en estaciones de paso, aun si detrás hay una ruta más corta a su próximo destino
 
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructura
@@ -1389,10 +1389,10 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir la construcción de paradas intermedias en localidades: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permitir la construcción de paradas intermedias en carreteras propiedad de las localidades
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir la construcción de paradas intermedias sobre carreteras de la competencia: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Construir paradas de autobuses intermedias en carreteras que sean propiedad de otras empresas
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir la construcción de paradas de paso en localidades: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permitir la construcción de paradas de paso en carreteras que sean propiedad de las localidades
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir la construcción de paradas paradas de paso en carreteras de la competencia: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Construir paradas de autobuses de paso en carreteras que sean propiedad de otras empresas
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No se puede cambiar esta opción si ya existen vehículos
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructura: {STRING}
@@ -4781,8 +4781,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiad
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No se puede cambiar nombre de la estación...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta carretera es propiedad de una localidad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... carretera en el sentido incorrecto
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las estaciones y paradas intermedias no pueden ponerse sobre esquinas
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las estaciones y paradas intermedias no pueden ponerse sobre intersecciones
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... las paradas de paso no pueden tener esquinas
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las paradas de paso no pueden tener intersecciones
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede quitar parte de la estación...
