@@ -2043,7 +2043,7 @@ CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID 
 
 	if (GetAmountOwnedBy(c, INVALID_OWNER) == 1) {
 		if (!c->is_ai) return cost; //  We can not buy out a real company (temporarily). TODO: well, enable it obviously.
-
+		if (GetAmountOwnedBy(c, _current_company) < 3) return cost; // Can't buy the last 25% when we don't own 75% of it.
 		if (GetAmountOwnedBy(c, _current_company) == 3 && !MayCompanyTakeOver(_current_company, target_company)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
