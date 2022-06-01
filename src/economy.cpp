@@ -2023,10 +2023,10 @@ extern int GetAmountOwnedBy(const Company *c, Owner owner);
 /**
  * Acquire shares in an opposing company.
  * @param flags type of operation
- * @param p1 company to buy the shares from
+ * @param target_company company to buy the shares from
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID target_company)
+CommandCost CmdBuyShareInCompany(DoCommandFlag flags, CompanyID target_company)
 {
 	CommandCost cost(EXPENSES_OTHER);
 	Company *c = Company::GetIfValid(target_company);

@@ -13,7 +13,7 @@
 #include "command_type.h"
 #include "company_type.h"
 
-CommandCost CmdBuyShareInCompany(DoCommandFlag flags, TileIndex tile, CompanyID target_company);
+CommandCost CmdBuyShareInCompany(DoCommandFlag flags, CompanyID target_company);
 CommandCost CmdSellShareInCompany(DoCommandFlag flags, CompanyID target_company);
 CommandCost CmdBuyCompany(DoCommandFlag flags, CompanyID target_company);
 
