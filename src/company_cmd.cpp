@@ -114,8 +114,11 @@ void SetLocalCompany(CompanyID new_company)
 
 	_current_company = _local_company = new_company;
 
-	/* Delete any construction windows... */
-	if (switching_company) CloseConstructionWindows();
+	if (switching_company) {
+		InvalidateWindowClassesData(WC_COMPANY);
+		/* Delete any construction windows... */
+		CloseConstructionWindows();
+	}
 
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
