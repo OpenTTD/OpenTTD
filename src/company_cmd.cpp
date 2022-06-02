@@ -876,8 +876,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			/* Delete any open window of the company */
-			CloseCompanyWindows(c->index);
 			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
 
 			/* Show the bankrupt news */
