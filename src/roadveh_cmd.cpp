@@ -872,18 +872,20 @@ static int PickRandomBit(uint bits)
 /**
  * Returns direction to for a road vehicle to take or
  * INVALID_TRACKDIR if the direction is currently blocked
- * @param v        the Vehicle to do the pathfinding for
- * @param tile     the where to start the pathfinding
- * @param enterdir the direction the vehicle enters the tile from
+ * @param v                  the Vehicle to do the pathfinding for
+ * @param tile               the where to start the pathfinding
+ * @param enterdir           the direction the vehicle enters the tile from
+ * @param[out] ran_pf_cache  whether the pathfinder ran or consumed from cache
  * @return the Trackdir to take
  */
-static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection enterdir)
+static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool *ran_pf_cache)
 {
 #define return_track(x) { best_track = (Trackdir)x; goto found_best_track; }
 
 	TileIndex desttile;
 	Trackdir best_track;
 	bool path_found = true;
+	*ran_pf_cache = false;
 
 	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype));
 	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // crossing
@@ -963,6 +965,8 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 		}
 		return_track(FindFirstBit2x64(trackdirs));
 	}
+
+	*ran_pf_cache = true;
 
 	/* Attempt to follow cached path. */
 	if (!v->path.empty()) {
@@ -1195,11 +1199,12 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 	if (rd.x & RDE_NEXT_TILE) {
 		TileIndex tile = v->tile + TileOffsByDiagDir((DiagDirection)(rd.x & 3));
 		Trackdir dir;
+		bool ran_pf_cache = false;
 
 		if (v->IsFrontEngine()) {
 			/* If this is the front engine, look for the right path. */
 			if (HasTileAnyRoadType(tile, v->compatible_roadtypes)) {
-				dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
+				dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3), &ran_pf_cache);
 			} else {
 				dir = _road_reverse_table[(DiagDirection)(rd.x & 3)];
 			}
@@ -1280,9 +1285,14 @@ again:
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 		if (v->IsFrontEngine()) {
-			Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
+			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != nullptr) {
 				v->cur_speed = u->First()->cur_speed;
+				if (ran_pf_cache) {
+					/* Prevent pathfinding rerun as we already know where we are heading to. */
+					v->path.tile.push_front(tile);
+					v->path.td.push_front(dir);
+				}
 				return false;
 			}
 		}
@@ -1352,6 +1362,7 @@ again:
 	if (rd.x & RDE_TURNED) {
 		/* Vehicle has finished turning around, it will now head back onto the same tile */
 		Trackdir dir;
+		bool ran_pf_cache = false;
 		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
 
 		if (RoadTypeIsTram(v->roadtype) && !IsRoadDepotTile(v->tile) && HasExactlyOneBit(GetAnyRoadBits(v->tile, RTT_TRAM, true))) {
@@ -1375,7 +1386,7 @@ again:
 		} else {
 			if (v->IsFrontEngine()) {
 				/* If this is the front engine, look for the right path. */
-				dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
+				dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3), &ran_pf_cache);
 			} else {
 				dir = FollowPreviousRoadVehicle(v, prev, v->tile, (DiagDirection)(rd.x & 3), true);
 			}
@@ -1392,15 +1403,17 @@ again:
 		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
-		if (v->IsFrontEngine() && RoadVehFindCloseTo(v, x, y, new_dir) != nullptr) {
-			/* We are blocked. */
-			v->cur_speed = 0;
-			if (!v->path.empty()) {
-				/* Prevent pathfinding rerun as we already know where we are heading to. */
-				v->path.tile.push_front(v->tile);
-				v->path.td.push_front(dir);
+		if (v->IsFrontEngine()) {
+			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
+			if (u != nullptr) {
+				v->cur_speed = u->First()->cur_speed;
+				if (ran_pf_cache) {
+					/* Prevent pathfinding rerun as we already know where we are heading to. */
+					v->path.tile.push_front(v->tile);
+					v->path.td.push_front(dir);
+				}
+				return false;
 			}
-			return false;
 		}
 
 		uint32 r = VehicleEnterTile(v, v->tile, x, y);
