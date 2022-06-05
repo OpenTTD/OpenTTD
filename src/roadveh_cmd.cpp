@@ -928,7 +928,9 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	trackdirs &= DiagdirReachesTrackdirs(enterdir);
 	if (trackdirs == TRACKDIR_BIT_NONE) {
 		/* If vehicle expected a path, it no longer exists, so invalidate it. */
-		if (!v->path.empty()) v->path.clear();
+		if (!v->path.empty() && v->path.tile.front() == tile) {
+			v->path.clear();
+		}
 		/* No reachable tracks, so we'll reverse */
 		return_track(_road_reverse_table[enterdir]);
 	}
