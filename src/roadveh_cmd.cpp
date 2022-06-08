@@ -1280,9 +1280,12 @@ again:
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 		if (v->IsFrontEngine()) {
-			Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
+			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != nullptr) {
 				v->cur_speed = u->First()->cur_speed;
+				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
+				v->path.tile.push_front(tile);
+				v->path.td.push_front(dir);
 				return false;
 			}
 		}
@@ -1392,15 +1395,15 @@ again:
 		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
-		if (v->IsFrontEngine() && RoadVehFindCloseTo(v, x, y, new_dir) != nullptr) {
-			/* We are blocked. */
-			v->cur_speed = 0;
-			if (!v->path.empty()) {
-				/* Prevent pathfinding rerun as we already know where we are heading to. */
+		if (v->IsFrontEngine()) {
+			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
+			if (u != nullptr) {
+				v->cur_speed = u->First()->cur_speed;
+				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
 				v->path.tile.push_front(v->tile);
 				v->path.td.push_front(dir);
+				return false;
 			}
-			return false;
 		}
 
 		uint32 r = VehicleEnterTile(v, v->tile, x, y);
