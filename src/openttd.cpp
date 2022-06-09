@@ -838,6 +838,15 @@ void HandleExitGameRequest()
 }
 
 /**
+ * Triggers everything required to set up a saved scenario for a new game.
+ */
+static void OnStartScenario()
+{
+	/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
+	EngineOverrideManager::ResetToCurrentNewGRFConfig();
+}
+
+/**
  * Triggers everything that should be triggered when starting a game.
  * @param dedicated_server Whether this is a dedicated server or not.
  */
@@ -1049,8 +1058,7 @@ void SwitchToMode(SwitchMode new_mode)
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
 				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
-					/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
-					EngineOverrideManager::ResetToCurrentNewGRFConfig();
+					OnStartScenario();
 				}
 				OnStartGame(_network_dedicated);
 				/* Decrease pause counter (was increased from opening load dialog) */
