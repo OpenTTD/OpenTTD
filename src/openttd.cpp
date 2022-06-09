@@ -844,6 +844,11 @@ static void OnStartScenario()
 {
 	/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
 	EngineOverrideManager::ResetToCurrentNewGRFConfig();
+
+	/* Make sure all industries were built "this year", to avoid too early closures. (#9918) */
+	for (Industry *i : Industry::Iterate()) {
+		i->last_prod_year = _cur_year;
+	}
 }
 
 /**
