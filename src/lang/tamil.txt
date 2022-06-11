@@ -311,6 +311,8 @@ STR_SORT_BY_RANGE                                               :வரையற
 STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
 STR_SORT_BY_RATING                                              :மதிப்பீடு
 STR_SORT_BY_NUM_VEHICLES                                        :வாகங்களின் எண்ணிக்கை
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :கடந்த ஆண்டின் மொத்த இலாபம்
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :கடந்த ஆண்டின் சராசரி இலாபம்
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :இந்த ஆண்டின் சராசரி இலாபம்
 
 # Group by options for vehicle list
@@ -1186,6 +1188,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :அடிக்
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :மானியம் பெருக்கு: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :மானியம் வழங்கப்பட்ட பணிகளுக்கு எவ்வுளவு தர வேண்டும் என்பதினை அமை
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :மானியம் நீடிக்கும் காலம்: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :மானியம் வழங்கப்படும் ஆண்டுகளின் எண்ணிக்கையை அமை
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} ஆண்டு{P "" கள்}
@@ -1417,6 +1420,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :கரும்
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
 
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :சாம்பல் நிறமான காட்சி
 
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :வலது சுட்டி பொத்தானைக் கொண்டு வரைபடத்தை நகர்த்தவும்
@@ -1637,6 +1641,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :என்றுமில்லை
 
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :பொருளாதார வகை: {STRING}
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :உறைந்த
 
@@ -2031,6 +2036,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}நி�
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}வரைபடத்தின் அளவு: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}சர்வர் பதிப்பு: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}சர்வரின் முகவரி: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}அழைப்பு குறியீடு: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}தொடக்கத் தேதி: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}இன்றையத் தேதி: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}கடவுச்சொலினால் தடுக்கப்பட்டுள்ளது!
@@ -2103,12 +2109,15 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}தொ�
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}உங்கள் சேவையகத்தை மற்றவர்கள் எப்படி அணுகலாம்
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}உங்கள் வீரரின் பெயர்
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}இந்த நிறுவனத்திற்கான நிர்வாக நடவடிக்கைகள்
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}இந்த விளையாட்டாளருக்கு ஒரு செய்தியை அனுப்பவும்
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}அனைத்து பார்வையாளர்களுக்கும் ஒரு செய்தியை அனுப்பவும்
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(புதிய நிறுவனம்)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}புதிய நிறுவனத்தினை நிறுவி விளையாடு
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} வாடிக்கையாளர்{P "" கள்} / {NUM} நிறுவன{P ம் ங்கள்}
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}இருப்பிட வலைப்பின்னல்
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}தொலைக்கோடியான வீரர்களால் இணைய முடியவில்லை
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NAT-யிற்கு பின்னால்
 
@@ -2713,6 +2722,7 @@ STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE}
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}உருவகப்படுத்துதலின் வேகம்: {STRING}
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}கிராபிக்ஸ் பிரேம் வீதம்: {STRING}
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}தற்போதைய ஆட்டத்தின் வேக அமைப்பு: {DECIMAL} மடங்கு
+STR_FRAMERATE_CURRENT                                           :{WHITE}நடப்பு
 STR_FRAMERATE_AVERAGE                                           :{WHITE}சராசரி
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}நினைவாற்றல்
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
@@ -2736,6 +2746,7 @@ STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI 
 
 ###length 15
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :சரக்கு கையாளுதல்
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :இரயில் சொடுக்குகள்
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :சாலை வாகனத்தின் பயண நேரம்
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :விமான டிக்குகள்
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :உலக சொடுக்குகள்
@@ -2782,6 +2793,8 @@ STR_MAPGEN_DATE                                                 :{BLACK}தே�
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}தொழிற்சாலைகளின் எண்ணிக்கை:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}மிக உயர்ந்த சிகரம்:
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}பனி முழுத் தழுவு அளவு:
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}பனி முழுத் தழுவு அளவினை பத்து சதவிகிதம் குறைக்கவும்
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}பாலைவன முழுத் தழுவு அளவு:
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}பாலைவன முழுத் தழுவு அளவினை பத்து சதவிகிதம் அதிகப்படுத்து
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}பாலைவன முழுத் தழுவு அளவினை பத்து சதவிகிதம் குறைக்கவும்
@@ -2894,6 +2907,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}இந்�
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Preset-ஐ பதிவுசெய்
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Preset இற்கு ஒரு பெயரினை இடு
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}இரத்து செய்
+STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}முன்னமைக்கப்பட்டவற்றை மாற்றாதே
 STR_SAVE_PRESET_SAVE                                            :{BLACK}சேமி
 
 # NewGRF parameters window
@@ -3063,6 +3077,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}தங�
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} குறிக்கோள்கள்
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}உலகளாவிய குறிக்கோள்கள்
 STR_GOALS_SPECTATOR                                             :உலகளாவிய குறிக்கோள்கள்
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}நிறுவனம்
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}நிறுவனத்தின் இலக்குகளைக் காட்டு
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -
@@ -3201,6 +3216,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}வருவாய்
 
 
 ###length 13
@@ -3210,6 +3226,7 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}இரய
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}சாலை வாகனங்களை இயக்கும் செலவுகள்
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}விமானங்களை இயக்கும் செலவுகள்
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}கப்பல்களை இயக்கும் செலவுகள்
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}கப்பல்கள்
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}கடன் வட்டி
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}மற்றவை
 
@@ -3310,6 +3327,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}தய�
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}தொழிற்சாலை உடனடியாக மூடப்படும் என்று அறிவிக்கப்பட்டுள்ளது!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}வேண்டியவன: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}வேண்டியவன:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3687,6 +3705,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION} நிலையத்தினை அடைய முடியவில்லை, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT}-இனை அடைய முடியவில்லை, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{DEPOT}-இனை அடைய முடியாது , {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{DEPOT} இனை அடைய முடியவில்லை, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4075,6 +4094,7 @@ STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}தி�
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}திரைபிடிப்பு - இயல்பிருப்பு பெரிதாக்குதல்
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}முழு வரைபடத்தின் திரைபிடிப்பு
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}உயர்படத்தின் திரைப்பிடிப்பு
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}சிறிய வரைபட திரைபிடிப்பு
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} குணாதிசயங்கள்
