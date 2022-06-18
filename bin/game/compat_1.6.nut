@@ -20,3 +20,10 @@ GSCompany.ChangeBankBalance <- function(company, delta, expenses_type)
 {
 	return GSCompany._ChangeBankBalance(company, delta, expenses_type, GSMap.TILE_INVALID);
 }
+
+/* 13 returns the additive inverse of the value. */
+GSCompany._GetQuarterlyExpenses <- GSCompany.GetQuarterlyExpenses
+GSCompany.GetQuarterlyExpenses <- function(company, quarter)
+{
+	return -GSCompany._GetQuarterlyExpenses(company, quarter);
+}

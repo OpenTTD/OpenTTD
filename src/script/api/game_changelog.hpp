@@ -20,6 +20,9 @@
  * \li GSIndustryType::ResolveNewGRFID
  * \li GSObjectType::ResolveNewGRFID
  *
+ * Other changes:
+ * \li GSCompany::GetQuarterlyExpenses now returns the additive inverse of the value
+ *
  * \b 12.0
  *
  * API additions:

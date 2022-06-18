@@ -6,3 +6,10 @@
  */
 
 AILog.Info("1.11 API compatibility in effect.");
+
+/* 13 returns the additive inverse of the value. */
+AICompany._GetQuarterlyExpenses <- AICompany.GetQuarterlyExpenses
+AICompany.GetQuarterlyExpenses <- function(company, quarter)
+{
+	return -AICompany._GetQuarterlyExpenses(company, quarter);
+}

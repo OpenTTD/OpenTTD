@@ -20,6 +20,9 @@
  * \li AIIndustryType::ResolveNewGRFID
  * \li AIObjectType::ResolveNewGRFID
  *
+ * Other changes:
+ * \li AICompany::GetQuarterlyExpenses now returns the additive inverse of the value
+ *
  * \b 12.0
  *
  * API additions:

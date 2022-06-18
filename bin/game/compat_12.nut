@@ -6,3 +6,10 @@
  */
 
 GSLog.Info("12 API compatibility in effect.");
+
+/* 13 returns the additive inverse of the value. */
+GSCompany._GetQuarterlyExpenses <- GSCompany.GetQuarterlyExpenses
+GSCompany.GetQuarterlyExpenses <- function(company, quarter)
+{
+	return -GSCompany._GetQuarterlyExpenses(company, quarter);
+}

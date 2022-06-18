@@ -68,3 +68,10 @@ AIGroup.CreateGroup <- function(vehicle_type)
 {
 	return AIGroup._CreateGroup(vehicle_type, AIGroup.GROUP_INVALID);
 }
+
+/* 13 returns the additive inverse of the value. */
+AICompany._GetQuarterlyExpenses <- AICompany.GetQuarterlyExpenses
+AICompany.GetQuarterlyExpenses <- function(company, quarter)
+{
+	return -AICompany._GetQuarterlyExpenses(company, quarter);
+}

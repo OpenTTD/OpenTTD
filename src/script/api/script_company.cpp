@@ -132,9 +132,9 @@
 	if (quarter > EARLIEST_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(company)->cur_economy.expenses;
+		return -::Company::Get(company)->cur_economy.expenses;
 	}
-	return ::Company::Get(company)->old_economy[quarter - 1].expenses;
+	return -::Company::Get(company)->old_economy[quarter - 1].expenses;
 }
 
 /* static */ int32 ScriptCompany::GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, uint32 quarter)
