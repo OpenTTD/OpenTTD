@@ -3377,20 +3377,24 @@ static bool ValidateIndustryLayout(const IndustryTileLayout &layout)
 	const size_t size = layout.size();
 	if (size == 0) return false;
 
-	size_t valid_regular_tiles = 0;
-
 	for (size_t i = 0; i < size - 1; i++) {
 		for (size_t j = i + 1; j < size; j++) {
 			if (layout[i].ti.x == layout[j].ti.x &&
 					layout[i].ti.y == layout[j].ti.y) {
 				return false;
 			}
-			if (layout[i].gfx != GFX_WATERTILE_SPECIALCHECK) {
-				++valid_regular_tiles;
-			}
 		}
 	}
-	return valid_regular_tiles > 0;
+
+	bool have_regular_tile = false;
+	for (size_t i = 0; i < size; i++) {
+		if (layout[i].gfx != GFX_WATERTILE_SPECIALCHECK) {
+			have_regular_tile = true;
+			break;
+		}
+	}
+
+	return have_regular_tile;
 }
 
 /**
