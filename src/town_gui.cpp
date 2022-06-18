@@ -56,10 +56,7 @@ static const NWidgetPart _nested_town_authority_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_RATING_INFO), SetMinimalSize(317, 92), SetResize(1, 1), EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_COMMAND_LIST), SetMinimalSize(305, 52), SetResize(1, 0), SetDataTip(0x0, STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), SetScrollbar(WID_TA_SCROLLBAR), EndContainer(),
-		NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_TA_SCROLLBAR),
-	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_COMMAND_LIST), SetMinimalSize(317, 52), SetResize(1, 0), SetDataTip(0x0, STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP), EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_TA_ACTION_INFO), SetMinimalSize(317, 52), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TA_EXECUTE),  SetMinimalSize(317, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_LOCAL_AUTHORITY_DO_IT_BUTTON, STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP),
@@ -72,22 +69,22 @@ struct TownAuthorityWindow : Window {
 private:
 	Town *town;    ///< Town being displayed.
 	int sel_index; ///< Currently selected town action, \c 0 to \c TACT_COUNT-1, \c -1 means no action selected.
-	Scrollbar *vscroll;
 	uint displayed_actions_on_previous_painting; ///< Actions that were available on the previous call to OnPaint()
+	TownActions enabled_actions; ///< Actions that are enabled in settings.
+	TownActions available_actions; ///< Actions that are available to execute for the current company.
 
 	/**
 	 * Get the position of the Nth set bit.
 	 *
 	 * If there is no Nth bit set return -1
 	 *
-	 * @param bits The value to search in
 	 * @param n The Nth set bit from which we want to know the position
-	 * @return The position of the Nth set bit
+	 * @return The position of the Nth set bit, or -1 if no Nth bit set.
 	 */
-	static int GetNthSetBit(uint32 bits, int n)
+	int GetNthSetBit(int n)
 	{
 		if (n >= 0) {
-			for (uint i : SetBitIterator(bits)) {
+			for (uint i : SetBitIterator(this->enabled_actions)) {
 				n--;
 				if (n < 0) return i;
 			}
@@ -95,33 +92,46 @@ private:
 		return -1;
 	}
 
+	/**
+	 * Gets all town authority actions enabled in settings.
+	 *
+	 * @return Bitmask of actions enabled in the settings.
+	 */
+	static TownActions GetEnabledActions()
+	{
+		TownActions enabled = TACT_ALL;
+
+		if (!_settings_game.economy.fund_roads) CLRBITS(enabled, TACT_ROAD_REBUILD);
+		if (!_settings_game.economy.fund_buildings) CLRBITS(enabled, TACT_FUND_BUILDINGS);
+		if (!_settings_game.economy.exclusive_rights) CLRBITS(enabled, TACT_BUY_RIGHTS);
+		if (!_settings_game.economy.bribe) CLRBITS(enabled, TACT_BRIBE);
+
+		return enabled;
+	}
+
 public:
-	TownAuthorityWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), sel_index(-1), displayed_actions_on_previous_painting(0)
+	TownAuthorityWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), sel_index(-1), displayed_actions_on_previous_painting(0), available_actions(TACT_NONE)
 	{
 		this->town = Town::Get(window_number);
+		this->enabled_actions = GetEnabledActions();
 		this->InitNested(window_number);
-		this->vscroll = this->GetScrollbar(WID_TA_SCROLLBAR);
-		this->vscroll->SetCapacity((this->GetWidget<NWidgetBase>(WID_TA_COMMAND_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
 	}
 
 	void OnPaint() override
 	{
-		int numact;
-		uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
-		if (buttons != displayed_actions_on_previous_painting) this->SetDirty();
-		displayed_actions_on_previous_painting = buttons;
-
-		this->vscroll->SetCount(numact + 1);
-
-		if (this->sel_index != -1 && !HasBit(buttons, this->sel_index)) {
-			this->sel_index = -1;
-		}
+		this->available_actions = GetMaskOfTownActions(_local_company, this->town);
+		if (this->available_actions != displayed_actions_on_previous_painting) this->SetDirty();
+		displayed_actions_on_previous_painting = this->available_actions;
 
 		this->SetWidgetLoweredState(WID_TA_ZONE_BUTTON, this->town->show_zone);
-		this->SetWidgetDisabledState(WID_TA_EXECUTE, this->sel_index == -1);
+		this->SetWidgetDisabledState(WID_TA_EXECUTE, (this->sel_index == -1) || !HasBit(this->available_actions, this->sel_index));
 
 		this->DrawWidgets();
-		if (!this->IsShaded()) this->DrawRatings();
+		if (!this->IsShaded())
+		{
+			this->DrawRatings();
+			this->DrawActions();
+		}
 	}
 
 	/** Draw the contents of the ratings panel. May request a resize of the window if the contents does not fit. */
@@ -185,6 +195,32 @@ public:
 		}
 	}
 
+	/** Draws the contents of the actions panel. May re-initialise window to resize panel, if the list does not fit. */
+	void DrawActions()
+	{
+		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_TA_COMMAND_LIST);
+		uint left = nwid->pos_x + WD_FRAMERECT_LEFT;
+		uint right = nwid->pos_x + nwid->current_x - 1 - WD_FRAMERECT_RIGHT;
+		uint y = nwid->pos_y + WD_FRAMERECT_TOP;
+
+		DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
+		y += FONT_HEIGHT_NORMAL;
+
+		/* Draw list of actions */
+		for (int i = 0; i < TACT_COUNT; i++) {
+			/* Don't show actions if disabled in settings. */
+			if (!HasBit(this->enabled_actions, i)) continue;
+
+			/* Set colour of action based on ability to execute and if selected. */
+			TextColour action_colour = TC_GREY | TC_NO_SHADE;
+			if (HasBit(this->available_actions, i)) action_colour = TC_ORANGE;
+			if (this->sel_index == i) action_colour = TC_WHITE;
+
+			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, action_colour);
+			y += FONT_HEIGHT_NORMAL;
+		}
+	}
+
 	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_TA_CAPTION) SetDParam(0, this->window_number);
@@ -195,33 +231,15 @@ public:
 		switch (widget) {
 			case WID_TA_ACTION_INFO:
 				if (this->sel_index != -1) {
-					SetDParam(0, _price[PR_TOWN_ACTION] * _town_action_costs[this->sel_index] >> 8);
+					Money action_cost = _price[PR_TOWN_ACTION] * _town_action_costs[this->sel_index] >> 8;
+					bool affordable = action_cost < Company::GetIfValid(_local_company)->money;
+
+					SetDParam(0, action_cost);
 					DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
-								STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index);
+						STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index,
+						affordable ? TC_YELLOW : TC_RED);
 				}
 				break;
-			case WID_TA_COMMAND_LIST: {
-				int numact;
-				uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
-				int y = r.top + WD_FRAMERECT_TOP;
-				int pos = this->vscroll->GetPosition();
-
-				if (--pos < 0) {
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
-					y += FONT_HEIGHT_NORMAL;
-				}
-
-				for (int i = 0; buttons; i++, buttons >>= 1) {
-					if (pos <= -5) break; ///< Draw only the 5 fitting lines
-
-					if ((buttons & 1) && --pos < 0) {
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y,
-								STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, this->sel_index == i ? TC_WHITE : TC_ORANGE);
-						y += FONT_HEIGHT_NORMAL;
-					}
-				}
-				break;
-			}
 		}
 	}
 
@@ -244,7 +262,7 @@ public:
 			}
 
 			case WID_TA_COMMAND_LIST:
-				size->height = WD_FRAMERECT_TOP + 5 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				size->height = WD_FRAMERECT_TOP + (TACT_COUNT + 1) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 				size->width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
 				for (uint i = 0; i < TACT_COUNT; i++ ) {
 					size->width = std::max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width);
@@ -275,14 +293,14 @@ public:
 			}
 
 			case WID_TA_COMMAND_LIST: {
-				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, FONT_HEIGHT_NORMAL);
-				if (!IsInsideMM(y, 0, 5)) return;
+				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, FONT_HEIGHT_NORMAL) - 1;
 
-				y = GetNthSetBit(GetMaskOfTownActions(nullptr, _local_company, this->town), y + this->vscroll->GetPosition() - 1);
+				y = GetNthSetBit(y);
 				if (y >= 0) {
 					this->sel_index = y;
 					this->SetDirty();
 				}
+
 				/* When double-clicking, continue */
 				if (click_count == 1 || y < 0) break;
 				FALLTHROUGH;
@@ -297,6 +315,16 @@ public:
 	void OnHundredthTick() override
 	{
 		this->SetDirty();
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		if (!gui_scope) return;
+
+		this->enabled_actions = this->GetEnabledActions();
+		if (!HasBit(this->enabled_actions, this->sel_index)) {
+			this->sel_index = -1;
+		}
 	}
 };
 

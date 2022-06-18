@@ -3293,21 +3293,19 @@ static TownActionProc * const _town_action_proc[] = {
 
 /**
  * Get a list of available actions to do at a town.
- * @param nump if not nullptr add put the number of available actions in it
  * @param cid the company that is querying the town
  * @param t the town that is queried
  * @return bitmasked value of enabled actions
  */
-uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
+TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 {
-	int num = 0;
 	TownActions buttons = TACT_NONE;
 
 	/* Spectators and unwanted have no options */
 	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
 
-		/* Things worth more than this are not shown */
-		Money avail = Company::Get(cid)->money + _price[PR_STATION_VALUE] * 200;
+		/* Actions worth more than this are not able to be performed */
+		Money avail = Company::Get(cid)->money;
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
@@ -3331,12 +3329,10 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 
 			if (avail >= _town_action_costs[i] * _price[PR_TOWN_ACTION] >> 8) {
 				buttons |= cur;
-				num++;
 			}
 		}
 	}
 
-	if (nump != nullptr) *nump = num;
 	return buttons;
 }
 
@@ -3354,7 +3350,7 @@ CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8 action)
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr || action >= lengthof(_town_action_proc)) return CMD_ERROR;
 
-	if (!HasBit(GetMaskOfTownActions(nullptr, _current_company, t), action)) return CMD_ERROR;
+	if (!HasBit(GetMaskOfTownActions(_current_company, t), action)) return CMD_ERROR;
 
 	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * _town_action_costs[action] >> 8);
 
