@@ -354,11 +354,11 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra l
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostra l'elenco degli aeromobili di una compagnia. CTRL+clic non apre la lista gruppi.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zooma la visuale in avanti
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zooma la visuale indietro
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Costruisci ferrovie
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Costruisci strade
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Costruisci tranvie
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Costruisci trasporti su acqua
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruisci aeroporti
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Costruzione ferrovie
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Costruzione strade
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Costruzione tranvie
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Costruzione trasporti su acqua
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruzione aeroporti
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra suoni/musica
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra l'ultimo messaggio/notizia, mostra le opzioni dei messaggi
@@ -468,7 +468,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Costruzione tra
 
 # Waterways construction menu
 ###length 1
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Costruisci trasporti su acqua
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Costruzione trasporti su acqua
 
 # Aairport construction menu
 ###length 1
