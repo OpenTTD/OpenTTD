@@ -1185,7 +1185,7 @@ STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağı
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel (sadece önemli ayarları göster)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş (çoğu ayarı göster)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman (garip olanlar dahil tüm ayarları göster)
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Geçerli değerden farklı bir değere sahip ayarlama
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Öntanımlıdan farklı değerdeki ayarlar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Yeni oyun ayarlarınızdan farklı bir değere sahip ayarlar
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Aşağıdaki liste belirli bir ayar türüne göre kısıtlanır

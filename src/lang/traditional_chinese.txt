@@ -2031,7 +2031,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車的路徑
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :設定列車使用的路徑搜尋方式。
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :車輛的路徑搜尋方式：{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :設定公路車輛（包括電車）使用的路徑搜尋方式。
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船隻的路徑搜尋方式：{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船舶的路徑搜尋方式：{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :設定船舶使用的路徑搜尋方式。
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :在號誌自動倒轉：{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :設定是否容許列車在號誌前等候超過一段時間後調頭。
@@ -3071,8 +3071,8 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}遊戲週期合計：
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} 貨物處理：
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} 列車耗時
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} 道路車輛耗時
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK} 船隻耗時
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} 公路車輛耗時
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} 船舶耗時
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} 飛機耗時
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} 世界耗時
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} 貨物分配圖延遲
@@ -3088,8 +3088,8 @@ STR_FRAMERATE_AI                                                :{BLACK}   AI {N
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :遊戲週期
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :貨物處理
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :列車耗時
-STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :道路車輛耗時
-STR_FRAMETIME_CAPTION_GL_SHIPS                                  :船隻耗時
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :公路車輛耗時
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :船舶耗時
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :飛機耗時
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :世界耗時
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :貨物分配圖延遲
@@ -4102,7 +4102,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}將列車置於畫面中央。雙擊將會使視野跟隨列車。 按住 Ctrl 點選可於列車開啟新視窗視野
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}將車輛置於畫面中央。雙擊將會使視野跟隨車輛。 按住 Ctrl 點選可於車輛位置開啟新視窗視野
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}將船隻置於畫面中央。雙擊將會使視野跟隨船隻。 按住 Ctrl 點選可於船隻位置開啟新視窗視野
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}將船舶置於畫面中央。雙擊將會使視野跟隨船舶。 按住 Ctrl 點選可於船舶位置開啟新視窗視野
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}將飛機置於畫面中央。雙擊將會使視野跟隨飛機。 按住 Ctrl 點選可於飛機位置開啟新視窗視野
 
 ###length VEHICLE_TYPES
