@@ -17,6 +17,8 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AICargo::GetWeight
  * \li AIIndustryType::ResolveNewGRFID
  * \li AIObjectType::ResolveNewGRFID
  *
