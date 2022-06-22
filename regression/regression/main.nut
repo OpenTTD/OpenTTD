@@ -341,6 +341,7 @@ function Regression::Cargo()
 		print("    GetCargoIncome(10, 10):  " + AICargo.GetCargoIncome(i, 10, 10));
 		print("    GetCargoIncome(100, 10): " + AICargo.GetCargoIncome(i, 100, 10));
 		print("    GetCargoIncome(10, 100): " + AICargo.GetCargoIncome(i, 10, 100));
+		print("    GetWeight(100):          " + AICargo.GetWeight(i, 100));
 		print("    GetRoadVehicleTypeForCargo(): " + AIRoad.GetRoadVehicleTypeForCargo(i));
 	}
 }
