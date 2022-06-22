@@ -153,6 +153,16 @@ public:
 	 * @return The cargo distribution type for the given cargo.
 	 */
 	static DistributionType GetDistributionType(CargoID cargo_type);
+
+	/**
+	 * Get the weight in tonnes for the given amount of
+	 *   cargo for the specified type.
+	 * @param cargo_type The cargo to check on.
+	 * @param amount The quantity of cargo.
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
+	 * @return The weight in tonnes for that quantity of cargo.
+	 */
+	static int64 GetWeight(CargoID cargo_type, uint32 amount);
 };
 
 #endif /* SCRIPT_CARGO_HPP */
