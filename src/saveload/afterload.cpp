@@ -24,6 +24,7 @@
 #include "../string_func.h"
 #include "../date_func.h"
 #include "../roadveh.h"
+#include "../roadveh_cmd.h"
 #include "../train.h"
 #include "../station_base.h"
 #include "../waypoint_base.h"
@@ -56,7 +57,6 @@
 #include "../disaster_vehicle.h"
 #include "../ship.h"
 #include "../water.h"
-
 
 #include "saveload_internal.h"
 
@@ -3152,6 +3152,50 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_LAST_LOADING_TICK)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->last_loading_tick = std::max(_tick_counter, static_cast<uint64>(v->current_order_time)) - v->current_order_time;
+		}
+	}
+
+	/* Road vehicles stopped on multitrack level crossings need teleporting to a depot
+	 * to avoid crashing into the side of the train they're waiting for. */
+	if (IsSavegameVersionBefore(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
+		/* Teleport road vehicles to the nearest depot. */
+		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
+			/* Ignore trailers of articulated vehicles. */
+			if (rv->IsArticulatedPart()) continue;
+
+			/* Ignore moving vehicles. */
+			if (rv->cur_speed > 0) continue;
+
+			/* Ignore vehicles not on level crossings. */
+			TileIndex cur_tile = rv->tile;
+			if (!IsLevelCrossingTile(cur_tile)) continue;
+
+			TileIndex location;
+			DestinationID destination;
+			bool reverse = true;
+
+			/* Try to find a depot with a distance limit of 512 tiles (Manhattan distance). */
+			if (rv->FindClosestDepot(&location, &destination, &reverse) && DistanceManhattan(rv->tile, location) < 512u) {
+				/* Teleport all parts of articulated vehicles. */
+				for (RoadVehicle *u = rv; u != nullptr; u = u->Next()) {
+					u->tile = location;
+					int x = TileX(location) * TILE_SIZE + TILE_SIZE / 2;
+					int y = TileY(location) * TILE_SIZE + TILE_SIZE / 2;
+					u->x_pos = x;
+					u->y_pos = y;
+					u->z_pos = GetSlopePixelZ(x, y);
+
+					u->vehstatus |= VS_HIDDEN;
+					u->state = RVSB_IN_DEPOT;
+					u->UpdatePosition();
+				}
+				RoadVehLeaveDepot(rv, false);
+			}
+		}
+
+		/* Refresh all level crossings to bar adjacent crossing tiles. */
+		for (TileIndex tile = 0; tile < MapSize(); tile++) {
+			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false, true);
 		}
 	}
 
