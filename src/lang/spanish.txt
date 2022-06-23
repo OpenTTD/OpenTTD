@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}El ajust
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Sincronización vertical
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca esta casilla para activar la sincronización vertical en la pantalla. El cambio sólo se aplicará después de reiniciar el juego. Sólo funciona si la aceleración por hardware está activada.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona el tamaño de los elementos de la interfaz a usar
@@ -1156,7 +1157,7 @@ STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personal
 ###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (sin efecto sobre las acciones de las compañías)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se han encontrado IA apropiadas...{}Puedes descargar IA a través del sistema de 'Contenido Online'
 
@@ -1257,7 +1258,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, l
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los municipios frente a reestructuraciones en su zona: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de las autoridades locales: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir en que medida el ruido y el daño ambiental causado por las empresas afecta a su calificación y nuevas acciones de construcción en los municipios
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Límite de altura del mapa: {STRING}
@@ -3618,15 +3619,17 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuevos vehículos
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Coste operación Trenes
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste de operación de vehículos de carretera
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Coste operación Aeronaves
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Coste operación Barcos
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trenes
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vehículos de carretera
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaves
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Barcos
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestructura
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trenes
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intereses de Préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo en Banco
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstamo Máximo: {BLACK}{CURRENCY_LONG}
@@ -4210,7 +4213,7 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidad de carga total de este tren:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vacío
