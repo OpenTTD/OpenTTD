@@ -115,7 +115,7 @@ STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} d
 STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}sacc{P o hi} di oro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} di acqua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} di frumento
-STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} di gomma
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} di caucciù
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} di zucchero
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}giocattol{P o i}
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}sacc{P o hi} di caramelle
@@ -5156,7 +5156,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=f}Banca
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Miniera di diamanti
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Miniera di ferro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Frutteto
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Piantagione di gomma
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Piantagione di caucciù
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}Falda acquifera
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Torre idrica
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fabbrica
@@ -5263,7 +5263,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Tramoggia per rame
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Carro cisterna (acqua)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Carro per frutta
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Carro per gomma
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Carro per caucciù
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Tramoggia per toffee
@@ -5293,7 +5293,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Tramoggia per rame
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Carro cisterna (acqua)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Carro per frutta
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Carro per gomma
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Carro per caucciù
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Tramoggia per toffee
@@ -5325,7 +5325,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Tramoggia per rame
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Carro cisterna (acqua)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Carro per frutta
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Carro per gomma
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Carro per caucciù
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Tramoggia per toffee
@@ -5393,9 +5393,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Autobotte MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Autocarro frutta Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Autocarro frutta Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Autocarro frutta Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Autocarro gomma Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Autocarro gomma Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Autocarro gomma RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Autocarro caucciù Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Autocarro caucciù Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Autocarro caucciù RMT
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Autocarro zucchero MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Autocarro zucchero Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Autocarro zucchero Wizzowow

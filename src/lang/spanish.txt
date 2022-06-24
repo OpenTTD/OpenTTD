@@ -1155,6 +1155,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Altura personal
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Tolerante
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (sin efecto sobre las acciones de las compañías)
@@ -1529,7 +1530,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Colores de Flujos de Carga: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Esquema de Color que se usará para el grafo de Flujos de Carga.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :De verde a rojo (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :De verde a azul
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :De gris a rojo
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de grises
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Desplazamiento de vista: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamiento al desplazar el mapa
@@ -3614,24 +3621,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finanzas
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingresos
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Gastos de explotación
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Gastos de capital
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuevos vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trenes
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vehículos de carretera
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Vehículos de Carretera
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Barcos
 STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestructura
 STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trenes
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vehículos de Carretera
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronaves
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Barcos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intereses de Préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Beneficio neto
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo en Banco
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fondos propios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Tipo de interés del préstamo: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstamo Máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir Préstamo {CURRENCY_LONG}
@@ -4214,7 +4230,7 @@ STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidad de carga total de este tren:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vacío
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} desde {STATION}
@@ -4520,7 +4536,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script d
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA que serán cargadas en la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
-STR_AI_CONFIG_NONE                                              :(ninguna)
+STR_AI_CONFIG_NONE                                              :(ninguno)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover hacia arriba
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover la IA seleccionada hacia arriba
