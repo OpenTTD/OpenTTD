@@ -98,7 +98,7 @@
 {
 	if (!ScriptMap::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(road_type)) return false;
-	return ::GetAnyRoadBits(tile, ::GetRoadTramType((::RoadType)road_type), false) != ROAD_NONE;
+	return ::MayHaveRoad(tile) && HasBit(::GetPresentRoadTypes(tile), (::RoadType)road_type);
 }
 
 /* static */ bool ScriptRoad::AreRoadTilesConnected(TileIndex t1, TileIndex t2)
