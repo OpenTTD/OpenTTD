@@ -20,6 +20,9 @@
  * \li AIIndustryType::ResolveNewGRFID
  * \li AIObjectType::ResolveNewGRFID
  *
+ * Other changes:
+ * \li AIRoad::HasRoadType now correctly checks RoadType against RoadType
+ *
  * \b 12.0
  *
  * API additions:

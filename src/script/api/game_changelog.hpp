@@ -20,6 +20,9 @@
  * \li GSIndustryType::ResolveNewGRFID
  * \li GSObjectType::ResolveNewGRFID
  *
+ * Other changes:
+ * \li GSRoad::HasRoadType now correctly checks RoadType against RoadType
+ *
  * \b 12.0
  *
  * API additions:
