@@ -752,7 +752,6 @@ void Station::AfterStationTileSetChange(bool adding, StationType type)
 		InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 	} else {
 		MarkCatchmentTilesDirty();
-		this->RecomputeCatchment();
 	}
 
 	switch (type) {
@@ -776,6 +775,7 @@ void Station::AfterStationTileSetChange(bool adding, StationType type)
 		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 	} else {
 		DeleteStationIfEmpty(this);
+		this->RecomputeCatchment();
 	}
 
 }
