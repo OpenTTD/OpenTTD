@@ -26,6 +26,7 @@
 #	define LOAD_128 _mm_loadu_si128
 #endif
 
+GNU_TARGET("sse4.1")
 void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 {
 	if (psdv->size() < 2) return;

@@ -38,21 +38,6 @@ add_files(
     CONDITION NOT OPTION_DEDICATED AND OPENGL_FOUND
 )
 
-
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-    set_compile_flags(
-        32bpp_anim_sse2.cpp
-        32bpp_sse2.cpp
-        COMPILE_FLAGS -msse2)
-    set_compile_flags(
-        32bpp_ssse3.cpp
-        COMPILE_FLAGS -mssse3)
-    set_compile_flags(
-        32bpp_anim_sse4.cpp
-        32bpp_sse4.cpp
-        COMPILE_FLAGS -msse4.1)
-endif()
-
 add_files(
     base.hpp
     common.hpp
