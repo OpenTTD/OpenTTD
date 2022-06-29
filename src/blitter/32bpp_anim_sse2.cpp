@@ -19,6 +19,7 @@
 /** Instantiation of the partially SSSE2 32bpp with animation blitter factory. */
 static FBlitter_32bppSSE2_Anim iFBlitter_32bppSSE2_Anim;
 
+GNU_TARGET("sse2")
 void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 {
 	assert(!_screen_disable_anim);

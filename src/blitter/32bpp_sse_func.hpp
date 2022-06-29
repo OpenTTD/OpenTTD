@@ -12,6 +12,7 @@
 
 #ifdef WITH_SSE
 
+GNU_TARGET(SSE_TARGET)
 static inline void InsertFirstUint32(const uint32 value, __m128i &into)
 {
 #if (SSE_VERSION >= 4)
@@ -22,6 +23,7 @@ static inline void InsertFirstUint32(const uint32 value, __m128i &into)
 #endif
 }
 
+GNU_TARGET(SSE_TARGET)
 static inline void InsertSecondUint32(const uint32 value, __m128i &into)
 {
 #if (SSE_VERSION >= 4)
@@ -32,6 +34,7 @@ static inline void InsertSecondUint32(const uint32 value, __m128i &into)
 #endif
 }
 
+GNU_TARGET(SSE_TARGET)
 static inline void LoadUint64(const uint64 value, __m128i &into)
 {
 #ifdef POINTER_IS_64BIT
@@ -46,6 +49,7 @@ static inline void LoadUint64(const uint64 value, __m128i &into)
 #endif
 }
 
+GNU_TARGET(SSE_TARGET)
 static inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
 {
 #if (SSE_VERSION == 2)
@@ -56,6 +60,7 @@ static inline __m128i PackUnsaturated(__m128i from, const __m128i &mask)
 #endif
 }
 
+GNU_TARGET(SSE_TARGET)
 static inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 {
 #if (SSE_VERSION == 2)
@@ -66,6 +71,7 @@ static inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 #endif
 }
 
+GNU_TARGET(SSE_TARGET)
 static inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &pack_mask)
 {
 	__m128i srcAB = _mm_unpacklo_epi8(src, _mm_setzero_si128());   // PUNPCKLBW, expand each uint8 into uint16
@@ -86,6 +92,7 @@ static inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128
 /* Darken 2 pixels.
  * rgb = rgb * ((256/4) * 4 - (alpha/4)) / ((256/4) * 4)
  */
+GNU_TARGET(SSE_TARGET)
 static inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribution_mask, const __m128i &tr_nom_base)
 {
 	__m128i srcAB = _mm_unpacklo_epi8(src, _mm_setzero_si128());
@@ -99,6 +106,7 @@ static inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &d
 }
 
 IGNORE_UNINITIALIZED_WARNING_START
+GNU_TARGET(SSE_TARGET)
 static Colour ReallyAdjustBrightness(Colour colour, uint8 brightness)
 {
 	uint64 c16 = colour.b | (uint64) colour.g << 16 | (uint64) colour.r << 32;
@@ -141,6 +149,7 @@ static inline Colour AdjustBrightneSSE(Colour colour, uint8 brightness)
 	return ReallyAdjustBrightness(colour, brightness);
 }
 
+GNU_TARGET(SSE_TARGET)
 static inline __m128i AdjustBrightnessOfTwoPixels(__m128i from, uint32 brightness)
 {
 #if (SSE_VERSION < 3)
@@ -192,6 +201,7 @@ static inline __m128i AdjustBrightnessOfTwoPixels(__m128i from, uint32 brightnes
  */
 IGNORE_UNINITIALIZED_WARNING_START
 template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bppSSE2::BlockType bt_last, bool translucent>
+GNU_TARGET(SSE_TARGET)
 #if (SSE_VERSION == 2)
 inline void Blitter_32bppSSE2::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 #elif (SSE_VERSION == 3)
