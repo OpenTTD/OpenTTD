@@ -222,6 +222,12 @@ public:
 	template <typename Tcallback>
 	static bool PostFromNet(StringID err_message, Tcallback *callback, bool my_cmd, TileIndex location, std::tuple<Targs...> args)
 	{
+		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, decltype(args)>>) {
+			/* Do not even think about executing out-of-bounds tile-commands. */
+			TileIndex tile = std::get<0>(args);
+			if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
+		}
+
 		return InternalPost(err_message, callback, my_cmd, true, location, std::move(args));
 	}
 
@@ -299,6 +305,9 @@ protected:
 	template <typename Tcallback>
 	static bool InternalPost(StringID err_message, Tcallback *callback, bool my_cmd, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
+		/* Do not even think about executing out-of-bounds tile-commands. */
+		if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
+
 		auto [err, estimate_only, only_sending] = InternalPostBefore(Tcmd, GetCommandFlags<Tcmd>(), tile, err_message, network_command);
 		if (err) return false;
 
