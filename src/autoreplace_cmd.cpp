@@ -725,7 +725,6 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id)
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	if (!v->IsChainInDepot()) return CMD_ERROR;
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	bool free_wagon = false;
@@ -737,6 +736,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id)
 	} else {
 		if (!v->IsPrimaryVehicle()) return CMD_ERROR;
 	}
+	if (!v->IsChainInDepot()) return CMD_ERROR;
 
 	const Company *c = Company::Get(_current_company);
 	bool wagon_removal = c->settings.renew_keep_length;
