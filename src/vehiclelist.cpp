@@ -80,20 +80,20 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
 			case VEH_TRAIN: {
 				const Train *t = Train::From(v);
 				if (t->IsArticulatedPart() || t->IsRearDualheaded()) continue;
-				if (t->track != TRACK_BIT_DEPOT) continue;
+				if (!t->IsInDepot()) continue;
 				if (wagons != nullptr && t->First()->IsFreeWagon()) {
 					if (individual_wagons || t->IsFreeWagon()) wagons->push_back(t);
 					continue;
 				}
+				if (!t->IsPrimaryVehicle()) continue;
 				break;
 			}
 
 			default:
+				if (!v->IsPrimaryVehicle()) continue;
 				if (!v->IsInDepot()) continue;
 				break;
 		}
-
-		if (!v->IsPrimaryVehicle()) continue;
 
 		engines->push_back(v);
 	}
