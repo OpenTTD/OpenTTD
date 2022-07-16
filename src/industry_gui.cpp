@@ -612,7 +612,9 @@ public:
 		} else {
 			extern void GenerateIndustries();
 			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
+			BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 			GenerateIndustries();
+			BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 			old_generating_world.Restore();
 		}
 	}
