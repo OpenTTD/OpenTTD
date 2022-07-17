@@ -114,7 +114,8 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 	const RailVehicleInfo *rvi_v = RailVehInfo(this->engine_type);
 	EngineID first_engine = this->IsFrontEngine() ? this->engine_type : INVALID_ENGINE;
 	this->gcache.cached_total_length = 0;
-	this->compatible_railtypes = RAILTYPES_NONE;
+	RailTypes all_compatible = RAILTYPES_ALL;
+	RailTypes any_powered = RAILTYPES_NONE;
 
 	bool train_can_tilt = true;
 	int min_curve_speed_mod = INT_MAX;
@@ -169,17 +170,20 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		}
 
 		if (!u->IsArticulatedPart()) {
-			/* Do not count powered wagons for the compatible railtypes, as wagons always
-			   have railtype normal */
-			if (rvi_u->power > 0) {
-				this->compatible_railtypes |= GetRailTypeInfo(u->railtype)->powered_railtypes;
-			}
-
 			/* Some electric engines can be allowed to run on normal rail. It happens to all
 			 * existing electric engines when elrails are disabled and then re-enabled */
 			if (HasBit(u->flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL)) {
 				u->railtype = RAILTYPE_RAIL;
-				u->compatible_railtypes |= RAILTYPES_RAIL;
+			}
+
+			/* collect railtypes compatible with every vehicle */
+			all_compatible &= GetRailTypeInfo(u->railtype)->compatible_railtypes;
+
+			/* Do not count powered wagons for the compatible railtypes, as wagons always
+			   have railtype normal */
+			if (rvi_u->power > 0) {
+				/* collect railtypes powering any engine */
+				any_powered |= GetRailTypeInfo(u->railtype)->powered_railtypes;
 			}
 
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
@@ -229,6 +233,8 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		this->InvalidateNewGRFCache();
 		u->InvalidateNewGRFCache();
 	}
+
+	this->compatible_railtypes = all_compatible & any_powered;
 
 	/* store consist weight/max speed in cache */
 	this->vcache.cached_max_speed = max_speed;
