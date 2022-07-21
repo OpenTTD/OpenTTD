@@ -24,6 +24,12 @@
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
  *
+ * Other changes:
+ * \li GSRail::BuildRail preconditions changed to allow rail coming from and heading
+ *     to the void. Also ensure going from a tile to another doesn't change direction.
+ * \li GSRail::RemoveRail preconditions changed to allow rail coming from and heading
+ *     to the void. Also ensure going from a tile to another doesn't change direction.
+ *
  * \b 13.0
  *
  * API additions:

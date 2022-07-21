@@ -397,12 +397,11 @@ public:
 	 * @param tile The first tile to build on.
 	 * @param to The tile just after the last tile to build on.
 	 * @pre from != to.
-	 * @pre ScriptMap::DistanceManhattan(from, tile) == 1.
-	 * @pre ScriptMap::DistanceManhattan(to, tile) >= 1.
-	 * @pre (abs(abs(ScriptMap::GetTileX(to) - ScriptMap::GetTileX(tile)) -
-	 *          abs(ScriptMap::GetTileY(to) - ScriptMap::GetTileY(tile))) <= 1) ||
-	 *      (ScriptMap::GetTileX(from) == ScriptMap::GetTileX(tile) && ScriptMap::GetTileX(tile) == ScriptMap::GetTileX(to)) ||
-	 *      (ScriptMap::GetTileY(from) == ScriptMap::GetTileY(tile) && ScriptMap::GetTileY(tile) == ScriptMap::GetTileY(to)).
+	 * @pre ::DistanceManhattan(from, tile) == 1.
+	 * @pre ::DistanceManhattan(to, tile) >= 1.
+	 * @pre (abs(abs((int)::TileX(to) - (int)::TileX(tile)) -
+	 *          abs((int)::TileY(to) - (int)::TileY(tile))) <= 1 ||
+	 *      (::DiagdirBetweenTiles(from, tile) == ::DiagdirBetweenTiles(tile, to))).
 	 * @pre IsRailTypeAvailable(GetCurrentRailType()).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
@@ -421,12 +420,11 @@ public:
 	 * @param tile The first tile to remove rail from.
 	 * @param to The tile just after the last tile to remove rail from.
 	 * @pre from != to.
-	 * @pre ScriptMap::DistanceManhattan(from, tile) == 1.
-	 * @pre ScriptMap::DistanceManhattan(to, tile) >= 1.
-	 * @pre (abs(abs(ScriptMap::GetTileX(to) - ScriptMap::GetTileX(tile)) -
-	 *          abs(ScriptMap::GetTileY(to) - ScriptMap::GetTileY(tile))) <= 1) ||
-	 *      (ScriptMap::GetTileX(from) == ScriptMap::GetTileX(tile) && ScriptMap::GetTileX(tile) == ScriptMap::GetTileX(to)) ||
-	 *      (ScriptMap::GetTileY(from) == ScriptMap::GetTileY(tile) && ScriptMap::GetTileY(tile) == ScriptMap::GetTileY(to)).
+	 * @pre ::DistanceManhattan(from, tile) == 1.
+	 * @pre ::DistanceManhattan(to, tile) >= 1.
+	 * @pre (abs(abs((int)::TileX(to) - (int)::TileX(tile)) -
+	 *          abs((int)::TileY(to) - (int)::TileY(tile))) <= 1 ||
+	 *      (::DiagdirBetweenTiles(from, tile) == ::DiagdirBetweenTiles(tile, to))).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptRail::ERR_UNSUITABLE_TRACK
 	 * @return Whether the rail has been/can be removed or not.

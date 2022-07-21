@@ -353,16 +353,16 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 /* static */ bool ScriptRail::BuildRail(TileIndex from, TileIndex tile, TileIndex to)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, ::IsValidTile(from));
+	EnforcePrecondition(false, from != to);
+	EnforcePrecondition(false, from < ScriptMap::GetMapSize());
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, ::IsValidTile(to));
+	EnforcePrecondition(false, to < ScriptMap::GetMapSize());
 	EnforcePrecondition(false, ::DistanceManhattan(from, tile) == 1);
-	EnforcePrecondition(false, ::DistanceManhattan(tile, to) >= 1);
+	EnforcePrecondition(false, ::DistanceManhattan(to, tile) >= 1);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 	int diag_offset = abs(abs((int)::TileX(to) - (int)::TileX(tile)) - abs((int)::TileY(to) - (int)::TileY(tile)));
 	EnforcePrecondition(false, diag_offset <= 1 ||
-			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
-			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
+			::DiagdirBetweenTiles(from, tile) == ::DiagdirBetweenTiles(tile, to));
 
 	Track track = SimulateDrag(from, tile, &to);
 	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(to, tile, (::RailType)ScriptRail::GetCurrentRailType(), track, false, true);
@@ -371,15 +371,15 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 /* static */ bool ScriptRail::RemoveRail(TileIndex from, TileIndex tile, TileIndex to)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, ::IsValidTile(from));
+	EnforcePrecondition(false, from != to);
+	EnforcePrecondition(false, from < ScriptMap::GetMapSize());
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, ::IsValidTile(to));
+	EnforcePrecondition(false, to < ScriptMap::GetMapSize());
 	EnforcePrecondition(false, ::DistanceManhattan(from, tile) == 1);
-	EnforcePrecondition(false, ::DistanceManhattan(tile, to) >= 1);
+	EnforcePrecondition(false, ::DistanceManhattan(to, tile) >= 1);
 	int diag_offset = abs(abs((int)::TileX(to) - (int)::TileX(tile)) - abs((int)::TileY(to) - (int)::TileY(tile)));
 	EnforcePrecondition(false, diag_offset <= 1 ||
-			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
-			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
+			::DiagdirBetweenTiles(from, tile) == ::DiagdirBetweenTiles(tile, to));
 
 	Track track = SimulateDrag(from, tile, &to);
 	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(to, tile, track);

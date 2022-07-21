@@ -24,6 +24,12 @@
  * API removals:
  * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
  *
+ * Other changes:
+ * \li AIRail::BuildRail preconditions changed to allow rail coming from and heading
+ *     to the void. Also ensure going from a tile to another doesn't change direction.
+ * \li AIRail::RemoveRail preconditions changed to allow rail coming from and heading
+ *     to the void. Also ensure going from a tile to another doesn't change direction.
+ *
  * \b 13.0
  *
  * API additions:
