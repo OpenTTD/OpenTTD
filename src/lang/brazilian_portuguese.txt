@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A config
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para habilitar o v-sync na tela. Qualquer mudança nesta configuração só será aplicada após reiniciar o jogo. Só funciona com a aceleração de hardware habilitada
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Motorista atual: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamanho da interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Selecione o tamanho de elemento de interface a ser usado
@@ -1157,7 +1158,7 @@ STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personal
 STR_CITY_APPROVAL_LENIENT                                       :Brando
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
-STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
+STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo (sem efeito nas ações da empresa)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não há IA compatíveis disponíveis...{}Você pode baixar várias IA's pelo sistema de 'Conteúdo Online'
 
@@ -1258,8 +1259,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, tre
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestrutura
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação local: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras naquela área
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da autoridade local: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras nessa cidade
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altura do mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(automático)", um bom valor será escolhido após a geração do terreno
@@ -1529,7 +1530,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Cores de sobreposição de fluxo de carga: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Defina o esquema de cores usado na sobreposição do fluxo de carga.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Verde para vermelho (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Verde para azul
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Cinza para vermelho
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de cinza
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento de rolamento da janela: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento ao rolar o mapa
@@ -3614,22 +3621,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finança
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Receita
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Despesas Operacionais
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Despesas de Capital
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construção
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Veículos
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Custo de Operação de Trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Circulação de Automóveis
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Custo de Operação de Aeronaves
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Custo de Operação de Embarcações
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Veículos Rodoviários
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aeronaves
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Navios
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraestrutura
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Veículos Rodoviários
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeronave
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navios
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Juros do Empréstimo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Outros
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Lucro Líquido
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanço Bancário
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fundos Próprios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Empréstimo
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Juro do Empréstimo: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Empréstimo Máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir {CURRENCY_LONG}
@@ -4211,8 +4229,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidade total deste trem:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vazio
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}
