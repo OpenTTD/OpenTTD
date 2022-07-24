@@ -1745,7 +1745,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kiedy firma wykupuje wyłączność na transport w mieście, to przystanki i stacje przeciwników (pasażerskie i towarowe) nie otrzymają żadnego ładunku przez cały rok
 
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fundowywanie budynków: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fundowanie budynków: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Pozwalaj firmom na sponsorowanie budowy nowych budynków w miastach
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Pozwalaj na sponsorowanie odbudowy lokalnych dróg: {STRING}
