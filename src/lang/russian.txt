@@ -4655,7 +4655,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Граф
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Отсчёт времени начнётся с {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Начальная дата
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Выберите начальную дату для этого графика. Ctrl+щелчок установит начальную дату и равномерно распределит все транспортные средства, следующие по этому маршруту, если время движения по нему полностью рассчитано.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Выберите начальную дату для этого графика. Ctrl+щелчок равномерно распределит все транспортные средства, следующие по этому маршруту, если время движения по нему полностью рассчитано.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изменить время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
