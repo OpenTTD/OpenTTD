@@ -3974,7 +3974,7 @@ static void CheckIfTrainNeedsService(Train *v)
 	}
 
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
-	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
+	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE, ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, ODATFB_NEAREST_DEPOT);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }

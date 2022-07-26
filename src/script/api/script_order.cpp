@@ -470,7 +470,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 			if (order_flags & OF_GOTO_NEAREST_DEPOT) odaf |= ODATFB_NEAREST_DEPOT;
 			OrderNonStopFlags onsf = (OrderNonStopFlags)((order_flags & OF_NON_STOP_INTERMEDIATE) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 			if (order_flags & OF_GOTO_NEAREST_DEPOT) {
-				order.MakeGoToDepot(0, odtf, onsf, odaf);
+				order.MakeGoToDepot(INVALID_DEPOT, odtf, onsf, odaf);
 			} else {
 				/* Check explicitly if the order is to a station (for aircraft) or
 				 * to a depot (other vehicle types). */

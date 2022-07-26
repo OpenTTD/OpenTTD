@@ -656,7 +656,7 @@ void OrderList::DebugCheckSanity() const
 static inline bool OrderGoesToStation(const Vehicle *v, const Order *o)
 {
 	return o->IsType(OT_GOTO_STATION) ||
-			(v->type == VEH_AIRCRAFT && o->IsType(OT_GOTO_DEPOT) && !(o->GetDepotActionType() & ODATFB_NEAREST_DEPOT));
+			(v->type == VEH_AIRCRAFT && o->IsType(OT_GOTO_DEPOT) && o->GetDestination() != INVALID_STATION);
 }
 
 /**
@@ -690,7 +690,7 @@ TileIndex Order::GetLocation(const Vehicle *v, bool airport) const
 			return BaseStation::Get(this->GetDestination())->xy;
 
 		case OT_GOTO_DEPOT:
-			if ((this->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) return INVALID_TILE;
+			if (this->GetDestination() == INVALID_DEPOT) return INVALID_TILE;
 			return (v->type == VEH_AIRCRAFT) ? Station::Get(this->GetDestination())->xy : Depot::Get(this->GetDestination())->xy;
 
 		default:
@@ -1991,7 +1991,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 					if (pbs_look_ahead && reverse) return false;
 
 					v->SetDestTile(location);
-					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo());
+					v->current_order.SetDestination(destination);
 
 					/* If there is no depot in front, reverse automatically (trains only) */
 					if (v->type == VEH_TRAIN && reverse) Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC, v->index, false);
