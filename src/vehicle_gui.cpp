@@ -2861,7 +2861,7 @@ public:
 					SetDParam(0, v->type);
 					SetDParam(1, v->current_order.GetDestination());
 					SetDParam(2, v->GetDisplaySpeed());
-					if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+					if (v->current_order.GetDestination() == INVALID_DEPOT) {
 						/* This case *only* happens when multiple nearest depot orders
 						 * follow each other (including an order list only one order: a
 						 * nearest depot order) and there are no reachable depots.
