@@ -4469,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este iti
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este itinerario comenzará el {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elegir una fecha de inicio del itinerario. Ctrl+Clic para establecer el inicio del itinerario y distribuir uniformemente todos los demás vehículos que lo compartan, siempre y cuando esté programado completamente
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elegir una fecha de inicio del itinerario. Ctrl+Clic para distribuir uniformemente todos los demás vehículos que lo compartan, siempre y cuando esté programado completamente
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar tiempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar cuánto debe tardar el recorrido resaltado
