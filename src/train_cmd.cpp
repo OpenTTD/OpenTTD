@@ -2541,6 +2541,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 	Track best_track = INVALID_TRACK;
 	bool do_track_reservation = _settings_game.pf.reserve_paths || force_res;
 	bool changed_signal = false;
+	TileIndex final_dest = INVALID_TILE;
 
 	assert((tracks & ~TRACK_BIT_MASK) == 0);
 
@@ -2613,7 +2614,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 		bool      path_found = true;
 		TileIndex new_tile = res_dest.tile;
 
-		Track next_track = DoTrainPathfind(v, new_tile, dest_enterdir, tracks, path_found, do_track_reservation, &res_dest, nullptr);
+		Track next_track = DoTrainPathfind(v, new_tile, dest_enterdir, tracks, path_found, do_track_reservation, &res_dest, &final_dest);
 		if (new_tile == tile) best_track = next_track;
 		v->HandlePathfindingResult(path_found);
 	}
@@ -2686,6 +2687,15 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 	TryReserveRailTrack(v->tile, TrackdirToTrack(v->GetVehicleTrackdir()));
 
 	if (changed_signal) MarkTileDirtyByTile(tile);
+
+	orders.Restore();
+	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
+			(v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) &&
+			final_dest != INVALID_TILE && IsRailDepotTile(final_dest)) {
+		v->current_order.SetDestination(GetDepotIndex(final_dest));
+		v->dest_tile = final_dest;
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+	}
 
 	return best_track;
 }
