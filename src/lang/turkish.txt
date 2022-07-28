@@ -4469,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bu çize
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bu çizelge {STRING} tarihinde başlayacak
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Başlangıç tarihi
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Bu zaman çizelgesinin başlangıcı olarak bir tarih seçin. Ctrl+Tıklama bu zaman çizelgesinin başlangıcını seçer ve eğer komuta zaman çizelgesi uygulanmışsa bu komutu paylaşan tüm araçlara göreli komutlarını baz alarak eşit dağıtır.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Bu zaman çizelgesinin başlangıcı olarak bir tarih seçin. Ctrl+Tıklama eğer komuta zaman çizelgesi uygulanmışsa bu komutu paylaşan tüm araçlara göreli komutlarını baz alarak belirtilen tarihten itibaren eşit dağıtır.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir
