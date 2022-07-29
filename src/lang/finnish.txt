@@ -778,8 +778,8 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kaikki pois päältä
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Kaikki päälle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Näytä korkeus
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Älä näytä teollisuutta kartalla
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Näytä kaikki teollisuus kartalla
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Älä näytä teollisuuslaitoksia kartalla
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Näytä kaikki teollisuuslaitokset kartalla
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Valitse, näytetäänkö korkeuskartta
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Älä näytä yhtiöiden omaisuutta kartalla
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Näytä kaikki yhtiöiden omaisuus kartalla
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Realistisemman 
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Erityyppisillä asemilla ja lentokentillä on eri kokoiset vaikutusalueet
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Yhtiöiden asemat voivat palvella laitoksia, joilla on omat asemat: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Mikäli käytössä, asemilla valmiiksi varustettuja teollisuuslaitoksia (kuten öljylauttoja) voivat palvella myös yhtiöiden lähistölle rakentamat asemat. Mikäli pois käytöstä, tällaisia laitoksia voivat palvella vain niiden omat asemat. Lähistöllä olevat yhtiöiden asemat eivät tällöin voi palvella näitä laitoksia, eivätkä laitosten asemat palvele muita kuin näitä laitoksia
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Mikäli käytössä, asemilla valmiiksi varustettuja teollisuuslaitoksia (kuten öljynporauslauttoja) voivat palvella myös yhtiöiden lähistölle rakentamat asemat. Mikäli pois käytöstä, tällaisia laitoksia voivat palvella vain niiden omat asemat. Lähistöllä olevat yhtiöiden asemat eivät tällöin voi palvella näitä laitoksia, eivätkä laitosten asemat palvele muita kuin näitä laitoksia
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Kunnan omistamien teiden, siltojen ja tunneleiden raivaaminen sallittu: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Tekee kuntien omistaman infrastruktuurin ja rakennusten tuhoamisesta helpompaa
@@ -1319,17 +1319,17 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Suurin sallittu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Suurin sallittu pituus tunneleita rakennettaessa
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuaalinen raakateollisuuden rakentamistapa: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Ensisijaisten teollisuuslaitosten rahoitustapa. ”Ei mitään” tarkoittaa, että rahoitus ei ole mahdollista; ”koekaivaus” tarkoittaa, että rahoitus on mahdollista, mutta teollisuuslaitos rakennetaan sattumanvaraiselle paikalle kartalla tai rakennus epäonnistuu; ”kuten muut tehtaat” tarkoittaa, että rakentaminen onnistuu kuten kaikkien muidenkin teollisuuslaitosten kohdalla
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Alkutuotannon rahoitustapa. ”Ei mitään” tarkoittaa, että rahoitus ei ole mahdollista; ”koekaivaus” tarkoittaa, että rahoitus on mahdollista, mutta teollisuuslaitos rakennetaan sattumanvaraiselle paikalle kartalla tai rakentaminen epäonnistuu; ”kuten muu teollisuus” tarkoittaa, että yhtiöt voivat rakentaa alkutuotantoa samalla tavalla kuin muitakin teollisuuslaitoksia, mihin tahansa kohtaan
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ei mikään
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Kuten muut tehtaat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Koekaivaus
 
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Teollisuutta ympäröivä tasainen maasto: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Teollisuuslaitoksia ympäröivä tasainen maasto: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Teollisuuslaitosten ympärillä oleva tasainen maasto. Tämä varmistaa että teollisuuslaitosten ympärillä on tyhjää tilaa esimerkiksi ratojen ja asemien rakantamiseen
 
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :Kunnassa voi olla useita samanlaisia teollisuustyyppejä: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normaalisti kunta ei halua enempää kuin yhden kutakin teollisuuslaitostyyppiä. Tämän asetuksen ollessa käytössä kunnat sallivat useampien samaa tyyppiä olevien teollisuuslaitosten rakentamisen
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Kunnassa voi olla useita samanlaisia teollisuuslaitoksia: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normaalisti kunta ei halua kahta samanlaista teollisuuslaitosta. Tämän asetuksen ollessa käytössä kunnat sallivat useampien samaa tyyppiä olevien teollisuuslaitosten rakentamisen
 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Näytä opastimet: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Valitse kummalle puolelle rataa opastimet rakennetaan
@@ -1363,7 +1363,7 @@ STR_CONFIG_SETTING_BRIBE                                        :Salli viranomai
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kunnassa kuuteen kuukauteen
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kuntaan, vastustajien matkustaja- ja rahtiasemat eivät vastaanota rahtia vuoden ajan
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kuntaan, vastustajien matkustaja- ja rahtiasemat eivät vastaanota rahtia seuraavan vuoden ajan
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennusten rahoittaminen: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Sallii yhtiöiden rahoittaa uusien talojen rakentamista kunnissa
@@ -1466,7 +1466,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Teollisuuden m�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määritä, kuinka paljon teollisuutta tulisi luoda ja millä tasolla teollisuuden tulisi pysytellä pelin aikana
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljyteollisuudelle: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamojen ja öljylauttojen suurin etäisyys kartan reunasta. Saarikartoilla tämä takaa sen, että ne ovat lähellä rannikkoa. Yli 256 ruudun kartoilla tätä arvoa suurennetaan suhteessa kartan kokoon.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamojen ja öljynporauslauttojen suurin etäisyys kartan reunasta. Saarikartoilla tämä takaa sen, että ne ovat lähellä rannikkoa. Yli 256 ruudun kartoilla tämä arvo suhteutetaan kartan kokoon.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuslaitosten luontiin sekä kuntien kasvuedellytyksiin. Voidaan muuttaa vain Skenaariomuokkaimessa, muuten lasketaan ”lumen peiton” perusteella
@@ -1676,7 +1676,7 @@ STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kulkuneuvot: {S
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista kulkuneuvojen äänet
 
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ympäristö: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja taajamien äänet
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuslaitosten ja taajamien äänet
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Suurin sallittu junien määrä yhtiötä kohden: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Yhtiön suurin sallittu junien määrä
@@ -1760,17 +1760,17 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomal
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Näytä sanomalehti uusien teollisuuslaitosten avautuessa
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lakkautettavaa teollisuutta: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Teollisuuslaitosten lakkautukset: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Näytä sanomalehti teollisuuslaitosten sulkeutuessa
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutokset: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Näytä sanomalehti taloustilanteen muuttuessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Tuotantomuutokset laitoksissa, joita yhtiö palvelee: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma yhtiö palvelee
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotantomäärän muuttuessa oman yhtiön palvelemassa teollisuuslaitoksessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota kilpaileva yhtiö palvelee
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotantomäärän muuttuessa kilpailijoiden palvelemassa teollisuuslaitoksessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma tai kilpaileva yhtiö ei palvele
@@ -2885,36 +2885,36 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3×3-ruu
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Sattumanvarainen
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Rakenna uutta teollisuutta
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Rahoita uutta teollisuutta
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Valitse tehdas listasta
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Luo satunnaisia tuotantolaitoksia
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Sijoita teollisuuslaitokset satunnaisesti
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Luo satunnaista teollisuutta
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Luo satunnaisia teollisuuslaitoksia
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Oletko varma, että haluat luoda monta satunnaista tuotantolaitosta?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kustannus: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Koekaivaus
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Rakenna
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Perusta
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Rahoita
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Poista kaikki tuotantolaitokset
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Poista kaikki kartalla olevat tuotantolaitokset
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Poista kaikki tuotantolaitokset
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Oletko varma, että haluat poistaa kaikki tuotantolaitokset?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Teollisuusketju teollisuudelle {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Teollisuusketju: {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Teollisuusketju rahdille {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tuottavia teollisuuksia
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Hyväksyviä teollisuuksia
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tuottavat teollisuudenhaarat
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Hyväksyvät teollisuudenhaarat
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taloja
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Napsauta teollisuutta nähdäksesi sen tuottajat ja kuluttajat
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Napsauta rahtia nähdäksesi sen tuottajat ja kuluttajat
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näytä ketju
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahdin tuottajat ja hyväksyvät teollisuudet
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahtia tuottavat ja hyväksyvät teollisuudenhaarat
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Yhdistä karttaan
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Valitse näytetyt teollisuudet kartalla
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Valitse näytetyt teollisuuslaitokset myös kartalla
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Valitse rahti
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Valitse rahti, jonka haluat näyttää
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Valitse teollisuus
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Valitse teollisuudenhaara
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Valitse teollisuus, jonka haluat näyttää
 
 # Land area window
@@ -3379,7 +3379,7 @@ STR_NEWGRF_INVALID_CARGO                                        :<virheellinen r
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <virheellistä rahtia>
 STR_NEWGRF_INVALID_ENGINE                                       :<virheellinen kulkuneuvo>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<virheellinen teollisuus>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<virheellinen teollisuudenhaara>
 
 # Placeholders for other invalid stuff, e.g. vehicles that have gone (Game Script).
 STR_INVALID_VEHICLE                                             :<virheellinen kulkuneuvo>
@@ -3638,7 +3638,7 @@ STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Ajoneuvot
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Ilma-alukset
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Laivat
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lainan korko
-STR_FINANCES_SECTION_OTHER                                      :{GOLD}Muuta
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}Muut
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
@@ -3722,7 +3722,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lentoken
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/vuosi
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Teollisuusala
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Teollisuuslaitokset
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ei mitään -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% kuljetettu){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -3730,7 +3730,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} ja {NUM} muuta
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuusmuotojen nimet – kohdista päänäkymä tuotantolaitokseen napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin.
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuushaarojen nimet – kohdista päänäkymä tuotantolaitokseen napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Vastaanotettava rahti: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Tuotettu rahti: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Kaikki rahtityypit
@@ -3742,7 +3742,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotto v
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä tuotantolaitoksen sijaintiin. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}{NBSP}%
-STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa pikaisesta sulkeutumisestaan!
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Teollisuuslaitos ilmoittaa välittömästä lakkautuksesta!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}
@@ -4468,7 +4468,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tämä a
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tämä aikataulu alkaa {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aloituspäivä
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse päivämäärä aikataulun aloitusajankohdaksi. Ctrl+napsautus asettaa aikataulun aloituspäivän ja levittää kaikki tämän käskyjoukon jakavat kulkuneuvot tasaisesti niiden keskinäisen järjestyksen mukaan, mikäli käskyjoukko on kokonaan aikataulutettu.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse päivämäärä aikataulun aloitusajankohdaksi. Ctrl+napsautus levittää kaikki tämän käskyjoukon jakavat kulkuneuvot tasaisesti niiden keskinäisen järjestyksen mukaan, mikäli käskyjoukko on kokonaan aikataulutettu
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää
@@ -4739,11 +4739,11 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kuntaa e
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tämän kunnan keskustassa ei ole sopivaa paikkaa patsaalle
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liian paljon teollisuutta
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisuusaluetta ei voi luoda...
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liikaa teollisuuslaitoksia
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisuuslaitoksia ei voi luoda...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liian lähellä toista teollisuutta.
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liian lähellä toista teollisuuslaitosta
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kunta pitää perustaa ensin
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kuntaa kohden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kuntiin, joissa on vähintään 1200 asukasta
@@ -4757,7 +4757,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... mets
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan yläpuolelle
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan alapuolelle
 
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Teollisuudelle ”{STRING}” ei löytynyt sopivaa paikkaa
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Ei ollut sopivia paikkoja ”{STRING}”-teollisuuslaitoksille
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Muuta kartan parametreja saadaksesi paremman kartan
 
 # Station construction related errors
@@ -5100,7 +5100,7 @@ STR_INDUSTRY_NAME_POWER_STATION                                 :Sähkölaitos
 STR_INDUSTRY_NAME_SAWMILL                                       :Saha
 STR_INDUSTRY_NAME_FOREST                                        :Metsä
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Öljynjalostamo
-STR_INDUSTRY_NAME_OIL_RIG                                       :Öljylautta
+STR_INDUSTRY_NAME_OIL_RIG                                       :Öljynporauslautta
 STR_INDUSTRY_NAME_FACTORY                                       :Tehdas
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Kirjapaino
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Terästehdas
