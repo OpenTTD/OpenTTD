@@ -4468,7 +4468,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Deze die
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Deze dienstregeling begint op {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecteer een datum als startpunt voor deze dienstregeling. Ctrl + klik geeft het startpunt van deze dienstregeling en verdeelt alle voertuigen die deze orders delen gelijkmatig op basis van hun relatieve volgorde, als de order volledig is ingeroosterd.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecteer een datum als startpunt voor deze dienstregeling. Ctrl + klik verdeelt alle voertuigen die deze orders delen gelijkmatig vanaf deze datum op basis van hun relatieve volgorde, als de order volledig is ingeroosterd.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tijd wijzigen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren
