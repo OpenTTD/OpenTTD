@@ -4469,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시간표는 {STRING}에 시작될 것입니다
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요. CTRL+클릭하면 이 차량과 경로를 공유하는 모든 차량에 대하여, 만약 시간표가 완전히 작성되어 있다면 그 경로의 상대적인 순서에 따라 시간표의 시작점을 설정하고 적절히 분배합니다
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요. CTRL+클릭하면, 시간표가 모두 작성되어 있다는 가정 하에, 주어진 경로를 기반으로 설정한 날짜부터 이 경로를 공유하는 모든 차량을 균등하게 출발시킵니다
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다

@@ -4854,7 +4854,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ten rozkład jazdy rozpocznie się {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data początkowa
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wybierz początkową datę rozkładu jazdy. Ctrl+klik ustawia startowy punkt tego rozkładu oraz, jeśli ten jest kompletny, rozdziela go po kolei wszystkim pojazdom współdzielącym go, zależnie od ich kolejności ułożenia
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wybierz początkową datę rozkładu jazdy. Ctrl+klik rozłoży równomierne wszystkie pojazdy współdzielące ten rozkład, począwszy od podanej daty, zgodnie z ich kolejnością, o ile rozkład ten jest kompletny
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
