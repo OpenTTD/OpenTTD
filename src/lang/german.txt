@@ -4469,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dieser F
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dieser Fahrplan wird ab {STRING} in Kraft sein
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Anfangsdatum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wähle ein Anfangsdatum für diesen Fahrplan aus. Mit Strg+Klick wird das Anfangsdatum dieses Fahrplans festgelegt und bei allen anderen Fahrzeugen, die nach demselben Fahrplan unterwegs sind, wird ein zeitlich versetztes Anfangsdatum gesetzt, so dass die Abstände zwischen den einzelnen Fahrzeugen immer gleich sind. Dazu muss der Fahrplan erst komplett erfasst worden sein.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wähle ein Anfangsdatum für diesen Fahrplan aus. Mit Strg+Klick wird bei allen Fahrzeugen, die nach demselben Fahrplan unterwegs sind, ein zeitlich versetztes Anfangsdatum gesetzt, so dass die Abstände zwischen den einzelnen Fahrzeugen immer gleich sind. Dazu muss der Fahrplan erst komplett erfasst worden sein.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zeit ändern
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahmen für den markierten Auftrag ändern
