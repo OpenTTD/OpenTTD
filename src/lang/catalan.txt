@@ -842,7 +842,7 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FON
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}S'ha fundat una nova població que es diu {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}No{G u va} {STRING} en construcció prop de {TOWN}
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}S'està plantant {G un una} {G nou nova} {STRING} prop de {TOWN}
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Es planta {G un una} {G nou nova} {STRING} prop de {TOWN}
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} anuncia el seu tancament imminent
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problemes de subministrament fan que {STRING} anunciï el seu imminent tancament
@@ -875,9 +875,9 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} té una estació invàlida en les seves ordres
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} té en les seves ordres un aeroport amb pista d'aterratge massa curta
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} s'està fent vell
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} s'està fent molt vell
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} s'està fent molt vell i necessita ser substituït urgentment
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} és vell
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} és molt vell
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} és molt vell i necessita ser substituït urgentment
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} s'ha perdut
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}El benefici del {VEHICLE} l'any passat va ser de {CURRENCY_LONG}
@@ -1610,8 +1610,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament quan comenci una partida nova: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es posa en pausa automàticament quan es comenci una partida nova, permetent a l'usuari estudiar el mapa més detalladament
 
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Accions permeses mentre s'està fent una pausa a la partida: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccioneu quines accions es poden realitzar mentre s'està fent una pausa a la partida.
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Accions permeses mentre la partida està en pausa: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccioneu quines accions es poden realitzar mentre la partida està en pausa.
 ###length 4
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Cap
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Totes, excepte les de construcció
@@ -2494,7 +2494,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombre de jugad
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connectant clients
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de partida
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :s'està esperant que s'actualitzi el graf de distribució
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :s'espera que s'actualitzi el graf de distribució
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :deixant
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} s'ha unit a la partida
@@ -3366,7 +3366,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Arxius que
 STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' pot fer que la partida es pengi o es desincronitzi
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle '{1:ENGINE}' ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva llargada mentre estava fora del dipòsit
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva capacitat mentre estava fora del dipòsit o no s'estava canviant el tipus de càrrega a transportar
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{1:ENGINE}' ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta
@@ -4527,7 +4527,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra el registre de l'script de partida.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA que no fa res.{}Podeu descarregar diverses IA via el sistema de «Contingut en línia».
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts que s'estava executant ha fallat. Si us plau, informeu l'autor de l'script amb una captura de pantalla de la finestra de depuració de l'script d'IA/partida.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts que s'executava ha fallat. Si us plau, informeu l'autor de l'script amb una captura de pantalla de la finestra de depuració de l'script d'IA/partida.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració dels scripts d'IA/partida només està disponible al servidor.
 
 # AI configuration window
@@ -4624,7 +4624,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Cost Est
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingressos Estimats: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}S'està desant la partida.{}Espera que acabi l'operació!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Es desa la partida.{}Espera que acabi l'operació!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ha fallat el desat automàtic
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible llegir la unitat de disc
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Error guardant la partida{}{STRING}
@@ -4690,7 +4690,7 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... s'ha
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... s'ha arribat al límit de plantat d'arbres
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}...el nom ha de ser únic.
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en el camí
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}...no està permès mentre s'està en pausa.
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}...no està permès mentre la partida està en pausa.
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Les autoritats locals de {TOWN} no permeten fer això
