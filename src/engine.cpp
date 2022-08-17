@@ -76,6 +76,8 @@ Engine::Engine(VehicleType type, EngineID base)
 
 	/* Check if this base engine is within the original engine data range */
 	if (base >= _engine_counts[type]) {
+		/* 'power' defaults to zero, so we also have to default to 'wagon' */
+		if (type == VEH_TRAIN) this->u.rail.railveh_type = RAILVEH_WAGON;
 		/* Set model life to maximum to make wagons available */
 		this->info.base_life = 0xFF;
 		/* Set road vehicle tractive effort to the default value */
