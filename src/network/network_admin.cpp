@@ -137,7 +137,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode er
 
 	p->Send_uint8(error);
 	this->SendPacket(p);
-
 	std::string error_message = GetString(GetNetworkErrorMsg(error));
 
 	Debug(net, 1, "[admin] The admin '{}' ({}) made an error and has been disconnected: '{}'", this->admin_name, this->admin_version, error_message);
@@ -333,10 +332,26 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 
 	for (auto owner : c->share_owners) {
-		p->Send_uint8(owner);
+	  p->Send_uint8(owner);
 	}
 
+	std::vector<Company *> companies;
+	for(Company* company: Company::Iterate()){
+	  companies.emplace_back(company);
+	}
+
+	std::sort(companies.begin(), companies.end(), [](Company * const &c1, Company * const &c2){
+	  return c2->old_economy[0].performance_history < c1->old_economy[0].performance_history;
+	});
+
+	for(size_t t = 0; t < companies.size(); t++){
+	  companies[t]->rating = t+1;
+	}
+
+	p->Send_uint8 (c->rating);
+
 	this->SendPacket(p);
+
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -581,7 +596,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const std::str
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendPong(uint32 d1)
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_PONG);
-
 	p->Send_uint32(d1);
 	this->SendPacket(p);
 
