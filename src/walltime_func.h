@@ -65,7 +65,7 @@ struct Time {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
 #endif /* _MSC_VER */
-		return strftime(buffer, last - buffer, format, &time_struct);
+		return strftime(buffer, last - buffer + 1, format, &time_struct);
 #ifndef _MSC_VER
 #pragma GCC diagnostic pop
 #endif /* _MSC_VER */
