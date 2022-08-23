@@ -4469,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cet hora
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Cet horaire démarrera à {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de départ
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Choisir une date comme point de départ de cet horaire. Ctrl-clic pour définir le point de départ de cet horaire et répartir tous les véhicules partageant cet ordre uniformément selon leur ordre relatif, si l'ordre est complétement planifié
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Choisir une date comme point de départ de cet horaire. Ctrl-clic pour répartir tous les véhicules partageant cet ordre uniformément à partir de la date donnée selon leur ordre relatif, si l'ordre est complètement planifié
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné
