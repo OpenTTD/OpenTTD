@@ -50,6 +50,7 @@ STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}मूल्यवान वस्तुओं {P "का थैला" "के थैले"}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} टॉफी
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -117,6 +118,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 ###length 14
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत
 
 # File menu
 ###length 5
@@ -196,6 +198,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 # Company league window
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :राष्ट्रपति
 
 # Performance detail window
 
@@ -216,9 +219,11 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHIT
 # Smallmap window
 
 ###length 7
+STR_SMALLMAP_TYPE_VEGETATION                                    :वनस्पति
 
 
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}ट्रक लदान वीथी
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}खुरदरा भूमि
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}रिक्त भूमि
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}नगर
 
@@ -465,6 +470,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :बैंगन
 
 
 ###length 3
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :स्क्रॉल नक्शा
 
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :अक्षम
@@ -505,6 +511,7 @@ STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचा
 
 
 
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :एक कंपनी के पास जहाजों की अधिकतम संख्या
 
 
 
@@ -564,6 +571,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :नगर म�
 
 ###length 4
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :मुख्य टूलबार की स्थिति: {STRING}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
@@ -632,6 +640,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्�
 
 # Livery window
 
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK} ट्रेन रंग योजनाएं दिखाएं
 
 ###length 23
 
@@ -706,6 +715,7 @@ STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}यह 
 
 
 # Order of these is important!
+STR_CONTENT_TYPE_GS_LIBRARY                                     :जीएस लाइब्रेरी
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}डाउनलोड पूरा हुआ
@@ -1059,6 +1069,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}डिपो में सभी सड़क वाहन बेचते हैं
 
 ###length VEHICLE_TYPES
 
@@ -1187,6 +1198,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :के बर�
 
 STR_ORDER_NEAREST_DEPOT                                         :निकटतम
 ###length 3
+STR_ORDER_TRAIN_DEPOT                                           :ट्रेन डिपो
 ###next-name-looks-similar
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
@@ -1194,8 +1206,10 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(स्टेशन का उपयोग नहीं कर सकते){POP_COLOUR} {STRING} {STATION} {STRING}
 
 
+STR_ORDER_NO_LOAD                                               :(कोई लोडिंग नहीं)
 
 
 
@@ -1305,6 +1319,7 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}अत�
 
 
 
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE} स्थानीय डिपो के लिए मार्ग खोजने में असमर्थ
 
 
 # Autoreplace related errors
@@ -1315,6 +1330,7 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}पट�
 
 
 # Road construction errors
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE} ट्राम प्रकार को यहाँ परिवर्तित नहीं कर सकते ...
 
 # Waterway construction errors
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... पानी पर बनाया जाना चाहिये।
@@ -1406,6 +1422,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :कोयला
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :फल वाहन
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (विद्युतीय)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :खिलौनों का डब्बा
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :फ़िज़ी ड्रिंक ट्रक
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :पानी का टैंकर
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :बबल वैन
 
@@ -1414,6 +1431,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :प्लॉड
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :मोरलैंड काष्ठ ट्रक
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :फोस्टर कवचयुक्त ट्रक
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :पावरनोट मिष्ठान्न ट्रक
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow बबल ट्रक
 
 ###length 11
 
