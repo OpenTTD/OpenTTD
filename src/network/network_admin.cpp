@@ -335,20 +335,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	  p->Send_uint8(owner);
 	}
 
-	std::vector<Company *> companies;
-	for(Company* company: Company::Iterate()){
-	  companies.emplace_back(company);
-	}
 
-	std::sort(companies.begin(), companies.end(), [](Company * const &c1, Company * const &c2){
-	  return c2->old_economy[0].performance_history < c1->old_economy[0].performance_history;
-	});
+	uint8 rating = std::count_if(Company::Iterate().begin(), Company::Iterate().end(), [&](auto company){
+	return c->old_economy[0].performance_history < company->old_economy[0].performance_history;});
 
-	for(size_t t = 0; t < companies.size(); t++){
-	  companies[t]->rating = t+1;
-	}
-
-	p->Send_uint8 (c->rating);
+	p->Send_uint8 (rating);
 
 	this->SendPacket(p);
 
