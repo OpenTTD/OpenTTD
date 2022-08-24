@@ -4468,7 +4468,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Jadwal m
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Jadwal ini akan dimulai pada {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tanggal mulai
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pilih sebarang hari sebagai titik mula timetable. Ctrl+Click akan men-set titik awal timetable dan akan menyebarkan semua kendaraan yang berorder sama secara merata berdasarkan order relatif, jika order tersebut sepenuhnya terjadwalkan.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pilih tanggal titik mula timetable. Ctrl+Click untuk mendistribusikan semua kendaraan dengan instruksi sama secara merata dari tanggal yang telah dipilih berdasarkan instruksi relatif tiap kendaraan, hanya jika intruksi tersebut sepenuhnya terjadwal.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih
