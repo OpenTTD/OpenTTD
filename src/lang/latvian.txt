@@ -1027,6 +1027,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Šis ies
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Atzīmējiet šo izvēlni, lai sinhronizētu ekrānu. Mainīts iestatījums tiks piemērots tikai pēc spēles restartēšanas. Darbojas tikai ar iespējotu aparatūras paātrinājumu
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Esošais vadītājs: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Lietotāja saskarnes lielums
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Lietotāja saskarnes elementu lieluma izvēle
@@ -1155,9 +1156,10 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Pielāgots augs
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Pielāgots augstums ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Mīksts
 STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :naidīga
-STR_CITY_APPROVAL_PERMISSIVE                                    :pieļaujoša
+STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša (nav efekta kompānijas darbībām)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
 
@@ -1258,8 +1260,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ja ieslēgts, s
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofas: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Pārslēgt katastrofas, kas laiku pa laikam var bloķēt vai iznīcināt transportlīdzekļus un infrastruktūru
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Pilsētu domju attieksme pret platības pārstrukturēšanu: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izvēlieties, cik lielā mērā trokšņi un vides bojājumi ietekmē uzņēmuma reitingu un turpmākās būvniecības darbības viņu teritorijā
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Vietējās pašvaldības attieksme: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izvēlieties, cik lielā mērā trokšņi un vides bojājumi ietekmē uzņēmuma reitingu un turpmākās būvniecības darbības pilsētā
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Kartes augstuma ierobežojums: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Iestatiet kartes reljefa maksimālo augstumu. Izmantojot "(auto)", laba vērtība tiks izvēlēta pēc reljefa ģenerēšanas
@@ -1529,7 +1531,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}tumši zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Kravas plūsmu pārklājuma krāsas: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Iestatiet kravas plūsmu pārklājumam izmantoto krāsu shēmu.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Zaļš uz sarkanu (orģināli)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Zaļš uz zilu
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Pelēks uz sarkanu
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Pelēktonis
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Skatvietas ritināšanas uzvedība: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Uzvedība, kad ritina karti
@@ -3622,22 +3630,33 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ieņēmumi
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Ekspluatācijas izdevumi
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitāla Izdevumi
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Būvniecība
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Jauni transportlīdzekļi
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vilcienu kārtējās izmaksas
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autotransporta kārtējās izmaksas
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lidaparātu kārtējās izmaksas
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kuģu kārtējās izmaksas
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vilcieni
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autotransportlīdzekļi
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lidaparāts
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kuģi
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastruktūra
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Vilcieni
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Autotransportlīdzekļi
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Lidaparāts
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Kuģi
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Aizdevuma procents
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Citi
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Tīrā peļņa
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankas bilance
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Pašu līdzekļi
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Aizdevums
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Aizdevuma procenti: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimālais aizdevums: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Aizņemties {CURRENCY_LONG}
@@ -4220,8 +4239,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vērtība: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Kopējā kravas ietilpība:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tukšs
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} no {STATION}
@@ -4460,7 +4479,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Šis sar
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Šis saraksts sāksies {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Sākuma datums
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izvēlieties šī kustības saraksta sākuma datumu. Ctrl+klikšķis iestata šī saraksta sākuma datumu un vienmērīgi izplata to starp visiem transporta līdzekļiem, kuri seko šim rīkojumam, ja kustības saraksts ir pilnībā aizpildīts
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izvēlieties datumu kā šī kustību saraksta sākuma punktu. Ctrl+Click vienmērīgi sadala visus transportlīdzekļus, kas koplieto šo pasūtījumu no norādītā datuma, pamatojoties uz to plānoto pasūtījumu, ja pasūtījums pilnībā izmanto kustību sarakstu
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt iezīmētajam maršrutam nepieciešamo laiku
