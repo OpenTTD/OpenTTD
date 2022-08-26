@@ -1587,7 +1587,7 @@ DEF_CONSOLE_CMD(ConDebugLevel)
 	if (argc == 1) {
 		IConsolePrint(CC_DEFAULT, "Current debug-level: '{}'", GetDebugString());
 	} else {
-		SetDebugString(argv[1]);
+		SetDebugString(argv[1], [](const char *err) { IConsolePrint(CC_ERROR, std::string(err)); });
 	}
 
 	return true;
