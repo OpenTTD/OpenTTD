@@ -159,8 +159,9 @@ void DebugPrint(const char *level, const std::string &message)
  * For setting individual levels a string like \c "net=3,grf=6" should be used.
  * If the string starts with a number, the number is used as global debugging level.
  * @param s Text describing the wanted debugging levels.
+ * @param error_func The function to call if a parse error occurs.
  */
-void SetDebugString(const char *s)
+void SetDebugString(const char *s, void (*error_func)(const char *))
 {
 	int v;
 	char *end;
@@ -203,7 +204,8 @@ void SetDebugString(const char *s)
 		if (p != nullptr) {
 			*p = v;
 		} else {
-			ShowInfoF("Unknown debug level '%.*s'", (int)(s - t), t);
+			std::string error_string = fmt::format("Unknown debug level '{}'", std::string(t, s - t));
+			error_func(error_string.c_str());
 			return;
 		}
 	}

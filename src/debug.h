@@ -57,7 +57,7 @@ extern int _debug_random_level;
 #endif
 
 char *DumpDebugFacilityNames(char *buf, char *last);
-void SetDebugString(const char *s);
+void SetDebugString(const char *s, void (*error_func)(const char *));
 const char *GetDebugString();
 
 /* Shorter form for passing filename and linenumber */
