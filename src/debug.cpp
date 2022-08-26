@@ -167,21 +167,23 @@ void SetDebugString(const char *s, void (*error_func)(const char *))
 	char *end;
 	const char *t;
 
-	/* global debugging level? */
+	/* Store planned changes into map during parse */
+	std::map<const char *, int> new_levels;
+
+	/* Global debugging level? */
 	if (*s >= '0' && *s <= '9') {
 		const DebugLevel *i;
 
 		v = strtoul(s, &end, 0);
 		s = end;
 
-		for (i = debug_level; i != endof(debug_level); ++i) *i->level = v;
+		for (i = debug_level; i != endof(debug_level); ++i) {
+			new_levels[i->name] = v;
+		}
 	}
 
-	/* individual levels */
+	/* Individual levels */
 	for (;;) {
-		const DebugLevel *i;
-		int *p;
-
 		/* skip delimiters */
 		while (*s == ' ' || *s == ',' || *s == '\t') s++;
 		if (*s == '\0') break;
@@ -190,10 +192,10 @@ void SetDebugString(const char *s, void (*error_func)(const char *))
 		while (*s >= 'a' && *s <= 'z') s++;
 
 		/* check debugging levels */
-		p = nullptr;
-		for (i = debug_level; i != endof(debug_level); ++i) {
+		const DebugLevel *found = nullptr;
+		for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
 			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {
-				p = i->level;
+				found = i;
 				break;
 			}
 		}
@@ -201,12 +203,20 @@ void SetDebugString(const char *s, void (*error_func)(const char *))
 		if (*s == '=') s++;
 		v = strtoul(s, &end, 0);
 		s = end;
-		if (p != nullptr) {
-			*p = v;
+		if (found != nullptr) {
+			new_levels[found->name] = v;
 		} else {
 			std::string error_string = fmt::format("Unknown debug level '{}'", std::string(t, s - t));
 			error_func(error_string.c_str());
 			return;
+		}
+	}
+
+	/* Apply the changes after parse is successful */
+	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
+		const auto &nl = new_levels.find(i->name);
+		if (nl != new_levels.end()) {
+			*i->level = nl->second;
 		}
 	}
 }
