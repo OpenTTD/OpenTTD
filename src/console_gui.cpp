@@ -21,6 +21,8 @@
 #include "console_func.h"
 #include "rev.h"
 #include "video/video_driver.hpp"
+#include <deque>
+#include <string>
 
 #include "widgets/console_widget.h"
 
@@ -37,94 +39,36 @@ static const uint ICON_BOTTOM_BORDERWIDTH = 12;
  * Container for a single line of console output
  */
 struct IConsoleLine {
-	static IConsoleLine *front; ///< The front of the console backlog buffer
-	static int size;            ///< The amount of items in the backlog
-
-	IConsoleLine *previous; ///< The previous console message.
-	char *buffer;           ///< The data to store.
+	std::string buffer;     ///< The data to store.
 	TextColour colour;      ///< The colour of the line.
 	uint16 time;            ///< The amount of time the line is in the backlog.
+
+	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
+	{
+
+	}
 
 	/**
 	 * Initialize the console line.
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(char *buffer, TextColour colour) :
-			previous(IConsoleLine::front),
+	IConsoleLine(const std::string &buffer, TextColour colour) :
 			buffer(buffer),
 			colour(colour),
 			time(0)
 	{
-		IConsoleLine::front = this;
-		IConsoleLine::size++;
 	}
 
-	/**
-	 * Clear this console line and any further ones.
-	 */
 	~IConsoleLine()
 	{
-		IConsoleLine::size--;
-		free(buffer);
-
-		delete previous;
-	}
-
-	/**
-	 * Get the index-ed item in the list.
-	 */
-	static const IConsoleLine *Get(uint index)
-	{
-		const IConsoleLine *item = IConsoleLine::front;
-		while (index != 0 && item != nullptr) {
-			index--;
-			item = item->previous;
-		}
-
-		return item;
-	}
-
-	/**
-	 * Truncate the list removing everything older than/more than the amount
-	 * as specified in the config file.
-	 * As a side effect also increase the time the other lines have been in
-	 * the list.
-	 * @return true if and only if items got removed.
-	 */
-	static bool Truncate()
-	{
-		IConsoleLine *cur = IConsoleLine::front;
-		if (cur == nullptr) return false;
-
-		int count = 1;
-		for (IConsoleLine *item = cur->previous; item != nullptr; count++, cur = item, item = item->previous) {
-			if (item->time > _settings_client.gui.console_backlog_timeout &&
-					count > _settings_client.gui.console_backlog_length) {
-				delete item;
-				cur->previous = nullptr;
-				return true;
-			}
-
-			if (item->time != MAX_UVALUE(uint16)) item->time++;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Reset the complete console line backlog.
-	 */
-	static void Reset()
-	{
-		delete IConsoleLine::front;
-		IConsoleLine::front = nullptr;
-		IConsoleLine::size = 0;
 	}
 };
 
-/* static */ IConsoleLine *IConsoleLine::front = nullptr;
-/* static */ int IConsoleLine::size  = 0;
+/** The console backlog buffer. Item index 0 is the newest line. */
+static std::deque<IConsoleLine> _iconsole_buffer;
+
+static bool TruncateBuffer();
 
 
 /* ** main console cmd buffer ** */
@@ -169,7 +113,7 @@ static WindowDesc _console_window_desc(
 
 struct IConsoleWindow : Window
 {
-	static int scroll;
+	static size_t scroll;
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
 	GUITimer truncate_timer;
@@ -198,8 +142,15 @@ struct IConsoleWindow : Window
 	 */
 	void Scroll(int amount)
 	{
-		int max_scroll = std::max(0, IConsoleLine::size + 1 - this->height / this->line_height);
-		IConsoleWindow::scroll = Clamp<int>(IConsoleWindow::scroll + amount, 0, max_scroll);
+		if (amount < 0) {
+			size_t namount = (size_t) -amount;
+			IConsoleWindow::scroll = (namount > IConsoleWindow::scroll) ? 0 : IConsoleWindow::scroll - namount;
+		} else {
+			assert(this->height >= 0 && this->line_height > 0);
+			size_t visible_lines = (size_t)(this->height / this->line_height);
+			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
+			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll + amount, max_scroll);
+		}
 		this->SetDirty();
 	}
 
@@ -209,9 +160,10 @@ struct IConsoleWindow : Window
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
 		int ypos = this->height - this->line_height;
-		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != nullptr; print = print->previous) {
-			SetDParamStr(0, print->buffer);
-			ypos = DrawStringMultiLine(5, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
+		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
+			const IConsoleLine &print = _iconsole_buffer[line_index];
+			SetDParamStr(0, print.buffer);
+			ypos = DrawStringMultiLine(5, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
@@ -235,9 +187,12 @@ struct IConsoleWindow : Window
 	{
 		if (this->truncate_timer.CountElapsed(delta_ms) == 0) return;
 
-		if (IConsoleLine::Truncate() &&
-				(IConsoleWindow::scroll > IConsoleLine::size)) {
-			IConsoleWindow::scroll = std::max(0, IConsoleLine::size - (this->height / this->line_height) + 1);
+		assert(this->height >= 0 && this->line_height > 0);
+		size_t visible_lines = (size_t)(this->height / this->line_height);
+
+		if (TruncateBuffer() && IConsoleWindow::scroll + visible_lines > _iconsole_buffer.size()) {
+			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
+			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll, max_scroll);
 			this->SetDirty();
 		}
 	}
@@ -389,14 +344,14 @@ struct IConsoleWindow : Window
 	}
 };
 
-int IConsoleWindow::scroll = 0;
+size_t IConsoleWindow::scroll = 0;
 
 void IConsoleGUIInit()
 {
 	IConsoleResetHistoryPos();
 	_iconsole_mode = ICONSOLE_CLOSED;
 
-	IConsoleLine::Reset();
+	IConsoleClearBuffer();
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
 	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
@@ -408,7 +363,7 @@ void IConsoleGUIInit()
 
 void IConsoleClearBuffer()
 {
-	IConsoleLine::Reset();
+	_iconsole_buffer.clear();
 }
 
 void IConsoleGUIFree()
@@ -511,8 +466,36 @@ static void IConsoleHistoryNavigate(int direction)
  */
 void IConsoleGUIPrint(TextColour colour_code, char *str)
 {
-	new IConsoleLine(str, colour_code);
+	_iconsole_buffer.push_front(IConsoleLine(str, colour_code));
 	SetWindowDirty(WC_CONSOLE, 0);
+}
+
+/**
+ * Remove old lines from the backlog buffer.
+ * The buffer is limited by a maximum size and a minimum age. Every time truncation runs,
+ * all lines in the buffer are aged by one. When a line exceeds both the maximum position
+ * and also the maximum age, it gets removed.
+ * @return true if any lines were removed
+*/
+static bool TruncateBuffer()
+{
+	bool need_truncation = false;
+	size_t count = 0;
+	for (IConsoleLine &line : _iconsole_buffer) {
+		count++;
+		line.time++;
+		if (line.time > _settings_client.gui.console_backlog_timeout && count > _settings_client.gui.console_backlog_length) {
+			/* Any messages after this are older and need to be truncated */
+			need_truncation = true;
+			break;
+		}
+	}
+
+	if (need_truncation) {
+		_iconsole_buffer.resize(count - 1);
+	}
+
+	return need_truncation;
 }
 
 
