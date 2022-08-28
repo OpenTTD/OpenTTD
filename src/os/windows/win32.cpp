@@ -28,6 +28,7 @@
 #include "../../language.h"
 #include "../../thread.h"
 #include <array>
+#include "../../strings_func.h"
 
 #include "../../safeguards.h"
 
@@ -177,18 +178,55 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives(FileList &file_list)
 {
+	/* Add various other known folders */
+	IKnownFolderManager *kfm = nullptr;
+	if (SUCCEEDED(CoCreateInstance(CLSID_KnownFolderManager, nullptr, CLSCTX_INPROC_SERVER, IID_IKnownFolderManager, (LPVOID*)&kfm))) {
+		static const KNOWNFOLDERID KNOWN_FOLDERS[] = {
+			FOLDERID_Desktop, FOLDERID_Documents, FOLDERID_Downloads, FOLDERID_Pictures, FOLDERID_SkyDrive
+		};
+
+		for (const KNOWNFOLDERID &folderid : KNOWN_FOLDERS) {
+			IKnownFolder *folder = nullptr;
+			if (SUCCEEDED(kfm->GetFolder(folderid, &folder))) {
+				wchar_t *path = nullptr;
+				if (SUCCEEDED(folder->GetPath(KF_FLAG_DEFAULT, &path))) {
+					IShellItem *si = nullptr;
+					if (SUCCEEDED(folder->GetShellItem(KF_FLAG_DEFAULT, IID_IShellItem, (LPVOID*)&si))) {
+						wchar_t *name = nullptr;
+						if (SUCCEEDED(si->GetDisplayName(SIGDN_NORMALDISPLAY, &name))) {
+							file_list.push_back(FiosItem(FIOS_TYPE_DRIVE, FS2OTTD(path) + PATHSEP, FS2OTTD(name)));
+
+							CoTaskMemFree(name);
+						}
+						si->Release();
+					}
+					CoTaskMemFree(path);
+				}
+				folder->Release();
+			}
+		}
+		kfm->Release();
+	}
+
 	/* Add drive letters */
-	wchar_t drives[256];
+	wchar_t drives[256]; // theoretical maximum required should be less than 110 characters (3 characters plus \0 terminator per mount point, times 26 letters, plus ending empty string)
 	const wchar_t *s;
 
 	GetLogicalDriveStrings(lengthof(drives), drives);
-	for (s = drives; *s != '\0';) {
-		FiosItem *fios = &file_list.emplace_back();
-		fios->type = FIOS_TYPE_DRIVE;
-		fios->mtime = 0;
-		seprintf(fios->title, lastof(fios->title),  "%c:", s[0] & 0xFF);
-		seprintf(fios->name, lastof(fios->name), "%c:" PATHSEP, s[0] & 0xFF);
-		while (*s++ != '\0') { /* Nothing */ }
+	for (s = drives; *s != '\0'; s += wcslen(s) + 1) {
+		std::string name = FS2OTTD(s);
+		std::string title = name;
+		if (title.back() == PATHSEPCHAR) title.pop_back();
+
+		wchar_t volname[MAX_PATH + 1];
+		if (GetVolumeInformation(s, volname, lengthof(volname), nullptr, nullptr, nullptr, nullptr, 0) && volname[0] != '\0') {
+			std::string volname_str = FS2OTTD(volname);
+			SetDParamStr(0, title);
+			SetDParamStr(1, volname_str);
+			title = GetString(STR_SAVELOAD_DRIVE_VOLUMELABEL);
+		}
+
+		file_list.emplace_back(FIOS_TYPE_DRIVE, name, title);
 	}
 }
 

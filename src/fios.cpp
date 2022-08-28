@@ -47,6 +47,16 @@ extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
 extern void GetOldSaveGameName(const std::string &file, char *title, const char *last);
 
 /**
+ * Construct a FiosItem from std::string values for name and title.
+ */
+FiosItem::FiosItem(FiosType type, const std::string &name, const std::string &title, uint64 mtime) :
+	type(type), mtime(mtime)
+{
+	strecpy(this->name, name.c_str(), lastof(this->name));
+	strecpy(this->title, title.c_str(), lastof(this->title));
+}
+
+/**
  * Compare two FiosItem's. Used with sort when sorting the file list.
  * @param other The FiosItem to compare to.
  * @return for ascending order: returns true if da < db. Vice versa for descending order.

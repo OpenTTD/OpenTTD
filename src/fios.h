@@ -89,6 +89,10 @@ struct FiosItem {
 	uint64 mtime;
 	char title[64];
 	char name[MAX_PATH];
+
+	FiosItem() = default;
+	FiosItem(FiosType type, const std::string &name, const std::string &title, uint64 mtime = 0);
+
 	bool operator< (const FiosItem &other) const;
 };
 
