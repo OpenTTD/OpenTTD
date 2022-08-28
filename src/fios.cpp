@@ -151,10 +151,8 @@ const char *FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-#if defined(_WIN32) || defined(__OS2__)
 			assert(_fios_path != nullptr);
-			*_fios_path = std::string{ item->title[0] } + ":" PATHSEP;
-#endif
+			*_fios_path = std::string{ item->name };
 			break;
 
 		case FIOS_TYPE_INVALID:

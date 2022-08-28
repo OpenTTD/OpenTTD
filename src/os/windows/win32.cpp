@@ -177,6 +177,7 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives(FileList &file_list)
 {
+	/* Add drive letters */
 	wchar_t drives[256];
 	const wchar_t *s;
 
@@ -185,8 +186,8 @@ void FiosGetDrives(FileList &file_list)
 		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
-		seprintf(fios->name, lastof(fios->name),  "%c:", s[0] & 0xFF);
-		strecpy(fios->title, fios->name, lastof(fios->title));
+		seprintf(fios->title, lastof(fios->title),  "%c:", s[0] & 0xFF);
+		seprintf(fios->name, lastof(fios->name), "%c:" PATHSEP, s[0] & 0xFF);
 		while (*s++ != '\0') { /* Nothing */ }
 	}
 }
