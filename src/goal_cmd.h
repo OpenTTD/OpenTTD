@@ -11,7 +11,6 @@
 #define GOAL_CMD_H
 
 #include "command_type.h"
-#include "command_type.h"
 #include "goal_type.h"
 
 std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text);
