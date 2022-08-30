@@ -139,7 +139,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
  */
 static inline int CenterBounds(int min, int max, int size)
 {
-	return min + (max - min - size + 1) / 2;
+	return (min + max - size + 1) / 2;
 }
 
 /* window.cpp */
