@@ -1714,6 +1714,11 @@ public:
 		this->FinishInitNested(window_number);
 	}
 
+	void OnInit() override
+	{
+		RebuildList();
+	}
+
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		this->RebuildList();
