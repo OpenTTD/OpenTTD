@@ -562,7 +562,14 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	c->inaugurated_year = _cur_year;
-	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false); // create a random company manager face
+
+	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
+	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */
+	if (_company_manager_face != 0 && !is_ai && !_networking) {
+		c->face = _company_manager_face;
+	} else {
+		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false);
+	}
 
 	SetDefaultCompanySettings(c->index);
 	ClearEnginesHiddenFlagOfCompany(c->index);
@@ -837,6 +844,10 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 				if (!_settings_client.network.default_company_pass.empty()) {
 					NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
 				}
+
+				/* In network games, we need to try setting the company manager face here to sync it to all clients.
+				 * If a favorite company manager face is selected, choose it. Otherwise, use a random face. */
+				if (_company_manager_face != 0) Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(_company_manager_face);
 
 				/* Now that we have a new company, broadcast our company settings to
 				 * all clients so everything is in sync */
