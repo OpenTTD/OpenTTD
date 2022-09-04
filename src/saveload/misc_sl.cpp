@@ -39,7 +39,7 @@ void SaveViewportBeforeSaveGame()
 	if (w != nullptr) {
 		_saved_scrollpos_x = w->viewport->scrollpos_x;
 		_saved_scrollpos_y = w->viewport->scrollpos_y;
-		_saved_scrollpos_zoom = w->viewport->zoom;
+		_saved_scrollpos_zoom = std::min(UnScaleZoomGUI(w->viewport->zoom), ZOOM_LVL_MAX);
 	}
 }
 
@@ -53,7 +53,7 @@ void ResetViewportAfterLoadGame()
 	w->viewport->dest_scrollpos_y = _saved_scrollpos_y;
 
 	Viewport *vp = w->viewport;
-	vp->zoom = std::min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp->zoom = ScaleZoomGUI(std::min(_saved_scrollpos_zoom, ZOOM_LVL_MAX));
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 
