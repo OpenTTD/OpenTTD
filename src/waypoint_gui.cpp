@@ -27,6 +27,7 @@
 #include "table/strings.h"
 
 #include "safeguards.h"
+#include "zoom_func.h"
 
 /** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {
@@ -70,7 +71,7 @@ public:
 		this->flags |= WF_DISABLE_VP_SCROLL;
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_W_VIEWPORT);
-		nvp->InitializeViewport(this, this->GetCenterTile(), ZOOM_LVL_VIEWPORT);
+		nvp->InitializeViewport(this, this->GetCenterTile(), ScaleZoomGUI(ZOOM_LVL_VIEWPORT));
 
 		this->OnInvalidateData(0);
 	}

@@ -35,7 +35,7 @@ enum ZoomLevel : byte {
 	ZOOM_LVL_VIEWPORT = ZOOM_LVL_OUT_4X, ///< Default zoom level for viewports.
 	ZOOM_LVL_NEWS     = ZOOM_LVL_OUT_4X, ///< Default zoom level for the news messages.
 	ZOOM_LVL_INDUSTRY = ZOOM_LVL_OUT_8X, ///< Default zoom level for the industry view.
-	ZOOM_LVL_TOWN     = ZOOM_LVL_OUT_8X, ///< Default zoom level for the town view.
+	ZOOM_LVL_TOWN     = ZOOM_LVL_OUT_4X, ///< Default zoom level for the town view.
 	ZOOM_LVL_AIRCRAFT = ZOOM_LVL_OUT_4X, ///< Default zoom level for the aircraft view.
 	ZOOM_LVL_SHIP     = ZOOM_LVL_OUT_4X, ///< Default zoom level for the ship view.
 	ZOOM_LVL_TRAIN    = ZOOM_LVL_OUT_4X, ///< Default zoom level for the train view.

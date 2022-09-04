@@ -837,7 +837,7 @@ public:
 
 		this->InitNested(window_number);
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_IV_VIEWPORT);
-		nvp->InitializeViewport(this, Industry::Get(window_number)->location.GetCenterTile(), ZOOM_LVL_INDUSTRY);
+		nvp->InitializeViewport(this, Industry::Get(window_number)->location.GetCenterTile(), ScaleZoomGUI(ZOOM_LVL_INDUSTRY));
 
 		this->InvalidateData();
 	}
