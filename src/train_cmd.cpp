@@ -451,10 +451,10 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	}
 
 	if (offset != nullptr) {
-		offset->x = ScaleGUITrad(reference_width) / 2;
-		offset->y = ScaleGUITrad(vehicle_pitch);
+		offset->x = ScaleSpriteTrad(reference_width) / 2;
+		offset->y = ScaleSpriteTrad(vehicle_pitch);
 	}
-	return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
+	return ScaleSpriteTrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
 }
 
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
@@ -500,7 +500,7 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 		GetCustomVehicleIcon(engine, dir, image_type, result);
 		if (result->IsValid()) {
 			if (e->GetGRF() != nullptr) {
-				y += ScaleGUITrad(e->GetGRF()->traininfo_vehicle_pitch);
+				y += ScaleSpriteTrad(e->GetGRF()->traininfo_vehicle_pitch);
 			}
 			return;
 		}
@@ -528,11 +528,11 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 		seqr.GetBounds(&rectr);
 
 		preferred_x = Clamp(preferred_x,
-				left - UnScaleGUI(rectf.left) + ScaleGUITrad(14),
-				right - UnScaleGUI(rectr.right) - ScaleGUITrad(15));
+				left - UnScaleGUI(rectf.left) + ScaleSpriteTrad(14),
+				right - UnScaleGUI(rectr.right) - ScaleSpriteTrad(15));
 
-		seqf.Draw(preferred_x - ScaleGUITrad(14), yf, pal, pal == PALETTE_CRASH);
-		seqr.Draw(preferred_x + ScaleGUITrad(15), yr, pal, pal == PALETTE_CRASH);
+		seqf.Draw(preferred_x - ScaleSpriteTrad(14), yf, pal, pal == PALETTE_CRASH);
+		seqr.Draw(preferred_x + ScaleSpriteTrad(15), yr, pal, pal == PALETTE_CRASH);
 	} else {
 		VehicleSpriteSeq seq;
 		GetRailIcon(engine, false, y, image_type, &seq);
@@ -576,9 +576,9 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 		seq.GetBounds(&rect);
 
 		/* Calculate values relative to an imaginary center between the two sprites. */
-		width = ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(rect.right) - xoffs;
+		width = ScaleSpriteTrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(rect.right) - xoffs;
 		height = std::max<uint>(height, UnScaleGUI(rect.Height()));
-		xoffs  = xoffs - ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) / 2;
+		xoffs  = xoffs - ScaleSpriteTrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) / 2;
 		yoffs  = std::min(yoffs, UnScaleGUI(rect.top));
 	}
 }

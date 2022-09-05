@@ -1257,8 +1257,8 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
-					int y = (r.Height() + ScaleGUITrad(58)) / 2 - ScaleGUITrad(31);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					if (!DrawStationTile(x, y, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2);
 					}
@@ -1271,8 +1271,8 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
-					int y = (r.Height() + ScaleGUITrad(58)) / 2 - ScaleGUITrad(31);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					if (!DrawStationTile(x, y, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 3);
 					}
@@ -1308,8 +1308,8 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
-					int y = (r.Height() + ScaleGUITrad(58)) / 2 - ScaleGUITrad(31);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					if (!DrawStationTile(x, y, _cur_railtype, _railstation.orientation, _railstation.station_class, type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2 + _railstation.orientation);
 					}
@@ -1942,8 +1942,8 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
 			DrawPixelInfo *old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
-			int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
-			int y = (r.Height() + ScaleGUITrad(48)) / 2 - ScaleGUITrad(31);
+			int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+			int y = (r.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
 			DrawTrainDepotSprite(x, y, widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
 			_cur_dpi = old_dpi;
 		}
@@ -2054,8 +2054,8 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
-					int y = (r.Height() + ScaleGUITrad(58)) / 2 - ScaleGUITrad(31);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					DrawWaypointSprite(x, y, type, _cur_railtype);
 					_cur_dpi = old_dpi;
 				}

@@ -100,6 +100,16 @@ static inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
 }
 
 /**
+ * Scale traditional pixel dimensions to GUI zoom level, for drawing sprites.
+ * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
+ */
+static inline int ScaleSpriteTrad(int value)
+{
+	return UnScaleGUI(value * ZOOM_LVL_BASE);
+}
+
+/**
  * Scale traditional pixel dimensions to GUI zoom level.
  * @param value Pixel amount at #ZOOM_LVL_BASE (traditional "normal" interface size).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).

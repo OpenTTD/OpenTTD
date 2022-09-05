@@ -977,7 +977,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_li
 
 	Rect ir      = r.WithHeight(step_size).Shrink(WidgetDimensions::scaled.matrix);
 	int sprite_x = ir.WithWidth(sprite_width, rtl).left + sprite_left;
-	int sprite_y_offset = ScaleGUITrad(sprite_y_offsets[type]) + ir.Height() / 2;
+	int sprite_y_offset = ScaleSpriteTrad(sprite_y_offsets[type]) + ir.Height() / 2;
 
 	Dimension replace_icon = {0, 0};
 	int count_width = 0;

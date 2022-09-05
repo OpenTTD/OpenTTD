@@ -73,7 +73,7 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection, boo
 
 	if (drag_hlight_width > 0) {
 		GfxFillRect(drag_hlight_left + WidgetDimensions::scaled.framerect.left, WidgetDimensions::scaled.framerect.top + 1,
-				drag_hlight_right - WidgetDimensions::scaled.framerect.right, ScaleGUITrad(13) - WidgetDimensions::scaled.framerect.bottom, _colour_gradient[COLOUR_GREY][7]);
+				drag_hlight_right - WidgetDimensions::scaled.framerect.right, ScaleSpriteTrad(13) - WidgetDimensions::scaled.framerect.bottom, _colour_gradient[COLOUR_GREY][7]);
 	}
 
 	return drag_hlight_width;
@@ -99,7 +99,7 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 	int highlight_l = 0;
 	int highlight_r = 0;
 	int max_width = right - left + 1;
-	int height = ScaleGUITrad(14);
+	int height = ScaleSpriteTrad(14);
 
 	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, height)) return;
 
@@ -341,7 +341,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 			num += std::max(1u, (unsigned)_cargo_summary.size());
 
 			uint length = GetLengthOfArticulatedVehicle(v);
-			if (length > TRAIN_DETAILS_MAX_INDENT) num++;
+			if (length > (uint)ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT)) num++;
 		}
 	}
 
@@ -382,7 +382,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vsc
 					int pitch = 0;
 					const Engine *e = Engine::Get(v->engine_type);
 					if (e->GetGRF() != nullptr) {
-						pitch = ScaleGUITrad(e->GetGRF()->traininfo_vehicle_pitch);
+						pitch = ScaleSpriteTrad(e->GetGRF()->traininfo_vehicle_pitch);
 					}
 					PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 					VehicleSpriteSeq seq;
@@ -394,13 +394,13 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vsc
 				u = u->Next();
 			} while (u != nullptr && u->IsArticulatedPart());
 
-			bool separate_sprite_row = (dx > (uint)ScaleGUITrad(TRAIN_DETAILS_MAX_INDENT));
+			bool separate_sprite_row = (dx > (uint)ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT));
 			if (separate_sprite_row) {
 				vscroll_pos--;
 				dx = 0;
 			}
 
-			int sprite_width = std::max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + WidgetDimensions::scaled.hsep_normal;
+			int sprite_width = std::max<int>(dx, ScaleSpriteTrad(TRAIN_DETAILS_MIN_INDENT)) + WidgetDimensions::scaled.hsep_normal;
 			Rect dr = r.Indent(sprite_width, rtl);
 			uint num_lines = std::max(1u, (unsigned)_cargo_summary.size());
 			for (uint i = 0; i < num_lines; i++) {

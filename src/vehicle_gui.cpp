@@ -972,7 +972,7 @@ struct RefitWindow : public Window {
 								}
 
 								if (left != right) {
-									DrawFrameRect(left, r.top + WidgetDimensions::scaled.framerect.top, right, r.top + WidgetDimensions::scaled.framerect.top + ScaleGUITrad(14) - 1, COLOUR_WHITE, FR_BORDERONLY);
+									DrawFrameRect(left, r.top + WidgetDimensions::scaled.framerect.top, right, r.top + WidgetDimensions::scaled.framerect.top + ScaleSpriteTrad(14) - 1, COLOUR_WHITE, FR_BORDERONLY);
 								}
 
 								left = INT32_MIN;
@@ -1647,7 +1647,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 	int image_left  = (rtl && show_orderlist) ? olr.right : tr.left;
 	int image_right = (!rtl && show_orderlist) ? olr.left : tr.right;
-	int image_height = ScaleGUITrad(GetVehicleHeight(this->vli.vtype));
+	int image_height = ScaleSpriteTrad(GetVehicleHeight(this->vli.vtype));
 
 	int vehicle_button_x = rtl ? ir.right - profit.width : ir.left;
 
@@ -3344,7 +3344,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 	bool is_ground_vehicle = v->IsGroundVehicle();
 
 	while (v != nullptr) {
-		if (total_width >= ScaleGUITrad(2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH)) break;
+		if (total_width >= ScaleSpriteTrad(2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH)) break;
 
 		PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 		VehicleSpriteSeq seq;
@@ -3352,7 +3352,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 		if (rotor_seq) {
 			GetCustomRotorSprite(Aircraft::From(v), image_type, &seq);
 			if (!seq.IsValid()) seq.Set(SPR_ROTOR_STOPPED);
-			y_offset = - ScaleGUITrad(5);
+			y_offset = -ScaleSpriteTrad(5);
 		} else {
 			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
 		}
@@ -3379,7 +3379,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 
 	if (is_ground_vehicle) {
 		/* Center trains and road vehicles on the front vehicle */
-		int offs = (ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH) - total_width) / 2;
+		int offs = (ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH) - total_width) / 2;
 		if (rtl) offs = -offs;
 		for (uint i = 0; i < _cursor.sprite_count; ++i) {
 			_cursor.sprite_pos[i].x += offs;
