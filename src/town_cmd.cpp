@@ -1622,6 +1622,9 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 			return TownGrowthResult::Continue;
 		}
 
+		/* Don't build houses around half-tile roads in the rare case we ended up on one. */
+		if (HasExactlyOneBit(cur_rb)) allow_house = false;
+
 		/* Possibly extend the road in a direction.
 		 * Randomize a direction and if it has a road, bail out. */
 		target_dir = RandomDiagDir();
