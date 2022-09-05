@@ -190,17 +190,17 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 		if ((int)x + x_offs > max_extend_right) max_extend_right = x + x_offs;
 	}
 
-	int min_extend = ScaleGUITrad(16);
-	int max_extend = ScaleGUITrad(98);
+	int min_extend = ScaleSpriteTrad(16);
+	int max_extend = ScaleSpriteTrad(98);
 
 	switch (image_type) {
 		case EIT_IN_DEPOT:
-			_base_block_sizes_depot[type].height       = std::max<uint>(ScaleGUITrad(GetVehicleHeight(type)), max_height);
+			_base_block_sizes_depot[type].height       = std::max<uint>(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
 			_base_block_sizes_depot[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
 			_base_block_sizes_depot[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
 		case EIT_PURCHASE:
-			_base_block_sizes_purchase[type].height       = std::max<uint>(ScaleGUITrad(GetVehicleHeight(type)), max_height);
+			_base_block_sizes_purchase[type].height       = std::max<uint>(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
 			_base_block_sizes_purchase[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
 			_base_block_sizes_purchase[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
@@ -310,7 +310,7 @@ struct DepotWindow : Window {
 	void DrawVehicleInDepot(const Vehicle *v, int left, int right, int y) const
 	{
 		bool free_wagon = false;
-		int sprite_y = y + (this->resize.step_height - ScaleGUITrad(GetVehicleHeight(v->type))) / 2;
+		int sprite_y = y + (this->resize.step_height - ScaleSpriteTrad(GetVehicleHeight(v->type))) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		int image_left  = rtl ? left  + this->count_width  : left  + this->header_width;
@@ -322,7 +322,7 @@ struct DepotWindow : Window {
 				free_wagon = u->IsFreeWagon();
 
 				uint x_space = free_wagon ?
-						ScaleGUITrad(_consistent_train_width != 0 ? _consistent_train_width : TRAININFO_DEFAULT_VEHICLE_WIDTH) :
+						ScaleSpriteTrad(_consistent_train_width != 0 ? _consistent_train_width : TRAININFO_DEFAULT_VEHICLE_WIDTH) :
 						0;
 
 				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y,
@@ -381,7 +381,7 @@ struct DepotWindow : Window {
 		 *  - All vehicles are 8/8. This cannot be checked for NewGRF, so instead we check for "all vehicles are original vehicles".
 		 */
 		if (this->type == VEH_TRAIN && _consistent_train_width != 0) {
-			int w = ScaleGUITrad(2 * _consistent_train_width);
+			int w = ScaleSpriteTrad(2 * _consistent_train_width);
 			int col = _colour_gradient[wid->colour][4];
 			int image_left  = rtl ? ir.left  + this->count_width  : ir.left  + this->header_width;
 			int image_right = rtl ? ir.right - this->header_width : ir.right - this->count_width;
@@ -486,7 +486,7 @@ struct DepotWindow : Window {
 			pos -= (uint)this->vehicle_list.size();
 			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
-			x -= ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
+			x -= ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
 			wagon = true;
 		}
 
@@ -682,7 +682,7 @@ struct DepotWindow : Window {
 				resize->height = std::max<uint>(GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).height, min_height);
 				if (this->type == VEH_TRAIN) {
 					resize->width = 1;
-					size->width = base_width + 2 * ScaleGUITrad(29); // about 2 parts
+					size->width = base_width + 2 * ScaleSpriteTrad(29); // about 2 parts
 					size->height = resize->height * 6;
 				} else {
 					resize->width = base_width + GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).extend_left + GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).extend_right;
@@ -725,7 +725,7 @@ struct DepotWindow : Window {
 
 		/* determine amount of items for scroller */
 		if (this->type == VEH_TRAIN) {
-			uint max_width = ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
+			uint max_width = ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
 			for (uint num = 0; num < this->vehicle_list.size(); num++) {
 				uint width = 0;
 				for (const Train *v = Train::From(this->vehicle_list[num]); v != nullptr; v = v->Next()) {
@@ -736,7 +736,7 @@ struct DepotWindow : Window {
 			/* Always have 1 empty row, so people can change the setting of the train */
 			this->vscroll->SetCount((uint)this->vehicle_list.size() + (uint)this->wagon_list.size() + 1);
 			/* Always make it longer than the longest train, so you can attach vehicles at the end, and also see the next vertical tile separator line */
-			this->hscroll->SetCount(max_width + ScaleGUITrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
+			this->hscroll->SetCount(max_width + ScaleSpriteTrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
 		} else {
 			this->vscroll->SetCount(CeilDiv((uint)this->vehicle_list.size(), this->num_columns));
 		}

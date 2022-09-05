@@ -27,7 +27,7 @@
  */
 void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 {
-	int y = r.top + (v->HasArticulatedPart() ? ScaleGUITrad(15) : 0); // Draw the first line below the sprite of an articulated RV instead of after it.
+	int y = r.top + (v->HasArticulatedPart() ? ScaleSpriteTrad(15) : 0); // Draw the first line below the sprite of an articulated RV instead of after it.
 	StringID str;
 	Money feeder_share = 0;
 
@@ -135,7 +135,7 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int max_width = right - left + 1;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, ScaleGUITrad(14))) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, ScaleSpriteTrad(14))) return;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
@@ -149,14 +149,14 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 			PaletteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
 			VehicleSpriteSeq seq;
 			u->GetImage(dir, image_type, &seq);
-			seq.Draw(px + (rtl ? -offset.x : offset.x), ScaleGUITrad(6) + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
+			seq.Draw(px + (rtl ? -offset.x : offset.x), ScaleSpriteTrad(6) + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
 		}
 
 		px += rtl ? -width : width;
 	}
 
 	if (v->index == selection) {
-		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, ScaleGUITrad(13) - 1, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, ScaleSpriteTrad(13) - 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 
 	_cur_dpi = old_dpi;

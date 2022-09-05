@@ -43,7 +43,7 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	int x_offs = UnScaleGUI(rect.left);
 	int x = rtl ? right - width - x_offs : left - x_offs;
 
-	y += ScaleGUITrad(10);
+	y += ScaleSpriteTrad(10);
 	seq.Draw(x, y, GetVehiclePalette(v), false);
 
 	if (v->index == selection) {

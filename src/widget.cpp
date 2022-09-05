@@ -786,7 +786,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 	Dimension d = GetSpriteSize(SPR_CLOSEBOX, &offset);
 	d.width  -= offset.x;
 	d.height -= offset.y;
-	int s = ScaleGUITrad(1); /* Offset to account for shadow of SPR_CLOSEBOX */
+	int s = ScaleSpriteTrad(1); /* Offset to account for shadow of SPR_CLOSEBOX */
 	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CenterBounds(r.left, r.right, d.width - s) - offset.x, CenterBounds(r.top, r.bottom, d.height - s) - offset.y);
 }
 

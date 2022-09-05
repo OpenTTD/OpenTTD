@@ -93,7 +93,7 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 	int x = rtl ? right - width - x_offs : left - x_offs;
 	bool helicopter = v->subtype == AIR_HELICOPTER;
 
-	int y_offs = ScaleGUITrad(10);
+	int y_offs = ScaleSpriteTrad(10);
 	int heli_offs = 0;
 
 	PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
@@ -103,7 +103,7 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 		VehicleSpriteSeq rotor_seq;
 		GetCustomRotorSprite(a, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
-		heli_offs = ScaleGUITrad(5);
+		heli_offs = ScaleSpriteTrad(5);
 		rotor_seq.Draw(x, y + y_offs - heli_offs, PAL_NONE, false);
 	}
 	if (v->index == selection) {
