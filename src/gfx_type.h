@@ -351,4 +351,11 @@ enum StringAlignment {
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 
+enum ModifierKey : byte {
+	None      = 0, ///< No key configured
+	Shift     = 1, ///< Shift key
+	Ctrl      = 2, ///< Ctrl key
+	Alt       = 3, ///< Alt key
+};
+
 #endif /* GFX_TYPE_H */

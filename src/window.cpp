@@ -2614,6 +2614,25 @@ void HandleKeypress(uint keycode, char32_t key)
 }
 
 /**
+ * Select the right state for the requested modifier key.
+ */
+static bool SelectModifierKey(ModifierKey key, bool shift_pressed, bool ctrl_pressed, bool alt_pressed)
+{
+	switch (key) {
+		case ModifierKey::None:
+			return false;
+		case ModifierKey::Shift:
+			return shift_pressed;
+		case ModifierKey::Ctrl:
+			return ctrl_pressed;
+		case ModifierKey::Alt:
+			return alt_pressed;
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
  * Handle the modifier key state changes.
  */
 void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed, bool alt_pressed)
@@ -2623,10 +2642,9 @@ void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed, bool alt_pressed)
 
 	_shift_pressed = shift_pressed;
 
-	/* Hardwire modifier keys. */
-	_fn_pressed = ctrl_pressed;
-	_remove_pressed = alt_pressed;
-	_estimate_pressed = shift_pressed;
+	_fn_pressed = SelectModifierKey(_settings_client.gui.fn_modifier, shift_pressed, ctrl_pressed, alt_pressed);
+	_remove_pressed = SelectModifierKey(_settings_client.gui.remove_modifier, shift_pressed, ctrl_pressed, alt_pressed);
+	_estimate_pressed = SelectModifierKey(_settings_client.gui.estimate_modifier, shift_pressed, ctrl_pressed, alt_pressed);
 
 	if (old_fn_pressed != _fn_pressed) {
 		/* Call the event, start with the uppermost window. */

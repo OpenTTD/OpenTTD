@@ -1766,6 +1766,18 @@ STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal g
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :No limit (as fast as your computer allows)
 
+STR_CONFIG_SETTING_MODIFIER_FN                                  :Function modifier key: {STRING2}
+STR_CONFIG_SETTING_MODIFIER_FN_HELPTEXT                         :Modifier key for accessing additional functions.
+STR_CONFIG_SETTING_MODIFIER_REMOVE                              :Remove modifier key: {STRING2}
+STR_CONFIG_SETTING_MODIFIER_REMOVE_HELPTEXT                     :Modifier key for removal mode on building tools.
+STR_CONFIG_SETTING_MODIFIER_ESTIMATE                            :Estimate modifier key: {STRING2}
+STR_CONFIG_SETTING_MODIFIER_ESTIMATE_HELPTEXT                   :Modifier key for estimating action cost.
+STR_CONFIG_SETTING_MODIFIER_NONE                                :None
+STR_CONFIG_SETTING_MODIFIER_SHIFT                               :Shift
+STR_CONFIG_SETTING_MODIFIER_CTRL                                :Ctrl
+STR_CONFIG_SETTING_MODIFIER_ALT                                 :Alt
+STR_CONFIG_SETTING_MODIFIER_ALREADY_IN_USE                      :{WHITE}This modifier key is already in use.
+
 STR_CONFIG_SETTING_SOUND_TICKER                                 :News ticker: {STRING2}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarised news messages
 

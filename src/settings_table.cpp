@@ -483,6 +483,33 @@ static bool CheckMaxHeightLevel(int32_t &new_value)
 	return true;
 }
 
+static bool CheckModifier(int32_t new_value, ModifierKey other1, ModifierKey other2)
+{
+	ModifierKey key = (ModifierKey)new_value;
+	if (key == ModifierKey::None) return true;
+	if (other1 == key || other2 == key) {
+		ShowErrorMessage(STR_CONFIG_SETTING_MODIFIER_ALREADY_IN_USE, INVALID_STRING_ID, WL_ERROR);
+		return false;
+	}
+
+	return true;
+}
+
+static bool CheckFnModifier(int32_t &new_value)
+{
+	return CheckModifier(new_value, _settings_client.gui.remove_modifier, _settings_client.gui.estimate_modifier);
+}
+
+static bool CheckRemoveModifier(int32_t &new_value)
+{
+	return CheckModifier(new_value, _settings_client.gui.fn_modifier, _settings_client.gui.estimate_modifier);
+}
+
+static bool CheckEstimateModifier(int32_t &new_value)
+{
+	return CheckModifier(new_value, _settings_client.gui.fn_modifier, _settings_client.gui.remove_modifier);
+}
+
 static void StationCatchmentChanged(int32_t)
 {
 	Station::RecomputeCatchmentForAll();

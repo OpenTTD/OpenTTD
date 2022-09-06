@@ -2041,6 +2041,9 @@ static SettingsContainer &GetSettingsTree()
 			interface->Add(new SettingEntry("gui.timetable_arrival_departure"));
 			interface->Add(new SettingEntry("gui.show_newgrf_name"));
 			interface->Add(new SettingEntry("gui.show_cargo_in_vehicle_lists"));
+			viewports->Add(new SettingEntry("gui.fn_modifier"));
+			viewports->Add(new SettingEntry("gui.remove_modifier"));
+			viewports->Add(new SettingEntry("gui.estimate_modifier"));
 		}
 
 		SettingsPage *advisors = main->Add(new SettingsPage(STR_CONFIG_SETTING_ADVISORS));
