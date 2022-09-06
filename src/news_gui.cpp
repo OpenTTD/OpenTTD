@@ -267,6 +267,7 @@ struct NewsWindow : Window {
 	const NewsItem *ni;   ///< News item to display.
 	static int duration;  ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
+	static const uint TIMER_INTERVAL = 210; ///< Scrolling interval, scaled by line text line height. This value chosen to maintain the 15ms at normal zoom.
 	GUITimer timer;
 
 	NewsWindow(WindowDesc *desc, const NewsItem *ni) : Window(desc), ni(ni)
@@ -277,8 +278,6 @@ struct NewsWindow : Window {
 		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
 
 		this->flags |= WF_DISABLE_VP_SCROLL;
-
-		this->timer.SetInterval(15);
 
 		this->CreateNestedTree();
 
@@ -321,6 +320,11 @@ struct NewsWindow : Window {
 		}
 
 		PositionNewsMessage(this);
+	}
+
+	void OnInit() override
+	{
+		this->timer.SetInterval(TIMER_INTERVAL / FONT_HEIGHT_NORMAL);
 	}
 
 	void DrawNewsBorder(const Rect &r) const
