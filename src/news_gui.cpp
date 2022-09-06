@@ -520,6 +520,18 @@ struct NewsWindow : Window {
 		}
 	}
 
+	void OnResize() override
+	{
+		if (this->viewport != nullptr) {
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
+			nvp->UpdateViewportCoordinates(this);
+
+			if (ni->reftype1 != NR_VEHICLE) {
+				ScrollWindowToTile(GetReferenceTile(ni->reftype1, ni->ref1), this, true); // Re-center viewport.
+			}
+		}
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
