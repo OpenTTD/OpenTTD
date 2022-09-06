@@ -293,8 +293,7 @@ static bool RoadToolbar_RemoveChanged(Window *w)
 {
 	if (w->IsWidgetDisabled(WID_ROT_REMOVE)) return false;
 
-	/* allow ctrl to switch remove mode only for these widgets */
-	for (WidgetID i = WID_ROT_ROAD_X; i <= WID_ROT_AUTOROAD; i++) {
+	for (WidgetID i = WID_ROT_ROAD_X; i <= WID_ROT_TRUCK_STATION; i++) {
 		if (w->IsWidgetLowered(i)) {
 			ToggleRoadButton_Remove(w);
 			return true;

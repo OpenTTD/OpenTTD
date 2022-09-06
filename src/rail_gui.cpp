@@ -294,39 +294,6 @@ static void ToggleRailButton_Remove(Window *w)
 	w->SetWidgetDirty(WID_RAT_REMOVE);
 	_remove_button_clicked = w->IsWidgetLowered(WID_RAT_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
-}
-
-/**
- * Updates the Remove button because of remove modifer state change
- * @param w window the button belongs to
- * @return true iff the remove button was changed
- */
-static bool RailToolbar_RemoveChanged(Window *w)
-{
-	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return false;
-
-	/* allow ctrl to switch remove mode only for these widgets */
-	for (WidgetID i = WID_RAT_BUILD_NS; i <= WID_RAT_BUILD_STATION; i++) {
-		if ((i <= WID_RAT_AUTORAIL || i >= WID_RAT_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
-			ToggleRailButton_Remove(w);
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-/**
- * The "remove"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbarWindow::OnClick()
- */
-static void BuildRailClick_Remove(Window *w)
-{
-	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return;
-	ToggleRailButton_Remove(w);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 	/* handle station builder */
 	if (w->IsWidgetLowered(WID_RAT_BUILD_STATION)) {
@@ -349,6 +316,38 @@ static void BuildRailClick_Remove(Window *w)
 			}
 		}
 	}
+}
+
+/**
+ * Updates the Remove button because of remove modifer state change
+ * @param w window the button belongs to
+ * @return true iff the remove button was changed
+ */
+static bool RailToolbar_RemoveChanged(Window *w)
+{
+	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return false;
+
+	for (WidgetID i = WID_RAT_BUILD_NS; i <= WID_RAT_BUILD_SIGNALS; i++) {
+		if (w->IsWidgetLowered(i)) {
+			ToggleRailButton_Remove(w);
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+/**
+ * The "remove"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbarWindow::OnClick()
+ */
+static void BuildRailClick_Remove(Window *w)
+{
+	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return;
+	ToggleRailButton_Remove(w);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 }
 
 static void DoRailroadTrack(Track track)
@@ -788,8 +787,7 @@ struct BuildRailToolbarWindow : Window {
 
 	EventState OnRemoveStateChange() override
 	{
-		/* do not toggle Remove button by remove modifier when placing station */
-		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_RemoveChanged(this)) return ES_HANDLED;
+		if (RailToolbar_RemoveChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
 
