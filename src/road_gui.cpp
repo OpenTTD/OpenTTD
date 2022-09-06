@@ -285,11 +285,11 @@ static void ToggleRoadButton_Remove(Window *w)
 }
 
 /**
- * Updates the Remove button because of Ctrl state change
+ * Updates the Remove button because of remove modifer state change
  * @param w window the button belongs to
  * @return true iff the remove button was changed
  */
-static bool RoadToolbar_CtrlChanged(Window *w)
+static bool RoadToolbar_RemoveChanged(Window *w)
 {
 	if (w->IsWidgetDisabled(WID_ROT_REMOVE)) return false;
 
@@ -549,7 +549,7 @@ struct BuildRoadToolbarWindow : Window {
 			default: NOT_REACHED();
 		}
 		this->UpdateOptionWidgetStatus((RoadToolbarWidgets)widget);
-		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
+		if (_remove_pressed) RoadToolbar_RemoveChanged(this);
 	}
 
 	EventState OnHotkey(int hotkey) override
@@ -709,9 +709,9 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_BUS_STATION) && GetIfClassHasNewStopsByType(RoadStopClass::Get(_roadstop_gui_settings.roadstop_class), ROADSTOP_BUS, _cur_roadtype)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_BUS], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_BUS, _ctrl_pressed);
+							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_BUS], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_BUS, _fn_pressed);
 						} else {
-							PlaceRoadStop(start_tile, end_tile, ROADSTOP_BUS, _ctrl_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_BUS]);
+							PlaceRoadStop(start_tile, end_tile, ROADSTOP_BUS, _fn_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_BUS]);
 						}
 					}
 					break;
@@ -721,9 +721,9 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_TRUCK_STATION) && GetIfClassHasNewStopsByType(RoadStopClass::Get(_roadstop_gui_settings.roadstop_class), ROADSTOP_TRUCK, _cur_roadtype)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_TRUCK], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_TRUCK, _ctrl_pressed);
+							Command<CMD_REMOVE_ROAD_STOP>::Post(this->rti->strings.err_remove_station[ROADSTOP_TRUCK], CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, ROADSTOP_TRUCK, _fn_pressed);
 						} else {
-							PlaceRoadStop(start_tile, end_tile, ROADSTOP_TRUCK, _ctrl_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_TRUCK]);
+							PlaceRoadStop(start_tile, end_tile, ROADSTOP_TRUCK, _fn_pressed, _cur_roadtype, this->rti->strings.err_build_station[ROADSTOP_TRUCK]);
 						}
 					}
 					break;
@@ -741,9 +741,9 @@ struct BuildRoadToolbarWindow : Window {
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
-	EventState OnCTRLStateChange() override
+	EventState OnRemoveStateChange() override
 	{
-		if (RoadToolbar_CtrlChanged(this)) return ES_HANDLED;
+		if (RoadToolbar_RemoveChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
 

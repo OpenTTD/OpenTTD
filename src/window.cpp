@@ -680,7 +680,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_DEFSIZEBOX: {
-			if (_ctrl_pressed) {
+			if (_fn_pressed) {
 				w->window_desc->pref_width = w->width;
 				w->window_desc->pref_height = w->height;
 			} else {
@@ -714,7 +714,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_STICKYBOX:
 			w->flags ^= WF_STICKY;
 			nw->SetDirty(w);
-			if (_ctrl_pressed) w->window_desc->pref_sticky = (w->flags & WF_STICKY) != 0;
+			if (_fn_pressed) w->window_desc->pref_sticky = (w->flags & WF_STICKY) != 0;
 			return;
 
 		default:
@@ -2614,14 +2614,36 @@ void HandleKeypress(uint keycode, char32_t key)
 }
 
 /**
- * State of CONTROL key has changed
+ * Handle the modifier key state changes.
  */
-void HandleCtrlChanged()
+void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed, bool alt_pressed)
 {
-	/* Call the event, start with the uppermost window. */
-	for (Window *w : Window::IterateFromFront()) {
-		if (w->OnCTRLStateChange() == ES_HANDLED) return;
+	bool old_fn_pressed = _fn_pressed;
+	bool old_remove_pressed = _remove_pressed;
+
+	_shift_pressed = shift_pressed;
+
+	/* Hardwire modifiers leaving remove inaccessible for now. */
+	_fn_pressed = ctrl_pressed;
+	_remove_pressed = false;
+	_estimate_pressed = shift_pressed;
+
+	if (old_fn_pressed != _fn_pressed) {
+		/* Call the event, start with the uppermost window. */
+		for (Window *w : Window::IterateFromFront()) {
+			if (w->OnFnStateChange() == ES_HANDLED) return;
+		}
 	}
+
+	if (old_remove_pressed != _remove_pressed) {
+		/* Call the event, start with the uppermost window. */
+		for (Window *w : Window::IterateFromFront()) {
+			if (w->OnRemoveStateChange() == ES_HANDLED) return;
+		}
+	}
+
+	old_fn_pressed = _fn_pressed;
+	old_remove_pressed = _remove_pressed;
 }
 
 /**

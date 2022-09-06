@@ -52,8 +52,10 @@ extern byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 extern bool _fullscreen;
 extern byte _support8bpp;
 extern CursorVars _cursor;
-extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
-extern bool _shift_pressed;  ///< Is Shift pressed?
+extern bool _shift_pressed;    ///< Is Shift pressed?
+extern bool _fn_pressed;       ///< Is function modifier pressed?
+extern bool _remove_pressed;   ///< Is remove modifier pressed?
+extern bool _estimate_pressed; ///< Is esitame modifier pressed?
 extern uint16_t _game_speed;
 
 extern bool _left_button_down;
@@ -71,7 +73,7 @@ extern Palette _cur_palette; ///< Current palette
 void HandleToolbarHotkey(int hotkey);
 void HandleKeypress(uint keycode, char32_t key);
 void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
-void HandleCtrlChanged();
+void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed);
 void HandleMouseEvents();
 void UpdateWindows();
 void ChangeGameSpeed(bool enable_fast_forward);

@@ -497,11 +497,11 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_INCREASE_LOAN: // increase loan
-				Command<CMD_INCREASE_LOAN>::Post(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
+				Command<CMD_INCREASE_LOAN>::Post(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, _fn_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
 			case WID_CF_REPAY_LOAN: // repay loan
-				Command<CMD_DECREASE_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
+				Command<CMD_DECREASE_LOAN>::Post(STR_ERROR_CAN_T_REPAY_LOAN, _fn_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
@@ -1017,7 +1017,7 @@ public:
 					}
 					assert(j < LS_END);
 
-					if (_ctrl_pressed) {
+					if (_fn_pressed) {
 						ToggleBit(this->sel, j);
 					} else {
 						this->sel = 1 << j;
@@ -1048,7 +1048,7 @@ public:
 			/* Set company colour livery */
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
-				if (HasBit(this->sel, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
+				if (HasBit(this->sel, scheme) || (_fn_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
 					Command<CMD_SET_COMPANY_COLOUR>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 				}
 			}
@@ -2510,7 +2510,7 @@ struct CompanyWindow : Window
 
 			case WID_C_VIEW_HQ: {
 				TileIndex tile = Company::Get((CompanyID)this->window_number)->location_of_HQ;
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(tile);
 				} else {
 					ScrollMainWindowToTile(tile);
@@ -2585,7 +2585,7 @@ struct CompanyWindow : Window
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
-		if (Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !_shift_pressed) {
+		if (Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !_estimate_pressed) {
 			ResetObjectToPlace();
 			this->RaiseButtons();
 		}

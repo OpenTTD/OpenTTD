@@ -84,7 +84,7 @@ template <typename T>
 void FindStationsAroundSelection()
 {
 	/* With distant join we don't know which station will be selected, so don't show any */
-	if (_ctrl_pressed) {
+	if (_fn_pressed) {
 		SetViewportCatchmentSpecializedStation<T>(nullptr, true);
 		return;
 	}
@@ -125,11 +125,11 @@ void FindStationsAroundSelection()
  */
 void CheckRedrawStationCoverage(const Window *w)
 {
-	/* Test if ctrl state changed */
-	static bool _last_ctrl_pressed;
-	if (_ctrl_pressed != _last_ctrl_pressed) {
+	/* Test if fn modifer state changed */
+	static bool _last_fn_pressed;
+	if (_fn_pressed != _last_fn_pressed) {
 		_thd.dirty = 0xff;
-		_last_ctrl_pressed = _ctrl_pressed;
+		_last_fn_pressed = _fn_pressed;
 	}
 
 	if (_thd.dirty & 1) {
@@ -145,10 +145,10 @@ void CheckRedrawStationCoverage(const Window *w)
 void CheckRedrawWaypointCoverage(const Window *)
 {
 	/* Test if ctrl state changed */
-	static bool _last_ctrl_pressed;
-	if (_ctrl_pressed != _last_ctrl_pressed) {
+	static bool _last_fn_pressed;
+	if (_fn_pressed != _last_fn_pressed) {
 		_thd.dirty = 0xff;
-		_last_ctrl_pressed = _ctrl_pressed;
+		_last_fn_pressed = _fn_pressed;
 	}
 
 	if (_thd.dirty & 1) {
@@ -544,7 +544,7 @@ public:
 				/* do not check HasStationInUse - it is slow and may be invalid */
 				assert(st->owner == (Owner)this->window_number || st->owner == OWNER_NONE);
 
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(st->xy);
 				} else {
 					ScrollMainWindowToTile(st->xy);
@@ -557,7 +557,7 @@ public:
 			case WID_STL_BUS:
 			case WID_STL_AIRPLANE:
 			case WID_STL_SHIP:
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ToggleBit(this->filter.facilities, widget - WID_STL_TRAIN);
 					this->ToggleWidgetLoweredState(widget);
 				} else {
@@ -604,7 +604,7 @@ public:
 				break;
 
 			case WID_STL_NOCARGOWAITING:
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					this->filter.include_empty = !this->filter.include_empty;
 					this->ToggleWidgetLoweredState(WID_STL_NOCARGOWAITING);
 				} else {
@@ -626,8 +626,9 @@ public:
 					/* Determine the selected cargo type */
 					const CargoSpec *cs = _sorted_cargo_specs[widget - WID_STL_CARGOSTART];
 
-					if (_ctrl_pressed) {
+					if (_fn_pressed) {
 						ToggleBit(this->filter.cargoes, cs->Index());
+
 						this->ToggleWidgetLoweredState(widget);
 					} else {
 						for (uint i = 0; i < _sorted_standard_cargo_specs.size(); i++) {
@@ -1901,7 +1902,7 @@ struct StationViewWindow : public Window {
 	void HandleCargoWaitingClick(int row)
 	{
 		if (row < 0 || (uint)row >= this->displayed_rows.size()) return;
-		if (_ctrl_pressed) {
+		if (_fn_pressed) {
 			this->scroll_to_row = row;
 		} else {
 			RowDisplay &display = this->displayed_rows[row];
@@ -1926,7 +1927,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_LOCATION:
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					ShowExtraViewportWindow(Station::Get(this->window_number)->xy);
 				} else {
 					ScrollMainWindowToTile(Station::Get(this->window_number)->xy);
@@ -2423,7 +2424,7 @@ static bool StationJoinerNeeded(TileArea ta, const StationPickerCmdProc &proc)
 	}
 
 	/* only show the popup, if we press ctrl */
-	if (!_ctrl_pressed) return false;
+	if (!_fn_pressed) return false;
 
 	/* Now check if we could build there */
 	if (!proc(true, INVALID_STATION)) return false;

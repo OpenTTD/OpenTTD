@@ -1007,7 +1007,7 @@ struct SpriteAlignerWindow : Window {
 				if (this->offs_start_map.count(this->current_sprite) == 0) {
 					this->offs_start_map[this->current_sprite] = XyOffs(spr->x_offs, spr->y_offs);
 				}
-				int amt = ScaleByZoom(_ctrl_pressed ? 8 : 1, SpriteAlignerWindow::zoom);
+				int amt = ScaleByZoom(_fn_pressed ? 8 : 1, SpriteAlignerWindow::zoom);
 				switch (widget) {
 					/* Move eight units at a time if ctrl is pressed. */
 					case WID_SA_UP:    spr->y_offs -= amt; break;

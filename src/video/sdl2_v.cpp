@@ -575,10 +575,8 @@ void VideoDriver_SDL_Base::InputLoop()
 	uint32_t mod = SDL_GetModState();
 	const Uint8 *keys = SDL_GetKeyboardState(nullptr);
 
-	bool old_ctrl_pressed = _ctrl_pressed;
-
-	_ctrl_pressed  = !!(mod & KMOD_CTRL);
-	_shift_pressed = !!(mod & KMOD_SHIFT);
+	bool ctrl_pressed  = !!(mod & KMOD_CTRL);
+	bool shift_pressed = !!(mod & KMOD_SHIFT);
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
@@ -591,7 +589,7 @@ void VideoDriver_SDL_Base::InputLoop()
 		(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
 		(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
 
-	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+	HandleModifierKeys(shift_pressed, ctrl_pressed);
 }
 
 void VideoDriver_SDL_Base::LoopOnce()

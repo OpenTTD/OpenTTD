@@ -582,7 +582,7 @@ public:
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
 				const Group *g = Group::GetIfValid(this->sel_group);
 				if (g != nullptr) {
-					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlags::GF_REPLACE_WAGON_REMOVAL, !HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL), _ctrl_pressed);
+					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlags::GF_REPLACE_WAGON_REMOVAL, !HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL), _fn_pressed);
 				} else {
 					// toggle renew_keep_length
 					Command<CMD_CHANGE_COMPANY_SETTING>::Post("company.renew_keep_length", Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1);
@@ -634,9 +634,9 @@ public:
 					if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) e = item.engine_id;
 				}
 
-				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
+				/* If Fn modifier is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
 				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */
-				if (click_side == 0 && _ctrl_pressed && e != INVALID_ENGINE &&
+				if (click_side == 0 && _fn_pressed && e != INVALID_ENGINE &&
 					(GetGroupNumEngines(_local_company, sel_group, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0)) {
 						EngineID veh_from = e;
 						Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, INVALID_ENGINE, false);

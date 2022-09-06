@@ -1620,7 +1620,7 @@ struct BuildVehicleWindow : Window {
 				}
 				this->SelectEngine(e);
 				this->SetDirty();
-				if (_ctrl_pressed) {
+				if (_fn_pressed) {
 					this->OnClick(pt, WID_BV_SHOW_HIDE, 1);
 				} else if (click_count > 1 && !this->listview_mode) {
 					this->OnClick(pt, WID_BV_BUILD, 1);

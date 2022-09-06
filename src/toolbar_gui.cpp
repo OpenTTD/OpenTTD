@@ -1133,7 +1133,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case  0: return PlaceLandBlockInfo();
 		case  1: ShowHelpWindow();                 break;
 		case  2: IConsoleSwitch();                 break;
-		case  3: ShowScriptDebugWindow(INVALID_COMPANY, _ctrl_pressed); break;
+		case  3: ShowScriptDebugWindow(INVALID_COMPANY, _fn_pressed); break;
 		case  4: ShowScreenshotWindow();           break;
 		case  5: ShowFramerateWindow();            break;
 		case  6: ShowAboutWindow();                break;

@@ -388,7 +388,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				ODTFB_PART_OF_ORDERS,
 				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 
-		if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
+		if (_fn_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 
 		return order;
 	}
@@ -398,7 +398,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
-		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
+		if (_settings_client.gui.new_nonstop != _fn_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 		return order;
 	}
 
@@ -429,7 +429,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			}
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st->index);
-				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
+				if (_fn_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OSL_PLATFORM_FAR_END);
 				return order;
@@ -689,16 +689,16 @@ private:
 
 	/**
 	 * Handle the click on the skip button.
-	 * If ctrl is pressed, skip to selected order, else skip to current order + 1
+	 * If Fn is pressed, skip to selected order, else skip to current order + 1
 	 */
 	void OrderClick_Skip()
 	{
 		/* Don't skip when there's nothing to skip */
-		if (_ctrl_pressed && this->vehicle->cur_implicit_order_index == this->OrderGetSel()) return;
+		if (_fn_pressed && this->vehicle->cur_implicit_order_index == this->OrderGetSel()) return;
 		if (this->vehicle->GetNumOrders() <= 1) return;
 
-		Command<CMD_SKIP_TO_ORDER>::Post(_ctrl_pressed ? STR_ERROR_CAN_T_SKIP_TO_ORDER : STR_ERROR_CAN_T_SKIP_ORDER,
-				this->vehicle->tile, this->vehicle->index, _ctrl_pressed ? this->OrderGetSel() : ((this->vehicle->cur_implicit_order_index + 1) % this->vehicle->GetNumOrders()));
+		Command<CMD_SKIP_TO_ORDER>::Post(_fn_pressed ? STR_ERROR_CAN_T_SKIP_TO_ORDER : STR_ERROR_CAN_T_SKIP_ORDER,
+				this->vehicle->tile, this->vehicle->index, _fn_pressed ? this->OrderGetSel() : ((this->vehicle->cur_implicit_order_index + 1) % this->vehicle->GetNumOrders()));
 	}
 
 	/**
@@ -717,7 +717,7 @@ private:
 
 	/**
 	 * Handle the click on the 'stop sharing' button.
-	 * If 'End of Shared Orders' isn't selected, do nothing. If Ctrl is pressed, call OrderClick_Delete and exit.
+	 * If 'End of Shared Orders' isn't selected, do nothing. If Fn is pressed, call OrderClick_Delete and exit.
 	 * To stop sharing this vehicle order list, we copy the orders of a vehicle that share this order list. That way we
 	 * exit the group of shared vehicles while keeping the same order list.
 	 */
@@ -725,8 +725,8 @@ private:
 	{
 		/* Don't try to stop sharing orders if 'End of Shared Orders' isn't selected. */
 		if (!this->vehicle->IsOrderListShared() || this->selected_order != this->vehicle->GetNumOrders()) return;
-		/* If Ctrl is pressed, delete the order list as if we clicked the 'Delete' button. */
-		if (_ctrl_pressed) {
+		/* If Fn is pressed, delete the order list as if we clicked the 'Delete' button. */
+		if (_fn_pressed) {
 			this->OrderClick_Delete();
 			return;
 		}
@@ -741,13 +741,13 @@ private:
 
 	/**
 	 * Handle the click on the refit button.
-	 * If ctrl is pressed, cancel refitting, else show the refit window.
+	 * If Fn is pressed, cancel refitting, else show the refit window.
 	 * @param i Selected refit command.
 	 * @param auto_refit Select refit for auto-refitting.
 	 */
 	void OrderClick_Refit(int i, bool auto_refit)
 	{
-		if (_ctrl_pressed) {
+		if (_fn_pressed) {
 			/* Cancel refitting */
 			Command<CMD_ORDER_REFIT>::Post(this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), CARGO_NO_REFIT);
 		} else {
@@ -1023,7 +1023,7 @@ public:
 						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					}
 					/* Disable refit button if the order is no 'always go' order.
-					 * However, keep the service button enabled for refit-orders to allow clearing refits (without knowing about ctrl). */
+					 * However, keep the service button enabled for refit-orders to allow clearing refits (without knowing about Fn). */
 					this->SetWidgetDisabledState(WID_O_REFIT,
 							(order->GetDepotOrderType() & ODTFB_SERVICE) || (order->GetDepotActionType() & ODATFB_HALT) ||
 							(!this->can_do_refit && !order->IsRefit()));
@@ -1178,7 +1178,7 @@ public:
 
 				VehicleOrderID sel = this->GetOrderFromPt(pt.y);
 
-				if (_ctrl_pressed && sel < this->vehicle->GetNumOrders()) {
+				if (_fn_pressed && sel < this->vehicle->GetNumOrders()) {
 					TileIndex xy = this->vehicle->GetOrder(sel)->GetLocation(this->vehicle);
 					if (xy != INVALID_TILE) ScrollMainWindowToTile(xy);
 					return;
@@ -1463,9 +1463,9 @@ public:
 		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet.
 		 * We disallow copying orders of other vehicles if we already have at least one order entry
 		 * ourself as it easily copies orders of vehicles within a station when we mean the station.
-		 * Obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
+		 * Obviously if you press Fn on a non-empty orders vehicle you know what you are doing
 		 * TODO: give a warning message */
-		bool share_order = _ctrl_pressed || this->goto_type == OPOS_SHARE;
+		bool share_order = _fn_pressed || this->goto_type == OPOS_SHARE;
 		if (this->vehicle->GetNumOrders() != 0 && !share_order) return false;
 
 		if (Command<CMD_CLONE_ORDER>::Post(share_order ? STR_ERROR_CAN_T_SHARE_ORDER_LIST : STR_ERROR_CAN_T_COPY_ORDER_LIST,
@@ -1484,11 +1484,11 @@ public:
 	 */
 	bool OnVehicleSelect(VehicleList::const_iterator begin, VehicleList::const_iterator end) override
 	{
-		bool share_order = _ctrl_pressed || this->goto_type == OPOS_SHARE;
+		bool share_order = _fn_pressed || this->goto_type == OPOS_SHARE;
 		if (this->vehicle->GetNumOrders() != 0 && !share_order) return false;
 
 		if (!share_order) {
-			/* If CTRL is not pressed: If all the vehicles in this list have the same orders, then copy orders */
+			/* If Fn is not pressed: If all the vehicles in this list have the same orders, then copy orders */
 			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
 				return VehiclesHaveSameOrderList(v1, v2);
 			})) {
@@ -1497,7 +1497,7 @@ public:
 				ShowErrorMessage(STR_ERROR_CAN_T_COPY_ORDER_LIST, STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST, WL_INFO);
 			}
 		} else {
-			/* If CTRL is pressed: If all the vehicles in this list share orders, then copy orders */
+			/* If Fn is pressed: If all the vehicles in this list share orders, then copy orders */
 			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
 				return v1->FirstShared() == v2->FirstShared();
 			})) {

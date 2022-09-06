@@ -2430,7 +2430,7 @@ bool HandleViewportClicked(const Viewport *vp, int x, int y)
 		Debug(misc, 2, "Vehicle {} (index {}) at {}", v->unitnumber, v->index, fmt::ptr(v));
 		if (IsCompanyBuildableVehicleType(v)) {
 			v = v->First();
-			if (_ctrl_pressed && v->owner == _local_company) {
+			if (_fn_pressed && v->owner == _local_company) {
 				StartStopVehicle(v, true);
 			} else {
 				ShowVehicleViewWindow(v);
@@ -2572,7 +2572,7 @@ void TileHighlightData::Reset()
  */
 bool TileHighlightData::IsDraggingDiagonal()
 {
-	return (this->place_mode & HT_DIAGONAL) != 0 && _ctrl_pressed && _left_button_down;
+	return (this->place_mode & HT_DIAGONAL) != 0 && _fn_pressed && _left_button_down;
 }
 
 /**

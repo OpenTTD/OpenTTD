@@ -757,12 +757,12 @@ public:
 						NOT_REACHED();
 				}
 				if (v) {
-					if (_ctrl_pressed && this->grouping == GB_SHARED_ORDERS) {
+					if (_fn_pressed && this->grouping == GB_SHARED_ORDERS) {
 						ShowOrdersWindow(v);
 					} else {
 						this->vehicle_sel = v->index;
 
-						if (_ctrl_pressed && this->grouping == GB_NONE) {
+						if (_fn_pressed && this->grouping == GB_NONE) {
 							/*
 							 * It only makes sense to select a group if not using shared orders
 							 * since two vehicles sharing orders can be from different groups.
@@ -818,7 +818,7 @@ public:
 			case WID_GL_REPLACE_PROTECTION: {
 				const Group *g = Group::GetIfValid(this->vli.index);
 				if (g != nullptr) {
-					Command<CMD_SET_GROUP_FLAG>::Post(this->vli.index, GroupFlags::GF_REPLACE_PROTECTION, !HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), _ctrl_pressed);
+					Command<CMD_SET_GROUP_FLAG>::Post(this->vli.index, GroupFlags::GF_REPLACE_PROTECTION, !HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), _fn_pressed);
 				}
 				break;
 			}
@@ -861,7 +861,7 @@ public:
 	{
 		switch (widget) {
 			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles
-				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, DEFAULT_GROUP, this->vehicle_sel, _ctrl_pressed || this->grouping == GB_SHARED_ORDERS, VehicleListIdentifier{});
+				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, DEFAULT_GROUP, this->vehicle_sel, _fn_pressed || this->grouping == GB_SHARED_ORDERS, VehicleListIdentifier{});
 
 				this->vehicle_sel = INVALID_VEHICLE;
 				this->group_over = INVALID_GROUP;
@@ -878,7 +878,7 @@ public:
 				auto it = this->group_sb->GetScrolledItemFromWidget(this->groups, pt.y, this, WID_GL_LIST_GROUP);
 				GroupID new_g = it == this->groups.end() ? NEW_GROUP : (*it)->index;
 
-				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr, new_g, vindex, _ctrl_pressed || this->grouping == GB_SHARED_ORDERS, VehicleListIdentifier{});
+				Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr, new_g, vindex, _fn_pressed || this->grouping == GB_SHARED_ORDERS, VehicleListIdentifier{});
 				break;
 			}
 

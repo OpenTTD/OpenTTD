@@ -647,12 +647,18 @@ public:
 	virtual EventState OnHotkey(int hotkey);
 
 	/**
-	 * The state of the control key has changed
+	 * The state of the function modifier key has changed
 	 * @return #ES_HANDLED if the change has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnCTRLStateChange() { return ES_NOT_HANDLED; }
+	virtual EventState OnFnStateChange() { return ES_NOT_HANDLED; }
 
+	/**
+	 * The state of the remove modifier key has changed
+	 * @return #ES_HANDLED if the change has been handled and no other
+	 *         window should receive the event.
+	 */
+	virtual EventState OnRemoveStateChange() { return ES_NOT_HANDLED; }
 
 	/**
 	 * A click with the left mouse button has been made on the window.

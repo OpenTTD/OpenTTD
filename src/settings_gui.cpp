@@ -785,7 +785,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_GUI_SCALE:
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, this->gui_scale)) {
-					if (!_ctrl_pressed) this->gui_scale = ((this->gui_scale + 12) / 25) * 25;
+					if (!_fn_pressed) this->gui_scale = ((this->gui_scale + 12) / 25) * 25;
 					this->SetWidgetDirty(widget);
 				}
 

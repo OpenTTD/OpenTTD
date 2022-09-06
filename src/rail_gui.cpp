@@ -204,7 +204,7 @@ static void PlaceRail_Station(TileIndex tile)
 		RailType rt = _cur_railtype;
 		byte numtracks = _settings_client.gui.station_numtracks;
 		byte platlength = _settings_client.gui.station_platlength;
-		bool adjacent = _ctrl_pressed;
+		bool adjacent = _fn_pressed;
 
 		auto proc = [=](bool test, StationID to_join) -> bool {
 			if (test) {
@@ -246,11 +246,11 @@ static void GenericPlaceSignals(TileIndex tile)
 		if (FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr) {
 			/* signal GUI is used */
 			Command<CMD_BUILD_SINGLE_SIGNAL>::Post(_convert_signal_button ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
-				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
+				tile, track, _cur_signal_type, _cur_signal_variant, _convert_signal_button, false, _fn_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
 		} else {
 			SignalVariant sigvar = TimerGameCalendar::year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
 			Command<CMD_BUILD_SINGLE_SIGNAL>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
-				tile, track, _settings_client.gui.default_signal_type, sigvar, false, false, _ctrl_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
+				tile, track, _settings_client.gui.default_signal_type, sigvar, false, false, _fn_pressed, cycle_start, SIGTYPE_LAST, 0, 0);
 
 		}
 	}
@@ -297,11 +297,11 @@ static void ToggleRailButton_Remove(Window *w)
 }
 
 /**
- * Updates the Remove button because of Ctrl state change
+ * Updates the Remove button because of remove modifer state change
  * @param w window the button belongs to
  * @return true iff the remove button was changed
  */
-static bool RailToolbar_CtrlChanged(Window *w)
+static bool RailToolbar_RemoveChanged(Window *w)
 {
 	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return false;
 
@@ -393,13 +393,13 @@ static void HandleAutoSignalPlacement()
 	 * in a network game can specify their own signal density */
 	if (_remove_button_clicked) {
 		Command<CMD_REMOVE_SIGNAL_TRACK>::Post(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, _ctrl_pressed);
+				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, _fn_pressed);
 	} else {
 		bool sig_gui = FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr;
 		SignalType sigtype = sig_gui ? _cur_signal_type : _settings_client.gui.default_signal_type;
 		SignalVariant sigvar = sig_gui ? _cur_signal_variant : (TimerGameCalendar::year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 		Command<CMD_BUILD_SIGNAL_TRACK>::Post(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, sigtype, sigvar, false, _ctrl_pressed, !_settings_client.gui.drag_signals_fixed_distance, _settings_client.gui.drag_signals_density);
+				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track, sigtype, sigvar, false, _fn_pressed, !_settings_client.gui.drag_signals_fixed_distance, _settings_client.gui.drag_signals_density);
 	}
 }
 
@@ -596,7 +596,7 @@ struct BuildRailToolbarWindow : Window {
 			case WID_RAT_BUILD_SIGNALS: {
 				this->last_user_action = widget;
 				bool started = HandlePlacePushButton(this, WID_RAT_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT);
-				if (started != _ctrl_pressed) {
+				if (started != _fn_pressed) {
 					ShowSignalBuilder(this);
 				}
 				break;
@@ -624,7 +624,7 @@ struct BuildRailToolbarWindow : Window {
 			default: NOT_REACHED();
 		}
 		this->UpdateRemoveWidgetStatus(widget);
-		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
+		if (_remove_pressed) RailToolbar_RemoveChanged(this);
 	}
 
 	EventState OnHotkey(int hotkey) override
@@ -723,7 +723,7 @@ struct BuildRailToolbarWindow : Window {
 					break;
 
 				case DDSP_CONVERT_RAIL:
-					Command<CMD_CONVERT_RAIL>::Post(STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _ctrl_pressed);
+					Command<CMD_CONVERT_RAIL>::Post(STR_ERROR_CAN_T_CONVERT_RAIL, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, _cur_railtype, _fn_pressed);
 					break;
 
 				case DDSP_REMOVE_STATION:
@@ -731,7 +731,7 @@ struct BuildRailToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) {
 						/* Station */
 						if (_remove_button_clicked) {
-							bool keep_rail = !_ctrl_pressed;
+							bool keep_rail = !_fn_pressed;
 							Command<CMD_REMOVE_FROM_RAIL_STATION>::Post(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
 						} else {
 							HandleStationPlacement(start_tile, end_tile);
@@ -739,12 +739,12 @@ struct BuildRailToolbarWindow : Window {
 					} else {
 						/* Waypoint */
 						if (_remove_button_clicked) {
-							bool keep_rail = !_ctrl_pressed;
+							bool keep_rail = !_fn_pressed;
 							Command<CMD_REMOVE_FROM_RAIL_WAYPOINT>::Post(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, keep_rail);
 						} else {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
-							bool adjacent = _ctrl_pressed;
+							bool adjacent = _fn_pressed;
 							uint16_t waypoint_type = _cur_waypoint_type;
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
@@ -786,10 +786,10 @@ struct BuildRailToolbarWindow : Window {
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	}
 
-	EventState OnCTRLStateChange() override
+	EventState OnRemoveStateChange() override
 	{
-		/* do not toggle Remove button by Ctrl when placing station */
-		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
+		/* do not toggle Remove button by remove modifier when placing station */
+		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_RemoveChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
 
@@ -912,7 +912,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 	RailStationGUISettings params = _railstation;
 	RailType rt = _cur_railtype;
-	bool adjacent = _ctrl_pressed;
+	bool adjacent = _fn_pressed;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {

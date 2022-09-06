@@ -848,10 +848,8 @@ void VideoDriver_Win32Base::CheckPaletteAnim()
 
 void VideoDriver_Win32Base::InputLoop()
 {
-	bool old_ctrl_pressed = _ctrl_pressed;
-
-	_ctrl_pressed = this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
-	_shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
+	bool ctrl_pressed = this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
+	bool shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
@@ -868,7 +866,7 @@ void VideoDriver_Win32Base::InputLoop()
 		_dirkeys = 0;
 	}
 
-	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+	HandleModifierKeys(shift_pressed, ctrl_pressed);
 }
 
 bool VideoDriver_Win32Base::PollEvent()
