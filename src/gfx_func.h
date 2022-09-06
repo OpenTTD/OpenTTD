@@ -73,7 +73,7 @@ extern Palette _cur_palette; ///< Current palette
 void HandleToolbarHotkey(int hotkey);
 void HandleKeypress(uint keycode, char32_t key);
 void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
-void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed);
+void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed, bool alt_pressed);
 void HandleMouseEvents();
 void UpdateWindows();
 void ChangeGameSpeed(bool enable_fast_forward);

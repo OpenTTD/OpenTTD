@@ -2623,9 +2623,9 @@ void HandleModifierKeys(bool shift_pressed, bool ctrl_pressed, bool alt_pressed)
 
 	_shift_pressed = shift_pressed;
 
-	/* Hardwire modifiers leaving remove inaccessible for now. */
+	/* Hardwire modifier keys. */
 	_fn_pressed = ctrl_pressed;
-	_remove_pressed = false;
+	_remove_pressed = alt_pressed;
 	_estimate_pressed = shift_pressed;
 
 	if (old_fn_pressed != _fn_pressed) {
