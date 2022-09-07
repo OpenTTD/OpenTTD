@@ -189,7 +189,7 @@ struct StatusBarWindow : Window {
 
 				if (!this->reminder_timeout.HasElapsed()) {
 					Dimension icon_size = GetSpriteSize(SPR_UNREAD_NEWS);
-					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, r.right - WD_FRAMERECT_RIGHT - icon_size.width, r.top + std::max(0, ((int)(r.bottom - r.top + 1) - (int)icon_size.height) / 2));
+					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, r.right - WD_FRAMERECT_RIGHT - icon_size.width, CenterBounds(r.top, r.bottom, icon_size.height));
 				}
 				break;
 		}
