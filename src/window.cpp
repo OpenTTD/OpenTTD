@@ -3343,6 +3343,13 @@ void HideVitalWindows()
 	CloseWindowById(WC_STATUS_BAR, 0);
 }
 
+void ReInitWindow(Window *w, bool zoom_changed)
+{
+	if (w == nullptr) return;
+	if (zoom_changed) w->nested_root->AdjustPaddingForZoom();
+	w->ReInit();
+}
+
 /** Re-initialize all windows. */
 void ReInitAllWindows(bool zoom_changed)
 {
@@ -3352,9 +3359,13 @@ void ReInitAllWindows(bool zoom_changed)
 	extern void InitDepotWindowBlockSizes();
 	InitDepotWindowBlockSizes();
 
+	/* When _gui_zoom has changed, we need to resize toolbar and statusbar first,
+	 * so EnsureVisibleCaption uses the updated size information. */
+	ReInitWindow(FindWindowById(WC_MAIN_TOOLBAR, 0), zoom_changed);
+	ReInitWindow(FindWindowById(WC_STATUS_BAR, 0), zoom_changed);
 	for (Window *w : Window::Iterate()) {
-		if (zoom_changed) w->nested_root->AdjustPaddingForZoom();
-		w->ReInit();
+		if (w->window_class == WC_MAIN_TOOLBAR || w->window_class == WC_STATUS_BAR) continue;
+		ReInitWindow(w, zoom_changed);
 	}
 
 	void NetworkReInitChatBoxSize();
