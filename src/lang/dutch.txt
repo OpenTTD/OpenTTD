@@ -1011,7 +1011,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Taal sel
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% voltooid)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Volledig scherm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit vakje aan om OpenTTD in het volledige scherm te spelen
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit vakje aan om OpenTTD op volledig scherm te spelen
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
@@ -1025,7 +1025,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}De inste
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selecteer dit vakje om het scherm verticaal te synchroniseren. De wijziging gaat pas in nadat je het spel opnieuw hebt opgestart. Werkt alleen als hardwareversnelling is ingeschakeld
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Huidige chauffeur: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Huidige driver: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Menupuntgrootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kiest de grootte van bedieningselementen
