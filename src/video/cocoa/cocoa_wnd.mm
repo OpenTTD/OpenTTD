@@ -1269,8 +1269,12 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 /** Screen the window is on changed. */
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification
 {
+	bool did_adjust = AdjustGUIZoom();
+
 	/* Reallocate screen buffer if necessary. */
 	driver->AllocateBackingStore();
+
+	if (did_adjust) ReInitAllWindows(true);
 }
 
 /** Presentation options to use for full screen mode. */
