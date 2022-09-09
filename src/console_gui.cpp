@@ -53,8 +53,8 @@ struct IConsoleLine {
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(const std::string &buffer, TextColour colour) :
-			buffer(buffer),
+	IConsoleLine(std::string buffer, TextColour colour) :
+			buffer(std::move(buffer)),
 			colour(colour),
 			time(0)
 	{
