@@ -819,7 +819,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 	for (const auto &line : layout) {
 
 		int line_height = line->GetLeading();
-		if (y >= top && y < bottom) {
+		if (y >= top && y + line_height - 1 <= bottom) {
 			last_line = y + line_height;
 			if (first_line > y) first_line = y;
 
