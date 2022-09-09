@@ -1977,7 +1977,14 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 				d = maxdim(d, background);
 			}
 			if (this->index >= 0) {
-				static const Dimension padding = {0, 0};
+				/* Setup suggested padding for widgets. */
+				Dimension padding = {0, 0};
+				switch (this->type) {
+					default: NOT_REACHED();
+					case WWT_PANEL: padding = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM}; break;
+					case WWT_FRAME: padding = {WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM}; break;
+					case WWT_INSET: padding = {WD_INSET_LEFT + WD_INSET_RIGHT, WD_INSET_TOP + WD_BEVEL_BOTTOM}; break;
+				}
 				w->UpdateWidgetSize(this->index, &d, padding, &fill, &resize);
 			}
 		}
