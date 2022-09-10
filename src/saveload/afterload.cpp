@@ -2334,8 +2334,7 @@ bool AfterLoadGame()
 			if (IsTileType(t, MP_TREES)) {
 				uint density = GB(_m[t].m2, 6, 2);
 				uint ground = GB(_m[t].m2, 4, 2);
-				uint counter = GB(_m[t].m2, 0, 4);
-				_m[t].m2 = ground << 6 | density << 4 | counter;
+				_m[t].m2 = ground << 6 | density << 4;
 			}
 		}
 	}
@@ -3187,6 +3186,15 @@ bool AfterLoadGame()
 					u->UpdatePosition();
 				}
 				RoadVehLeaveDepot(rv, false);
+			}
+		}
+
+		if (IsSavegameVersionBeforeOrAt(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
+			/* Reset unused tree counters to reduce the savegame size. */
+			for (TileIndex t = 0; t < map_size; t++) {
+				if (IsTileType(t, MP_TREES)) {
+					SB(_m[t].m2, 0, 4, 0);
+				}
 			}
 		}
 
