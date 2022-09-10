@@ -788,7 +788,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	if (statspec == nullptr) return false;
 
 	if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
-		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, nullptr, INVALID_TILE);
+		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, nullptr, INVALID_TILE);
 		if (callback != CALLBACK_FAILED) tile = callback;
 	}
 
