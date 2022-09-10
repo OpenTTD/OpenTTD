@@ -1948,6 +1948,12 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					}
 					dts->Clone(tmp_layout.data());
 				}
+
+				/* Number of layouts must be even, alternating X and Y */
+				if (statspec->renderdata.size() & 1) {
+					grfmsg(1, "StationChangeInfo: Station %u defines an odd number of sprite layouts, dropping the last item", stid + i);
+					statspec->renderdata.pop_back();
+				}
 				break;
 			}
 
@@ -2069,6 +2075,12 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					uint num_building_sprites = buf->ReadByte();
 					/* On error, bail out immediately. Temporary GRF data was already freed */
 					if (ReadSpriteLayout(buf, num_building_sprites, false, GSF_STATIONS, true, false, dts)) return CIR_DISABLED;
+				}
+
+				/* Number of layouts must be even, alternating X and Y */
+				if (statspec->renderdata.size() & 1) {
+					grfmsg(1, "StationChangeInfo: Station %u defines an odd number of sprite layouts, dropping the last item", stid + i);
+					statspec->renderdata.pop_back();
 				}
 				break;
 			}
