@@ -19,13 +19,13 @@
 static const int SLIDER_WIDTH = 3;
 
 /**
- * Draw a volume slider widget with know at given value
+ * Draw a slider widget with knob at given value
  * @param r     Rectangle to draw the widget in
  * @param value Value to put the slider at
  */
-void DrawVolumeSliderWidget(Rect r, byte value)
+void DrawSliderWidget(Rect r, byte value)
 {
-	/* Draw a wedge indicating low to high volume level. */
+	/* Draw a wedge indicating low to high value. */
 	const int ha = (r.bottom - r.top) / 5;
 	int wx1 = r.left, wx2 = r.right;
 	if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
@@ -38,7 +38,7 @@ void DrawVolumeSliderWidget(Rect r, byte value)
 	GfxDrawLine(wedge[1].x, wedge[1].y, wedge[2].x, wedge[2].y, _current_text_dir == TD_RTL ? shadow : light);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[1].x, wedge[1].y, shadow);
 
-	/* Draw a slider handle indicating current volume level. */
+	/* Draw a slider handle indicating current value. */
 	const int sw = ScaleGUITrad(SLIDER_WIDTH);
 	if (_current_text_dir == TD_RTL) value = 127 - value;
 	const int x = r.left + (value * (r.right - r.left - sw) / 127);
@@ -46,20 +46,20 @@ void DrawVolumeSliderWidget(Rect r, byte value)
 }
 
 /**
- * Handle click on a volume slider widget to change the value
+ * Handle click on a slider widget to change the value
  * @param r      Rectangle of the widget
  * @param pt     Clicked point
- * @param value[in,out] Volume value to modify
- * @return       True if the volume setting was modified
+ * @param value[in,out] Value to modify
+ * @return       True if the value setting was modified
  */
-bool ClickVolumeSliderWidget(Rect r, Point pt, byte &value)
+bool ClickSliderWidget(Rect r, Point pt, byte &value)
 {
 	const int sw = ScaleGUITrad(SLIDER_WIDTH);
-	byte new_vol = Clamp((pt.x - r.left - sw / 2) * 127 / (r.right - r.left - sw), 0, 127);
-	if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
+	byte new_value = Clamp((pt.x - r.left - sw / 2) * 127 / (r.right - r.left - sw), 0, 127);
+	if (_current_text_dir == TD_RTL) new_value = 127 - new_value;
 
-	if (new_vol != value) {
-		value = new_vol;
+	if (new_value != value) {
+		value = new_value;
 		return true;
 	}
 

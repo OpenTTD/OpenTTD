@@ -14,8 +14,8 @@
 #include "../gfx_func.h"
 
 
-void DrawVolumeSliderWidget(Rect r, byte value);
-bool ClickVolumeSliderWidget(Rect r, Point pt, byte &value);
+void DrawSliderWidget(Rect r, byte value);
+bool ClickSliderWidget(Rect r, Point pt, byte &value);
 
 
 #endif /* WIDGETS_SLIDER_TYPE_H */
