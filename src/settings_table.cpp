@@ -286,7 +286,7 @@ static void InvalidateNewGRFChangeWindows(int32 new_value)
 {
 	InvalidateWindowClassesData(WC_SAVELOAD);
 	CloseWindowByClass(WC_GAME_OPTIONS);
-	ReInitAllWindows(_gui_zoom_cfg);
+	ReInitAllWindows(false);
 }
 
 static void InvalidateCompanyLiveryWindow(int32 new_value)
