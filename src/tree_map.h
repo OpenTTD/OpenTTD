@@ -21,6 +21,8 @@
  * offsets from the grfs files. These points to the start of
  * the tree list for a landscape. See the TREE_COUNT_* enumerations
  * for the amount of different trees for a specific landscape.
+ * TREE_RANDOM_* are special values used in the map array that signify that
+ * exact tree type is not stored and should be determined procedurally.
  */
 enum TreeType {
 	TREE_TEMPERATE    = 0x00, ///< temperate tree
@@ -29,7 +31,14 @@ enum TreeType {
 	TREE_CACTUS       = 0x1B, ///< a cactus for the 'desert part' on a sub-tropical map
 	TREE_SUB_TROPICAL = 0x1C, ///< tree on a sub-tropical map, non-rainforest, non-desert
 	TREE_TOYLAND      = 0x20, ///< tree on a toyland map
+	TREE_RANDOM_TEMPERATE = 0xFA, ///< procedural TREE_TEMPERATE
+	TREE_RANDOM_BEGIN = TREE_RANDOM_TEMPERATE,
+	TREE_RANDOM_ARCTIC = 0xFB, ///< procedural TREE_SUB_ARCTIC
+	TREE_RANDOM_TROPIC_NORMAL = 0xFC, ///< procedural tropic tree
+	TREE_RANDOM_TROPIC_RAINFOREST = 0xFD, ///< procedural TREE_RAINFOREST
+	TREE_RANDOM_TOYLAND = 0xFE, ///< procedural TREE_TOYLAND
 	TREE_INVALID      = 0xFF, ///< An invalid tree
+	TREE_RANDOM_END   = TREE_INVALID,
 };
 
 /* Counts the number of tree types for each landscape.
@@ -70,6 +79,7 @@ enum class TreeGrowthStage : uint {
 	Dying1 = 4,  ///< First stage of dying
 	Dying2 = 5,  ///< Second stage of dying
 	Dead = 6,  ///< Dead tree
+	Procedural = 7,  ///< Magic value that signifies that tree growth stage is determined procedurally, not stored in the map array.
 };
 
 /**
@@ -181,6 +191,20 @@ inline void AddTreeCount(Tile t, int c)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	t.m5() += c << 6;
+}
+
+/**
+ * Returns the tree growth stage.
+ * Sets the tree cycle parity (for procedural growth). Uses the same bits as tree counter.
+ *
+ * @param t The tile to set the value on
+ * @param c The value to set
+ * @pre Tile must be of type MP_TREES
+ */
+static inline void SetTreeCycle(Tile t, int c)
+{
+	assert(IsTileType(t, MP_TREES));
+	SB(t.m5(), 6, 2, c);
 }
 
 /**

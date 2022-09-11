@@ -365,4 +365,22 @@ constexpr uint64_t PowerOfTen(int power)
 
 uint32_t IntSqrt(uint32_t num);
 
+
+/**
+ * Simple 32 bit to 32 bit hash.
+ * From MurmurHash3.
+ * @param h The value to take the hash of.
+ * @return The hash of the value.
+ */
+inline uint32_t SimpleHash32(uint32_t h)
+{
+	h ^= h >> 16;
+	h *= 0x85ebca6b;
+	h ^= h >> 13;
+	h *= 0xc2b2ae35;
+	h ^= h >> 16;
+
+	return h;
+}
+
 #endif /* MATH_FUNC_HPP */
