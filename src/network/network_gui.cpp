@@ -1777,9 +1777,11 @@ public:
 				SetDParam(0, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + _network_server_connection_type);
 				break;
 
-			case WID_CL_CLIENT_NAME:
-				SetDParamStr(0, _settings_client.network.client_name);
+			case WID_CL_CLIENT_NAME: {
+				const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
+				SetDParamStr(0, own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name);
 				break;
+			}
 
 			case WID_CL_CLIENT_COMPANY_COUNT:
 				SetDParam(0, NetworkClientInfo::GetNumItems());
@@ -1799,12 +1801,13 @@ public:
 				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION, NETWORK_NAME_LENGTH, this, CS_ALPHANUMERAL, QSF_LEN_IN_CHARS);
 				break;
 
-			case WID_CL_CLIENT_NAME_EDIT:
+			case WID_CL_CLIENT_NAME_EDIT: {
+				const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				this->query_widget = WID_CL_CLIENT_NAME_EDIT;
-				SetDParamStr(0, _settings_client.network.client_name);
+				SetDParamStr(0, own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name);
 				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION, NETWORK_CLIENT_NAME_LENGTH, this, CS_ALPHANUMERAL, QSF_LEN_IN_CHARS);
 				break;
-
+			}
 			case WID_CL_SERVER_VISIBILITY:
 				if (!_network_server) break;
 
