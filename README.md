@@ -116,35 +116,6 @@ Most types of add-on content can be downloaded within OpenTTD via the 'Check Onl
 
 Add-on content can also be installed manually, but that's more complicated; the [OpenTTD wiki](https://wiki.openttd.org/) may offer help with that, or the [OpenTTD directory structure guide](./docs/directory_structure.md).
 
-### 1.5.1) AI opponents
-
-OpenTTD comes without AI opponents, so if you want to play with AIs you have to download them.
-
-The easiest way is via the 'Check Online Content' button in the main menu.
-
-You can select some AIs that you think are compatible with your playing style.
-
-AI help and discussions may also be found in the [AI section of the forum](https://www.tt-forums.net/viewforum.php?f=65).
-
-### 1.5.2) Scenarios and height maps
-
-Scenarios and heightmaps can be added via the 'Check Online Content' button in the main menu.
-
-### 1.5.3) NewGRFs
-
-A wide range of add-content is available as NewGRFs, including vehicles, industries, stations, landscape objects, town names and more.
-
-NewGRFs can be added via the 'Check Online Content' button in the main menu.
-
-See also the wiki [guide to NewGRFs](https://wiki.openttd.org/en/Manual/NewGRF) and [the forum graphics development section](https://www.tt-forums.net/viewforum.php?f=66).
-
-### 1.5.4) Game scripts
-
-Game scripts can provide additional challenges or changes to the standard OpenTTD gameplay, for example setting transport goals, or changing town growth behaviour.
-
-Game scripts can be added via the 'Check Online Content' button in the main menu.
-
-See also the wiki [guide to game scripts](https://wiki.openttd.org/en/Manual/Game%20script) and [the forum graphics game script section](https://www.tt-forums.net/viewforum.php?f=65).
 
 ### 1.6) OpenTTD directories
 
