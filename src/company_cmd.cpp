@@ -847,7 +847,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 
 				/* In network games, we need to try setting the company manager face here to sync it to all clients.
 				 * If a favorite company manager face is selected, choose it. Otherwise, use a random face. */
-				if (_company_manager_face != 0) Command<CMD_SET_COMPANY_MANAGER_FACE>::Post(_company_manager_face);
+				if (_company_manager_face != 0) Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, _company_manager_face);
 
 				/* Now that we have a new company, broadcast our company settings to
 				 * all clients so everything is in sync */
