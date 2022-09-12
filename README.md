@@ -22,6 +22,10 @@
 OpenTTD is a transport simulation game based upon the popular game Transport Tycoon Deluxe, written by Chris Sawyer.
 It attempts to mimic the original game as closely as possible while extending it with new features.
 
+hen played, OpenTTD includes many ways of expanding and connecting many ports or cities that you may have built.
+You may build a bridge to connect cities across oceans, or build long connecting highways for maximum efficiency.
+As time passes, the climates change and technology evolves. Make sure to keep track with this changes to achieve highest prosperity!
+
 OpenTTD is licensed under the GNU General Public License version 2.0, but includes some 3rd party software under different licenses.
 See the section ["Licensing"](#30-licensing) below for details.
 
@@ -119,6 +123,9 @@ Add-on content can also be installed manually, but that's more complicated; the 
 ### 1.5.1) AI opponents
 
 OpenTTD comes without AI opponents, so if you want to play with AIs you have to download them.
+
+For more information on how to download and configure the AI, look in this [video](https://www.youtube.com/watch?v=UxUOjtSJaA4&ab_channel=TTDHelper)
+
 
 The easiest way is via the 'Check Online Content' button in the main menu.
 
