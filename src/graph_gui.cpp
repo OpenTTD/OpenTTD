@@ -110,14 +110,15 @@ struct GraphLegendWindow : Window {
  */
 static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 {
-	NWidgetVertical *vert = new NWidgetVertical();
+	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
+	vert->SetPadding(2, 2, 2, 2);
 	uint sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X).height;
 
 	for (int widnum = WID_GL_FIRST_COMPANY; widnum <= WID_GL_LAST_COMPANY; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_BROWN, widnum);
-		panel->SetMinimalSize(246, sprite_height);
+		panel->SetMinimalSize(246, sprite_height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 		panel->SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, FS_NORMAL);
-		panel->SetFill(1, 0);
+		panel->SetFill(1, 1);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(panel);
 	}
@@ -133,13 +134,7 @@ static const NWidgetPart _nested_graph_legend_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GL_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidgetFunction(MakeNWidgetCompanyLines),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+		NWidgetFunction(MakeNWidgetCompanyLines),
 	EndContainer(),
 };
 
