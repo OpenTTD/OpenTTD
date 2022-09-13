@@ -260,7 +260,7 @@ static Money DrawYearCategory (const Rect &r, int start_y, ExpensesList list, co
 static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_END])
 {
 	int y = r.top;
-	Money sum;
+	Money sum = 0;
 
 	/* Year header */
 	SetDParam(0, year);
