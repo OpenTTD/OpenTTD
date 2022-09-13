@@ -2115,21 +2115,19 @@ public:
 		}
 	}
 
-	virtual void OnMouseLoop() override
+	void OnMouseOver(Point pt, int widget) override
 	{
-		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) != WID_CL_MATRIX) {
-			this->hover_index = -1;
-			this->SetDirty();
-			return;
-		}
-
-		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_CL_MATRIX);
-		int y = _cursor.pos.y - this->top - nwi->pos_y - 2;
-		int index = y / this->line_height;
-
-		if (index != this->hover_index) {
-			this->hover_index = index;
-			this->SetDirty();
+		if (widget != WID_CL_MATRIX) {
+			if (this->hover_index != -1) {
+				this->hover_index = -1;
+				this->SetWidgetDirty(WID_CL_MATRIX);
+			}
+		} else {
+			int index = this->GetRowFromWidget(pt.y, widget, 0, -1);
+			if (index != this->hover_index) {
+				this->hover_index = index;
+				this->SetWidgetDirty(WID_CL_MATRIX);
+			}
 		}
 	}
 };
