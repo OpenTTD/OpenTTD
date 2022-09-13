@@ -56,6 +56,11 @@ macro(compile_flags)
 
     if(MSVC)
         add_compile_options(/W3)
+        if(MSVC_VERSION GREATER 1929)
+            # Starting with version 19.30, there is an optimisation bug, see #9966 for details
+            # This flag disables the broken optimisation to work around the bug
+            add_compile_options(/d2ssa-rse-)
+        endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
         add_compile_options(
             -W
