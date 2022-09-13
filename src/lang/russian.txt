@@ -352,8 +352,8 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}м
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите строку фильтра
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевое слово для фильтрации списка
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите ключевые слова для фильтрации списка
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевые слова для фильтрации списка
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Выбор порядка группировки
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Смена направления сортировки (убывание/возрастание)
