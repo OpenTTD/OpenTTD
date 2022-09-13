@@ -1100,7 +1100,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 11 : 8);
+	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 12 : 8);
 	return CBF_NONE;
 }
 
@@ -1139,6 +1139,20 @@ void ToggleDirtyBlocks()
 }
 
 /**
+ * Toggle drawing of widget outlihes.
+ * @note has only an effect when newgrf_developer_tools are active.
+ */
+void ToggleWidgetOutlines()
+{
+	extern bool _draw_widget_outlines;
+	/* Always allow to toggle them off */
+	if (_settings_client.gui.newgrf_developer_tools || _draw_widget_outlines) {
+		_draw_widget_outlines = !_draw_widget_outlines;
+		MarkWholeScreenDirty();
+	}
+}
+
+/**
  * Set the starting year for a scenario.
  * @param year New starting year.
  */
@@ -1169,6 +1183,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case  8: ShowSpriteAlignerWindow();        break;
 		case  9: ToggleBoundingBoxes();            break;
 		case 10: ToggleDirtyBlocks();              break;
+		case 11: ToggleWidgetOutlines();           break;
 	}
 	return CBF_NONE;
 }
