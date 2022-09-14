@@ -226,9 +226,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Cadena de filtrat:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena de filtrat
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdueix una paraula clau per filtrar la llista de
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introduïu una o més paraules per a filtrar la llista de
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduïu una paraula clau o més per a filtrar la llista de
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecciona l'agrupament de la càrrega
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona si l'ordre ha de ser descendent o ascendent
@@ -1164,7 +1164,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuració
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Femenin}{BLACK}Cadena de filtrat:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Masculin}{BLACK}Filtre:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplega-ho tot
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plega-ho tot
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restableix tots els valors
@@ -3125,7 +3125,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalls 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hi ha informació disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Cadena de filtre:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtre:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobreescriu fitxer
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Esteu segur que voleu sobreescriure el fitxer?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (carpeta)
@@ -3217,7 +3217,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informac
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arxius NewGRF actius
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arxius NewGRF inactius
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecciona configuració:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena de filtre:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtre:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa configuració
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Desa la llista actual com a predefinició
