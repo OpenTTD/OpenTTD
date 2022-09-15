@@ -235,4 +235,6 @@ void InitFontCache(bool monospace);
 void UninitFontCache();
 bool HasAntialiasedFonts();
 
+bool GetFontAAState(FontSize size, bool check_blitter = true);
+
 #endif /* FONTCACHE_H */

@@ -10,7 +10,7 @@
 #ifndef FONT_OSX_H
 #define FONT_OSX_H
 
-#include "../../fontcache_internal.h"
+#include "../../fontcache/truetypefontcache.h"
 #include "os/macosx/macos.h"
 
 #include <CoreFoundation/CoreFoundation.h>
