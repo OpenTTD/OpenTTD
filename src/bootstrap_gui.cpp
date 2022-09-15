@@ -286,16 +286,16 @@ bool HandleBootstrap()
 	/* No user interface, bail out with an error. */
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) goto failure;
 
-	/* If there is no network or no freetype, then there is nothing we can do. Go straight to failure. */
+	/* If there is no network or no non-sprite font, then there is nothing we can do. Go straight to failure. */
 #if (defined(_WIN32) && defined(WITH_UNISCRIBE)) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(__APPLE__))) || defined(WITH_COCOA)
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */
 	_game_mode = GM_BOOTSTRAP;
 
-	/* Initialise the freetype font code. */
+	/* Initialise the font cache. */
 	InitializeUnicodeGlyphMap();
-	/* Next "force" finding a suitable freetype font as the local font is missing. */
+	/* Next "force" finding a suitable non-sprite font as the local font is missing. */
 	CheckForMissingGlyphs(false);
 
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.

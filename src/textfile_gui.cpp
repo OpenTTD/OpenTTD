@@ -215,7 +215,7 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	return true;
 }
 
-/* virtual */ void TextfileWindow::SetFontNames(FreeTypeSettings *settings, const char *font_name, const void *os_data)
+/* virtual */ void TextfileWindow::SetFontNames(FontCacheSettings *settings, const char *font_name, const void *os_data)
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	settings->mono.font = font_name;

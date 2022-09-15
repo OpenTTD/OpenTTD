@@ -32,7 +32,7 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
 static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
 
-FreeTypeSettings _freetype;
+FontCacheSettings _fcsettings;
 
 /**
  * Create a new font cache.
@@ -72,7 +72,7 @@ int GetCharacterHeight(FontSize size)
 }
 
 
-/** Font cache for fonts that are based on a freetype font. */
+/** Font cache for fonts that are based on a sprite font. */
 class SpriteFontCache : public FontCache {
 private:
 	SpriteID **glyph_to_spriteid_map; ///< Mapping of glyphs to sprite IDs.
@@ -259,16 +259,16 @@ TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
 void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate)
 {
 	if (this->glyph_to_sprite == nullptr) {
-		Debug(freetype, 3, "Allocating root glyph cache for size {}", this->fs);
+		Debug(fontcache, 3, "Allocating root glyph cache for size {}", this->fs);
 		this->glyph_to_sprite = CallocT<GlyphEntry*>(256);
 	}
 
 	if (this->glyph_to_sprite[GB(key, 8, 8)] == nullptr) {
-		Debug(freetype, 3, "Allocating glyph cache for range 0x{:02X}00, size {}", GB(key, 8, 8), this->fs);
+		Debug(fontcache, 3, "Allocating glyph cache for range 0x{:02X}00, size {}", GB(key, 8, 8), this->fs);
 		this->glyph_to_sprite[GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
 	}
 
-	Debug(freetype, 4, "Set glyph for unicode character 0x{:04X}, size {}", key, this->fs);
+	Debug(fontcache, 4, "Set glyph for unicode character 0x{:04X}, size {}", key, this->fs);
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width = glyph->width;
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
@@ -283,10 +283,10 @@ static bool GetFontAAState(FontSize size, bool check_blitter = true)
 
 	switch (size) {
 		default: NOT_REACHED();
-		case FS_NORMAL: return _freetype.medium.aa;
-		case FS_SMALL:  return _freetype.small.aa;
-		case FS_LARGE:  return _freetype.large.aa;
-		case FS_MONO:   return _freetype.mono.aa;
+		case FS_NORMAL: return _fcsettings.medium.aa;
+		case FS_SMALL:  return _fcsettings.small.aa;
+		case FS_LARGE:  return _fcsettings.large.aa;
+		case FS_MONO:   return _fcsettings.mono.aa;
 	}
 }
 
@@ -468,7 +468,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 		this->height       = this->ascender - this->descender;
 	} else {
 		/* Both FT_Set_Pixel_Sizes and FT_Select_Size failed. */
-		Debug(freetype, 0, "Font size selection failed. Using FontCache defaults.");
+		Debug(fontcache, 0, "Font size selection failed. Using FontCache defaults.");
 	}
 }
 
@@ -484,10 +484,10 @@ static void LoadFreeTypeFont(FontSize fs)
 	FreeTypeSubSetting *settings = nullptr;
 	switch (fs) {
 		default: NOT_REACHED();
-		case FS_SMALL:  settings = &_freetype.small;  break;
-		case FS_NORMAL: settings = &_freetype.medium; break;
-		case FS_LARGE:  settings = &_freetype.large;  break;
-		case FS_MONO:   settings = &_freetype.mono;   break;
+		case FS_SMALL:  settings = &_fcsettings.small;  break;
+		case FS_NORMAL: settings = &_fcsettings.medium; break;
+		case FS_LARGE:  settings = &_fcsettings.large;  break;
+		case FS_MONO:   settings = &_fcsettings.mono;   break;
 	}
 
 	if (settings->font.empty()) return;
@@ -498,7 +498,7 @@ static void LoadFreeTypeFont(FontSize fs)
 			return;
 		}
 
-		Debug(freetype, 2, "Initialized");
+		Debug(fontcache, 2, "Initialized");
 	}
 
 	const char *font_name = settings->font.c_str();
@@ -527,7 +527,7 @@ static void LoadFreeTypeFont(FontSize fs)
 	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, &face);
 
 	if (error == FT_Err_Ok) {
-		Debug(freetype, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
+		Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
 
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(face, ft_encoding_unicode);
@@ -675,10 +675,10 @@ const void *FreeTypeFontCache::InternalGetFontTable(uint32 tag, size_t &length)
 
 
 /**
- * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
+ * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
  * @param monospace Whether to initialise the monospace or regular fonts.
  */
-void InitFreeType(bool monospace)
+void InitFontCache(bool monospace)
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		if (monospace != (fs == FS_MONO)) continue;
@@ -701,7 +701,7 @@ void InitFreeType(bool monospace)
 /**
  * Free everything allocated w.r.t. fonts.
  */
-void UninitFreeType()
+void UninitFontCache()
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache *fc = FontCache::Get(fs);
@@ -733,5 +733,5 @@ bool HasAntialiasedFonts()
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
 #endif /* WITH_FREETYPE */
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
+bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
 #endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA) */

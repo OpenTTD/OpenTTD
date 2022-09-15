@@ -94,7 +94,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 #endif /* WITH_FREETYPE */
 
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	if (!FcInit()) return false;
 
@@ -148,7 +148,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			callback->SetFontNames(settings, (const char *)file);
 
 			bool missing = callback->FindMissingGlyphs();
-			Debug(freetype, 1, "Font \"{}\" misses{} glyphs", file, missing ? "" : " no");
+			Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", file, missing ? "" : " no");
 
 			if (!missing) {
 				best_weight = value;
@@ -159,7 +159,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		if (best_font != nullptr) {
 			ret = true;
 			callback->SetFontNames(settings, best_font);
-			InitFreeType(callback->Monospace());
+			InitFontCache(callback->Monospace());
 		}
 
 		/* Clean up the list of filenames. */
