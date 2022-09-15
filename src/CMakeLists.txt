@@ -10,6 +10,7 @@ add_subdirectory(3rdparty)
 add_subdirectory(ai)
 add_subdirectory(blitter)
 add_subdirectory(core)
+add_subdirectory(fontcache)
 add_subdirectory(game)
 add_subdirectory(lang)
 add_subdirectory(linkgraph)
@@ -157,7 +158,6 @@ add_files(
     fios_gui.cpp
     fontcache.cpp
     fontcache.h
-    fontcache_internal.h
     fontdetection.h
     framerate_gui.cpp
     framerate_type.h

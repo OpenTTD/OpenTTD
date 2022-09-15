@@ -10,7 +10,7 @@
 #ifndef FONT_WIN32_H
 #define FONT_WIN32_H
 
-#include "../../fontcache_internal.h"
+#include "../../fontcache/truetypefontcache.h"
 #include "win32.h"
 
 /** Font cache for fonts that are based on a Win32 font. */

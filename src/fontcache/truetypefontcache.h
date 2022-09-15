@@ -5,13 +5,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file fontcache_internal.h Support types and functions for platform-specific font support. */
+/** @file truetypefontcache.h Common base definition for font file based font caches. */
 
-#ifndef FONTCACHE_INTERNAL_H
-#define FONTCACHE_INTERNAL_H
+#ifndef TRUETYPEFONTCACHE_H
+#define TRUETYPEFONTCACHE_H
 
-#include "core/smallmap_type.hpp"
-#include "fontcache.h"
+#include "../core/smallmap_type.hpp"
+#include "../fontcache.h"
 
 
 static const int MAX_FONT_SIZE = 72; ///< Maximum font size.
@@ -74,4 +74,4 @@ public:
 	bool IsBuiltInFont() override { return false; }
 };
 
-#endif /* FONTCACHE_INTERNAL_H */
+#endif /* TRUETYPEFONTCACHE_H */

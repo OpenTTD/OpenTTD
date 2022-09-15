@@ -9,16 +9,17 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "font_win32.h"
 #include "../../blitter/factory.hpp"
 #include "../../core/alloc_func.hpp"
 #include "../../core/math_func.hpp"
 #include "../../fileio_func.h"
 #include "../../fontdetection.h"
 #include "../../fontcache.h"
+#include "../../fontcache/truetypefontcache.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../zoom_func.h"
+#include "font_win32.h"
 
 #include "../../table/control_codes.h"
 
