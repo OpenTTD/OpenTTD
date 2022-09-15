@@ -212,8 +212,8 @@ static inline bool GetDrawGlyphShadow(FontSize size)
 	return FontCache::Get(size)->GetDrawGlyphShadow();
 }
 
-/** Settings for a single freetype font. */
-struct FreeTypeSubSetting {
+/** Settings for a single font. */
+struct FontCacheSubSetting {
 	std::string font; ///< The name of the font, or path to the font.
 	uint size;        ///< The (requested) size of the font.
 	bool aa;          ///< Whether to do anti aliasing or not.
@@ -221,18 +221,18 @@ struct FreeTypeSubSetting {
 	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
 };
 
-/** Settings for the freetype fonts. */
-struct FreeTypeSettings {
-	FreeTypeSubSetting small;  ///< The smallest font; mostly used for zoomed out view.
-	FreeTypeSubSetting medium; ///< The normal font size.
-	FreeTypeSubSetting large;  ///< The largest font; mostly used for newspapers.
-	FreeTypeSubSetting mono;   ///< The mono space font used for license/readme viewers.
+/** Settings for the four different fonts. */
+struct FontCacheSettings {
+	FontCacheSubSetting small;  ///< The smallest font; mostly used for zoomed out view.
+	FontCacheSubSetting medium; ///< The normal font size.
+	FontCacheSubSetting large;  ///< The largest font; mostly used for newspapers.
+	FontCacheSubSetting mono;   ///< The mono space font used for license/readme viewers.
 };
 
-extern FreeTypeSettings _freetype;
+extern FontCacheSettings _fcsettings;
 
-void InitFreeType(bool monospace);
-void UninitFreeType();
+void InitFontCache(bool monospace);
+void UninitFontCache();
 bool HasAntialiasedFonts();
 
 #endif /* FONTCACHE_H */

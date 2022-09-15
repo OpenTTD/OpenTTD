@@ -78,7 +78,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, FONT_DIR_NT, 0, KEY_READ, &hKey);
 
 	if (ret != ERROR_SUCCESS) {
-		Debug(freetype, 0, "Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts");
+		Debug(fontcache, 0, "Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts");
 		return err;
 	}
 
@@ -113,7 +113,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	}
 
 	if (!SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_FONTS, nullptr, SHGFP_TYPE_CURRENT, vbuffer))) {
-		Debug(freetype, 0, "SHGetFolderPath cannot return fonts directory");
+		Debug(fontcache, 0, "SHGetFolderPath cannot return fonts directory");
 		goto folder_error;
 	}
 
@@ -268,7 +268,7 @@ public:
 };
 
 struct EFCParam {
-	FreeTypeSettings *settings;
+	FontCacheSettings *settings;
 	LOCALESIGNATURE  locale;
 	MissingGlyphSearcher *callback;
 	FontList fonts;
@@ -334,17 +334,17 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 
 	info->callback->SetFontNames(info->settings, font_name, &logfont->elfLogFont);
 	if (info->callback->FindMissingGlyphs()) return 1;
-	Debug(freetype, 1, "Fallback font: {} ({})", font_name, english_name);
+	Debug(fontcache, 1, "Fallback font: {} ({})", font_name, english_name);
 	return 0; // stop enumerating
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
-	Debug(freetype, 1, "Trying fallback fonts");
+	Debug(fontcache, 1, "Trying fallback fonts");
 	EFCParam langInfo;
 	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPTSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
 		/* Invalid langid or some other mysterious error, can't determine fallback font. */
-		Debug(freetype, 1, "Can't get locale info for fallback font (langid=0x{:x})", winlangid);
+		Debug(fontcache, 1, "Can't get locale info for fallback font (langid=0x{:x})", winlangid);
 		return false;
 	}
 	langInfo.settings = settings;
@@ -439,7 +439,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 	this->glyph_size.cx = otm->otmTextMetrics.tmMaxCharWidth;
 	this->glyph_size.cy = otm->otmTextMetrics.tmHeight;
 
-	Debug(freetype, 2, "Loaded font '{}' with size {}", FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFullName)), pixels);
+	Debug(fontcache, 2, "Loaded font '{}' with size {}", FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFullName)), pixels);
 }
 
 /**
@@ -579,12 +579,12 @@ void LoadWin32Font(FontSize fs)
 {
 	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
 
-	FreeTypeSubSetting *settings = nullptr;
+	FontCacheSubSetting *settings = nullptr;
 	switch (fs) {
-		case FS_SMALL:  settings = &_freetype.small;  break;
-		case FS_NORMAL: settings = &_freetype.medium; break;
-		case FS_LARGE:  settings = &_freetype.large;  break;
-		case FS_MONO:   settings = &_freetype.mono;   break;
+		case FS_SMALL:  settings = &_fcsettings.small;  break;
+		case FS_NORMAL: settings = &_fcsettings.medium; break;
+		case FS_LARGE:  settings = &_fcsettings.large;  break;
+		case FS_MONO:   settings = &_fcsettings.mono;   break;
 		default: NOT_REACHED();
 	}
 

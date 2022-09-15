@@ -329,7 +329,7 @@ static void ShutdownGame()
 	/* No NewGRFs were loaded when it was still bootstrapping. */
 	if (_game_mode != GM_BOOTSTRAP) ResetNewGRFData();
 
-	UninitFreeType();
+	UninitFontCache();
 }
 
 /**
@@ -705,8 +705,8 @@ int openttd_main(int argc, char *argv[])
 	/* enumerate language files */
 	InitializeLanguagePacks();
 
-	/* Initialize the regular font for FreeType */
-	InitFreeType(false);
+	/* Initialize the font cache */
+	InitFontCache(false);
 
 	/* This must be done early, since functions use the SetWindowDirty* calls */
 	InitWindowSystem();

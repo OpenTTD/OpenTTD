@@ -57,7 +57,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	}
 
 	if (os_err == noErr) {
-		Debug(freetype, 3, "Font path for {}: {}", font_name, file_path);
+		Debug(fontcache, 3, "Font path for {}: {}", font_name, file_path);
 		err = FT_New_Face(_library, (const char *)file_path, 0, face);
 	}
 
@@ -67,7 +67,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 #endif /* WITH_FREETYPE */
 
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	/* Determine fallback font using CoreText. This uses the language isocode
 	 * to find a suitable font. CoreText is available from 10.5 onwards. */
@@ -134,7 +134,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			/* Save result. */
 			callback->SetFontNames(settings, name);
 			if (!callback->FindMissingGlyphs()) {
-				Debug(freetype, 2, "CT-Font for {}: {}", language_isocode, name);
+				Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
 				result = true;
 				break;
 			}
@@ -221,7 +221,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
 	this->font_name = name;
 
-	Debug(freetype, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
+	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
 GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)
@@ -350,13 +350,13 @@ void LoadCoreTextFont(FontSize fs)
 {
 	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
 
-	FreeTypeSubSetting *settings = nullptr;
+	FontCacheSubSetting *settings = nullptr;
 	switch (fs) {
 		default: NOT_REACHED();
-		case FS_SMALL:  settings = &_freetype.small;  break;
-		case FS_NORMAL: settings = &_freetype.medium; break;
-		case FS_LARGE:  settings = &_freetype.large;  break;
-		case FS_MONO:   settings = &_freetype.mono;   break;
+		case FS_SMALL:  settings = &_fcsettings.small;  break;
+		case FS_NORMAL: settings = &_fcsettings.medium; break;
+		case FS_LARGE:  settings = &_fcsettings.large;  break;
+		case FS_MONO:   settings = &_fcsettings.mono;   break;
 	}
 
 	if (settings->font.empty()) return;
