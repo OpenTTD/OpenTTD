@@ -226,9 +226,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar texto:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introducir cadea de texto a filtrar
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce unha palabra clave pola que filtra-la lista
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introducir unha ou máis palabras clave pola que filtrar a lista
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce unha ou máis palabras clave pola que filtra-la lista
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecciona a orde de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona a ordenación (descendente/ascendente)
@@ -1026,6 +1026,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}O cambio
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca esta caixa para activar o V-sync da pantalla. O cambio só se aplicará tras reiniciar o xogo. Só funciona coa aceleración de hardware habilitada
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño da interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleciona o tamaño de elementos da interface a usar
@@ -1163,7 +1164,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Non hai 
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Opcións
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar texto:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todos
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Minimizar todos
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos os valores
@@ -3124,7 +3125,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Non hai información dispoñíbel
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}String de filtrado:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtro:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobrescribir arquivo
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Estás seguro de que queres rescribir este arquivo?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Directorio)
@@ -3216,7 +3217,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informac
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arquivos NewGRF activos
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arquivos NewGRF inactivos
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleccionar perfil
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrar cadea de caracteres
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrar:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carga-lo perfil seleccionado
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gravar perfil
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Grava-la lista actual coma un perfil
@@ -4228,8 +4229,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacidade total de carga deste tren:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Baleiro
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} dende {STATION}
@@ -4468,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este hor
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comezará o {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data comezo
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona unha data coma punto de inicio para este horario. Ctrl + click determina o punto de partida deste horario e distribúe uniformemente tódolos vehículos que compartan esta orde baséandose na súa orde relativa. se a orde está completamente tabulada nos horarios
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona unha data coma punto de inicio para este horario. Ctrl + click distribúe uniformemente tódolos vehículos que compartan esta orde baséandose na súa orde relativa. se a orde está completamente tabulada nos horarios
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar o tempo que debería levar a orde seleccionada
@@ -5115,7 +5116,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banco
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de diamante
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de ferro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantación de froita
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantación de sobreiras
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantación de caucho
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Abastecemento de auga
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de auga
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica

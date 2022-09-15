@@ -605,8 +605,8 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowo filtru
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo, wg którego filtrować listę
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz jedno lub więcej słów kluczowych, aby przefiltrować listę
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz jedno lub więcej słów kluczowych, aby przefiltrować listę
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wybierz kolejność grupowania
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Wybierz kolejność sortowania (malejąco/rosnąco)
@@ -1543,7 +1543,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pas
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ustawienia
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrowanie po frazie:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtr:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otwórz wszystko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zamknij wszystko
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Zresetuj wszystkie ustawienia
@@ -3504,7 +3504,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegó
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Fraza filtru:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtr:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Zastąp plik
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Czy na pewno chcesz zastąpić istniejący stan gry?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (folder)
@@ -3596,7 +3596,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Szczegó
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktywne pliki NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Nieaktywne pliki NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wybierz konfigurację:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtruj napis:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtr:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Załaduj wskazany stan ustawień
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Zapisz schemat
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Zapisz obecną listę jako stan ustawień
