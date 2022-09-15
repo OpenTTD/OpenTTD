@@ -161,7 +161,7 @@ registry_no_font_found:
  * @param logfont the font information to get the english name of.
  * @return the English name (if it could be found).
  */
-static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
+static std::string GetEnglishFontName(const ENUMLOGFONTEX *logfont)
 {
 	static char font_name[MAX_PATH];
 	const char *ret_font_name = nullptr;
@@ -228,7 +228,7 @@ err2:
 	ReleaseDC(nullptr, dc);
 	DeleteObject(font);
 err1:
-	return ret_font_name == nullptr ? FS2OTTD((const wchar_t *)logfont->elfFullName) : ret_font_name;
+	return ret_font_name == nullptr ? FS2OTTD((const wchar_t *)logfont->elfFullName) : std::string(ret_font_name);
 }
 #endif /* WITH_FREETYPE */
 
@@ -309,8 +309,8 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 
 #ifdef WITH_FREETYPE
 	/* Add english name after font name */
-	const char *english_name = GetEnglishFontName(logfont);
-	strecpy(font_name + strlen(font_name) + 1, english_name, lastof(font_name));
+	std::string english_name = GetEnglishFontName(logfont);
+	strecpy(font_name + strlen(font_name) + 1, english_name.c_str(), lastof(font_name));
 
 	/* Check whether we can actually load the font. */
 	bool ft_init = _library != nullptr;
