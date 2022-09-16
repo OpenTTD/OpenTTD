@@ -225,9 +225,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtertekst:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtertekst invoeren
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Voer een woord in waarop de lijst wordt gefilterd
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Voer een of meer woorden in waarop de lijst wordt gefilterd
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Voer een of meer woorden in waarop de lijst wordt gefilterd
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecteer de volgorde voor groeperen
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer de sorteerrichting (aflopend-oplopend)
@@ -1163,7 +1163,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bru
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Instellingen
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtertekst:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles uitvouwen
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles inklappen
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Alle waarden terugstellen
@@ -3124,7 +3124,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldeta
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Geen informatie beschikbaar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtertekenreeks:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Bestand overschrijven
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Weet je zeker dat je het bestaande bestand wilt overschrijven?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Map)
@@ -3216,7 +3216,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Gedetail
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Actieve NewGRF-bestanden
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inactieve NewGRF-bestanden
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Voorkeursinstelling selecteren:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtertekst:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}De geselecteerde voorkeursinstelling laden
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Voorkeursinstelling opslaan
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Bewaar de huidige lijst als voorkeursinstelling
