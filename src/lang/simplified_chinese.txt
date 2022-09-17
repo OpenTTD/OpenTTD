@@ -225,9 +225,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}�
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}米
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}过滤字串:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入过滤器字符串
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入用以过滤此列表的关键词
+STR_LIST_FILTER_TITLE                                           :{BLACK}关键字词:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入关键字筛选
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入关键字以筛选查找此列表
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}选择分组次序
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}选择排序方法 （降序/升序）
@@ -1163,7 +1163,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合�
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}设置
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}关键字过滤:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}关键字搜索:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展开全部
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}关闭全部
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}重置所有值
@@ -3124,7 +3124,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏�
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}过滤字串：
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}关键字词：
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆盖文件
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}你确定要覆盖已有文件吗？
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (目录)
@@ -3216,7 +3216,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF �
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}激活 NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}停用 NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}选择预设
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}过滤器字符串：
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}关键字词搜索：
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}装载选定的预定义
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}保存预定义
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}将当前组保存为预定义
@@ -4468,7 +4468,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此时�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此时刻表将于 {STRING} 开始
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}起始日期
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}选择此时刻表开始实施的日期。如果时刻表每一项指令皆已指定持续时间，Ctrl+左击会使系统为每个共用此时刻表的运具赋予一个开始实施时刻表的日期，使它们之间的时间间距一致
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}选择一个时间作为此时间表的起始日期。按住Ctrl键单击将会给所有共享此时刻表的车辆指定一个时间，以使所有共享车辆保持运行间隔，但前提是时间表已为所有命令设定计划执行时间。
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间
