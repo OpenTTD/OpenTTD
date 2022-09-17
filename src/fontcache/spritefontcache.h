@@ -17,12 +17,12 @@
 class SpriteFontCache : public FontCache {
 private:
 	SpriteID **glyph_to_spriteid_map; ///< Mapping of glyphs to sprite IDs.
+	SpriteID GetUnicodeGlyph(WChar key);
 
 	void ClearGlyphToSpriteMap();
 public:
 	SpriteFontCache(FontSize fs);
 	~SpriteFontCache();
-	virtual SpriteID GetUnicodeGlyph(WChar key);
 	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite);
 	virtual void InitializeUnicodeGlyphMap();
 	virtual void ClearFontCache();

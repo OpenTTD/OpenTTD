@@ -63,7 +63,6 @@ public:
 	TrueTypeFontCache(FontSize fs, int pixels);
 	virtual ~TrueTypeFontCache();
 	int GetFontSize() const override { return this->used_size; }
-	SpriteID GetUnicodeGlyph(WChar key) override { return this->parent->GetUnicodeGlyph(key); }
 	void SetUnicodeGlyph(WChar key, SpriteID sprite) override { this->parent->SetUnicodeGlyph(key, sprite); }
 	void InitializeUnicodeGlyphMap() override { this->parent->InitializeUnicodeGlyphMap(); }
 	const Sprite *GetGlyph(GlyphID key) override;
