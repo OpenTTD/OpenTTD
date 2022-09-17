@@ -72,13 +72,6 @@ public:
 	virtual int GetFontSize() const { return this->height; }
 
 	/**
-	 * Get the SpriteID mapped to the given key
-	 * @param key The key to get the sprite for.
-	 * @return The sprite.
-	 */
-	virtual SpriteID GetUnicodeGlyph(WChar key) = 0;
-
-	/**
 	 * Map a SpriteID to the key
 	 * @param key The key to map to.
 	 * @param sprite The sprite that is being mapped.
@@ -165,12 +158,6 @@ public:
 	 */
 	virtual bool IsBuiltInFont() = 0;
 };
-
-/** Get the SpriteID mapped to the given font size and key */
-static inline SpriteID GetUnicodeGlyph(FontSize size, WChar key)
-{
-	return FontCache::Get(size)->GetUnicodeGlyph(key);
-}
 
 /** Map a SpriteID to the font size and key */
 static inline void SetUnicodeGlyph(FontSize size, WChar key, SpriteID sprite)
