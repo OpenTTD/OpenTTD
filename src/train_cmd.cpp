@@ -2042,7 +2042,7 @@ bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bo
 }
 
 /** Play a sound for a train leaving the station. */
-void Train::PlayLeaveStationSound() const
+void Train::PlayLeaveStationSound(bool force) const
 {
 	static const SoundFx sfx[] = {
 		SND_04_DEPARTURE_STEAM,
@@ -2052,7 +2052,7 @@ void Train::PlayLeaveStationSound() const
 		SND_41_DEPARTURE_MAGLEV
 	};
 
-	if (PlayVehicleSound(this, VSE_START)) return;
+	if (PlayVehicleSound(this, VSE_START, force)) return;
 
 	EngineID engtype = this->engine_type;
 	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], this);
@@ -2179,7 +2179,7 @@ static bool CheckTrainStayInDepot(Train *v)
 
 	VehicleServiceInDepot(v);
 	SetWindowClassesDirty(WC_TRAINS_LIST);
-	v->PlayLeaveStationSound();
+	v->PlayLeaveStationSound(false);
 
 	v->track = TRACK_BIT_X;
 	if (v->direction & 2) v->track = TRACK_BIT_Y;

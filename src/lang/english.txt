@@ -4121,6 +4121,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}This wil
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Force train to proceed without waiting for signal to clear it
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Reverse direction of train
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Force vehicle to turn around
+STR_VEHICLE_VIEW_HONK_HORN_TOOLTIP                              :{BLACK}Honk vehicle's horn
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centre main view on order destination. Ctrl+Click opens a new viewport on the order destination's location
 
 ###length VEHICLE_TYPES

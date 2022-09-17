@@ -54,7 +54,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 191;
+static const uint16 OPENTTD_SPRITE_COUNT = 192;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -970,6 +970,7 @@ static const SpriteID SPR_SHOW_ORDERS           = 690;
 static const SpriteID SPR_SHOW_VEHICLE_DETAILS  = 691;
 static const SpriteID SPR_REFIT_VEHICLE         = 692;
 static const SpriteID SPR_FORCE_VEHICLE_TURN    = 715;
+static const SpriteID SPR_HONK_HORN             = SPR_OPENTTD_BASE + 191;
 
 /* Vehicle sprite-flags (red/green) */
 static const SpriteID SPR_FLAG_VEH_STOPPED  = 3090;

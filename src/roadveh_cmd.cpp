@@ -596,7 +596,7 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 
 static void StartRoadVehSound(const RoadVehicle *v)
 {
-	if (!PlayVehicleSound(v, VSE_START)) {
+	if (!PlayVehicleSound(v, VSE_START, false)) {
 		SoundID s = RoadVehInfo(v->engine_type)->sfx;
 		if (s == SND_19_DEPARTURE_OLD_RV_1 && (v->tick_counter & 3) == 0) {
 			s = SND_1A_DEPARTURE_OLD_RV_2;

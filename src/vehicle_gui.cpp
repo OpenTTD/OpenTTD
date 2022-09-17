@@ -2535,6 +2535,8 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 												SetDataTip(SPR_FORCE_VEHICLE_TURN, STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_SHOW_ORDERS), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_ORDERS, 0x0 /* filled later */),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_HONK_HORN), SetMinimalSize(18, 18),
+											SetDataTip(SPR_HONK_HORN, STR_VEHICLE_VIEW_HONK_HORN_TOOLTIP),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_SHOW_DETAILS), SetMinimalSize(18, 18), SetDataTip(SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */),
 			NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(18, 0), SetResize(0, 1), EndContainer(),
 		EndContainer(),
@@ -2774,6 +2776,14 @@ public:
 				}
 				break;
 
+			case WID_VV_HONK_HORN:
+				/* Aircraft don't have horns and we don't have a road vehicle horn sound. */
+				if (v->type == VEH_AIRCRAFT || v->type == VEH_ROAD) {
+					size->height = 0;
+					size->width = 0;
+				}
+				break;
+
 			case WID_VV_VIEWPORT:
 				size->width = VV_INITIAL_VIEWPORT_WIDTH;
 				size->height = (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT;
@@ -2791,6 +2801,7 @@ public:
 		this->SetWidgetDisabledState(WID_VV_GOTO_DEPOT, !is_localcompany);
 		this->SetWidgetDisabledState(WID_VV_REFIT, !refitable_and_stopped_in_depot || !is_localcompany);
 		this->SetWidgetDisabledState(WID_VV_CLONE, !is_localcompany);
+		this->SetWidgetDisabledState(WID_VV_HONK_HORN, !is_localcompany);
 
 		if (v->type == VEH_TRAIN) {
 			this->SetWidgetLoweredState(WID_VV_FORCE_PROCEED, Train::From(v)->force_proceed == TFP_SIGNAL);
@@ -2979,6 +2990,9 @@ public:
 				} else {
 					ShowOrdersWindow(v);
 				}
+				break;
+			case WID_VV_HONK_HORN: // honk horn
+				v->PlayLeaveStationSound(true);
 				break;
 			case WID_VV_SHOW_DETAILS: // show details
 				if (_ctrl_pressed) {

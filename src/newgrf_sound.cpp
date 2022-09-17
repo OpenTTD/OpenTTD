@@ -183,9 +183,9 @@ SoundID GetNewGRFSoundID(const GRFFile *file, SoundID sound_id)
  * @param event Trigger for the sound effect.
  * @return false if the default sound effect shall be played instead.
  */
-bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
+bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event, bool force)
 {
-	if (!_settings_client.sound.vehicle) return true;
+	if (!_settings_client.sound.vehicle && !force) return true;
 
 	const GRFFile *file = v->GetGRF();
 	uint16 callback;

@@ -1200,7 +1200,7 @@ CargoPayment::~CargoPayment()
 	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
 
-	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
+	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD, false)) {
 		SndPlayVehicleFx(SND_14_CASHTILL, this->front);
 	}
 

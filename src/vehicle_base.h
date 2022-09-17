@@ -440,8 +440,9 @@ public:
 
 	/**
 	 * Play the sound associated with leaving the station
+	 * @param force Should we play the sound even if sound effects are muted? (horn button)
 	 */
-	virtual void PlayLeaveStationSound() const {}
+	virtual void PlayLeaveStationSound(bool force) const {}
 
 	/**
 	 * Whether this is the primary vehicle in the chain.
