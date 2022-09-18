@@ -45,14 +45,14 @@ struct NewGRFProfiler {
 		uint32 result;       ///< Result of callback
 		uint32 subs;         ///< Sub-calls to other sprite groups
 		uint32 time;         ///< Time taken for resolution (microseconds)
-		uint16 tick;         ///< Game tick
+		uint64 tick;         ///< Game tick
 		CallbackID cb;       ///< Callback ID
 		GrfSpecFeature feat; ///< GRF feature being resolved for
 	};
 
 	const GRFFile *grffile;  ///< Which GRF is being profiled
 	bool active;             ///< Is this profiler collecting data
-	uint16 start_tick;       ///< Tick number this profiler was started on
+	uint64 start_tick;       ///< Tick number this profiler was started on
 	Call cur_call;           ///< Data for current call in progress
 	std::vector<Call> calls; ///< All calls collected so far
 };

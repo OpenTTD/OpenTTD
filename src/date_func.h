@@ -16,7 +16,7 @@ extern Year      _cur_year;
 extern Month     _cur_month;
 extern Date      _date;
 extern DateFract _date_fract;
-extern uint16 _tick_counter;
+extern uint64 _tick_counter;
 
 void SetDate(Date date, DateFract fract);
 void ConvertDateToYMD(Date date, YearMonthDay *ymd);
