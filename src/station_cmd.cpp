@@ -424,7 +424,7 @@ void Station::UpdateVirtCoord()
 
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
-	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION);
+	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION, STR_VIEWPORT_STATION_TINY);
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 
