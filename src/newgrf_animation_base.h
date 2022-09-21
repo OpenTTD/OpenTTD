@@ -53,7 +53,7 @@ struct AnimationBase {
 		 * increasing this value by one doubles the wait. 0 is the minimum value
 		 * allowed for animation_speed, which corresponds to 30ms, and 16 is the
 		 * maximum, corresponding to around 33 minutes. */
-		if (_tick_counter % (1 << animation_speed) != 0) return;
+		if (_tick_counter % (1ULL << animation_speed) != 0) return;
 
 		uint8 frame      = GetAnimationFrame(tile);
 		uint8 num_frames = spec->animation.frames;

@@ -81,7 +81,7 @@ struct LoggedAction {
 	LoggedChange *change; ///< First logged change in this action
 	uint32 changes;       ///< Number of changes in this action
 	GamelogActionType at; ///< Type of action
-	uint16 tick;          ///< Tick when it happened
+	uint64 tick;          ///< Tick when it happened
 };
 
 extern LoggedAction *_gamelog_action;

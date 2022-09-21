@@ -109,7 +109,7 @@ uint32 NewGRFProfiler::Finish()
 
 	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
 	for (const Call &c : this->calls) {
-		fprintf(f, "%u,%u,0x%X,%u,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+		fprintf(f, OTTD_PRINTF64U ",%u,0x%X,%u,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
 		total_microseconds += c.time;
 	}
 
@@ -141,7 +141,7 @@ std::string NewGRFProfiler::GetOutputFilename() const
 
 uint32 NewGRFProfiler::FinishAll()
 {
-	int max_ticks = 0;
+	uint64 max_ticks = 0;
 	uint32 total_microseconds = 0;
 	for (NewGRFProfiler &pr : _newgrf_profilers) {
 		if (pr.active) {
