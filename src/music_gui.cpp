@@ -127,11 +127,11 @@ void MusicSystem::BuildPlaylists()
 	/* Load custom playlists
 	 * Song index offsets are 1-based, zero indicates invalid/end-of-list value */
 	for (uint i = 0; i < NUM_SONGS_PLAYLIST; i++) {
-		if (_settings_client.music.custom_1[i] > 0) {
+		if (_settings_client.music.custom_1[i] > 0 && _settings_client.music.custom_1[i] <= NUM_SONGS_AVAILABLE) {
 			PlaylistEntry entry(set, _settings_client.music.custom_1[i] - 1);
 			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM1].push_back(entry);
 		}
-		if (_settings_client.music.custom_2[i] > 0) {
+		if (_settings_client.music.custom_2[i] > 0 && _settings_client.music.custom_2[i] <= NUM_SONGS_AVAILABLE) {
 			PlaylistEntry entry(set, _settings_client.music.custom_2[i] - 1);
 			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM2].push_back(entry);
 		}
