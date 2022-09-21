@@ -721,11 +721,8 @@ public:
 		}
 	}
 
-	void OnMouseLoop() override
+	void OnMouseOver(Point pt, int widget) override
 	{
-		const Point pt{ _cursor.pos.x - this->left, _cursor.pos.y - this->top };
-		const int widget = GetWidgetFromPos(this, pt.x, pt.y);
-
 		if (widget == WID_SL_DRIVES_DIRECTORIES_LIST) {
 			int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
 			if (y == INT_MAX) return;
