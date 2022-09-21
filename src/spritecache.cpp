@@ -36,6 +36,7 @@ struct SpriteCache {
 	int16 lru;
 	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
+	byte control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
 };
 
 
@@ -471,10 +472,10 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	SpriteLoaderGrf sprite_loader(file.GetContainerVersion());
 	if (sprite_type != ST_MAPGEN && encoder->Is32BppSupported()) {
 		/* Try for 32bpp sprites first. */
-		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, true);
+		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, true, sc->control_flags);
 	}
 	if (sprite_avail == 0) {
-		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, false);
+		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, false, sc->control_flags);
 	}
 
 	if (sprite_avail == 0) {
@@ -529,9 +530,13 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	return encoder->Encode(sprite, allocator);
 }
 
+struct GrfSpriteOffset {
+	size_t file_pos;
+	byte control_flags;
+};
 
 /** Map from sprite numbers to position in the GRF file. */
-static std::map<uint32, size_t> _grf_sprite_offsets;
+static std::map<uint32, GrfSpriteOffset> _grf_sprite_offsets;
 
 /**
  * Get the file offset for a specific sprite in the sprite section of a GRF.
@@ -540,7 +545,7 @@ static std::map<uint32, size_t> _grf_sprite_offsets;
  */
 size_t GetGRFSpriteOffset(uint32 id)
 {
-	return _grf_sprite_offsets.find(id) != _grf_sprite_offsets.end() ? _grf_sprite_offsets[id] : SIZE_MAX;
+	return _grf_sprite_offsets.find(id) != _grf_sprite_offsets.end() ? _grf_sprite_offsets[id].file_pos : SIZE_MAX;
 }
 
 /**
@@ -557,13 +562,35 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 		size_t old_pos = file.GetPos();
 		file.SeekTo(data_offset, SEEK_CUR);
 
+		GrfSpriteOffset offset = { 0, 0 };
+
 		/* Loop over all sprite section entries and store the file
 		 * offset for each newly encountered ID. */
 		uint32 id, prev_id = 0;
 		while ((id = file.ReadDword()) != 0) {
-			if (id != prev_id) _grf_sprite_offsets[id] = file.GetPos() - 4;
+			if (id != prev_id) {
+				_grf_sprite_offsets[prev_id] = offset;
+				offset.file_pos = file.GetPos() - 4;
+				offset.control_flags = 0;
+			}
 			prev_id = id;
-			file.SkipBytes(file.ReadDword());
+			uint length = file.ReadDword();
+			if (length > 0) {
+				byte colour = file.ReadByte() & SCC_MASK;
+				length--;
+				if (length > 0) {
+					byte zoom = file.ReadByte();
+					length--;
+					if (colour != 0 && zoom == 0) { // ZOOM_LVL_OUT_4X (normal zoom)
+						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL);
+						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
+					}
+					if (colour != 0 && zoom == 2) { // ZOOM_LVL_OUT_2X (2x zoomed in)
+						SetBit(offset.control_flags, (colour != SCC_PAL) ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL);
+					}
+				}
+			}
+			file.SkipBytes(length);
 		}
 
 		/* Continue processing the data section. */
@@ -591,6 +618,7 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 
 	SpriteType type;
 	void *data = nullptr;
+	byte control_flags = 0;
 	if (grf_type == 0xFF) {
 		/* Some NewGRF files have "empty" pseudo-sprites which are 1
 		 * byte long. Catch these so the sprites won't be displayed. */
@@ -607,7 +635,13 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 			return false;
 		}
 		/* It is not an error if no sprite with the provided ID is found in the sprite section. */
-		file_pos = GetGRFSpriteOffset(file.ReadDword());
+		auto iter = _grf_sprite_offsets.find(file.ReadDword());
+		if (iter != _grf_sprite_offsets.end()) {
+			file_pos = iter->second.file_pos;
+			control_flags = iter->second.control_flags;
+		} else {
+			file_pos = SIZE_MAX;
+		}
 		type = ST_NORMAL;
 	} else {
 		file.SkipBytes(7);
@@ -637,6 +671,7 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 	sc->id = file_sprite_id;
 	sc->type = type;
 	sc->warned = false;
+	sc->control_flags = control_flags;
 
 	return true;
 }

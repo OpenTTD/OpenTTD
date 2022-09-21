@@ -17,6 +17,7 @@
 #include "../core/math_func.hpp"
 #include "../core/alloc_type.hpp"
 #include "../core/bitmath_func.hpp"
+#include "../spritecache.h"
 #include "grf.hpp"
 
 #include "../safeguards.h"
@@ -241,7 +242,7 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 	return 0;
 }
 
-uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
+uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
 {
 	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_OUT_4X, ZOOM_LVL_NORMAL, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_8X, ZOOM_LVL_OUT_16X, ZOOM_LVL_OUT_32X};
 
@@ -269,7 +270,19 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 		bool is_wanted_zoom_lvl;
 
 		if (sprite_type != ST_MAPGEN) {
-			is_wanted_zoom_lvl = (zoom < lengthof(zoom_lvl_map) && zoom_lvl_map[zoom] >= _settings_client.gui.sprite_zoom_min);
+			if (zoom < lengthof(zoom_lvl_map)) {
+				is_wanted_zoom_lvl = true;
+				if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_2X &&
+						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_OUT_2X) {
+					is_wanted_zoom_lvl = false;
+				}
+				if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_4X &&
+						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_OUT_4X) {
+					is_wanted_zoom_lvl = false;
+				}
+			} else {
+				is_wanted_zoom_lvl = false;
+			}
 		} else {
 			is_wanted_zoom_lvl = (zoom == 0);
 		}
@@ -326,10 +339,10 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 	return loaded_sprites;
 }
 
-uint8 SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
+uint8 SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
 {
 	if (this->container_ver >= 2) {
-		return LoadSpriteV2(sprite, file, file_pos, sprite_type, load_32bpp);
+		return LoadSpriteV2(sprite, file, file_pos, sprite_type, load_32bpp, control_flags);
 	} else {
 		return LoadSpriteV1(sprite, file, file_pos, sprite_type, load_32bpp);
 	}
