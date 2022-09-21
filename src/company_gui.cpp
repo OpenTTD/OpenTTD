@@ -214,9 +214,11 @@ static void DrawCategories(const Rect &r)
 static void DrawPrice(Money amount, int left, int right, int top, TextColour colour)
 {
 	StringID str = STR_FINANCES_NEGATIVE_INCOME;
-	if (amount < 0) {
+	if (amount == 0) {
+		str = STR_FINANCES_ZERO_INCOME;
+	} else if (amount < 0) {
 		amount = -amount;
-		str++;
+		str = STR_FINANCES_POSITIVE_INCOME;
 	}
 	SetDParam(0, amount);
 	DrawString(left, right, top, str, colour, SA_RIGHT);
