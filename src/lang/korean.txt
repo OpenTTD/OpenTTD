@@ -226,9 +226,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}검색할 문자열:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 문자를 입력하세요
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
+STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 단어를 하나 이상 입력하세요
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 단어를 하나 이상 입력하세요
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}그룹화 순서를 선택하세요.
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하세요 (내림차순/오름차순)
@@ -1164,7 +1164,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용�
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}설정
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색할 문자열:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}모두 펼치기
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 접기
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}모든 설정 초기화
@@ -3125,7 +3125,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}게임 �
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 가능한 정보 없음
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}검색할 문자열:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}검색:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}파일 덮어쓰기
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}정말로 이미 존재하는 파일에 덮어씌우시겠습니까?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (폴더)
@@ -3217,7 +3217,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF �
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}적용한 NewGRF 파일
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}적용하지 않은 NewGRF 파일
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리셋 선택:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장합니다

@@ -170,6 +170,7 @@ STR_LITERS                                                      :{COMMA}{NBSP}li
 STR_ITEMS                                                       :{COMMA}{NBSP}eitem
 STR_CRATES                                                      :{COMMA}{NBSP}crât
 
+STR_COLOUR_DEFAULT                                              :Rhagosodiad
 ###length 17
 STR_COLOUR_DARK_BLUE                                            :Glas Tywyll
 STR_COLOUR_PALE_GREEN                                           :Gwyrdd Golau
@@ -1323,6 +1324,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw'n
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cynnal a chadw tanadeiledd: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pan fo wedi'i alluogi, mae tanadeiledd yn creu costau cynnal a chadw. Mae'r cost yn codi'n gyflymach na'i gyfradd gyda thŵf y rhwydwaith, gan effeithio'n fwy ar gwmniau mawr na rhai bychan
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Dewiswch liw dechreuol am y cwmni
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mae galluogi'r dewis yma'n peri i bob math o faes awyr aros ar gael am byth wedi ei gyflwyniad gyntaf
@@ -1921,6 +1923,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Allan o 
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Methwyd dyroddi {BYTES} o storfa corluniau. Lleihawyd y storfa corluniau at {BYTES}. Bydd hyn yn lleihau perfformiad OpenTTD. I leihau gofynion cof gallwch roi cynnig ar analluogi graffigiau 32 did a/neu lefelau mwyháu
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Gwall gyda'r gosodiadau fideo...
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2182,6 +2185,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Mae'r cw
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleientiaid
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Anfon neges i bob gwyliwr
 
 # Matches ConnectionType
 ###length 5
@@ -2797,6 +2801,7 @@ STR_ABOUT_VERSION                                               :{BLACK}fersiwn 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} Y tîm OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nifer y ticiau gêm a efelychir bob eiliad.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nifer o fframiau fideo a lunir bob eiliad.
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pa mor gyflym mae'r gêm yn rhedeg, o gymharu a'r cyflymder i'w ddisgwyl ar gyfradd efelychu arferol.
@@ -2805,6 +2810,7 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 
 ###length 15
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Trin cargo:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Allbwn fideo:
 
 ###length 15
 STR_FRAMETIME_CAPTION_VIDEO                                     :Allbwn fideo
@@ -3344,6 +3350,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ail-leol
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ailadeiladu pencadlys cwmni mewn man arall am 1% o werth y cwmni. Mae Shift+Clic yn dangos amcangyfrif o'r gost heb adleoli
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Manylion
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Gweld cyfansymau tanadeiledd manwl
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Rhoi arian
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Gwyneb Newydd
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Dewiswch wyneb newydd ar gyfer y rheolwr
@@ -3995,6 +4002,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Ailfitio i {ST
 STR_ORDER_STOP_ORDER                                            :(Stopio)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Methu defnyddio gorsaf){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Ymhlyg)
 
