@@ -94,8 +94,8 @@ Although we really appreciate feedback and ideas, we will close feature requests
 
 Many of those ideas etc do have a place on the [forums](https://www.tt-forums.net); and if enough people like it, someone will stand up and make it.
 
-It's usually best discuss in [irc](https://wiki.openttd.org/en/Development/IRC%20channel) before opening a feature request or working on a large feature in a fork.
-Discussion in irc can take time, but it can be productive and avoid disappointment :)
+It's usually best to discuss on [Discord](https://discord.gg/openttd) before opening a feature request or working on a large feature in a fork.
+Discussion can take time, but it can be productive and avoid disappointment. :)
 
 
 ## Pull requests
