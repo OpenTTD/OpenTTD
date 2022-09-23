@@ -1154,6 +1154,24 @@ static inline NWidgetPart SetPadding(uint8 top, uint8 right, uint8 bottom, uint8
 }
 
 /**
+ * Widget part function for setting additional space around a widget.
+ * @param r The padding around the widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetPadding(const RectPadding &padding)
+{
+	NWidgetPart part;
+
+	part.type = WPT_PADDING;
+	part.u.padding.left = padding.left;
+	part.u.padding.top = padding.top;
+	part.u.padding.right = padding.right;
+	part.u.padding.bottom = padding.bottom;
+
+	return part;
+}
+
+/**
  * Widget part function for setting a padding.
  * @param padding The padding to use for all directions.
  * @ingroup NestedWidgetParts
