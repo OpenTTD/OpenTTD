@@ -73,6 +73,19 @@ static inline Dimension ScaleGUITrad(const Dimension &dim)
 }
 
 /**
+ * Scale sprite size for GUI.
+ * Offset is ignored.
+ */
+Dimension GetScaledSpriteSize(SpriteID sprid)
+{
+	Point offset;
+	Dimension d = GetSpriteSize(sprid, &offset, ZOOM_LVL_OUT_4X);
+	d.width  -= offset.x;
+	d.height -= offset.y;
+	return ScaleGUITrad(d);
+}
+
+/**
  * Set up pre-scaled versions of Widget Dimensions.
  */
 void SetupWidgetDimensions()
@@ -318,6 +331,17 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	}
 }
 
+void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, int clicked, StringAlignment align)
+{
+	Point offset;
+	Dimension d = GetSpriteSize(img, &offset);
+	d.width  -= offset.x;
+	d.height -= offset.y;
+
+	Point p = GetAlignedPosition(r, d, align);
+	DrawSprite(img, PAL_NONE, p.x + clicked - offset.x, p.y + clicked - offset.y);
+}
+
 /**
  * Draw an image button.
  * @param r       Rectangle of the button.
@@ -333,9 +357,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
-	Dimension d = GetSpriteSize(img);
-	Point p = GetAlignedPosition(r, d, align);
-	DrawSprite(img, PAL_NONE, p.x + clicked, p.y + clicked);
+	DrawSpriteIgnorePadding(r, img, clicked, align);
 }
 
 /**
@@ -645,9 +667,12 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 static inline void DrawCloseBox(const Rect &r, Colours colour)
 {
 	if (colour != COLOUR_WHITE) DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
-	Dimension d = GetSpriteSize(SPR_CLOSEBOX);
-	int s = UnScaleGUI(1); /* Offset to account for shadow of SPR_CLOSEBOX */
-	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CenterBounds(r.left, r.right, d.width - s), CenterBounds(r.top, r.bottom, d.height - s));
+	Point offset;
+	Dimension d = GetSpriteSize(SPR_CLOSEBOX, &offset);
+	d.width  -= offset.x;
+	d.height -= offset.y;
+	int s = ScaleGUITrad(1); /* Offset to account for shadow of SPR_CLOSEBOX */
+	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CenterBounds(r.left, r.right, d.width - s) - offset.x, CenterBounds(r.top, r.bottom, d.height - s) - offset.y);
 }
 
 /**
