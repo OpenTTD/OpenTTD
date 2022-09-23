@@ -137,7 +137,7 @@ struct StatusBarWindow : Window {
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		Rect tr = r.Shrink(WD_FRAMERECT_LEFT, 0, WD_FRAMERECT_RIGHT, 0);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
 		tr.top = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		switch (widget) {
 			case WID_S_LEFT:
@@ -171,7 +171,7 @@ struct StatusBarWindow : Window {
 					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (this->ticker_scroll < TICKER_STOP && _statusbar_news_item != nullptr && _statusbar_news_item->string_id != 0) {
 					/* Draw the scrolling news text */
-					if (!DrawScrollingStatusText(_statusbar_news_item, ScaleGUITrad(this->ticker_scroll), r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom)) {
+					if (!DrawScrollingStatusText(_statusbar_news_item, ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */

@@ -313,8 +313,8 @@ public:
 				break;
 
 			case WID_BO_SELECT_IMAGE:
-				size->width  = ScaleGUITrad(64) + WD_BEVEL_LEFT + WD_BEVEL_RIGHT;
-				size->height = ScaleGUITrad(58) + WD_BEVEL_TOP + WD_BEVEL_BOTTOM;
+				size->width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size->height = ScaleGUITrad(58) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 
 			default: break;
@@ -325,7 +325,7 @@ public:
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
-				Rect mr = r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+				Rect mr = r.Shrink(WidgetDimensions::scaled.matrix);
 				uint pos = 0;
 				for (auto object_class_id : this->object_classes) {
 					ObjectClass *objclass = ObjectClass::Get(object_class_id);
@@ -377,7 +377,7 @@ public:
 				if (spec == nullptr) break;
 
 				if (!spec->IsAvailable()) {
-					GfxFillRect(r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
 				}
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */

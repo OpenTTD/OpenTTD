@@ -422,7 +422,7 @@ public:
 					str = STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED;
 				}
 
-				DrawString(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM), str, TC_BLACK, SA_HOR_CENTER);
+				DrawString(r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect), str, TC_BLACK, SA_HOR_CENTER);
 				break;
 			}
 
@@ -485,7 +485,7 @@ public:
 					ted.capacity = e->GetDisplayDefaultCapacity(&ted.mail_capacity);
 
 					const Rect r = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS)->GetCurrentRect()
-							.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM);
+							.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 					int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine[side], ted);
 					needed_height = std::max(needed_height, (text_end - r.top) / FONT_HEIGHT_NORMAL);
 				}

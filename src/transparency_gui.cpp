@@ -52,15 +52,15 @@ public:
 			case WID_TT_CATENARY:
 			case WID_TT_LOADING: {
 				uint i = widget - WID_TT_BEGIN;
-				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + WD_BEVEL_LEFT, r.top + WD_BEVEL_TOP);
+				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + WidgetDimensions::scaled.fullbevel.left, r.top + WidgetDimensions::scaled.fullbevel.top);
 				break;
 			}
 			case WID_TT_BUTTONS: {
-				const Rect fr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+				const Rect fr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (uint i = WID_TT_BEGIN; i < WID_TT_END; i++) {
 					if (i == WID_TT_LOADING) continue; // Do not draw button for invisible loading indicators.
 
-					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
 					DrawFrameRect(wr.left, fr.top, wr.right, fr.bottom, COLOUR_PALE_GREEN,
 							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FR_LOWERED : FR_NONE);
 				}

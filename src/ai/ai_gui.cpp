@@ -125,7 +125,7 @@ struct AIListWindow : public Window {
 		switch (widget) {
 			case WID_AIL_LIST: {
 				/* Draw a list of all available AIs. */
-				Rect tr = r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+				Rect tr = r.Shrink(WidgetDimensions::scaled.matrix);
 				/* First AI in the list is hardcoded to random */
 				if (this->vscroll->IsVisible(0)) {
 					DrawString(tr, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
@@ -150,17 +150,17 @@ struct AIListWindow : public Window {
 				}
 				/* Some info about the currently selected AI. */
 				if (selected_info != nullptr) {
-					Rect tr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM);
+					Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 					SetDParamStr(0, selected_info->GetAuthor());
 					DrawString(tr, STR_AI_LIST_AUTHOR);
-					tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 					SetDParam(0, selected_info->GetVersion());
 					DrawString(tr, STR_AI_LIST_VERSION);
-					tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 					if (selected_info->GetURL() != nullptr) {
 						SetDParamStr(0, selected_info->GetURL());
 						DrawString(tr, STR_AI_LIST_URL);
-						tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+						tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 					}
 					SetDParamStr(0, selected_info->GetDescription());
 					DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_WHITE);
@@ -253,7 +253,7 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIL_LIST), SetMinimalSize(188, 112), SetFill(1, 1), SetResize(1, 1), SetMatrixDataTip(1, 0, STR_AI_LIST_TOOLTIP), SetScrollbar(WID_AIL_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_AIL_SCROLLBAR),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIL_INFO_BG), SetMinimalTextLines(8, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 0),
+	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIL_INFO_BG), SetMinimalTextLines(8, WidgetDimensions::unscaled.framerect.Vertical() + WidgetDimensions::unscaled.vsep_normal * 3), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -359,10 +359,10 @@ struct AISettingsWindow : public Window {
 		int i = 0;
 		for (; !this->vscroll->IsVisible(i); i++) it++;
 
-		Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
-		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + 8, rtl);
+		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 		int y = r.top;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -426,7 +426,7 @@ struct AISettingsWindow : public Window {
 	{
 		switch (widget) {
 			case WID_AIS_BACKGROUND: {
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WD_MATRIX_LEFT, 0, WD_MATRIX_RIGHT, 0);
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
 				if (num >= (int)this->visible_settings.size()) break;
 
@@ -791,7 +791,7 @@ struct AIConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_AIC_LIST: {
-				Rect tr = r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+				Rect tr = r.Shrink(WidgetDimensions::scaled.matrix);
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
 					StringID text;
 
@@ -1042,8 +1042,8 @@ struct AIDebugWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_AID_LOG_PANEL) {
-			resize->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			size->height = 14 * resize->height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+			resize->height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+			size->height = 14 * resize->height + WidgetDimensions::scaled.framerect.Vertical();
 		}
 	}
 
@@ -1157,8 +1157,8 @@ struct AIDebugWindow : public Window {
 				ScriptLog::LogData *log = this->GetLogPointer();
 				if (log == nullptr) return;
 
-				Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
-				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
+				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < log->used; i++) {
 					int pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 					if (log->lines[pos] == nullptr) break;
@@ -1352,7 +1352,7 @@ struct AIDebugWindow : public Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_AID_LOG_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, WID_AID_LOG_PANEL, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	static HotkeyList hotkeys;

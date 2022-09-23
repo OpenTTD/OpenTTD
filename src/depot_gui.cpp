@@ -325,13 +325,13 @@ struct DepotWindow : Window {
 						ScaleGUITrad(_consistent_train_width != 0 ? _consistent_train_width : TRAININFO_DEFAULT_VEHICLE_WIDTH) :
 						0;
 
-				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1,
+				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y,
 						this->sel, EIT_IN_DEPOT, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
 				/* Length of consist in tiles with 1 fractional digit (rounded up) */
 				SetDParam(0, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE));
 				SetDParam(1, 1);
-				DrawString(rtl ? left + WD_FRAMERECT_LEFT : right - this->count_width, rtl ? left + this->count_width : right - WD_FRAMERECT_RIGHT, y + (this->resize.step_height - FONT_HEIGHT_SMALL) / 2, STR_TINY_BLACK_DECIMAL, TC_FROMSTRING, SA_RIGHT); // Draw the counter
+				DrawString(rtl ? left : right - this->count_width, rtl ? left + this->count_width : right, y + (this->resize.step_height - FONT_HEIGHT_SMALL) / 2, STR_TINY_BLACK_DECIMAL, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 			}
 
@@ -344,23 +344,23 @@ struct DepotWindow : Window {
 		uint diff_x, diff_y;
 		if (v->IsGroundVehicle()) {
 			/* Arrange unitnumber and flag horizontally */
-			diff_x = this->flag_width + WD_FRAMERECT_LEFT;
-			diff_y = (this->resize.step_height - this->flag_height) / 2 - 2;
+			diff_x = this->flag_width;
+			diff_y = (this->resize.step_height - this->flag_height) / 2;
 		} else {
 			/* Arrange unitnumber and flag vertically */
-			diff_x = WD_FRAMERECT_LEFT;
-			diff_y = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+			diff_x = 0;
+			diff_y = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 		}
 		int text_left  = rtl ? right - this->header_width - 1 : left + diff_x;
 		int text_right = rtl ? right - diff_x : left + this->header_width - 1;
 
 		if (free_wagon) {
-			DrawString(text_left, text_right, y + 2, STR_DEPOT_NO_ENGINE);
+			DrawString(text_left, text_right, y + WidgetDimensions::scaled.framerect.top, STR_DEPOT_NO_ENGINE);
 		} else {
-			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, rtl ? right - this->flag_width : left + WD_FRAMERECT_LEFT, y + diff_y);
+			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, rtl ? right - this->flag_width : left + WidgetDimensions::scaled.framerect.left, y + diff_y);
 
 			SetDParam(0, v->unitnumber);
-			DrawString(text_left, text_right, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
+			DrawString(text_left, text_right, y + WidgetDimensions::scaled.framerect.top, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
 		}
 	}
 
@@ -373,6 +373,8 @@ struct DepotWindow : Window {
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		const NWidgetCore *wid = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
 
+		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
+
 		/* Draw vertical separators at whole tiles.
 		 * This only works in two cases:
 		 *  - All vehicles use VEHICLEINFO_FULL_VEHICLE_WIDTH as reference width.
@@ -381,16 +383,16 @@ struct DepotWindow : Window {
 		if (this->type == VEH_TRAIN && _consistent_train_width != 0) {
 			int w = ScaleGUITrad(2 * _consistent_train_width);
 			int col = _colour_gradient[wid->colour][4];
-			int image_left  = rtl ? r.left  + this->count_width  : r.left  + this->header_width;
-			int image_right = rtl ? r.right - this->header_width : r.right - this->count_width;
+			int image_left  = rtl ? ir.left  + this->count_width  : ir.left  + this->header_width;
+			int image_right = rtl ? ir.right - this->header_width : ir.right - this->count_width;
 			int first_line = w + (-this->hscroll->GetPosition()) % w;
 			if (rtl) {
 				for (int x = image_right - first_line; x >= image_left; x -= w) {
-					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
+					GfxDrawLine(x, r.top, x, r.bottom, col, ScaleGUITrad(1), ScaleGUITrad(3));
 				}
 			} else {
 				for (int x = image_left + first_line; x <= image_right; x += w) {
-					GfxDrawLine(x, r.top, x, r.bottom, col, 1, 3);
+					GfxDrawLine(x, r.top, x, r.bottom, col, ScaleGUITrad(1), ScaleGUITrad(3));
 				}
 			}
 		}
@@ -400,15 +402,15 @@ struct DepotWindow : Window {
 		uint num = this->vscroll->GetPosition() * this->num_columns;
 		uint maxval = static_cast<uint>(std::min<size_t>(this->vehicle_list.size(), num + (rows_in_display * this->num_columns)));
 		int y;
-		for (y = r.top + 1; num < maxval; y += this->resize.step_height) { // Draw the rows
+		for (y = r.top; num < maxval; y += this->resize.step_height) { // Draw the rows
 			for (uint i = 0; i < this->num_columns && num < maxval; i++, num++) {
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
 				if (this->num_columns == 1) {
-					this->DrawVehicleInDepot(v, r.left, r.right, y);
+					this->DrawVehicleInDepot(v, ir.left, ir.right, y);
 				} else {
-					int x = r.left + (rtl ? (this->num_columns - i - 1) : i) * this->resize.step_width;
-					this->DrawVehicleInDepot(v, x, x + this->resize.step_width - 1, y);
+					int x = ir.left + (rtl ? (this->num_columns - i - 1) : i) * this->resize.step_width;
+					this->DrawVehicleInDepot(v, x, x + this->resize.step_width - 1 - WidgetDimensions::scaled.framerect.Horizontal(), y);
 				}
 			}
 		}
@@ -418,7 +420,7 @@ struct DepotWindow : Window {
 		/* Draw the train wagons without an engine in front. */
 		for (; num < maxval; num++, y += this->resize.step_height) {
 			const Vehicle *v = this->wagon_list[num - this->vehicle_list.size()];
-			this->DrawVehicleInDepot(v, r.left, r.right, y);
+			this->DrawVehicleInDepot(v, ir.left, ir.right, y);
 		}
 	}
 
@@ -506,7 +508,7 @@ struct DepotWindow : Window {
 
 				case VEH_SHIP:
 				case VEH_AIRCRAFT:
-					if (xm <= this->flag_width && ym >= (uint)(FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL)) return MODE_START_STOP;
+					if (xm <= this->flag_width && ym >= (uint)(FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
 					break;
 
 				default: NOT_REACHED();
@@ -657,7 +659,7 @@ struct DepotWindow : Window {
 				if (this->type == VEH_TRAIN) {
 					SetDParamMaxValue(0, 1000, 0, FS_SMALL);
 					SetDParam(1, 1);
-					this->count_width = GetStringBoundingBox(STR_TINY_BLACK_DECIMAL).width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+					this->count_width = GetStringBoundingBox(STR_TINY_BLACK_DECIMAL).width + WidgetDimensions::scaled.framerect.Horizontal();
 				} else {
 					this->count_width = 0;
 				}
@@ -665,15 +667,15 @@ struct DepotWindow : Window {
 				SetDParamMaxDigits(0, this->unitnumber_digits);
 				Dimension unumber = GetStringBoundingBox(STR_BLACK_COMMA);
 				const Sprite *spr = GetSprite(SPR_FLAG_VEH_STOPPED, ST_NORMAL);
-				this->flag_width  = UnScaleGUI(spr->width) + WD_FRAMERECT_RIGHT;
+				this->flag_width  = UnScaleGUI(spr->width) + WidgetDimensions::scaled.framerect.right;
 				this->flag_height = UnScaleGUI(spr->height);
 
 				if (this->type == VEH_TRAIN || this->type == VEH_ROAD) {
-					min_height = std::max<uint>(unumber.height + WD_MATRIX_TOP, UnScaleGUI(spr->height));
-					this->header_width = unumber.width + this->flag_width + WD_FRAMERECT_LEFT;
+					min_height = std::max<uint>(unumber.height + WidgetDimensions::scaled.matrix.top, UnScaleGUI(spr->height));
+					this->header_width = unumber.width + this->flag_width + WidgetDimensions::scaled.framerect.left;
 				} else {
-					min_height = unumber.height + UnScaleGUI(spr->height) + WD_MATRIX_TOP + WD_PAR_VSEP_NORMAL + WD_MATRIX_BOTTOM;
-					this->header_width = std::max<uint>(unumber.width, this->flag_width) + WD_FRAMERECT_RIGHT;
+					min_height = unumber.height + UnScaleGUI(spr->height) + padding.height + WidgetDimensions::scaled.vsep_normal;
+					this->header_width = std::max<uint>(unumber.width, this->flag_width) + WidgetDimensions::scaled.framerect.right;
 				}
 				int base_width = this->count_width + this->header_width;
 

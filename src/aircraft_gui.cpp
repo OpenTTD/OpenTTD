@@ -46,7 +46,7 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 			SetDParam(3, u->Next()->cargo_cap);
 			SetDParam(4, GetCargoSubtypeText(u));
 			DrawString(r.left, r.right, y, (u->Next()->cargo_cap != 0) ? STR_VEHICLE_INFO_CAPACITY_CAPACITY : STR_VEHICLE_INFO_CAPACITY);
-			y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+			y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 		}
 
 		if (u->cargo_cap != 0) {
@@ -64,7 +64,7 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 		}
 	}
 
-	y += WD_PAR_VSEP_NORMAL;
+	y += WidgetDimensions::scaled.vsep_normal;
 	SetDParam(0, feeder_share);
 	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }

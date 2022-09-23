@@ -58,8 +58,8 @@ static Dimension GetMaxTreeSpriteSize()
 	Dimension size, this_size;
 	Point offset;
 	/* Avoid to use it uninitialized */
-	size.width = 32; // default width - WD_FRAMERECT_LEFT
-	size.height = 39; // default height - BUTTON_BOTTOM_OFFSET
+	size.width = ScaleGUITrad(32); // default width - WD_FRAMERECT_LEFT
+	size.height = ScaleGUITrad(39); // default height - BUTTON_BOTTOM_OFFSET
 	offset.x = 0;
 	offset.y = 0;
 

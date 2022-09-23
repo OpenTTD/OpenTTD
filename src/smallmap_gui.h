@@ -123,7 +123,7 @@ protected:
 	 */
 	inline uint GetMinLegendWidth() const
 	{
-		return WD_FRAMERECT_LEFT + this->min_number_of_columns * this->column_width;
+		return WidgetDimensions::scaled.framerect.left + this->min_number_of_columns * this->column_width;
 	}
 
 	/**
@@ -142,7 +142,7 @@ protected:
 	 */
 	inline uint GetLegendHeight(uint num_columns) const
 	{
-		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM +
+		return WidgetDimensions::scaled.framerect.Vertical() +
 				this->GetNumberRowsLegend(num_columns) * FONT_HEIGHT_SMALL;
 	}
 
