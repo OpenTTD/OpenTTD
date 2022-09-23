@@ -90,6 +90,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 Dimension GetSpriteSize(SpriteID sprid, Point *offset = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
+Dimension GetScaledSpriteSize(SpriteID sprid); /* widget.cpp */
 void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr);
 void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
 std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom = ZOOM_LVL_GUI);
