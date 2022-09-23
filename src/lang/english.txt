@@ -1011,6 +1011,9 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Current 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interface size
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Select the interface element size to use
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scale bevels
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Check this box to scale bevels by interface size
+
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-detect)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Double size

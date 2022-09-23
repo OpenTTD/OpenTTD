@@ -193,6 +193,8 @@ struct GUISettings {
 	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list
 	uint8  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
 
+	bool   scale_bevels;                     ///< bevels are scaled with GUI scale.
+
 	/**
 	 * Returns true when the user has sufficient privileges to edit newgrfs on a running game
 	 * @return whether the user has sufficient privileges to edit newgrfs in an existing game
