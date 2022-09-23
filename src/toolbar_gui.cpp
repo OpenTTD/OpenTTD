@@ -2336,14 +2336,18 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_TE_DATE:
 				SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
-				DrawString(r.left, r.right, (this->height - FONT_HEIGHT_NORMAL) / 2, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
+		}
+	}
 
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		switch (widget) {
 			case WID_TE_SPACER: {
 				int height = r.bottom - r.top;
 				if (height > 2 * FONT_HEIGHT_NORMAL) {
@@ -2367,7 +2371,6 @@ struct ScenarioEditorToolbarWindow : Window {
 			case WID_TE_DATE:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
 				*size = GetStringBoundingBox(STR_WHITE_DATE_LONG);
-				size->height = std::max(size->height, GetSpriteSize(SPR_IMG_SAVE).height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
 				break;
 		}
 	}
@@ -2530,10 +2533,10 @@ static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_SPACER), EndContainer(),
 	NWidget(NWID_SPACER),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_DATE_PANEL),
-		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_BACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD),
-			NWidget(WWT_EMPTY, COLOUR_GREY, WID_TE_DATE), SetDataTip(STR_NULL, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_FORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD),
+		NWidget(NWID_HORIZONTAL), SetPIP(2, 2, 2), SetPadding(1),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_BACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD), SetFill(0, 1),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_TE_DATE), SetDataTip(STR_WHITE_DATE_LONG, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE), SetAlignment(SA_CENTER), SetFill(0, 1),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_FORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD), SetFill(0, 1),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SPACER),

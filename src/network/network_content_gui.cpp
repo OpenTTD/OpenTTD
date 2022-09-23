@@ -559,10 +559,6 @@ public:
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
-			case WID_NCL_FILTER_CAPT:
-				*size = maxdim(*size, GetStringBoundingBox(STR_CONTENT_FILTER_TITLE));
-				break;
-
 			case WID_NCL_CHECKBOX:
 				size->width = this->checkbox_size.width + WD_MATRIX_RIGHT + WD_MATRIX_LEFT;
 				break;
@@ -587,10 +583,6 @@ public:
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
-			case WID_NCL_FILTER_CAPT:
-				DrawString(r.left, r.right, r.top, STR_CONTENT_FILTER_TITLE, TC_FROMSTRING, SA_RIGHT);
-				break;
-
 			case WID_NCL_DETAILS:
 				this->DrawDetails(r);
 				break;
@@ -1029,7 +1021,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(8, 8, 8),
 			/* Top */
-			NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, WID_NCL_FILTER_CAPT), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NCL_FILTER_CAPT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_CONTENT_FILTER_TITLE, STR_NULL), SetAlignment(SA_RIGHT),
 			NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NCL_FILTER), SetFill(1, 0), SetResize(1, 0),
 						SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),

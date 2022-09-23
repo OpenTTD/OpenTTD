@@ -222,7 +222,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 			EndContainer(),
 			/* Widgets at the right of the labels. */
 			NWidget(NWID_VERTICAL), SetPIP(0, 4, 0),
-				NWidget(WWT_EMPTY, COLOUR_ORANGE, WID_GL_HEIGHTMAP_NAME_TEXT), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_ORANGE, WID_GL_HEIGHTMAP_NAME_TEXT), SetTextColour(TC_ORANGE), SetDataTip(STR_JUST_RAW_STRING, STR_EMPTY), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, 5, 0),
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 						NWidget(WWT_TEXT, COLOUR_ORANGE, WID_GL_HEIGHTMAP_SIZE_TEXT), SetDataTip(STR_MAPGEN_HEIGHTMAP_SIZE, STR_NULL), SetFill(1, 0),
@@ -436,6 +436,7 @@ struct GenerateLandscapeWindow : public Window {
 				}
 				break;
 
+			case WID_GL_HEIGHTMAP_NAME_TEXT: SetDParamStr(0, this->name); break;
 			case WID_GL_RIVER_PULLDOWN:      SetDParam(0, _rivers[_settings_newgame.game_creation.amount_of_rivers]); break;
 			case WID_GL_SMOOTHNESS_PULLDOWN: SetDParam(0, _smoothness[_settings_newgame.game_creation.tgen_smoothness]); break;
 			case WID_GL_VARIETY_PULLDOWN:    SetDParam(0, _variety[_settings_newgame.game_creation.variety]); break;
@@ -617,16 +618,6 @@ struct GenerateLandscapeWindow : public Window {
 		}
 		size->width += padding.width;
 		size->height = std::max(size->height, (uint)(FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM));
-	}
-
-	void DrawWidget(const Rect &r, int widget) const override
-	{
-		switch (widget) {
-			case WID_GL_HEIGHTMAP_NAME_TEXT: {
-				DrawString(r.left, r.right, r.top, this->name, TC_ORANGE);
-				break;
-			}
-		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
