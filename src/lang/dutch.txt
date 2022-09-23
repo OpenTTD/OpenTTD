@@ -1851,7 +1851,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Willekeurig
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Steden mogen wegen bouwen: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Steden toestaan om wegen te bouwen ten behoeve van groei. Schakel deze optie uit als je niet wilt dat gemeenten zelf wegen bouwen.
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Steden toestaan om wegen te bouwen ten behoeve van groei. Schakel deze optie uit als je niet wilt dat steden zelf wegen bouwen.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Steden mogen gelijkvloerse kruisingen bouwen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Door deze optie in te schakelen, kunnen steden gelijkvloerse kruisingen bouwen.
 
@@ -1922,8 +1922,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Heel snel
 
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van gemeenten die uitgroeien tot steden: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Aantal steden die een stad worden, dus een stad die groter begint en sneller groeit
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van dorpen die uitgroeien tot steden: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Aantal dorpen dat een stad wordt, dus die groter begint en sneller groeit
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 op {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
@@ -2539,7 +2539,7 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale 
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO OVER INHOUD
 
 ###length 5
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt ervoor gekozen om dit niet te downloaden
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt er niet voor gekozen om dit te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Je hebt ervoor gekozen om dit te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Deze afhankelijkheid is geselecteerd om te downloaden
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dit heb je al
@@ -3641,6 +3641,7 @@ STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD} Rente va
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Overig
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}Nettowinst
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
@@ -4725,17 +4726,17 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan geen
 STR_ERROR_PROTECTED                                             :{WHITE}Dit bedrijf verhandelt nog geen aandelen...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen plaatsen bouwen
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan plaats niet hernoemen...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuwe plaats bouwen...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen steden bouwen
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan stad niet hernoemen...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuwe stad bouwen...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan dorp niet uitbreiden...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te dicht bij de rand van de kaart
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een andere plaats
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel plaatsen
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De plaats bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Omgeving->Plaatsen
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De stad bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Instellingen->Omgeving->Steden
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze plaats niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de plaats beheerde tegel kan niet worden verwijderd
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze stad niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de stad beheerde tegel kan niet worden verwijderd
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
 
 # Industry related errors
@@ -4745,11 +4746,11 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan {STR
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan dit type industrie hier niet bouwen...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te dicht bij een andere industrie
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... moet eerst dorp bouwen
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slechts één per plaats toegestaan
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan alleen in plaatsen met meer dan 1.200 inwoners worden gebouwd
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slechts één per stad toegestaan
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan alleen in steden met meer dan 1.200 inwoners worden gebouwd
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan alleen in regenwouden gebouwd worden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan alleen in woestijnen gebouwd worden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan alleen in plaatsen gebouwd worden (vervangt huizen)
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan alleen in steden gebouwd worden (vervangt huizen)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan alleen worden gebouwd in het centrum van de stad
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan alleen in laaggelegen gebieden gebouwd worden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan alleen aan de rand van de kaart geplaatst worden
@@ -4757,8 +4758,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... boss
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan alleen boven de sneeuwlijn gebouwd worden
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan alleen onder de sneeuwlijn gebouwd worden
 
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Er waren een geschikte locaties voor '{STRING}' industrieën
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Parameters voor kaartontwikkeling wijzigen om een betere kaart te krijgen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Er waren geen geschikte locaties voor {STRING}-industrieën
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Wijzig de instellingen van wereldontwikkeling om een betere kaart te krijgen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan hier geen treinstation bouwen...
