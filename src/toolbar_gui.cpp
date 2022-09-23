@@ -95,7 +95,7 @@ public:
 
 	DropDownListCheckedItem(StringID string, int result, bool masked, bool checked) : DropDownListStringItem(string, result, masked), checked(checked)
 	{
-		this->checkmark_width = GetStringBoundingBox(STR_JUST_CHECKMARK).width + 3;
+		this->checkmark_width = GetStringBoundingBox(STR_JUST_CHECKMARK).width + WidgetDimensions::scaled.hsep_wide;
 	}
 
 	uint Width() const override
@@ -106,7 +106,7 @@ public:
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		Rect tr = r.Shrink(WD_DROPDOWNTEXT_LEFT, 0, WD_DROPDOWNTEXT_RIGHT, 0);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
 		if (this->checked) {
 			DrawString(tr, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
@@ -139,12 +139,12 @@ public:
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT + 6;
+		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + WidgetDimensions::scaled.dropdowntext.Horizontal() + WidgetDimensions::scaled.hsep_wide;
 	}
 
 	uint Height(uint width) const override
 	{
-		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM, (uint)FONT_HEIGHT_NORMAL);
+		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)FONT_HEIGHT_NORMAL);
 	}
 
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
@@ -155,7 +155,7 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		Rect tr = r.Shrink(WD_DROPDOWNTEXT_LEFT, 0, WD_DROPDOWNTEXT_RIGHT, 0);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
 		int icon_y = CenterBounds(r.top, r.bottom, icon_size.height);
 		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		int lock_y = CenterBounds(r.top, r.bottom, lock_size.height);
@@ -173,7 +173,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		tr = tr.Indent(this->icon_size.width + 3, rtl).Indent(this->lock_size.width + 3, !rtl);
+		tr = tr.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl).Indent(this->lock_size.width + WidgetDimensions::scaled.hsep_normal, !rtl);
 		DrawString(tr.left, tr.right, text_y, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
@@ -2374,7 +2374,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		switch (widget) {
 			case WID_TE_SPACER:
-				size->width = std::max(GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_OPENTTD).width, GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR).width) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->width = std::max(GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_OPENTTD).width, GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR).width) + padding.width;
 				break;
 
 			case WID_TE_DATE:

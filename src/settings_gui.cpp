@@ -1000,8 +1000,8 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 	if (cur_row >= max_row) return cur_row;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int offset = rtl ? -4 : 4;
-	int level_width = rtl ? -LEVEL_WIDTH : LEVEL_WIDTH;
+	int offset = (rtl ? -(int)_circle_size.width : _circle_size.width) / 2;
+	int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
 	int x = rtl ? right : left;
 	if (cur_row >= first_row) {
@@ -1018,7 +1018,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 		int bottom_y = (flags & SEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
 		GfxDrawLine(x + offset, y, x + offset, bottom_y, colour);
 		/* Small horizontal line from the last vertical line */
-		GfxDrawLine(x + offset, halfway_y, x + level_width - offset, halfway_y, colour);
+		GfxDrawLine(x + offset, halfway_y, x + level_width - WidgetDimensions::scaled.hsep_normal, halfway_y, colour);
 		x += level_width;
 
 		this->DrawSetting(settings_ptr, rtl ? left : x, rtl ? x : right, y, this == selected);
@@ -1210,8 +1210,8 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 
 	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
-	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + 5);
-	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + 5 : 0);
+	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
+	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide : 0);
 	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
@@ -1558,7 +1558,7 @@ void SettingsPage::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _circle_size.width : left, y + (SETTING_HEIGHT - _circle_size.height) / 2);
-	DrawString(rtl ? left : left + _circle_size.width + 2, rtl ? right - _circle_size.width - 2 : right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, this->title);
+	DrawString(rtl ? left : left + _circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, this->title);
 }
 
 /** Construct settings tree */
@@ -1962,10 +1962,10 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL:
-				resize->height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL}) + 1;
-				resize->width  = 1;
+				resize->height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL}) + WidgetDimensions::scaled.vsep_normal;
+				resize->width = 1;
 
-				size->height = 5 * resize->height + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+				size->height = 5 * resize->height + WidgetDimensions::scaled.framerect.Vertical();
 				break;
 
 			case WID_GS_HELP_TEXT: {
@@ -1978,7 +1978,7 @@ struct GameSettingsWindow : Window {
 					SetDParam(0, setting_types[i]);
 					size->width = std::max(size->width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width);
 				}
-				size->height = 2 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL +
+				size->height = 2 * FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal +
 						std::max(size->height, GetSettingsTree().GetMaxHelpHeight(size->width));
 				break;
 			}
@@ -2003,7 +2003,7 @@ struct GameSettingsWindow : Window {
 		}
 
 		/* Reserve the correct number of lines for the 'some search results are hidden' notice in the central settings display panel. */
-		const Rect panel = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL)->GetCurrentRect().Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
+		const Rect panel = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.frametext);
 		StringID warn_str = STR_CONFIG_SETTING_CATEGORY_HIDES - 1 + this->warn_missing;
 		int new_warn_lines;
 		if (this->warn_missing == WHR_NONE) {
@@ -2072,7 +2072,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL: {
-				Rect tr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
+				Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 				tr.top += this->warn_lines * SETTING_HEIGHT;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
 				int next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top,
@@ -2097,7 +2097,7 @@ struct GameSettingsWindow : Window {
 
 					this->last_clicked->SetValueDParams(0, sd->def);
 					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
-					tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 
 					DrawStringMultiLine(tr, this->last_clicked->GetHelpText(), TC_WHITE);
 				}
@@ -2161,7 +2161,7 @@ struct GameSettingsWindow : Window {
 
 		if (widget != WID_GS_OPTIONSPANEL) return;
 
-		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, WD_FRAMETEXT_TOP);
+		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, WidgetDimensions::scaled.framerect.top);
 		if (btn == INT_MAX || (int)btn < this->warn_lines) return;
 		btn -= this->warn_lines;
 
@@ -2170,7 +2170,7 @@ struct GameSettingsWindow : Window {
 
 		if (clicked_entry == nullptr) return;  // Clicked below the last setting of the page
 
-		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - WD_FRAMETEXT_LEFT - (clicked_entry->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - WidgetDimensions::scaled.frametext.left - (clicked_entry->level + 1) * WidgetDimensions::scaled.hsep_indent;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
 		SettingsPage *clicked_page = dynamic_cast<SettingsPage*>(clicked_entry);
@@ -2211,7 +2211,7 @@ struct GameSettingsWindow : Window {
 				this->closing_dropdown = false;
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
-				int rel_y = (pt.y - (int)wid->pos_y - WD_FRAMETEXT_TOP) % wid->resize_y;
+				int rel_y = (pt.y - (int)wid->pos_y - WidgetDimensions::scaled.framerect.top) % wid->resize_y;
 
 				Rect wi_rect;
 				wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
@@ -2439,7 +2439,7 @@ struct GameSettingsWindow : Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_GS_OPTIONSPANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, WID_GS_OPTIONSPANEL, WidgetDimensions::scaled.framerect.Vertical());
 	}
 };
 
@@ -2452,16 +2452,16 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
-		NWidget(NWID_VERTICAL), SetPIP(WD_TEXTPANEL_TOP, WD_PAR_VSEP_NORMAL, WD_TEXTPANEL_BOTTOM),
-			NWidget(NWID_HORIZONTAL), SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+		NWidget(NWID_VERTICAL), SetPIP(WidgetDimensions::unscaled.frametext.top, WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.frametext.bottom),
+			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_GS_RESTRICT_CATEGORY), SetDataTip(STR_CONFIG_SETTING_RESTRICT_CATEGORY, STR_NULL),
 				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_RESTRICT_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_GS_RESTRICT_TYPE), SetDataTip(STR_CONFIG_SETTING_RESTRICT_TYPE, STR_NULL),
 				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_TYPE_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_CONFIG_SETTING_FILTER_TITLE, STR_NULL),
 				NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_GS_FILTER), SetMinimalSize(50, 12), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
@@ -2473,7 +2473,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GS_HELP_TEXT), SetMinimalSize(300, 25), SetFill(1, 1), SetResize(1, 0),
-				SetPadding(WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM, WD_FRAMETEXT_LEFT),
+				SetPadding(WidgetDimensions::unscaled.frametext),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GS_EXPAND_ALL), SetDataTip(STR_CONFIG_SETTING_EXPAND_ALL, STR_NULL),
@@ -2511,21 +2511,26 @@ void ShowGameSettings()
  */
 void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right)
 {
+	extern void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, bool clicked, StringAlignment align);
+
 	int colour = _colour_gradient[button_colour][2];
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();
 
-	DrawFrameRect(x,             y, x + dim.width - 1,             y + dim.height - 1, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
-	DrawFrameRect(x + dim.width, y, x + dim.width + dim.width - 1, y + dim.height - 1, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, x + WD_IMGBTN_LEFT, y + WD_IMGBTN_TOP);
-	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, x + WD_IMGBTN_LEFT + dim.width, y + WD_IMGBTN_TOP);
+	Rect lr = {x,                  y, x + (int)dim.width     - 1, y + (int)dim.height - 1};
+	Rect rr = {x + (int)dim.width, y, x + (int)dim.width * 2 - 1, y + (int)dim.height - 1};
+
+	DrawFrameRect(lr, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(rr, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
+	DrawSpriteIgnorePadding(lr, SPR_ARROW_LEFT,  (state == 1), SA_CENTER);
+	DrawSpriteIgnorePadding(rr, SPR_ARROW_RIGHT, (state == 2), SA_CENTER);
 
 	/* Grey out the buttons that aren't clickable */
 	bool rtl = _current_text_dir == TD_RTL;
 	if (rtl ? !clickable_right : !clickable_left) {
-		GfxFillRect(x + 1, y, x + dim.width - 1, y + dim.height - 2, colour, FILLRECT_CHECKER);
+		GfxFillRect(lr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
 	}
 	if (rtl ? !clickable_left : !clickable_right) {
-		GfxFillRect(x + dim.width + 1, y, x + dim.width + dim.width - 1, y + dim.height - 2, colour, FILLRECT_CHECKER);
+		GfxFillRect(rr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
 	}
 }
 
@@ -2539,13 +2544,17 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
  */
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable)
 {
+	extern void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, bool clicked, StringAlignment align);
+
 	int colour = _colour_gradient[button_colour][2];
 
-	DrawFrameRect(x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1, button_colour, state ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_DOWN, PAL_NONE, x + (SETTING_BUTTON_WIDTH - NWidgetScrollbar::GetVerticalDimension().width) / 2 + state, y + 2 + state);
+	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
+
+	DrawFrameRect(r, button_colour, state ? FR_LOWERED : FR_NONE);
+	DrawSpriteIgnorePadding(r, SPR_ARROW_DOWN, state, SA_CENTER);
 
 	if (!clickable) {
-		GfxFillRect(x +  1, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 2, colour, FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
 	}
 }
 
@@ -2559,7 +2568,9 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
 void DrawBoolButton(int x, int y, bool state, bool clickable)
 {
 	static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
-	DrawFrameRect(x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1, _bool_ctabs[state][clickable], state ? FR_LOWERED : FR_NONE);
+
+	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
+	DrawFrameRect(r, _bool_ctabs[state][clickable], state ? FR_LOWERED : FR_NONE);
 }
 
 struct CustomCurrencyWindow : Window {

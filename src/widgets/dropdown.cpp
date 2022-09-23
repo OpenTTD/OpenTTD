@@ -13,6 +13,7 @@
 #include "../strings_func.h"
 #include "../window_func.h"
 #include "../guitimer_func.h"
+#include "../zoom_func.h"
 #include "dropdown_type.h"
 
 #include "dropdown_widget.h"
@@ -25,21 +26,22 @@ void DropDownListItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 	int c1 = _colour_gradient[bg_colour][3];
 	int c2 = _colour_gradient[bg_colour][7];
 
-	int mid = (r.top + r.bottom) / 2;
-	GfxFillRect(r.left + 1, mid - 2, r.right - 1, mid - 2, c1);
-	GfxFillRect(r.left + 1, mid - 1, r.right - 1, mid - 1, c2);
+	int mid = CenterBounds(r.top, r.bottom, 0);
+	GfxFillRect(r.left, mid - WidgetDimensions::scaled.bevel.bottom, r.right, mid - 1, c1);
+	GfxFillRect(r.left, mid, r.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
 }
 
 uint DropDownListStringItem::Width() const
 {
 	char buffer[512];
 	GetString(buffer, this->String(), lastof(buffer));
-	return GetStringBoundingBox(buffer).width;
+	return GetStringBoundingBox(buffer).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
 }
 
 void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 {
-	DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
+	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
+	DrawString(ir.left, ir.right, r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
 /**
@@ -82,14 +84,14 @@ uint DropDownListIconItem::Height(uint width) const
 
 uint DropDownListIconItem::Width() const
 {
-	return DropDownListStringItem::Width() + this->dim.width + WD_FRAMERECT_LEFT;
+	return DropDownListParamStringItem::Width() + this->dim.width + WidgetDimensions::scaled.hsep_wide;
 }
 
 void DropDownListIconItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	Rect ir = r.Shrink(WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_LEFT);
-	Rect tr = ir.Indent(this->dim.width + WD_FRAMERECT_LEFT, rtl);
+	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
+	Rect tr = ir.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl);
 	DrawSprite(this->sprite, this->pal, ir.WithWidth(this->dim.width, rtl).left, CenterBounds(r.top, r.bottom, this->sprite_y));
 	DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 }
@@ -155,7 +157,7 @@ struct DropdownWindow : Window {
 
 		uint items_width = size.width - (scroll ? NWidgetScrollbar::GetVerticalDimension().width : 0);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_DM_ITEMS);
-		nwi->SetMinimalSizeAbsolute(items_width, size.height + 4);
+		nwi->SetMinimalSizeAbsolute(items_width, size.height + WidgetDimensions::scaled.fullbevel.Vertical() * 2);
 		nwi->colour = wi_colour;
 
 		nwi = this->GetWidget<NWidgetCore>(WID_DM_SCROLL);
@@ -215,8 +217,8 @@ struct DropdownWindow : Window {
 	{
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
-		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect();
-		int y     = _cursor.pos.y - this->top - r.top - 2;
+		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
+		int y     = _cursor.pos.y - this->top - r.top - WidgetDimensions::scaled.fullbevel.top;
 		int width = r.Width();
 		int pos   = this->vscroll->GetPosition();
 
@@ -244,22 +246,23 @@ struct DropdownWindow : Window {
 
 		Colours colour = this->GetWidget<NWidgetCore>(widget)->colour;
 
-		int y = r.top + 2;
+		Rect ir = r.Shrink(WidgetDimensions::scaled.fullbevel).Shrink(RectPadding::zero, WidgetDimensions::scaled.fullbevel);
+		int y = ir.top;
 		int pos = this->vscroll->GetPosition();
 		for (const auto &item : this->list) {
-			int item_height = item->Height(r.Width());
+			int item_height = item->Height(ir.Width());
 
 			/* Skip items that are scrolled up */
 			if (--pos >= 0) continue;
 
-			if (y + item_height < r.bottom) {
+			if (y + item_height - 1 <= ir.bottom) {
 				bool selected = (this->selected_index == item->result);
-				if (selected) GfxFillRect(r.left + 2, y, r.right - 1, y + item_height - 1, PC_BLACK);
+				if (selected) GfxFillRect(ir.left, y, ir.right, y + item_height - 1, PC_BLACK);
 
-				item->Draw({r.left, y, r.right, y + item_height - 1}, selected, colour);
+				item->Draw({ir.left, y, ir.right, y + item_height - 1}, selected, colour);
 
 				if (item->masked) {
-					GfxFillRect(r.left + 1, y, r.right - 1, y + item_height - 1, _colour_gradient[colour][5], FILLRECT_CHECKER);
+					GfxFillRect(ir.left, y, ir.right, y + item_height - 1, _colour_gradient[colour][5], FILLRECT_CHECKER);
 				}
 			}
 			y += item_height;
@@ -373,8 +376,10 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 
 	for (const auto &item : list) {
 		height += item->Height(width);
-		if (auto_width) max_item_width = std::max(max_item_width, item->Width() + 5);
+		if (auto_width) max_item_width = std::max(max_item_width, item->Width());
 	}
+
+	if (auto_width) max_item_width += WidgetDimensions::scaled.fullbevel.Horizontal();
 
 	/* Scrollbar needed? */
 	bool scroll = false;
@@ -383,12 +388,12 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	bool above = false;
 
 	/* Available height below (or above, if the dropdown is placed above the widget). */
-	uint available_height = std::max(GetMainViewBottom() - top - 4, 0);
+	uint available_height = std::max(GetMainViewBottom() - top - WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0U);
 
 	/* If the dropdown doesn't fully fit below the widget... */
 	if (height > available_height) {
 
-		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - 4, 0);
+		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0U);
 
 		/* Put the dropdown above if there is more available space. */
 		if (available_height_above > available_height) {
@@ -414,7 +419,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 
 		/* Set the top position if needed. */
 		if (above) {
-			top = w->top + wi_rect.top - height - 4;
+			top = w->top + wi_rect.top - height - WidgetDimensions::scaled.fullbevel.Vertical() * 2;
 		}
 	}
 
@@ -459,9 +464,9 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
 
 	if (width != 0) {
 		if (_current_text_dir == TD_RTL) {
-			wi_rect.left = wi_rect.right + 1 - width;
+			wi_rect.left = wi_rect.right + 1 - ScaleGUITrad(width);
 		} else {
-			wi_rect.right = wi_rect.left + width - 1;
+			wi_rect.right = wi_rect.left + ScaleGUITrad(width) - 1;
 		}
 	}
 

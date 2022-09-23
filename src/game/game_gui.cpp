@@ -186,7 +186,7 @@ struct GSConfigWindow : public Window {
 				}
 
 				/* There is only one slot, unlike with the GS GUI, so it should never be white */
-				DrawString(r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM), text, (IsEditable() ? TC_ORANGE : TC_SILVER));
+				DrawString(r.Shrink(WidgetDimensions::scaled.matrix), text, (IsEditable() ? TC_ORANGE : TC_SILVER));
 				break;
 			}
 			case WID_GSC_SETTINGS: {
@@ -195,10 +195,10 @@ struct GSConfigWindow : public Window {
 				int i = 0;
 				for (; !this->vscroll->IsVisible(i); i++) it++;
 
-				Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				bool rtl = _current_text_dir == TD_RTL;
 				Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
-				Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + 8, rtl);
+				Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 				int y = r.top;
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -290,7 +290,7 @@ struct GSConfigWindow : public Window {
 				break;
 
 			case WID_GSC_SETTINGS: {
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WD_MATRIX_LEFT, 0, WD_MATRIX_RIGHT, 0);
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
 				if (num >= (int)this->visible_settings.size()) break;
 

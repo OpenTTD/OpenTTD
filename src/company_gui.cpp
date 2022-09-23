@@ -148,7 +148,7 @@ static uint GetMaxCategoriesWidth()
 		/* Title of category */
 		max_width = std::max(max_width, GetStringBoundingBox(STR_FINANCES_REVENUE_TITLE + i).width);
 		/* Entries in category */
-		max_width = std::max(max_width, _expenses_list_types[i].GetListWidth());
+		max_width = std::max(max_width, _expenses_list_types[i].GetListWidth() + WidgetDimensions::scaled.hsep_indent);
 	}
 
 	return max_width;
@@ -292,7 +292,7 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_PANEL),
 		NWidget(WWT_PANEL, COLOUR_GREY),
-			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT), SetPIP(0, 9, 0),
+			NWidget(NWID_HORIZONTAL), SetPadding(WidgetDimensions::unscaled.framerect), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_CATEGORY), SetMinimalSize(120, 0), SetFill(0, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_PRICE1), SetMinimalSize(86, 0), SetFill(0, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_PRICE2), SetMinimalSize(86, 0), SetFill(0, 0),
@@ -301,7 +301,7 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT),
+		NWidget(NWID_HORIZONTAL), SetPadding(WidgetDimensions::unscaled.framerect),
 			NWidget(NWID_VERTICAL), // Vertical column with 'bank balance', 'loan'
 				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_OWN_FUNDS_TITLE, STR_NULL), SetFill(1, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY), SetDataTip(STR_FINANCES_LOAN_TITLE, STR_NULL), SetFill(1, 0),
@@ -607,17 +607,14 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		int icon_y = CenterBounds(r.top, r.bottom, 0);
 		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
-		Rect tr = r.Shrink(WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext);
 		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
 				   rtl ? tr.right - ScaleGUITrad(14) : tr.left + ScaleGUITrad(14),
 				   icon_y);
-		DrawString(rtl ? tr.left : tr.left + ScaleGUITrad(28) + 2,
-				rtl ? tr.right - ScaleGUITrad(28) - 2 : tr.right,
-				text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
+		tr = tr.Indent(ScaleGUITrad(28) + WidgetDimensions::scaled.hsep_normal, rtl);
+		DrawString(tr.left, tr.right, text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
-
-static const int LEVEL_WIDTH = 10; ///< Indenting width of a sub-group in pixels
 
 typedef GUIList<const Group*> GUIGroupList;
 
@@ -823,14 +820,14 @@ public:
 					}
 				}
 
-				size->width = std::max(size->width, 5 + d.width + WD_FRAMERECT_RIGHT);
+				size->width = std::max(size->width, 5 + d.width + padding.width);
 				break;
 			}
 
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
 				this->square = GetSpriteSize(SPR_SQUARE);
-				this->line_height = std::max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + 4;
+				this->line_height = std::max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
 
 				size->height = 11 * this->line_height;
 				resize->width = 1;
@@ -847,7 +844,7 @@ public:
 
 			case WID_SCL_PRI_COL_DROPDOWN: {
 				this->square = GetSpriteSize(SPR_SQUARE);
-				int string_padding = this->square.width + NWidgetScrollbar::GetVerticalDimension().width + 10;
+				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = std::max(size->width, GetStringBoundingBox(*id).width + string_padding);
 				}
@@ -919,21 +916,21 @@ public:
 
 		/* Coordinates of scheme name column. */
 		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_SCL_SPACER_DROPDOWN);
-		Rect sch = nwi->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		Rect sch = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		/* Coordinates of first dropdown. */
 		nwi = this->GetWidget<NWidgetBase>(WID_SCL_PRI_COL_DROPDOWN);
-		Rect pri = nwi->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		Rect pri = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		/* Coordinates of second dropdown. */
 		nwi = this->GetWidget<NWidgetBase>(WID_SCL_SEC_COL_DROPDOWN);
-		Rect sec = nwi->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		Rect sec = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
 		Rect pri_squ = pri.WithWidth(this->square.width, rtl);
 		Rect sec_squ = sec.WithWidth(this->square.width, rtl);
 
-		pri = pri.Indent(this->square.width + ScaleGUITrad(2), rtl);
-		sec = sec.Indent(this->square.width + ScaleGUITrad(2), rtl);
+		pri = pri.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
+		sec = sec.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
-		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
 		int square_offs = (ir.Height() - this->square.height) / 2;
 		int text_offs   = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
 
@@ -971,7 +968,7 @@ public:
 			for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 				const Group *g = this->groups[i];
 				SetDParam(0, g->index);
-				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[i] * LEVEL_WIDTH);
+				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
 			}
 		}
 	}
@@ -1269,81 +1266,81 @@ static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_EYECOLOUR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAS_MOUSTACHE_EARRING), SetDataTip(STR_WHITE_STRING, STR_FACE_MOUSTACHE_EARRING_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_GLASSES_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_GLASSES_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_GLASSES, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAS_GLASSES), SetDataTip(STR_WHITE_STRING, STR_FACE_GLASSES_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAIR_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAIR_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_HAIR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_HAIR_L), SetDataTip(AWV_DECREASE, STR_FACE_HAIR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAIR), SetDataTip(STR_WHITE_STRING, STR_FACE_HAIR_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_HAIR_R), SetDataTip(AWV_INCREASE, STR_FACE_HAIR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_EYEBROWS_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_EYEBROWS_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_EYEBROWS, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYEBROWS_L), SetDataTip(AWV_DECREASE, STR_FACE_EYEBROWS_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_EYEBROWS), SetDataTip(STR_WHITE_STRING, STR_FACE_EYEBROWS_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYEBROWS_R), SetDataTip(AWV_INCREASE, STR_FACE_EYEBROWS_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_EYECOLOUR_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_EYECOLOUR_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_EYECOLOUR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR_L), SetDataTip(AWV_DECREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR), SetDataTip(STR_WHITE_STRING, STR_FACE_EYECOLOUR_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR_R), SetDataTip(AWV_INCREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_GLASSES_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_GLASSES_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_GLASSES, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_GLASSES_L), SetDataTip(AWV_DECREASE, STR_FACE_GLASSES_TOOLTIP_2),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_GLASSES), SetDataTip(STR_WHITE_STRING, STR_FACE_GLASSES_TOOLTIP_2),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_GLASSES_R), SetDataTip(AWV_INCREASE, STR_FACE_GLASSES_TOOLTIP_2),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_NOSE_TEXT), SetFill(1, 0),  SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_NOSE_TEXT), SetFill(1, 0),  SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_NOSE, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_NOSE_L), SetDataTip(AWV_DECREASE, STR_FACE_NOSE_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_NOSE), SetDataTip(STR_WHITE_STRING, STR_FACE_NOSE_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_NOSE_R), SetDataTip(AWV_INCREASE, STR_FACE_NOSE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_LIPS_MOUSTACHE_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_LIPS_MOUSTACHE_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_MOUSTACHE, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE_L), SetDataTip(AWV_DECREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE), SetDataTip(STR_WHITE_STRING, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE_R), SetDataTip(AWV_INCREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_CHIN_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_CHIN_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_CHIN, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_CHIN_L), SetDataTip(AWV_DECREASE, STR_FACE_CHIN_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_CHIN), SetDataTip(STR_WHITE_STRING, STR_FACE_CHIN_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_CHIN_R), SetDataTip(AWV_INCREASE, STR_FACE_CHIN_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_JACKET_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_JACKET_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_JACKET, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_JACKET_L), SetDataTip(AWV_DECREASE, STR_FACE_JACKET_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_JACKET), SetDataTip(STR_WHITE_STRING, STR_FACE_JACKET_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_JACKET_R), SetDataTip(AWV_INCREASE, STR_FACE_JACKET_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_COLLAR_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_COLLAR_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_COLLAR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_COLLAR_L), SetDataTip(AWV_DECREASE, STR_FACE_COLLAR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_COLLAR), SetDataTip(STR_WHITE_STRING, STR_FACE_COLLAR_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_COLLAR_R), SetDataTip(AWV_INCREASE, STR_FACE_COLLAR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_TIE_EARRING_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_TIE_EARRING_TEXT), SetFill(1, 0), SetPadding(WidgetDimensions::unscaled.framerect),
 								SetDataTip(STR_FACE_EARRING, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING_L), SetDataTip(AWV_DECREASE, STR_FACE_TIE_EARRING_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING), SetDataTip(STR_WHITE_STRING, STR_FACE_TIE_EARRING_TOOLTIP),
@@ -1447,17 +1444,17 @@ public:
 	{
 		/* Size of the boolean yes/no button. */
 		Dimension yesno_dim = maxdim(GetStringBoundingBox(STR_FACE_YES), GetStringBoundingBox(STR_FACE_NO));
-		yesno_dim.width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-		yesno_dim.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		yesno_dim.width  += WidgetDimensions::scaled.framerect.Horizontal();
+		yesno_dim.height += WidgetDimensions::scaled.framerect.Vertical();
 		/* Size of the number button + arrows. */
 		Dimension number_dim = {0, 0};
 		for (int val = 1; val <= 12; val++) {
 			SetDParam(0, val);
 			number_dim = maxdim(number_dim, GetStringBoundingBox(STR_JUST_INT));
 		}
-		uint arrows_width = GetSpriteSize(SPR_ARROW_LEFT).width + GetSpriteSize(SPR_ARROW_RIGHT).width + 2 * (WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
-		number_dim.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + arrows_width;
-		number_dim.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		uint arrows_width = GetSpriteSize(SPR_ARROW_LEFT).width + GetSpriteSize(SPR_ARROW_RIGHT).width + 2 * (WidgetDimensions::scaled.imgbtn.Horizontal());
+		number_dim.width += WidgetDimensions::scaled.framerect.Horizontal() + arrows_width;
+		number_dim.height += WidgetDimensions::scaled.framerect.Vertical();
 		/* Compute width of both buttons. */
 		yesno_dim.width = std::max(yesno_dim.width, number_dim.width);
 		number_dim.width = yesno_dim.width - arrows_width;
@@ -1796,28 +1793,28 @@ static const NWidgetPart _nested_company_infrastructure_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, WD_PAR_VSEP_NORMAL * 2, WD_FRAMERECT_BOTTOM),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.framerect), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TRAM_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL_DESC), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL), SetFill(0, 1),
 			EndContainer(),
@@ -1918,12 +1915,12 @@ struct CompanyInfrastructureWindow : Window
 					if (HasBit(this->railtypes, rt)) {
 						lines++;
 						SetDParam(0, GetRailTypeInfo(rt)->strings.name);
-						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WD_FRAMERECT_LEFT);
+						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WidgetDimensions::scaled.hsep_indent);
 					}
 				}
 				if (this->railtypes != RAILTYPES_NONE) {
 					lines++;
-					size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + WD_FRAMERECT_LEFT);
+					size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + WidgetDimensions::scaled.hsep_indent);
 				}
 
 				size->height = std::max(size->height, lines * FONT_HEIGHT_NORMAL);
@@ -1940,7 +1937,7 @@ struct CompanyInfrastructureWindow : Window
 					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
 						lines++;
 						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
-						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WD_FRAMERECT_LEFT);
+						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WidgetDimensions::scaled.hsep_indent);
 					}
 				}
 
@@ -1950,13 +1947,13 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_WATER_DESC:
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + WD_FRAMERECT_LEFT);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + WidgetDimensions::scaled.hsep_indent);
 				break;
 
 			case WID_CI_STATION_DESC:
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + WD_FRAMERECT_LEFT);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + WD_FRAMERECT_LEFT);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + WidgetDimensions::scaled.hsep_indent);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + WidgetDimensions::scaled.hsep_indent);
 				break;
 
 			case WID_CI_RAIL_COUNT:
@@ -1990,11 +1987,11 @@ struct CompanyInfrastructureWindow : Window
 				max_cost = std::max(max_cost, AirportMaintenanceCost(c->index));
 
 				SetDParamMaxValue(0, max_val);
-				uint count_width = GetStringBoundingBox(STR_WHITE_COMMA).width + 20; // Reserve some wiggle room
+				uint count_width = GetStringBoundingBox(STR_WHITE_COMMA).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
 
 				if (_settings_game.economy.infrastructure_maintenance) {
 					SetDParamMaxValue(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					this->total_width = GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width + 20;
+					this->total_width = GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width + WidgetDimensions::scaled.hsep_indent * 2;
 					size->width = std::max(size->width, this->total_width);
 
 					SetDParamMaxValue(0, max_cost * 12); // Convert to per year
@@ -2034,9 +2031,10 @@ struct CompanyInfrastructureWindow : Window
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
+
 		int y = r.top;
 
-		Rect ir = r.Indent(LEVEL_WIDTH, _current_text_dir == TD_RTL);
+		Rect ir = r.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
 		switch (widget) {
 			case WID_CI_RAIL_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);

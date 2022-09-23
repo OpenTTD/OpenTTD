@@ -76,7 +76,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		}
 
 		DrawString(r.left, r.right, y, capacity, TC_BLUE);
-		y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
@@ -92,13 +92,13 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			DrawString(r.left, r.right, y, str);
 			y += FONT_HEIGHT_NORMAL;
 		}
-		y += WD_PAR_VSEP_NORMAL;
+		y += WidgetDimensions::scaled.vsep_normal;
 	} else {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		SetDParam(4, GetCargoSubtypeText(v));
 		DrawString(r.left, r.right, y, STR_VEHICLE_INFO_CAPACITY);
-		y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 
 		str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 		if (v->cargo.StoredCount() > 0) {
@@ -109,7 +109,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			feeder_share += v->cargo.FeederShare();
 		}
 		DrawString(r.left, r.right, y, str);
-		y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 	}
 
 	/* Draw Transfer credits text */

@@ -48,7 +48,7 @@
  */
 uint GetEngineListHeight(VehicleType type)
 {
-	return std::max<uint>(FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM, GetVehicleImageCellSize(type, EIT_PURCHASE).height);
+	return std::max<uint>(FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EIT_PURCHASE).height);
 }
 
 static const NWidgetPart _nested_build_vehicle_widgets[] = {
@@ -975,7 +975,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_li
 	int sprite_right = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_right;
 	int sprite_width = sprite_left + sprite_right;
 
-	Rect ir      = r.WithHeight(step_size).Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+	Rect ir      = r.WithHeight(step_size).Shrink(WidgetDimensions::scaled.matrix);
 	int sprite_x = ir.WithWidth(sprite_width, rtl).left + sprite_left;
 	int sprite_y_offset = ScaleGUITrad(sprite_y_offsets[type]) + ir.Height() / 2;
 
@@ -987,10 +987,10 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_li
 		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
 	}
 
-	Rect tr = ir.Indent(sprite_width + 6, rtl);                                     // Name position
-	Rect cr = tr.Indent(replace_icon.width + 6, !rtl).WithWidth(count_width, !rtl);  // Count position
-	Rect rr = tr.WithWidth(replace_icon.width, !rtl);                                // Replace icon position
-	if (show_count) tr = tr.Indent(count_width + 2 + replace_icon.width + 6, !rtl);
+	Rect tr = ir.Indent(sprite_width + WidgetDimensions::scaled.hsep_wide, rtl);                                      // Name position
+	Rect cr = tr.Indent(replace_icon.width + WidgetDimensions::scaled.hsep_wide, !rtl).WithWidth(count_width, !rtl);  // Count position
+	Rect rr = tr.WithWidth(replace_icon.width, !rtl);                                                                 // Replace icon position
+	if (show_count) tr = tr.Indent(count_width + WidgetDimensions::scaled.hsep_normal + replace_icon.width + WidgetDimensions::scaled.hsep_wide, !rtl);
 
 	int normal_text_y_offset = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
 	int small_text_y_offset  = ir.Height() - FONT_HEIGHT_SMALL;
@@ -1551,7 +1551,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST:
 				resize->height = GetEngineListHeight(this->vehicle_type);
 				size->height = 3 * resize->height;
-				size->width = std::max(size->width, GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_left + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_right + 165);
+				size->width = std::max(size->width, GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_left + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_right + 165) + padding.width;
 				break;
 
 			case WID_BV_PANEL:
@@ -1620,7 +1620,7 @@ struct BuildVehicleWindow : Window {
 			int needed_height = this->details_height;
 			/* Draw details panels. */
 			if (this->sel_engine != INVALID_ENGINE) {
-				const Rect r = this->GetWidget<NWidgetBase>(WID_BV_PANEL)->GetCurrentRect().Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM);
+				const Rect r = this->GetWidget<NWidgetBase>(WID_BV_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 				int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine, this->te);
 				needed_height = std::max(needed_height, (text_end - r.top) / FONT_HEIGHT_NORMAL);
 			}

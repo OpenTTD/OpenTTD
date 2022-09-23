@@ -72,8 +72,8 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection, boo
 	int drag_hlight_width = std::max(drag_hlight_right - drag_hlight_left + 1, 0);
 
 	if (drag_hlight_width > 0) {
-		GfxFillRect(drag_hlight_left + WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP + 1,
-				drag_hlight_right - WD_FRAMERECT_RIGHT, ScaleGUITrad(13) - WD_FRAMERECT_BOTTOM, _colour_gradient[COLOUR_GREY][7]);
+		GfxFillRect(drag_hlight_left + WidgetDimensions::scaled.framerect.left, WidgetDimensions::scaled.framerect.top + 1,
+				drag_hlight_right - WidgetDimensions::scaled.framerect.right, ScaleGUITrad(13) - WidgetDimensions::scaled.framerect.bottom, _colour_gradient[COLOUR_GREY][7]);
 	}
 
 	return drag_hlight_width;
@@ -400,14 +400,14 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vsc
 				dx = 0;
 			}
 
-			int sprite_width = std::max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + 3;
+			int sprite_width = std::max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + WidgetDimensions::scaled.hsep_normal;
 			Rect dr = r.Indent(sprite_width, rtl);
 			uint num_lines = std::max(1u, (unsigned)_cargo_summary.size());
 			for (uint i = 0; i < num_lines; i++) {
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
 					int py = r.top - line_height * vscroll_pos + text_y_offset;
 					if (i > 0 || separate_sprite_row) {
-						if (vscroll_pos != 0) GfxFillRect(r.left, py - WD_MATRIX_TOP - 1, r.right, py - WD_MATRIX_TOP, _colour_gradient[COLOUR_GREY][5]);
+						if (vscroll_pos != 0) GfxFillRect(r.left, py - WidgetDimensions::scaled.matrix.top - 1, r.right, py - WidgetDimensions::scaled.matrix.top, _colour_gradient[COLOUR_GREY][5]);
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:

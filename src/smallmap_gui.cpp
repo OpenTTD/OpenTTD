@@ -1191,7 +1191,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 	this->legend_width = (FONT_HEIGHT_SMALL - ScaleFontTrad(1)) * 8 / 5;
 
 	/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
-	this->column_width = min_width + this->legend_width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+	this->column_width = min_width + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();
 }
 
 /* virtual */ void SmallMapWindow::OnPaint()
@@ -1214,7 +1214,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 {
 	switch (widget) {
 		case WID_SM_MAP: {
-			Rect ir = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 			DrawPixelInfo new_dpi;
 			if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
 			this->DrawSmallMap(&new_dpi);
@@ -1227,10 +1227,10 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 			bool rtl = _current_text_dir == TD_RTL;
 			uint i = 0; // Row counter for industry legend.
 			uint row_height = FONT_HEIGHT_SMALL;
-			int padding = ScaleFontTrad(1);
+			int padding = ScaleGUITrad(1);
 
-			Rect origin = r.WithWidth(this->column_width, rtl).Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM).WithHeight(row_height);
-			Rect text = origin.Indent(this->legend_width + padding, rtl);
+			Rect origin = r.WithWidth(this->column_width, rtl).Shrink(WidgetDimensions::scaled.framerect).WithHeight(row_height);
+			Rect text = origin.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl);
 			Rect icon = origin.WithWidth(this->legend_width, rtl).Shrink(0, padding, 0, 0);
 
 			StringID string = STR_NULL;
@@ -1298,7 +1298,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 						DrawString(text, tbl->legend);
 						break;
 				}
-				GfxFillRect(icon.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), legend_colour); // Legend colour
+				GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), legend_colour); // Legend colour
 
 				text = text.Translate(0, row_height);
 				icon = icon.Translate(0, row_height);
@@ -1396,7 +1396,7 @@ void SmallMapWindow::SetOverlayCargoMask()
 int SmallMapWindow::GetPositionOnLegend(Point pt)
 {
 	const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND);
-	uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
+	uint line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / FONT_HEIGHT_SMALL;
 	uint columns = this->GetNumberColumnsLegend(wi->current_x);
 	uint number_of_rows = this->GetNumberRowsLegend(columns);
 	if (line >= number_of_rows) return -1;
@@ -1404,7 +1404,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	bool rtl = _current_text_dir == TD_RTL;
 	int x = pt.x - wi->pos_x;
 	if (rtl) x = wi->current_x - x;
-	uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
+	uint column = (x - WidgetDimensions::scaled.framerect.left) / this->column_width;
 
 	return (column * number_of_rows) + line;
 }

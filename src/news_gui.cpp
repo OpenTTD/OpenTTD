@@ -329,12 +329,14 @@ struct NewsWindow : Window {
 
 	void DrawNewsBorder(const Rect &r) const
 	{
-		GfxFillRect(r.left,  r.top,    r.right, r.bottom, PC_WHITE);
+		Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+		GfxFillRect(ir, PC_WHITE);
 
-		GfxFillRect(r.left,  r.top,    r.left,  r.bottom, PC_BLACK);
-		GfxFillRect(r.right, r.top,    r.right, r.bottom, PC_BLACK);
-		GfxFillRect(r.left,  r.top,    r.right, r.top,    PC_BLACK);
-		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, PC_BLACK);
+		ir = ir.Expand(1);
+		GfxFillRect( r.left,   r.top,    ir.left,   r.bottom, PC_BLACK);
+		GfxFillRect(ir.right,  r.top,     r.right,  r.bottom, PC_BLACK);
+		GfxFillRect( r.left,   r.top,     r.right, ir.top,    PC_BLACK);
+		GfxFillRect( r.left,  ir.bottom,  r.right,  r.bottom, PC_BLACK);
 	}
 
 	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
@@ -351,7 +353,7 @@ struct NewsWindow : Window {
 				/* Caption is not a real caption (so that the window cannot be moved)
 				 * thus it doesn't get the default sizing of a caption. */
 				Dimension d2 = GetStringBoundingBox(STR_NEWS_MESSAGE_CAPTION);
-				d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
+				d2.height += WidgetDimensions::scaled.captiontext.Vertical();
 				*size = maxdim(*size, d2);
 				return;
 			}
@@ -389,8 +391,8 @@ struct NewsWindow : Window {
 			case WID_N_SHOW_GROUP:
 				if (this->ni->reftype1 == NR_VEHICLE) {
 					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->widget_data);
-					d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
-					d2.width += WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT;
+					d2.height += WidgetDimensions::scaled.captiontext.Vertical();
+					d2.width += WidgetDimensions::scaled.captiontext.Horizontal();
 					*size = d2;
 				} else {
 					/* Hide 'Show group window' button if this news is not about a vehicle. */
@@ -1151,15 +1153,15 @@ struct MessageHistoryWindow : Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			this->line_height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+			this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 			resize->height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */
 			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
-			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
+			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width + ScaleFontTrad(5);
 
-			size->height = 4 * resize->height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM; // At least 4 lines are visible.
+			size->height = 4 * resize->height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 		}
 	}
@@ -1183,8 +1185,8 @@ struct MessageHistoryWindow : Window {
 
 		/* Fill the widget with news items. */
 		bool rtl = _current_text_dir == TD_RTL;
-		Rect news = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM).Indent(this->date_width + ScaleFontTrad(5), rtl);
-		Rect date = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM).WithWidth(this->date_width, rtl);
+		Rect news = r.Shrink(WidgetDimensions::scaled.framerect).Indent(this->date_width + WidgetDimensions::scaled.hsep_wide, rtl);
+		Rect date = r.Shrink(WidgetDimensions::scaled.framerect).WithWidth(this->date_width, rtl);
 		int y = news.top;
 		for (int n = this->vscroll->GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
@@ -1215,7 +1217,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == nullptr) return;
 
-			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WD_FRAMERECT_TOP); n > 0; n--) {
+			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WidgetDimensions::scaled.framerect.top); n > 0; n--) {
 				ni = ni->prev;
 				if (ni == nullptr) return;
 			}

@@ -278,7 +278,7 @@ protected:
 	 */
 	uint GetAvailablePageContentWidth() const
 	{
-		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT - 1;
+		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WidgetDimensions::scaled.frametext.Horizontal() - 1;
 	}
 
 	/**
@@ -346,7 +346,7 @@ protected:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
 				Dimension dim = GetStringBoundingBox(pe.text, FS_NORMAL);
-				return dim.height + WD_BEVEL_TOP + WD_BEVEL_BOTTOM + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+				return dim.height + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
 
 			default:
@@ -389,7 +389,7 @@ protected:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
 				Dimension dim = GetStringBoundingBox(pe.text, FS_NORMAL);
-				return dim.width + WD_BEVEL_LEFT + WD_BEVEL_RIGHT + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+				return dim.width + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
 
 			default:
@@ -533,7 +533,7 @@ protected:
 		uint text_top = y_offset + (element_height - line_height) / 2;
 
 		DrawSprite(action_sprite, PAL_NONE, 0, sprite_top);
-		DrawString(sprite_dim.width + WD_FRAMETEXT_LEFT, width, text_top, string_id, TC_BLACK);
+		DrawString(sprite_dim.width + WidgetDimensions::scaled.frametext.left, width, text_top, string_id, TC_BLACK);
 
 		y_offset += element_height;
 	}
@@ -692,7 +692,7 @@ public:
 		StoryPage *page = this->GetSelPage();
 		if (page == nullptr) return;
 
-		Rect fr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
+		Rect fr = r.Shrink(WidgetDimensions::scaled.frametext);
 
 		/* Set up a clipping region for the panel. */
 		DrawPixelInfo tmp_dpi;
@@ -744,14 +744,14 @@ public:
 				case SPET_BUTTON_PUSH:
 				case SPET_BUTTON_TILE:
 				case SPET_BUTTON_VEHICLE: {
-					const int tmargin = WD_BEVEL_TOP + WD_FRAMETEXT_TOP;
+					const int tmargin = WidgetDimensions::scaled.bevel.top + WidgetDimensions::scaled.frametext.top;
 					const FrameFlags frame = this->active_button_id == ce.pe->index ? FR_LOWERED : FR_NONE;
 					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
 
 					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
 
 					SetDParamStr(0, ce.pe->text);
-					DrawString(ce.bounds.left + WD_BEVEL_LEFT, ce.bounds.right - WD_BEVEL_RIGHT, ce.bounds.top + tmargin - scrollpos, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
+					DrawString(ce.bounds.left + WidgetDimensions::scaled.bevel.left, ce.bounds.right - WidgetDimensions::scaled.bevel.right, ce.bounds.top + tmargin - scrollpos, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
 					break;
 				}
 
@@ -798,7 +798,7 @@ public:
 
 			case WID_SB_PAGE_PANEL: {
 				d.height *= 5;
-				d.height += padding.height + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+				d.height += padding.height + WidgetDimensions::scaled.frametext.Vertical();
 				*size = maxdim(*size, d);
 				break;
 			}
@@ -809,7 +809,7 @@ public:
 	void OnResize() override
 	{
 		this->InvalidateStoryPageElementLayout();
-		this->vscroll->SetCapacityFromWidget(this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, WID_SB_PAGE_PANEL, WidgetDimensions::scaled.frametext.Vertical());
 		this->vscroll->SetCount(this->GetContentHeight());
 	}
 
@@ -841,7 +841,7 @@ public:
 				break;
 
 			case WID_SB_PAGE_PANEL: {
-				int clicked_y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP);
+				int clicked_y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SB_PAGE_PANEL, WidgetDimensions::scaled.frametext.top);
 				this->EnsureStoryPageElementLayout();
 
 				for (const LayoutCacheElement &ce : this->layout_cache) {

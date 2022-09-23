@@ -33,7 +33,6 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< fullbevel
 	{WD_FRAMERECT_LEFT,    WD_FRAMERECT_TOP,    WD_FRAMERECT_RIGHT,    WD_FRAMERECT_BOTTOM},    ///< framerect
 	{WD_FRAMETEXT_LEFT,    WD_FRAMETEXT_TOP,    WD_FRAMETEXT_RIGHT,    WD_FRAMETEXT_BOTTOM},    ///< frametext
-	{WD_FRAMETEXT_LEFT,    WD_TEXTPANEL_TOP,    WD_FRAMETEXT_RIGHT,    WD_TEXTPANEL_BOTTOM},    ///< textpanel
 	{WD_MATRIX_LEFT,       WD_MATRIX_TOP,       WD_MATRIX_RIGHT,       WD_MATRIX_BOTTOM},       ///< matrix
 	{WD_SHADEBOX_LEFT,     WD_SHADEBOX_TOP,     WD_SHADEBOX_RIGHT,     WD_SHADEBOX_BOTTOM},     ///< shadebox
 	{WD_STICKYBOX_LEFT,    WD_STICKYBOX_TOP,    WD_STICKYBOX_RIGHT,    WD_STICKYBOX_BOTTOM},    ///< stickybox
@@ -99,7 +98,6 @@ void SetupWidgetDimensions()
 	WidgetDimensions::scaled.fullbevel    = ScaleGUITrad(WidgetDimensions::unscaled.fullbevel);
 	WidgetDimensions::scaled.framerect    = ScaleGUITrad(WidgetDimensions::unscaled.framerect);
 	WidgetDimensions::scaled.frametext    = ScaleGUITrad(WidgetDimensions::unscaled.frametext);
-	WidgetDimensions::scaled.textpanel    = ScaleGUITrad(WidgetDimensions::unscaled.textpanel);
 	WidgetDimensions::scaled.matrix       = ScaleGUITrad(WidgetDimensions::unscaled.matrix);
 	WidgetDimensions::scaled.shadebox     = ScaleGUITrad(WidgetDimensions::unscaled.shadebox);
 	WidgetDimensions::scaled.stickybox    = ScaleGUITrad(WidgetDimensions::unscaled.stickybox);
@@ -989,7 +987,7 @@ void NWidgetResizeBase::SetMinimalSizeAbsolute(uint min_x, uint min_y)
 /**
  * Set minimal text lines for the widget.
  * @param min_lines Number of text lines of the widget.
- * @param spacing   Extra spacing (eg WD_FRAMERECT_TOP + _BOTTOM) of the widget.
+ * @param spacing   Extra unscaled spacing (eg WidgetDimensions::unscaled.framerect.Vertical()) of the widget.
  * @param size      Font size of text.
  */
 void NWidgetResizeBase::SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size)

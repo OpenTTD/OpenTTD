@@ -40,7 +40,7 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SUL_PANEL, WD_FRAMERECT_TOP);
+		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SUL_PANEL, WidgetDimensions::scaled.framerect.top);
 		int num = 0;
 		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (!s->IsAwarded()) {
@@ -130,11 +130,11 @@ struct SubsidyListWindow : Window {
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		resize->height = d.height;
+		resize->height = FONT_HEIGHT_NORMAL;
 
 		d.height *= 5;
-		d.width += padding.width;
-		d.height += padding.height;
+		d.width += WidgetDimensions::scaled.framerect.Horizontal();
+		d.height += WidgetDimensions::scaled.framerect.Vertical();
 		*size = maxdim(*size, d);
 	}
 
@@ -145,7 +145,7 @@ struct SubsidyListWindow : Window {
 		YearMonthDay ymd;
 		ConvertDateToYMD(_date, &ymd);
 
-		Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		int pos = -this->vscroll->GetPosition();
 		const int cap = this->vscroll->GetCapacity();

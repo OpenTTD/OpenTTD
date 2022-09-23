@@ -34,14 +34,6 @@ struct Viewport {
 	LinkGraphOverlay *overlay;
 };
 
-/** Margins for the viewport sign */
-enum ViewportSignMargin {
-	VPSM_LEFT   = 1, ///< Left margin
-	VPSM_RIGHT  = 1, ///< Right margin
-	VPSM_TOP    = 1, ///< Top margin
-	VPSM_BOTTOM = 1, ///< Bottom margin
-};
-
 /** Location information about a sign as seen on the viewport */
 struct ViewportSign {
 	int32 center;        ///< The center position of the sign
