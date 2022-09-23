@@ -940,7 +940,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
-	this->text_colour = TC_FROMSTRING;
+	this->text_colour = TC_BLACK;
 	this->align = SA_CENTER;
 }
 
