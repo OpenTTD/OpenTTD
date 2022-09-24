@@ -3642,6 +3642,7 @@ STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}T. de int
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}Utilidad neta
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo en banco

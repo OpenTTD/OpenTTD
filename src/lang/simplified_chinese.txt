@@ -3641,6 +3641,7 @@ STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}贷款利
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}其他费用
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}净利润
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}流动资金
