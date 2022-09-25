@@ -3642,6 +3642,7 @@ STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interesso
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altres
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}Benefici net
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanç bancari
