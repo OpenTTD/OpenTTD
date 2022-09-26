@@ -225,9 +225,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc chuỗi:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập chuỗi lọc
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập từ khóa vào để lọc danh sách
+STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập một hoặc nhiều từ khóa để lọc danh sách
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập một hoặc nhiều từ khóa để lọc danh sách
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Chọn cách gom nhóm
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
@@ -1163,7 +1163,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không c
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Thiết lập
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lọc chuỗi:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lọc:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Mở xuống tất cả
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Đóng lại tất cả
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Thiết lập lại tất cả
@@ -3124,7 +3124,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Chi Ti�
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Không có thông tin gì cả.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Chuỗi lọc:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Lọc:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Ghi đè file
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Bạn có chắc chắn ghi đè lên file đang tồn tại?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Thư mục)
@@ -3216,7 +3216,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Thông t
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Các NewGRP đã kích hoạt
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Các NewGRF chưa kích hoạt
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Chọn bộ tham số:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Lọc giá trị:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Lọc:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nạp các thiết lập đã chọn
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lưu thiết lập
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lưu danh sách này như là thiết lập
@@ -3641,6 +3641,7 @@ STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lãi vay 
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Khác
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}Lợi Nhuận Ròng
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Số dư hiện có
