@@ -367,6 +367,12 @@ IGNORE_UNINITIALIZED_WARNING_STOP
  */
 void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
+	if (_screen_disable_anim) {
+		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
+		Blitter_32bppSSE4::Draw(bp, mode, zoom);
+		return;
+	}
+
 	const Blitter_32bppSSE_Base::SpriteFlags sprite_flags = ((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags;
 	switch (mode) {
 		default: {
