@@ -228,8 +228,8 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Inserire il filtro
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Inserire una parola da utilizzare per filtrare la lista
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Immettere una o più parole chiave per filtrare dall'elenco
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Immettere una o più parole chiave per filtrare dall'elenco
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Seleziona il criterio di raggruppamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleziona l'ordinamento (decrescente/crescente)
@@ -3678,10 +3678,11 @@ STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Treni
 STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Automezzi
 STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Aeromobili
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navi
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessi sul prestito
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Int. sul prestito
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altro
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_NET_PROFIT                                         :{WHITE}Profitto netto
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
@@ -3904,7 +3905,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacit�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni motorizzati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
-STR_PURCHASE_INFO_NONE                                          :Niente
+STR_PURCHASE_INFO_NONE                                          :Nessun carico
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo locomotive
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
