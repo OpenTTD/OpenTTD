@@ -1762,7 +1762,7 @@ struct StationViewWindow : public Window {
 				}
 
 				bool rtl = _current_text_dir == TD_RTL;
-				Rect text = r.Indent(column * this->expand_shrink_width, rtl).Indent(this->expand_shrink_width, !rtl);
+				Rect text = r.Indent(column * WidgetDimensions::scaled.hsep_indent, rtl).Indent(this->expand_shrink_width, !rtl);
 				Rect shrink = r.WithWidth(this->expand_shrink_width, !rtl);
 
 				DrawString(text.left, text.right, y, str);
@@ -1840,7 +1840,7 @@ struct StationViewWindow : public Window {
 			SetDParam(1, lg != nullptr ? lg->Monthly((*lg)[ge->node].Supply()) : 0);
 			SetDParam(2, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
 			SetDParam(3, ToPercent8(ge->rating));
-			DrawString(tr.Indent(6, rtl), STR_STATION_VIEW_CARGO_SUPPLY_RATING);
+			DrawString(tr.Indent(WidgetDimensions::scaled.hsep_indent, rtl), STR_STATION_VIEW_CARGO_SUPPLY_RATING);
 			tr.top += FONT_HEIGHT_NORMAL;
 		}
 		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, FONT_HEIGHT_NORMAL);

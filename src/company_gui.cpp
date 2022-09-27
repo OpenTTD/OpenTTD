@@ -49,10 +49,6 @@
 
 
 /** Company GUI constants. */
-static const uint EXP_LINESPACE  = 2;      ///< Amount of vertical space for a horizontal (sub-)total line.
-static const uint EXP_BLOCKSPACE = 10;     ///< Amount of vertical space between two blocks of numbers.
-static const int  EXP_INDENT     = 10;     ///< Amount of horizontal space for an indented line.
-
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
 
@@ -122,15 +118,15 @@ static const ExpensesList _expenses_list_types[] = {
 static uint GetTotalCategoriesHeight()
 {
 	/* There's an empty line and blockspace on the year row */
-	uint total_height = FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+	uint total_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 
 	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
 		/* Title + expense list + total line + total + blockspace after category */
-		total_height += FONT_HEIGHT_NORMAL + _expenses_list_types[i].GetHeight() + EXP_LINESPACE + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+		total_height += FONT_HEIGHT_NORMAL + _expenses_list_types[i].GetHeight() + WidgetDimensions::scaled.vsep_normal + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 	}
 
 	/* Total income */
-	total_height += EXP_LINESPACE + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+	total_height += WidgetDimensions::scaled.vsep_normal + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 
 	return total_height;
 }
@@ -159,7 +155,7 @@ static uint GetMaxCategoriesWidth()
  */
 static void DrawCategory(const Rect &r, int start_y, ExpensesList list)
 {
-	Rect tr = r.Indent(EXP_INDENT, _current_text_dir == TD_RTL);
+	Rect tr = r.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL);
 
 	tr.top = start_y;
 	ExpensesType et;
@@ -179,7 +175,7 @@ static void DrawCategory(const Rect &r, int start_y, ExpensesList list)
 static void DrawCategories(const Rect &r)
 {
 	/* Start with an empty space in the year row, plus the blockspace under the year. */
-	int y = r.top + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+	int y = r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 
 	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
 		/* Draw category title and advance y */
@@ -191,14 +187,14 @@ static void DrawCategories(const Rect &r)
 		y += _expenses_list_types[i].GetHeight();
 
 		/* Advance y by the height of the total and associated total line */
-		y += EXP_LINESPACE + FONT_HEIGHT_NORMAL;
+		y += WidgetDimensions::scaled.vsep_normal + FONT_HEIGHT_NORMAL;
 
 		/* Advance y by a blockspace after this category block */
-		y += EXP_BLOCKSPACE;
+		y += WidgetDimensions::scaled.vsep_wide;
 	}
 
 	/* Draw total profit/loss */
-	y += EXP_LINESPACE;
+	y += WidgetDimensions::scaled.vsep_normal;
 	DrawString(r.left, r.right, y, STR_FINANCES_NET_PROFIT, TC_FROMSTRING, SA_LEFT);
 }
 
@@ -243,7 +239,7 @@ static Money DrawYearCategory (const Rect &r, int start_y, ExpensesList list, co
 
 	/* Draw the total at the bottom of the category. */
 	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
-	y += EXP_LINESPACE;
+	y += WidgetDimensions::scaled.vsep_normal;
 	if (sum != 0) DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 
 	/* Return the sum for the yearly total. */
@@ -266,19 +262,19 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 	/* Year header */
 	SetDParam(0, year);
 	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
-	y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+	y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
 	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
 		y += FONT_HEIGHT_NORMAL;
 		sum += DrawYearCategory(r, y, _expenses_list_types[i], tbl);
 		/* Expense list + expense category title + expense category total + blockspace after category */
-		y += _expenses_list_types[i].GetHeight() + EXP_LINESPACE + FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
+		y += _expenses_list_types[i].GetHeight() + WidgetDimensions::scaled.vsep_normal + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 	}
 
 	/* Total income. */
 	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
-	y += EXP_LINESPACE;
+	y += WidgetDimensions::scaled.vsep_normal;
 	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 }
 
@@ -2002,7 +1998,7 @@ struct CompanyInfrastructureWindow : Window
 
 				/* Set height of the total line. */
 				if (widget == WID_CI_TOTAL) {
-					size->height = _settings_game.economy.infrastructure_maintenance ? std::max(size->height, EXP_LINESPACE + FONT_HEIGHT_NORMAL) : 0;
+					size->height = _settings_game.economy.infrastructure_maintenance ? std::max<uint>(size->height, WidgetDimensions::scaled.vsep_normal + FONT_HEIGHT_NORMAL) : 0;
 				}
 				break;
 			}
@@ -2108,7 +2104,7 @@ struct CompanyInfrastructureWindow : Window
 				if (_settings_game.economy.infrastructure_maintenance) {
 					Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
 					GfxFillRect(tr.left, y, tr.right, y, PC_WHITE);
-					y += EXP_LINESPACE;
+					y += WidgetDimensions::scaled.vsep_normal;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
 					DrawString(tr.left, tr.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				}

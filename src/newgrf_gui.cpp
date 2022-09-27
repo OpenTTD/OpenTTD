@@ -728,7 +728,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		switch (widget) {
 			case WID_NS_FILE_LIST:
 			{
-				Dimension d = maxdim(GetSpriteSize(SPR_SQUARE), GetSpriteSize(SPR_WARNING_SIGN));
+				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
 				resize->height = std::max<uint>(d.height + 2U, FONT_HEIGHT_NORMAL);
 				size->height = std::max(size->height, padding.height + 6 * resize->height);
 				break;
@@ -736,7 +736,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_AVAIL_LIST:
 			{
-				Dimension d = maxdim(GetSpriteSize(SPR_SQUARE), GetSpriteSize(SPR_WARNING_SIGN));
+				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
 				resize->height = std::max<uint>(d.height + 2U, FONT_HEIGHT_NORMAL);
 				size->height = std::max(size->height, padding.height + 8 * resize->height);
 				break;
