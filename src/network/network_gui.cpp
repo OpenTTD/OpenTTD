@@ -1507,8 +1507,6 @@ private:
 
 	std::map<uint, std::vector<std::unique_ptr<ButtonCommon>>> buttons; ///< Per line which buttons are available.
 
-	static const int CLIENT_OFFSET_LEFT = 12; ///< Offset of client entries compared to company entries.
-
 	/**
 	 * Chat button on a Company is clicked.
 	 * @param w The instance of this window.
@@ -1851,7 +1849,7 @@ public:
 				uint text_right = matrix.right - (rtl ? d.width + WidgetDimensions::scaled.hsep_wide : 0);
 
 				Dimension d2 = GetSpriteSize(SPR_PLAYER_SELF);
-				uint offset_x = CLIENT_OFFSET_LEFT - d2.width - ScaleGUITrad(3);
+				uint offset_x = WidgetDimensions::scaled.hsep_indent - d2.width - ScaleGUITrad(3);
 
 				uint player_icon_x = rtl ? text_right - offset_x - d2.width : text_left + offset_x;
 

@@ -789,7 +789,6 @@ void ShowGameOptions()
 }
 
 static int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree view in pixels
-static const int LEVEL_WIDTH = 15; ///< Indenting width of a sub-page in pixels
 
 /**
  * Flags for #SettingEntry

@@ -182,7 +182,6 @@ struct CargoSummaryItem {
 
 static const uint TRAIN_DETAILS_MIN_INDENT  = 32; ///< Minimum indent level in the train details window
 static const uint TRAIN_DETAILS_MAX_INDENT  = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
-static const int  TRAIN_DETAILS_LIST_INDENT = 10; ///< Indent for list items in the Total Cargo window
 
 /** Container for the cargo summary information. */
 typedef std::vector<CargoSummaryItem> CargoSummary;
@@ -454,7 +453,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vsc
 		y += line_height;
 
 		/* Indent the total cargo capacity details */
-		Rect ir = r.Indent(TRAIN_DETAILS_LIST_INDENT, rtl);
+		Rect ir = r.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				SetDParam(0, i);            // {CARGO} #1
