@@ -1933,7 +1933,6 @@ struct GameSettingsWindow : Window {
 		this->filter.type_hides = false;
 		this->settings_ptr = &GetGameSettings();
 
-		_circle_size = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
 		GetSettingsTree().FoldAll(); // Close all sub-pages
 
 		this->valuewindow_entry = nullptr; // No setting entry for which a entry window is opened
@@ -1952,6 +1951,11 @@ struct GameSettingsWindow : Window {
 		this->SetFocusedWidget(WID_GS_FILTER);
 
 		this->InvalidateData();
+	}
+
+	void OnInit() override
+	{
+		_circle_size = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
