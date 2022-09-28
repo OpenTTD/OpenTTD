@@ -1613,13 +1613,13 @@ public:
 		this->acs->SetupSmallestSize(w, init_array);
 		this->inf->SetupSmallestSize(w, init_array);
 
-		uint min_avs_width = this->avs->smallest_x + this->avs->padding_left + this->avs->padding_right;
-		uint min_acs_width = this->acs->smallest_x + this->acs->padding_left + this->acs->padding_right;
-		uint min_inf_width = this->inf->smallest_x + this->inf->padding_left + this->inf->padding_right;
+		uint min_avs_width = this->avs->smallest_x + this->avs->padding.left + this->avs->padding.right;
+		uint min_acs_width = this->acs->smallest_x + this->acs->padding.left + this->acs->padding.right;
+		uint min_inf_width = this->inf->smallest_x + this->inf->padding.left + this->inf->padding.right;
 
-		uint min_avs_height = this->avs->smallest_y + this->avs->padding_top + this->avs->padding_bottom;
-		uint min_acs_height = this->acs->smallest_y + this->acs->padding_top + this->acs->padding_bottom;
-		uint min_inf_height = this->inf->smallest_y + this->inf->padding_top + this->inf->padding_bottom;
+		uint min_avs_height = this->avs->smallest_y + this->avs->padding.top + this->avs->padding.bottom;
+		uint min_acs_height = this->acs->smallest_y + this->acs->padding.top + this->acs->padding.bottom;
+		uint min_inf_height = this->inf->smallest_y + this->inf->padding.top + this->inf->padding.bottom;
 
 		/* Smallest window is in two column mode. */
 		this->smallest_x = std::max(min_avs_width, min_acs_width) + INTER_COLUMN_SPACING + min_inf_width;
@@ -1649,9 +1649,9 @@ public:
 	{
 		this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
-		uint min_avs_width = this->avs->smallest_x + this->avs->padding_left + this->avs->padding_right;
-		uint min_acs_width = this->acs->smallest_x + this->acs->padding_left + this->acs->padding_right;
-		uint min_inf_width = this->inf->smallest_x + this->inf->padding_left + this->inf->padding_right;
+		uint min_avs_width = this->avs->smallest_x + this->avs->padding.left + this->avs->padding.right;
+		uint min_acs_width = this->acs->smallest_x + this->acs->padding.left + this->acs->padding.right;
+		uint min_inf_width = this->inf->smallest_x + this->inf->padding.left + this->inf->padding.right;
 
 		uint min_list_width = std::max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
 		uint avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
@@ -1687,10 +1687,10 @@ public:
 			avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_width, this->avs->GetHorizontalStepSize(sizing));
 
 			uint acs_width = given_width - // Remaining space, including horizontal padding.
-					inf_width - this->inf->padding_left - this->inf->padding_right -
-					avs_width - this->avs->padding_left - this->avs->padding_right - 2 * INTER_COLUMN_SPACING;
+					inf_width - this->inf->padding.left - this->inf->padding.right -
+					avs_width - this->avs->padding.left - this->avs->padding.right - 2 * INTER_COLUMN_SPACING;
 			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
-					this->acs->padding_left - this->acs->padding_right;
+					this->acs->padding.left - this->acs->padding.right;
 
 			/* Never use fill_y on these; the minimal size is chosen, so that the 3 column view looks nice */
 			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->resize_y);
@@ -1698,25 +1698,25 @@ public:
 
 			/* Assign size and position to the children. */
 			if (rtl) {
-				x += this->inf->padding_left;
-				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
-				x += inf_width + this->inf->padding_right + INTER_COLUMN_SPACING;
+				x += this->inf->padding.left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
+				x += inf_width + this->inf->padding.right + INTER_COLUMN_SPACING;
 			} else {
-				x += this->avs->padding_left;
-				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding_top, avs_width, avs_height, rtl);
-				x += avs_width + this->avs->padding_right + INTER_COLUMN_SPACING;
+				x += this->avs->padding.left;
+				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding.top, avs_width, avs_height, rtl);
+				x += avs_width + this->avs->padding.right + INTER_COLUMN_SPACING;
 			}
 
-			x += this->acs->padding_left;
-			this->acs->AssignSizePosition(sizing, x, y + this->acs->padding_top, acs_width, acs_height, rtl);
-			x += acs_width + this->acs->padding_right + INTER_COLUMN_SPACING;
+			x += this->acs->padding.left;
+			this->acs->AssignSizePosition(sizing, x, y + this->acs->padding.top, acs_width, acs_height, rtl);
+			x += acs_width + this->acs->padding.right + INTER_COLUMN_SPACING;
 
 			if (rtl) {
-				x += this->avs->padding_left;
-				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding_top, avs_width, avs_height, rtl);
+				x += this->avs->padding.left;
+				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding.top, avs_width, avs_height, rtl);
 			} else {
-				x += this->inf->padding_left;
-				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
+				x += this->inf->padding.left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
 			}
 		} else {
 			/* Two columns, all space in extra_width goes to both lists. Since the lists are underneath each other,
@@ -1726,8 +1726,8 @@ public:
 			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
 					this->acs->GetHorizontalStepSize(sizing));
 
-			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding_top + this->avs->padding_bottom + INTER_LIST_SPACING;
-			uint min_acs_height = this->acs->smallest_y + this->acs->padding_top + this->acs->padding_bottom;
+			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding.top + this->avs->padding.bottom + INTER_LIST_SPACING;
+			uint min_acs_height = this->acs->smallest_y + this->acs->padding.top + this->acs->padding.bottom;
 			uint extra_height = given_height - min_acs_height - min_avs_height;
 
 			/* Never use fill_y on these; instead use the INTER_LIST_SPACING as filler */
@@ -1737,29 +1737,29 @@ public:
 
 			/* Assign size and position to the children. */
 			if (rtl) {
-				x += this->inf->padding_left;
-				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
-				x += inf_width + this->inf->padding_right + INTER_COLUMN_SPACING;
+				x += this->inf->padding.left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
+				x += inf_width + this->inf->padding.right + INTER_COLUMN_SPACING;
 
-				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, y + this->acs->padding_top, acs_width, acs_height, rtl);
+				this->acs->AssignSizePosition(sizing, x + this->acs->padding.left, y + this->acs->padding.top, acs_width, acs_height, rtl);
 				if (this->editable) {
-					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, y + given_height - avs_height - this->avs->padding_bottom, avs_width, avs_height, rtl);
+					this->avs->AssignSizePosition(sizing, x + this->avs->padding.left, y + given_height - avs_height - this->avs->padding.bottom, avs_width, avs_height, rtl);
 				} else {
 					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
 				}
 			} else {
-				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, y + this->acs->padding_top, acs_width, acs_height, rtl);
+				this->acs->AssignSizePosition(sizing, x + this->acs->padding.left, y + this->acs->padding.top, acs_width, acs_height, rtl);
 				if (this->editable) {
-					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, y + given_height - avs_height - this->avs->padding_bottom, avs_width, avs_height, rtl);
+					this->avs->AssignSizePosition(sizing, x + this->avs->padding.left, y + given_height - avs_height - this->avs->padding.bottom, avs_width, avs_height, rtl);
 				} else {
 					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
 				}
-				uint dx = this->acs->current_x + this->acs->padding_left + this->acs->padding_right;
+				uint dx = this->acs->current_x + this->acs->padding.left + this->acs->padding.right;
 				if (this->editable) {
-					dx = std::max(dx, this->avs->current_x + this->avs->padding_left + this->avs->padding_right);
+					dx = std::max(dx, this->avs->current_x + this->avs->padding.left + this->avs->padding.right);
 				}
-				x += dx + INTER_COLUMN_SPACING + this->inf->padding_left;
-				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
+				x += dx + INTER_COLUMN_SPACING + this->inf->padding.left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding.top, inf_width, inf_height, rtl);
 			}
 		}
 	}
