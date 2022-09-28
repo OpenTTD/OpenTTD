@@ -1273,4 +1273,6 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int
 
 NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip);
 
+void SetupWidgetDimensions();
+
 #endif /* WIDGET_TYPE_H */
