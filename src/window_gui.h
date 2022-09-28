@@ -34,6 +34,36 @@ enum FrameFlags {
 
 DECLARE_ENUM_AS_BIT_SET(FrameFlags)
 
+struct WidgetDimensions {
+	RectPadding imgbtn;
+	RectPadding inset;
+	RectPadding scrollbar;
+	RectPadding bevel;        ///< Widths of bevel border.
+	RectPadding fullbevel;    ///< Always-scaled bevel border.
+	RectPadding framerect;    ///< Offsets within frame area.
+	RectPadding frametext;    ///< Offsets within a text frame area.
+	RectPadding textpanel;    ///< Text panel?
+	RectPadding matrix;       ///< Offsets within a matrix cell.
+	RectPadding shadebox;
+	RectPadding stickybox;
+	RectPadding debugbox;
+	RectPadding defsizebox;
+	RectPadding resizebox;
+	RectPadding closebox;
+	RectPadding captiontext;  ///< Offsets of text within a caption.
+	RectPadding dropdowntext; ///< Offsets of text within a dropdown widget.
+
+	int pressed;              ///< Offset for contents of depressed widget.
+	int vsep_normal;          ///< Normal vertical spacing.
+	int vsep_wide;            ///< Wide vertical spacing.
+	int hsep_normal;          ///< Normal horizontal spacing.
+	int hsep_wide;            ///< Wide horizontal spacing.
+	int hsep_indent;          ///< Width of identation for tree layouts.
+
+	static const WidgetDimensions unscaled; ///< Unscaled widget dimensions.
+	static WidgetDimensions scaled;         ///< Widget dimensions scaled for current zoom level.
+};
+
 /** Distances used in drawing widgets. */
 enum WidgetDrawDistances {
 	/* WWT_IMGBTN(_2) */

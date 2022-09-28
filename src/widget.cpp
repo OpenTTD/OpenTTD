@@ -24,6 +24,85 @@
 
 #include "safeguards.h"
 
+const WidgetDimensions WidgetDimensions::unscaled = {
+	{WD_IMGBTN_LEFT,       WD_IMGBTN_TOP,       WD_IMGBTN_RIGHT,       WD_IMGBTN_BOTTOM},       ///< imgbtn
+	{WD_INSET_LEFT,        WD_INSET_TOP,        WD_INSET_RIGHT,        WD_BEVEL_BOTTOM},        ///< inset
+	{WD_SCROLLBAR_LEFT,    WD_SCROLLBAR_TOP,    WD_SCROLLBAR_RIGHT,    WD_SCROLLBAR_BOTTOM},    ///< scrollbar
+	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< bevel
+	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< fullbevel
+	{WD_FRAMERECT_LEFT,    WD_FRAMERECT_TOP,    WD_FRAMERECT_RIGHT,    WD_FRAMERECT_BOTTOM},    ///< framerect
+	{WD_FRAMETEXT_LEFT,    WD_FRAMETEXT_TOP,    WD_FRAMETEXT_RIGHT,    WD_FRAMETEXT_BOTTOM},    ///< frametext
+	{WD_FRAMETEXT_LEFT,    WD_TEXTPANEL_TOP,    WD_FRAMETEXT_RIGHT,    WD_TEXTPANEL_BOTTOM},    ///< textpanel
+	{WD_MATRIX_LEFT,       WD_MATRIX_TOP,       WD_MATRIX_RIGHT,       WD_MATRIX_BOTTOM},       ///< matrix
+	{WD_SHADEBOX_LEFT,     WD_SHADEBOX_TOP,     WD_SHADEBOX_RIGHT,     WD_SHADEBOX_BOTTOM},     ///< shadebox
+	{WD_STICKYBOX_LEFT,    WD_STICKYBOX_TOP,    WD_STICKYBOX_RIGHT,    WD_STICKYBOX_BOTTOM},    ///< stickybox
+	{WD_DEBUGBOX_LEFT,     WD_DEBUGBOX_TOP,     WD_DEBUGBOX_RIGHT,     WD_DEBUGBOX_BOTTOM},     ///< debugbox
+	{WD_DEFSIZEBOX_LEFT,   WD_DEFSIZEBOX_TOP,   WD_DEFSIZEBOX_RIGHT,   WD_DEFSIZEBOX_BOTTOM},   ///< defsizebox
+	{WD_RESIZEBOX_LEFT,    WD_RESIZEBOX_TOP,    WD_RESIZEBOX_RIGHT,    WD_RESIZEBOX_BOTTOM},    ///< resizebox
+	{WD_CLOSEBOX_LEFT,     WD_CLOSEBOX_TOP,     WD_CLOSEBOX_RIGHT,     WD_CLOSEBOX_BOTTOM},     ///< closebox
+	{WD_CAPTIONTEXT_LEFT,  WD_CAPTIONTEXT_TOP,  WD_CAPTIONTEXT_RIGHT,  WD_CAPTIONTEXT_BOTTOM},  ///< captiontext
+	{WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM}, ///< dropdowntext
+	1,                   ///< pressed
+	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
+	WD_PAR_VSEP_WIDE,    ///< vsep_wide
+	2,                   ///< hsep_normal
+	6,                   ///< hsep_wide
+	10,                  ///< hsep_indent
+};
+
+WidgetDimensions WidgetDimensions::scaled = {};
+
+/**
+ * Scale a RectPadding to GUI zoom level.
+ * @param r RectPadding at ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @return RectPadding at #ZOOM_LVL_GUI (current interface size).
+ */
+static inline RectPadding ScaleGUITrad(const RectPadding &r)
+{
+	return {(uint8)ScaleGUITrad(r.left), (uint8)ScaleGUITrad(r.top), (uint8)ScaleGUITrad(r.right), (uint8)ScaleGUITrad(r.bottom)};
+}
+
+/**
+ * Scale a Dimension to GUI zoom level.
+ * @param d Dimension at ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @return Dimension at #ZOOM_LVL_GUI (current interface size).
+ */
+static inline Dimension ScaleGUITrad(const Dimension &dim)
+{
+	return {(uint)ScaleGUITrad(dim.width), (uint)ScaleGUITrad(dim.height)};
+}
+
+/**
+ * Set up pre-scaled versions of Widget Dimensions.
+ */
+void SetupWidgetDimensions()
+{
+	WidgetDimensions::scaled.imgbtn       = ScaleGUITrad(WidgetDimensions::unscaled.imgbtn);
+	WidgetDimensions::scaled.inset        = ScaleGUITrad(WidgetDimensions::unscaled.inset);
+	WidgetDimensions::scaled.scrollbar    = ScaleGUITrad(WidgetDimensions::unscaled.scrollbar);
+	WidgetDimensions::scaled.bevel        = WidgetDimensions::unscaled.bevel;
+	WidgetDimensions::scaled.fullbevel    = ScaleGUITrad(WidgetDimensions::unscaled.fullbevel);
+	WidgetDimensions::scaled.framerect    = ScaleGUITrad(WidgetDimensions::unscaled.framerect);
+	WidgetDimensions::scaled.frametext    = ScaleGUITrad(WidgetDimensions::unscaled.frametext);
+	WidgetDimensions::scaled.textpanel    = ScaleGUITrad(WidgetDimensions::unscaled.textpanel);
+	WidgetDimensions::scaled.matrix       = ScaleGUITrad(WidgetDimensions::unscaled.matrix);
+	WidgetDimensions::scaled.shadebox     = ScaleGUITrad(WidgetDimensions::unscaled.shadebox);
+	WidgetDimensions::scaled.stickybox    = ScaleGUITrad(WidgetDimensions::unscaled.stickybox);
+	WidgetDimensions::scaled.debugbox     = ScaleGUITrad(WidgetDimensions::unscaled.debugbox);
+	WidgetDimensions::scaled.defsizebox   = ScaleGUITrad(WidgetDimensions::unscaled.defsizebox);
+	WidgetDimensions::scaled.resizebox    = ScaleGUITrad(WidgetDimensions::unscaled.resizebox);
+	WidgetDimensions::scaled.closebox     = ScaleGUITrad(WidgetDimensions::unscaled.closebox);
+	WidgetDimensions::scaled.captiontext  = ScaleGUITrad(WidgetDimensions::unscaled.captiontext);
+	WidgetDimensions::scaled.dropdowntext = ScaleGUITrad(WidgetDimensions::unscaled.dropdowntext);
+
+	WidgetDimensions::scaled.pressed      = ScaleGUITrad(WidgetDimensions::unscaled.pressed);
+	WidgetDimensions::scaled.vsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.vsep_normal);
+	WidgetDimensions::scaled.vsep_wide    = ScaleGUITrad(WidgetDimensions::unscaled.vsep_wide);
+	WidgetDimensions::scaled.hsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_normal);
+	WidgetDimensions::scaled.hsep_wide    = ScaleGUITrad(WidgetDimensions::unscaled.hsep_wide);
+	WidgetDimensions::scaled.hsep_indent  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_indent);
+}
+
 /**
  * Calculate x and y coordinates for an aligned object within a window.
  * @param r     Rectangle of the widget to be drawn in.
@@ -831,10 +910,7 @@ NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
 
 void NWidgetBase::AdjustPaddingForZoom()
 {
-	this->padding.left   = ScaleGUITrad(this->uz_padding.left);
-	this->padding.top    = ScaleGUITrad(this->uz_padding.top);
-	this->padding.right  = ScaleGUITrad(this->uz_padding.right);
-	this->padding.bottom = ScaleGUITrad(this->uz_padding.bottom);
+	this->padding = ScaleGUITrad(this->uz_padding);
 }
 
 /**
