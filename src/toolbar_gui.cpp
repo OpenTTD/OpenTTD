@@ -1354,10 +1354,10 @@ public:
 		/* First initialise some variables... */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			child_wid->SetupSmallestSize(w, init_array);
-			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.top + child_wid->padding.bottom);
 			if (this->IsButton(child_wid->type)) {
 				nbuttons++;
-				this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+				this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.left + child_wid->padding.right);
 			} else if (child_wid->type == NWID_SPACER) {
 				this->spacers++;
 			}

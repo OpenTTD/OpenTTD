@@ -831,10 +831,10 @@ NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
 
 void NWidgetBase::AdjustPaddingForZoom()
 {
-	this->padding_top    = ScaleGUITrad(this->uz_padding_top);
-	this->padding_right  = ScaleGUITrad(this->uz_padding_right);
-	this->padding_bottom = ScaleGUITrad(this->uz_padding_bottom);
-	this->padding_left   = ScaleGUITrad(this->uz_padding_left);
+	this->padding.left   = ScaleGUITrad(this->uz_padding.left);
+	this->padding.top    = ScaleGUITrad(this->uz_padding.top);
+	this->padding.right  = ScaleGUITrad(this->uz_padding.right);
+	this->padding.bottom = ScaleGUITrad(this->uz_padding.bottom);
 }
 
 /**
@@ -1124,8 +1124,8 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		child_wid->SetupSmallestSize(w, init_array);
 
-		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
-		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.left + child_wid->padding.right);
+		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.top + child_wid->padding.bottom);
 		this->fill_x = LeastCommonMultiple(this->fill_x, child_wid->fill_x);
 		this->fill_y = LeastCommonMultiple(this->fill_y, child_wid->fill_y);
 		this->resize_x = LeastCommonMultiple(this->resize_x, child_wid->resize_x);
@@ -1142,12 +1142,12 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
-		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
-		uint child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
+		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding.left - child_wid->padding.right, hor_step);
+		uint child_pos_x = (rtl ? child_wid->padding.right : child_wid->padding.left);
 
 		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
-		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
-		uint child_pos_y = child_wid->padding_top;
+		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding.top - child_wid->padding.bottom, vert_step);
+		uint child_pos_y = child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, rtl);
 	}
@@ -1269,7 +1269,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		child_wid->SetupSmallestSize(w, init_array);
 		longest = std::max(longest, child_wid->smallest_x);
 		max_vert_fill = std::max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
-		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.top + child_wid->padding.bottom);
 	}
 	/* 1b. Make the container higher if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
@@ -1277,7 +1277,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetVerticalStepSize(ST_SMALLEST);
-			uint child_height = child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+			uint child_height = child_wid->smallest_y + child_wid->padding.top + child_wid->padding.bottom;
 			if (step_size > 1 && child_height < cur_height) { // Small step sizes or already fitting children are not interesting.
 				uint remainder = (cur_height - child_height) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
@@ -1297,15 +1297,15 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		}
 	}
 	/* 3. Move PIP space to the children, compute smallest, fill, and resize values of the container. */
-	if (this->head != nullptr) this->head->padding_left += this->pip_pre;
+	if (this->head != nullptr) this->head->padding.left += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		if (child_wid->next != nullptr) {
-			child_wid->padding_right += this->pip_inter;
+			child_wid->padding.right += this->pip_inter;
 		} else {
-			child_wid->padding_right += this->pip_post;
+			child_wid->padding.right += this->pip_post;
 		}
 
-		this->smallest_x += child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
+		this->smallest_x += child_wid->smallest_x + child_wid->padding.left + child_wid->padding.right;
 		if (child_wid->fill_x > 0) {
 			if (this->fill_x == 0 || this->fill_x > child_wid->fill_x) this->fill_x = child_wid->fill_x;
 		}
@@ -1329,7 +1329,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
 		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			additional_length -= child_wid->smallest_x + child_wid->padding_right + child_wid->padding_left;
+			additional_length -= child_wid->smallest_x + child_wid->padding.right + child_wid->padding.left;
 		}
 	} else {
 		additional_length -= this->smallest_x;
@@ -1363,7 +1363,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 		}
 
 		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
-		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
+		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding.top - child_wid->padding.bottom, vert_step);
 	}
 
 	/* First.5 loop: count how many children are of the biggest step size. */
@@ -1411,11 +1411,11 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	NWidgetBase *child_wid = this->head;
 	while (child_wid != nullptr) {
 		uint child_width = child_wid->current_x;
-		uint child_x = x + (rtl ? position - child_width - child_wid->padding_left : position + child_wid->padding_left);
-		uint child_y = y + child_wid->padding_top;
+		uint child_x = x + (rtl ? position - child_width - child_wid->padding.left : position + child_wid->padding.left);
+		uint child_y = y + child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
-		uint padded_child_width = child_width + child_wid->padding_right + child_wid->padding_left;
+		uint padded_child_width = child_width + child_wid->padding.right + child_wid->padding.left;
 		position = rtl ? position - padded_child_width : position + padded_child_width;
 
 		child_wid = child_wid->next;
@@ -1454,7 +1454,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		child_wid->SetupSmallestSize(w, init_array);
 		highest = std::max(highest, child_wid->smallest_y);
 		max_hor_fill = std::max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
-		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.left + child_wid->padding.right);
 	}
 	/* 1b. Make the container wider if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
@@ -1462,7 +1462,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetHorizontalStepSize(ST_SMALLEST);
-			uint child_width = child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
+			uint child_width = child_wid->smallest_x + child_wid->padding.left + child_wid->padding.right;
 			if (step_size > 1 && child_width < cur_width) { // Small step sizes or already fitting children are not interesting.
 				uint remainder = (cur_width - child_width) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
@@ -1482,15 +1482,15 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		}
 	}
 	/* 3. Move PIP space to the child, compute smallest, fill, and resize values of the container. */
-	if (this->head != nullptr) this->head->padding_top += this->pip_pre;
+	if (this->head != nullptr) this->head->padding.top += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		if (child_wid->next != nullptr) {
-			child_wid->padding_bottom += this->pip_inter;
+			child_wid->padding.bottom += this->pip_inter;
 		} else {
-			child_wid->padding_bottom += this->pip_post;
+			child_wid->padding.bottom += this->pip_post;
 		}
 
-		this->smallest_y += child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+		this->smallest_y += child_wid->smallest_y + child_wid->padding.top + child_wid->padding.bottom;
 		if (child_wid->fill_y > 0) {
 			if (this->fill_y == 0 || this->fill_y > child_wid->fill_y) this->fill_y = child_wid->fill_y;
 		}
@@ -1514,7 +1514,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
 		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			additional_length -= child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+			additional_length -= child_wid->smallest_y + child_wid->padding.top + child_wid->padding.bottom;
 		}
 	} else {
 		additional_length -= this->smallest_y;
@@ -1539,7 +1539,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 		}
 
 		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
-		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
+		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding.left - child_wid->padding.right, hor_step);
 	}
 
 	/* First.5 loop: count how many children are of the biggest step size. */
@@ -1585,11 +1585,11 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	/* Third loop: Compute position and call the child. */
 	uint position = 0; // Place to put next child relative to origin of the container.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		uint child_x = x + (rtl ? child_wid->padding_right : child_wid->padding_left);
+		uint child_x = x + (rtl ? child_wid->padding.right : child_wid->padding.left);
 		uint child_height = child_wid->current_y;
 
-		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding_top, child_wid->current_x, child_height, rtl);
-		position += child_height + child_wid->padding_top + child_wid->padding_bottom;
+		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding.top, child_wid->current_x, child_height, rtl);
+		position += child_height + child_wid->padding.top + child_wid->padding.bottom;
 	}
 }
 
@@ -1945,25 +1945,25 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 
 		if (this->type == WWT_FRAME) {
 			/* Account for the size of the frame's text if that exists */
-			this->child->padding_left   = WD_FRAMETEXT_LEFT;
-			this->child->padding_right  = WD_FRAMETEXT_RIGHT;
-			this->child->padding_top    = std::max((int)WD_FRAMETEXT_TOP, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP / 2 : 0);
-			this->child->padding_bottom = WD_FRAMETEXT_BOTTOM;
+			this->child->padding.left   = WD_FRAMETEXT_LEFT;
+			this->child->padding.right  = WD_FRAMETEXT_RIGHT;
+			this->child->padding.top    = std::max((int)WD_FRAMETEXT_TOP, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP / 2 : 0);
+			this->child->padding.bottom = WD_FRAMETEXT_BOTTOM;
 
-			this->smallest_x += this->child->padding_left + this->child->padding_right;
-			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
+			this->smallest_x += this->child->padding.left + this->child->padding.right;
+			this->smallest_y += this->child->padding.top + this->child->padding.bottom;
 
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 		} else if (this->type == WWT_INSET) {
 			/* Apply automatic padding for bevel thickness. */
-			this->child->padding_left   = WD_BEVEL_LEFT;
-			this->child->padding_right  = WD_BEVEL_RIGHT;
-			this->child->padding_top    = WD_BEVEL_TOP;
-			this->child->padding_bottom = WD_BEVEL_BOTTOM;
+			this->child->padding.left   = WD_BEVEL_LEFT;
+			this->child->padding.right  = WD_BEVEL_RIGHT;
+			this->child->padding.top    = WD_BEVEL_TOP;
+			this->child->padding.bottom = WD_BEVEL_BOTTOM;
 
-			this->smallest_x += this->child->padding_left + this->child->padding_right;
-			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
+			this->smallest_x += this->child->padding.left + this->child->padding.right;
+			this->smallest_y += this->child->padding.top + this->child->padding.bottom;
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
@@ -1995,10 +1995,10 @@ void NWidgetBackground::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	if (this->child != nullptr) {
-		uint x_offset = (rtl ? this->child->padding_right : this->child->padding_left);
-		uint width = given_width - this->child->padding_right - this->child->padding_left;
-		uint height = given_height - this->child->padding_top - this->child->padding_bottom;
-		this->child->AssignSizePosition(sizing, x + x_offset, y + this->child->padding_top, width, height, rtl);
+		uint x_offset = (rtl ? this->child->padding.right : this->child->padding.left);
+		uint width = given_width - this->child->padding.right - this->child->padding.left;
+		uint height = given_height - this->child->padding.top - this->child->padding.bottom;
+		this->child->AssignSizePosition(sizing, x + x_offset, y + this->child->padding.top, width, height, rtl);
 	}
 }
 
