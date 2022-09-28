@@ -3316,7 +3316,7 @@ int GetSingleVehicleWidth(const Vehicle *v, EngineImageType image_type)
 			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
 			Rect rec;
 			seq.GetBounds(&rec);
-			return UnScaleGUI(rec.right - rec.left + 1);
+			return UnScaleGUI(rec.Width());
 	}
 }
 

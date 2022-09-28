@@ -39,7 +39,7 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	Rect rect;
 	seq.GetBounds(&rect);
 
-	int width = UnScaleGUI(rect.right - rect.left + 1);
+	int width = UnScaleGUI(rect.Width());
 	int x_offs = UnScaleGUI(rect.left);
 	int x = rtl ? right - width - x_offs : left - x_offs;
 
@@ -49,7 +49,7 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	if (v->index == selection) {
 		x += x_offs;
 		y += UnScaleGUI(rect.top);
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.bottom - rect.top + 1) + 1, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.Height()) + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 
