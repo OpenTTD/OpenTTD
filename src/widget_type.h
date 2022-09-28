@@ -156,6 +156,16 @@ public:
 		this->AdjustPaddingForZoom();
 	}
 
+	/**
+	 * Set additional space (padding) around the widget.
+	 * @param padding Amount of padding around the widget.
+	 */
+	inline void SetPadding(const RectPadding &padding)
+	{
+		this->uz_padding = padding;
+		this->AdjustPaddingForZoom();
+	}
+
 	inline uint GetHorizontalStepSize(SizingType sizing) const;
 	inline uint GetVerticalStepSize(SizingType sizing) const;
 
