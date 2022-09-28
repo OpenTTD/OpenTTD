@@ -549,8 +549,8 @@ CommandCost StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 		Rect new_rect = {std::min(x, this->left), std::min(y, this->top), std::max(x, this->right), std::max(y, this->bottom)};
 
 		/* check new rect dimensions against preset max */
-		int w = new_rect.right - new_rect.left + 1;
-		int h = new_rect.bottom - new_rect.top + 1;
+		int w = new_rect.Width();
+		int h = new_rect.Height();
 		if (mode != ADD_FORCE && (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread)) {
 			assert(mode != ADD_TRY);
 			return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);

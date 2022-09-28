@@ -285,7 +285,7 @@ public:
 					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
 							this->summary_msg, TC_FROMSTRING, SA_CENTER);
 				} else {
-					int extra = (r.bottom - r.top + 1 - this->height_summary - this->height_detailed - WD_PAR_VSEP_WIDE) / 2;
+					int extra = (r.Height() - this->height_summary - this->height_detailed - WD_PAR_VSEP_WIDE) / 2;
 
 					/* Note: NewGRF supplied error message often do not start with a colour code, so default to white. */
 					int top = r.top + WD_FRAMERECT_TOP;

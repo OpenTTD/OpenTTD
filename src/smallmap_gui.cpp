@@ -1215,13 +1215,13 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 	switch (widget) {
 		case WID_SM_MAP: {
 			DrawPixelInfo new_dpi;
-			if (!FillDrawPixelInfo(&new_dpi, r.left + 1, r.top + 1, r.right - r.left - 1, r.bottom - r.top - 1)) return;
+			if (!FillDrawPixelInfo(&new_dpi, r.left + 1, r.top + 1, r.Width(), r.Height())) return;
 			this->DrawSmallMap(&new_dpi);
 			break;
 		}
 
 		case WID_SM_LEGEND: {
-			uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
+			uint columns = this->GetNumberColumnsLegend(r.Width());
 			uint number_of_rows = this->GetNumberRowsLegend(columns);
 			bool rtl = _current_text_dir == TD_RTL;
 			uint y_org = r.top + WD_FRAMERECT_TOP;

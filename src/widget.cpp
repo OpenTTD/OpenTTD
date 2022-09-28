@@ -322,18 +322,18 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 	int column_width; // Width of a single column in the matrix.
 	if (num_columns == 0) {
 		column_width = resize_x;
-		num_columns = (r.right - r.left + 1) / column_width;
+		num_columns = r.Width() / column_width;
 	} else {
-		column_width = (r.right - r.left + 1) / num_columns;
+		column_width = r.Width() / num_columns;
 	}
 
 	int num_rows = GB(data, MAT_ROW_START, MAT_ROW_BITS); // Upper 8 bits of the widget data: Number of rows in the matrix.
 	int row_height; // Height of a single row in the matrix.
 	if (num_rows == 0) {
 		row_height = resize_y;
-		num_rows = (r.bottom - r.top + 1) / row_height;
+		num_rows = r.Height() / row_height;
 	} else {
-		row_height = (r.bottom - r.top + 1) / num_rows;
+		row_height = r.Height() / num_rows;
 	}
 
 	int col = _colour_gradient[colour & 0xF][6];
@@ -611,11 +611,11 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
  */
 static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str, StringAlignment align)
 {
-	int text_offset = std::max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
+	int text_offset = std::max(0, (r.Height() - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
 
 	int dd_width  = NWidgetLeaf::dropdown_dimension.width;
 	int dd_height = NWidgetLeaf::dropdown_dimension.height;
-	int image_offset = std::max(0, ((int)(r.bottom - r.top + 1) - dd_height) / 2);
+	int image_offset = std::max(0, (r.Height() - dd_height) / 2);
 
 	if (_current_text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);

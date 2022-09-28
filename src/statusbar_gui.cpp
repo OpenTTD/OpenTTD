@@ -137,7 +137,7 @@ struct StatusBarWindow : Window {
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		int text_offset = std::max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
+		int text_offset = std::max(0, (r.Height() - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
 		int text_top = r.top + text_offset;
 		switch (widget) {
 			case WID_S_LEFT:

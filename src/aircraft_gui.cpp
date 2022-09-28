@@ -87,7 +87,7 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 	Rect rect;
 	seq.GetBounds(&rect);
 
-	int width = UnScaleGUI(rect.right - rect.left + 1);
+	int width = UnScaleGUI(rect.Width());
 	int x_offs = UnScaleGUI(rect.left);
 	int x = rtl ? right - width - x_offs : left - x_offs;
 	bool helicopter = v->subtype == AIR_HELICOPTER;
@@ -108,6 +108,6 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 	if (v->index == selection) {
 		x += x_offs;
 		y += UnScaleGUI(rect.top) + y_offs - heli_offs;
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.bottom - rect.top + 1) + heli_offs + 1, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.Height()) + heli_offs + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
