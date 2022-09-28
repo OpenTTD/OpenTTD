@@ -43,6 +43,28 @@ struct Dimension {
 	}
 };
 
+/** Padding dimensions to apply to each side of a Rect. */
+struct RectPadding {
+	uint8 left;
+	uint8 top;
+	uint8 right;
+	uint8 bottom;
+
+	static const RectPadding zero;
+
+	/**
+	 * Get total horizontal padding of RectPadding.
+	 * @return total horizontal padding.
+	 */
+	inline uint Horizontal() const { return this->left + this->right; }
+
+	/**
+	 * Get total vertical padding of RectPadding.
+	 * @return total vertical padding.
+	 */
+	inline uint Vertical() const { return this->top + this->bottom; }
+};
+
 /** Specification of a rectangle with absolute coordinates of all edges */
 struct Rect {
 	int left;
@@ -97,6 +119,27 @@ struct Rect {
 	}
 
 	/**
+	 * Copy and shrink Rect by a RectPadding.
+	 * @param other RectPadding to remove from each side of Rect.
+	 * @return the new smaller Rect.
+	 */
+	[[nodiscard]] inline Rect Shrink(const RectPadding &other) const
+	{
+		return {this->left + other.left, this->top + other.top, this->right - other.right, this->bottom - other.bottom};
+	}
+
+	/**
+	 * Copy and shrink Rect by a different horizontal and vertical RectPadding.
+	 * @param horz RectPadding to remove from left and right of Rect.
+	 * @param vert RectPadding to remove from top and bottom of Rect.
+	 * @return the new smaller Rect.
+	 */
+	[[nodiscard]] inline Rect Shrink(const RectPadding &horz, const RectPadding &vert) const
+	{
+		return {this->left + horz.left, this->top + vert.top, this->right - horz.right, this->bottom - vert.bottom};
+	}
+
+	/**
 	 * Copy and expand Rect by s pixels.
 	 * @param s number of pixels to add to each side of Rect.
 	 * @return the new larger Rect.
@@ -104,6 +147,16 @@ struct Rect {
 	[[nodiscard]] inline Rect Expand(int s) const
 	{
 		return this->Shrink(-s);
+	}
+
+	/**
+	 * Copy and expand Rect by a RectPadding.
+	 * @param other RectPadding to add to each side of Rect.
+	 * @return the new larger Rect.
+	 */
+	[[nodiscard]] inline Rect Expand(const RectPadding &other) const
+	{
+		return {this->left - other.left, this->top - other.top, this->right + other.right, this->bottom + other.bottom};
 	}
 
 	/**
