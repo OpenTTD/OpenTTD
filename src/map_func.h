@@ -239,8 +239,11 @@ private:
 	static uint size;      ///< The number of tiles on the map
 	static uint tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
+	static uint initial_land_count; ///< Initial number of land tiles on the map.
+
 public:
 	static void Allocate(uint size_x, uint size_y);
+	static void CountLandTiles();
 
 	/**
 	 * Logarithm of the map size along the X side.
@@ -307,6 +310,16 @@ public:
 		return Map::SizeY() - 1;
 	}
 
+	/**
+	 * Scales the given value by the number of water tiles.
+	 * @param n the value to scale
+	 * @return the scaled size
+	 */
+	static inline uint ScaleByLandProportion(uint n)
+	{
+		/* Use 64-bit arithmetic to avoid overflow. */
+		return static_cast<uint>(static_cast<uint64_t>(n) * Map::initial_land_count / Map::size);
+	}
 
 	/**
 	 * 'Wraps' the given "tile" so it is within the map.

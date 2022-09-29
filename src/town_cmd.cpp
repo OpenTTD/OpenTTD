@@ -55,6 +55,7 @@
 #include "road_cmd.h"
 #include "terraform_cmd.h"
 #include "tunnelbridge_cmd.h"
+#include "map_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
@@ -2419,9 +2420,9 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 	if (number.has_value()) {
 		total = number.value();
 	} else if (_settings_game.difficulty.number_towns == static_cast<uint>(CUSTOM_TOWN_NUMBER_DIFFICULTY)) {
-		total = GetDefaultTownsForMapSize();
+		total = Map::ScaleByLandProportion(GetDefaultTownsForMapSize());
 	} else {
-		total = GetDefaultTownsForMapSize() + (Random() & 7);
+		total = Map::ScaleByLandProportion(GetDefaultTownsForMapSize() + (Random() & 7));
 	}
 
 	total = std::min<uint>(TownPool::MAX_SIZE, total);
