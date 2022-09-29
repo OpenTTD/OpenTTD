@@ -592,6 +592,7 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 			}
 			file.SkipBytes(length);
 		}
+		if (prev_id != 0) _grf_sprite_offsets[prev_id] = offset;
 
 		/* Continue processing the data section. */
 		file.SeekTo(old_pos, SEEK_SET);
