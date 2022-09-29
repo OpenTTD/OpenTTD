@@ -126,6 +126,16 @@ static inline uint ScaleByMapSize(uint n)
 	return CeilDiv(n << (MapLogX() + MapLogY() - 12), 1 << 4);
 }
 
+/**
+ * Scales the given value by the number of water tiles.
+ * @param n the value to scale
+ * @return the scaled size
+ */
+static inline uint ScaleByWaterLevel(uint n)
+{
+	extern uint _map_land_scale;
+	return n * _map_land_scale / 100;
+}
 
 /**
  * Scales the given value by the maps circumference, where the given
