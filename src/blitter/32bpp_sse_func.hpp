@@ -66,8 +66,7 @@ static inline __m128i DistributeAlpha(const __m128i from, const __m128i &mask)
 #if (SSE_VERSION == 2)
 	__m128i alphaAB = _mm_shufflelo_epi16(from, 0x3F); // PSHUFLW, put alpha1 in front of each rgb1
 	alphaAB = _mm_shufflehi_epi16(alphaAB, 0x3F);      // PSHUFHW, put alpha2 in front of each rgb2
-	alphaAB = _mm_or_si128(alphaAB, mask);             // POR, set alpha fields to all 1
-	return _mm_xor_si128(alphaAB, mask);               // PXOR, set alpha fields to 0
+	return _mm_andnot_si128(mask, alphaAB);            // PANDN, set alpha fields to 0
 #else
 	return _mm_shuffle_epi8(from, mask);
 #endif
@@ -80,8 +79,7 @@ static inline __m128i AlphaBlendTwoPixels(__m128i src, __m128i dst, const __m128
 	__m128i dstAB = _mm_unpacklo_epi8(dst, _mm_setzero_si128());
 
 	__m128i alphaMaskAB = _mm_cmpgt_epi16(srcAB, _mm_setzero_si128()); // PCMPGTW (alpha > 0) ? 0xFFFF : 0
-	__m128i alphaAB = _mm_srli_epi16(alphaMaskAB, 15);
-	alphaAB = _mm_add_epi16(alphaAB, srcAB);                           // if (alpha > 0) a++;
+	__m128i alphaAB = _mm_sub_epi16(srcAB, alphaMaskAB);               // if (alpha > 0) a++;
 	alphaAB = DistributeAlpha(alphaAB, distribution_mask);
 
 	srcAB = _mm_sub_epi16(srcAB, dstAB);     // PSUBW,    (r - Cr)
