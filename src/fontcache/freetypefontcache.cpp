@@ -237,9 +237,10 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */
 	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
-	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
-	uint width  = std::max(1U, (uint)slot->bitmap.width + (this->fs == FS_NORMAL));
-	uint height = std::max(1U, (uint)slot->bitmap.rows  + (this->fs == FS_NORMAL));
+	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
+	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint width  = std::max(1U, (uint)slot->bitmap.width + shadow);
+	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
@@ -259,8 +260,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 		for (uint y = 0; y < (uint)slot->bitmap.rows; y++) {
 			for (uint x = 0; x < (uint)slot->bitmap.width; x++) {
 				if (HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
-					sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
-					sprite.data[1 + x + (1 + y) * sprite.width].a = 0xFF;
+					sprite.data[shadow + x + (shadow + y) * sprite.width].m = SHADOW_COLOUR;
+					sprite.data[shadow + x + (shadow + y) * sprite.width].a = 0xFF;
 				}
 			}
 		}

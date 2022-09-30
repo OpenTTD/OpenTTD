@@ -276,9 +276,10 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	uint bb_width = (uint)std::ceil(bounds.size.width) + 1; // Sometimes the glyph bounds are too tight and cut of the last pixel after rounding.
 	uint bb_height = (uint)std::ceil(bounds.size.height);
 
-	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
-	uint width = std::max(1U, bb_width + (this->fs == FS_NORMAL ? 1 : 0));
-	uint height = std::max(1U, bb_height + (this->fs == FS_NORMAL ? 1 : 0));
+	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
+	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint width = std::max(1U, bb_width + shadow);
+	uint height = std::max(1U, bb_height + shadow);
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
@@ -314,8 +315,8 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 			for (uint y = 0; y < bb_height; y++) {
 				for (uint x = 0; x < bb_width; x++) {
 					if (bmp[y * pitch + x] > 0) {
-						sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
-						sprite.data[1 + x + (1 + y) * sprite.width].a = use_aa ? bmp[x + y * pitch] : 0xFF;
+						sprite.data[shadow + x + (shadow + y) * sprite.width].m = SHADOW_COLOUR;
+						sprite.data[shadow + x + (shadow + y) * sprite.width].a = use_aa ? bmp[x + y * pitch] : 0xFF;
 					}
 				}
 			}
