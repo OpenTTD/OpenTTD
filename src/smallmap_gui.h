@@ -27,6 +27,15 @@ void ShowSmallMap();
 void BuildLandLegend();
 void BuildOwnerLegend();
 
+/** Enum for how to include the heightmap pixels/colours in small map related functions */
+enum class IncludeHeightmap {
+	Never,      ///< Never include the heightmap
+	IfEnabled,  ///< Only include the heightmap if its enabled in the gui by the player
+	Always      ///< Always include the heightmap
+};
+
+uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap include_heightmap);
+
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
 	uint8 colour;              ///< Colour of the item on the map.
