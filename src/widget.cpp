@@ -39,13 +39,13 @@ static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, String
 	switch (align & SA_HOR_MASK) {
 		case SA_LEFT:       p.x = r.left; break;
 		case SA_HOR_CENTER: p.x = CenterBounds(r.left, r.right, d.width); break;
-		case SA_RIGHT:      p.x = r.right - d.width; break;
+		case SA_RIGHT:      p.x = r.right + 1 - d.width; break;
 		default: NOT_REACHED();
 	}
 	switch (align & SA_VERT_MASK) {
 		case SA_TOP:         p.y = r.top; break;
 		case SA_VERT_CENTER: p.y = CenterBounds(r.top, r.bottom, d.height); break;
-		case SA_BOTTOM:      p.y = r.bottom - d.height; break;
+		case SA_BOTTOM:      p.y = r.bottom + 1 - d.height; break;
 		default: NOT_REACHED();
 	}
 	return p;
