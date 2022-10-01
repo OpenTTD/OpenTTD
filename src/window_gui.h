@@ -37,7 +37,8 @@ DECLARE_ENUM_AS_BIT_SET(FrameFlags)
 struct WidgetDimensions {
 	RectPadding imgbtn;
 	RectPadding inset;
-	RectPadding scrollbar;
+	RectPadding vscrollbar;
+	RectPadding hscrollbar;
 	RectPadding bevel;        ///< Widths of bevel border.
 	RectPadding fullbevel;    ///< Always-scaled bevel border.
 	RectPadding framerect;    ///< Offsets within frame area.
@@ -77,10 +78,15 @@ enum WidgetDrawDistances {
 	WD_INSET_RIGHT = 2,         ///< Right offset of string.
 	WD_INSET_TOP   = 1,         ///< Top offset of string.
 
-	WD_SCROLLBAR_LEFT   = 2,    ///< Left offset of scrollbar.
-	WD_SCROLLBAR_RIGHT  = 2,    ///< Right offset of scrollbar.
-	WD_SCROLLBAR_TOP    = 2,    ///< Top offset of scrollbar.
-	WD_SCROLLBAR_BOTTOM = 2,    ///< Bottom offset of scrollbar.
+	WD_VSCROLLBAR_LEFT   = 2,   ///< Left offset of vertical scrollbar.
+	WD_VSCROLLBAR_RIGHT  = 2,   ///< Right offset of vertical scrollbar.
+	WD_VSCROLLBAR_TOP    = 3,   ///< Top offset of vertical scrollbar.
+	WD_VSCROLLBAR_BOTTOM = 3,   ///< Bottom offset of vertical scrollbar.
+
+	WD_HSCROLLBAR_LEFT   = 3,   ///< Left offset of horizontal scrollbar.
+	WD_HSCROLLBAR_RIGHT  = 3,   ///< Right offset of horizontal scrollbar.
+	WD_HSCROLLBAR_TOP    = 2,   ///< Top offset of horizontal scrollbar.
+	WD_HSCROLLBAR_BOTTOM = 2,   ///< Bottom offset of horizontal scrollbar.
 
 	/* Size of the pure frame bevel without any padding. */
 	WD_BEVEL_LEFT       = 1,    ///< Width of left bevel border.

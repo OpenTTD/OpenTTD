@@ -27,7 +27,8 @@
 const WidgetDimensions WidgetDimensions::unscaled = {
 	{WD_IMGBTN_LEFT,       WD_IMGBTN_TOP,       WD_IMGBTN_RIGHT,       WD_IMGBTN_BOTTOM},       ///< imgbtn
 	{WD_INSET_LEFT,        WD_INSET_TOP,        WD_INSET_RIGHT,        WD_BEVEL_BOTTOM},        ///< inset
-	{WD_SCROLLBAR_LEFT,    WD_SCROLLBAR_TOP,    WD_SCROLLBAR_RIGHT,    WD_SCROLLBAR_BOTTOM},    ///< scrollbar
+	{WD_VSCROLLBAR_LEFT,   WD_VSCROLLBAR_TOP,   WD_VSCROLLBAR_RIGHT,   WD_VSCROLLBAR_BOTTOM},   ///< vscrollbar
+	{WD_HSCROLLBAR_LEFT,   WD_HSCROLLBAR_TOP,   WD_HSCROLLBAR_RIGHT,   WD_HSCROLLBAR_BOTTOM},   ///< hscrollbar
 	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< bevel
 	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< fullbevel
 	{WD_FRAMERECT_LEFT,    WD_FRAMERECT_TOP,    WD_FRAMERECT_RIGHT,    WD_FRAMERECT_BOTTOM},    ///< framerect
@@ -92,7 +93,8 @@ void SetupWidgetDimensions()
 {
 	WidgetDimensions::scaled.imgbtn       = ScaleGUITrad(WidgetDimensions::unscaled.imgbtn);
 	WidgetDimensions::scaled.inset        = ScaleGUITrad(WidgetDimensions::unscaled.inset);
-	WidgetDimensions::scaled.scrollbar    = ScaleGUITrad(WidgetDimensions::unscaled.scrollbar);
+	WidgetDimensions::scaled.vscrollbar   = ScaleGUITrad(WidgetDimensions::unscaled.vscrollbar);
+	WidgetDimensions::scaled.hscrollbar   = ScaleGUITrad(WidgetDimensions::unscaled.hscrollbar);
 	WidgetDimensions::scaled.bevel        = WidgetDimensions::unscaled.bevel;
 	WidgetDimensions::scaled.fullbevel    = ScaleGUITrad(WidgetDimensions::unscaled.fullbevel);
 	WidgetDimensions::scaled.framerect    = ScaleGUITrad(WidgetDimensions::unscaled.framerect);
@@ -2408,8 +2410,8 @@ void NWidgetScrollbar::Draw(const Window *w)
 {
 	if (vertical_dimension.width == 0) {
 		vertical_dimension = maxdim(GetScaledSpriteSize(SPR_ARROW_UP), GetScaledSpriteSize(SPR_ARROW_DOWN));
-		vertical_dimension.width += WidgetDimensions::scaled.scrollbar.Horizontal();
-		vertical_dimension.height += WidgetDimensions::scaled.scrollbar.Vertical();
+		vertical_dimension.width += WidgetDimensions::scaled.vscrollbar.Horizontal();
+		vertical_dimension.height += WidgetDimensions::scaled.vscrollbar.Vertical();
 	}
 	return vertical_dimension;
 }
@@ -2418,8 +2420,8 @@ void NWidgetScrollbar::Draw(const Window *w)
 {
 	if (horizontal_dimension.width == 0) {
 		horizontal_dimension = maxdim(GetScaledSpriteSize(SPR_ARROW_LEFT), GetScaledSpriteSize(SPR_ARROW_RIGHT));
-		horizontal_dimension.width += WidgetDimensions::scaled.scrollbar.Horizontal();
-		horizontal_dimension.height += WidgetDimensions::scaled.scrollbar.Vertical();
+		horizontal_dimension.width += WidgetDimensions::scaled.hscrollbar.Horizontal();
+		horizontal_dimension.height += WidgetDimensions::scaled.hscrollbar.Vertical();
 	}
 	return horizontal_dimension;
 }
