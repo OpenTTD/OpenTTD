@@ -48,7 +48,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		/* left part */
-		NWidget(NWID_VERTICAL),
+		NWidget(NWID_VERTICAL, NC_BIGFIRST),
 			NWidget(WWT_PANEL, COLOUR_GREY, WID_GL_ALL_VEHICLES), SetFill(1, 0), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, WID_GL_DEFAULT_VEHICLES), SetFill(1, 0), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
@@ -383,26 +383,11 @@ public:
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
-			case WID_GL_LIST_GROUP: {
+			case WID_GL_LIST_GROUP:
 				size->width = this->ComputeGroupInfoSize();
 				resize->height = this->tiny_step_height;
-
-				/* Minimum height is the height of the list widget minus all and default vehicles... */
-				size->height = 4 * GetVehicleListHeight(this->vli.vtype, this->tiny_step_height);
-
-				/* ... minus the buttons at the bottom ... */
-				uint max_icon_height = GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_CREATE_GROUP)->widget_data).height;
-				max_icon_height = std::max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_RENAME_GROUP)->widget_data).height);
-				max_icon_height = std::max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_DELETE_GROUP)->widget_data).height);
-				max_icon_height = std::max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->widget_data).height);
-
-				/* ... minus the height of the group info ... */
-				max_icon_height += (FONT_HEIGHT_NORMAL * 3) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-
-				/* Get a multiple of tiny_step_height of that amount */
-				size->height = Ceil(size->height - max_icon_height, tiny_step_height);
+				fill->height = this->tiny_step_height;
 				break;
-			}
 
 			case WID_GL_ALL_VEHICLES:
 			case WID_GL_DEFAULT_VEHICLES:
