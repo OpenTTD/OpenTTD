@@ -481,11 +481,8 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	int height = NWidgetScrollbar::GetVerticalDimension().height;
 
 	/* draw up/down buttons */
-	DrawFrameRect(r.left, r.top, r.right, r.top + height - 1, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_UP, PAL_NONE, r.left + 1 + up_clicked, r.top + 1 + up_clicked);
-
-	DrawFrameRect(r.left, r.bottom - (height - 1), r.right, r.bottom, colour, (down_clicked) ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + down_clicked, r.bottom - (height - 2) + down_clicked);
+	DrawImageButtons(r.WithHeight(height, false),  NWID_VSCROLLBAR, colour, up_clicked,   SPR_ARROW_UP,   SA_CENTER);
+	DrawImageButtons(r.WithHeight(height, true),   NWID_VSCROLLBAR, colour, down_clicked, SPR_ARROW_DOWN, SA_CENTER);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
@@ -518,11 +515,8 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	int centre = (r.bottom - r.top) / 2;
 	int width = NWidgetScrollbar::GetHorizontalDimension().width;
 
-	DrawFrameRect(r.left, r.top, r.left + width - 1, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + left_clicked, r.top + 1 + left_clicked);
-
-	DrawFrameRect(r.right - (width - 1), r.top, r.right, r.bottom, colour, right_clicked ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - (width - 2) + right_clicked, r.top + 1 + right_clicked);
+	DrawImageButtons(r.WithWidth(width, false), NWID_HSCROLLBAR, colour, left_clicked,  SPR_ARROW_LEFT,  SA_CENTER);
+	DrawImageButtons(r.WithWidth(width, true),  NWID_HSCROLLBAR, colour, right_clicked, SPR_ARROW_RIGHT, SA_CENTER);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
@@ -648,15 +642,7 @@ static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
-	if (at_left) {
-		Dimension d = GetSpriteSize(SPR_WINDOW_RESIZE_LEFT);
-		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + WD_RESIZEBOX_RIGHT + clicked,
-				 r.bottom + 1 - WD_RESIZEBOX_BOTTOM - d.height + clicked);
-	} else {
-		Dimension d = GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT);
-		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.right + 1 - WD_RESIZEBOX_RIGHT - d.width + clicked,
-				 r.bottom + 1 - WD_RESIZEBOX_BOTTOM - d.height + clicked);
-	}
+	DrawSpriteIgnorePadding(r.Shrink(ScaleGUITrad(2)), at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, clicked, at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
 
 /**
@@ -718,18 +704,14 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 	int text_offset = std::max(0, (r.Height() - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
 
 	int dd_width  = NWidgetLeaf::dropdown_dimension.width;
-	int dd_height = NWidgetLeaf::dropdown_dimension.height;
-	int image_offset = std::max(0, (r.Height() - dd_height) / 2);
 
 	if (_current_text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
-		DrawFrameRect(r.right + 1 - dd_width, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
-		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.right - (dd_width - 2) + clicked_dropdown, r.top + image_offset + clicked_dropdown);
+		DrawImageButtons(r.WithWidth(dd_width, true), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
-		DrawFrameRect(r.left, r.top, r.left + dd_width - 1, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
-		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + clicked_dropdown, r.top + image_offset + clicked_dropdown);
+		DrawImageButtons(r.WithWidth(dd_width, false), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
 	}
 }
@@ -776,15 +758,12 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	if (state == SBS_OFF) return;
 
 	assert(this->nested_array != nullptr);
-	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+	Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect();
 
 	/* Sort button uses the same sprites as vertical scrollbar */
 	Dimension dim = NWidgetScrollbar::GetVerticalDimension();
-	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	int x = offset + nwid->pos_x + (_current_text_dir == TD_LTR ? nwid->current_x - dim.width : 0);
-	int y = offset + nwid->pos_y + (nwid->current_y - dim.height) / 2;
 
-	DrawSprite(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, x, y);
+	DrawSpriteIgnorePadding(r.WithWidth(dim.width, _current_text_dir == TD_LTR), state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, this->IsWidgetLowered(widget), SA_CENTER);
 }
 
 /**
