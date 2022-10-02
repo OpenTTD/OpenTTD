@@ -80,13 +80,15 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		/* Left side : filter box and available files */
-		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_VERTICAL),
 			/* Filter box with label */
-			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
-				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
-					NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
-					NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
-						SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+			NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+				NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
+					SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+						NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+							SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+				EndContainer(),
 			EndContainer(),
 			/* Sort buttons */
 			NWidget(NWID_HORIZONTAL),
@@ -97,22 +99,24 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
 			EndContainer(),
 			/* Files */
-			NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 1, 2, 2),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
+					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 2, 2, 2),
 							SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SL_SCROLLBAR), EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
 				EndContainer(),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SL_CONTENT_DOWNLOAD_SEL),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_CONTENT_DOWNLOAD), SetResize(1, 0),
-							SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
-				EndContainer(),
+				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
+			EndContainer(),
+			/* Online Content button */
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SL_CONTENT_DOWNLOAD_SEL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_CONTENT_DOWNLOAD), SetResize(1, 0),
+						SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 			EndContainer(),
 		EndContainer(),
 
 		/* Right side : game details */
-		NWidget(WWT_PANEL, COLOUR_GREY),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SL_DETAILS), SetResize(1, 1), SetFill(1, 1),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_DETAILS), SetResize(1, 1), SetFill(1, 1),
+			EndContainer(),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_MISSING_NEWGRFS), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
@@ -135,37 +139,38 @@ static const NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 	/* Current directory and free space */
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
 
+	/* Filter box with label */
 	NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
-		/* Filter box with label */
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
 			SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
 				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
 					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
-		/* Sort Buttons */
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
-			EndContainer(),
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
+	EndContainer(),
+	/* Sort Buttons */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
-		/* Files */
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
+	EndContainer(),
+	/* Files */
+	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 1, 2, 2),
-						SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SL_SCROLLBAR), EndContainer(),
-				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_CONTENT_DOWNLOAD), SetResize(1, 0), SetFill(1, 0),
-						SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetResize(1, 0), SetFill(1, 0),
-						SetDataTip(STR_SAVELOAD_LOAD_BUTTON, STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
-			EndContainer(),
+			NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 2, 2, 2),
+					SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SL_SCROLLBAR), EndContainer(),
 		EndContainer(),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
+	EndContainer(),
+	/* Online Content and Load button */
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_CONTENT_DOWNLOAD), SetResize(1, 0), SetFill(1, 0),
+				SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SL_LOAD_BUTTON), SetResize(1, 0), SetFill(1, 0),
+				SetDataTip(STR_SAVELOAD_LOAD_BUTTON, STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
@@ -180,13 +185,15 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		/* Left side : filter box and available files */
-		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_VERTICAL),
 			/* Filter box with label */
-			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
-				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
-					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+			NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 1),
+				NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, 0, WD_FRAMERECT_BOTTOM, 0),
+					SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetFill(0, 1), SetDataTip(STR_SAVELOAD_FILTER_TITLE , STR_NULL),
+					NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+						SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+				EndContainer(),
 			EndContainer(),
 			/* Sort buttons */
 			NWidget(NWID_HORIZONTAL),
@@ -197,13 +204,15 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SL_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
 			EndContainer(),
 			/* Files */
-			NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetPadding(2, 1, 0, 2),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_SL_FILE_BACKGROUND),
+					NWidget(WWT_INSET, COLOUR_GREY, WID_SL_DRIVES_DIRECTORIES_LIST), SetPadding(2, 2, 2, 2),
 							SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SL_SCROLLBAR), EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
 				EndContainer(),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_SAVE_OSK_TITLE), SetPadding(3, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
+				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SL_SCROLLBAR),
+			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SL_SAVE_OSK_TITLE), SetPadding(2, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
 						SetDataTip(STR_SAVELOAD_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
 			EndContainer(),
 			/* Save/delete buttons */
@@ -435,7 +444,7 @@ public:
 			}
 
 			case WID_SL_DRIVES_DIRECTORIES_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint scroll_pos = this->vscroll->GetPosition();
@@ -449,9 +458,9 @@ public:
 					const FiosItem *item = &this->fios_items[row];
 
 					if (item == this->selected) {
-						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
+						GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, PC_DARK_BLUE);
 					} else if (item == this->highlighted) {
-						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_VERY_DARK_BLUE);
+						GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, PC_VERY_DARK_BLUE);
 					}
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, item->title, _fios_colours[GetDetailedFileType(item->type)]);
 					y += this->resize.step_height;
@@ -461,8 +470,7 @@ public:
 			}
 
 			case WID_SL_DETAILS: {
-				GfxFillRect(r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP,
-						r.right - WD_FRAMERECT_RIGHT, r.top + FONT_HEIGHT_NORMAL * 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, PC_GREY);
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + FONT_HEIGHT_NORMAL * 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, PC_GREY);
 				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL / 2 + WD_FRAMERECT_TOP, STR_SAVELOAD_DETAIL_CAPTION, TC_FROMSTRING, SA_HOR_CENTER);
 
 				if (this->selected == nullptr) break;
