@@ -1356,7 +1356,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
 		if (hor_step > 0) {
-			num_changing_childs++;
+			if (!(flags & NC_BIGFIRST)) num_changing_childs++;
 			biggest_stepsize = std::max(biggest_stepsize, hor_step);
 		} else {
 			child_wid->current_x = child_wid->smallest_x;
@@ -1364,6 +1364,16 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 
 		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
 		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
+	}
+
+	/* First.5 loop: count how many children are of the biggest step size. */
+	if ((flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+			uint hor_step = child_wid->GetHorizontalStepSize(sizing);
+			if (hor_step == biggest_stepsize) {
+				num_changing_childs++;
+			}
+		}
 	}
 
 	/* Second loop: Allocate the additional horizontal space over the resizing children, starting with the biggest resize steps. */
@@ -1383,6 +1393,16 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 			next_biggest_stepsize = std::max(next_biggest_stepsize, hor_step);
 		}
 		biggest_stepsize = next_biggest_stepsize;
+
+		if (num_changing_childs == 0 && (flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+			/* Second.5 loop: count how many children are of the updated biggest step size. */
+			for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+				uint hor_step = child_wid->GetHorizontalStepSize(sizing);
+				if (hor_step == biggest_stepsize) {
+					num_changing_childs++;
+				}
+			}
+		}
 	}
 	assert(num_changing_childs == 0);
 
@@ -1512,7 +1532,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint vert_step = child_wid->GetVerticalStepSize(sizing);
 		if (vert_step > 0) {
-			num_changing_childs++;
+			if (!(flags & NC_BIGFIRST)) num_changing_childs++;
 			biggest_stepsize = std::max(biggest_stepsize, vert_step);
 		} else {
 			child_wid->current_y = child_wid->smallest_y;
@@ -1520,6 +1540,16 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 
 		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
 		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
+	}
+
+	/* First.5 loop: count how many children are of the biggest step size. */
+	if ((this->flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+			uint vert_step = child_wid->GetVerticalStepSize(sizing);
+			if (vert_step == biggest_stepsize) {
+				num_changing_childs++;
+			}
+		}
 	}
 
 	/* Second loop: Allocate the additional vertical space over the resizing children, starting with the biggest resize steps. */
@@ -1539,6 +1569,16 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 			next_biggest_stepsize = std::max(next_biggest_stepsize, vert_step);
 		}
 		biggest_stepsize = next_biggest_stepsize;
+
+		if (num_changing_childs == 0 && (flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+			/* Second.5 loop: count how many children are of the updated biggest step size. */
+			for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+				uint vert_step = child_wid->GetVerticalStepSize(sizing);
+				if (vert_step == biggest_stepsize) {
+					num_changing_childs++;
+				}
+			}
+		}
 	}
 	assert(num_changing_childs == 0);
 
