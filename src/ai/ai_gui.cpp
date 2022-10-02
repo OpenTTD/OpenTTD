@@ -685,10 +685,10 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIC_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(4, 4, 4),
 			NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
-				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE), SetFill(0, 1), SetDataTip(AWV_DECREASE, STR_NULL),
-				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE), SetFill(0, 1), SetDataTip(AWV_INCREASE, STR_NULL),
+				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE), SetDataTip(AWV_DECREASE, STR_NULL),
+				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE), SetDataTip(AWV_INCREASE, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(6, 0),
-				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_AIC_NUMBER), SetDataTip(STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS, STR_NULL), SetFill(1, 0), SetPadding(1, 0, 0, 0),
+				NWidget(WWT_TEXT, COLOUR_MAUVE, WID_AIC_NUMBER), SetDataTip(STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_MOVE_UP), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_CONFIG_MOVE_UP, STR_AI_CONFIG_MOVE_UP_TOOLTIP),
@@ -780,6 +780,11 @@ struct AIConfigWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
+			case WID_AIC_DECREASE:
+			case WID_AIC_INCREASE:
+				*size = maxdim(*size, NWidgetScrollbar::GetHorizontalDimension());
+				break;
+
 			case WID_AIC_GAMELIST:
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = 1 * this->line_height;
