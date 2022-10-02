@@ -458,9 +458,11 @@ public:
 /** Nested widget container flags, */
 enum NWidContainerFlags {
 	NCB_EQUALSIZE = 0, ///< Containers should keep all their (resizing) children equally large.
+	NCB_BIGFIRST  = 1, ///< Allocate space to biggest resize first.
 
 	NC_NONE = 0,                       ///< All flags cleared.
 	NC_EQUALSIZE = 1 << NCB_EQUALSIZE, ///< Value of the #NCB_EQUALSIZE flag.
+	NC_BIGFIRST  = 1 << NCB_BIGFIRST,  ///< Value of the #NCB_BIGFIRST flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidContainerFlags)
 
