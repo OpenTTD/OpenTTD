@@ -89,6 +89,7 @@ enum ClientListWidgets {
 	WID_CL_MATRIX,                     ///< Company/client list.
 	WID_CL_SCROLLBAR,                  ///< Scrollbar for company/client list.
 	WID_CL_COMPANY_JOIN,               ///< Used for QueryWindow when a company has a password.
+	WID_CL_CLIENT_COMPANY_REMAINING,   ///< Number of companies that can still be formed.
 	WID_CL_CLIENT_COMPANY_COUNT,       ///< Count of clients and companies.
 };
 
