@@ -14,6 +14,7 @@
 #include "../company_gui.h"
 #include "../date_func.h"
 #include "../viewport_func.h"
+#include "../zoom_func.h"
 #include "../smallmap_gui.h"
 #include "../core/geometry_func.hpp"
 #include "../widgets/link_graph_legend_widget.h"
@@ -267,13 +268,14 @@ void LinkGraphOverlay::Draw(const DrawPixelInfo *dpi)
  */
 void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
 {
+	int width = ScaleGUITrad(this->scale);
 	for (LinkMap::const_iterator i(this->cached_links.begin()); i != this->cached_links.end(); ++i) {
 		if (!Station::IsValidID(i->first)) continue;
 		Point pta = this->GetStationMiddle(Station::Get(i->first));
 		for (StationLinkMap::const_iterator j(i->second.begin()); j != i->second.end(); ++j) {
 			if (!Station::IsValidID(j->first)) continue;
 			Point ptb = this->GetStationMiddle(Station::Get(j->first));
-			if (!this->IsLinkVisible(pta, ptb, dpi, this->scale + 2)) continue;
+			if (!this->IsLinkVisible(pta, ptb, dpi, width + 2)) continue;
 			this->DrawContent(pta, ptb, j->second);
 		}
 	}
@@ -289,20 +291,21 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 {
 	uint usage_or_plan = std::min(cargo.capacity * 2 + 1, std::max(cargo.usage, cargo.planned));
 	int colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
-	int dash = cargo.shared ? this->scale * 4 : 0;
+	int width = ScaleGUITrad(this->scale);
+	int dash = cargo.shared ? width * 4 : 0;
 
 	/* Move line a bit 90° against its dominant direction to prevent it from
 	 * being hidden below the grey line. */
 	int side = _settings_game.vehicle.road_side ? 1 : -1;
 	if (abs(pta.x - ptb.x) < abs(pta.y - ptb.y)) {
-		int offset_x = (pta.y > ptb.y ? 1 : -1) * side * this->scale;
-		GfxDrawLine(pta.x + offset_x, pta.y, ptb.x + offset_x, ptb.y, colour, this->scale, dash);
+		int offset_x = (pta.y > ptb.y ? 1 : -1) * side * width;
+		GfxDrawLine(pta.x + offset_x, pta.y, ptb.x + offset_x, ptb.y, colour, width, dash);
 	} else {
-		int offset_y = (pta.x < ptb.x ? 1 : -1) * side * this->scale;
-		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, this->scale, dash);
+		int offset_y = (pta.x < ptb.x ? 1 : -1) * side * width;
+		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, width, dash);
 	}
 
-	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][1], this->scale);
+	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][1], width);
 }
 
 /**
@@ -311,13 +314,14 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
  */
 void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 {
+	int width = ScaleGUITrad(this->scale);
 	for (StationSupplyList::const_iterator i(this->cached_stations.begin()); i != this->cached_stations.end(); ++i) {
 		const Station *st = Station::GetIfValid(i->first);
 		if (st == nullptr) continue;
 		Point pt = this->GetStationMiddle(st);
-		if (!this->IsPointVisible(pt, dpi, 3 * this->scale)) continue;
+		if (!this->IsPointVisible(pt, dpi, 3 * width)) continue;
 
-		uint r = this->scale * 2 + this->scale * 2 * std::min(200U, i->second) / 200;
+		uint r = width * 2 + width * 2 * std::min(200U, i->second) / 200;
 
 		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
 				_colour_gradient[st->owner != OWNER_NONE ?
