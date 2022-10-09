@@ -84,6 +84,10 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
 			FiosGetHeightmapList(fop, show_dirs, *this);
 			break;
 
+		case FT_TOWN_DATA:
+			FiosGetTownDataList(fop, show_dirs, *this);
+			break;
+
 		default:
 			NOT_REACHED();
 	}
@@ -180,6 +184,7 @@ bool FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLD_SCENARIO:
 		case FIOS_TYPE_PNG:
 		case FIOS_TYPE_BMP:
+		case FIOS_TYPE_JSON:
 			return false;
 	}
 
@@ -552,6 +557,42 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
 	std::string base_path = FioFindDirectory(HEIGHTMAP_DIR);
 	Subdirectory subdir = base_path == *_fios_path ? HEIGHTMAP_DIR : NO_DIRECTORY;
 	FiosGetFileList(fop, show_dirs, &FiosGetHeightmapListCallback, subdir, file_list);
+}
+
+/**
+ * Callback for FiosGetTownDataList.
+ * @param fop Purpose of collecting the list.
+ * @param file Name of the file to check.
+ * @return a FIOS_TYPE_JSON type of the found file, FIOS_TYPE_INVALID if not a valid JSON file, and the title of the file (if any).
+ */
+static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
+{
+	if (fop == SLO_LOAD) {
+		if (StrEqualsIgnoreCase(ext, ".json")) {
+			return { FIOS_TYPE_JSON, GetFileTitle(file, SAVE_DIR) };
+		}
+	}
+
+	return { FIOS_TYPE_INVALID, {} };
+}
+
+/**
+ * Get a list of town data files.
+ * @param fop Purpose of collecting the list.
+ * @param show_dirs Whether to show directories.
+ * @param file_list Destination of the found files.
+ */
+void FiosGetTownDataList(SaveLoadOperation fop, bool show_dirs, FileList &file_list)
+{
+	static std::optional<std::string> fios_town_data_path;
+
+	if (!fios_town_data_path) fios_town_data_path = FioFindDirectory(HEIGHTMAP_DIR);
+
+	_fios_path = &(*fios_town_data_path);
+
+	std::string base_path = FioFindDirectory(HEIGHTMAP_DIR);
+	Subdirectory subdir = base_path == *_fios_path ? HEIGHTMAP_DIR : NO_DIRECTORY;
+	FiosGetFileList(fop, show_dirs, &FiosGetTownDataListCallback, subdir, file_list);
 }
 
 /**
