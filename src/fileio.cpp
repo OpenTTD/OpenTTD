@@ -42,6 +42,7 @@ static const char * const _subdirs[] = {
 	"save" PATHSEP "autosave" PATHSEP,
 	"scenario" PATHSEP,
 	"scenario" PATHSEP "heightmap" PATHSEP,
+	"scenario" PATHSEP "towndata" PATHSEP,
 	"gm" PATHSEP,
 	"data" PATHSEP,
 	"baseset" PATHSEP,
@@ -1055,7 +1056,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	Debug(misc, 1, "{} found as personal directory", _personal_dir);
 
 	static const Subdirectory default_subdirs[] = {
-		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR, SOCIAL_INTEGRATION_DIR
+		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, TOWN_DATA_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR, SOCIAL_INTEGRATION_DIR
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {
