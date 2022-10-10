@@ -225,14 +225,14 @@
 	}
 }
 
-/* static */ char *Game::GetConsoleList(char *p, const char *last, bool newest_only)
+/* static */ std::string Game::GetConsoleList(bool newest_only)
 {
-	return Game::scanner_info->GetConsoleList(p, last, newest_only);
+	return Game::scanner_info->GetConsoleList(newest_only);
 }
 
-/* static */ char *Game::GetConsoleLibraryList(char *p, const char *last)
+/* static */ std::string Game::GetConsoleLibraryList()
 {
-	 return Game::scanner_library->GetConsoleList(p, last, true);
+	 return Game::scanner_library->GetConsoleList(true);
 }
 
 /* static */ const ScriptInfoList *Game::GetInfoList()

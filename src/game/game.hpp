@@ -93,9 +93,9 @@ public:
 	static void Load(int version);
 
 	/** Wrapper function for GameScanner::GetConsoleList */
-	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
+	static std::string GetConsoleList(bool newest_only = false);
 	/** Wrapper function for GameScanner::GetConsoleLibraryList */
-	static char *GetConsoleLibraryList(char *p, const char *last);
+	static std::string GetConsoleLibraryList();
 	/** Wrapper function for GameScanner::GetInfoList */
 	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for GameScanner::GetUniqueInfoList */
