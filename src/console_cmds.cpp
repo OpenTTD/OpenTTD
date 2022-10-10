@@ -1178,6 +1178,10 @@ static void PrintLineByLine(char *buf)
 
 DEF_CONSOLE_CMD(ConListAILibs)
 {
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed AI libraries. Usage: 'list_ai_libs'.");
+		return true;
+	}
 	char buf[4096];
 	AI::GetConsoleLibraryList(buf, lastof(buf));
 
@@ -1188,6 +1192,10 @@ DEF_CONSOLE_CMD(ConListAILibs)
 
 DEF_CONSOLE_CMD(ConListAI)
 {
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed AIs. Usage: 'list_ai'.");
+		return true;
+	}
 	char buf[4096];
 	AI::GetConsoleList(buf, lastof(buf));
 
@@ -1198,6 +1206,10 @@ DEF_CONSOLE_CMD(ConListAI)
 
 DEF_CONSOLE_CMD(ConListGameLibs)
 {
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed Game Script libraries. Usage: 'list_game_libs'.");
+		return true;
+	}
 	char buf[4096];
 	Game::GetConsoleLibraryList(buf, lastof(buf));
 
@@ -1208,6 +1220,10 @@ DEF_CONSOLE_CMD(ConListGameLibs)
 
 DEF_CONSOLE_CMD(ConListGame)
 {
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed Game Scripts. Usage: 'list_game'.");
+		return true;
+	}
 	char buf[4096];
 	Game::GetConsoleList(buf, lastof(buf));
 
