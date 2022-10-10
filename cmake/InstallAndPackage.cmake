@@ -118,10 +118,12 @@ endif()
 set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
 set(CPACK_MONOLITHIC_INSTALL YES)
 set(CPACK_PACKAGE_EXECUTABLES "openttd;OpenTTD")
-set(CPACK_STRIP_FILES NO)
+set(CPACK_STRIP_FILES YES)
 set(CPACK_OUTPUT_FILE_PREFIX "bundles")
 
 if(APPLE)
+    # Stripping would produce unreadable stacktraces.
+    set(CPACK_STRIP_FILES NO)
     set(CPACK_GENERATOR "Bundle")
     include(PackageBundle)
 
