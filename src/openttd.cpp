@@ -227,12 +227,14 @@ static void ShowHelp()
 
 	/* We need to initialize the AI, so it finds the AIs */
 	AI::Initialize();
-	p = AI::GetConsoleList(p, lastof(buf), true);
+	const std::string ai_list = AI::GetConsoleList(true);
+	p = strecpy(p, ai_list.c_str(), lastof(buf));
 	AI::Uninitialize(true);
 
 	/* We need to initialize the GameScript, so it finds the GSs */
 	Game::Initialize();
-	p = Game::GetConsoleList(p, lastof(buf), true);
+	const std::string game_list = Game::GetConsoleList(true);
+	p = strecpy(p, game_list.c_str(), lastof(buf));
 	Game::Uninitialize(true);
 
 	/* ShowInfo put output to stderr, but version information should go

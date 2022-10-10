@@ -45,6 +45,8 @@
 #include "company_cmd.h"
 #include "misc_cmd.h"
 
+#include <sstream>
+
 #include "safeguards.h"
 
 /* scriptfile handling */
@@ -1160,19 +1162,14 @@ DEF_CONSOLE_CMD(ConReload)
 
 /**
  * Print a text buffer line by line to the console. Lines are separated by '\n'.
- * @param buf The buffer to print.
- * @note All newlines are replace by '\0' characters.
+ * @param full_string The multi-line string to print.
  */
-static void PrintLineByLine(char *buf)
+static void PrintLineByLine(const std::string &full_string)
 {
-	char *p = buf;
-	/* Print output line by line */
-	for (char *p2 = buf; *p2 != '\0'; p2++) {
-		if (*p2 == '\n') {
-			*p2 = '\0';
-			IConsolePrint(CC_DEFAULT, p);
-			p = p2 + 1;
-		}
+	std::istringstream in(full_string);
+	std::string line;
+	while (std::getline(in, line)) {
+		IConsolePrint(CC_DEFAULT, line.c_str());
 	}
 }
 
@@ -1182,10 +1179,9 @@ DEF_CONSOLE_CMD(ConListAILibs)
 		IConsolePrint(CC_HELP, "List installed AI libraries. Usage: 'list_ai_libs'.");
 		return true;
 	}
-	char buf[4096];
-	AI::GetConsoleLibraryList(buf, lastof(buf));
 
-	PrintLineByLine(buf);
+	const std::string output_str = AI::GetConsoleLibraryList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
@@ -1196,10 +1192,9 @@ DEF_CONSOLE_CMD(ConListAI)
 		IConsolePrint(CC_HELP, "List installed AIs. Usage: 'list_ai'.");
 		return true;
 	}
-	char buf[4096];
-	AI::GetConsoleList(buf, lastof(buf));
 
-	PrintLineByLine(buf);
+	const std::string output_str = AI::GetConsoleList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
@@ -1210,10 +1205,9 @@ DEF_CONSOLE_CMD(ConListGameLibs)
 		IConsolePrint(CC_HELP, "List installed Game Script libraries. Usage: 'list_game_libs'.");
 		return true;
 	}
-	char buf[4096];
-	Game::GetConsoleLibraryList(buf, lastof(buf));
 
-	PrintLineByLine(buf);
+	const std::string output_str = Game::GetConsoleLibraryList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
@@ -1224,10 +1218,9 @@ DEF_CONSOLE_CMD(ConListGame)
 		IConsolePrint(CC_HELP, "List installed Game Scripts. Usage: 'list_game'.");
 		return true;
 	}
-	char buf[4096];
-	Game::GetConsoleList(buf, lastof(buf));
 
-	PrintLineByLine(buf);
+	const std::string output_str = Game::GetConsoleList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
