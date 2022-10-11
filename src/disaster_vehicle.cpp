@@ -580,10 +580,11 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		TileIndex tile_org = RandomTile();
 		TileIndex tile = tile_org;
+		int num = GB(Random(), 0, 8);
 		do {
 			if (IsPlainRailTile(tile) &&
 					Company::IsHumanID(GetTileOwner(tile))) {
-				break;
+				if (--num == 0) break;
 			}
 			tile = TILE_MASK(tile + 1);
 		} while (tile != tile_org);
