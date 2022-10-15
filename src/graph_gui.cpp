@@ -65,12 +65,14 @@ struct GraphLegendWindow : Window {
 
 		bool rtl = _current_text_dir == TD_RTL;
 
+		const Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, rtl ? r.right - d.width - ScaleGUITrad(2) : r.left + ScaleGUITrad(2), CenterBounds(r.top, r.bottom, d.height));
+		DrawCompanyIcon(cid, rtl ? ir.right - d.width : ir.left, CenterBounds(ir.top, ir.bottom, d.height));
 
+		const Rect tr = ir.Indent(d.width + ScaleGUITrad(2), rtl);
 		SetDParam(0, cid);
 		SetDParam(1, cid);
-		DrawString(r.left + (rtl ? (uint)WD_FRAMERECT_LEFT : (d.width + ScaleGUITrad(4))), r.right - (rtl ? (d.width + ScaleGUITrad(4)) : (uint)WD_FRAMERECT_RIGHT), CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
+		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, FONT_HEIGHT_NORMAL), STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -943,32 +945,31 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		bool rtl = _current_text_dir == TD_RTL;
 
-		int x = r.left + WD_FRAMERECT_LEFT;
-		int y = r.top;
-		uint row_height = FONT_HEIGHT_SMALL;
-		int padding = ScaleFontTrad(1);
-
 		int pos = this->vscroll->GetPosition();
 		int max = pos + this->vscroll->GetCapacity();
 
+		Rect line = r.WithHeight(this->line_height);
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			if (pos-- > 0) continue;
 			if (--max < 0) break;
 
 			bool lowered = !HasBit(_legend_excluded_cargo, cs->Index());
 
-			/* Redraw box if lowered */
-			if (lowered) DrawFrameRect(r.left, y, r.right, y + this->line_height - 1, COLOUR_BROWN, FR_LOWERED);
+			/* Redraw frame if lowered */
+			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FR_LOWERED);
 
-			byte clk_dif = lowered ? 1 : 0;
-			int rect_x = clk_dif + (rtl ? r.right - this->legend_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT);
+			const Rect text = line.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM).Translate(lowered ? 1 : 0, lowered ? 1 : 0);
 
-			GfxFillRect(rect_x, y + padding + clk_dif, rect_x + this->legend_width, y + row_height - 1 + clk_dif, PC_BLACK);
-			GfxFillRect(rect_x + 1, y + padding + 1 + clk_dif, rect_x + this->legend_width - 1, y + row_height - 2 + clk_dif, cs->legend_colour);
+			/* Cargo-colour box with outline */
+			const Rect cargo = text.WithWidth(this->legend_width, rtl);
+			GfxFillRect(cargo, PC_BLACK);
+			GfxFillRect(cargo.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), cs->legend_colour);
+
+			/* Cargo name */
 			SetDParam(0, cs->name);
-			DrawString(rtl ? r.left : x + this->legend_width + 4 + clk_dif, (rtl ? r.right - this->legend_width - 4 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
+			DrawString(text.Indent(this->legend_width + 4, rtl), STR_GRAPH_CARGO_PAYMENT_CARGO);
 
-			y += this->line_height;
+			line = line.Translate(0, this->line_height);
 		}
 	}
 
@@ -1132,8 +1133,8 @@ private:
 	GUIList<const Company*> companies;
 	uint ordinal_width; ///< The width of the ordinal number
 	uint text_width;    ///< The width of the actual text
-	uint icon_width;    ///< The width of the company icon
 	int line_height;    ///< Height of the text lines
+	Dimension icon;     ///< Dimenion of the company icon.
 
 	/**
 	 * (Re)Build the company league list
@@ -1178,27 +1179,26 @@ public:
 	{
 		if (widget != WID_CL_BACKGROUND) return;
 
-		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - this->line_height) / 2;
-		uint y = r.top + WD_FRAMERECT_TOP - icon_y_offset;
+		Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		int icon_y_offset = (this->line_height - this->icon.height) / 2;
+		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint ordinal_left  = rtl ? r.right - WD_FRAMERECT_LEFT - this->ordinal_width : r.left + WD_FRAMERECT_LEFT;
-		uint ordinal_right = rtl ? r.right - WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->ordinal_width;
-		uint icon_left     = r.left + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + (rtl ? this->text_width : this->ordinal_width);
-		uint text_left     = rtl ? r.left + WD_FRAMERECT_LEFT : r.right - WD_FRAMERECT_LEFT - this->text_width;
-		uint text_right    = rtl ? r.left + WD_FRAMERECT_LEFT + this->text_width : r.right - WD_FRAMERECT_LEFT;
+		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
+		uint icon_left = ir.Indent(rtl ? this->text_width : this->ordinal_width, rtl).left;
+		Rect text    = ir.WithWidth(this->text_width, !rtl);
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
-			DrawString(ordinal_left, ordinal_right, y, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
+			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
 
-			DrawCompanyIcon(c->index, icon_left, y + icon_y_offset);
+			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
 
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
 			SetDParam(2, GetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawString(text_left, text_right, y, STR_COMPANY_LEAGUE_COMPANY_NAME);
-			y += this->line_height;
+			DrawString(text.left, text.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_NAME);
+			ir.top += this->line_height;
 		}
 	}
 
@@ -1222,9 +1222,8 @@ public:
 			}
 		}
 
-		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		this->icon_width = d.width + 2;
-		this->line_height = std::max<int>(d.height + 2, FONT_HEIGHT_NORMAL);
+		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
+		this->line_height = std::max<int>(this->icon.height + 2, FONT_HEIGHT_NORMAL);
 
 		for (const Company *c : Company::Iterate()) {
 			SetDParam(0, c->index);
@@ -1235,7 +1234,7 @@ public:
 
 		this->text_width = widest_width + 30; // Keep some extra spacing
 
-		size->width = WD_FRAMERECT_LEFT + this->ordinal_width + WD_FRAMERECT_RIGHT + this->icon_width + WD_FRAMERECT_LEFT + this->text_width + WD_FRAMERECT_RIGHT;
+		size->width = WD_FRAMERECT_LEFT + this->ordinal_width + WD_FRAMERECT_RIGHT + this->icon.width + WD_FRAMERECT_LEFT + this->text_width + WD_FRAMERECT_RIGHT;
 		size->height = WD_FRAMERECT_TOP + this->line_height * MAX_COMPANIES + WD_FRAMERECT_BOTTOM;
 	}
 

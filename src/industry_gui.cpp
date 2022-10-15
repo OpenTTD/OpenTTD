@@ -513,52 +513,41 @@ public:
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
-				uint text_left, text_right, icon_left, icon_right;
-				if (_current_text_dir == TD_RTL) {
-					icon_right = r.right    - WD_MATRIX_RIGHT;
-					icon_left  = icon_right - this->legend.width;
-					text_right = icon_left  - ScaleFontTrad(7);
-					text_left  = r.left     + WD_MATRIX_LEFT;
-				} else {
-					icon_left  = r.left     + WD_MATRIX_LEFT;
-					icon_right = icon_left  + this->legend.width;
-					text_left  = icon_right + ScaleFontTrad(7);
-					text_right = r.right    - WD_MATRIX_RIGHT;
-				}
+				bool rtl = _current_text_dir == TD_RTL;
+				Rect text = r.WithHeight(this->resize.step_height).Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+				Rect icon = text.WithWidth(this->legend.width, rtl);
+				text = text.Indent(this->legend.width + ScaleFontTrad(7), rtl);
 
 				/* Vertical offset for legend icon. */
-				int icon_top    = (this->resize.step_height - this->legend.height + 1) / 2;
-				int icon_bottom = icon_top + this->legend.height;
+				icon.top    = r.top + (this->resize.step_height - this->legend.height + 1) / 2;
+				icon.bottom = icon.top + this->legend.height - 1;
 
 				int y = r.top;
 				for (uint16 i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->count; i++) {
 					bool selected = this->selected_index == i + this->vscroll->GetPosition();
 
 					if (this->index[i + this->vscroll->GetPosition()] == INVALID_INDUSTRYTYPE) {
-						DrawString(text_left, text_right, y + WD_MATRIX_TOP, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
-						y += this->resize.step_height;
-						continue;
+						DrawString(text, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
+					} else {
+						const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll->GetPosition()]);
+
+						/* Draw the name of the industry in white is selected, otherwise, in orange */
+						DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+						GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
+						GfxFillRect(icon.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), indsp->map_colour);
 					}
-					const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll->GetPosition()]);
 
-					/* Draw the name of the industry in white is selected, otherwise, in orange */
-					DrawString(text_left, text_right, y + WD_MATRIX_TOP, indsp->name, selected ? TC_WHITE : TC_ORANGE);
-					GfxFillRect(icon_left,     y + icon_top,     icon_right,     y + icon_bottom,     selected ? PC_WHITE : PC_BLACK);
-					GfxFillRect(icon_left + 1, y + icon_top + 1, icon_right - 1, y + icon_bottom - 1, indsp->map_colour);
-
-					y += this->resize.step_height;
+					text = text.Translate(0, this->resize.step_height);
+					icon = icon.Translate(0, this->resize.step_height);
 				}
 				break;
 			}
 
 			case WID_DPI_INFOPANEL: {
-				int y      = r.top    + WD_FRAMERECT_TOP;
-				int bottom = r.bottom - WD_FRAMERECT_BOTTOM;
-				int left   = r.left   + WD_FRAMERECT_LEFT;
-				int right  = r.right  - WD_FRAMERECT_RIGHT;
+				Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
 				if (this->selected_type == INVALID_INDUSTRYTYPE) {
-					DrawStringMultiLine(left, right, y,  bottom, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP);
+					DrawStringMultiLine(ir, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP);
 					break;
 				}
 
@@ -566,8 +555,8 @@ public:
 
 				if (_game_mode != GM_EDITOR) {
 					SetDParam(0, indsp->GetConstructionCost());
-					DrawString(left, right, y, STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST);
-					y += FONT_HEIGHT_NORMAL;
+					DrawString(ir, STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST);
+					ir.top += FONT_HEIGHT_NORMAL;
 				}
 
 				CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
@@ -575,12 +564,12 @@ public:
 				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
 				GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
 				std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
-				y = DrawStringMultiLine(left, right, y, bottom, cargostring);
+				ir.top = DrawStringMultiLine(ir, cargostring);
 
 				/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
 				GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, nullptr, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
 				cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
-				y = DrawStringMultiLine(left, right, y, bottom, cargostring);
+				ir.top = DrawStringMultiLine(ir, cargostring);
 
 				/* Get the additional purchase info text, if it has not already been queried. */
 				if (HasBit(indsp->callback_mask, CBM_IND_FUND_MORE_TEXT)) {
@@ -592,7 +581,7 @@ public:
 							StringID str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
 							if (str != STR_UNDEFINED) {
 								StartTextRefStackUsage(indsp->grf_prop.grffile, 6);
-								DrawStringMultiLine(left, right, y, bottom, str, TC_YELLOW);
+								DrawStringMultiLine(ir, str, TC_YELLOW);
 								StopTextRefStackUsage();
 							}
 						}
@@ -848,10 +837,10 @@ public:
 
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
 
-		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_IV_INFO);
-		uint expected = this->DrawInfo(nwi->pos_x, nwi->pos_x + nwi->current_x - 1, nwi->pos_y) - nwi->pos_y;
-		if (expected > nwi->current_y - 1) {
-			this->info_height = expected + 1;
+		const Rect r = this->GetWidget<NWidgetBase>(WID_IV_INFO)->GetCurrentRect();
+		int expected = this->DrawInfo(r);
+		if (expected > r.bottom) {
+			this->info_height = expected - r.top + 1;
 			this->ReInit();
 			return;
 		}
@@ -864,30 +853,29 @@ public:
 	 * @param top   Top edge of the panel.
 	 * @return Expected position of the bottom edge of the panel.
 	 */
-	int DrawInfo(uint left, uint right, uint top)
+	int DrawInfo(const Rect &r)
 	{
 		Industry *i = Industry::Get(this->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
-		int y = top + WD_FRAMERECT_TOP;
+		Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 		bool first = true;
 		bool has_accept = false;
 
 		if (i->prod_level == PRODLEVEL_CLOSURE) {
-			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
-			y += 2 * FONT_HEIGHT_NORMAL;
+			DrawString(ir, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
+			ir.top += 2 * FONT_HEIGHT_NORMAL;
 		}
 
 		CargoSuffix cargo_suffix[lengthof(i->accepts_cargo)];
 		GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
 		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
 
-		uint left_side = left + WD_FRAMERECT_LEFT * 4; // Indent accepted cargoes.
 		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 			if (i->accepts_cargo[j] == CT_INVALID) continue;
 			has_accept = true;
 			if (first) {
-				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_REQUIRES);
-				y += FONT_HEIGHT_NORMAL;
+				DrawString(ir, STR_INDUSTRY_VIEW_REQUIRES);
+				ir.top += FONT_HEIGHT_NORMAL;
 				first = false;
 			}
 			SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
@@ -913,8 +901,8 @@ public:
 				default:
 					NOT_REACHED();
 			}
-			DrawString(left_side, right - WD_FRAMERECT_RIGHT, y, str);
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(ir.Indent(10, _current_text_dir == TD_RTL), str);
+			ir.top += FONT_HEIGHT_NORMAL;
 		}
 
 		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, i->produced_cargo, cargo_suffix);
@@ -922,10 +910,10 @@ public:
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
-				if (has_accept) y += WD_PAR_VSEP_WIDE;
-				DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
-				y += FONT_HEIGHT_NORMAL;
-				if (this->editable == EA_RATE) this->production_offset_y = y;
+				if (has_accept) ir.top += WD_PAR_VSEP_WIDE;
+				DrawString(ir, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
+				ir.top += FONT_HEIGHT_NORMAL;
+				if (this->editable == EA_RATE) this->production_offset_y = ir.top;
 				first = false;
 			}
 
@@ -933,26 +921,24 @@ public:
 			SetDParam(1, i->last_month_production[j]);
 			SetDParamStr(2, cargo_suffix[j].text);
 			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
-			uint x = left + WD_FRAMETEXT_LEFT + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + 10 : 0);
-			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_TRANSPORTED);
+			DrawString(ir.Indent(this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + 10 : 0, false), STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
-				DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
+				DrawArrowButtons(ir.left, ir.top, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
 						i->production_rate[j] > 0, i->production_rate[j] < 255);
 			}
-			y += FONT_HEIGHT_NORMAL;
+			ir.top += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Display production multiplier if editable */
 		if (this->editable == EA_MULTIPLIER) {
-			y += WD_PAR_VSEP_WIDE;
-			this->production_offset_y = y;
+			ir.top += WD_PAR_VSEP_WIDE;
+			this->production_offset_y = ir.top;
 			SetDParam(0, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT));
-			uint x = left + WD_FRAMETEXT_LEFT + SETTING_BUTTON_WIDTH + 10;
-			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
-			DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
+			DrawString(ir.Indent(SETTING_BUTTON_WIDTH + 10, false), STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
+			DrawArrowButtons(ir.left, ir.top, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
 					i->prod_level > PRODLEVEL_MINIMUM, i->prod_level < PRODLEVEL_MAXIMUM);
-			y += FONT_HEIGHT_NORMAL;
+			ir.top += FONT_HEIGHT_NORMAL;
 		}
 
 		/* Get the extra message for the GUI */
@@ -964,13 +950,13 @@ public:
 				} else {
 					StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
 					if (message != STR_NULL && message != STR_UNDEFINED) {
-						y += WD_PAR_VSEP_WIDE;
+						ir.top += WD_PAR_VSEP_WIDE;
 
 						StartTextRefStackUsage(ind->grf_prop.grffile, 6);
 						/* Use all the available space left from where we stand up to the
 						 * end of the window. We ALSO enlarge the window if needed, so we
 						 * can 'go' wild with the bottom of the window. */
-						y = DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, UINT16_MAX, message, TC_BLACK);
+						ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, message, TC_BLACK);
 						StopTextRefStackUsage();
 					}
 				}
@@ -979,11 +965,11 @@ public:
 
 		if (!i->text.empty()) {
 			SetDParamStr(0, i->text);
-			y += WD_PAR_VSEP_WIDE;
-			y = DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+			ir.top += WD_PAR_VSEP_WIDE;
+			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 		}
 
-		return y + WD_FRAMERECT_BOTTOM;
+		return ir.top - 1 + WD_FRAMERECT_BOTTOM;
 	}
 
 	void SetStringParameters(int widget) const override
@@ -1661,9 +1647,9 @@ public:
 
 			case WID_ID_INDUSTRY_LIST: {
 				int n = 0;
-				int y = r.top + WD_FRAMERECT_TOP;
+				Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				if (this->industries.size() == 0) {
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_DIRECTORY_NONE);
+					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
 				}
 				TextColour tc;
@@ -1676,9 +1662,9 @@ public:
 							tc = TC_GREY | TC_FORCED;
 						}
 					}
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, this->GetIndustryString(this->industries[i]), tc);
+					DrawString(ir, this->GetIndustryString(this->industries[i]), tc);
 
-					y += this->resize.step_height;
+					ir.top += this->resize.step_height;
 					if (++n == this->vscroll->GetCapacity()) break; // max number of industries in 1 window
 				}
 				break;
@@ -2920,14 +2906,13 @@ struct IndustryCargoesWindow : public Window {
 	{
 		if (widget != WID_IC_PANEL) return;
 
+		Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 		DrawPixelInfo tmp_dpi, *old_dpi;
-		int width = r.Width();
-		int height = r.Height() - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM;
-		if (!FillDrawPixelInfo(&tmp_dpi, r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, width, height)) return;
+		if (!FillDrawPixelInfo(&tmp_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
 		old_dpi = _cur_dpi;
 		_cur_dpi = &tmp_dpi;
 
-		int left_pos = WD_FRAMERECT_LEFT;
+		int left_pos = ir.left;
 		if (this->ind_cargo >= NUM_INDUSTRYTYPES) left_pos += (CargoesField::industry_width + CargoesField::cargo_field_width) / 2;
 		int last_column = (this->ind_cargo < NUM_INDUSTRYTYPES) ? 4 : 2;
 

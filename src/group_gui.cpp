@@ -563,25 +563,23 @@ public:
 					occupancy += v->trip_occupancy;
 				}
 
-				const int left  = r.left + WD_FRAMERECT_LEFT + 8;
-				const int right = r.right - WD_FRAMERECT_RIGHT - 8;
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
-				int y = r.top + WD_FRAMERECT_TOP;
-				DrawString(left, right, y, STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
+				DrawString(tr, STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
 				SetDParam(0, this_year);
-				DrawString(left, right, y, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
+				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
-				y += FONT_HEIGHT_NORMAL;
-				DrawString(left, right, y, STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
+				tr.top += FONT_HEIGHT_NORMAL;
+				DrawString(tr, STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
 				SetDParam(0, last_year);
-				DrawString(left, right, y, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
+				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
-				y += FONT_HEIGHT_NORMAL;
-				DrawString(left, right, y, STR_GROUP_OCCUPANCY, TC_BLACK);
+				tr.top += FONT_HEIGHT_NORMAL;
+				DrawString(tr, STR_GROUP_OCCUPANCY, TC_BLACK);
 				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {
 					SetDParam(0, occupancy / vehicle_count);
-					DrawString(left, right, y, STR_GROUP_OCCUPANCY_VALUE, TC_BLACK, SA_RIGHT);
+					DrawString(tr, STR_GROUP_OCCUPANCY_VALUE, TC_BLACK, SA_RIGHT);
 				}
 
 				break;
@@ -612,14 +610,14 @@ public:
 			case WID_GL_LIST_VEHICLE:
 				if (this->vli.index != ALL_GROUP && this->grouping == GB_NONE) {
 					/* Mark vehicles which are in sub-groups (only if we are not using shared order coalescing) */
-					int y = r.top;
+					Rect mr = r.WithHeight(this->resize.step_height);
 					uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehgroups.size()));
 					for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 						const Vehicle *v = this->vehgroups[i].GetSingleVehicle();
 						if (v->group_id != this->vli.index) {
-							GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->resize.step_height - 2, _colour_gradient[COLOUR_GREY][3], FILLRECT_CHECKER);
+							GfxFillRect(mr.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), _colour_gradient[COLOUR_GREY][3], FILLRECT_CHECKER);
 						}
-						y += this->resize.step_height;
+						mr = mr.Translate(0, this->resize.step_height);
 					}
 				}
 

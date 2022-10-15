@@ -692,19 +692,17 @@ public:
 		StoryPage *page = this->GetSelPage();
 		if (page == nullptr) return;
 
-		const int x = r.left + WD_FRAMETEXT_LEFT;
-		const int y = r.top + WD_FRAMETEXT_TOP;
-		const int right = r.right - WD_FRAMETEXT_RIGHT;
-		const int bottom = r.bottom - WD_FRAMETEXT_BOTTOM;
+		Rect fr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
 
 		/* Set up a clipping region for the panel. */
 		DrawPixelInfo tmp_dpi;
-		if (!FillDrawPixelInfo(&tmp_dpi, x, y, right - x + 1, bottom - y + 1)) return;
+		if (!FillDrawPixelInfo(&tmp_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
 
 		DrawPixelInfo *old_dpi = _cur_dpi;
 		_cur_dpi = &tmp_dpi;
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
+		fr = fr.Translate(-fr.left, -fr.top);
 		int line_height = FONT_HEIGHT_NORMAL;
 		const int scrollpos = this->vscroll->GetPosition();
 		int y_offset = -scrollpos;
@@ -712,13 +710,13 @@ public:
 		/* Date */
 		if (page->date != INVALID_DATE) {
 			SetDParam(0, page->date);
-			DrawString(0, right - x, y_offset, STR_JUST_DATE_LONG, TC_BLACK);
+			DrawString(0, fr.right, y_offset, STR_JUST_DATE_LONG, TC_BLACK);
 		}
 		y_offset += line_height;
 
 		/* Title */
 		SetDParamStr(0, page->title != nullptr ? page->title : this->selected_generic_title);
-		y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, STR_STORY_BOOK_TITLE, TC_BLACK, SA_TOP | SA_HOR_CENTER);
+		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, STR_STORY_BOOK_TITLE, TC_BLACK, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
 		this->EnsureStoryPageElementLayout();

@@ -125,18 +125,18 @@ struct AIListWindow : public Window {
 		switch (widget) {
 			case WID_AIL_LIST: {
 				/* Draw a list of all available AIs. */
-				int y = this->GetWidget<NWidgetBase>(WID_AIL_LIST)->pos_y;
+				Rect tr = r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
 				/* First AI in the list is hardcoded to random */
 				if (this->vscroll->IsVisible(0)) {
-					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
-					y += this->line_height;
+					DrawString(tr, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
+					tr.top += this->line_height;
 				}
 				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
-						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
-						y += this->line_height;
+						DrawString(tr, item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						tr.top += this->line_height;
 					}
 				}
 				break;
@@ -150,20 +150,20 @@ struct AIListWindow : public Window {
 				}
 				/* Some info about the currently selected AI. */
 				if (selected_info != nullptr) {
-					int y = r.top + WD_FRAMERECT_TOP;
+					Rect tr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM);
 					SetDParamStr(0, selected_info->GetAuthor());
-					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_LIST_AUTHOR);
-					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+					DrawString(tr, STR_AI_LIST_AUTHOR);
+					tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 					SetDParam(0, selected_info->GetVersion());
-					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_LIST_VERSION);
-					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+					DrawString(tr, STR_AI_LIST_VERSION);
+					tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 					if (selected_info->GetURL() != nullptr) {
 						SetDParamStr(0, selected_info->GetURL());
-						DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_LIST_URL);
-						y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+						DrawString(tr, STR_AI_LIST_URL);
+						tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 					}
 					SetDParamStr(0, selected_info->GetDescription());
-					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, r.bottom - WD_FRAMERECT_BOTTOM, STR_JUST_RAW_STRING, TC_WHITE);
+					DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_WHITE);
 				}
 				break;
 			}
@@ -359,11 +359,10 @@ struct AISettingsWindow : public Window {
 		int i = 0;
 		for (; !this->vscroll->IsVisible(i); i++) it++;
 
+		Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 		bool rtl = _current_text_dir == TD_RTL;
-		uint buttons_left = rtl ? r.right - SETTING_BUTTON_WIDTH - 3 : r.left + 4;
-		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : SETTING_BUTTON_WIDTH + 8);
-		uint text_right   = r.right - (rtl ? SETTING_BUTTON_WIDTH + 8 : WD_FRAMERECT_RIGHT);
-
+		Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
+		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + 8, rtl);
 
 		int y = r.top;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -392,13 +391,13 @@ struct AISettingsWindow : public Window {
 			}
 
 			if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
-				DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, editable);
+				DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
 				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
 				if (config_item.complete_labels) {
-					DrawDropDownButton(buttons_left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
+					DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
 				} else {
-					DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
 				if (config_item.labels != nullptr && config_item.labels->Contains(current_value)) {
 					SetDParam(idx++, STR_JUST_RAW_STRING);
@@ -409,7 +408,7 @@ struct AISettingsWindow : public Window {
 				}
 			}
 
-			DrawString(text_left, text_right, y + text_y_offset, str, colour);
+			DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
 			y += this->line_height;
 		}
 	}
@@ -427,8 +426,8 @@ struct AISettingsWindow : public Window {
 	{
 		switch (widget) {
 			case WID_AIS_BACKGROUND: {
-				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_AIS_BACKGROUND);
-				int num = (pt.y - wid->pos_y) / this->line_height + this->vscroll->GetPosition();
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WD_MATRIX_LEFT, 0, WD_MATRIX_RIGHT, 0);
+				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
 				if (num >= (int)this->visible_settings.size()) break;
 
 				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
@@ -445,9 +444,8 @@ struct AISettingsWindow : public Window {
 
 				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
 
-				int x = pt.x - wid->pos_x;
-				if (_current_text_dir == TD_RTL) x = wid->current_x - 1 - x;
-				x -= 4;
+				int x = pt.x - r.left;
+				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				int old_val = this->ai_config->GetSetting(config_item.name);
@@ -458,8 +456,7 @@ struct AISettingsWindow : public Window {
 						this->clicked_dropdown = false;
 						this->closing_dropdown = false;
 					} else {
-						const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_AIS_BACKGROUND);
-						int rel_y = (pt.y - (int)wid->pos_y) % this->line_height;
+						int rel_y = (pt.y - r.top) % this->line_height;
 
 						Rect wi_rect;
 						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
@@ -794,7 +791,7 @@ struct AIConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_AIC_LIST: {
-				int y = r.top;
+				Rect tr = r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
 					StringID text;
 
@@ -806,9 +803,9 @@ struct AIConfigWindow : public Window {
 					} else {
 						text = STR_AI_CONFIG_RANDOM_AI;
 					}
-					DrawString(r.left + 10, r.right - 10, y + WD_MATRIX_TOP, text,
+					DrawString(tr, text,
 							(this->selected_slot == i) ? TC_WHITE : (IsEditable((CompanyID)i) ? TC_ORANGE : TC_SILVER));
-					y += this->line_height;
+					tr.top += this->line_height;
 				}
 				break;
 			}

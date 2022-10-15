@@ -194,10 +194,10 @@ public:
 				}
 				sprite_dim.height++; // Sprite is rendered one pixel down in the matrix field.
 				text_dim.height++; // Allowing the bottom row pixels to be rendered on the edge of the matrix field.
-				resize->height = std::max(sprite_dim.height, text_dim.height) + 2; // Max of both sizes + account for matrix edges.
+				resize->height = std::max(sprite_dim.height, text_dim.height) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM; // Max of both sizes + account for matrix edges.
 
-				this->bridgetext_offset = WD_MATRIX_LEFT + sprite_dim.width + 1; // Left edge of text, 1 pixel distance from the sprite.
-				size->width = this->bridgetext_offset + text_dim.width + WD_MATRIX_RIGHT;
+				this->bridgetext_offset = sprite_dim.width + 1; // Left edge of text, 1 pixel distance from the sprite.
+				size->width = WD_MATRIX_LEFT + this->bridgetext_offset + text_dim.width + WD_MATRIX_RIGHT;
 				size->height = 4 * resize->height; // Smallest bridge gui is 4 entries high in the matrix.
 				break;
 			}
@@ -222,7 +222,7 @@ public:
 				break;
 
 			case WID_BBS_BRIDGE_LIST: {
-				uint y = r.top;
+				Rect tr = r.WithHeight(this->resize.step_height).Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->size(); i++) {
 					const BridgeSpec *b = this->bridges->at(i).spec;
 
@@ -230,10 +230,10 @@ public:
 					SetDParam(1, b->speed);
 					SetDParam(0, b->material);
 
-					DrawSprite(b->sprite, b->pal, r.left + WD_MATRIX_LEFT, y + this->resize.step_height - 1 - GetSpriteSize(b->sprite).height);
-					DrawStringMultiLine(r.left + this->bridgetext_offset, r.right, y + 2, y + this->resize.step_height,
+					DrawSprite(b->sprite, b->pal, tr.left, tr.bottom - GetSpriteSize(b->sprite).height);
+					DrawStringMultiLine(tr.Indent(this->bridgetext_offset, false),
 							_game_mode == GM_EDITOR ? STR_SELECT_BRIDGE_SCENEDIT_INFO : STR_SELECT_BRIDGE_INFO);
-					y += this->resize.step_height;
+					tr = tr.Translate(0, this->resize.step_height);
 				}
 				break;
 			}

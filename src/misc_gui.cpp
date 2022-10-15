@@ -75,16 +75,15 @@ public:
 	{
 		if (widget != WID_LI_BACKGROUND) return;
 
-		uint y = r.top + WD_TEXTPANEL_TOP;
+		Rect ir = r.Shrink(WD_FRAMETEXT_LEFT, WD_TEXTPANEL_TOP, WD_FRAMETEXT_RIGHT, WD_TEXTPANEL_BOTTOM);
 		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
-			DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_HOR_CENTER);
-			y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			if (i == 0) y += 4;
+			DrawString(ir, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_HOR_CENTER);
+			ir.top += FONT_HEIGHT_NORMAL + (i == 0 ? WD_PAR_VSEP_WIDE : WD_PAR_VSEP_NORMAL);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
 			SetDParamStr(0, this->cargo_acceptance);
-			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, r.bottom - WD_TEXTPANEL_BOTTOM, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -97,8 +96,7 @@ public:
 			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
 			size->width = std::max(size->width, width);
 
-			size->height += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			if (i == 0) size->height += 4;
+			size->height += FONT_HEIGHT_NORMAL + (i == 0 ? WD_PAR_VSEP_WIDE : WD_PAR_VSEP_NORMAL);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
@@ -730,13 +728,13 @@ struct TooltipsWindow : public Window
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		/* There is only one widget. */
-		GfxFillRect(r.left, r.top, r.right, r.bottom, PC_BLACK);
-		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_LIGHT_YELLOW);
+		GfxFillRect(r, PC_BLACK);
+		GfxFillRect(r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), PC_LIGHT_YELLOW);
 
 		for (uint arg = 0; arg < this->paramcount; arg++) {
 			SetDParam(arg, this->params[arg]);
 		}
-		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, this->string_id, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM), this->string_id, TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnMouseLoop() override
@@ -1041,8 +1039,7 @@ struct QueryStringWindow : public Window
 		if (widget != WID_QS_WARNING) return;
 
 		if (this->flags & QSF_PASSWORD) {
-			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT - WD_FRAMERECT_RIGHT,
-				r.top + WD_FRAMERECT_TOP + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMERECT_BOTTOM - WD_FRAMETEXT_BOTTOM,
+			DrawStringMultiLine(r.Shrink(WD_FRAMERECT_LEFT + WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP + WD_FRAMETEXT_TOP, WD_FRAMERECT_RIGHT + WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM + WD_FRAMETEXT_BOTTOM),
 				STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
 		}
 	}
@@ -1194,7 +1191,7 @@ struct QueryWindow : public Window {
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+		DrawStringMultiLine(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM),
 				this->message, TC_FROMSTRING, SA_CENTER);
 	}
 

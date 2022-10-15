@@ -194,30 +194,29 @@ struct SignListWindow : Window, SignList {
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
-				uint y = r.top + WD_FRAMERECT_TOP; // Offset from top of widget.
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				uint text_offset_y = (this->resize.step_height - FONT_HEIGHT_NORMAL + 1) / 2;
 				/* No signs? */
 				if (this->vscroll->GetCount() == 0) {
-					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y + text_offset_y, STR_STATION_LIST_NONE);
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_STATION_LIST_NONE);
 					return;
 				}
 
 				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
 				bool rtl = _current_text_dir == TD_RTL;
 				int sprite_offset_y = (this->resize.step_height - d.height + 1) / 2;
-				uint icon_left  = 4 + (rtl ? r.right - this->text_offset : r.left);
-				uint text_left  = r.left + (rtl ? WD_FRAMERECT_LEFT : this->text_offset);
-				uint text_right = r.right - (rtl ? this->text_offset : WD_FRAMERECT_RIGHT);
+				uint icon_left = rtl ? tr.right - this->text_offset : tr.left;
+				tr = tr.Indent(this->text_offset, rtl);
 
 				/* At least one sign available. */
 				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 					const Sign *si = this->signs[i];
 
-					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + sprite_offset_y);
+					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
 
 					SetDParam(0, si->index);
-					DrawString(text_left, text_right, y + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
-					y += this->resize.step_height;
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
+					tr.top += this->resize.step_height;
 				}
 				break;
 			}
