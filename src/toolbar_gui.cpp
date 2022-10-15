@@ -106,10 +106,11 @@ public:
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
+		Rect tr = r.Shrink(WD_DROPDOWNTEXT_LEFT, 0, WD_DROPDOWNTEXT_RIGHT, 0);
 		if (this->checked) {
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
+			DrawString(tr, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
-		DrawString(r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : this->checkmark_width), r.right - WD_FRAMERECT_RIGHT - (rtl ? this->checkmark_width : 0), r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(tr.Indent(this->checkmark_width, rtl), this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -138,12 +139,12 @@ public:
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + 6;
+		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT + 6;
 	}
 
 	uint Height(uint width) const override
 	{
-		return std::max(std::max(this->icon_size.height, this->lock_size.height) + 2U, (uint)FONT_HEIGHT_NORMAL);
+		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM, (uint)FONT_HEIGHT_NORMAL);
 	}
 
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
@@ -154,13 +155,14 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
+		Rect tr = r.Shrink(WD_DROPDOWNTEXT_LEFT, 0, WD_DROPDOWNTEXT_RIGHT, 0);
 		int icon_y = CenterBounds(r.top, r.bottom, icon_size.height);
 		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		int lock_y = CenterBounds(r.top, r.bottom, lock_size.height);
 
-		DrawCompanyIcon(company, rtl ? r.right - this->icon_size.width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT, icon_y);
+		DrawCompanyIcon(company, tr.WithWidth(this->icon_size.width, rtl).left, icon_y);
 		if (NetworkCompanyIsPassworded(company)) {
-			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? r.left + WD_FRAMERECT_LEFT : r.right - this->lock_size.width - WD_FRAMERECT_RIGHT, lock_y);
+			DrawSprite(SPR_LOCK, PAL_NONE, tr.WithWidth(this->lock_size.width, !rtl).left, lock_y);
 		}
 
 		SetDParam(0, company);
@@ -171,7 +173,8 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(r.left + WD_FRAMERECT_LEFT + (rtl ? 3 + this->lock_size.width : 3 + this->icon_size.width), r.right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 3 + this->lock_size.width), text_y, STR_COMPANY_NAME_COMPANY_NUM, col);
+		tr = tr.Indent(this->icon_size.width + 3, rtl).Indent(this->lock_size.width + 3, !rtl);
+		DrawString(tr.left, tr.right, text_y, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
@@ -2355,10 +2358,10 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		switch (widget) {
 			case WID_TE_SPACER: {
-				int height = r.bottom - r.top;
+				int height = r.Height();
 				if (height > 2 * FONT_HEIGHT_NORMAL) {
-					DrawString(r.left, r.right, (height + 1) / 2 - FONT_HEIGHT_NORMAL, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
-					DrawString(r.left, r.right, (height + 1) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, height / 2 - FONT_HEIGHT_NORMAL, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
 					DrawString(r.left, r.right, (height - FONT_HEIGHT_NORMAL) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				}

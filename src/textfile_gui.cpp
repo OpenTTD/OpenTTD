@@ -148,17 +148,15 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 {
 	if (widget != WID_TF_BACKGROUND) return;
 
-	const int x = r.left + WD_FRAMETEXT_LEFT;
-	const int y = r.top + WD_FRAMETEXT_TOP;
-	const int right = r.right - WD_FRAMETEXT_RIGHT;
-	const int bottom = r.bottom - WD_FRAMETEXT_BOTTOM;
+	Rect fr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
 
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, x, y, right - x + 1, bottom - y + 1)) return;
+	if (!FillDrawPixelInfo(&new_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &new_dpi;
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
+	fr = fr.Translate(-fr.left, -fr.top);
 	int line_height = FONT_HEIGHT_MONO;
 	int pos = this->vscroll->GetPosition();
 	int cap = this->vscroll->GetCapacity();
@@ -169,9 +167,9 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 
 		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			DrawStringMultiLine(0, right - x, y_offset, bottom - y, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
-			DrawString(-this->hscroll->GetPosition(), right - x, y_offset, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawString(-this->hscroll->GetPosition(), fr.right, y_offset, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
 		}
 	}
 

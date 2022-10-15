@@ -1135,9 +1135,6 @@ static void DrawNewsString(uint left, uint right, int y, TextColour colour, cons
 }
 
 struct MessageHistoryWindow : Window {
-	static const int top_spacing;    ///< Additional spacing at the top of the #WID_MH_BACKGROUND widget.
-	static const int bottom_spacing; ///< Additional spacing at the bottom of the #WID_MH_BACKGROUND widget.
-
 	int line_height; /// < Height of a single line in the news history window including spacing.
 	int date_width;  /// < Width needed for the date part.
 
@@ -1154,7 +1151,7 @@ struct MessageHistoryWindow : Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			this->line_height = FONT_HEIGHT_NORMAL + 2;
+			this->line_height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 			resize->height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
@@ -1162,7 +1159,7 @@ struct MessageHistoryWindow : Window {
 			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
 			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
 
-			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
+			size->height = 4 * resize->height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM; // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 		}
 	}
@@ -1185,17 +1182,15 @@ struct MessageHistoryWindow : Window {
 		}
 
 		/* Fill the widget with news items. */
-		int y = r.top + this->top_spacing;
 		bool rtl = _current_text_dir == TD_RTL;
-		uint date_left  = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width : r.left + WD_FRAMERECT_LEFT;
-		uint date_right = rtl ? r.right - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT + this->date_width;
-		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT + ScaleFontTrad(5);
-		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT - ScaleFontTrad(5) : r.right - WD_FRAMERECT_RIGHT;
+		Rect news = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM).Indent(this->date_width + ScaleFontTrad(5), rtl);
+		Rect date = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM).WithWidth(this->date_width, rtl);
+		int y = news.top;
 		for (int n = this->vscroll->GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
-			DrawString(date_left, date_right, y, STR_SHORT_DATE);
+			DrawString(date.left, date.right, y, STR_SHORT_DATE);
 
-			DrawNewsString(news_left, news_right, y, TC_WHITE, ni);
+			DrawNewsString(news.left, news.right, y, TC_WHITE, ni);
 			y += this->line_height;
 
 			ni = ni->prev;
@@ -1234,9 +1229,6 @@ struct MessageHistoryWindow : Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_MH_BACKGROUND);
 	}
 };
-
-const int MessageHistoryWindow::top_spacing = WD_FRAMERECT_TOP + 4;
-const int MessageHistoryWindow::bottom_spacing = WD_FRAMERECT_BOTTOM;
 
 static const NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),

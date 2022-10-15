@@ -1622,10 +1622,9 @@ struct BuildVehicleWindow : Window {
 			int needed_height = this->details_height;
 			/* Draw details panels. */
 			if (this->sel_engine != INVALID_ENGINE) {
-				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_BV_PANEL);
-				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
-						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine, this->te);
-				needed_height = std::max(needed_height, (text_end - (int)nwi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL);
+				const Rect r = this->GetWidget<NWidgetBase>(WID_BV_PANEL)->GetCurrentRect().Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM);
+				int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine, this->te);
+				needed_height = std::max(needed_height, (text_end - r.top) / FONT_HEIGHT_NORMAL);
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
 				int resize = needed_height - this->details_height;

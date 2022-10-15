@@ -1281,14 +1281,14 @@ public:
 				break;
 
 			case WID_BRAS_NEWST_LIST: {
+				Rect ir = r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
 				uint statclass = 0;
-				uint row = 0;
 				for (auto station_class : this->station_classes) {
 					if (this->vscroll->IsVisible(statclass)) {
-						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, row * this->line_height + r.top + WD_MATRIX_TOP,
+						DrawString(ir,
 								StationClass::Get(station_class)->name,
 								station_class == _railstation.station_class ? TC_WHITE : TC_BLACK);
-						row++;
+						ir.top += this->line_height;
 					}
 					statclass++;
 				}
@@ -1301,7 +1301,7 @@ public:
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
 				if (!IsStationAvailable(statspec)) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), PC_BLACK, FILLRECT_CHECKER);
 				}
 
 				/* Set up a clipping area for the station preview. */
@@ -2043,7 +2043,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				DrawWaypointSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), type, _cur_railtype);
 
 				if (!IsStationAvailable(statspec)) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), PC_BLACK, FILLRECT_CHECKER);
 				}
 			}
 		}

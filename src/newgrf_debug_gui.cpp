@@ -428,7 +428,8 @@ struct NewGRFInspectWindow : Window {
 					if (u == v) sel_end = total_width;
 				}
 
-				int width = r.Width() - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
+				Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+				int width = br.Width();
 				int skip = 0;
 				if (total_width > width) {
 					int sel_center = (sel_start + sel_end) / 2;
@@ -437,8 +438,8 @@ struct NewGRFInspectWindow : Window {
 
 				GrfSpecFeature f = GetFeatureNum(this->window_number);
 				int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
-				int y = CenterBounds(r.top, r.bottom, h);
-				DrawVehicleImage(v->First(), r.left + WD_BEVEL_LEFT, r.right - WD_BEVEL_RIGHT, y + 1, INVALID_VEHICLE, EIT_IN_DETAILS, skip);
+				int y = CenterBounds(br.top, br.bottom, h);
+				DrawVehicleImage(v->First(), br.left, br.right, y + 1, INVALID_VEHICLE, EIT_IN_DETAILS, skip);
 
 				/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
 				if (_current_text_dir == TD_RTL) {
@@ -878,13 +879,12 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_SPRITE: {
 				/* Center the sprite ourselves */
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
-				int width  = r.Width()  - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
-				int height = r.Height() - WD_BEVEL_TOP - WD_BEVEL_BOTTOM;
-				int x = -UnScaleGUI(spr->x_offs) + (width  - UnScaleGUI(spr->width) ) / 2;
-				int y = -UnScaleGUI(spr->y_offs) + (height - UnScaleGUI(spr->height)) / 2;
+				Rect ir = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+				int x = -UnScaleGUI(spr->x_offs) + (ir.Width()  - UnScaleGUI(spr->width) ) / 2;
+				int y = -UnScaleGUI(spr->y_offs) + (ir.Height() - UnScaleGUI(spr->height)) / 2;
 
 				DrawPixelInfo new_dpi;
-				if (!FillDrawPixelInfo(&new_dpi, r.left + WD_BEVEL_LEFT, r.top + WD_BEVEL_TOP, width, height)) break;
+				if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) break;
 				DrawPixelInfo *old_dpi = _cur_dpi;
 				_cur_dpi = &new_dpi;
 
@@ -902,11 +902,11 @@ struct SpriteAlignerWindow : Window {
 				std::vector<SpriteID> &list = _newgrf_debug_sprite_picker.sprites;
 				int max = std::min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (uint)list.size());
 
-				int y = r.top + WD_FRAMERECT_TOP;
+				Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				for (int i = this->vscroll->GetPosition(); i < max; i++) {
 					SetDParam(0, list[i]);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_BLACK_COMMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
-					y += step_size;
+					DrawString(ir, STR_BLACK_COMMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+					ir.top += step_size;
 				}
 				break;
 			}

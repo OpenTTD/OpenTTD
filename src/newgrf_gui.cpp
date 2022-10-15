@@ -66,8 +66,9 @@ void ShowNewGRFError()
 	}
 }
 
-static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint bottom, bool show_params)
+static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 {
+	Rect tr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
 	if (c->error != nullptr) {
 		char message[512];
 		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
@@ -79,34 +80,34 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		GetString(message, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
 
 		SetDParamStr(0, message);
-		y = DrawStringMultiLine(x, right, y, bottom, c->error->severity);
+		tr.top = DrawStringMultiLine(tr, c->error->severity);
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (c->filename != nullptr) {
 		SetDParamStr(0, c->filename);
-		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_FILENAME);
+		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_FILENAME);
 	}
 
 	/* Prepare and draw GRF ID */
 	char buff[256];
 	seprintf(buff, lastof(buff), "%08X", BSWAP32(c->ident.grfid));
 	SetDParamStr(0, buff);
-	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
+	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_GRF_ID);
 
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c->version != 0) {
 		SetDParam(0, c->version);
-		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_VERSION);
+		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_VERSION);
 	}
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c->min_loadable_version != 0) {
 		SetDParam(0, c->min_loadable_version);
-		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_MIN_VERSION);
+		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_MIN_VERSION);
 	}
 
 	/* Prepare and draw MD5 sum */
 	md5sumToString(buff, lastof(buff), c->ident.md5sum);
 	SetDParamStr(0, buff);
-	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_MD5SUM);
+	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_MD5SUM);
 
 	/* Show GRF parameter list */
 	if (show_params) {
@@ -117,7 +118,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		} else {
 			SetDParam(0, STR_NEWGRF_SETTINGS_PARAMETER_NONE);
 		}
-		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PARAMETER);
+		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
 		if (c->palette & GRFP_BLT_32BPP) {
@@ -125,21 +126,21 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		} else {
 			SetDParam(0, (c->palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT);
 		}
-		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
+		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_PALETTE);
 	}
 
 	/* Show flags */
-	if (c->status == GCS_NOT_FOUND)       y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NOT_FOUND);
-	if (c->status == GCS_DISABLED)        y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_DISABLED);
-	if (HasBit(c->flags, GCF_INVALID))    y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
-	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
+	if (c->status == GCS_NOT_FOUND)       tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NOT_FOUND);
+	if (c->status == GCS_DISABLED)        tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_DISABLED);
+	if (HasBit(c->flags, GCF_INVALID))    tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
+	if (HasBit(c->flags, GCF_COMPATIBLE)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
 	if (!StrEmpty(c->GetDescription())) {
 		SetDParamStr(0, c->GetDescription());
-		y = DrawStringMultiLine(x, right, y, bottom, STR_BLACK_RAW_STRING);
+		tr.top = DrawStringMultiLine(tr, STR_BLACK_RAW_STRING);
 	} else {
-		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NO_INFO);
+		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
 }
 
@@ -252,18 +253,17 @@ struct NewGRFParametersWindow : public Window {
 			if (par_info == nullptr) return;
 			const char *desc = GetGRFStringFromGRFText(par_info->desc);
 			if (desc == nullptr) return;
-			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_TEXTPANEL_TOP, r.bottom - WD_TEXTPANEL_BOTTOM, desc, TC_BLACK);
+			DrawStringMultiLine(r.Shrink(WD_FRAMERECT_LEFT, WD_TEXTPANEL_TOP, WD_FRAMERECT_RIGHT, WD_TEXTPANEL_BOTTOM), desc, TC_BLACK);
 			return;
 		} else if (widget != WID_NP_BACKGROUND) {
 			return;
 		}
 
+		Rect ir = r.Shrink(WD_FRAMERECT_LEFT, 0, WD_FRAMERECT_RIGHT, 0);
 		bool rtl = _current_text_dir == TD_RTL;
-		uint buttons_left = rtl ? r.right - SETTING_BUTTON_WIDTH - 3 : r.left + 4;
-		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : SETTING_BUTTON_WIDTH + 8);
-		uint text_right   = r.right - (rtl ? SETTING_BUTTON_WIDTH + 8 : WD_FRAMERECT_RIGHT);
+		uint buttons_left = rtl ? ir.right - SETTING_BUTTON_WIDTH - 3 : ir.left + 4;
+		Rect tr = r.Indent(SETTING_BUTTON_WIDTH + 8, rtl);
 
-		int y = r.top;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
@@ -273,13 +273,13 @@ struct NewGRFParametersWindow : public Window {
 			bool selected = (i == this->clicked_row);
 
 			if (par_info->type == PTYPE_BOOL) {
-				DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, this->editable);
+				DrawBoolButton(buttons_left, ir.top + button_y_offset, current_value != 0, this->editable);
 				SetDParam(2, par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info->type == PTYPE_UINT_ENUM) {
 				if (par_info->complete_labels) {
-					DrawDropDownButton(buttons_left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
+					DrawDropDownButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
 				} else {
-					DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
+					DrawArrowButtons(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
 				}
 				SetDParam(2, STR_JUST_INT);
 				SetDParam(3, current_value);
@@ -301,8 +301,8 @@ struct NewGRFParametersWindow : public Window {
 				SetDParam(1, i + 1);
 			}
 
-			DrawString(text_left, text_right, y + text_y_offset, STR_NEWGRF_PARAMETERS_SETTING, selected ? TC_WHITE : TC_LIGHT_BLUE);
-			y += this->line_height;
+			DrawString(tr.left, tr.right, ir.top + text_y_offset, STR_NEWGRF_PARAMETERS_SETTING, selected ? TC_WHITE : TC_LIGHT_BLUE);
+			ir.top += this->line_height;
 		}
 	}
 
@@ -833,10 +833,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	{
 		switch (widget) {
 			case WID_NS_FILE_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
+				const Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+				GfxFillRect(br, PC_BLACK);
 
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_FILE_LIST)->resize_y;
-				uint y = r.top + WD_FRAMERECT_TOP;
 				Dimension square = GetSpriteSize(SPR_SQUARE);
 				Dimension warning = GetSpriteSize(SPR_WARNING_SIGN);
 				int square_offset_y = (step_height - square.height) / 2;
@@ -844,10 +845,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 
 				bool rtl = _current_text_dir == TD_RTL;
-				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + square.width + 15;
-				uint text_right   = rtl ? r.right - square.width - 15 : r.right - WD_FRAMERECT_RIGHT;
-				uint square_left  = rtl ? r.right - square.width - 5 : r.left + 5;
-				uint warning_left = rtl ? r.right - square.width - warning.width - 10 : r.left + square.width + 10;
+				uint text_left    = rtl ? tr.left : tr.left + square.width + 13;
+				uint text_right   = rtl ? tr.right - square.width - 13 : tr.right;
+				uint square_left  = rtl ? tr.right - square.width - 3 : tr.left + 3;
+				uint warning_left = rtl ? tr.right - square.width - warning.width - 8 : tr.left + square.width + 8;
 
 				int i = 0;
 				for (const GRFConfig *c = this->actives; c != nullptr; c = c->next, i++) {
@@ -857,35 +858,36 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 						PaletteID pal = this->GetPalette(c);
 
 						if (h) {
-							GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, PC_DARK_BLUE);
+							GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 						} else if (i == this->active_over) {
 							/* Get index of current selection. */
 							int active_sel_pos = 0;
 							for (GRFConfig *c = this->actives; c != nullptr && c != this->active_sel; c = c->next, active_sel_pos++) {}
 							if (active_sel_pos != this->active_over) {
-								uint top = this->active_over < active_sel_pos ? y + 1 : y + step_height - 2;
-								GfxFillRect(r.left + WD_FRAMERECT_LEFT, top - 1, r.right - WD_FRAMERECT_RIGHT, top + 1, PC_GREY);
+								uint top = this->active_over < active_sel_pos ? tr.top + 1 : tr.top + step_height - 2;
+								GfxFillRect(tr.left, top - 1, tr.right, top + 1, PC_GREY);
 							}
 						}
-						DrawSprite(SPR_SQUARE, pal, square_left, y + square_offset_y);
-						if (c->error != nullptr) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y + warning_offset_y);
+						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
+						if (c->error != nullptr) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
 						uint txtoffset = c->error == nullptr ? 0 : warning.width;
-						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), y + offset_y, text, h ? TC_WHITE : TC_ORANGE);
-						y += step_height;
+						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, text, h ? TC_WHITE : TC_ORANGE);
+						tr.top += step_height;
 					}
 				}
 				if (i == this->active_over && this->vscroll->IsVisible(i)) { // Highlight is after the last GRF entry.
-					GfxFillRect(r.left + WD_FRAMERECT_LEFT, y, r.right - WD_FRAMERECT_RIGHT, y + 2, PC_GREY);
+					GfxFillRect(tr.left, tr.top, tr.right, tr.top + 2, PC_GREY);
 				}
 				break;
 			}
 
 			case WID_NS_AVAIL_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, this->active_over == -2 ? PC_DARK_GREY : PC_BLACK);
+				const Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+				GfxFillRect(br, this->active_over == -2 ? PC_DARK_GREY : PC_BLACK);
 
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
-				uint y = r.top + WD_FRAMERECT_TOP;
 				uint min_index = this->vscroll2->GetPosition();
 				uint max_index = std::min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
 
@@ -894,16 +896,16 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					bool h = (c == this->avail_sel);
 					const char *text = c->GetName();
 
-					if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, PC_DARK_BLUE);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y + offset_y, text, h ? TC_WHITE : TC_SILVER);
-					y += step_height;
+					if (h) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
+					DrawString(tr.left, tr.right, tr.top + offset_y, text, h ? TC_WHITE : TC_SILVER);
+					tr.top += step_height;
 				}
 				break;
 			}
 
 			case WID_NS_NEWGRF_INFO_TITLE:
 				/* Create the nice grayish rectangle at the details top. */
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_DARK_BLUE);
+				GfxFillRect(r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), PC_DARK_BLUE);
 				DrawString(r.left, r.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
@@ -911,7 +913,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				const GRFConfig *selected = this->active_sel;
 				if (selected == nullptr) selected = this->avail_sel;
 				if (selected != nullptr) {
-					ShowNewGRFInfo(selected, r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, r.bottom - WD_FRAMERECT_BOTTOM, this->show_params);
+					ShowNewGRFInfo(selected, r, this->show_params);
 				}
 				break;
 			}
@@ -2091,20 +2093,21 @@ struct SavePresetWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
+				const Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+				GfxFillRect(br, PC_BLACK);
 
 				uint step_height = this->GetWidget<NWidgetBase>(WID_SVP_PRESET_LIST)->resize_y;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
-				uint y = r.top + WD_FRAMERECT_TOP;
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				uint min_index = this->vscroll->GetPosition();
 				uint max_index = std::min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
 
 				for (uint i = min_index; i < max_index; i++) {
-					if ((int)i == this->selected) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 2, PC_DARK_BLUE);
+					if ((int)i == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 
 					const char *text = this->presets[i].c_str();
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right, y + offset_y, text, ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
-					y += step_height;
+					DrawString(tr.left, tr.right, tr.top + offset_y, text, ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
+					tr.top += step_height;
 				}
 				break;
 			}

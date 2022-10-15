@@ -287,8 +287,8 @@ public:
 					int extra = (r.Height() - this->height_summary - this->height_detailed - WD_PAR_VSEP_WIDE) / 2;
 
 					/* Note: NewGRF supplied error message often do not start with a colour code, so default to white. */
-					DrawStringMultiLine(r.SetHeight(this->height_summary + extra, false), this->summary_msg, TC_WHITE, SA_CENTER);
-					DrawStringMultiLine(r.SetHeight(this->height_detailed + extra, true), this->detailed_msg, TC_WHITE, SA_CENTER);
+					DrawStringMultiLine(r.WithHeight(this->height_summary + extra, false), this->summary_msg, TC_WHITE, SA_CENTER);
+					DrawStringMultiLine(r.WithHeight(this->height_detailed + extra, true), this->detailed_msg, TC_WHITE, SA_CENTER);
 				}
 
 				if (this->textref_stack_size > 0) StopTextRefStackUsage();

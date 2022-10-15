@@ -137,14 +137,10 @@ public:
 	/** Draw the contents of the ratings panel. May request a resize of the window if the contents does not fit. */
 	void DrawRatings()
 	{
-		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_TA_RATING_INFO);
-		uint left = nwid->pos_x + WD_FRAMERECT_LEFT;
-		uint right = nwid->pos_x + nwid->current_x - 1 - WD_FRAMERECT_RIGHT;
+		Rect r = this->GetWidget<NWidgetBase>(WID_TA_RATING_INFO)->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
-		uint y = nwid->pos_y + WD_FRAMERECT_TOP;
-
-		DrawString(left, right, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
-		y += FONT_HEIGHT_NORMAL;
+		DrawString(r, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
+		r.top += FONT_HEIGHT_NORMAL;
 
 		Dimension icon_size = GetSpriteSize(SPR_COMPANY_ICON);
 		int icon_width      = icon_size.width;
@@ -155,56 +151,52 @@ public:
 		int exclusive_y_offset   = (FONT_HEIGHT_NORMAL - exclusive_size.height) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint text_left      = left  + (rtl ? 0 : icon_width + exclusive_width + 4);
-		uint text_right     = right - (rtl ? icon_width + exclusive_width + 4 : 0);
-		uint icon_left      = rtl ? right - icon_width : left;
-		uint exclusive_left = rtl ? right - icon_width - exclusive_width - 2 : left + icon_width + 2;
+		Rect text = r.Indent(icon_width + exclusive_width + 4, rtl);
+		uint icon_left = r.WithWidth(icon_width, rtl).left;
+		uint exclusive_left = r.Indent(icon_width + 2, rtl).WithWidth(exclusive_width, rtl).left;
 
 		/* Draw list of companies */
 		for (const Company *c : Company::Iterate()) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, icon_left, y + icon_y_offset);
+				DrawCompanyIcon(c->index, icon_left, text.top + icon_y_offset);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);
 
-				int r = this->town->ratings[c->index];
+				int rating = this->town->ratings[c->index];
 				StringID str = STR_CARGO_RATING_APPALLING;
-				if (r > RATING_APPALLING) str++;
-				if (r > RATING_VERYPOOR)  str++;
-				if (r > RATING_POOR)      str++;
-				if (r > RATING_MEDIOCRE)  str++;
-				if (r > RATING_GOOD)      str++;
-				if (r > RATING_VERYGOOD)  str++;
-				if (r > RATING_EXCELLENT) str++;
+				if (rating > RATING_APPALLING) str++;
+				if (rating > RATING_VERYPOOR)  str++;
+				if (rating > RATING_POOR)      str++;
+				if (rating > RATING_MEDIOCRE)  str++;
+				if (rating > RATING_GOOD)      str++;
+				if (rating > RATING_VERYGOOD)  str++;
+				if (rating > RATING_EXCELLENT) str++;
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive_left, y + exclusive_y_offset);
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive_left, r.top + exclusive_y_offset);
 				}
 
-				DrawString(text_left, text_right, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
-				y += FONT_HEIGHT_NORMAL;
+				DrawString(text, STR_LOCAL_AUTHORITY_COMPANY_RATING);
+				text.top += FONT_HEIGHT_NORMAL;
 			}
 		}
 
-		y = y + WD_FRAMERECT_BOTTOM - nwid->pos_y; // Compute needed size of the widget.
-		if (y > nwid->current_y) {
+		text.bottom = text.top - 1;
+		if (text.bottom > r.bottom) {
 			/* If the company list is too big to fit, mark ourself dirty and draw again. */
-			ResizeWindow(this, 0, y - nwid->current_y, false);
+			ResizeWindow(this, 0, text.bottom - r.bottom, false);
 		}
 	}
 
 	/** Draws the contents of the actions panel. May re-initialise window to resize panel, if the list does not fit. */
 	void DrawActions()
 	{
-		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_TA_COMMAND_LIST);
-		uint left = nwid->pos_x + WD_FRAMERECT_LEFT;
-		uint right = nwid->pos_x + nwid->current_x - 1 - WD_FRAMERECT_RIGHT;
-		uint y = nwid->pos_y + WD_FRAMERECT_TOP;
+		Rect r = this->GetWidget<NWidgetBase>(WID_TA_COMMAND_LIST)->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
-		DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
-		y += FONT_HEIGHT_NORMAL;
+		DrawString(r, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
+		r.top += FONT_HEIGHT_NORMAL;
 
 		/* Draw list of actions */
 		for (int i = 0; i < TACT_COUNT; i++) {
@@ -216,8 +208,8 @@ public:
 			if (HasBit(this->available_actions, i)) action_colour = TC_ORANGE;
 			if (this->sel_index == i) action_colour = TC_WHITE;
 
-			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, action_colour);
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, action_colour);
+			r.top += FONT_HEIGHT_NORMAL;
 		}
 	}
 
@@ -235,7 +227,7 @@ public:
 					bool affordable = action_cost < Company::GetIfValid(_local_company)->money;
 
 					SetDParam(0, action_cost);
-					DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+					DrawStringMultiLine(r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM),
 						STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index,
 						affordable ? TC_YELLOW : TC_RED);
 				}
@@ -389,21 +381,24 @@ public:
 	{
 		if (widget != WID_TV_INFO) return;
 
-		uint y = r.top + WD_FRAMERECT_TOP;
+		Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
 		SetDParam(0, this->town->cache.population);
 		SetDParam(1, this->town->cache.num_houses);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y, STR_TOWN_VIEW_POPULATION_HOUSES);
+		DrawString(tr, STR_TOWN_VIEW_POPULATION_HOUSES);
+		tr.top += FONT_HEIGHT_NORMAL;
 
 		SetDParam(0, 1 << CT_PASSENGERS);
 		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_act);
 		SetDParam(2, this->town->supplied[CT_PASSENGERS].old_max);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		tr.top += FONT_HEIGHT_NORMAL;
 
 		SetDParam(0, 1 << CT_MAIL);
 		SetDParam(1, this->town->supplied[CT_MAIL].old_act);
 		SetDParam(2, this->town->supplied[CT_MAIL].old_max);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		tr.top += FONT_HEIGHT_NORMAL;
 
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {
@@ -412,13 +407,12 @@ public:
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
 
 			if (first) {
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
+				DrawString(tr, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
+				tr.top += FONT_HEIGHT_NORMAL;
 				first = false;
 			}
 
 			bool rtl = _current_text_dir == TD_RTL;
-			uint cargo_text_left = r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : 20);
-			uint cargo_text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? 20 : 0);
 
 			const CargoSpec *cargo = FindFirstCargoWithTownEffect((TownEffect)i);
 			assert(cargo != nullptr);
@@ -448,26 +442,30 @@ public:
 				SetDParam(2, cargo->Index());
 				SetDParam(3, this->town->goal[i]);
 			}
-			DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, string);
+			DrawString(tr.Indent(20, rtl), string);
+			tr.top += FONT_HEIGHT_NORMAL;
 		}
 
 		if (HasBit(this->town->flags, TOWN_IS_GROWING)) {
 			SetDParam(0, RoundDivSU(this->town->growth_rate + 1, DAY_TICKS));
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED);
+			DrawString(tr, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED);
+			tr.top += FONT_HEIGHT_NORMAL;
 		} else {
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_TOWN_GROW_STOPPED);
+			DrawString(tr, STR_TOWN_VIEW_TOWN_GROW_STOPPED);
+			tr.top += FONT_HEIGHT_NORMAL;
 		}
 
 		/* only show the town noise, if the noise option is activated. */
 		if (_settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_NOISE_IN_TOWN);
+			DrawString(tr, STR_TOWN_VIEW_NOISE_IN_TOWN);
+			tr.top += FONT_HEIGHT_NORMAL;
 		}
 
 		if (!this->town->text.empty()) {
 			SetDParamStr(0, this->town->text);
-			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y += FONT_HEIGHT_NORMAL, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+			tr.top = DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_BLACK);
 		}
 	}
 
@@ -821,18 +819,17 @@ public:
 
 			case WID_TD_LIST: {
 				int n = 0;
-				int y = r.top + WD_FRAMERECT_TOP;
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				if (this->towns.size() == 0) { // No towns available.
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right, y, STR_TOWN_DIRECTORY_NONE);
+					DrawString(tr, STR_TOWN_DIRECTORY_NONE);
 					break;
 				}
 
 				/* At least one town available. */
 				bool rtl = _current_text_dir == TD_RTL;
 				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
-				int text_left  = r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : icon_size.width + 2);
-				int text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? icon_size.width + 2 : 0);
-				int icon_x = rtl ? r.right - WD_FRAMERECT_RIGHT - icon_size.width : r.left + WD_FRAMERECT_LEFT;
+				int icon_x = tr.WithWidth(icon_size.width, rtl).left;
+				tr = tr.Indent(icon_size.width + 2, rtl);
 
 				for (uint i = this->vscroll->GetPosition(); i < this->towns.size(); i++) {
 					const Town *t = this->towns[i];
@@ -840,19 +837,19 @@ public:
 
 					/* Draw rating icon. */
 					if (_game_mode == GM_EDITOR || !HasBit(t->have_ratings, _local_company)) {
-						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, y + (this->resize.step_height - icon_size.height) / 2);
+						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					} else {
 						SpriteID icon = SPR_TOWN_RATING_APALLING;
 						if (t->ratings[_local_company] > RATING_VERYPOOR) icon = SPR_TOWN_RATING_MEDIOCRE;
 						if (t->ratings[_local_company] > RATING_GOOD)     icon = SPR_TOWN_RATING_GOOD;
-						DrawSprite(icon, PAL_NONE, icon_x, y + (this->resize.step_height - icon_size.height) / 2);
+						DrawSprite(icon, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					}
 
 					SetDParam(0, t->index);
 					SetDParam(1, t->cache.population);
-					DrawString(text_left, text_right, y + (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2, GetTownString(t));
+					DrawString(tr.left, tr.right, tr.top + (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2, GetTownString(t));
 
-					y += this->resize.step_height;
+					tr.top += this->resize.step_height;
 					if (++n == this->vscroll->GetCapacity()) break; // max number of towns in 1 window
 				}
 				break;

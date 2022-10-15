@@ -610,15 +610,17 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, const 
 
 void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 {
+	Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+	if (this->IsWidgetLowered(widget)) br = br.Translate(1, 1);
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
 		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, CenterBounds(r.left, r.right, sprite_size.width), CenterBounds(r.top, r.bottom, sprite_size.height));
+		DrawCompanyIcon(cid, CenterBounds(br.left, br.right, sprite_size.width), CenterBounds(br.top, br.bottom, sprite_size.height));
 	}
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
 		uint8 colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];
-		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour);
+		GfxFillRect(br, colour);
 		StringID str = STR_NULL;
 		if (widget == WID_LGL_SATURATION_FIRST) {
 			str = STR_LINKGRAPH_LEGEND_UNUSED;
@@ -628,14 +630,14 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			DrawString(r.left, r.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_SMALL), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER);
+			DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_SMALL), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER);
 		}
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
-		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, cargo->legend_colour);
-		DrawString(r.left, r.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_SMALL), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER);
+		GfxFillRect(br, cargo->legend_colour);
+		DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_SMALL), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER);
 	}
 }
 

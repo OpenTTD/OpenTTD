@@ -186,7 +186,7 @@ struct GSConfigWindow : public Window {
 				}
 
 				/* There is only one slot, unlike with the GS GUI, so it should never be white */
-				DrawString(r.left + 10, r.right - 10, r.top + WD_MATRIX_TOP, text, (IsEditable() ? TC_ORANGE : TC_SILVER));
+				DrawString(r.Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM), text, (IsEditable() ? TC_ORANGE : TC_SILVER));
 				break;
 			}
 			case WID_GSC_SETTINGS: {
@@ -195,11 +195,10 @@ struct GSConfigWindow : public Window {
 				int i = 0;
 				for (; !this->vscroll->IsVisible(i); i++) it++;
 
+				Rect ir = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				bool rtl = _current_text_dir == TD_RTL;
-				uint buttons_left = rtl ? r.right - SETTING_BUTTON_WIDTH - 3 : r.left + 4;
-				uint text_left = r.left + (rtl ? WD_FRAMERECT_LEFT : SETTING_BUTTON_WIDTH + 8);
-				uint text_right = r.right - (rtl ? SETTING_BUTTON_WIDTH + 8 : WD_FRAMERECT_RIGHT);
-
+				Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
+				Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + 8, rtl);
 
 				int y = r.top;
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -228,13 +227,13 @@ struct GSConfigWindow : public Window {
 					}
 
 					if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
-						DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, editable);
+						DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
 						SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 					} else {
 						if (config_item.complete_labels) {
-							DrawDropDownButton(buttons_left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
+							DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
 						} else {
-							DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
 						if (config_item.labels != nullptr && config_item.labels->Contains(current_value)) {
 							SetDParam(idx++, STR_JUST_RAW_STRING);
@@ -245,7 +244,7 @@ struct GSConfigWindow : public Window {
 						}
 					}
 
-					DrawString(text_left, text_right, y + text_y_offset, str, colour);
+					DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
 					y += this->line_height;
 				}
 				break;
@@ -289,9 +288,10 @@ struct GSConfigWindow : public Window {
 					ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_GAME);
 				}
 				break;
+
 			case WID_GSC_SETTINGS: {
-				const NWidgetBase* wid = this->GetWidget<NWidgetBase>(WID_GSC_SETTINGS);
-				int num = (pt.y - wid->pos_y) / this->line_height + this->vscroll->GetPosition();
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WD_MATRIX_LEFT, 0, WD_MATRIX_RIGHT, 0);
+				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
 				if (num >= (int)this->visible_settings.size()) break;
 
 				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
@@ -308,9 +308,8 @@ struct GSConfigWindow : public Window {
 
 				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
 
-				int x = pt.x - wid->pos_x;
-				if (_current_text_dir == TD_RTL) x = wid->current_x - 1 - x;
-				x -= 4;
+				int x = pt.x - r.left;
+				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				int old_val = this->gs_config->GetSetting(config_item.name);
@@ -321,8 +320,7 @@ struct GSConfigWindow : public Window {
 						this->clicked_dropdown = false;
 						this->closing_dropdown = false;
 					} else {
-						const NWidgetBase* wid = this->GetWidget<NWidgetBase>(WID_GSC_SETTINGS);
-						int rel_y = (pt.y - (int)wid->pos_y) % this->line_height;
+						int rel_y = (pt.y - r.top) % this->line_height;
 
 						Rect wi_rect;
 						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);

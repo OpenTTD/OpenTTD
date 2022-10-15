@@ -159,16 +159,15 @@ static uint GetMaxCategoriesWidth()
  */
 static void DrawCategory(const Rect &r, int start_y, ExpensesList list)
 {
-	int offs_left = _current_text_dir == TD_LTR ? EXP_INDENT : 0;
-	int offs_right = _current_text_dir == TD_LTR ? 0 : EXP_INDENT;
+	Rect tr = r.Indent(EXP_INDENT, _current_text_dir == TD_RTL);
 
-	int y = start_y;
+	tr.top = start_y;
 	ExpensesType et;
 
 	for (uint i = 0; i < list.length; i++) {
 		et = list.et[i];
-		DrawString(r.left + offs_left, r.right - offs_right, y, STR_FINANCES_SECTION_CONSTRUCTION + et);
-		y += FONT_HEIGHT_NORMAL;
+		DrawString(tr, STR_FINANCES_SECTION_CONSTRUCTION + et);
+		tr.top += FONT_HEIGHT_NORMAL;
 	}
 }
 
@@ -608,11 +607,12 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		int icon_y = CenterBounds(r.top, r.bottom, 0);
 		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
+		Rect tr = r.Shrink(WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM);
 		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
-				rtl ? r.right - 2 - ScaleGUITrad(14) : r.left + ScaleGUITrad(14) + 2,
-				icon_y);
-		DrawString(rtl ? r.left + 2 : r.left + ScaleGUITrad(28) + 4,
-				rtl ? r.right - ScaleGUITrad(28) - 4 : r.right - 2,
+				   rtl ? tr.right - ScaleGUITrad(14) : tr.left + ScaleGUITrad(14),
+				   icon_y);
+		DrawString(rtl ? tr.left : tr.left + ScaleGUITrad(28) + 2,
+				rtl ? tr.right - ScaleGUITrad(28) - 2 : tr.right,
 				text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
@@ -917,40 +917,41 @@ public:
 
 		bool rtl = _current_text_dir == TD_RTL;
 
-		/* Horizontal coordinates of scheme name column. */
+		/* Coordinates of scheme name column. */
 		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_SCL_SPACER_DROPDOWN);
-		int sch_left = nwi->pos_x;
-		int sch_right = sch_left + nwi->current_x - 1;
-		/* Horizontal coordinates of first dropdown. */
+		Rect sch = nwi->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		/* Coordinates of first dropdown. */
 		nwi = this->GetWidget<NWidgetBase>(WID_SCL_PRI_COL_DROPDOWN);
-		int pri_left = nwi->pos_x;
-		int pri_right = pri_left + nwi->current_x - 1;
-		/* Horizontal coordinates of second dropdown. */
+		Rect pri = nwi->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
+		/* Coordinates of second dropdown. */
 		nwi = this->GetWidget<NWidgetBase>(WID_SCL_SEC_COL_DROPDOWN);
-		int sec_left = nwi->pos_x;
-		int sec_right = sec_left + nwi->current_x - 1;
+		Rect sec = nwi->GetCurrentRect().Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
-		int text_left  = (rtl ? (uint)WD_FRAMERECT_LEFT : (this->square.width + 5));
-		int text_right = (rtl ? (this->square.width + 5) : (uint)WD_FRAMERECT_RIGHT);
+		Rect pri_squ = pri.WithWidth(this->square.width, rtl);
+		Rect sec_squ = sec.WithWidth(this->square.width, rtl);
 
-		int square_offs = (this->line_height - this->square.height) / 2 + 1;
-		int text_offs   = (this->line_height - FONT_HEIGHT_NORMAL) / 2 + 1;
+		pri = pri.Indent(this->square.width + ScaleGUITrad(2), rtl);
+		sec = sec.Indent(this->square.width + ScaleGUITrad(2), rtl);
 
-		int y = r.top;
+		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+		int square_offs = (ir.Height() - this->square.height) / 2;
+		int text_offs   = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
+
+		int y = ir.top;
 
 		/* Helper function to draw livery info. */
 		auto draw_livery = [&](StringID str, const Livery &liv, bool sel, bool def, int indent) {
 			/* Livery Label. */
-			DrawString(sch_left + WD_FRAMERECT_LEFT + (rtl ? 0 : indent), sch_right - WD_FRAMERECT_RIGHT - (rtl ? indent : 0), y + text_offs, str, sel ? TC_WHITE : TC_BLACK);
+			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, sel ? TC_WHITE : TC_BLACK);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), (rtl ? pri_right - (this->square.width + 5) + WD_FRAMERECT_RIGHT : pri_left) + WD_FRAMERECT_LEFT, y + square_offs);
-			DrawString(pri_left + text_left, pri_right - text_right, y + text_offs, (def || HasBit(liv.in_use, 0)) ? STR_COLOUR_DARK_BLUE + liv.colour1 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
+			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), pri_squ.left, y + square_offs);
+			DrawString(pri.left, pri.right, y + text_offs, (def || HasBit(liv.in_use, 0)) ? STR_COLOUR_DARK_BLUE + liv.colour1 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
-			if (sec_right > sec_left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), (rtl ? sec_right - (this->square.width + 5) + WD_FRAMERECT_RIGHT : sec_left) + WD_FRAMERECT_LEFT, y + square_offs);
-				DrawString(sec_left + text_left, sec_right - text_right, y + text_offs, (def || HasBit(liv.in_use, 1)) ? STR_COLOUR_DARK_BLUE + liv.colour2 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
+			if (sec.right > sec.left) { // Second dropdown has non-zero size.
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), sec_squ.left, y + square_offs);
+				DrawString(sec.left, sec.right, y + text_offs, (def || HasBit(liv.in_use, 1)) ? STR_COLOUR_DARK_BLUE + liv.colour2 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 			}
 
 			y += this->line_height;
@@ -1795,7 +1796,7 @@ static const NWidgetPart _nested_company_infrastructure_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, 4, WD_FRAMETEXT_BOTTOM),
+		NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, WD_PAR_VSEP_NORMAL * 2, WD_FRAMERECT_BOTTOM),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
@@ -2025,8 +2026,8 @@ struct CompanyInfrastructureWindow : Window
 
 		if (_settings_game.economy.infrastructure_maintenance) {
 			SetDParam(0, monthly_cost * 12); // Convert to per year
-			int left = _current_text_dir == TD_RTL ? r.right - this->total_width : r.left;
-			DrawString(left, left + this->total_width, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+			Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
+			DrawString(tr.left, tr.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
 		}
 	}
 
@@ -2109,11 +2110,11 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_TOTAL:
 				if (_settings_game.economy.infrastructure_maintenance) {
-					int left = _current_text_dir == TD_RTL ? r.right - this->total_width : r.left;
-					GfxFillRect(left, y, left + this->total_width, y, PC_WHITE);
+					Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
+					GfxFillRect(tr.left, y, tr.right, y, PC_WHITE);
 					y += EXP_LINESPACE;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(left, left + this->total_width, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+					DrawString(tr.left, tr.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 

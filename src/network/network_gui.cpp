@@ -633,15 +633,19 @@ public:
 	{
 		NetworkGameList *sel = this->server;
 
-		const int detail_height = 6 + 8 + 6 + 3 * FONT_HEIGHT_NORMAL;
+		/* Height for the title banner */
+		int HEADER_HEIGHT = 3 * FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+
+		Rect hr = r.WithHeight(HEADER_HEIGHT).Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
+		Rect tr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
+		tr.top += HEADER_HEIGHT;
 
 		/* Draw the right menu */
-		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + detail_height - 1, PC_DARK_BLUE);
+		/* Create the nice grayish rectangle at the details top */
+		GfxFillRect(r.WithHeight(HEADER_HEIGHT).Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, 0), PC_DARK_BLUE);
 		if (sel == nullptr) {
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
+			DrawString(hr.left, hr.right, hr.top, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
 		} else if (sel->status != NGLS_ONLINE) {
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
-
 			StringID message = INVALID_STRING_ID;
 			switch (sel->status) {
 				case NGLS_OFFLINE: message = STR_NETWORK_SERVER_LIST_SERVER_OFFLINE; break;
@@ -652,63 +656,63 @@ public:
 				/* Handled by the if-case above. */
 				case NGLS_ONLINE: NOT_REACHED();
 			}
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + detail_height + 4, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
+
+			DrawString(hr.left, hr.right, hr.top, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
+			DrawStringMultiLine(hr.left, hr.right, hr.top + FONT_HEIGHT_NORMAL, hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
+			DrawString(tr.left, tr.right, tr.top, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
 		} else { // show game info
 
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 6 + 4 + FONT_HEIGHT_NORMAL, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
-
-			uint16 y = r.top + detail_height + 4;
+			DrawString(hr.left, hr.right, hr.top, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
+			DrawStringMultiLine(hr.left, hr.right, hr.top + FONT_HEIGHT_NORMAL, hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CLIENTS);
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, STR_NETWORK_SERVER_LIST_CLIENTS);
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.landscape);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_LANDSCAPE); // landscape
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE); // landscape
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			SetDParamStr(0, sel->connection_string);
 			StringID invite_or_address = StrStartsWith(sel->connection_string, "+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, invite_or_address); // server address / invite code
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, invite_or_address); // server address / invite code
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_START_DATE); // start date
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, STR_NETWORK_SERVER_LIST_START_DATE); // start date
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
-			y += FONT_HEIGHT_NORMAL;
+			DrawString(tr, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
+			tr.top += FONT_HEIGHT_NORMAL;
 
 			if (sel->info.gamescript_version != -1) {
 				SetDParamStr(0, sel->info.gamescript_name);
 				SetDParam(1, sel->info.gamescript_version);
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_GAMESCRIPT); // gamescript name and version
-				y += FONT_HEIGHT_NORMAL;
+				tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_GAMESCRIPT); // gamescript name and version
 			}
 
-			y += WD_PAR_VSEP_NORMAL;
+			tr.top += WD_PAR_VSEP_WIDE;
 
 			if (!sel->info.compatible) {
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_HOR_CENTER); // server mismatch
+				DrawString(tr, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_HOR_CENTER); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				/* Show: server full, when clients_on == max_clients */
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_HOR_CENTER); // server full
+				DrawString(tr, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_HOR_CENTER); // server full
 			} else if (sel->info.use_password) {
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_HOR_CENTER); // password warning
+				DrawString(tr, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_HOR_CENTER); // password warning
 			}
 		}
 	}
@@ -2088,8 +2092,8 @@ public:
 				uint line = 0;
 
 				if (this->hover_index >= 0) {
-					uint offset = this->hover_index * this->line_height;
-					GfxFillRect(r.left + 2, r.top + offset, r.right - 1, r.top + offset + this->line_height - 2, GREY_SCALE(9));
+					Rect br = r.WithHeight(this->line_height).Translate(0, this->hover_index * this->line_height);
+					GfxFillRect(br.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM), GREY_SCALE(9));
 				}
 
 				NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
@@ -2314,8 +2318,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 	{
 		if (widget != WID_NCP_WARNING) return;
 
-		DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT,
-			r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+		DrawStringMultiLine(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMERECT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMERECT_BOTTOM),
 			STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
 	}
 
@@ -2415,7 +2418,7 @@ struct NetworkAskRelayWindow : public Window {
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget == WID_NAR_TEXT) {
-			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_NETWORK_ASK_RELAY_TEXT, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM), STR_NETWORK_ASK_RELAY_TEXT, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 

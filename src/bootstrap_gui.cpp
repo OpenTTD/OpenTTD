@@ -108,7 +108,7 @@ public:
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget == WID_BEM_MESSAGE) {
-			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_MISSING_GRAPHICS_ERROR, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM), STR_MISSING_GRAPHICS_ERROR, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -236,7 +236,7 @@ public:
 	{
 		if (widget != 0) return;
 
-		DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_MISSING_GRAPHICS_SET_MESSAGE, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM), STR_MISSING_GRAPHICS_SET_MESSAGE, TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
