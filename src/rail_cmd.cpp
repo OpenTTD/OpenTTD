@@ -940,15 +940,15 @@ CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileI
  * Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
  * @param flags operation to perform
- * @param tile start tile of drag
  * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
  * @param track track-orientation
  * @return the cost of this operation or an error
  * @see CmdRailTrackHelper
  */
-CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track)
+CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, Track track)
 {
-	return CmdRailTrackHelper(flags, tile, end_tile, INVALID_RAILTYPE, track, true, false, false);
+	return CmdRailTrackHelper(flags, start_tile, end_tile, INVALID_RAILTYPE, track, true, false, false);
 }
 
 /**

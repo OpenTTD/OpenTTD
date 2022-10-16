@@ -15,8 +15,8 @@
 #include "rail_type.h"
 #include "signal_type.h"
 
-CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, RailType railtype, Track track, bool auto_remove_signals, bool fail_on_obstacle);
-CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track);
+CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RailType railtype, Track track, bool auto_remove_signals, bool fail_on_obstacle);
+CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, Track track);
 CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType railtype, Track track, bool auto_remove_signals);
 CommandCost CmdRemoveSingleRail(DoCommandFlag flags, TileIndex tile, Track track);
 CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir);
