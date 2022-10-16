@@ -976,7 +976,7 @@ static bool CanConnectToRoad(TileIndex tile, RoadType rt, DiagDirection dir)
  */
 CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai)
 {
-	if (end_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= MapSize()) return CMD_ERROR;
 
 	if (!ValParamRoadType(rt) || !IsValidAxis(axis) || !IsValidDisallowedRoadDirections(drd)) return CMD_ERROR;
 
@@ -1074,7 +1074,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	if (end_tile >= MapSize()) return { CMD_ERROR, 0 };
+	if (start_tile >= MapSize()) return { CMD_ERROR, 0 };
 	if (!ValParamRoadType(rt) || !IsValidAxis(axis)) return { CMD_ERROR, 0 };
 
 	/* Only drag in X or Y direction dictated by the direction variable */

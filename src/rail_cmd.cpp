@@ -880,7 +880,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
 	if ((!remove && !ValParamRailtype(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
-	if (end_tile >= MapSize()) return CMD_ERROR;
+	if (end_tile >= MapSize() || tile >= MapSize()) return CMD_ERROR;
 
 	Trackdir trackdir = TrackToTrackdir(track);
 
