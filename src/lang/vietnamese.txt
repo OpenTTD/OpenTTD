@@ -4469,7 +4469,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng l
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bảng lịch trình sẽ bắt đầu lúc {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ngày bắt đầu
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Lựa chọn ngày bắt đầu trong bảng lịch trình này. Ctrl+Click chọn ngày bắt đầu trong bảng lịch trình và phân bổ nó cho tất cả các phương tiện chia sẻ lộ trình này, nếu như lộ trình đã lên lịch đầy đủ.
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Lựa chọn ngày bắt đầu trong bảng lịch trình này. Ctrl+Click phân bổ cho tất cả các phương tiện chia sẻ lộ trình này bắt đầu từ ngày được chọn một cách đồng đều theo thứ tự tương đối giữa chúng, nếu như lộ trình đã lên lịch đầy đủ.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng
