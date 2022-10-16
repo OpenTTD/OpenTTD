@@ -17,8 +17,8 @@
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt);
 void UpdateNearestTownForRoadTiles(bool invalidate);
 
-CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai);
-std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile, RoadType rt, Axis axis, bool start_half, bool end_half);
+CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai);
+std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, bool start_half, bool end_half);
 CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, RoadType rt, DisallowedRoadDirections toggle_drd, TownID town_id);
 CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, DiagDirection dir);
 CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_start, RoadType to_type);
