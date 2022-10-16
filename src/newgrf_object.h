@@ -40,6 +40,8 @@ enum ObjectFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
 
+static const uint8 OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size property when the object is 1x1 tiles: low nibble for X, high nibble for Y.
+
 void ResetObjects();
 
 /** Class IDs for objects. */
