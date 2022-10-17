@@ -212,8 +212,8 @@ When it comes to gameplay features there are at least these groups of interests:
 - *Control freak:* micromanagement like conditional orders, refitting and loading etc.
 - *Casual:* automatisation like cargodist, path based signalling etc.
 
-To please everyone, the official branch tries to stay close to the original gameplay; after all, that is what everyone brought here.
-The preferred method to alter and extent the gameplay is via add-ons like NewGRF and GameScripts.
+To please everyone, the official branch tries to stay close to the original gameplay; after all, that is what brought everyone here.
+The preferred method to alter and extend the gameplay is via add-ons like NewGRF and GameScripts.
 
 For a long time, the official branch was also open to features which could be enabled/disabled, but the corner-cases that came with some configurations have rendered some parts of the code very complicated.
 Today, new features have to work with all the already existing features, which is not only challenging in corner cases, but also requires spending considerable more work than just "making it work in the game mode that I play".
