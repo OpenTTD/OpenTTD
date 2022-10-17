@@ -273,11 +273,6 @@ static inline const NIHelper *GetFeatureHelper(uint window_number)
 
 /** Window used for inspecting NewGRFs. */
 struct NewGRFInspectWindow : Window {
-	static const int LEFT_OFFSET   = 5; ///< Position of left edge
-	static const int RIGHT_OFFSET  = 5; ///< Position of right edge
-	static const int TOP_OFFSET    = 5; ///< Position of top edge
-	static const int BOTTOM_OFFSET = 5; ///< Position of bottom edge
-
 	/** The value for the variable 60 parameters. */
 	static uint32 var60params[GSF_FAKE_END][0x20];
 
@@ -384,7 +379,7 @@ struct NewGRFInspectWindow : Window {
 				resize->height = std::max(11, FONT_HEIGHT_NORMAL + 1);
 				resize->width  = 1;
 
-				size->height = 5 * resize->height + TOP_OFFSET + BOTTOM_OFFSET;
+				size->height = 5 * resize->height + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
 				break;
 		}
 	}
@@ -407,7 +402,7 @@ struct NewGRFInspectWindow : Window {
 		offset -= this->vscroll->GetPosition();
 		if (offset < 0 || offset >= this->vscroll->GetCapacity()) return;
 
-		::DrawString(r.left + LEFT_OFFSET, r.right - RIGHT_OFFSET, r.top + TOP_OFFSET + (offset * this->resize.step_height), buf, TC_BLACK);
+		::DrawString(r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP + (offset * this->resize.step_height), WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM), buf, TC_BLACK);
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -585,7 +580,7 @@ struct NewGRFInspectWindow : Window {
 				if (nif->variables == nullptr) return;
 
 				/* Get the line, make sure it's within the boundaries. */
-				int line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NGRFI_MAINPANEL, TOP_OFFSET);
+				int line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NGRFI_MAINPANEL, WD_FRAMETEXT_TOP);
 				if (line == INT_MAX) return;
 
 				/* Find the variable related to the line */
@@ -611,7 +606,7 @@ struct NewGRFInspectWindow : Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_NGRFI_MAINPANEL, TOP_OFFSET + BOTTOM_OFFSET);
+		this->vscroll->SetCapacityFromWidget(this, WID_NGRFI_MAINPANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
 	}
 
 	/**
