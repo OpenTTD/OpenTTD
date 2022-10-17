@@ -1753,11 +1753,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 		switch (front->type) {
 			case VEH_TRAIN:
 			case VEH_SHIP:
-				t = front->vcache.cached_max_speed;
-				break;
-
 			case VEH_ROAD:
-				t = front->vcache.cached_max_speed / 2;
+				/* cached_max_speed from ships and road vehicles are double in size when we fetch the values here
+				 * in order for road veichles to get speed bonus on station ratings we keep the values as is */
+				t = front->vcache.cached_max_speed;
 				break;
 
 			case VEH_AIRCRAFT:
