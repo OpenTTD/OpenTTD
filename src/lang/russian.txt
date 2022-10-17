@@ -504,7 +504,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Стро
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Строительство трамвайных путей
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья. При нажатом Shift - оценка стоимости высадки.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разместить объект. При нажатом Shift - оценка стоимости строительства.
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разместить объект.{}При нажатом Ctrl выбираются клетки по диагонали.{}При нажатом Shift - оценка стоимости строительства.
 
 # Scenario editor file menu
 ###length 7
@@ -2991,7 +2991,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Поку
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбор объекта
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Выберите создаваемый объект. При нажатом Shift - оценка стоимости постройки.
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Выберите создаваемый объект.{}При нажатом Ctrl выбираются клетки по диагонали.{}При нажатом Shift - оценка стоимости постройки.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Выберите класс объекта для строительства
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Предварительный просмотр объекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} × {NUM} клеток
@@ -5112,6 +5112,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Объе
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... штаб-квартира компании мешает
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Невозможно купить эту землю...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... вы и так уже владеете этим!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... достигнуто максимальное количество объектов
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Невозможно создать группу...
