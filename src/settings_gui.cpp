@@ -1907,11 +1907,6 @@ static void ResetAllSettingsConfirmationCallback(Window *w, bool confirmed)
 
 /** Window to edit settings of the game. */
 struct GameSettingsWindow : Window {
-	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
-	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
-	static const int SETTINGTREE_TOP_OFFSET    = 5; ///< Position of top edge of setting values
-	static const int SETTINGTREE_BOTTOM_OFFSET = 5; ///< Position of bottom edge of setting values
-
 	static GameSettings *settings_ptr; ///< Pointer to the game settings being displayed and modified.
 
 	SettingEntry *valuewindow_entry;   ///< If non-nullptr, pointer to setting for which a value-entering window has been opened.
@@ -1966,7 +1961,7 @@ struct GameSettingsWindow : Window {
 				resize->height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL}) + 1;
 				resize->width  = 1;
 
-				size->height = 5 * resize->height + SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET;
+				size->height = 5 * resize->height + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
 				break;
 
 			case WID_GS_HELP_TEXT: {
@@ -2004,14 +1999,14 @@ struct GameSettingsWindow : Window {
 		}
 
 		/* Reserve the correct number of lines for the 'some search results are hidden' notice in the central settings display panel. */
-		const NWidgetBase *panel = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
+		const Rect panel = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL)->GetCurrentRect().Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
 		StringID warn_str = STR_CONFIG_SETTING_CATEGORY_HIDES - 1 + this->warn_missing;
 		int new_warn_lines;
 		if (this->warn_missing == WHR_NONE) {
 			new_warn_lines = 0;
 		} else {
 			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			new_warn_lines = GetStringLineCount(warn_str, panel->current_x);
+			new_warn_lines = GetStringLineCount(warn_str, panel.Width());
 		}
 		if (this->warn_lines != new_warn_lines) {
 			this->vscroll->SetCount(this->vscroll->GetCount() - this->warn_lines + new_warn_lines);
@@ -2022,16 +2017,8 @@ struct GameSettingsWindow : Window {
 
 		/* Draw the 'some search results are hidden' notice. */
 		if (this->warn_missing != WHR_NONE) {
-			const int left = panel->pos_x;
-			const int right = left + panel->current_x - 1;
-			const int top = panel->pos_y + WD_FRAMETEXT_TOP + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) * this->warn_lines / 2;
 			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			if (this->warn_lines == 1) {
-				/* If the warning fits at one line, center it. */
-				DrawString(left + WD_FRAMETEXT_LEFT, right - WD_FRAMETEXT_RIGHT, top, warn_str, TC_FROMSTRING, SA_HOR_CENTER);
-			} else {
-				DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, INT32_MAX, warn_str, TC_FROMSTRING, SA_HOR_CENTER);
-			}
+			DrawStringMultiLine(panel.WithHeight(this->warn_lines * FONT_HEIGHT_NORMAL), warn_str, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -2081,11 +2068,12 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL: {
-				int top_pos = r.top + SETTINGTREE_TOP_OFFSET + 1 + this->warn_lines * SETTING_HEIGHT;
+				Rect tr = r.Shrink(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM);
+				tr.top += this->warn_lines * SETTING_HEIGHT;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
-				int next_row = GetSettingsTree().Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos,
+				int next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top,
 						this->vscroll->GetPosition(), last_row, this->last_clicked);
-				if (next_row == 0) DrawString(r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, top_pos, STR_CONFIG_SETTINGS_NONE);
+				if (next_row == 0) DrawString(tr, STR_CONFIG_SETTINGS_NONE);
 				break;
 			}
 
@@ -2093,21 +2081,21 @@ struct GameSettingsWindow : Window {
 				if (this->last_clicked != nullptr) {
 					const IntSettingDesc *sd = this->last_clicked->setting;
 
-					int y = r.top;
+					Rect tr = r;
 					switch (sd->GetType()) {
 						case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
 						case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_CLIENT); break;
 						case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
 						default: NOT_REACHED();
 					}
-					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
-					y += FONT_HEIGHT_NORMAL;
+					DrawString(tr, STR_CONFIG_SETTING_TYPE);
+					tr.top += FONT_HEIGHT_NORMAL;
 
 					this->last_clicked->SetValueDParams(0, sd->def);
-					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
-					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
+					tr.top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 
-					DrawStringMultiLine(r.left, r.right, y, r.bottom, this->last_clicked->GetHelpText(), TC_WHITE);
+					DrawStringMultiLine(tr, this->last_clicked->GetHelpText(), TC_WHITE);
 				}
 				break;
 
@@ -2169,7 +2157,7 @@ struct GameSettingsWindow : Window {
 
 		if (widget != WID_GS_OPTIONSPANEL) return;
 
-		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET);
+		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, WD_FRAMETEXT_TOP);
 		if (btn == INT_MAX || (int)btn < this->warn_lines) return;
 		btn -= this->warn_lines;
 
@@ -2178,7 +2166,7 @@ struct GameSettingsWindow : Window {
 
 		if (clicked_entry == nullptr) return;  // Clicked below the last setting of the page
 
-		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (clicked_entry->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - WD_FRAMETEXT_LEFT - (clicked_entry->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
 		SettingsPage *clicked_page = dynamic_cast<SettingsPage*>(clicked_entry);
@@ -2219,7 +2207,7 @@ struct GameSettingsWindow : Window {
 				this->closing_dropdown = false;
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
-				int rel_y = (pt.y - (int)wid->pos_y - SETTINGTREE_TOP_OFFSET) % wid->resize_y;
+				int rel_y = (pt.y - (int)wid->pos_y - WD_FRAMETEXT_TOP) % wid->resize_y;
 
 				Rect wi_rect;
 				wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
@@ -2447,7 +2435,7 @@ struct GameSettingsWindow : Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET);
+		this->vscroll->SetCapacityFromWidget(this, WID_GS_OPTIONSPANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
 	}
 };
 
