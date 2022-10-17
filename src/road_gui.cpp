@@ -974,15 +974,23 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
-		size->width  = ScaleGUITrad(64) + 2;
-		size->height = ScaleGUITrad(48) + 2;
+		size->width  = ScaleGUITrad(64) + WD_BEVEL_LEFT + WD_BEVEL_RIGHT;
+		size->height = ScaleGUITrad(48) + WD_BEVEL_TOP + WD_BEVEL_BOTTOM;
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (!IsInsideMM(widget, WID_BROD_DEPOT_NE, WID_BROD_DEPOT_NW + 1)) return;
 
-		DrawRoadDepotSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
+		DrawPixelInfo tmp_dpi;
+		if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+			DrawPixelInfo *old_dpi = _cur_dpi;
+			_cur_dpi = &tmp_dpi;
+			int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
+			int y = (r.Height() + ScaleGUITrad(48)) / 2 - ScaleGUITrad(31);
+			DrawRoadDepotSprite(x, y, (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
+			_cur_dpi = old_dpi;
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -1099,8 +1107,8 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 	{
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
-		size->width  = ScaleGUITrad(64) + 2;
-		size->height = ScaleGUITrad(48) + 2;
+		size->width  = ScaleGUITrad(64) + WD_BEVEL_LEFT + WD_BEVEL_RIGHT;
+		size->height = ScaleGUITrad(48) + WD_BEVEL_TOP + WD_BEVEL_BOTTOM;
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -1108,7 +1116,16 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		if (!IsInsideMM(widget, WID_BROS_STATION_NE, WID_BROS_STATION_Y + 1)) return;
 
 		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
-		StationPickerDrawSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), st, INVALID_RAILTYPE, _cur_roadtype, widget - WID_BROS_STATION_NE);
+
+		DrawPixelInfo tmp_dpi;
+		if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+			DrawPixelInfo *old_dpi = _cur_dpi;
+			_cur_dpi = &tmp_dpi;
+			int x = (r.Width()  - ScaleGUITrad(64)) / 2 + ScaleGUITrad(31);
+			int y = (r.Height() + ScaleGUITrad(48)) / 2 - ScaleGUITrad(31);
+			StationPickerDrawSprite(x, y, st, INVALID_RAILTYPE, _cur_roadtype, widget - WID_BROS_STATION_NE);
+			_cur_dpi = old_dpi;
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override

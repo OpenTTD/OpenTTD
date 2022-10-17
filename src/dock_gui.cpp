@@ -531,25 +531,35 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
-				size->width  = ScaleGUITrad(96) + 2;
-				size->height = ScaleGUITrad(64) + 2;
+				size->width  = ScaleGUITrad(96) + WD_BEVEL_LEFT + WD_BEVEL_RIGHT;
+				size->height = ScaleGUITrad(64) + WD_BEVEL_TOP + WD_BEVEL_BOTTOM;
 				break;
 		}
 	}
 
-	void OnPaint() override
+	void DrawWidget(const Rect &r, int widget) const override
 	{
-		this->DrawWidgets();
+		DrawPixelInfo tmp_dpi;
 
-		int x1 = ScaleGUITrad(63) + 1;
-		int x2 = ScaleGUITrad(31) + 1;
-		int y1 = ScaleGUITrad(17) + 1;
-		int y2 = ScaleGUITrad(33) + 1;
+		switch (widget) {
+			case WID_BDD_X:
+			case WID_BDD_Y: {
+				Axis axis = widget == WID_BDD_X ? AXIS_X : AXIS_Y;
 
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + x1, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + y1, AXIS_X, DEPOT_PART_NORTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + x2, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + y2, AXIS_X, DEPOT_PART_SOUTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + x2, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + y1, AXIS_Y, DEPOT_PART_NORTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + x1, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + y2, AXIS_Y, DEPOT_PART_SOUTH);
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					DrawPixelInfo *old_dpi = _cur_dpi;
+					_cur_dpi = &tmp_dpi;
+					int x = (r.Width()  - ScaleGUITrad(96)) / 2;
+					int y = (r.Height() - ScaleGUITrad(64)) / 2;
+					int x1 = ScaleGUITrad(63);
+					int x2 = ScaleGUITrad(31);
+					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleGUITrad(17), axis, DEPOT_PART_NORTH);
+					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleGUITrad(33), axis, DEPOT_PART_SOUTH);
+					_cur_dpi = old_dpi;
+				}
+				break;
+			}
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
