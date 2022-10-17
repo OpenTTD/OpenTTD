@@ -1755,7 +1755,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			case VEH_SHIP:
 			case VEH_ROAD:
 				/* cached_max_speed from ships and road vehicles are double in size when we fetch the values here
-				 * in order for road veichles to get speed bonus on station ratings we keep the values as is */
+				 * in order for road vehicles and ships to get speed bonus on station ratings we keep the values as is */
 				t = front->vcache.cached_max_speed;
 				break;
 
