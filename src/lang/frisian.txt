@@ -1172,6 +1172,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsydzjeferman
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stel yn hoefolle der betelle wurdt foar subsidiearre ferbinings
 
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jier
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Boukosten: {STRING}
@@ -2065,6 +2066,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Fier in 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Ferbyning meitsje...
 
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klïïnt{P "" en} foar dy
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} Delhelle oant
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} delhelle
 
@@ -2145,6 +2147,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ûnjildich of �
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :ferkearde revyzje
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namme is al beset
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :ferkeard wachtwurd
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :besocht falsk te spieljen
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :joech tevolle opdrachten
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kaart delheljen duorret te lang
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kaart ferwurkje duorret te lang
@@ -2162,6 +2165,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spulskript
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :Ferlit
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} der is ien bykommen(Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is in neie taskôger
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat it spul ferlitten ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat syn/har namme oanpast nei {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tsjinner hat de ferbining sluten
 
@@ -2176,6 +2180,7 @@ STR_CONTENT_OPEN_URL                                            :{BLACK}Webside 
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Webside foar dizze ynhâld besykje
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Delhelje
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Begjinne mei delheljen fan selektearre ynhâld
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totaal om te delheljen: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}KONTENT INFO
 
 ###length 5
@@ -2195,6 +2200,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :AI biblioteek
 STR_CONTENT_TYPE_SCENARIO                                       :Lânskip
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hichtemap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basislûden
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Basisset for musyk
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spulskript
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS biblioteek
 
@@ -2285,6 +2291,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Oantal b
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selektear oantal banen foar treinstasjon
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Stasjon lengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selektear lengte fan treinstasjon
+STR_STATION_BUILD_DRAG_DROP                                     :Sleepe en los litte
 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selektearje type stasjon om te bouwe
 
@@ -2593,10 +2600,12 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} It OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_CURRENT                                           :Aktueel
 
 ###length 15
 
 ###length 15
+STR_FRAMETIME_CAPTION_AI                                        :Kompjûterspiler {NUM} {STRING}
 
 
 # Save/load game/scenario
@@ -2727,7 +2736,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Ferzje: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Leechte noch wurkjende ferzje: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Oarspronklik (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Oarspronklik (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Gjin
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}gjin ynformaasje beskikber
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Keppelt bestând koe net fûn wurde
@@ -2891,6 +2903,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Stêdsnamme Fer
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} gemeente
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Sône
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportbedrieuwwurdearring:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Mooglike aksjes:
@@ -3065,6 +3078,7 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Oaren
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Jild
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Eigen fûnsen
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Liening
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimale Liening: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
@@ -3394,6 +3408,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stjoer f
 ###length VEHICLE_TYPES
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Rydrjochting fan trein omkeare
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :Lit fiertug omkeare
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Trein ombouwe om in oar soart fracht mei te nimmen
@@ -3495,6 +3510,7 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Totale F
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasiteit: {LTBLUE}
 
 # Vehicle refit
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombouwe)
 STR_REFIT_TITLE                                                 :{GOLD}Selektearje it soart fracht om mei te nimmen:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nije kapasiteit: {GOLD}{CARGO_LONG}{}{BLACK}Kosten fan ombou: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nije kapasiteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}kosten fan werfolje: {RED}{CURRENCY_LONG}
@@ -3699,7 +3715,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Trjochge
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lit debug output fan dizze AI sjen
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spulskript
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
+STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte kompjûterspiler fûn.{}Disse kompjûterspiler is in dummy en docht neat.{}Jo kinne kompjûterspilers delhelje fan 'Online Inhâld' ôf.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Spulskript debugskerm is allinich beskikber foar de tsjinner
 
 # AI configuration window

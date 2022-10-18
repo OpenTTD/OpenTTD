@@ -2987,7 +2987,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Ланд
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Опустить угол земли. Перетаскивание опускает первый выбранный угол и выравнивает выбранную область до новой высоты угла. Ctrl выбирает область по диагонали. При нажатом Shift - оценка стоимости строительства.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Поднять угол земли. Перетаскивание поднимает первый выбранный угол и выравнивает выбранную область до новой высоты угла. Ctrl выбирает область по диагонали. При нажатом Shift - оценка стоимости строительства.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выровнять землю до высоты первого выбранного угла. Ctrl выбирает область по диагонали. При нажатом Shift - оценка стоимости выравнивания.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Покупка земли. При нажатом Shift - оценка стоимости покупки.
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Покупка земли.{}При нажатом Ctrl выбираются клетки по диагонали.{}При нажатом Shift - оценка стоимости покупки.
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбор объекта
