@@ -57,21 +57,23 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
  * Draw the details for the given vehicle at the given position
  *
  * @param v     current vehicle
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
+ * @param r     the Rect to draw within
  */
-void DrawShipDetails(const Vehicle *v, int left, int right, int y)
+void DrawShipDetails(const Vehicle *v, const Rect &r)
 {
+	int y = r.top;
+
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(left, right, y, STR_VEHICLE_INFO_BUILT_VALUE);
+	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);
+	y += FONT_HEIGHT_NORMAL;
 
 	SetDParam(0, v->cargo_type);
 	SetDParam(1, v->cargo_cap);
 	SetDParam(4, GetCargoSubtypeText(v));
-	DrawString(left, right, y + FONT_HEIGHT_NORMAL, STR_VEHICLE_INFO_CAPACITY);
+	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_CAPACITY);
+	y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 
 	StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 	if (v->cargo.StoredCount() > 0) {
@@ -80,9 +82,10 @@ void DrawShipDetails(const Vehicle *v, int left, int right, int y)
 		SetDParam(2, v->cargo.Source());
 		str = STR_VEHICLE_DETAILS_CARGO_FROM;
 	}
-	DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1, str);
+	DrawString(r.left, r.right, y, str);
+	y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 
 	/* Draw Transfer credits text */
 	SetDParam(0, v->cargo.FeederShare());
-	DrawString(left, right, y + 3 * FONT_HEIGHT_NORMAL + 3, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }

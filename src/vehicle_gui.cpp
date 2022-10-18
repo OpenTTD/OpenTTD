@@ -2236,10 +2236,10 @@ static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 
 
 extern int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab);
-extern void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab);
-extern void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y);
-extern void DrawShipDetails(const Vehicle *v, int left, int right, int y);
-extern void DrawAircraftDetails(const Aircraft *v, int left, int right, int y);
+extern void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab);
+extern void DrawRoadVehDetails(const Vehicle *v, const Rect &r);
+extern void DrawShipDetails(const Vehicle *v, const Rect &r);
+extern void DrawAircraftDetails(const Aircraft *v, const Rect &r);
 
 static StringID _service_interval_dropdown[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
@@ -2300,13 +2300,13 @@ struct VehicleDetailsWindow : Window {
 		uint desired_height;
 		if (v->HasArticulatedPart()) {
 			/* An articulated RV has its text drawn under the sprite instead of after it, hence 15 pixels extra. */
-			desired_height = WD_FRAMERECT_TOP + ScaleGUITrad(15) + 3 * FONT_HEIGHT_NORMAL + 2 + WD_FRAMERECT_BOTTOM;
+			desired_height = WD_FRAMERECT_TOP + ScaleGUITrad(15) + 3 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL * 2 + WD_FRAMERECT_BOTTOM;
 			/* Add space for the cargo amount for each part. */
 			for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
-				if (u->cargo_cap != 0) desired_height += FONT_HEIGHT_NORMAL + 1;
+				if (u->cargo_cap != 0) desired_height += FONT_HEIGHT_NORMAL;
 			}
 		} else {
-			desired_height = WD_FRAMERECT_TOP + 4 * FONT_HEIGHT_NORMAL + 3 + WD_FRAMERECT_BOTTOM;
+			desired_height = WD_FRAMERECT_TOP + 4 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL * 2 + WD_FRAMERECT_BOTTOM;
 		}
 		return desired_height;
 	}
@@ -2343,11 +2343,11 @@ struct VehicleDetailsWindow : Window {
 						break;
 
 					case VEH_SHIP:
-						size->height = WD_FRAMERECT_TOP + 4 * FONT_HEIGHT_NORMAL + 3 + WD_FRAMERECT_BOTTOM;
+						size->height = WD_FRAMERECT_TOP + 4 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL * 2 + WD_FRAMERECT_BOTTOM;
 						break;
 
 					case VEH_AIRCRAFT:
-						size->height = WD_FRAMERECT_TOP + 5 * FONT_HEIGHT_NORMAL + 4 + WD_FRAMERECT_BOTTOM;
+						size->height = WD_FRAMERECT_TOP + 5 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL * 2 + WD_FRAMERECT_BOTTOM;
 						break;
 
 					default:
@@ -2400,20 +2400,18 @@ struct VehicleDetailsWindow : Window {
 	 * Draw the details for the given vehicle at the position of the Details windows
 	 *
 	 * @param v     current vehicle
-	 * @param left  The left most coordinate to draw
-	 * @param right The right most coordinate to draw
-	 * @param y     The y coordinate
+	 * @param r     the Rect to draw within
 	 * @param vscroll_pos Position of scrollbar (train only)
 	 * @param vscroll_cap Number of lines currently displayed (train only)
 	 * @param det_tab Selected details tab (train only)
 	 */
-	static void DrawVehicleDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint vscroll_cap, TrainDetailsWindowTabs det_tab)
+	static void DrawVehicleDetails(const Vehicle *v, const Rect &r, int vscroll_pos, uint vscroll_cap, TrainDetailsWindowTabs det_tab)
 	{
 		switch (v->type) {
-			case VEH_TRAIN:    DrawTrainDetails(Train::From(v), left, right, y, vscroll_pos, vscroll_cap, det_tab);  break;
-			case VEH_ROAD:     DrawRoadVehDetails(v, left, right, y);  break;
-			case VEH_SHIP:     DrawShipDetails(v, left, right, y);     break;
-			case VEH_AIRCRAFT: DrawAircraftDetails(Aircraft::From(v), left, right, y); break;
+			case VEH_TRAIN:    DrawTrainDetails(Train::From(v), r, vscroll_pos, vscroll_cap, det_tab);  break;
+			case VEH_ROAD:     DrawRoadVehDetails(v, r);  break;
+			case VEH_SHIP:     DrawShipDetails(v, r);     break;
+			case VEH_AIRCRAFT: DrawAircraftDetails(Aircraft::From(v), r); break;
 			default: NOT_REACHED();
 		}
 	}
@@ -2491,37 +2489,36 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_MATRIX:
 				/* For trains only. */
-				DrawVehicleDetails(v, r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, r.top + WD_MATRIX_TOP, this->vscroll->GetPosition(), this->vscroll->GetCapacity(), this->tab);
+				DrawVehicleDetails(v, r.Shrink(WD_MATRIX_LEFT, 0, WD_MATRIX_RIGHT, 0).WithHeight(this->resize.step_height), this->vscroll->GetPosition(), this->vscroll->GetCapacity(), this->tab);
 				break;
 
 			case WID_VD_MIDDLE_DETAILS: {
 				/* For other vehicles, at the place of the matrix. */
 				bool rtl = _current_text_dir == TD_RTL;
 				uint sprite_width = GetSingleVehicleWidth(v, EIT_IN_DETAILS) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-
-				uint text_left  = r.left  + (rtl ? 0 : sprite_width);
-				uint text_right = r.right - (rtl ? sprite_width : 0);
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 
 				/* Articulated road vehicles use a complete line. */
 				if (v->type == VEH_ROAD && v->HasArticulatedPart()) {
-					DrawVehicleImage(v, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
+					DrawVehicleImage(v, tr.left, tr.right, tr.top, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
 				} else {
-					uint sprite_left  = rtl ? text_right : r.left;
-					uint sprite_right = rtl ? r.right : text_left;
-
-					DrawVehicleImage(v, sprite_left + WD_FRAMERECT_LEFT, sprite_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
+					Rect sr = tr.WithWidth(sprite_width, rtl);
+					DrawVehicleImage(v, sr.left, sr.right, sr.top, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
 				}
-				DrawVehicleDetails(v, text_left + WD_FRAMERECT_LEFT, text_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, 0, 0, this->tab);
+
+				DrawVehicleDetails(v, tr.Indent(sprite_width, rtl), 0, 0, this->tab);
 				break;
 			}
 
-			case WID_VD_SERVICING_INTERVAL:
+			case WID_VD_SERVICING_INTERVAL: {
 				/* Draw service interval text */
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				SetDParam(0, v->GetServiceInterval());
 				SetDParam(1, v->date_of_last_service);
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL),
+				DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL),
 						v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
 				break;
+			}
 		}
 	}
 
