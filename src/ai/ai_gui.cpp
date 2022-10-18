@@ -939,9 +939,6 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
  * Window with everything an AI prints via ScriptLog.
  */
 struct AIDebugWindow : public Window {
-	static const int top_offset;    ///< Offset of the text at the top of the WID_AID_LOG_PANEL.
-	static const int bottom_offset; ///< Offset of the text at the bottom of the WID_AID_LOG_PANEL.
-
 	static const uint MAX_BREAK_STR_STRING_LENGTH = 256;   ///< Maximum length of the break string.
 
 	static CompanyID ai_debug_company;                     ///< The AI that is (was last) being debugged.
@@ -1046,7 +1043,7 @@ struct AIDebugWindow : public Window {
 	{
 		if (widget == WID_AID_LOG_PANEL) {
 			resize->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
-			size->height = 14 * resize->height + this->top_offset + this->bottom_offset;
+			size->height = 14 * resize->height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 		}
 	}
 
@@ -1160,7 +1157,8 @@ struct AIDebugWindow : public Window {
 				ScriptLog::LogData *log = this->GetLogPointer();
 				if (log == nullptr) return;
 
-				int y = this->top_offset;
+				Rect br = r.Shrink(WD_BEVEL_LEFT, WD_BEVEL_TOP, WD_BEVEL_RIGHT, WD_BEVEL_BOTTOM);
+				Rect tr = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < log->used; i++) {
 					int pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 					if (log->lines[pos] == nullptr) break;
@@ -1177,12 +1175,12 @@ struct AIDebugWindow : public Window {
 
 					/* Check if the current line should be highlighted */
 					if (pos == this->highlight_row) {
-						GfxFillRect(r.left + 1, r.top + y, r.right - 1, r.top + y + this->resize.step_height - WD_PAR_VSEP_NORMAL, PC_BLACK);
+						GfxFillRect(br.left, tr.top, br.right, tr.top + this->resize.step_height - 1, PC_BLACK);
 						if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
 					}
 
-					DrawString(r.left + 7, r.right - 7, r.top + y, log->lines[pos], colour, SA_LEFT | SA_FORCE);
-					y += this->resize.step_height;
+					DrawString(tr, log->lines[pos], colour, SA_LEFT | SA_FORCE);
+					tr.top += this->resize.step_height;
 				}
 				break;
 			}
@@ -1360,8 +1358,6 @@ struct AIDebugWindow : public Window {
 	static HotkeyList hotkeys;
 };
 
-const int AIDebugWindow::top_offset = WD_FRAMERECT_TOP + 2;
-const int AIDebugWindow::bottom_offset = WD_FRAMERECT_BOTTOM;
 CompanyID AIDebugWindow::ai_debug_company = INVALID_COMPANY;
 char AIDebugWindow::break_string[MAX_BREAK_STR_STRING_LENGTH] = "";
 bool AIDebugWindow::break_check_enabled = true;
