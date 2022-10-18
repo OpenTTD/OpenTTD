@@ -352,32 +352,22 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
  * Draw the details for the given vehicle at the given position
  *
  * @param v     current vehicle
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
+ * @param r     the Rect to draw within
  * @param vscroll_pos Position of scrollbar
  * @param vscroll_cap Number of lines currently displayed
  * @param det_tab Selected details tab
  */
-void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab)
+void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab)
 {
-	/* get rid of awkward offset */
-	y -= WD_MATRIX_TOP;
-
-	/* Indent the total cargo capacity details */
-	int offs_left = _current_text_dir == TD_LTR ? TRAIN_DETAILS_LIST_INDENT : 0;
-	int offs_right = _current_text_dir == TD_LTR ? 0 : TRAIN_DETAILS_LIST_INDENT;
-
-	int sprite_height = ScaleGUITrad(GetVehicleHeight(VEH_TRAIN));
-	int line_height = std::max(sprite_height, WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM);
+	bool rtl = _current_text_dir == TD_RTL;
+	int line_height = r.Height();
 	int sprite_y_offset = line_height / 2;
 	int text_y_offset = (line_height - FONT_HEIGHT_NORMAL) / 2;
 
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {
-		bool rtl = _current_text_dir == TD_RTL;
 		Direction dir = rtl ? DIR_E : DIR_W;
-		int x = rtl ? right : left;
+		int x = rtl ? r.right : r.left;
 		for (; v != nullptr && vscroll_pos > -vscroll_cap; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
 
@@ -397,7 +387,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 					PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 					VehicleSpriteSeq seq;
 					u->GetImage(dir, EIT_IN_DETAILS, &seq);
-					seq.Draw(px + (rtl ? -offset.x : offset.x), y - line_height * vscroll_pos + sprite_y_offset + pitch, pal, (v->vehstatus & VS_CRASHED) != 0);
+					seq.Draw(px + (rtl ? -offset.x : offset.x), r.top - line_height * vscroll_pos + sprite_y_offset + pitch, pal, (v->vehstatus & VS_CRASHED) != 0);
 				}
 				px += rtl ? -width : width;
 				dx += width;
@@ -410,35 +400,34 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				dx = 0;
 			}
 
+			int sprite_width = std::max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + 3;
+			Rect dr = r.Indent(sprite_width, rtl);
 			uint num_lines = std::max(1u, (unsigned)_cargo_summary.size());
 			for (uint i = 0; i < num_lines; i++) {
-				int sprite_width = std::max<int>(dx, ScaleGUITrad(TRAIN_DETAILS_MIN_INDENT)) + 3;
-				int data_left  = left + (rtl ? 0 : sprite_width);
-				int data_right = right - (rtl ? sprite_width : 0);
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
-					int py = y - line_height * vscroll_pos + text_y_offset;
+					int py = r.top - line_height * vscroll_pos + text_y_offset;
 					if (i > 0 || separate_sprite_row) {
-						if (vscroll_pos != 0) GfxFillRect(left, py - WD_MATRIX_TOP - 1, right, py - WD_MATRIX_TOP, _colour_gradient[COLOUR_GREY][5]);
+						if (vscroll_pos != 0) GfxFillRect(r.left, py - WD_MATRIX_TOP - 1, r.right, py - WD_MATRIX_TOP, _colour_gradient[COLOUR_GREY][5]);
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:
 							if (i < _cargo_summary.size()) {
-								TrainDetailsCargoTab(&_cargo_summary[i], data_left, data_right, py);
+								TrainDetailsCargoTab(&_cargo_summary[i], dr.left, dr.right, py);
 							} else {
-								DrawString(data_left, data_right, py, STR_QUANTITY_N_A, TC_LIGHT_BLUE);
+								DrawString(dr.left, dr.right, py, STR_QUANTITY_N_A, TC_LIGHT_BLUE);
 							}
 							break;
 
 						case TDW_TAB_INFO:
-							if (i == 0) TrainDetailsInfoTab(v, data_left, data_right, py);
+							if (i == 0) TrainDetailsInfoTab(v, dr.left, dr.right, py);
 							break;
 
 						case TDW_TAB_CAPACITY:
 							if (i < _cargo_summary.size()) {
-								TrainDetailsCapacityTab(&_cargo_summary[i], data_left, data_right, py);
+								TrainDetailsCapacityTab(&_cargo_summary[i], dr.left, dr.right, py);
 							} else {
 								SetDParam(0, STR_EMPTY);
-								DrawString(data_left, data_right, py, STR_VEHICLE_INFO_NO_CAPACITY);
+								DrawString(dr.left, dr.right, py, STR_VEHICLE_INFO_NO_CAPACITY);
 							}
 							break;
 
@@ -449,6 +438,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 			}
 		}
 	} else {
+		int y = r.top;
 		CargoArray act_cargo;
 		CargoArray max_cargo;
 		Money feeder_share = 0;
@@ -460,9 +450,11 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 		}
 
 		/* draw total cargo tab */
-		DrawString(left, right, y + text_y_offset, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
+		DrawString(r.left, r.right, y + text_y_offset, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
 		y += line_height;
 
+		/* Indent the total cargo capacity details */
+		Rect ir = r.Indent(TRAIN_DETAILS_LIST_INDENT, rtl);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				SetDParam(0, i);            // {CARGO} #1
@@ -470,11 +462,11 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				SetDParam(4, _settings_game.vehicle.freight_trains);
-				DrawString(left + offs_left, right - offs_right, y + text_y_offset, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
+				DrawString(ir.left, ir.right, y + text_y_offset, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
 				y += line_height;
 			}
 		}
 		SetDParam(0, feeder_share);
-		DrawString(left, right, y + text_y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+		DrawString(r.left, r.right, y + text_y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 	}
 }
