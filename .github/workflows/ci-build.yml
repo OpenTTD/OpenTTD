@@ -171,7 +171,7 @@ jobs:
     - name: Prepare cache key
       id: key
       run: |
-        echo "::set-output name=image::$ImageOS-$ImageVersion"
+        echo "name=image::$ImageOS-$ImageVersion" >> $GITHUB_OUTPUT
 
     - name: Enable vcpkg cache
       uses: actions/cache@v3
@@ -253,7 +253,7 @@ jobs:
         # Work around caching failure with GNU tar
         New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
 
-        Write-Output "::set-output name=image::$env:ImageOS-$env:ImageVersion"
+        Write-Output "name=image::$env:ImageOS-$env:ImageVersion" >> $GITHUB_OUTPUT
 
     - name: Enable vcpkg cache
       uses: actions/cache@v3
