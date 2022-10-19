@@ -2036,9 +2036,7 @@ struct CompanyInfrastructureWindow : Window
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		int y = r.top;
 
-		int offs_left = _current_text_dir == TD_LTR ? WD_FRAMERECT_LEFT : 0;
-		int offs_right = _current_text_dir == TD_LTR ? 0 : WD_FRAMERECT_LEFT;
-
+		Rect ir = r.Indent(LEVEL_WIDTH, _current_text_dir == TD_RTL);
 		switch (widget) {
 			case WID_CI_RAIL_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
@@ -2048,13 +2046,13 @@ struct CompanyInfrastructureWindow : Window
 					for (const auto &rt : _sorted_railtypes) {
 						if (HasBit(this->railtypes, rt)) {
 							SetDParam(0, GetRailTypeInfo(rt)->strings.name);
-							DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
+							DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
 						}
 					}
-					DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS);
+					DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS);
 				} else {
 					/* No valid railtype. */
-					DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+					DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
 				}
 
 				break;
@@ -2081,7 +2079,7 @@ struct CompanyInfrastructureWindow : Window
 				for (const auto &rt : _sorted_roadtypes) {
 					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
 						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
-						DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
+						DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
 					}
 				}
 
@@ -2101,7 +2099,7 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_WATER_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
-				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS);
+				DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS);
 				break;
 
 			case WID_CI_WATER_COUNT:
@@ -2120,8 +2118,8 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_STATION_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
-				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS);
-				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS);
+				DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS);
+				DrawString(ir.left, ir.right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS);
 				break;
 
 			case WID_CI_STATION_COUNT:
