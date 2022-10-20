@@ -2299,6 +2299,8 @@ STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Bat ere 
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}erabiltzeke
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}saturatua
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Geltoki irismena erakutsi
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Itzali

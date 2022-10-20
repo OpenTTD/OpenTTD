@@ -2309,6 +2309,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}fullt utnytta
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overbelasta
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Syne dekningsområde
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av

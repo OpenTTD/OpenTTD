@@ -2021,6 +2021,8 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Baskulig
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ŝarĝregiona marko
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Malaktiva

@@ -2618,6 +2618,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}doygun
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}aşırı dolu
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Kapsama alanı
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Kapalı

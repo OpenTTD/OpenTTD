@@ -2618,6 +2618,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{G=Masculin}{TI
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{G=Masculin}{TINY_FONT}{BLACK}saturat
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{G=Masculin}{TINY_FONT}{BLACK}sobrecarregat
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Marca l'àrea de cobertura
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Inactiu

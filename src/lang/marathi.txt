@@ -1201,6 +1201,8 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 
 # Join station window

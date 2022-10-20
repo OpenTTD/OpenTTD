@@ -2716,6 +2716,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}κορεσμένο
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}υπερφορτωμένο
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ανενεργό

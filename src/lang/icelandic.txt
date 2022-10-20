@@ -2241,6 +2241,8 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gera hlu
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fela

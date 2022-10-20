@@ -2801,6 +2801,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}zasićen
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}Preopterećen
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Označavanje zahvaćenog područja
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Isključeno

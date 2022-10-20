@@ -731,6 +731,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}डा�
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 
 # Join station window

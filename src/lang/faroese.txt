@@ -2202,6 +2202,8 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ger luti
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hálýsing av deknings øki
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Sløkt

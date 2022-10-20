@@ -2618,6 +2618,11 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}saturado
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecarregado
 
+# Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} a ser transportado mensalmente de {STATION} para {STATION} ({COMMA}% da capacidade){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} a ser transportado de volta ({COMMA}% da capacidade)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tempo médio de viagem: {NUM}{NBSP}dia{P "" s}
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Exibir área de cobertura
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Não

@@ -2140,6 +2140,8 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ghaibkan
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}tepu
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Serlahan kawasan liputan
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Tiada

@@ -2741,6 +2741,8 @@ STR_LINKGRAPH_LEGEND_OVERLOADED.r                               :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED.d                               :{TINY_FONT}{BLACK}перевантаженому
 STR_LINKGRAPH_LEGEND_OVERLOADED.z                               :{TINY_FONT}{BLACK}перевантажений
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Підсвічення зони покриття
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ні
