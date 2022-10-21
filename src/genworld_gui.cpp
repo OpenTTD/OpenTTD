@@ -96,7 +96,6 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					/* Labels on the left side (global column 1). */
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_MAPSIZE, STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
-						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_LAND_GENERATOR, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TERRAIN_TYPE, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_VARIETY, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SMOOTHNESS, STR_NULL), SetFill(1, 1),
@@ -111,7 +110,6 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 							NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_BY, STR_NULL), SetPadding(1, 0, 0, 0), SetFill(1, 1),
 							NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_MAPSIZE_Y_PULLDOWN), SetDataTip(STR_JUST_INT, STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 0),
 						EndContainer(),
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_LANDSCAPE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TERRAIN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
@@ -397,7 +395,6 @@ static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LO
 static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT, INVALID_STRING_ID};
 static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
-static const StringID _landscape[]   = {STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL, STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM, INVALID_STRING_ID};
 static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, INVALID_STRING_ID};
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH, INVALID_STRING_ID};
@@ -426,6 +423,11 @@ struct GenerateLandscapeWindow : public Window {
 		/* In case the map_height_limit is changed, clamp heightmap_height and custom_terrain_type. */
 		_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
 		_settings_newgame.game_creation.custom_terrain_type = Clamp(_settings_newgame.game_creation.custom_terrain_type, MIN_CUSTOM_TERRAIN_TYPE, GetMapHeightLimit());
+
+		/* If original landgenerator is selected and alpinist terrain_type was selected, revert to mountainous. */
+		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
+			_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, 0, 3);
+		}
 
 		this->OnInvalidateData();
 	}
@@ -462,7 +464,6 @@ struct GenerateLandscapeWindow : public Window {
 			}
 
 			case WID_GL_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_CONFIG_SETTING_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
-			case WID_GL_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
 			case WID_GL_TERRAIN_PULLDOWN:
 				if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
 					SetDParam(0, STR_TERRAIN_TYPE_CUSTOM_VALUE);
@@ -620,7 +621,6 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:   strs = _num_inds; break;
-			case WID_GL_LANDSCAPE_PULLDOWN:  strs = _landscape; break;
 
 			case WID_GL_TERRAIN_PULLDOWN:
 				strs = _elevations;
@@ -795,10 +795,6 @@ struct GenerateLandscapeWindow : public Window {
 				ShowQueryString(STR_JUST_INT, STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case WID_GL_LANDSCAPE_PULLDOWN: // Landscape generator
-				ShowDropDownMenu(this, _landscape, _settings_newgame.game_creation.land_generator, WID_GL_LANDSCAPE_PULLDOWN, 0, 0);
-				break;
-
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: // Heightmap rotation
 				ShowDropDownMenu(this, _rotation, _settings_newgame.game_creation.heightmap_rotation, WID_GL_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
 				break;
@@ -893,13 +889,6 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_RIVER_PULLDOWN:         _settings_newgame.game_creation.amount_of_rivers = index; break;
 			case WID_GL_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 			case WID_GL_VARIETY_PULLDOWN:       _settings_newgame.game_creation.variety = index; break;
-
-			case WID_GL_LANDSCAPE_PULLDOWN:     _settings_newgame.game_creation.land_generator = index;
-				/* If original landgenerator is selected and alpinist terrain_type was selected, revert to mountainous. */
-				if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
-					_settings_newgame.difficulty.terrain_type = Clamp(_settings_newgame.difficulty.terrain_type, 0, 3);
-				}
-				break;
 
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: _settings_newgame.game_creation.heightmap_rotation = index; break;
 
