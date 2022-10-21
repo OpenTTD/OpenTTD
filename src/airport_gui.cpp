@@ -8,6 +8,7 @@
 /** @file airport_gui.cpp The GUI for airports. */
 
 #include "stdafx.h"
+#include "economy_func.h"
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
@@ -436,6 +437,13 @@ public:
 				/* show the noise of the selected airport */
 				SetDParam(0, as->noise_level);
 				DrawString(r.left, r.right, top, STR_STATION_BUILD_NOISE);
+				top += FONT_HEIGHT_NORMAL + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
+			}
+
+			if (_settings_game.economy.infrastructure_maintenance) {
+				Money monthly = _price[PR_INFRASTRUCTURE_AIRPORT] * as->maintenance_cost >> 3;
+				SetDParam(0, monthly * 12);
+				DrawString(r.left, r.right, top, STR_STATION_BUILD_INFRASTRUCTURE_COST);
 				top += FONT_HEIGHT_NORMAL + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
 			}
 
