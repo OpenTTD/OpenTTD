@@ -33,6 +33,7 @@
 #include "engine_cmd.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
+#include "zoom_func.h"
 
 #include "widgets/build_vehicle_widget.h"
 
@@ -953,9 +954,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 /**
  * Engine drawing loop
  * @param type Type of vehicle (VEH_*)
- * @param l The left most location of the list
- * @param r The right most location of the list
- * @param y The top most location of the list
+ * @param r The Rect of the list
  * @param eng_list What engines to draw
  * @param min where to start in the list
  * @param max where in the list to end
@@ -963,7 +962,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
 {
 	static const int sprite_y_offsets[] = { -1, -1, -2, -2 };
 
@@ -976,8 +975,9 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	int sprite_right = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_right;
 	int sprite_width = sprite_left + sprite_right;
 
-	int sprite_x        = rtl ? r - sprite_right - 1 : l + sprite_left + 1;
-	int sprite_y_offset = sprite_y_offsets[type] + step_size / 2;
+	Rect ir      = r.WithHeight(step_size).Shrink(WD_MATRIX_LEFT, WD_MATRIX_TOP, WD_MATRIX_RIGHT, WD_MATRIX_BOTTOM);
+	int sprite_x = ir.WithWidth(sprite_width, rtl).left + sprite_left;
+	int sprite_y_offset = ScaleGUITrad(sprite_y_offsets[type]) + ir.Height() / 2;
 
 	Dimension replace_icon = {0, 0};
 	int count_width = 0;
@@ -987,16 +987,16 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
 	}
 
-	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT + replace_icon.width + 8 + count_width : sprite_width + WD_FRAMETEXT_LEFT);
-	int text_right = r - (rtl ? sprite_width + WD_FRAMETEXT_RIGHT : WD_FRAMERECT_RIGHT + replace_icon.width + 8 + count_width);
-	int replace_icon_left = rtl ? l + WD_FRAMERECT_LEFT : r - WD_FRAMERECT_RIGHT - replace_icon.width;
-	int count_left = l;
-	int count_right = rtl ? text_left : r - WD_FRAMERECT_RIGHT - replace_icon.width - 8;
+	Rect tr = ir.Indent(sprite_width + 6, rtl);                                     // Name position
+	Rect cr = tr.Indent(replace_icon.width + 6, !rtl).WithWidth(count_width, !rtl);  // Count position
+	Rect rr = tr.WithWidth(replace_icon.width, !rtl);                                // Replace icon position
+	if (show_count) tr = tr.Indent(count_width + 2 + replace_icon.width + 6, !rtl);
 
-	int normal_text_y_offset = (step_size - FONT_HEIGHT_NORMAL) / 2;
-	int small_text_y_offset  = step_size - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1;
-	int replace_icon_y_offset = (step_size - replace_icon.height) / 2 - 1;
+	int normal_text_y_offset = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
+	int small_text_y_offset  = ir.Height() - FONT_HEIGHT_SMALL;
+	int replace_icon_y_offset = (ir.Height() - replace_icon.height) / 2;
 
+	int y = ir.top;
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = (*eng_list)[min];
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
@@ -1008,12 +1008,12 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 		TextColour tc = (engine == selected_id) ? TC_WHITE : (TC_NO_SHADE | (hidden ? TC_GREY : TC_BLACK));
 
 		SetDParam(0, engine);
-		DrawString(text_left, text_right, y + normal_text_y_offset, str, tc);
-		DrawVehicleEngine(l, r, sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company), EIT_PURCHASE);
+		DrawString(tr.left, tr.right, y + normal_text_y_offset, str, tc);
+		DrawVehicleEngine(r.left, r.right, sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company), EIT_PURCHASE);
 		if (show_count) {
 			SetDParam(0, num_engines);
-			DrawString(count_left, count_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
-			if (EngineHasReplacementForCompany(Company::Get(_local_company), engine, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, replace_icon_left, y + replace_icon_y_offset);
+			DrawString(cr.left, cr.right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+			if (EngineHasReplacementForCompany(Company::Get(_local_company), engine, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.left, y + replace_icon_y_offset);
 		}
 	}
 }
@@ -1588,9 +1588,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST:
 				DrawEngineList(
 					this->vehicle_type,
-					r.left + WD_FRAMERECT_LEFT,
-					r.right - WD_FRAMERECT_RIGHT,
-					r.top + WD_FRAMERECT_TOP,
+					r,
 					&this->eng_list,
 					this->vscroll->GetPosition(),
 					static_cast<uint16>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->eng_list.size())),
