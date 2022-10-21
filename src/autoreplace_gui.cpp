@@ -33,7 +33,7 @@
 
 #include "safeguards.h"
 
-void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 
 static bool EngineNumberSorter(const EngineID &a, const EngineID &b)
 {
@@ -433,9 +433,7 @@ public:
 				EngineID end    = static_cast<EngineID>(std::min<size_t>(this->vscroll[side]->GetCapacity() + start, this->engines[side].size()));
 
 				/* Do the actual drawing */
-				const Rect list = r.Shrink(WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM);
-				DrawEngineList((VehicleType)this->window_number, list.left, list.right, list.top,
-						&this->engines[side], start, end, this->sel_engine[side], side == 0, this->sel_group);
+				DrawEngineList((VehicleType)this->window_number, r, &this->engines[side], start, end, this->sel_engine[side], side == 0, this->sel_group);
 				break;
 			}
 		}
