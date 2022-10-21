@@ -1273,8 +1273,10 @@ static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 		}
 	}
 
-	/* If the river is a main river, go back along the path to widen it. */
-	if (data->main_river) {
+	/* If the river is a main river, go back along the path to widen it.
+	 * Don't make wide rivers if we're using the original landscape generator.
+	 */
+	if (_settings_game.game_creation.land_generator != LG_ORIGINAL && data->main_river) {
 		const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
 		uint current_river_length;
 		uint radius;
