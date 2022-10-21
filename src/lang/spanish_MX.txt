@@ -379,7 +379,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construc
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcción de tranvía
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Mayús muestra un costo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Poner cartel
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Mayús muestra un costo estimado
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
 
 # Scenario editor file menu
 ###length 7
@@ -2619,6 +2619,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecargado
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} a ser transportad{G 0 o a}{P 0 "" s} al mes desde {STATION} a {STATION} ({COMMA}% de la capacidad){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} a ser transportad{G 0 o a}{P 0 "" s}) de vuelta ({COMMA}% de la capacidad)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tiempo promedio de viaje: {NUM}{NBSP}día{P "" s}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Mostrar área de recolección
@@ -2815,11 +2818,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Alteraci
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebajar una esquina del terreno. Al arrastrar el ratón se rebaja la primera esquina elegida y el resto del terreno seleccionado se nivela a dicha altura. Ctrl para seleccionar un área en diagonal.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar una esquina del terreno. Al arrastrar el ratón se eleva la primera esquina elegida y se nivela el resto del terreno seleccionado a dicha altura. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar un área de terreno a la altura de la primera esquina seleccionada. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para usos futuros. Mayús muestra un costo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para usos futuros. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección de objeto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Elegir una estructura u objeto a construir. Mayús muestra un costo estimado
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Elegir una estructura u objeto a construir. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Elegir el tipo de objeto o estructura a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vista previa del objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM}×{NUM} casillas
@@ -4688,9 +4691,9 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... luga
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ya construido
 STR_ERROR_OWNED_BY                                              :{WHITE}... propiedad de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... otra empresa es dueña de esta área
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... límite de modificación de terreno alcanzado
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... límite de casillas despejadas alcanzado
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantación de árboles alcanzado
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... no se puede modificar más terreno
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... no se pueden despejar más casillas
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... no se pueden plantar más árboles
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nombre debe ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} estorba
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permitido en pausa
@@ -4928,6 +4931,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Otro obj
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... la sede de la empresa estorba
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No se puede adquirir este terreno...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya fue adquirido por el jugador!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :... no se pueden construir más objetos
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}No se puede crear grupo...

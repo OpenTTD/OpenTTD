@@ -379,7 +379,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로�
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}전찻길 건설
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무를 심습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}팻말을 답니다.
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트를 설치합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트를 설치합니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
 # Scenario editor file menu
 ###length 7
@@ -2619,6 +2619,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}과포화
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{1:STATION}에서 {2:STATION}까지 매달 {0:CARGO_LONG} {G 0 "을" "를"} 수송해야 함 (수용량의 {3:COMMA}%){4:STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{0:CARGO_LONG}{G 0 "을" "를"} 다시 수송해와야 함 (수용량의 {1:COMMA}%)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}평균 운행 시간: {NUM}일
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 표시
@@ -2815,11 +2818,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지형 �
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 낮춥니다. 드래그하면 시작점의 땅을 낮추고 선택한 영역의 도착점까지 지형을 적절히 맞춥니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 높입니다. 드래그하면 시작점의 땅을 높이고 선택한 영역의 도착점까지 지형을 적절히 맞춥니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}처음 선택한 모퉁이의 고도에 맞추어 땅을 평평하게 고릅니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}나중에 그 땅을 사용하기 위해 소유권을 구입합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}나중에 그 땅을 사용하기 위해 소유권을 구입합니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}오브젝트 선택
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}건설할 오브젝트를 선택합니다.
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}건설할 오브젝트를 선택합니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}건설할 오브젝트의 등급을 선택합니다
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}오브젝트 미리보기
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 칸
@@ -4928,6 +4931,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간�
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 본사가 있습니다
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}이 지역을 매입할 수 없습니다...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 이미 소유중입니다!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... 오브젝트 건설 제한에 다다랐습니다
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}그룹을 만들 수 없습니다...
