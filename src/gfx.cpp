@@ -915,12 +915,12 @@ Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize)
  * @param strid String to examine.
  * @return Width and height of the bounding box for the string in pixels.
  */
-Dimension GetStringBoundingBox(StringID strid)
+Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize)
 {
 	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, strid, lastof(buffer));
-	return GetStringBoundingBox(buffer);
+	return GetStringBoundingBox(buffer, start_fontsize);
 }
 
 /**

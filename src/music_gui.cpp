@@ -741,11 +741,11 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_MUSIC_VOL:
-				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.music_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.music_vol, {});
 				break;
 
 			case WID_M_EFFECT_VOL:
-				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol, {});
 				break;
 		}
 	}

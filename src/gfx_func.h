@@ -147,7 +147,7 @@ static inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FI
 
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize = FS_NORMAL);
-Dimension GetStringBoundingBox(StringID strid);
+Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize = FS_NORMAL);
 int GetStringHeight(const char *str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
 int GetStringLineCount(StringID str, int maxw);
