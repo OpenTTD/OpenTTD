@@ -24,13 +24,18 @@ static const int SLIDER_WIDTH = 3;
  * @param min_value Minimum value of slider
  * @param max_value Maximum value of slider
  * @param value Value to put the slider at
+ * @param labels List of positions and labels to draw along the slider.
  */
-void DrawSliderWidget(Rect r, int min_value, int max_value, int value)
+void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels)
 {
+	/* Allow space for labels. We assume they are in the small font. */
+	if (labels.size() > 0) r.bottom -= FONT_HEIGHT_SMALL + WidgetDimensions::scaled.hsep_normal;
+
 	max_value -= min_value;
 
 	/* Draw a wedge indicating low to high value. */
 	const int ha = (r.bottom - r.top) / 5;
+	const int sw = ScaleGUITrad(SLIDER_WIDTH);
 	const int t = WidgetDimensions::scaled.bevel.top; /* Thickness of lines */
 	int wx1 = r.left  + sw / 2;
 	int wx2 = r.right - sw / 2;
@@ -44,10 +49,22 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int value)
 	GfxDrawLine(wedge[1].x, wedge[1].y, wedge[2].x, wedge[2].y, _current_text_dir == TD_RTL ? shadow : light, t);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[1].x, wedge[1].y, shadow, t);
 
+	int x;
+	for (auto label : labels) {
+		x = label.first - min_value;
+		if (_current_text_dir == TD_RTL) x = max_value - x;
+		x = r.left + (x * (r.right - r.left - sw) / max_value) + sw / 2;
+		GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (label.second == STR_NULL ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
+		if (label.second != STR_NULL) {
+			Dimension d = GetStringBoundingBox(label.second, FS_SMALL);
+			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, label.second, TC_BLACK, SA_CENTER, false, FS_SMALL);
+		}
+	}
+
 	/* Draw a slider handle indicating current value. */
-	const int sw = ScaleGUITrad(SLIDER_WIDTH);
 	if (_current_text_dir == TD_RTL) value = max_value - value;
-	const int x = r.left + ((value - min_value) * (r.right - r.left - sw) / max_value);
+	x = r.left + ((value - min_value) * (r.right - r.left - sw) / max_value);
 	DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
 }
 

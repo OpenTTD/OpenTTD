@@ -347,11 +347,11 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
-				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol, {});
 				break;
 
 			case WID_GO_BASE_MUSIC_VOLUME:
-				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.music_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.music_vol, {});
 				break;
 		}
 	}
