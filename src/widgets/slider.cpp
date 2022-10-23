@@ -20,11 +20,15 @@ static const int SLIDER_WIDTH = 3;
 
 /**
  * Draw a slider widget with knob at given value
- * @param r     Rectangle to draw the widget in
+ * @param r Rectangle to draw the widget in
+ * @param min_value Minimum value of slider
+ * @param max_value Maximum value of slider
  * @param value Value to put the slider at
  */
-void DrawSliderWidget(Rect r, byte value)
+void DrawSliderWidget(Rect r, int min_value, int max_value, int value)
 {
+	max_value -= min_value;
+
 	/* Draw a wedge indicating low to high value. */
 	const int ha = (r.bottom - r.top) / 5;
 	int wx1 = r.left, wx2 = r.right;
@@ -40,8 +44,8 @@ void DrawSliderWidget(Rect r, byte value)
 
 	/* Draw a slider handle indicating current value. */
 	const int sw = ScaleGUITrad(SLIDER_WIDTH);
-	if (_current_text_dir == TD_RTL) value = 127 - value;
-	const int x = r.left + (value * (r.right - r.left - sw) / 127);
+	if (_current_text_dir == TD_RTL) value = max_value - value;
+	const int x = r.left + ((value - min_value) * (r.right - r.left - sw) / max_value);
 	DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
 }
 
@@ -52,11 +56,14 @@ void DrawSliderWidget(Rect r, byte value)
  * @param value[in,out] Value to modify
  * @return       True if the value setting was modified
  */
-bool ClickSliderWidget(Rect r, Point pt, byte &value)
+bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value)
 {
+	max_value -= min_value;
+
 	const int sw = ScaleGUITrad(SLIDER_WIDTH);
-	byte new_value = Clamp((pt.x - r.left - sw / 2) * 127 / (r.right - r.left - sw), 0, 127);
-	if (_current_text_dir == TD_RTL) new_value = 127 - new_value;
+	int new_value = Clamp((pt.x - r.left - sw / 2) * max_value / (r.right - r.left - sw), 0, max_value);
+	if (_current_text_dir == TD_RTL) new_value = max_value - new_value;
+	new_value += min_value;
 
 	if (new_value != value) {
 		value = new_value;

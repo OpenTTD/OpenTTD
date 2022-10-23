@@ -741,11 +741,11 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_MUSIC_VOL:
-				DrawSliderWidget(r, _settings_client.music.music_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.music_vol);
 				break;
 
 			case WID_M_EFFECT_VOL:
-				DrawSliderWidget(r, _settings_client.music.effect_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol);
 				break;
 		}
 	}
@@ -788,7 +788,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
 				byte &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
-				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
+				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, vol)) {
 					if (widget == WID_M_MUSIC_VOL) {
 						MusicDriver::GetInstance()->SetVolume(vol);
 					} else {
