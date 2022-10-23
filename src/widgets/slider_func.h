@@ -14,8 +14,15 @@
 #include "../gfx_func.h"
 
 
-void DrawSliderWidget(Rect r, byte value);
-bool ClickSliderWidget(Rect r, Point pt, byte &value);
+void DrawSliderWidget(Rect r, int min_value, int max_value, int value);
+bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value);
 
+inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, byte &value)
+{
+	int tmp_value = value;
+	if (!ClickSliderWidget(r, pt, min_value, max_value, tmp_value)) return false;
+	value = tmp_value;
+	return true;
+}
 
 #endif /* WIDGETS_SLIDER_TYPE_H */

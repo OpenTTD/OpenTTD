@@ -347,11 +347,11 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
-				DrawSliderWidget(r, _settings_client.music.effect_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol);
 				break;
 
 			case WID_GO_BASE_MUSIC_VOLUME:
-				DrawSliderWidget(r, _settings_client.music.music_vol);
+				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.music_vol);
 				break;
 		}
 	}
@@ -478,7 +478,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_SFX_VOLUME:
 			case WID_GO_BASE_MUSIC_VOLUME: {
 				byte &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
-				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
+				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, vol)) {
 					if (widget == WID_GO_BASE_MUSIC_VOLUME) MusicDriver::GetInstance()->SetVolume(vol);
 					this->SetWidgetDirty(widget);
 					SetWindowClassesDirty(WC_MUSIC_WINDOW);
