@@ -32,7 +32,8 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int value)
 	/* Draw a wedge indicating low to high value. */
 	const int ha = (r.bottom - r.top) / 5;
 	const int t = WidgetDimensions::scaled.bevel.top; /* Thickness of lines */
-	int wx1 = r.left, wx2 = r.right;
+	int wx1 = r.left  + sw / 2;
+	int wx2 = r.right - sw / 2;
 	if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
 	const uint shadow = _colour_gradient[COLOUR_GREY][3];
 	const uint fill = _colour_gradient[COLOUR_GREY][6];
