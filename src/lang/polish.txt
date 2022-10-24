@@ -2998,6 +2998,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}przeładowany
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Średni czas podróży: {NUM}{NBSP}d{P zień ni ni}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
@@ -3007,6 +3008,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nie pod�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Podświetl zasięg projektowanej stacji
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptuje: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_SHORT}/rok
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Połącz stację
@@ -5313,6 +5315,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiekt n
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siedziba firmy na drodze
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nie można nabyć tego terenu...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... to już jest twoje!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... osiągnięto limit budowy obiektów
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie można stworzyć grupy...

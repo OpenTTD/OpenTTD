@@ -556,15 +556,18 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Owner".
  *
- * @param tile The tile of which we would like to get the colour.
- * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
+ * @note If include_heightmap is IH_NEVER, the return value can safely be used as a palette colour (by masking it to a uint8)
+ * @param tile              The tile of which we would like to get the colour.
+ * @param t                 Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
+ * @param include_heightmap Whether to return the heightmap/contour colour of this tile (instead of the default land tile colour)
  * @return The colour of tile in the small map in mode "Owner"
  */
-static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
+inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap include_heightmap)
 {
 	Owner o;
 
 	switch (t) {
+		case MP_VOID:     return MKCOLOUR_XXXX(PC_BLACK);
 		case MP_INDUSTRY: return MKCOLOUR_XXXX(PC_DARK_GREY);
 		case MP_HOUSE:    return MKCOLOUR_XXXX(PC_DARK_RED);
 		default:          o = GetTileOwner(tile); break;
@@ -577,7 +580,8 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE || o == OWNER_WATER) {
 		if (t == MP_WATER) return MKCOLOUR_XXXX(PC_WATER);
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-		return _smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour;
+		return ((include_heightmap == IncludeHeightmap::IfEnabled && _smallmap_show_heightmap) || include_heightmap == IncludeHeightmap::Always)
+			? cs->height_colours[TileHeight(tile)] : cs->default_colour;
 	} else if (o == OWNER_TOWN) {
 		return MKCOLOUR_XXXX(PC_DARK_RED);
 	}
@@ -814,7 +818,7 @@ inline uint32 SmallMapWindow::GetTileColours(const TileArea &ta) const
 			return GetSmallMapVegetationPixels(tile, et);
 
 		case SMT_OWNER:
-			return GetSmallMapOwnerPixels(tile, et);
+			return GetSmallMapOwnerPixels(tile, et, IncludeHeightmap::IfEnabled);
 
 		default: NOT_REACHED();
 	}

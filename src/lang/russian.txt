@@ -2793,6 +2793,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не п�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Показывать зону покрытия
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Принимается: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляется: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY_SHORT}/г
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
