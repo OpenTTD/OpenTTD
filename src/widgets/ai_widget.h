@@ -38,7 +38,6 @@ enum AIConfigWidgets {
 	WID_AIC_DECREASE,         ///< Decrease the number of AIs.
 	WID_AIC_INCREASE,         ///< Increase the number of AIs.
 	WID_AIC_NUMBER,           ///< Number of AIs.
-	WID_AIC_GAMELIST,         ///< List with current selected GameScript.
 	WID_AIC_LIST,             ///< List with currently selected AIs.
 	WID_AIC_SCROLLBAR,        ///< Scrollbar to scroll through the selected AIs.
 	WID_AIC_MOVE_UP,          ///< Move up button.

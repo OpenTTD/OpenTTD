@@ -13,6 +13,7 @@
 /** %Window numbers. */
 enum WindowNumberEnum {
 	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.
+	WN_GAME_OPTIONS_GS,              ///< GS settings.
 	WN_GAME_OPTIONS_ABOUT,           ///< About window.
 	WN_GAME_OPTIONS_NEWGRF_STATE,    ///< NewGRF settings.
 	WN_GAME_OPTIONS_GAME_OPTIONS,    ///< Game options.
@@ -596,6 +597,7 @@ enum WindowClass {
 	/**
 	 * Game options window; %Window numbers:
 	 *   - #WN_GAME_OPTIONS_AI = #AIConfigWidgets
+	 *   - #WN_GAME_OPTIONS_GS = #GSConfigWidgets
 	 *   - #WN_GAME_OPTIONS_ABOUT = #AboutWidgets
 	 *   - #WN_GAME_OPTIONS_NEWGRF_STATE = #NewGRFStateWidgets
 	 *   - #WN_GAME_OPTIONS_GAME_OPTIONS = #GameOptionsWidgets

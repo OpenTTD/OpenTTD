@@ -22,6 +22,7 @@
 #include "strings_func.h"
 #include "fios.h"
 #include "ai/ai_gui.hpp"
+#include "game/game_gui.hpp"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "language.h"
@@ -368,6 +369,7 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 			case WID_SGI_AI_SETTINGS:     ShowAIConfigWindow(); break;
+			case WID_SGI_GS_SETTINGS:     ShowGSConfigWindow(); break;
 			case WID_SGI_EXIT:            HandleExitGameRequest(); break;
 		}
 	}
@@ -447,11 +449,13 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'script settings' and 'newgrf settings' buttons */
+	/* 'AO settings', 'Game Script settings', and 'newgrf settings' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_AI_SETTINGS), SetMinimalSize(158, 12),
-							SetDataTip(STR_INTRO_SCRIPT_SETTINGS, STR_INTRO_TOOLTIP_SCRIPT_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_AI_SETTINGS), SetMinimalSize(105, 12),
+							SetDataTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GS_SETTINGS), SetMinimalSize(106, 12),
+							SetDataTip(STR_INTRO_GAMESCRIPT_SETTINGS, STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS), SetPadding(0, 0, 0, 0), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GRF_SETTINGS), SetMinimalSize(105, 12),
 							SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
