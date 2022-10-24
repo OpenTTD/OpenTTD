@@ -757,7 +757,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Konstruk
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Konstrukcja torów tramwajowych
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa. Shift przełącza pomiędzy trybem sadzenia a szacowaniem jego kosztów
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść napis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 
 # Scenario editor file menu
 ###length 7
@@ -2998,6 +2998,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}przeładowany
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} miesięcznie do przetransportowania z {STATION} do {STATION} ({COMMA}% przepustowości){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} do przetransportowania z powrotem ({COMMA}% przepustowości)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Średni czas podróży: {NUM}{NBSP}d{P zień ni ni}
 
 # Base for station construction window(s)
@@ -3196,11 +3198,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Krajobra
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Obniżenie narożnika terenu. Przeciągnięcie obniża pierwszy zaznaczony róg i wyrównuje zaznaczony obszar do nowej wysokości rogu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyższenie narożnika terenu. Przeciągnięcie podnosi pierwszy zaznaczony róg i wyrównuje zaznaczony obszar do nowej wysokości rogu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren do wysykości pierwszego zaznaczonego rogu. Ctrl zaznacza teren po przekątnej. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia. Shift przełącza pomiędzy trybem kupowania a szacowaniem jego kosztów
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem kupowania a szacowaniem jego kosztów
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy. Shift przełącza pomiędzy trybem budowy a szacowaniem jej kosztów
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem budowy a szacowaniem jej kosztów
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Wybierz rodzaj obiektu do budowy
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Podgląd obiektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} pól

@@ -830,10 +830,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nije koalier fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbeljen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nije oaljereserves fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbeljen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Troch ferbetterde metoades wurdt de produskje fan {INDUSTRY} ferwachte te ferdûbeljen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} Produksje by {INDUSTRY} giet omheech mei {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK} Produksje fan {INDUSTRY} giet omleech mei 50%
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produksje fan {STRING} troch {INDUSTRY} giet omheech mei {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produksje fan {INDUSTRY} giet omleech mei 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insektenpleach jout gaos by {INDUSTRY}!{}Produksje giet omleech mei 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} produksje fan {INDUSTRY} wurdt tebekset mei {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produksje fan {STRING} troch {INDUSTRY} wurdt tebekset mei {COMMA}%!
 
 ###length VEHICLE_TYPES
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} stiet opsteld yn depot
@@ -1103,7 +1103,7 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 ###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fijannich
-STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend
+STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend (gjin effekt op bedriuwsaktiviteit)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin brûkbere AIs beskikber...{}jo kinne ferskillende AIs downloade fia it 'Online Content' systeem
 
@@ -1182,6 +1182,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Behearskje hoe 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsydzjefermannichfâldiger: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stel yn hoefolle der betelle wurdt foar subsidiearre ferbinings
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stel it oantal jierren yn wêrfoar subsydzje takend wurdt
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jier
 ###setting-zero-is-special
@@ -1691,6 +1692,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Begjin jier: {S
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Stea it keapjen fan oandielen ta: {STRING}
 
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimale leeftiid fan it bedriuw om oandielen te hanneljen: {STRING}
 
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :By slepe, pleats seinen eltse: {STRING}
@@ -1716,6 +1718,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Soksawat
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Doarpen en stêden meie dyken boue: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Stêden meie spoaroergongen boue: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Troch dizze opsje yn te skeakeljen kinne stêden oergongen krúspunten op gelikense hichte bouwe
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Wetten oer maximale lûdesdruk foar fleanfjilden: {STRING}
 
@@ -2176,6 +2179,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ûnjildich of �
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :ferkearde revyzje
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namme is al beset
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :ferkeard wachtwurd
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :fuortstjoerd troch server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :besocht falsk te spieljen
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :joech tevolle opdrachten
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kaart delheljen duorret te lang

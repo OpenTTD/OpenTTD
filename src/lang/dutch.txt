@@ -855,10 +855,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nieuwe kolenader gevonden bij {INDUSTRY}!{}Men verwacht productieverdubbeling!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nieuwe oliebronnen gevonden bij {INDUSTRY}!{}Men verwacht productieverdubbeling!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Verbeterde landbouwmethoden bij {INDUSTRY} zorgen voor een verwachte productieverdubbeling!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} productie van {INDUSTRY} stijgt met {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Productie van {STRING} door {INDUSTRY} stijgt met {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Productie van {INDUSTRY} verlaagd met 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insectenplaag zorgt voor ravage bij {INDUSTRY}!{}Productie gezakt met 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} productie van {INDUSTRY} daalt met {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Productie van {STRING} door {INDUSTRY} daalt met {COMMA}%!
 
 ###length VEHICLE_TYPES
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wacht in remise
@@ -1250,7 +1250,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {ST
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten instellen
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld, kunnen om de paar jaar recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld kunnen om de paar jaar recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, zelfs als er een kortere weg naar hun volgende bestemming is bij omkeren
@@ -1275,7 +1275,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Meer realistisc
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Verzorgingsgebieden met verschillende groottes voor verschillende typen stations en luchthavens
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Stations van het bedrijf kunnen leveren aan industrieën met bijbehorend neutraal station: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Wanneer dit is ingeschakeld, kunnen industrieën met bijbehorende stations (zoals olievelden) ook worden voorzien door stations van het bedrijf die in de buurt zijn gebouwd. Wanneer dit is uitgeschakeld, kunnen deze industrieën alleen worden voorzien door het bijbehorende station. Eventuele stations van het bedrijif in de buurt kunnen niet aan ze leveren; ook levert het bijbehorende station alleen aan de industrie zelf.
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Wanneer dit is ingeschakeld kunnen industrieën met bijbehorende stations (zoals olievelden) ook worden voorzien door stations van het bedrijf die in de buurt zijn gebouwd. Wanneer dit is uitgeschakeld kunnen deze industrieën alleen worden voorzien door het bijbehorende station. Eventuele stations van het bedrijif in de buurt kunnen niet aan ze leveren; ook levert het bijbehorende station alleen aan de industrie zelf.
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Verwijderen van meer stedelijke wegen, bruggen en tunnels toestaan: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Maakt het gemakkelijker om door de stad beheerde infrastructuur en gebouwen te verwijderen.
@@ -1853,13 +1853,13 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Willekeurig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Steden mogen wegen bouwen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Steden toestaan om wegen te bouwen ten behoeve van groei. Schakel deze optie uit als je niet wilt dat steden zelf wegen bouwen.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Steden mogen gelijkvloerse kruisingen bouwen: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Door deze optie in te schakelen, kunnen steden gelijkvloerse kruisingen bouwen.
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Door deze optie in te schakelen kunnen steden gelijkvloerse kruisingen bouwen
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Geluidsniveaucontrole door steden voor vliegvelden toestaan: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Als je deze instelling uitschakelt, mogen er twee luchthavens per stad zijn. Als je deze instelling ingeschakelt, wordt het aantal luchthavens in een stad beperkt door de lawaaitolerantie van de stad; deze is afhankelijk van de bevolking en de grootte en afstand van de luchthaven.
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Steden stichten in spel: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wanneer deze instelling is ingeschakeld, kunnen spelers nieuwe steden stichten tijdens het spel.
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wanneer deze instelling is ingeschakeld kunnen spelers nieuwe steden stichten tijdens het spel
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
@@ -2630,6 +2630,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Markeer 
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Markeer het dekkingsgebied van de voorgestelde locatie
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepteert: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Biedt aan: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Onderhoudskosten: {GOLD}{CURRENCY_SHORT}/jaar
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Station samenvoegen
