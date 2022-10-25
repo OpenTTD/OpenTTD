@@ -562,7 +562,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
  * @param include_heightmap Whether to return the heightmap/contour colour of this tile (instead of the default land tile colour)
  * @return The colour of tile in the small map in mode "Owner"
  */
-inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap include_heightmap)
+uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap include_heightmap)
 {
 	Owner o;
 
