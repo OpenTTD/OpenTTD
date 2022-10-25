@@ -41,6 +41,7 @@
 #include "order_cmd.h"
 #include "roadveh_cmd.h"
 #include "train_cmd.h"
+#include "hotkeys.h"
 
 #include "safeguards.h"
 
@@ -2686,26 +2687,6 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	EndContainer(),
 };
 
-/** Vehicle view window descriptor for all vehicles but trains. */
-static WindowDesc _vehicle_view_desc(
-	WDP_AUTO, "view_vehicle", 250, 116,
-	WC_VEHICLE_VIEW, WC_NONE,
-	0,
-	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
-);
-
-/**
- * Vehicle view window descriptor for trains. Only minimum_height and
- *  default_height are different for train view.
- */
-static WindowDesc _train_view_desc(
-	WDP_AUTO, "view_vehicle_train", 250, 134,
-	WC_VEHICLE_VIEW, WC_NONE,
-	0,
-	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
-);
-
-
 /* Just to make sure, nobody has changed the vehicle type constants, as we are
 	 using them for array indexing in a number of places here. */
 static_assert(VEH_TRAIN == 0);
@@ -3151,6 +3132,20 @@ public:
 		}
 	}
 
+	EventState OnHotkey(int hotkey) override
+	{
+		/* If the hotkey is not for any widget in the UI (i.e. for honking) */
+		if (hotkey == WID_VV_HONK_HORN) {
+			const Window* mainwindow = FindWindowById(WC_MAIN_WINDOW, 0);
+			const Vehicle* v = Vehicle::Get(window_number);
+			/*Only play the sound if we're following this vehicle */
+			if (mainwindow->viewport->follow_vehicle == v->index) {
+				v->PlayLeaveStationSound(true);
+			}
+		}
+		return Window::OnHotkey(hotkey);
+	}
+
 	void OnQueryTextFinished(char *str) override
 	{
 		if (str == nullptr) return;
@@ -3225,8 +3220,36 @@ public:
 	{
 		::ShowNewGRFInspectWindow(GetGrfSpecFeature(Vehicle::Get(this->window_number)->type), this->window_number);
 	}
+
+	static HotkeyList hotkeys;
 };
 
+static Hotkey vehicleview_hotkeys[] = {
+	Hotkey('H', "honk", WID_VV_HONK_HORN),
+	HOTKEY_LIST_END
+};
+HotkeyList VehicleViewWindow::hotkeys("vehicleview", vehicleview_hotkeys);
+
+/** Vehicle view window descriptor for all vehicles but trains. */
+static WindowDesc _vehicle_view_desc(
+	WDP_AUTO, "view_vehicle", 250, 116,
+	WC_VEHICLE_VIEW, WC_NONE,
+	0,
+	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets),
+	&VehicleViewWindow::hotkeys
+);
+
+/**
+ * Vehicle view window descriptor for trains. Only minimum_height and
+ *  default_height are different for train view.
+ */
+static WindowDesc _train_view_desc(
+	WDP_AUTO, "view_vehicle_train", 250, 134,
+	WC_VEHICLE_VIEW, WC_NONE,
+	0,
+	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets),
+	&VehicleViewWindow::hotkeys
+);
 
 /** Shows the vehicle view window of the given vehicle. */
 void ShowVehicleViewWindow(const Vehicle *v)

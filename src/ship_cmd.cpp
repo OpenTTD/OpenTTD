@@ -272,16 +272,10 @@ void Ship::MarkDirty()
 	this->UpdateCache();
 }
 
-static void PlayShipSound(const Vehicle *v)
+void Ship::PlayLeaveStationSound(bool force) const
 {
-	if (!PlayVehicleSound(v, VSE_START)) {
-		SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
-	}
-}
-
-void Ship::PlayLeaveStationSound() const
-{
-	PlayShipSound(this);
+	if (PlayVehicleSound(this, VSE_START, force)) return;
+	SndPlayVehicleFx(ShipVehInfo(this->engine_type)->sfx, this);
 }
 
 TileIndex Ship::GetOrderStationLocation(StationID station)
@@ -398,7 +392,7 @@ static bool CheckShipLeaveDepot(Ship *v)
 	v->UpdateViewport(true, true);
 	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 
-	PlayShipSound(v);
+	v->PlayLeaveStationSound();
 	VehicleServiceInDepot(v);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	SetWindowClassesDirty(WC_SHIPS_LIST);

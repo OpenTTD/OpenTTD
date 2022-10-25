@@ -235,6 +235,7 @@ void SndCopyToPool()
 
 /**
  * Decide 'where' (between left and right speaker) to play the sound effect.
+ * Note: Callers must determine if sound effects are enabled. This plays a sound regardless of the setting.
  * @param sound Sound effect to play
  * @param left   Left edge of virtual coordinates where the sound is produced
  * @param right  Right edge of virtual coordinates where the sound is produced
@@ -243,8 +244,6 @@ void SndCopyToPool()
  */
 static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, int bottom)
 {
-	if (_settings_client.music.effect_vol == 0) return;
-
 	/* Iterate from back, so that main viewport is checked first */
 	for (const Window *w : Window::IterateFromBack()) {
 		const Viewport *vp = w->viewport;
