@@ -2631,6 +2631,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 표시합니다
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}유지비: {GOLD}{CURRENCY_SHORT}/년
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}같은 이름으로 정거장 만들기
