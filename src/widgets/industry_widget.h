@@ -39,6 +39,7 @@ enum IndustryDirectoryWidgets {
 	WID_ID_FILTER_BY_PROD_CARGO, ///< Produced cargo filter dropdown list.
 	WID_ID_INDUSTRY_LIST,        ///< Industry list.
 	WID_ID_SCROLLBAR,            ///< Scrollbar of the list.
+	WID_ID_INDUSTRY_TOTAL		 ///< Total Number of industries in the map
 };
 
 /** Widgets of the #IndustryCargoesWindow class */

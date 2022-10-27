@@ -44,6 +44,7 @@
 #include "industry_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
+#include "console_func.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -550,6 +551,10 @@ static bool TransportIndustryGoods(TileIndex tile)
 			moved_cargo |= (am != 0);
 		}
 	}
+
+    if (moved_cargo) {
+        i->ctlflags |= INDCTL_SERVICED;
+    }
 
 	return moved_cargo;
 }
@@ -2173,7 +2178,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint32 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
-			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
+			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_creation == ICR_FUND_ONLY) ||
 			(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
 		*force_at_least_one = false;
 		return 0;
@@ -2196,7 +2201,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
  */
 static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 {
-	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) {
+	if (_settings_game.difficulty.industry_creation == ICR_FUND_ONLY) {
 		*min_number = 0;
 		return 0;
 	}
@@ -2222,7 +2227,6 @@ static uint GetNumberOfIndustries()
 {
 	/* Number of industries on a 256x256 map. */
 	static const uint16 numof_industry_table[] = {
-		0,    // none
 		0,    // minimal
 		10,   // very low
 		25,   // low
@@ -2272,7 +2276,7 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
  * Get total number of industries existing in the game.
  * @return Number of industries currently in the game.
  */
-static uint GetCurrentTotalNumberOfIndustries()
+uint GetCurrentTotalNumberOfIndustries()
 {
 	int total = 0;
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) total += Industry::GetIndustryTypeCount(it);
@@ -2297,21 +2301,32 @@ void IndustryBuildData::Reset()
 
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		this->builddata[it].Reset();
+
+		this->builddata[it].target_count = this->industry_target[it] = Industry::GetIndustryTypeCount(it);
 	}
+
+	this->total_population = GetWorldPopulation();
 }
 
 /** Monthly update of industry build data. */
 void IndustryBuildData::MonthlyLoop()
 {
 	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
-	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // 'no industries' setting.
 
-	/* To prevent running out of unused industries for the player to connect,
+	if (_settings_game.difficulty.industry_creation == ICR_FUND_ONLY ||
+		_settings_game.difficulty.industry_creation == ICR_KEEP_COUNT||
+		_settings_game.difficulty.industry_creation == ICR_ADAPT_POP) return; // no update needed
+
+	/* Original behavior: To prevent running out of unused industries for the player to connect,
 	 * add a fraction of new industries each month, but only if the manager can keep up. */
 	uint max_behind = 1 + std::min(99u, ScaleByMapSize(3)); // At most 2 industries for small maps, and 100 at the biggest map (about 6 months industry build attempts).
 	if (GetCurrentTotalNumberOfIndustries() + max_behind >= (this->wanted_inds >> 16)) {
 		this->wanted_inds += ScaleByMapSize(NEWINDS_PER_MONTH);
 	}
+
+	// Debug(console, 1,  "Number of industries = {}", GetCurrentTotalNumberOfIndustries());
+	// Debug(console, 1,  "Industry target = {}", (this->wanted_inds >> 16));
+	// Debug(console, 1,  "Wanted Inds = {}", this->wanted_inds);
 }
 
 /**
@@ -2320,7 +2335,7 @@ void IndustryBuildData::MonthlyLoop()
  */
 void GenerateIndustries()
 {
-	if (_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // No industries in the game.
+	if (_game_mode != GM_EDITOR && _settings_game.difficulty.industry_creation == ICR_FUND_ONLY) return; // No industries in the game.
 
 	uint32 industry_probs[NUM_INDUSTRYTYPES];
 	bool force_at_least_one[NUM_INDUSTRYTYPES];
@@ -2438,43 +2453,98 @@ bool IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
 /** Decide how many industries of each type are needed. */
 void IndustryBuildData::SetupTargetCount()
 {
-	bool changed = false;
-	uint num_planned = 0; // Number of industries planned in the industry build data.
-	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		changed |= this->builddata[it].GetIndustryTypeData(it);
-		num_planned += this->builddata[it].target_count;
-	}
-	uint total_amount = this->wanted_inds >> 16; // Desired total number of industries.
-	changed |= num_planned != total_amount;
-	if (!changed) return; // All industries are still the same, no need to re-randomize.
+	//try to keep the amount of each industry around the value set when starting the game, with or without adapting
+	//to the variation of population in the whole map.
+	if (_settings_game.difficulty.industry_creation == ICR_KEEP_COUNT||
+		_settings_game.difficulty.industry_creation == ICR_ADAPT_POP) {
 
-	/* Initialize the target counts. */
-	uint force_build = 0;  // Number of industries that should always be available.
-	uint32 total_prob = 0; // Sum of probabilities.
-	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		IndustryTypeBuildData *ibd = this->builddata + it;
-		force_build += ibd->min_number;
-		ibd->target_count = ibd->min_number;
-		total_prob += ibd->probability;
-	}
 
-	if (total_prob == 0) return; // No buildable industries.
+		int32 total_count = 0, target_total = 0;
 
-	/* Subtract forced industries from the number of industries available for construction. */
-	total_amount = (total_amount <= force_build) ? 0 : total_amount - force_build;
+		float pop_variation = 1.0f + (0.1f * (float(GetWorldPopulation()) / (float(this->total_population)) - 1.0f));
 
-	/* Assign number of industries that should be aimed for, by using the probability as a weight. */
-	while (total_amount > 0) {
-		uint32 r = RandomRange(total_prob);
-		IndustryType it = 0;
-		while (r >= this->builddata[it].probability) {
-			r -= this->builddata[it].probability;
-			it++;
-			assert(it < NUM_INDUSTRYTYPES);
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			uint16 target_value = this->industry_target[it];
+
+			int32 rand = RandomRange(2);
+			uint8 sign = RandomRange(256);
+
+			if (sign < 128) {
+				rand = -rand;
+			}
+
+			this->builddata[it].target_count += rand;
+
+			if (_settings_game.difficulty.industry_creation == ICR_ADAPT_POP) {
+				//adapts the target to the world population, the idea behind this is that more people
+				//means more demand, hence a need of new industries.
+				target_value *= pop_variation;
+			}
+
+            target_total += target_value;
+
+			//allows a max varation around the initial count of around 10%. Division by 8 is 12% (and a simple integer operation)
+			uint32 max_variation = target_value / 8;
+			if (this->builddata[it].target_count < (target_value - max_variation) ) {
+				this->builddata[it].target_count = target_value - max_variation;
+			}
+			else if (this->builddata[it].target_count > (target_value + max_variation) ) {
+				this->builddata[it].target_count = target_value + max_variation;
+			}
+
+			total_count +=  this->builddata[it].target_count;
+
+			auto ind = GetIndustrySpec(it);
+			if (ind->enabled) {
+				Debug(console, 1,  "Industry {} : \t {}/{}/{}", GetString(ind->name), Industry::GetIndustryTypeCount(it),
+																				   this->builddata[it].target_count, target_value);
+			}
 		}
-		assert(this->builddata[it].probability > 0);
-		this->builddata[it].target_count++;
-		total_amount--;
+
+		Debug(console, 1,  "Population variation factor: \t {}", pop_variation);
+		Debug(console, 1,  "Total: \t {}/{}/{}", GetCurrentTotalNumberOfIndustries(), total_count, target_total);
+	}
+	else {
+		//original behavior
+
+		bool changed = false;
+		uint num_planned = 0; // Number of industries planned in the industry build data.
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			changed |= this->builddata[it].GetIndustryTypeData(it);
+			num_planned += this->builddata[it].target_count;
+		}
+		uint total_amount = this->wanted_inds >> 16; // Desired total number of industries.
+		changed |= num_planned != total_amount;
+		if (!changed) return; // All industries are still the same, no need to re-randomize.
+
+		/* Initialize the target counts. */
+		uint force_build = 0;  // Number of industries that should always be available.
+		uint32 total_prob = 0; // Sum of probabilities.
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			IndustryTypeBuildData *ibd = this->builddata + it;
+			force_build += ibd->min_number;
+			ibd->target_count = ibd->min_number;
+			total_prob += ibd->probability;
+		}
+
+		if (total_prob == 0) return; // No buildable industries.
+
+		/* Subtract forced industries from the number of industries available for construction. */
+		total_amount = (total_amount <= force_build) ? 0 : total_amount - force_build;
+
+		/* Assign number of industries that should be aimed for, by using the probability as a weight. */
+		while (total_amount > 0) {
+			uint32 r = RandomRange(total_prob);
+			IndustryType it = 0;
+			while (r >= this->builddata[it].probability) {
+				r -= this->builddata[it].probability;
+				it++;
+				assert(it < NUM_INDUSTRYTYPES);
+			}
+			assert(this->builddata[it].probability > 0);
+			this->builddata[it].target_count++;
+			total_amount--;
+		}
 	}
 }
 
@@ -2848,6 +2918,16 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	 * For non-smooth economy these should always be synchronized with prod_level */
 	if (recalculate_multipliers) i->RecomputeProductionMultipliers();
 
+	/* Prevent unserviced industries closure if the parameter is set */
+	if(_settings_game.difficulty.industry_closure == ICL_UNSERVICED && (!(i->ctlflags & INDCTL_SERVICED)) ) {
+		closeit = false;
+	}
+	
+	/* Prevent industries closure if linked town has no rating at all */
+	if((_settings_game.difficulty.industry_closure == ICL_NO_RATINGS) && (! i->town->have_ratings)) {
+		closeit = false;
+	}
+	
 	/* Close if needed and allowed */
 	if (closeit && !CheckIndustryCloseDownProtection(i->type) && !(i->ctlflags & INDCTL_NO_CLOSURE)) {
 		i->prod_level = PRODLEVEL_CLOSURE;

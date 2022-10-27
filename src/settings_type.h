@@ -51,7 +51,6 @@ enum SettingsProfile {
 
 /** Available industry map generation densities. */
 enum IndustryDensity {
-	ID_FUND_ONLY, ///< The game does not build industries.
 	ID_MINIMAL,   ///< Start with just the industries that must be present.
 	ID_VERY_LOW,  ///< Very few industries at game start.
 	ID_LOW,       ///< Few industries at game start.
@@ -59,6 +58,25 @@ enum IndustryDensity {
 	ID_HIGH,      ///< Many industries at game start.
 
 	ID_END,       ///< Number of industry density settings.
+};
+
+/** In game industry creation behavior */
+enum IndustryCreation {
+	ICR_FUND_ONLY, 	///< The game does not build industries.
+	ICR_ORIGINAL,	///< Original game behavior
+	ICR_KEEP_COUNT,	///< Sticks to the number of industries at map creation. By type. With small variations.
+	ICR_ADAPT_POP,	///< Adapts the amount of industries to the population on the map
+
+	ICR_END			///< Number of industry creation settings.
+};
+
+/** In game industry closure behavior */
+enum IndustryClosure {
+	ICL_ORIGINAL,	///< Original game behavior
+	ICL_UNSERVICED,	///< Never remove unservided industries
+	ICL_NO_RATINGS,	///< Never remove an instry whose town never had player ratings
+
+	ICL_END			///< Number of industry closure settings.
 };
 
 /** Possible values for "userelayservice" setting. */
@@ -76,6 +94,8 @@ struct DifficultySettings {
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
 	byte   number_towns;                     ///< the amount of towns
 	byte   industry_density;                 ///< The industry density. @see IndustryDensity
+	byte   industry_creation;                ///< The industry creation behavior. @see IndustryCreation
+	byte   industry_closure;                 ///< The industry closure behavior. @see IndustryCreation
 	uint32 max_loan;                         ///< the maximum initial loan
 	byte   initial_interest;                 ///< amount of interest (to pay over the loan)
 	byte   vehicle_costs;                    ///< amount of money spent on vehicle running cost

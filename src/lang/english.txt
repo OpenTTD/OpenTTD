@@ -1096,7 +1096,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change c
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA}
 
 STR_NONE                                                        :None
-STR_FUNDING_ONLY                                                :Funding only
 STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Very Low
 STR_NUM_LOW                                                     :Low
@@ -1104,6 +1103,15 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :High
 STR_NUM_CUSTOM                                                  :Custom
 STR_NUM_CUSTOM_NUMBER                                           :Custom ({NUM})
+
+STR_INDUSTRY_CREATION_FUNDING_ONLY                              :Funding only
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Original behavior
+STR_INDUSTRY_CREATION_KEEP_COUNT                                :Maintain stable number
+STR_INDUSTRY_CREATION_ADAPT_POP                                 :Adapt the industry number to the overall population
+
+STR_INDUSTRY_CLOSURE_ORIGINAL_BEHAVIOR                          :Original behavior
+STR_INDUSTRY_CLOSURE_KEEP_UNSERVICED                            :Keep industries with no service record
+STR_INDUSTRY_CLOSURE_KEEP_NORATING                              :Keep industries linked to towns with no player rating
 
 STR_VARIETY_NONE                                                :None
 STR_VARIETY_VERY_LOW                                            :Very Low
@@ -1463,7 +1471,13 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrain type: {
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness of the landscape
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING2}
-STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated during map creation
+
+STR_CONFIG_SETTING_INDUSTRY_CREATION                            :Industry creation: {STRING2}
+STR_CONFIG_SETTING_INDUSTRY_CREATION_HELPTEXT                   :Defines how industries can be created in game
+
+STR_CONFIG_SETTING_INDUSTRY_CLOSURE                             :Industry closure: {STRING2}
+STR_CONFIG_SETTING_INDUSTRY_CLOSURE_HELPTEXT                    :Defines when a industry can be closed in game
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil industries: {STRING2}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up.
@@ -3140,6 +3154,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of towns:
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of industries:
+STR_MAPGEN_BEHAVIOR_OF_INDUSTRIES                               :{BLACK}Industry creation:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Highest peak:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Increase the maximum height of highest peak on the map by one
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Decrease the maximum height of highest peak on the map by one
@@ -3736,6 +3751,7 @@ STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Accepted
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produced cargo: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :All cargo types
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :None
+STR_INDUSTRY_TOTAL                                              :{BLACK}Industry total: {COMMA}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

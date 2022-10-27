@@ -772,7 +772,7 @@ public:
 		this->SetupArrays();
 
 		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? nullptr : GetIndustrySpec(this->selected_type);
-		if (indsp == nullptr) this->enabled[this->selected_index] = _settings_game.difficulty.industry_density != ID_FUND_ONLY;
+		if (indsp == nullptr) this->enabled[this->selected_index] = _settings_game.difficulty.industry_creation != ICR_FUND_ONLY;
 		this->SetButtons();
 		this->SetDirty();
 	}
@@ -1235,6 +1235,9 @@ static const NWidgetPart _nested_industry_directory_widgets[] = {
 				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_ID_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1), SetScrollbar(WID_ID_SCROLLBAR), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_BROWN),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_ID_INDUSTRY_TOTAL), SetPadding(2, 0, 2, 2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_INDUSTRY_TOTAL, STR_NULL),
+			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_ID_SCROLLBAR),
@@ -1648,6 +1651,10 @@ public:
 
 			case WID_ID_FILTER_BY_PROD_CARGO:
 				SetDParam(0, this->cargo_filter_texts[this->produced_cargo_filter_criteria]);
+				break;
+				
+			case WID_ID_INDUSTRY_TOTAL:
+				SetDParam(0, GetCurrentTotalNumberOfIndustries());
 				break;
 		}
 	}

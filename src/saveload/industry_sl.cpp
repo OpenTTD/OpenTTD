@@ -130,6 +130,8 @@ struct TIDSChunkHandler : NewGRFMappingChunkHandler {
 /** Description of the data to save and load in #IndustryBuildData. */
 static const SaveLoad _industry_builder_desc[] = {
 	SLEG_VAR("wanted_inds", _industry_builder.wanted_inds, SLE_UINT32),
+	SLEG_ARR("industry_target", _industry_builder.industry_target, SLE_UINT16),
+	SLEG_VAR("total_population", _industry_builder.total_population, SLE_UINT32)
 };
 
 /** Industry builder. */
@@ -138,6 +140,13 @@ struct IBLDChunkHandler : ChunkHandler {
 
 	void Save() const override
 	{
+		if (_game_mode == GM_EDITOR) {
+			/// udpate industry count to save correct values.
+			for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+				_industry_builder.industry_target[it] = Industry::GetIndustryTypeCount(it);
+			}
+		}
+
 		SlTableHeader(_industry_builder_desc);
 
 		SlSetArrayIndex(0);

@@ -3148,6 +3148,19 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_INDUSTRY_CREATION)) {
+		//set industry creation if previous save was using ID_FUND_ONLY
+		//no need to change industry_density as it doesn't have any effect on the current game.
+		if (_settings_game.difficulty.industry_density == 0) { // previously ID_FUND_ONLY, equal to 0
+			_settings_game.difficulty.industry_creation = ICR_FUND_ONLY;
+		}
+		else {
+			_settings_game.difficulty.industry_creation = ICR_ORIGINAL;
+		}
+
+        _settings_game.difficulty.industry_closure = ICL_ORIGINAL;
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

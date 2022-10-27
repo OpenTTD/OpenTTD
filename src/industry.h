@@ -55,8 +55,11 @@ enum IndustryControlFlags : byte {
 	 * Industry can not close regardless of production level or time since last delivery.
 	 * This does not prevent a closure already announced. */
 	INDCTL_NO_CLOSURE             = 1 << 2,
+	/**
+	 * Industry has been serviced at least one */
+	 INDCTL_SERVICED 			  = 1 << 3,
 	/** Mask of all flags set */
-	INDCTL_MASK = INDCTL_NO_PRODUCTION_DECREASE | INDCTL_NO_PRODUCTION_INCREASE | INDCTL_NO_CLOSURE,
+	INDCTL_MASK = INDCTL_NO_PRODUCTION_DECREASE | INDCTL_NO_PRODUCTION_INCREASE | INDCTL_NO_CLOSURE | INDCTL_SERVICED,
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryControlFlags);
 
@@ -209,6 +212,8 @@ void ReleaseDisastersTargetingIndustry(IndustryID);
 
 bool IsTileForestIndustry(TileIndex tile);
 
+uint GetCurrentTotalNumberOfIndustries();
+
 /** Data for managing the number of industries of a single industry type. */
 struct IndustryTypeBuildData {
 	uint32 probability;  ///< Relative probability of building this industry.
@@ -228,6 +233,8 @@ struct IndustryTypeBuildData {
 struct IndustryBuildData {
 	IndustryTypeBuildData builddata[NUM_INDUSTRYTYPES]; ///< Industry build data for every industry type.
 	uint32 wanted_inds; ///< Number of wanted industries (bits 31-16), and a fraction (bits 15-0).
+	uint16 industry_target[NUM_INDUSTRYTYPES]; ///< Target count for each industry type set during game start
+	uint32 total_population; ///< Population when starting game
 
 	void Reset();
 

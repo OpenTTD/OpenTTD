@@ -22,7 +22,8 @@ enum GenerateLandscapeWidgets {
 
 	WID_GL_TOWN_PULLDOWN,               ///< Dropdown 'No. of towns'.
 	WID_GL_TOWNNAME_DROPDOWN,           ///< Dropdown 'Townnames'.
-	WID_GL_INDUSTRY_PULLDOWN,           ///< Dropdown 'No. of industries'.
+	WID_GL_INDUSTRY_DENSITY_PULLDOWN,   ///< Dropdown 'No. of industries'.
+	WID_GL_INDUSTRY_CREATION_PULLDOWN,  ///< Dropdown 'Industries creation behavior'.
 
 	WID_GL_GENERATE_BUTTON,             ///< 'Generate' button.
 

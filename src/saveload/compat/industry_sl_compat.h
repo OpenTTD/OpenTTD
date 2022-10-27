@@ -58,6 +58,8 @@ const SaveLoadCompat _industry_sl_compat[] = {
 /** Original field order for _industry_builder_desc. */
 const SaveLoadCompat _industry_builder_sl_compat[] = {
 	SLC_VAR("wanted_inds"),
+	SLC_VAR("industry_target"),
+    SLC_VAR("total_population"),
 };
 
 /** Original field order for _industrytype_builder_desc. */

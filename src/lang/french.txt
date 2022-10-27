@@ -1097,7 +1097,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Nombre maximal de concurrents{NBSP}: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Aucune
-STR_FUNDING_ONLY                                                :Financement uniquement
 STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Très bas
 STR_NUM_LOW                                                     :Bas
@@ -1105,6 +1104,15 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Élevé
 STR_NUM_CUSTOM                                                  :Personnalisé
 STR_NUM_CUSTOM_NUMBER                                           :Personnalisé ({NUM})
+
+STR_INDUSTRY_CREATION_FUNDING_ONLY                              :Financement uniquement
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Comportement d'origine
+STR_INDUSTRY_CREATION_KEEP_COUNT                                :Maintenir nombre de départ
+STR_INDUSTRY_CREATION_ADAPT_POP                                 :Adapte le nombre d'industres à la population totale
+
+STR_INDUSTRY_CLOSURE_ORIGINAL_BEHAVIOR                          :Comportement d'origine
+STR_INDUSTRY_CLOSURE_KEEP_UNSERVICED                            :Garder les industries jamais desservies
+STR_INDUSTRY_CLOSURE_KEEP_NORATING                              :Garder les industries liées à des villes sans joueur
 
 STR_VARIETY_NONE                                                :Aucune
 STR_VARIETY_VERY_LOW                                            :Très basse
@@ -1464,7 +1472,13 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Type de terrain
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Vallonnement du paysage
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densité des industries{NBSP}: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Définit combien d'industries doivent être générée et quel niveau doit être maintenu pendant la partie
+STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Définit combien d'industries doivent être générées lors de la création de la carte
+
+STR_CONFIG_SETTING_INDUSTRY_CREATION                            :Création des industries {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CREATION_HELPTEXT                   :Définit la manière dont les industries sont créées pendant le jeu
+
+STR_CONFIG_SETTING_INDUSTRY_CLOSURE                             :Fermeture des industries: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CLOSURE_HELPTEXT                    :Définit quand les industries peuvent être supprimées en cours de jeu
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les industries pétrolières{NBSP}: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distance par rapport au bord de la carte où les raffineries et les plateformes pétrolières peuvent être construites. Sur les cartes d'îles cela assure qu'elles sont près de la côte. Sur les cartes plus large que 256 tuiles, cette valeur est mise à l'échelle.
@@ -2917,6 +2931,7 @@ STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selectio
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Choisir la marchandise à afficher
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Sélectionner l'industrie
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Choisir l'industrie à afficher
+STR_INDUSTRY_TOTAL                                              :{BLACK}Nombre d'industries: {COMMA}
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informations sur le terrain
@@ -3141,6 +3156,7 @@ STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
+STR_MAPGEN_BEHAVIOR_OF_INDUSTRIES                               :{BLACK}Creation des industries:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Sommet le plus élevé:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Augmenter la hauteur maximale du plus haut sommet de la carte de un
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuer la hauteur maximale du plus haut sommet de la carte de un
