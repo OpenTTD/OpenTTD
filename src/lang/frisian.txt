@@ -1108,6 +1108,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Sljocht
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelich
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergich
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
+STR_TERRAIN_TYPE_CUSTOM                                         :Oanpaste hichte
 
 ###length 4
 STR_CITY_APPROVAL_LENIENT                                       :Meigeand
@@ -2070,7 +2071,9 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Lânski
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Lângrutte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverferzje: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradres: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Útnûgingskoade: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Start datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spulskript: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{BLACK}Mei wachtwurd beskerme!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER NET BESKIKBER
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER FOL
@@ -2130,6 +2133,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Client l
 # Network client list
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Namme
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Namme fan de server wêrsto op spilest
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Dyn namme
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dit bisto sels
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klïïnt{P "" en} / {NUM} bedriuw{P "" en}
 
@@ -3235,8 +3239,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sintrear
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksje nivo: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Yndustry kundicht drigend sluten oan!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Fereaskje: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Nedichheden: {YELLOW}{STRING}{STRING}
 
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Nedichheden:
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Feroarje produksjenivo (mearfâld fan 8, maksimaal 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Feroarje produksjenivo (persintaazje, maksimaal 800%)
@@ -3409,10 +3414,11 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Tôgje f
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Ferkeapje alle treinen yn dit depot
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :Ferkeapje alle weinen yn disse garage
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Ferkeapje alle skippen yn dit dok
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Ferkeapje alle fleantugen yn hangar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Ferfang automatysk skippen yn de skipmakkerij
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Ferfang automatysk skippen yn it dok
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Ferfang automatysk alle fleantugen yn disse fleantúchhangaar
 
 ###length VEHICLE_TYPES
@@ -3486,6 +3492,7 @@ STR_REPLACE_ENGINES                                             :Motoaren
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail weinen
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev treinen
 
+STR_REPLACE_TRAM_VEHICLES                                       :Trams
 
 
 # Vehicle view
