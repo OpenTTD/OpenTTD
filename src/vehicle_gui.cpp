@@ -2343,7 +2343,12 @@ struct VehicleDetailsWindow : Window {
 				/* Draw profit */
 				SetDParam(0, v->GetDisplayProfitThisYear());
 				SetDParam(1, v->GetDisplayProfitLastYear());
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
+				if (v->IsGroundVehicle()) {
+					SetDParam(2, v->GetDisplayMinPowerToWeight());
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE);
+				} else {
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
+				}
 				y += FONT_HEIGHT_NORMAL;
 
 				/* Draw breakdown & reliability */
