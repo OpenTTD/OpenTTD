@@ -149,7 +149,7 @@ constexpr UnpackNetworkCommandProc MakeUnpackNetworkCommandCallback() noexcept
 template <Commands Tcmd, size_t... i>
 constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) noexcept
 {
-	return UnpackDispatchT{{ {MakeUnpackNetworkCommandCallback<Tcmd, i>()}...}};
+	return UnpackDispatchT{{ MakeUnpackNetworkCommandCallback<Tcmd, i>()...}};
 }
 
 template <typename T, T... i, size_t... j>
