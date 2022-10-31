@@ -4119,3 +4119,20 @@ Trackdir Train::GetVehicleTrackdir() const
 
 	return TrackDirectionToTrackdir(FindFirstTrack(this->track), this->direction);
 }
+
+uint16 Train::GetMaxWeight() const
+{
+	uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnitsInTrain(this->GetEngine()->DetermineCapacity(this));
+
+	/* Vehicle weight is not added for articulated parts. */
+	if (!this->IsArticulatedPart()) {
+		weight += GetVehicleProperty(this, PROP_TRAIN_WEIGHT, RailVehInfo(this->engine_type)->weight);
+	}
+
+	/* Powered wagons have extra weight added. */
+	if (HasBit(this->flags, VRF_POWEREDWAGON)) {
+		weight += RailVehInfo(this->gcache.first_engine)->pow_wag_weight;
+	}
+
+	return weight;
+}

@@ -190,6 +190,12 @@ protected: // These functions should not be called outside acceleration code.
 	}
 
 	/**
+	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
+	 * @return Weight value in tonnes.
+	 */
+	uint16 GetMaxWeight() const override;
+
+	/**
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */

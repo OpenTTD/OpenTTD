@@ -1753,3 +1753,16 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
 	 * otherwise transform it into a valid track direction */
 	return (Trackdir)((IsReversingRoadTrackdir((Trackdir)this->state)) ? (this->state - 6) : this->state);
 }
+
+uint16 RoadVehicle::GetMaxWeight() const
+{
+	uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->GetEngine()->DetermineCapacity(this));
+
+	/* Vehicle weight is not added for articulated parts. */
+	if (!this->IsArticulatedPart()) {
+		/* Road vehicle weight is in units of 1/4 t. */
+		weight += GetVehicleProperty(this, PROP_ROADVEH_WEIGHT, RoadVehInfo(this->engine_type)->weight) / 4;
+	}
+
+	return weight;
+}

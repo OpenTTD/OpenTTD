@@ -2987,3 +2987,29 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
 		}
 	}
 }
+
+/**
+ * Calculates the maximum weight of the ground vehicle when loaded.
+ * @return Weight in tonnes
+ */
+uint32 Vehicle::GetDisplayMaxWeight() const
+{
+	uint32 max_weight = 0;
+
+	for (const Vehicle* u = this; u != nullptr; u = u->Next()) {
+		max_weight += u->GetMaxWeight();
+	}
+
+	return max_weight;
+}
+
+/**
+ * Calculates the minimum power-to-weight ratio using the maximum weight of the ground vehicle
+ * @return power-to-weight ratio in 10ths of hp(I) per tonne
+ */
+uint32 Vehicle::GetDisplayMinPowerToWeight() const
+{
+	uint32 max_weight = GetDisplayMaxWeight();
+	if (max_weight == 0) return 0;
+	return GetGroundVehicleCache()->cached_power * 10u / max_weight;
+}

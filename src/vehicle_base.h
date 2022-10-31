@@ -346,6 +346,15 @@ public:
 
 	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
 
+	/**
+	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
+	 * @return Weight value in tonnes.
+	 */
+	virtual uint16 GetMaxWeight() const
+	{
+		return 0;
+	}
+
 	Vehicle(VehicleType type = VEH_INVALID);
 
 	void PreDestructor();
@@ -1040,6 +1049,9 @@ public:
 	 * @return an iterable ensemble of orders of a vehicle
 	 */
 	IterateWrapper Orders() const { return IterateWrapper(this->orders); }
+
+	uint32 GetDisplayMaxWeight() const;
+	uint32 GetDisplayMinPowerToWeight() const;
 };
 
 /**
