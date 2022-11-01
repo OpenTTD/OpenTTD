@@ -380,6 +380,8 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			uint len = GetTunnelBridgeLength(other_end, tile) + 2;
 			cost.AddCost(len * 2 * RoadClearCost(existing_rt));
 			if (flags & DC_EXEC) {
+				MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
+
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 
@@ -780,6 +782,7 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 				MakeRoadCrossing(tile, company, company, GetTileOwner(tile), roaddir, GetRailType(tile), rtt == RTT_ROAD ? rt : INVALID_ROADTYPE, (rtt == RTT_TRAM) ? rt : INVALID_ROADTYPE, town_id);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
+				MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
 				MarkTileDirtyByTile(tile);
 			}
 			return CommandCost(EXPENSES_CONSTRUCTION, 2 * RoadBuildCost(rt));
@@ -1703,7 +1706,42 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RTSG_CROSSING) + axis;
 				DrawGroundSprite(rail, pal);
 
-				DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
+				const Axis road_axis = GetCrossingRoadAxis(ti->tile);
+				const DiagDirection dir1 = AxisToDiagDir(road_axis);
+				const DiagDirection dir2 = ReverseDiagDir(dir1);
+				uint adjacent_diagdirs = 0;
+				for (DiagDirection dir : { dir1, dir2 }) {
+					const TileIndex t = TileAddByDiagDir(ti->tile, dir);
+					if (t < MapSize() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
+						SetBit(adjacent_diagdirs, dir);
+					}
+				}
+
+				switch (adjacent_diagdirs) {
+					case 0:
+						DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
+						break;
+
+					case (1 << DIAGDIR_NE):
+						DrawRailTileSeq(ti, &_crossing_layout_SW, TO_CATENARY, rail, 0, PAL_NONE);
+						break;
+
+					case (1 << DIAGDIR_SE):
+						DrawRailTileSeq(ti, &_crossing_layout_NW, TO_CATENARY, rail, 0, PAL_NONE);
+						break;
+
+					case (1 << DIAGDIR_SW):
+						DrawRailTileSeq(ti, &_crossing_layout_NE, TO_CATENARY, rail, 0, PAL_NONE);
+						break;
+
+					case (1 << DIAGDIR_NW):
+						DrawRailTileSeq(ti, &_crossing_layout_SE, TO_CATENARY, rail, 0, PAL_NONE);
+						break;
+
+					default:
+						/* Show no sprites */
+						break;
+				}
 			} else if (draw_pbs || tram_rti != nullptr || road_rti->UsesOverlay()) {
 				/* Add another rail overlay, unless there is only the base road sprite. */
 				PaletteID pal = draw_pbs ? PALETTE_CRASH : PAL_NONE;
@@ -2033,7 +2071,16 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, u
 					if (side != INVALID_DIAGDIR && axis != DiagDirToAxis(side)) break;
 
 					trackdirbits = TrackBitsToTrackdirBits(AxisToTrackBits(axis));
-					if (IsCrossingBarred(tile)) red_signals = trackdirbits;
+					if (IsCrossingBarred(tile)) {
+						red_signals = trackdirbits;
+						auto mask_red_signal_bits_if_crossing_barred = [&](TileIndex t, TrackdirBits mask) {
+							if (IsLevelCrossingTile(t) && IsCrossingBarred(t)) red_signals &= mask;
+						};
+						/* Check for blocked adjacent crossing to south, keep only southbound red signal trackdirs, allow northbound traffic */
+						mask_red_signal_bits_if_crossing_barred(TileAddByDiagDir(tile, AxisToDiagDir(axis)), TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_SE);
+						/* Check for blocked adjacent crossing to north, keep only northbound red signal trackdirs, allow southbound traffic */
+						mask_red_signal_bits_if_crossing_barred(TileAddByDiagDir(tile, ReverseDiagDir(AxisToDiagDir(axis))), TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_NW);
+					}
 					break;
 				}
 

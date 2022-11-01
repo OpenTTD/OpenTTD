@@ -14,6 +14,8 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 
+bool RoadVehLeaveDepot(RoadVehicle *v, bool first);
+
 CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **v);
 
 CommandCost CmdTurnRoadVeh(DoCommandFlag flags, VehicleID veh_id);

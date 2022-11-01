@@ -153,7 +153,8 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces = true);
 RoadTypes GetRoadTypes(bool introduces);
 RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date);
 
-void UpdateLevelCrossing(TileIndex tile, bool sound = true);
+void UpdateLevelCrossing(TileIndex tile, bool sound = true, bool force_bar = false);
+void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis);
 void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count);
 
 struct TileInfo;

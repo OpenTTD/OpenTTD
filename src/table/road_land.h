@@ -53,6 +53,46 @@ static const DrawTileSprites _crossing_layout = {
 	{0, PAL_NONE}, _crossing_layout_ALL
 };
 
+static const DrawTileSeqStruct _crossing_layout_SW_ALL[] = {
+	TILE_SEQ_LINE(6, PAL_NONE, 13,  0, 3, 3)
+	TILE_SEQ_LINE(8, PAL_NONE, 13, 13, 3, 3)
+	TILE_SEQ_END()
+};
+
+static const DrawTileSprites _crossing_layout_SW = {
+	{0, PAL_NONE}, _crossing_layout_SW_ALL
+};
+
+static const DrawTileSeqStruct _crossing_layout_NW_ALL[] = {
+	TILE_SEQ_LINE(2, PAL_NONE,  0,  0, 3, 3)
+	TILE_SEQ_LINE(6, PAL_NONE, 13,  0, 3, 3)
+	TILE_SEQ_END()
+};
+
+static const DrawTileSprites _crossing_layout_NW = {
+	{0, PAL_NONE}, _crossing_layout_NW_ALL
+};
+
+static const DrawTileSeqStruct _crossing_layout_NE_ALL[] = {
+	TILE_SEQ_LINE(2, PAL_NONE,  0,  0, 3, 3)
+	TILE_SEQ_LINE(4, PAL_NONE,  0, 13, 3, 3)
+	TILE_SEQ_END()
+};
+
+static const DrawTileSprites _crossing_layout_NE = {
+	{0, PAL_NONE}, _crossing_layout_NE_ALL
+};
+
+static const DrawTileSeqStruct _crossing_layout_SE_ALL[] = {
+	TILE_SEQ_LINE(4, PAL_NONE,  0, 13, 3, 3)
+	TILE_SEQ_LINE(8, PAL_NONE, 13, 13, 3, 3)
+	TILE_SEQ_END()
+};
+
+static const DrawTileSprites _crossing_layout_SE = {
+	{0, PAL_NONE}, _crossing_layout_SE_ALL
+};
+
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_END
 
