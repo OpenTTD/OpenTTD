@@ -929,34 +929,34 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Ne
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina (CNY)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gyrru ar y chwith
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gyrru ar y dde
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gyrru ar y chwith
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gyrru ar y dde
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Enwau Trefi
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Dewis arddull yr enwau trefi
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Enwau Trefi
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Dewis arddull yr enwau trefi
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Saesneg (Gwreiddiol)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Ffrangeg
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Almaeneg
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Saesneg (Ychwanegol)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :America Ladin
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Gwirion
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedaidd
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Iseldireg
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Ffinnaidd
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pwylaidd
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slofacaidd
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwyaidd
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hwngaraidd
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Awstriaidd
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rwmaniaidd
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsecaidd
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swisaidd
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danaidd
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Twrcaidd
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Eidalaidd
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanaidd
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Saesneg (Gwreiddiol)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Ffrangeg
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Almaeneg
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Saesneg (Ychwanegol)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :America Ladin
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Gwirion
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Swedaidd
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Iseldireg
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Ffinnaidd
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pwylaidd
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slofacaidd
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwyaidd
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hwngaraidd
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Awstriaidd
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rwmaniaidd
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsecaidd
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Swisaidd
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danaidd
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Twrcaidd
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eidalaidd
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanaidd
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
@@ -1036,7 +1036,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolw
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) yn eich arian cyfaddas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Newid paramedrau arian cyfaddas
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Uchafswm nifer y cystadleuwyr: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Uchafswm nifer y cystadleuwyr: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Dim
 STR_FUNDING_ONLY                                                :Ariannu'n unig
@@ -1898,7 +1898,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Troi'n ôl yn a
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Caniatáu i drenau gwrthdroi wrth signal, os ydynt wedi aros yno am beth amser
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Argymellir)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Argymellir)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Newid gwerth gosodiad
 
@@ -1991,10 +1991,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Newid y 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tirwedd Tymherus
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Tirwedd Is-arctig
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tirwedd trofannol
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Tirwedd Teganau
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tirwedd Tymherus
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Tirwedd Is-arctig
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tirwedd trofannol
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Tirwedd Teganau
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cynllun Lliw

@@ -892,34 +892,34 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی اف
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :بائیں طرف چلے
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :دائیں طرف چلے
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :بائیں طرف چلے
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :دائیں طرف چلے
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}شہروں کے نام
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}شہروں کے نام کی طرز اختیار کریں
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}شہروں کے نام
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}شہروں کے نام کی طرز اختیار کریں
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :انگریزی (اصلی)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :فرانسیسی
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :جرمن
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :انگریزی (اضافی)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :لاطینی امریکی
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :سِلی
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :سوئیڈش
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :ڈچ
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :فِنش
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :پولش
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :سلواک
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :ناروئیجین
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ہینگرین
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :آسٹرین
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :رومانین
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :چیک
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :سوئس
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :ڈینش
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ٹرکش
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :اِٹالین
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :کاٹالن
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :انگریزی (اصلی)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرانسیسی
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :جرمن
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انگریزی (اضافی)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :لاطینی امریکی
+STR_MAPGEN_TOWN_NAME_SILLY                                      :سِلی
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سوئیڈش
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :ڈچ
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فِنش
+STR_MAPGEN_TOWN_NAME_POLISH                                     :پولش
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلواک
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ناروئیجین
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ہینگرین
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :آسٹرین
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :رومانین
+STR_MAPGEN_TOWN_NAME_CZECH                                      :چیک
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سوئس
+STR_MAPGEN_TOWN_NAME_DANISH                                     :ڈینش
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ٹرکش
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :اِٹالین
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاٹالن
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}خود مختار بچاو
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
@@ -993,7 +993,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}جائ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}اپنی کرنسی میں 10000 پاونڈ (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}اپنی مرضی کے کرنسی پیرامیٹر کو تبدیل کریں
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
 
 STR_NONE                                                        :کوئی نہیں
 STR_FUNDING_ONLY                                                :صرف فنڈنگ
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :بحری جہا
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :اشاروں پر خودکار ریورس ہونا: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}سیٹنگ کی ولیو بدلیں
 
@@ -1600,10 +1600,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجو
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}پیداوار میں تبدیلی کو فعال کریں: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperate منظر کشی
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arctic منظر کشی
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropical منظر کشی
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Toyland منظر کشی
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperate منظر کشی
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arctic منظر کشی
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropical منظر کشی
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Toyland منظر کشی
 
 # Livery window
 

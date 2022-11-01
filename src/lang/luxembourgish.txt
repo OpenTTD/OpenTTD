@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesesch Rup
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysesche Ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lénks fueren
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Riets fueren
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lénks fueren
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Riets fueren
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stiednimm:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Stil vun de Stiednimm wielen
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Stiednimm:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Stil vun de Stiednimm wielen
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Englesch (Original)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franséisch
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Däitsch
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Englesch (Erweidert)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Lateinamerikanesch
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Blöd
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Schwedesch
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holländesch
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnesch
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polnesch
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakesch
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegesch
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungaresch
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Éisträichesch
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumänesch
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tschechesch
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schwäitzer
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dänesch
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türkesch
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienesch
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanesch
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englesch (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franséisch
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Däitsch
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englesch (Erweidert)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Lateinamerikanesch
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Blöd
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Schwedesch
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holländesch
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnesch
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polnesch
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakesch
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwegesch
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungaresch
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Éisträichesch
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumänesch
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tschechesch
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Schwäitzer
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dänesch
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türkesch
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italienesch
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanesch
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospäicheren
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Autospäicherung
@@ -1092,7 +1092,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prouf: 
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pond (£) an denger Währung
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Änner Währungsparameter
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximal Unzuel vu Géigner: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximal Unzuel vu Géigner: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Keng
 STR_FUNDING_ONLY                                                :Nëmmen finanzéiren
@@ -2027,7 +2027,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatescht Em
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Erlab Zich bei engem Signal emzedréinen, wann se eng laang Zäit geward hunn
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(recommandéiert)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(recommandéiert)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Astellung änneren
 
@@ -2123,10 +2123,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Änner d
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaabt d'ännere vun de Produktiounswäerter: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gemässegt Klima Landschaft
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-Arktesch Landschaft
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-Tropesch Landschaft
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Spillsaacheland Landschaft
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Gemässegt Klima Landschaft
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-Arktesch Landschaft
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-Tropesch Landschaft
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Spillsaacheland Landschaft
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Neie Faarfschema

@@ -1111,34 +1111,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Индонез�
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзийский ринггит (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Левостороннее
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Правостороннее
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Левостороннее
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Правостороннее
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Названия городов:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Язык, который будет использоваться для выбора названий населённых пунктов
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Названия городов:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Язык, который будет использоваться для выбора названий населённых пунктов
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Английские
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Французские
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Немецкие
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Английские (дополн.)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Латино-американские
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Английские (шуточные)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Шведские
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нидерландские
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Финские
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польские
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словацкие
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Норвежские
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Венгерские
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австрийские
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынские
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чешские
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швейцарские
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датские
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турецкие
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Итальянские
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталанские
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Английские
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Французские
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Немецкие
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Английские (дополн.)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Латино-американские
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Английские (шуточные)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Шведские
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Нидерландские
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Финские
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Польские
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Словацкие
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Норвежские
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Венгерские
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Австрийские
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Румынские
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Чешские
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Швейцарские
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Датские
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Турецкие
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Итальянские
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Каталанские
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автосохранение
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры
@@ -1238,7 +1238,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Обр�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10{NBSP}000 фунтов стерлингов (£) в вашей валюте
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Нет
 STR_FUNDING_ONLY                                                :Строить самому
@@ -2188,7 +2188,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автомат�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Разрешить поездам разворачиваться у светофора, если они долго ждут разрешающего сигнала
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Рекомендуется)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Рекомендуется)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Изменить значение
 
@@ -2284,10 +2284,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Изме
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Умеренный ландшафт
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субарктический ландшафт
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтропический ландшафт
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Игрушечный ландшафт
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Умеренный ландшафт
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Субарктический ландшафт
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Субтропический ландшафт
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Игрушечный ландшафт
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Цвета компании «{COMPANY}»

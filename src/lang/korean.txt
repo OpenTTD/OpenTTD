@@ -967,34 +967,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아 링깃 (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :좌측통행
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :우측통행
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름 스타일을 선택하세요
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}도시 이름:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}도시 이름 스타일을 선택하세요
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :영국 식 (기본)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :프랑스 식
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :독일 식
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :영국 식 (추가)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :라틴아메리카 식
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :바보같은 도시 이름
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :스웨덴 식
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :네덜란드 식
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :핀란드 식
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :폴란드 식
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :슬로바키아 식
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :노르웨이 식
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :헝가리 식
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :오스트리아 식
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :루마니아 식
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :체코 식
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :스위스 식
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :덴마크 식
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :터키 식
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :이탈리아 식
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :카탈로니아 식
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :영국 식 (기본)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :프랑스 식
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :독일 식
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :영국 식 (추가)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :라틴아메리카 식
+STR_MAPGEN_TOWN_NAME_SILLY                                      :바보같은 도시 이름
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :스웨덴 식
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :네덜란드 식
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :핀란드 식
+STR_MAPGEN_TOWN_NAME_POLISH                                     :폴란드 식
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :슬로바키아 식
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :노르웨이 식
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :헝가리 식
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :오스트리아 식
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :루마니아 식
+STR_MAPGEN_TOWN_NAME_CZECH                                      :체코 식
+STR_MAPGEN_TOWN_NAME_SWISS                                      :스위스 식
+STR_MAPGEN_TOWN_NAME_DANISH                                     :덴마크 식
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :터키 식
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :이탈리아 식
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :카탈로니아 식
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택
@@ -1094,7 +1094,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 파운드(£)에 해당하는 사용자 화폐 단위입니다
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용자 화폐 변수 변경
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}최대 경쟁자수: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}최대 경쟁자수: {ORANGE}{COMMA}
 
 STR_NONE                                                        :없음
 STR_FUNDING_ONLY                                                :투자만 가능
@@ -2038,7 +2038,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :신호기 앞�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :열차가 신호기 앞에서 너무 오래 기다리면 뒤로 되돌아갈 수 있도록 허용합니다.
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(권장)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(권장)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
 
@@ -2134,10 +2134,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}1차 산업시설 생산량 조절 허용: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :아한대 기후
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감나라
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :온대 기후
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :아한대 기후
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :아열대 기후
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :장난감나라
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 색상

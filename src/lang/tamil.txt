@@ -936,34 +936,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :இந்தோ
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :மலேசிய ரிங்கிட்டு (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :இடப்பக்கம் ஒட்டு
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :வலப்பக்கம் ஒட்டு
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :இடப்பக்கம் ஒட்டு
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :வலப்பக்கம் ஒட்டு
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}நகரங்களின் பெயர்கள்:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}நகர பெயர்கள் பாணியினைத் தேர்ந்தெடுக்கவும்
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}நகரங்களின் பெயர்கள்:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}நகர பெயர்கள் பாணியினைத் தேர்ந்தெடுக்கவும்
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :ஆங்கிலம் (இயற்கையான)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :பிரெஞ்சு
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :ஜெர்மன்
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :ஆங்கிலம் (கூடுதலான)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :இலத்தின்-அமெரிக்க
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :முட்டாள்தனமான
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :சுவீடிஷ்
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :டச்சு
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :பின்னிஷ்
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :போலிஷ்
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :சுலோவக்
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :நார்வேஜியன்
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ஹங்கேரியன்
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ஆஸ்திரியன்
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :ரோமேனியன்
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :செக்
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :சுவிஸ்
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :டேனிஷ்
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :துர்கிஷ்
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :இத்தாலியன்
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :கடலன்
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :ஆங்கிலம் (இயற்கையான)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :பிரெஞ்சு
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :ஜெர்மன்
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :ஆங்கிலம் (கூடுதலான)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :இலத்தின்-அமெரிக்க
+STR_MAPGEN_TOWN_NAME_SILLY                                      :முட்டாள்தனமான
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :சுவீடிஷ்
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :டச்சு
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :பின்னிஷ்
+STR_MAPGEN_TOWN_NAME_POLISH                                     :போலிஷ்
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :சுலோவக்
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :நார்வேஜியன்
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ஹங்கேரியன்
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ஆஸ்திரியன்
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :ரோமேனியன்
+STR_MAPGEN_TOWN_NAME_CZECH                                      :செக்
+STR_MAPGEN_TOWN_NAME_SWISS                                      :சுவிஸ்
+STR_MAPGEN_TOWN_NAME_DANISH                                     :டேனிஷ்
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :துர்கிஷ்
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :இத்தாலியன்
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :கடலன்
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}தானியங்கி விளையாட்டு சேமிப்பு இடைவெளியைத் தேர்ந்தெடுக்கவும்
@@ -1052,7 +1052,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}மு�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 பவுண்டு (£) உங்க்ள் நாணயத்தில்
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}பயனரால் மாற்றப்பட்ட பண குணாதிசயங்களை மாற்று
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
 
 STR_NONE                                                        :ஒன்றுமில்லை
 STR_FUNDING_ONLY                                                :நிதியளிப்பு மட்டும்
@@ -1827,7 +1827,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :சிக்ன
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :இரயில்கள் நீண்ட நேரம் காத்திருந்தால், சிக்னலில் திரும்புவதற்கு அனுமதிக்கவும்
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(பரிந்துரைக்கப்பட்டது)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(பரிந்துரைக்கப்பட்டது)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}அமைப்பின் மதிப்பினை மாற்று
 
@@ -1913,10 +1913,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நட�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}தயாரிப்பு மதிப்புகளை மாற்ற முடியும்: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலவெளி
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :வட துருவ நிலவெளி
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :மிதவெப்பமண்டல நிலவெளி
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :பொம்மை நிலவெளி
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :மிதமான நிலவெளி
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :வட துருவ நிலவெளி
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :மிதவெப்பமண்டல நிலவெளி
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :பொம்மை நிலவெளி
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - நிற கோட்பாடு

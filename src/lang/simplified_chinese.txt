@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾 (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林吉特 (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左侧通行
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :右侧通行
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :左侧通行
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :右侧通行
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}城镇名称：
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}选择城镇名称的命名风格
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}城镇名称：
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}选择城镇名称的命名风格
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :英国 (原始的)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :法国
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :德国
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :英国 (增强的)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :美式拉丁
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :搞笑地名
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :瑞典
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :荷兰
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :芬兰
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :波兰
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :斯洛伐克
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :挪威
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :匈牙利
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :澳大利亚
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :罗马尼亚
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :捷克
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :瑞士
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :丹麦
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :土耳其
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :意大利
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :加泰罗尼亚
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英国 (原始的)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :法国
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :德国
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :英国 (增强的)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :美式拉丁
+STR_MAPGEN_TOWN_NAME_SILLY                                      :搞笑地名
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :瑞典
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :荷兰
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :芬兰
+STR_MAPGEN_TOWN_NAME_POLISH                                     :波兰
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :斯洛伐克
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :挪威
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :匈牙利
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :澳大利亚
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :罗马尼亚
+STR_MAPGEN_TOWN_NAME_CZECH                                      :捷克
+STR_MAPGEN_TOWN_NAME_SWISS                                      :瑞士
+STR_MAPGEN_TOWN_NAME_DANISH                                     :丹麦
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :土耳其
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :意大利
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :加泰罗尼亚
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自动保存
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}选择自动保存的周期
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 英磅(£) 兑换自定义货币的数量
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}最大竞争对手个数：{ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}最大竞争对手个数：{ORANGE}{COMMA}
 
 STR_NONE                                                        :没有
 STR_FUNDING_ONLY                                                :不生成
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :遇到红灯时
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :当列车在信号灯前长时间等待时，允许掉头
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(推荐)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(推荐)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变设置值
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}改变�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}开启可调整产量模式：{ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温带景观
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :寒带景观
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :沙漠景观
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :奇幻景观
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :温带景观
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :寒带景观
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :沙漠景观
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :奇幻景观
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} 的色彩方案

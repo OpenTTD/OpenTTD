@@ -1168,34 +1168,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijos rup
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ringitai (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kairiąja puse
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dešiniąja puse
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kairiąja puse
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Dešiniąja puse
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Miestų pavadinimai:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pasirink miestų pavadinimų tipą
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Miestų pavadinimai:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Pasirink miestų pavadinimų tipą
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglų (Oginalus)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Prancūzų
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Vokiečių
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglų (Papildomas)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Lotynų-Amerikos
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Kvaili
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Švedų
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Olandų
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Suomių
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Lenkų
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakų
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegų
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Vengrų
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrų
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumunų
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Čekų
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Šveicarų
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danų
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiški
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italų
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonų
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglų (Oginalus)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Prancūzų
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Vokiečių
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglų (Papildomas)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Lotynų-Amerikos
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Kvaili
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švedų
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Olandų
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Suomių
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Lenkų
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakų
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegų
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Vengrų
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrų
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunų
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Čekų
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Šveicarų
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danų
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiški
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italų
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonų
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatinis išsaugojimas
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą
@@ -1293,7 +1293,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perži�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nėra
 STR_FUNDING_ONLY                                                :Tik finansavimas
@@ -2239,7 +2239,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Apsisukimas pri
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leisti traukiniams apsisukti ir bandyti važiuoti priešinga kryptimi, jei ties šviesoforu jiems tenka laukti pernelyg ilgai
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomenduojama)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekomenduojama)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Keisti reikšmes
 
@@ -2335,10 +2335,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Pakeisti
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Normalus klimatas
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arktinis klimatas
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropinis klimatas
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :'Žaislinis' klimatas
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Normalus klimatas
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arktinis klimatas
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropinis klimatas
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :'Žaislinis' klimatas
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Kompanijos spalvos

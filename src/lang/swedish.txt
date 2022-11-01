@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kör på vänster sida
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kör på höger sida
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kör på vänster sida
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Kör på höger sida
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stadsnamn:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Välj typ av stadsnamn
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Stadsnamn:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Välj typ av stadsnamn
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelska (Original)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franska
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Tyska
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engelska (Extra)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinamerikanska
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Löjliga
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svenska
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollänska
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finska
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polska
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakiska
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norska
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungerska
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Österrikiska
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumänska
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjeckiska
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schweiziska
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danska
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiska
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienska
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanska
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelska (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franska
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tyska
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelska (Extra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinamerikanska
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Löjliga
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svenska
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollänska
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finska
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polska
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakiska
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norska
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungerska
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Österrikiska
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumänska
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tjeckiska
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Schweiziska
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danska
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiska
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italienska
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanska
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Spara automatiskt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhan
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra valutaparametrar
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Max antal motståndare: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Max antal motståndare: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Endast finansiering
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vänd automatis
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tåg vänder vid en signal om de har väntat där länge
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekommenderad)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekommenderad)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändra n
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifiering av produktionsvärden: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempererat landskap
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arktiskt landskap
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropiskt landskap
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leksakslandskap
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tempererat landskap
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arktiskt landskap
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropiskt landskap
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Leksakslandskap
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Färgschema

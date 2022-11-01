@@ -942,34 +942,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Yndonezyske Roe
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleizyske Ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lofts ride
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rjochts ride
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lofts ride
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Rjochts ride
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stêdnammen
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selektearje nammestyl
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Stêdnammen
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selektearje nammestyl
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelsk (Orizjineel)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frânsk
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Dútsk
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ingelsk (Ekstra)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latynsk-Amerikaansk
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ût mâlens
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sweedsk
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nederlânsk
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finsk
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poalsk
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slowaaks
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Noorsk
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hongaarsk
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Eastenryksk
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Roemeensk
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsjechysk
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Switsersk
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deensk
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turksk
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italjaansk
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaansk
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ingelsk (Orizjineel)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frânsk
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Dútsk
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ingelsk (Ekstra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latynsk-Amerikaansk
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Ût mâlens
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sweedsk
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlânsk
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finsk
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poalsk
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slowaaks
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noorsk
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongaarsk
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Eastenryksk
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Roemeensk
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjechysk
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Switsersk
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Deensk
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turksk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italjaansk
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalaansk
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatysk opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selektearje de interval foar automatysk opslaan
@@ -1056,7 +1056,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Foarbyl
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pûn (£) yn jo faluta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Feroarje opsje fan oanpaste faluta
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum oantal tsjinstanners: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimum oantal tsjinstanners: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Gjin
 STR_FUNDING_ONLY                                                :Allinnich finansierje
@@ -1879,7 +1879,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pathfinder te b
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Omkeare fan treinen by seinen: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Feroarje wearde
 
@@ -1957,10 +1957,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wizigje 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Stea oanpassen fan produksje ta: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gêrs lânskip
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Snie lânskip
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropysk lânskip
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Boartersguodlânskip
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Gêrs lânskip
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Snie lânskip
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropysk lânskip
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Boartersguodlânskip
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Kleurenskema

@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lái bên trái
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Lái bên phải
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lái bên trái
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Lái bên phải
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Tên thị trấn:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa chọn kiểu tên thị trấn
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Tên thị trấn:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Lựa chọn kiểu tên thị trấn
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Nguyên bản)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Pháp
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Đức
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Tiếng Anh (Bổ sung)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Mỹ-Latin
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Thụy Điển
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hà Lan
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Phần Lan
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Ba Lan
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakia
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Na Uy
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungary
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Úc
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Ru-ma-ni
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Séc
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Thụy Sỹ
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Đan Mạch
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Thổ Nhĩ Kỳ
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ý
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Tiếng Anh (Nguyên bản)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Pháp
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Đức
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Tiếng Anh (Bổ sung)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Mỹ-Latin
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Silly
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Thụy Điển
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hà Lan
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Phần Lan
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Ba Lan
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakia
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Na Uy
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungary
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Úc
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Ru-ma-ni
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Séc
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Thụy Sỹ
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Đan Mạch
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Thổ Nhĩ Kỳ
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ý
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem tr�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) tính bằng tiền của bạn
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa tham số của tiền tự chỉnh
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Không Có
 STR_FUNDING_ONLY                                                :Chỉ Cấp Vốn
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Tự động đ
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Cho phép xe lửa vòng lại nơi đèn báo, khi nó chờ quá lâu
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Nên dùng)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Nên dùng)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Thay đ�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho phép khả năng sửa giá trị sản xuất: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Địa hình vừa phải
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Địa hình giá lạnh
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Địa hình cận nhiệt đới
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Địa hình đồ chơi
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Địa hình vừa phải
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Địa hình giá lạnh
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Địa hình cận nhiệt đới
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Địa hình đồ chơi
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cách Phối Màu Mới

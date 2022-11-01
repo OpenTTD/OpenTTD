@@ -1034,34 +1034,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonézska rup
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malajzijský ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazdia naľavo
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazdia napravo
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Jazdia naľavo
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Jazdia napravo
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Názvy miest:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Výber štýlu názvov miest
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Názvy miest:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Výber štýlu názvov miest
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglické (pôvodné)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francúzske
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Nemecké
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglické (ďalšie)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinsko-Americké
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Anglické (hlúpe)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Švédske
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandské
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fínske
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poľské
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovenské
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Nórske
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Maďarské
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Rakúske
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumunské
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :České
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Švajčiarské
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dánske
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turecké
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Talianské
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalánske
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglické (pôvodné)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francúzske
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Nemecké
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglické (ďalšie)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinsko-Americké
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Anglické (hlúpe)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švédske
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandské
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fínske
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poľské
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovenské
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Nórske
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Maďarské
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Rakúske
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunské
+STR_MAPGEN_TOWN_NAME_CZECH                                      :České
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Švajčiarské
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dánske
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turecké
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Talianské
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalánske
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukladanie
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Výber intervalu automatického ukladania
@@ -1160,7 +1160,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhľa
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libier (£) vo vašej mene
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmeniť parametre vlastnej meny
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximálny počet konkurentov: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximálny počet konkurentov: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Žiadny
 STR_FUNDING_ONLY                                                :Iba financovanie
@@ -2097,7 +2097,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické ob
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Povoliť vlakom otočiť sa na návestidlách, ak tam čakajú dlhý čas
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(odporučený)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(odporučený)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmeniť hodnotu nastavenia
 
@@ -2193,10 +2193,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmeniť 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povoliť zmenu objemu výroby: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Krajina mierneho pásma
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subpolárna krajina
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropická krajina
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajina hračiek
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Krajina mierneho pásma
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subpolárna krajina
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Subtropická krajina
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Krajina hračiek
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Farebná schéma

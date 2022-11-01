@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kør i venstre side
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kør i højre side
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kør i venstre side
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Kør i højre side
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavne:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vælg stil for bynavne
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bynavne:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vælg stil for bynavne
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelske
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franske
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Tyske
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engelske (ekstra)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikanske
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fjollede
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svenske
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandske
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finske
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polske
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakiske
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norske
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarske
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Østrigske
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumænske
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjekkiske
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schweiziske
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danske
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrkiske
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienske
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanske
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelske
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franske
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tyske
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelske (ekstra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerikanske
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Fjollede
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svenske
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandske
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finske
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polske
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakiske
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norske
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarske
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østrigske
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumænske
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tjekkiske
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Schweiziske
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danske
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkiske
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italienske
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanske
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
@@ -1092,7 +1092,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempe
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift brugerdefinerede møntfodsparametre
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Kun finansiering
@@ -2029,7 +2029,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vend automatisk
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillad tog at vende ved et signal, hvis det har ventet i lang tid
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalet)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Anbefalet)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Skift indstillingsværdi
 
@@ -2125,10 +2125,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Skift å
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempereret klima
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktisk klima
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropisk klima
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Legetøjsland
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tempereret klima
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Arktisk klima
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropisk klima
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Legetøjsland
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Farvetema

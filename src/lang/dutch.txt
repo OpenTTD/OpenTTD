@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische ro
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Links rijden
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechts rijden
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Links rijden
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Rechts rijden
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Plaatsnamen:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Stijl voor plaatsnamen kiezen
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Plaatsnamen:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Stijl voor plaatsnamen kiezen
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engels (Origineel)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frans
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Duits
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engels (Extra)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latijns-Amerikaans
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Zot
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Zweeds
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nederlands
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fins
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pools
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slowaaks
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Noors
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hongaars
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Oostenrijks
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Roemeens
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsjechisch
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Zwitsers
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deens
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turks
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiaans
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalaans
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engels (Origineel)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frans
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Duits
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engels (Extra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latijns-Amerikaans
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Zot
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Zweeds
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlands
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fins
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pools
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slowaaks
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noors
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongaars
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Oostenrijks
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Roemeens
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjechisch
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Zwitsers
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Deens
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turks
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiaans
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalaans
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduur kiezen tussen automatisch opgeslagen spellen
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbee
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pond (£) in jouw munteenheid
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Aangepaste valutaparameters wijzigen
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Geen
 STR_FUNDING_ONLY                                                :Alleen gefinancierd
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisch omd
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Treinen mogen keren bij een sein als ze hier lang staan wachten
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevolen)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Aanbevolen)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Instelwaarde wijzigen
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Huidig j
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Productiewaarden aanpassen toestaan: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gematigd landschap
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarctisch landschap
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropisch landschap
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Speelgoedlandschap
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Gematigd landschap
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subarctisch landschap
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Subtropisch landschap
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Speelgoedlandschap
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - kleurenschema

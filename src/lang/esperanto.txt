@@ -909,34 +909,34 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Kartvela Lario 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irana Rialo (IRR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Veturu maldekstre
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Veturu dekstre
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Veturu maldekstre
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Veturu dekstre
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Urbonomoj
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elektu stilon de urbonomoj
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Urbonomoj
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Elektu stilon de urbonomoj
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angle (Originale)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :France
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Germane
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angle (Aldone)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerike
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Angle (Stulte)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svede
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nederlande
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finne
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pole
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovake
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvege
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungare
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Aŭstrie
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumane
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Ĉeĥe
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svise
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dane
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turke
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itale
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalune
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angle (Originale)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :France
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Germane
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Angle (Aldone)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerike
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Angle (Stulte)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svede
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlande
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finne
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pole
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovake
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvege
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungare
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Aŭstrie
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumane
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Ĉeĥe
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Svise
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dane
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turke
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Itale
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalune
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Aŭtomata konservado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
@@ -1011,7 +1011,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭv
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pundo (£) en via valuto
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝi parametron por alia monunuo
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Neniom
 STR_FUNDING_ONLY                                                :Funduso sola
@@ -1577,7 +1577,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padtrovilo por 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaloj: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomendite)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekomendite)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ŝanĝu agord-valoron
 
@@ -1646,10 +1646,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Modera landaspekto
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktikeca landaspekto
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropikeca landaspekto
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Ludolandaspekto
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Modera landaspekto
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Arktikeca landaspekto
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropikeca landaspekto
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Ludolandaspekto
 
 # Livery window
 

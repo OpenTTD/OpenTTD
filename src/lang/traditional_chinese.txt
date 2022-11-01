@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾 (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :馬來西亞令吉 (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :靠左行駛
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :靠右行駛
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :靠左行駛
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :靠右行駛
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}市鎮名稱:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}選擇市鎮命名風格
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}市鎮名稱:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}選擇市鎮命名風格
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :英國 (原版)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :法國
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :德國
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :英國 (增訂版)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :拉丁美洲
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :荒唐名稱
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :瑞典
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :荷蘭
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :芬蘭
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :波蘭
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :斯洛伐克
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :挪威
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :匈牙利
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :奧地利
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :羅馬尼亞
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :捷克
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :瑞士
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :丹麥
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :土耳其
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :義大利
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :加泰隆尼亞
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英國 (原版)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :法國
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :德國
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :英國 (增訂版)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :拉丁美洲
+STR_MAPGEN_TOWN_NAME_SILLY                                      :荒唐名稱
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :瑞典
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :荷蘭
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :芬蘭
+STR_MAPGEN_TOWN_NAME_POLISH                                     :波蘭
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :斯洛伐克
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :挪威
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :匈牙利
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :奧地利
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :羅馬尼亞
+STR_MAPGEN_TOWN_NAME_CZECH                                      :捷克
+STR_MAPGEN_TOWN_NAME_SWISS                                      :瑞士
+STR_MAPGEN_TOWN_NAME_DANISH                                     :丹麥
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :土耳其
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :義大利
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :加泰隆尼亞
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}將10000 Pound (£)換算成你的幣值
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}修改自訂幣值參數
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
 
 STR_NONE                                                        :無
 STR_FUNDING_ONLY                                                :只挹注資金
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :在號誌自動
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :設定是否容許列車在號誌前等候超過一段時間後調頭。
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(建議)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(建議)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改設定值
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}變更�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}允許修改產量：{ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :溫帶
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :寒帶
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亞熱帶
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :玩具世界
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :溫帶
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :寒帶
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :亞熱帶
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :玩具世界
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} 的配色

@@ -1030,34 +1030,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonéz rúpia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maláj ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Balra hajtás
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jobbra hajtás
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Balra hajtás
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Jobbra hajtás
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Városnevek:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}A városnevek stílusának kiválasztása
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Városnevek:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}A városnevek stílusának kiválasztása
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angol (Eredeti)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francia
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Német
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angol (További)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-amerikai
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Komolytalan
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svéd
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holland
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finn
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Lengyel
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Szlovák
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvég
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Magyar
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Osztrák
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romániai
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Cseh
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svájci
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dán
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Török
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Olasz
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalán
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angol (Eredeti)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francia
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Német
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Angol (További)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-amerikai
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Komolytalan
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svéd
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holland
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finn
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Lengyel
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Szlovák
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvég
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Magyar
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Osztrák
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romániai
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Cseh
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Svájci
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dán
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Török
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Olasz
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalán
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatikus mentés
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Az automatikus mentések közötti időtartam kiválasztása
@@ -1157,7 +1157,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előné
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Font (£) a pénznemedben
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját pénznem paramétereinek megváltoztatása
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Semmi
 STR_FUNDING_ONLY                                                :Csak finanszírozás
@@ -2101,7 +2101,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatikus meg
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :A vonatok automatikus megfordításának engedélyezése, ha azok túl hosszú ideje várakoznak egy jelző előtt
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ajánlott)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ajánlott)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
@@ -2197,10 +2197,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aktuáli
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyersanyagüzemek termelése változtatható: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Mérsékelt táj
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Szubarktikus táj
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Szubtrópusi táj
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Játékvilág táj
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Mérsékelt táj
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Szubarktikus táj
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Szubtrópusi táj
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Játékvilág táj
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} színsémája

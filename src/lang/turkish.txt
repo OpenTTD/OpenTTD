@@ -967,34 +967,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Endonezya Rupia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezya Ringgiti (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan trafik
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Sağdan trafik
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Soldan trafik
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Sağdan trafik
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Şehir isimleri:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri için bir tür seçin
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Şehir isimleri:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Şehir isimleri için bir tür seçin
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :İngiliz (Özgün)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fransız
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alman
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :İngiliz (İlave)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikan
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Saçmasapan (İngilizce)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :İsveç
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollanda
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fin
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Leh
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norveç
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Macar
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Avusturya
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romen
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Çek
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :İsviçre
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danimarka
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türk
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italyan
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalan
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :İngiliz (Özgün)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Fransız
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alman
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :İngiliz (İlave)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerikan
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Saçmasapan (İngilizce)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :İsveç
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollanda
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fin
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Leh
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norveç
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Macar
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Avusturya
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romen
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Çek
+STR_MAPGEN_TOWN_NAME_SWISS                                      :İsviçre
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danimarka
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italyan
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalan
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otomatik Kaydet
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otomatik kaydetme sıklığını seçin
@@ -1094,7 +1094,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizle
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Sterlin'in (£) para biriminizdeki karşılığı
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini değiştir
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Hiç
 STR_FUNDING_ONLY                                                :Yalnızca yatırım
@@ -2038,7 +2038,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :İşaretlerde o
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tren sinyalde uzun süre beklediği takdirde ters yöne gitmesine izin ver
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Önerilen)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ayar değerini değiştir
 
@@ -2134,10 +2134,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Yılı d
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim değerlerini değiştir: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Ilıman iklim
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Soğuk iklim
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropik iklim
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Oyun bahçesi
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Ilıman iklim
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Soğuk iklim
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropik iklim
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Oyun bahçesi
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Renk Düzeni

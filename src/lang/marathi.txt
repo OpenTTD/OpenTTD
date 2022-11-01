@@ -728,22 +728,22 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोव
 
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ्रेंच
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :जर्मन
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :स्वीडीश
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :डच
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :फिन्निश
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :पोलिश
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :स्लोवाक
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :नोर्वेगीअन
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :हंगेरियन
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ओस्त्रिअन
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :रोमेनिअन
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :झेख
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :स्विस
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :डेनिष
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :तुर्की
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ईटेलिअन
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ्रेंच
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :जर्मन
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :स्वीडीश
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :डच
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :फिन्निश
+STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :स्लोवाक
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :नोर्वेगीअन
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :हंगेरियन
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ओस्त्रिअन
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :रोमेनिअन
+STR_MAPGEN_TOWN_NAME_CZECH                                      :झेख
+STR_MAPGEN_TOWN_NAME_SWISS                                      :स्विस
+STR_MAPGEN_TOWN_NAME_DANISH                                     :डेनिष
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ईटेलिअन
 
 
 # Autosave dropdown

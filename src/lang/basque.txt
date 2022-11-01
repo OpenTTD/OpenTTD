@@ -917,34 +917,34 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerretik gidatu
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eskuinetik gidatu
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Ezkerretik gidatu
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Eskuinetik gidatu
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Herrien izenak
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Herrien izenen estiloak aukeratu
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Herrien izenak
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Herrien izenen estiloak aukeratu
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelesa (Jatorrizkoa)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frantsesak
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemaniarrak
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ingelesa (Adizionala)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Amerikarra
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Inozoak
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suediarrak
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Herbeheretakoak
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandiarrak
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poloniarrak
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Eslovakiarrak
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegiarrak
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungariarrak
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austriarrak
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Errumaniarrak
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Txekoak
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Suitzarrak
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danierarrak
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiarrak
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiarrak
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanak
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ingelesa (Jatorrizkoa)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frantsesak
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemaniarrak
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ingelesa (Adizionala)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Amerikarra
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Inozoak
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suediarrak
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Herbeheretakoak
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandiarrak
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloniarrak
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovakiarrak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiarrak
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungariarrak
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriarrak
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Errumaniarrak
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Txekoak
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Suitzarrak
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danierarrak
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiarrak
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiarrak
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanak
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokoa automatikoki gordetzeko denbora
@@ -1022,7 +1022,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreik
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ezer ez
 STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
@@ -1814,7 +1814,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Seinaletan auto
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Trenak seinaleetan buelta ematea baimendu, denbora luzez itxaroten ari badira
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Gomendatua)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
@@ -1902,10 +1902,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Klima epeleko paisaia
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Klima artikoko paisaia
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klima tropikaleko paisaia
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Jostailu munduko paisaia
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Klima epeleko paisaia
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Klima artikoko paisaia
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Klima tropikaleko paisaia
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Jostailu munduko paisaia
 
 # Livery window
 

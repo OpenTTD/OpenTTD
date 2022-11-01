@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malesian ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmanpuolinen liikenne
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Oikeanpuolinen liikenne
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasemmanpuolinen liikenne
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Oikeanpuolinen liikenne
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Kuntien nimet:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Valitse kuntien nimien tyyli
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Kuntien nimet:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Valitse kuntien nimien tyyli
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Englantilainen
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Ranskalainen
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Saksalainen
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Englantilainen 2
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinalaisamerikkalainen
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Hassu
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Ruotsalainen
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollantilainen
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Suomalainen
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Puolalainen
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakialainen
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norjalainen
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Unkarilainen
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Itävaltalainen
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanialainen
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tšekkiläinen
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Sveitsiläinen
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Tanskalainen
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkkilainen
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italialainen
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonialainen
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englantilainen
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Ranskalainen
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Saksalainen
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englantilainen 2
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinalaisamerikkalainen
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Hassu
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Ruotsalainen
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollantilainen
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Suomalainen
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Puolalainen
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakialainen
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norjalainen
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Unkarilainen
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Itävaltalainen
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanialainen
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tšekkiläinen
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsiläinen
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Tanskalainen
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkkilainen
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italialainen
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonialainen
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Esikats
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10 000 puntaa (£) valuutassasi
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda oman valuutan parametria.
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastustajien enimmäismäärä: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Vastustajien enimmäismäärä: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ei mitään
 STR_FUNDING_ONLY                                                :Vain rahoitetut
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automaattinen k
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sallii junien kääntymisen opastimen edessä pitkän odotusajan jälkeen
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Suositeltu)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Suositeltu)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuta asetusarvo
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuta ny
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Salli tuotantomäärien muuttaminen: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :lauhkea maasto
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :pohjoinen maasto
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtrooppinen maasto
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lelumaan maasto
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :lauhkea maasto
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :pohjoinen maasto
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtrooppinen maasto
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Lelumaan maasto
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY}: Väriteema

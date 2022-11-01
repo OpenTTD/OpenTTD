@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Drive on left
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Drive on right
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Drive on left
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Drive on right
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Town names:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Select style of town names
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Town names:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Select style of town names
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :English (Original)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :French
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :German
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :English (Additional)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-American
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedish
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Dutch
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnish
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polish
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegian
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarian
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrian
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanian
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czech
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danish
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkish
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italian
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :French
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :German
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :English (Additional)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-American
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Silly
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Swedish
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Dutch
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnish
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polish
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwegian
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarian
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrian
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanian
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Czech
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Swiss
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danish
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkish
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italian
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) in your currency
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change custom currency parameter
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA}
 
 STR_NONE                                                        :None
 STR_FUNDING_ONLY                                                :Funding only
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatic rever
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Allow trains to reverse on a signal, if they have waited there a long time
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change c
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperate landscape
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arctic landscape
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropical landscape
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Toyland landscape
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperate landscape
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arctic landscape
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropical landscape
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Toyland landscape
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Colour Scheme

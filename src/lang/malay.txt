@@ -900,34 +900,34 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Memandu di sebelah kiri
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Memandu di sebelah kanan
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Memandu di sebelah kiri
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Memandu di sebelah kanan
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nama bandar
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pilih tema untuk nama bandar
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nama bandar
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Pilih tema untuk nama bandar
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inggeris (Asal)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Peranchis
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Jerman
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inggeris (Tambahan)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Amerika Latin
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Mengarut
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedish
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Dutch
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnish
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polish
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegian
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarian
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrian
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanian
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czech
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danish
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkish
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italian
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inggeris (Asal)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Peranchis
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Jerman
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inggeris (Tambahan)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Amerika Latin
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Mengarut
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Swedish
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Dutch
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnish
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polish
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwegian
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarian
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrian
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanian
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Czech
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Swiss
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danish
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkish
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italian
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpanan automatik
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih tempoh untuk simpanan permainan automatik
@@ -1007,7 +1007,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previu:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}Mata wang anda berbanding 10000 Pound (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Tukar parameter matawang pilihan diri
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Jumlah maksimum pesaing: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Jumlah maksimum pesaing: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Tiada
 STR_FUNDING_ONLY                                                :Melalui pembiayaan sahaja
@@ -1658,7 +1658,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Berundur secara
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Benarkan keretapi berundur di lampu isyarat, jika ia menuggu lama
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Disyorkan)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Disyorkan)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 
@@ -1747,10 +1747,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Tukar ta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Bolehkan pengubahsuaian nilai-nilai pengeluaran: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap temperate
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lanskap subartik
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lanskap subtropik
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lanskap alam permainan
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Lanskap temperate
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Lanskap subartik
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Lanskap subtropik
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Lanskap alam permainan
 
 # Livery window
 
