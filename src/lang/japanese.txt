@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :インドネシ
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :マレーシア・リンギット(MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左側通行
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :右側通行
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :左側通行
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :右側通行
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}街の名前:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}街名のスタイルを選択します
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}街の名前:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}街名のスタイルを選択します
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :イギリス
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :フランス
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :ドイツ
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :イギリス(追加)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :ラテンアメリカ
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :無邪気の国
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :スウェーデン
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :オランダ
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :フィンランド
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :ポーランド
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :スロバキア
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :ノルウェー
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ハンガリー
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :オーストリア
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :ルーマニア
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :チェコ
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :スイス
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :デンマーク
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :トルコ
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :イタリア
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :カタラン
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :イギリス
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :フランス
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :ドイツ
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :イギリス(追加)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :ラテンアメリカ
+STR_MAPGEN_TOWN_NAME_SILLY                                      :無邪気の国
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :スウェーデン
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :オランダ
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :フィンランド
+STR_MAPGEN_TOWN_NAME_POLISH                                     :ポーランド
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :スロバキア
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ノルウェー
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ハンガリー
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :オーストリア
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :ルーマニア
+STR_MAPGEN_TOWN_NAME_CZECH                                      :チェコ
+STR_MAPGEN_TOWN_NAME_SWISS                                      :スイス
+STR_MAPGEN_TOWN_NAME_DANISH                                     :デンマーク
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :トルコ
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :イタリア
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :カタラン
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}オートセーブ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
@@ -1092,7 +1092,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}}£10,000(英ポンド)に対する為替レートを設定します
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}最大競争会社数: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}最大競争会社数: {ORANGE}{COMMA}
 
 STR_NONE                                                        :なし
 STR_FUNDING_ONLY                                                :出資のみ
@@ -2029,7 +2029,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :信号待ちで
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :列車が信号で長く待たされた場合、進路を反転することを許可します
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF{BLUE}(おすすめ)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF{BLUE}(おすすめ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
@@ -2125,10 +2125,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温帯
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :亜寒帯
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亜熱帯
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :おもちゃの国
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :温帯
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :亜寒帯
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :亜熱帯
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :おもちゃの国
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 配色

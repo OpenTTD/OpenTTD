@@ -1015,34 +1015,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indoneesia ruup
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaisia ringit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Parempoolne liiklus
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasakpoolne liiklus
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Parempoolne liiklus
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Asulanimed:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vali asulanimede stiil
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Asulanimed:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vali asulanimede stiil
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglise (algne)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Prantsusmaa
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Saksamaa
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglise (täiendatud)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Ladina-Ameerika
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tobedad
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Rootsi
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandi
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Soome
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poola
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakkia
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norra
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungari
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austria
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumeenia
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tšehhi
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Šveitsi
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Taani
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türgi
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itaalia
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaani
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglise (algne)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Prantsusmaa
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Saksamaa
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglise (täiendatud)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Ladina-Ameerika
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Tobedad
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Rootsi
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandi
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Soome
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poola
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakkia
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norra
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungari
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austria
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumeenia
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tšehhi
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Šveitsi
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Taani
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türgi
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Itaalia
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalaani
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvestusvälp
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali salvestamise välp
@@ -1141,7 +1141,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaad
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 naela (£) sinu valuutas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastaseid kuni: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Vastaseid kuni: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Pole
 STR_FUNDING_ONLY                                                :Ainult rahastatud
@@ -2062,7 +2062,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automaatne taga
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Luba rongidel ümber pöörata kui nad on pikka aega foori taga oodanud
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(soovitatud)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(soovitatud)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Määra seade väärtus
 
@@ -2158,10 +2158,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuda jo
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tootmisväärtuste muutmine: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Parasvöötme maastik
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lähisarktiline maastik
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Troopiline maastik
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Mänguasjamaa
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Parasvöötme maastik
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Lähisarktiline maastik
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Troopiline maastik
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Mänguasjamaa
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Värvivalik

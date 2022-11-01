@@ -925,34 +925,34 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Нов тайв
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Хонгконгски долар (HKD)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ляво
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :дясно
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ляво
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :дясно
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Имена на градовете
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Избор стила на имената на градовете
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Имена на градовете
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Избор стила на имената на градовете
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :английски (оригинални)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :френски
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :германски
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :английски (допълнителни)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :латиноамерикански
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :глупави
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :шведски
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :холандски
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :финландски
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :полски
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :словашки
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :норвежки
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :унгарски
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :австрийски
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :румънски
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :чешки
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :швейцарски
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :датски
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :турски
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :италиански
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :каталонски
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :английски (оригинални)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :френски
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :германски
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :английски (допълнителни)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :латиноамерикански
+STR_MAPGEN_TOWN_NAME_SILLY                                      :глупави
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :шведски
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :холандски
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :финландски
+STR_MAPGEN_TOWN_NAME_POLISH                                     :полски
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :словашки
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :норвежки
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :унгарски
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :австрийски
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :румънски
+STR_MAPGEN_TOWN_NAME_CZECH                                      :чешки
+STR_MAPGEN_TOWN_NAME_SWISS                                      :швейцарски
+STR_MAPGEN_TOWN_NAME_DANISH                                     :датски
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :турски
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :италиански
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :каталонски
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозаписване
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервала между две автозаписваня
@@ -1032,7 +1032,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Пре�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 лири(£) в твоята валута
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на парична единица
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
 
 STR_NONE                                                        :николко
 STR_FUNDING_ONLY                                                :Единствено финансиране
@@ -1858,7 +1858,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автомат�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Позволява на влаковете да обръщат ако са чакали твърде дълго
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(препоръчва се)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(препоръчва се)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
@@ -1948,10 +1948,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Пром
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Промяна на производствените стойности: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :умерен климат
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Арктичен климат
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Тропически климат
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Земята на играчките
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :умерен климат
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Арктичен климат
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Тропически климат
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Земята на играчките
 
 # Livery window
 

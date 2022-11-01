@@ -1122,34 +1122,34 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gubernantur sinistro
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gubernantur dextro
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gubernantur sinistro
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gubernantur dextro
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomina oppidorum
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Eligere oppidorum nomina
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomina oppidorum
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Eligere oppidorum nomina
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglica (Primigenia)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francogallica
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Theodisca
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglica (Additicia)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Americae Latinae
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ridicula
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suecica
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Batavica
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnica
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polonica
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovaca
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegica
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarica
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austriaca
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanica
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Cecha
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Helvetica
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danica
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcica
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiana
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalana
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglica (Primigenia)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francogallica
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Theodisca
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglica (Additicia)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Americae Latinae
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Ridicula
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suecica
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Batavica
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnica
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonica
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovaca
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegica
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarica
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriaca
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanica
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Cecha
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Helvetica
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danica
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcica
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiana
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalana
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Eligere crebritatem automatice ludum servandi
@@ -1234,7 +1234,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Praevis
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}Copia nummi tui quae aequa est 10000 Librae Britannicae (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mutare parametrum nummi proprii
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Numerus competitorum maximus: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numerus competitorum maximus: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nullae
 STR_FUNDING_ONLY                                                :Modo conditu
@@ -2107,7 +2107,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Reversio automa
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sinere tramina reverti apud signale, si illic valde morati sunt
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Commendatum)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Commendatum)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mutare valorem optionis
 
@@ -2199,10 +2199,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare a
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Terra temperata
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Terra subarctica
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Terra subtropica
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Terra ludicrorum
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terra temperata
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terra subarctica
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terra subtropica
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terra ludicrorum
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} Schema Coloris

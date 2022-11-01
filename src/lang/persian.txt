@@ -917,34 +917,34 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :لیره گرج
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ریال ایران (IRR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :چپ فرمان
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :راست فرمان
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :چپ فرمان
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :راست فرمان
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK} نام شهرها
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}انتخاب نوع نام شهرها
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK} نام شهرها
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}انتخاب نوع نام شهرها
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :انگلیسی (اصلی)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :فرانسوی
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :آلمانی
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :انگلیسی (اضافه)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :آمریکای لاتین
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :سیلی
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :سوئدی
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :هلندی
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :فنلاند
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :لهستان
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :اسلواکی
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :نروژی
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :مجاری
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :اتریشی
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :رومانیایی
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :چکی
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :سوییسی
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :دانمارکی
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ترکیه ای
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ایتالیایی
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :کاتالانی
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :انگلیسی (اصلی)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرانسوی
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :آلمانی
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انگلیسی (اضافه)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :آمریکای لاتین
+STR_MAPGEN_TOWN_NAME_SILLY                                      :سیلی
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سوئدی
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :هلندی
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فنلاند
+STR_MAPGEN_TOWN_NAME_POLISH                                     :لهستان
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :اسلواکی
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :نروژی
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :مجاری
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :اتریشی
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :رومانیایی
+STR_MAPGEN_TOWN_NAME_CZECH                                      :چکی
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سوییسی
+STR_MAPGEN_TOWN_NAME_DANISH                                     :دانمارکی
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ترکیه ای
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ایتالیایی
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاتالانی
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
@@ -1020,7 +1020,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}پیش�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}۱۰۰۰۰ پوند (£) به واحد پول شما می شود
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغییر دلخواه پارامترهای واحد پول
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
 
 STR_NONE                                                        :هیچکدام
 STR_FUNDING_ONLY                                                :فقط سرمایه گذاری
@@ -1628,7 +1628,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :مسیریاب 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :برگشت خودکار با رسیدن به نشانه ها: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(توصیه می گردد)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(توصیه می گردد)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
@@ -1710,10 +1710,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}تغیی
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}قابلیت تغییر سطح تولید صنایع: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :آب و هوای معتدل
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :آب و هوای قطبی
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :آب و هوای استوایی
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :دنیای اسباب بازی ها
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :آب و هوای معتدل
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :آب و هوای قطبی
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :آب و هوای استوایی
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :دنیای اسباب بازی ها
 
 # Livery window
 

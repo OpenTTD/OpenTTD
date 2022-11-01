@@ -1255,34 +1255,34 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Ганконс�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Індыйская рупія (INR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Езьдзіць леваруч
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Езьдзіць праваруч
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Езьдзіць леваруч
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Езьдзіць праваруч
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назвы гарадоў
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На якой мове будуць назвы населеных пунктаў
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Назвы гарадоў
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}На якой мове будуць назвы населеных пунктаў
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Анґельскія (арыґінальныя)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францускія
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нямецкія
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Анґельскія (дадатковыя)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Лацінаамэрыканскія
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Анґельскія (жартоўныя)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Швэдзкія
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідэрляндзкія
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінскія
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польскія
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Славацкія
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Нарвэскія
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Вугорскія
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Аўстрыйскія
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынскія
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чэскія
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швайцарскія
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Дацкія
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турэцкія
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італьянскія
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталёнскія
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Анґельскія (арыґінальныя)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Францускія
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Нямецкія
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Анґельскія (дадатковыя)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Лацінаамэрыканскія
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Анґельскія (жартоўныя)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Швэдзкія
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Нідэрляндзкія
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Фінскія
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Польскія
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Славацкія
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Нарвэскія
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Вугорскія
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Аўстрыйскія
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Румынскія
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Чэскія
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Швайцарскія
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Дацкія
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Турэцкія
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Італьянскія
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Каталёнскія
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Інтэрвал паміж аўтаматычнымі захаваньнямі гульні
@@ -1367,7 +1367,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Узо�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 брыт. фунтаў (£) у вашай валюце
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Зьмяніць парамэтр уласнай валюты
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максымальная колькасьць канкурэнтаў: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максымальная колькасьць канкурэнтаў: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Няма
 STR_FUNDING_ONLY                                                :Будаваць самому
@@ -2255,7 +2255,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Аўтамат�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Дазволіць цягнікам разварочвацца перад сыґналамі, калі яны чакаюць доўгі час.
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рэкамэндуецца)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(рэкамэндуецца)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
 
@@ -2347,10 +2347,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Зьмя
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць зьмяненьне прадукцыйнасьці: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :умераны ляндшафт
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :субарктычны ляндшафт
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :субтрапічны ляндшафт
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :цацачны ляндшафт
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :умераны ляндшафт
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :субарктычны ляндшафт
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :субтрапічны ляндшафт
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :цацачны ляндшафт
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Колеры кампаніі «{COMPANY}»

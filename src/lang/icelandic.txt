@@ -896,34 +896,34 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstristefna
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Hægristefna
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vinstristefna
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Hægristefna
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bæjanöfn
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Tungumál bæjarnafna
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bæjanöfn
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tungumál bæjarnafna
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ensk (Upphafleg)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frönsk
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Þýsk
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ensk (Aukaleg)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Rómönsk-Amerísk
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fáránleg
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sænsk
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollensk
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnsk
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pólsk
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slóvakísk
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norsk
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungversk
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austurrísk
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rúmensk
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tékknesk
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svissnesk
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dönsk
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrknesk
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ítölsk
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalónsk
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ensk (Upphafleg)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frönsk
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Þýsk
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ensk (Aukaleg)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Rómönsk-Amerísk
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Fáránleg
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sænsk
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollensk
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnsk
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pólsk
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slóvakísk
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norsk
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungversk
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austurrísk
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rúmensk
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tékknesk
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Svissnesk
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dönsk
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrknesk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ítölsk
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalónsk
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tíðni sjálfvirkra vistana
@@ -997,7 +997,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: 
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pund (£) í þessum gjaldmiðli
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérsniðnum gjaldmiðli
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Engin
 STR_FUNDING_ONLY                                                :Með fjármögnun
@@ -1759,7 +1759,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Snúa járnbrau
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leyfa járnbrautarlestum að snúa við á umferðarmerkjum ef þau hafa beðið þar í langan tíma
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ráðlegt)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ráðlegt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
@@ -1846,10 +1846,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Breyta u
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temprað landslag
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Heimskautalandslag
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Miðjarðarlandslag
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leikfangalandslag
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temprað landslag
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Heimskautalandslag
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Miðjarðarlandslag
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Leikfangalandslag
 
 # Livery window
 

@@ -488,25 +488,25 @@ STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла 
 
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Акӑлчан
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францири
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нимӗҫ
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Акӑлчан (Хушма)
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Акӑлчан (Кулӑшма)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Шведла
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Голланд
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Финла
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Поляк
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словак
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Венгрла
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австри
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Рим
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чехла
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швеци
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датчан
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турккӑла
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Итали
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Катталун
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Акӑлчан
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Францири
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Нимӗҫ
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Акӑлчан (Хушма)
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Акӑлчан (Кулӑшма)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Шведла
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Голланд
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Финла
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Поляк
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Словак
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Венгрла
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Австри
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Рим
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Чехла
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Швеци
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Датчан
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Турккӑла
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Итали
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Катталун
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
 
@@ -892,10 +892,10 @@ STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑйй
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳрлет кун: {ORANGE}{DATE_SHORT}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Виҫеллӗ климат
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Сивӗ климат
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Тропик климат
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Вӑйӑ пахчи
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Виҫеллӗ климат
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Сивӗ климат
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Тропик климат
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Вӑйӑ пахчи
 
 # Livery window
 

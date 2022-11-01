@@ -1130,34 +1130,34 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheil
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach (IRR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Draibheadh air an taobh chlì
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Draibheadh air an taobh deas
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Draibheadh air an taobh chlì
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Draibheadh air an taobh deas
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Ainmean bhailtean
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Tagh stoidhle aig ainmean nam bailtean
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ainmean bhailtean
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tagh stoidhle aig ainmean nam bailtean
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Beurla (Tùsail)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frangach
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Gearmailteach
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Beurla (a bharrachd)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Aimeireaga Laidinneach
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Gòrach
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suaineach
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Duitseach
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fionnlannach
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pòlannach
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slòbhacach
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Nirribheach
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungaireach
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Ostaireach
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romàineach
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Seiceach
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Eilbheiseach
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danmhairgeach
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcach
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Eadailteach
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanach
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Beurla (Tùsail)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frangach
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Gearmailteach
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Beurla (a bharrachd)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Aimeireaga Laidinneach
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Gòrach
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suaineach
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Duitseach
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fionnlannach
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pòlannach
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slòbhacach
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Nirribheach
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungaireach
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Ostaireach
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romàineach
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Seiceach
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Eilbheiseach
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danmhairgeach
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcach
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eadailteach
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanach
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
@@ -1237,7 +1237,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Ro-shea
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 not (£) san airgeadra agad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Atharraich paramadair an airgeadra ghnàthaichte
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Chan eil gin
 STR_FUNDING_ONLY                                                :Le maoineachadh a-mhàin
@@ -2100,7 +2100,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Taobh contrarra
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Faodaidh trèanaichean tilleadh aig comharra nuair a bhios iad air feitheamh ann ùine fada
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(molta)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(molta)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Atharraich luach na roghainn
 
@@ -2192,10 +2192,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Atharrai
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan saothrachaidh: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Cruth-tìre measarra
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Cruth-tìre fo-artach
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Cruth-tìre fo-thropaigeach
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Cruth-tìre nan dèideag
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Cruth-tìre measarra
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Cruth-tìre fo-artach
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Cruth-tìre fo-thropaigeach
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Cruth-tìre nan dèideag
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Sgeama nan dath

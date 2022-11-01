@@ -967,34 +967,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonèsi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducció per l'esquerra
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducció per la dreta
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conducció per l'esquerra
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conducció per la dreta
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Estil dels noms de les poblacions:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selecciona l'estil dels noms de poblacions
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Estil dels noms de les poblacions:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecciona l'estil dels noms de poblacions
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglès
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francès
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemany
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglès (addicional)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Llatinoamericà
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Graciós
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suec
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandès
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finès
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polonès
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Eslovac
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Noruec
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hongarès
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austríac
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanès
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Txec
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Suís
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danès
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turc
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italià
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Català
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglès
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francès
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemany
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglès (addicional)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Llatinoamericà
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Graciós
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suec
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandès
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finès
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonès
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovac
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noruec
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongarès
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austríac
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanès
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Txec
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Suís
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danès
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turc
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italià
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Català
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa automàticament
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval de desada automàtica de la partida
@@ -1094,7 +1094,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista p
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 lliures (£) en aquesta moneda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Canvia el paràmetre de la moneda personalitzada
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Nombre màxim de competidors: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nombre màxim de competidors: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Cap
 STR_FUNDING_ONLY                                                :Cap, excepte finançades
@@ -2038,7 +2038,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Canvi de sentit
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als trens girar en un senyal, si esperaven allà durant molt temps
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomanat)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
@@ -2134,10 +2134,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació dels valors de producció: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Paisatge temperat
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Paisatge subàrtic
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Paisatge subtropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisatge de joguines
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Paisatge temperat
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Paisatge subàrtic
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Paisatge subtropical
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Paisatge de joguines
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de colors nou

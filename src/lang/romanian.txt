@@ -966,34 +966,34 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonezia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Pe partea dreaptă
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Pe partea stângă
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Pe partea dreaptă
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Numele orașelor:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Alege naţionalitatea numelor oraşelor
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Numele orașelor:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Alege naţionalitatea numelor oraşelor
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Englezeşti (Original)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franţuzeşti
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Nemţeşti
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Englezeşti (Adiţional)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Americane
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Amuzante
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suedeze
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Olandeze
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandeze
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poloneze
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovace
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegiene
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungureşti
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austriece
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Româneşti
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Ceheşti
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Elveţiene
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Daneze
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turceşti
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italieneşti
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalană
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englezeşti (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franţuzeşti
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Nemţeşti
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englezeşti (Adiţional)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Americane
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Amuzante
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suedeze
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Olandeze
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandeze
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloneze
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovace
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiene
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungureşti
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriece
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Româneşti
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Ceheşti
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Elveţiene
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Daneze
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turceşti
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italieneşti
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalană
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
@@ -1093,7 +1093,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzu
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 de Lire sterline (£) în moneda proprie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimbă un parametru al monedei proprii
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Numărul maxim de companii concurente: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numărul maxim de companii concurente: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nimic
 STR_FUNDING_ONLY                                                :Doar finanțare
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Întoarcere aut
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permite trenurilor să întoarcă la semafor, dacă aşteaptă de mult timp
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomandat)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recomandat)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -2133,10 +2133,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Schimbă
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activează accesul la valorile de producţie: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :peisajul temperat
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :peisajul sub-arctic
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :peisajul sub-tropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :peisajul 'ţara jucăriilor'
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :peisajul temperat
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :peisajul sub-arctic
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :peisajul sub-tropical
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :peisajul 'ţara jucăriilor'
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemă de culori

@@ -934,34 +934,34 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :(HKD) دولا�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :الروبية الهندية (INR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :القيادة على اليسار
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :القيادة على اليمين
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :القيادة على اليسار
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :القيادة على اليمين
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}اسماء المدن:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}اختيار طريقة عرض اسماء المدن
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}اسماء المدن:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}اختيار طريقة عرض اسماء المدن
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :English (Original)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :فرنسي
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :الماني
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :انجليزي اضافي
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :امريكي لاتيني
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :مضحك
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :سويدي
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :هولندي
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :فنلندي
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :بلغاري
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :سلوفاكي
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :نرويجي
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :هنغاري
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :نمساوي
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :روماني
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :تشيكي
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :سويدي
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :دنماكي
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :تركي
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ايطالي
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :كتالونية
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرنسي
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :الماني
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انجليزي اضافي
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :امريكي لاتيني
+STR_MAPGEN_TOWN_NAME_SILLY                                      :مضحك
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سويدي
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :هولندي
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فنلندي
+STR_MAPGEN_TOWN_NAME_POLISH                                     :بلغاري
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلوفاكي
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :نرويجي
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :هنغاري
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :نمساوي
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :روماني
+STR_MAPGEN_TOWN_NAME_CZECH                                      :تشيكي
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سويدي
+STR_MAPGEN_TOWN_NAME_DANISH                                     :دنماكي
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :تركي
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ايطالي
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :كتالونية
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ آلي
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي
@@ -1056,7 +1056,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK} 10000 جنية استرليني في عملتك
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
 
 STR_NONE                                                        :بدون
 STR_FUNDING_ONLY                                                :التمويل فقط
@@ -1711,7 +1711,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :موجد طري
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :العكس عند الإشارات: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(مفضل)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(مفضل)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}عدل قيمة التغيير
 
@@ -1796,10 +1796,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}غير �
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}تفعيل تغيير قيمة الانتاج: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :مناطق معتدلة
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :مناطق ثلجية
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :مناطق مدارية
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :ألعاب
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :مناطق معتدلة
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :مناطق ثلجية
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :مناطق مدارية
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ألعاب
 
 # Livery window
 

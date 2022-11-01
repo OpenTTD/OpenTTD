@@ -946,34 +946,34 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminb
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Bestuur aan linkerkant
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Bestuur aan regterkant
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Bestuur aan linkerkant
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Bestuur aan regterkant
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Dorp name
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Kies dorp naam styl
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Dorp name
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Kies dorp naam styl
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engels (Oorspronkilik)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frans
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Duits
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engels (Addisioneel)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latyns-Amerikaans
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Snaaks
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sweeds
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollands
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnish
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polish
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegian
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarian
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrian
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanian
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czech
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deens
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turks
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiaans
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engels (Oorspronkilik)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frans
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Duits
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engels (Addisioneel)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latyns-Amerikaans
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Snaaks
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sweeds
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollands
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnish
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polish
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwegian
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarian
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrian
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanian
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Czech
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Swiss
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Deens
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turks
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiaans
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Outostoor
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen outomatiese store
@@ -1057,7 +1057,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorsko
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pond (£) in jou koers
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander gebruiklike koers parameter
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum no. mededingers: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimum no. mededingers: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Geen
 STR_FUNDING_ONLY                                                :Befondsing alleen
@@ -1935,7 +1935,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Outomatiese rig
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Laat treine toe om agteruit te gaan by signale, as hulle daar lank gewag het
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevole)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Aanbevole)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander stel waarde
 
@@ -2026,10 +2026,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Verander
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiveer modifisering van produksie waardes: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Matige klimaat
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-artiese landskap
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropiese landskap
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Speelgoedland landskap
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Matige klimaat
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-artiese landskap
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropiese landskap
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Speelgoedland landskap
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Kleur Skema

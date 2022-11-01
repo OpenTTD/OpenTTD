@@ -275,14 +275,14 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलै
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :दाईं ओर वाहन चलाएँ
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :दाईं ओर वाहन चलाएँ
 
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ़्रेंच
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :पोलिश
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :तुर्की
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :इटैलियन
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ़्रेंच
+STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :इटैलियन
 
 
 # Autosave dropdown

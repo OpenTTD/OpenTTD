@@ -942,34 +942,34 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :ดอลลา
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :ริงกิตมาเลเซีย (MYR)
 
 ###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ขับชิดซ้าย
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :ขับชิดขวา
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ขับชิดซ้าย
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :ขับชิดขวา
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}ชื่อเมือง:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}เลือกรูปแบบของชื่อเมือง
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}ชื่อเมือง:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}เลือกรูปแบบของชื่อเมือง
 
 ###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :อังกฤษ (ดั้งเดิม)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :ฝรั่งเศส
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :เยอรมัน
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :อังกฤษ (ตัวเสริม)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :ลาติน-อเมริกัน
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :อังกฤษอย่างง่าย
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :สวีดิช
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :ดัชต์
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :ฟินน์
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :โปลิช
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :สโลวากิช
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :นอร์วิเจียน
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ฮังกาเรียน
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ออสเตรียน
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :โรมาเนียน
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :เช็ค
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :สวิส
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :เดนมาร์ค
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ตุรกี
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :อิตาเลียน
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :คาตาลัน
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :อังกฤษ (ดั้งเดิม)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :ฝรั่งเศส
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :เยอรมัน
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :อังกฤษ (ตัวเสริม)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :ลาติน-อเมริกัน
+STR_MAPGEN_TOWN_NAME_SILLY                                      :อังกฤษอย่างง่าย
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :สวีดิช
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :ดัชต์
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :ฟินน์
+STR_MAPGEN_TOWN_NAME_POLISH                                     :โปลิช
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :สโลวากิช
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :นอร์วิเจียน
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ฮังกาเรียน
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ออสเตรียน
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :โรมาเนียน
+STR_MAPGEN_TOWN_NAME_CZECH                                      :เช็ค
+STR_MAPGEN_TOWN_NAME_SWISS                                      :สวิส
+STR_MAPGEN_TOWN_NAME_DANISH                                     :เดนมาร์ค
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ตุรกี
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :อิตาเลียน
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :คาตาลัน
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
@@ -1051,7 +1051,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}แส�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ปอนด์สเตอร์ลิง (£) ในสกุลเงินของคุณ
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เปลี่ยนการกำหนดค่าตัวแปรสกุลเงิน
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
 
 STR_NONE                                                        :ไม่มี
 STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
@@ -1916,7 +1916,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :หมุนก
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :อนุญาตให้ขบวนรถไฟกลับขบวนที่เสาอาณัติสัญญาณเมื่อมีการรอสัญญาณอนุญาตเป็นเวลานาน
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(แนะนำ)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(แนะนำ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
@@ -2008,10 +2008,10 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}เป�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}เปิดใช้งานการแก้ไขปริมาณผลผลิต: {ORANGE}{STRING}
 
 ###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :ภูมิประเทศเขตอบอุ่น
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :ภูมิประเทศเขตกึ่งขั้วโลก
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :ภูมิประเทศเขตกึ่งมรสุม
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :ภูมิประเทศเมืองของเล่น
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :ภูมิประเทศเขตอบอุ่น
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :ภูมิประเทศเขตกึ่งขั้วโลก
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :ภูมิประเทศเขตกึ่งมรสุม
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ภูมิประเทศเมืองของเล่น
 
 # Livery window
 
