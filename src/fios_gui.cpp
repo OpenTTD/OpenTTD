@@ -499,7 +499,7 @@ public:
 					/* Climate */
 					byte landscape = _load_check_data.settings.game_creation.landscape;
 					if (landscape < NUM_LANDSCAPE) {
-						SetDParam(0, STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE + landscape);
+						SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + landscape);
 						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_LANDSCAPE);
 						y += FONT_HEIGHT_NORMAL;
 					}
