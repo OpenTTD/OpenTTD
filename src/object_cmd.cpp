@@ -408,7 +408,7 @@ CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex st
 		CommandCost ret = Command<CMD_BUILD_OBJECT>::Do(flags & ~DC_EXEC, t, type, view);
 
 		/* If we've reached the limit, stop building (or testing). */
-		if (c != nullptr && --limit <= 0) break;
+		if (c != nullptr && limit-- <= 0) break;
 
 		if (ret.Failed()) {
 			last_error = ret;
