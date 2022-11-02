@@ -247,6 +247,15 @@ static void RoadVehSlopeSteepnessChanged(int32 new_value)
 	}
 }
 
+/**
+ *Vehicle breakdown setting changed, redraw vehicle and buy menu GUIs to show / hide reliability info
+ * @param new_value Unused
+ */
+static void VehicleBreakdownsChanged(int32 new_value)
+{
+	ReInitAllWindows(false);
+}
+
 static void TownFoundingChanged(int32 new_value)
 {
 	if (_game_mode != GM_EDITOR && _settings_game.economy.found_town == TF_FORBIDDEN) {

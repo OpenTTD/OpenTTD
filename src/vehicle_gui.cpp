@@ -2185,7 +2185,9 @@ struct VehicleDetailsWindow : Window {
 		switch (widget) {
 			case WID_VD_TOP_DETAILS: {
 				Dimension dim = { 0, 0 };
-				size->height = WD_FRAMERECT_TOP + 4 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				/* Only make space for reliability and breakdown info if breakdowns are enabled. */
+				uint num_info_strings = (_settings_game.difficulty.vehicle_breakdowns == 0) ? 3 : 4;
+				size->height = WD_FRAMERECT_TOP + num_info_strings * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 
 				for (uint i = 0; i < 4; i++) SetDParamMaxValue(i, INT16_MAX);
 				static const StringID info_strings[] = {
@@ -2346,10 +2348,12 @@ struct VehicleDetailsWindow : Window {
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
 				y += FONT_HEIGHT_NORMAL;
 
-				/* Draw breakdown & reliability */
-				SetDParam(0, ToPercent16(v->reliability));
-				SetDParam(1, v->breakdowns_since_last_service);
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
+				/* Draw breakdown & reliability, if breakdowns are enabled. */
+				if (_settings_game.difficulty.vehicle_breakdowns != 0) {
+					SetDParam(0, ToPercent16(v->reliability));
+					SetDParam(1, v->breakdowns_since_last_service);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS);
+				}
 				break;
 			}
 

@@ -928,10 +928,12 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE);
 		y += FONT_HEIGHT_NORMAL;
 
-		/* Reliability */
-		SetDParam(0, ToPercent16(e->reliability));
-		DrawString(left, right, y, STR_PURCHASE_INFO_RELIABILITY);
-		y += FONT_HEIGHT_NORMAL;
+		/* Reliability, if breakdowns are enabled */
+		if (_settings_game.difficulty.vehicle_breakdowns != 0) {
+			SetDParam(0, ToPercent16(e->reliability));
+			DrawString(left, right, y, STR_PURCHASE_INFO_RELIABILITY);
+			y += FONT_HEIGHT_NORMAL;
+		}
 	}
 
 	if (refittable) y = ShowRefitOptionsList(left, right, y, engine_number);
@@ -1115,7 +1117,8 @@ struct BuildVehicleWindow : Window {
 		widget->tool_tip    = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + type;
 		widget->SetLowered(this->show_hidden_engines);
 
-		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9);
+		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 9 : 8);
+		if (_settings_game.difficulty.vehicle_breakdowns != 0) this->details_height++; // Only show a line for max reliability if breakdowns are enabled
 
 		this->FinishInitNested(tile == INVALID_TILE ? (int)type : (int)tile);
 
