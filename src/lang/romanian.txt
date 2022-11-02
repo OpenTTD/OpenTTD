@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană 
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indoneziană (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Pe partea stângă
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Pe partea dreaptă
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Numele orașelor:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Alege naţionalitatea numelor oraşelor
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englezeşti (Original)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franţuzeşti
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Nemţeşti
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englezeşti (Adiţional)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Americane
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Amuzante
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suedeze
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Olandeze
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandeze
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloneze
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovace
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiene
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungureşti
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriece
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Româneşti
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Ceheşti
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Elveţiene
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Daneze
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turceşti
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italieneşti
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalană
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
 
@@ -1093,8 +1063,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzu
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 de Lire sterline (£) în moneda proprie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimbă un parametru al monedei proprii
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numărul maxim de companii concurente: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Nimic
 STR_FUNDING_ONLY                                                :Doar finanțare
 STR_MINIMAL                                                     :Minim
@@ -1143,6 +1111,12 @@ STR_SUBSIDY_X1_5                                                :x1,5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :peisajul temperat
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :peisajul sub-arctic
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :peisajul sub-tropical
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :peisajul 'ţara jucăriilor'
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Foarte plat
@@ -1502,6 +1476,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Îmbunătăţit
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Autovehicule: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Alege banda pentru condus
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Pe partea stângă
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Pe partea dreaptă
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotaţie hartă înălţimi: {STRING}
 ###length 2
@@ -2131,12 +2109,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Schimbă
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbă data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Schimbă anul curent
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activează accesul la valorile de producţie: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :peisajul temperat
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :peisajul sub-arctic
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :peisajul sub-tropical
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :peisajul 'ţara jucăriilor'
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schemă de culori
@@ -3140,6 +3112,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Mărime 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Alege mărimea hărții folosind ca unitate de măsură suprafețele. Numărul de suprafețe disponibile va fi puțin mai mic decât această valoare
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de oraşe:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Numele orașelor:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Alege naţionalitatea numelor oraşelor
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cel mai înalt vârf:
@@ -3160,6 +3134,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Râuri:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Netezime:
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribuţia varietăţii:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generează
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englezeşti (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franţuzeşti
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Nemţeşti
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englezeşti (Adiţional)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Americane
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Amuzante
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suedeze
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Olandeze
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandeze
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloneze
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovace
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiene
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungureşti
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriece
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Româneşti
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Ceheşti
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Elveţiene
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Daneze
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turceşti
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italieneşti
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalană
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Margine:
@@ -4538,6 +4535,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Modulul 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jucator uman
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleator
 STR_AI_CONFIG_NONE                                              :(niciunul)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numărul maxim de companii concurente: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}În sus
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mută IA selectată sus în listă

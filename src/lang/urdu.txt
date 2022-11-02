@@ -891,36 +891,6 @@ STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کو
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :بائیں طرف چلے
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :دائیں طرف چلے
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}شہروں کے نام
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}شہروں کے نام کی طرز اختیار کریں
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :انگریزی (اصلی)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرانسیسی
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :جرمن
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انگریزی (اضافی)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :لاطینی امریکی
-STR_MAPGEN_TOWN_NAME_SILLY                                      :سِلی
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سوئیڈش
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :ڈچ
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :فِنش
-STR_MAPGEN_TOWN_NAME_POLISH                                     :پولش
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلواک
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ناروئیجین
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ہینگرین
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :آسٹرین
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :رومانین
-STR_MAPGEN_TOWN_NAME_CZECH                                      :چیک
-STR_MAPGEN_TOWN_NAME_SWISS                                      :سوئس
-STR_MAPGEN_TOWN_NAME_DANISH                                     :ڈینش
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :ٹرکش
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :اِٹالین
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاٹالن
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}خود مختار بچاو
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
 
@@ -993,8 +963,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}جائ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}اپنی کرنسی میں 10000 پاونڈ (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}اپنی مرضی کے کرنسی پیرامیٹر کو تبدیل کریں
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
-
 STR_NONE                                                        :کوئی نہیں
 STR_FUNDING_ONLY                                                :صرف فنڈنگ
 STR_MINIMAL                                                     :کم از کم
@@ -1043,6 +1011,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperate منظر کشی
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arctic منظر کشی
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropical منظر کشی
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Toyland منظر کشی
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :بہت سیدھا
@@ -1242,6 +1216,10 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :کوئی نہی
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بہتر بنایا ہوا
 
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :بائیں طرف چلے
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :دائیں طرف چلے
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اونچائی والے نقشے کو گھمانا: {STRING}
 ###length 2
@@ -1598,12 +1576,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ہوا�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}تاریخ بدلیں: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجودہ سال بدلیں
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}پیداوار میں تبدیلی کو فعال کریں: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperate منظر کشی
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arctic منظر کشی
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropical منظر کشی
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Toyland منظر کشی
 
 # Livery window
 
@@ -2258,6 +2230,31 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}شہروں کے نام
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}شہروں کے نام کی طرز اختیار کریں
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :انگریزی (اصلی)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرانسیسی
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :جرمن
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انگریزی (اضافی)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :لاطینی امریکی
+STR_MAPGEN_TOWN_NAME_SILLY                                      :سِلی
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سوئیڈش
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :ڈچ
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فِنش
+STR_MAPGEN_TOWN_NAME_POLISH                                     :پولش
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلواک
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ناروئیجین
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ہینگرین
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :آسٹرین
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :رومانین
+STR_MAPGEN_TOWN_NAME_CZECH                                      :چیک
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سوئس
+STR_MAPGEN_TOWN_NAME_DANISH                                     :ڈینش
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ٹرکش
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :اِٹالین
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاٹالن
 
 # Strings for map borders at game generation
 
@@ -2717,6 +2714,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 
 
 # AI configuration window
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
 
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھیل کا سکرپٹ

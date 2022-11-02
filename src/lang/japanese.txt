@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :インド・ル
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :インドネシア・ルピア(IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :マレーシア・リンギット(MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :左側通行
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :右側通行
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}街の名前:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}街名のスタイルを選択します
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :イギリス
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :フランス
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :ドイツ
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :イギリス(追加)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :ラテンアメリカ
-STR_MAPGEN_TOWN_NAME_SILLY                                      :無邪気の国
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :スウェーデン
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :オランダ
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :フィンランド
-STR_MAPGEN_TOWN_NAME_POLISH                                     :ポーランド
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :スロバキア
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ノルウェー
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ハンガリー
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :オーストリア
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :ルーマニア
-STR_MAPGEN_TOWN_NAME_CZECH                                      :チェコ
-STR_MAPGEN_TOWN_NAME_SWISS                                      :スイス
-STR_MAPGEN_TOWN_NAME_DANISH                                     :デンマーク
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :トルコ
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :イタリア
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :カタラン
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}オートセーブ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
 
@@ -1092,8 +1062,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}}£10,000(英ポンド)に対する為替レートを設定します
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}最大競争会社数: {ORANGE}{COMMA}
-
 STR_NONE                                                        :なし
 STR_FUNDING_ONLY                                                :出資のみ
 STR_MINIMAL                                                     :最小
@@ -1142,6 +1110,12 @@ STR_SUBSIDY_X1_5                                                :×1.5
 STR_SUBSIDY_X2                                                  :×2
 STR_SUBSIDY_X3                                                  :×3
 STR_SUBSIDY_X4                                                  :×4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :温帯
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :亜寒帯
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :亜熱帯
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :おもちゃの国
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :特に平地
@@ -1500,6 +1474,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :改良版
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :車両: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :左側/右側通行を設定します
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :左側通行
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :右側通行
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :ハイトマップの回転方向: {STRING}
 ###length 2
@@ -2123,12 +2101,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}マッ�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在日時を変更
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :温帯
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :亜寒帯
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :亜熱帯
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :おもちゃの国
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 配色
@@ -3132,6 +3104,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}地図�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}生成する地図のサイズです。実際にはこのサイズより少し小さくなります
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}街数:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}街の名前:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}街名のスタイルを選択します
 STR_MAPGEN_DATE                                                 :{BLACK}日付:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}産業数:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰:
@@ -3152,6 +3126,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形のなだらかさ:
 STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :イギリス
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :フランス
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :ドイツ
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :イギリス(追加)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :ラテンアメリカ
+STR_MAPGEN_TOWN_NAME_SILLY                                      :無邪気の国
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :スウェーデン
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :オランダ
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :フィンランド
+STR_MAPGEN_TOWN_NAME_POLISH                                     :ポーランド
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :スロバキア
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ノルウェー
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ハンガリー
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :オーストリア
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :ルーマニア
+STR_MAPGEN_TOWN_NAME_CZECH                                      :チェコ
+STR_MAPGEN_TOWN_NAME_SWISS                                      :スイス
+STR_MAPGEN_TOWN_NAME_DANISH                                     :デンマーク
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :トルコ
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :イタリア
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :カタラン
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地図端:
@@ -4519,6 +4516,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}}このA
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
 STR_AI_CONFIG_RANDOM_AI                                         :ランダムなAI
 STR_AI_CONFIG_NONE                                              :(なし)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}最大競争会社数: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上に移動
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}選択したAIの順位を上げる

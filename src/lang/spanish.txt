@@ -966,36 +966,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (IN
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conducir por la izquierda
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conducir por la derecha
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nombres de municipios:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selección del estilo del nombre de los municipios
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglés
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francés
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemán
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglés (Adicional)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinoamericano
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Tontos/Absurdos
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sueco
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandés
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandés
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Polaco
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovaco
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noruego
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Húngaro
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austríaco
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumano
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Checo
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Suizo
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danés
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turco
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiano
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalán
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego
 
@@ -1094,8 +1064,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previa:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras(£) en tu moneda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Núm. máximo de jugadores: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Ninguno
 STR_FUNDING_ONLY                                                :Solo fundadas
 STR_MINIMAL                                                     :Mínimo
@@ -1144,6 +1112,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terreno templado
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terreno subártico
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terreno subtropical
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terreno juguetelandia
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Muy llano
@@ -1503,6 +1477,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Mejorado
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Selecciona el lado de conducción
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conducir por la izquierda
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conducir por la derecha
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotación del Mapa de alturas: {STRING}
 ###length 2
@@ -2132,12 +2110,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edita la
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar año actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificar los valores de producción: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terreno templado
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terreno subártico
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terreno subtropical
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terreno juguetelandia
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de Color
@@ -3141,6 +3113,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecciona el tamaño del mapa en casillas. El número de casillas disponible en el mapa será ligeramente inferior
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de municipios:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nombres de municipios:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selección del estilo del nombre de los municipios
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de industrias:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Punto más alto:
@@ -3161,6 +3135,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Uniformidad:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedad:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generar
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglés
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francés
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemán
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglés (Adicional)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinoamericano
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Tontos/Absurdos
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sueco
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandés
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandés
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polaco
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovaco
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noruego
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Húngaro
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austríaco
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumano
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Checo
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Suizo
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danés
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turco
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiano
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalán
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bordes del mapa:
@@ -4539,6 +4536,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA que s
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ninguno)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Núm. máximo de jugadores: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover hacia arriba
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover la IA seleccionada hacia arriba

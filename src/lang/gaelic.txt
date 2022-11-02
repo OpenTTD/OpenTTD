@@ -1129,36 +1129,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Gnàthaichte...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheileach (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach (IRR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Draibheadh air an taobh chlì
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Draibheadh air an taobh deas
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ainmean bhailtean
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tagh stoidhle aig ainmean nam bailtean
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Beurla (Tùsail)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frangach
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Gearmailteach
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Beurla (a bharrachd)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Aimeireaga Laidinneach
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Gòrach
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suaineach
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Duitseach
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fionnlannach
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Pòlannach
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slòbhacach
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Nirribheach
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungaireach
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Ostaireach
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romàineach
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Seiceach
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Eilbheiseach
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danmhairgeach
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcach
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eadailteach
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanach
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
 
@@ -1237,8 +1207,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Ro-shea
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 not (£) san airgeadra agad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Atharraich paramadair an airgeadra ghnàthaichte
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Chan eil gin
 STR_FUNDING_ONLY                                                :Le maoineachadh a-mhàin
 STR_MINIMAL                                                     :As lugha
@@ -1287,6 +1255,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Cruth-tìre measarra
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Cruth-tìre fo-artach
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Cruth-tìre fo-thropaigeach
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Cruth-tìre nan dèideag
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Glè rèidh
@@ -1622,6 +1596,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Leasaichte
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Carbadan-rathaid: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Tagh an taobh air an draibhear
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Draibheadh air an taobh chlì
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Draibheadh air an taobh deas
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Cuairteachadh a' mhapa-àirde: {STRING}
 ###length 2
@@ -2190,12 +2168,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Deasaich
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Atharraich an ceann-latha: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Atharraich am bliadhna an-dràsta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan saothrachaidh: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Cruth-tìre measarra
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Cruth-tìre fo-artach
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Cruth-tìre fo-thropaigeach
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Cruth-tìre nan dèideag
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Sgeama nan dath
@@ -3100,6 +3072,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Meud a' 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Tagh co mheud leacan a bhios sa mhapa. Bidh an àireamh dhe leacan ri làimh beagan nas lugha
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Bailtean:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ainmean bhailtean
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tagh stoidhle aig ainmean nam bailtean
 STR_MAPGEN_DATE                                                 :{BLACK}Ceann-latha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gnìomhachasan:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
@@ -3109,6 +3083,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Aibhnich
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Dè cho rèidh:
 STR_MAPGEN_VARIETY                                              :{BLACK}Sgaoileadh caochlaidh:
 STR_MAPGEN_GENERATE                                             :{WHITE}Gin am mapa
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Beurla (Tùsail)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frangach
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Gearmailteach
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Beurla (a bharrachd)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Aimeireaga Laidinneach
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Gòrach
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suaineach
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Duitseach
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fionnlannach
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pòlannach
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slòbhacach
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Nirribheach
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungaireach
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Ostaireach
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romàineach
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Seiceach
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Eilbheiseach
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danmhairgeach
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcach
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eadailteach
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanach
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Oirean a' mhapa:
@@ -4403,6 +4400,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Na IF a 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Cluicheadair daonna
 STR_AI_CONFIG_RANDOM_AI                                         :IF air thuaiream
 STR_AI_CONFIG_NONE                                              :(gun IF)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gluais suas
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Gluais an IF a thagh thu suas air an liosta

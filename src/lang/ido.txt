@@ -472,11 +472,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 ###length 42
 
-###length 2
-
-
-###length 21
-
 
 # Autosave dropdown
 ###length 5
@@ -499,7 +494,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 # Custom currency window
-
 
 
 
@@ -533,6 +527,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 ###length 4
 
 ###length 3
+
+###length 4
 
 ###length 4
 
@@ -645,6 +641,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
 ###length 3
 
+
+###length 2
 
 ###length 2
 
@@ -819,8 +817,6 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 # Abandon game
 
 # Cheat window
-
-###length 4
 
 # Livery window
 
@@ -1030,6 +1026,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NovaGRF
 
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
+
+###length 21
 
 # Strings for map borders at game generation
 

@@ -933,36 +933,6 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :(CNY) الرن�
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :(HKD) دولار هونج كونج
 STR_GAME_OPTIONS_CURRENCY_INR                                   :الروبية الهندية (INR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :القيادة على اليسار
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :القيادة على اليمين
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}اسماء المدن:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}اختيار طريقة عرض اسماء المدن
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرنسي
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :الماني
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انجليزي اضافي
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :امريكي لاتيني
-STR_MAPGEN_TOWN_NAME_SILLY                                      :مضحك
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سويدي
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :هولندي
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :فنلندي
-STR_MAPGEN_TOWN_NAME_POLISH                                     :بلغاري
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلوفاكي
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :نرويجي
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :هنغاري
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :نمساوي
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :روماني
-STR_MAPGEN_TOWN_NAME_CZECH                                      :تشيكي
-STR_MAPGEN_TOWN_NAME_SWISS                                      :سويدي
-STR_MAPGEN_TOWN_NAME_DANISH                                     :دنماكي
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :تركي
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ايطالي
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :كتالونية
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ آلي
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي
 
@@ -1056,8 +1026,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK} 10000 جنية استرليني في عملتك
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
-
 STR_NONE                                                        :بدون
 STR_FUNDING_ONLY                                                :التمويل فقط
 STR_MINIMAL                                                     :الادنى
@@ -1106,6 +1074,12 @@ STR_SUBSIDY_X1_5                                                :*1.5
 STR_SUBSIDY_X2                                                  :*2
 STR_SUBSIDY_X3                                                  :*3
 STR_SUBSIDY_X4                                                  :*4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :مناطق معتدلة
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :مناطق ثلجية
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :مناطق مدارية
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ألعاب
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :مسطح تماما
@@ -1357,6 +1331,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :المحسن
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :السيارات: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :إختر جهة القيادة
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :القيادة على اليسار
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :القيادة على اليمين
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اتجاة خريطة المرتفعات: {STRING}
 ###length 2
@@ -1794,12 +1772,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الط�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}عدل التاريخ {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}غير السنة الحالية
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}تفعيل تغيير قيمة الانتاج: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :مناطق معتدلة
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :مناطق ثلجية
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :مناطق مدارية
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ألعاب
 
 # Livery window
 
@@ -2672,6 +2644,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}حجم �
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK} حدد حجم الخريطة بالمربعات. سيكون عدد المربعات المتاحة أصغر قليلاً
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}عدد المدن:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}اسماء المدن:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}اختيار طريقة عرض اسماء المدن
 STR_MAPGEN_DATE                                                 :{BLACK}التاريخ:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد المصانع:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}قم بزيادة أقصى ارتفاع لأعلى قمة على الخريطة بواحد
@@ -2686,6 +2660,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}انها
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} النعومة:
 STR_MAPGEN_VARIETY                                              :{BLACK}توزيع التنوع:
 STR_MAPGEN_GENERATE                                             :{WHITE}ولد
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرنسي
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :الماني
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انجليزي اضافي
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :امريكي لاتيني
+STR_MAPGEN_TOWN_NAME_SILLY                                      :مضحك
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سويدي
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :هولندي
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فنلندي
+STR_MAPGEN_TOWN_NAME_POLISH                                     :بلغاري
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلوفاكي
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :نرويجي
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :هنغاري
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :نمساوي
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :روماني
+STR_MAPGEN_TOWN_NAME_CZECH                                      :تشيكي
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سويدي
+STR_MAPGEN_TOWN_NAME_DANISH                                     :دنماكي
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :تركي
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ايطالي
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :كتالونية
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK} حدود الخريطة:
@@ -3919,6 +3916,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}مخطو
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
 STR_AI_CONFIG_NONE                                              :(لا شيء)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}انقل للاعلى
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}انقل الذكاء الاصطناعي المختار للاعلى

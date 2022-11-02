@@ -1072,36 +1072,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Ρουπία Ι
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Ινδονησιακή Ρουπία  (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ρινγκίτ Μαλαισίας (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Οδηγούν από αριστερά
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Οδηγούν από δεξιά
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ονόματα πόλεων:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Επιλογή στυλ ονομάτων πόλεων
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Αγγλικά (Αυθεντικά)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Γαλλικά
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Γερμανικά
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Αγγλικά (Πρόσθετα)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Λατινοαμερικάνικα
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Αστεία
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Σουηδικά
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Ολλανδικά
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Φινλανδικά
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Πολωνικά
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Σλοβάκικα
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Νορβηγικά
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ουγγρικά
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Αυστριακά
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Ρουμάνικα
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Τσέχικα
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Ελβετικά
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Δανέζικα
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Τούρκικα
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ιταλικά
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Καταλανικά
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Αυτόματη αποθήκευση
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
 
@@ -1199,8 +1169,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 λίρες (£) στο νόμισμά σας
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλαγή παραμέτρων προσαρμοσμένου νομίσματος
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Μέγιστος αρ. ανταγωνιστών: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Κανένα
 STR_FUNDING_ONLY                                                :Χρηματοδότηση μονο
 STR_MINIMAL                                                     :Ελάχιστο
@@ -1249,6 +1217,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Εύκρατο τοπίο
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Πολικό τοπίο
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Υποτροπικό τοπίο
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Τοπίο παιχνιδότοπου
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Πολύ Επίπεδο
@@ -1607,6 +1581,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμ�
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Οχήματα δρόμου: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Επιλέξτε την πλευρά οδήγησης
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Οδηγούν από αριστερά
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Οδηγούν από δεξιά
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστροφή χάρτη υψομετρίας: {STRING}
 ###length 2
@@ -2230,12 +2208,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Μετα
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Αλλαγή ημ/νίας: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή τρέχοντος έτους
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενεργοποίηση δυνατότητας αλλαγής τιμών παραγωγής: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Εύκρατο τοπίο
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Πολικό τοπίο
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Υποτροπικό τοπίο
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Τοπίο παιχνιδότοπου
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Νέος Χρωματισμός
@@ -3239,6 +3211,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Διάσ
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Επιλέξτε το μέγεθος του χάρτη σε τετραγωνίδια. Ο αριθμός των τετραγωνίδιων διαθέσιμα για κτίσιμο θα είναι λίγο χαμηλότερος
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθμός πόλεων:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ονόματα πόλεων:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Επιλογή στυλ ονομάτων πόλεων
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομηνία:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθμός βιομηχανιών:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Υψηλότερη κορυφή:
@@ -3259,6 +3233,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτά
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Ομαλότητα:
 STR_MAPGEN_VARIETY                                              :{BLACK}Διανομή ποικιλομορφίας:
 STR_MAPGEN_GENERATE                                             :{WHITE}Δημιουργία
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Αγγλικά (Αυθεντικά)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Γαλλικά
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Γερμανικά
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Αγγλικά (Πρόσθετα)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Λατινοαμερικάνικα
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Αστεία
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Σουηδικά
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Ολλανδικά
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Φινλανδικά
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Πολωνικά
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Σλοβάκικα
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Νορβηγικά
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ουγγρικά
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Αυστριακά
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Ρουμάνικα
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Τσέχικα
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Ελβετικά
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Δανέζικα
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Τούρκικα
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ιταλικά
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Καταλανικά
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Άκρες χάρτη:
@@ -4632,6 +4629,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία AI
 STR_AI_CONFIG_NONE                                              :{G=f}(καμία)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Μέγιστος αρ. ανταγωνιστών: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση Πάνω
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση της επιλεγμένης AI πάνω στη λίστα

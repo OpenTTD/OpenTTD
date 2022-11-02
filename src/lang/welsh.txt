@@ -928,36 +928,6 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Newydd (RUB)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina (CNY)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gyrru ar y chwith
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gyrru ar y dde
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Enwau Trefi
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Dewis arddull yr enwau trefi
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Saesneg (Gwreiddiol)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Ffrangeg
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Almaeneg
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Saesneg (Ychwanegol)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :America Ladin
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Gwirion
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Swedaidd
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Iseldireg
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Ffinnaidd
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Pwylaidd
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slofacaidd
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwyaidd
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hwngaraidd
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Awstriaidd
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rwmaniaidd
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsecaidd
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Swisaidd
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danaidd
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Twrcaidd
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eidalaidd
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanaidd
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
 
@@ -1036,8 +1006,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolw
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) yn eich arian cyfaddas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Newid paramedrau arian cyfaddas
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Uchafswm nifer y cystadleuwyr: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Dim
 STR_FUNDING_ONLY                                                :Ariannu'n unig
 STR_MINIMAL                                                     :Lleiafsymol
@@ -1086,6 +1054,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tirwedd Tymherus
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Tirwedd Is-arctig
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tirwedd trofannol
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Tirwedd Teganau
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Gwastad Iawn
@@ -1420,6 +1394,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gwell
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Cerbydau ffordd: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Dewis yr ochr gyrru
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gyrru ar y chwith
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gyrru ar y dde
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Tro Map Uchder: {STRING}
 ###length 2
@@ -1989,12 +1967,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Golygu u
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Newid dyddiad: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Newid y flwyddyn bresennol
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tirwedd Tymherus
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Tirwedd Is-arctig
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tirwedd trofannol
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Tirwedd Teganau
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cynllun Lliw
@@ -2850,6 +2822,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Maint Ma
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Dewis maint y map mewn teiliau. Bydd y nifer o deiliau sydd ara gael ychydig yn llai
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nifer trefi:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Enwau Trefi
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Dewis arddull yr enwau trefi
 STR_MAPGEN_DATE                                                 :{BLACK}Dyddiad:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer diwydiannau:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
@@ -2859,6 +2833,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Afonydd:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Llyfnder:
 STR_MAPGEN_VARIETY                                              :{BLACK}Dosbarthiad amrywiaeth:
 STR_MAPGEN_GENERATE                                             :{WHITE}Cynhyrchu
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Saesneg (Gwreiddiol)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Ffrangeg
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Almaeneg
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Saesneg (Ychwanegol)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :America Ladin
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Gwirion
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Swedaidd
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Iseldireg
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Ffinnaidd
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pwylaidd
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slofacaidd
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norwyaidd
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hwngaraidd
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Awstriaidd
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rwmaniaidd
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsecaidd
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Swisaidd
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danaidd
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Twrcaidd
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eidalaidd
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanaidd
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Ymylon mapiau:
@@ -4152,6 +4149,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Yr AIau 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Chwaraewr dynol
 STR_AI_CONFIG_RANDOM_AI                                         :AI ar hap
 STR_AI_CONFIG_NONE                                              :(dim)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Uchafswm nifer y cystadleuwyr: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Symud i Fyny
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Symud yr AI a ddewiswyd i fyny'r rhestr

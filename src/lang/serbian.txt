@@ -1160,36 +1160,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijska rupija
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijska rupija (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezijski ringit (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Levom stranom
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Desnom stranom
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Imena naselja:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Izaberi stil imena naselja
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engleska (Originalna)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francuska
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Nemačka
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engleska (Dodatna)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinoamerička
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Šašava
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švedska
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandska
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finska
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Poljska
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovačka
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norveška
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Mađarska
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrijanska
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunska
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Češka
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Švajcarska
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danska
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turska
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italijanska
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonska
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto čuvanje pozicije
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izbor vremenskog intervala između dve automatski sačuvane pozicije
 
@@ -1287,8 +1257,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 funti (£) u vašoj moneti
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promena parametara sopstvene monete
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Nijedan
 STR_FUNDING_ONLY                                                :Samo finansiranje
 STR_MINIMAL                                                     :Najmanji
@@ -1337,6 +1305,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Umereni klimatski pojas
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subpolarni klimatski pojas
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Suptropski klimatski pojas
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Zemlja igračaka
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Ravničarski
@@ -1695,6 +1669,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređen
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Drumskih vozila: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Odaberite stranu saobraćaja
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Levom stranom
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Desnom stranom
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Orijentacija elevacione karte: {STRING}
 ###length 2
@@ -2316,12 +2294,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Promenit
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Promena datuma: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Promena trenutne godine
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Dozvoliti promenu količine proizvodnje: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Umereni klimatski pojas
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subpolarni klimatski pojas
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Suptropski klimatski pojas
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Zemlja igračaka
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Šema boja
@@ -3323,6 +3295,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Veličin
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Izaberite veličinu mape u pločicama. Broj dostupnih pločica će biti neznatno manji
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Broj naselja:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Imena naselja:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Izaberi stil imena naselja
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj fabrika:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najviši vrh:
@@ -3343,6 +3317,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Broj rek
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Postepenost:
 STR_MAPGEN_VARIETY                                              :{BLACK}Raznolikost:
 STR_MAPGEN_GENERATE                                             :{WHITE}Napravi
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engleska (Originalna)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francuska
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Nemačka
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engleska (Dodatna)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinoamerička
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Šašava
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švedska
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandska
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finska
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poljska
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovačka
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norveška
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Mađarska
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrijanska
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunska
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Češka
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Švajcarska
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danska
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turska
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italijanska
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonska
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Ivice terena:
@@ -4726,6 +4723,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštač
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
 STR_AI_CONFIG_RANDOM_AI                                         :Proizvoljna VI
 STR_AI_CONFIG_NONE                                              :(nijedna)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pomeri Naviše
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pomera obeleženu VI naviše u listi

@@ -966,36 +966,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Roupie indienne
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Roupie indonésienne (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conduite à gauche
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conduite à droite
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nom des villes{NBSP}:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Sélectionner la nationalité des noms des villes
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglais (originaux)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Français
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Allemands
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglais (additionnels)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-américains
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Drôles
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suédois
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandais
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandais
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonais
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovaques
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvégiens
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongrois
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Autrichiens
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Roumains
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tchèques
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Suisses
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danois
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcs
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiens
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalans
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sauvegarde automatique
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
 
@@ -1094,8 +1064,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévis
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10{NBSP}000 livres (£) dans cette devise
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de la devise personnalisée
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nombre maximal de concurrents{NBSP}: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Aucune
 STR_FUNDING_ONLY                                                :Financement uniquement
 STR_MINIMAL                                                     :Minimal
@@ -1144,6 +1112,12 @@ STR_SUBSIDY_X1_5                                                :x1,5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Environnement «{NBSP}Tempéré{NBSP}»
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Environnement «{NBSP}Arctique{NBSP}»
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Environnement «{NBSP}Tropical{NBSP}»
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Environnement «{NBSP}Monde des jouets{NBSP}»
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Très plat
@@ -1503,6 +1477,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Amélioré
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Véhicules routiers{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choisir le côté de circulation
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conduite à gauche
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conduite à droite
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotation de la carte d'altitude{NBSP}: {STRING}
 ###length 2
@@ -2132,12 +2110,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Modifier
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date{NBSP}: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année courante
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Environnement «{NBSP}Tempéré{NBSP}»
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Environnement «{NBSP}Arctique{NBSP}»
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Environnement «{NBSP}Tropical{NBSP}»
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Environnement «{NBSP}Monde des jouets{NBSP}»
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Couleur
@@ -3143,6 +3115,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Taille d
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Définir la taille de la carte en cases. Le nombre de cases utilisables sera légèrement plus petit
 STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nom des villes{NBSP}:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Sélectionner la nationalité des noms des villes
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Sommet le plus élevé:
@@ -3163,6 +3137,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nb. de r
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lissage{NBSP}:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variété de distribution{NBSP}:
 STR_MAPGEN_GENERATE                                             :{WHITE}Créer
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglais (originaux)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Français
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Allemands
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglais (additionnels)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-américains
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Drôles
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suédois
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandais
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandais
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonais
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovaques
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvégiens
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongrois
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Autrichiens
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Roumains
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tchèques
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Suisses
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danois
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcs
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiens
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalans
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bords de la carte{NBSP}:
@@ -4542,6 +4539,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
 STR_AI_CONFIG_NONE                                              :(aucun)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nombre maximal de concurrents{NBSP}: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Déplacer vers le haut
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Déplacer l'IA sélectionnée vers le haut

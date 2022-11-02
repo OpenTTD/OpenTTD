@@ -1121,36 +1121,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gubernantur sinistro
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gubernantur dextro
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomina oppidorum
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Eligere oppidorum nomina
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglica (Primigenia)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francogallica
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Theodisca
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglica (Additicia)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Americae Latinae
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Ridicula
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suecica
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Batavica
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnica
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonica
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovaca
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegica
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarica
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriaca
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanica
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Cecha
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Helvetica
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danica
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcica
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiana
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalana
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Eligere crebritatem automatice ludum servandi
 
@@ -1234,8 +1204,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Praevis
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}Copia nummi tui quae aequa est 10000 Librae Britannicae (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mutare parametrum nummi proprii
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numerus competitorum maximus: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Nullae
 STR_FUNDING_ONLY                                                :Modo conditu
 STR_MINIMAL                                                     :Minimus
@@ -1284,6 +1252,12 @@ STR_SUBSIDY_X1_5                                                :Sesquiplex
 STR_SUBSIDY_X2                                                  :Duplex
 STR_SUBSIDY_X3                                                  :Triplex
 STR_SUBSIDY_X4                                                  :Quadruplex
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terra temperata
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terra subarctica
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terra subtropica
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terra ludicrorum
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Planissimus
@@ -1620,6 +1594,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Melior
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehicula viaria: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Eligere latus viae gubernandi
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gubernantur sinistro
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gubernantur dextro
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotatio tabulae altitudinum: {STRING}
 ###length 2
@@ -2197,12 +2175,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Eligere 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Mutare annum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare annum currentem
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terra temperata
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terra subarctica
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terra subtropica
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terra ludicrorum
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} Schema Coloris
@@ -3073,6 +3045,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Tabulae 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Eligere magnitudinem tegularum tabulae geographicae. Tegulae parabiles fere minores erunt
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numerus oppidorum:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomina oppidorum
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Eligere oppidorum nomina
 STR_MAPGEN_DATE                                                 :{BLACK}Dies:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numerus industriarum:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatrum terrae:
@@ -3082,6 +3056,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Numerus 
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lenitas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Partitio Varietatis:
 STR_MAPGEN_GENERATE                                             :{WHITE}Creare
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglica (Primigenia)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francogallica
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Theodisca
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglica (Additicia)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Americae Latinae
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Ridicula
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suecica
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Batavica
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnica
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonica
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovaca
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegica
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarica
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriaca
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanica
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Cecha
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Helvetica
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danica
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcica
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiana
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalana
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Fines tabulae:
@@ -4401,6 +4398,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA quae 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lusor humanus
 STR_AI_CONFIG_RANDOM_AI                                         :IA Fortuita
 STR_AI_CONFIG_NONE                                              :(nullum)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numerus competitorum maximus: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Sursum Movere
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movere IA electam sursum in indice

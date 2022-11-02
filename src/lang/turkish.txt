@@ -966,36 +966,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Hindistan Rupis
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Endonezya Rupiahı (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezya Ringgiti (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Soldan trafik
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Sağdan trafik
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Şehir isimleri:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Şehir isimleri için bir tür seçin
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :İngiliz (Özgün)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Fransız
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alman
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :İngiliz (İlave)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerikan
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Saçmasapan (İngilizce)
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :İsveç
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollanda
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fin
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Leh
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovak
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norveç
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Macar
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Avusturya
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romen
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Çek
-STR_MAPGEN_TOWN_NAME_SWISS                                      :İsviçre
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danimarka
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türk
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italyan
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalan
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otomatik Kaydet
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otomatik kaydetme sıklığını seçin
 
@@ -1094,8 +1064,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizle
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Sterlin'in (£) para biriminizdeki karşılığı
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini değiştir
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Hiç
 STR_FUNDING_ONLY                                                :Yalnızca yatırım
 STR_MINIMAL                                                     :En düşük
@@ -1144,6 +1112,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Ilıman iklim
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Soğuk iklim
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropik iklim
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Oyun bahçesi
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Dümdüz
@@ -1503,6 +1477,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gelişmiş
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Yol araçları: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Sürüş yönünü seçin
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Soldan trafik
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Sağdan trafik
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Yükseklik haritasını döndür: {STRING}
 ###length 2
@@ -2132,12 +2110,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Haritada
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tarihi değiştir: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Yılı değiştir
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim değerlerini değiştir: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Ilıman iklim
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Soğuk iklim
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropik iklim
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Oyun bahçesi
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Renk Düzeni
@@ -3141,6 +3113,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Harita b
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Haritanın büyüklüğünü kare sayısına göre seçin. Kullanılabilir karelerin sayısı bir miktar az olacaktır.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Şehir sayısı:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Şehir isimleri:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Şehir isimleri için bir tür seçin
 STR_MAPGEN_DATE                                                 :{BLACK}Tarih:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika sayısı:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}En yüksek tepe:
@@ -3161,6 +3135,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Düzlük seviyesi:
 STR_MAPGEN_VARIETY                                              :{BLACK}Çeşitlilik dağılımı:
 STR_MAPGEN_GENERATE                                             :{WHITE}Oluştur
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :İngiliz (Özgün)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Fransız
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alman
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :İngiliz (İlave)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerikan
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Saçmasapan (İngilizce)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :İsveç
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollanda
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fin
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Leh
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norveç
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Macar
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Avusturya
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romen
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Çek
+STR_MAPGEN_TOWN_NAME_SWISS                                      :İsviçre
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danimarka
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italyan
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalan
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Harita kenarları:
@@ -4540,6 +4537,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonr
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
 STR_AI_CONFIG_NONE                                              :(hiçbiri)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Yukarı taşı
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Seçilen YZ'yi listede yukarı taşı

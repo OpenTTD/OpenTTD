@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :印度盧比(IN
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾 (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :馬來西亞令吉 (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :靠左行駛
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :靠右行駛
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}市鎮名稱:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}選擇市鎮命名風格
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英國 (原版)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :法國
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :德國
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :英國 (增訂版)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :拉丁美洲
-STR_MAPGEN_TOWN_NAME_SILLY                                      :荒唐名稱
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :瑞典
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :荷蘭
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :芬蘭
-STR_MAPGEN_TOWN_NAME_POLISH                                     :波蘭
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :斯洛伐克
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :挪威
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :匈牙利
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :奧地利
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :羅馬尼亞
-STR_MAPGEN_TOWN_NAME_CZECH                                      :捷克
-STR_MAPGEN_TOWN_NAME_SWISS                                      :瑞士
-STR_MAPGEN_TOWN_NAME_DANISH                                     :丹麥
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :土耳其
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :義大利
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :加泰隆尼亞
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
 
@@ -1093,8 +1063,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}將10000 Pound (£)換算成你的幣值
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}修改自訂幣值參數
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
-
 STR_NONE                                                        :無
 STR_FUNDING_ONLY                                                :只挹注資金
 STR_MINIMAL                                                     :最小
@@ -1143,6 +1111,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :溫帶
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :寒帶
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :亞熱帶
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :玩具世界
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :非常平坦
@@ -1502,6 +1476,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :改進版
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :公路車輛：{STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :選擇行車方向。
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :靠左行駛
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :靠右行駛
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :旋轉高度圖：{STRING}
 ###length 2
@@ -2131,12 +2109,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}修改�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}修改日期：{ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}變更目前年份
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}允許修改產量：{ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :溫帶
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :寒帶
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :亞熱帶
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :玩具世界
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} 的配色
@@ -3140,6 +3112,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}地圖�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}選擇地圖大小（單位為方格）。實際可供使用的方格數量會比所設定的值略低
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}市鎮名稱:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}選擇市鎮命名風格
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰：
@@ -3160,6 +3134,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}地形起伏分佈：
 STR_MAPGEN_GENERATE                                             :{WHITE}產生
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英國 (原版)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :法國
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :德國
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :英國 (增訂版)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :拉丁美洲
+STR_MAPGEN_TOWN_NAME_SILLY                                      :荒唐名稱
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :瑞典
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :荷蘭
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :芬蘭
+STR_MAPGEN_TOWN_NAME_POLISH                                     :波蘭
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :斯洛伐克
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :挪威
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :匈牙利
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :奧地利
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :羅馬尼亞
+STR_MAPGEN_TOWN_NAME_CZECH                                      :捷克
+STR_MAPGEN_TOWN_NAME_SWISS                                      :瑞士
+STR_MAPGEN_TOWN_NAME_DANISH                                     :丹麥
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :土耳其
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :義大利
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :加泰隆尼亞
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地圖邊緣：
@@ -4538,6 +4535,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人類玩家
 STR_AI_CONFIG_RANDOM_AI                                         :隨機 AI
 STR_AI_CONFIG_NONE                                              :(無)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}向上移
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}向上移動所選的 AI

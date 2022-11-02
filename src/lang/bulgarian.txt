@@ -924,36 +924,6 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ирански 
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Нов тайвански долар
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Хонгконгски долар (HKD)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ляво
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :дясно
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Имена на градовете
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Избор стила на имената на градовете
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :английски (оригинални)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :френски
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :германски
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :английски (допълнителни)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :латиноамерикански
-STR_MAPGEN_TOWN_NAME_SILLY                                      :глупави
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :шведски
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :холандски
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :финландски
-STR_MAPGEN_TOWN_NAME_POLISH                                     :полски
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :словашки
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :норвежки
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :унгарски
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :австрийски
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :румънски
-STR_MAPGEN_TOWN_NAME_CZECH                                      :чешки
-STR_MAPGEN_TOWN_NAME_SWISS                                      :швейцарски
-STR_MAPGEN_TOWN_NAME_DANISH                                     :датски
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :турски
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :италиански
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :каталонски
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозаписване
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервала между две автозаписваня
 
@@ -1032,8 +1002,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Пре�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 лири(£) в твоята валута
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на парична единица
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
-
 STR_NONE                                                        :николко
 STR_FUNDING_ONLY                                                :Единствено финансиране
 STR_MINIMAL                                                     :Минимален
@@ -1082,6 +1050,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :умерен климат
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Арктичен климат
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Тропически климат
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Земята на играчките
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :платовиден
@@ -1410,6 +1384,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :подобре�
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Пътни превозни средства: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Изберете страна шофиране
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ляво
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :дясно
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Завъртане на картата: {STRING}
 ###length 2
@@ -1946,12 +1924,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Реда
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Промяна на датата: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Промяна настоящата година
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Промяна на производствените стойности: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :умерен климат
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Арктичен климат
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Тропически климат
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Земята на играчките
 
 # Livery window
 
@@ -2804,6 +2776,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Разм
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Изберете големината на картата в полета. Броя на наличните полета ще е малко по-малък.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Брой градове:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Имена на градовете
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Избор стила на имената на градовете
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой индустрии:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Земегенератор:
@@ -2813,6 +2787,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Реки
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Полегатост:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразност:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генериране
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :английски (оригинални)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :френски
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :германски
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :английски (допълнителни)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :латиноамерикански
+STR_MAPGEN_TOWN_NAME_SILLY                                      :глупави
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :шведски
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :холандски
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :финландски
+STR_MAPGEN_TOWN_NAME_POLISH                                     :полски
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :словашки
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :норвежки
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :унгарски
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :австрийски
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :румънски
+STR_MAPGEN_TOWN_NAME_CZECH                                      :чешки
+STR_MAPGEN_TOWN_NAME_SWISS                                      :швейцарски
+STR_MAPGEN_TOWN_NAME_DANISH                                     :датски
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :турски
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :италиански
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :каталонски
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Краищата на картата да са:
@@ -4086,6 +4083,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}ИИ-т�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Човешки играч
 STR_AI_CONFIG_RANDOM_AI                                         :Случаен AI
 STR_AI_CONFIG_NONE                                              :(нищо)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Премести нагоре
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Премести маркирания AI нагоре в списъка

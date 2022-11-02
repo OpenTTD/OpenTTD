@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia (I
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian rupia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malesian ringgit (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasemmanpuolinen liikenne
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Oikeanpuolinen liikenne
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Kuntien nimet:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Valitse kuntien nimien tyyli
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englantilainen
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Ranskalainen
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Saksalainen
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englantilainen 2
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinalaisamerikkalainen
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Hassu
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Ruotsalainen
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollantilainen
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Suomalainen
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Puolalainen
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakialainen
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norjalainen
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Unkarilainen
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Itävaltalainen
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanialainen
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tšekkiläinen
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsiläinen
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Tanskalainen
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkkilainen
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italialainen
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonialainen
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
 
@@ -1093,8 +1063,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Esikats
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10 000 puntaa (£) valuutassasi
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda oman valuutan parametria.
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Vastustajien enimmäismäärä: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Ei mitään
 STR_FUNDING_ONLY                                                :Vain rahoitetut
 STR_MINIMAL                                                     :Minimi
@@ -1143,6 +1111,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :lauhkea maasto
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :pohjoinen maasto
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtrooppinen maasto
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Lelumaan maasto
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Hyvin tasainen
@@ -1502,6 +1476,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Parannettu
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Ajoneuvot: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Valitse ajokaista
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasemmanpuolinen liikenne
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Oikeanpuolinen liikenne
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Korkeuskartan pyöritys:{STRING}
 ###length 2
@@ -2131,12 +2109,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Muuta su
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuta päiväystä: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuta nykyistä vuotta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Salli tuotantomäärien muuttaminen: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :lauhkea maasto
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :pohjoinen maasto
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtrooppinen maasto
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Lelumaan maasto
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY}: Väriteema
@@ -3140,6 +3112,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartan k
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Valitse kartan koko ruutuina. Saatavilla olevien ruutujen määrä on hieman alhaisempi
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kuntien määrä:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Kuntien nimet:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Valitse kuntien nimien tyyli
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuuden määrä:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Korkein huippu:
@@ -3160,6 +3134,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Joet:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasaisuus:
 STR_MAPGEN_VARIETY                                              :{BLACK}Vaihtelu:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generoi
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Englantilainen
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Ranskalainen
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Saksalainen
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Englantilainen 2
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinalaisamerikkalainen
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Hassu
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Ruotsalainen
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollantilainen
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Suomalainen
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Puolalainen
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakialainen
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norjalainen
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Unkarilainen
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Itävaltalainen
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanialainen
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tšekkiläinen
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsiläinen
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Tanskalainen
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkkilainen
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italialainen
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonialainen
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kartan reunat:
@@ -4538,6 +4535,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Seuraava
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja
 STR_AI_CONFIG_RANDOM_AI                                         :Sattumanvarainen tekoäly
 STR_AI_CONFIG_NONE                                              :(ei mitään)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Vastustajien enimmäismäärä: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Siirrä ylöspäin
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Siirrä valittua tekoälyä ylöspäin listalla

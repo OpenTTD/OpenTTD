@@ -935,36 +935,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :இந்தி
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :இந்தோனேசிய ரூபியா (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :மலேசிய ரிங்கிட்டு (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :இடப்பக்கம் ஒட்டு
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :வலப்பக்கம் ஒட்டு
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}நகரங்களின் பெயர்கள்:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}நகர பெயர்கள் பாணியினைத் தேர்ந்தெடுக்கவும்
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :ஆங்கிலம் (இயற்கையான)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :பிரெஞ்சு
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :ஜெர்மன்
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :ஆங்கிலம் (கூடுதலான)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :இலத்தின்-அமெரிக்க
-STR_MAPGEN_TOWN_NAME_SILLY                                      :முட்டாள்தனமான
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :சுவீடிஷ்
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :டச்சு
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :பின்னிஷ்
-STR_MAPGEN_TOWN_NAME_POLISH                                     :போலிஷ்
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :சுலோவக்
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :நார்வேஜியன்
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ஹங்கேரியன்
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ஆஸ்திரியன்
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :ரோமேனியன்
-STR_MAPGEN_TOWN_NAME_CZECH                                      :செக்
-STR_MAPGEN_TOWN_NAME_SWISS                                      :சுவிஸ்
-STR_MAPGEN_TOWN_NAME_DANISH                                     :டேனிஷ்
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :துர்கிஷ்
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :இத்தாலியன்
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :கடலன்
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}தானியங்கி விளையாட்டு சேமிப்பு இடைவெளியைத் தேர்ந்தெடுக்கவும்
 
@@ -1052,8 +1022,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}மு�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 பவுண்டு (£) உங்க்ள் நாணயத்தில்
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}பயனரால் மாற்றப்பட்ட பண குணாதிசயங்களை மாற்று
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
-
 STR_NONE                                                        :ஒன்றுமில்லை
 STR_FUNDING_ONLY                                                :நிதியளிப்பு மட்டும்
 STR_MINIMAL                                                     :குறைந்தபட்சம்
@@ -1102,6 +1070,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :மிதமான நிலவெளி
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :வட துருவ நிலவெளி
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :மிதவெப்பமண்டல நிலவெளி
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :பொம்மை நிலவெளி
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :மிகவும் சமமான
@@ -1398,6 +1372,10 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மை
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :சீரமைக்கப்பட்ட
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :சாலை வாகனங்கள்: {STRING}
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :இடப்பக்கம் ஒட்டு
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :வலப்பக்கம் ஒட்டு
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :உயர்பட சுழற்ச்சி: {STRING}
 ###length 2
@@ -1911,12 +1889,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}வர�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}தேதியை மாற்று: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நடப்பு வருடத்தை மாற்று
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}தயாரிப்பு மதிப்புகளை மாற்ற முடியும்: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :மிதமான நிலவெளி
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :வட துருவ நிலவெளி
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :மிதவெப்பமண்டல நிலவெளி
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :பொம்மை நிலவெளி
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - நிற கோட்பாடு
@@ -2797,6 +2769,8 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}உல�
 STR_MAPGEN_MAPSIZE                                              :{BLACK}வரைபடத்தின் அளவு:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}நகரங்களின் எண்ணிக்கை:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}நகரங்களின் பெயர்கள்:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}நகர பெயர்கள் பாணியினைத் தேர்ந்தெடுக்கவும்
 STR_MAPGEN_DATE                                                 :{BLACK}தேதி:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}தொழிற்சாலைகளின் எண்ணிக்கை:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}மிக உயர்ந்த சிகரம்:
@@ -2814,6 +2788,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}ஆற�
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}சமநிலை:
 STR_MAPGEN_VARIETY                                              :{BLACK}பலவகை பரவல்:
 STR_MAPGEN_GENERATE                                             :{WHITE}உருவாக்கு
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :ஆங்கிலம் (இயற்கையான)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :பிரெஞ்சு
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :ஜெர்மன்
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :ஆங்கிலம் (கூடுதலான)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :இலத்தின்-அமெரிக்க
+STR_MAPGEN_TOWN_NAME_SILLY                                      :முட்டாள்தனமான
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :சுவீடிஷ்
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :டச்சு
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :பின்னிஷ்
+STR_MAPGEN_TOWN_NAME_POLISH                                     :போலிஷ்
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :சுலோவக்
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :நார்வேஜியன்
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ஹங்கேரியன்
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ஆஸ்திரியன்
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :ரோமேனியன்
+STR_MAPGEN_TOWN_NAME_CZECH                                      :செக்
+STR_MAPGEN_TOWN_NAME_SWISS                                      :சுவிஸ்
+STR_MAPGEN_TOWN_NAME_DANISH                                     :டேனிஷ்
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :துர்கிஷ்
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :இத்தாலியன்
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :கடலன்
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}வரைபடத்தின் முனைகள்:
@@ -4066,6 +4063,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}அட�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :மனித வீரர்
 STR_AI_CONFIG_RANDOM_AI                                         :ஏதொவொரு AI
 STR_AI_CONFIG_NONE                                              :(none)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}மேல் நகர்த்து
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}தேரந்தெடுக்கப்பட்ட AI-இனை பட்டியலில் மேல் நகர்த்து

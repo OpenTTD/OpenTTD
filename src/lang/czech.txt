@@ -1052,36 +1052,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indická rupie 
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonéská rupie (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malajsijský Ringgit (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vlevo
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Vpravo
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Názvy měst
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Výběr stylu jmen měst
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglická (původní)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francouzská
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Německá
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglická (další)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinskoamerická
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Anglická (legrační)
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švédská
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandská
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finská
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Polská
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovenská
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norská
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Maďarská
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Rakouská
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunská
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Česká
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Švýcarská
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Dánská
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turecká
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italská
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalánská
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukládání
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Volba intervalu mezi automatickým ukládáním hry
 
@@ -1180,8 +1150,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 liber (£) ve vlastní měně
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit parametry vlastní měny
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximální počet protivníků: {ORANGE}{COMMA}
-
 STR_NONE                                                        :žádný
 STR_FUNDING_ONLY                                                :Pouze dotace
 STR_MINIMAL                                                     :Nejmenší
@@ -1230,6 +1198,12 @@ STR_SUBSIDY_X1_5                                                :1,5x
 STR_SUBSIDY_X2                                                  :2x
 STR_SUBSIDY_X3                                                  :3x
 STR_SUBSIDY_X4                                                  :4x
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :krajina mírného pásma
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :subarktická krajina
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtropická kraina
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Země hraček
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :velmi plochá
@@ -1589,6 +1563,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :vylepšený
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Silniční vozidla: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Zvol na jaké straně vozovky jezdí vozidla
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vlevo
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Vpravo
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Otočení výškové mapy: {STRING}
 ###length 2
@@ -2218,12 +2196,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Upravit 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Změnit datum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Změnit rok
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit změnu produkce průmyslu: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :krajina mírného pásma
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :subarktická krajina
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtropická kraina
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Země hraček
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - barevné schéma
@@ -3233,6 +3205,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Velikost
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vybrat velikost mapy ve čtvercích. Počet dostupných čtverců bude o neco nižší
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Množství měst:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Názvy měst
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Výběr stylu jmen měst
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Množství průmyslu:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Nejvyšší vrchol:
@@ -3253,6 +3227,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Řeky:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Členitost krajiny:
 STR_MAPGEN_VARIETY                                              :{BLACK}Rozmanitost terénu:
 STR_MAPGEN_GENERATE                                             :{WHITE}Vytvořit
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglická (původní)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francouzská
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Německá
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglická (další)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinskoamerická
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Anglická (legrační)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švédská
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandská
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finská
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polská
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovenská
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norská
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Maďarská
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Rakouská
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunská
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Česká
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Švýcarská
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dánská
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turecká
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italská
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalánská
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Okraje mapy:
@@ -4634,6 +4631,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI, kter
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lidský hráč
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
 STR_AI_CONFIG_NONE                                              :(žádný)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximální počet protivníků: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Přesunout nahoru
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Přesunout vybranou AI v seznamu výše

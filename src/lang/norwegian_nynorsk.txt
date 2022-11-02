@@ -926,36 +926,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigendefinert..
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Venstrekøyring
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Høgrekøyring
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Namn på byar
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vel nasjonalitet på bynamn
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelsk
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Fransk
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tysk
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelsk (utvidet)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinamerikansk
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Tåpelige
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svensk
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlandsk
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finsk
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Polsk
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakisk
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norsk
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarsk
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østerriksk
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumensk
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjekkisk
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsisk
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Dansk
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkisk
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiensk
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalansk
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk lagring
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel intervall for automatisk lagring
 
@@ -1034,8 +1004,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempe
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Byt eigendefinert valutaparameter
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maks. antal konkurrentar: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Kun finansiering
 STR_MINIMAL                                                     :Minimal
@@ -1084,6 +1052,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperert landskap
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :subarktisk landskap
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtropisk landskap
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :"Leikeland"-landskap
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Særs flatt
@@ -1391,6 +1365,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbetra
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Veg-køyrety: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vel køyreside
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Venstrekøyring
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Høgrekøyring
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Høgdekartrotering: {STRING}
 ###length 2
@@ -1905,12 +1883,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Endre ma
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Byt noverande år
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillet endring av produksjonsmengder: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperert landskap
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :subarktisk landskap
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :subtropisk landskap
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :"Leikeland"-landskap
 
 # Livery window
 
@@ -2753,6 +2725,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartstor
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vel storleik på kartet, i ruter. Talet på tilgjengelege ruter vert smått mindre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byar:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Namn på byar
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vel nasjonalitet på bynamn
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industriar:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
@@ -2762,6 +2736,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Elver:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Glattleik:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variasjonsdistrubusjon:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generer
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelsk
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Fransk
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tysk
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelsk (utvidet)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latinamerikansk
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Tåpelige
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svensk
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlandsk
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finsk
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polsk
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakisk
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norsk
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarsk
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østerriksk
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumensk
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjekkisk
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Sveitsisk
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dansk
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkisk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiensk
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalansk
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kartkantar
@@ -4027,6 +4024,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIane so
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfeldig AI
 STR_AI_CONFIG_NONE                                              :(ingen)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maks. antal konkurrentar: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytt oppover
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytt valt AI oppover lista

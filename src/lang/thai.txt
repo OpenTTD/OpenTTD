@@ -941,36 +941,6 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (I
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :ดอลลาร์ฮ่องกง (HKD)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :ริงกิตมาเลเซีย (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ขับชิดซ้าย
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :ขับชิดขวา
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}ชื่อเมือง:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}เลือกรูปแบบของชื่อเมือง
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :อังกฤษ (ดั้งเดิม)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :ฝรั่งเศส
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :เยอรมัน
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :อังกฤษ (ตัวเสริม)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :ลาติน-อเมริกัน
-STR_MAPGEN_TOWN_NAME_SILLY                                      :อังกฤษอย่างง่าย
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :สวีดิช
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :ดัชต์
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :ฟินน์
-STR_MAPGEN_TOWN_NAME_POLISH                                     :โปลิช
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :สโลวากิช
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :นอร์วิเจียน
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ฮังกาเรียน
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ออสเตรียน
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :โรมาเนียน
-STR_MAPGEN_TOWN_NAME_CZECH                                      :เช็ค
-STR_MAPGEN_TOWN_NAME_SWISS                                      :สวิส
-STR_MAPGEN_TOWN_NAME_DANISH                                     :เดนมาร์ค
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :ตุรกี
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :อิตาเลียน
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :คาตาลัน
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
 
@@ -1051,8 +1021,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}แส�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ปอนด์สเตอร์ลิง (£) ในสกุลเงินของคุณ
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เปลี่ยนการกำหนดค่าตัวแปรสกุลเงิน
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
-
 STR_NONE                                                        :ไม่มี
 STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
 STR_MINIMAL                                                     :ขั้นต่ำ
@@ -1101,6 +1069,12 @@ STR_SUBSIDY_X1_5                                                :1.5 เท่�
 STR_SUBSIDY_X2                                                  :2 เท่า
 STR_SUBSIDY_X3                                                  :3 เท่า
 STR_SUBSIDY_X4                                                  :4 เท่า
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :ภูมิประเทศเขตอบอุ่น
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :ภูมิประเทศเขตกึ่งขั้วโลก
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :ภูมิประเทศเขตกึ่งมรสุม
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ภูมิประเทศเมืองของเล่น
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :แบนราบมาก
@@ -1427,6 +1401,10 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :ดั้งเ
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :ปรังปรุงแล้ว
 
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :เลือกฝั่งในการขับขี่
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :ขับชิดซ้าย
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :ขับชิดขวา
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :ทิศการหมุน Heightmap: {STRING}
 ###length 2
@@ -2006,12 +1984,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}เค�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}เปลี่ยนวันที่: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}เปลี่ยนปีปัจจุบัน
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}เปิดใช้งานการแก้ไขปริมาณผลผลิต: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :ภูมิประเทศเขตอบอุ่น
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :ภูมิประเทศเขตกึ่งขั้วโลก
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :ภูมิประเทศเขตกึ่งมรสุม
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ภูมิประเทศเมืองของเล่น
 
 # Livery window
 
@@ -2931,6 +2903,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}ขน�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}เลือกขนาดของแผนที่(ตาราง) จำนวนของตารางที่สามารถมองเห็นจะมีจำนวนน้อยกว่าเล็กน้อย
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}จำนวนเมือง
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}ชื่อเมือง:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}เลือกรูปแบบของชื่อเมือง
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำนวนอุตสาหกรรม:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}จุดที่พีคมากที่สุด:
@@ -2945,6 +2919,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}แม�
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}ความเรียบ:
 STR_MAPGEN_VARIETY                                              :{BLACK}การกระจายความแตกต่าง:
 STR_MAPGEN_GENERATE                                             :{WHITE}สร้างสภาพภูมิประเทศ
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :อังกฤษ (ดั้งเดิม)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :ฝรั่งเศส
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :เยอรมัน
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :อังกฤษ (ตัวเสริม)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :ลาติน-อเมริกัน
+STR_MAPGEN_TOWN_NAME_SILLY                                      :อังกฤษอย่างง่าย
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :สวีดิช
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :ดัชต์
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :ฟินน์
+STR_MAPGEN_TOWN_NAME_POLISH                                     :โปลิช
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :สโลวากิช
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :นอร์วิเจียน
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ฮังกาเรียน
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ออสเตรียน
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :โรมาเนียน
+STR_MAPGEN_TOWN_NAME_CZECH                                      :เช็ค
+STR_MAPGEN_TOWN_NAME_SWISS                                      :สวิส
+STR_MAPGEN_TOWN_NAME_DANISH                                     :เดนมาร์ค
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ตุรกี
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :อิตาเลียน
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :คาตาลัน
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}ขอบแผนที่:
@@ -4246,6 +4243,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI จ�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :ผู้เล่น
 STR_AI_CONFIG_RANDOM_AI                                         :คอมพิวเตอร์
 STR_AI_CONFIG_NONE                                              :(ไม่มี)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}เลื่อนขึ้น
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}ย้าย AI ที่เลือกขึ้นด้านบนของรายชื่อ

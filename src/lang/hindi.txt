@@ -274,16 +274,6 @@ STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलै
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना (ISK)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :दाईं ओर वाहन चलाएँ
-
-
-###length 21
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ़्रेंच
-STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :इटैलियन
-
 
 # Autosave dropdown
 ###length 5
@@ -316,7 +306,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक �
 
 
 
-
 STR_VARIETY_MEDIUM                                              :मध्यम
 
 ###length 5
@@ -327,6 +316,8 @@ STR_AI_SPEED_SLOW                                               :धीमा
 ###length 4
 
 ###length 3
+
+###length 4
 
 ###length 4
 
@@ -447,6 +438,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
 ###length 3
 
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :दाईं ओर वाहन चलाएँ
 
 ###length 2
 
@@ -635,8 +629,6 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}क्�
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्या आप वास्तव में यह परिदृश्य छोड़ना चाहते हैं?
 
 # Cheat window
-
-###length 4
 
 # Livery window
 
@@ -847,6 +839,12 @@ STR_FRAMETIME_CAPTION_GL_ECONOMY                                :माल प�
 
 
 # World generation
+
+###length 21
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ़्रेंच
+STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :इटैलियन
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}जल

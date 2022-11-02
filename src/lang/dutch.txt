@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiase rupee (
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische roepia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Links rijden
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Rechts rijden
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Plaatsnamen:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Stijl voor plaatsnamen kiezen
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engels (Origineel)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frans
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Duits
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engels (Extra)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latijns-Amerikaans
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Zot
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Zweeds
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlands
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fins
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Pools
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slowaaks
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noors
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongaars
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Oostenrijks
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Roemeens
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjechisch
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Zwitsers
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Deens
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turks
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiaans
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalaans
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduur kiezen tussen automatisch opgeslagen spellen
 
@@ -1093,8 +1063,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbee
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pond (£) in jouw munteenheid
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Aangepaste valutaparameters wijzigen
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Geen
 STR_FUNDING_ONLY                                                :Alleen gefinancierd
 STR_MINIMAL                                                     :Minimaal
@@ -1143,6 +1111,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Gematigd landschap
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subarctisch landschap
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Subtropisch landschap
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Speelgoedlandschap
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Zeer vlak
@@ -1502,6 +1476,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbeterd
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Wegvoertuigen: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Rijzijde voor verkeer kiezen
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Links rijden
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Rechts rijden
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Draaiing van hoogtekaart: {STRING}
 ###length 2
@@ -2131,12 +2109,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Wijzig d
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Datum wijzigen: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Huidig jaar wijzigen
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Productiewaarden aanpassen toestaan: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Gematigd landschap
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Subarctisch landschap
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Subtropisch landschap
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Speelgoedlandschap
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - kleurenschema
@@ -3144,6 +3116,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaartgro
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecteer het formaat van de kaart in tegels. Het aantal beschikbare tegels zal iets kleiner zijn
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Plaatsnamen:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Stijl voor plaatsnamen kiezen
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal industrieën:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Hoogste berg:
@@ -3164,6 +3138,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivieren
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
 STR_MAPGEN_VARIETY                                              :{BLACK}Landschapsvariatie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maken
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engels (Origineel)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frans
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Duits
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engels (Extra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latijns-Amerikaans
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Zot
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Zweeds
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlands
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fins
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pools
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slowaaks
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Noors
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hongaars
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Oostenrijks
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Roemeens
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tsjechisch
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Zwitsers
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Deens
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turks
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiaans
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalaans
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaartranden:
@@ -4543,6 +4540,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}De AI's 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
 STR_AI_CONFIG_NONE                                              :(geen)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Omhoog verplaatsen
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Geselecteerde AI omhoog verplaatsen in de lijst

@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupee Ấn Đ�
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lái bên trái
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Lái bên phải
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Tên thị trấn:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Lựa chọn kiểu tên thị trấn
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Tiếng Anh (Nguyên bản)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Pháp
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Đức
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Tiếng Anh (Bổ sung)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Mỹ-Latin
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Silly
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Thụy Điển
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hà Lan
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Phần Lan
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Ba Lan
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakia
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Na Uy
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungary
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Úc
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Ru-ma-ni
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Séc
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Thụy Sỹ
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Đan Mạch
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Thổ Nhĩ Kỳ
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ý
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
 
@@ -1093,8 +1063,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem tr�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) tính bằng tiền của bạn
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa tham số của tiền tự chỉnh
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Không Có
 STR_FUNDING_ONLY                                                :Chỉ Cấp Vốn
 STR_MINIMAL                                                     :Tối Thiểu
@@ -1143,6 +1111,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Địa hình vừa phải
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Địa hình giá lạnh
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Địa hình cận nhiệt đới
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Địa hình đồ chơi
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Rất Phẳng
@@ -1502,6 +1476,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Tối Ưu Hóa
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Xe cộ: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Chọn phía xe chạy
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lái bên trái
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Lái bên phải
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Xoay bản đồ địa hình: {STRING}
 ###length 2
@@ -2131,12 +2109,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Thay đ�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Sửa thời gian: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Thay đổi thời gian hiện tại
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho phép khả năng sửa giá trị sản xuất: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Địa hình vừa phải
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Địa hình giá lạnh
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Địa hình cận nhiệt đới
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Địa hình đồ chơi
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cách Phối Màu Mới
@@ -3144,6 +3116,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích th
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Lựa chọn kích thước bản đồ theo đơn vị ô. Số lượng ô thực sự có thể nhỏ hơn 1 chút.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Tên thị trấn:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Lựa chọn kiểu tên thị trấn
 STR_MAPGEN_DATE                                                 :{BLACK}Thời điểm:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Độ cao đỉnh cao nhất:
@@ -3164,6 +3138,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sô
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
 STR_MAPGEN_GENERATE                                             :{WHITE}Khởi Tạo
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Tiếng Anh (Nguyên bản)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Pháp
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Đức
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Tiếng Anh (Bổ sung)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Mỹ-Latin
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Silly
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Thụy Điển
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hà Lan
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Phần Lan
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Ba Lan
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakia
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Na Uy
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungary
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Úc
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Ru-ma-ni
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Séc
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Thụy Sỹ
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Đan Mạch
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Thổ Nhĩ Kỳ
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ý
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Rìa bản đồ:
@@ -4543,6 +4540,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Các AIs
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
 STR_AI_CONFIG_NONE                                              :(không)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Chuyển Lên Trên
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách

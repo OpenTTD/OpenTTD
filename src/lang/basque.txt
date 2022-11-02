@@ -916,36 +916,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Ezkerretik gidatu
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Eskuinetik gidatu
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Herrien izenak
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Herrien izenen estiloak aukeratu
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ingelesa (Jatorrizkoa)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frantsesak
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemaniarrak
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ingelesa (Adizionala)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Amerikarra
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Inozoak
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suediarrak
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Herbeheretakoak
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandiarrak
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloniarrak
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovakiarrak
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiarrak
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungariarrak
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriarrak
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Errumaniarrak
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Txekoak
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Suitzarrak
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danierarrak
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiarrak
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiarrak
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanak
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokoa automatikoki gordetzeko denbora
 
@@ -1022,8 +992,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreik
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Ezer ez
 STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
 STR_MINIMAL                                                     :Gutxienekoa
@@ -1072,6 +1040,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Klima epeleko paisaia
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Klima artikoko paisaia
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Klima tropikaleko paisaia
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Jostailu munduko paisaia
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Oso laua
@@ -1386,6 +1360,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Errepideko garraioak: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Gidatzeko aldea aukeratu
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Ezkerretik gidatu
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Eskuinetik gidatu
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera maparen norabidea: {STRING}
 ###length 2
@@ -1900,12 +1878,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Hegazki
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Data aldatu: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Klima epeleko paisaia
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Klima artikoko paisaia
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Klima tropikaleko paisaia
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Jostailu munduko paisaia
 
 # Livery window
 
@@ -2749,6 +2721,8 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Mundua s
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Maparen tamaina:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Herri kopurua:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Herrien izenak
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Herrien izenen estiloak aukeratu
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industria kopurua:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
@@ -2758,6 +2732,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Errekak:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Leuntasuna:
 STR_MAPGEN_VARIETY                                              :{BLACK}Barietateen distribuzioa:
 STR_MAPGEN_GENERATE                                             :{WHITE}Sortu
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ingelesa (Jatorrizkoa)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frantsesak
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemaniarrak
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ingelesa (Adizionala)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Amerikarra
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Inozoak
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suediarrak
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Herbeheretakoak
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandiarrak
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloniarrak
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovakiarrak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiarrak
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungariarrak
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriarrak
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Errumaniarrak
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Txekoak
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Suitzarrak
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danierarrak
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiarrak
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiarrak
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanak
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Maparen ertzak:
@@ -4006,6 +4003,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Hurrengo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jokalaria
 STR_AI_CONFIG_RANDOM_AI                                         :Ausazko IA
 STR_AI_CONFIG_NONE                                              :(ezer ez)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gora Mugitu
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Auratutako IA zerrendan gora igo

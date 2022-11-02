@@ -943,36 +943,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :לארי גאו
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איראני (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :רובל רוסי (RUB)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :סע בצד שמאל
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :סע בצד ימין
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}שמות הערים
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}בחר סגנון של שמות הערים
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :אנגלית
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :צרפתית
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :גרמנית
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :אנגלית
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :אמריקאי-לטיני
-STR_MAPGEN_TOWN_NAME_SILLY                                      :מצחיק
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :שוודית
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :הולנדית
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :פינית
-STR_MAPGEN_TOWN_NAME_POLISH                                     :פולנית
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :סלובקית
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :נורבגית
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :הונגרית
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :אוסטרית
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :רומנית
-STR_MAPGEN_TOWN_NAME_CZECH                                      :צ'כית
-STR_MAPGEN_TOWN_NAME_SWISS                                      :שווצרית
-STR_MAPGEN_TOWN_NAME_DANISH                                     :דנית
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :טורקית
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :איטלקית
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :רומאית
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
 
@@ -1051,8 +1021,6 @@ STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURREN
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ליש"ט (£) במטבע שלך
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{ORANGE}{COMMA}{LTBLUE} : מספר מתחרים מירבי
-
 STR_NONE                                                        :ללא
 STR_FUNDING_ONLY                                                :מימון בלבד
 STR_MINIMAL                                                     :מזערי
@@ -1101,6 +1069,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :אקלים ממוזג
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :אקלים קר
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :אקלים טרופי
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ארץ הצעצועים
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :שטוח ביותר
@@ -1434,6 +1408,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :משופר
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :כלי רכב: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :בחר את צד הנסיעה
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :סע בצד שמאל
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :סע בצד ימין
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :סיבוב מפת גבהים: {STRING}
 ###length 2
@@ -2005,12 +1983,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}ערוך
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}שנה תאריך:{ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}שנה את השנה הנוכחית
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}אפשר שינוי ערכי התפוקה: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :אקלים ממוזג
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :אקלים קר
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :אקלים טרופי
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ארץ הצעצועים
 
 # Livery window
 
@@ -2884,6 +2856,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}:גוד�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}בחר את גודל המפה במשבצות. מספר המשבצות הזמינות תהיה קצת קטנה יותר.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK} :מספר העיירות
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}שמות הערים
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}בחר סגנון של שמות הערים
 STR_MAPGEN_DATE                                                 :{BLACK} :תאריך
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספר התעשיות
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :מחולל פני שטח
@@ -2893,6 +2867,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}נהרו
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} :חלקלקות
 STR_MAPGEN_VARIETY                                              :{BLACK}הפצה מגוונת:
 STR_MAPGEN_GENERATE                                             :{WHITE}יצירת קרקע
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :אנגלית
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :צרפתית
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :גרמנית
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :אנגלית
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :אמריקאי-לטיני
+STR_MAPGEN_TOWN_NAME_SILLY                                      :מצחיק
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :שוודית
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :הולנדית
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :פינית
+STR_MAPGEN_TOWN_NAME_POLISH                                     :פולנית
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :סלובקית
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :נורבגית
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :הונגרית
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :אוסטרית
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :רומנית
+STR_MAPGEN_TOWN_NAME_CZECH                                      :צ'כית
+STR_MAPGEN_TOWN_NAME_SWISS                                      :שווצרית
+STR_MAPGEN_TOWN_NAME_DANISH                                     :דנית
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :טורקית
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :איטלקית
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :רומאית
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK} :שולי המפה
@@ -4182,6 +4179,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}שחקנ
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי
 STR_AI_CONFIG_RANDOM_AI                                         :בינה מלאכותית אקראית
 STR_AI_CONFIG_NONE                                              :(ללא)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{ORANGE}{COMMA}{LTBLUE} : מספר מתחרים מירבי
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}הזז מעלה
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}הזז את ה-AI הנבחר מעלה ברשימה

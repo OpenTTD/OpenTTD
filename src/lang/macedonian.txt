@@ -792,11 +792,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 ###length 42
 
-###length 2
-
-
-###length 21
-
 
 # Autosave dropdown
 ###length 5
@@ -825,7 +820,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
-
 STR_NUM_CUSTOM_NUMBER                                           :Прилагодено ({NUM})
 
 
@@ -838,6 +832,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 ###length 4
 
 ###length 3
+
+###length 4
 
 ###length 4
 
@@ -954,6 +950,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелин�
 
 ###length 3
 
+
+###length 2
 
 ###length 2
 
@@ -1177,8 +1175,6 @@ STR_ABANDON_GAME_CAPTION                                        :{WHITE}Напу
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дали сте сигурни дека сакате да ја напуштите играта?
 
 # Cheat window
-
-###length 4
 
 # Livery window
 
@@ -1447,6 +1443,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Нов�
 # World generation
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Големина на мапа:
 STR_MAPGEN_BY                                                   :{BLACK}*
+
+###length 21
 
 # Strings for map borders at game generation
 

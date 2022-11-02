@@ -724,27 +724,6 @@ STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीड
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा (TRY)
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना (SKK)
 
-###length 2
-
-
-###length 21
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ्रेंच
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :जर्मन
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :स्वीडीश
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :डच
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :फिन्निश
-STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :स्लोवाक
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :नोर्वेगीअन
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :हंगेरियन
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ओस्त्रिअन
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :रोमेनिअन
-STR_MAPGEN_TOWN_NAME_CZECH                                      :झेख
-STR_MAPGEN_TOWN_NAME_SWISS                                      :स्विस
-STR_MAPGEN_TOWN_NAME_DANISH                                     :डेनिष
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ईटेलिअन
-
 
 # Autosave dropdown
 ###length 5
@@ -780,7 +759,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
-
 ###length 5
 
 ###length 6
@@ -794,6 +772,8 @@ STR_SUBSIDY_X1_5                                                :x१.५
 STR_SUBSIDY_X2                                                  :x२
 STR_SUBSIDY_X3                                                  :x३
 STR_SUBSIDY_X4                                                  :x४
+
+###length 4
 
 ###length 7
 
@@ -906,6 +886,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 ###length 3
 
+
+###length 2
 
 ###length 2
 
@@ -1075,8 +1057,6 @@ STR_INTRO_CAPTION                                               :{WHITE}ओप�
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}चालू वर्ष बदला
-
-###length 4
 
 # Livery window
 
@@ -1327,6 +1307,24 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_DATE                                                 :{BLACK}तिथी:
+
+###length 21
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ्रेंच
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :जर्मन
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :स्वीडीश
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :डच
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :फिन्निश
+STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :स्लोवाक
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :नोर्वेगीअन
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :हंगेरियन
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ओस्त्रिअन
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :रोमेनिअन
+STR_MAPGEN_TOWN_NAME_CZECH                                      :झेख
+STR_MAPGEN_TOWN_NAME_SWISS                                      :स्विस
+STR_MAPGEN_TOWN_NAME_DANISH                                     :डेनिष
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ईटेलिअन
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}पाणी

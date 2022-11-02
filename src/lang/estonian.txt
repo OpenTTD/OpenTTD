@@ -1014,36 +1014,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :India ruupia (I
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indoneesia ruupia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaisia ringit (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasakpoolne liiklus
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Parempoolne liiklus
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Asulanimed:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vali asulanimede stiil
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglise (algne)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Prantsusmaa
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Saksamaa
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglise (täiendatud)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Ladina-Ameerika
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Tobedad
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Rootsi
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandi
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Soome
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Poola
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakkia
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norra
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungari
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austria
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumeenia
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Tšehhi
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Šveitsi
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Taani
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türgi
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Itaalia
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalaani
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvestusvälp
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali salvestamise välp
 
@@ -1141,8 +1111,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaad
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 naela (£) sinu valuutas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Vastaseid kuni: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Pole
 STR_FUNDING_ONLY                                                :Ainult rahastatud
 STR_MINIMAL                                                     :Vähene
@@ -1191,6 +1159,12 @@ STR_SUBSIDY_X1_5                                                :1,5x
 STR_SUBSIDY_X2                                                  :2x
 STR_SUBSIDY_X3                                                  :3x
 STR_SUBSIDY_X4                                                  :4x
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Parasvöötme maastik
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Lähisarktiline maastik
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Troopiline maastik
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Mänguasjamaa
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Väga tasane
@@ -1545,6 +1519,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Täiustatud
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Sõidukid: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vali liikluse suund
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasakpoolne liiklus
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Parempoolne liiklus
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Kõrguskaardi pööre: {STRING}
 ###length 2
@@ -2156,12 +2134,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Muuda ka
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuda kuupäeva: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuda jooksvat aastaarvu
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tootmisväärtuste muutmine: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Parasvöötme maastik
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Lähisarktiline maastik
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Troopiline maastik
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Mänguasjamaa
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Värvivalik
@@ -3137,6 +3109,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaardi m
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Määrab kaardi mõõtmed ruutudes. Ruute, mida saab kasutada, on pisut vähem
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustuste arv:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Asulanimed:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vali asulanimede stiil
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstustihedus:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Kõrgpunkt:
@@ -3157,6 +3131,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Jõgesid
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Laugus:
 STR_MAPGEN_VARIETY                                              :{BLACK}Iseärasuste jaotus:
 STR_MAPGEN_GENERATE                                             :{WHITE}Tekita
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglise (algne)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Prantsusmaa
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Saksamaa
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglise (täiendatud)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Ladina-Ameerika
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Tobedad
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Rootsi
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandi
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Soome
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poola
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakkia
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norra
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungari
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austria
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumeenia
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tšehhi
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Šveitsi
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Taani
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Türgi
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Itaalia
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalaani
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaardi ääred:
@@ -4518,6 +4515,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI-d jä
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
 STR_AI_CONFIG_RANDOM_AI                                         :Suvaline AI
 STR_AI_CONFIG_NONE                                              :(mitte ühtegi)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Vastaseid kuni: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Tõsta
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Tõsta valitud AI loendis kõrgemale

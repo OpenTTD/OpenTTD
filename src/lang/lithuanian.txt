@@ -1167,36 +1167,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijos rupijos
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijos rupijos (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ringitai (MYR)
 
-###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kairiąja puse
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Dešiniąja puse
-
-STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Miestų pavadinimai:
-STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Pasirink miestų pavadinimų tipą
-
-###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglų (Oginalus)
-STR_MAPGEN_TOWN_NAME_FRENCH                                     :Prancūzų
-STR_MAPGEN_TOWN_NAME_GERMAN                                     :Vokiečių
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglų (Papildomas)
-STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Lotynų-Amerikos
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Kvaili
-STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švedų
-STR_MAPGEN_TOWN_NAME_DUTCH                                      :Olandų
-STR_MAPGEN_TOWN_NAME_FINNISH                                    :Suomių
-STR_MAPGEN_TOWN_NAME_POLISH                                     :Lenkų
-STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakų
-STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegų
-STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Vengrų
-STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrų
-STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunų
-STR_MAPGEN_TOWN_NAME_CZECH                                      :Čekų
-STR_MAPGEN_TOWN_NAME_SWISS                                      :Šveicarų
-STR_MAPGEN_TOWN_NAME_DANISH                                     :Danų
-STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiški
-STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italų
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonų
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatinis išsaugojimas
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą
 
@@ -1293,8 +1263,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perži�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Nėra
 STR_FUNDING_ONLY                                                :Tik finansavimas
 STR_MINIMAL                                                     :Mažiausias
@@ -1343,6 +1311,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Normalus klimatas
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arktinis klimatas
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropinis klimatas
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :'Žaislinis' klimatas
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Tik lygumos
@@ -1698,6 +1672,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Naujasis
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Automobilių eismas: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Eismo pusė
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kairiąja puse
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Dešiniąja puse
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Aukščių žemėlapio pasukimas: {STRING}
 ###length 2
@@ -2333,12 +2311,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Keisti d
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Pakeisti datą: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Pakeisti dabartinius metus
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
-
-###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Normalus klimatas
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arktinis klimatas
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropinis klimatas
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :'Žaislinis' klimatas
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Kompanijos spalvos
@@ -3288,6 +3260,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Žemėla
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pasirinkite žemėlapio dydį langeliais. Prieinamų langelių skaičius bus šiek tiek mažesnis.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Miestų kiekis:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Miestų pavadinimai:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Pasirink miestų pavadinimų tipą
 STR_MAPGEN_DATE                                                 :{BLACK}Pradžios data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Pramonės įmonių kiekis:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Didžiausias aukštis
@@ -3308,6 +3282,29 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių ki
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jautrumas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Įvairovės paskirstymas:
 STR_MAPGEN_GENERATE                                             :{WHITE}Sukurti
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglų (Oginalus)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Prancūzų
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Vokiečių
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglų (Papildomas)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Lotynų-Amerikos
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Kvaili
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Švedų
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Olandų
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Suomių
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Lenkų
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakų
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegų
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Vengrų
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austrų
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumunų
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Čekų
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Šveicarų
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danų
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiški
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italų
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonų
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Žemėlapio kraštai:
@@ -4727,6 +4724,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}DI'ai bu
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
 STR_AI_CONFIG_RANDOM_AI                                         :Atsitiktinis DI
 STR_AI_CONFIG_NONE                                              :(tuščia)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Perkelti aukščiau
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Perkelti pasirinktą DI aukščiau
