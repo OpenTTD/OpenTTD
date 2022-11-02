@@ -12,6 +12,7 @@
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "strings_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -209,3 +210,8 @@ void InitializeSortedCargoSpecs()
 	_sorted_standard_cargo_specs = { _sorted_cargo_specs.data(), nb_standard_cargo };
 }
 
+uint64 CargoSpec::WeightOfNUnitsInTrain(uint32 n) const
+{
+	if (this->is_freight) n *= _settings_game.vehicle.freight_trains;
+	return this->WeightOfNUnits(n);
+}

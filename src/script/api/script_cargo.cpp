@@ -85,5 +85,5 @@
 /* static */ int64 ScriptCargo::GetWeight(CargoID cargo_type, uint32 amount)
 {
 	if (!IsValidCargo(cargo_type)) return -1;
-	return ::CargoSpec::Get(cargo_type)->weight * static_cast<int64>(amount) / 16;
+	return ::CargoSpec::Get(cargo_type)->WeightOfNUnits(amount);
 }
