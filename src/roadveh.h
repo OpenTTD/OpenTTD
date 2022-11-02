@@ -178,7 +178,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline uint16 GetWeight() const
 	{
-		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.StoredCount()) / 16;
+		uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->cargo.StoredCount());
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {
