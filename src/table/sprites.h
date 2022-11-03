@@ -1542,18 +1542,18 @@ enum Modifiers {
  * @see SpriteSetup
  */
 enum SpriteMasks {
-	MAX_SPRITES = 1 << SPRITE_WIDTH,       ///< Maximum number of sprites that can be loaded at a given time
+	MAX_SPRITES = 1U << SPRITE_WIDTH,      ///< Maximum number of sprites that can be loaded at a given time
 	SPRITE_MASK = MAX_SPRITES - 1,         ///< The mask to for the main sprite
 
-	MAX_PALETTES = 1 << PALETTE_WIDTH,
+	MAX_PALETTES = 1U << PALETTE_WIDTH,
 	PALETTE_MASK = MAX_PALETTES - 1,       ///< The mask for the auxiliary sprite (the one that takes care of recolouring)
 };
 
-static_assert( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
-static_assert( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
+static_assert( (1U << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
+static_assert( (1U << RECOLOUR_BIT & SPRITE_MASK) == 0 );
 static_assert( TRANSPARENT_BIT != RECOLOUR_BIT );
-static_assert( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
-static_assert( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
+static_assert( (1U << TRANSPARENT_BIT & PALETTE_MASK) == 0 );
+static_assert( (1U << RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
 
 static const PaletteID PAL_NONE                    = 0;
