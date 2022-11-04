@@ -107,23 +107,23 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
 
-	void MarkDirty();
-	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
-	void PlayLeaveStationSound() const;
-	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
-	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
-	int GetDisplaySpeed() const { return this->gcache.last_speed; }
-	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
-	Money GetRunningCost() const;
+	void MarkDirty() override;
+	void UpdateDeltaXY() override;
+	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
+	void PlayLeaveStationSound() const override;
+	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
+	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
+	int GetDisplaySpeed() const override { return this->gcache.last_speed; }
+	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
+	Money GetRunningCost() const override;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const { return this->track == TRACK_BIT_DEPOT; }
-	bool Tick();
-	void OnNewDay();
-	uint Crash(bool flooded = false);
-	Trackdir GetVehicleTrackdir() const;
-	TileIndex GetOrderStationLocation(StationID station);
-	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+	bool Tick() override;
+	void OnNewDay() override;
+	uint Crash(bool flooded = false) override;
+	Trackdir GetVehicleTrackdir() const override;
+	TileIndex GetOrderStationLocation(StationID station) override;
+	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) override;
 
 	void ReserveTrackUnderConsist() const;
 
@@ -135,7 +135,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void UpdateAcceleration();
 
-	int GetCurrentMaxSpeed() const;
+	int GetCurrentMaxSpeed() const override;
 
 	/**
 	 * Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
