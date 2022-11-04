@@ -2166,64 +2166,79 @@ struct NetworkJoinStatusWindow : Window {
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		if (widget != WID_NJS_BACKGROUND) return;
+		switch (widget) {
+			case WID_NJS_PROGRESS_BAR: {
+				/* Draw the % complete with a bar and a text */
+				DrawFrameRect(r, COLOUR_GREY, FR_BORDERONLY | FR_LOWERED);
+				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+				uint8 progress; // used for progress bar
+				switch (_network_join_status) {
+					case NETWORK_JOIN_STATUS_CONNECTING:
+					case NETWORK_JOIN_STATUS_AUTHORIZING:
+					case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
+						progress = 10; // first two stages 10%
+						break;
+					case NETWORK_JOIN_STATUS_WAITING:
+						progress = 15; // third stage is 15%
+						break;
+					case NETWORK_JOIN_STATUS_DOWNLOADING:
+						if (_network_join_bytes_total == 0) {
+							progress = 15; // We don't have the final size yet; the server is still compressing!
+							break;
+						}
+						FALLTHROUGH;
 
-		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
-
-		uint8 progress; // used for progress bar
-		DrawString(ir.left, ir.right, ir.top + 20, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
-		switch (_network_join_status) {
-			case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
-			case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
-				progress = 10; // first two stages 10%
-				break;
-			case NETWORK_JOIN_STATUS_WAITING:
-				SetDParam(0, _network_join_waiting);
-				DrawString(ir.left, ir.right, ir.top + 20 + FONT_HEIGHT_NORMAL, STR_NETWORK_CONNECTING_WAITING, TC_FROMSTRING, SA_HOR_CENTER);
-				progress = 15; // third stage is 15%
-				break;
-			case NETWORK_JOIN_STATUS_DOWNLOADING:
-				SetDParam(0, _network_join_bytes);
-				SetDParam(1, _network_join_bytes_total);
-				DrawString(ir.left, ir.right, ir.top + 20 + FONT_HEIGHT_NORMAL, _network_join_bytes_total == 0 ? STR_NETWORK_CONNECTING_DOWNLOADING_1 : STR_NETWORK_CONNECTING_DOWNLOADING_2, TC_FROMSTRING, SA_HOR_CENTER);
-				if (_network_join_bytes_total == 0) {
-					progress = 15; // We don't have the final size yet; the server is still compressing!
-					break;
+					default: // Waiting is 15%, so the resting receivement of map is maximum 70%
+						progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
+						break;
 				}
-				FALLTHROUGH;
+				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, false), COLOUR_MAUVE, FR_NONE);
+				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, FONT_HEIGHT_NORMAL), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
+				break;
+			}
 
-			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
-				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
+			case WID_NJS_PROGRESS_TEXT:
+				switch (_network_join_status) {
+					case NETWORK_JOIN_STATUS_WAITING:
+						SetDParam(0, _network_join_waiting);
+						DrawStringMultiLine(r, STR_NETWORK_CONNECTING_WAITING, TC_FROMSTRING, SA_CENTER);
+						break;
+					case NETWORK_JOIN_STATUS_DOWNLOADING:
+						SetDParam(0, _network_join_bytes);
+						SetDParam(1, _network_join_bytes_total);
+						DrawStringMultiLine(r, _network_join_bytes_total == 0 ? STR_NETWORK_CONNECTING_DOWNLOADING_1 : STR_NETWORK_CONNECTING_DOWNLOADING_2, TC_FROMSTRING, SA_CENTER);
+						break;
+					default:
+						break;
+				}
+				break;
 		}
-
-		/* Draw nice progress bar :) */
-		DrawFrameRect(r.left + 20, r.top + 5, (int)((this->width - 20) * progress / 100), r.top + 15, COLOUR_MAUVE, FR_NONE);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
-		if (widget != WID_NJS_BACKGROUND) return;
+		switch (widget) {
+			case WID_NJS_PROGRESS_BAR:
+				/* Account for the statuses */
+				for (uint i = 0; i < NETWORK_JOIN_STATUS_END; i++) {
+					*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i));
+				}
+				/* For the number of waiting (other) players */
+				SetDParamMaxValue(0, MAX_CLIENTS);
+				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING));
+				/* We need some spacing for the 'border' */
+				size->height += WidgetDimensions::scaled.frametext.Horizontal();
+				size->width  += WidgetDimensions::scaled.frametext.Vertical();
+				break;
 
-		size->height = 25 + 2 * FONT_HEIGHT_NORMAL;
-
-		/* Account for the statuses */
-		uint width = 0;
-		for (uint i = 0; i < NETWORK_JOIN_STATUS_END; i++) {
-			width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i).width);
+			case WID_NJS_PROGRESS_TEXT:
+				/* Account for downloading ~ 10 MiB */
+				SetDParamMaxDigits(0, 8);
+				SetDParamMaxDigits(1, 8);
+				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1));
+				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1));
+				break;
 		}
-
-		/* For the number of waiting (other) players */
-		SetDParamMaxValue(0, MAX_CLIENTS);
-		width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING).width);
-
-		/* Account for downloading ~ 10 MiB */
-		SetDParamMaxDigits(0, 8);
-		SetDParamMaxDigits(1, 8);
-		width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1).width);
-		width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_2).width);
-
-		/* Give a bit more clearing for the widest strings than strictly needed */
-		size->width = width + padding.width + WidgetDimensions::scaled.hsep_indent;
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -2253,13 +2268,11 @@ struct NetworkJoinStatusWindow : Window {
 static const NWidgetPart _nested_network_join_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EMPTY, COLOUR_GREY, WID_NJS_BACKGROUND),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(75, 0), SetFill(1, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NJS_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL),
-			NWidget(NWID_SPACER), SetMinimalSize(75, 0), SetFill(1, 0),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NJS_PROGRESS_BAR), SetFill(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NJS_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(350, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NJS_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 	EndContainer(),
 };
 

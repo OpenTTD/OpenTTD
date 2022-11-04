@@ -123,8 +123,11 @@ public:
 /** Nested widgets for the download window. */
 static const NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCDS_BACKGROUND),
-		NWidget(NWID_SPACER), SetMinimalSize(350, 0), SetMinimalTextLines(3, WidgetDimensions::unscaled.framerect.Vertical() + 30),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCDS_PROGRESS_BAR), SetFill(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCDS_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(350, 0),
+		EndContainer(),
 	EndContainer(),
 };
 

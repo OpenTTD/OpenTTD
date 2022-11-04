@@ -149,6 +149,7 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{WD_CLOSEBOX_LEFT,     WD_CLOSEBOX_TOP,     WD_CLOSEBOX_RIGHT,     WD_CLOSEBOX_BOTTOM},     ///< closebox
 	{WD_CAPTIONTEXT_LEFT,  WD_CAPTIONTEXT_TOP,  WD_CAPTIONTEXT_RIGHT,  WD_CAPTIONTEXT_BOTTOM},  ///< captiontext
 	{WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM}, ///< dropdowntext
+	{20, 10, 20, 10},    ///< modalpopup
 	1,                   ///< pressed
 	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
 	WD_PAR_VSEP_WIDE,    ///< vsep_wide
@@ -218,6 +219,7 @@ void SetupWidgetDimensions()
 	WidgetDimensions::scaled.closebox     = ScaleGUITrad(WidgetDimensions::unscaled.closebox);
 	WidgetDimensions::scaled.captiontext  = ScaleGUITrad(WidgetDimensions::unscaled.captiontext);
 	WidgetDimensions::scaled.dropdowntext = ScaleGUITrad(WidgetDimensions::unscaled.dropdowntext);
+	WidgetDimensions::scaled.modalpopup   = ScaleGUITrad(WidgetDimensions::unscaled.modalpopup);
 
 	WidgetDimensions::scaled.pressed      = ScaleGUITrad(WidgetDimensions::unscaled.pressed);
 	WidgetDimensions::scaled.vsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.vsep_normal);
