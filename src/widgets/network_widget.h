@@ -94,8 +94,9 @@ enum ClientListWidgets {
 
 /** Widgets of the #NetworkJoinStatusWindow class. */
 enum NetworkJoinStatusWidgets {
-	WID_NJS_BACKGROUND, ///< Background of the window.
-	WID_NJS_CANCELOK,   ///< Cancel / OK button.
+	WID_NJS_PROGRESS_BAR,  ///< Simple progress bar.
+	WID_NJS_PROGRESS_TEXT, ///< Text explaining what is happening.
+	WID_NJS_CANCELOK,      ///< Cancel / OK button.
 };
 
 /** Widgets of the #NetworkCompanyPasswordWindow class. */

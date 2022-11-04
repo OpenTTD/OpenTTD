@@ -52,6 +52,7 @@ struct WidgetDimensions {
 	RectPadding closebox;
 	RectPadding captiontext;  ///< Offsets of text within a caption.
 	RectPadding dropdowntext; ///< Offsets of text within a dropdown widget.
+	RectPadding modalpopup;   ///< Padding for a modal popup.
 
 	int pressed;              ///< Offset for contents of depressed widget.
 	int vsep_normal;          ///< Normal vertical spacing.
