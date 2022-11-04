@@ -1095,7 +1095,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Athraigh
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Uaslíon na n-iomaitheoirí: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ceann ar bith
-STR_FUNDING_ONLY                                                :Maoiniú amháin
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Maoiniú amháin
 STR_MINIMAL                                                     :Íosmhéid
 STR_NUM_VERY_LOW                                                :An íseal
 STR_NUM_LOW                                                     :Íseal

@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}修改�
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
 
 STR_NONE                                                        :無
-STR_FUNDING_ONLY                                                :只挹注資金
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :只挹注資金
 STR_MINIMAL                                                     :最小
 STR_NUM_VERY_LOW                                                :非常少
 STR_NUM_LOW                                                     :低

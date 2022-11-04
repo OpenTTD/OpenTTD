@@ -1097,7 +1097,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel pa
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Hiç
-STR_FUNDING_ONLY                                                :Yalnızca yatırım
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Yalnızca yatırım
 STR_MINIMAL                                                     :En düşük
 STR_NUM_VERY_LOW                                                :Çok Az
 STR_NUM_LOW                                                     :Düşük

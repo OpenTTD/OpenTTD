@@ -1144,7 +1144,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda pe
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastaseid kuni: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Pole
-STR_FUNDING_ONLY                                                :Ainult rahastatud
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Ainult rahastatud
 STR_MINIMAL                                                     :Vähene
 STR_NUM_VERY_LOW                                                :Väga madal
 STR_NUM_LOW                                                     :Madal

@@ -1160,7 +1160,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Semmi
-STR_FUNDING_ONLY                                                :Csak finanszírozás
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Csak finanszírozás
 STR_MINIMAL                                                     :Minimális
 STR_NUM_VERY_LOW                                                :Nagyon kevés
 STR_NUM_LOW                                                     :Kevés

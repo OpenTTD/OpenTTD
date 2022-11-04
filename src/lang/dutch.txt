@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Aangepas
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Geen
-STR_FUNDING_ONLY                                                :Alleen gefinancierd
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Alleen gefinancierd
 STR_MINIMAL                                                     :Minimaal
 STR_NUM_VERY_LOW                                                :Zeer laag
 STR_NUM_LOW                                                     :Laag

@@ -1241,7 +1241,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изме
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Нет
-STR_FUNDING_ONLY                                                :Строить самому
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Строить самому
 STR_MINIMAL                                                     :Минимальное
 STR_NUM_VERY_LOW                                                :Очень малое
 STR_NUM_LOW                                                     :Малое

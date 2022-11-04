@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sen
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Jumlah pesaing maksimal: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Tidak ada
-STR_FUNDING_ONLY                                                :Hanya pendanaan
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Hanya pendanaan
 STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Sangat Sedikit
 STR_NUM_LOW                                                     :Sedikit

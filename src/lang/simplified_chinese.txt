@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变�
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}最大竞争对手个数：{ORANGE}{COMMA}
 
 STR_NONE                                                        :没有
-STR_FUNDING_ONLY                                                :不生成
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :不生成
 STR_MINIMAL                                                     :每种仅一个
 STR_NUM_VERY_LOW                                                :非常低
 STR_NUM_LOW                                                     :低

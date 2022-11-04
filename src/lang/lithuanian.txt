@@ -1296,7 +1296,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti p
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Didžiausias priešininkų skaičius: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nėra
-STR_FUNDING_ONLY                                                :Tik finansavimas
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Tik finansavimas
 STR_MINIMAL                                                     :Mažiausias
 STR_NUM_VERY_LOW                                                :Labai mažas
 STR_NUM_LOW                                                     :Žemas

@@ -1223,7 +1223,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Нала
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Кількість конкурентів: {ORANGE}{COMMA}
 
 STR_NONE                                                        :нема
-STR_FUNDING_ONLY                                                :засновувати власноруч
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :засновувати власноруч
 STR_MINIMAL                                                     :мінімально
 STR_NUM_VERY_LOW                                                :дуже мало
 STR_NUM_LOW                                                     :мало

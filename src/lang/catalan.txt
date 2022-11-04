@@ -1097,7 +1097,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Canvia e
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Nombre màxim de competidors: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Cap
-STR_FUNDING_ONLY                                                :Cap, excepte finançades
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Cap, excepte finançades
 STR_MINIMAL                                                     :Mínim
 STR_NUM_VERY_LOW                                                :Molt baix
 STR_NUM_LOW                                                     :Baix

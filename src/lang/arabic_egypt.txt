@@ -1059,7 +1059,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير �
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
 
 STR_NONE                                                        :بدون
-STR_FUNDING_ONLY                                                :التمويل فقط
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :التمويل فقط
 STR_MINIMAL                                                     :الادنى
 STR_NUM_VERY_LOW                                                :منخفض جدا
 STR_NUM_LOW                                                     :قليل

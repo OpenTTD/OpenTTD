@@ -1053,7 +1053,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}பய�
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
 
 STR_NONE                                                        :ஒன்றுமில்லை
-STR_FUNDING_ONLY                                                :நிதியளிப்பு மட்டும்
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :நிதியளிப்பு மட்டும்
 STR_MINIMAL                                                     :குறைந்தபட்சம்
 STR_NUM_VERY_LOW                                                :மிகவும் குறைவு
 STR_NUM_LOW                                                     :குறைவு

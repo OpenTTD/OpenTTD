@@ -1290,7 +1290,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promena 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nijedan
-STR_FUNDING_ONLY                                                :Samo finansiranje
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Samo finansiranje
 STR_MINIMAL                                                     :Najmanji
 STR_NUM_VERY_LOW                                                :Veoma mali
 STR_NUM_LOW                                                     :Mali

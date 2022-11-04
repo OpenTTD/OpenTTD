@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra v
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Max antal motståndare: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ingen
-STR_FUNDING_ONLY                                                :Endast finansiering
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Endast finansiering
 STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Väldigt låg
 STR_NUM_LOW                                                     :Låg

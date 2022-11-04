@@ -1060,7 +1060,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum no. mededingers: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Geen
-STR_FUNDING_ONLY                                                :Befondsing alleen
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Befondsing alleen
 STR_MINIMAL                                                     :Minimale
 STR_NUM_VERY_LOW                                                :Baie laag
 STR_NUM_LOW                                                     :Laag

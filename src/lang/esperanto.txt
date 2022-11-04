@@ -1014,7 +1014,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝi 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Neniom
-STR_FUNDING_ONLY                                                :Funduso sola
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Funduso sola
 STR_MINIMAL                                                     :Malgrandeto
 STR_NUM_VERY_LOW                                                :Tre Malalte
 STR_NUM_LOW                                                     :Malalte

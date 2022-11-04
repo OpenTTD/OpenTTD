@@ -1097,7 +1097,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar pa
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Número máximo de oponentes: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nenhum
-STR_FUNDING_ONLY                                                :Financiamento apenas
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Financiamento apenas
 STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muito Baixo
 STR_NUM_LOW                                                     :Baixo

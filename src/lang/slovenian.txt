@@ -1193,7 +1193,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zamenjaj
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Največje število tekmecev: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Brez
-STR_FUNDING_ONLY                                                :Samo financiranje
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Samo financiranje
 STR_MINIMAL                                                     :Minimalno
 STR_NUM_VERY_LOW                                                :Zelo malo
 STR_NUM_LOW                                                     :Malo

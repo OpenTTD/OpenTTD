@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa th
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Không Có
-STR_FUNDING_ONLY                                                :Chỉ Cấp Vốn
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Chỉ Cấp Vốn
 STR_MINIMAL                                                     :Tối Thiểu
 STR_NUM_VERY_LOW                                                :Ít Nhất
 STR_NUM_LOW                                                     :Ít

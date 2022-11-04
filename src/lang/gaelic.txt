@@ -1240,7 +1240,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Atharrai
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Chan eil gin
-STR_FUNDING_ONLY                                                :Le maoineachadh a-mhàin
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Le maoineachadh a-mhàin
 STR_MINIMAL                                                     :As lugha
 STR_NUM_VERY_LOW                                                :Gann
 STR_NUM_LOW                                                     :Beagan dhiubh

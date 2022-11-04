@@ -1098,7 +1098,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mainīt 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimālais sāncenšu daudzums: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nav
-STR_FUNDING_ONLY                                                :Tikai līdzekļu piešķiršana
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Tikai līdzekļu piešķiršana
 STR_MINIMAL                                                     :Minimāls
 STR_NUM_VERY_LOW                                                :Ļoti zems
 STR_NUM_LOW                                                     :Zems

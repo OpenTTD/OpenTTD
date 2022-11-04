@@ -1183,7 +1183,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximální počet protivníků: {ORANGE}{COMMA}
 
 STR_NONE                                                        :žádný
-STR_FUNDING_ONLY                                                :Pouze dotace
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Pouze dotace
 STR_MINIMAL                                                     :Nejmenší
 STR_NUM_VERY_LOW                                                :velmi nízké
 STR_NUM_LOW                                                     :nízké

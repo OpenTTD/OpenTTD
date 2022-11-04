@@ -1096,7 +1096,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda o
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastustajien enimmäismäärä: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ei mitään
-STR_FUNDING_ONLY                                                :Vain rahoitetut
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Vain rahoitetut
 STR_MINIMAL                                                     :Minimi
 STR_NUM_VERY_LOW                                                :Erittäin alhainen
 STR_NUM_LOW                                                     :Matala

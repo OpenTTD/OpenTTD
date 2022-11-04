@@ -1097,7 +1097,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Núm. máximo de jugadores: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ninguno
-STR_FUNDING_ONLY                                                :Solo fundadas
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Solo fundadas
 STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muy bajo
 STR_NUM_LOW                                                     :Bajo

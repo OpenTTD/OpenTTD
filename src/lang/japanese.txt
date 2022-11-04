@@ -1095,7 +1095,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カス�
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}最大競争会社数: {ORANGE}{COMMA}
 
 STR_NONE                                                        :なし
-STR_FUNDING_ONLY                                                :出資のみ
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :出資のみ
 STR_MINIMAL                                                     :最小
 STR_NUM_VERY_LOW                                                :特に低い
 STR_NUM_LOW                                                     :低い

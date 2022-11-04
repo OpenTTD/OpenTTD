@@ -1097,7 +1097,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용�
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}최대 경쟁자수: {ORANGE}{COMMA}
 
 STR_NONE                                                        :없음
-STR_FUNDING_ONLY                                                :투자만 가능
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :투자만 가능
 STR_MINIMAL                                                     :최소
 STR_NUM_VERY_LOW                                                :매우 적음
 STR_NUM_LOW                                                     :낮음

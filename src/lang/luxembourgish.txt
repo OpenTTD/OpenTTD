@@ -1095,7 +1095,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Änner W
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximal Unzuel vu Géigner: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Keng
-STR_FUNDING_ONLY                                                :Nëmmen finanzéiren
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Nëmmen finanzéiren
 STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Ganz niddreg
 STR_NUM_LOW                                                     :Wéineg

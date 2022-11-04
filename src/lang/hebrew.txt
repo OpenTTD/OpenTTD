@@ -1054,7 +1054,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה �
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{ORANGE}{COMMA}{LTBLUE} : מספר מתחרים מירבי
 
 STR_NONE                                                        :ללא
-STR_FUNDING_ONLY                                                :מימון בלבד
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :מימון בלבד
 STR_MINIMAL                                                     :מזערי
 STR_NUM_VERY_LOW                                                :נמוך מאוד
 STR_NUM_LOW                                                     :נמוך

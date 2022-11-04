@@ -1023,7 +1023,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغیی
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
 
 STR_NONE                                                        :هیچکدام
-STR_FUNDING_ONLY                                                :فقط سرمایه گذاری
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :فقط سرمایه گذاری
 STR_MINIMAL                                                     :کمینه
 STR_NUM_VERY_LOW                                                :خیلی کم
 STR_NUM_LOW                                                     :کم

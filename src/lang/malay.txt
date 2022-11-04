@@ -1010,7 +1010,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Tukar pa
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Jumlah maksimum pesaing: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Tiada
-STR_FUNDING_ONLY                                                :Melalui pembiayaan sahaja
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Melalui pembiayaan sahaja
 STR_MINIMAL                                                     :Minimum
 STR_NUM_VERY_LOW                                                :Sangat Rendah
 STR_NUM_LOW                                                     :Rendah

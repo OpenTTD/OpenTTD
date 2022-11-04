@@ -1001,7 +1001,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Broyt pa
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hægsta tali av kappingarneytum: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Einki
-STR_FUNDING_ONLY                                                :Fíggjing einans
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Fíggjing einans
 STR_MINIMAL                                                     :Minst
 STR_NUM_VERY_LOW                                                :Sera lágt
 STR_NUM_LOW                                                     :Lágt

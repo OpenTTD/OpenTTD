@@ -1163,7 +1163,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmeniť 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximálny počet konkurentov: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Žiadny
-STR_FUNDING_ONLY                                                :Iba financovanie
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Iba financovanie
 STR_MINIMAL                                                     :Minimálny
 STR_NUM_VERY_LOW                                                :Veľmi nízky
 STR_NUM_LOW                                                     :Nízky

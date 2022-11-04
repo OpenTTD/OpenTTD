@@ -1054,7 +1054,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เป�
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
 
 STR_NONE                                                        :ไม่มี
-STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :ระดมทุนเท่านั้น
 STR_MINIMAL                                                     :ขั้นต่ำ
 STR_NUM_VERY_LOW                                                :ต่ำมาก
 STR_NUM_LOW                                                     :ต่ำ

@@ -1025,7 +1025,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa p
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ezer ez
-STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Finantzazioa bakarrik
 STR_MINIMAL                                                     :Gutxienekoa
 STR_NUM_VERY_LOW                                                :Oso baxua
 STR_NUM_LOW                                                     :Baxua

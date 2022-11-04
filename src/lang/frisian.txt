@@ -1034,7 +1034,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Feroarje
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum oantal tsjinstanners: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Gjin
-STR_FUNDING_ONLY                                                :Allinnich finansierje
+STR_INDUSTRY_CREATION_ORIGINAL_BEHAVIOR                         :Allinnich finansierje
 STR_MINIMAL                                                     :Minimaal
 STR_NUM_VERY_LOW                                                :Hiel leech
 STR_NUM_LOW                                                     :Leech
