@@ -3158,8 +3158,15 @@ bool AfterLoadGame()
 			_settings_game.difficulty.industry_creation = ICR_ORIGINAL;
 		}
 
-        _settings_game.difficulty.industry_closure = ICL_ORIGINAL;
+		_settings_game.difficulty.industry_closure = ICL_ORIGINAL;
+
+		//set if no value loaded, to allow switching to new settings with old save
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			if (_industry_builder.industry_target[it] == 0 ) _industry_builder.industry_target[it] = Industry::GetIndustryTypeCount(it);
+		}
+		if (_industry_builder.total_population == 0) _industry_builder.total_population = GetWorldPopulation();
 	}
+
 
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();

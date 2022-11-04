@@ -552,9 +552,9 @@ static bool TransportIndustryGoods(TileIndex tile)
 		}
 	}
 
-    if (moved_cargo) {
-        i->ctlflags |= INDCTL_SERVICED;
-    }
+	if (moved_cargo) {
+		i->ctlflags |= INDCTL_SERVICED;
+	}
 
 	return moved_cargo;
 }
@@ -2323,10 +2323,6 @@ void IndustryBuildData::MonthlyLoop()
 	if (GetCurrentTotalNumberOfIndustries() + max_behind >= (this->wanted_inds >> 16)) {
 		this->wanted_inds += ScaleByMapSize(NEWINDS_PER_MONTH);
 	}
-
-	// Debug(console, 1,  "Number of industries = {}", GetCurrentTotalNumberOfIndustries());
-	// Debug(console, 1,  "Industry target = {}", (this->wanted_inds >> 16));
-	// Debug(console, 1,  "Wanted Inds = {}", this->wanted_inds);
 }
 
 /**
@@ -2481,7 +2477,7 @@ void IndustryBuildData::SetupTargetCount()
 				target_value *= pop_variation;
 			}
 
-            target_total += target_value;
+			target_total += target_value;
 
 			//allows a max varation around the initial count of around 10%. Division by 8 is 12% (and a simple integer operation)
 			uint32 max_variation = target_value / 8;
@@ -2856,7 +2852,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				if ((i->ctlflags & INDCTL_NO_PRODUCTION_DECREASE) && new_prod < old_prod) continue;
 				if ((i->ctlflags & INDCTL_NO_PRODUCTION_INCREASE) && new_prod > old_prod) continue;
 
-				/* Do not stop closing the industry when it has the lowest possible production rate */
+				/* no production change: skip and production not minimal : no closure */
 				if (new_prod == old_prod && old_prod > 1) {
 					closeit = false;
 					continue;
@@ -2865,8 +2861,22 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				percent = (old_prod == 0) ? 100 : (new_prod * 100 / old_prod - 100);
 				i->production_rate[j] = new_prod;
 
-				/* Close the industry when it has the lowest possible production rate */
-				if (new_prod > 1) closeit = false;
+				/* Do not close the industry until it has the lowest possible production rate */
+				if (new_prod > 1) {
+					closeit = false;
+				}
+				else {
+					/* force new_prod to higher value to prevent the industry from closing if suddenly serviced */
+					if(_settings_game.difficulty.industry_closure == ICL_UNSERVICED && (!(i->ctlflags & INDCTL_SERVICED)) ) {
+						new_prod = 2;
+						closeit = false;
+					}
+					
+					if((_settings_game.difficulty.industry_closure == ICL_NO_RATINGS) && (! i->town->have_ratings)) {
+						new_prod = 2;
+						closeit = false;
+					}
+				}
 
 				if (abs(percent) >= 10) {
 					ReportNewsProductionChangeIndustry(i, i->produced_cargo[j], percent);
@@ -2919,12 +2929,20 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	if (recalculate_multipliers) i->RecomputeProductionMultipliers();
 
 	/* Prevent unserviced industries closure if the parameter is set */
+	/* Force production level otherwise the industry will close quickly after being first serviced */
 	if(_settings_game.difficulty.industry_closure == ICL_UNSERVICED && (!(i->ctlflags & INDCTL_SERVICED)) ) {
+		i->prod_level = PRODLEVEL_MINIMUM + 1;
 		closeit = false;
 	}
 	
-	/* Prevent industries closure if linked town has no rating at all */
 	if((_settings_game.difficulty.industry_closure == ICL_NO_RATINGS) && (! i->town->have_ratings)) {
+		i->prod_level = PRODLEVEL_MINIMUM + 1;
+		closeit = false;
+	}
+
+	/* Prevent industries closure if a subsidy is active */
+	if (i->part_of_subsidy != POS_NONE) {
+		i->prod_level = PRODLEVEL_MINIMUM + 1;
 		closeit = false;
 	}
 	

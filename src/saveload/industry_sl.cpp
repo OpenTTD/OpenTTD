@@ -13,8 +13,10 @@
 #include "compat/industry_sl_compat.h"
 
 #include "../industry.h"
+#include "../town.h"
 #include "newgrf_sl.h"
 
+#include "../debug.h"
 #include "../safeguards.h"
 
 static OldPersistentStorage _old_ind_persistent_storage;
@@ -141,10 +143,12 @@ struct IBLDChunkHandler : ChunkHandler {
 	void Save() const override
 	{
 		if (_game_mode == GM_EDITOR) {
-			/// udpate industry count to save correct values.
+			/// udpate industry count and world population to save correct values.
 			for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 				_industry_builder.industry_target[it] = Industry::GetIndustryTypeCount(it);
 			}
+
+			_industry_builder.total_population = GetWorldPopulation();
 		}
 
 		SlTableHeader(_industry_builder_desc);
