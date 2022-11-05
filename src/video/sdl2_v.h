@@ -88,6 +88,9 @@ private:
 	bool edit_box_focused;
 
 	int startup_display;
+
+	/** linked SDL library version - for backward compatibility workarounds */
+	int sdl_lib_major, sdl_lib_minor;
 };
 
 #endif /* VIDEO_SDL_H */

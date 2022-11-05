@@ -367,13 +367,18 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 bool VideoDriver_SDL_Base::PollEvent()
 {
 	SDL_Event ev;
+	// workaround for old SDL libraries
+	bool is_SDL_2_0 = this->sdl_lib_major == 2 && this->sdl_lib_minor < 24;
 
 	if (!SDL_PollEvent(&ev)) return false;
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
-			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
+			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, is_SDL_2_0)) {
+				SDL_SetRelativeMouseMode(is_SDL_2_0 ? SDL_FALSE : SDL_TRUE);
 				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
+			} else {
+				SDL_SetRelativeMouseMode(SDL_FALSE);
 			}
 			HandleMouseEvents();
 			break;
@@ -500,9 +505,6 @@ static const char *InitializeSDL()
 	 * UpdateWindowSurface() to update the window's texture instead of
 	 * its surface. */
 	SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
-#ifndef __EMSCRIPTEN__
-	SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
-#endif
 
 	/* Check if the video-driver is already initialized. */
 	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return nullptr;
@@ -517,6 +519,10 @@ const char *VideoDriver_SDL_Base::Initialize()
 
 	const char *error = InitializeSDL();
 	if (error != nullptr) return error;
+	SDL_version linked;
+	SDL_GetVersion(&linked);
+	this->sdl_lib_major = linked.major;
+	this->sdl_lib_minor = linked.minor;
 
 	FindResolutions();
 	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
