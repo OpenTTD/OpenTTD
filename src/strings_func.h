@@ -203,6 +203,7 @@ void SetDParamMaxDigits(uint n, uint count, FontSize size = FS_NORMAL);
 
 void SetDParamStr(uint n, const char *str);
 void SetDParamStr(uint n, const std::string &str);
+void SetDParamStr(uint n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
 
 void CopyInDParam(int offs, const uint64 *src, int num);
 void CopyOutDParam(uint64 *dst, int offs, int num);
