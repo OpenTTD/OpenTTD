@@ -51,8 +51,6 @@ void RebuildStationKdtree()
 
 BaseStation::~BaseStation()
 {
-	free(this->speclist);
-
 	if (CleaningPool()) return;
 
 	CloseWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->index).Pack());
@@ -227,7 +225,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 		/* Don't waste time updating if there are no custom station graphics
 		 * that might change. Even if there are custom graphics, they might
 		 * not change. Unfortunately we have no way of telling. */
-		if (this->num_specs == 0) return;
+		if (this->speclist.size() == 0) return;
 	}
 
 	for (h = 0; h < train_station.h; h++) {

@@ -683,7 +683,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 
 	if (statspec == nullptr || st == nullptr) return 0;
 
-	for (i = 1; i < st->num_specs && i < NUM_STATIONSSPECS_PER_STATION; i++) {
+	for (i = 1; i < st->speclist.size() && i < NUM_STATIONSSPECS_PER_STATION; i++) {
 		if (st->speclist[i].spec == nullptr && st->speclist[i].grfid == 0) break;
 	}
 
@@ -693,7 +693,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 		 * result in slightly "wrong" (as per specs) looking stations,
 		 * but it's fairly unlikely that one reaches the limit anyways.
 		 */
-		for (i = 1; i < st->num_specs && i < NUM_STATIONSSPECS_PER_STATION; i++) {
+		for (i = 1; i < st->speclist.size() && i < NUM_STATIONSSPECS_PER_STATION; i++) {
 			if (st->speclist[i].spec == statspec) return i;
 		}
 
@@ -701,18 +701,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 	}
 
 	if (exec) {
-		if (i >= st->num_specs) {
-			st->num_specs = i + 1;
-			st->speclist = ReallocT(st->speclist, st->num_specs);
-
-			if (st->num_specs == 2) {
-				/* Initial allocation */
-				st->speclist[0].spec     = nullptr;
-				st->speclist[0].grfid    = 0;
-				st->speclist[0].localidx = 0;
-			}
-		}
-
+		if (i >= st->speclist.size()) st->speclist.resize(i + 1);
 		st->speclist[i].spec     = statspec;
 		st->speclist[i].grfid    = statspec->grf_prop.grffile->grfid;
 		st->speclist[i].localidx = statspec->grf_prop.local_id;
@@ -749,15 +738,16 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 	st->speclist[specindex].localidx = 0;
 
 	/* If this was the highest spec index, reallocate */
-	if (specindex == st->num_specs - 1) {
-		for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--) {}
+	if (specindex == st->speclist.size() - 1) {
+		size_t num_specs;
+		for (num_specs = st->speclist.size() - 1; num_specs > 0; num_specs--) {
+			if (st->speclist[num_specs].grfid != 0) break;
+		}
 
-		if (st->num_specs > 1) {
-			st->speclist = ReallocT(st->speclist, st->num_specs);
+		if (num_specs > 0) {
+			st->speclist.resize(num_specs + 1);
 		} else {
-			free(st->speclist);
-			st->num_specs = 0;
-			st->speclist  = nullptr;
+			st->speclist.clear();
 			st->cached_anim_triggers = 0;
 			st->cached_cargo_triggers = 0;
 			return;
@@ -854,7 +844,7 @@ const StationSpec *GetStationSpec(TileIndex t)
 
 	const BaseStation *st = BaseStation::GetByTile(t);
 	uint specindex = GetCustomStationSpecIndex(t);
-	return specindex < st->num_specs ? st->speclist[specindex].spec : nullptr;
+	return specindex < st->speclist.size() ? st->speclist[specindex].spec : nullptr;
 }
 
 
@@ -1050,7 +1040,7 @@ void StationUpdateCachedTriggers(BaseStation *st)
 
 	/* Combine animation trigger bitmask for all station specs
 	 * of this station. */
-	for (uint i = 0; i < st->num_specs; i++) {
+	for (uint i = 0; i < st->speclist.size(); i++) {
 		const StationSpec *ss = st->speclist[i].spec;
 		if (ss != nullptr) {
 			st->cached_anim_triggers |= ss->animation.triggers;
