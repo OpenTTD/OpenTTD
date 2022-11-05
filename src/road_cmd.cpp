@@ -380,8 +380,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			uint len = GetTunnelBridgeLength(other_end, tile) + 2;
 			cost.AddCost(len * 2 * RoadClearCost(existing_rt));
 			if (flags & DC_EXEC) {
-				MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
-
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 
@@ -504,6 +502,8 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			}
 
 			if (flags & DC_EXEC) {
+				MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
+
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -2);
 
