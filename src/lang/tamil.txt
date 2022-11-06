@@ -1826,6 +1826,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}நி�
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}வீடியோ அமைப்புகளில் பிழை...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... இணைவொத்த GPU கிடைக்கவில்லை. வன்பொருள் முடுக்கம் செயலிழக்கப்பட்டுள்ளது
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2085,6 +2086,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}தொ�
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}உங்கள் சேவையகத்தை மற்றவர்கள் எப்படி அணுகலாம்
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}உங்கள் வீரரின் பெயர்
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}இந்த நிறுவனத்திற்கான நிர்வாக நடவடிக்கைகள்
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :இந்த நிறுவனத்தில் சேரு
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}இந்த விளையாட்டாளருக்கு ஒரு செய்தியை அனுப்பவும்
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}அனைத்து பார்வையாளர்களுக்கும் ஒரு செய்தியை அனுப்பவும்
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(புதிய நிறுவனம்)
@@ -3429,6 +3431,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :புது �
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :புது விமானம்
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}செலவு: {GOLD}{CURRENCY_LONG}{BLACK} எடை: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK} செலவு: {GOLD}{CURRENCY_LONG}{BLACK} (சரக்கு திருத்தல் விலை: {GOLD}{CURRENCY_LONG}{BLACK}) கனம்: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}வேகம்: {GOLD}{VELOCITY}{BLACK} திறன்: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}வேகம்: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}கடலில் வேகம்: {GOLD}{VELOCITY}
