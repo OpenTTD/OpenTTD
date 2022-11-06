@@ -59,6 +59,7 @@
 #include "waypoint_cmd.h"
 #include "landscape_cmd.h"
 #include "rail_cmd.h"
+#include "newgrf_roadstop.h"
 
 #include "table/strings.h"
 
@@ -1794,7 +1795,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
 	}
 }
 
-static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags);
+static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int replacement_spec_index = -1);
 
 /**
  * Find a nearby station that joins this road stop.
@@ -1820,16 +1821,30 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param is_drive_through False for normal stops, true for drive-through.
  * @param ddir Entrance direction (#DiagDirection) for normal stops. Converted to the axis for drive-through stops.
  * @param rt The roadtype.
+ * @param spec_class Road stop spec class.
+ * @param spec_index Road stop spec index.
  * @param station_to_join Station ID to join (NEW_STATION if build new one).
  * @param adjacent Allow stations directly adjacent to other stations.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, uint8 length, RoadStopType stop_type, bool is_drive_through, DiagDirection ddir, RoadType rt, StationID station_to_join, bool adjacent)
+CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, uint8 length, RoadStopType stop_type, bool is_drive_through,
+		DiagDirection ddir, RoadType rt, RoadStopClassID spec_class, byte spec_index, StationID station_to_join, bool adjacent)
 {
 	if (!ValParamRoadType(rt) || !IsValidDiagDirection(ddir) || stop_type >= ROADSTOP_END) return CMD_ERROR;
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
+
+	/* Check if the given station class is valid */
+	if ((uint)spec_class >= RoadStopClass::GetClassCount() || spec_class == ROADSTOP_CLASS_WAYP) return CMD_ERROR;
+	if (spec_index >= RoadStopClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
+
+	const RoadStopSpec *roadstopspec = RoadStopClass::Get(spec_class)->GetSpec(spec_index);
+	if (roadstopspec != nullptr) {
+		if (stop_type == ROADSTOP_TRUCK && roadstopspec->stop_type != ROADSTOPTYPE_FREIGHT && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
+		if (stop_type == ROADSTOP_BUS && roadstopspec->stop_type != ROADSTOPTYPE_PASSENGER && roadstopspec->stop_type != ROADSTOPTYPE_ALL) return CMD_ERROR;
+		if (!is_drive_through && HasBit(roadstopspec->flags, RSF_DRIVE_THROUGH_ONLY)) return CMD_ERROR;
+	}
 
 	/* Check if the requested road stop is too big */
 	if (width > _settings_game.station.station_spread || length > _settings_game.station.station_spread) return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
@@ -1853,7 +1868,13 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, u
 	bool is_truck_stop = stop_type != ROADSTOP_BUS;
 
 	/* Total road stop cost. */
-	CommandCost cost(EXPENSES_CONSTRUCTION, roadstop_area.w * roadstop_area.h * _price[is_truck_stop ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS]);
+	Money unit_cost;
+	if (roadstopspec != nullptr) {
+		unit_cost = roadstopspec->GetBuildCost(is_truck_stop ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS);
+	} else {
+		unit_cost = _price[is_truck_stop ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS];
+	}
+	CommandCost cost(EXPENSES_CONSTRUCTION, roadstop_area.w * roadstop_area.h * unit_cost);
 	StationID est = INVALID_STATION;
 	ret = CheckFlatLandRoadStop(roadstop_area, flags, is_drive_through ? 5 << axis : 1 << ddir, is_drive_through, is_truck_stop, axis, &est, rt);
 	if (ret.Failed()) return ret;
@@ -1869,6 +1890,20 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, u
 	ret = BuildStationPart(&st, flags, reuse, roadstop_area, STATIONNAMING_ROAD);
 	if (ret.Failed()) return ret;
 
+	/* Check if we can allocate a custom stationspec to this station */
+	int specindex = AllocateSpecToRoadStop(roadstopspec, st, (flags & DC_EXEC) != 0);
+	if (specindex == -1) return_cmd_error(STR_ERROR_TOO_MANY_STATION_SPECS);
+
+	if (roadstopspec != nullptr) {
+		/* Perform NewGRF checks */
+
+		/* Check if the road stop is buildable */
+		if (HasBit(roadstopspec->callback_mask, CBM_ROAD_STOP_AVAIL)) {
+			uint16 cb_res = GetRoadStopCallback(CBID_STATION_AVAILABILITY, 0, 0, roadstopspec, nullptr, INVALID_TILE, rt, is_truck_stop ? STATION_TRUCK : STATION_BUS, 0);
+			if (cb_res != CALLBACK_FAILED && !Convert8bitBooleanCallback(roadstopspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res)) return CMD_ERROR;
+		}
+	}
+
 	if (flags & DC_EXEC) {
 		/* Check every tile in the area. */
 		for (TileIndex cur_tile : roadstop_area) {
@@ -1879,7 +1914,13 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, u
 			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
 
 			if (IsTileType(cur_tile, MP_STATION) && IsRoadStop(cur_tile)) {
-				RemoveRoadStop(cur_tile, flags);
+				RemoveRoadStop(cur_tile, flags, specindex);
+			}
+
+			if (roadstopspec != nullptr) {
+				/* Include this road stop spec's animation trigger bitmask
+				 * in the station's cached copy. */
+				st->cached_roadstop_anim_triggers |= roadstopspec->animation.triggers;
 			}
 
 			RoadStop *road_stop = new RoadStop(cur_tile);
@@ -1921,6 +1962,15 @@ CommandCost CmdBuildRoadStop(DoCommandFlag flags, TileIndex tile, uint8 width, u
 			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 			Company::Get(st->owner)->infrastructure.station++;
 
+			UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);
+			UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
+
+			SetCustomRoadStopSpecIndex(cur_tile, specindex);
+			if (roadstopspec != nullptr) {
+				st->SetRoadStopRandomBits(cur_tile, GB(Random(), 0, 8));
+				TriggerRoadStopAnimation(st, cur_tile, SAT_BUILT);
+			}
+
 			MarkTileDirtyByTile(cur_tile);
 		}
 
@@ -1953,9 +2003,10 @@ static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
  * Remove a bus station/truck stop
  * @param tile TileIndex been queried
  * @param flags operation to perform
+ * @param replacement_spec_index replacement spec index to avoid deallocating, if < 0, tile is not being replaced
  * @return cost or failure of operation
  */
-static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
+static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int replacement_spec_index)
 {
 	Station *st = Station::GetByTile(tile);
 
@@ -1987,6 +2038,8 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		if (ret.Failed()) return ret;
 	}
 
+	const RoadStopSpec *spec = GetRoadStopSpec(tile);
+
 	if (flags & DC_EXEC) {
 		if (*primary_stop == cur_stop) {
 			/* removed the first stop in the list */
@@ -2011,6 +2064,12 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		Company::Get(st->owner)->infrastructure.station--;
 		DirtyCompanyInfrastructureWindows(st->owner);
 
+		DeleteAnimatedTile(tile);
+
+		uint specindex = GetCustomRoadStopSpecIndex(tile);
+
+		DeleteNewGRFInspectWindow(GSF_ROADSTOPS, tile);
+
 		if (IsDriveThroughStopTile(tile)) {
 			/* Clears the tile for us */
 			cur_stop->ClearDriveThrough();
@@ -2030,7 +2089,10 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 
 		st->rect.AfterRemoveTile(st, tile);
 
-		st->AfterStationTileSetChange(false, is_truck ? STATION_TRUCK: STATION_BUS);
+		if (replacement_spec_index < 0) st->AfterStationTileSetChange(false, is_truck ? STATION_TRUCK: STATION_BUS);
+
+		st->RemoveRoadStopTileData(tile);
+		if ((int)specindex != replacement_spec_index) DeallocateSpecFromRoadStop(st, specindex);
 
 		/* Update the tile area of the truck/bus stop */
 		if (is_truck) {
@@ -2042,7 +2104,8 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[is_truck ? PR_CLEAR_STATION_TRUCK : PR_CLEAR_STATION_BUS]);
+	Price category = is_truck ? PR_CLEAR_STATION_TRUCK : PR_CLEAR_STATION_BUS;
+	return CommandCost(EXPENSES_CONSTRUCTION, spec != nullptr ? spec->GetClearCost(category) : _price[category]);
 }
 
 /**
@@ -2932,6 +2995,8 @@ draw_default_foundation:
 		}
 	}
 
+	bool draw_ground = false;
+
 	if (IsBuoy(ti->tile)) {
 		DrawWaterClassGround(ti);
 		SpriteID sprite = GetCanalSprite(CF_BUOY, ti->tile);
@@ -2970,6 +3035,10 @@ draw_default_foundation:
 			ground_relocation += rti->fallback_railtype;
 		}
 
+		draw_ground = true;
+	}
+
+	if (draw_ground && !IsRoadStop(ti->tile)) {
 		SpriteID image = t->ground.sprite;
 		PaletteID pal  = t->ground.pal;
 		RailTrackOffset overlay_offset;
@@ -3002,8 +3071,32 @@ draw_default_foundation:
 		const RoadTypeInfo* road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
 		const RoadTypeInfo* tram_rti = tram_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(tram_rt);
 
+		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
+		DiagDirection dir = GetRoadStopDir(ti->tile);
+		StationType type = GetStationType(ti->tile);
+
+		const RoadStopSpec *stopspec = GetRoadStopSpec(ti->tile);
+		if (stopspec != nullptr) {
+			int view = dir;
+			if (IsDriveThroughStopTile(ti->tile)) view += 4;
+			st = BaseStation::GetByTile(ti->tile);
+			RoadStopResolverObject object(stopspec, st, ti->tile, INVALID_ROADTYPE, type, view);
+			const SpriteGroup *group = object.Resolve();
+			if (group != nullptr && group->type == SGT_TILELAYOUT) {
+				t = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(nullptr);
+			}
+		}
+
+		/* Draw ground sprite */
+		if (draw_ground) {
+			SpriteID image = t->ground.sprite;
+			PaletteID pal  = t->ground.pal;
+			image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
+			if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
+		}
+
 		if (IsDriveThroughStopTile(ti->tile)) {
-			Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
 			uint sprite_offset = axis == AXIS_X ? 1 : 0;
 
 			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
@@ -3011,15 +3104,16 @@ draw_default_foundation:
 			/* Non-drivethrough road stops are only valid for roads. */
 			assert(road_rt != INVALID_ROADTYPE && tram_rt == INVALID_ROADTYPE);
 
-			if (road_rti->UsesOverlay()) {
-				DiagDirection dir = GetRoadStopDir(ti->tile);
+			if ((stopspec == nullptr || (stopspec->draw_mode & ROADSTOP_DRAW_MODE_ROAD) != 0) && road_rti->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ROADSTOP);
 				DrawGroundSprite(ground + dir, PAL_NONE);
 			}
 		}
 
-		/* Draw road, tram catenary */
-		DrawRoadCatenary(ti);
+		if (stopspec == nullptr || !HasBit(stopspec->flags, RSF_NO_CATENARY)) {
+			/* Draw road, tram catenary */
+			DrawRoadCatenary(ti);
+		}
 	}
 
 	if (IsRailWaypoint(ti->tile)) {
@@ -3272,6 +3366,12 @@ static void AnimateTile_Station(TileIndex tile)
 
 	if (IsAirport(tile)) {
 		AnimateAirportTile(tile);
+		return;
+	}
+
+	if (IsRoadStopTile(tile)) {
+		AnimateRoadStopTile(tile);
+		return;
 	}
 }
 
@@ -3799,6 +3899,7 @@ void OnTick_Station()
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
 			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
+			TriggerRoadStopAnimation(st, st->xy, SAT_250_TICKS);
 			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_TICKS);
 		}
 	}
@@ -3871,6 +3972,9 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	TriggerStationRandomisation(st, st->xy, SRT_NEW_CARGO, type);
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, type);
 	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, type);
+	TriggerRoadStopRandomisation(st, st->xy, RSRT_NEW_CARGO, type);
+	TriggerRoadStopAnimation(st, st->xy, SAT_NEW_CARGO, type);
+
 
 	SetWindowDirty(WC_STATION_VIEW, st->index);
 	st->MarkTilesDirty(true);

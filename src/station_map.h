@@ -498,6 +498,42 @@ static inline uint GetCustomStationSpecIndex(TileIndex t)
 }
 
 /**
+ * Is there a custom road stop spec on this tile?
+ * @param t Tile to query
+ * @pre IsRoadStopTile(t)
+ * @return True if this station is part of a newgrf station.
+ */
+static inline bool IsCustomRoadStopSpecIndex(TileIndex t)
+{
+	assert(IsRoadStopTile(t));
+	return GB(_me[t].m8, 0, 6) != 0;
+}
+
+/**
+ * Set the custom road stop spec for this tile.
+ * @param t Tile to set the stationspec of.
+ * @param specindex The new spec.
+ * @pre IsRoadStopTile(t)
+ */
+static inline void SetCustomRoadStopSpecIndex(TileIndex t, byte specindex)
+{
+	assert(IsRoadStopTile(t));
+	SB(_me[t].m8, 0, 6, specindex);
+}
+
+/**
+ * Get the custom road stop spec for this tile.
+ * @param t Tile to query
+ * @pre IsRoadStopTile(t)
+ * @return The custom station spec of this tile.
+ */
+static inline uint GetCustomRoadStopSpecIndex(TileIndex t)
+{
+	assert(IsRoadStopTile(t));
+	return GB(_me[t].m8, 0, 6);
+}
+
+/**
  * Set the random bits for a station tile.
  * @param t Tile to set random bits for.
  * @param random_bits The random bits.

@@ -17,15 +17,22 @@
 #include "newgrf_callbacks.h"
 #include "tile_map.h"
 
+template <typename Tobj>
+struct TileAnimationFrameAnimationHelper {
+	static byte Get(Tobj *obj, TileIndex tile) { return GetAnimationFrame(tile); }
+	static void Set(Tobj *obj, TileIndex tile, byte frame) { SetAnimationFrame(tile, frame); }
+};
+
 /**
  * Helper class for a unified approach to NewGRF animation.
- * @tparam Tbase       Instantiation of this class.
- * @tparam Tspec       NewGRF specification related to the animated tile.
- * @tparam Tobj        Object related to the animated tile.
- * @tparam Textra      Custom extra callback data.
- * @tparam GetCallback The callback function pointer.
+ * @tparam Tbase        Instantiation of this class.
+ * @tparam Tspec        NewGRF specification related to the animated tile.
+ * @tparam Tobj         Object related to the animated tile.
+ * @tparam Textra       Custom extra callback data.
+ * @tparam GetCallback  The callback function pointer.
+ * @tparam Tframehelper The animation frame get/set helper.
  */
-template <typename Tbase, typename Tspec, typename Tobj, typename Textra, uint16 (*GetCallback)(CallbackID callback, uint32 param1, uint32 param2, const Tspec *statspec, Tobj *st, TileIndex tile, Textra extra_data)>
+template <typename Tbase, typename Tspec, typename Tobj, typename Textra, uint16 (*GetCallback)(CallbackID callback, uint32 param1, uint32 param2, const Tspec *statspec, Tobj *st, TileIndex tile, Textra extra_data), typename Tframehelper>
 struct AnimationBase {
 	/**
 	 * Animate a single tile.
@@ -55,7 +62,7 @@ struct AnimationBase {
 		 * maximum, corresponding to around 33 minutes. */
 		if (_tick_counter % (1ULL << animation_speed) != 0) return;
 
-		uint8 frame      = GetAnimationFrame(tile);
+		uint8 frame      = Tframehelper::Get(obj, tile);
 		uint8 num_frames = spec->animation.frames;
 
 		bool frame_set_by_callback = false;
@@ -98,7 +105,7 @@ struct AnimationBase {
 			}
 		}
 
-		SetAnimationFrame(tile, frame);
+		Tframehelper::Set(obj, tile, frame);
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -124,7 +131,7 @@ struct AnimationBase {
 			case 0xFE: AddAnimatedTile(tile);    break;
 			case 0xFF: DeleteAnimatedTile(tile); break;
 			default:
-				SetAnimationFrame(tile, callback);
+				Tframehelper::Set(obj, tile, callback);
 				AddAnimatedTile(tile);
 				break;
 		}

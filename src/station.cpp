@@ -170,6 +170,36 @@ void BaseStation::PostDestructor(size_t index)
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }
 
+void BaseStation::SetRoadStopTileData(TileIndex tile, byte data, bool animation)
+{
+	for (RoadStopTileData &tile_data : this->custom_roadstop_tile_data) {
+		if (tile_data.tile == tile) {
+			if (animation) {
+				tile_data.animation_frame = data;
+			} else {
+				tile_data.random_bits = data;
+			}
+			return;
+		}
+	}
+	RoadStopTileData tile_data;
+	tile_data.tile = tile;
+	tile_data.animation_frame = animation ? data : 0;
+	tile_data.random_bits = animation ? 0 : data;
+	this->custom_roadstop_tile_data.push_back(tile_data);
+}
+
+void BaseStation::RemoveRoadStopTileData(TileIndex tile)
+{
+	for (RoadStopTileData &tile_data : this->custom_roadstop_tile_data) {
+		if (tile_data.tile == tile) {
+			tile_data = this->custom_roadstop_tile_data.back();
+			this->custom_roadstop_tile_data.pop_back();
+			return;
+		}
+	}
+}
+
 /**
  * Get the primary road stop (the first road stop) that the given vehicle can load/unload.
  * @param v the vehicle to get the first road stop for

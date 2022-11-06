@@ -308,6 +308,15 @@ enum StationCallbackMask {
 };
 
 /**
+ * Callback masks for road stops.
+ */
+enum RoadStopCallbackMask {
+	CBM_ROAD_STOP_AVAIL                = 0, ///< Availability of road stop in construction window
+	CBM_ROAD_STOP_ANIMATION_NEXT_FRAME = 1, ///< Use a custom next frame callback
+	CBM_ROAD_STOP_ANIMATION_SPEED      = 2, ///< Customize the animation speed of the road stop
+};
+
+/**
  * Callback masks for houses.
  */
 enum HouseCallbackMask {
