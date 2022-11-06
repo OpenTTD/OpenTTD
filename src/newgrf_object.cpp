@@ -29,7 +29,12 @@ ObjectOverrideManager _object_mngr(NEW_OBJECT_OFFSET, NUM_OBJECTS, INVALID_OBJEC
 
 extern const ObjectSpec _original_objects[NEW_OBJECT_OFFSET];
 /** All the object specifications. */
-ObjectSpec _object_specs[NUM_OBJECTS];
+std::vector<ObjectSpec> _object_specs;
+
+size_t ObjectSpec::Count()
+{
+	return _object_specs.size();
+}
 
 /**
  * Get the specification associated with a specific ObjectType.
@@ -38,7 +43,11 @@ ObjectSpec _object_specs[NUM_OBJECTS];
  */
 /* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {
+	/* Empty object if index is out of range -- this might happen if NewGRFs are changed. */
+	static ObjectSpec empty = {};
+
 	assert(index < NUM_OBJECTS);
+	if (index >= _object_specs.size()) return &empty;
 	return &_object_specs[index];
 }
 
@@ -87,7 +96,7 @@ bool ObjectSpec::IsAvailable() const
  */
 uint ObjectSpec::Index() const
 {
-	return this - _object_specs;
+	return this - _object_specs.data();
 }
 
 /**
@@ -106,14 +115,13 @@ uint ObjectSpec::Index() const
 void ResetObjects()
 {
 	/* Clean the pool. */
-	for (uint16 i = 0; i < NUM_OBJECTS; i++) {
-		_object_specs[i] = {};
-	}
+	_object_specs.clear();
 
 	/* And add our originals. */
-	MemCpyT(_object_specs, _original_objects, lengthof(_original_objects));
+	_object_specs.resize(lengthof(_original_objects));
 
 	for (uint16 i = 0; i < lengthof(_original_objects); i++) {
+		_object_specs[i] = _original_objects[i];
 		_object_specs[i].grf_prop.local_id = i;
 	}
 
