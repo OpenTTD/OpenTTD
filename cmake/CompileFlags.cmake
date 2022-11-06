@@ -44,8 +44,8 @@ macro(compile_flags)
             "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
         )
         if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-            add_link_options(
-                "$<$<CONFIG:Debug>:-Wl,--disable-dynamicbase,--disable-high-entropy-va,--default-image-base-low>" # ASLR somehow breaks linking for x64 Debug builds
+            add_compile_options(
+                "$<$<CONFIG:Debug>:-Wa,-mbig-obj>" # Switch to pe-bigobj-x86-64 as x64 Debug builds push pe-x86-64 to the limits (linking errors with ASLR, ...)
             )
         endif()
     endif()
