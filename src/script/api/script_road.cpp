@@ -15,6 +15,7 @@
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
 #include "../../station_cmd.h"
+#include "../../newgrf_roadstop.h"
 #include "../../script/squirrel_helper_type.hpp"
 
 #include "../../safeguards.h"
@@ -549,7 +550,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	DiagDirection entrance_dir = DiagdirBetweenTiles(tile, front);
 	RoadStopType stop_type = road_veh_type == ROADVEHTYPE_TRUCK ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 	StationID to_join = ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION;
-	return ScriptObject::Command<CMD_BUILD_ROAD_STOP>::Do(tile, 1, 1, stop_type, drive_through, entrance_dir, ScriptObject::GetRoadType(), to_join, station_id != ScriptStation::STATION_JOIN_ADJACENT);
+	return ScriptObject::Command<CMD_BUILD_ROAD_STOP>::Do(tile, 1, 1, stop_type, drive_through, entrance_dir, ScriptObject::GetRoadType(), ROADSTOP_CLASS_DFLT, 0, to_join, station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptRoad::BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)

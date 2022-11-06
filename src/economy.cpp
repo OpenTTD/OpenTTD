@@ -26,6 +26,7 @@
 #include "newgrf_industrytiles.h"
 #include "newgrf_station.h"
 #include "newgrf_airporttiles.h"
+#include "newgrf_roadstop.h"
 #include "object.h"
 #include "strings_func.h"
 #include "date_func.h"
@@ -1813,6 +1814,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 						TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
 						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
 						AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+						TriggerRoadStopRandomisation(st, st->xy, RSRT_CARGO_TAKEN, v->cargo_type);
+						TriggerRoadStopAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
 					}
 
 					new_load_unload_ticks += loaded;
@@ -1833,6 +1836,9 @@ static void LoadUnloadVehicle(Vehicle *front)
 		if (front->type == VEH_TRAIN) {
 			TriggerStationRandomisation(st, front->tile, SRT_TRAIN_LOADS);
 			TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
+		} else if (front->type == VEH_ROAD) {
+			TriggerRoadStopRandomisation(st, front->tile, RSRT_VEH_LOADS);
+			TriggerRoadStopAnimation(st, front->tile, SAT_TRAIN_LOADS);
 		}
 	}
 
