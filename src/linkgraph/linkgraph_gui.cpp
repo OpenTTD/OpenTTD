@@ -379,16 +379,20 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 				char *buf_end = buf;
 				buf[0] = 0;
 				/* Fill buf with more information if this is a bidirectional link. */
+				uint32 back_time = 0;
 				auto k = this->cached_links[j->first].find(i->first);
-				const auto &back = k->second;
-				if (k != this->cached_links[j->first].end() && back.Usage() > 0) {
-					SetDParam(0, back.cargo);
-					SetDParam(1, back.Usage());
-					SetDParam(2, back.Usage() * 100 / (back.capacity + 1));
-					buf_end = GetString(buf, STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION, lastof(buf));
+				if (k != this->cached_links[j->first].end()) {
+					const auto &back = k->second;
+					back_time = back.time;
+					if (back.Usage() > 0) {
+						SetDParam(0, back.cargo);
+						SetDParam(1, back.Usage());
+						SetDParam(2, back.Usage() * 100 / (back.capacity + 1));
+						buf_end = GetString(buf, STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION, lastof(buf));
+					}
 				}
 				/* Add information about the travel time if known. */
-				const auto time = link.time ? back.time ? ((link.time + back.time) / 2) : link.time : back.time;
+				const auto time = link.time ? back_time ? ((link.time + back_time) / 2) : link.time : back_time;
 				if (time > 0) {
 					SetDParam(0, time);
 					buf_end = GetString(buf_end, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION, lastof(buf));
