@@ -15,7 +15,7 @@
 
 ScriptObjectTypeList::ScriptObjectTypeList()
 {
-	for (int i = 0; i < NUM_OBJECTS; i++) {
+	for (int i = 0; i < ObjectSpec::Count(); i++) {
 		const ObjectSpec *spec = ObjectSpec::Get(i);
 		if (!spec->IsEverAvailable()) continue;
 		this->AddItem(i);

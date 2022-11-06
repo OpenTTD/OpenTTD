@@ -312,10 +312,11 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 		return;
 	}
 
-	extern ObjectSpec _object_specs[NUM_OBJECTS];
+	extern std::vector<ObjectSpec> _object_specs;
 
 	/* Now that we know we can use the given id, copy the spec to its final destination. */
-	memcpy(&_object_specs[type], spec, sizeof(*spec));
+	if (type >= _object_specs.size()) _object_specs.resize(type + 1);
+	_object_specs[type] = *spec;
 }
 
 /**
