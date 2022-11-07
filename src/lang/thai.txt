@@ -4569,8 +4569,6 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}ตร�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}ตรงนี้ไม่สามารถสร้างรถรางได้
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}ตรงนี้ไม่สามารถลบถนนออกไปได้
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}ตรงนี้ไม่สามารถลบทางรถรางออกไปได้
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ไม่มีถนน
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ไม่มีทางรถราง
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}ตรงนี้ไม่สามารถสร้างคลองได้

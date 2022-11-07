@@ -1527,7 +1527,6 @@ STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ne e
 
 
 # Road construction errors
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ne esas voyo
 
 # Waterway construction errors
 

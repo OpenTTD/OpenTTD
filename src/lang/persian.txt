@@ -3651,8 +3651,6 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}نمی �
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}اول باید جاده حذف شود
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}اینجا نمی توان جاده ساخت
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}جاده را نمی شود از اینجا حذف کرد
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... اینجا جاده ای نیست
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... اینجا تراموایی نیست
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}نمی توان در اینجا کانالی ساخت...
