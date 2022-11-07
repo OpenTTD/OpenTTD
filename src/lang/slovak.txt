@@ -289,9 +289,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovací reťazec:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložiť filtrovací reťazec
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložiť kľúčové slovo pre filtrovanie zoznamu
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložiť aspoň jedno klúčové slovo pre filtrovanie
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložiť aspoň jedno klúčové slovo pre filtrovanie
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Zvoľ druh zoskupenia
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Spôsob triedenia (zostupný/vzostupný)
@@ -442,7 +442,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Stavba c
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Výstavba električkovej trate
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadiť stromy. Shift zobrazí odhadovanú cenu
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umiestniť popis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt. Shift zobrazí odhadovanú cenu
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt. Ctrl označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
 
 # Scenario editor file menu
 ###length 7
@@ -1063,6 +1063,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastaven
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtnite toto políčko, aby ste povolili vertikálnu synchronizáciu. Zmeny budú uplatnené až po reštarte hry. Funguje iba ak je zapnutá hardvérová akcelerácia.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuálny ovládač: {STRING}
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
@@ -1195,15 +1196,16 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Vlastná výšk
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Vlastná výška ({NUM})
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Zhovievavý
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantný
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavý
-STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitívny
+STR_CITY_APPROVAL_PERMISSIVE                                    :Povoľný (nemá vplyv na akcie spoločnosti)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje dostupné žiadne použiteľné AI...{}Niekoľko AI je možné stiahnuť cez 'Online obsah'
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastavenia
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrovací reťazec:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozbaliť všetko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zabaliť všetko
 STR_CONFIG_SETTING_RESET_ALL                                    :Resetovať všetky hodnoty
@@ -1298,8 +1300,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ak je povolené
 STR_CONFIG_SETTING_DISASTERS                                    :Havárie: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zapne katastrofy, ktoré môžu občas zablokovať alebo zničiť vozidlá alebo infraštruktúru
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k reštrukturalizácii v oblasti: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v oblasti vlastnenej mestom
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj miestnej samosprávy: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v meste
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limit výšky mapy: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Zvoľte maximálnu výšku terénu na mape. S "(automatický)" bude vybraná správna hodnota podľa generátora krajiny
@@ -1573,7 +1575,13 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tmavozelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fialová
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Farby prekrytia toku nákladu: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Nastavte farebnú schému použitú pre prekrytie toku nákladu.
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Zelenočervená
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Zelenomodrá
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Sivá až červená
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Odtiene šedej
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Správanie pohľadu pri posúvaní myšou: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Reakcia na posúvanie (scrollovanie) na mape
@@ -2529,13 +2537,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :čaká sa na ak
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odchádza
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} vstúpil do hry
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} vstúpil do hry (klient č. {2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} sa pripojil do spoločnosti č. {2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} vstúpil do hry (klient č. {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} sa pripojil do spoločnosti č. {2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} sa pripojil k pozorovateľom
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} založil novú spoločnosť (č. {2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opustil hru ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} založil novú spoločnosť (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} opustil hru ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmenil/-a svoje meno na {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} dal {2:CURRENCY_LONG} spoločnosti {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} dal {2:CURRENCY_LONG} spoločnosti {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil reláciu
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server sa reštartuje...{}Čakajte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Hráč {STRING} bol vyhodený. Dôvod: ({STRING})
@@ -2650,6 +2658,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}preťažené
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} na prepravu za mesiac z {STATION} do {STATION} ({COMMA}% kapacity){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} na prepravu naspäť ({COMMA}% kapacity)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Priemerný čas cesty: {NUM}{NBSP}d{P eň ni ní}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ukázať oblasť pokrytia
@@ -2659,6 +2670,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nezvýra
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Zobraziť oblasť pokrytia stavanej plochy
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prijíma: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dodáva: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Náklady na údržbu: {GOLD}{CURRENCY_SHORT}/rok
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojiť stanicu
@@ -2846,11 +2858,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Úprava 
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znížiť roh políčka. Ťahaním znížite prvý vybraný roh a vyrovnáte celú vybranú oblasť na novú výšku. Ctrl označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšiť roh políčka. Ťahaním zvýšite prvý vybraný roh a vyrovnáte celú vybranú oblasť na novú výšku. Ctrl označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Vyrovnať výšku terénu podľa vybraného rohu. Ctrl označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakúpiť pozemok pre budúce použitie. Shift zobrazí odhadovanú cenu
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakúpiť pozemok pre budúce použitie. Ctrl označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výber objektu
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vyberte objekt na vybudovanie. Shift zobrazí odhadovanú cenu
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vyberte objekt na vybudovanie. Ctrl označí oblasť diagonálne. Shift zobrazí odhadovanú cenu
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vyberte triedu objektu na vybudovanie
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Náhľad objektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmery: {GOLD}{NUM} x {NUM} políčok
@@ -3158,7 +3170,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaily 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informácia nie je k dispozícii
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrovací reťazec:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Prepísanie súboru
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Ste si istý, že chcete prepísať existujúci súbor?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Priečinok)
@@ -3275,7 +3287,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailn�
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktívne NewGRF súbory
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktívne NewGRF súbory
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrať predvoľbu:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovací reťazec:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrať vybraný zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložiť aktuálne nastavenie ako zoznam
@@ -3379,15 +3391,15 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritická 
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Nastala závažná chyba NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Vyskytla sa chyba NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovať s TTDPatch verziou nahlásenou OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre verziu {STRING} TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navrhnutý pre použitie s {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí byť načítaný pred {STRING}
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí byť načítaný po {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre verziu {2:STRING} TTD
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navrhnutý pre použitie s {2:STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {1:STRING}: parameter {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí byť načítaný pred {2:STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí byť načítaný po {2:STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyžaduje verziu OpenTTD {2:STRING} alebo vyššiu
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Načítaných priveľa súborov NewGRF.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {1:STRING} ako statického NewGRF s {STRING} môže spôsobiť chybné zobrazenie.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {1:STRING} ako statického NewGRF s {2:STRING} môže spôsobiť chybné zobrazenie
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma vlastnosť Action 0 {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použitie neplatného ID (sprite {3:NUM})
@@ -3679,22 +3691,34 @@ STR_FINANCES_CAPTION                                            :{WHITE}Financie
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :Výnosy
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Prevádzkové náklady
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitálové výdavky
 
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Výstavba
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nové vozidlá
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Prevádzka vlakov
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Prevádzka cestných vozidiel
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Prevádzka lietadiel
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Prevádzka lodí
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vlaky
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Cestné vozidlá
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lietadlá
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Lode
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infraštruktúra
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Vlaky
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Cestné vozidlá
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Lietadlá
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Lode
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Úroky
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Ostatné
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_NET_PROFIT                                         :{WHITE}Čistý zisk
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Zostatok na účte v banke
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Vlastné prostriedky
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Úver
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Úroky: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximálny úver: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Požičať {CURRENCY_LONG}
@@ -3797,7 +3821,7 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produkuj
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Vyžaduje:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} čak{P á ajú á}{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmeniť produkciu (násobky 8, až do 2040)
@@ -4086,7 +4110,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Výkon: {POWER}{}Prevádzkové náklady: {CURRENCY_LONG}/rok{}Kapacita: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {6:FORCE}{}Prevádzkové náklady: {4:CURRENCY_LONG}/yr{}Kapacita: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {0:CURRENCY_LONG} Váha: {1:WEIGHT_SHORT}{}Rýchlosť: {2:VELOCITY}  Výkon: {3:POWER}  Max. trakčná sila: {6:FORCE}{}Prevádzkové náklady: {4:CURRENCY_LONG}/rok{}Kapacita: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cena: {CURRENCY_LONG} Max. Rýchlosť: {VELOCITY}{}Kapacita: {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cena: {CURRENCY_LONG} Rýchlosť: {VELOCITY}{}Typ lietadla: {STRING}{}Kapacita: {CARGO_LONG}, {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Rýchlosť: {VELOCITY}{}Typ lietadla: {STRING}{}Kapacita: {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
@@ -4249,8 +4273,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spoľahl
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vyrobený: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacita: {LTBLUE}Žiadna{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{0:CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{0:CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY_LONG}
@@ -4276,8 +4300,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Celkový náklad (kapacita) tohto vlaku:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prázdny
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} z {STATION}
@@ -4516,7 +4540,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tento ce
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tento cestovný poriadok začne {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začiatočný dátum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vyberte dátum začiatku cestovného poriadku. Ctrl+klik nastaví počiatočný dátum tohto cestovného poriadku pre všetky vozidlá zdieľajúce tieto príkazy na základe ich relatívneho poradia, ak je cestovný poriadok kompletne vyplnený
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vyberte dátum začiatku cestovného poriadku. Ctrl+klik rozdelí od daného dátumu rovnomerne všetky vozidlá zdieľajúce tieto príkazy na základe ich relatívneho poradia, ak je cestovný poriadok kompletne vyplnený
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmeniť čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmeniť dĺžku trvania označeného príkazu
@@ -4973,6 +4997,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V ceste 
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sídlo spoločnosti v ceste
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tento pozemok nie je možné kúpiť...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... už to vlastníš!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... dosiahnutý stavebný limit objektu
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie je možné vytvoriť skupinu...
