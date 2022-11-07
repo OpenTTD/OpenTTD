@@ -41,6 +41,7 @@ static uint32 _play_rate = 11025;
 static uint32 _max_size = UINT_MAX;
 static MxStreamCallback _music_stream = nullptr;
 static std::mutex _music_stream_mutex;
+static std::atomic<uint8> _effect_vol;
 
 /**
  * The theoretical maximum volume for a single sound sample. Multiple sound
@@ -162,9 +163,10 @@ void MxMixSamples(void *buffer, uint samples)
 	 * perceived difference in loudness to better match expectations. effect_vol
 	 * is expected to be in the range 0-127 hence the division by 127 * 127 to
 	 * get back into range. */
-	uint8 effect_vol = (_settings_client.music.effect_vol *
-	                    _settings_client.music.effect_vol *
-	                    _settings_client.music.effect_vol) / (127 * 127);
+	uint8 effect_vol_setting = _effect_vol.load(std::memory_order_relaxed);
+	uint8 effect_vol = (effect_vol_setting *
+	                    effect_vol_setting *
+	                    effect_vol_setting) / (127 * 127);
 
 	/* Mix each channel */
 	uint8 active = _active_channels.load(std::memory_order_acquire);
@@ -254,4 +256,9 @@ bool MxInitialize(uint rate)
 	_max_size  = UINT_MAX / _play_rate;
 	_music_stream = nullptr; /* rate may have changed, any music source is now invalid */
 	return true;
+}
+
+void SetEffectVolume(uint8 volume)
+{
+	_effect_vol.store(volume, std::memory_order_relaxed);
 }
