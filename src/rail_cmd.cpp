@@ -455,10 +455,9 @@ CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType rai
 			if (ret.Succeeded()) ret = EnsureNoTrainOnTrack(tile, track);
 			if (ret.Failed()) {
 				if (ret.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) return ret;
-				else {
-					/* We don't have to pay for rail that already exists, and we can break out early. */
-					return CMD_NOTHING;
-				}
+
+				/* We don't have to pay for rail that already exists, and we can break out early. */
+				return CMD_NOTHING;
 			}
 
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
