@@ -27,6 +27,7 @@
 #include "widgets/dropdown_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/slider_func.h"
+#include "mixer.h"
 
 #include "widgets/music_widget.h"
 
@@ -788,7 +789,11 @@ struct MusicWindow : public Window {
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
 				byte &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
 				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
-					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(vol);
+					if (widget == WID_M_MUSIC_VOL) {
+						MusicDriver::GetInstance()->SetVolume(vol);
+					} else {
+						SetEffectVolume(vol);
+					}
 					this->SetWidgetDirty(widget);
 					SetWindowClassesDirty(WC_GAME_OPTIONS);
 				}
