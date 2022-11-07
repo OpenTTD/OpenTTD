@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include <math.h>
 #include <mutex>
+#include <atomic>
 #include "core/math_func.hpp"
 #include "framerate_type.h"
 #include "settings_type.h"
@@ -18,8 +19,6 @@
 #include "mixer.h"
 
 struct MixerChannel {
-	bool active;
-
 	/* pointer to allocated buffer memory */
 	int8 *memory;
 
@@ -36,6 +35,7 @@ struct MixerChannel {
 	bool is16bit;
 };
 
+static std::atomic<uint8> _active_channels;
 static MixerChannel _channels[8];
 static uint32 _play_rate = 11025;
 static uint32 _max_size = UINT_MAX;
@@ -135,9 +135,9 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples, uin
 	sc->pos = b - sc->memory;
 }
 
-static void MxCloseChannel(MixerChannel *mc)
+static void MxCloseChannel(uint8 channel_index)
 {
-	mc->active = false;
+	_active_channels.fetch_and(~(1 << channel_index), std::memory_order_release);
 }
 
 void MxMixSamples(void *buffer, uint samples)
@@ -148,8 +148,6 @@ void MxMixSamples(void *buffer, uint samples)
 		framerate.SetExpectedRate((double)_play_rate / samples);
 		last_samples = samples;
 	}
-
-	MixerChannel *mc;
 
 	/* Clear the buffer */
 	memset(buffer, 0, sizeof(int16) * 2 * samples);
@@ -169,29 +167,30 @@ void MxMixSamples(void *buffer, uint samples)
 	                    _settings_client.music.effect_vol) / (127 * 127);
 
 	/* Mix each channel */
-	for (mc = _channels; mc != endof(_channels); mc++) {
-		if (mc->active) {
-			if (mc->is16bit) {
-				mix_int16(mc, (int16*)buffer, samples, effect_vol);
-			} else {
-				mix_int8_to_int16(mc, (int16*)buffer, samples, effect_vol);
-			}
-			if (mc->samples_left == 0) MxCloseChannel(mc);
+	uint8 active = _active_channels.load(std::memory_order_acquire);
+	for (uint8 idx : SetBitIterator(active)) {
+		MixerChannel *mc = &_channels[idx];
+		if (mc->is16bit) {
+			mix_int16(mc, (int16*)buffer, samples, effect_vol);
+		} else {
+			mix_int8_to_int16(mc, (int16*)buffer, samples, effect_vol);
 		}
+		if (mc->samples_left == 0) MxCloseChannel(idx);
 	}
 }
 
 MixerChannel *MxAllocateChannel()
 {
-	MixerChannel *mc;
-	for (mc = _channels; mc != endof(_channels); mc++) {
-		if (!mc->active) {
-			free(mc->memory);
-			mc->memory = nullptr;
-			return mc;
-		}
-	}
-	return nullptr;
+	uint8 currently_active = _active_channels.load(std::memory_order_acquire);
+	uint8 available = ~currently_active;
+	if (available == 0) return nullptr;
+
+	uint8 channel_index = FindFirstBit(available);
+
+	MixerChannel *mc = &_channels[channel_index];
+	free(mc->memory);
+	mc->memory = nullptr;
+	return mc;
 }
 
 void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, bool is16bit)
@@ -231,7 +230,8 @@ void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan)
 
 void MxActivateChannel(MixerChannel *mc)
 {
-	mc->active = true;
+	uint8 channel_index = mc - _channels;
+	_active_channels.fetch_or((1 << channel_index), std::memory_order_release);
 }
 
 /**
