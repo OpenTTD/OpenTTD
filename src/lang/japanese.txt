@@ -3121,7 +3121,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}砂漠�
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形作成:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海水位:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海水位:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形のなだらかさ:
 STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:

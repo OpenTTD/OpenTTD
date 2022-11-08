@@ -2782,7 +2782,7 @@ STR_MAPGEN_DATE                                                 :{BLACK}Дата
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой индустрии:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Земегенератор:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Морско ниво:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Морско ниво:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Реки:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Полегатост:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразност:

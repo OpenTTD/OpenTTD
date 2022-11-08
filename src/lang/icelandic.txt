@@ -2661,7 +2661,7 @@ STR_MAPGEN_DATE                                                 :{BLACK}Dags.:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi iðnaða:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magn sjávar:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Magn sjávar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ár:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Sléttleiki lands:
 STR_MAPGEN_VARIETY                                              :{BLACK}Fjölbreytileikadreifing:

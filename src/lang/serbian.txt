@@ -3312,7 +3312,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Smanji p
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivo mora:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivo mora:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Broj reka:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Postepenost:
 STR_MAPGEN_VARIETY                                              :{BLACK}Raznolikost:

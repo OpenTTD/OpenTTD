@@ -3228,7 +3228,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Μείω
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Επίπεδο θάλασσας:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Επίπεδο θάλασσας:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτάμια:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Ομαλότητα:
 STR_MAPGEN_VARIETY                                              :{BLACK}Διανομή ποικιλομορφίας:

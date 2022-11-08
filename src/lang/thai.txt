@@ -2914,7 +2914,7 @@ STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}เพ�
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}การปกคลุมของทะเลทราย:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}ประเภทภูมิประเทศ:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}ระดับทะเล:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}ระดับทะเล:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}แม่น้ำ:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}ความเรียบ:
 STR_MAPGEN_VARIETY                                              :{BLACK}การกระจายความแตกต่าง:

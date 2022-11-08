@@ -2655,7 +2655,7 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}مدى �
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}مستوى البحر
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}مستوى البحر
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}انهار:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} النعومة:
 STR_MAPGEN_VARIETY                                              :{BLACK}توزيع التنوع:

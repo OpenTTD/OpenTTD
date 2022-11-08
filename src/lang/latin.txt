@@ -3051,7 +3051,7 @@ STR_MAPGEN_DATE                                                 :{BLACK}Dies:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numerus industriarum:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatrum terrae:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typus terrae:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magnitudo maris:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Magnitudo maris:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Numerus fluviorum:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lenitas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Partitio Varietatis:

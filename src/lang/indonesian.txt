@@ -3129,7 +3129,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Kurangi 
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Area perairan:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Area perairan:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Kehalusan:
 STR_MAPGEN_VARIETY                                              :{BLACK}Macam penyebaran:

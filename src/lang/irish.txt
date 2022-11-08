@@ -3112,7 +3112,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Laghdaig
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Talamh a chruthú:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Cineál tír-raoin:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Leibhéal na farraige:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Leibhéal na farraige:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Aibhneacha:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Míne:
 STR_MAPGEN_VARIETY                                              :{BLACK}Éagsúlacht:

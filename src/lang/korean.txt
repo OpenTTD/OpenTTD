@@ -3134,7 +3134,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}사막 �
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}해수면:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}해수면:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}강:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}지표면을 깎는 방식:
 STR_MAPGEN_VARIETY                                              :{BLACK}산세 험준도:

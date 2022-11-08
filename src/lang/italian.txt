@@ -3170,7 +3170,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuis
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Livello di mare:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Livello di mare:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Levigatezza:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietà del terreno:
