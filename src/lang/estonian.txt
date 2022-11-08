@@ -3126,7 +3126,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Vähenda
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merepinna tase:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Merepinna tase:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Jõgesid:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Laugus:
 STR_MAPGEN_VARIETY                                              :{BLACK}Iseärasuste jaotus:

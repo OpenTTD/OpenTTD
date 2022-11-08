@@ -2828,7 +2828,7 @@ STR_MAPGEN_DATE                                                 :{BLACK}Dyddiad:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer diwydiannau:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Math Tirwedd:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Lefel y Môr:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Lefel y Môr:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Afonydd:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Llyfnder:
 STR_MAPGEN_VARIETY                                              :{BLACK}Dosbarthiad amrywiaeth:

@@ -2731,7 +2731,7 @@ STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industriar:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havflate:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havflate:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Elver:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Glattleik:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variasjonsdistrubusjon:

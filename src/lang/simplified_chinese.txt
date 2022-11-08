@@ -3129,7 +3129,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}减少 1
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}生成地形：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形特点：
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海洋面积：
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海洋面积：
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流数量:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}多样的分发：
