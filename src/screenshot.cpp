@@ -681,8 +681,16 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 		}
 	}
 
-	/* Add extension to screenshot file */
 	size_t len = strlen(_screenshot_name);
+
+	/* Handle user-specified filenames ending in # with automatic numbering */
+	if (StrEndsWith(_screenshot_name, "#")) {
+		generate = true;
+		len -= 1;
+		_screenshot_name[len] = '\0';
+	}
+
+	/* Add extension to screenshot file */
 	seprintf(&_screenshot_name[len], lastof(_screenshot_name), ".%s", ext);
 
 	const char *screenshot_dir = crashlog ? _personal_dir.c_str() : FiosGetScreenshotDir();
