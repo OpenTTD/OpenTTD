@@ -25,8 +25,16 @@
 #include "game/game_instance.hpp"
 
 #include "widgets/framerate_widget.h"
+
+#include <atomic>
+#include <mutex>
+#include <vector>
+
 #include "safeguards.h"
 
+static std::mutex _sound_perf_lock;
+static std::atomic<bool> _sound_perf_pending;
+static std::vector<TimingMeasurement> _sound_perf_measurements;
 
 /**
  * Private declarations for performance measurement implementation
@@ -250,6 +258,20 @@ PerformanceMeasurer::~PerformanceMeasurer()
 			PerformanceMeasurer::SetInactive(PFE_ALLSCRIPTS);
 			return;
 		}
+	}
+	if (this->elem == PFE_SOUND) {
+		/* PFE_SOUND measurements are made from the mixer thread.
+		 * _pf_data cannot be concurrently accessed from the mixer thread
+		 * and the main thread, so store the measurement results in a
+		 * mutex-protected queue which is drained by the main thread.
+		 * See: ProcessPendingPerformanceMeasurements() */
+		TimingMeasurement end = GetPerformanceTimer();
+		std::lock_guard lk(_sound_perf_lock);
+		if (_sound_perf_measurements.size() >= NUM_FRAMERATE_POINTS * 2) return;
+		_sound_perf_measurements.push_back(this->start_time);
+		_sound_perf_measurements.push_back(end);
+		_sound_perf_pending.store(true, std::memory_order_release);
+		return;
 	}
 	_pf_data[this->elem].Add(this->start_time, GetPerformanceTimer());
 }
@@ -1077,5 +1099,24 @@ void ConPrintFramerate()
 
 	if (!printed_anything) {
 		IConsolePrint(CC_ERROR, "No performance measurements have been taken yet.");
+	}
+}
+
+/**
+ * This drains the PFE_SOUND measurement data queue into _pf_data.
+ * PFE_SOUND measurements are made by the mixer thread and so cannot be stored
+ * into _pf_data directly, because this would not be thread safe and would violate
+ * the invariants of the FPS and frame graph windows.
+ * @see PerformanceMeasurement::~PerformanceMeasurement()
+ */
+void ProcessPendingPerformanceMeasurements()
+{
+	if (_sound_perf_pending.load(std::memory_order_acquire)) {
+		std::lock_guard lk(_sound_perf_lock);
+		for (size_t i = 0; i < _sound_perf_measurements.size(); i += 2) {
+			_pf_data[PFE_SOUND].Add(_sound_perf_measurements[i], _sound_perf_measurements[i + 1]);
+		}
+		_sound_perf_measurements.clear();
+		_sound_perf_pending.store(false, std::memory_order_relaxed);
 	}
 }

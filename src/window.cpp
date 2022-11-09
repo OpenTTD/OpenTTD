@@ -3067,6 +3067,9 @@ void UpdateWindows()
 	PerformanceMeasurer framerate(PFE_DRAWING);
 	PerformanceAccumulator::Reset(PFE_DRAWWORLD);
 
+	extern void ProcessPendingPerformanceMeasurements();
+	ProcessPendingPerformanceMeasurements();
+
 	CallWindowRealtimeTickEvent(delta_ms);
 
 	static GUITimer network_message_timer = GUITimer(1);
