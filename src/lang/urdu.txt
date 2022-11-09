@@ -198,6 +198,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ھار�
 STR_UNITS_POWER_METRIC                                          :{COMMA} ھارس پآور
 STR_UNITS_POWER_SI                                              :{COMMA} کلو واٹ
 
+
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} من
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
@@ -2481,6 +2482,8 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :نیا طیارہ
 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ: {GOLD}{COMMA} ٹائلیں
+
+###length 3
 
 ###length VEHICLE_TYPES
 

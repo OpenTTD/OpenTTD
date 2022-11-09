@@ -197,6 +197,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}ا
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}اسب بخار
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}کیلووات
 
+
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}تن
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}کیلوگرم
 
@@ -3086,6 +3087,8 @@ STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}سرعت
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}سرعت در کانال/رودخانه: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}برد: {GOLD}{COMMA} قطعه
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید. برای مخفی یا پدیدار کردن انواع قطار کنترل+کلیک کنید

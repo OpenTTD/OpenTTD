@@ -72,6 +72,7 @@ STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 
 
 
+
 # Common window strings
 
 
@@ -1033,6 +1034,8 @@ STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :नई ट्�
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}मूल्य : {GOLD}{CURRENCY_LONG}{BLACK} भार : {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भार : {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+
+###length 3
 
 ###length VEHICLE_TYPES
 

@@ -200,6 +200,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA} к.с.
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} т.
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} кг.
@@ -3449,6 +3450,8 @@ STR_PURCHASE_INFO_NONE                                          :Нищо
 STR_PURCHASE_INFO_ALL_BUT                                       :Всичко освен {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. теглеща сила: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Обхват: {GOLD}{COMMA} полета
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Списък с влакове - натисни върху влак за информация

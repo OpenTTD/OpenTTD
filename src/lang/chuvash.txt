@@ -163,6 +163,7 @@ STR_UNITS_POWER_SI                                              :{COMMA}кВт
 
 
 
+
 # Common window strings
 
 
@@ -1377,6 +1378,8 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 # Vehicle availability
 ###length VEHICLE_TYPES
 
+
+###length 3
 
 ###length VEHICLE_TYPES
 

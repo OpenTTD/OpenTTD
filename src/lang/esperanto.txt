@@ -198,6 +198,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}ĉ
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ĉp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
@@ -2936,6 +2937,8 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Transfor
 STR_PURCHASE_INFO_ALL_TYPES                                     :Ĉiaj ŝarĝoj
 STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimuma Tiro: {GOLD}{FORCE}
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trajnveturila elektolisto - alklaku veturilon por informoj

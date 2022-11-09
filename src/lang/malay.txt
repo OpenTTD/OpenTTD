@@ -197,6 +197,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}kk
 STR_UNITS_POWER_METRIC                                          :{COMMA}kk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
@@ -3186,6 +3187,8 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kar
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua kecuali {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Usaha Penarikan Maks.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jarak: {GOLD}{COMMA} petak
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Senarai pilihan keretapi - Klik atas kenderaan untuk maklumat

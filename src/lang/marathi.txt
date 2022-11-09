@@ -196,6 +196,7 @@ STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ट
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ट
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} किलो
@@ -1534,6 +1535,8 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}गत�
 STR_PURCHASE_INFO_COST                                          :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}वजन: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}{BLACK} गती: {GOLD}{VELOCITY}
+
+###length 3
 
 ###length VEHICLE_TYPES
 
