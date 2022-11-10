@@ -575,9 +575,10 @@ private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
 		return _game_mode == GM_MENU
-			|| ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot))
-			|| (config_item.flags & SCRIPTCONFIG_INGAME) != 0
-			|| _settings_client.gui.ai_developer_tools;
+		    || _game_mode == GM_EDITOR
+		    || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot))
+		    || (config_item.flags & SCRIPTCONFIG_INGAME) != 0
+		    || _settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)
