@@ -110,7 +110,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
 	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
-	void PlayLeaveStationSound() const override;
+	void PlayLeaveStationSound(bool force = false) const override;
 	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
 	int GetDisplaySpeed() const override { return this->gcache.last_speed; }

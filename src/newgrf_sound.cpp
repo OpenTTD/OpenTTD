@@ -181,11 +181,12 @@ SoundID GetNewGRFSoundID(const GRFFile *file, SoundID sound_id)
  * Checks whether a NewGRF wants to play a different vehicle sound effect.
  * @param v Vehicle to play sound effect for.
  * @param event Trigger for the sound effect.
+ * @param force Should we play the sound effect even if vehicle sound effects are muted?
  * @return false if the default sound effect shall be played instead.
  */
-bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
+bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event, bool force)
 {
-	if (!_settings_client.sound.vehicle) return true;
+	if (!_settings_client.sound.vehicle && !force) return true;
 
 	const GRFFile *file = v->GetGRF();
 	uint16 callback;
