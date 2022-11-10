@@ -201,6 +201,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -1351,7 +1360,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permite enviar 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite transferências de dinheiro entre empresas em modo multi-jogador
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular comboios pesados: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Define o impacto de carregar mercadoria nos combóios. Um valor superior torna o carregamento de meradoria mais exigente para os combóios, especialmente em terreno inclinado
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Define o impacto de carregar mercadoria nos comboios. Um valor elevado torna o transporte de mercadorias mais exigente para os comboios, especialmente em terreno inclinado
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fator de velocidade de avião: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Set the relative speed of planes compared to other vehicle types, to reduce the amount of income of transport by aircraft
@@ -3877,6 +3886,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance:
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo de aeronave: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Todos os tipos de carga
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Mercadorias
+STR_CARGO_TYPE_FILTER_NONE                                      :Nenhum
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
@@ -4774,7 +4786,7 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Não é possível construir estação de autocarros...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Não é possível construir estação de carregamento de camiões...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Não é possível construir estação de passageiros para eléctricos...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Não é possível construir estação de carga para eléctricos...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Não é possível construir estação de carga para elétricos...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Não é possível construir doca aqui...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Não é possível construir aeroporto aqui...
 
@@ -4798,7 +4810,7 @@ STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}É preci
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Impossível remover estação...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossível remover estação...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover paragem de eléctricos de passageiros
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de eléctricos de mercadorias...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de elétricos de mercadorias...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Deverá remover a paragem rodoviária primeiro
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... não há nenhuma estação aqui
 
@@ -4806,7 +4818,7 @@ STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa 
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa de demolir a estação de autocarros primeiro
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa de demolir a estação de carga primeiro
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa demolir estação de eléctricos primeiro
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir estação de eléctricos primeiro
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir estação de elétricos primeiro
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deverá demolir a doca primeiro
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Precisa de demolir o aeroporto primeiro
 

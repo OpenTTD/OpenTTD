@@ -3877,6 +3877,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Type d'aéronef{NBSP}: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fret
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Choix du véhicule. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour basculer le masquage du type de véhicule

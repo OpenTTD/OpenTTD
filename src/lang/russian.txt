@@ -326,6 +326,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}л
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}лс
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}кВт
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}лс/т
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}лс/т
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}лс/Мг
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}лс/т
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}лс/т
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}лс/Мг
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}кВт/т
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}кВт/т
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}Вт/кг
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}т
@@ -4051,6 +4060,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Даль
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип возд. судна: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Все типы грузов
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Груз
+STR_CARGO_TYPE_FILTER_NONE                                      :Нет
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список железнодорожного транспорта - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
