@@ -19,6 +19,7 @@ add_files(
     error_widget.h
     fios_widget.h
     framerate_widget.h
+    game_widget.h
     genworld_widget.h
     goal_widget.h
     graph_widget.h
