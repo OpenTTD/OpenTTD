@@ -266,7 +266,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
 # Settings menu
-###length 14
+###length 15
 
 # File menu
 ###length 5
@@ -1314,7 +1314,6 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 
 
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 

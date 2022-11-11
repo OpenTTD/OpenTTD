@@ -389,10 +389,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :הגדרות
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :הגדרות סקריפטים של משחק/שחקני מחשב
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :הגדרות GRF חדש
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :אפשרויות שקיפות
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :שמות ערים
@@ -1935,7 +1934,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}טבלת
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}הגדרות
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}הגדרות סקריפטים של משחק/שחקני מחשב
 STR_INTRO_QUIT                                                  :{BLACK}יציאה
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
@@ -1955,7 +1953,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}הצג �
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}הצגת הגדרות
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}הצג הגדרות שדרוג גראפי
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK} הצג הגדרות סקריפטים של משחק/שחקני מחשב
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}צא מ-'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}חסרים {NUM} ספרייט עבור גרפיקות הבסיס שנבחרו. אנא בדוק עדכונים לערכה זו.
@@ -4176,7 +4173,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלון הדה-באג זמין רק עבור השרת
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}הגדרות משחק/בינה מלאכותית
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}סקריפט המשחק אשר יטען במשחק הבא
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}שחקני המחשב אשר יטענו במשחק הבא
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי
@@ -4192,8 +4188,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}הזז �
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}סקריפט משחק
 STR_AI_CONFIG_AI                                                :{SILVER}שחקני מחשב
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}בחר {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :שחקן מחשב
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :סקריפט משחק
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}טען סקריפט נוסף
@@ -4217,9 +4211,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל ת�
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} פרמטרים
 STR_AI_SETTINGS_CAPTION_AI                                      :שחקן מחשב
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :סקריפט משחק
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

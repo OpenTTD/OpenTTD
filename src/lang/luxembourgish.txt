@@ -392,10 +392,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Eraus
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Astellungen
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :KI / Spill-Script Astellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenz Optiounen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stiednimm uweisen
@@ -2049,7 +2048,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Beschtel
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Inhalt
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}KI / Spill-Script Astellungen
 STR_INTRO_QUIT                                                  :{BLACK}Eraus
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start en neit Spill. Ctrl+Klick iwwerspréngt Kaartenkonfiguratioun
@@ -2069,7 +2067,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Beschtel
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Displayastellungen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen uweisen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Weis KI an Spill-Script-Astellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
 
 STR_INTRO_BASESET                                               :{BLACK}Dem grad ausgewielte Basis Grafikset fehlen {NUM} Sprite{P "" s}. W.e.g. no Updates fir dëse Set sichen.
@@ -4509,7 +4506,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En Scrip
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI / Spill-Script Debugfënster ass nëmmen fir Serveren verfügbar
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}KI /Spill-Script Konfiguratioun
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}D'Spill-Script dat am nächsten Spill geluede gëtt
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}D'KIën déi am nächsten Spill geluede ginn
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mënschleche Spiller
@@ -4525,8 +4521,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Gewielte
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spill-Script
 STR_AI_CONFIG_AI                                                :{SILVER}KIën
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Wiel {STRING} aus
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :KI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spill-Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lued en aneren Script
@@ -4557,9 +4551,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Héichte
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap-Screenshot
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
 STR_AI_SETTINGS_CAPTION_AI                                      :KI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spill-Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

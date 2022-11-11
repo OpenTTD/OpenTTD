@@ -376,10 +376,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Gêm
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Gosodiadau
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gosodiadau AI / sgript Gêm
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Gosodiadau NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Dewisiadau tryloywder
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dangos enwau trefi
@@ -1919,7 +1918,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabl Sg�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Gosodiadau
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio Cynnwys Ar-lein
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Gosodiadau AI / Sgript Gêm
 STR_INTRO_QUIT                                                  :{BLACK}Gadael
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Dechrau gêm newydd. Mae Ctrl+Clic yn hepgor dewisiadau map
@@ -1939,7 +1937,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Dangos y
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Gosodiadau arddangos
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Dangos gosodiadau NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Dangos gosodiadau AI a sgript Gêm
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gadael 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Mae {NUM} corlun ar goll o'r set raffeg sylfaenol a ddewiswyd. Gwiriwch am ddiweddariadau i'r set raffeg.
@@ -4146,7 +4143,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Mae sgri
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mae'r Ffenestr Ddadnamu AI / Sgript Gêm ar gael ar gyfer y gweinydd yn unig
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Ffurfweddiad AI / Sgript Gêm
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Y Sgriptiau Gêm a lwythir yn y gêm nesaf
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Yr AIau a lwythir yn y gêm nesaf
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Chwaraewr dynol
@@ -4162,8 +4158,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Symud yr
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Sgript Gêm
 STR_AI_CONFIG_AI                                                :{SILVER}AIau
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Dewis {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Sgript Gêm
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Llwytho sgript arall
@@ -4187,9 +4181,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio n
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramedrau
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Sgript Gêm
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cau
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ailosod
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

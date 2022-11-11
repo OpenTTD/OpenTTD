@@ -393,10 +393,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :설정
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :인공지능/게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
@@ -2060,7 +2059,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}고득�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}인공지능/게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}CTRL+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다.
@@ -2080,7 +2078,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다.
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}인공지능/게임 스크립트 설정창을 엽니다.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다.
 
 STR_INTRO_BASESET                                               :{BLACK}현재 선택된 기본 그래픽 세트에는 {NUM}개의 스프라이트가 빠져있습니다. 기본 세트를 업데이트하세요.
@@ -4538,7 +4535,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동 �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}인공지능/게임 스크립트 디버그창은 오직 서버만 사용 가능합니다
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 / 게임 스크립트 설정
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음에 게임을 시작할 때 이 게임 스크립트를 불러올 것입니다
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 인공지능을 불러올 것입니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
@@ -4554,8 +4550,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}목록�
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}게임 스크립트
 STR_AI_CONFIG_AI                                                :{SILVER}인공지능
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING} 선택하기
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :인공지능
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :게임 스크립트
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 스크립트 불러오기
@@ -4586,9 +4580,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}높이�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니맵 스크린 샷
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 매개 변수
 STR_AI_SETTINGS_CAPTION_AI                                      :인공지능
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크립트
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

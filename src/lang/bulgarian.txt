@@ -376,10 +376,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Изход
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови опции
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Настройки
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Настройка на ИИ програмите
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf настройки
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки на прозрачност
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показване имената на градовете
@@ -1877,7 +1876,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Провери онлайн съдържанието
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}ИИ/Игрови настройки
 STR_INTRO_QUIT                                                  :{BLACK}Изход
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Започни нова игра. Ctrl+Click пропуска конфигурацията на картата
@@ -1897,7 +1895,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пока
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Настройки на дисплея
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Покажи NewGRF настройки
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Провери за ново съдържание за сваляне
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показва настройките на ИИ
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Изход от 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}На този превод му липсват {NUM} string{P "" s}. Помогнете на OpenTTD като се запишете за преводач. Вижте readme.txt за повече информация.
@@ -4080,7 +4077,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}ИИ Дебъг прозореца е на разположение само на сървъра
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}ИИ Настройки
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Иговия скрипт ще бъде зареден в следващата игра
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}ИИ-тата ще бъдат заредени в следващата игра
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Човешки играч
@@ -4096,8 +4092,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Прем
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Игрови скрипт
 STR_AI_CONFIG_AI                                                :{SILVER}AI-та
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Избери {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Програмен език на играта
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Зареди друг скрипт
@@ -4121,9 +4115,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не п�
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Програмен език на играта
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

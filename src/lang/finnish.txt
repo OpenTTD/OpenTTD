@@ -392,10 +392,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Lopeta
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin valinnat
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Asetukset
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tekoälyn/peliskriptin asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kuntien nimet näkyvissä
@@ -2059,7 +2058,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Pistetau
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Asetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista online-sisältö
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tekoälyn/peliskriptin asetukset
 STR_INTRO_QUIT                                                  :{BLACK}Sulje
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+napsautus ohittaa kartan asetusten valinnan.
@@ -2079,7 +2077,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Näytä 
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Näytä asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly/peliskriptiasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Lopeta OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Valitusta perusgrafiikkapaketista puuttuu {NUM} sprite{P "" ä}. Tarkista, onko sille päivityksiä.
@@ -4532,7 +4529,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi kä
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn/peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn/peliskriptin määritteet
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Seuraavassa pelissä ladattava peliskripti
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Seuraavassa pelissä ladattavat tekoälyt
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja
@@ -4548,8 +4544,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Siirrä 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Peliskripti
 STR_AI_CONFIG_AI                                                :{SILVER}Tekoälyt
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Valitse {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :Tekoäly
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Peliskripti
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lataa toinen skripti
@@ -4580,9 +4574,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Korkeusk
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoiskartan kuvakaappaus
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrit
 STR_AI_SETTINGS_CAPTION_AI                                      :Tekoäly
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Peliskripti
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

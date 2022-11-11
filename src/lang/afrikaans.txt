@@ -383,10 +383,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Verlaat
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spel opsies
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Stellings
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spel skript instellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Deursigtigheid opsies
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dorp name vertoon
@@ -1955,7 +1954,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Hoogste 
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Stellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Soek aanlyn
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spel Skript Instellings
 STR_INTRO_QUIT                                                  :{BLACK}Verlaat
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel. Ctrl+klik ignoreer kaart konfigurasie
@@ -1975,7 +1973,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vertoon 
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Vertoon instellings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vertoon AI/Spel skript konfigurasie
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Die vertaling kort {NUM} string{P "" s}. Help aseblief om OpenTTD beter te maak, deur aan te sluit as 'n vertaaler. Sien die readme.txt vir meer inligting.
@@ -4253,7 +4250,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Rekenaar Speler/Spel Skrip Ontfout venster is slegs beskikbaar aan die verskaffer
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spel Konfigurasie
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spel Skrip wat in die volgende spel gelaai sal word
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die AIs wat om die volgende spel gelaai sal word
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mens Speler
@@ -4269,8 +4265,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Beweeg g
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spel Skrip
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Selekteer {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spel Skrip
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laai nog 'n script
@@ -4301,9 +4295,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Hoogteka
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap-skermkiekie
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Speletjie Skrif
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -580,10 +580,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Podešavanja
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Podešavanja VI/Skripte partije
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikazana imena naselja
@@ -2244,7 +2243,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela n
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Podešavanja VI/Skripte Partije
 STR_INTRO_QUIT                                                  :{BLACK}Izađi
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju. Ctrl+Klik preskače konfiguraciju mape
@@ -2264,7 +2262,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikazuj
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Prikaži podešavanje
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuje NewGRF podešavanja
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikazuje podešavanja za VI/Skriptu partije
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Trenutno odabranom skupu osnovne grafike nedostaje {NUM} sprajt{P "" "ova" "ova"}. Proverite da li postoje izmene za ovaj skup.
@@ -4720,7 +4717,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za korigovanje VI / Skripte Partije je dostupan samo na serveru
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Podešavanja VI / skripte igre
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta igre koja će biti pokrenuta u sledećoj partiji
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštačke inteligencije koje će biti pokrenute u sledećoj partiji
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
@@ -4736,8 +4732,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Pomera o
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta igre
 STR_AI_CONFIG_AI                                                :{SILVER}VIe
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Izaberi {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :VI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta igre
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu
@@ -4768,9 +4762,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Slika ek
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika umanjene mape
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :VI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta Partije
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

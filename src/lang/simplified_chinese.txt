@@ -392,10 +392,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :设置
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 游戏脚本设定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :显示城镇名称
@@ -2059,7 +2058,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}高分�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 脚本 设定
 STR_INTRO_QUIT                                                  :{BLACK}退出
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始新游戏. 单击的同时按住Ctrl以跳过地图设置界面
@@ -2079,7 +2077,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}显示�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}显示设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}查看AI和脚本设定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}当前选定的基础图形组缺少 {NUM} 个子画面。请检查基础图形组有无更新。
@@ -4533,7 +4530,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使�
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI调试窗口只对服务器可用
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 设置
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}下局游戏将启用这些脚本
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局游戏将启用这些AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :玩家
@@ -4549,8 +4545,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}在列�
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}游戏脚本
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}选择{STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :游戏脚本
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}装在另一脚本
@@ -4581,9 +4575,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}高度�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地图截图
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 参数
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :游戏脚本
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

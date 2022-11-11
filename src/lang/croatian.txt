@@ -481,10 +481,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Izlaz
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Postavke igre
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Postavke
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Postavke UI-ja/Skripte igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke za NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Postavke prozirnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikaži imena gradova
@@ -2076,7 +2075,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tablica 
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Postavke
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Postavke
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri online sadržaj
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Postavke UI-ja/Skripte igre
 STR_INTRO_QUIT                                                  :{BLACK}Izlaz
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru. Ctrl+klik preskače konfiguriranje karte
@@ -2096,7 +2094,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Prikaži postavke
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži postavke NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži postavke UI-ja/Skripte igre
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izzađi it 'OpenTTD'-a
 
 STR_INTRO_BASESET                                               :{BLACK}Trenutno odabranom osnovnom grafičkom setu nedostaje {NUM} sprite{P "" a a}. Potražite nadogradnju grafičkog seta.
@@ -4440,7 +4437,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za debugiranje UI-ja/Skripte igre je dopušten samo za poslužitelj
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracija UI-ja/Skripte igre
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta Igre koja će biti učitana u sljedećoj igri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}UI-jevi koji će biti učitani u sljedećoj igri
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudski igrač
@@ -4456,8 +4452,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Pomakni 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta Igre
 STR_AI_CONFIG_AI                                                :{SILVER}UI-jevi
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Odaberi {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :UI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta Igre
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitaj drugu skriptu
@@ -4488,9 +4482,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Slika vi
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika mini-mape
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta Igre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

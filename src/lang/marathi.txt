@@ -347,9 +347,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ए.आय. / गेम स्क्रिप्ट सेटिंग्ज
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर्याय
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :शहरांची नावे दाखवा
@@ -1744,7 +1743,6 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वे�
 
 
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 

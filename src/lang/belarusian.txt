@@ -692,10 +692,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Наладкі
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Наладкі ШІ / скрыпту
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі празрыстасьці
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Паказваць назвы гарадоў
@@ -2275,7 +2274,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Наладкі ШІ / скрыпту
 STR_INTRO_QUIT                                                  :{BLACK}Выхад
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Пачаць новую гульню. Ctrl+клік прапускае этап наладак мапы
@@ -2295,7 +2293,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пака
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Акно наладак
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Зьмяніць наладкі ШІ ды гульнёвага скрыпту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}У абраным наборы базавай графікі адсутнічае {NUM} спрайт{P "" а аў}. Калі ласка, абнавіце набор графікі.
@@ -4616,7 +4613,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзі
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вакно адладкі ШІ / скрыпту даступна толькі для сэрвэра
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Канфігурацыя ШІ / скрыпту
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Гульнёвы скрыпт, які будзе загружаны ў наступнай гульні
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Модулі ШІ, якія будуць загружаны ў наступнай гульні
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Чалавек
@@ -4632,8 +4628,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Пера
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Гульнёвы скрыпт
 STR_AI_CONFIG_AI                                                :{SILVER}ШI
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Выбраць {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :ШI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Гульнёвы скрыпт
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузіць іншы скрыпт
@@ -4658,9 +4652,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не з�
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Бачная вобласць у максімальным набліжэнні
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :ШI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Гульнёвы скрыпт
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

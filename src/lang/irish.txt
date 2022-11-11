@@ -392,10 +392,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Socruithe
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Socruithe AI/Scripteanna cluiche
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghanna trédhearcachta
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Taispeántar ainmneacha bailte
@@ -2044,7 +2043,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tábla n
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Socruithe
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Socruithe NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Seiceáil Inneachar Ar Líne
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Socruithe AI/Script Cluiche
 STR_INTRO_QUIT                                                  :{BLACK}Scoir
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Tosaigh cluiche nua. Scipeáltar cumrú an léarscáil le Ctrl+Cliceáil
@@ -2064,7 +2062,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Taispeá
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Socruithe taispeána
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Taispeáin socruithe NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Seiceáil le haghaidh inneachar nua agus nuashonruithe le híoslódáil
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Taispeáin socruithe AI/Script cluiche
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Téigh amach as 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Tá {NUM} sprít in easnamh sa bhuntacar grafaicí. Seiceáil an bhfuil nuashonruithe ar fáil don bhuntacar.
@@ -4503,7 +4500,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuairte
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Níl an fhuinneog Dífhabhtú AI ar fáil ach don fhreastalaí amháin
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Cumrú AI
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}An Script Cluiche a lódálfar sa chéad chluiche eile
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Na AInna a lódálfar sa chéad chluiche eile
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Imreoir Daonna
@@ -4519,8 +4515,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Bog an A
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script Cluiche
 STR_AI_CONFIG_AI                                                :{SILVER}AInna
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Roghnaigh {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script Cluiche
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lódáil script eile
@@ -4551,9 +4545,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Seat sc�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Seat scáileáin den mhion-léarscáil
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paraiméadair {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script an Chluiche
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dún
 STR_AI_SETTINGS_RESET                                           :{BLACK}Athshocraigh
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

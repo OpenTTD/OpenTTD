@@ -565,10 +565,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Exire
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludi optiones
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Electiones
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Optiones IA/Ludi scriptorum
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Optiones NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiones perluciditatis
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomina oppidorum spectabilia
@@ -2127,7 +2126,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Album Pu
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Electiones
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Optiones
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Inspicere Inventarium Interretiale
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA/Ludi Scriptorum Optiones
 STR_INTRO_QUIT                                                  :{BLACK}Exire
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Incipere novum ludum. Ctrl+Preme ut configuratio tabulae omittatur
@@ -2147,7 +2145,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Monstrar
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Monstrare electiones
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Monstrare optiones NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Inspicere inventarium Interretiale in quo res sicut NewGRF, scaenaria, musica, etc. sunt
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Monstrare optiones IA/Ludi scriptorum
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exire OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Hoc fundamento graphico desunt spiritus {NUM}. Quaere novam editionem huius fundamenti.
@@ -4395,7 +4392,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Unum cur
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fenestra Emendationis IA/Ludi Scripti tantum servatro licet uti
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuratio IA/Ludi Scriptum
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ludi Scriptum quod imponet ludo proximo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA quae imponet ludo proximo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lusor humanus
@@ -4411,8 +4407,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movere I
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Ludi Scriptum
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Eligere {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Scriptum
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Legere aliud ludi scriptum
@@ -4436,9 +4430,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non scri
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametra
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ludi Scripti
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Claudere
 STR_AI_SETTINGS_RESET                                           :{BLACK}Revertere
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

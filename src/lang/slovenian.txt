@@ -529,10 +529,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavitve
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :UI/Nastavitve skriptov igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prikazana
@@ -2073,7 +2072,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela n
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / Nastavitve skriptov igre
 STR_INTRO_QUIT                                                  :{BLACK}Izhod
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Začni novo igro. Ctrl+Klik preskoči konfiguracijo sveta
@@ -2093,7 +2091,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Nastavitve zaslona
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI in Nastavitve skriptov igre
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izhod iz 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Temu prevodu manjka {NUM} vnos{P "" a i ov}. Prosimo pomagaj izboljšati OpenTTD in se vpiši za prevajanje. Preveri readme.txt za podrobnosti.
@@ -4280,7 +4277,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izme
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno razhroščevanja UI / skripte je na voljo samo za strežnik
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavitve UI / skript igre
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript igre, ki bo naložen v naslednji igri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}UI, ki bodo naložene v naslednji igri
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Igralec
@@ -4296,8 +4292,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Premakni
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta igre
 STR_AI_CONFIG_AI                                                :{SILVER}UI-ji
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Izberi {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :UI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta igre
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Naloži drugi skript
@@ -4321,9 +4315,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne sprem
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta igre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

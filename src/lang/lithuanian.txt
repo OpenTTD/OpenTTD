@@ -585,10 +585,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pagrindinės nuostatos
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Išplėstinės nuostatos
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Dirbtinio intelekto nuostatos
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Plėtinių nuostatos
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Skaidrumo nuostatos
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Miestų pavadinimai
@@ -2261,7 +2260,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Nugalėt
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Išplėstinės nuostatos
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Plėtiniai
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Interneto turinys
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Dirbtinio intelekto nuostatos
 STR_INTRO_QUIT                                                  :{BLACK}Išeiti
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Pradėti naują žaidimą. Spragtelėjus laikant nuspaustą Ctrl klavišą, naujas žemėlapis bus sugeneruotas nedelsiant ir nieko nebeklausiant
@@ -2281,7 +2279,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rodyti n
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Rodyti išplėstines nuostatas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rodyti parsisiųstus plėtinius ir jų nuostatas
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tikrinti, ar nėra naujų plėtinių arba atnaujinimų jau atsisiųstiems plėtiniams
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti dirbtinio intelekto nuostatas
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš „OpenTTD“ žaidimo
 
 STR_INTRO_BASESET                                               :{BLACK}Šiuo metu pasirinktame grafikos rinkinyje trūksta {NUM} sprukl{P io ių ių}. Patikrinkite, ar nėra naujinių.
@@ -4721,7 +4718,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Vienas i
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}DI / GameScript derinimo langas yra pasiekiamas tik iš serverio
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}DI / Žaidimo Nustatymai
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Žaidimo skriptas bus įkeltas sekančiame žaidime
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}DI'ai bus įkelti sekančiame žaidime
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
@@ -4737,8 +4733,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Perkelti
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Žaidimo skriptas
 STR_AI_CONFIG_AI                                                :{SILVER}DI'ai
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Pasirinkti {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :DI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Žaidimo skriptas
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Užkrauti kitą skriptą
@@ -4769,9 +4763,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Teminio 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Mini žemėlapio kopija
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrai
 STR_AI_SETTINGS_CAPTION_AI                                      :DI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Žaidimo skriptas
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Uždaryti
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atstatyti
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

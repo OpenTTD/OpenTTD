@@ -563,10 +563,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Fàg an-seo
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghainnean a' gheama
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Roghainnean
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Roghainnean IF/sgriobt geama
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Roghainnean NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghainnean trìd-shoilleireachd
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ainmean nam bailtean gan sealltainn
@@ -2120,7 +2119,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Clàr na
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Roghainnean
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Roghainnean NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Susbaint air loidhne
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Roghainnean sgriobt IF/Geama
 STR_INTRO_QUIT                                                  :{BLACK}Fàg an-seo
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Tòisich geama ùr. Ctrl+Briogadh gus leum thairis air rèiteachadh a mhapa
@@ -2140,7 +2138,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Seall cl
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Roghainnean an t-seallaidh
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Seall na roghainnean NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Thoir sùil airson susbainte ùire no air a h-ùrachadh ri luchdadh a-nuas
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Seall roghainnean sgriobt IF/geama
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fàg “OpenTTD"
 
 STR_INTRO_BASESET                                               :{BLACK}Tha {NUM} {P sprìd sprìd sprìdean sprìd} a dhìth air an t-seata grafaigeachd bhunasach a thagh thu. Thoir sùil airson ùrachaidhean an t-seata bhunasaich.
@@ -4397,7 +4394,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuislic
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Chan eil an uinneag dì-bhugaidh aig an IF/sgriobt geama ri làimh ach airson an fhrithealaiche
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Rèiteachadh an IF/sgriobt geama
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}An sgriobt geama a thèid a luchdadh leis an ath-gheama
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Na IF a thèid a luchdadh leis an ath-gheama
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Cluicheadair daonna
@@ -4413,8 +4409,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Gluais a
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Sgriobt geama
 STR_AI_CONFIG_AI                                                :{SILVER}IFan
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Tagh {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IF
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Sgriobt geama
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Luchdaich sgriobt eile
@@ -4438,9 +4432,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Na athar
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramadairean aig {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :IF
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Sgriobt geama
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dùin
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ath-shuidhich
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

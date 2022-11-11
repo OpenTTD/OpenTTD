@@ -355,9 +355,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gervigreind/leikjaforskrift
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bæjanöfn sýnd
@@ -1778,7 +1777,6 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stilling
 STR_INTRO_HIGHSCORE                                             :{BLACK}Stigatafla
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}GG/forskriftar stillingar
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+smella sleppir kortastillingum
@@ -1797,7 +1795,6 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Stilla O
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Birta stigatöflu
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Birta stillingar fyrir gervigreind/forskrift
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Það vantar {NUM} þýðing{P u ar} í þetta tungumál. Vinsamlegast hjálpaðu við að gera OpenTTD betra með því að skrá þig sem þýðanda. Nánari upplýsingar í readme.txt.
@@ -3883,7 +3880,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af f
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar/forskriftar er aðeins aðgengilegur á þjóni
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar/forskriftar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Forskriftin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Gervigreindin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
@@ -3899,8 +3895,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa va
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Forskrift
 STR_AI_CONFIG_AI                                                :{SILVER}Gervigreindir
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Veldu {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :gervigreind
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Forskrift
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Hlaða annarri forskrift
@@ -3924,9 +3918,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta v
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} breytur
 STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Leikja forskriftar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

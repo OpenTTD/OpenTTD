@@ -453,10 +453,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ρυθμίσεις
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ρυθμίσεις ΑΙ και Δέσμης Ενεργειών
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
@@ -2158,7 +2157,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνα
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και Δέσμης Ενεργειών
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Με Ctrl+Κλικ παρακάμπτεται η ρύθμιση του χάρτη
@@ -2178,7 +2176,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφά
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ρυθμίσεις οθόνης
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων για AI και της δέσμης ενεργειών του παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το «OpenTTD»
 
 STR_INTRO_BASESET                                               :{BLACK}Λείπουν {NUM} sprite{P "" s} από το επιλεγμένο βασικό σετ γραφικών. Παρακαλούμε ελέγξτε για ενημερώσεις του βασικού σετ.
@@ -4626,7 +4623,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση ΑΙ και Δέσμης Ενεργειών
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η Δέσμη Ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs που θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
@@ -4642,8 +4638,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετα
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη Ενεργειών
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Επιλογή {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :ΑΙ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Δέσμη Ενεργειών
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών
@@ -4674,9 +4668,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Δέσμη Ενεργειών
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

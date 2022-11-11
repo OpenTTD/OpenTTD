@@ -377,10 +377,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI- / Spelscript-innstillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjennomsiktigheitsinnstillingar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Syne bynamn
@@ -1836,7 +1835,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Poengtav
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Innstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sjå etter innhald på nett
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI- / Spelscriptinnstillingar
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start eit nytt spel. CTRL+klikk hoppar over kartkonfigurasjon
@@ -1856,7 +1854,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Syn poen
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skjerminnstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne NewGRF-instillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis AI- og spelscriptinnstillingar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Denne nynorsk-omsettinga manglar {NUM} tekst{P "" ar}. Du må gjerne verte med i omsettingsgruppa for å hjelpe til å gjere OpenTTD betre. Sjå readme.txt for detaljar.
@@ -4021,7 +4018,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI h
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI- / Spelscript-feilsøkingvindauget er kun tilgjengeleg for tenaren
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI- / Spelkonfigurasjonar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spelscriptet som blir lasta i neste spel
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIane som blir lasta i neste spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
@@ -4037,8 +4033,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytt va
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spelscript
 STR_AI_CONFIG_AI                                                :{SILVER}AIar
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vel {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spelscript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Last eit anna script
@@ -4062,9 +4056,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikkje en
 
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelscript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

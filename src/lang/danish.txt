@@ -392,10 +392,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opsætning
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Indstillinger
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/spilscript-indstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
@@ -2051,7 +2050,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK} Topresu
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spilscript indstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
@@ -2071,7 +2069,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis top
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skærm indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis computerspiller/spilscript indstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Afslut 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK} Det aktuelt valgte base grafiksæt mangler {NUM} sprite {P "" s}. Se venligst efter opdateringer til basesættet.
@@ -4513,7 +4510,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En af de
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspiller/script-debugvindue er kun tilgængeligt for serveren
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration af computerspiller/spilscript
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spilscriptet der vil bliver indlæst i næste spil
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIer der vil bliver loaded i næste spil
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
@@ -4529,8 +4525,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flyt val
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spilscript
 STR_AI_CONFIG_AI                                                :{SILVER}KI'er
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vælg {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :Ingen ændringer
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spilscript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs et andet script
@@ -4561,9 +4555,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Højdeko
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikort skærmbillede
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spilscript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

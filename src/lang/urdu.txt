@@ -361,9 +361,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / کھیل کے اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
@@ -1533,7 +1532,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}زیاد
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}کھیل کے اختیارات
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / کھیل کے اختیارات
 STR_INTRO_QUIT                                                  :{BLACK}باہر نکلو
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}نیا کھیل شروع کریں۔ Ctrl+Click نقشے کی ترتیب کو چھوڑ دے گا
@@ -1551,7 +1549,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}منظر
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}کھیل کے اختیارات دکھائیں
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF سیٹنگز دیکھیئے
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}نئے اور ترمیم شدہ مواد کو ڈاون لوڈ کرنے کے لئے چیک کریں
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK} AI اور کھیل کے اختیارات دکھائیں
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' سے باہر نکلو
 
 STR_INTRO_TRANSLATION                                           :{BLACK}اس ترجمے میں {NUM} لائنین{P "" یں} غیر ترجمہ سدہ ہیں۔ براہ مہربانی ترجمہ کُنندہ بن کر OpenTTD کی مدد کریں۔ تفصیلات کے لئے readme.txt دیکھیں
@@ -2722,7 +2719,6 @@ STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}مدم�
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھیل کا سکرپٹ
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 

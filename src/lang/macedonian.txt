@@ -353,9 +353,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :АИ / игри поставувања
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF подесувања
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :транспарентност опции
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Место имиња прикажани
@@ -1159,11 +1158,9 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Сцен
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Повеќе играчи
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Опции на Играта
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}АИ / Играта Подесувања
 
 
 
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Покажи АИ и игра поставувања
 
 
 # Quit window
@@ -1949,7 +1946,6 @@ STR_AI_CONFIG_NONE                                              :(никој)
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
 STR_AI_CONFIG_AI                                                :{SILVER}ЗИС
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :АИ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
 
@@ -1962,7 +1958,6 @@ STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :АИ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Број на денови за да започнете оваа Пи по претходниот (се дава или зема): {ORANGE}{STRING}
 

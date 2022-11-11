@@ -384,10 +384,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :வெளியேறு
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :அமைப்புகள்
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / ஆட்ட அமைப்புகள்
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF அமைப்புகள்
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ஒளி அமைப்புகள்
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :நகரத்தின் பெயர்களை காட்டு
@@ -1844,7 +1843,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}பு�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}அமைப்புகள்
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF அமைப்புகள்
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}கோப்புகளை இணையதளத்தில் தேடு
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / ஆட்டம் அமைப்புகள்
 STR_INTRO_QUIT                                                  :{BLACK}வெளியேறு
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}புதிய ஆட்டத்தினைத் தொடங்கும். Ctrl+Click அழுத்தினால் வரைபட அமைப்புவடிவாக்கம் தவிர்க்கப்படும்
@@ -1862,7 +1860,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}பு�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}திரை அமைப்புகள்
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF அமைப்புகளைக் காட்டு
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}பதிவிறக்கம் செய்ய புதிய மற்றும் புதுப்பிக்கப்பட்ட உள்ளடக்கத்தை பார்க்கவும்
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI/வரிவடிவங்கள் அமைப்புகளைக் காட்டு
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} 'OpenTTD'ஐ விட்டு வெளியேறு
 
 STR_INTRO_TRANSLATION                                           :{BLACK}இந்த மொழிபெயர்ப்பில் {NUM} இல்லை {P "" s}.மொழிபெயர்பாளராக பதிவு செய்து OpenTTDவிற்கு உதவவும். மேலும் விவரங்கள் அறிய readme.txt ஐ பார்க்கவும்..
@@ -4063,7 +4060,6 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}வர�
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ஆட்ட வரிவடிவம் சரிபார்த்தல் கட்டம் சர்வர்களுக்கு மட்டுமே உள்ளது
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/வரிவடிவம் ஏற்றபடி அமை
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}வரிவடிவம் அடுத்த ஆட்டங்களிலிருந்து பதிவேற்றப்படும்
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}அடுத்த ஆட்டங்களில் பதிவேற்றப்படும் AI-கள்
 STR_AI_CONFIG_HUMAN_PLAYER                                      :மனித வீரர்
@@ -4079,8 +4075,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}தே�
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}விளையாட்டின் ஸ்கிரிப்ட்
 STR_AI_CONFIG_AI                                                :{SILVER}AIகள்
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}தேர்ந்தெடு {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :விளையாட்டின் ஸ்கிரிப்ட்
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}மற்றொறு வரிவடிவத்தினை பதிவேற்று
@@ -4111,9 +4105,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}உய�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}சிறிய வரைபட திரைபிடிப்பு
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} குணாதிசயங்கள்
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :விளையாட்டின் ஸ்கிரிப்ட்
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}மூடு
 STR_AI_SETTINGS_RESET                                           :{BLACK}முன்னிருந்தமாதிரி மாற்று
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

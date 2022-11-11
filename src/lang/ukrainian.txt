@@ -517,10 +517,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Налаштування
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Налаштування AI / Ігрового скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налаштування прозорості
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показувати назви міст
@@ -2180,7 +2179,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / GS
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клац мишою пропускає конфігурацію карти
@@ -2200,7 +2198,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пока
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Налаштування відображення
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати налаштування NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового Скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}В обраному наборі базової графіки немає {NUM} спрайт{P а ів ів}. Будь ласка, оновіть набір графіки.
@@ -4645,7 +4642,6 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно налагодження АІ / Ігрового Скрипта доступне тільки серверу
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Налаштування AI / Ігрового Скрипта
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ігровий Скрипт, який буде завантажено в наступній грі
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
@@ -4661,8 +4657,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Пере
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Ігровий Скрипт
 STR_AI_CONFIG_AI                                                :{SILVER}АІ
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Вибрати {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Ігровий Скрипт
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Завантажити інший скрипт
@@ -4693,9 +4687,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Знят
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Зняток мінімапи
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CAPTION_AI                                      :АІ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий Скрипт
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
