@@ -442,7 +442,10 @@ struct GSConfigWindow : public Window {
 private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
-		return _game_mode == GM_MENU || (config_item.flags & SCRIPTCONFIG_INGAME) != 0;
+		return _game_mode == GM_MENU
+		    || _game_mode == GM_EDITOR
+		    || (config_item.flags & SCRIPTCONFIG_INGAME) != 0
+		    || _settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)
