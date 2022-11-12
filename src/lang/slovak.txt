@@ -1065,21 +1065,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtn
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuálny ovládač: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automaticky zistené)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normálna
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojnásobná veľkosť
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Štvornásobná veľkosť
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Veľkosť písma
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Výber veľkosti písma v rozhraní
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automaticky zistené)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normálna
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvojnásobná veľkosť
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Štvornásobná veľkosť
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 

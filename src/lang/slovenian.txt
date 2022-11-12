@@ -1105,15 +1105,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Velikost vmesnika
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Izberi velikost elementa vmesnika
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalno
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojna velikost
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Velikost kvadrata
 
 
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(samodejno zaznaj)
 
 
 

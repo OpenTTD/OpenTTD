@@ -998,21 +998,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dikey se
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Geçerli sürücü: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Arayüz boyutu
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kullanmak üzere arayüz bileşen boyutunu seçin
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(otomatik-tespit)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :İki kat büyük
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Dört kat büyük
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Yazı boyutu
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :Arayüz boyutunu seç
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(otomatik-tespit)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Yazı iki kat büyük
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Dört kat büyük
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikler
 

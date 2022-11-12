@@ -997,21 +997,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}勾選�
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驅動程式: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}介面大小
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}選擇使用的介面元素大小
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(自動偵測)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :正常大小
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :兩倍大小
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}字體大小
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}選擇此字體大小
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(自動偵測)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :正常
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :兩倍大小
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :四倍大小
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}圖形
 

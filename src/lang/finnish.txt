@@ -997,21 +997,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Valitse 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nykyinen ajuri: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Käyttöliittymän koko
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Valitse käyttöliittymäelementtien koko
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(tunnista automaattisesti)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavallinen
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kaksinkertainen
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Nelinkertainen
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirjasinkoko
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Valitse käyttöliittymän kirjasinkoko
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(tunnista automaattisesti)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaali
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kaksinkertainen koko
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Nelinkertainen koko
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiikka
 

@@ -940,11 +940,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfaze tamaina
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaina doblea
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaina laukoitza
 
 
 

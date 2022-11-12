@@ -201,6 +201,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ch
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{G=f}{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{G=f}{COMMA}{NBSP}t
@@ -396,6 +405,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Paramètres
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuration des IAs
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuration du script de jeu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
@@ -998,21 +1009,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cochez c
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pilote actif{NBSP}: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Taille d'interface
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Choisir la taille d'élément d'interface à utiliser
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-détection)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Taille double
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Taille quadruple
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Taille de police
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Choisir la taille de police d'interface à utiliser
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-détection)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Taille double
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Taille quadruple
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK} Graphiques
 
@@ -2059,6 +2057,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleur
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuration des IAs
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuration du script de jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain.
@@ -2078,6 +2078,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afficher
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Afficher les paramètres
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afficher la configuration des IAs
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Afficher la configuration du script de jeu
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}{NUM} sprite{P "" s} manque{P "" "nt"} dans les graphiques de base actuellement sélectionnés. Veuillez vérifier les mises à jours pour les graphiques de base.
@@ -3137,6 +3139,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nb. de r
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lissage{NBSP}:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variété de distribution{NBSP}:
 STR_MAPGEN_GENERATE                                             :{WHITE}Créer
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Paramètres NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Afficher la configuration des NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Paramètres des IAs
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Afficher la configuration des IAs
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Configuration du script de jeu
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Afficher la configuration du script de jeu
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglais (originaux)
@@ -3874,7 +3882,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Type d'aéronef{NBSP}: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Tous les types de cargaison
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fret
+STR_CARGO_TYPE_FILTER_NONE                                      :Aucun
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Choix du véhicule. Cliquer sur un véhicule pour obtenir des informations. Ctrl-clic pour basculer le masquage du type de véhicule
@@ -4203,6 +4213,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NB
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT}{BLACK} − Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} − E.T. max.{NBSP}: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG}) {BLACK}Performance min.{NBSP}: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
@@ -4529,13 +4540,15 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de jeu
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal des scripts de jeu
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal du script de jeu
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage de scripts.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage de scripts n'est disponible que pour le serveur
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuration d'IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuration du script de jeu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le script de jeu qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
@@ -4549,10 +4562,11 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Déplace
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Déplacer l'IA sélectionnée vers le bas
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de jeu
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Paramètres
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
-STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de jeu
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Sélectionner une IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Sélectionner le script de jeu
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger un autre script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurer les paramètres du script
@@ -4581,7 +4595,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Capture 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Capture d'écran de la mini-carte
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Paramètres de l'IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}

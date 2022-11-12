@@ -999,21 +999,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Atzīmē
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Esošais vadītājs: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Lietotāja saskarnes lielums
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Lietotāja saskarnes elementu lieluma izvēle
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automātiski noteikt)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Parasts
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Divkāršs
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Četrkāršs
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Fonta izmērs
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Izvēlieties saskarnes fonta izmēru
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automātiski noteikt)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normāls
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Divkāršs izmērs
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Četrkāršs izmērs
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 

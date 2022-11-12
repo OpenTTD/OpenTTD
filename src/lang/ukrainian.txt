@@ -1124,21 +1124,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Вертика�
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Увімкнутий прапорець дозволить вертикальну синхронізацію екрану. Налаштування запрацює тільки після перезапуску гри. Працює тільки за увімкнутого прискорення апаратного забезпечення.
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Оберіть розмір елементів інтерфейсу
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(автоматичо)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Нормальний розмір
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Подвійний розмір
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Почетверний розмір
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Розмір шрифту
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Виберть розмір шрифту інтерфейсу
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(автоматичо)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормальний
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Подвійний розмір
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетверний розмір
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 

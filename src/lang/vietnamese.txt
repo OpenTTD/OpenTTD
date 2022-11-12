@@ -997,21 +997,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Đánh d
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Trình điều khiển hiện tại: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Kích thước giao diện
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Chọn kích thước của các đối tượng trên giao diện
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(nhận diện tự động)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Bình thường
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Gấp 2 lần
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Gấp 4 lần
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Cỡ chữ
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Chọn cỡ chữ trong giao diện
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(nhận diện tự động)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Bình thường
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Phóng to gấp đôi
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Phóng nhân bốn
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Hình ảnh
 

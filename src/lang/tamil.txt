@@ -962,19 +962,8 @@ STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}இடைமுக அளவு
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}பயன்படுத்த இடைமுக உறுப்பு அளவை தேர்ந்தெடுக்கவும்
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(தானாக கண்டறி)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :சராசரி
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :இரண்டு மடங்கு
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :நான்கு மடங்கு
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}எழுத்துரு அளவு
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :இயல்பான
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :இரண்டு மடங்கு
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :நான்கு மடங்கு
 
 
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz

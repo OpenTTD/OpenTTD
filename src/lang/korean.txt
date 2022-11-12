@@ -201,6 +201,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}마력
 STR_UNITS_POWER_METRIC                                          :{COMMA}마력
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}마력/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}마력/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}마력/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}마력/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}마력/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}마력/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -396,6 +405,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 기본 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :설정
+STR_SETTINGS_MENU_AI_SETTINGS                                   :인공지능 설정
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
@@ -998,21 +1009,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}화면�
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}현재 드라이버: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(자동 탐지)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :기본 크기
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2배 크기
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4배 크기
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}글씨 크기
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}인터페이스에서 사용할 글씨 크기를 선택하세요
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(자동 탐지)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :기본 크기
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :2배 크기
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4배 크기
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}그래픽
 
@@ -1682,7 +1680,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :컴퓨터의 �
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :이 설정을 켜면, 컴퓨터 플레이어가 선박을 사용할 수 없게 됩니다.
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :기본 설정 난이도: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :무작위 인공지능이 사용할 난이도 설정이나, 인공지능 또는 게임 스크립트를 추가할 때의 난이도 초기값을 고르십시오.
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :무작위 인공지능이 사용할 난이도 설정이나 인공지능 또는 게임 스크립트를 추가할 때 사용할 난이도 초기값을 고르십시오
 ###length 3
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :쉬움
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :중간
@@ -2059,6 +2057,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}고득�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
+STR_INTRO_AI_SETTINGS                                           :{BLACK}인공지능 설정
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}CTRL+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다.
@@ -2075,9 +2075,11 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 기본 설정 창을 보여줍니다.
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 보여줍니다.
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다.
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}인공지능 설정 창을 엽니다
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}게임 스크립트 설정 창을 엽니다
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다.
 
 STR_INTRO_BASESET                                               :{BLACK}현재 선택된 기본 그래픽 세트에는 {NUM}개의 스프라이트가 빠져있습니다. 기본 세트를 업데이트하세요.
@@ -3137,6 +3139,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}강:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}지표면을 깎는 방식:
 STR_MAPGEN_VARIETY                                              :{BLACK}산세 험준도:
 STR_MAPGEN_GENERATE                                             :{WHITE}만들기
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF 설정
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF 설정 창을 엽니다
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}인공지능 설정
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}인공지능 설정 창을 엽니다
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}게임 스크립트 설정
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}게임 스크립트 설정 창을 엽니다
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :영국 식 (기본)
@@ -3874,6 +3882,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속�
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}항공기 종류: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :모든 화물 종류
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :무게
+STR_CARGO_TYPE_FILTER_NONE                                      :없음
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}열차 차량 구매 목록입니다. 차량의 정보를 보려면 클릭하세요. CTRL+클릭하면 해당 차량을 숨김/표시 처리할 수 있습니다
@@ -4535,6 +4546,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동 �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}인공지능/게임 스크립트 디버그창은 오직 서버만 사용 가능합니다
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}인공지능 설정
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}게임 스크립트 설정
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음에 게임을 시작할 때 이 게임 스크립트를 불러올 것입니다
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 인공지능을 불러올 것입니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
@@ -4548,10 +4561,11 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}아래�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}목록에서 선택한 인공지능의 순서를 한 칸 아래로 옮깁니다
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}게임 스크립트
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}매개 변수
 STR_AI_CONFIG_AI                                                :{SILVER}인공지능
 
-STR_AI_CONFIG_CHANGE_AI                                         :인공지능
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :게임 스크립트
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}인공지능을 선택하세요
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}게임 스크립트를 선택하세요
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 스크립트 불러오기
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}설정
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}인공지능의 매개 변수를 설정합니다
@@ -4580,7 +4594,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}높이�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니맵 스크린 샷
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :인공지능
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}인공지능 매개 변수
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

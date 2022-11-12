@@ -203,8 +203,13 @@ STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -400,6 +405,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuración
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuración de IA
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuración de scripts de juego
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración de NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nombres de localidades
@@ -1002,21 +1009,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Activar 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el tamaño de los elementos de la interfaz
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(detectar)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Cuádruple
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño de texto
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Elegir el tamaño de letra de la interfaz
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detectar)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Cuádruple
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -2063,6 +2057,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuración
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Config. NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido en línea
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Scripts de juego
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar una nueva partida. Ctrl+Clic omite la configuración del mapa
@@ -2082,6 +2078,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar 
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostrar configuración
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostrar configuración de IA
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mostrar configuración de scripts de juego
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}A los gráficos base elegidos les hace falta {NUM} spirte{P "" s}. Necesitan actualizarse.
@@ -3141,6 +3139,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidad:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedad:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generar
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Configuración de NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostrar configuración de NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configuración de IA
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Mostrar configuración de IA
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Configuración de scripts de juego
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Mostrar configuración de scripts de juego
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglés
@@ -4542,6 +4546,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de l
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuración de IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :Configuración de scripts de juego
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de juego que será cargado en la próxima partida
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Scripts de IA que serán cargados la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humano
@@ -4555,10 +4561,11 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mover ha
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover la IA elegida una posición hacia abajo
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de juego
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parámetros
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
-STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de juego
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Elegir IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Elegir script de juego
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar otro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar los parámetros del script
@@ -4587,7 +4594,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de minimapa
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parámetros de IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

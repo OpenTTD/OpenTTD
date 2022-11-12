@@ -1278,18 +1278,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Памер элементаў інтэрфейсу
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберыце памер элементаў інтэрфейсу
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Звычайны
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Падвоены
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Пачацвяроны
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Памер шрыфта
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Абярыце памер шрыфта, выкарыстоўванага ў гульні
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Звычайны
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Падвоены
 
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Чашчыня абнаўлення экрана

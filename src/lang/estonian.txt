@@ -1045,21 +1045,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Märgi, et ekraani v-sync sisse lülitada. Seade kohaldub alles pärast mängu taaskäivitust. Töötab vaid, kui riistvarakiirendus on peal
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Liidese suurus
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vali kasutatav liideseelementide suurus
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automaattuvastus)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavaline
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Topeltsuurus
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Neljakordne suurus
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirja suurus
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vali kasutatav liideseelementide suurus
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automaattuvastus)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Tavaline
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Topeltsuurus
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Neljakordne suurus
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graafika
 

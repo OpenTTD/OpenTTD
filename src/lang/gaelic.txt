@@ -1153,12 +1153,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Meud na h-eadar-aghaidh
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Tagh am meud airson rud san eadar-aghaidh
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Àbhaisteach
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dà uiread a mheud
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Ceithir uiread a mheud
 
 
 

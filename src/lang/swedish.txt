@@ -997,21 +997,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Markera 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuvarande drivrutin: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som ska användas
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(Upptäck automatiskt)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dubbel storlek
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Fyrdubbel storlek
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Storlek på typsnitt
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Välj vilken storlek som ska användas på gränssnittets typsnitt
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(Upptäck automatiskt)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dubbel storlek
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Kvadrupel storlek
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 

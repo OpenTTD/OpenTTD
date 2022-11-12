@@ -1145,19 +1145,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Magnitudo interfaciei
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Eligere magnitudinem interfaciei adhibendam
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Simplex
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duplex
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quadruplex
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Magnitudo Litterarum
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Eligere magnitudinem litterarum adhibendam
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Simplex
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duplex
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quadruplex
 
 
 

@@ -998,21 +998,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Merk av i denne boksen for å v-synkronisere skjermen. Endring av innstillinger krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Grensesnitt-størrelse
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Velg grensesnitt-størrelsen som skal benyttes
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(finn automatisk)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2 ganger størrelse
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4 ganger størrelse
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Skriftstørrelse
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Velg skriftstørrelse for grensesnitt
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(finn automatisk)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbel størrelse
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Firedobbel størrelse
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikk
 

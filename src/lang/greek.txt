@@ -1103,21 +1103,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Τσεκάρετε αυτό το κουτί για να ενεργοποιήσετε το v-sync στην οθόνη. Η αλλαγή αυτή θα εφαρμοστεί μετά από επανεκκίνηση του παιχνιδιού. Λειτουργεί μόνο με ενεργοποιημένη την επιτάχυνση υλικού
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Μέγεθος διεπαφής
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Επιλέξτε το μέγεθος στοιχείου διεπαφής
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(αυτόματη ανίχνευση)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Κανονικό
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Διπλό μέγεθος
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Τετραπλό μέγεθος
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Μέγεθος γραμματοσειράς
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Επιλέξτε το μέγεθος της γραμματοσειράς διεπαφής
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(αυτόματη ανίχνευση)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Κανονικό
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Διπλό μέγεθος
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Τετραπλό μέγεθος
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 

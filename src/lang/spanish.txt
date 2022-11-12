@@ -998,21 +998,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca es
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona el tamaño de los elementos de la interfaz a usar
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(autodetectar)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaño doble
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaño cuádruple
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño de fuente
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Selecciona el tamaño de fuente a utilizar en la interfaz
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(autodetectar)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Tamaño doble
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Tamaño cuádruple
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 

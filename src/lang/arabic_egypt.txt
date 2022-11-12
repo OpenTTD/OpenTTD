@@ -961,20 +961,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}لن ي�
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}حجم اللوحة
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}حدد العنصر المطلوب
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :تقريب عادي
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :تقريب ×2
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :تقريب ×4
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}حجم الخط
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}حدد حجم خط الواجهة المراد استخدامه
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(كشف أوتوماتيكي)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :عادي
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :حجم مزدوج
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :حجم رباعي
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}الرسومات
 

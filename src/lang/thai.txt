@@ -965,15 +965,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :ปกติ
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :คูณสี่
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}ขนาดตัวอักษร
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :ปกติ
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :ขนาดใหญ่คูณสอง
 
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}รีเฟรชเรทของหน้าจอ

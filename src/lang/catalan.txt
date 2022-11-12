@@ -998,21 +998,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Seleccio
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mida de la interfície
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Escull la mida dels elements de la interfície
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(detecta automàticament)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quàdruple
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Mida de la lletra
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Seleccioneu la mida de les fonts de la interfície.
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detecta automàticament)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quàdruple
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gràfics
 

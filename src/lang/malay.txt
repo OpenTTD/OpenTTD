@@ -923,12 +923,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Saiz Antaramuka
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Sila pilih saiz elemen antara muka untuk digunakan
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Biasa
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Saiz berganda
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Saiz kuad
 
 
 

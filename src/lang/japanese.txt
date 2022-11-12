@@ -996,21 +996,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK} 垂直�
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}ここをチェックして垂直同期を有効にします。設定はゲームを再起動した後に適用されます。ハードウェアアクセラレーションが有効な環境でしか機能しません。
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}インターフェイスのサイズ
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}インターフェイス上の単位サイズを指定します
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :（自動検出）
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :ノーマル
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2倍
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4倍
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}フォントサイズ
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}使用するインターフェースのフォントサイズを選択します
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :（自動検出）
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :ノーマル
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :ダブルサイズ
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4倍
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}グラフィクス
 

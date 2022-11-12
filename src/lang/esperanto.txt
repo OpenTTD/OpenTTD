@@ -932,11 +932,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfacgrandeco
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duobla grandeco
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kvaroble grandeco
 
 
 

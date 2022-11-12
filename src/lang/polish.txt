@@ -1377,21 +1377,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Bieżący sterownik: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Rozmiar interfejsu
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz rozmiar elementów interfejsu
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(wykryj automatycznie)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalny
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Podwójny
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Poczwórny
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Wielkość czcionki
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Wybierz wielkość czcionki interfejsu
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(wykryj automatycznie)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normalna
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Podwójna
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Poczwórna
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 

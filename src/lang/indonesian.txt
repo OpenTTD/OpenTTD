@@ -997,21 +997,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Centang 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pengendali piranti: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Ukuran antarmuka
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pilih ukuran elemen antarmuka yang akan digunakan
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(deteksi-otomatis)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kali dua
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kali empat
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Ukuran font
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Pilih ukuran font antarmuka yang akan digunakan
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(deteksi-otomatis)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kali dua
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4 kali
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
