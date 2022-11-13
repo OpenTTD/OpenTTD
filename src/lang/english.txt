@@ -3670,6 +3670,7 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Loan
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Loan Interest: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximum Loan: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click borrows as much as possible
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {CURRENCY_LONG}
