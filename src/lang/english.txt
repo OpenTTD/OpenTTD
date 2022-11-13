@@ -3660,6 +3660,7 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Ships
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Loan Interest
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Other
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
