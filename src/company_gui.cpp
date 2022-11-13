@@ -199,7 +199,7 @@ static void DrawCategories(const Rect &r)
 
 	/* Draw total profit/loss */
 	y += WidgetDimensions::scaled.vsep_normal;
-	DrawString(r.left, r.right, y, STR_FINANCES_NET_PROFIT, TC_FROMSTRING, SA_LEFT);
+	DrawString(r.left, r.right, y, STR_FINANCES_PROFIT, TC_FROMSTRING, SA_LEFT);
 }
 
 /**
