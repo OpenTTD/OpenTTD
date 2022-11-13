@@ -186,8 +186,12 @@ static void DrawCategories(const Rect &r)
 		DrawCategory(r, y, _expenses_list_types[i]);
 		y += _expenses_list_types[i].GetHeight();
 
-		/* Advance y by the height of the total and associated total line */
-		y += WidgetDimensions::scaled.vsep_normal + FONT_HEIGHT_NORMAL;
+		/* Advance y by the height of the horizontal line between amounts and subtotal */
+		y += WidgetDimensions::scaled.vsep_normal;
+
+		/* Draw category total and advance y */
+		DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+		y += FONT_HEIGHT_NORMAL;
 
 		/* Advance y by a blockspace after this category block */
 		y += WidgetDimensions::scaled.vsep_wide;
