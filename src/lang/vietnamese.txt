@@ -3631,7 +3631,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Khác
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Lợi Nhuận Ròng
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Số dư hiện có
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Nguồn Vốn Riêng
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Đi vay

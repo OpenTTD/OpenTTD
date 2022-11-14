@@ -405,6 +405,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Definições
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Definições de script de jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de localidades
@@ -1007,8 +1009,19 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque e
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}"Driver" atual: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamanho do interface
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arraste o controle deslizante para definir o tamanho do interface. Mantenha pressionada a tecla Ctrl para um ajuste contínuo
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Auto-detetar o tamanho
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marque esta caixa para detetar automaticamente o tamanho do interface
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escalar chanfros
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque esta caixa para dimensionar os chanfros por tamanho de interface
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -1678,7 +1691,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar navi
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta preferência impossibilita a construção de navios por um jogador controlado pelo computador
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de preferências por omissão: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolher o perfil de preferências a usar para AIs aleatórias ou para valores iniciais ao adicionar uma nova AI ou Script de Jogo
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolher o perfil de preferências a usar para IAs aleatórias ou para valores iniciais ao adicionar uma nova IA ou Script de Jogo
 ###length 3
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Média
@@ -2053,8 +2066,10 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jo
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de classificações
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Definições
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Definições NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Definições de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Verificar conteúdo online
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Definições de IA
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Definições de Script de Jogo
 STR_INTRO_QUIT                                                  :{BLACK}Sair
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique salta a configuração do mapa
@@ -2074,6 +2089,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar 
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostrar definições
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar definições de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostrar definições de IA
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Mostrar definições de Script de Jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base seleccionado tem {NUM} sprite{P "" s} em falta. Por favor verifique se existem atualizações para o conjunto.
@@ -3053,9 +3070,9 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Renderiz
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Janelas de exibição do mundo:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Saída de video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Mistura de Som:
-STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI total:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  SJ/IA total:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script de jogo:
-STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
+STR_FRAMERATE_AI                                                :{BLACK} IA {NUM} {STRING}
 
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Loop de jogo
@@ -3072,7 +3089,7 @@ STR_FRAMETIME_CAPTION_VIDEO                                     :Saída de video
 STR_FRAMETIME_CAPTION_SOUND                                     :Mistura de Som
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :total scripts GS/AI
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Script de jogo
-STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
+STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 
 
 # Save/load game/scenario
@@ -3133,6 +3150,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedade da distribuição:
 STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Definições de NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostrar definições de NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Definições de IA
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Mostrar definições de IA
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Definições de Script de Jogo
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Mostrar definições de script de jogo
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglês
@@ -3272,7 +3295,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Grava
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Grava a predefinição com o nome seleccionado
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros de NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Repor
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Retorna todos os parâmetros ao seu valor padrão
@@ -3458,14 +3481,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusi
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar uma campanha local publicitária pequena, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio pequeno à volta do centro da localidade.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar uma campanha local publicitária média, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio médio à volta do centro da localidade.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar uma campanha local publicitária grande, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio grande à volta do centro da localidade.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financiar a reconstrução da rede rodoviária urbana.{}Causa engarrafamentos consideráveis ao tráfego rodoviário até 6 meses.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construir uma estátua em honra da sua empresa.{}Providencia um incremento permanente na avaliação das estações nesta localidade.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financiar a construção de novos edifícios na localidade.{}Providencia um incremento temporário no crescimento desta localidade.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar 1 ano de direitos exclusivos de transportes nesta localidade.{}A autoridade local não permitirá que os passageiros e a carga usem as estações dos seus concorrentes.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a autoridade local para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha local publicitária pequena, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio pequeno à volta do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha local publicitária média, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio médio à volta do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar uma campanha local publicitária grande, para atrair mais passageiros e carga à sua empresa.{}Providencia um incremento temporário na avaliação das estações num raio grande à volta do centro da localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede rodoviária urbana.{}Causa engarrafamentos consideráveis ao tráfego rodoviário até 6 meses.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em honra da sua empresa.{}Providencia um incremento permanente na avaliação das estações nesta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financiar a construção de novos edifícios na localidade.{}Providencia um incremento temporário no crescimento desta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Comprar 1 ano de direitos exclusivos de transportes nesta localidade.{}A autoridade local não permitirá que os passageiros e a carga usem as estações dos seus concorrentes.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectivos
@@ -3641,7 +3664,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Outros
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Lucro Líquido
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanço bancário
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fundos Próprios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Empréstimo
@@ -4201,6 +4223,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tração Máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lucro deste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG}) {BLACK}Performance min.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde o último serviço: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -4534,6 +4557,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Houve um
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela de Depuração de IA/Scripts de jogo está disponível apenas para o servidor
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuração de IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuração de Script de Jogo
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O Script de jogo que será carregado no próximo jogo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
@@ -4547,10 +4572,11 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mover pa
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move a IA seleccionada para baixo
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de jogo
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parâmetros
 STR_AI_CONFIG_AI                                                :{SILVER}IAs
 
-STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de jogo
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Selecionar IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Selecionar Script de Jogo
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parâmetros do script
@@ -4579,7 +4605,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap screenshot
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parâmetros de IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

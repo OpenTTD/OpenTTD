@@ -3636,7 +3636,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Citi
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Tīrā peļņa
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankas bilance
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Pašu līdzekļi
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Aizdevums

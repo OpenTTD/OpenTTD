@@ -3640,7 +3640,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Overig
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Nettowinst
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Eigen kapitaal
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening

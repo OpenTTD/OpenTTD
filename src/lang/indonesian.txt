@@ -3626,7 +3626,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Lainnya
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Laba bersih
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Dana Pribadi
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman

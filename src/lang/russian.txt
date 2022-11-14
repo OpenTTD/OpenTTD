@@ -1153,6 +1153,10 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Вклю
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Видеодрайвер: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Масштаб интерфейса
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Изменяйте масштаб интерфейса с помощью ползунка. Удерживайте Ctrl для тонкой настройки.
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Автоопределение
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Нажмите для автоматической установки масштаба интерфейса
 
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
@@ -3832,7 +3836,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Проч�
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Чистая прибыль
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс:
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Собственные средства
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Взято в кредит
@@ -4404,6 +4407,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Масс
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Масса: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% {BLACK}Поломок после ТО: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}

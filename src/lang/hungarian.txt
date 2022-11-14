@@ -3695,7 +3695,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Egyéb
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Nettó Profit
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banki egyenleg
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Saját források
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kölcsön

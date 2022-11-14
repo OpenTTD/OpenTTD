@@ -3626,7 +3626,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altele
 
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Profit Net
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanţă curentă
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fonduri proprii
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Credite

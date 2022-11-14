@@ -931,7 +931,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copiar u
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones de juego
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Divisa
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de divisa
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elegir divisa
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica (GBP)
@@ -1009,9 +1009,13 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Activar 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamaño de la interfaz
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Mover el deslizador para cambiar el tamaño de la interfaz. Mantener pulsado Ctrl para un control fino
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectar automáticamente
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Detectar tamaño de la interfaz automáticamente
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Ajustar biseles
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Ajustar los biseles de la interfaz según el tamaño
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -3477,14 +3481,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar los der
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar al ayuntamiento
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio pequeño alrededor del centro de la localidad.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio mediano alrededor del centro de la localidad.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio grande alrededor del centro de la localidad.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar la reconstrucción de las carreteras locales.{}Provoca considerables complicaciones al tráfico hasta por 6 meses.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construir una estatua en honor a tu empresa.{}Otorga un aumento permanente a la evaluación estaciones en esta localidad.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en la localidad.{}Otorga un aumento temporal a su crecimiento.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar los derechos exclusivos de transporte en esta localidad por un año.{}El ayuntamiento solo permitirá el uso de estaciones que sean de tu empresa.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar al ayuntamiento para aumentar mejorar tu evaluación, con el riesgo de una severa penalización si llegas a ser descubierto.{}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio pequeño alrededor del centro de la localidad.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio mediano alrededor del centro de la localidad.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a tus servicios de transporte.{}Otorga un aumento temporal a la evaluación de estaciones en un radio grande alrededor del centro de la localidad.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Pagar la reconstrucción de las carreteras locales.{}Provoca considerables complicaciones al tráfico hasta por 6 meses.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir una estatua en honor a tu empresa.{}Otorga un aumento permanente a la evaluación estaciones en esta localidad.{}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Pagar la construcción de nuevos edificios comerciales en la localidad.{}Otorga un aumento temporal a su crecimiento.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Comprar los derechos exclusivos de transporte en esta localidad por un año.{}El ayuntamiento solo permitirá el uso de estaciones que sean de tu empresa.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Sobornar al ayuntamiento para aumentar mejorar tu evaluación, con el riesgo de una severa penalización si llegas a ser descubierto.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Metas de {COMPANY}
@@ -3660,7 +3664,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Utilidad neta
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo en banco
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fondos propios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
@@ -4220,6 +4223,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad máx.: {LTBLUE}{VELOCITY} {BLACK}F.T. máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG}) {BLACK}Mín. rendimiento: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último mantenimiento: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}

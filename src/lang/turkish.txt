@@ -3628,7 +3628,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Diğer
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Net Kâr
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banka Hesabı
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Kendi Sermayem
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredi

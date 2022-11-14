@@ -4011,7 +4011,6 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Inne
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_NET_PROFIT                                         :{WHITE}Zysk netto
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bilans bankowy
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Środki własne
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pożyczka
