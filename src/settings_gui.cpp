@@ -2532,8 +2532,6 @@ void ShowGameSettings()
  */
 void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right)
 {
-	extern void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, bool clicked, StringAlignment align);
-
 	int colour = _colour_gradient[button_colour][2];
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();
 
@@ -2542,8 +2540,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 
 	DrawFrameRect(lr, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(rr, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
-	DrawSpriteIgnorePadding(lr, SPR_ARROW_LEFT,  (state == 1), SA_CENTER);
-	DrawSpriteIgnorePadding(rr, SPR_ARROW_RIGHT, (state == 2), SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_LEFT,  PAL_NONE, lr, (state == 1), SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_RIGHT, PAL_NONE, rr, (state == 2), SA_CENTER);
 
 	/* Grey out the buttons that aren't clickable */
 	bool rtl = _current_text_dir == TD_RTL;
@@ -2565,14 +2563,12 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
  */
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable)
 {
-	extern void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, bool clicked, StringAlignment align);
-
 	int colour = _colour_gradient[button_colour][2];
 
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 
 	DrawFrameRect(r, button_colour, state ? FR_LOWERED : FR_NONE);
-	DrawSpriteIgnorePadding(r, SPR_ARROW_DOWN, state, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, r, state, SA_CENTER);
 
 	if (!clickable) {
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);

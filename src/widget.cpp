@@ -447,7 +447,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	}
 }
 
-void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, bool clicked, StringAlignment align)
+void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool clicked, StringAlignment align)
 {
 	Point offset;
 	Dimension d = GetSpriteSize(img, &offset);
@@ -456,7 +456,7 @@ void DrawSpriteIgnorePadding(const Rect &r, SpriteID img, bool clicked, StringAl
 
 	Point p = GetAlignedPosition(r, d, align);
 	int o = clicked ? WidgetDimensions::scaled.pressed : 0;
-	DrawSprite(img, PAL_NONE, p.x + o - offset.x, p.y + o - offset.y);
+	DrawSprite(img, pal, p.x + o - offset.x, p.y + o - offset.y);
 }
 
 /**
@@ -474,7 +474,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
-	DrawSpriteIgnorePadding(r, img, clicked, align);
+	DrawSpriteIgnorePadding(img, PAL_NONE, r, clicked, align);
 }
 
 /**
@@ -773,7 +773,7 @@ static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
-	DrawSpriteIgnorePadding(r.Shrink(ScaleGUITrad(2)), at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, clicked, at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
+	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), clicked, at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
 
 /**
@@ -897,7 +897,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	/* Sort button uses the same sprites as vertical scrollbar */
 	Dimension dim = NWidgetScrollbar::GetVerticalDimension();
 
-	DrawSpriteIgnorePadding(r.WithWidth(dim.width, _current_text_dir == TD_LTR), state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, this->IsWidgetLowered(widget), SA_CENTER);
+	DrawSpriteIgnorePadding(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, r.WithWidth(dim.width, _current_text_dir == TD_LTR), this->IsWidgetLowered(widget), SA_CENTER);
 }
 
 /**
