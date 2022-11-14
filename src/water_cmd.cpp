@@ -443,12 +443,6 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 	/* Outside of the editor you can only build canals, not oceans */
 	if (wc != WATER_CLASS_CANAL && _game_mode != GM_EDITOR) return CMD_ERROR;
 
-	/* Outside the editor you can only drag canals, and not areas */
-	if (_game_mode != GM_EDITOR) {
-		TileArea ta(tile, start_tile);
-		if (ta.w != 1 && ta.h != 1) return CMD_ERROR;
-	}
-
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	std::unique_ptr<TileIterator> iter;

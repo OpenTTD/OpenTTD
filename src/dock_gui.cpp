@@ -192,7 +192,7 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		switch (this->last_clicked_widget) {
 			case WID_DT_CANAL: // Build canal button
-				VpStartPlaceSizing(tile, (_game_mode == GM_EDITOR) ? VPM_X_AND_Y : VPM_X_OR_Y, DDSP_CREATE_WATER);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_WATER);
 				break;
 
 			case WID_DT_LOCK: // Build lock button
