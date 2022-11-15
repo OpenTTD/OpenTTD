@@ -3833,6 +3833,7 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Суда
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Платёж по кредиту
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Прочие расходы
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Всего
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
@@ -3842,6 +3843,7 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Взят
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Проценты по кредиту: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. сумма кредита: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Занять {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги в кредит. Ctrl+щелчок - взять максимально возможную сумму.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Отдать {CURRENCY_LONG}
