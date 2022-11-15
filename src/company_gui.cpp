@@ -2446,7 +2446,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_HAS_PASSWORD:
-				*size = maxdim(*size, GetSpriteSize(SPR_LOCK));
+				*size = maxdim(*size, GetScaledSpriteSize(SPR_LOCK));
 				break;
 		}
 	}
@@ -2558,7 +2558,7 @@ struct CompanyWindow : Window
 
 			case WID_C_HAS_PASSWORD:
 				if (_networking && NetworkCompanyIsPassworded(c->index)) {
-					DrawSprite(SPR_LOCK, PAL_NONE, r.left, r.top);
+					DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, r, false, SA_CENTER);
 				}
 				break;
 		}
