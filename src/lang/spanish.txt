@@ -204,9 +204,9 @@ STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
-STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
-STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}cv/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}cv/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}cv/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
@@ -448,14 +448,14 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfica de beneficio operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfica de ingresos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfica de carga entregada
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfica de rendimiento
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfica de desempeño
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfica del valor de la empresa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pagos por carga
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pagos pago de cargas
 
 # Company league menu
 ###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabla de clasificación de empresas
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalles del rendimiento
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Calificación detallada de desempeño
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntuaciones
 
 # Industry menu
@@ -603,20 +603,20 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfica de Beneficio Operativo
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfica de Ingresos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregadas
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Calificaciones de rendimiento de empresas (máximo=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño de empresas (máximo=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor de la empresa
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifa de pago por carga
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas de pago de cargas
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Días en tránsito
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 1,000 litros) de carga a una distancia de 20 casillas
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10 000 litros) de carga a una distancia de 20 casillas
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todos
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en la gráfica de tarifas de pagos por carga
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en la gráfica de tarifas de pagos por carga
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en la gráfica de tarifas de pago de cargas
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en la gráfica de tarifas de pago de cargas
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfica para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Muestra detalles del rendimiento
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Muestra detalles del nivel de desempeño
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leyenda de las gráficas
@@ -636,21 +636,21 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalle de rendimiento
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalle de nivel de desempeño
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalle
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Mostrar detalles de esta empresa
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Muestra detalles para esta empresa
 
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estaciones:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Beneficio Mín.:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ingreso Mín.:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Ingreso Máx.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Beneficio Mín.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Beneficio Máx.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregado:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Cargas:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinero:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstamo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
@@ -658,14 +658,14 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Cantidad de vehículos que obtuvieron beneficios el año pasado. Incluye vehículos de carretera, trenes, barcos y aeronaves
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de tren, paradas de autobús, aeropuertos y demás son contabilizadas por separado, incluso si pertenecen a la misma estación
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficio del vehículo con menores ingresos (considerando sólo vehículos con más de 2 años)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más bajo de los pasados 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más alto de los pasados 12 trimestres
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregadas en los pasados cuatro trimestres
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficio del vehículo menos rentable (considerando sólo vehículos con más de 2 años)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el menor beneficio de los últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el mayor beneficio de los últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregadas en los cuatro últimos trimestres
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregados en el último trimestre
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Cantidad de dinero que esta empresa tiene en el banco
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Cantidad de dinero que esta empresa ha recibido como préstamo
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de puntos ganados del máximo posible
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de puntos obtenidos del máximo posible
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Selección de Jazz
@@ -1615,7 +1615,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar horario
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Muestra los tiempos de viaje en los horarios en tics en lugar de en días
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en los horarios: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Muestra tiempos de llegada y salida adelantados en los horarios
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Muestra fechas de llegada y salida previstas en los horarios
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselecciona el cursor "Ir a" al abrir la ventana de órdenes
@@ -2603,7 +2603,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} para ser transportad{G 0 o a}{P 0 "" s} al mes desde {STATION} a {STATION} ({COMMA}% de la capacidad){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} para ser transportad{G 0 o a}{P 0 "" s}) de vuelta ({COMMA}% de la capacidad)
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} para ser transportad{G 0 o a}{P 0 "" s} de vuelta ({COMMA}% de la capacidad)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tiempo de viaje promedio: {NUM}{NBSP}día{P "" s}
 
 # Base for station construction window(s)
@@ -3617,10 +3617,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la posición de la estación. Ctrl+clic abre un punto de vista en dicha posición
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia el nombre de la estación
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Muestra todos los trenes que tienen esta estación en su horario
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Muestra todos los vehículos de carretera que tienen esta estación en su horario
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Muestra todas las aeronaves que tienen esta estación en su horario
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Muestra todos los barcos que tienen esta estación en su horario
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Muestra todos los trenes que tienen esta estación en sus órdenes
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Muestra todos los vehículos de carretera que tienen esta estación en sus órdenes
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Muestra todas las aeronaves que tienen esta estación en sus órdenes
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Muestra todos los barcos que tienen esta estación en sus órdenes
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renombrar estación/zona de carga
 
@@ -3661,15 +3661,18 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Barcos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intereses de Préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Otros
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo en Banco
+STR_FINANCES_PROFIT                                             :{WHITE}Beneficio
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fondos propios
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Tipo de interés del préstamo: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstamo Máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir Préstamo {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Incrementa el préstamo. Ctrl+clic solicita todo el préstamo posible
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar Préstamo {CURRENCY_LONG}
@@ -4223,7 +4226,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY} {BLACK}F.T. Máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY_LONG} (año anterior: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY_LONG} (año anterior: {CURRENCY_LONG}) {BLACK}Mín. rendimiento: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY_LONG} (año anterior: {CURRENCY_LONG}) {BLACK}Potencia específica mín.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último mantenimiento: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -4390,7 +4393,7 @@ STR_ORDER_CONDITIONAL                                           :Salto de orden 
 STR_ORDER_SHARE                                                 :Compartir órdenes
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añade una nueva orden antes de la orden resaltada, o la añade al final de la lista. Ctrl sobre estaciones ordena 'Carga completa de cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Ctrl o Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado. Clica sobre un vehículo copia las órdenes. Una órden de depósito desactiva el mantenimiento automático del vehículo
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Muestra todos los vehículos con el mismo horario
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Muestra todos los vehículos que comparten estas órdenes y este horario
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Ir vía {WAYPOINT}
@@ -4470,54 +4473,54 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Cambia a
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario - Clica en una orden para resaltarla
 
-STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
+STR_TIMETABLE_NO_TRAVEL                                         :No viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (sin programar)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sin programar) a {2:VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} a {VELOCITY} como máximo
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajando (durante {STRING}, sin programar)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajando (durante {STRING}, sin programar) a {VELOCITY} como máximo
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permaneciendo {STRING}, sin programar)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajando durante {STRING}, sin programar)
-STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, sin programar)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, sin programar) a {VELOCITY} como máximo
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permanecer {STRING}, sin programar)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante {STRING}, sin programar)
+STR_TIMETABLE_STAY_FOR                                          :y permanecer {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}día{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tic{P "" s}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en completarse
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El horario tardará al menos {STRING} en completarse (no todas las órdenes)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en recorrerse
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El horario tardará al menos {STRING} en recorrerse (no todas las órdenes)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en hora
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está actualmente retrasado {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente adelantado {STRING}
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo actualmente es puntual
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo actualmente está retrasado {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo actualmente está adelantado {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario no ha comenzado
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comenzará el {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona la fecha de inicio del horario. Ctrl+click distribuye uniformemente todos los vehículos que compartan este horario a partir de la fecha proporcionada, basados en su orden relativo, siempre que el horario esté completo
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona la fecha de inicio del horario. Ctrl+click distribuye uniformemente todos los vehículos que compartan este horario a partir de la fecha proporcionada, basados en su orden relativo, siempre que el horario esté completamente rellenado
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar duración
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la duración de la orden seleccionada
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modificar duración
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifica la duración de la orden seleccionada
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Borrar duración
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Borra la duración de la orden resaltada
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambiar límite de velocidad
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modificar límite de velocidad
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia el límite de velocidad de la orden resaltada
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Borrar límite de velocidad
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Borra el límite de velocidad de la orden resaltada
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retrasos
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Pone a cero el retraso del vehículo, así el vehículo estará en hora
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retraso
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Establece en cero el retraso acumulado del vehículo para que sea puntual
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+clic para tratar de mantener los tiempos de espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido (Ctrl+clic para intentar mantener los tiempos de espera)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Previsto
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna entre esperado y programado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna entre fechas previstas y programadas
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ll:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
@@ -5059,7 +5062,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la a
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se puede asignar horario al vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Los vehículos sólo pueden esperar en estaciones
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo no va a detenerse en esta estación
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo no se detendrá en esta estación
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados letreros

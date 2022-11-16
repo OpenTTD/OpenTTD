@@ -3813,8 +3813,8 @@ STR_FINANCES_CAPTION                                            :{WHITE}Фина
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
-STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доход
-STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Эксплуатационные расходы
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доходы
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Операционные расходы
 STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Капитальные расходы
 
 
@@ -3837,6 +3837,7 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Всег
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Прибыль
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс:
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Собственные средства
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Взято в кредит

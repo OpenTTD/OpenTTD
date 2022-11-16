@@ -575,10 +575,19 @@ STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}p{P ole ola ól}/dzień
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}KM
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}KM
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}KM/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}KM/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}KM/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -774,6 +783,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ustawienia
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Ustawienia SI
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ustawienia Game Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
@@ -2068,7 +2079,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Trudny
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w grze wieloosobowej: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Pozwól komputerowym graczom SI na udział w grach dla wielu graczy
 
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :ilość #opcodes przed uśpieniem skryptu: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Liczba wysyłanych kodów instrukcji przed zawieszeniem skryptów: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksymalna liczba kroków obliczeniowych, jakie skrypt może zrobić w jednej kolejce
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maksymalne zużycie pamięci na skrypt: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Ilość pamięci jaką może zużywać pojedynczy skrypt zanim zostanie przymusowo zakończony. Może wymagać zwiększenia dla większych map.
@@ -2327,7 +2338,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednostka mocy 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kiedy moc pojazdu jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperialne (hp)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metryczne (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metryczne (KM)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednostki wagi: {STRING}
@@ -3519,6 +3530,11 @@ STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gładko�
 STR_MAPGEN_VARIETY                                              :{BLACK}Różnorodność:
 STR_MAPGEN_GENERATE                                             :{WHITE}Stwórz
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Ustawienia NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Wyświetl ustawienia NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Ustawienia SI
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Wyświetl ustawienia SI
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Ustawienia Game Script
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Wyświetl ustawienia Game Script
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angielskie (Oryginalne)
@@ -3844,14 +3860,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kup wyłączno�
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Daj łapówkę lokalnym władzom
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Rozpocznij małą kampanię reklamową aby zachęcić trochę pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Zapewnia tymczasowy wzrost oceny stacji w małym promieniu wokół centrum miasta.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Rozpocznij średnią kampanię reklamową, aby zachęcić więcej pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Zapewnia tymczasowy wzrost oceny stacji w średnim promieniu wokół centrum miasta.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Rozpocznij dużą kampanię reklamową aby zachęcić mnóstwo pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Zapewnia tymczasowy wzrost oceny stacji w dużym promieniu wokół centrum miasta.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Ufunduj remont sieci dróg.{}Spowoduje to zakłócenia w ruchu ulicznym do 6 miesięcy.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj pomnik dla uczczenia twojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufunduj nowe budynki komercyjne w mieście.{}Daje jednorazowy impuls do szybszego wzrostu miasta.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście.{} Lokalne władze nie pozwolą pasażerom ani przedsiębiorstwom korzystać z usług innych firm.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom. Powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Rozpocznij małą lokalną kampanię reklamową, aby przyciągnąć więcej pasażerów i ładunków do twoich usług transportowych.{}Zapewnia tymczasowe zwiększenie oceny stacji w małym promieniu wokół centrum miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Rozpocznij średnią lokalną kampanię reklamową, aby przyciągnąć więcej pasażerów i ładunków do twoich usług transportowych.{}Zapewnia tymczasowe zwiększenie oceny stacji w umiarkowanym promieniu wokół centrum miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Rozpocznij dużą lokalną kampanię reklamową, aby przyciągnąć więcej pasażerów i ładunków do twoich usług transportowych.{}Zapewnia tymczasowe zwiększenie oceny stacji w dużym promieniu wokół centrum miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Ufunduj remont sieci dróg.{}Spowoduje to zakłócenia w ruchu ulicznym do 6 miesięcy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Zbuduj statuę dla uczczenia swojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Ufunduj nowe budynki w mieście.{}Zapewnia tymczasowe przyspieszenie rozwoju tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście.{}Lokalne władze nie pozwolą pasażerom ani przedsiębiorstwom korzystać z usług innych firm.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze, aby zwiększyć swoją ocenę, ryzykując surową karę w przypadku przyłapania.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
@@ -4594,7 +4610,8 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. pr�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (w zeszłym roku: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (ostatni rok: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (ostatni rok: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
@@ -4946,8 +4963,8 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Game Sc
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametry
 STR_AI_CONFIG_AI                                                :{SILVER}SI
 
-STR_AI_CONFIG_CHANGE_AI                                         :SI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Game Script
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Wybierz SI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Wybierz Game Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Wczytaj kolejny skrypt
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfiguruj
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfiguruj parametry skryptu
@@ -4976,7 +4993,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut ek
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut ekranu minimapy
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :SI
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry SI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
