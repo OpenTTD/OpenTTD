@@ -467,13 +467,9 @@ void VideoDriver_Allegro::InputLoop()
 	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
 	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
 
-#if defined(_DEBUG)
-	this->fast_forward_key_pressed = _shift_pressed;
-#else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
 	this->fast_forward_key_pressed = key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0;
-#endif
 
 	/* Determine which directional keys are down. */
 	_dirkeys =
