@@ -624,13 +624,9 @@ void VideoDriver_SDL::InputLoop()
 	_ctrl_pressed  = !!(mod & KMOD_CTRL);
 	_shift_pressed = !!(mod & KMOD_SHIFT);
 
-#if defined(_DEBUG)
-	this->fast_forward_key_pressed = _shift_pressed;
-#else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
 	this->fast_forward_key_pressed = keys[SDLK_TAB] && (mod & KMOD_ALT) == 0;
-#endif /* defined(_DEBUG) */
 
 	/* Determine which directional keys are down. */
 	_dirkeys =

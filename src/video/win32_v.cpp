@@ -844,13 +844,9 @@ void VideoDriver_Win32Base::InputLoop()
 	_ctrl_pressed = this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
 	_shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
 
-#if defined(_DEBUG)
-	this->fast_forward_key_pressed = _shift_pressed;
-#else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
 	this->fast_forward_key_pressed = this->has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0;
-#endif
 
 	/* Determine which directional keys are down. */
 	if (this->has_focus) {
