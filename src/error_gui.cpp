@@ -245,8 +245,8 @@ public:
 			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
 			pt.y = (pt.y < (_screen.height >> 1)) ? scr_bot - sm_height : scr_top;
 		} else {
-			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (sm_width / 2),  0, _screen.width  - sm_width);
-			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), scr_top, scr_bot - sm_height);
+			pt.x = std::min(std::max(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (sm_width / 2), 0), _screen.width - sm_width);
+			pt.y = std::min(std::max(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), scr_top), scr_bot - sm_height);
 		}
 		return pt;
 	}
