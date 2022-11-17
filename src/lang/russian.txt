@@ -1158,6 +1158,8 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Изме
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Автоопределение
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Нажмите для автоматической установки масштаба интерфейса
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Масштабировать рельеф
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Масштабировать рельефные элементы интерфейса
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x

@@ -237,7 +237,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introduce una o varias palabras clave para filtrar la lista
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introduce texto para filtrar
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce una o varias palabras clave para filtrar la lista
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecciona la orden de agrupamiento
@@ -450,7 +450,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfica de ing
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfica de carga entregada
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfica de desempeño
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfica del valor de la empresa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pagos pago de cargas
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pago de cargas
 
 # Company league menu
 ###length 3
@@ -611,9 +611,9 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10 000 litros) de carga a una distancia de 20 casillas
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todos
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en la gráfica de tarifas de pago de cargas
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en la gráfica de tarifas de pago de cargas
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfica para este tipo de carga
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Muestra todos los tipos de carga en la gráfica de tarifas de pago de cargas
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Oculta todos los tipos de carga en la gráfica de tarifas de pago de cargas
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alterna entre mostrar/ocultar la gráfica para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Muestra detalles del nivel de desempeño
@@ -4516,7 +4516,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinicia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Establece en cero el retraso acumulado del vehículo para que sea puntual
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido (Ctrl+clic para intentar mantener los tiempos de espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido (Ctrl+clic para intentar mantener los tiempos de permanencia en estación)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Previsto
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado

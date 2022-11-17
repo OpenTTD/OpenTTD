@@ -4971,7 +4971,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigur
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostępne {STRING}
-STR_AI_LIST_CAPTION_AI                                          :Gracze SI
+STR_AI_LIST_CAPTION_AI                                          :SI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripty
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknij, aby wybrać skrypt
 
