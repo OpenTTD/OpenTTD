@@ -404,6 +404,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Instellingen
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI-instellingen
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spelscript-instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Plaatsnamen weergeven
@@ -1006,8 +1008,19 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selectee
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Huidige driver: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Grootte gebruikersscherm
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Sleep de schuif om de grootte van het gebruikersscherm in te stellen. Hou Ctrl ingedrukt voor geleidelijke aanpassing
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Grootte automatisch detecteren
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Vink dit vakje aan om de grootte van het gebruikersscherm automatisch te detecteren
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Randen schalen
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Vink dit vakje aan om randen te schalen op grootte van gebruikersscherm
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Weergave
 
@@ -2054,6 +2067,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Scoretab
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-instellingen
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Spelscript-instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel. Ctrl+klik slaat de kaartconfiguratie over
@@ -2073,6 +2088,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Scoretab
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Scherminstellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-instellingen weergeven
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI-instellingen weergeven
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Spelscript-instellingen weergeven
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' afsluiten
 
 STR_INTRO_BASESET                                               :{BLACK}De huidige gekozen set grafische elementen mist {NUM} sprite{P "" s}. Controleer of er updates zijn voor deze basisset.
@@ -3132,6 +3149,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivieren
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
 STR_MAPGEN_VARIETY                                              :{BLACK}Landschapsvariatie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maken
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-instellingen
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-instellingen weergeven
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI-instellingen
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}AI-instellingen weergeven
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Spelscript-instellingen
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Spelscript-instellingen weergeven
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engels (Origineel)
@@ -3457,14 +3480,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exclusieve tran
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Gemeentebestuur omkopen
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin een kleine reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een klein gebied rondom het centrum.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin een middelgrote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een middelgroot gebied rondom het centrum.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin een grote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een groot gebied rondom het centrum.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financier een reconstructie van het wegennetwerk.{}Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Een standbeeld bouwen ter ere van jouw bedrijf.{}Zorgt voor een blijvend hogere stationswaardering in deze stad.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}De bouw van nieuwe gebouwen in de stad financieren.{}Zorgt voor een tijdelijk hogere groei van deze stad.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats.{}Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen met het risico op een strenge sanctie wanneer je gepakt wordt.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Begin een kleine reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een klein gebied rondom het centrum.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Begin een middelgrote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een middelgroot gebied rondom het centrum.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Begin een grote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een groot gebied rondom het centrum.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financier een reconstructie van het wegennetwerk.{}Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Bouw een standbeeld ter ere van jouw bedrijf.{}Zorgt voor een blijvend hogere stationswaardering in deze stad.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financier de bouw van nieuwe gebouwen in de stad.{}Zorgt voor een tijdelijk hogere groei van deze stad.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats.{}Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen met het risico op een ernstige sanctie wanneer je gepakt wordt.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Doelen
@@ -3637,15 +3660,18 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Schepen
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD} Rente van lening
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Overig
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totaal
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Winst
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Eigen kapitaal
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Rente op lening: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximale lening: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} lenen
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+klik om zoveel als mogelijk te lenen
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG} terugbetalen
@@ -4199,6 +4225,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht:
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Vermogen: {LTBLUE}{POWER}{BLACK} Max.snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. tr.kr.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG}) {BLACK}Min. prestatie: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech sinds laatste onderhoud: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}
@@ -4512,7 +4539,7 @@ STR_AI_DEBUG                                                    :{WHITE}Probleem
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van het script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instellingen
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Instellingen van script wijzigen
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Script-instellingen wijzigen
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Computerspeler opnieuw laden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Computerspeler verwijderen, script opnieuw laden en computerspeler opnieuw starten
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Afbreken in-uitschakelen als een AI-logbericht overeenstemt met de afbreektekst
@@ -4532,6 +4559,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-/spelscript-probleemvenster is alleen beschikbaar voor de server
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuratie AI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuratie spelscript
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Het spelscript dat in het volgende spel geladen wordt
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}De AI's die in het volgende spel geladen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
@@ -4545,10 +4574,11 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Omlaag v
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Geselecteerde AI naar omlaag verplaatsen in de lijst
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spelscript
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parameters
 STR_AI_CONFIG_AI                                                :{SILVER}AI's
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spelscript
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}AI selecteren
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Spelscript selecteren
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ander script laden
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configureren
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}De parameters van het script configureren
@@ -4577,7 +4607,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Schermaf
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Schermafbeelding van de minikaart
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI-parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -1014,6 +1014,8 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Faites g
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :détection automatique de la taille
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Cochez cette case pour détecter automatiquement la taille de l'interface
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Mettre à l’échelle les bordures
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Cochez cette case pour mettre les bordures à l'échelle avec la taille de l'interface
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -3479,14 +3481,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acheter les dro
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompre la municipalité
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Lancez une petite campagne de publicité locale pour attirer plus de passagers et de marchandises vers vos services de transport.{}Fournit une amélioration temporaire de la note des gares dans un petit rayon autour du centre-ville.{}{POP_COLOUR}Coût : {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement de vos gares dans un rayon moyen autour du centre-ville.{}Coût:{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement des gares dans un rayon important autour du centre-ville.{}Coût: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Lancez une petite campagne de publicité locale pour attirer plus de passagers et de marchandises vers vos services de transport.{}Fournit une amélioration temporaire de la note des gares dans un petit rayon autour du centre-ville.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement de vos gares dans un rayon moyen autour du centre-ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement des gares dans un rayon important autour du centre-ville.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financer la reconstruction du réseau routier.{}Provoque une perturbation considérable du trafic pendant 6 mois au maximum.{}{POP_COLOUR}Coût : {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Augmente en permanence le classement de vos stations dans cette ville.{}Coût:{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Stimule temporairement la croissance dans cette ville.{}Coût:{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Achetez les droits de transport exclusifs d'un an pour la ville.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les gares de vos concurrents.{} Coût: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Augmente en permanence le classement de vos stations dans cette ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Stimule temporairement la croissance dans cette ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Achetez les droits de transport exclusifs d'un an pour la ville.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les gares de vos concurrents.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Objectifs de {COMPANY}
@@ -3659,15 +3661,18 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navires
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intérêts du prêt
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Autres
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Profit
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Solde bancaire
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Fonds propres
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Emprunt
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Taux d'intérêt de l'emprunt{NBSP}: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Emprunt maximum{NBSP}: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Emprunter {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenter l'emprunt. Ctrl-clic pour emprunter autant que possible.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Rembourser {CURRENCY_LONG}
