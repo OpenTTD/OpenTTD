@@ -208,6 +208,17 @@ struct Rect {
 			? Rect {this->left, this->bottom - height + 1, this->right, this->bottom}
 			: Rect {this->left, this->top,                 this->right, this->top + height - 1};
 	}
+
+	/**
+	 * Test if a point falls inside this Rect.
+	 * @param pt the point to test.
+	 * @return true iif the point falls inside the Rect.
+	 */
+	inline bool Contains(const Point &pt) const
+	{
+		/* This is a local version of IsInsideMM, to avoid including math_func everywhere. */
+		return (uint)(pt.x - this->left) < (uint)(this->right - this->left) && (uint)(pt.y - this->top) < (uint)(this->bottom - this->top);
+	}
 };
 
 /**

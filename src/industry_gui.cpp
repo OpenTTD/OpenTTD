@@ -813,6 +813,7 @@ class IndustryViewWindow : public Window
 	byte clicked_button;      ///< The button that has been clicked (to raise)
 	int production_offset_y;  ///< The offset of the production texts/buttons
 	int info_height;          ///< Height needed for the #WID_IV_INFO panel
+	int cheat_line_height;    ///< Height of each line for the #WID_IV_INFO panel
 
 public:
 	IndustryViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
@@ -830,6 +831,12 @@ public:
 		this->InvalidateData();
 	}
 
+	void OnInit() override
+	{
+		/* This only used when the cheat to alter industry production is enabled */
+		this->cheat_line_height = std::max(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, FONT_HEIGHT_NORMAL);
+	}
+
 	void OnPaint() override
 	{
 		this->DrawWidgets();
@@ -838,7 +845,7 @@ public:
 
 		const Rect r = this->GetWidget<NWidgetBase>(WID_IV_INFO)->GetCurrentRect();
 		int expected = this->DrawInfo(r);
-		if (expected > r.bottom) {
+		if (expected != r.bottom) {
 			this->info_height = expected - r.top + 1;
 			this->ReInit();
 			return;
@@ -852,6 +859,7 @@ public:
 	 */
 	int DrawInfo(const Rect &r)
 	{
+		bool rtl = _current_text_dir == TD_RTL;
 		Industry *i = Industry::Get(this->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
@@ -860,7 +868,7 @@ public:
 
 		if (i->prod_level == PRODLEVEL_CLOSURE) {
 			DrawString(ir, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
-			ir.top += 2 * FONT_HEIGHT_NORMAL;
+			ir.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 		}
 
 		CargoSuffix cargo_suffix[lengthof(i->accepts_cargo)];
@@ -898,11 +906,14 @@ public:
 				default:
 					NOT_REACHED();
 			}
-			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent, _current_text_dir == TD_RTL), str);
+			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl), str);
 			ir.top += FONT_HEIGHT_NORMAL;
 		}
 
 		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, i->produced_cargo, cargo_suffix);
+		int line_height = this->editable == EA_RATE ? this->cheat_line_height : FONT_HEIGHT_NORMAL;
+		int text_y_offset = (line_height - FONT_HEIGHT_NORMAL) / 2;
+		int button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 		first = true;
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == CT_INVALID) continue;
@@ -918,24 +929,27 @@ public:
 			SetDParam(1, i->last_month_production[j]);
 			SetDParamStr(2, cargo_suffix[j].text);
 			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
-			DrawString(ir.Indent(this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_indent : 0, false), STR_INDUSTRY_VIEW_TRANSPORTED);
+			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
-				DrawArrowButtons(ir.left, ir.top, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
+				DrawArrowButtons(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
 						i->production_rate[j] > 0, i->production_rate[j] < 255);
 			}
-			ir.top += FONT_HEIGHT_NORMAL;
+			ir.top += line_height;
 		}
 
 		/* Display production multiplier if editable */
 		if (this->editable == EA_MULTIPLIER) {
+			line_height = this->cheat_line_height;
+			text_y_offset = (line_height - FONT_HEIGHT_NORMAL) / 2;
+			button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 			ir.top += WidgetDimensions::scaled.vsep_wide;
 			this->production_offset_y = ir.top;
 			SetDParam(0, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT));
-			DrawString(ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_indent, false), STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
-			DrawArrowButtons(ir.left, ir.top, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
+			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
+			DrawArrowButtons(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
 					i->prod_level > PRODLEVEL_MINIMUM, i->prod_level < PRODLEVEL_MAXIMUM);
-			ir.top += FONT_HEIGHT_NORMAL;
+			ir.top += line_height;
 		}
 
 		/* Get the extra message for the GUI */
@@ -991,12 +1005,12 @@ public:
 					case EA_NONE: break;
 
 					case EA_MULTIPLIER:
-						if (IsInsideBS(pt.y, this->production_offset_y, FONT_HEIGHT_NORMAL)) line = IL_MULTIPLIER;
+						if (IsInsideBS(pt.y, this->production_offset_y, this->cheat_line_height)) line = IL_MULTIPLIER;
 						break;
 
 					case EA_RATE:
 						if (pt.y >= this->production_offset_y) {
-							int row = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
+							int row = (pt.y - this->production_offset_y) / this->cheat_line_height;
 							for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
 								if (i->produced_cargo[j] == CT_INVALID) continue;
 								row--;
@@ -1010,15 +1024,15 @@ public:
 				}
 				if (line == IL_NONE) return;
 
-				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
-				int left = nwi->pos_x + WidgetDimensions::scaled.framerect.left;
-				int right = nwi->pos_x + nwi->current_x - 1 - WidgetDimensions::scaled.framerect.right;
-				if (IsInsideMM(pt.x, left, left + SETTING_BUTTON_WIDTH)) {
+				bool rtl = _current_text_dir == TD_RTL;
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect).Indent(WidgetDimensions::scaled.hsep_indent, rtl);
+
+				if (r.WithWidth(SETTING_BUTTON_WIDTH, rtl).Contains(pt)) {
 					/* Clicked buttons, decrease or increase production */
-					byte button = (pt.x < left + SETTING_BUTTON_WIDTH / 2) ? 1 : 2;
+					bool decrease = r.WithWidth(SETTING_BUTTON_WIDTH / 2, rtl).Contains(pt);
 					switch (this->editable) {
 						case EA_MULTIPLIER:
-							if (button == 1) {
+							if (decrease) {
 								if (i->prod_level <= PRODLEVEL_MINIMUM) return;
 								i->prod_level = std::max<uint>(i->prod_level / 2, PRODLEVEL_MINIMUM);
 							} else {
@@ -1028,7 +1042,7 @@ public:
 							break;
 
 						case EA_RATE:
-							if (button == 1) {
+							if (decrease) {
 								if (i->production_rate[line - IL_RATE1] <= 0) return;
 								i->production_rate[line - IL_RATE1] = std::max(i->production_rate[line - IL_RATE1] / 2, 0);
 							} else {
@@ -1046,8 +1060,8 @@ public:
 					this->SetDirty();
 					this->SetTimeout();
 					this->clicked_line = line;
-					this->clicked_button = button;
-				} else if (IsInsideMM(pt.x, left + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_indent, right)) {
+					this->clicked_button = (decrease ^ rtl) ? 1 : 2;
+				} else if (r.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Contains(pt)) {
 					/* clicked the text */
 					this->editbox_line = line;
 					switch (this->editable) {
