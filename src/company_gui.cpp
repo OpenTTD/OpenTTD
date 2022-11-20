@@ -605,7 +605,7 @@ public:
 
 	uint Height(uint width) const override
 	{
-		return std::max(FONT_HEIGHT_NORMAL, ScaleGUITrad(12) + 2);
+		return std::max(FONT_HEIGHT_NORMAL, ScaleGUITrad(12) + WidgetDimensions::scaled.vsep_normal);
 	}
 
 	bool Selectable() const override
