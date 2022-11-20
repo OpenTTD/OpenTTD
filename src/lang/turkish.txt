@@ -201,6 +201,9 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}bg
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}bg
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -396,6 +399,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ayarlar
+STR_SETTINGS_MENU_AI_SETTINGS                                   :YZ ayarları
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Oyun betiği ayarları
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarları
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimlerini göster
@@ -998,8 +1003,16 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dikey se
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Geçerli sürücü: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Arayüz büyüklüğü
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Büyüklüğü otomatik algıla
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
 
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikler
 
@@ -2046,6 +2059,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tab
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Oyun Betiği Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Tıklama harita ayarlamasını atlar.
@@ -2065,6 +2079,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tab
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Görüntü ayarları
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}YZ ayarlarını göster
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Oyun betiği ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
 
 STR_INTRO_BASESET                                               :{BLACK}Geçerli seçimdeki temel grafik setinin {NUM} örneği eksik. Lütfen temel setin güncellemelerini kontrol edin.
@@ -2585,6 +2601,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Kapsama 
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Kapsama alanını göster
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}İstenen: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Sağladıkları: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Bakım maliyeti: {GOLD}{CURRENCY_SHORT}/yıl
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}İstasyonu birleştir
@@ -3120,6 +3137,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Düzlük seviyesi:
 STR_MAPGEN_VARIETY                                              :{BLACK}Çeşitlilik dağılımı:
 STR_MAPGEN_GENERATE                                             :{WHITE}Oluştur
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF Ayarları
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF ayarlarını göster
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}YZ Ayarları
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}YZ ayarlarını göster
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Oyun Betiği Ayarları
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Oyun betiği ayarlarını göster
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :İngiliz (Özgün)
@@ -3625,9 +3648,11 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Gemiler
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Kredi Faizi
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Diğer
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Toplam
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Kâr
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banka Hesabı
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Kendi Sermayem
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredi
@@ -3856,6 +3881,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Menzil: 
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Uçak türü: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Tüm kargo tipleri
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Nakliye
+STR_CARGO_TYPE_FILTER_NONE                                      :Hiçbiri
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tren seçim listesi. Bilgi için araç tıklayın. Ctrl+Tıklama araç türünün gizlenmesini açar/kapatır
@@ -4184,6 +4212,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırl�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yılki kar: {LTBLUE}{CURRENCY_LONG} (geçen yıl: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Bu yıl kâr: {LTBLUE}{CURRENCY_LONG} (geçen sene: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenilirlik: {LTBLUE}{COMMA}%  {BLACK}Son bakımdan beri bozulma sayısı: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}
@@ -4517,6 +4546,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalış
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Konfigürasyonu
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Oyun Betiği Konfigürasyonu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonraki oyunda yüklenecek YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
@@ -4532,8 +4563,8 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Seçilen
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Oyun Betiği
 STR_AI_CONFIG_AI                                                :{SILVER}YZ'ler
 
-STR_AI_CONFIG_CHANGE_AI                                         :YZ
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Oyun Betiği
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}YZ Seç
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Oyun Betiği Seç
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Başka bir betik yükle
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Yapılandır
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Betik parametrelerini yapılandır
