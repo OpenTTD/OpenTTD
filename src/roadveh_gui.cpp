@@ -120,28 +120,28 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 /**
  * Draws an image of a road vehicle chain
  * @param v         Front vehicle
- * @param left      The minimum horizontal position
- * @param right     The maximum horizontal position
- * @param y         Vertical position to draw at
+ * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip)
+void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
 	const RoadVehicle *u = RoadVehicle::From(v);
 
 	DrawPixelInfo tmp_dpi, *old_dpi;
-	int max_width = right - left + 1;
+	int max_width = r.Width();
 
-	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, ScaleSpriteTrad(14))) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
 	int px = rtl ? max_width + skip : -skip;
-	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next()) {
+	int y = r.Height() / 2;
+	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next())
+	{
 		Point offset;
 		int width = u->GetDisplayImageWidth(&offset);
 
@@ -149,15 +149,17 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 			PaletteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
 			VehicleSpriteSeq seq;
 			u->GetImage(dir, image_type, &seq);
-			seq.Draw(px + (rtl ? -offset.x : offset.x), ScaleSpriteTrad(6) + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
+			seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
 		}
 
 		px += rtl ? -width : width;
 	}
 
-	if (v->index == selection) {
-		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, ScaleSpriteTrad(13) - 1, COLOUR_WHITE, FR_BORDERONLY);
-	}
-
 	_cur_dpi = old_dpi;
+
+	if (v->index == selection) {
+		int height = ScaleSpriteTrad(12);
+		Rect hr = {(rtl ? px : 0), 0, (rtl ? max_width : px) - 1, height - 1};
+		DrawFrameRect(hr.Translate(r.left, CenterBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
+	}
 }
