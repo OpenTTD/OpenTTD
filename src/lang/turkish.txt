@@ -201,8 +201,14 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}bg
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}bg
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}bg/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}bg/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}bg/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}bg/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}bg/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
@@ -383,7 +389,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Yol yap�
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK} Tramvay yapımı
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Ağaç dik. Shift ile tıklama maliyet tahminini gösterir
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tabela koy
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin. Shift ile tıklama maliyet tahminini gösterir
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin. Ctrl alanı çapraz olarak seçer. Shift inşa etme/değerini gösterme arasında geçiş yapar
 
 # Scenario editor file menu
 ###length 7
@@ -1004,9 +1010,12 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dikey se
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Geçerli sürücü: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Arayüz büyüklüğü
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Büyüklüğü otomatik algıla
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Eğimi ayarla
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -2059,6 +2068,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tab
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
+STR_INTRO_AI_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Oyun Betiği Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
@@ -2471,13 +2481,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :bağlantı graf
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ayrılıyor
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} oyuna katıldı
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} oyuna katıldı (İstemci #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} #{2:NUM} numaralı şirkete katıldı
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} oyuna katıldı (İstemci #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} #{2:NUM} numaralı şirkete katıldı
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} gözlemcilere katıldı
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} yeni bir şirket kurdu (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} oyunu terketti ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} yeni bir şirket kurdu (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} oyunu terketti ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} adını {STRING} olarak değiştirdi
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} {1:STRING} adlı şirkete {2:CURRENCY_LONG} verdi
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} {1:STRING} adlı şirkete {2:CURRENCY_LONG} verdi
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu kapandı
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} atıldı. Sebep: ({STRING})
@@ -2592,6 +2602,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}aşırı dolu
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} aylık nakledilecek {STATION} istasyonundan {STATION} istasyonuna ({COMMA}% kapasite ile){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} geri nakledilecek ({COMMA}% kapasite ile)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Ortalama seyahat süresi: {NUM}{NBSP}gün
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Kapsama alanı
@@ -2789,11 +2802,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Arazi d�
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini alçalt. Sürükleme ilk seçilen köşeyi alçaltır ve seçilen araziyi yeni yüksekliğe indirir. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini yükselt. Sürükleme ilk seçilen köşeyi yükseltir ve seçilen araziyi yeni yüksekliğe çıkarır. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Bir alanı ilk seçilen köşenin yüksekliğine düzle. Ctrl ile alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al. Shift ile tıklama maliyet tahminini gösterir
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al. Ctrl alanı çapraz olarak seçer. Shift ile tıklama maliyet tahminini gösterir
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Nesne Seçimi
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin. Shift ile tıklama maliyet tahminini gösterir
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin. Ctrl alanı çapraz olarak seçer. Shift ile tıklama maliyet tahminini gösterir
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}İnşa edilecek nesnenin sınıfını seçin
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Nesnenin önizlemesi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {GOLD}{NUM} x {NUM} kare
@@ -3328,15 +3341,15 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Ölümcül
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ölümcül bir NewGRF hatası oluştu:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF hatası oluştu:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {STRING} sürümü içindir
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}, {STRING} ile kullanılmak için tasarlanmıştır
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} için geçersiz parametre: {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} önce, {STRING} ondan sonra yüklenmeli
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} sonra, {STRING} ondan önce yüklenmeli
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {2:STRING} sürümü içindir
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}, {2:STRING} ile kullanılmak için tasarlanmıştır
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} için geçersiz parametre: {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} önce, {2:STRING} ondan sonra yüklenmeli
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :Önce {1:STRING}, sonra {2:STRING} yüklenmeli.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {2:STRING} veya daha yüksek bir sürüm gerektirir
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} adlı NewGRF'yi {STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} adlı NewGRF'yi {2:STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmedik nesne (nesne {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği {4:HEX} (nesne {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanım girişimi (nesne {3:NUM})
@@ -3468,14 +3481,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Ayrıcalıklı 
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Belediyeye rüşvet ver
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Müsteri çekmek için duvarlara poster yapıştır.{}Şehir merkezinin etrafında küçük bir çapta istasyon derecelendirmesinde geçici bir yükseltme sağlar.{}Fiyat: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Müsteri çekmek için radyoya reklam ver.{}Şehir merkezinin etrafında orta bir çapta istasyon derecelendirmesinde geçici bir yükseltme sağlar.{}Fiyat: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Müsteri çekmek için televizyona reklam ver.{}Şehir merkezinin etrafında büyük bir çapta istasyon derecelendirmesinde geçici bir yükseltme sağlar.{}Fiyat: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Yol tamirleri için belediyeye bağış yap.{}6 ay boyunca şehrin yolları kullanılamaz.{}Fiyat: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Şirket sahibinin heykelini dik.{}Şehirdeki istasyon derecelendirmesinde kalıcı bir yükseltme sağlar.{}Fiyatı: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Bu kasabanın büyümesine geçici bir yükseltme sağlar.{}Fiyatı: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al.{} Belediye, rakip istasyonların yolcu ve kargo taşımasına izin vermez.{} Fiyat: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{}Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW} Müsteri çekmek için küçük reklam kampanyası düzenle.{}Şehir merkezinin etrafında küçük bir alanda istasyon derecelendirmesinde geçici bir yükseltme sağlar.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW} Müsteri çekmek için radyoya reklam ver.{}Şehir merkezinin etrafında orta bir çapta istasyon derecelendirmesinde geçici bir yükseltme sağlar.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW} Müsteri çekmek için televizyona reklam ver.{}Şehir merkezinin etrafında büyük bir çapta istasyon derecelendirmesinde geçici bir yükseltme sağlar.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW} Yol tamirleri için belediyeye bağış yap.{}6 ay boyunca şehrin yollarında önemli aksamalara sebep olur.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Şirket sahibinin heykelini dik.{}Şehirdeki istasyon derecelendirmesinde kalıcı bir yükseltme sağlar.{}{POP_COLOUR}Fiyatı: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Bu kasabanın büyümesine geçici bir yükseltme sağlar.{}{POP_COLOUR}Fiyatı: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al.{} Belediye, rakip istasyonların yolcu ve kargo taşımasına izin vermez.{}{POP_COLOUR} Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Yakalanırsan şiddetli bir ceza alma riskini göze alarak yerel yönetime bölge derecelendirmesini arttırmak için rüşvet ver.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Hedefler
@@ -3659,6 +3672,7 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredi
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Kredi Faizi: {BLACK}%{NUM}
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Azami Kredi: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} Kredi Al
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Borcu arttır. Ctrl+Tıklama alınabilen en yüksek borcu alır
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG} Geri Öde
@@ -3759,7 +3773,7 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Üretile
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Gereken:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} bekliyor{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir (8'in katı, 2040'a kadar)
@@ -4053,7 +4067,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :uçak
 STR_ENGINE_PREVIEW_SHIP                                         :gemi
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Fiyat: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}{}İşletme Gideri: {CURRENCY_LONG}/yıl{}Kapasite: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Maliyet: {CURRENCY_LONG} Ağırlık: {WEIGHT_SHORT}{}Hız: {VELOCITY}  Güç: {POWER}  Azami Tork: {6:FORCE}{}İşletme Gideri: {4:CURRENCY_LONG}/yıl{}Kapasite: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Maliyet: {0:CURRENCY_LONG} Ağırlık: {1:WEIGHT_SHORT}{}Hız: {2:VELOCITY}  Güç: {3:POWER}  Azami Tork: {6:FORCE}{}İşletme Gideri: {4:CURRENCY_LONG}/yıl{}Kapasite: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Kapasite: {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}/yıl
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Uçak türü: {STRING}{}Kapasite: {CARGO_LONG}, {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}/yıl
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY}{}Uçak türü: {STRING}{}Kapasite: {CARGO_LONG}{}İşletme Gideri: {CURRENCY_LONG}//yıl
@@ -4217,8 +4231,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenil
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasite: {LTBLUE}Yok{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasite: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasite: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasite: {LTBLUE}{0:CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasite: {LTBLUE}{0:CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Aktarma Maliyeti: {LTBLUE}{CURRENCY_LONG}
@@ -4561,6 +4575,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Aşağı
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Seçilen YZ'yi listede aşağı taşı
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Oyun Betiği
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametreler
 STR_AI_CONFIG_AI                                                :{SILVER}YZ'ler
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}YZ Seç
@@ -4593,7 +4608,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Yüksekl
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Küçük harita ekran görüntüsü
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :YZ
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}YZ Parametreleri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4938,6 +4953,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Yolda ne
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yolda şirket binası var
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Burası satın alınamaz...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... zaten senin!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... Nesne oluşturma sınırına ulaştınız
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Grup oluşturulamıyor...

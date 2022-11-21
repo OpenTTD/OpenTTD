@@ -4929,7 +4929,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}No puede construirse un puente aquí...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Primero debe demolerse el puente
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}No se puede comenzar y acabar en la misma posición
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Las cabeceras del puente no están al mismo nivel
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Los estribos del puente no están al mismo nivel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El puente es demasiado bajo para el terreno
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}El puente es demasiado alto para este terreno.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Comienzo y final deben estar en línea
