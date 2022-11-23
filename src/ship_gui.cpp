@@ -24,12 +24,10 @@
 /**
  * Draws an image of a ship
  * @param v         Front vehicle
- * @param left      The minimum horizontal position
- * @param right     The maximum horizontal position
- * @param y         Vertical position to draw at
+ * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  */
-void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type)
+void DrawShipImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
@@ -41,15 +39,17 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 
 	int width = UnScaleGUI(rect.Width());
 	int x_offs = UnScaleGUI(rect.left);
-	int x = rtl ? right - width - x_offs : left - x_offs;
+	int x = rtl ? r.right - width - x_offs : r.left - x_offs;
+	/* This magic -1 offset is related to the sprite_y_offsets in build_vehicle_gui.cpp */
+	int y = ScaleSpriteTrad(-1) + CenterBounds(r.top, r.bottom, 0);
 
-	y += ScaleSpriteTrad(10);
 	seq.Draw(x, y, GetVehiclePalette(v), false);
 
 	if (v->index == selection) {
 		x += x_offs;
 		y += UnScaleGUI(rect.top);
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.Height()) + 1, COLOUR_WHITE, FR_BORDERONLY);
+		Rect hr = {x, y, x + width - 1, y + UnScaleGUI(rect.Height()) - 1};
+		DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

@@ -933,8 +933,8 @@ struct RefitWindow : public Window {
 		switch (widget) {
 			case WID_VR_VEHICLE_PANEL_DISPLAY: {
 				Vehicle *v = Vehicle::Get(this->window_number);
-				DrawVehicleImage(v, this->sprite_left + WidgetDimensions::scaled.framerect.left, this->sprite_right - WidgetDimensions::scaled.framerect.right,
-					r.top + WidgetDimensions::scaled.framerect.top, INVALID_VEHICLE, EIT_IN_DETAILS, this->hscroll != nullptr ? this->hscroll->GetPosition() : 0);
+				DrawVehicleImage(v, {this->sprite_left + WidgetDimensions::scaled.framerect.left, r.top, this->sprite_right - WidgetDimensions::scaled.framerect.right, r.bottom},
+					INVALID_VEHICLE, EIT_IN_DETAILS, this->hscroll != nullptr ? this->hscroll->GetPosition() : 0);
 
 				/* Highlight selected vehicles. */
 				if (this->order != INVALID_VEH_ORDER_ID) break;
@@ -1590,19 +1590,17 @@ static void DrawSmallOrderList(const Order *order, int left, int right, int y, u
 /**
  * Draws an image of a vehicle chain
  * @param v         Front vehicle
- * @param left      The minimum horizontal position
- * @param right     The maximum horizontal position
- * @param y         Vertical position to draw at
+ * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip)
+void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip)
 {
 	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainImage(Train::From(v), left, right, y, selection, image_type, skip); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, left, right, y, selection, image_type, skip);  break;
-		case VEH_SHIP:     DrawShipImage(v, left, right, y, selection, image_type);     break;
-		case VEH_AIRCRAFT: DrawAircraftImage(v, left, right, y, selection, image_type); break;
+		case VEH_TRAIN:    DrawTrainImage(Train::From(v), r, selection, image_type, skip); break;
+		case VEH_ROAD:     DrawRoadVehImage(v, r, selection, image_type, skip);  break;
+		case VEH_SHIP:     DrawShipImage(v, r, selection, image_type);     break;
+		case VEH_AIRCRAFT: DrawAircraftImage(v, r, selection, image_type); break;
 		default: NOT_REACHED();
 	}
 }
@@ -1647,7 +1645,6 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 	int image_left  = (rtl && show_orderlist) ? olr.right : tr.left;
 	int image_right = (!rtl && show_orderlist) ? olr.left : tr.right;
-	int image_height = ScaleSpriteTrad(GetVehicleHeight(this->vli.vtype));
 
 	int vehicle_button_x = rtl ? ir.right - profit.width : ir.left;
 
@@ -1670,7 +1667,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 					DrawSprite(SPR_WARNING_SIGN, PAL_NONE, vehicle_button_x, ir.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal + profit.height);
 				}
 
-				DrawVehicleImage(v, image_left, image_right, CenterBounds(ir.top, ir.bottom, image_height), selected_vehicle, EIT_IN_LIST, 0);
+				DrawVehicleImage(v, {image_left, ir.top, image_right, ir.bottom}, selected_vehicle, EIT_IN_LIST, 0);
 
 				if (!v->name.empty()) {
 					/* The vehicle got a name so we will print it */
@@ -1701,7 +1698,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 				for (int i = 0; i < static_cast<int>(vehgroup.NumVehicles()); ++i) {
 					if (image_left + WidgetDimensions::scaled.hsep_wide * i >= image_right) break; // Break if there is no more space to draw any more vehicles anyway.
-					DrawVehicleImage(vehgroup.vehicles_begin[i], image_left + WidgetDimensions::scaled.hsep_wide * i, image_right, CenterBounds(ir.top, ir.bottom, image_height), selected_vehicle, EIT_IN_LIST, 0);
+					DrawVehicleImage(vehgroup.vehicles_begin[i], {image_left + WidgetDimensions::scaled.hsep_wide * i, ir.top, image_right, ir.bottom}, selected_vehicle, EIT_IN_LIST, 0);
 				}
 
 				if (show_orderlist) DrawSmallOrderList((vehgroup.vehicles_begin[0])->GetFirstOrder(), olr.left, olr.right, ir.top, this->order_arrow_width);
@@ -2501,10 +2498,10 @@ struct VehicleDetailsWindow : Window {
 
 				/* Articulated road vehicles use a complete line. */
 				if (v->type == VEH_ROAD && v->HasArticulatedPart()) {
-					DrawVehicleImage(v, tr.left, tr.right, tr.top, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
+					DrawVehicleImage(v, tr, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
 				} else {
 					Rect sr = tr.WithWidth(sprite_width, rtl);
-					DrawVehicleImage(v, sr.left, sr.right, sr.top, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
+					DrawVehicleImage(v, sr, INVALID_VEHICLE, EIT_IN_DETAILS, 0);
 				}
 
 				DrawVehicleDetails(v, tr.Indent(sprite_width, rtl), 0, 0, this->tab);

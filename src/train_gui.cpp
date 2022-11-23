@@ -82,14 +82,12 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection, boo
 /**
  * Draws an image of a whole train
  * @param v         Front vehicle
- * @param left      The minimum horizontal position
- * @param right     The maximum horizontal position
- * @param y         Vertical position to draw at
+ * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
  * @param drag_dest The vehicle another one is dragged over, \c INVALID_VEHICLE if none.
  */
-void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest)
+void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
@@ -98,15 +96,15 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 	/* Position of highlight box */
 	int highlight_l = 0;
 	int highlight_r = 0;
-	int max_width = right - left + 1;
-	int height = ScaleSpriteTrad(14);
+	int max_width = r.Width();
 
-	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, height)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
 	int px = rtl ? max_width + skip : -skip;
+	int y = r.Height() / 2;
 	bool sel_articulated = false;
 	bool dragging = (drag_dest != INVALID_VEHICLE);
 	bool drag_at_end_of_train = (drag_dest == v->index); // Head index is used to mark dragging at end of train.
@@ -124,7 +122,7 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 			PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 			VehicleSpriteSeq seq;
 			v->GetImage(dir, image_type, &seq);
-			seq.Draw(px + (rtl ? -offset.x : offset.x), height / 2 + offset.y, pal, (v->vehstatus & VS_CRASHED) != 0);
+			seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, (v->vehstatus & VS_CRASHED) != 0);
 		}
 
 		if (!v->IsArticulatedPart()) sel_articulated = false;
@@ -150,13 +148,15 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 		HighlightDragPosition(px, max_width, selection, _cursor.vehchain);
 	}
 
+	_cur_dpi = old_dpi;
+
 	if (highlight_l != highlight_r) {
 		/* Draw the highlight. Now done after drawing all the engines, as
 		 * the next engine after the highlight could overlap it. */
-		DrawFrameRect(highlight_l, 0, highlight_r, height - 1, COLOUR_WHITE, FR_BORDERONLY);
+		int height = ScaleSpriteTrad(12);
+		Rect hr = {highlight_l, 0, highlight_r, height - 1};
+		DrawFrameRect(hr.Translate(r.left, CenterBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
 	}
-
-	_cur_dpi = old_dpi;
 }
 
 /** Helper struct for the cargo details information */

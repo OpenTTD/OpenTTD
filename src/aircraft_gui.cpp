@@ -73,12 +73,10 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 /**
  * Draws an image of an aircraft
  * @param v         Front vehicle
- * @param left      The minimum horizontal position
- * @param right     The maximum horizontal position
- * @param y         Vertical position to draw at
+ * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  */
-void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type)
+void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
@@ -90,25 +88,27 @@ void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID s
 
 	int width = UnScaleGUI(rect.Width());
 	int x_offs = UnScaleGUI(rect.left);
-	int x = rtl ? right - width - x_offs : left - x_offs;
+	int x = rtl ? r.right - width - x_offs : r.left - x_offs;
+	/* This magic -1 offset is related to the sprite_y_offsets in build_vehicle_gui.cpp */
+	int y = ScaleSpriteTrad(-1) + CenterBounds(r.top, r.bottom, 0);
 	bool helicopter = v->subtype == AIR_HELICOPTER;
 
-	int y_offs = ScaleSpriteTrad(10);
 	int heli_offs = 0;
 
 	PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	seq.Draw(x, y + y_offs, pal, (v->vehstatus & VS_CRASHED) != 0);
+	seq.Draw(x, y, pal, (v->vehstatus & VS_CRASHED) != 0);
 	if (helicopter) {
 		const Aircraft *a = Aircraft::From(v);
 		VehicleSpriteSeq rotor_seq;
 		GetCustomRotorSprite(a, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
 		heli_offs = ScaleSpriteTrad(5);
-		rotor_seq.Draw(x, y + y_offs - heli_offs, PAL_NONE, false);
+		rotor_seq.Draw(x, y - heli_offs, PAL_NONE, false);
 	}
 	if (v->index == selection) {
 		x += x_offs;
-		y += UnScaleGUI(rect.top) + y_offs - heli_offs;
-		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleGUI(rect.Height()) + heli_offs + 1, COLOUR_WHITE, FR_BORDERONLY);
+		y += UnScaleGUI(rect.top) - heli_offs;
+		Rect hr = {x, y, x + width - 1, y + UnScaleGUI(rect.Height()) + heli_offs - 1};
+		DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
 	}
 }

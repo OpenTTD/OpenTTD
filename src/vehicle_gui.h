@@ -45,10 +45,10 @@ struct TestedEngineDetails {
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te);
 
-void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest = INVALID_VEHICLE);
-void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip = 0);
-void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type);
-void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type);
+void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest = INVALID_VEHICLE);
+void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip = 0);
+void DrawShipImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type);
+void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type);
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type);
 
@@ -106,7 +106,7 @@ void StartStopVehicle(const Vehicle *v, bool texteffect);
 
 Vehicle *CheckClickOnVehicle(const struct Viewport *vp, int x, int y);
 
-void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip);
+void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip);
 void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type);
 
 #endif /* VEHICLE_GUI_H */
