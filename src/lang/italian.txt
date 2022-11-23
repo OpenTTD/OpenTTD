@@ -202,6 +202,12 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -397,6 +403,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Esci
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Impostazioni
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Impostazioni IA
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Impostazioni script di gioco
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Impostazioni NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opzioni trasparenza
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra nomi città
@@ -999,8 +1007,12 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selezion
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver attuale: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Dimensione dell'interfaccia
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Trascinare il cursore per impostare le dimensioni dell'interfaccia. Tenere premuto Ctrl per una regolazione permanente
 
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafica
 
@@ -2080,6 +2092,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Punteggi
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Impostazioni
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Impostazioni IA
 STR_INTRO_QUIT                                                  :{BLACK}Esci
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita. CTRL salta la configurazione della mappa.
@@ -2099,6 +2112,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostra le impostazioni
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra le impostazioni NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra impostazioni IA
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Visualizza le impostazioni dello script di gioco
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Esci da OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Nel pacchetto grafico di base attualmente selezionato mancano {NUM} sprite. È consigliabile controllare gli aggiornamenti del pacchetto.
@@ -2612,6 +2627,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sovraccarica
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} da trasportare indietro ({COMMA}% di capacità)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}tempo medio di percorrenza: {NUM}{NBSP}giorn{P "o" i}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Evidenzia area coperta
@@ -2621,6 +2638,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Non evid
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Evidenzia l'area di copertura del sito proposto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accetta: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fornisce: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Costi di manutenzione: {GOLD}{CURRENCY_SHORT}/anno
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unisci stazione
@@ -3160,6 +3178,8 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Levigatezza:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietà del terreno:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Impostazioni NewGRF
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :BLACK}Visualizza le impostazioni dello script di gioco
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inglesi (originali)
@@ -3665,6 +3685,7 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Navi
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Int. sul prestito
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altro
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totale
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
@@ -3896,6 +3917,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomi
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo di aeromobile: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_NONE                                      :Nessuno
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Elenco di selezione dei veicoli ferroviari - fare clic su un veicolo per informazioni. CTRL+clic mostra/nasconde il tipo di veicolo
@@ -4224,6 +4246,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}S.T. max.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profitti anno corrente: {LTBLUE}{CURRENCY_LONG} (anno scorso: {CURRENCY_LONG}) {BLACK}Min. rendimento: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenzione: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Costruito nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY_LONG}
@@ -4557,6 +4580,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno degl
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra di debug IA/Script è disponibile soltanto per il server
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configurazione IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configurazione script di gioco
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Lista degli Script che saranno caricati nella prossima partita
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Lista delle IA che saranno caricate nella prossima partita
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Giocatore umano
@@ -4570,6 +4595,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Sposta g
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Sposta l'IA selezionata più in basso nell'elenco
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametri
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE_AI                                         :IA
@@ -4947,6 +4973,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Oggetto 
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede della compagnia di mezzo
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Impossibile acquistare quest'area di terreno...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... già posseduto!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... limite di costruzione dell'oggetto raggiunto
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossibile creare il gruppo...
