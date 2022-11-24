@@ -202,7 +202,10 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
@@ -387,7 +390,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Costruzi
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Costruzione tranvie
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Pianta alberi. MAIUSC alterna fra costruzione e stima dei costi
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Posiziona cartello
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posiziona oggetto. MAIUSC alterna fra costruzione e stima dei costi
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posizionare l'oggetto. Ctrl seleziona l'area in diagonale. Maiuscole alterna la costruzione/visualizzazione della stima dei costi.
 
 # Scenario editor file menu
 ###length 7
@@ -1009,10 +1012,17 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver a
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Dimensione dell'interfaccia
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Trascinare il cursore per impostare le dimensioni dell'interfaccia. Tenere premuto Ctrl per una regolazione permanente
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Rileva automaticamente le dimensioni
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Seleziona questa casella per rilevare automaticamente le dimensioni dell'interfaccia
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scala smussature
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Seleziona questa casella per ridimensionare le smussature in base alle dimensioni dell'interfaccia
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafica
 
@@ -2093,6 +2103,7 @@ STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Impostaz
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Impostazioni IA
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Impostazioni script di gioco
 STR_INTRO_QUIT                                                  :{BLACK}Esci
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita. CTRL salta la configurazione della mappa.
@@ -2504,13 +2515,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :in attesa di ag
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abbandono della partita
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} è entrato nella partita
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} è entrato nella partita (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ha iniziato a controllare la compagnia #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING}  è entrato nella partita (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} è entrato a far parte della compagnia #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} è diventato spettatore
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha avviato una nuova compagnia (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abbandonato la partita ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} ha fondato una nuova compagnia (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} ha abbandonato la partita ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiato il loro nome in {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha dato {2:CURRENCY_LONG} a {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} ha dato {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il server ha chiuso la sessione
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})
@@ -2627,6 +2638,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sovraccarica
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} da trasportare al mese da {STATION} a {STATION} ({COMMA}% di capacità){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} da trasportare indietro ({COMMA}% di capacità)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}tempo medio di percorrenza: {NUM}{NBSP}giorn{P "o" i}
 
@@ -2830,11 +2842,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modellaz
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abbassa un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella un'area di terreno alla quota del primo angolo selezionato. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri. MAIUSC alterna fra costruzione e stima dei costi
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri. Ctrl seleziona l'area in diagonale. MAIUSC alterna la costruzione/visualizzazione della stima dei costi.
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selezione oggetto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire. MAIUSC alterna fra costruzione e stima dei costi
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire. Ctrl seleziona l'area in diagonale. MAIUSC alterna la costruzione/visualizzazione della stima dei costi
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Seleziona la classe dell'oggetto da costruire
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Anteprima dell'oggetto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} caselle
@@ -3179,6 +3191,10 @@ STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Levigate
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietà del terreno:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Impostazioni NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostra impostazioni NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Impostazioni IA
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Mostra impostazioni IA
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Impostazioni script di gioco
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :BLACK}Visualizza le impostazioni dello script di gioco
 
 ###length 21
@@ -3365,15 +3381,15 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Errore irr
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Si è verificato un errore irreversibile nel NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Si è verificato un errore in un NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funziona con la versione di TTDPatch riferita da OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} è per la versione {STRING} di TTD
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} è progettato per essere usato con {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametro non valido per {1:STRING}: parametro {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve essere caricato prima di {STRING}
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve essere caricato dopo {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} richiede OpenTTD versione {STRING} o superiore
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} è per la versione {2:STRING} di TTD
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} è progettato per essere usato con {2:STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametro non valido per {1:STRING}: parametro {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve essere caricato prima di {2:STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve essere caricato dopo {2:STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} richiede la versione {2:STRING} o superiore di OpenTTD
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF che era progettato per tradurre
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Troppi NewGRF caricati
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Caricare {1:STRING} come NewGRF statico insieme a {STRING} può causare errori di sincronizzazione
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Caricare {1:STRING} come NewGRF statico insieme a {2:STRING} può causare errori di sincronizzazione
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietà {4:HEX} sconosciuta per l'azione 0 (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di utilizzare un ID non valido (sprite {3:NUM})
@@ -3505,14 +3521,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acquista esclus
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompi l'autorità locale
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inizia una piccola campagna pubblicitaria, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Fornisce un aumento temporaneo della valutazione delle stazioni in un piccolo raggio dal centro della città.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inizia una campagna pubblicitaria moderata, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Fornisce un aumento temporaneo della valutazione delle stazioni in un moderato raggio dal centro della città.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inizia una grande campagna pubblicitaria locale, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Fornisce un aumento temporaneo della valutazione delle stazioni in un grande raggio dal centro della città.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finanzia la ricostruzione della rete stradale cittadina.{}Causa un considerevole disagio al traffico stradale per 6 mesi.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Costruisci una statua in onore della compagnia.{}Fornisce un aumento permanente della valutazione delle stazioni in questa città.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finanzia la costruzione di nuovi edifici nella città.{}Fornisce un aumento temporaneo della crescita della città.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acquista un anno di diritti di trasporto esclusivi in città. L'autorità cittadina non permetterà a passeggeri e merci di usare le stazioni dei tuoi avversari.{}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompi l'autorità locale per aumentare la tua valutazione, con il rischio di una severa multa se scoperto.{}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Iniziate una piccola campagna pubblicitaria locale per attirare più passeggeri e merci sui vostri servizi di trasporto..{}Fornisce un incremento temporane alla valutazione delle stazioni in un piccolo raggio intorno al centro città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Avvia una campagna pubblicitaria a livello locale per attirare un maggior numero di passeggeri e merci sui vostri servizi di trasporto..{}Fornisce un incremento temporaneo alla valutazione delle stazioni in un raggio medio intorno al centro città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Avvia una vasta campagna pubblicitaria locale, per attirare più passeggeri e merci sui vostri servizi di trasporto.{}Fornisce un incremento temporaneo alla valutazione delle stazioni in un ampio raggio intorno al centro città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finanziare la ricostruzione della rete stradale urbana.{}Provoca notevoli disagi al traffico stradale per un periodo fino a 6 mesi.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Costruite una statua in onore della vostra compagnia.{}Fornisce un aumento permanente della valutazione della stazione in questa città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finanziare la costruzione di nuovi edifici in città.{}Fornisce un incremento temporaneo alla crescita di questa città.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Acquistate 1 anno di diritti esclusivi di trasporto in città..{}Le autorità cittadine non permetteranno a passeggeri e merci di utilizzare le stazioni dei vostri concorrenti..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompere l'autorità locale per aumentare la valutazione, con il rischio di una severa sanzione se si viene scoperti.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Obiettivi della {COMPANY}
@@ -3689,12 +3705,14 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totale
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Profitto
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Capitale netto
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prestito
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Interesse sul prestito: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Prestito massimo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Chiedi in prestito {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumenta l'ammontare del prestito, CTRL+clic chiede in prestito il più possibile
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ripaga {CURRENCY_LONG}
@@ -3795,7 +3813,7 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Richiede:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} in attesa{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione (multiplo di 8, fino a 2040)
@@ -3917,6 +3935,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomi
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo di aeromobile: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Tutti i tipi di carico
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Merci
 STR_CARGO_TYPE_FILTER_NONE                                      :Nessuno
 
 ###length VEHICLE_TYPES
@@ -4087,7 +4107,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}nave
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo di esercizio: {CURRENCY_LONG}/anno{}Capacità: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}  S.T. max.: {6:FORCE}{}Costo di esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {0:CURRENCY_LONG} Peso: {1:WEIGHT_SHORT}{}Velocità: {2:VELOCITY} Potenza: {3:POWER} S.T. Max.: {6:FORCE}{}Costo di esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Tipo aeromobile: {STRING}{}Capacità: {CARGO_LONG}{}Costo di esercizio: {CURRENCY_LONG}/anno
@@ -4251,8 +4271,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Affidabi
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Costruito nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacità: {LTBLUE}Nessuna{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacità: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacità: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacità: {LTBLUE}{0:CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacità: {LTBLUE}{0:CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacità: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crediti di trasferimento: {LTBLUE}{CURRENCY_LONG}
@@ -4598,8 +4618,8 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametri
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
-STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Seleziona IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Seleziona lo script di gioco
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carica un altro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura i parametri dello script
@@ -4628,7 +4648,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Screensh
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Screenshot della minimappa
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametri IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Chiudi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reimposta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
