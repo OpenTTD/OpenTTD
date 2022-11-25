@@ -264,6 +264,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -353,8 +362,8 @@ STR_SORT_BY_PRODUCTION                                          :Produkcia
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Prepravené
 STR_SORT_BY_NUMBER                                              :Číslo
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit v minulom roku
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit v tomto roku
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zisk v minulom roku
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zisk v tomto roku
 STR_SORT_BY_AGE                                                 :Vek
 STR_SORT_BY_RELIABILITY                                         :Spoľahlivosť
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kapacita podľa typu nákladu
@@ -381,10 +390,10 @@ STR_SORT_BY_RANGE                                               :Rozsah
 STR_SORT_BY_POPULATION                                          :Populácia
 STR_SORT_BY_RATING                                              :Hodnotenie
 STR_SORT_BY_NUM_VEHICLES                                        :Počet vozidiel
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Celkový profit v minulom roku
-STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Celkový profit v tomto roku
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Priemerný profit v minulom roku
-STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Priemerný profit v tomto roku
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Celkový zisk v minulom roku
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Celkový zisk v tomto roku
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Priemerný zisk v minulom roku
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Priemerný zisk v tomto roku
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Žiadne
@@ -459,6 +468,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavenia
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavenia AI
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Nastavenia skriptu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehľadnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobraziť názvy miest
@@ -497,7 +508,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotácie
 
 # Graph menu
 ###length 6
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf prevádzkového profitu
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf prevádzkového zisku
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf tržieb
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf prepraveného nákladu
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Graf hodnotenia výkonu
@@ -652,7 +663,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf prevádzkového profitu
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf prevádzkového zisku
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf tržieb
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Graf prepraveného nákladu (jednotiek nákladu)
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Graf hodnotenia výkonu (najvyššie hodnotenie je 1000)
@@ -698,7 +709,7 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ukázať
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozidlá:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profit:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zisk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. príjem:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. príjem:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Prepravené:
@@ -710,7 +721,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Spolu:
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet vozidiel, ktoré dosiahli v minulom roku zisk. Patria sem cestné vozidlá, vlaky, lode a lietadlá
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet nedávno obsluhovaných staníc. Železničné stanice, autobusové zastávky, letiská a pod. sa počítajú oddelene aj keď patria do rovnakej stanice
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profit vozidla s najnižšími tržbami (zo všetkých vozidiel starších ako 2 roky)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zisk vozidla s najnižšími tržbami (zo všetkých vozidiel starších ako 2 roky)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najmenším ziskom v posledných 12 kvartáloch
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najväčším ziskom v posledných 12 kvartáloch
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Počet jednotiek nákladu prepravených v posledných štyroch kvartáloch
@@ -882,9 +893,9 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLAC
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Vlakové nešťastie!{}{COMMA} mŕtv{P i i ych} pri požiari po kolízii
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Dopravná nehoda!{}Vodič zomrel po kolízii s vlakom
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Dopravná nehoda!{}{COMMA} mŕtvych po kolízii s vlakom
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Dopravná nehoda!{}{COMMA} mŕtv{P i i ych} po kolízii s vlakom
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Letecké nešťastie!{}{COMMA} mŕtv{P y i ych} po požiari na {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Letecké nešťastie!{}Lietadlu došlo palivo, {COMMA} mŕtvych pri požiari
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Letecké nešťastie!{}Lietadlu došlo palivo, {COMMA} mŕtv{P y i ych} pri požiari
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin zničený pri nehode na {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Cestné vozidlo bolo zničené pri kolízii s 'UFO'
@@ -892,7 +903,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Za nejasných okolností bola zničená továreň neďaleko mesta {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' pristálo neďaleko mesta {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Zával v uhoľnej bani neďaleko mesta {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Povodeň!{}Najmenej {COMMA} ľudí je nezvestných alebo mŕtvych po obrovských záplavách!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Povodeň!{}Najmenej {COMMA} {P človek ľudia ľudí} {P je sú je} nezvestn{P ý í ých} alebo mŕtv{P y i ych} po obrovských záplavách!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Dopravná spoločnosť má problémy!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} bude predaná alebo vyhlási bankrot pokiaľ čoskoro nezvýši produktivitu!
@@ -1065,8 +1076,19 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtn
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuálny ovládač: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Veľkosť rozhrania
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Potiahnutím posúvača nastavte veľkosť rozhrania. Pre plynulé nastavenie podržte Ctrl
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detekovať rozmery automaticky
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Začiarknutím tohto políčka automaticky zistiť veľkosť rozhrania
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Mierkové úkosy
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Začiarknutím tohto políčka zmeníte úkosy podľa veľkosti rozhrania
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
@@ -1850,7 +1872,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ak je zapnuté,
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimálny vek spoločnosti na obchodovanie s podielmi: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Určuje minimálny vek spoločnosti na to, aby od nej mohli ostatné spoločnosti kupovať a predavať podiely.
 
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentáž profitu na zaplatenie podávacieho systému: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentáž zisku na zaplatenie podávacieho systému: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percento príjmov dať na strednú ´nohu´ vo feeder systémoch, získate väčšiu kontrolu nad príjmamy
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Pri ťahaní, umiestni návestidlo každé: {STRING}
@@ -2113,6 +2135,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Najvyš�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Nastavenia AI
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Nastavenia skriptu
 STR_INTRO_QUIT                                                  :{BLACK}Ukončiť
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustiť novú hru. Ctrl+klik preskočí nastavenie mapy
@@ -2132,6 +2156,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zobrazi�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Zobraziť nastavenia
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť nastavenia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Zobraz nastavenia skriptu
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Vo vybranej základnej sade grafiky chýba {NUM} prv{P ok ky kov}. Prosím skontrolujte aktualizácie sady grafiky.
@@ -3191,6 +3217,12 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rieky:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Členitosť:
 STR_MAPGEN_VARIETY                                              :{BLACK}Rozmanitosť distribúcie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generovať
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Nastavenia NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Zobraziť nastavenia NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Nastavenia AI
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Zobraziť AI nastavenia
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Nastavenia skriptu
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Zobraz nastavenia skriptu
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglické (pôvodné)
@@ -3516,14 +3548,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Zakúpiť exklu
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatiť miestnu správu
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustiť malú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc v malom okruhu okolo centra mesta.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Spustiť strednú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc v stredne veľkom okruhu okolo centra mesta.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Spustiť veľkú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc vo veľkom okruhu okolo centra mesta.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financovať rekonštrukciu mestskej cestnej siete.{}Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postaviť sochu na počesť vašej spoločnosti.{}Zabezpečí trvalé zvýšenie hodnotenia staníc v tomto meste.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu nových budov v meste.{}Zabezpečí dočasné zrýchlenie rastu tohto mesta.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpiť exkluzívne dopravné práva v meste na 1 rok.{}Miestna správa nedovolí cestujúcim a nákladu používať stanice konkurentov.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia vašej spoločnosti, s rizikom ťažkého postihu pri odhalení.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Spustiť malú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc v malom okruhu okolo centra mesta.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Spustiť strednú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc v stredne veľkom okruhu okolo centra mesta.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Spustiť veľkú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc vo veľkom okruhu okolo centra mesta.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financovať rekonštrukciu mestskej cestnej siete.{}Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Postaviť sochu na počesť vašej spoločnosti.{}Zabezpečí trvalé zvýšenie hodnotenia staníc v tomto meste.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financovať výstavbu nových budov v meste.{}Zabezpečí dočasné zrýchlenie rastu tohto mesta.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Zakúpiť exkluzívne dopravné práva v meste na 1 rok.{}Miestna správa nedovolí cestujúcim a nákladu používať stanice konkurentov.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia vašej spoločnosti, s rizikom ťažkého postihu pri odhalení.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciele
@@ -3676,7 +3708,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}Financie
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
-STR_FINANCES_REVENUE_TITLE                                      :Výnosy
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Výnosy
 STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Prevádzkové náklady
 STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitálové výdavky
 
@@ -3696,15 +3728,18 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Lode
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Úroky
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Ostatné
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Spolu
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Zisk
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Zostatok na účte v banke
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Vlastné prostriedky
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Úver
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Úroky: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maximálny úver: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Požičať {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zvýšiť veľkosť úveru. Crtl+klik požičia koľko sa dá
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Splatiť {CURRENCY_LONG}
@@ -3834,7 +3869,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Možnost
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Zadať príkazy všetkým vozidlám v zozname
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vymeniť vozidlá
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Vykonať servis
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit tento rok: {CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zisk tento rok: {CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Poslať do depa
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Poslať do garáže
@@ -3877,8 +3912,8 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrániť vš
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovať skupinu
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :Profit v tomto roku:
-STR_GROUP_PROFIT_LAST_YEAR                                      :Profit v minulom roku:
+STR_GROUP_PROFIT_THIS_YEAR                                      :Zisk v tomto roku:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Zisk v minulom roku:
 STR_GROUP_OCCUPANCY                                             :Súčasné využitie:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -3927,6 +3962,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Dolet: {
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Typ lietadla: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Všetky druhy nákladu
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Nákladné
+STR_CARGO_TYPE_FILTER_NONE                                      :Žiadne
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Výber vlakov. Pre získanie informácií klikni na vlak. CTRL+klik prepne skrytie typu vlaku.
@@ -4254,7 +4292,8 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Rýchlos
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_SHORT} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_SHORT} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit tento rok: {LTBLUE}{CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zisk v tomto roku: {LTBLUE}{CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Zisk v tomto roku: {LTBLUE}{CURRENCY_LONG} (minulý rok: {CURRENCY_LONG}) {BLACK}Min. výkon: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spoľahlivosť: {LTBLUE}{COMMA}%  {BLACK}Poruchy od posledného servisu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vyrobený: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY_LONG}
@@ -4588,6 +4627,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno ladenia AI/skriptu je dostupné len pre server
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Konfigurácia AI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Konfigurácia skriptu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript, ktorý bude načítaný v ďalšej hre
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI, ktoré budú načítané v ďalšiej hre
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Človek
@@ -4601,10 +4642,11 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Posunú�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Posunúť nižšie vybrané AI v zozname
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Herný skript
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametre
 STR_AI_CONFIG_AI                                                :{SILVER}AI (umelá inteligencia)
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skript
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Vyber AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Vyber skript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Spusti ďalší skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastaviť
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastaviť parametre skriptu
@@ -4633,7 +4675,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Snímka 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Snímka minimapy
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :Umelá inteligencia
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametre AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavrieť
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetovať
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
