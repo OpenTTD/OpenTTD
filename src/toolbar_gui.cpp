@@ -51,6 +51,8 @@
 #include "guitimer_func.h"
 #include "screenshot_gui.h"
 #include "misc_cmd.h"
+#include "league_gui.h"
+#include "league_base.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -249,7 +251,6 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 
 	PopupMainToolbMenu(w, widget, std::move(list), _local_company == COMPANY_SPECTATOR ? (widget == WID_TN_COMPANIES ? CTMN_CLIENT_LIST : CTMN_SPECTATOR) : (int)_local_company);
 }
-
 
 static ToolbarMode _toolbar_mode;
 
@@ -672,59 +673,95 @@ static CallBackFunction MenuClickGoal(int index)
 	return CBF_NONE;
 }
 
-/* --- Graphs button menu --- */
+/* --- Graphs and League Table button menu --- */
+
+/**
+ * Enum for the League Toolbar's and Graph Toolbar's related buttons.
+ * Use continuous numbering as League Toolbar can be combined into the Graph Toolbar.
+ */
+static const int GRMN_OPERATING_PROFIT_GRAPH = -1;    ///< Show operating profit graph
+static const int GRMN_INCOME_GRAPH = -2;              ///< Show income graph
+static const int GRMN_DELIVERED_CARGO_GRAPH = -3;     ///< Show delivered cargo graph
+static const int GRMN_PERFORMANCE_HISTORY_GRAPH = -4; ///< Show performance history graph
+static const int GRMN_COMPANY_VALUE_GRAPH = -5;       ///< Show company value graph
+static const int GRMN_CARGO_PAYMENT_RATES = -6;       ///< Show cargo payment rates graph
+static const int LTMN_PERFORMANCE_LEAGUE = -7;        ///< Show default league table
+static const int LTMN_PERFORMANCE_RATING = -8;        ///< Show detailed performance rating
+static const int LTMN_HIGHSCORE          = -9;        ///< Show highscrore table
+
+static void AddDropDownLeagueTableOptions(DropDownList &list) {
+	if (LeagueTable::GetNumItems() > 0) {
+		for (LeagueTable *lt : LeagueTable::Iterate()) {
+			list.emplace_back(new DropDownListCharStringItem(lt->title, lt->index, false));
+		}
+	} else {
+		list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, LTMN_PERFORMANCE_LEAGUE, false));
+		list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING, LTMN_PERFORMANCE_RATING, false));
+		if (!_networking) {
+			list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_HIGHSCORE, LTMN_HIGHSCORE, false));
+		}
+	}
+}
 
 static CallBackFunction ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_GRAPHS, STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
+	DropDownList list;
+
+	list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, GRMN_OPERATING_PROFIT_GRAPH, false));
+	list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_INCOME_GRAPH, GRMN_INCOME_GRAPH, false));
+	list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH, GRMN_DELIVERED_CARGO_GRAPH, false));
+	list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH, GRMN_PERFORMANCE_HISTORY_GRAPH, false));
+	list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_COMPANY_VALUE_GRAPH, GRMN_COMPANY_VALUE_GRAPH, false));
+	list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_CARGO_PAYMENT_RATES, GRMN_CARGO_PAYMENT_RATES, false));
+
+	if (_toolbar_mode != TB_NORMAL) AddDropDownLeagueTableOptions(list);
+
+	ShowDropDownList(w, std::move(list), 0, WID_TN_GRAPHS, 140, true, true);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
+	return CBF_NONE;
+}
+
+static CallBackFunction ToolbarLeagueClick(Window *w)
+{
+	DropDownList list;
+
+	AddDropDownLeagueTableOptions(list);
+
+	ShowDropDownList(w, std::move(list), 0, WID_TN_LEAGUE, 140, true, true);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
 	return CBF_NONE;
 }
 
 /**
- * Handle click on the entry in the Graphs menu.
+ * Handle click on the entry in the Graphs or CompanyLeague.
  *
  * @param index Graph to show.
  * @return #CBF_NONE
  */
-static CallBackFunction MenuClickGraphs(int index)
+static CallBackFunction MenuClickGraphsOrLeague(int index)
 {
 	switch (index) {
-		case 0: ShowOperatingProfitGraph();    break;
-		case 1: ShowIncomeGraph();             break;
-		case 2: ShowDeliveredCargoGraph();     break;
-		case 3: ShowPerformanceHistoryGraph(); break;
-		case 4: ShowCompanyValueGraph();       break;
-		case 5: ShowCargoPaymentRates();       break;
-		/* functions for combined graphs/league button */
-		case 6: ShowCompanyLeagueTable();      break;
-		case 7: ShowPerformanceRatingDetail(); break;
+		case GRMN_OPERATING_PROFIT_GRAPH: ShowOperatingProfitGraph(); break;
+		case GRMN_INCOME_GRAPH: ShowIncomeGraph(); break;
+		case GRMN_DELIVERED_CARGO_GRAPH: ShowDeliveredCargoGraph(); break;
+		case GRMN_PERFORMANCE_HISTORY_GRAPH: ShowPerformanceHistoryGraph(); break;
+		case GRMN_COMPANY_VALUE_GRAPH: ShowCompanyValueGraph(); break;
+		case GRMN_CARGO_PAYMENT_RATES: ShowCargoPaymentRates(); break;
+		case LTMN_PERFORMANCE_LEAGUE: ShowPerformanceLeagueTable(); break;
+		case LTMN_PERFORMANCE_RATING: ShowPerformanceRatingDetail(); break;
+		case LTMN_HIGHSCORE: ShowHighscoreTable(); break;
+		default: {
+			if (LeagueTable::IsValidID(index)) {
+				ShowScriptLeagueTable((LeagueTableID)index);
+			}
+		}
 	}
 	return CBF_NONE;
 }
 
-/* --- League button menu --- */
 
-static CallBackFunction ToolbarLeagueClick(Window *w)
-{
-	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, _networking ? 2 : 3);
-	return CBF_NONE;
-}
-
-/**
- * Handle click on the entry in the CompanyLeague menu.
- *
- * @param index Menu entry number.
- * @return #CBF_NONE
- */
-static CallBackFunction MenuClickLeague(int index)
-{
-	switch (index) {
-		case 0: ShowCompanyLeagueTable();      break;
-		case 1: ShowPerformanceRatingDetail(); break;
-		case 2: ShowHighscoreTable();          break;
-	}
-	return CBF_NONE;
-}
 
 /* --- Industries button menu --- */
 
@@ -1299,8 +1336,8 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickCompany,     // 9
 	MenuClickStory,       // 10
 	MenuClickGoal,        // 11
-	MenuClickGraphs,      // 12
-	MenuClickLeague,      // 13
+	MenuClickGraphsOrLeague, // 12
+	MenuClickGraphsOrLeague, // 13
 	MenuClickIndustry,    // 14
 	MenuClickShowTrains,  // 15
 	MenuClickShowRoad,    // 16
@@ -2020,7 +2057,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_STORY: ShowStoryBook(_local_company); break;
 			case MTHK_GOAL: ShowGoalsList(_local_company); break;
 			case MTHK_GRAPHS: ShowOperatingProfitGraph(); break;
-			case MTHK_LEAGUE: ShowCompanyLeagueTable(); break;
+			case MTHK_LEAGUE: ShowFirstLeagueTable(); break;
 			case MTHK_INDUSTRIES: ShowBuildIndustryWindow(); break;
 			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VEH_TRAIN); break;
 			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VEH_ROAD); break;

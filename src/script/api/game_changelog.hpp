@@ -21,6 +21,7 @@
  * \li GSCargo::GetWeight
  * \li GSIndustryType::ResolveNewGRFID
  * \li GSObjectType::ResolveNewGRFID
+ * \li GSLeagueTable
  *
  * Other changes:
  * \li GSRoad::HasRoadType now correctly checks RoadType against RoadType

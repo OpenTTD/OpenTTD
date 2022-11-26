@@ -116,6 +116,16 @@ public:
 	static void DoCommandReturnStoryPageElementID(ScriptInstance *instance);
 
 	/**
+	 * Return a LeagueTableID reply for a DoCommand.
+	 */
+	static void DoCommandReturnLeagueTableID(ScriptInstance *instance);
+
+	/**
+	 * Return a LeagueTableElementID reply for a DoCommand.
+	 */
+	static void DoCommandReturnLeagueTableElementID(ScriptInstance *instance);
+
+	/**
 	 * Get the controller attached to the instance.
 	 */
 	class ScriptController *GetController() { return controller; }

@@ -337,6 +337,12 @@ enum Commands : uint16 {
 
 	CMD_OPEN_CLOSE_AIRPORT,           ///< open/close an airport to incoming aircraft
 
+	CMD_CREATE_LEAGUE_TABLE,               ///< create a new league table
+	CMD_CREATE_LEAGUE_TABLE_ELEMENT,       ///< create a new element in a league table
+	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA,  ///< update the data fields of a league table element
+	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, ///< update the score of a league table element
+	CMD_REMOVE_LEAGUE_TABLE_ELEMENT,       ///< remove a league table element
+
 	CMD_END,                          ///< Must ALWAYS be on the end of this list!! (period)
 };
 

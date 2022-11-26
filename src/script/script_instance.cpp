@@ -26,6 +26,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../fileio_func.h"
+#include "../league_type.h"
 #include "../misc/endian_buffer.hpp"
 
 #include "../safeguards.h"
@@ -297,6 +298,17 @@ void ScriptInstance::CollectGarbage()
 {
 	instance->engine->InsertResult(EndianBufferReader::ToValue<StoryPageElementID>(ScriptObject::GetLastCommandResData()));
 }
+
+/* static */ void ScriptInstance::DoCommandReturnLeagueTableElementID(ScriptInstance *instance)
+{
+	instance->engine->InsertResult(EndianBufferReader::ToValue<LeagueTableElementID>(ScriptObject::GetLastCommandResData()));
+}
+
+/* static */ void ScriptInstance::DoCommandReturnLeagueTableID(ScriptInstance *instance)
+{
+	instance->engine->InsertResult(EndianBufferReader::ToValue<LeagueTableID>(ScriptObject::GetLastCommandResData()));
+}
+
 
 ScriptStorage *ScriptInstance::GetStorage()
 {
