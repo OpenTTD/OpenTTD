@@ -5026,6 +5026,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 �
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차량이 파괴되었습니다
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}사용할 수 있는 차량이 모두 없어질 것입니다
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하십시오
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}사용할 수 있는 차량이 하나도 없습니다

@@ -5072,6 +5072,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν �
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... το όχημα καταστράφηκε
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Δεν θα είναι κανένα όχημα διαθέσιμο
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Κανένα όχημα δεν είναι διαθέσιμο ακόμη

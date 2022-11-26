@@ -4714,6 +4714,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogo�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Sploh ni razpoložljivih vozil
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zamenjaj svojo NewGRF konfiguracijo
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ni še vozil na razpolago.

@@ -5066,6 +5066,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossib
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... il veicolo è distrutto
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Non sarà disponibile alcun veicolo
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Cambiare i NewGRF configurati
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Non sono ancora disponibili veicoli

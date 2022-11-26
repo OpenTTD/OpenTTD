@@ -1138,7 +1138,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Altura personal
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura personalizada ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :Tolerante
+STR_CITY_APPROVAL_LENIENT                                       :Indulgente
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (sin efecto sobre las acciones de las compañías)
@@ -1433,6 +1433,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las l
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar el nombre del NewGRF en la ventana de compra de vehículos: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Añade una línea a la ventana de compra de vehículos, mostrando a qué NewGRF pertenece el vehículo seleccionado.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar las cargas que pueden llevar los vehículos en las ventanas con listas {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Si se activa, las cargas que los vehículos pueden transportar aparecerán encima de éstos en las listas de vehículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los terrenos definen escenarios con diferentes tipos de carga y requisitos de crecimiento de municipios. Es posible modificarlos empleando NewGRF y scripts de juego
@@ -1991,7 +1993,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localización
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráficas
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráficos
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de sonido
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaz
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
@@ -2894,14 +2896,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}¿Está
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena de industrias para la industria {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de industrias para la carga {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias proveedoras
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias clientes
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias consumidoras
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clica en la industria para ver sus proveedores y clientes
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clica en la carga para mostrar sus proveedores y clientes
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clica en la carga para mostrar sus proveedores y consumidores
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadena
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Muestra industrias que suministran o aceptan la carga
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Enlazar al mapa
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Muestra las industrias seleccionadas también en el minimapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Mostran en el minimapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Muestra las industrias seleccionadas en el minimapa
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Seleccionar carga
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selecciona el tipo de carga a mostrar
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleccionar industria
@@ -3803,6 +3805,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia in
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemplazar vehículos
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para Mantenimiento
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este año: {CURRENCY_LONG} (año anterior: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar a Depósito
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar a Depósito
@@ -5025,6 +5029,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Demasiad
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No se puede cambiar intervalo de mantenimiento...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... el vehículo está destruido
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ningún vehículo estará disponible
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Es necesario modificar la configuración NewGRF

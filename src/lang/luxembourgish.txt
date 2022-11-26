@@ -4955,6 +4955,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}De Servi
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Gefier ass zerstéiert
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Keng Gefierer verfügbar
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Änner d'NewGRF Konfiguratioun
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nach keng Gefierer verfügbar

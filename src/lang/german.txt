@@ -4984,6 +4984,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Das Wart
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Fahrzeug ist zerstört
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Es sind keine Fahrzeuge verfügbar!
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Bitte die NewGRF-Einstellungen ändern, damit Fahrzeuge früher verfügbar sind
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Noch keine Fahrzeuge verfügbar

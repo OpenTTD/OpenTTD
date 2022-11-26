@@ -4977,6 +4977,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nu se po
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehiculul este distrus
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Niciun vehicul nu va fi disponibil
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Schimbă configuraţia NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Niciun vehicul nu este disponibil încă

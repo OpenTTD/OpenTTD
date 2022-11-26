@@ -4697,6 +4697,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan nie 
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... voertuig is vernietig
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Geen voertuie gaan beskikbaar wees nie
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Verander jou NewGRF stellings
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Geen voertuie is op die oomblik beskikbaar nie

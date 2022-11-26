@@ -4502,6 +4502,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}சர�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... வாகனம் அழிக்கப்பட்டுள்ளது
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}எந்த வாகனங்களும் தற்போது கிடையாது
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}தங்களது NewGRF அமைப்பினை மாற்றவும்
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}தற்போது எந்த வாகனங்களும் கிடையாது

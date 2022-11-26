@@ -4949,6 +4949,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ní féi
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... tá an fheithicil scriosta
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ní bheidh aon fheithicil ar fáil ar chor ar bith
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Athraigh do chumraíocht NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Níl aon fheithicil ar fáil fós

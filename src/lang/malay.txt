@@ -4223,6 +4223,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak bo
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kenderaan sudah musnah
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Mulakan permainan baru selepas {DATE_SHORT} atau gunakan NewGRF yang digunakan kenderaan terdahulu
 
 # Specific vehicle errors

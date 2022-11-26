@@ -4959,6 +4959,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fartøjet er ødelagt
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen køretøjer vil være tilgængelige overhovedet
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Skift din NewGRF-konfiguration
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen køretøjer er tilgængelige endnu

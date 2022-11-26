@@ -5212,6 +5212,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Нево
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспортное средство уничтожено
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Все транспортные средства будут недоступны
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Измените конфигурацию модуля NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Нет доступных транспортных средств

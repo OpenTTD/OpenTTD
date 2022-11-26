@@ -3757,6 +3757,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکا
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... وسیله نقلیه منهدم شد
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}بطور کلی هیچ خودرویی در دسترس نخواهد بود
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}تنظیمات مربوط به NewGRF را تغییر دهید
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}هنوز خودرویی در دسترس نیست

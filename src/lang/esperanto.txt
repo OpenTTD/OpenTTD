@@ -3940,6 +3940,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veturilo estas detrua
 
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de trajno...

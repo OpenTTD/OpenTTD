@@ -4516,6 +4516,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Инте
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... машината е унищожена
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Никакви превозни средства няма да бъдат налични
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Промени своята NewGRF конфигурация
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Няма налични превозни средства все още

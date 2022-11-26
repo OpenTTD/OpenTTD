@@ -4582,6 +4582,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Methu ne
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... cerbyd wedi ei ddinistrio
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ni fydd cerbydau ar gael o gwbl
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Newid eich ffurfweddiad NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Dim cerbydau ar gael eto

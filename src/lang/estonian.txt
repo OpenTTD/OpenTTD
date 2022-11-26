@@ -4959,6 +4959,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Hooldusv
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... sõiduk hävitatud
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ühtegi sõidukit ei ole saadaval
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muuda NewGRF-i seadistust
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Sõidukeid ei ole veel saadaval

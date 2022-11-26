@@ -4977,6 +4977,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak da
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kendaraan hancur
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Tak satupun kendaraan tersedia
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Tukarkan konfigurasi NewGRF anda
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Belum ada kendaraan yang tersedia saat ini

@@ -5091,6 +5091,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не м�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспорт знищено
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Недоступний жоден транспортний засіб
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Змінити налаштування встановленого NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Жоден вид транспорту ще не став доступним

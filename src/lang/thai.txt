@@ -4675,6 +4675,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ยานพาหนะถูกทำลาย
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}ไม่มียานพาหานะให้เลือก
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}เปลี่ยนการกำหนดค่าสำหรับ NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}ยังไม่มียานพาหานะให้เลือก

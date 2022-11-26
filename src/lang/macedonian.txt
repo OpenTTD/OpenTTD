@@ -2113,6 +2113,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не м�
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... возилото е уништено
 
 
+
 # Specific vehicle errors
 
 

@@ -4611,6 +4611,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא נ�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... הרכב נהרס
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}כלי תחבורה לא יהיו זמינים
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}שנה הגדרות NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}כלי תחבורה עדיין לא זמינים

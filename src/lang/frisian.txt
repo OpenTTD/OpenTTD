@@ -4265,6 +4265,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... wein verneatige
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Hielendal gjin fiertugen talitten
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Feroarje jo NewGRF-konfiguraasje
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Der binne noch gjin fiertugen beskikber

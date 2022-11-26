@@ -4456,6 +4456,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikkj
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... køyretøy er øydelagd
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen køyretøy vert tilgjengelege
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Byt NewGRF-innstillingar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Det finst ikkje nokon køyretøy enno

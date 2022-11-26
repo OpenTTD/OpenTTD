@@ -4988,6 +4988,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nevar ma
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... transportlīdzeklis ir iznīcināts
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Vispār nebūs pieejami transporta līdzekļi
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mainiet jūsu NewGRF konfogurāciju
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Transportlīdzekļi vēl nav pieejami

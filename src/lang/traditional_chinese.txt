@@ -4977,6 +4977,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 車輛已被摧毀
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}沒有可用的車輛
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}請修改您的 NewGRF 設定
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}未有可用的車輛

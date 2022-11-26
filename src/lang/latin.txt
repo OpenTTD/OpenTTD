@@ -4825,6 +4825,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Non lice
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehiculum est destructum!
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nulla vehicula omnino parabilia erunt
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muta configurationem NewGRF tuam
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nulla vehicula adhuc parabilia sunt

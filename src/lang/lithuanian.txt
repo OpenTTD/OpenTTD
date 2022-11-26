@@ -5167,6 +5167,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Aptarnav
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... automobilis sunaikintas
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nebus įmanoma įsigyti jokių transporto priemonių
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pakeiskite plėtinių nuostatas
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Kol kas negalima įsigyti jokių transporto priemonių
