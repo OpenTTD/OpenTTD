@@ -11,7 +11,10 @@
 #define WINDOW_GUI_H
 
 #include <list>
+#include <algorithm>
+#include <functional>
 
+#include "vehiclelist.h"
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "company_type.h"
@@ -681,10 +684,19 @@ public:
 
 	/**
 	 * The user clicked on a vehicle while HT_VEHICLE has been set.
-	 * @param v clicked vehicle. It is guaranteed to be v->IsPrimaryVehicle() == true
-	 * @return True if the click is handled, false if it is ignored.
+	 * @param v clicked vehicle
+	 * @return true if the click is handled, false if it is ignored
+	 * @pre v->IsPrimaryVehicle() == true
 	 */
 	virtual bool OnVehicleSelect(const struct Vehicle *v) { return false; }
+
+	/**
+	 * The user clicked on a vehicle while HT_VEHICLE has been set.
+	 * @param v clicked vehicle
+	 * @return True if the click is handled, false if it is ignored
+	 * @pre v->IsPrimaryVehicle() == true
+	 */
+	virtual bool OnVehicleSelect(VehicleList::const_iterator begin, VehicleList::const_iterator end) { return false; }
 
 	/**
 	 * The user cancelled a tile highlight mode that has been set.
@@ -805,6 +817,19 @@ public:
 	using IterateFromBack = AllWindows<false>; //!< Iterate all windows in Z order from back to front.
 	using IterateFromFront = AllWindows<true>; //!< Iterate all windows in Z order from front to back.
 };
+
+/**
+ * Generic helper function that checks if all elements of the range are equal with respect to the given predicate.
+ * @param begin The start of the range.
+ * @param end The end of the range.
+ * @param pred The predicate to use.
+ * @return True if all elements are equal, false otherwise.
+ */
+template <class It, class Pred>
+inline bool AllEqual(It begin, It end, Pred pred)
+{
+	return std::adjacent_find(begin, end, std::not_fn(pred)) == end;
+}
 
 /**
  * Get the nested widget with number \a widnum from the nested widget tree.

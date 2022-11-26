@@ -24,8 +24,10 @@
 #include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "vehiclelist.h"
+#include "vehicle_func.h"
 #include "order_backup.h"
 #include "zoom_func.h"
+#include "error.h"
 #include "depot_cmd.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
@@ -911,6 +913,49 @@ struct DepotWindow : Window {
 			/* Copy-clone, open viewport for new vehicle, and deselect the tool (assume player wants to change things on new vehicle) */
 			if (Command<CMD_CLONE_VEHICLE>::Post(STR_ERROR_CAN_T_BUY_TRAIN + v->type, CcCloneVehicle, this->window_number, v->index, false)) {
 				ResetObjectToPlace();
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Clones a vehicle from a vehicle list.  If this doesn't make sense (because not all vehicles in the list have the same orders), then it displays an error.
+	 * @return This always returns true, which indicates that the contextual action handled the mouse click.
+	 *         Note that it's correct behaviour to always handle the click even though an error is displayed,
+	 *         because users aren't going to expect the default action to be performed just because they overlooked that cloning doesn't make sense.
+	 */
+	bool OnVehicleSelect(VehicleList::const_iterator begin, VehicleList::const_iterator end) override
+	{
+		if (!_ctrl_pressed) {
+			/* If CTRL is not pressed: If all the vehicles in this list have the same orders, then copy orders */
+			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
+				return VehiclesHaveSameEngineList(v1, v2);
+			})) {
+				if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
+					return VehiclesHaveSameOrderList(v1, v2);
+				})) {
+					OnVehicleSelect(*begin);
+				} else {
+					ShowErrorMessage(STR_ERROR_CAN_T_BUY_TRAIN + (*begin)->type, STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST, WL_INFO);
+				}
+			} else {
+				ShowErrorMessage(STR_ERROR_CAN_T_BUY_TRAIN + (*begin)->type, STR_ERROR_CAN_T_CLONE_VEHICLE_LIST, WL_INFO);
+			}
+		} else {
+			/* If CTRL is pressed: If all the vehicles in this list share orders, then copy orders */
+			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
+				return VehiclesHaveSameEngineList(v1, v2);
+			})) {
+				if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
+					return v1->FirstShared() == v2->FirstShared();
+				})) {
+					OnVehicleSelect(*begin);
+				} else {
+					ShowErrorMessage(STR_ERROR_CAN_T_BUY_TRAIN + (*begin)->type, STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST, WL_INFO);
+				}
+			} else {
+				ShowErrorMessage(STR_ERROR_CAN_T_BUY_TRAIN + (*begin)->type, STR_ERROR_CAN_T_CLONE_VEHICLE_LIST, WL_INFO);
 			}
 		}
 

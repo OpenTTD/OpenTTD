@@ -2018,16 +2018,16 @@ public:
 
 					case GB_SHARED_ORDERS: {
 						assert(vehgroup.NumVehicles() > 0);
-						const Vehicle *v = vehgroup.vehicles_begin[0];
-						/* We do not support VehicleClicked() here since the contextual action may only make sense for individual vehicles */
-
-						if (_ctrl_pressed) {
-							ShowOrdersWindow(v);
-						} else {
-							if (vehgroup.NumVehicles() == 1) {
-								ShowVehicleViewWindow(v);
+						if (!VehicleClicked(vehgroup)) {
+							const Vehicle *v = vehgroup.vehicles_begin[0];
+							if (_ctrl_pressed) {
+								ShowOrdersWindow(v);
 							} else {
-								ShowVehicleListWindow(v);
+								if (vehgroup.NumVehicles() == 1) {
+									ShowVehicleViewWindow(v);
+								} else {
+									ShowVehicleListWindow(v);
+								}
 							}
 						}
 						break;
@@ -3286,6 +3286,33 @@ bool VehicleClicked(const Vehicle *v)
 	if (!v->IsPrimaryVehicle()) return false;
 
 	return _thd.GetCallbackWnd()->OnVehicleSelect(v);
+}
+
+/**
+ * Dispatch a "vehicle group selected" event if any window waits for it.
+ * @param begin iterator to the start of the range of vehicles
+ * @param end iterator to the end of the range of vehicles
+ * @return did any window accept vehicle group selection?
+ */
+bool VehicleClicked(VehicleList::const_iterator begin, VehicleList::const_iterator end)
+{
+	assert(begin != end);
+	if (!(_thd.place_mode & HT_VEHICLE)) return false;
+
+	/* If there is only one vehicle in the group, act as if we clicked a single vehicle */
+	if (begin + 1 == end) return _thd.GetCallbackWnd()->OnVehicleSelect(*begin);
+
+	return _thd.GetCallbackWnd()->OnVehicleSelect(begin, end);
+}
+
+/**
+ * Dispatch a "vehicle group selected" event if any window waits for it.
+ * @param vehgroup the GUIVehicleGroup representing the vehicle group
+ * @return did any window accept vehicle group selection?
+ */
+bool VehicleClicked(const GUIVehicleGroup &vehgroup)
+{
+	return VehicleClicked(vehgroup.vehicles_begin, vehgroup.vehicles_end);
 }
 
 void StopGlobalFollowVehicle(const Vehicle *v)

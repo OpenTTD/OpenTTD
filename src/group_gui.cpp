@@ -884,14 +884,14 @@ public:
 					}
 
 					case GB_SHARED_ORDERS: {
-						const Vehicle *v = vehgroup.vehicles_begin[0];
-						/* We do not support VehicleClicked() here since the contextual action may only make sense for individual vehicles */
-
-						if (vindex == v->index) {
-							if (vehgroup.NumVehicles() == 1) {
-								ShowVehicleViewWindow(v);
-							} else {
-								ShowVehicleListWindow(v);
+						if (!VehicleClicked(vehgroup)) {
+							const Vehicle* v = vehgroup.vehicles_begin[0];
+							if (vindex == v->index) {
+								if (vehgroup.NumVehicles() == 1) {
+									ShowVehicleViewWindow(v);
+								} else {
+									ShowVehicleListWindow(v);
+								}
 							}
 						}
 						break;
