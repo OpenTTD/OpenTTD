@@ -933,7 +933,7 @@ struct RefitWindow : public Window {
 		switch (widget) {
 			case WID_VR_VEHICLE_PANEL_DISPLAY: {
 				Vehicle *v = Vehicle::Get(this->window_number);
-				DrawVehicleImage(v, {this->sprite_left + WidgetDimensions::scaled.framerect.left, r.top, this->sprite_right - WidgetDimensions::scaled.framerect.right, r.bottom},
+				DrawVehicleImage(v, {this->sprite_left, r.top, this->sprite_right, r.bottom},
 					INVALID_VEHICLE, EIT_IN_DETAILS, this->hscroll != nullptr ? this->hscroll->GetPosition() : 0);
 
 				/* Highlight selected vehicles. */
@@ -946,6 +946,11 @@ struct RefitWindow : public Window {
 
 						int left = INT32_MIN;
 						int width = 0;
+
+						/* Determine top & bottom position of the highlight.*/
+						const int height = ScaleSpriteTrad(12);
+						const int highlight_top = CenterBounds(r.top, r.bottom, height);
+						const int highlight_bottom = highlight_top + height - 1;
 
 						for (Train *u = Train::From(v); u != nullptr; u = u->Next()) {
 							/* Start checking. */
@@ -967,12 +972,13 @@ struct RefitWindow : public Window {
 								left = std::max(0, left);
 
 								if (_current_text_dir == TD_RTL) {
-									right = this->GetWidget<NWidgetCore>(WID_VR_VEHICLE_PANEL_DISPLAY)->current_x - left;
+									right = r.Width() - left;
 									left = right - width;
 								}
 
 								if (left != right) {
-									DrawFrameRect(left, r.top + WidgetDimensions::scaled.framerect.top, right, r.top + WidgetDimensions::scaled.framerect.top + ScaleSpriteTrad(14) - 1, COLOUR_WHITE, FR_BORDERONLY);
+									Rect hr = {left, highlight_top, right, highlight_bottom};
+									DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
 								}
 
 								left = INT32_MIN;
