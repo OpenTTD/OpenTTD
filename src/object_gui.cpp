@@ -420,11 +420,11 @@ public:
 								/* Use all the available space left from where we stand up to the
 								 * end of the window. We ALSO enlarge the window if needed, so we
 								 * can 'go' wild with the bottom of the window. */
-								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top;
+								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top - 1;
 								StopTextRefStackUsage();
 								if (y > this->info_height) {
 									BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
-									bow->info_height = y + 2;
+									bow->info_height = y;
 									bow->ReInit();
 								}
 							}
@@ -729,7 +729,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(0, 5, 0, 1), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(0, 5, 2, 2), SetFill(1, 0), SetResize(1, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),
 				NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
