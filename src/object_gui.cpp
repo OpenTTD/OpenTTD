@@ -48,8 +48,8 @@ class BuildObjectWindow : public Window {
 	typedef GUIList<ObjectClassID, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
-	static const int OBJECT_MARGIN = 4;    ///< The margin (in pixels) around an object.
 
+	int object_margin;                     ///< The margin (in pixels) around an object.
 	int line_height;                       ///< The height of a single line.
 	int info_height;                       ///< The height of the info box.
 	Scrollbar *vscroll;                    ///< The scrollbar.
@@ -229,6 +229,11 @@ public:
 		}
 	}
 
+	void OnInit() override
+	{
+		this->object_margin = ScaleGUITrad(4);
+	}
+
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
@@ -266,7 +271,7 @@ public:
 
 			case WID_BO_OBJECT_SPRITE: {
 				bool two_wide = false;  // Whether there will be two widgets next to each other in the matrix or not.
-				int height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
+				uint height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
 
 				/* Get the height and view information. */
 				for (int i = 0; i < NUM_OBJECTS; i++) {
@@ -279,18 +284,18 @@ public:
 				/* Determine the pixel heights. */
 				for (size_t i = 0; i < lengthof(height); i++) {
 					height[i] *= ScaleGUITrad(TILE_HEIGHT);
-					height[i] += ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN;
+					height[i] += ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}
 
 				/* Now determine the size of the minimum widgets. When there are two columns, then
 				 * we want these columns to be slightly less wide. When there are two rows, then
 				 * determine the size of the widgets based on the maximum size for a single row
 				 * of widgets, or just the twice the widget height of the two row ones. */
-				size->height = std::max(height[0], height[1] * 2 + 2);
+				size->height = std::max(height[0], height[1] * 2);
 				if (two_wide) {
-					size->width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN) * 2 + 2;
+					size->width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin) * 2;
 				} else {
-					size->width  = 4 * ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN;
+					size->width  = 4 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}
 
 				/* Get the right size for the single widget based on the current spec. */
@@ -360,9 +365,9 @@ public:
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - OBJECT_MARGIN - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
+						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - OBJECT_MARGIN - ScaleSpriteTrad(TILE_PIXELS), spec, GB(widget, 16, 16));
+						DrawNewObjectTileInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec, GB(widget, 16, 16));
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -387,9 +392,9 @@ public:
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, r.Height() - OBJECT_MARGIN - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
+						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, r.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI(r.Width() / 2 - 1, r.Height() - OBJECT_MARGIN - ScaleSpriteTrad(TILE_PIXELS), spec,
+						DrawNewObjectTileInGUI(r.Width() / 2 - 1, r.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec,
 								std::min<int>(_selected_object_view, spec->views - 1));
 					}
 					_cur_dpi = old_dpi;
