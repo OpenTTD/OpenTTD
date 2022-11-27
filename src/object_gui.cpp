@@ -302,8 +302,10 @@ public:
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
 				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec != nullptr) {
-					if (spec->views >= 2) size->width  = size->width  / 2 - 1;
-					if (spec->views >= 4) size->height = size->height / 2 - 1;
+					if (spec->views <= 1) size->width  += WidgetDimensions::scaled.hsep_normal;
+					if (spec->views <= 2) size->height += WidgetDimensions::scaled.vsep_normal;
+					if (spec->views >= 2) size->width  /= 2;
+					if (spec->views >= 4) size->height /= 2;
 				}
 				break;
 			}
