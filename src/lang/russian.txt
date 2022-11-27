@@ -1583,6 +1583,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Толщина 
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Показывать имя NewGRF в окне покупки транспорта: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Показывать название модуля NewGRF, содержащего выбранную модель транспортного средства, в окне покупки транспорта.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Показывать типы перевозимых грузов в списках ТС: {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Если включено, в списках транспорта будут указаны типы грузов, которые каждое ТС может перевозить.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Тип карты: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Тип карты определяет основу игрового процесса, например, доступные типы транспорта и грузов, различные условия роста городов. Всё это также может быть изменено с помощью модулей NewGRF и игровых скриптов.
@@ -3977,6 +3979,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Упра
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена транспорта
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Отправить на тех. обслуживание
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибыль в этом году: {CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Отправить в депо
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Отправить в гараж

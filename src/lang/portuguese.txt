@@ -5030,6 +5030,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Não é 
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o veículo está destruido
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nem todos os veículos são idênticos
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nenhum veículo estará disponível
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Mudar a sua configuração NewGRF
@@ -5057,6 +5058,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossí
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... veiculo não pode ir a todas as estações
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... veiculo não pode ir a essa estação
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... um veículo a partilhar esta ordem não pode ir a essa estação
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nem todos os veículos têm as mesmas ordens
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nem todos os veículos estão a partilhar ordens
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Não é possível partilhar a lista de ordens...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossível parar de partilhar a lista de ordens...
