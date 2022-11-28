@@ -1158,7 +1158,7 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Изме
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Автоопределение
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Нажмите для автоматической установки масштаба интерфейса
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Масштабировать рельеф
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Рельефные элементы
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Масштабировать рельефные элементы интерфейса
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
@@ -5216,6 +5216,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Нево
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспортное средство уничтожено
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... не все ТС идентичны друг другу
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Все транспортные средства будут недоступны
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Измените конфигурацию модуля NewGRF
@@ -5243,6 +5244,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Нево
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ТС не может достигнуть всех станций
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС не может достигнуть этой станции
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС с общим маршрутом не может достигнуть этой станции
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... не у всех ТС одинаковый маршрут
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... не у всех ТС одинаковый общий маршрут
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Невозможно использовать общий маршрут...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Невозможно создать индивидуальный маршрут...

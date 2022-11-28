@@ -997,8 +997,13 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}点击�
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驱动程序: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}自动检测大小
 
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1倍
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2倍
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4倍
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5倍
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}图像
 
@@ -2045,6 +2050,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}高分�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 设置
 STR_INTRO_QUIT                                                  :{BLACK}退出
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始新游戏. 单击的同时按住Ctrl以跳过地图设置界面
@@ -3119,6 +3125,8 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流�
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}多样的分发：
 STR_MAPGEN_GENERATE                                             :{WHITE}生成
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}显示NewGRF设置
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}游戏脚本设置
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英国 (原始的)
@@ -3627,6 +3635,7 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}其他费
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}利润
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}流动资金
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}自有资金
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}已贷款额
@@ -4516,6 +4525,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使�
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI调试窗口只对服务器可用
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI配置
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}游戏脚本配置
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}下局游戏将启用这些脚本
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局游戏将启用这些AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :玩家
@@ -4906,6 +4917,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}目标�
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}目标处有公司总部
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能购买这个地块！
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}你已经拥有此地块！
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}...对象构造达到极限
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}无法新建分组……
@@ -5005,6 +5017,7 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}不能�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}车辆无法到达全部站点
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}车辆无法到达那个车站
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一个共享此调度计划的载具无法到达那个车站
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}...并不是所有的车辆都有相同的指令
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}不能共享调度计划……
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}不能停止共享调度计划……

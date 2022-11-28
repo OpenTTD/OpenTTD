@@ -1812,6 +1812,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grubość linii
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Pokaż nazwę NewGRF-a w oknie budowy pojazdu: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj wiersz do okna budowy pojazdów, pokazujący z którego NewGRF-a wybrany pojazd pochodzi.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Pokaż w oknach list jakie ładunki mogą być przewożone przez pojazdy: {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Jeśli włączone, ładunek możliwy do przewiezienia przez pojazd będzie wyświetlany nad nim na listach pojazdów.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajobraz: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajobrazy określają podstawowe scenariusze gry, które różnią się przedsiębiorstwami, ładunkiem i wymogami dla rozwoju miast. Pliki NewGRF i skrypty umożliwiają dokładniejszą kontrolę warunków rozgrywki
@@ -4182,6 +4184,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij 
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do serwisu
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zysk w tym roku: {CURRENCY_LONG} (ostatni rok: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do warsztatów
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Wyślij do zajezdni
@@ -5411,6 +5415,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie moż
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... pojazd jest zniszczony
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nie wszystkie pojazdy są takie same
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Żadne pojazdy nie będą dostępne
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmień konfigurację swoich NewGRF-ów
@@ -5438,6 +5443,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie moż
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... pojazd nie może jechać do wszystkich stacji
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... pojazd nie może jechać do tej stacji
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... pojazd dzielący ten rozkaz nie może jechać do tej stacji
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nie wszystkie pojazdy mają takie same polecenia
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nie wszystkie pojazdy współdzielą polecenia
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nie można współdzielić listy poleceń...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nie można zaprzestać współdzielenia listy poleceń...

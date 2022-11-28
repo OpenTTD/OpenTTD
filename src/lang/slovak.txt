@@ -1500,6 +1500,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Hrúbka čiar v
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Zobraziť názov NewGRF v okne vozidiel: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Pridá riadok do zoznamu vozidiel, ktorý ukazuje z akého NewGRF vozidlo pochádza.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Zobraziť náklad, ktorý môžu vozidlá prepravovať v oknách zoznamu {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Ak je zapnuté, v zoznamoch vozidiel sa nad ňou zobrazí prepravovateľný náklad vozidla
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajina: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajiny definujú základný herný scenár s rôznymi druhmi nákladu a požiadavkami na rast miest. NewGRF a herné skripty umožňujú ich lepšiu kontrolu
@@ -3870,6 +3872,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Zadať p
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vymeniť vozidlá
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Vykonať servis
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zisk tento rok: {CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Poslať do depa
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Poslať do garáže
@@ -5093,6 +5097,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nemožno
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo je zničené
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nie všetky vozidlá sú rovnaké
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Žiadne vozidlá nebudú k dispozícii
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmena vašej konfigurácie NewGRF
@@ -5120,6 +5125,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie je m
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... vozidlo nemôže ísť do všetkých staníc
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vozidlo nemôže ísť do tejto stanice
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vozidlo zdieľajúce tento príkaz nemôže ísť do stanice
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nie všetky vozidlá majú rovnaké príkazy
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nie všetky vozidlá zdieľajú príkazy
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nemožno zdieľať zoznam príkazov ...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nie je možné prestať zdieľať zoznam príkazov...
