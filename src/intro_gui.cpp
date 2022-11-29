@@ -380,7 +380,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 	NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 
-	/* 'generate game' and 'load game' buttons */
+	/* 'New Game' and 'Load Game' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GENERATE_GAME), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -390,7 +390,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'play scenario' and 'play heightmap' buttons */
+	/* 'Play Scenario' and 'Play Heightmap' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -400,7 +400,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'edit scenario' and 'play multiplayer' buttons */
+	/* 'Scenario Editor' and 'Multiplayer' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -410,7 +410,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 
-	/* climate selection buttons */
+	/* Climate selection buttons */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
 		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_SGI_TEMPERATE_LANDSCAPE), SetMinimalSize(77, 55),
@@ -439,7 +439,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 
-	/* 'game options' and 'advanced settings' buttons */
+	/* 'Game Options' and 'Settings' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
