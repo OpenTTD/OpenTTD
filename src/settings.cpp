@@ -160,8 +160,8 @@ enum IniFileVersion : uint32_t {
 	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
 	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
 	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move no_http_content_downloads / use_relay_service to private settings.
-
 	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
+	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
 
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
@@ -1332,6 +1332,12 @@ void LoadFromConfig(bool startup)
 				case 4: _settings_client.gui.autosave_interval = std::chrono::minutes(120); break;
 				default: break;
 			}
+		}
+
+		/* Persist the right click close option from older versions. */
+		if (generic_version < IFV_RIGHT_CLICK_CLOSE && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
+			auto old_value = BoolSettingDesc::ParseSingleValue(old_item->value->c_str());
+			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RCC_YES : RCC_NO;
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
