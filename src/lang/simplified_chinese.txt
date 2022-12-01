@@ -1003,6 +1003,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}点击�
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驱动程序: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}界面大小
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}拖动滑块以设置界面大小。按住 Ctrl 进行连续调整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}自动检测大小
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}选中此框可自动检测界面大小
 
@@ -2063,6 +2064,7 @@ STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 设置
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}游戏脚本设置
 STR_INTRO_QUIT                                                  :{BLACK}退出
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始新游戏. 单击的同时按住Ctrl以跳过地图设置界面
@@ -2083,6 +2085,7 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}显示�
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示AI设置
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}显示游戏脚本设置
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}当前选定的基础图形组缺少 {NUM} 个子画面。请检查基础图形组有无更新。
