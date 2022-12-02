@@ -1432,6 +1432,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de 
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Naam van NewGRF weergeven in venster voor voertuigen bouwen: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Voeg een regel toe aan het venster voor voertuigen bouwen die aangeeft uit welke NewGRF het geselecteerde voertuig komt.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mogelijke lading van voertuigen weergeven in lijstvensters {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Wanneer ingeschakeld, verschijnt de mogelijke lading van het voertuig erboven in voertuiglijsten
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landschap: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landschappen definiëren standaard spelscenario's met verschillende vracht- en stadsgroei-eisen. NewGRF en spelscripts kunnen daarentegen fijnere controle bieden.
@@ -3802,6 +3804,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Stuur in
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vervang voertuigen
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Stuur voor onderhoud
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Winst dit jaar: {CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Stuur naar depot
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Stuur naar garage
@@ -5025,6 +5029,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onde
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... voertuig is vernietigd
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... niet alle voertuigen zijn identiek
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Er zullen geen voertuigen beschikbaar zijn
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Pas je NewGRF-configuratie aan
@@ -5052,6 +5057,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan gese
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... voertuig kan niet naar alle stations
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... voertuig kan niet naar dat station
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... een voertuig die deze order deelt kan niet naar dat station
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... niet alle voertuigen hebben dezelfde orders
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... niet alle voertuigen delen hun orders
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan orderlijst niet delen...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan niet stoppen met delen van orderlijst...
