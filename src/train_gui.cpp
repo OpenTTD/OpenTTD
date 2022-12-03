@@ -53,11 +53,12 @@ void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id,
  * Highlight the position where a rail vehicle is dragged over by drawing a light gray background.
  * @param px        The current x position to draw from.
  * @param max_width The maximum space available to draw.
+ * @param y         The vertical centre position to draw from.
  * @param selection Selected vehicle that is dragged.
  * @param chain     Whether a whole chain is dragged.
  * @return The width of the highlight mark.
  */
-static int HighlightDragPosition(int px, int max_width, VehicleID selection, bool chain)
+static int HighlightDragPosition(int px, int max_width, int y, VehicleID selection, bool chain)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
@@ -72,8 +73,11 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection, boo
 	int drag_hlight_width = std::max(drag_hlight_right - drag_hlight_left + 1, 0);
 
 	if (drag_hlight_width > 0) {
-		GfxFillRect(drag_hlight_left + WidgetDimensions::scaled.framerect.left, WidgetDimensions::scaled.framerect.top + 1,
-				drag_hlight_right - WidgetDimensions::scaled.framerect.right, ScaleSpriteTrad(13) - WidgetDimensions::scaled.framerect.bottom, _colour_gradient[COLOUR_GREY][7]);
+		int height = ScaleSpriteTrad(12);
+		int top = y - height / 2;
+		Rect r = {drag_hlight_left, top, drag_hlight_right, top + height - 1};
+		/* Sprite-scaling is used here as the area is from sprite size */
+		GfxFillRect(r.Shrink(ScaleSpriteTrad(1)), _colour_gradient[COLOUR_GREY][7]);
 	}
 
 	return drag_hlight_width;
@@ -111,7 +115,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 	for (; v != nullptr && (rtl ? px > 0 : px < max_width); v = v->Next()) {
 		if (dragging && !drag_at_end_of_train && drag_dest == v->index) {
 			/* Highlight the drag-and-drop destination inside the train. */
-			int drag_hlight_width = HighlightDragPosition(px, max_width, selection, _cursor.vehchain);
+			int drag_hlight_width = HighlightDragPosition(px, max_width, y, selection, _cursor.vehchain);
 			px += rtl ? -drag_hlight_width : drag_hlight_width;
 		}
 
@@ -145,7 +149,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 
 	if (dragging && drag_at_end_of_train) {
 		/* Highlight the drag-and-drop destination at the end of the train. */
-		HighlightDragPosition(px, max_width, selection, _cursor.vehchain);
+		HighlightDragPosition(px, max_width, y, selection, _cursor.vehchain);
 	}
 
 	_cur_dpi = old_dpi;
