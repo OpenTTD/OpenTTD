@@ -562,6 +562,25 @@ function Regression::Prices()
 	print("  BT_CLEAR_WATER:  " + AITile.GetBuildCost(AITile.BT_CLEAR_WATER));
 }
 
+function Regression::Commands()
+{
+	print("");
+	print("--Commands--");
+
+	print(" -Command accounting-");
+	local test = AITestMode();
+	local costs = AIAccounting();
+	AITile.DemolishTile(2834);
+	print("  Command cost:              " + costs.GetCosts());
+	{
+		local inner = AIAccounting();
+		print("  New inner cost scope:      " + costs.GetCosts());
+		AITile.DemolishTile(2835);
+		print("  Further command cost:      " + costs.GetCosts());
+	}
+	print("  Saved cost of outer scope: " + costs.GetCosts());
+}
+
 function cost_callback(old_path, new_tile, new_direction, self) { if (old_path == null) return 0; return old_path.GetCost() + 1; }
 function estimate_callback(tile, direction, goals, self) { return goals[0] - tile; }
 function neighbours_callback(path, cur_tile, self) { return [[cur_tile + 1, 1]]; }
@@ -1940,6 +1959,7 @@ function Regression::Start()
 	/* Do this first as it gains maximum loan (which is faked to quite a lot). */
 	this.Company();
 
+	this.Commands();
 	this.Airport();
 	this.Bridge();
 	this.BridgeList();
