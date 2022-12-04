@@ -200,6 +200,13 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -395,6 +402,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Thiết lập
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Thiết lập AI
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Thiết lập kịch bản màn chơi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập hiệu ứng trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Hiển thị tên thị trấn
@@ -997,8 +1006,18 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Đánh d
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Trình điều khiển hiện tại: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Kích thước giao diện
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tự động nhận dạng kích thước
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Đánh dấu vào ô này để điều chỉnh kích thước giao diện tự động
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Tỷ lệ góc xiên
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Đánh dấu vào ô này để điều chỉnh tỷ lệ góc xiên theo kích thước giao diện
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Hình ảnh
 
@@ -2045,6 +2064,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng �
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Thiết lập
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
@@ -2064,6 +2084,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hiện b
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Thiết lập hiển thị
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Hiển thị tùy chỉnh AI
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Hiển thị thiết lập kịch bản màn chơi
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Gói đồ họa cơ sở đang chọn bị thiếu  {NUM} sprite. Hãy cập nhật gói cơ sở này.
@@ -2455,7 +2477,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :đợi cập nh
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ra khỏi ván
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Máy trạm {STRING} gia nhập ván chơi
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Máy trạm {STRING} đã vào trò chơi (Máy trạm #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} gia nhập công ty #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} đã gia nhập công ty #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} vào xem ván chơi
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} rời bỏ ván chơi ({2:STRING})
@@ -3123,6 +3145,11 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sô
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
 STR_MAPGEN_GENERATE                                             :{WHITE}Khởi Tạo
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Thiết Lập NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Hiển thị tùy chỉnh NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Thiết lập AI
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Hiển thị tùy chỉnh AI
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Thiết Lập Kịch Bản Màn Chơi
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Tiếng Anh (Nguyên bản)
@@ -3631,12 +3658,14 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Khác
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Lợi nhuận
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Số dư hiện có
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Nguồn Vốn Riêng
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Đi vay
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Lãi Vay Vốn: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Hạn mức vay: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Vay {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vay thêm tiền. Ctrl+Click vay hết hạn mức ngay
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Trả nợ {CURRENCY_LONG}
@@ -3767,6 +3796,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Gửi ch
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Thay phương tiện
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Gửi về bảo trì
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lợi nhuận năm nay: {CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Gửi về xưởng
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Gửi về xưởng
@@ -3859,6 +3890,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tầm xa
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Kiểu máy bay: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_NONE                                      :Không
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Danh sách tàu hỏa có thể chọn. Click vào tàu hỏa để xem thông tin. Ctrl+Click để ẩn/hiện loại được chọn
@@ -4187,6 +4219,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải tr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lợi nhuận năm nay: {LTBLUE}{CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lợi nhuận năm nay: {LTBLUE}{CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG}) {BLACK}Hiệu suất tối thiểu: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Độ tin cậy: {LTBLUE}{COMMA}%  {BLACK}Hỏng hóc kể từ lần bảo trì cuối: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY_LONG}
@@ -4520,6 +4553,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có mộ
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI/Game Script chỉ có trên server
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Cấu hình AI
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Các Game Script sẽ được chạy trong ván chơi tiếp theo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Các AIs sẽ được chạy trong ván chơi tiếp theo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
@@ -4533,9 +4567,10 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Di Chuy�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuyển AI xuống dưới danh sách
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Game Script
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Tham số
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Chọn AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Game Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Chạy tập lệnh khác
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
@@ -4983,6 +5018,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Không t
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... xe đã bị phá hủy
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... các phương tiện không như nhau
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Không có phương tiện nào sẵn sàng cả
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Thay đổi tham số NewGRF
@@ -5010,6 +5046,7 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Không t
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... phương tiện không thể tới được mọi ga, bến
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... phương tiện không thể tới ga, bến đó được
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... phương tiện dùng lộ trình chia sẻ này không tới được ga, bến đó
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... các phương tiện không có cùng lộ trình
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Không thể chia sẻ lộ trình...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Không thể dừng chia sẻ danh sách lịch trình...

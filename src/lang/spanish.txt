@@ -3249,8 +3249,8 @@ STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Añadir
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Añade el NewGRF seleccionado a tu configuración
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar archivos
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza la lista de archivos NewGRF disponibles
-STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Quitar
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Quita el NewGRF seleccionado de la lista
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Retirar
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retira el NewGRF seleccionado de la lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mover Arriba
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mueve el NewGRF seleccionado hacia arriba
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mover Abajo
