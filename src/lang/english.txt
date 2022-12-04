@@ -2851,6 +2851,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Random T
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Found town in random location
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Many random towns
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cover the map with randomly placed towns
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expand all towns
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Make all towns grow slightly
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Town name:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Enter town name
