@@ -125,6 +125,10 @@ class ReplaceVehicleWindow : public Window {
 
 			/* Add variants if not folded */
 			if ((item.flags & (EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded)) == EngineDisplayFlags::HasVariants) {
+				/* Add this engine again as a child */
+				if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) {
+					target.emplace_back(item.engine_id, item.engine_id, EngineDisplayFlags::None, indent + 1);
+				}
 				AddChildren(source, target, item.engine_id, indent + 1, side);
 			}
 		}
@@ -617,7 +621,22 @@ public:
 				uint i = this->vscroll[click_side]->GetScrolledRowFromWidget(pt.y, this, widget);
 				size_t engine_count = this->engines[click_side].size();
 
-				EngineID e = engine_count > i ? this->engines[click_side][i].engine_id : INVALID_ENGINE;
+				EngineID e = INVALID_ENGINE;
+				if (i < engine_count) {
+					const auto &item = this->engines[click_side][i];
+					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
+					if ((item.flags & EngineDisplayFlags::HasVariants) != EngineDisplayFlags::None && IsInsideMM(r.left, r.right, pt.x)) {
+						/* toggle folded flag on engine */
+						assert(item.variant_id != INVALID_ENGINE);
+						Engine *engine = Engine::Get(item.variant_id);
+						engine->display_flags ^= EngineDisplayFlags::IsFolded;
+
+						InvalidateWindowData(WC_REPLACE_VEHICLE, (VehicleType)this->window_number, 0); // Update the autoreplace window
+						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+						return;
+					}
+					if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) e = item.engine_id;
+				}
 
 				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
 				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */

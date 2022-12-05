@@ -974,9 +974,10 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	int sprite_left  = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_left;
 	int sprite_right = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_right;
 	int sprite_width = sprite_left + sprite_right;
+	int circle_width = std::max(GetScaledSpriteSize(SPR_CIRCLE_FOLDED).width, GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED).width);
+	int linecolour = _colour_gradient[COLOUR_ORANGE][4];
 
 	Rect ir      = r.WithHeight(step_size).Shrink(WidgetDimensions::scaled.matrix);
-	int sprite_x = ir.WithWidth(sprite_width, rtl).left + sprite_left;
 	int sprite_y_offset = ScaleSpriteTrad(sprite_y_offsets[type]) + ir.Height() / 2;
 
 	Dimension replace_icon = {0, 0};
@@ -987,7 +988,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
 	}
 
-	Rect tr = ir.Indent(sprite_width + WidgetDimensions::scaled.hsep_wide, rtl);                                      // Name position
+	Rect tr = ir.Indent(circle_width + WidgetDimensions::scaled.hsep_normal + sprite_width + WidgetDimensions::scaled.hsep_wide, rtl); // Name position
 	Rect cr = tr.Indent(replace_icon.width + WidgetDimensions::scaled.hsep_wide, !rtl).WithWidth(count_width, !rtl);  // Count position
 	Rect rr = tr.WithWidth(replace_icon.width, !rtl);                                                                 // Replace icon position
 	if (show_count) tr = tr.Indent(count_width + WidgetDimensions::scaled.hsep_normal + replace_icon.width + WidgetDimensions::scaled.hsep_wide, !rtl);
@@ -998,22 +999,40 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 	int y = ir.top;
 	for (; min < max; min++, y += step_size) {
-		const EngineID engine = eng_list[min].engine_id;
+		const auto &item = eng_list[min];
+		uint indent       = item.indent * WidgetDimensions::scaled.hsep_indent;
+		bool has_variants = (item.flags & EngineDisplayFlags::HasVariants) != EngineDisplayFlags::None;
+		bool is_folded    = (item.flags & EngineDisplayFlags::IsFolded)    != EngineDisplayFlags::None;
+		bool shaded       = (item.flags & EngineDisplayFlags::Shaded)      != EngineDisplayFlags::None;
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
-		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, engine);
+		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, item.engine_id);
 
-		const Engine *e = Engine::Get(engine);
+		const Engine *e = Engine::Get(item.engine_id);
 		bool hidden = HasBit(e->company_hidden, _local_company);
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
-		TextColour tc = (engine == selected_id) ? TC_WHITE : (TC_NO_SHADE | (hidden ? TC_GREY : TC_BLACK));
+		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : (TC_NO_SHADE | ((hidden | shaded) ? TC_GREY : TC_BLACK));
 
-		SetDParam(0, engine);
-		DrawString(tr.left, tr.right, y + normal_text_y_offset, str, tc);
-		DrawVehicleEngine(r.left, r.right, sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company), EIT_PURCHASE);
+		SetDParam(0, item.engine_id);
+		Rect itr = tr.Indent(indent, rtl);
+		DrawString(itr.left, itr.right, y + normal_text_y_offset, str, tc);
+		int sprite_x = ir.Indent(indent + circle_width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(sprite_width, rtl).left + sprite_left;
+		DrawVehicleEngine(r.left, r.right, sprite_x, y + sprite_y_offset, item.engine_id, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(item.engine_id, _local_company), EIT_PURCHASE);
 		if (show_count) {
 			SetDParam(0, num_engines);
 			DrawString(cr.left, cr.right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
-			if (EngineHasReplacementForCompany(Company::Get(_local_company), engine, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.left, y + replace_icon_y_offset);
+			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.left, y + replace_icon_y_offset);
+		}
+		if (has_variants) {
+			Rect fr = ir.Indent(indent, rtl).WithWidth(circle_width, rtl);
+			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, {fr.left, y, fr.right, y + ir.Height() - 1}, false, SA_CENTER);
+		}
+		if (indent > 0) {
+			/* Draw tree lines */
+			Rect fr = ir.Indent(indent - WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(circle_width, rtl);
+			int ycenter = y + normal_text_y_offset + FONT_HEIGHT_NORMAL / 2;
+			bool continues = (min + 1U) < eng_list.size() && eng_list[min + 1].indent == item.indent;
+			GfxDrawLine(fr.left + circle_width / 2, y - WidgetDimensions::scaled.matrix.top, fr.left + circle_width / 2, continues ? y - WidgetDimensions::scaled.matrix.top + step_size - 1 : ycenter, linecolour, WidgetDimensions::scaled.fullbevel.top);
+			GfxDrawLine(fr.left + circle_width / 2, ycenter, fr.right, ycenter, linecolour, WidgetDimensions::scaled.fullbevel.top);
 		}
 	}
 }
@@ -1090,6 +1109,10 @@ struct BuildVehicleWindow : Window {
 
 			/* Add variants if not folded */
 			if ((item.flags & (EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded)) == EngineDisplayFlags::HasVariants) {
+				/* Add this engine again as a child */
+				if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) {
+					this->eng_list.emplace_back(item.engine_id, item.engine_id, EngineDisplayFlags::None, indent + 1);
+				}
 				AddChildren(source, item.engine_id, indent + 1);
 			}
 		}
@@ -1490,7 +1513,23 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST: {
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BV_LIST);
 				size_t num_items = this->eng_list.size();
-				this->SelectEngine((i < num_items) ? this->eng_list[i].engine_id : INVALID_ENGINE);
+				EngineID e = INVALID_ENGINE;
+				if (i < num_items) {
+					const auto &item = this->eng_list[i];
+					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
+					if ((item.flags & EngineDisplayFlags::HasVariants) != EngineDisplayFlags::None && IsInsideMM(r.left, r.right, pt.x)) {
+						/* toggle folded flag on engine */
+						assert(item.variant_id != INVALID_ENGINE);
+						Engine *engine = Engine::Get(item.variant_id);
+						engine->display_flags ^= EngineDisplayFlags::IsFolded;
+
+						InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
+						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+						return;
+					}
+					if ((item.flags & EngineDisplayFlags::Shaded) == EngineDisplayFlags::None) e = item.engine_id;
+				}
+				this->SelectEngine(e);
 				this->SetDirty();
 				if (_ctrl_pressed) {
 					this->OnClick(pt, WID_BV_SHOW_HIDE, 1);
@@ -1525,6 +1564,20 @@ struct BuildVehicleWindow : Window {
 						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
 					} else {
 						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
+					}
+
+					/* Update last used variant and refresh if necessary. */
+					bool refresh = false;
+					int recursion = 10; /* In case of infinite loop */
+					for (Engine *e = Engine::Get(sel_eng); recursion > 0; e = Engine::Get(e->info.variant_id), --recursion) {
+						refresh |= (e->display_last_variant != sel_eng);
+						e->display_last_variant = sel_eng;
+						if (e->info.variant_id == INVALID_ENGINE) break;
+					}
+					if (refresh) {
+						InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
+						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+						return;
 					}
 				}
 				break;
