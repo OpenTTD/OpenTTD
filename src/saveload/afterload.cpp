@@ -3155,6 +3155,9 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Road stops is 'only' updating some caches, but they are needed for PF calls in SLV_MULTITRACK_LEVEL_CROSSINGS teleporting. */
+	AfterLoadRoadStops();
+
 	/* Road vehicles stopped on multitrack level crossings need teleporting to a depot
 	 * to avoid crashing into the side of the train they're waiting for. */
 	if (IsSavegameVersionBefore(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
@@ -3165,6 +3168,9 @@ bool AfterLoadGame()
 
 			/* Ignore moving vehicles. */
 			if (rv->cur_speed > 0) continue;
+
+			/* Ignore crashed vehicles. */
+			if (rv->vehstatus & VS_CRASHED) continue;
 
 			/* Ignore vehicles not on level crossings. */
 			TileIndex cur_tile = rv->tile;
@@ -3207,8 +3213,6 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
 	}
 
-	/* Road stops is 'only' updating some caches */
-	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();
