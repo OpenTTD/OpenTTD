@@ -24,6 +24,7 @@
 #include "ship.h"
 #include "aircraft.h"
 #include "engine_cmd.h"
+#include "zoom_func.h"
 
 #include "widgets/engine_widget.h"
 
@@ -94,7 +95,7 @@ struct EnginePreviewWindow : Window {
 			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
 			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
 		}
-		this->vehicle_space = std::max<int>(40, y - y_offs);
+		this->vehicle_space = std::max<int>(ScaleSpriteTrad(40), y - y_offs);
 
 		size->width = std::max(size->width, x - x_offs);
 		SetDParam(0, GetEngineCategoryName(engine));
