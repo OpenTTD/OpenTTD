@@ -9001,7 +9001,7 @@ static void FinaliseEngineArray()
 
 		/* Set appropriate flags on variant engine */
 		if (e->info.variant_id != INVALID_ENGINE) {
-			Engine::Get(e->info.variant_id)->display_flags |= EngineDisplayFlags::HasVariants;
+			Engine::Get(e->info.variant_id)->display_flags |= EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded;
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
