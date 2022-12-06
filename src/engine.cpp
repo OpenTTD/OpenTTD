@@ -563,6 +563,18 @@ static bool IsWagon(EngineID index)
 }
 
 /**
+ * Ensure engine is not set as the last used variant for any other engine.
+ * @param engine_id Engine being removed.
+ * @param type      Type of engine.
+ */
+static void ClearLastVariant(EngineID engine_id, VehicleType type)
+{
+	for (Engine *e : Engine::IterateType(type)) {
+		if (e->display_last_variant == engine_id) e->display_last_variant = INVALID_ENGINE;
+	}
+}
+
+/**
  * Update #Engine::reliability and (if needed) update the engine GUIs.
  * @param e %Engine to update.
  */
@@ -577,6 +589,7 @@ static void CalcEngineReliability(Engine *e)
 		if (retire_early != 0 && age >= retire_early_max_age) {
 			/* Early retirement is enabled and we're past the date... */
 			e->company_avail = 0;
+			ClearLastVariant(e->index, e->type);
 			AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 		}
 	}
@@ -597,6 +610,7 @@ static void CalcEngineReliability(Engine *e)
 		e->company_avail = 0;
 		e->reliability = e->reliability_final;
 		/* Kick this engine out of the lists */
+		ClearLastVariant(e->index, e->type);
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 	SetWindowClassesDirty(WC_BUILD_VEHICLE); // Update to show the new reliability
@@ -750,6 +764,7 @@ static void DisableEngineForCompany(EngineID eid, CompanyID company)
 	}
 
 	if (company == _local_company) {
+		ClearLastVariant(e->index, e->type);
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 }
