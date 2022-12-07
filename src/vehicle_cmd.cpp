@@ -958,7 +958,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlag flags, TileInde
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { total_cost, INVALID_VEHICLE };
+			return { result, INVALID_VEHICLE };
 		}
 
 		/* Now clone the vehicle's name, if it has one. */
