@@ -429,13 +429,7 @@ static GRFFile *GetFileByFilename(const char *filename)
 /** Reset all NewGRFData that was used only while processing data */
 static void ClearTemporaryNewGRFData(GRFFile *gf)
 {
-	/* Clear the GOTO labels used for GRF processing */
-	for (GRFLabel *l = gf->label; l != nullptr;) {
-		GRFLabel *l2 = l->next;
-		free(l);
-		l = l2;
-	}
-	gf->label = nullptr;
+	gf->labels.clear();
 }
 
 /**
@@ -6745,15 +6739,15 @@ static void SkipIf(ByteReader *buf)
 	 * file. The jump will always be the first matching label that follows
 	 * the current nfo_line. If no matching label is found, the first matching
 	 * label in the file is used. */
-	GRFLabel *choice = nullptr;
-	for (GRFLabel *label = _cur.grffile->label; label != nullptr; label = label->next) {
-		if (label->label != numsprites) continue;
+	const GRFLabel *choice = nullptr;
+	for (const auto &label : _cur.grffile->labels) {
+		if (label.label != numsprites) continue;
 
 		/* Remember a goto before the current line */
-		if (choice == nullptr) choice = label;
+		if (choice == nullptr) choice = &label;
 		/* If we find a label here, this is definitely good */
-		if (label->nfo_line > _cur.nfo_line) {
-			choice = label;
+		if (label.nfo_line > _cur.nfo_line) {
+			choice = &label;
 			break;
 		}
 	}
@@ -7601,23 +7595,9 @@ static void DefineGotoLabel(ByteReader *buf)
 
 	byte nfo_label = buf->ReadByte();
 
-	GRFLabel *label = MallocT<GRFLabel>(1);
-	label->label    = nfo_label;
-	label->nfo_line = _cur.nfo_line;
-	label->pos      = _cur.file->GetPos();
-	label->next     = nullptr;
+	_cur.grffile->labels.emplace_back(nfo_label, _cur.nfo_line, _cur.file->GetPos());
 
-	/* Set up a linked list of goto targets which we will search in an Action 0x7/0x9 */
-	if (_cur.grffile->label == nullptr) {
-		_cur.grffile->label = label;
-	} else {
-		/* Attach the label to the end of the list */
-		GRFLabel *l;
-		for (l = _cur.grffile->label; l->next != nullptr; l = l->next) {}
-		l->next = label;
-	}
-
-	grfmsg(2, "DefineGotoLabel: GOTO target with label 0x%02X", label->label);
+	grfmsg(2, "DefineGotoLabel: GOTO target with label 0x%02X", nfo_label);
 }
 
 /**
