@@ -578,9 +578,16 @@ static void ClearLastVariant(EngineID engine_id, VehicleType type)
  * Update #Engine::reliability and (if needed) update the engine GUIs.
  * @param e %Engine to update.
  */
-static void CalcEngineReliability(Engine *e)
+void CalcEngineReliability(Engine *e, bool new_month)
 {
-	uint age = e->age;
+	/* Get source engine for reliability age. This is normally our engine unless variant reliability syncing is requested. */
+	Engine *re = e;
+	while (re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+		re = Engine::Get(re->info.variant_id);
+	}
+
+	uint age = re->age;
+	if (new_month && re->index > e->index && age != MAX_DAY) age++; /* parent variant's age has not yet updated. */
 
 	/* Check for early retirement */
 	if (e->company_avail != 0 && !_settings_game.vehicle.never_expire_vehicles && e->info.base_life != 0xFF) {
@@ -671,7 +678,16 @@ void StartupOneEngine(Engine *e, Date aging_date)
 		e->flags |= ENGINE_AVAILABLE;
 	}
 
-	RestoreRandomSeeds(saved_seeds);
+	/* Get parent variant index for syncing reliability via random seed. */
+	const Engine *re = e;
+	while (re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+		re = Engine::Get(re->info.variant_id);
+	}
+
+	SetRandomSeed(_settings_game.game_creation.generation_seed ^
+	              re->index ^
+	              e->type ^
+	              e->GetGRFID());
 
 	r = Random();
 	e->reliability_start = GB(r, 16, 14) + 0x7AE0;
@@ -683,9 +699,9 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
 	e->duration_phase_3 = GB(r, 9, 7) + 120;
 
-	e->reliability_spd_dec = ei->decay_speed << 2;
+	RestoreRandomSeeds(saved_seeds);
 
-	CalcEngineReliability(e);
+	e->reliability_spd_dec = ei->decay_speed << 2;
 
 	/* prevent certain engines from ever appearing. */
 	if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {
@@ -705,6 +721,9 @@ void StartupEngines()
 
 	for (Engine *e : Engine::Iterate()) {
 		StartupOneEngine(e, aging_date);
+	}
+	for (Engine *e : Engine::Iterate()) {
+		CalcEngineReliability(e, false);
 	}
 
 	/* Update the bitmasks for the vehicle lists */
@@ -775,8 +794,9 @@ static void DisableEngineForCompany(EngineID eid, CompanyID company)
  * Company \a company accepts engine \a eid for preview.
  * @param eid Engine being accepted (is under preview).
  * @param company Current company previewing the engine.
+ * @param recursion_depth Recursion depth to avoid infinite loop.
  */
-static void AcceptEnginePreview(EngineID eid, CompanyID company)
+static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_depth = 0)
 {
 	Engine *e = Engine::Get(eid);
 
@@ -791,6 +811,16 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 	 *       we have to use the GUI-scope scheduling of InvalidateWindowData.
 	 */
 	InvalidateWindowData(WC_ENGINE_PREVIEW, eid);
+
+	/* Don't search for variants to include if we are 10 levels deep already. */
+	if (recursion_depth >= 10) return;
+
+	/* Find variants to be included in preview. */
+	for (Engine *ve : Engine::IterateType(e->type)) {
+		if (ve->index != eid && ve->info.variant_id == eid && (ve->info.extra_flags & ExtraEngineFlags::JoinPreview) != ExtraEngineFlags::None) {
+			AcceptEnginePreview(ve->index, company, recursion_depth + 1);
+		}
+	}
 }
 
 /**
@@ -1014,7 +1044,7 @@ static void NewVehicleAvailable(Engine *e)
 	if (!IsVehicleTypeDisabled(e->type, true)) AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
-	if (!IsVehicleTypeDisabled(e->type, false)) {
+	if (!IsVehicleTypeDisabled(e->type, false) && (e->info.extra_flags & ExtraEngineFlags::NoNews) == ExtraEngineFlags::None) {
 		SetDParam(0, GetEngineCategoryName(index));
 		SetDParam(1, index);
 		AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NT_NEW_VEHICLES, NF_VEHICLE, NR_ENGINE, index);
@@ -1038,7 +1068,7 @@ void EnginesMonthlyLoop()
 			/* Age the vehicle */
 			if ((e->flags & ENGINE_AVAILABLE) && e->age != MAX_DAY) {
 				e->age++;
-				CalcEngineReliability(e);
+				CalcEngineReliability(e, true);
 				refresh = true;
 			}
 
@@ -1057,6 +1087,9 @@ void EnginesMonthlyLoop()
 
 				/* Do not introduce new rail wagons */
 				if (IsWagon(e->index)) continue;
+
+				/* Engine has no preview */
+				if ((e->info.extra_flags & ExtraEngineFlags::NoPreview) != ExtraEngineFlags::None) continue;
 
 				/* Show preview dialog to one of the companies. */
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
