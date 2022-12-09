@@ -52,6 +52,8 @@ struct LEAEChunkHandler : ChunkHandler {
 
 static const SaveLoad _league_tables_desc[] = {
 	SLE_SSTR(LeagueTable, title, SLE_STR | SLF_ALLOW_CONTROL),
+	SLE_SSTR(LeagueTable, header, SLE_STR | SLF_ALLOW_CONTROL),
+	SLE_SSTR(LeagueTable, footer, SLE_STR | SLF_ALLOW_CONTROL),
 };
 
 struct LEATChunkHandler : ChunkHandler {
