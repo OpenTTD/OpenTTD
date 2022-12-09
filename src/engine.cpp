@@ -613,8 +613,7 @@ static void CalcEngineReliability(Engine *e)
 		ClearLastVariant(e->index, e->type);
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
-	SetWindowClassesDirty(WC_BUILD_VEHICLE); // Update to show the new reliability
-	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
+
 }
 
 /** Compute the value for #_year_engine_aging_stops. */
@@ -716,6 +715,9 @@ void StartupEngines()
 
 	/* Invalidate any open purchase lists */
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE);
+
+	SetWindowClassesDirty(WC_BUILD_VEHICLE);
+	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
 }
 
 /**
@@ -1031,11 +1033,13 @@ static void NewVehicleAvailable(Engine *e)
 void EnginesMonthlyLoop()
 {
 	if (_cur_year < _year_engine_aging_stops) {
+		bool refresh = false;
 		for (Engine *e : Engine::Iterate()) {
 			/* Age the vehicle */
 			if ((e->flags & ENGINE_AVAILABLE) && e->age != MAX_DAY) {
 				e->age++;
 				CalcEngineReliability(e);
+				refresh = true;
 			}
 
 			/* Do not introduce invalid engines */
@@ -1062,6 +1066,11 @@ void EnginesMonthlyLoop()
 		}
 
 		InvalidateWindowClassesData(WC_BUILD_VEHICLE); // rebuild the purchase list (esp. when sorted by reliability)
+
+		if (refresh) {
+			SetWindowClassesDirty(WC_BUILD_VEHICLE);
+			SetWindowClassesDirty(WC_REPLACE_VEHICLE);
+		}
 	}
 }
 
