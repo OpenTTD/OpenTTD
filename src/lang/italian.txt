@@ -1467,6 +1467,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Larghezza delle
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostra il nome dei NewGRF nella finestra di costruzione dei veicoli: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Viene aggiunta una riga di testo alla finestra di costruzione dei veicoli, che specifica da quale NewGRF proviene il veicolo selezionato.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrare i carichi che i veicoli possono trasportare nella finestra dell'elenco veicoli. {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Se abilitato, il carico trasportabile dal veicolo apparirà sopra di esso nell'elenco dei veicoli della compagnia.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paesaggio: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :I paesaggi definiscono scenari predefiniti di gioco. Differiscono per i carichi disponibili e per i requisiti di crescita delle città. Tuttavia NewGRF e Script offrono possibilità di controllo più fine su questi aspetti.
@@ -3843,6 +3845,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Invia is
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Rimpiazza veicoli
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Manutenzione
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profitto quest'anno: {CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Manda al deposito
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Manda al deposito
@@ -3885,7 +3889,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Rimuovi tutti i
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rinomina un gruppo
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :Profitto di quest'anno:
+STR_GROUP_PROFIT_THIS_YEAR                                      :Profitto anno corrente:
 STR_GROUP_PROFIT_LAST_YEAR                                      :Profitto dell'anno scorso:
 STR_GROUP_OCCUPANCY                                             :Utilizzo corrente:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
@@ -3937,7 +3941,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo di 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tutti i tipi di carico
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Merci
-STR_CARGO_TYPE_FILTER_NONE                                      :Nessuno
+STR_CARGO_TYPE_FILTER_NONE                                      :Nessun carico
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Elenco di selezione dei veicoli ferroviari - fare clic su un veicolo per informazioni. CTRL+clic mostra/nasconde il tipo di veicolo
@@ -4265,8 +4269,8 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}elocità
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}S.T. max.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profitti anno corrente: {LTBLUE}{CURRENCY_LONG} (anno scorso: {CURRENCY_LONG}) {BLACK}Min. rendimento: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profitto anno corrente: {LTBLUE}{CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profitti anno corrente: {LTBLUE}{CURRENCY_LONG} (anno scorso: {CURRENCY_LONG}) {BLACK}Prestazione minima: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenzione: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Costruito nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY_LONG}
@@ -5066,6 +5070,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossib
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... il veicolo è distrutto
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... non tutti i veicoli sono identici
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Non sarà disponibile alcun veicolo
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Cambiare i NewGRF configurati
@@ -5093,6 +5098,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... il veicolo non può utilizzare tutte le stazioni
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... il veicolo non può utilizzare questa stazione
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un veicolo che condivide l'ordine non può utilizzare questa stazione
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... non tutti i veicoli hanno gli stessi ordini
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... non tutti i veicoli condividono gli ordini
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossibile condividere la lista degli ordini...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossibile terminare la condivisione degli ordini...
