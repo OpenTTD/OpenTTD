@@ -2920,9 +2920,11 @@ static inline void ClearSaveLoadState()
  */
 static void SaveFileStart()
 {
-	// If fast forward is via key, save normal game speed.
-	// If the key continues to be pressed, the graphics driver will continue to fast forward the game.
-	// If the key is released during autosave, the normal speed will be restored.
+	/**
+	 * If fast forward is via key, save normal game speed.
+	 * If the key continues to be pressed, the graphics driver will continue to fast forward the game.
+	 * If the key is released during autosave, the normal speed will be restored.
+	 */
 	_sl.game_speed = VideoDriver::GetInstance()->isFastForwardViaKey() ? 100 : _game_speed;
 	_game_speed = 100;
 	SetMouseCursorBusy(true);
