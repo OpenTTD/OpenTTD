@@ -2925,7 +2925,7 @@ static void SaveFileStart()
 	 * If the key continues to be pressed, the graphics driver will continue to fast forward the game.
 	 * If the key is released during autosave, the normal speed will be restored.
 	 */
-	_sl.game_speed = VideoDriver::GetInstance()->isFastForwardViaKey() ? 100 : _game_speed;
+	_sl.game_speed = VideoDriver::GetInstance()->IsFastForwardViaKey() ? 100 : _game_speed;
 	_game_speed = 100;
 	SetMouseCursorBusy(true);
 
