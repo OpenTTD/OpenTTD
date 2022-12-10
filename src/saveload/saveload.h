@@ -17,6 +17,7 @@
 #include <optional>
 #include <string>
 #include <vector>
+#include "../video/video_driver.hpp"
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were

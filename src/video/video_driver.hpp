@@ -222,6 +222,9 @@ public:
 		bool unlock; ///< Stores if the lock did anything that has to be undone.
 	};
 
+	bool isFastForwardViaKey(){
+		return fast_forward_via_key;
+	}
 protected:
 	const uint ALLOWED_DRIFT = 5; ///< How many times videodriver can miss deadlines without it being overly compensated.
 
