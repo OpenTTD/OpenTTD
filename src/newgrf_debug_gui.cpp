@@ -808,11 +808,17 @@ struct SpriteAlignerWindow : Window {
 	Scrollbar *vscroll;
 	SmallMap<SpriteID, XyOffs> offs_start_map; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
+	static bool centre;
+	static bool crosshair;
+
 	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
 		this->FinishInitNested(wno);
+
+		this->SetWidgetLoweredState(WID_SA_CENTRE, SpriteAlignerWindow::centre);
+		this->SetWidgetLoweredState(WID_SA_CROSSHAIR, SpriteAlignerWindow::crosshair);
 
 		/* Oh yes, we assume there is at least one normal sprite! */
 		while (GetSpriteType(this->current_sprite) != ST_NORMAL) this->current_sprite++;
@@ -875,8 +881,15 @@ struct SpriteAlignerWindow : Window {
 				/* Center the sprite ourselves */
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-				int x = -UnScaleGUI(spr->x_offs) + (ir.Width()  - UnScaleGUI(spr->width) ) / 2;
-				int y = -UnScaleGUI(spr->y_offs) + (ir.Height() - UnScaleGUI(spr->height)) / 2;
+				int x;
+				int y;
+				if (SpriteAlignerWindow::centre) {
+					x = -UnScaleGUI(spr->x_offs) + (ir.Width() - UnScaleGUI(spr->width)) / 2;
+					y = -UnScaleGUI(spr->y_offs) + (ir.Height() - UnScaleGUI(spr->height)) / 2;
+				} else {
+					x = ir.Width() / 2;
+					y = ir.Height() / 2;
+				}
 
 				DrawPixelInfo new_dpi;
 				if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) break;
@@ -884,6 +897,10 @@ struct SpriteAlignerWindow : Window {
 				_cur_dpi = &new_dpi;
 
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, ZOOM_LVL_GUI);
+				if (this->crosshair) {
+					GfxDrawLine(x, 0, x, ir.Height() - 1, PC_WHITE, 1, 1);
+					GfxDrawLine(0, y, ir.Width() - 1, y, PC_WHITE, 1, 1);
+				}
 
 				_cur_dpi = old_dpi;
 
@@ -989,6 +1006,18 @@ struct SpriteAlignerWindow : Window {
 				this->offs_start_map.Erase(this->current_sprite);
 				this->SetDirty();
 				break;
+
+			case WID_SA_CENTRE:
+				SpriteAlignerWindow::centre = !SpriteAlignerWindow::centre;
+				this->SetWidgetLoweredState(widget, SpriteAlignerWindow::centre);
+				this->SetDirty();
+				break;
+
+			case WID_SA_CROSSHAIR:
+				SpriteAlignerWindow::crosshair = !SpriteAlignerWindow::crosshair;
+				this->SetWidgetLoweredState(widget, SpriteAlignerWindow::crosshair);
+				this->SetDirty();
+				break;
 		}
 	}
 
@@ -1024,6 +1053,9 @@ struct SpriteAlignerWindow : Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_SA_LIST);
 	}
 };
+
+bool SpriteAlignerWindow::centre = true;
+bool SpriteAlignerWindow::crosshair = true;
 
 static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -1066,10 +1098,10 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 				EndContainer(),
 				NWidget(WWT_LABEL, COLOUR_GREY, WID_SA_OFFSETS_ABS), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS_ABS, STR_NULL), SetFill(1, 0), SetPadding(0, 10, 0, 10),
 				NWidget(WWT_LABEL, COLOUR_GREY, WID_SA_OFFSETS_REL), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS_REL, STR_NULL), SetFill(1, 0), SetPadding(0, 10, 0, 10),
-				NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
-					NWidget(NWID_SPACER), SetFill(1, 1),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_RESET_REL), SetDataTip(STR_SPRITE_ALIGNER_RESET_BUTTON, STR_SPRITE_ALIGNER_RESET_TOOLTIP), SetFill(0, 0),
-					NWidget(NWID_SPACER), SetFill(1, 1),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 5, 10),
+					NWidget(WWT_TEXTBTN_2, COLOUR_GREY, WID_SA_CENTRE), SetDataTip(STR_SPRITE_ALIGNER_CENTRE_OFFSET, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_RESET_REL), SetDataTip(STR_SPRITE_ALIGNER_RESET_BUTTON, STR_SPRITE_ALIGNER_RESET_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_CROSSHAIR), SetDataTip(STR_SPRITE_ALIGNER_CROSSHAIR, STR_NULL), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),
