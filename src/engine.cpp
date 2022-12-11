@@ -685,7 +685,11 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	}
 
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^
-	              re->index ^
+	              (re->index << 16) ^
+				  (re->info.base_intro << 12) ^
+				  (re->info.decay_speed << 8) ^
+				  (re->info.lifelength << 4) ^
+				  re->info.retire_early ^
 	              e->type ^
 	              e->GetGRFID());
 
