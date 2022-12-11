@@ -206,6 +206,8 @@ STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}
 STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
@@ -1007,6 +1009,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Đánh d
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Trình điều khiển hiện tại: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Kích thước giao diện
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Kéo thanh trượt để điều chỉnh kích thước giao diện. Giữ Ctrl để điều chỉnh liên tục
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tự động nhận dạng kích thước
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Đánh dấu vào ô này để điều chỉnh kích thước giao diện tự động
 
@@ -1429,6 +1432,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Độ đậm c�
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Hiển thị tên NewGRF trong cửa sổ xây phương tiện: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Thêm một dòng vào cửa sổ xây phương tiện, hiển thị phương tiện đến từ NewGRF nào.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Liệt kê hàng hoá mà phương tiện có thể chuyên chở trong cửa sổ danh sách {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Nếu được bật, những hàng hóa có thể vận chuyển của phương tiện sẽ được hiển thị phía trên chúng trong danh sách phương tiện
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Nền đất: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Nền đất là định nghĩa cơ bản của các màn chơi với các kiểu hàng hóa và yêu cầu cho sự phát triển đô thị khác nhau. NewGRF và kịch bản chơi cho phép các điều chỉnh nhỏ hơn
@@ -2065,6 +2070,7 @@ STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Thiết 
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Thiết lập Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
@@ -2476,13 +2482,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :đợi cập nh
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ra khỏi ván
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Máy trạm {STRING} gia nhập ván chơi
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Máy trạm {STRING} đã vào trò chơi (Máy trạm #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Máy trạm {0:STRING} đã vào trò chơi (Máy trạm #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} đã gia nhập công ty #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} vào xem ván chơi
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} rời bỏ ván chơi ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} khai trương công ty mới (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} rời bỏ ván chơi ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} đã đổi tên thành {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tặng {2:CURRENCY_LONG} cho {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} tặng {2:CURRENCY_LONG} cho {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server kết thúc phiên
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server khởi động lại...{}Xin chờ...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} đã bị đá khỏi ván chơi. Lý do: ({STRING})
@@ -3149,7 +3155,8 @@ STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Thiết 
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Thiết lập AI
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Hiển thị tùy chỉnh AI
-STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Thiết Lập Kịch Bản Màn Chơi
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Thiết lập Game Script
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Hiển thị thiết lập game script
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Tiếng Anh (Nguyên bản)
@@ -3335,15 +3342,15 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Lỗi nghi
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Xảy ra lỗi NewGRF nghiêm trọng:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Có lỗi NewGRF xảy ra:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sẽ không hoạt động với phiên bản TTDPatch version theo như báo cáo của OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} để dành cho phiên bản {STRING} của TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} được thiết kế để xài với {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Tham số không hợp lệ {1:STRING}: tham số {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} phải được nạp trước {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} phỉa được nạp sau {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} yêu cầu phiên bản OpenTTD {STRING} hoặc cao hơn.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} để dành cho phiên bản {2:STRING} của TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} được thiết kế để dùng với {2:STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Tham số không hợp lệ {1:STRING}: tham số {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} phải được nạp trước {2:STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} phỉa được nạp sau {2:STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} yêu cầu phiên bản OpenTTD {2:STRING} hoặc cao hơn.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF file được thiết kế để phiên dịch
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Quá nhiều NewGRFs đã nạp.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {1:STRING} như là NewGRF tĩnh với {STRING} có thể gây mất đồng bộ
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {1:STRING} như là NewGRF tĩnh với {2:STRING} có thể gây mất đồng bộ
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :sprite không hợp lệ (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Thuộc tính thực thi 0 chưa định nghĩa {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng IT không hợp lệ (sprite {3:NUM})
@@ -3475,14 +3482,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Mua độc quy�
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan chức địa phương
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm gần trung tâm trong thời gian ngắn.{}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Thực hiện chiến dịch quảng cáo trung bình để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh trung tâm trong thời gian ngắn.{}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh & xa trung tâm trong thời gian ngắn.{}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Tài trợ xây dựng lại đường sá của đô thị.{} Sẽ gây ách tắc giao thông đường bộ trong 6 tháng.{}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{} Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Mua 1 năm độc quyền kinh doanh vận tải của đô thị.{} Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty.{}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm gần trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo trung bình để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Tăng xếp hạng cho các trạm xung quanh & xa trung tâm trong thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng lại đường sá của đô thị.{} Sẽ gây ách tắc giao thông đường bộ trong 6 tháng.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Mua 1 năm độc quyền kinh doanh vận tải của đô thị.{} Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Mục Tiêu Của {COMPANY}
@@ -3655,6 +3662,7 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Tàu thuy
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lãi vay vốn
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Khác
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Tổng số
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
@@ -3766,7 +3774,7 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Sản l�
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Cần cung cấp:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} đang chờ{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Thay đổi sản lượng (bội số của 8, max 2040)
@@ -3890,6 +3898,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tầm xa
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Kiểu máy bay: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Tất cả hàng hóa
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Hàng hóa
 STR_CARGO_TYPE_FILTER_NONE                                      :Không
 
 ###length VEHICLE_TYPES
@@ -4060,7 +4070,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
 STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá thành: {CURRENCY_LONG} Tải trọng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}{}Chi phí hoạt động: {CURRENCY_LONG}/năm{}Sức chứa: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY_LONG} Nặng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {0:CURRENCY_LONG} Nặng: {1:WEIGHT_SHORT}{}Tốc độ: {2:VELOCITY}  Công suất: {3:POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Giá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING}{}Sức chứa: {CARGO_LONG}, {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}GIá: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Kiểu máy bay: {STRING}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
@@ -4224,8 +4234,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Độ ti
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Sức chứa: {LTBLUE}Không{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Sức chứa: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Sức chứa: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Sức chứa: {LTBLUE}{0:CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Sức chứa: {LTBLUE}{0:CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Sức chứa: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Cước trung chuyển: {LTBLUE}{CURRENCY_LONG}
@@ -4554,6 +4564,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa s
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Cấu hình AI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Cấu hình Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Các Game Script sẽ được chạy trong ván chơi tiếp theo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Các AIs sẽ được chạy trong ván chơi tiếp theo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
@@ -4571,7 +4582,7 @@ STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Tham s�
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Chọn AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Game Script
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Chọn Game Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Chạy tập lệnh khác
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
@@ -4600,7 +4611,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Chụp b
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Chụp màn hình bản đồ nhỏ
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tham số AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5047,6 +5058,7 @@ STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... phư
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... phương tiện không thể tới ga, bến đó được
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... phương tiện dùng lộ trình chia sẻ này không tới được ga, bến đó
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... các phương tiện không có cùng lộ trình
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... không phải tất cả phương tiện đang chia sẻ lộ trình
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Không thể chia sẻ lộ trình...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Không thể dừng chia sẻ danh sách lịch trình...
