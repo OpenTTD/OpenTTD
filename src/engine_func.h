@@ -27,7 +27,7 @@ bool IsEngineRefittable(EngineID engine);
 void GetArticulatedVehicleCargoesAndRefits(EngineID engine, CargoArray *cargoes, CargoTypes *refits, CargoID cargo_type, uint cargo_capacity);
 void SetYearEngineAgingStops();
 void CalcEngineReliability(Engine *e, bool new_month);
-void StartupOneEngine(Engine *e, Date aging_date);
+void StartupOneEngine(Engine *e, Date aging_date, uint32 seed);
 
 uint GetTotalCapacityOfArticulatedParts(EngineID engine);
 
