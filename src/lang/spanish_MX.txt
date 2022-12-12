@@ -1433,6 +1433,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las l
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar el nombre del GRF en la ventana de construcción de vehículo: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Indicar por medio de una línea adicional en la ventana de construcción de vehículo su NewGRF.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar la carga que los vehículos puede llevar en las ventanas de listas {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Al activarse, la carga que el vehículo puede transportar aparecerá en las listas de vehículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ambiente: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Los ambientes definen mapas con diferentes tipos de carga y requisitos de crecimiento de las localidades. Pueden ajustarse con NewGRF y scripts de juego
@@ -3803,6 +3805,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Enviar i
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemplazar vehículos
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar a mantenimiento
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Ganancias este año: {CURRENCY_LONG} (último año: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar a depósito
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar a depósito
@@ -5026,6 +5030,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No se pu
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... el vehículo está destruido
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... no todos los vehículos son idénticos
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}No habrá vehículos disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Se debe modificar la configuración de NewGRF
@@ -5053,6 +5058,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}No se pu
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... el vehículo no puede ir a todas las estaciones
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... el vehículo no puede ir a esa estación
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehículo que comparte este recorrido no puede ir a esa estación
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... no todos los vehículos tienen los mismos recorridos
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... no todos los vehículos comparten los recorridos
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}No se puede compartir la lista de recorridos...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}No se puede dejar de compartir la lista de recorridos...
