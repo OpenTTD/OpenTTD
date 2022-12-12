@@ -648,8 +648,9 @@ void SetYearEngineAgingStops()
  * Start/initialise one engine.
  * @param e The engine to initialise.
  * @param aging_date The date used for age calculations.
+ * @param seed Random seed.
  */
-void StartupOneEngine(Engine *e, Date aging_date)
+void StartupOneEngine(Engine *e, Date aging_date, uint32 seed)
 {
 	const EngineInfo *ei = &e->info;
 
@@ -662,7 +663,7 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	 * Make sure they use the same randomisation of the date. */
 	SavedRandomSeeds saved_seeds;
 	SaveRandomSeeds(&saved_seeds);
-	SetRandomSeed(_settings_game.game_creation.generation_seed ^
+	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
 	              ei->base_intro ^
 	              e->type ^
 	              e->GetGRFID());
@@ -684,7 +685,7 @@ void StartupOneEngine(Engine *e, Date aging_date)
 		re = Engine::Get(re->info.variant_id);
 	}
 
-	SetRandomSeed(_settings_game.game_creation.generation_seed ^
+	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
 	              (re->index << 16) ^ (re->info.base_intro << 12) ^ (re->info.decay_speed << 8) ^
 	              (re->info.lifelength << 4) ^ re->info.retire_early ^
 	              e->type ^
@@ -719,9 +720,10 @@ void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
 	const Date aging_date = std::min(_date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
+	uint32 seed = Random();
 
 	for (Engine *e : Engine::Iterate()) {
-		StartupOneEngine(e, aging_date);
+		StartupOneEngine(e, aging_date, seed);
 	}
 	for (Engine *e : Engine::Iterate()) {
 		CalcEngineReliability(e, false);

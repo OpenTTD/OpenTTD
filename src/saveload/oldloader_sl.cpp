@@ -401,7 +401,7 @@ static bool FixTTOEngines()
 		if (oi == 255) {
 			/* Default engine is used */
 			_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-			StartupOneEngine(e, aging_date);
+			StartupOneEngine(e, aging_date, 0);
 			CalcEngineReliability(e, false);
 			e->intro_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
 			_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
