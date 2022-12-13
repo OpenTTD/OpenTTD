@@ -13,19 +13,20 @@ Build the docker image:
   docker build -t emsdk-lzma .
 ```
 
+From the repository root
 Build the host tools first:
 ```
   mkdir build-host
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build-host emsdk-lzma cmake .. -DOPTION_TOOLS_ONLY=ON
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build-host emsdk-lzma make -j5 tools
+  docker run -it --rm -v $(pwd):$(pwd) --workdir $(pwd)/build-host emsdk-lzma cmake .. -DOPTION_TOOLS_ONLY=ON
+  docker run -it --rm -v $(pwd):$(pwd) --workdir $(pwd)/build-host emsdk-lzma make -j$(nproc) tools
 ```
 
 Next, build the game with emscripten:
 
 ```
   mkdir build
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emcmake cmake .. -DHOST_BINARY_DIR=../build-host -DCMAKE_BUILD_TYPE=Release -DOPTION_USE_ASSERTS=OFF
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emmake make -j5
+  docker run -it --rm -v $(pwd):$(pwd) --workdir $(pwd)/build emsdk-lzma emcmake cmake .. -DHOST_BINARY_DIR=../build-host -DCMAKE_BUILD_TYPE=Release -DOPTION_USE_ASSERTS=OFF
+  docker run -it --rm -v $(pwd):$(pwd) --workdir $(pwd)/build emsdk-lzma emmake make -j$(nproc)
 ```
 
 And now you have in your build folder files like "openttd.html".
