@@ -1176,9 +1176,9 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 				Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO, tile, to_change, true);
 			}
 		}
+		/* Update cur_slope after possibly terraforming. */
+		cur_slope = GetTileSlope(tile);
 	}
-	/* Update cur_slope after possibly terraforming. */
-	cur_slope = GetTileSlope(tile);
 
 	/* Sloped rivers need water both upstream and downstream. */
 	if (IsInclinedSlope(cur_slope)) {
@@ -1319,7 +1319,7 @@ static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 			current_river_length = DistanceManhattan(data->spring, tile);
 			radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
 
-			if (radius > 1) CircularTileSearch(&tile, radius + RandomRange(1), RiverMakeWider, (void *)&path->node.tile);
+			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, (void *)&path->node.tile);
 		}
 	}
 }
