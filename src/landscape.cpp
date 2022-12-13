@@ -1180,6 +1180,36 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 	/* Update cur_slope after possibly terraforming. */
 	cur_slope = GetTileSlope(tile);
 
+	/* Sloped rivers need water both upstream and downstream. */
+	if (IsInclinedSlope(cur_slope)) {
+		DiagDirection slope_direction = GetInclinedSlopeDirection(cur_slope);
+
+		TileIndex upstream_tile = TileAddByDiagDir(tile, slope_direction);
+		TileIndex downstream_tile = TileAddByDiagDir(tile, ReverseDiagDir(slope_direction));
+
+		/* Don't look outside the map. */
+		if (!IsValidTile(upstream_tile) || !IsValidTile(downstream_tile)) return false;
+
+		/* Downstream might be new ocean created by our terraforming, and it hasn't flooded yet. */
+		bool downstream_is_ocean = GetTileZ(downstream_tile) == 0 && (GetTileSlope(downstream_tile) == SLOPE_FLAT || IsSlopeWithOneCornerRaised(GetTileSlope(downstream_tile)));
+
+		/* If downstream is dry, flat, and not ocean, try making it a river tile. */
+		if (!IsWaterTile(downstream_tile) && !downstream_is_ocean) {
+			/* If the tile upstream isn't flat, don't bother. */
+			if (GetTileSlope(downstream_tile) != SLOPE_FLAT) return false;
+
+			MakeRiver(downstream_tile, Random());
+		}
+
+		/* If upstream is dry and flat, try making it a river tile. */
+		if (!IsWaterTile(upstream_tile)) {
+			/* If the tile upstream isn't flat, don't bother. */
+			if (GetTileSlope(upstream_tile) != SLOPE_FLAT) return false;
+
+			MakeRiver(upstream_tile, Random());
+		}
+	}
+
 	/* If the tile slope matches the desired slope, add a river tile. */
 	if (cur_slope == desired_slope) {
 		MakeRiver(tile, Random());
