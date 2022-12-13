@@ -1013,7 +1013,7 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Vedä li
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tunnista koko automaattisesti
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Valitse tämä ruutu käyttöliittymän koon tunnistamiseksi automaattisesti
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaalaa reunukset
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaalaa viisteet
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Valitse tämä ruutu reunusten skaalaamiseksi käyttöliittymän koon mukaan
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1×
