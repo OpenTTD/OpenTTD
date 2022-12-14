@@ -4583,8 +4583,8 @@ STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Paráme
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Seleccionar IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Selecciona script de juego
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar otro script
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Seleccionar script de juego
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carga otro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura los parámetros del script
 
