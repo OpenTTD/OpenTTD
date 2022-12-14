@@ -77,7 +77,7 @@ struct AIPLChunkHandler : ChunkHandler {
 			_ai_saveload_version = -1;
 			SlObject(nullptr, slt);
 
-			if (_networking && !_network_server) {
+			if (_game_mode == GM_MENU || (_networking && !_network_server)) {
 				if (Company::IsValidAiID(index)) AIInstance::LoadEmpty();
 				continue;
 			}
