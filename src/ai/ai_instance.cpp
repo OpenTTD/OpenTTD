@@ -61,6 +61,9 @@ void AIInstance::Died()
 {
 	ScriptInstance::Died();
 
+	/* Intro is not supposed to use AI, but it may have 'dummy' AI which instant dies. */
+	if (_game_mode == GM_MENU) return;
+
 	ShowAIDebugWindow(_current_company);
 
 	const AIInfo *info = AIConfig::GetConfig(_current_company, AIConfig::SSS_FORCE_GAME)->GetInfo();
