@@ -16,6 +16,7 @@
 #include "../core/string_compare_type.hpp"
 #include "../company_type.h"
 #include "../textfile_gui.h"
+#include "script_instance.hpp"
 
 /** Bitmask of flags for Script settings. */
 enum ScriptConfigFlags {
@@ -63,7 +64,8 @@ public:
 		version(-1),
 		info(nullptr),
 		config_list(nullptr),
-		is_random(false)
+		is_random(false),
+		to_load_data(nullptr)
 	{}
 
 	/**
@@ -185,13 +187,17 @@ public:
 	 */
 	const char *GetTextfile(TextfileType type, CompanyID slot) const;
 
+	void SetToLoadData(ScriptInstance::ScriptData *data);
+	ScriptInstance::ScriptData *GetToLoadData();
+
 protected:
-	const char *name;                  ///< Name of the Script
-	int version;                       ///< Version of the Script
-	class ScriptInfo *info;            ///< ScriptInfo object for related to this Script version
-	SettingValueList settings;         ///< List with all setting=>value pairs that are configure for this Script
-	ScriptConfigItemList *config_list; ///< List with all settings defined by this Script
-	bool is_random;                    ///< True if the AI in this slot was randomly chosen.
+	const char *name;                                         ///< Name of the Script
+	int version;                                              ///< Version of the Script
+	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
+	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
+	ScriptConfigItemList *config_list;                        ///< List with all settings defined by this Script
+	bool is_random;                                           ///< True if the AI in this slot was randomly chosen.
+	std::unique_ptr<ScriptInstance::ScriptData> to_load_data; ///< Data to load after the Script start.
 
 	/**
 	 * In case you have mandatory non-Script-definable config entries in your

@@ -87,11 +87,6 @@ public:
 	 */
 	static void Save();
 
-	/**
-	 * Load data for a GameScript from a savegame.
-	 */
-	static void Load(int version);
-
 	/** Wrapper function for GameScanner::GetConsoleList */
 	static std::string GetConsoleList(bool newest_only = false);
 	/** Wrapper function for GameScanner::GetConsoleLibraryList */
