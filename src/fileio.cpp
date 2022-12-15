@@ -418,7 +418,7 @@ uint TarScanner::DoScan(Subdirectory sd)
 
 /* static */ uint TarScanner::DoScan(TarScanner::Mode mode)
 {
-	Debug(misc, 1, "Scanning for tars");
+	Debug(misc, 2, "Scanning for tars");
 	TarScanner fs;
 	uint num = 0;
 	if (mode & TarScanner::BASESET) {
@@ -439,7 +439,7 @@ uint TarScanner::DoScan(Subdirectory sd)
 		num += fs.DoScan(SCENARIO_DIR);
 		num += fs.DoScan(HEIGHTMAP_DIR);
 	}
-	Debug(misc, 1, "Scan complete, found {} files", num);
+	Debug(misc, 2, "Scan complete, found {} files", num);
 	return num;
 }
 
@@ -571,7 +571,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 
 				/* Only allow relative links */
 				if (link[0] == PATHSEPCHAR) {
-					Debug(misc, 1, "Ignoring absolute link in tar: {} -> {}", name, link);
+					Debug(misc, 5, "Ignoring absolute link in tar: {} -> {}", name, link);
 					break;
 				}
 
@@ -597,7 +597,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 					} else if (strcmp(pos, "..") == 0) {
 						/* level up */
 						if (dest[0] == '\0') {
-							Debug(misc, 1, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
+							Debug(misc, 5, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
 							break;
 						}
 
@@ -652,7 +652,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 		pos += skip;
 	}
 
-	Debug(misc, 1, "Found tar '{}' with {} new files", filename, num);
+	Debug(misc, 4, "Found tar '{}' with {} new files", filename, num);
 	fclose(f);
 
 	/* Resolve file links and store directory links.
@@ -690,7 +690,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 
 	/* The file doesn't have a sub directory! */
 	if (dirname.empty()) {
-		Debug(misc, 1, "Extracting {} failed; archive rejected, the contents must be in a sub directory", tar_filename);
+		Debug(misc, 3, "Extracting {} failed; archive rejected, the contents must be in a sub directory", tar_filename);
 		return false;
 	}
 
@@ -987,7 +987,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 
 	for (Searchpath sp : _valid_searchpaths) {
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
-		Debug(misc, 4, "{} added as search path", _searchpaths[sp]);
+		Debug(misc, 3, "{} added as search path", _searchpaths[sp]);
 	}
 
 	std::string config_dir;
@@ -1020,7 +1020,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 		_config_file = config_dir + "openttd.cfg";
 	}
 
-	Debug(misc, 3, "{} found as config directory", config_dir);
+	Debug(misc, 1, "{} found as config directory", config_dir);
 
 	_highscore_file = config_dir + "hs.dat";
 	extern std::string _hotkeys_file;
@@ -1056,7 +1056,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	FioCreateDirectory(_personal_dir);
 #endif
 
-	Debug(misc, 3, "{} found as personal directory", _personal_dir);
+	Debug(misc, 1, "{} found as personal directory", _personal_dir);
 
 	static const Subdirectory default_subdirs[] = {
 		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR
@@ -1068,7 +1068,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 
 	/* If we have network we make a directory for the autodownloading of content */
 	_searchpaths[SP_AUTODOWNLOAD_DIR] = _personal_dir + "content_download" PATHSEP;
-	Debug(misc, 4, "{} added as search path", _searchpaths[SP_AUTODOWNLOAD_DIR]);
+	Debug(misc, 3, "{} added as search path", _searchpaths[SP_AUTODOWNLOAD_DIR]);
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 	FillValidSearchPaths(only_local_path);
 
