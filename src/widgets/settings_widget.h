@@ -12,7 +12,10 @@
 
 /** Widgets of the #GameOptionsWindow class. */
 enum GameOptionsWidgets {
-	WID_GO_BACKGROUND,             ///< Background of the window.
+	WID_GO_TAB_GENERAL,            ///< General tab.
+	WID_GO_TAB_GRAPHICS,           ///< Graphics tab.
+	WID_GO_TAB_SOUND,              ///< Sound tab.
+	WID_GO_TAB_SELECTION,          ///< Background of the tab selection.
 	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
 	WID_GO_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown.
 	WID_GO_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave.
@@ -27,10 +30,12 @@ enum GameOptionsWidgets {
 	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
 	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + TFT_END,     ///< Description of selected base GRF.
 	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
+	WID_GO_TEXT_SFX_VOLUME,        ///< Sound effects volume label.
 	WID_GO_BASE_SFX_VOLUME,        ///< Change sound effects volume.
 	WID_GO_BASE_SFX_TEXTFILE,      ///< Open base SFX readme, changelog (+1) or license (+2).
 	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_END,     ///< Description of selected base SFX.
 	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
+	WID_GO_TEXT_MUSIC_VOLUME,      ///< Music volume label.
 	WID_GO_BASE_MUSIC_VOLUME,      ///< Change music volume.
 	WID_GO_BASE_MUSIC_JUKEBOX,     ///< Open the jukebox.
 	WID_GO_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
