@@ -28,8 +28,8 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid_map(nullptr)
 {
 	this->InitializeUnicodeGlyphMap();
-	this->height = ScaleGUITrad(this->GetDefaultFontHeight(this->fs));
-	this->ascender = (this->height - ScaleSpriteTrad(this->GetDefaultFontHeight(this->fs))) / 2;
+	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
+	this->ascender = (this->height - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
 }
 
 /**
@@ -105,8 +105,8 @@ void SpriteFontCache::ClearGlyphToSpriteMap()
 void SpriteFontCache::ClearFontCache()
 {
 	Layouter::ResetFontCache(this->fs);
-	this->height = ScaleGUITrad(this->GetDefaultFontHeight(this->fs));
-	this->ascender = (this->height - ScaleSpriteTrad(this->GetDefaultFontHeight(this->fs))) / 2;
+	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
+	this->ascender = (this->height - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
 }
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
