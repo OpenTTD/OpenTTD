@@ -13,6 +13,7 @@
 #include "../../strings_func.h"
 #include "../../table/control_codes.h"
 #include "../../fontcache.h"
+#include "../../zoom_func.h"
 #include "macos.h"
 
 #include <CoreFoundation/CoreFoundation.h>
@@ -245,7 +246,7 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END) {
 			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
 			this->positions[i * 2 + 0] = pts[i].x;
-			this->positions[i * 2 + 1] = font->fc->GetAscender() - font->fc->GetGlyph(this->glyphs[i])->height - 1; // Align sprite glyphs to font baseline.
+			this->positions[i * 2 + 1] = (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2; // Align sprite font to centre
 		} else {
 			this->glyphs[i] = gl[i];
 			this->positions[i * 2 + 0] = pts[i].x;

@@ -11,6 +11,7 @@
 #include "gfx_layout.h"
 #include "string_func.h"
 #include "strings_func.h"
+#include "zoom_func.h"
 #include "debug.h"
 
 #include "table/control_codes.h"
@@ -345,11 +346,11 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 	for (int i = 0; i < this->glyph_count; i++) {
 		this->glyphs[i] = font->fc->MapCharToGlyph(chars[i]);
 		if (isbuiltin) {
-			this->positions[2 * i + 1] = font->fc->GetAscender();                                                   // Apply sprite font's ascender.
+			this->positions[2 * i + 1] = font->fc->GetAscender(); // Apply sprite font's ascender.
 		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
-			this->positions[2 * i + 1] = font->fc->GetAscender() - font->fc->GetGlyph(this->glyphs[i])->height - 1; // Align sprite glyphs to font baseline.
+			this->positions[2 * i + 1] = (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2; // Align sprite font to centre
 		} else {
-			this->positions[2 * i + 1] = 0;                                                                         // No ascender adjustment.
+			this->positions[2 * i + 1] = 0;                       // No ascender adjustment.
 		}
 		this->positions[2 * i + 2] = this->positions[2 * i] + font->fc->GetGlyphWidth(this->glyphs[i]);
 		this->glyph_to_char[i] = i;
