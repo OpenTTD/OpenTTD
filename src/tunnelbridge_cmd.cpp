@@ -1307,8 +1307,28 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			const RoadTypeInfo *road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
 			const RoadTypeInfo *tram_rti = tram_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(tram_rt);
 			uint sprite_offset = DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? 1 : 0;
+			bool draw_underlay = true;
 
-			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
+			/* Road underlay takes precedence over tram */
+			if (road_rti != nullptr) {
+				if (road_rti->UsesOverlay()) {
+					SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_TUNNEL);
+					if (ground != 0) {
+						DrawGroundSprite(ground + tunnelbridge_direction, PAL_NONE);
+						draw_underlay = false;
+					}
+				}
+			} else {
+				if (tram_rti->UsesOverlay()) {
+					SpriteID ground = GetCustomRoadSprite(tram_rti, ti->tile, ROTSG_TUNNEL);
+					if (ground != 0) {
+						DrawGroundSprite(ground + tunnelbridge_direction, PAL_NONE);
+						draw_underlay = false;
+					}
+				}
+			}
+
+			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset, draw_underlay);
 
 			/* Road catenary takes precedence over tram */
 			SpriteID catenary_sprite_base = 0;
