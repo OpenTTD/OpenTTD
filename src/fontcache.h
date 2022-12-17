@@ -29,11 +29,11 @@ protected:
 	int descender;                    ///< The descender value of the font.
 	int units_per_em;                 ///< The units per EM value of the font.
 
-	static int GetDefaultFontHeight(FontSize fs);
-
 public:
 	FontCache(FontSize fs);
 	virtual ~FontCache();
+
+	static int GetDefaultFontHeight(FontSize fs);
 
 	/**
 	 * Get the FontSize of the font.
