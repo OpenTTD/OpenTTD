@@ -690,7 +690,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Saltar a
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Saltar a la pista siguiente de la selección
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Detener música
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Comenzar música
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Mover los cursores para ajustar el volumen de la música y los efectos
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Mover el deslizador para ajustar el volumen de la música y los efectos
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Elegir programa 'todas las pistas'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Elegir programa 'antiguo'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Elegir programa 'moderno'
@@ -1015,7 +1015,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectar
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Detectar tamaño de la interfaz automáticamente
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Ajustar biseles
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Ajustar los biseles de la interfaz según el tamaño
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Ajustar el tamaño de los biseles respecto a la interfaz
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -1433,7 +1433,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las l
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostrar el nombre del GRF en la ventana de construcción de vehículo: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Indicar por medio de una línea adicional en la ventana de construcción de vehículo su NewGRF.
-STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar la carga que los vehículos puede llevar en las ventanas de listas {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Mostrar la carga que los vehículos pueden llevar en las ventanas de listas {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Al activarse, la carga que el vehículo puede transportar aparecerá en las listas de vehículos
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ambiente: {STRING}
@@ -3326,6 +3326,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite a
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir al sprite anterior (ignorando pseudosprites, sprites coloreados y sprites de fuente) y pasar del primer al último sprite
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación del sprite elegido. Se ignora la alineación al ser dibujado
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite cambiando los valores X y Y. Ctrl+Clic mueve el sprite ocho unidades de una sola vez
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restaurar coordenadas relativas
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restaurar las coordenadas relativas
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Coordenada X: {NUM}, Coordenada Y: {NUM} (absoluta)

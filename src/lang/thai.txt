@@ -3068,6 +3068,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}sprite �
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}เคลื่อนไปยัง sprite ปกติอันก่อนหน้า โดยข้าม pseudo/recolour/font และวกกลับเมื่อถึงจุดเริ่มต้น
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}แสดง sprite ที่เลือกใหม่อีกครั้ง
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}ย้าย sprite wxiv[q, แก้ไขแกน X และ Y สำหรับความคลาดเคลื่อน
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}รีเซ็ตการตั้งค่าปัจจุบัน
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}ตำแน่ง X: {NUM}, ตำแหน่ง Y: {NUM} (แบบแน่นอน)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}หยิบ sprite

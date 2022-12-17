@@ -2297,6 +2297,10 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK} جای�
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK} پچھلا sprite
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK} منتخب sprite کا اظھار۔ اس sprite کے نقش میں سف بندی نظر اندازکی جائے گی۔
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK} ارد گرد sprite ھلایئے، X اور Y offset تبدیل کیجئے
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK} منتخب sprite کیجئے
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK} اسکرین سے کسی sprite کو منتخب کیجئے
 

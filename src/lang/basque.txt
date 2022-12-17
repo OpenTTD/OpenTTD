@@ -2876,6 +2876,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Aldez au
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Aurreko grafiko arruntera joan, pseudo/birkoloretu/grafiko tipoak desgaituz
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Orain aukeratutako grafikoaren aurkezpena. Alineazioa ez da kontua hartzen grafiko hau egiterakoan
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite-a mugitu ingurunean, X eta Y-ren desplazamenduak aldatuz. Ctrl+Klik sprite-a zortzi unitatero mugitzeko
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Erlatiboa berezarri
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Momentuan dauden desplazamendu erlatiboak erreseteatu
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X desplazamendua: {NUM}, Y desplazamendua: {NUM} (Absolutua)

@@ -3018,6 +3018,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}הספר
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}עבור לספרייט הקודם, כאשר נדלג על כל הספרייטים המיוחדים ונחזור מתחילת הרשימה לסופה
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}הייצוג של הספרייט הנבחר. בעת ציור הספרייט, נתעלם מהיישור שלו
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}הזז את הספרייט, תוך שינוי ההיסט של צירי ה-X וה-Y. לחץ עם ctrl כדי להזיז את הספרייט שמונה יחידות בבת אחת
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}איפוס יחסית
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}איפוס ההיסטים היחסיים הנוכחיים
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}היסט X: {NUM}, היסט Y: {NUM} (מוחלט)

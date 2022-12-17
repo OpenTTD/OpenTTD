@@ -3386,6 +3386,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Προη
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Προχώρησε στο προηγούμενο κανονικό sprite, προσπερνώντας οποιαδήποτε ψευδό/επαναχρωματιζόμενα/γραμματοσειράς sprites και ξαναεκτέλεσε τη διαδικασία από το πρώτο sprite ως το τελεταίο
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Επανεμφάνιση του επιλεγμένου sprite. Η ευθυγράμμιση αγνοείται όταν γίνεται η σχεδίαση του sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Μετακίνηση του sprite τριγύρω, αλλάζοντας τα στίγματα Χ και Υ. Ctrl+Κλικ για να μετακινήσετε το sprite μονάδες τη φορά.
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Επαναφορά σχετικού
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Επαναφορά των τρεχούμενων σχετικών στιγμάτων
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Στίγμα X: {NUM}, Στίγμα Y: {NUM} (Απόλυτο)

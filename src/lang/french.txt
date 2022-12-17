@@ -3324,6 +3324,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite p
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Se rendre au précédent sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant du premier vers le dernier
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation du sprite actuellement séléctionné. L'alignement est ignoré lors de l'affichage de ce sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Déplacer le sprite, en modifiant les décalages X et Y. Ctrl-clic pour déplacer le sprite de 8 unités à la fois.
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Réinitialiser les relatifs
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Réinitialiser les décalages relatifs courants
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Décalage X{NBSP}: {NUM}, décalage Y{NBSP}: {NUM} (Absolu)

@@ -875,6 +875,10 @@ STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :मूल (D)
 
 # Sprite aligner window
 
+###length 2
+
+
+
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

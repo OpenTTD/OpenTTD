@@ -3393,6 +3393,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Predchá
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Prejsť na predchádzajúci normálny sprite, vynechajúc akékoľvek falošné/prefarbené sprites a sprites fontu použité na začiatku
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentuje aktuálne zvolený sprite. Zarovnanie je ignorované pri vykresľovaní sprite-u
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posúvajte sprite, so súčasnou zmenou X a Y súradnice. Ctrl+klik posunie sprite o osem jednotiek súčasne
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetovať relatívne
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetovať aktuálne relatívne posunutie
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (absolútne)

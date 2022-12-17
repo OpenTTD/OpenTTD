@@ -3270,6 +3270,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite r
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Téigh ar aghaigh chuig an gnáth-sprite roimhe, ag scipeáil thar aon bhréag-sprite nó sprite athdathaithe/clófhoirne agus ag timfhilleadh ag an tús
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Léiriú den sprite atá roghnaithe faoi láthair. Déantar neamhaird den ailíniú agus an sprite seo á tharraingt
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bog an sprid timpeall, ag athrú an seach-chur X agus Y. Ctrl+Cliceáil chun an sprid a bhogadh ocht n-aonad ag an am céanna
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Athshocraigh coibhneasta
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Athshocraigh na seach-chuir choibhneasta reatha
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Seach-chur X: {NUM}, Seach-chur Y: {NUM} (Dearbh-shuíomh)

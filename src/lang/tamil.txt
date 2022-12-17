@@ -2927,6 +2927,10 @@ STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}ஸ்�
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}அடுத்த ஸ்பிரைட்டு
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}ஸ்பிரைட்டுயிற்கு செல்லவும்
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}முந்தைய ஸ்பிரைட்டு
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}முன்னிருந்தமாதிரி மாற்று
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}தற்போதைய ஆஃப்செட்களை மீட்டமைக்கவும்
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X ஒதுக்கம்: {NUM}, Y ஒதுக்கம்: {NUM} (சார்பு)

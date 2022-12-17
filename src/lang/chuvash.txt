@@ -1239,6 +1239,10 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Объект
 
 # Sprite aligner window
 
+###length 2
+
+
+
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
