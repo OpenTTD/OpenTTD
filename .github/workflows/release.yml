@@ -469,7 +469,7 @@ jobs:
 
     runs-on: macos-11
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.14
+      MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
     - name: Download source
