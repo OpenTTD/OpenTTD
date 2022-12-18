@@ -134,6 +134,7 @@ struct ChildScreenSpriteToDraw {
 	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
 	int32 x;
 	int32 y;
+	bool relative;
 	int next;                       ///< next child to draw (-1 at the end)
 };
 
@@ -816,8 +817,10 @@ bool IsInsideRotatedRectangle(int x, int y)
  * @param y sprite y-offset (screen coordinates) relative to parent sprite.
  * @param transparent if true, switch the palette between the provided palette and the transparent palette,
  * @param sub Only draw a part of the sprite.
+ * @param scale if true, scale offsets to base zoom level.
+ * @param relative if true, draw sprite relative to parent sprite offsets.
  */
-void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool transparent, const SubSprite *sub, bool scale)
+void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool transparent, const SubSprite *sub, bool scale, bool relative)
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
@@ -838,6 +841,7 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	cs.sub = sub;
 	cs.x = scale ? x * ZOOM_LVL_BASE : x;
 	cs.y = scale ? y * ZOOM_LVL_BASE : y;
+	cs.relative = relative;
 	cs.next = -1;
 
 	/* Append the sprite to the active ChildSprite list.
@@ -1634,7 +1638,11 @@ static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const
 		while (child_idx >= 0) {
 			const ChildScreenSpriteToDraw *cs = csstdv->data() + child_idx;
 			child_idx = cs->next;
-			DrawSpriteViewport(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
+			if (cs->relative) {
+				DrawSpriteViewport(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
+			} else {
+				DrawSpriteViewport(cs->image, cs->pal, ps->x + cs->x, ps->y + cs->y, cs->sub);
+			}
 		}
 	}
 }
