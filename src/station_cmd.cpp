@@ -2921,7 +2921,7 @@ static void DrawTile_Station(TileInfo *ti)
 				EndSpriteCombine();
 			}
 
-			OffsetGroundSprite(31, 1);
+			OffsetGroundSprite(0, -8);
 			ti->z += ApplyPixelFoundationToSlope(FOUNDATION_LEVELED, &ti->tileh);
 		} else {
 draw_default_foundation:

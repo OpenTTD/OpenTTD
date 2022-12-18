@@ -538,7 +538,7 @@ static void AddChildSpriteToFoundation(SpriteID image, PaletteID pal, const SubS
 	int *old_child = _vd.last_child;
 	_vd.last_child = _vd.last_foundation_child[foundation_part];
 
-	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub, false);
+	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub, false, false);
 
 	/* Switch back to last ChildSprite list */
 	_vd.last_child = old_child;
@@ -876,16 +876,18 @@ static void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint
  * @param ti TileInfo Tile that is being drawn
  * @param z_offset Z offset relative to the groundsprite. Only used for the sprite position, not for sprite sorting.
  * @param foundation_part Foundation part the sprite belongs to.
+ * @param extra_offs_x Pixel X offset for the sprite position.
+ * @param extra_offs_y Pixel Y offset for the sprite position.
  */
-static void DrawSelectionSprite(SpriteID image, PaletteID pal, const TileInfo *ti, int z_offset, FoundationPart foundation_part)
+static void DrawSelectionSprite(SpriteID image, PaletteID pal, const TileInfo *ti, int z_offset, FoundationPart foundation_part, int extra_offs_x = 0, int extra_offs_y = 0)
 {
 	/* FIXME: This is not totally valid for some autorail highlights that extend over the edges of the tile. */
 	if (_vd.foundation[foundation_part] == -1) {
 		/* draw on real ground */
-		AddTileSpriteToDraw(image, pal, ti->x, ti->y, ti->z + z_offset);
+		AddTileSpriteToDraw(image, pal, ti->x, ti->y, ti->z + z_offset, nullptr, extra_offs_x, extra_offs_y);
 	} else {
 		/* draw on top of foundation */
-		AddChildSpriteToFoundation(image, pal, nullptr, foundation_part, 0, -z_offset * ZOOM_LVL_BASE);
+		AddChildSpriteToFoundation(image, pal, nullptr, foundation_part, extra_offs_x, extra_offs_y - z_offset * ZOOM_LVL_BASE);
 	}
 }
 
