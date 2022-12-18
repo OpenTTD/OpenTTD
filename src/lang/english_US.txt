@@ -3327,7 +3327,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represen
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move the sprite around, changing the X and Y offsets. Ctrl+Click to move the sprite eight units at a time
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Offset centered
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centered
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Crosshair
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reset relative
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reset the current relative offsets
