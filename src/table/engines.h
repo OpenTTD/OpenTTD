@@ -24,7 +24,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MT(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
+#define MT(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
 
 /**
  * Writes the properties of a multiple-unit train into the EngineInfo struct.
@@ -37,7 +37,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MM(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS | 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
+#define MM(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_IS_MU, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -50,7 +50,7 @@
  * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
+#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY, CARGO_AGING_TICKS }
 
 /**
  * Writes the properties of a road vehicle into the EngineInfo struct.

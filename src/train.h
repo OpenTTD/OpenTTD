@@ -116,6 +116,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	int GetDisplaySpeed() const override { return this->gcache.last_speed; }
 	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
 	Money GetRunningCost() const override;
+	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
 	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
 	bool Tick() override;

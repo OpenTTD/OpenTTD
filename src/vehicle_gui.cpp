@@ -3418,11 +3418,14 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 
 		if (_cursor.sprite_count + seq.count > lengthof(_cursor.sprite_seq)) break;
 
+		int x_offs = 0;
+		if (v->type == VEH_TRAIN) x_offs = Train::From(v)->GetCursorImageOffset();
+
 		for (uint i = 0; i < seq.count; ++i) {
 			PaletteID pal2 = (v->vehstatus & VS_CRASHED) || !seq.seq[i].pal ? pal : seq.seq[i].pal;
 			_cursor.sprite_seq[_cursor.sprite_count].sprite = seq.seq[i].sprite;
 			_cursor.sprite_seq[_cursor.sprite_count].pal = pal2;
-			_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? -total_width : total_width;
+			_cursor.sprite_pos[_cursor.sprite_count].x = rtl ? (-total_width + x_offs) : (total_width + x_offs);
 			_cursor.sprite_pos[_cursor.sprite_count].y = y_offset;
 			_cursor.sprite_count++;
 		}

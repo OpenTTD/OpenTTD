@@ -8985,13 +8985,6 @@ static void FinaliseEngineArray()
 
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
-		/* When the train does not set property 27 (misc flags), but it
-		 * is overridden by a NewGRF graphically we want to disable the
-		 * flipping possibility. */
-		if (e->type == VEH_TRAIN && !_gted[e->index].prop27_set && e->GetGRF() != nullptr && is_custom_sprite(e->u.rail.image_index)) {
-			ClrBit(e->info.misc_flags, EF_RAIL_FLIPS);
-		}
-
 		/* Skip wagons, there livery is defined via the engine */
 		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
 			LiveryScheme ls = GetEngineLiveryScheme(e->index, INVALID_ENGINE, nullptr);

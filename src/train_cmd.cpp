@@ -434,6 +434,21 @@ void Train::UpdateAcceleration()
 	this->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
+int Train::GetCursorImageOffset() const
+{
+	if (this->gcache.cached_veh_length != 8 && HasBit(this->flags, VRF_REVERSE_DIRECTION) && !HasBit(EngInfo(this->engine_type)->misc_flags, EF_RAIL_FLIPS)) {
+		int reference_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
+
+		const Engine *e = this->GetEngine();
+		if (e->GetGRF() != nullptr && is_custom_sprite(e->u.rail.image_index)) {
+			reference_width = e->GetGRF()->traininfo_vehicle_width;
+		}
+
+		return ScaleSpriteTrad((this->gcache.cached_veh_length - (int)VEHICLE_LENGTH) * reference_width / (int)VEHICLE_LENGTH);
+	}
+	return 0;
+}
+
 /**
  * Get the width of a train vehicle image in the GUI.
  * @param offset Additional offset for positioning the sprite; set to nullptr if not needed
@@ -451,7 +466,11 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	}
 
 	if (offset != nullptr) {
-		offset->x = ScaleSpriteTrad(reference_width) / 2;
+		if (HasBit(this->flags, VRF_REVERSE_DIRECTION) && !HasBit(EngInfo(this->engine_type)->misc_flags, EF_RAIL_FLIPS)) {
+			offset->x = ScaleSpriteTrad((this->gcache.cached_veh_length - VEHICLE_LENGTH / 2) * reference_width / VEHICLE_LENGTH);
+		} else {
+			offset->x = ScaleSpriteTrad(reference_width) / 2;
+		}
 		offset->y = ScaleSpriteTrad(vehicle_pitch);
 	}
 	return ScaleSpriteTrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
@@ -1438,7 +1457,15 @@ void Train::UpdateDeltaXY()
 	this->x_bb_offs =  0;
 	this->y_bb_offs =  0;
 
-	if (!IsDiagonalDirection(this->direction)) {
+	/* Set if flipped and engine is NOT flagged with custom flip handling. */
+	int flipped = HasBit(this->flags, VRF_REVERSE_DIRECTION) && !HasBit(EngInfo(this->engine_type)->misc_flags, EF_RAIL_FLIPS);
+	/* If flipped and vehicle length is odd, we need to adjust the bounding box offset slightly. */
+	int flip_offs = flipped && (this->gcache.cached_veh_length & 1);
+
+	Direction dir = this->direction;
+	if (flipped) dir = ReverseDir(dir);
+
+	if (!IsDiagonalDirection(dir)) {
 		static const int _sign_table[] =
 		{
 			/* x, y */
@@ -1448,25 +1475,25 @@ void Train::UpdateDeltaXY()
 			 1, -1, // DIR_W
 		};
 
-		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length) / 2;
+		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length + flipped) / 2;
 
 		/* For all straight directions, move the bound box to the centre of the vehicle, but keep the size. */
-		this->x_offs -= half_shorten * _sign_table[this->direction];
-		this->y_offs -= half_shorten * _sign_table[this->direction + 1];
-		this->x_extent += this->x_bb_offs = half_shorten * _sign_table[direction];
-		this->y_extent += this->y_bb_offs = half_shorten * _sign_table[direction + 1];
+		this->x_offs -= half_shorten * _sign_table[dir];
+		this->y_offs -= half_shorten * _sign_table[dir + 1];
+		this->x_extent += this->x_bb_offs = half_shorten * _sign_table[dir];
+		this->y_extent += this->y_bb_offs = half_shorten * _sign_table[dir + 1];
 	} else {
-		switch (this->direction) {
+		switch (dir) {
 				/* Shorten southern corner of the bounding box according the vehicle length
 				 * and center the bounding box on the vehicle. */
 			case DIR_NE:
-				this->x_offs    = 1 - (this->gcache.cached_veh_length + 1) / 2;
+				this->x_offs    = 1 - (this->gcache.cached_veh_length + 1) / 2 + flip_offs;
 				this->x_extent  = this->gcache.cached_veh_length - 1;
 				this->x_bb_offs = -1;
 				break;
 
 			case DIR_NW:
-				this->y_offs    = 1 - (this->gcache.cached_veh_length + 1) / 2;
+				this->y_offs    = 1 - (this->gcache.cached_veh_length + 1) / 2 + flip_offs;
 				this->y_extent  = this->gcache.cached_veh_length - 1;
 				this->y_bb_offs = -1;
 				break;
@@ -1474,13 +1501,13 @@ void Train::UpdateDeltaXY()
 				/* Move northern corner of the bounding box down according to vehicle length
 				 * and center the bounding box on the vehicle. */
 			case DIR_SW:
-				this->x_offs    = 1 + (this->gcache.cached_veh_length + 1) / 2 - VEHICLE_LENGTH;
+				this->x_offs    = 1 + (this->gcache.cached_veh_length + 1) / 2 - VEHICLE_LENGTH - flip_offs;
 				this->x_extent  = VEHICLE_LENGTH - 1;
 				this->x_bb_offs = VEHICLE_LENGTH - this->gcache.cached_veh_length - 1;
 				break;
 
 			case DIR_SE:
-				this->y_offs    = 1 + (this->gcache.cached_veh_length + 1) / 2 - VEHICLE_LENGTH;
+				this->y_offs    = 1 + (this->gcache.cached_veh_length + 1) / 2 - VEHICLE_LENGTH - flip_offs;
 				this->y_extent  = VEHICLE_LENGTH - 1;
 				this->y_bb_offs = VEHICLE_LENGTH - this->gcache.cached_veh_length - 1;
 				break;
@@ -1975,7 +2002,6 @@ CommandCost CmdReverseTrainDirection(DoCommandFlag flags, VehicleID veh_id, bool
 		if (v->IsMultiheaded() || HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) {
 			return_cmd_error(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS);
 		}
-		if (!HasBit(EngInfo(v->engine_type)->misc_flags, EF_RAIL_FLIPS)) return CMD_ERROR;
 
 		Train *front = v->First();
 		/* make sure the vehicle is stopped in the depot */
