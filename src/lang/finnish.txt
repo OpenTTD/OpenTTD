@@ -3327,7 +3327,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun 
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja. Ctrl+napsautus siirtää spriteä kahdeksan yksikköä kerralla.
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Siirros keskitetty
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite keskitetty
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Hiusristikko
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nollaa suhteelliset
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nollaa suhteelliset erotukset
