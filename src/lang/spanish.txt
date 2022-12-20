@@ -1069,7 +1069,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Configur
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambia al Euro antes
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambia al Euro después
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previa: {ORANGE}{CURRENCY_LONG}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista preliminar: {ORANGE} {CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras(£) en tu moneda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
 

@@ -509,8 +509,8 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Näytä kuvataajuus
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja OpenTTD:stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Reunat päälle/pois
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Likaisten ruutujen värjäys päälle/pois
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Rajakehikot päälle/pois
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Likaisten lohkojen värjäys päälle/pois
 
 # Place in highscore window
 ###length 15
@@ -1898,9 +1898,9 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Korkein käytettävä sprite-resoluutio: {STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Rajoita suurinta spriteille käytettävää resoluutiota. Resoluution rajoittaminen estää korkean tarkkuuden grafiikoiden käyttämisen vaikka niitä olisi saatavilla. Tämä voi auttaa pitämään pelin ulkoasun yhtenäisenä käytettäessä sekaisin GRF-tiedostoja, joista osalla on ja osalla ei ole korkean tarkkuuden grafiikoita.
 ###length 3
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4×
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2×
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1×
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Kuntien kasvunopeus: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kunnan kasvunopeus
@@ -2048,7 +2048,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ohit
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ohitetaan äänipaketti ”{STRING}”: ei löydetty
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ohitetaan musiikkipaketti ”{STRING}”: ei löydetty
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Muisti lopussa
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} sprite-välimuistin varaaminen epäonnistui. Sprite-välimuistin kooksi valittiin {BYTES}. Tämä heikentää OpenTTD:n suorituskykyä. Vähentääksesi muistivaatimuksia voit kokeilla poistaa käytöstä 32bpp-grafiikat ja/tai lähennystasoja
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} sprite-välimuistin varaaminen epäonnistui. Sprite-välimuistin kooksi valittiin {BYTES}. Tämä heikentää OpenTTD:n suorituskykyä. Vähentääksesi muistivaatimuksia voit kokeilla poistaa käytöstä 32 bpp -grafiikat ja/tai lähennystasoja
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Virhe näyttöasetuksissa…
@@ -3318,12 +3318,12 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF m
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Kohdistetaan spriteä {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Seuraava sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mene seuraavaan tavalliseen spriteen ja hyppää yli pseudo-/uudelleenväritetyt/fontti- spritet ja mene alkuun kun päästään viimeiseen
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Siirry seuraavaan tavalliseen spriteen; mahdolliset pseudo-, uudelleenväritys- ja fonttispritet ohitetaan; viimeisen spriten jälkeen siirrytään ensimmäiseen
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mene spriteen
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mene valittuun spriteen. Jos sprite ei ole tavallinen, jatka seuraavaan tavalliseen spriteen
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Edelinen sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Siirry valittuun spriteen. Jos sprite ei ole tavallinen, jatka seuraavaan tavalliseen spriteen
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Edellinen sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jatka edelliseen tavalliseen spriteen ja hyppää yli kaikki pseudo-/uudelleenväritetyt/fontti- spritet ja mene loppuun kun päästään ensimmäiseen
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun spriten näyttö. Sijaintia ei huomioida spriteä piirrettäessä
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun spriten esitys. Siirrosta ei huomioida tätä spriteä piirrettäessä
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja. Ctrl+napsautus siirtää spriteä kahdeksan yksikköä kerralla.
 
 ###length 2
@@ -3333,9 +3333,9 @@ STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite k
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Hiusristikko
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nollaa suhteelliset
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nollaa suhteelliset erotukset
-STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (absoluuttinen)
-STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-erotus: {NUM}, Y-erotus: {NUM} (suhteellinen)
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nollaa tämänhetkiset suhteelliset siirrokset
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-siirros: {NUM}, Y-siirros: {NUM} (absoluuttinen)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-siirros: {NUM}, Y-siirros: {NUM} (suhteellinen)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Valitse sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Valitse sprite ruudulta
 
