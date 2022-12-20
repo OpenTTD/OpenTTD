@@ -388,12 +388,12 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	bool above = false;
 
 	/* Available height below (or above, if the dropdown is placed above the widget). */
-	uint available_height = std::max(GetMainViewBottom() - top - WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0U);
+	uint available_height = std::max(GetMainViewBottom() - top - (int)WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0);
 
 	/* If the dropdown doesn't fully fit below the widget... */
 	if (height > available_height) {
 
-		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0U);
+		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - (int)WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0);
 
 		/* Put the dropdown above if there is more available space. */
 		if (available_height_above > available_height) {
