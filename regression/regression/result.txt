@@ -9295,6 +9295,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   BuildVehicle():       12
   IsValidVehicle(12):   true
   CloneVehicle():       13
+  BuildVehicle():       1048575
   --Accounting--
     GetCosts():         11894
     Should be:          11894

@@ -1703,6 +1703,7 @@ function Regression::Vehicle()
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(33417, 153));
 	print("  IsValidVehicle(12):   " + AIVehicle.IsValidVehicle(12));
 	print("  CloneVehicle():       " + AIVehicle.CloneVehicle(33417, 12, true));
+	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(-1, 153));
 
 	local bank_after = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 
