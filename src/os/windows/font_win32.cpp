@@ -185,8 +185,8 @@ void Win32FontCache::SetFontSize(int pixels)
 	GetOutlineTextMetrics(this->dc, otmSize, otm);
 
 	this->units_per_em = otm->otmEMSquare;
-	this->ascender = otm->otmTextMetrics.tmAscent;
-	this->descender = otm->otmTextMetrics.tmDescent;
+	this->ascender = otm->otmAscent;
+	this->descender = -otm->otmDescent;
 	this->height = this->ascender + this->descender;
 	this->glyph_size.cx = otm->otmTextMetrics.tmMaxCharWidth;
 	this->glyph_size.cy = otm->otmTextMetrics.tmHeight;
