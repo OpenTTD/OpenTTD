@@ -239,5 +239,6 @@ void UninitFontCache();
 bool HasAntialiasedFonts();
 
 bool GetFontAAState(FontSize size, bool check_blitter = true);
+void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa);
 
 #endif /* FONTCACHE_H */
