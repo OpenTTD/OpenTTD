@@ -142,11 +142,11 @@ struct AIListWindow : public Window {
 				break;
 			}
 			case WID_AIL_INFO_BG: {
-				AIInfo *selected_info = nullptr;
+				ScriptInfo *selected_info = nullptr;
 				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
-					if (this->selected == i - 1) selected_info = static_cast<AIInfo *>(item.second);
+					if (this->selected == i - 1) selected_info = static_cast<ScriptInfo *>(item.second);
 				}
 				/* Some info about the currently selected AI. */
 				if (selected_info != nullptr) {
