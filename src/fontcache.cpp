@@ -70,15 +70,8 @@ bool GetFontAAState(FontSize size, bool check_blitter)
 	/* AA is only supported for 32 bpp */
 	if (check_blitter && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
 
-	switch (size) {
-		default: NOT_REACHED();
-		case FS_NORMAL: return _fcsettings.medium.aa;
-		case FS_SMALL:  return _fcsettings.small.aa;
-		case FS_LARGE:  return _fcsettings.large.aa;
-		case FS_MONO:   return _fcsettings.mono.aa;
-	}
+	return GetFontCacheSubSetting(size)->aa;
 }
-
 
 /**
  * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
