@@ -199,6 +199,7 @@
 	InvalidateWindowData(WC_AI_LIST, 0, 1);
 	SetWindowClassesDirty(WC_AI_DEBUG);
 	InvalidateWindowClassesData(WC_AI_SETTINGS);
+	InvalidateWindowClassesData(WC_GAME_OPTIONS);
 }
 
 
