@@ -350,16 +350,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
  */
 void LoadCoreTextFont(FontSize fs)
 {
-	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-
-	FontCacheSubSetting *settings = nullptr;
-	switch (fs) {
-		default: NOT_REACHED();
-		case FS_SMALL:  settings = &_fcsettings.small;  break;
-		case FS_NORMAL: settings = &_fcsettings.medium; break;
-		case FS_LARGE:  settings = &_fcsettings.large;  break;
-		case FS_MONO:   settings = &_fcsettings.mono;   break;
-	}
+	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
 
 	if (settings->font.empty()) return;
 
@@ -395,7 +386,7 @@ void LoadCoreTextFont(FontSize fs)
 				font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
 				CFRetain(font_ref.get());
 			} else {
-				ShowInfoF("Unable to load file '%s' for %s font, using default OS font selection instead", settings->font.c_str(), SIZE_TO_NAME[fs]);
+				ShowInfoF("Unable to load file '%s' for %s font, using default OS font selection instead", settings->font.c_str(), FontSizeToName(fs));
 			}
 		}
 	}
@@ -419,7 +410,7 @@ void LoadCoreTextFont(FontSize fs)
 	}
 
 	if (!font_ref) {
-		ShowInfoF("Unable to use '%s' for %s font, using sprite font instead", settings->font.c_str(), SIZE_TO_NAME[fs]);
+		ShowInfoF("Unable to use '%s' for %s font, using sprite font instead", settings->font.c_str(), FontSizeToName(fs));
 		return;
 	}
 

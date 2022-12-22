@@ -122,14 +122,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
  */
 void LoadFreeTypeFont(FontSize fs)
 {
-	FontCacheSubSetting *settings = nullptr;
-	switch (fs) {
-		default: NOT_REACHED();
-		case FS_SMALL:  settings = &_fcsettings.small;  break;
-		case FS_NORMAL: settings = &_fcsettings.medium; break;
-		case FS_LARGE:  settings = &_fcsettings.large;  break;
-		case FS_MONO:   settings = &_fcsettings.mono;   break;
-	}
+	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
 
 	if (settings->font.empty()) return;
 
@@ -197,8 +190,7 @@ void LoadFreeTypeFont(FontSize fs)
 
 	FT_Done_Face(face);
 
-	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, SIZE_TO_NAME[fs], error);
+	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, FontSizeToName(fs), error);
 	return;
 
 found_face:
