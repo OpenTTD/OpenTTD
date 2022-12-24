@@ -1606,7 +1606,17 @@ static void DrawRoadBits(TileInfo *ti)
 	if (road_rti != nullptr) {
 		DisallowedRoadDirections drd = GetDisallowedRoadDirections(ti->tile);
 		if (drd != DRD_NONE) {
-			DrawGroundSpriteAt(SPR_ONEWAY_BASE + drd - 1 + ((road == ROAD_X) ? 0 : 3), PAL_NONE, 8, 8, GetPartialPixelZ(8, 8, ti->tileh));
+			SpriteID oneway = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ONEWAY);
+
+			if (oneway == 0) oneway = SPR_ONEWAY_BASE;
+
+			if ((ti->tileh == SLOPE_NE) || (ti->tileh == SLOPE_NW)) {
+				oneway += SPR_ONEWAY_SLOPE_N_OFFSET;
+			} else if ((ti->tileh == SLOPE_SE) || (ti->tileh == SLOPE_SW)) {
+				oneway += SPR_ONEWAY_SLOPE_S_OFFSET;
+			}
+
+			DrawGroundSpriteAt(oneway + drd - 1 + ((road == ROAD_X) ? 0 : 3), PAL_NONE, 8, 8, GetPartialPixelZ(8, 8, ti->tileh));
 		}
 	}
 
