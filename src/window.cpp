@@ -355,6 +355,17 @@ QueryString *Window::GetQueryString(uint widnum)
 }
 
 /**
+ * Update size of all QueryStrings of this window.
+ */
+void Window::UpdateQueryStringSize()
+{
+	for (auto &qs : this->querystrings)
+	{
+		qs.second->text.UpdateSize();
+	}
+}
+
+/**
  * Get the current input text if an edit box has the focus.
  * @return The currently focused input text or nullptr if no input focused.
  */
@@ -3353,7 +3364,10 @@ void HideVitalWindows()
 void ReInitWindow(Window *w, bool zoom_changed)
 {
 	if (w == nullptr) return;
-	if (zoom_changed) w->nested_root->AdjustPaddingForZoom();
+	if (zoom_changed) {
+		w->nested_root->AdjustPaddingForZoom();
+		w->UpdateQueryStringSize();
+	}
 	w->ReInit();
 }
 
