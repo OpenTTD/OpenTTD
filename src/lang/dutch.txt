@@ -3327,7 +3327,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeel
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite verplaatsen, dit verandert X en Y offsets. Ctr+klik om de sprite 8 eenheden per keer te verplaatsen.
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Op offset gecentreerd
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Op sprite gecentreerd
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Richtkruis
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Relatief herstellen
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Herstel de huidige relatieve offsets

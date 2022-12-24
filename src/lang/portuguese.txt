@@ -3328,7 +3328,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represen
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desloca o gráfico, alterando os intervalos  X e Y. Ctrl+Clique desloca o gráfico 8 unidades de uma só vez
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Deslocamento centrado
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centrado
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Mira
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Repor relativo
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Repor intervalos relativos atuais

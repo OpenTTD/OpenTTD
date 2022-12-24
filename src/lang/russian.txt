@@ -3502,7 +3502,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Пред
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Двигайте спрайт, изменяя смещение по осям X и Y. С помощью Ctrl+щелчка можно сдвигать спрайты на 8 единиц.
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Смещение в центре
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Спрайт в центре
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Перекрестие
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Сброс смещения
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Сбросить значения относительного смещения
