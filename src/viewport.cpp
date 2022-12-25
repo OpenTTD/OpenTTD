@@ -1323,7 +1323,7 @@ void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const Vie
 		int shadow_offset = 0;
 		if (string_small_shadow != STR_NULL) {
 			shadow_offset = 4;
-			AddStringToDraw(sign->center - sign_half_width + shadow_offset, sign->top, string_small_shadow, params_1, params_2, INVALID_COLOUR, sign->width_small);
+			AddStringToDraw(sign->center - sign_half_width + shadow_offset, sign->top, string_small_shadow, params_1, params_2, INVALID_COLOUR, sign->width_small | 0x8000);
 		}
 		AddStringToDraw(sign->center - sign_half_width, sign->top - shadow_offset, string_small, params_1, params_2,
 				colour, sign->width_small | 0x8000);
