@@ -1722,7 +1722,7 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 			}
 		}
 
-		DrawString(x + WidgetDimensions::scaled.fullbevel.left, x + w - 1 - WidgetDimensions::scaled.fullbevel.right, y + WidgetDimensions::scaled.fullbevel.top, ss.string, colour, SA_HOR_CENTER);
+		DrawString(x + WidgetDimensions::scaled.fullbevel.left, x + w - 1 - WidgetDimensions::scaled.fullbevel.right, y + WidgetDimensions::scaled.fullbevel.top, ss.string, colour, SA_HOR_CENTER, false, small ? FS_SMALL : FS_NORMAL);
 	}
 }
 
