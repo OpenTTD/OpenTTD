@@ -276,6 +276,7 @@ public:
 
 	const QueryString *GetQueryString(uint widnum) const;
 	QueryString *GetQueryString(uint widnum);
+	void UpdateQueryStringSize();
 
 	virtual const char *GetFocusedText() const;
 	virtual const char *GetCaret() const;
