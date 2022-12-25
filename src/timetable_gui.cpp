@@ -156,6 +156,8 @@ struct TimetableWindow : Window {
 	uint deparr_abbr_width; ///< The width of the departure/arrival abbreviation
 	Scrollbar *vscroll;
 	bool query_is_speed_query; ///< The currently open query window is a speed query and not a time query.
+	bool set_start_date_all;   ///< Set start date using minutes text entry for all timetable entries (ctrl-click) action
+	bool change_timetable_all; ///< Set wait time or speed for all timetable entries (ctrl-click) action
 
 	TimetableWindow(WindowDesc *desc, WindowNumber window_number) :
 			Window(desc),
@@ -551,6 +553,7 @@ struct TimetableWindow : Window {
 				}
 
 				this->query_is_speed_query = false;
+				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
 				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 			}
@@ -571,19 +574,28 @@ struct TimetableWindow : Window {
 				}
 
 				this->query_is_speed_query = true;
+				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
 				ShowQueryString(current, STR_TIMETABLE_CHANGE_SPEED, 31, this, CS_NUMERAL, QSF_NONE);
 				break;
 			}
 
 			case WID_VT_CLEAR_TIME: { // Clear waiting time.
 				auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, false);
-				Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, 0);
+				if (_ctrl_pressed) {
+					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, 0);
+				} else {
+					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, 0);
+				}
 				break;
 			}
 
 			case WID_VT_CLEAR_SPEED: { // Clear max speed button.
 				auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, true);
-				Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, UINT16_MAX);
+				if (_ctrl_pressed) {
+					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, UINT16_MAX);
+				} else {
+					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, UINT16_MAX);
+				}
 				break;
 			}
 
@@ -622,7 +634,12 @@ struct TimetableWindow : Window {
 		}
 
 		auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, this->query_is_speed_query);
-		Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, std::min<uint32>(val, UINT16_MAX));
+
+		if (this->change_timetable_all) {
+			Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, std::min<uint32>(val, UINT16_MAX));
+		} else {
+			Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, std::min<uint32>(val, UINT16_MAX));
+		}
 	}
 
 	void OnResize() override

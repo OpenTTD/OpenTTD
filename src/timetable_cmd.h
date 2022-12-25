@@ -13,13 +13,15 @@
 #include "command_type.h"
 
 CommandCost CmdChangeTimetable(DoCommandFlag flags, VehicleID veh, VehicleOrderID order_number, ModifyTimetableFlags mtf, uint16 data);
+CommandCost CmdBulkChangeTimetable(DoCommandFlag flags, VehicleID veh, ModifyTimetableFlags mtf, uint16 data);
 CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh);
 CommandCost CmdAutofillTimetable(DoCommandFlag flags, VehicleID veh, bool autofill, bool preserve_wait_time);
 CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool timetable_all, Date start_date);
 
-DEF_CMD_TRAIT(CMD_CHANGE_TIMETABLE,    CmdChangeTimetable,   0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_VEHICLE_ON_TIME, CmdSetVehicleOnTime,  0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_AUTOFILL_TIMETABLE,  CmdAutofillTimetable, 0, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SET_TIMETABLE_START, CmdSetTimetableStart, 0, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CHANGE_TIMETABLE,      CmdChangeTimetable,     0, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_BULK_CHANGE_TIMETABLE, CmdBulkChangeTimetable, 0, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SET_VEHICLE_ON_TIME,   CmdSetVehicleOnTime,    0, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_AUTOFILL_TIMETABLE,    CmdAutofillTimetable,   0, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SET_TIMETABLE_START,   CmdSetTimetableStart,   0, CMDT_ROUTE_MANAGEMENT)
 
 #endif /* TIMETABLE_CMD_H */
