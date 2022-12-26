@@ -290,8 +290,10 @@ static const SpriteID SPR_TRAMWAY_DEPOT_NO_TRACK       = SPR_TRAMWAY_BASE + 113;
 static const uint16 TRAMWAY_SPRITE_COUNT = 119;
 
 /** One way road sprites */
-static const SpriteID SPR_ONEWAY_BASE = SPR_TRAMWAY_BASE + TRAMWAY_SPRITE_COUNT;
-static const uint16 ONEWAY_SPRITE_COUNT = 6;
+static const SpriteID SPR_ONEWAY_BASE           = SPR_TRAMWAY_BASE + TRAMWAY_SPRITE_COUNT;
+static const SpriteID SPR_ONEWAY_SLOPE_N_OFFSET = 6;
+static const SpriteID SPR_ONEWAY_SLOPE_S_OFFSET = 12;
+static const uint16 ONEWAY_SPRITE_COUNT = 18;
 
 /** Tunnel sprites with grass only for custom railtype tunnel. */
 static const SpriteID SPR_RAILTYPE_TUNNEL_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT;

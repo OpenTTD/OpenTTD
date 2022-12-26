@@ -66,6 +66,7 @@ enum RoadTypeSpriteGroup {
 	ROTSG_DEPOT,          ///< Optional: Depot images
 	ROTSG_reserved3,      ///<           Placeholder, if we add road fences (for highways).
 	ROTSG_ROADSTOP,       ///< Required: Drive-in stop surface
+	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
 	ROTSG_END,
 };
 

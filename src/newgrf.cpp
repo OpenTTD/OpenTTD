@@ -6274,9 +6274,17 @@ static void GraphicsNew(ByteReader *buf)
 		if (offset <= depot_no_track_offset && offset + num > depot_no_track_offset) _loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_NO_TRACK;
 	}
 
+	/* If the baseset or grf only provides sprites for flat tiles (pre #10282), duplicate those for use on slopes. */
+	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= SPR_ONEWAY_SLOPE_N_OFFSET));
+
 	for (; num > 0; num--) {
 		_cur.nfo_line++;
-		LoadNextSprite(replace == 0 ? _cur.spriteid++ : replace++, *_cur.file, _cur.nfo_line);
+		int load_index = (replace == 0 ? _cur.spriteid++ : replace++);
+		LoadNextSprite(load_index, *_cur.file, _cur.nfo_line);
+		if (dup_oneway_sprites) {
+			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_N_OFFSET);
+			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_S_OFFSET);
+		}
 	}
 
 	_cur.skip_sprites = skip_num;
