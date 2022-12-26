@@ -1328,7 +1328,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt o
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalisti kulkuneuvo pysähtyy jokaisella läpikulkemallaan asemalla. Mikäli tämä asetus on käytössä kulkuneuvot eivät pysähdy ajaessaan asemien läpi. Huomioi, että tämä asetus määrittää oletusarvoisen toiminnon uusille kulkuneuvoille. Asetusta voidaan muuttaa erikseen kunkin kulkuneuvon kohdalla
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Uudet junien käskyt pysäyttävät junan aseman {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. ”Alkuun” tarkoittaa, että junan viimeinen vaunu pysähtyy laiturin alkuun; ”keskelle” tarkoittaa junan pysähtymistä keskelle laituria; ja ”loppuun” tarkoittaa, että veturi pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää vain oletusarvon uusille määräyksille. Yksittäisten määräysten kohdalla käyttäytymistä voi muuttaa tästä asetuksesta huolimatta
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. ”Alkuun” tarkoittaa, että junan viimeinen vaunu pysähtyy laiturin alkuun; ”keskelle” tarkoittaa junan pysähtymistä keskelle laituria; ja ”loppuun” tarkoittaa, että veturi pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää vain oletusarvon uusille käskyille. Yksittäisten käskyjen kohdalla käyttäytymistä voi muuttaa tästä asetuksesta huolimatta
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :alkuun
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle
@@ -1390,7 +1390,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varoita, jos ku
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Lähetä viesti, jos kulkuneuvo ei löydä reittiä määränpäähänsä
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista kulkuneuvojen pysähdykset: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Mikäli käytössä, kulkuneuvojen määräykset tarkistetaan väliajoin ja havaituista ongelmista ilmoitetaan uutisviestillä
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Mikäli käytössä, kulkuneuvojen käskyjä tarkastetaan väliajoin, ja havaituista ongelmista ilmoitetaan uutisviestillä
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta ei pysäytetyille
@@ -2851,6 +2851,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Satunnai
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Perusta kunta satunnaiseen paikkaan
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Monta satunnaista kuntaa
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Täytä kartta satunnaisesti sijoitetuilla kunnilla
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Laajenna kaikkia kuntia
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Kasvata kaikkia kuntia hieman
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kunnan nimi:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Syötä kunnan nimi
@@ -4511,22 +4513,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aloitusp
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse päivämäärä aikataulun aloitusajankohdaksi. Ctrl+napsautus levittää kaikki tämän käskyjoukon jakavat kulkuneuvot tasaisesti niiden keskinäisen järjestyksen mukaan, mikäli käskyjoukko on kokonaan aikataulutettu
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuta aikaa, jonka valitun käskyn tulisi kestää. Ctrl+napsautus asettaa keston kaikille käskyille
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nollaa aika
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nollaa tämän rivin aika
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nollaa valitun käskyn keston. Ctrl+napsautus nollaa kaikkien käskyjen kestot
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuta nopeusrajoitusta
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuta valitun määräyksen suurinta sallittua nopeutta
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuta suurinta sallittua nopeutta valitulle käskylle. Ctrl+napsautus asettaa nopeusrajoituksen kaikille käskyille
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tyhjennä nopeusrajoitus
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tyhjennä valitun määräyksen suurin sallittu nopeus
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Poista suurin sallittu nopeus valitulta käskyltä. Ctrl+napsautus poistaa kaikkien käskyjen nopeusrajoitukset
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nollaa myöhästymislaskuri
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollaa myöhästymislaskuri, jotta vaunu olisi taas aikataulussa
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaattinen
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä aikataulu automaattisesti seuraavan matkan arvoilla (Ctrl+napsautus: yritä säilyttää odotusajat)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä aikataulu automaattisesti seuraavan matkan arvoilla. Ctrl+napsautus: yritä säilyttää odotusajat
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Odotettu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulu

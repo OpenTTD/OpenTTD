@@ -3026,6 +3026,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случ
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Создать город в случайном месте
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Множество различных городов
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Разместить на карте различные города случайным образом
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Расширить все города
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Увеличить размер всех городов
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Название города:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введите название города
@@ -4698,16 +4700,16 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Нача
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Выберите начальную дату для этого графика. Ctrl+щелчок равномерно распределит все транспортные средства, следующие по этому маршруту, если время движения по нему полностью рассчитано.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изменить время
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время исполнения выделенного задания. Ctrl+щелчок устанавливает время для всех заданий.
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Сбросить время
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Сбросить время в выделенном задании
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Сбросить время в выделенном задании. Ctrl+щелчок - сбросить время во всех заданиях.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Изменить огранич. скорости
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Изменить ограничение скорости движения для выбранного задания
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Изменить ограничение скорости движения для выбранного задания. Ctrl+щелчок устанавливает скорость для всех заданий.
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Сбросить огранич. скорости
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Сбросить ограничение скорости движения для выделенного задания
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Сбросить ограничение скорости движения для выделенного задания. Ctrl+щелчок - сбросить время для всех заданий.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Сбросить счетчик опозд.
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик отклонения от графика, чтобы транспорт снова считался приходящим вовремя

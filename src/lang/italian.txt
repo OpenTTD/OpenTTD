@@ -2892,6 +2892,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Città c
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonda una città in una posizione casuale
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Alcune città casuali
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Copre la mappa con città posizionate casualmente
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Espandi tutte le città
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fa crescere leggermente tutte le città
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome città:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Inserire il nome della città
@@ -3368,7 +3370,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Rapprese
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando gli spiazzamenti X e Y. CTRL+clic sposta lo sprite di otto unità alla volta
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Spiazzamento del centro
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centrato
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Mirino
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reimposta posizione relativa
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reimposta gli spiazzamenti relativi attuali
@@ -4549,22 +4554,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data ini
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleziona una data come punto di partenza della tabella oraria. Ctrl+click distribuisce tutti i veicoli che condividono questo ordine in modo uniforme dalla data indicata in base al loro ordine relativo, se l'ordine è completamente programmato.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia tempo
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato. CTRL+clic imposta il tempo di tutti gli ordini
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Elimina tempo
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina l'impostazione della quantità di tempo per l'ordine selezionato
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina l'impostazione della quantità di tempo per l'ordine selezionato. CTRL+clic la rimuove da tutti gli ordini
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambia limite di velocità
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia l'impostazione del limite di velocità per l'ordine selezionato
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia l'impostazione del limite di velocità per l'ordine selezionato. CTRL+clic lo imposta per tutti gli ordini
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Elimina limite di velocità
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Elimina l'impostazione del limite di velocità per l'ordine selezionato
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Elimina l'impostazione del limite di velocità per l'ordine selezionato. CTRL+clic rimuove la velocità da tutti gli ordini
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Azzera ritardo
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio (CTRL+clic per cercare di mantenere i tempi di attesa)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio. CTRL+clic per cercare di mantenere i tempi di attesa
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari attesi
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
