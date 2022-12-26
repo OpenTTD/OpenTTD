@@ -73,6 +73,9 @@ private:
 	TownActions enabled_actions; ///< Actions that are enabled in settings.
 	TownActions available_actions; ///< Actions that are available to execute for the current company.
 
+	Dimension icon_size;      ///< Dimensions of company icon
+	Dimension exclusive_size; ///< Dimensions of exlusive icon
+
 	/**
 	 * Get the position of the Nth set bit.
 	 *
@@ -117,6 +120,12 @@ public:
 		this->InitNested(window_number);
 	}
 
+	void OnInit() override
+	{
+		this->icon_size      = GetSpriteSize(SPR_COMPANY_ICON);
+		this->exclusive_size = GetSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
+	}
+
 	void OnPaint() override
 	{
 		this->available_actions = GetMaskOfTownActions(_local_company, this->town);
@@ -139,26 +148,22 @@ public:
 	{
 		Rect r = this->GetWidget<NWidgetBase>(WID_TA_RATING_INFO)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
-		DrawString(r, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
-		r.top += FONT_HEIGHT_NORMAL;
+		int text_y_offset      = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
+		int icon_y_offset      = (this->resize.step_height - this->icon_size.height) / 2;
+		int exclusive_y_offset = (this->resize.step_height - this->exclusive_size.height) / 2;
 
-		Dimension icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		int icon_width      = icon_size.width;
-		int icon_y_offset   = (FONT_HEIGHT_NORMAL - icon_size.height) / 2;
-
-		Dimension exclusive_size = GetSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
-		int exclusive_width      = exclusive_size.width;
-		int exclusive_y_offset   = (FONT_HEIGHT_NORMAL - exclusive_size.height) / 2;
+		DrawString(r.left, r.right, r.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
+		r.top += this->resize.step_height;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		Rect text = r.Indent(icon_width + WidgetDimensions::scaled.hsep_normal + exclusive_width + WidgetDimensions::scaled.hsep_normal, rtl);
-		uint icon_left = r.WithWidth(icon_width, rtl).left;
-		uint exclusive_left = r.Indent(icon_width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(exclusive_width, rtl).left;
+		Rect icon      = r.WithWidth(this->icon_size.width, rtl);
+		Rect exclusive = r.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(this->exclusive_size.width, rtl);
+		Rect text      = r.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal + this->exclusive_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
 		/* Draw list of companies */
 		for (const Company *c : Company::Iterate()) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, icon_left, text.top + icon_y_offset);
+				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);
@@ -175,11 +180,11 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive_left, r.top + exclusive_y_offset);
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.left, text.top + exclusive_y_offset);
 				}
 
-				DrawString(text, STR_LOCAL_AUTHORITY_COMPANY_RATING);
-				text.top += FONT_HEIGHT_NORMAL;
+				DrawString(text.left, text.right, text.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATING);
+				text.top += this->resize.step_height;
 			}
 		}
 
@@ -261,8 +266,8 @@ public:
 				break;
 
 			case WID_TA_RATING_INFO:
-				resize->height = FONT_HEIGHT_NORMAL;
-				size->height = 9 * FONT_HEIGHT_NORMAL + padding.height;
+				resize->height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)FONT_HEIGHT_NORMAL});
+				size->height = 9 * resize->height + padding.height;
 				break;
 		}
 	}
