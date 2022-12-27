@@ -923,6 +923,21 @@ Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize)
 }
 
 /**
+ * Get maximum width of a list of strings.
+ * @param list List of strings, terminated with INVALID_STRING_ID.
+ * @param fontsize Font size to use.
+ * @return Width of longest string within the list.
+ */
+uint GetStringListWidth(const StringID *list, FontSize fontsize)
+{
+	uint width = 0;
+	for (const StringID *str = list; *str != INVALID_STRING_ID; str++) {
+		width = std::max(width, GetStringBoundingBox(*str, fontsize).width);
+	}
+	return width;
+}
+
+/**
  * Get the leading corner of a character in a single-line string relative
  * to the start of the string.
  * @param str String containing the character.
