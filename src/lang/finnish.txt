@@ -4784,6 +4784,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liik
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisuuslaitoksia ei voi luoda...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Ei voida koekaivaa…
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liian lähellä toista teollisuuslaitosta
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kunta pitää perustaa ensin
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kuntaa kohden
@@ -4798,6 +4799,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... mets
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan yläpuolelle
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan alapuolelle
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Rahoittamasi koekaivaus epäonnistui; yritä uudelleen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Ei ollut sopivia paikkoja tämän teollisuuslaitoksen koekaivauksille
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Ei ollut sopivia paikkoja ”{STRING}”-teollisuuslaitoksille
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Muuta kartan parametreja saadaksesi paremman kartan
 

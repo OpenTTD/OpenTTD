@@ -2852,6 +2852,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade A
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Constrói cidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias cidades aleatórias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cobrir o mapa com cidades colocadas aleatoriamente
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fazer com que todas as cidades cresçam ligeiramente
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da cidade:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Coloque o nome da cidade
@@ -4518,7 +4519,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Limpar H
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpar a quantidade de tempo para a ordem destacada
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Alterar Limite de Vel.
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Altera a velocidade máxima de viagem para a ordem selecionada
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Altera a velocidade máxima de viagem para a ordem selecionada. Ctrl+Clique define a velocidade para todas as ordens
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Limpa Limite de Vel.
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a velocidade máxima de viagem para a ordem selecionada

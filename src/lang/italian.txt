@@ -4825,6 +4825,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... trop
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossibile generare industrie...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossibile costruire {STRING} qui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossibile costruire l'industria qui...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Non si può eseguire la prospezione...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... troppo vicina ad un'altra industria
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... bisogna fondare una città prima
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ne è ammessa solo una per città
@@ -4839,6 +4840,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... può essere costruita solo al di sopra della linea delle nevi perenni
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... può essere costruita solo al di sotto della linea delle nevi perenni
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Nonostante il finanziamento la prospezione è fallita per sfortunate circostanze; riprova
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Non c'erano luoghi adatti per la prospezione di questa industria
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nessun luogo adatto per le industrie '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modificare i parametri di generazione delle mappa in modo da ottenerne una migliore
 
