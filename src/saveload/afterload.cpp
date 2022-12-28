@@ -41,6 +41,7 @@
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
 #include "../ai/ai_gui.hpp"
+#include "../game/game.hpp"
 #include "../town.h"
 #include "../economy_base.h"
 #include "../animated_tile_func.h"
@@ -302,7 +303,6 @@ static void InitializeWindowsAndCaches()
 
 	CheckTrainsLengths();
 	ShowNewGRFError();
-	ShowAIDebugWindowIfAIError();
 
 	/* Rebuild the smallmap list of owners. */
 	BuildOwnerLegend();
@@ -535,6 +535,22 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 {
 	return IsTileType(t, MP_CLEAR) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_ROAD) ||
 			IsTileType(t, MP_WATER) || IsTileType(t, MP_TUNNELBRIDGE) || IsTileType(t, MP_OBJECT);
+}
+
+/**
+ * Start the scripts.
+ */
+static void StartScripts()
+{
+	/* Start the GameScript. */
+	Game::StartNew();
+
+	/* Start the AIs. */
+	for (const Company *c : Company::Iterate()) {
+		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index, false);
+	}
+
+	ShowAIDebugWindowIfAIError();
 }
 
 /**
@@ -797,13 +813,6 @@ bool AfterLoadGame()
 
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
-
-	/* Make sure there is an AI attached to an AI company */
-	{
-		for (const Company *c : Company::Iterate()) {
-			if (c->is_ai && c->ai_instance == nullptr) AI::StartNew(c->index);
-		}
-	}
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && Town::GetNumItems() == 0) {
@@ -3224,6 +3233,10 @@ bool AfterLoadGame()
 	ResetSignalHandlers();
 
 	AfterLoadLinkGraphs();
+
+	/* Start the scripts. This MUST happen after everything else. */
+	StartScripts();
+
 	return true;
 }
 

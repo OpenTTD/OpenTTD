@@ -10,6 +10,8 @@
 #ifndef SCRIPT_INSTANCE_HPP
 #define SCRIPT_INSTANCE_HPP
 
+#include <variant>
+#include <list>
 #include <squirrel.h>
 #include "script_suspend.hpp"
 
@@ -21,9 +23,24 @@ static const uint SQUIRREL_MAX_DEPTH = 25; ///< The maximum recursive depth for 
 
 /** Runtime information about a script like a pointer to the squirrel vm and the current state. */
 class ScriptInstance {
+private:
+	/** The type of the data that follows in the savegame. */
+	enum SQSaveLoadType {
+		SQSL_INT             = 0x00, ///< The following data is an integer.
+		SQSL_STRING          = 0x01, ///< The following data is an string.
+		SQSL_ARRAY           = 0x02, ///< The following data is an array.
+		SQSL_TABLE           = 0x03, ///< The following data is an table.
+		SQSL_BOOL            = 0x04, ///< The following data is a boolean.
+		SQSL_NULL            = 0x05, ///< A null variable.
+		SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
+	};
+
 public:
 	friend class ScriptObject;
 	friend class ScriptController;
+
+	typedef std::variant<SQInteger, std::string, SQBool, SQSaveLoadType> ScriptDataVariant;
+	typedef std::list<ScriptDataVariant> ScriptData;
 
 	/**
 	 * Create a new script.
@@ -146,11 +163,18 @@ public:
 	static void SaveEmpty();
 
 	/**
-	 * Load data from a savegame and store it on the stack.
+	 * Load data from a savegame.
 	 * @param version The version of the script when saving, or -1 if this was
 	 *  not the original script saving the game.
+	 * @return a pointer to loaded data.
 	 */
-	void Load(int version);
+	static ScriptData *Load(int version);
+
+	/**
+	 * Store loaded data on the stack.
+	 * @param data The loaded data to store on the stack.
+	 */
+	void LoadOnStack(ScriptData *data);
 
 	/**
 	 * Load and discard data from a savegame.
@@ -289,7 +313,9 @@ private:
 	 * Load all objects from a savegame.
 	 * @return True if the loading was successful.
 	 */
-	static bool LoadObjects(HSQUIRRELVM vm);
+	static bool LoadObjects(ScriptData *data);
+
+	static bool LoadObjects(HSQUIRRELVM vm, ScriptData *data);
 };
 
 #endif /* SCRIPT_INSTANCE_HPP */

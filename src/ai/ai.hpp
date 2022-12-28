@@ -129,11 +129,6 @@ public:
 	static void Save(CompanyID company);
 
 	/**
-	 * Load data for an AI from a savegame.
-	 */
-	static void Load(CompanyID company, int version);
-
-	/**
 	 * Get the number of days before the next AI should start.
 	 */
 	static int GetStartNextTime();

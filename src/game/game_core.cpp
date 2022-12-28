@@ -88,6 +88,8 @@
 	Game::info = info;
 	Game::instance = new GameInstance();
 	Game::instance->Initialize(info);
+	Game::instance->LoadOnStack(config->GetToLoadData());
+	config->SetToLoadData(nullptr);
 
 	cur_company.Restore();
 
@@ -211,18 +213,6 @@
 		cur_company.Restore();
 	} else {
 		GameInstance::SaveEmpty();
-	}
-}
-
-/* static */ void Game::Load(int version)
-{
-	if (Game::instance != nullptr && (!_networking || _network_server)) {
-		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
-		Game::instance->Load(version);
-		cur_company.Restore();
-	} else {
-		/* Read, but ignore, the load data */
-		GameInstance::LoadEmpty();
 	}
 }
 

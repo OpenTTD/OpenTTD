@@ -26,6 +26,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 	if (this->config_list != nullptr) delete this->config_list;
 	this->config_list = (info == nullptr) ? nullptr : new ScriptConfigItemList();
 	if (this->config_list != nullptr) this->PushExtraConfigList();
+	this->to_load_data.reset();
 
 	this->ClearConfigList();
 
@@ -49,6 +50,7 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	this->version = config->version;
 	this->config_list = nullptr;
 	this->is_random = config->is_random;
+	this->to_load_data.reset();
 
 	for (const auto &item : config->settings) {
 		this->settings[stredup(item.first)] = item.second;
@@ -63,6 +65,7 @@ ScriptConfig::~ScriptConfig()
 	free(this->name);
 	this->ResetSettings();
 	if (this->config_list != nullptr) delete this->config_list;
+	this->to_load_data.reset();
 }
 
 ScriptInfo *ScriptConfig::GetInfo() const
@@ -238,3 +241,14 @@ const char *ScriptConfig::GetTextfile(TextfileType type, CompanyID slot) const
 
 	return ::GetTextfile(type, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR, this->GetInfo()->GetMainScript());
 }
+
+void ScriptConfig::SetToLoadData(ScriptInstance::ScriptData *data)
+{
+	this->to_load_data.reset(data);
+}
+
+ScriptInstance::ScriptData *ScriptConfig::GetToLoadData()
+{
+	return this->to_load_data.get();
+}
+

@@ -57,6 +57,8 @@
 	assert(c->ai_instance == nullptr);
 	c->ai_instance = new AIInstance();
 	c->ai_instance->Initialize(info);
+	c->ai_instance->LoadOnStack(config->GetToLoadData());
+	config->SetToLoadData(nullptr);
 
 	cur_company.Restore();
 
@@ -286,21 +288,6 @@
 		cur_company.Restore();
 	} else {
 		AIInstance::SaveEmpty();
-	}
-}
-
-/* static */ void AI::Load(CompanyID company, int version)
-{
-	if (!_networking || _network_server) {
-		Company *c = Company::GetIfValid(company);
-		assert(c != nullptr && c->ai_instance != nullptr);
-
-		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
-		c->ai_instance->Load(version);
-		cur_company.Restore();
-	} else {
-		/* Read, but ignore, the load data */
-		AIInstance::LoadEmpty();
 	}
 }
 
