@@ -538,7 +538,7 @@ void SetupEngines()
 	_engine_pool.CleanPool();
 
 	assert(_engine_mngr.size() >= _engine_mngr.NUM_DEFAULT_ENGINES);
-	uint index = 0;
+	[[maybe_unused]] uint index = 0;
 	for (const EngineIDMapping &eid : _engine_mngr) {
 		/* Assert is safe; there won't be more than 256 original vehicles
 		 * in any case, and we just cleaned the pool. */
