@@ -40,7 +40,7 @@ diff --git a/tools/ports/liblzma.py b/tools/ports/liblzma.py
 new file mode 100644
 --- /dev/null
 +++ b/tools/ports/liblzma.py
-@@ -0,0 +1,159 @@
+@@ -0,0 +1,151 @@
 +# Copyright 2020 The Emscripten Authors.  All rights reserved.
 +# Emscripten is available under two separate licenses, the MIT license and the
 +# University of Illinois/NCSA Open Source License.  Both these licenses can be
@@ -67,26 +67,18 @@ new file mode 100644
 +
 +    ports.clear_project_build('liblzma')
 +
-+    source_path = os.path.join(ports.get_dir(), 'liblzma', f'xz-{VERSION}')
-+    dest_path = os.path.join(ports.get_build_dir(), 'liblzma')
-+
-+    os.makedirs(dest_path)
-+    shutil.rmtree(dest_path, ignore_errors=True)
-+    shutil.copytree(source_path, dest_path)
++    source_path = os.path.join(ports.get_dir(), 'liblzma', f'xz-{VERSION}', 'src', 'liblzma')
++    ports.write_file(os.path.join(source_path, 'config.h'), config_h)
++    ports.install_headers(os.path.join(source_path, 'api'), pattern='lzma.h')
++    ports.install_headers(os.path.join(source_path, 'api', 'lzma'), pattern='*.h', target='lzma')
 +
 +    build_flags = ['-DHAVE_CONFIG_H', '-DTUKLIB_SYMBOL_PREFIX=lzma_', '-fvisibility=hidden']
-+    exclude_dirs = ['xzdec', 'xz', 'lzmainfo']
-+    exclude_files = ['crc32_small.c', 'crc64_small.c', 'crc32_tablegen.c', 'crc64_tablegen.c', 'price_tablegen.c', 'fastpos_tablegen.c'
++    exclude_files = ['crc32_small.c', 'crc64_small.c', 'crc32_tablegen.c', 'crc64_tablegen.c', 'price_tablegen.c', 'fastpos_tablegen.c',
 +                     'tuklib_exit.c', 'tuklib_mbstr_fw.c', 'tuklib_mbstr_width.c', 'tuklib_open_stdxxx.c', 'tuklib_progname.c']
-+    include_dirs_rel = ['../common', 'api', 'common', 'check', 'lz', 'rangecoder', 'lzma', 'delta', 'simple']
++    include_dirs_rel = ['../common', 'api', 'check', 'common', 'delta', 'lz', 'lzma', 'rangecoder', 'simple']
 +
-+    Path(dest_path, os.path.join('src', 'config.h')).write_text(config_h)
-+
-+    include_dirs = [os.path.join(dest_path, 'src', 'liblzma', p) for p in include_dirs_rel]
-+    ports.build_port(os.path.join(dest_path, 'src'), final, 'liblzma', flags=build_flags, exclude_dirs=exclude_dirs, exclude_files=exclude_files, includes=include_dirs)
-+
-+    ports.install_headers(os.path.join(dest_path, 'src', 'liblzma', 'api'), 'lzma.h')
-+    ports.install_headers(os.path.join(dest_path, 'src', 'liblzma', 'api', 'lzma'), '*.h', 'lzma')
++    include_dirs = [os.path.join(source_path, p) for p in include_dirs_rel]
++    ports.build_port(source_path, final, 'liblzma', flags=build_flags, exclude_files=exclude_files, includes=include_dirs)
 +
 +  return [shared.cache.get_lib('liblzma.a', create, what='port')]
 +
@@ -103,7 +95,7 @@ new file mode 100644
 +  return 'liblzma (USE_LIBLZMA=1; public domain)'
 +
 +
-+config_h = r'''
++config_h = '''
 +#define ASSUME_RAM 128
 +#define ENABLE_NLS 1
 +#define HAVE_CHECK_CRC32 1
