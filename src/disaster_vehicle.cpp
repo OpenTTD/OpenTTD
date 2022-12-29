@@ -40,6 +40,7 @@
 #include "sound_func.h"
 #include "effectvehicle_func.h"
 #include "roadveh.h"
+#include "train.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
 #include "company_base.h"
@@ -578,17 +579,34 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		}
 		v->current_order.SetDestination(1);
 
-		TileIndex tile_org = RandomTile();
-		TileIndex tile = tile_org;
-		do {
-			if (IsPlainRailTile(tile) &&
-					Company::IsHumanID(GetTileOwner(tile))) {
+		const auto is_valid_target = [](const Train *t) {
+			return t->IsFrontEngine() // Only the engines
+				&& Company::IsHumanID(t->owner) // Don't break AIs
+				&& IsPlainRailTile(t->tile) // No tunnels
+				&& (t->vehstatus & VS_CRASHED) == 0; // Not crashed
+		};
+
+		uint n = 0; // Total number of targetable trains.
+		for (const Train *t : Train::Iterate()) {
+			if (is_valid_target(t)) n++;
+		}
+
+		if (n == 0) {
+			/* If there are no targetable trains, destroy the UFO. */
+			delete v;
+			return false;
+		}
+
+		n = RandomRange(n); // Choose one of them.
+		for (const Train *t : Train::Iterate()) {
+			/* Find (n+1)-th train. */
+			if (is_valid_target(t) && (n-- == 0)) {
+				/* Target it. */
+				v->dest_tile = t->tile;
+				v->age = 0;
 				break;
 			}
-			tile = TILE_MASK(tile + 1);
-		} while (tile != tile_org);
-		v->dest_tile = tile;
-		v->age = 0;
+		}
 	}
 
 	return true;
