@@ -2071,7 +2071,7 @@ STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configur
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido Online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Scripts de juego
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Scripts de Juego
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comeenza una partida nueva. Ctrl+clic omite la configuración del escenario
@@ -4529,7 +4529,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinicia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Establece en cero el retraso acumulado del vehículo para que sea puntual
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido Ctrl+clic para intentar mantener los tiempos de permanencia en estación
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido. Ctrl+clic para intentar mantener los tiempos de permanencia en estación
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Previsto
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado

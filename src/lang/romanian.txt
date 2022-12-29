@@ -4783,6 +4783,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... prea
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nu pot genera industrii...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nu se poate construi {STRING} aici...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Acest tip de industrie nu se poate construi aici...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Nu pot prospecta industria...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... prea aproape de altă industrie
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... mai întâi trebuie creat un oraş
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... un singur obiectiv de acest tip este permis per oraş
@@ -4797,6 +4798,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... păd
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... poate fi construit doar deasupra liniei zăpezii
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... poate fi construit doar sub linia zăpezii
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Nu există locuri potrivite de prospectat pentru această industrie
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nu s-au găsit locuri potrivite pentru industriile '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifică parametrii generatorului ca să obții o hartă mai bună
 
