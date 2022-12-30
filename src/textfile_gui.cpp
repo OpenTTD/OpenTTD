@@ -167,9 +167,9 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 
 		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, line.text, TC_BLACK, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
-			DrawString(-this->hscroll->GetPosition(), fr.right, y_offset, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawString(-this->hscroll->GetPosition(), fr.right, y_offset, line.text, TC_BLACK, SA_TOP | SA_LEFT, false, FS_MONO);
 		}
 	}
 
