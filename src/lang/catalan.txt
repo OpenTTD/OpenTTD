@@ -3328,6 +3328,7 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represen
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desplaça l'sprite un píxel en el sentit indicat. Amb Ctrl+Clic el desplaça 8 píxels.
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centrat
 
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restableix relatius

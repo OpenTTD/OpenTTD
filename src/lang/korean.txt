@@ -2852,6 +2852,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위 위치에 도시를 건설합니다
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 여러 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}모든 도시 확장
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}모든 도시를 조금씩 확장시킵니다
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}도시 이름 입력
@@ -3328,7 +3330,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 �
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다. CTRL+클릭하면 한 번에 8씩 이동시킬 수 있습니다
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}오프셋 가운데 정렬
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}스프라이트 가운데 정렬
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}십자선
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}상대값 초기화
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}현재 상대값 좌표를 초기화
@@ -4509,22 +4514,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 �
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요. CTRL+클릭하면, 시간표가 모두 작성되어 있다는 가정 하에, 주어진 경로를 기반으로 설정한 날짜부터 이 경로를 공유하는 모든 차량을 균등하게 출발시킵니다
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다. CTRL+클릭하면 모든 경로에 그 시간 값을 설정합니다
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간값 초기화
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로에서 소요되는 시간 값을 초기화합니다
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로에서 소요되는 시간 값을 초기화합니다. CTRL+클릭하면 모든 경로의 시간을 초기화합니다
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속력 제한
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 제한합니다
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 제한합니다. CTRL+클릭하면 모든 경로에 그 속력 값을 설정합니다
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속력 제한값 초기화
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력 제한값을 초기화합니다
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력 제한값을 초기화합니다. CTRL+클릭하면 모든 경로의 속력을 초기화합니다
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 시간 초기화
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}이 차량의 지연 시간값을 초기화하여, 정시운행 상태로 바꿉니다
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동 시간 설정
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 운행시 자동으로 값을 얻어 시간표를 완성합니다 (역에 머무르는 시간값을 유지하려면 CTRL+클릭하십시오)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 운행시 자동으로 값을 얻어 시간표를 완성합니다. 역에 머무르는 시간값을 유지하려면 CTRL+클릭하세요
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}예정일 기준
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
@@ -4780,6 +4785,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 산�
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}산업시설을 생성할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}여기에 {STRING}{G 0 "을" "를"} 건설할 수 없습니다...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}여기에 산업시설을 건설할 수 없습니다...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}산업시설에 투자할 수 없습니다...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 다른 산업시설과 너무 가깝습니다
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 도시를 먼저 만들어야 합니다
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 한 도시에 하나만 지을 수 있습니다
@@ -4794,6 +4800,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 숲�
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 만년설 고도 위에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 만년설 고도 아래에만 지을 수 있습니다
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}운이 나빠 투자에 실패했습니다. 다시 시도해주세요.
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}이 산업시설을 투자하기에 적합한 장소가 없습니다
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}적당한 장소가 없어 '{STRING}'{G 0 "이" "가"} 지어지지 않았습니다
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}더 나은 지도가 생성되도록 설정 값을 변경해보십시오
 
