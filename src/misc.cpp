@@ -74,6 +74,24 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+
+		/* If using real-time units, economy date starts from year 1. Otherwise, _economy_date is always synced with calendar date. */
+		if (_settings_game.economy.use_realtime_units) {
+			_economy_date = DAYS_IN_ECONOMY_YEAR;
+			_cur_economy_month = 0;
+			_cur_economy_year = 1;
+		} else {
+			_economy_date = _date;
+
+			YearMonthDay ymd;
+			ConvertDateToYMD(_economy_date, &ymd);
+
+			_cur_economy_month = ymd.month;
+			_cur_economy_year = ymd.year;
+		}
+
+		_economy_date_fract = 0;
+
 		InitializeOldNames();
 	}
 
