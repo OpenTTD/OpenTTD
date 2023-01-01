@@ -13,9 +13,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 13.0
+ * \b 14.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ *
+ * \b 13.0
  *
  * API additions:
  * \li GSCargo::GetWeight
