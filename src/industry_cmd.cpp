@@ -2310,7 +2310,7 @@ void IndustryBuildData::Reset()
 }
 
 /** Monthly update of industry build data. */
-void IndustryBuildData::MonthlyLoop()
+void IndustryBuildData::EconomyMonthlyLoop()
 {
 	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
 	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // 'no industries' setting.
@@ -2907,7 +2907,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
  * For small maps, it implies that less than one change per month is required, while on bigger maps,
  * it would be way more. The daily loop handles those changes.
  */
-void IndustryDailyLoop()
+void IndustryEconomyDailyLoop()
 {
 	_economy.industry_daily_change_counter += _economy.industry_daily_increment;
 
@@ -2949,11 +2949,11 @@ void IndustryDailyLoop()
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 }
 
-void IndustryMonthlyLoop()
+void IndustryEconomyMonthlyLoop()
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
-	_industry_builder.MonthlyLoop();
+	_industry_builder.EconomyMonthlyLoop();
 
 	for (Industry *i : Industry::Iterate()) {
 		UpdateIndustryStatistics(i);

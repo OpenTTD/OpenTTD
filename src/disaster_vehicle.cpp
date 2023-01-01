@@ -935,7 +935,7 @@ static void ResetDisasterDelay()
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-void DisasterDailyLoop()
+void DisasterEconomyDailyLoop()
 {
 	if (--_disaster_delay != 0) return;
 

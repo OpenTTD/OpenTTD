@@ -3805,7 +3805,7 @@ void OnTick_Station()
 }
 
 /** Monthly loop for stations. */
-void StationMonthlyLoop()
+void StationEconomyMonthlyLoop()
 {
 	for (Station *st : Station::Iterate()) {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {

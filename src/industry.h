@@ -234,7 +234,7 @@ struct IndustryBuildData {
 	void SetupTargetCount();
 	void TryBuildNewIndustry();
 
-	void MonthlyLoop();
+	void EconomyMonthlyLoop();
 };
 
 extern IndustryBuildData _industry_builder;

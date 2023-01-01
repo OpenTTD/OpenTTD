@@ -878,7 +878,7 @@ static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
 }
 
 /** Daily check to offer an exclusive engine preview to the companies. */
-void EnginesDailyLoop()
+void EnginesCalendarDailyLoop()
 {
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, _date);
@@ -1063,7 +1063,7 @@ static void NewVehicleAvailable(Engine *e)
 }
 
 /** Monthly update of the availability, reliability, and preview offers of the engines. */
-void EnginesMonthlyLoop()
+void EnginesCalendarMonthlyLoop()
 {
 	if (_cur_year < _year_engine_aging_stops) {
 		bool refresh = false;
