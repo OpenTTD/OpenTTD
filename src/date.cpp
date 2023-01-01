@@ -23,14 +23,43 @@
 
 #include "safeguards.h"
 
-Year      _cur_year;   ///< Current year, starting at 0
-Month     _cur_month;  ///< Current month (0..11)
-Date      _date;       ///< Current date in days (day counter)
-DateFract _date_fract; ///< Fractional part of the day.
-uint64 _tick_counter;  ///< Ever incrementing tick counter for setting off various events
+/*
+ * Date/time handling is separated into two systems:
+ *  - Calendar time for technology and world appearance
+ *    o Vehicle introduction and obsolescence
+ *    o Available airports, stations, objects, etc.
+ *    o NewGRF variables which can be used to determine visual styles or behavior based on the time of year
+ *    o Snow line movement
+ *  - Economy time
+ *
+ * Calendar time is kept in a common Gregorian calendar, with 365 days in a year, leap years, variable
+ * length months, and so on.
+ *
+ * Economy time is kept in (approximate) real time. There are logical days with a duration of 1.998 seconds,
+ * logical months with a duration of 1 minute, and logical years with a duration of slightly more than 12 minutes.
+ * Internally a calendar with 12 months of 30 days is observed. There are no leap periods.
+ * In the user interface, all elements that run on economy time are presented in real time units:
+ *  - Seconds (multiples of 2), for things which were originally daily
+ *  - Minutes, for things which were originally monthly:
+ *  - Pentas (one-fifth hour, i.e. 12 minutes) for things which were originally yearly:
+ *
+ * Internally most events will still be referenced as daily/monthly/yearly.
+ */
+
+Year      _cur_year;   ///< Current calendar year, starting at 0
+Month     _cur_month;  ///< Current calendar month (0..11)
+Date      _date;       ///< Current calendar date in days (day counter)
+DateFract _date_fract; ///< Fractional part of the calendar day.
+
+Year      _cur_economy_year;   ///< Number of economy years elapsed since game start
+Month     _cur_economy_month;  ///< Current economy month (0..11)
+Date      _economy_date;       ///< Number of economy days elapsed since game start
+DateFract _economy_date_fract; ///< Fractional part of the economy day
+
+uint64 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 
 /**
- * Set the date.
+ * Set the calendar date.
  * @param date  New date
  * @param fract The number of ticks that have passed on this date.
  */
@@ -87,7 +116,7 @@ static const uint16 _accum_days_for_month[] = {
 };
 
 /**
- * Converts a Date to a Year, Month & Day.
+ * Converts a Date to a (Gregorian calendar) Year, Month & Day.
  * @param date the date to convert from
  * @param ymd  the year, month and day to write to
  */
@@ -141,7 +170,7 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 }
 
 /**
- * Converts a tuple of Year, Month and Day to a Date.
+ * Converts a tuple of (Gregorian calendar) Year, Month and Day to a Date.
  * @param year  is a number between 0..MAX_YEAR
  * @param month is a number between 0..11
  * @param day   is a number between 1..31

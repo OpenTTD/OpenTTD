@@ -16,6 +16,12 @@ extern Year      _cur_year;
 extern Month     _cur_month;
 extern Date      _date;
 extern DateFract _date_fract;
+
+extern Year      _cur_economy_year;
+extern Month     _cur_economy_month;
+extern Date      _economy_date;
+extern DateFract _economy_date_fract;
+
 extern uint64 _tick_counter;
 
 void SetDate(Date date, DateFract fract);

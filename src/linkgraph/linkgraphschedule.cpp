@@ -177,7 +177,7 @@ void StateGameLoop_LinkGraphPauseControl()
 			Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, false);
 		}
 	} else if (_pause_mode == PM_UNPAUSED &&
-			_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
+			_economy_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
 			_date % _settings_game.linkgraph.recalc_interval == _settings_game.linkgraph.recalc_interval / 2 &&
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 		/* Perform check two _date_fract ticks before we would join, to make
@@ -204,7 +204,7 @@ void AfterLoad_LinkGraphPauseControl()
  */
 void OnTick_LinkGraph()
 {
-	if (_date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
+	if (_economy_date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
 	Date offset = _date % _settings_game.linkgraph.recalc_interval;
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();

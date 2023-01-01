@@ -74,6 +74,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		_economy_date = 0;
+		_economy_date_fract = 0;
+		_cur_economy_month = 0;
+		_cur_economy_year = 0;
 		InitializeOldNames();
 	}
 
