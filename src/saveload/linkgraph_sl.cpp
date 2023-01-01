@@ -43,24 +43,25 @@ public:
 	void Save(Node *bn) const override
 	{
 		uint16 size = 0;
-		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
+		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->nodes[_linkgraph_from].edges[to].next_edge) {
 			size++;
 		}
 
 		SlSetStructListLength(size);
-		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
-			SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetDescription());
+		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->nodes[_linkgraph_from].edges[to].next_edge) {
+			SlObject(&_linkgraph->nodes[_linkgraph_from].edges[to], this->GetDescription());
 		}
 	}
 
 	void Load(Node *bn) const override
 	{
 		uint16 max_size = _linkgraph->Size();
+		_linkgraph->nodes[_linkgraph_from].edges.resize(max_size);
 
 		if (IsSavegameVersionBefore(SLV_191)) {
 			/* We used to save the full matrix ... */
 			for (NodeID to = 0; to < max_size; ++to) {
-				SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetLoadDescription());
+				SlObject(&_linkgraph->nodes[_linkgraph_from].edges[to], this->GetLoadDescription());
 			}
 			return;
 		}
@@ -68,12 +69,12 @@ public:
 		size_t used_size = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? max_size : SlGetStructListLength(UINT16_MAX);
 
 		/* ... but as that wasted a lot of space we save a sparse matrix now. */
-		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
+		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->nodes[_linkgraph_from].edges[to].next_edge) {
 			if (used_size == 0) SlErrorCorrupt("Link graph structure overflow");
 			used_size--;
 
 			if (to >= max_size) SlErrorCorrupt("Link graph structure overflow");
-			SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetLoadDescription());
+			SlObject(&_linkgraph->nodes[_linkgraph_from].edges[to], this->GetLoadDescription());
 		}
 
 		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) && used_size > 0) SlErrorCorrupt("Corrupted link graph");

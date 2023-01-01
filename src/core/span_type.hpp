@@ -94,6 +94,8 @@ public:
 
 	constexpr reference operator[](size_type idx) const { return first[idx]; }
 
+	constexpr pointer data() const noexcept { return first; }
+
 private:
 	pointer first;
 	pointer last;

@@ -36,7 +36,6 @@ private:
 		uint demand;             ///< Transport demand between the nodes.
 		uint unsatisfied_demand; ///< Demand over this edge that hasn't been satisfied yet.
 		uint flow;               ///< Planned flow over this edge.
-		void Init();
 	};
 
 	/**
@@ -46,11 +45,16 @@ private:
 		uint undelivered_supply; ///< Amount of supply that hasn't been distributed yet.
 		PathList paths;          ///< Paths through this node, sorted so that those with flow == 0 are in the back.
 		FlowStatMap flows;       ///< Planned flows to other nodes.
-		void Init(uint supply);
+
+		std::vector<EdgeAnnotation> edges;
+
+		NodeAnnotation(const LinkGraph::BaseNode &node) : undelivered_supply(node.supply), paths(), flows()
+		{
+			this->edges.resize(node.edges.size());
+		}
 	};
 
 	typedef std::vector<NodeAnnotation> NodeAnnotationVector;
-	typedef SmallMatrix<EdgeAnnotation> EdgeAnnotationMatrix;
 
 	friend SaveLoadTable GetLinkGraphJobDesc();
 	friend class LinkGraphSchedule;
@@ -61,7 +65,6 @@ protected:
 	std::thread thread;               ///< Thread the job is running in or a default-constructed thread if it's running in the main thread.
 	Date join_date;                   ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
-	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
 	std::atomic<bool> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
 	std::atomic<bool> job_aborted;    ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
 
@@ -146,7 +149,7 @@ public:
 	 * Iterator for job edges.
 	 */
 	class EdgeIterator : public LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator> {
-		EdgeAnnotation *base_anno; ///< Array of annotations to be (indirectly) iterated.
+		span<EdgeAnnotation> base_anno; ///< Array of annotations to be (indirectly) iterated.
 	public:
 		/**
 		 * Constructor.
@@ -154,9 +157,13 @@ public:
 		 * @param base_anno Array of annotations to be iterated.
 		 * @param current Start offset of iteration.
 		 */
-		EdgeIterator(const LinkGraph::BaseEdge *base, EdgeAnnotation *base_anno, NodeID current) :
+		EdgeIterator(span<const LinkGraph::BaseEdge> base, span<EdgeAnnotation> base_anno, NodeID current) :
 				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(base, current),
 				base_anno(base_anno) {}
+
+		EdgeIterator() :
+				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(span<const LinkGraph::BaseEdge>(), INVALID_NODE),
+				base_anno() {}
 
 		/**
 		 * Dereference.
@@ -184,8 +191,8 @@ public:
 	 */
 	class Node : public LinkGraph::ConstNode {
 	private:
-		NodeAnnotation &node_anno;  ///< Annotation being wrapped.
-		EdgeAnnotation *edge_annos; ///< Edge annotations belonging to this node.
+		NodeAnnotation       &node_anno; ///< Annotation being wrapped.
+		span<EdgeAnnotation> edge_annos; ///< Edge annotations belonging to this node.
 	public:
 
 		/**
@@ -195,7 +202,7 @@ public:
 		 */
 		Node (LinkGraphJob *lgj, NodeID node) :
 			LinkGraph::ConstNode(&lgj->link_graph, node),
-			node_anno(lgj->nodes[node]), edge_annos(lgj->edges[node])
+			node_anno(lgj->nodes[node]), edge_annos(lgj->nodes[node].edges)
 		{}
 
 		/**
@@ -204,21 +211,21 @@ public:
 		 * @param to Remote end of the edge.
 		 * @return Edge between this node and "to".
 		 */
-		Edge operator[](NodeID to) const { return Edge(this->edges[to], this->edge_annos[to]); }
+		Edge operator[](NodeID to) const { return Edge(this->node.edges[to], this->edge_annos[to]); }
 
 		/**
 		 * Iterator for the "begin" of the edge array. Only edges with capacity
 		 * are iterated. The others are skipped.
 		 * @return Iterator pointing to the first edge.
 		 */
-		EdgeIterator Begin() const { return EdgeIterator(this->edges, this->edge_annos, index); }
+		EdgeIterator Begin() const { return EdgeIterator(this->node.edges, this->edge_annos, index); }
 
 		/**
 		 * Iterator for the "end" of the edge array. Only edges with capacity
 		 * are iterated. The others are skipped.
 		 * @return Iterator pointing beyond the last edge.
 		 */
-		EdgeIterator End() const { return EdgeIterator(this->edges, this->edge_annos, INVALID_NODE); }
+		EdgeIterator End() const { return EdgeIterator(this->node.edges, this->edge_annos, INVALID_NODE); }
 
 		/**
 		 * Get amount of supply that hasn't been delivered, yet.

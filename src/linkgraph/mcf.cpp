@@ -103,9 +103,7 @@ public:
 	 * Construct a GraphEdgeIterator.
 	 * @param job Job to iterate on.
 	 */
-	GraphEdgeIterator(LinkGraphJob &job) : job(job),
-		i(nullptr, nullptr, INVALID_NODE), end(nullptr, nullptr, INVALID_NODE)
-	{}
+	GraphEdgeIterator(LinkGraphJob &job) : job(job), i(), end() {}
 
 	/**
 	 * Setup the node to start iterating at.
