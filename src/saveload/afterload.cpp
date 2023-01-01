@@ -734,6 +734,14 @@ bool AfterLoadGame()
 	 * must be done before loading sprites as some newgrfs check it */
 	SetDate(_date, _date_fract);
 
+	/* Determine economy dates based on calendar date */
+	if (IsSavegameVersionBefore(SLV_NODAYLENGTH)) {
+		/* Only new games can use real-time units. */
+		_settings_game.economy.use_realtime_units = false;
+
+		SetEconomyDate(_date, _date_fract);
+	}
+
 	/*
 	 * Force the old behaviour for compatibility reasons with old savegames. As new
 	 * settings can only be loaded from new savegames loading old savegames with new
