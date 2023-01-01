@@ -379,9 +379,11 @@ public:
 class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, CompanyProperties> {
 public:
 	inline static const SaveLoad description[] = {
-		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SLV_34, SL_MAX_VERSION),
-		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_34, SL_MAX_VERSION),
-		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_34, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, in_use,  SLE_UINT8,                 SLV_34,     SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, colour1, SLE_FILE_U8 | SLE_VAR_U32, SLV_34,     SLV_RGB_CC),
+		SLE_CONDVAR(Livery, colour1, SLE_UINT32,                SLV_RGB_CC, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, colour2, SLE_FILE_U8 | SLE_VAR_U32, SLV_34,     SLV_RGB_CC),
+		SLE_CONDVAR(Livery, colour2, SLE_UINT32,                SLV_RGB_CC, SL_MAX_VERSION),
 	};
 	inline const static SaveLoadCompatTable compat_description = _company_liveries_compat;
 
@@ -460,7 +462,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SLV_65, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, max_loan,              SLE_INT64, SLV_MAX_LOAN_FOR_COMPANY, SL_MAX_VERSION),
 
-	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
+	SLE_CONDVAR(CompanyProperties, colour,                SLE_FILE_U8 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_RGB_CC),
+	SLE_CONDVAR(CompanyProperties, colour,                SLE_UINT32,                  SLV_RGB_CC, SL_MAX_VERSION),
 	    SLE_VAR(CompanyProperties, money_fraction,        SLE_UINT8),
 	    SLE_VAR(CompanyProperties, block_preview,         SLE_UINT8),
 

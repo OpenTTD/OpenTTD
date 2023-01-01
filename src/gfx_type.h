@@ -279,7 +279,7 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : byte {
+enum Colours : uint32_t {
 	COLOUR_BEGIN,
 	COLOUR_DARK_BLUE = COLOUR_BEGIN,
 	COLOUR_PALE_GREEN,
@@ -298,7 +298,7 @@ enum Colours : byte {
 	COLOUR_GREY,
 	COLOUR_WHITE,
 	COLOUR_END,
-	INVALID_COLOUR = 0xFF,
+	INVALID_COLOUR = UINT32_MAX,
 };
 DECLARE_ENUM_AS_ADDABLE(Colours)
 
