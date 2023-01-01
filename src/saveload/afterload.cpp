@@ -60,6 +60,7 @@
 #include "../water.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_economy.h"
 #include "../timer/timer_game_tick.h"
 
 #include "saveload_internal.h"
@@ -733,6 +734,13 @@ bool AfterLoadGame()
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
 	TimerGameCalendar::SetDate(TimerGameCalendar::date, TimerGameCalendar::date_fract);
+
+	/* Update economy year. If we don't have a separate economy date saved, follow the calendar date. */
+	if (IsSavegameVersionBefore(SLV_ECONOMY_DATE)) {
+		TimerGameEconomy::SetDate(TimerGameCalendar::date.base(), TimerGameCalendar::date_fract);
+	} else {
+		TimerGameEconomy::SetDate(TimerGameEconomy::date, TimerGameEconomy::date_fract);
+	}
 
 	/*
 	 * Force the old behaviour for compatibility reasons with old savegames. As new
