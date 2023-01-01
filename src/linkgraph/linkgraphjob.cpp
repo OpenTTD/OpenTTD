@@ -180,37 +180,10 @@ LinkGraphJob::~LinkGraphJob()
 void LinkGraphJob::Init()
 {
 	uint size = this->Size();
-	this->nodes.resize(size);
-	this->edges.Resize(size, size);
+	this->nodes.reserve(size);
 	for (uint i = 0; i < size; ++i) {
-		this->nodes[i].Init(this->link_graph[i].Supply());
-		EdgeAnnotation *node_edges = this->edges[i];
-		for (uint j = 0; j < size; ++j) {
-			node_edges[j].Init();
-		}
+		this->nodes.emplace_back(this->link_graph.nodes[i]);
 	}
-}
-
-/**
- * Initialize a linkgraph job edge.
- */
-void LinkGraphJob::EdgeAnnotation::Init()
-{
-	this->demand = 0;
-	this->flow = 0;
-	this->unsatisfied_demand = 0;
-}
-
-/**
- * Initialize a Linkgraph job node. The underlying memory is expected to be
- * freshly allocated, without any constructors having been called.
- * @param supply Initial undelivered supply.
- */
-void LinkGraphJob::NodeAnnotation::Init(uint supply)
-{
-	this->undelivered_supply = supply;
-	new (&this->flows) FlowStatMap;
-	new (&this->paths) PathList;
 }
 
 /**

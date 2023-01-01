@@ -12,7 +12,6 @@
 
 #include "../core/pool_type.hpp"
 #include "../core/smallmap_type.hpp"
-#include "../core/smallmatrix_type.hpp"
 #include "../station_base.h"
 #include "../cargotype.h"
 #include "../date_func.h"
@@ -38,21 +37,6 @@ extern LinkGraphPool _link_graph_pool;
  */
 class LinkGraph : public LinkGraphPool::PoolItem<&_link_graph_pool> {
 public:
-
-	/**
-	 * Node of the link graph. contains all relevant information from the associated
-	 * station. It's copied so that the link graph job can work on its own data set
-	 * in a separate thread.
-	 */
-	struct BaseNode {
-		uint supply;             ///< Supply at the station.
-		uint demand;             ///< Acceptance at the station.
-		StationID station;       ///< Station ID.
-		TileIndex xy;            ///< Location of the station referred to by the node.
-		Date last_update;        ///< When the supply was last updated.
-		void Init(TileIndex xy = INVALID_TILE, StationID st = INVALID_STATION, uint demand = 0);
-	};
-
 	/**
 	 * An edge in the link graph. Corresponds to a link between two stations or at
 	 * least the distance between them. Edges from one node to itself contain the
@@ -66,7 +50,25 @@ public:
 		Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
 		Date last_restricted_update;   ///< When the restricted part of the link was last updated.
 		NodeID next_edge;              ///< Destination of next valid edge starting at the same source node.
-		void Init();
+
+		BaseEdge();
+	};
+
+	/**
+	 * Node of the link graph. contains all relevant information from the associated
+	 * station. It's copied so that the link graph job can work on its own data set
+	 * in a separate thread.
+	 */
+	struct BaseNode {
+		uint supply;             ///< Supply at the station.
+		uint demand;             ///< Acceptance at the station.
+		StationID station;       ///< Station ID.
+		TileIndex xy;            ///< Location of the station referred to by the node.
+		Date last_update;        ///< When the supply was last updated.
+
+		std::vector<BaseEdge> edges;
+
+		BaseNode(TileIndex xy = INVALID_TILE, StationID st = INVALID_STATION, uint demand = 0);
 	};
 
 	/**
@@ -125,26 +127,22 @@ public:
 
 	/**
 	 * Wrapper for a node (const or not) allowing retrieval, but no modification.
-	 * @tparam Tedge Actual node class, may be "const BaseNode" or just "BaseNode".
-	 * @tparam Tedge Actual edge class, may be "const BaseEdge" or just "BaseEdge".
+	 * @tparam Tnode Actual node class, may be "const BaseNode" or just "BaseNode".
 	 */
-	template<typename Tnode, typename Tedge>
+	template<typename Tnode>
 	class NodeWrapper {
 	protected:
-		Tnode &node;  ///< Node being wrapped.
-		Tedge *edges; ///< Outgoing edges for wrapped node.
-		NodeID index; ///< ID of wrapped node.
+		Tnode &node;       ///< Node being wrapped.
+		NodeID index;      ///< ID of wrapped node.
 
 	public:
 
 		/**
 		 * Wrap a node.
 		 * @param node Node to be wrapped.
-		 * @param edges Outgoing edges for node to be wrapped.
 		 * @param index ID of node to be wrapped.
 		 */
-		NodeWrapper(Tnode &node, Tedge *edges, NodeID index) : node(node),
-			edges(edges), index(index) {}
+		NodeWrapper(Tnode &node, NodeID index) : node(node), index(index) {}
 
 		/**
 		 * Get supply of wrapped node.
@@ -187,8 +185,8 @@ public:
 	template <class Tedge, class Tedge_wrapper, class Titer>
 	class BaseEdgeIterator {
 	protected:
-		Tedge *base;    ///< Array of edges being iterated.
-		NodeID current; ///< Current offset in edges array.
+		span<Tedge> base; ///< Array of edges being iterated.
+		NodeID current;   ///< Current offset in edges array.
 
 		/**
 		 * A "fake" pointer to enable operator-> on temporaries. As the objects
@@ -218,7 +216,7 @@ public:
 		 * @param base Array of edges to be iterated.
 		 * @param current ID of current node (to locate the first edge).
 		 */
-		BaseEdgeIterator (Tedge *base, NodeID current) :
+		BaseEdgeIterator (span<Tedge> base, NodeID current) :
 			base(base),
 			current(current == INVALID_NODE ? current : base[current].next_edge)
 		{}
@@ -254,7 +252,7 @@ public:
 		template<class Tother>
 		bool operator==(const Tother &other)
 		{
-			return this->base == other.base && this->current == other.current;
+			return this->base.data() == other.base.data() && this->current == other.current;
 		}
 
 		/**
@@ -267,7 +265,7 @@ public:
 		template<class Tother>
 		bool operator!=(const Tother &other)
 		{
-			return this->base != other.base || this->current != other.current;
+			return this->base.data() != other.base.data() || this->current != other.current;
 		}
 
 		/**
@@ -319,7 +317,7 @@ public:
 		 * @param edges Array of edges to be iterated over.
 		 * @param current ID of current edge's end node.
 		 */
-		ConstEdgeIterator(const BaseEdge *edges, NodeID current) :
+		ConstEdgeIterator(span<const BaseEdge> edges, NodeID current) :
 			BaseEdgeIterator<const BaseEdge, ConstEdge, ConstEdgeIterator>(edges, current) {}
 	};
 
@@ -334,7 +332,7 @@ public:
 		 * @param edges Array of edges to be iterated over.
 		 * @param current ID of current edge's end node.
 		 */
-		EdgeIterator(BaseEdge *edges, NodeID current) :
+		EdgeIterator(span<BaseEdge> edges, NodeID current) :
 			BaseEdgeIterator<BaseEdge, Edge, EdgeIterator>(edges, current) {}
 	};
 
@@ -342,16 +340,14 @@ public:
 	 * Constant node class. Only retrieval operations are allowed on both the
 	 * node itself and its edges.
 	 */
-	class ConstNode : public NodeWrapper<const BaseNode, const BaseEdge> {
+	class ConstNode : public NodeWrapper<const BaseNode> {
 	public:
 		/**
 		 * Constructor.
 		 * @param lg LinkGraph to get the node from.
 		 * @param node ID of the node.
 		 */
-		ConstNode(const LinkGraph *lg, NodeID node) :
-			NodeWrapper<const BaseNode, const BaseEdge>(lg->nodes[node], lg->edges[node], node)
-		{}
+		ConstNode(const LinkGraph *lg, NodeID node) : NodeWrapper<const BaseNode>(lg->nodes[node], node) {}
 
 		/**
 		 * Get a ConstEdge. This is not a reference as the wrapper objects are
@@ -359,34 +355,32 @@ public:
 		 * @param to ID of end node of edge.
 		 * @return Constant edge wrapper.
 		 */
-		ConstEdge operator[](NodeID to) const { return ConstEdge(this->edges[to]); }
+		ConstEdge operator[](NodeID to) const { return ConstEdge(this->node.edges[to]); }
 
 		/**
 		 * Get an iterator pointing to the start of the edges array.
 		 * @return Constant edge iterator.
 		 */
-		ConstEdgeIterator Begin() const { return ConstEdgeIterator(this->edges, this->index); }
+		ConstEdgeIterator Begin() const { return ConstEdgeIterator(this->node.edges, this->index); }
 
 		/**
 		 * Get an iterator pointing beyond the end of the edges array.
 		 * @return Constant edge iterator.
 		 */
-		ConstEdgeIterator End() const { return ConstEdgeIterator(this->edges, INVALID_NODE); }
+		ConstEdgeIterator End() const { return ConstEdgeIterator(this->node.edges, INVALID_NODE); }
 	};
 
 	/**
 	 * Updatable node class. The node itself as well as its edges can be modified.
 	 */
-	class Node : public NodeWrapper<BaseNode, BaseEdge> {
+	class Node : public NodeWrapper<BaseNode> {
 	public:
 		/**
 		 * Constructor.
 		 * @param lg LinkGraph to get the node from.
 		 * @param node ID of the node.
 		 */
-		Node(LinkGraph *lg, NodeID node) :
-			NodeWrapper<BaseNode, BaseEdge>(lg->nodes[node], lg->edges[node], node)
-		{}
+		Node(LinkGraph *lg, NodeID node) : NodeWrapper<BaseNode>(lg->nodes[node], node) {}
 
 		/**
 		 * Get an Edge. This is not a reference as the wrapper objects are not
@@ -394,19 +388,19 @@ public:
 		 * @param to ID of end node of edge.
 		 * @return Edge wrapper.
 		 */
-		Edge operator[](NodeID to) { return Edge(this->edges[to]); }
+		Edge operator[](NodeID to) { return Edge(this->node.edges[to]); }
 
 		/**
 		 * Get an iterator pointing to the start of the edges array.
 		 * @return Edge iterator.
 		 */
-		EdgeIterator Begin() { return EdgeIterator(this->edges, this->index); }
+		EdgeIterator Begin() { return EdgeIterator(this->node.edges, this->index); }
 
 		/**
 		 * Get an iterator pointing beyond the end of the edges array.
 		 * @return Constant edge iterator.
 		 */
-		EdgeIterator End() { return EdgeIterator(this->edges, INVALID_NODE); }
+		EdgeIterator End() { return EdgeIterator(this->node.edges, INVALID_NODE); }
 
 		/**
 		 * Update the node's supply and set last_update to the current date.
@@ -442,7 +436,6 @@ public:
 	};
 
 	typedef std::vector<BaseNode> NodeVector;
-	typedef SmallMatrix<BaseEdge> EdgeMatrix;
 
 	/** Minimum effective distance for timeout calculation. */
 	static const uint MIN_TIMEOUT_DISTANCE = 32;
@@ -539,11 +532,11 @@ protected:
 	friend SaveLoadTable GetLinkGraphJobDesc();
 	friend class SlLinkgraphNode;
 	friend class SlLinkgraphEdge;
+	friend class LinkGraphJob;
 
 	CargoID cargo;         ///< Cargo of this component's link graph.
 	Date last_compression; ///< Last time the capacities and supplies were compressed.
 	NodeVector nodes;      ///< Nodes in the component.
-	EdgeMatrix edges;      ///< Edges in the component.
 };
 
 #endif /* LINKGRAPH_H */
