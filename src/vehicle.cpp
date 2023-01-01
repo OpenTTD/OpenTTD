@@ -2826,7 +2826,7 @@ void Vehicle::RemoveFromShared()
 	this->previous_shared = nullptr;
 }
 
-void VehiclesYearlyLoop()
+void VehiclesEconomyYearlyLoop()
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {

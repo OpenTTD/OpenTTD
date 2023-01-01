@@ -92,7 +92,7 @@ static int32 ClickSetProdCheat(int32 p1, int32 p2)
 	return _cheats.setup_prod.value;
 }
 
-extern void EnginesMonthlyLoop();
+extern void EnginesCalendarMonthlyLoop();
 
 /**
  * Handle changing of the current year.
@@ -112,7 +112,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
 	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
-	EnginesMonthlyLoop();
+	EnginesCalendarMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
 	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
 	InvalidateWindowClassesData(WC_BUS_STATION, 0);

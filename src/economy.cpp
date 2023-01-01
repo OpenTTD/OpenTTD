@@ -1971,15 +1971,22 @@ void LoadUnloadStation(Station *st)
 }
 
 /**
- * Monthly update of the economic data (of the companies as well as economic fluctuations).
+ * Monthly update of the economic model (inflation) on calendar time
  */
-void CompaniesMonthlyLoop()
+void CompaniesCalendarMonthlyLoop()
 {
-	CompaniesGenStatistics();
 	if (_settings_game.economy.inflation) {
 		AddInflation();
 		RecomputePrices();
 	}
+}
+
+/**
+ * Monthly update of the economic model on economy time
+ */
+void CompaniesEconomyMonthlyLoop()
+{
+	CompaniesGenStatistics();
 	CompaniesPayInterest();
 	HandleEconomyFluctuations();
 }

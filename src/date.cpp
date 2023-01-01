@@ -192,20 +192,21 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 
 /** Functions used by the IncreaseDate function */
 
-extern void EnginesDailyLoop();
-extern void DisasterDailyLoop();
-extern void IndustryDailyLoop();
+extern void EnginesCalendarDailyLoop();
+extern void DisasterEconomyDailyLoop();
+extern void IndustryEconomyDailyLoop();
 
-extern void CompaniesMonthlyLoop();
-extern void EnginesMonthlyLoop();
-extern void TownsMonthlyLoop();
-extern void IndustryMonthlyLoop();
-extern void StationMonthlyLoop();
-extern void SubsidyMonthlyLoop();
+extern void CompaniesCalendarMonthlyLoop();
+extern void CompaniesEconomyMonthlyLoop();
+extern void EnginesCalendarMonthlyLoop();
+extern void TownsEconomyMonthlyLoop();
+extern void IndustryEconomyMonthlyLoop();
+extern void StationEconomyMonthlyLoop();
+extern void SubsidyEconomyMonthlyLoop();
 
-extern void CompaniesYearlyLoop();
-extern void VehiclesYearlyLoop();
-extern void TownsYearlyLoop();
+extern void CompaniesEconomyYearlyLoop();
+extern void VehiclesEconomyYearlyLoop();
+extern void TownsEconomyYearlyLoop();
 
 extern void ShowEndGameChart();
 
@@ -220,17 +221,13 @@ static const Month _autosave_months[] = {
 };
 
 /**
- * Runs various procedures that have to be done yearly
+ * Runs various procedures that have to be done when calendar year turns
  */
-static void OnNewYear()
+static void OnNewCalendarYear()
 {
-	CompaniesYearlyLoop();
-	VehiclesYearlyLoop();
-	TownsYearlyLoop();
 	InvalidateWindowClassesData(WC_BUILD_STATION);
 	InvalidateWindowClassesData(WC_BUS_STATION);
 	InvalidateWindowClassesData(WC_TRUCK_STATION);
-	if (_network_server) NetworkServerYearlyLoop();
 
 	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
 
@@ -239,76 +236,100 @@ static void OnNewYear()
 		ShowEndGameChart();
 	}
 
-	/* check if we reached the maximum year, decrement dates by a year */
-	if (_cur_year == MAX_YEAR + 1) {
-		int days_this_year;
-
-		_cur_year--;
-		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
-		_date -= days_this_year;
-		for (Vehicle *v : Vehicle::Iterate()) v->ShiftDates(-days_this_year);
-		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
-
-		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out
-		 *  all of them if the date is set back, else those messages will hang for ever */
-		NetworkInitChatMessage();
-	}
-
 	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
+
+	/* If we reached the maximum year, decrement dates by a year */
+	if (_cur_year == MAX_YEAR + 1) {
+		_cur_year--;
+		const int days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
+		_date -= days_this_year;
+	}
 }
 
 /**
- * Runs various procedures that have to be done monthly
+ * Runs various procedures that have to be done when economy year turns
  */
-static void OnNewMonth()
+static void OnNewEconomyYear()
 {
-	if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
+	CompaniesEconomyYearlyLoop();
+	VehiclesEconomyYearlyLoop();
+	TownsEconomyYearlyLoop();
+
+	if (_network_server) NetworkServerYearlyLoop();
+
+	/* If the maximum economy year has been reached, decrement everything by several years */
+	if (_cur_economy_year == MAX_YEAR + 1) {
+		/* Shift back 700 years to avoid doing this too often, and to have a number divisible by 7 (week length) */
+		const int shift_back_years = 700;
+		const int shift_back_days = DAYS_IN_ECONOMY_YEAR * shift_back_years;
+
+		_economy_date -= shift_back_days;
+		_cur_economy_year -= shift_back_years;
+
+		for (Vehicle* v : Vehicle::Iterate()) v->ShiftDates(-shift_back_days);
+		for (LinkGraph* lg : LinkGraph::Iterate()) lg->ShiftDates(-shift_back_days);
+	}
+}
+
+/**
+ * Runs various procedures that have to be done when calendar month turns
+ */
+static void OnNewCalendarMonth()
+{
+	SetWindowClassesDirty(WC_CHEATS);
+	CompaniesCalendarMonthlyLoop();
+	EnginesCalendarMonthlyLoop();
+}
+
+/**
+ * Runs various procedures that have to be done when economy month turns
+ */
+static void OnNewEconomyMonth()
+{
+	if (_settings_client.gui.autosave != 0 && (_cur_economy_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
 		_do_autosave = true;
 		SetWindowDirty(WC_STATUS_BAR, 0);
 	}
 
-	SetWindowClassesDirty(WC_CHEATS);
-	CompaniesMonthlyLoop();
-	EnginesMonthlyLoop();
-	TownsMonthlyLoop();
-	IndustryMonthlyLoop();
-	SubsidyMonthlyLoop();
-	StationMonthlyLoop();
-	if (_network_server) NetworkServerMonthlyLoop();
+	CompaniesEconomyMonthlyLoop();
+	TownsEconomyMonthlyLoop();
+	IndustryEconomyMonthlyLoop();
+	SubsidyEconomyMonthlyLoop();
+	StationEconomyMonthlyLoop();
+
+	if (_network_server) NetworkServerEconomyMonthlyLoop();
 }
 
 /**
- * Runs various procedures that have to be done daily
+ * Runs various procedures that have to be done every calendar day
  */
-static void OnNewDay()
+static void OnNewCalendarDay()
 {
 	if (!_newgrf_profilers.empty() && _newgrf_profile_end_date <= _date) {
 		NewGRFProfiler::FinishAll();
 	}
 
-	if (_network_server) NetworkServerDailyLoop();
-
-	DisasterDailyLoop();
-	IndustryDailyLoop();
 
 	SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_LEFT);
-	EnginesDailyLoop();
+	EnginesCalendarDailyLoop();
 
 	/* Refresh after possible snowline change */
 	SetWindowClassesDirty(WC_TOWN_VIEW);
 }
 
 /**
- * Increases the tick counter, increases date  and possibly calls
- * procedures that have to be called daily, monthly or yearly.
+ * Runs various procedures that have to be done every economy day
  */
-void IncreaseDate()
+static void OnNewEconomyDay()
 {
-	/* increase day, and check if a new day is there? */
-	_tick_counter++;
+	if (_network_server) NetworkServerDailyLoop();
 
-	if (_game_mode == GM_MENU) return;
+	DisasterEconomyDailyLoop();
+	IndustryEconomyDailyLoop();
+}
 
+static void IncreaseCalendarDate()
+{
 	_date_fract++;
 	if (_date_fract < DAY_TICKS) return;
 	_date_fract = 0;
@@ -330,11 +351,50 @@ void IncreaseDate()
 	_cur_year  = ymd.year;
 
 	/* yes, call various daily loops */
-	OnNewDay();
+	OnNewCalendarDay();
 
 	/* yes, call various monthly loops */
-	if (new_month) OnNewMonth();
+	if (new_month) OnNewCalendarMonth();
 
 	/* yes, call various yearly loops */
-	if (new_year) OnNewYear();
+	if (new_year) OnNewCalendarYear();
+}
+
+static void IncreaseEconomyDate()
+{
+	_economy_date_fract++;
+	if (_economy_date_fract < DAY_TICKS) return;
+	_economy_date_fract = 0;
+
+	_economy_date++;
+
+	bool new_month = _economy_date % DAYS_IN_ECONOMY_MONTH == 0;
+	bool new_year = _economy_date % DAYS_IN_ECONOMY_YEAR == 0;
+
+	if (new_year) {
+		_cur_economy_month = 0;
+		_cur_economy_year++;
+	} else if (new_month) {
+		_cur_economy_month++;
+	}
+
+	OnNewEconomyDay();
+
+	if (new_month) OnNewEconomyMonth();
+
+	if (new_year) OnNewEconomyYear();
+}
+
+/**
+ * Increases the tick counter and both types of dates (economic and calendar).
+ */
+void IncreaseDate()
+{
+	_tick_counter++;
+
+	/* Time does not advance in the main menu. */
+	if (_game_mode == GM_MENU) return;
+
+	IncreaseCalendarDate();
+	IncreaseEconomyDate();
 }

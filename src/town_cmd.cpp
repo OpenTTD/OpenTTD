@@ -3738,7 +3738,7 @@ CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType
 	return CommandCost();
 }
 
-void TownsMonthlyLoop()
+void TownsEconomyMonthlyLoop()
 {
 	for (Town *t : Town::Iterate()) {
 		if (t->road_build_months != 0) t->road_build_months--;
@@ -3755,7 +3755,7 @@ void TownsMonthlyLoop()
 
 }
 
-void TownsYearlyLoop()
+void TownsEconomyYearlyLoop()
 {
 	/* Increment house ages */
 	for (TileIndex t = 0; t < Map::Size(); t++) {

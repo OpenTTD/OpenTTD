@@ -743,7 +743,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-void CompaniesYearlyLoop()
+void CompaniesEconomyYearlyLoop()
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {
