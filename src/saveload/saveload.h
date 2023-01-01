@@ -344,6 +344,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_LAST_LOADING_TICK,                  ///< 301  PR#9693 Store tick of last loading for vehicles.
 	SLV_MULTITRACK_LEVEL_CROSSINGS,         ///< 302  PR#9931 v13.0  Multi-track level crossings.
 
+	SLV_NOCALENDAR,                         ///< 303  PR#10322 Separate calendar time and economy time.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
