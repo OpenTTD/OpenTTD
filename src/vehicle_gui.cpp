@@ -42,6 +42,7 @@
 #include "roadveh_cmd.h"
 #include "train_cmd.h"
 #include "hotkeys.h"
+#include "date_func.h"
 
 #include "safeguards.h"
 
@@ -2294,7 +2295,7 @@ extern void DrawAircraftDetails(const Aircraft *v, const Rect &r);
 
 static StringID _service_interval_dropdown[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
-	STR_VEHICLE_DETAILS_DAYS,
+	STR_VEHICLE_DETAILS_MINUTES,
 	STR_VEHICLE_DETAILS_PERCENT,
 	INVALID_STRING_ID,
 };
@@ -2427,7 +2428,7 @@ struct VehicleDetailsWindow : Window {
 				SetDParamMaxValue(1, MAX_YEAR * DAYS_IN_YEAR); // Roughly the maximum year
 				size->width = std::max(
 					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT).width,
-					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS).width
+					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES).width
 				) + padding.width;
 				size->height = FONT_HEIGHT_NORMAL + padding.height;
 				break;
@@ -2565,10 +2566,12 @@ struct VehicleDetailsWindow : Window {
 			case WID_VD_SERVICING_INTERVAL: {
 				/* Draw service interval text */
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+
+				int minutes_since_serviced = (_economy_date - v->date_of_last_service) / DAYS_IN_ECONOMY_MONTH;
 				SetDParam(0, v->GetServiceInterval());
-				SetDParam(1, v->date_of_last_service);
+				SetDParam(1, minutes_since_serviced);
 				DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL),
-						v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
+						v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES);
 				break;
 			}
 		}
@@ -2591,7 +2594,7 @@ struct VehicleDetailsWindow : Window {
 			WIDGET_LIST_END);
 
 		StringID str = v->ServiceIntervalIsCustom() ?
-			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_DAYS) :
+			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_MINUTES) :
 			STR_VEHICLE_DETAILS_DEFAULT;
 		this->GetWidget<NWidgetCore>(WID_VD_SERVICE_INTERVAL_DROPDOWN)->widget_data = str;
 

@@ -289,7 +289,7 @@ public:
 	Year build_year;                    ///< Year the vehicle has been built.
 	Date age;                           ///< Age in days
 	Date max_age;                       ///< Maximum age
-	Date date_of_last_service;          ///< Last date the vehicle had a service at a depot.
+	Date date_of_last_service;          ///< Last economy date the vehicle had a service at a depot.
 	uint16 reliability;                 ///< Reliability.
 	uint16 reliability_spd_dec;         ///< Reliability decrease speed.
 	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown

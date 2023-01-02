@@ -31,6 +31,7 @@
  *    o NewGRF variables which can be used to determine visual styles or behavior based on the time of year
  *    o Snow line movement
  *  - Economy time
+ *    o Vehicle service interval and time since last service
  *
  * Calendar time is kept in a common Gregorian calendar, with 365 days in a year, leap years, variable
  * length months, and so on.
@@ -41,6 +42,7 @@
  * In the user interface, all elements that run on economy time are presented in real time units:
  *  - Seconds (multiples of 2), for things which were originally daily
  *  - Minutes, for things which were originally monthly:
+ *    o Vehicle service intervals and time since last service
  *  - Pentas (one-fifth hour, i.e. 12 minutes) for things which were originally yearly:
  *
  * Internally most events will still be referenced as daily/monthly/yearly.

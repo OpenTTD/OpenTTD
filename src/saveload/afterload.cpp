@@ -66,6 +66,7 @@
 #include "../safeguards.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern void UpdateAllServiceInterval(int32 new_value);
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -786,6 +787,11 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_ENDING_YEAR)) {
 		_settings_game.game_creation.ending_year = DEF_END_YEAR;
+	}
+
+	/* If service intervals are measured in days, convert to minutes. */
+	if (IsSavegameVersionBefore(SLV_NOCALENDAR) && !_settings_client.company.vehicle.servint_ispercent) {
+		UpdateAllServiceInterval(0);
 	}
 
 	/* Load the sprites */

@@ -128,7 +128,7 @@ static void UpdateConsists(int32 new_value)
 }
 
 /* Check service intervals of vehicles, newvalue is value of % or day based servicing */
-static void UpdateAllServiceInterval(int32 new_value)
+void UpdateAllServiceInterval(int32 new_value)
 {
 	bool update_vehicles;
 	VehicleDefaultSettings *vds;
@@ -146,10 +146,10 @@ static void UpdateAllServiceInterval(int32 new_value)
 		vds->servint_aircraft = 50;
 		vds->servint_ships    = 50;
 	} else {
-		vds->servint_trains   = 150;
-		vds->servint_roadveh  = 150;
-		vds->servint_aircraft = 100;
-		vds->servint_ships    = 360;
+		vds->servint_trains   = 5;
+		vds->servint_roadveh  = 5;
+		vds->servint_aircraft = 3;
+		vds->servint_ships    = 12;
 	}
 
 	if (update_vehicles) {

@@ -651,7 +651,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 
 		v->railtype = rvi->railtype;
 
-		v->date_of_last_service = _date;
+		v->date_of_last_service = _economy_date;
 		v->build_year = _cur_year;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
@@ -781,7 +781,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 		v->railtype = rvi->railtype;
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
-		v->date_of_last_service = _date;
+		v->date_of_last_service = _economy_date;
 		v->build_year = _cur_year;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
