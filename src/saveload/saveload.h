@@ -345,6 +345,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_MULTITRACK_LEVEL_CROSSINGS,         ///< 302  PR#9931 v13.0  Multi-track level crossings.
 	SLV_NEWGRF_ROAD_STOPS,                  ///< 303  PR#10144 NewGRF road stops.
 
+	SLV_LINKGRAPH_EDGES,                    ///< 303  PR#10314 Explicitly store link graph edges destination.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

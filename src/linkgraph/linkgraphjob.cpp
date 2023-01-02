@@ -124,11 +124,12 @@ LinkGraphJob::~LinkGraphJob()
 		FlowStatMap &flows = from.Flows();
 
 		for (EdgeIterator it(from.Begin()); it != from.End(); ++it) {
-			if (from[it->first].Flow() == 0) continue;
+			if (it->second.Flow() == 0) continue;
 			StationID to = (*this)[it->first].Station();
 			Station *st2 = Station::GetIfValid(to);
 			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
 					st2->goods[this->Cargo()].node != it->first ||
+					!(*lg)[node_id].HasEdgeTo(it->first) ||
 					(*lg)[node_id][it->first].LastUpdate() == INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
 				StationIDStack erased = flows.DeleteFlows(to);

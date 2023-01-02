@@ -3720,11 +3720,11 @@ void DeleteStaleLinks(Station *from)
 		LinkGraph *lg = LinkGraph::GetIfValid(ge.link_graph);
 		if (lg == nullptr) continue;
 		Node node = (*lg)[ge.node];
-		for (EdgeIterator it(node.Begin()); it != node.End();) {
+		std::vector<NodeID> to_remove{};
+		for (EdgeIterator it(node.Begin()); it != node.End(); ++it) {
 			Edge edge = it->second;
 			Station *to = Station::Get((*lg)[it->first].Station());
 			assert(to->goods[c].node == it->first);
-			++it; // Do that before removing the edge. Anything else may crash.
 			assert(_date >= edge.LastUpdate());
 			uint timeout = LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 3);
 			if ((uint)(_date - edge.LastUpdate()) > timeout) {
@@ -3778,7 +3778,7 @@ void DeleteStaleLinks(Station *from)
 
 				if (!updated) {
 					/* If it's still considered dead remove it. */
-					node.RemoveEdge(to->goods[c].node);
+					to_remove.emplace_back(to->goods[c].node);
 					ge.flows.DeleteFlows(to->index);
 					RerouteCargo(from, c, to->index, from->index);
 				}
@@ -3790,6 +3790,9 @@ void DeleteStaleLinks(Station *from)
 				edge.Release();
 			}
 		}
+		/* Remove dead edges. */
+		for (NodeID r : to_remove) node.RemoveEdge(r);
+
 		assert(_date >= lg->LastCompression());
 		if ((uint)(_date - lg->LastCompression()) > LinkGraph::COMPRESSION_INTERVAL) {
 			lg->Compress();
