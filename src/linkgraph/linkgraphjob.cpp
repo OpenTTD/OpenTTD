@@ -182,7 +182,7 @@ void LinkGraphJob::Init()
 	uint size = this->Size();
 	this->nodes.reserve(size);
 	for (uint i = 0; i < size; ++i) {
-		this->nodes.emplace_back(this->link_graph.nodes[i]);
+		this->nodes.emplace_back(this->link_graph.nodes[i], this->link_graph.Size());
 	}
 }
 
