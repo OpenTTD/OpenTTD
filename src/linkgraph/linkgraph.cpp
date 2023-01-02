@@ -204,7 +204,7 @@ void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage, uint32 trave
 	BaseEdge &first = this->edges[this->index];
 	edge.capacity = capacity;
 	edge.usage = usage;
-	edge.travel_time_sum = travel_time * capacity;
+	edge.travel_time_sum = static_cast<uint64>(travel_time) * capacity;
 	edge.next_edge = first.next_edge;
 	first.next_edge = to;
 	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = _date;
@@ -275,18 +275,18 @@ void LinkGraph::Edge::Update(uint capacity, uint usage, uint32 travel_time, Edge
 
 	if (mode & EUM_INCREASE) {
 		if (this->edge.travel_time_sum == 0) {
-			this->edge.travel_time_sum = (this->edge.capacity + capacity) * travel_time;
+			this->edge.travel_time_sum = static_cast<uint64>(this->edge.capacity + capacity) * travel_time;
 		} else if (travel_time == 0) {
 			this->edge.travel_time_sum += this->edge.travel_time_sum / this->edge.capacity * capacity;
 		} else {
-			this->edge.travel_time_sum += travel_time * capacity;
+			this->edge.travel_time_sum += static_cast<uint64>(travel_time) * capacity;
 		}
 		this->edge.capacity += capacity;
 		this->edge.usage += usage;
 	} else if (mode & EUM_REFRESH) {
 		if (this->edge.travel_time_sum == 0) {
 			this->edge.capacity = std::max(this->edge.capacity, capacity);
-			this->edge.travel_time_sum = travel_time * this->edge.capacity;
+			this->edge.travel_time_sum = static_cast<uint64>(travel_time) * this->edge.capacity;
 		} else if (capacity > this->edge.capacity) {
 			this->edge.travel_time_sum = this->edge.travel_time_sum / this->edge.capacity * capacity;
 			this->edge.capacity = capacity;

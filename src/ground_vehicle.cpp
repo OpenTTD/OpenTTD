@@ -141,7 +141,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	}
 	/* Air drag; the air drag coefficient is in an arbitrary NewGRF-unit,
 	 * so we need some magic conversion factor. */
-	resistance += (area * this->gcache.cached_air_drag * speed * speed) / 1000;
+	resistance += static_cast<int64>(area) * this->gcache.cached_air_drag * speed * speed / 1000;
 
 	resistance += this->GetSlopeResistance();
 

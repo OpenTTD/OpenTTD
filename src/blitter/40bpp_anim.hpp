@@ -29,7 +29,7 @@ public:
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
-	int BufferSize(int width, int height) override;
+	size_t BufferSize(uint width, uint height) override;
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
 	bool NeedsAnimationBuffer() override;
 

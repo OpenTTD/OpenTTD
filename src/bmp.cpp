@@ -390,7 +390,7 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	assert(info != nullptr && data != nullptr);
 
-	data->bitmap = CallocT<byte>(info->width * info->height * ((info->bpp == 24) ? 3 : 1));
+	data->bitmap = CallocT<byte>(static_cast<size_t>(info->width) * info->height * ((info->bpp == 24) ? 3 : 1));
 
 	/* Load image */
 	SetStreamOffset(buffer, info->offset);

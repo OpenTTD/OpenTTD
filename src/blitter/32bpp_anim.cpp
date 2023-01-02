@@ -478,9 +478,9 @@ void Blitter_32bppAnim::ScrollBuffer(void *video, int &left, int &top, int &widt
 	Blitter_32bppBase::ScrollBuffer(video, left, top, width, height, scroll_x, scroll_y);
 }
 
-int Blitter_32bppAnim::BufferSize(int width, int height)
+size_t Blitter_32bppAnim::BufferSize(uint width, uint height)
 {
-	return width * height * (sizeof(uint32) + sizeof(uint16));
+	return (sizeof(uint32) + sizeof(uint16)) * width * height;
 }
 
 void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
