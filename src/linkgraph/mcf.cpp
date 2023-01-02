@@ -334,19 +334,20 @@ void MultiCommodityFlow::CleanupPaths(NodeID source_id, PathVector &paths)
 /**
  * Push flow along a path and update the unsatisfied_demand of the associated
  * edge.
- * @param edge Edge whose ends the path connects.
+ * @param node Node where the path starts.
+ * @param to Node where the path ends.
  * @param path End of the path the flow should be pushed on.
  * @param accuracy Accuracy of the calculation.
  * @param max_saturation If < UINT_MAX only push flow up to the given
  *                       saturation, otherwise the path can be "overloaded".
  */
-uint MultiCommodityFlow::PushFlow(Edge &edge, Path *path, uint accuracy,
+uint MultiCommodityFlow::PushFlow(Node &node, NodeID to, Path *path, uint accuracy,
 		uint max_saturation)
 {
-	assert(edge.UnsatisfiedDemand() > 0);
-	uint flow = Clamp(edge.Demand() / accuracy, 1, edge.UnsatisfiedDemand());
+	assert(node.UnsatisfiedDemandTo(to) > 0);
+	uint flow = Clamp(node.DemandTo(to) / accuracy, 1, node.UnsatisfiedDemandTo(to));
 	flow = path->AddFlow(flow, this->job, max_saturation);
-	edge.SatisfyDemand(flow);
+	node.SatisfyDemandTo(to, flow);
 	return flow;
 }
 
@@ -511,25 +512,25 @@ MCF1stPass::MCF1stPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 			/* First saturate the shortest paths. */
 			this->Dijkstra<DistanceAnnotation, GraphEdgeIterator>(source, paths);
 
+			Node src_node = job[source];
 			bool source_demand_left = false;
 			for (NodeID dest = 0; dest < size; ++dest) {
-				Edge edge = job[source][dest];
-				if (edge.UnsatisfiedDemand() > 0) {
+				if (src_node.UnsatisfiedDemandTo(dest) > 0) {
 					Path *path = paths[dest];
 					assert(path != nullptr);
 					/* Generally only allow paths that don't exceed the
 					 * available capacity. But if no demand has been assigned
 					 * yet, make an exception and allow any valid path *once*. */
-					if (path->GetFreeCapacity() > 0 && this->PushFlow(edge, path,
+					if (path->GetFreeCapacity() > 0 && this->PushFlow(src_node, dest, path,
 							accuracy, this->max_saturation) > 0) {
 						/* If a path has been found there is a chance we can
 						 * find more. */
-						more_loops = more_loops || (edge.UnsatisfiedDemand() > 0);
-					} else if (edge.UnsatisfiedDemand() == edge.Demand() &&
+						more_loops = more_loops || (src_node.UnsatisfiedDemandTo(dest) > 0);
+					} else if (src_node.UnsatisfiedDemandTo(dest) == src_node.DemandTo(dest) &&
 							path->GetFreeCapacity() > INT_MIN) {
-						this->PushFlow(edge, path, accuracy, UINT_MAX);
+						this->PushFlow(src_node, dest, path, accuracy, UINT_MAX);
 					}
-					if (edge.UnsatisfiedDemand() > 0) source_demand_left = true;
+					if (src_node.UnsatisfiedDemandTo(dest) > 0) source_demand_left = true;
 				}
 			}
 			finished_sources[source] = !source_demand_left;
@@ -558,13 +559,13 @@ MCF2ndPass::MCF2ndPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 
 			this->Dijkstra<CapacityAnnotation, FlowEdgeIterator>(source, paths);
 
+			Node src_node = job[source];
 			bool source_demand_left = false;
 			for (NodeID dest = 0; dest < size; ++dest) {
-				Edge edge = this->job[source][dest];
 				Path *path = paths[dest];
-				if (edge.UnsatisfiedDemand() > 0 && path->GetFreeCapacity() > INT_MIN) {
-					this->PushFlow(edge, path, accuracy, UINT_MAX);
-					if (edge.UnsatisfiedDemand() > 0) {
+				if (src_node.UnsatisfiedDemandTo(dest) > 0 && path->GetFreeCapacity() > INT_MIN) {
+					this->PushFlow(src_node, dest, path, accuracy, UINT_MAX);
+					if (src_node.UnsatisfiedDemandTo(dest) > 0) {
 						demand_left = true;
 						source_demand_left = true;
 					}

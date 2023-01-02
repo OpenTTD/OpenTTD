@@ -30,11 +30,17 @@ extern LinkGraphJobPool _link_graph_job_pool;
 class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool>{
 private:
 	/**
+	 * Demand between two nodes.
+	 */
+	struct DemandAnnotation {
+		uint demand;             ///< Transport demand between the nodes.
+		uint unsatisfied_demand; ///< Demand over this edge that hasn't been satisfied yet.
+	};
+
+	/**
 	 * Annotation for a link graph edge.
 	 */
 	struct EdgeAnnotation {
-		uint demand;             ///< Transport demand between the nodes.
-		uint unsatisfied_demand; ///< Demand over this edge that hasn't been satisfied yet.
 		uint flow;               ///< Planned flow over this edge.
 	};
 
@@ -46,11 +52,13 @@ private:
 		PathList paths;          ///< Paths through this node, sorted so that those with flow == 0 are in the back.
 		FlowStatMap flows;       ///< Planned flows to other nodes.
 
-		std::vector<EdgeAnnotation> edges;
+		std::vector<EdgeAnnotation>   edges;   ///< Annotations for all edges originating at this node.
+		std::vector<DemandAnnotation> demands; ///< Annotations for the demand to all other nodes.
 
-		NodeAnnotation(const LinkGraph::BaseNode &node) : undelivered_supply(node.supply), paths(), flows()
+		NodeAnnotation(const LinkGraph::BaseNode &node, size_t size) : undelivered_supply(node.supply), paths(), flows()
 		{
 			this->edges.resize(node.edges.size());
+			this->demands.resize(size);
 		}
 	};
 
@@ -91,18 +99,6 @@ public:
 				LinkGraph::ConstEdge(edge), anno(anno) {}
 
 		/**
-		 * Get the transport demand between end the points of the edge.
-		 * @return Demand.
-		 */
-		uint Demand() const { return this->anno.demand; }
-
-		/**
-		 * Get the transport demand that hasn't been satisfied by flows, yet.
-		 * @return Unsatisfied demand.
-		 */
-		uint UnsatisfiedDemand() const { return this->anno.unsatisfied_demand; }
-
-		/**
 		 * Get the total flow on the edge.
 		 * @return Flow.
 		 */
@@ -122,26 +118,6 @@ public:
 		{
 			assert(flow <= this->anno.flow);
 			this->anno.flow -= flow;
-		}
-
-		/**
-		 * Add some (not yet satisfied) demand.
-		 * @param demand Demand to be added.
-		 */
-		void AddDemand(uint demand)
-		{
-			this->anno.demand += demand;
-			this->anno.unsatisfied_demand += demand;
-		}
-
-		/**
-		 * Satisfy some demand.
-		 * @param demand Demand to be satisfied.
-		 */
-		void SatisfyDemand(uint demand)
-		{
-			assert(demand <= this->anno.unsatisfied_demand);
-			this->anno.unsatisfied_demand -= demand;
 		}
 	};
 
@@ -259,6 +235,28 @@ public:
 		const PathList &Paths() const { return this->node_anno.paths; }
 
 		/**
+		 * Get the transport demand between end the points of the edge.
+		 * @return Demand.
+		 */
+		uint DemandTo(NodeID to) const { return this->node_anno.demands[to].demand; }
+
+		/**
+		 * Get the transport demand that hasn't been satisfied by flows, yet.
+		 * @return Unsatisfied demand.
+		 */
+		uint UnsatisfiedDemandTo(NodeID to) const { return this->node_anno.demands[to].unsatisfied_demand; }
+
+		/**
+		 * Satisfy some demand.
+		 * @param demand Demand to be satisfied.
+		 */
+		void SatisfyDemandTo(NodeID to, uint demand)
+		{
+			assert(demand <= this->node_anno.demands[to].unsatisfied_demand);
+			this->node_anno.demands[to].unsatisfied_demand -= demand;
+		}
+
+		/**
 		 * Deliver some supply, adding demand to the respective edge.
 		 * @param to Destination for supply.
 		 * @param amount Amount of supply to be delivered.
@@ -266,7 +264,8 @@ public:
 		void DeliverSupply(NodeID to, uint amount)
 		{
 			this->node_anno.undelivered_supply -= amount;
-			(*this)[to].AddDemand(amount);
+			this->node_anno.demands[to].demand += amount;
+			this->node_anno.demands[to].unsatisfied_demand += amount;
 		}
 	};
 
