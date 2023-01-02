@@ -31,6 +31,7 @@
  *    o NewGRF variables which can be used to determine visual styles or behavior based on the time of year
  *    o Snow line movement
  *  - Economy time
+ *    o Vehicle service interval and time since last service
  *
  * Calendar time is kept in a common Gregorian calendar, with 365 days in a year, leap years, variable
  * length months, and so on.

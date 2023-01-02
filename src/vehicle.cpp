@@ -167,6 +167,7 @@ void VehicleServiceInDepot(Vehicle *v)
 
 	do {
 		v->date_of_last_service = _date;
+		v->economy_date_of_last_service = _economy_date;
 		v->breakdowns_since_last_service = 0;
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
@@ -190,10 +191,17 @@ bool Vehicle::NeedsServicing() const
 
 	/* Are we ready for the next service cycle? */
 	const Company *c = Company::Get(this->owner);
-	if (this->ServiceIntervalIsPercent() ?
-			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
-			(this->date_of_last_service + this->GetServiceInterval() >= _date)) {
-		return false;
+
+	/* There are three possible units for the service interval, which we handle individually. */
+	if (this->ServiceIntervalIsPercent()) {
+		/* Service interval is in percents. */
+		if (this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) return false;
+	} else if (_settings_game.economy.use_realtime_units) {
+		/* Service interval is in minutes. */
+		if (this->economy_date_of_last_service + (this->GetServiceInterval() * DAYS_IN_ECONOMY_MONTH) >= _economy_date) return false;
+	} else {
+		/* Service interval is in days. */
+		if (this->economy_date_of_last_service + this->GetServiceInterval() >= _economy_date) return false;
 	}
 
 	/* If we're servicing anyway, because we have not disabled servicing when

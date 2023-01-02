@@ -127,7 +127,10 @@ static void UpdateConsists(int32 new_value)
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 }
 
-/* Check service intervals of vehicles, newvalue is value of % or day based servicing */
+/**
+ * Check and update if needed all vehicle service intervals.
+ * @param new_value Contains 0 if service intervals are in time (days or real-world minutes), otherwise intervals use percents.
+ */
 static void UpdateAllServiceInterval(int32 new_value)
 {
 	bool update_vehicles;
@@ -141,15 +144,23 @@ static void UpdateAllServiceInterval(int32 new_value)
 	}
 
 	if (new_value != 0) {
-		vds->servint_trains   = 50;
-		vds->servint_roadveh  = 50;
-		vds->servint_aircraft = 50;
-		vds->servint_ships    = 50;
+		/* Service intervals are in percents. */
+		vds->servint_trains   = DEF_SERVINT_PERCENT;
+		vds->servint_roadveh  = DEF_SERVINT_PERCENT;
+		vds->servint_aircraft = DEF_SERVINT_PERCENT;
+		vds->servint_ships    = DEF_SERVINT_PERCENT;
+	} else if ((_game_mode == GM_MENU && _settings_newgame.economy.use_realtime_units) || _game_mode != GM_MENU && _settings_game.economy.use_realtime_units) {
+		/* Service intervals are in minutes. */
+		vds->servint_trains   = DEF_SERVINT_MINUTES_TRAINS;
+		vds->servint_roadveh  = DEF_SERVINT_MINUTES_ROADVEH;
+		vds->servint_aircraft = DEF_SERVINT_MINUTES_AIRCRAFT;
+		vds->servint_ships    = DEF_SERVINT_MINUTES_SHIPS;
 	} else {
-		vds->servint_trains   = 150;
-		vds->servint_roadveh  = 150;
-		vds->servint_aircraft = 100;
-		vds->servint_ships    = 360;
+		/* Service intervals are in days. */
+		vds->servint_trains   = DEF_SERVINT_DAYS_TRAINS;
+		vds->servint_roadveh  = DEF_SERVINT_DAYS_ROADVEH;
+		vds->servint_aircraft = DEF_SERVINT_DAYS_AIRCRAFT;
+		vds->servint_ships    = DEF_SERVINT_DAYS_SHIPS;
 	}
 
 	if (update_vehicles) {
@@ -490,9 +501,14 @@ static void UpdateClientConfigValues()
  */
 static void UseRealtimeUnits(int32 new_value)
 {
+	/* If disabling real-time units, we can only play at 100% calendar speed. */
 	if (!_settings_newgame.economy.use_realtime_units) {
 		_settings_newgame.economy.calendar_progress_speed = DEF_CALENDAR_PROGRESS_SPEED;
-		InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	}
+
+	/* If service intervals are in time units (calendar days or real-world minutes), reset them to the correct defaults. */
+	if (!_settings_client.company.vehicle.servint_ispercent) {
+		UpdateAllServiceInterval(0);
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
@@ -502,11 +518,19 @@ static void UseRealtimeUnits(int32 new_value)
  * If the player changes the calendar progress speed, we need to ensure we're using real-time units.
  * @param new_value Unused.
  */
-static void ChangeCalendarProgressSpeed(int32 new_value)
+void ChangeCalendarProgressSpeed(int32 new_value)
 {
+	/* We can only change real-time unit mode before starting a new game, so if we're in-game there's no need to do this. */
+	if (_game_mode != GM_MENU) return;
+
 	if (_settings_newgame.economy.calendar_progress_speed != DEF_CALENDAR_PROGRESS_SPEED) {
 		_settings_newgame.economy.use_realtime_units = true;
 		InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	}
+
+	/* If service intervals are in time units (calendar days or real-world minutes), reset them to the correct defaults. */
+	if (!_settings_client.company.vehicle.servint_ispercent) {
+		UpdateAllServiceInterval(0);
 	}
 }
 

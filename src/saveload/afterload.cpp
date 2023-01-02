@@ -741,6 +741,11 @@ bool AfterLoadGame()
 		_settings_game.economy.use_realtime_units = false;
 
 		SetEconomyDate(_date, _date_fract);
+
+		/* We now use economy dates for vehicle servicing, and store calendar date of last service for NewGRFs to read. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			v->economy_date_of_last_service = v->date_of_last_service;
+		}
 	}
 
 	/*
