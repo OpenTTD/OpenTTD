@@ -392,7 +392,7 @@ public:
 		}
 
 		size_t num_cargo = this->GetNumCargo();
-		for (CargoID i = 0; i < num_cargo; i++) {
+		for (size_t i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SlObject(ge, this->GetLoadDescription());
 			if (IsSavegameVersionBefore(SLV_183)) {

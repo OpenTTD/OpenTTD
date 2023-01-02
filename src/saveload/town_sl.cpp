@@ -148,7 +148,7 @@ public:
 	void Load(Town *t) const override
 	{
 		size_t num_cargo = this->GetNumCargo();
-		for (CargoID i = 0; i < num_cargo; i++) {
+		for (size_t i = 0; i < num_cargo; i++) {
 			SlObject(&t->supplied[i], this->GetLoadDescription());
 		}
 	}
