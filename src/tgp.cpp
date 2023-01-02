@@ -326,7 +326,7 @@ static inline bool AllocHeightMap()
 	_height_map.size_y = MapSizeY();
 
 	/* Allocate memory block for height map row pointers */
-	size_t total_size = (_height_map.size_x + 1) * (_height_map.size_y + 1);
+	size_t total_size = static_cast<size_t>(_height_map.size_x + 1) * (_height_map.size_y + 1);
 	_height_map.dim_x = _height_map.size_x + 1;
 	_height_map.h.resize(total_size);
 
@@ -580,7 +580,7 @@ static void HeightMapCurves(uint level)
 	float factor = sqrt((float)_height_map.size_x / (float)_height_map.size_y);
 	uint sx = Clamp((int)(((1 << level) * factor) + 0.5), 1, 128);
 	uint sy = Clamp((int)(((1 << level) / factor) + 0.5), 1, 128);
-	byte *c = AllocaM(byte, sx * sy);
+	byte *c = AllocaM(byte, static_cast<size_t>(sx) * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
 		c[i] = Random() % lengthof(curve_maps);

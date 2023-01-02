@@ -1222,9 +1222,10 @@ std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zo
 	const SpriteID real_sprite = GB(spriteId, 0, SPRITE_WIDTH);
 	const Sprite *sprite = GetSprite(real_sprite, ST_NORMAL);
 	Dimension dim = GetSpriteSize(real_sprite, nullptr, zoom);
-	std::unique_ptr<uint32[]> result(new uint32[dim.width * dim.height]);
+	size_t dim_size = static_cast<size_t>(dim.width) * dim.height;
+	std::unique_ptr<uint32[]> result(new uint32[dim_size]);
 	/* Set buffer to fully transparent. */
-	MemSetT(result.get(), 0, dim.width * dim.height);
+	MemSetT(result.get(), 0, dim_size);
 
 	/* Prepare new DrawPixelInfo - Normally this would be the screen but we want to draw to another buffer here.
 	 * Normally, pitch would be scaled screen width, but in our case our "screen" is only the sprite width wide. */
@@ -1237,11 +1238,13 @@ std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zo
 	dpi.height = dim.height;
 	dpi.zoom = zoom;
 
+	dim_size = static_cast<size_t>(dim.width) * dim.height;
+
 	/* If the current blitter is a paletted blitter, we have to render to an extra buffer and resolve the palette later. */
 	std::unique_ptr<byte[]> pal_buffer{};
 	if (blitter->GetScreenDepth() == 8) {
-		pal_buffer.reset(new byte[dim.width * dim.height]);
-		MemSetT(pal_buffer.get(), 0, dim.width * dim.height);
+		pal_buffer.reset(new byte[dim_size]);
+		MemSetT(pal_buffer.get(), 0, dim_size);
 
 		dpi.dst_ptr = pal_buffer.get();
 	}
@@ -1255,7 +1258,7 @@ std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zo
 		/* Resolve palette. */
 		uint32 *dst = result.get();
 		const byte *src = pal_buffer.get();
-		for (size_t i = 0; i < dim.height * dim.width; ++i) {
+		for (size_t i = 0; i < dim_size; ++i) {
 			*dst++ = _cur_palette.palette[*src++].data;
 		}
 	}
@@ -1506,7 +1509,7 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 void ScreenSizeChanged()
 {
 	_dirty_bytes_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-	_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_bytes_per_line * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
+	_dirty_blocks = ReallocT<byte>(_dirty_blocks, static_cast<size_t>(_dirty_bytes_per_line) * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
 
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
