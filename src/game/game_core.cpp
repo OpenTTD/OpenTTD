@@ -73,6 +73,9 @@
 {
 	if (Game::instance != nullptr) return;
 
+	/* Don't start GameScripts in intro */
+	if (_game_mode == GM_MENU) return;
+
 	/* Clients shouldn't start GameScripts */
 	if (_networking && !_network_server) return;
 
