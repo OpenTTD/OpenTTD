@@ -133,12 +133,12 @@ public:
 		 * @param base_anno Array of annotations to be iterated.
 		 * @param current Start offset of iteration.
 		 */
-		EdgeIterator(span<const LinkGraph::BaseEdge> base, span<EdgeAnnotation> base_anno, NodeID current) :
-				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(base, current),
+		EdgeIterator(span<const LinkGraph::BaseEdge> base, span<EdgeAnnotation> base_anno, bool end) :
+				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(base, end),
 				base_anno(base_anno) {}
 
 		EdgeIterator() :
-				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(span<const LinkGraph::BaseEdge>(), INVALID_NODE),
+				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(span<const LinkGraph::BaseEdge>(), true),
 				base_anno() {}
 
 		/**
@@ -148,7 +148,7 @@ public:
 		 */
 		std::pair<NodeID, Edge> operator*() const
 		{
-			return std::pair<NodeID, Edge>(this->current, Edge(this->base[this->current], this->base_anno[this->current]));
+			return std::pair<NodeID, Edge>(this->base[this->current].dest_node, Edge(this->base[this->current], this->base_anno[this->current]));
 		}
 
 		/**
@@ -187,21 +187,26 @@ public:
 		 * @param to Remote end of the edge.
 		 * @return Edge between this node and "to".
 		 */
-		Edge operator[](NodeID to) const { return Edge(this->node.edges[to], this->edge_annos[to]); }
+		Edge operator[](NodeID to) const
+		{
+			assert(this->HasEdgeTo(to));
+			auto index = std::distance(this->node.edges.begin(), this->GetEdge(to));
+			return Edge(this->node.edges[index], this->edge_annos[index]);
+		}
 
 		/**
 		 * Iterator for the "begin" of the edge array. Only edges with capacity
 		 * are iterated. The others are skipped.
 		 * @return Iterator pointing to the first edge.
 		 */
-		EdgeIterator Begin() const { return EdgeIterator(this->node.edges, this->edge_annos, index); }
+		EdgeIterator Begin() const { return EdgeIterator(this->node.edges, this->edge_annos, false); }
 
 		/**
 		 * Iterator for the "end" of the edge array. Only edges with capacity
 		 * are iterated. The others are skipped.
 		 * @return Iterator pointing beyond the last edge.
 		 */
-		EdgeIterator End() const { return EdgeIterator(this->node.edges, this->edge_annos, INVALID_NODE); }
+		EdgeIterator End() const { return EdgeIterator(this->node.edges, this->edge_annos, true); }
 
 		/**
 		 * Get amount of supply that hasn't been delivered, yet.

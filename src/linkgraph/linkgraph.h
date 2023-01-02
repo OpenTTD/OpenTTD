@@ -38,10 +38,7 @@ extern LinkGraphPool _link_graph_pool;
 class LinkGraph : public LinkGraphPool::PoolItem<&_link_graph_pool> {
 public:
 	/**
-	 * An edge in the link graph. Corresponds to a link between two stations or at
-	 * least the distance between them. Edges from one node to itself contain the
-	 * ID of the opposite Node of the first active edge (i.e. not just distance) in
-	 * the column as next_edge.
+	 * An edge in the link graph. Corresponds to a link between two stations.
 	 */
 	struct BaseEdge {
 		uint capacity;                 ///< Capacity of the link.
@@ -49,9 +46,25 @@ public:
 		uint64 travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
 		Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
 		Date last_restricted_update;   ///< When the restricted part of the link was last updated.
-		NodeID next_edge;              ///< Destination of next valid edge starting at the same source node.
+		NodeID dest_node;              ///< Destination of the edge.
 
-		BaseEdge();
+		BaseEdge(NodeID dest_node = INVALID_NODE);
+
+		/** Comparison operator based on \c dest_node. */
+		bool operator <(const BaseEdge &rhs) const
+		{
+			return this->dest_node < rhs.dest_node;
+		}
+
+		bool operator <(NodeID rhs) const
+		{
+			return this->dest_node < rhs;
+		}
+
+		friend inline bool operator <(NodeID lhs, const LinkGraph::BaseEdge &rhs)
+		{
+			return lhs < rhs.dest_node;
+		}
 	};
 
 	/**
@@ -66,7 +79,7 @@ public:
 		TileIndex xy;            ///< Location of the station referred to by the node.
 		Date last_update;        ///< When the supply was last updated.
 
-		std::vector<BaseEdge> edges;
+		std::vector<BaseEdge> edges; ///< Sorted list of outgoing edges from this node.
 
 		BaseNode(TileIndex xy = INVALID_TILE, StationID st = INVALID_STATION, uint demand = 0);
 	};
@@ -135,6 +148,10 @@ public:
 		Tnode &node;       ///< Node being wrapped.
 		NodeID index;      ///< ID of wrapped node.
 
+		auto GetEdge(NodeID dest) const
+		{
+			return std::lower_bound(this->node.edges.begin(), this->node.edges.end(), dest);
+		}
 	public:
 
 		/**
@@ -173,6 +190,16 @@ public:
 		 * @return Location of the station.
 		 */
 		TileIndex XY() const { return this->node.xy; }
+
+		/**
+		 * Check if an edge to a destination is present.
+		 * @param dest Wanted edge destination.
+		 * @return True if an edge is present.
+		 */
+		bool HasEdgeTo(NodeID dest) const
+		{
+			return std::binary_search(this->node.edges.begin(), this->node.edges.end(), dest);
+		}
 	};
 
 	/**
@@ -186,7 +213,7 @@ public:
 	class BaseEdgeIterator {
 	protected:
 		span<Tedge> base; ///< Array of edges being iterated.
-		NodeID current;   ///< Current offset in edges array.
+		size_t current;   ///< Current offset in edges array.
 
 		/**
 		 * A "fake" pointer to enable operator-> on temporaries. As the objects
@@ -214,12 +241,9 @@ public:
 		/**
 		 * Constructor.
 		 * @param base Array of edges to be iterated.
-		 * @param current ID of current node (to locate the first edge).
+		 * @param end Make the iterator the end sentinel?
 		 */
-		BaseEdgeIterator (span<Tedge> base, NodeID current) :
-			base(base),
-			current(current == INVALID_NODE ? current : base[current].next_edge)
-		{}
+		BaseEdgeIterator(span<Tedge> base, bool end) : base(base), current(end ? base.size() : 0) {}
 
 		/**
 		 * Prefix-increment.
@@ -227,7 +251,7 @@ public:
 		 */
 		Titer &operator++()
 		{
-			this->current = this->base[this->current].next_edge;
+			if (this->current < this->base.size()) this->current++;
 			return static_cast<Titer &>(*this);
 		}
 
@@ -238,7 +262,7 @@ public:
 		Titer operator++(int)
 		{
 			Titer ret(static_cast<Titer &>(*this));
-			this->current = this->base[this->current].next_edge;
+			++(*this);
 			return ret;
 		}
 
@@ -274,7 +298,7 @@ public:
 		 */
 		std::pair<NodeID, Tedge_wrapper> operator*() const
 		{
-			return std::pair<NodeID, Tedge_wrapper>(this->current, Tedge_wrapper(this->base[this->current]));
+			return std::pair<NodeID, Tedge_wrapper>(this->base[this->current].dest_node, Tedge_wrapper(this->base[this->current]));
 		}
 
 		/**
@@ -315,10 +339,10 @@ public:
 		/**
 		 * Constructor.
 		 * @param edges Array of edges to be iterated over.
-		 * @param current ID of current edge's end node.
+		 * @param end Make the iterator the end sentinel?
 		 */
-		ConstEdgeIterator(span<const BaseEdge> edges, NodeID current) :
-			BaseEdgeIterator<const BaseEdge, ConstEdge, ConstEdgeIterator>(edges, current) {}
+		ConstEdgeIterator(span<const BaseEdge> edges, bool end) :
+			BaseEdgeIterator<const BaseEdge, ConstEdge, ConstEdgeIterator>(edges, end) {}
 	};
 
 	/**
@@ -330,10 +354,10 @@ public:
 		/**
 		 * Constructor.
 		 * @param edges Array of edges to be iterated over.
-		 * @param current ID of current edge's end node.
+		 * @param end Make the iterator the end sentinel?
 		 */
-		EdgeIterator(span<BaseEdge> edges, NodeID current) :
-			BaseEdgeIterator<BaseEdge, Edge, EdgeIterator>(edges, current) {}
+		EdgeIterator(span<BaseEdge> edges, bool end) :
+			BaseEdgeIterator<BaseEdge, Edge, EdgeIterator>(edges, end) {}
 	};
 
 	/**
@@ -355,19 +379,23 @@ public:
 		 * @param to ID of end node of edge.
 		 * @return Constant edge wrapper.
 		 */
-		ConstEdge operator[](NodeID to) const { return ConstEdge(this->node.edges[to]); }
+		ConstEdge operator[](NodeID to) const
+		{
+			assert(this->HasEdgeTo(to));
+			return ConstEdge(*this->GetEdge(to));
+		}
 
 		/**
 		 * Get an iterator pointing to the start of the edges array.
 		 * @return Constant edge iterator.
 		 */
-		ConstEdgeIterator Begin() const { return ConstEdgeIterator(this->node.edges, this->index); }
+		ConstEdgeIterator Begin() const { return ConstEdgeIterator(this->node.edges, false); }
 
 		/**
 		 * Get an iterator pointing beyond the end of the edges array.
 		 * @return Constant edge iterator.
 		 */
-		ConstEdgeIterator End() const { return ConstEdgeIterator(this->node.edges, INVALID_NODE); }
+		ConstEdgeIterator End() const { return ConstEdgeIterator(this->node.edges, true); }
 	};
 
 	/**
@@ -388,19 +416,23 @@ public:
 		 * @param to ID of end node of edge.
 		 * @return Edge wrapper.
 		 */
-		Edge operator[](NodeID to) { return Edge(this->node.edges[to]); }
+		Edge operator[](NodeID to)
+		{
+			assert(this->HasEdgeTo(to));
+			return Edge(*this->GetEdge(to));
+		}
 
 		/**
 		 * Get an iterator pointing to the start of the edges array.
 		 * @return Edge iterator.
 		 */
-		EdgeIterator Begin() { return EdgeIterator(this->node.edges, this->index); }
+		EdgeIterator Begin() { return EdgeIterator(this->node.edges, false); }
 
 		/**
 		 * Get an iterator pointing beyond the end of the edges array.
 		 * @return Constant edge iterator.
 		 */
-		EdgeIterator End() { return EdgeIterator(this->node.edges, INVALID_NODE); }
+		EdgeIterator End() { return EdgeIterator(this->node.edges, true); }
 
 		/**
 		 * Update the node's supply and set last_update to the current date.
