@@ -2292,7 +2292,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :duża
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :bardzo duża
 
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcje miast, które będą metropoliami: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Liczba miast, które staną się metropoliami - czyli miastami, które na początku są większe i szybciej się rozwijają
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Liczba miast, które staną się metropoliami - czyli miastami, które od początku są większe i szybciej się rozwijają
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
@@ -3231,6 +3231,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Losowe m
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Budowa miasta w losowym miejscu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Wiele losowych miast
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryj mapę losowo położonymi miastami
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Rozszerz wszystkie miasta
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Zwiększ trochę rozmiar wszystkich miast
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nazwa miasta:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Wprowadź nazwę miasta
@@ -3696,27 +3698,30 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typ szyn
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR zmienna 60+parametr x (heksadecymalnie)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Dostosowanie obrazka {COMMA} ({STRING})
-STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Następny obrazek
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idź do następnego normalnego obrazka, pomijając jakiekolwiek pseudo/kolorowe/znakowe obrazki i zawijaj je od ostatniego do pierwszego
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idź do obrazka
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do danego obrazka. Jeśli dany obrazek nie jest normalnym obrazkiem, idź do następnego normalnego obrazka
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni obrazek
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego normalnego obrazka, pomijając jakiekolwiek pseudo/kolorowe/znakowe obrazki i zawijaj je od pierwszego do ostatniego
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Przedstawienie wybranego orbazka. Dostosowanie jest ignorowane podczas rysowania tego obrazka
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj obrazkiem, zmieniając przesunięcia X i Y. Ctrl+klik aby przesunąć o 8 jednostek  na raz.
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Wyrównywanie sprite'a {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Następny sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idź do następnego normalnego sprite'a, pomijając jakiekolwiek pseudo/przekolorowane/czcionkowe sprite'y i ewentualnie przewiń od ostatniego do pierwszego
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idź do sprite'a
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do danego sprite'a. Jeśli dany sprite nie jest normalnym spritem, przejdź do następnego normalnego sprite'a
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idź do poprzedniego normalnego sprite'a, pomijając jakiekolwiek pseudo/przekolorowane/czcionkowe sprite'y i ewentualnie przewiń od pierwszego do ostatniego
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prezentacja wybranego sprite'a. Wyrównanie jest ignorowane podczas rysowania tego sprite'a
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj spritem, zmieniając przesunięcia X i Y. Ctrl+klik aby przesunąć o 8 jednostek  na raz
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Wyśrodkowanie przesunięcia
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Wyśrodkowanie sprite'a
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Prowadnice
 
-STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetuj zależność
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetuj aktualne offsety zależne
-STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Całkowity)
-STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (Zależny)
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Wybierz obrazek
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Wybierz obrazek z dowolnego miejsca na ekranie
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Wyzeruj względność
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Wyzeruj aktualne względne przesunięcia
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Przesunięcie X: {NUM}, przesunięcie Y: {NUM} (bezwzględne)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Przesunięcie X: {NUM}, przesunięcie Y: {NUM} (względne)
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Wybierz sprite'a
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Wybierz sprite'a z dowolnego miejsca na ekranie
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Idź do obrazka
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Idź do sprite'a
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -4777,14 +4782,14 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Usuń wszystkie polecenia
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przestań dzielić
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań dzielić listę poleceń. Ctrl+Klik dodatkowo usuwa wszystkie polecenia tego pojazdu
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań współdzielić listę poleceń. Ctrl+klik dodatkowo usuwa wszystkie polecenia tego pojazdu
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbliższego serwisu
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawi polecenie stacji na 'pełny załadunek dowolnego towaru', pkt. orientacyjnego na 'bez zatrzymywania się', a zajezdni na 'serwisuj'. Kliknięcie innego pojazdu kopiuje jego polecenia, ctrl+klik (lub 'Współdzielenie poleceń') pozwala na dzielenie z nim poleceń. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Dodaj nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawi polecenie stacji na „pełny załadunek któregoś z towarów”, posterunku na „bez zatrzymywania się”, a zajezdni na „serwisuj”. Kliknięcie innego pojazdu kopiuje jego polecenia. „Współdzielenie poleceń” lub Ctrl+klik pozwala na współdzielenie z nim poleceń. Polecenie zajezdni wyłącza automatyczne serwisowanie tego pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -4894,22 +4899,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data poc
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wybierz początkową datę rozkładu jazdy. Ctrl+klik rozłoży równomierne wszystkie pojazdy współdzielące ten rozkład, począwszy od podanej daty, zgodnie z ich kolejnością, o ile rozkład ten jest kompletny
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu, jaką powinno zająć zaznaczone polecenie. Ctrl+klik ustala czas dla wszystkich poleceń
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Usuń czas
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czasu przeznaczoną na zaznaczone zadanie
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść ilość czasu w zaznaczonym poleceniu. Ctrl+klik wyczyści czas we wszystkich poleceniach
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień limit prędkości
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość podróży w zaznaczonym poleceniu
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość przejazdu w zaznaczonym poleceniu. Ctrl+klik zmieni prędkość we wszystkich poleceniach
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść limit prędkości
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość podróży w zaznaczonym poleceniu
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość przejazdu w zaznaczonym poleceniu. Ctrl+klik wyczyści prędkość we wszystkich poleceniach
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automat. wypełnienie
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu (Ctrl+klik, aby spróbować utrzymać czasy oczekiwania)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu. Ctrl+klik, aby spróbować utrzymać czasy oczekiwania
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
@@ -5165,6 +5170,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nie można stworzyć przedsiębiorstw...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nie można tutaj wybudować: {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nie można tutaj wybudować tego przedsiębiorstwa...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Nie można znaleźć przedsiębiorstwa...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... zbyt blisko innego przedsiębiorstwa
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... należy najpierw wybudować miasto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dozwolone jedno na miasto
@@ -5179,7 +5185,9 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... las 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... można zbudować tylko powyżej linii śniegu
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... można zbudować tylko poniżej linii śniegu
 
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nie ma odpowiednich miejsc dla przedsiębiorstw '{STRING}'
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Ufundowanie pechowo nie powiodło się; spróbuj ponownie
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Nie ma odpowiednich miejsc do poszukiwań takiego przedsiębiorstwa
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nie ma odpowiednich miejsc dla przedsiębiorstw „{STRING}”
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Zmień parametry tworzenia map, żeby uzyskać lepsze mapy
 
 # Station construction related errors

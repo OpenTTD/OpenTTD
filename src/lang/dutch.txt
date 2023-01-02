@@ -2851,6 +2851,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeu
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Hiermee sticht je een stad op een willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Verspreid willekeurig geplaatste steden over de kaart
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Alle steden uitbreiden
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Laat alle steden een klein beetje groeien
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Plaatsnaam:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Plaatsnaam invoeren
@@ -4511,22 +4513,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdat
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecteer een datum als startpunt voor deze dienstregeling. Ctrl+klik verdeelt alle voertuigen die deze orders delen gelijkmatig vanaf deze datum op basis van hun relatieve volgorde, als de order volledig is ingeroosterd
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tijd wijzigen
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren. Met Ctrl+klik stel je de tijd voor alle orders in
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tijd wissen
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren. Met Ctrl+klik wis je de tijd voor alle orders
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Maximumsnelheid wijzigen
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Wijzig de maximumsnelheid voor de gekozen order
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Wijzig de maximumsnelheid voor de gekozen order. Met Ctrl+klik stel je de snelheid voor alle orders in
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Snelheidslimiet wissen
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijder de maximumsnelheid van de gekozen order
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijder de maximumsnelheid van de gekozen order. Met Ctrl+klik wis je de snelheid voor alle orders
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Vertragingsteller terugstellen
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Stel de vertragingsteller terug zodat het voertuig op tijd is
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisch vullen
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om te proberen om wachttijden te bewaren)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis. Ctrl+klik om te proberen om wachttijden te bewaren
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Volgens dienstregeling
@@ -4782,6 +4784,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te v
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan {STRING} hier niet bouwen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan dit type industrie hier niet bouwen...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Kan industrie niet onderzoeken...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te dicht bij een andere industrie
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... moet eerst dorp bouwen
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slechts één per stad toegestaan
@@ -4796,6 +4799,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... boss
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan alleen boven de sneeuwlijn gebouwd worden
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan alleen onder de sneeuwlijn gebouwd worden
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}De financiering is mislukt vanwege domme pech. Probeer het opnieuw.
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Er was geen geschikte plek voor onderzoek voor deze industrie
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Er waren geen geschikte locaties voor {STRING}-industrieën
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Wijzig de instellingen van wereldontwikkeling om een betere kaart te krijgen
 
