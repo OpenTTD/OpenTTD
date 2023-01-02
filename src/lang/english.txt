@@ -1789,7 +1789,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default service
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the default service interval for new aircraft, if no explicit service interval is set for the vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default service interval for ships: {STRING2}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the default service interval for new ships, if no explicit service interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}day{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}Day{P 0 "" s}/Minute{P 0 "" s}/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 
@@ -4369,14 +4369,17 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacity
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servicing interval: {LTBLUE}{COMMA}{NBSP}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase servicing interval by 10. Ctrl+Click to increase servicing interval by 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease servicing interval by 10. Ctrl+Click to decrease servicing interval by 5
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servicing interval: {LTBLUE}{COMMA}{NBSP}days{BLACK}   {STRING1}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}{NBSP}minutes{BLACK}   {STRING1}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}%{BLACK}   {STRING1}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Last service: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Last service: {LTBLUE}{NUM} minutes ago
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase servicing interval by {TKM 10 5}. Ctrl+Click to increase servicing interval by {TKM 5 1}
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease servicing interval by {TKM 10 5}. Ctrl+Click to decrease servicing interval by {TKM 5 1}
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Change servicing interval type
 STR_VEHICLE_DETAILS_DEFAULT                                     :Default
-STR_VEHICLE_DETAILS_DAYS                                        :Days
+STR_VEHICLE_DETAILS_TIME                                        :{TKM Days Minutes}
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentage
 
 ###length VEHICLE_TYPES

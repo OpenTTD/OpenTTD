@@ -33,6 +33,13 @@ static const uint DEF_SERVINT_DAYS_SHIPS    = 360;
 static const uint MIN_SERVINT_DAYS          = 30;
 static const uint MAX_SERVINT_DAYS          = 800;
 
+static const uint DEF_SERVINT_MINUTES_TRAINS   = 5;
+static const uint DEF_SERVINT_MINUTES_ROADVEH  = 5;
+static const uint DEF_SERVINT_MINUTES_AIRCRAFT = 3;
+static const uint DEF_SERVINT_MINUTES_SHIPS    = 12;
+static const uint MIN_SERVINT_MINUTES          = 1;
+static const uint MAX_SERVINT_MINUTES          = 30;
+
 static const uint DEF_SERVINT_PERCENT = 50;
 static const uint MIN_SERVINT_PERCENT = 5;
 static const uint MAX_SERVINT_PERCENT = 90;
