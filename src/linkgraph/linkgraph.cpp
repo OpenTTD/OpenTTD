@@ -164,12 +164,11 @@ NodeID LinkGraph::AddNode(const Station *st)
  * @param usage Usage to be added.
  * @param mode Update mode to be used.
  */
-void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
+void LinkGraph::BaseNode::AddEdge(NodeID to, uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
 {
-	assert(this->index != to);
 	assert(!this->HasEdgeTo(to));
 
-	BaseEdge &edge = *this->node.edges.emplace(std::upper_bound(this->node.edges.begin(), this->node.edges.end(), to), to);
+	BaseEdge &edge = *this->edges.emplace(std::upper_bound(this->edges.begin(), this->edges.end(), to), to);
 	edge.capacity = capacity;
 	edge.usage = usage;
 	edge.travel_time_sum = static_cast<uint64>(travel_time) * capacity;
@@ -184,14 +183,14 @@ void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage, uint32 trave
  * @param usage Usage to be added.
  * @param mode Update mode to be used.
  */
-void LinkGraph::Node::UpdateEdge(NodeID to, uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
+void LinkGraph::BaseNode::UpdateEdge(NodeID to, uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
 {
 	assert(capacity > 0);
 	assert(usage <= capacity);
 	if (!this->HasEdgeTo(to)) {
 		this->AddEdge(to, capacity, usage, travel_time, mode);
 	} else {
-		(*this)[to].Update(capacity, usage, travel_time, mode);
+		this->GetEdge(to)->Update(capacity, usage, travel_time, mode);
 	}
 }
 
@@ -199,10 +198,10 @@ void LinkGraph::Node::UpdateEdge(NodeID to, uint capacity, uint usage, uint32 tr
  * Remove an outgoing edge from this node.
  * @param to ID of destination node.
  */
-void LinkGraph::Node::RemoveEdge(NodeID to)
+void LinkGraph::BaseNode::RemoveEdge(NodeID to)
 {
-	auto [first, last] = std::equal_range(this->node.edges.begin(), this->node.edges.end(), to);
-	this->node.edges.erase(first, last);
+	auto [first, last] = std::equal_range(this->edges.begin(), this->edges.end(), to);
+	this->edges.erase(first, last);
 }
 
 /**
@@ -215,33 +214,33 @@ void LinkGraph::Node::RemoveEdge(NodeID to)
  * @param travel_time Travel time to be added, in ticks.
  * @param mode Update mode to be applied.
  */
-void LinkGraph::Edge::Update(uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
+void LinkGraph::BaseEdge::Update(uint capacity, uint usage, uint32 travel_time, EdgeUpdateMode mode)
 {
-	assert(this->edge.capacity > 0);
+	assert(this->capacity > 0);
 	assert(capacity >= usage);
 
 	if (mode & EUM_INCREASE) {
-		if (this->edge.travel_time_sum == 0) {
-			this->edge.travel_time_sum = static_cast<uint64>(this->edge.capacity + capacity) * travel_time;
+		if (this->travel_time_sum == 0) {
+			this->travel_time_sum = static_cast<uint64>(this->capacity + capacity) * travel_time;
 		} else if (travel_time == 0) {
-			this->edge.travel_time_sum += this->edge.travel_time_sum / this->edge.capacity * capacity;
+			this->travel_time_sum += this->travel_time_sum / this->capacity * capacity;
 		} else {
-			this->edge.travel_time_sum += static_cast<uint64>(travel_time) * capacity;
+			this->travel_time_sum += static_cast<uint64>(travel_time) * capacity;
 		}
-		this->edge.capacity += capacity;
-		this->edge.usage += usage;
+		this->capacity += capacity;
+		this->usage += usage;
 	} else if (mode & EUM_REFRESH) {
-		if (this->edge.travel_time_sum == 0) {
-			this->edge.capacity = std::max(this->edge.capacity, capacity);
-			this->edge.travel_time_sum = static_cast<uint64>(travel_time) * this->edge.capacity;
-		} else if (capacity > this->edge.capacity) {
-			this->edge.travel_time_sum = this->edge.travel_time_sum / this->edge.capacity * capacity;
-			this->edge.capacity = capacity;
+		if (this->travel_time_sum == 0) {
+			this->capacity = std::max(this->capacity, capacity);
+			this->travel_time_sum = static_cast<uint64>(travel_time) * this->capacity;
+		} else if (capacity > this->capacity) {
+			this->travel_time_sum = this->travel_time_sum / this->capacity * capacity;
+			this->capacity = capacity;
 		}
-		this->edge.usage = std::max(this->edge.usage, usage);
+		this->usage = std::max(this->usage, usage);
 	}
-	if (mode & EUM_UNRESTRICTED) this->edge.last_unrestricted_update = _date;
-	if (mode & EUM_RESTRICTED) this->edge.last_restricted_update = _date;
+	if (mode & EUM_UNRESTRICTED) this->last_unrestricted_update = _date;
+	if (mode & EUM_RESTRICTED) this->last_restricted_update = _date;
 }
 
 /**

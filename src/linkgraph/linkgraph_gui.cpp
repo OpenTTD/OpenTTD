@@ -88,10 +88,10 @@ void LinkGraphOverlay::RebuildCache()
 			if (!LinkGraph::IsValidID(sta->goods[c].link_graph)) continue;
 			const LinkGraph &lg = *LinkGraph::Get(sta->goods[c].link_graph);
 
-			ConstNode from_node = lg[sta->goods[c].node];
-			supply += lg.Monthly(from_node.Supply());
-			for (ConstEdgeIterator i = from_node.Begin(); i != from_node.End(); ++i) {
-				StationID to = lg[i->first].Station();
+			ConstNode &from_node = lg[sta->goods[c].node];
+			supply += lg.Monthly(from_node.supply);
+			for (const Edge &edge : from_node.edges) {
+				StationID to = lg[edge.dest_node].station;
 				assert(from != to);
 				if (!Station::IsValidID(to) || seen_links.find(to) != seen_links.end()) {
 					continue;
@@ -218,8 +218,8 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 		}
 		const LinkGraph &lg = *LinkGraph::Get(ge.link_graph);
 		if (lg[ge.node].HasEdgeTo(to->goods[c].node)) {
-			ConstEdge edge = lg[ge.node][to->goods[c].node];
-			this->AddStats(c, lg.Monthly(edge.Capacity()), lg.Monthly(edge.Usage()),
+			ConstEdge &edge = lg[ge.node][to->goods[c].node];
+			this->AddStats(c, lg.Monthly(edge.capacity), lg.Monthly(edge.usage),
 					ge.flows.GetFlowVia(to->index),
 					edge.TravelTime() / DAY_TICKS,
 					from->owner == OWNER_NONE || to->owner == OWNER_NONE,
