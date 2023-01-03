@@ -3185,17 +3185,15 @@ bool AfterLoadGame()
 			TileIndex cur_tile = rv->tile;
 			if (!IsLevelCrossingTile(cur_tile)) continue;
 
-			TileIndex location;
-			DestinationID destination;
-			bool reverse = true;
+			ClosestDepot closestDepot = rv->FindClosestDepot();
 
 			/* Try to find a depot with a distance limit of 512 tiles (Manhattan distance). */
-			if (rv->FindClosestDepot(&location, &destination, &reverse) && DistanceManhattan(rv->tile, location) < 512u) {
+			if (closestDepot.found && DistanceManhattan(rv->tile, closestDepot.location) < 512u) {
 				/* Teleport all parts of articulated vehicles. */
 				for (RoadVehicle *u = rv; u != nullptr; u = u->Next()) {
-					u->tile = location;
-					int x = TileX(location) * TILE_SIZE + TILE_SIZE / 2;
-					int y = TileY(location) * TILE_SIZE + TILE_SIZE / 2;
+					u->tile = closestDepot.location;
+					int x = TileX(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
+					int y = TileY(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
 					u->x_pos = x;
 					u->y_pos = y;
 					u->z_pos = GetSlopePixelZ(x, y);

@@ -110,7 +110,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void OnNewDay();
 	uint Crash(bool flooded = false);
 	TileIndex GetOrderStationLocation(StationID station);
-	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	ClosestDepot FindClosestDepot();
 
 	/**
 	 * Check if the aircraft type is a normal flying device; eg
