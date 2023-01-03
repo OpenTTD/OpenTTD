@@ -220,6 +220,23 @@ struct RefitDesc {
 			cargo(cargo), capacity(capacity), remaining(remaining) {}
 };
 
+/**
+ * Structure to return information about the closest depot location,
+ * and whether it could be found.
+ */
+struct ClosestDepot {
+	TileIndex location;
+	DestinationID destination; ///< The DestinationID as used for orders.
+	bool reverse;
+	bool found;
+
+	ClosestDepot() :
+		location(INVALID_TILE), destination(0), reverse(false), found(false) {}
+
+	ClosestDepot(TileIndex location, DestinationID destination, bool reverse = false) :
+		location(location), destination(destination), reverse(reverse), found(true) {}
+};
+
 /** %Vehicle data structure. */
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle, BaseConsist {
 private:
@@ -771,12 +788,9 @@ public:
 	/**
 	 * Find the closest depot for this vehicle and tell us the location,
 	 * DestinationID and whether we should reverse.
-	 * @param location    where do we go to?
-	 * @param destination what hangar do we go to?
-	 * @param reverse     should the vehicle be reversed?
-	 * @return true if a depot could be found.
+	 * @return A structure with information about the closest depot, if found.
 	 */
-	virtual bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) { return false; }
+	virtual ClosestDepot FindClosestDepot() { return {}; }
 
 	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
 

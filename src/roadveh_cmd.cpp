@@ -346,15 +346,12 @@ static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance
 	}
 }
 
-bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+ClosestDepot RoadVehicle::FindClosestDepot()
 {
 	FindDepotData rfdd = FindClosestRoadDepot(this, 0);
-	if (rfdd.best_length == UINT_MAX) return false;
+	if (rfdd.best_length == UINT_MAX) return ClosestDepot();
 
-	if (location    != nullptr) *location    = rfdd.tile;
-	if (destination != nullptr) *destination = GetDepotIndex(rfdd.tile);
-
-	return true;
+	return ClosestDepot(rfdd.tile, GetDepotIndex(rfdd.tile));
 }
 
 /**

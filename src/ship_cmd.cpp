@@ -913,14 +913,10 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 	return CommandCost();
 }
 
-bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+ClosestDepot Ship::FindClosestDepot()
 {
 	const Depot *depot = FindClosestShipDepot(this, 0);
+	if (depot == nullptr) return ClosestDepot();
 
-	if (depot == nullptr) return false;
-
-	if (location    != nullptr) *location    = depot->xy;
-	if (destination != nullptr) *destination = depot->index;
-
-	return true;
+	return ClosestDepot(depot->xy, depot->index);
 }
