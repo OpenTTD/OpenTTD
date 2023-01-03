@@ -104,7 +104,7 @@ Station::~Station()
 		if (lg == nullptr) continue;
 
 		for (NodeID node = 0; node < lg->Size(); ++node) {
-			Station *st = Station::Get((*lg)[node].Station());
+			Station *st = Station::Get((*lg)[node].station);
 			st->goods[c].flows.erase(this->index);
 			if ((*lg)[node].HasEdgeTo(this->goods[c].node) && (*lg)[node][this->goods[c].node].LastUpdate() != INVALID_DATE) {
 				st->goods[c].flows.DeleteFlows(this->index);

@@ -234,7 +234,7 @@ void AfterLoadLinkGraphs()
 	if (IsSavegameVersionBefore(SLV_191)) {
 		for (LinkGraph *lg : LinkGraph::Iterate()) {
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
-				const Station *st = Station::GetIfValid((*lg)[node_id].Station());
+				const Station *st = Station::GetIfValid((*lg)[node_id].station);
 				if (st != nullptr) (*lg)[node_id].UpdateLocation(st->xy);
 			}
 		}
@@ -242,7 +242,7 @@ void AfterLoadLinkGraphs()
 		for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
 			LinkGraph *lg = &(const_cast<LinkGraph &>(lgj->Graph()));
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
-				const Station *st = Station::GetIfValid((*lg)[node_id].Station());
+				const Station *st = Station::GetIfValid((*lg)[node_id].station);
 				if (st != nullptr) (*lg)[node_id].UpdateLocation(st->xy);
 			}
 		}
