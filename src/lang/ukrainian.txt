@@ -325,6 +325,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}к
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}к.с.
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}кВт
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}к.с/т
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}к.с./т
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}к.с./Мг
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}к.с./т
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}к.с./т
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}к.с./Мг
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}кВт/т
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}кВт/т
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}Вт/кг
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}т
@@ -1123,9 +1132,16 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Нала
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Вертикальна синхронізація
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Увімкнутий прапорець дозволить вертикальну синхронізацію екрану. Налаштування запрацює тільки після перезапуску гри. Працює тільки за увімкнутого прискорення апаратного забезпечення.
 
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Поточний драйвер: {STRING}
+
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Автоматично визначений розмір
 
 
-
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
@@ -1537,6 +1553,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Товщина 
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Показувати назву NewGRF у вікні придбання транспорту: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Додати рядок у вікні придбання транспорту, який показуватиме назву NewGRF обраного транспорту.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Показати вантажі, які може перевозити транспорт, у віконному списку{STRING}
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ландшафт: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Ландшафти визначають базові ігрові сценарії з різними вантажами, необхідними для зростання міст. NewGRF'и й ігрові скрипти дозволяють тонший контроль
@@ -1622,6 +1639,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :темнозе�
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіолетовий
 
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Від зеленого до синього
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Переміщення вікна обзору: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Спосіб пересування ігрового поля
@@ -2166,6 +2184,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Налаштування ШІ
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Налаштування сценарію гри
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клац мишою пропускає конфігурацію карти
@@ -2185,6 +2205,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пока
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Налаштування відображення
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати налаштування NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Показати налаштування сценарію гри
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}В обраному наборі базової графіки немає {NUM} спрайт{P а ів ів}. Будь ласка, оновіть набір графіки.
@@ -2943,6 +2964,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Випа
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Заснувати місто у випадковому місці
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Багато різних міст
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Випадково розташувати міста по карті
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Усі міста зростають помалу
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Назва міста:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введіть назву міста
@@ -3243,6 +3265,10 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ріки
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкість:
 STR_MAPGEN_VARIETY                                              :{BLACK}Розподіл різноманітності:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генерувати
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Налаштування NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Налаштування ШІ
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Налаштування сценарію гри
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Показати налаштування сценарію гри
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Англійські (оригінальні)
@@ -3413,6 +3439,7 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Відо
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайте спрайт навколо, змінюючи його зміщення за X та Y. Ctrl+клік зміщує спрайт на 8 клітинок
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Віжцентрувати зсув
 
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Відновити відносні
@@ -3732,6 +3759,8 @@ STR_FINANCES_CAPTION                                            :{WHITE}Фіна
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Дохід
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Операційні видатки
 
 
 ###length 13
@@ -3741,6 +3770,11 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Витр�
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Витрати, автомобілі
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Витрати, літаки
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Витрати, кораблі
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Інфраструктура
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Потяги
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Дорожній транспорт
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Повітряний транспорт
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Судна
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Відсотки за позикою
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Інше
 
@@ -3748,6 +3782,7 @@ STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURREN
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Рахунок
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Позика
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Відсотки за позикою: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. позика: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Позичити {CURRENCY_LONG}
@@ -3880,6 +3915,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Дати
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Оновлення
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Відправити на техогляд
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибуток цього року: {CURRENCY_LONG} (торік: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Відправити до депо
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Відправити в гараж
@@ -3972,6 +4009,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Даль
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип літака: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Всі типи вантажів
+STR_CARGO_TYPE_FILTER_NONE                                      :нема
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів. Клацніть на поїзд для інформації. Ctrl+клац мишою вимикає показ типу транспорту
@@ -4300,6 +4339,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (торік: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (минулого року: {CURRENCY_LONG}) {BLACK}Найгірше: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY_LONG}
@@ -4633,6 +4673,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно налагодження АІ / Ігрового Скрипта доступне тільки серверу
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Налаштування ігрового скрипта
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ігровий Скрипт, який буде завантажено в наступній грі
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
@@ -4646,6 +4687,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Пере
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перемістити обраний AI вниз по списку
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Ігровий Скрипт
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Параметри
 STR_AI_CONFIG_AI                                                :{SILVER}АІ
 
 STR_AI_CONFIG_CHANGE_AI                                         :AI
@@ -5023,6 +5065,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Об'є�
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... на шляху Головний офіс
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Неможливо купити цю ділянку ...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... це вже ваша власність!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... досягнуто обмеження будівництва споруд
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не можна створити групу...
@@ -5122,6 +5165,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не м�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... транспорт не може йти на всі станції
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... транспорт не може йти на цю станцію
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... транспорт, що має спільний з цим розклад, не може йти на цю станцію
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... не увесь транспорт має спільні завдання
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :WHITE}... не увесь транспорт має спільні завдання
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Неможливо розділити список завдань...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Неможливо відмінити спільні накази...

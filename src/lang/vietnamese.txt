@@ -2851,6 +2851,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tạo đ
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Tìm đô thị vị trí ngẫu nhiên
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Nhiều đô thị ngẫu nhiên
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Phủ bản đồ bằng cách tạo đô thị ngẫu nhiên
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Mở xuống tất cả đô thị
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Làm cho mọi đô thị tăng trưởng một chút
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Tên thị trấn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Nhập tên thị trấn
@@ -3327,7 +3329,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo nh�
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets. Ctrl+Click để di chuyển sprite tám đơn vị một lúc
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Toạ độ về trung tâm
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite về trung tâm
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Chữ thập
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Đặt lại tương đối
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Đặt lại các dịch chuyển tương đối hiện tại
@@ -4508,22 +4513,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ngày b�
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Lựa chọn ngày bắt đầu trong bảng lịch trình này. Ctrl+Click phân bổ cho tất cả các phương tiện chia sẻ lộ trình này bắt đầu từ ngày được chọn một cách đồng đều theo thứ tự tương đối giữa chúng, nếu như lộ trình đã lên lịch đầy đủ.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng. Ctrl+Click đặt thời gian cho mọi lộ trình
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Xoá thời gian
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình. Ctrl+Click xoá tất cả thời gian cho mọi lộ trình
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Thay Đổi Giới Hạn Tốc Độ
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Thay đổi tốc độ tối đa của lộ trình được chọn
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Thay đổi tốc độ tối đa của lộ trình được chọn. Ctrl+Click đặt tốc độ cho mọi lộ trình
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Xóa Giới Hạn Tốc Độ
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Xóa tốc độ đối đa đối với lộ trình được chọn
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Xóa tốc độ đối đa đối với lộ trình được chọn. Ctrl+Click xoá tốc độ cho mọi lộ trình
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Lập lại bộ đếm trễ
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Thiết lập lại bộ đếm trễ giờ, để việc di chuyển phương tiện được tính lại đúng đắn
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Tự điền
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự điền bảng lịch trình qua việc đo thời gian hành trình kế tiếp (Ctrl+Click để cố giữ thời gian chờ không đổi)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự điền bảng lịch trình qua việc đo thời gian hành trình kế tiếp. Ctrl+Click để cố giữ thời gian chờ không đổi
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong muốn
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
@@ -4779,6 +4784,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... quá
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Không thể tạo nhà máy...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Không thể xây {STRING} ở đây...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Không thể xây loại nhà máy này ở đây...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Không thể dò tìm nhà máy...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... quá gần nhà máy khác
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... phải có ở thị trấn cái đã
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... mỗi đô thị chỉ được có một cái
@@ -4793,6 +4799,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừ
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía trên núi cao có tuyết
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía dưới núi cao có tuyết
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Không may là việc góp vốn cho tìm kiếm nhà máy thất bại; hãy thử lại
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Không có một nơi phù hợp nào để dò tìm nhà máy này
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Không có vùng đất nào phù hợp với nhà máy '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Thay đổi thông số khởi tạo bản đồ để có được bản đồ tốt hơn
 

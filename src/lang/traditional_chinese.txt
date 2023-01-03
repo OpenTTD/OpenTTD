@@ -200,6 +200,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}�
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}匹
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}千瓦
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}匹/短噸
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}匹/公噸
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}匹/千公斤
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}匹/短噸
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}匹/公噸
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}匹/千公斤
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}千瓦/短噸
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}千瓦/公噸
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}瓦/公斤
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}短噸
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}噸
@@ -395,6 +404,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :遊戲腳本設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :顯示市鎮名稱
@@ -997,8 +1007,17 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}勾選�
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驅動程式: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}界面大小
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}滑動以設定界面大小。 按住 Ctrl 以調整至非整數之倍數。
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}自動選取大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}勾選此方框以自動選取界面大小
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}縮放邊框
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}勾選此方框以令邊框隨界面大小而縮放
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1倍
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3倍
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4倍
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}圖形
 
@@ -1410,6 +1429,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :設定圖像上
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :在購買載具介面的下方顯示 NewGRF 的名稱：{STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :在購買載具介面的中增加一行，顯示所選載具來自哪個 NewGRF。
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :在車輛列表中顯示車輛可運載之貨物種類 {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :如啟用此選項，車輛可運輸的負載量會於車輛列表上方顯示。
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :場景：{STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :此設定決定基本的遊戲場景、可供運輸的貨物種類，以及城鎮發展的條件。然而，NewGRF 及遊戲腳本可提供更加細緻的設定。
@@ -1970,7 +1991,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}圖形
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音效
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}介面
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}界面
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}基本顯示
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}顯示設定
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建造
@@ -2045,6 +2066,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}積分�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 設定
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}遊戲腳本設定
 STR_INTRO_QUIT                                                  :{BLACK}離開
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲。按住 Ctrl 點選可跳過地圖設定畫面
@@ -2064,6 +2087,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}顯示�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}顯示設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}顯示 AI 設定
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}顯示遊戲腳本設定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
 
 STR_INTRO_BASESET                                               :{BLACK}目前圖形設定缺少 {NUM}個貼圖。 請確認基礎貼圖組是否有更新。
@@ -2575,6 +2600,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}超載
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}每月有 {CARGO_LONG} 正等待 從 {STATION} 運送至 {STATION} (可載量之{COMMA}%){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}回程則有{CARGO_LONG}(可載量之{COMMA}%)
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}顯示運輸涵蓋範圍
@@ -2584,6 +2611,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不顯�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}顯示設置地點的運輸涵蓋範圍
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供應：{GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}維護成本: {GOLD}{CURRENCY_SHORT}/年
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合併車站
@@ -2819,6 +2847,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}隨機�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}隨機選址建立市鎮
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}許多隨機市鎮
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}以隨機分佈的市鎮佈滿地圖
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}擴展所有市鎮
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}讓所有市鎮略為成長
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}市鎮名稱：
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}輸入市鎮名稱
@@ -3119,6 +3149,10 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}地形起伏分佈：
 STR_MAPGEN_GENERATE                                             :{WHITE}產生
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF 設定
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}顯示 NewGRF 設定
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}顯示 AI 設定
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}顯示遊戲腳本設定
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英國 (原版)
@@ -3290,6 +3324,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移動 s
 
 ###length 2
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}十字瞄準線
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}重設相對值
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}重設目前的相對位移值
@@ -3628,6 +3663,7 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}船舶
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}貸款利息
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}其他
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}總計
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}銀行餘額
@@ -3766,6 +3802,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}向清�
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :替換車輛
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :送去維護
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年盈利：{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG})
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :送到機廠
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :送到車廠
@@ -3858,6 +3895,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}範圍�
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}飛機類型：{GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :所有貨物種類
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :貨運
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車選單。點選機車或車卡檢視詳細資訊，或者按住 Ctrl 鍵再點選機車或車卡以切換是否顯示機車或車卡的種類
@@ -4519,6 +4558,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在�
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/只可於伺服器打開遊戲腳本除錯視窗
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI設定
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}遊戲腳本設定
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}將於下一次遊戲中載入的腳本
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局開始時將啟用AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人類玩家
@@ -4728,6 +4769,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 已�
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法產生工業...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}無法在此建造 {STRING} ...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}無法在此新建這種工業...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}無法勘探工業...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 太接近另一個工業
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 應先建造市鎮
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 每個市鎮僅允許一個
@@ -4742,6 +4784,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森�
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 只能在雪線以上建造
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 只能在雪線以下建造
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}無適當地點勘探開發此類工業。
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}無適當地點興建「{STRING}」工業
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}請更改參數以產生較佳的地圖
 
@@ -4909,6 +4952,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}被東�
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 被公司總部擋住
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能購買這塊土地...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 您已經擁有了！
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}...已達物件建造之上限
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}無法建立群組...
@@ -4981,6 +5025,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 車輛已被摧毀
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}...車輛並非全部相同
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}沒有可用的車輛
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}請修改您的 NewGRF 設定
@@ -5008,6 +5053,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}無法�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}車輛無法前往所有車站
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}車輛無法前往該站
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一部共用這個指令清單的車輛無法前往該站
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}...車輛之指令並非全部相同
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}...車輛並非全部使用同一共享指令
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}無法共享指令清單...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}無法停止共享指令清單...

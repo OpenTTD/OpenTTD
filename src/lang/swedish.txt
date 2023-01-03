@@ -997,6 +997,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Markera 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuvarande drivrutin: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Gränssnittets storlek
 
 
 
@@ -2575,6 +2576,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}överbelastad
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Genomsnittlig restid: {NUM}{NBSP}dag{P "" ar}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Markera upptagningsområde
@@ -2819,6 +2821,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Slumpmä
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunda stad på slumpmässig plats
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Många slumpmässiga städer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Täck kartan med slumpmässigt placerade städer
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Gör så att alla städer växer en aning
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Stadsnamn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv in stadsnamn
@@ -3119,6 +3122,8 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flod:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jämnhet:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varierad distribution:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generera
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-inställningar
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Visa inställningar för spelskript
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelska (Original)
@@ -3636,6 +3641,7 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Ränta på lån: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maxlån: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Öka lånets storlek. Ctrl+klick lånar så mycket som möjligt
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Återbetala {CURRENCY_LONG}
@@ -3858,6 +3864,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Räckvid
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Flygplanstyp: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Alla typer av last
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista av tågvagnar. Klicka på tågvagn för information. Ctrl+klick visar eller döljer vagnstypen
@@ -4535,7 +4542,7 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spelskr
 STR_AI_CONFIG_AI                                                :{SILVER}Datorspelare
 
 STR_AI_CONFIG_CHANGE_AI                                         :Datorspelare
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spelskript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Välj spelskript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Läs in ett annat skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurera
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurera datorspelarens parametrar
@@ -4728,6 +4735,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... för
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan inte generera industrier...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan inte bygga {STRING} här...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan inte bygga denna typ av industri här...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Kan inte prospektera för industrin...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... för nära en annan industri
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... måste grunda stad först
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... endast en per stad

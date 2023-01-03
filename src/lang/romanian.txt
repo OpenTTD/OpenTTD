@@ -1302,7 +1302,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lungimea maxim�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de tuneluri
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metoda manuală de construcţie a industriilor primare: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda de finanţare a industriilor primare. 'nici una' înseamnă că nu este posibile să se finanţeze nici una, 'prospectare' înseamnă ca finanţarea este posibilă, dar construcţia se realizează intr-un loc aleator şi poate eşua, 'la fel ca celelalte industrii' inseamnă că industriile de materie primă pot fi construite de către companii la fel ca industriile procesatoare, în orice locaţie doresc
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda de finanțare a industriilor primare. „niciuna” înseamnă că nu este posibil să se finanțeze niciuna, „prospectare” înseamnă că finanțarea este posibilă, dar construcția se realizează într-un loc aleator și poate eșua, „la fel ca celelalte industrii” înseamnă că industriile de materie primă pot fi construite de către companii la fel ca industriile procesatoare, în orice locație doresc
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
@@ -2605,6 +2605,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} care urmează să fie transportat pe lună de la {STATION} la {STATION} ({COMMA}% din capacitate){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} de transportat înapoi ({COMMA}% din capacitate)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Durată medie de călătorie: {NUM}{NBSP}{P "zi" "zile" "de zile"}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
@@ -4798,6 +4799,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... păd
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... poate fi construit doar deasupra liniei zăpezii
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... poate fi construit doar sub linia zăpezii
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Ghinion, finanțarea prospectării a eșuat. Încearcă din nou
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Nu există locuri potrivite de prospectat pentru această industrie
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nu s-au găsit locuri potrivite pentru industriile '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifică parametrii generatorului ca să obții o hartă mai bună

@@ -1433,6 +1433,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Épaisseur de l
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Afficher le nom du NewGRF dans la fenêtre d'achat des véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Ajoute une ligne à la fenêtre d'achat des véhicules, montrant de quel NewGRF provient le véhicule sélectionné.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Afficher les cargaisons que peuvent transporter les véhicules dans les fenêtres de liste {STRING}
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paysage{NBSP}: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Les paysages définissent les scénarios de jouabilité classique avec différentes marchandises et exigences pour la croissance des villes. Les NewGRFs et les scripts de jeux autorisent cependant un contrôle plus fin
