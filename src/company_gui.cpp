@@ -636,7 +636,7 @@ private:
 		const Company *c;
 		const Livery *livery, *default_livery = nullptr;
 		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
-		byte default_col;
+		byte default_col = 0;
 
 		/* Disallow other company colours for the primary colour */
 		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel, LS_DEFAULT) && primary) {

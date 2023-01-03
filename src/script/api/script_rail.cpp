@@ -449,7 +449,7 @@ static bool IsValidSignalType(int signal_type)
 	EnforcePrecondition(false, ::IsValidSignalType(signal));
 
 	Track track = INVALID_TRACK;
-	uint signal_cycles;
+	uint signal_cycles = 0;
 
 	int data_index = 2 + (::TileX(front) - ::TileX(tile)) + 2 * (::TileY(front) - ::TileY(tile));
 	for (int i = 0; i < NUM_TRACK_DIRECTIONS; i++) {
