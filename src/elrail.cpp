@@ -597,16 +597,14 @@ void SettingsDisableElrail(int32 new_value)
 {
 	bool disable = (new_value != 0);
 
-	/* we will now walk through all electric train engines and change their railtypes if it is the wrong one*/
-	const RailType old_railtype = disable ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL;
+	/* pick appropriate railtype for elrail engines depending on setting */
 	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
 
 	/* walk through all train engines */
 	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		RailVehicleInfo *rv_info = &e->u.rail;
-		/* if it is an electric rail engine and its railtype is the wrong one */
-		if (rv_info->engclass == 2 && rv_info->railtype == old_railtype) {
-			/* change it to the proper one */
+		/* update railtype of engines intended to use elrail */
+		if (rv_info->intended_railtype == RAILTYPE_ELECTRIC) {
 			rv_info->railtype = new_railtype;
 		}
 	}
