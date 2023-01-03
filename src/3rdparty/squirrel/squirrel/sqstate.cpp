@@ -513,7 +513,7 @@ void RefTable::AllocNodes(SQUnsignedInteger size)
 		bucks[n] = nullptr;
 		temp->refs = 0;
 		new (&temp->obj) SQObjectPtr;
-		temp->next = temp+1;
+		temp->next = &temp[1];
 		temp++;
 	}
 	bucks[n] = nullptr;

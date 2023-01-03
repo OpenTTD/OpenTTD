@@ -383,7 +383,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		dst += _screen.pitch;
 		/* Copy back the anim-buffer */
 		memcpy(anim_line, usrc, width * sizeof(uint16));
-		usrc = (const uint32 *)((const uint16 *)usrc + width);
+		usrc = (const uint32 *)&((const uint16 *)usrc)[width];
 		anim_line += this->anim_buf_pitch;
 
 		/* Okay, it is *very* likely that the image we stored is using
@@ -422,7 +422,7 @@ void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 		udst += width;
 		/* Copy the anim-buffer */
 		memcpy(udst, anim_line, width * sizeof(uint16));
-		udst = (uint32 *)((uint16 *)udst + width);
+		udst = (uint32 *)&((uint16 *)udst)[width];
 		anim_line += this->anim_buf_pitch;
 	}
 }
