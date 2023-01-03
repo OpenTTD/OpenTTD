@@ -50,7 +50,7 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 void LinkGraphJob::EraseFlows(NodeID from)
 {
 	for (NodeID node_id = 0; node_id < this->Size(); ++node_id) {
-		(*this)[node_id].Flows().erase(from);
+		(*this)[node_id].flows.erase(from);
 	}
 }
 
@@ -103,10 +103,10 @@ LinkGraphJob::~LinkGraphJob()
 
 	uint16 size = this->Size();
 	for (NodeID node_id = 0; node_id < size; ++node_id) {
-		Node from = (*this)[node_id];
+		NodeAnnotation &from = this->nodes[node_id];
 
 		/* The station can have been deleted. Remove all flows originating from it then. */
-		Station *st = Station::GetIfValid(from.Station());
+		Station *st = Station::GetIfValid(from.base.station);
 		if (st == nullptr) {
 			this->EraseFlows(node_id);
 			continue;
@@ -121,23 +121,24 @@ LinkGraphJob::~LinkGraphJob()
 		}
 
 		LinkGraph *lg = LinkGraph::Get(ge.link_graph);
-		FlowStatMap &flows = from.Flows();
+		FlowStatMap &flows = from.flows;
 
-		for (EdgeIterator it(from.Begin()); it != from.End(); ++it) {
-			if (it->second.Flow() == 0) continue;
-			StationID to = (*this)[it->first].Station();
+		for (const auto &edge : from.edges) {
+			if (edge.Flow() == 0) continue;
+			NodeID dest_id = edge.base.dest_node;
+			StationID to = this->nodes[dest_id].base.station;
 			Station *st2 = Station::GetIfValid(to);
 			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
-					st2->goods[this->Cargo()].node != it->first ||
-					!(*lg)[node_id].HasEdgeTo(it->first) ||
-					(*lg)[node_id][it->first].LastUpdate() == INVALID_DATE) {
+					st2->goods[this->Cargo()].node != dest_id ||
+					!(*lg)[node_id].HasEdgeTo(dest_id) ||
+					(*lg)[node_id][dest_id].LastUpdate() == INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
 				StationIDStack erased = flows.DeleteFlows(to);
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
 				while (!erased.IsEmpty()) ge.flows.erase(erased.Pop());
-			} else if ((*lg)[node_id][it->first].LastUnrestrictedUpdate() == INVALID_DATE) {
+			} else if ((*lg)[node_id][dest_id].LastUnrestrictedUpdate() == INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
 			}
@@ -220,9 +221,9 @@ void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
 uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 {
 	if (this->parent != nullptr) {
-		LinkGraphJob::Edge edge = job[this->parent->node][this->node];
+		LinkGraphJob::EdgeAnnotation edge = job[this->parent->node][this->node];
 		if (max_saturation != UINT_MAX) {
-			uint usable_cap = edge.Capacity() * max_saturation / 100;
+			uint usable_cap = edge.base.capacity * max_saturation / 100;
 			if (usable_cap > edge.Flow()) {
 				new_flow = std::min(new_flow, usable_cap - edge.Flow());
 			} else {
@@ -231,7 +232,7 @@ uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 		}
 		new_flow = this->parent->AddFlow(new_flow, job, max_saturation);
 		if (this->flow == 0 && new_flow > 0) {
-			job[this->parent->node].Paths().push_front(this);
+			job[this->parent->node].paths.push_front(this);
 		}
 		edge.AddFlow(new_flow);
 	}

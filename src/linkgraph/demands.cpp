@@ -36,7 +36,7 @@ public:
 	 */
 	inline void AddNode(const Node &node)
 	{
-		this->supply_sum += node.Supply();
+		this->supply_sum += node.base.supply;
 	}
 
 	/**
@@ -57,7 +57,7 @@ public:
 	 */
 	inline uint EffectiveSupply(const Node &from, const Node &to)
 	{
-		return std::max(from.Supply() * std::max(1U, to.Supply()) * this->mod_size / 100 / this->demand_per_node, 1U);
+		return std::max(from.base.supply * std::max(1U, to.base.supply) * this->mod_size / 100 / this->demand_per_node, 1U);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public:
 	 */
 	inline bool HasDemandLeft(const Node &to)
 	{
-		return (to.Supply() == 0 || to.UndeliveredSupply() > 0) && to.Demand() > 0;
+		return (to.base.supply == 0 || to.undelivered_supply > 0) && to.base.demand > 0;
 	}
 
 	void SetDemands(LinkGraphJob &job, NodeID from, NodeID to, uint demand_forw);
@@ -108,7 +108,7 @@ public:
 	 */
 	inline uint EffectiveSupply(const Node &from, const Node &)
 	{
-		return from.Supply();
+		return from.base.supply;
 	}
 
 	/**
@@ -116,7 +116,7 @@ public:
 	 * nodes always accept as long as their demand > 0.
 	 * @param to The node to be checked.
 	 */
-	inline bool HasDemandLeft(const Node &to) { return to.Demand() > 0; }
+	inline bool HasDemandLeft(const Node &to) { return to.base.demand > 0; }
 };
 
 /**
@@ -129,9 +129,9 @@ public:
  */
 void SymmetricScaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, uint demand_forw)
 {
-	if (job[from_id].Demand() > 0) {
+	if (job[from_id].base.demand > 0) {
 		uint demand_back = demand_forw * this->mod_size / 100;
-		uint undelivered = job[to_id].UndeliveredSupply();
+		uint undelivered = job[to_id].undelivered_supply;
 		if (demand_back > undelivered) {
 			demand_back = undelivered;
 			demand_forw = std::max(1U, demand_back * 100 / this->mod_size);
@@ -170,11 +170,11 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 
 	for (NodeID node = 0; node < job.Size(); node++) {
 		scaler.AddNode(job[node]);
-		if (job[node].Supply() > 0) {
+		if (job[node].base.supply > 0) {
 			supplies.push(node);
 			num_supplies++;
 		}
-		if (job[node].Demand() > 0) {
+		if (job[node].base.demand > 0) {
 			demands.push(node);
 			num_demands++;
 		}
@@ -209,7 +209,7 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 
 			/* Scale the distance by mod_dist around max_distance */
 			int32 distance = this->max_distance - (this->max_distance -
-					(int32)DistanceMaxPlusManhattan(job[from_id].XY(), job[to_id].XY())) *
+					(int32)DistanceMaxPlusManhattan(job[from_id].base.xy, job[to_id].base.xy)) *
 					this->mod_dist / 100;
 
 			/* Scale the accuracy by distance around accuracy / 2 */
@@ -230,7 +230,7 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 				demand_forw = 1;
 			}
 
-			demand_forw = std::min(demand_forw, job[from_id].UndeliveredSupply());
+			demand_forw = std::min(demand_forw, job[from_id].undelivered_supply);
 
 			scaler.SetDemands(job, from_id, to_id, demand_forw);
 
@@ -240,10 +240,10 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 				num_demands--;
 			}
 
-			if (job[from_id].UndeliveredSupply() == 0) break;
+			if (job[from_id].undelivered_supply == 0) break;
 		}
 
-		if (job[from_id].UndeliveredSupply() != 0) {
+		if (job[from_id].undelivered_supply != 0) {
 			supplies.push(from_id);
 		} else {
 			num_supplies--;
