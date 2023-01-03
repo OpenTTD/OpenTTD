@@ -50,6 +50,12 @@ public:
 
 		BaseEdge(NodeID dest_node = INVALID_NODE);
 
+		/**
+		 * Get edge's average travel time.
+		 * @return Travel time, in ticks.
+		 */
+		uint32 TravelTime() const { return this->travel_time_sum / this->capacity; }
+
 		/** Comparison operator based on \c dest_node. */
 		bool operator <(const BaseEdge &rhs) const
 		{
@@ -117,7 +123,7 @@ public:
 		 * Get edge's average travel time.
 		 * @return Travel time, in ticks.
 		 */
-		uint32 TravelTime() const { return this->edge.travel_time_sum / this->edge.capacity; }
+		uint32 TravelTime() const { return this->edge.TravelTime(); }
 
 		/**
 		 * Get the date of the last update to the edge's unrestricted capacity.

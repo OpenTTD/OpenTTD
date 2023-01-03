@@ -94,8 +94,9 @@ public:
 class GraphEdgeIterator {
 private:
 	LinkGraphJob &job; ///< Job being executed
-	EdgeIterator i;    ///< Iterator pointing to current edge.
-	EdgeIterator end;  ///< Iterator pointing beyond last edge.
+
+	std::vector<LinkGraphJob::EdgeAnnotation>::const_iterator i;   ///< Iterator pointing to current edge.
+	std::vector<LinkGraphJob::EdgeAnnotation>::const_iterator end; ///< Iterator pointing beyond last edge.
 
 public:
 
@@ -112,8 +113,8 @@ public:
 	 */
 	void SetNode(NodeID source, NodeID node)
 	{
-		this->i = this->job[node].Begin();
-		this->end = this->job[node].End();
+		this->i = this->job[node].edges.cbegin();
+		this->end = this->job[node].edges.cend();
 	}
 
 	/**
@@ -122,7 +123,7 @@ public:
 	 */
 	NodeID Next()
 	{
-		return this->i != this->end ? (this->i++)->first : INVALID_NODE;
+		return this->i != this->end ? (this->i++)->base.dest_node : INVALID_NODE;
 	}
 };
 
@@ -150,7 +151,7 @@ public:
 	FlowEdgeIterator(LinkGraphJob &job) : job(job)
 	{
 		for (NodeID i = 0; i < job.Size(); ++i) {
-			StationID st = job[i].Station();
+			StationID st = job[i].base.station;
 			if (st >= this->station_to_node.size()) {
 				this->station_to_node.resize(st + 1);
 			}
@@ -165,8 +166,8 @@ public:
 	 */
 	void SetNode(NodeID source, NodeID node)
 	{
-		const FlowStatMap &flows = this->job[node].Flows();
-		FlowStatMap::const_iterator it = flows.find(this->job[source].Station());
+		const FlowStatMap &flows = this->job[node].flows;
+		FlowStatMap::const_iterator it = flows.find(this->job[source].base.station);
 		if (it != flows.end()) {
 			this->it = it->second.GetShares()->begin();
 			this->end = it->second.GetShares()->end();
@@ -275,8 +276,8 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 		iter.SetNode(source_node, from);
 		for (NodeID to = iter.Next(); to != INVALID_NODE; to = iter.Next()) {
 			if (to == from) continue; // Not a real edge but a consumption sign.
-			Edge edge = this->job[from][to];
-			uint capacity = edge.Capacity();
+			const Edge &edge = this->job[from][to];
+			uint capacity = edge.base.capacity;
 			if (this->max_saturation != UINT_MAX) {
 				capacity *= this->max_saturation;
 				capacity /= 100;
@@ -288,9 +289,9 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 			bool express = IsCargoInClass(this->job.Cargo(), CC_PASSENGERS) ||
 				IsCargoInClass(this->job.Cargo(), CC_MAIL) ||
 				IsCargoInClass(this->job.Cargo(), CC_EXPRESS);
-			uint distance = DistanceMaxPlusManhattan(this->job[from].XY(), this->job[to].XY()) + 1;
+			uint distance = DistanceMaxPlusManhattan(this->job[from].base.xy, this->job[to].base.xy) + 1;
 			/* Compute a default travel time from the distance and an average speed of 1 tile/day. */
-			uint time = (edge.TravelTime() != 0) ? edge.TravelTime() + DAY_TICKS : distance * DAY_TICKS;
+			uint time = (edge.base.TravelTime() != 0) ? edge.base.TravelTime() + DAY_TICKS : distance * DAY_TICKS;
 			uint distance_anno = express ? time : distance;
 
 			Tannotation *dest = static_cast<Tannotation *>(paths[to]);
@@ -381,7 +382,7 @@ void MCF1stPass::EliminateCycle(PathVector &path, Path *cycle_begin, uint flow)
 		NodeID prev = cycle_begin->GetNode();
 		cycle_begin->ReduceFlow(flow);
 		if (cycle_begin->GetFlow() == 0) {
-			PathList &node_paths = this->job[cycle_begin->GetParent()->GetNode()].Paths();
+			PathList &node_paths = this->job[cycle_begin->GetParent()->GetNode()].paths;
 			for (PathList::iterator i = node_paths.begin(); i != node_paths.end(); ++i) {
 				if (*i == cycle_begin) {
 					node_paths.erase(i);
@@ -391,7 +392,7 @@ void MCF1stPass::EliminateCycle(PathVector &path, Path *cycle_begin, uint flow)
 			}
 		}
 		cycle_begin = path[prev];
-		Edge edge = this->job[prev][cycle_begin->GetNode()];
+		Edge &edge = this->job[prev][cycle_begin->GetNode()];
 		edge.RemoveFlow(flow);
 	} while (cycle_begin != cycle_end);
 }
@@ -415,7 +416,7 @@ bool MCF1stPass::EliminateCycles(PathVector &path, NodeID origin_id, NodeID next
 	if (at_next_pos == nullptr) {
 		/* Summarize paths; add up the paths with the same source and next hop
 		 * in one path each. */
-		PathList &paths = this->job[next_id].Paths();
+		PathList &paths = this->job[next_id].paths;
 		PathViaMap next_hops;
 		for (PathList::iterator i = paths.begin(); i != paths.end();) {
 			Path *new_child = *i;
@@ -512,7 +513,7 @@ MCF1stPass::MCF1stPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 			/* First saturate the shortest paths. */
 			this->Dijkstra<DistanceAnnotation, GraphEdgeIterator>(source, paths);
 
-			Node src_node = job[source];
+			Node &src_node = job[source];
 			bool source_demand_left = false;
 			for (NodeID dest = 0; dest < size; ++dest) {
 				if (src_node.UnsatisfiedDemandTo(dest) > 0) {
@@ -559,7 +560,7 @@ MCF2ndPass::MCF2ndPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 
 			this->Dijkstra<CapacityAnnotation, FlowEdgeIterator>(source, paths);
 
-			Node src_node = job[source];
+			Node &src_node = job[source];
 			bool source_demand_left = false;
 			for (NodeID dest = 0; dest < size; ++dest) {
 				Path *path = paths[dest];
