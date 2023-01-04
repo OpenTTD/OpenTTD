@@ -200,6 +200,8 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}dk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}dk
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/waktu
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -395,6 +397,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Pengaturan
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Pengaturan AI
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Pengaturan Game script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nama kota ditampilkan
@@ -997,8 +1001,14 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Centang 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pengendali piranti: {STRING}
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Ukuran antarmuka
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Geser slider untuk mengatur ukuran antarmuka. Tekan tombol Ctrl untuk pengaturan terus menerus
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Pilih kotak ini untuk mendeteksi ukuran antarmuka secara otomatis
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala bevel
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -2045,6 +2055,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel Ni
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari Konten Daring
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Pengaturan Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru. Ctrl-Klik melewatkan konfigurasi peta
@@ -2064,6 +2075,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilka
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan pengaturan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan pengaturan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Tampilan pengaturan game script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Kumpulan grafik dasar yang dipilih saat ini hilang {NUM} sprite {P ..}. Silakan periksa pembaruan untuk baseset.
@@ -2575,6 +2587,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}kelebihan beban
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} di transportasikan per bulan dari {STATION} ke {STATION} ({COMMA}% dari kapasitas){STRING}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Jangkauan layanan
@@ -2584,6 +2597,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Jangan s
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Soroti area yang dapat dilayani dari lokasi yang hendak dibangun
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suplai: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Biaya perawatan: {GOLD}{CURRENCY_SHORT}/tahun
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabung stasiun
@@ -2819,6 +2833,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Kota sec
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Membangun kota di lokasi secara acak
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Buat kota secara acak
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dukung Peta dengan penempatan kota secara otomatis
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Perluas seluruh kota
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nama kota:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Masukkan nama kota
@@ -3119,6 +3134,10 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Kehalusan:
 STR_MAPGEN_VARIETY                                              :{BLACK}Macam penyebaran:
 STR_MAPGEN_GENERATE                                             :{WHITE}Buat Peta
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Tampilkan pengaturan NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Pengaturan AI
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Tampilkan pengaturan AI
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Tampilkan pengaturan game script
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Inggris (Orisinil)
@@ -3289,6 +3308,8 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Mewakili
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pindahkan sprite, mengubah offset X dan Y
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Offset di tengah
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite di tengah
 
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reset relatif
@@ -3628,7 +3649,9 @@ STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Kapal
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Bunga Pinjaman
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Lainnya
 
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Dana Pribadi
@@ -3766,6 +3789,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Kirim pe
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Ganti kendaraan
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Perintahkan untuk diperbaiki
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Laba tahun ini: {CURRENCY_LONG} (tahun lalu: {CURRENCY_LONG})
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Perintahkan ke bengkel
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Perintahkan ke Bengkel
@@ -3858,6 +3882,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jangkaua
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Jenis pesawat: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_NONE                                      :Tidak ada
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
@@ -4519,6 +4544,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah sa
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela "Debug" skrip AI hanya tersedia untuk server
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Konfigurasi AI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Konfigurasi Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Permainan yang akan di jalankan di permainan berikutnya
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yg akan dijalankan pada permainan berikutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
@@ -4532,9 +4559,10 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Turunkan
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI terpilih dalam daftar
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skrip Permainan
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parameter
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Pilih AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skrip Permainan
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat skrip yang lain
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasikan

@@ -1105,6 +1105,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Τσεκ
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 
@@ -3707,6 +3708,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Έσοδα
 
 
 ###length 13
@@ -4614,6 +4616,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ρύθμιση ΤΝ
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ρύθμηση δέσμης ενεργειών παιχνιδιού
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η Δέσμη Ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs που θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
@@ -4629,7 +4633,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετα
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη Ενεργειών
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE_AI                                         :ΑΙ
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Διάλεξε ΤΝ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Δέσμη Ενεργειών
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
@@ -5004,6 +5008,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Αντι
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... κεντρικά γραφεία εταιρίας στη μέση
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Αδύνατο να αγοραστεί το έδαφος...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... είστε ήδη ιδιοκτήτης!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... έχετε φτάσει το όριο οικοδομήσεων
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Δεν μπορεί να δημιουργηθεί ομάδα...
@@ -5076,6 +5081,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν �
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... το όχημα καταστράφηκε
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... όλα τα οχήματα δεν είναι ίδια
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Δεν θα είναι κανένα όχημα διαθέσιμο
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Αλλάξτε τις ρύθμισεις NewGRF σας
@@ -5103,6 +5109,7 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Δεν �
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... το όχημα δεν μπορεί να πάει σε όλους τους σταθμούς
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... το όχημα δεν μπορεί να πάει σε αυτόν τον σταθμό
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ένα όχημα που μοιράζεται αυτή την εντολή δεν μπορεί να πάει σε εκείνο τον σταθμό
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... δε μοιράζουν διαταγές όλα τα οχήματα
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Αδύνατο να μοιραστεί η λίστα εντολών...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Δεν μπορεί να σταματήσει να μοιράζεται η λίστα εντολών...

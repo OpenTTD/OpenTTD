@@ -3333,6 +3333,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi 
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Ofset ortalandı
 STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Nesne ortalandı
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Artı imleci
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Bağılı sıfırla
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Geçerli bağıl ofsetleri sıfırla
@@ -4784,6 +4785,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Fabrika yapılamıyor...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Buraya {STRING} yapılamaz...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Buraya bu fabrikadan yapılamaz...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Endüstri araştırılamaz...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... başka bir fabrikaya çok yakın
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... önce şehir yapılmalı
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... her şehirde yalnızca bir tane olabilir
@@ -4798,6 +4800,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orma
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin üzerinde yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin altında yapılabilir
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Maalesef finansman sağlanamadı, tekrar deneyin.
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Bu endüstri için uygun bir konum bulunamadı
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}'{STRING}' fabrikaları için uygun bir alan yoktu
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Daha iyi bir harita için harita oluşturma parametrelerini değiştirin
 
