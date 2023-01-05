@@ -326,11 +326,15 @@ static void OnNewEconomyDay()
 
 static void IncreaseCalendarDate()
 {
-	_date_fract++;
-	if (_date_fract < DAY_TICKS) return;
-	_date_fract = 0;
+	/* If calendar day progress is frozen, don't try to advance the date (particularly since this would divide by 0). */
+	if (_settings_game.economy.calendar_progress_speed == FROZEN_CALENDAR_PROGRESS_SPEED) return;
 
-	/* increase day counter */
+	/* Scale calendar day progression by the chosen speed percentage,
+	   then bail out if it's not time to increase the calendar date yet. */
+	if (++_date_fract < (DAY_TICKS * 100) / _settings_game.economy.calendar_progress_speed) return;
+
+	/* Reset fract counter and increase day counter */
+	_date_fract = 0;
 	_date++;
 
 	YearMonthDay ymd;
