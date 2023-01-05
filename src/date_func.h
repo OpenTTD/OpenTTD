@@ -25,6 +25,7 @@ extern DateFract _economy_date_fract;
 extern uint64 _tick_counter;
 
 void SetDate(Date date, DateFract fract);
+void SetEconomyDate(Date date, DateFract fract);
 void ConvertDateToYMD(Date date, YearMonthDay *ymd);
 Date ConvertYMDToDate(Year year, Month month, Day day);
 

@@ -531,6 +531,8 @@ struct EconomySettings {
 	uint16 town_noise_population[4];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
+	bool   use_realtime_units;               ///< use real-time units (seconds/minutes/hours) instead of days/months/years for economy time.
+	uint16 calendar_progress_speed;          ///< the rate of calendar progression, as a percentage where 100 is normal speed and 0 means time is frozen.
 };
 
 struct LinkGraphSettings {

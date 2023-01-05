@@ -57,6 +57,13 @@ static const Year ORIGINAL_END_YEAR  = 2051;
 /** The maximum year of the original TTD */
 static const Year ORIGINAL_MAX_YEAR  = 2090;
 
+/** The default calendar progress speed. */
+static const uint16 DEF_CALENDAR_PROGRESS_SPEED      = 100;
+/** Frozen calendar progress speed. */
+static const uint16 FROZEN_CALENDAR_PROGRESS_SPEED   = 0;
+/** Max calendar progress speed is one day per tick. */
+static const uint16 MAX_CALENDAR_PROGRESS_SPEED      = DAY_TICKS * 100;
+
 /**
  * Calculate the number of leap years till a given year.
  *

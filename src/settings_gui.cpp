@@ -1803,6 +1803,8 @@ static SettingsContainer &GetSettingsTree()
 
 		SettingsPage *genworld = main->Add(new SettingsPage(STR_CONFIG_SETTING_GENWORLD));
 		{
+			genworld->Add(new SettingEntry("economy.use_realtime_units"));
+			genworld->Add(new SettingEntry("economy.calendar_progress_speed"));
 			genworld->Add(new SettingEntry("game_creation.landscape"));
 			genworld->Add(new SettingEntry("game_creation.land_generator"));
 			genworld->Add(new SettingEntry("difficulty.terrain_type"));

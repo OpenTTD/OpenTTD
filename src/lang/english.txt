@@ -380,6 +380,10 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move the starting date backward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move the starting date forward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Click to enter the starting year
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DECREASE_CALENDAR_SPEED            :{BLACK}Decrease the calendar progress speed
+STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED                     :{BLACK}{NUM}%
+STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED_FROZEN              :{BLACK}Frozen
+STR_SCENEDIT_TOOLBAR_TOOLTIP_INCREASE_CALENDAR_SPEED            :{BLACK}Increase the calendar progress speed
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Display map, town directory
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landscape generation
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Town generation
@@ -1404,6 +1408,15 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING2}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
+
+STR_CONFIG_SETTING_USE_REALTIME_UNITS                           :Use real-time units
+STR_CONFIG_SETTING_USE_REALTIME_UNITS_HELPTEXT                  :When enabled, economic time in OpenTTD will be displayed in real-time seconds, minutes, and hours, instead of days, months, and years. The traditional "year" becomes a 12-minute "period". Calendar time, such as vehicle introductions will still be displayed in calendar dates. Real-time units might be slightly longer if your computer is unable to run OpenTTD at its optimal speed.
+
+STR_CONFIG_SETTING_CALENDAR_PROGRESS_SPEED                      :Calendar progress speed: {STRING2}
+STR_CONFIG_SETTING_CALENDAR_PROGRESS_SPEED_HELPTEXT             :Choose the rate of calendar date progression
+STR_CONFIG_SETTING_CALENDAR_PROGRESS_SPEED_VALUE                :{NUM}%
+###setting-zero-is-special
+STR_CONFIG_SETTING_CALENDAR_PROGRESS_SPEED_FROZEN               :Frozen
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
@@ -3140,6 +3153,7 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of t
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Town names:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Select style of town names
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
+STR_MAPGEN_CALENDAR_PROGRESS_SPEED                              :{BLACK}Calendar progress speed:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of industries:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Highest peak:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Increase the maximum height of highest peak on the map by one
@@ -3210,6 +3224,7 @@ STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Highest 
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Snow coverage (in %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Desert coverage (in %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
+STR_MAPGEN_CALENDAR_PROGRESS_SPEED_CAPT                         :{WHITE}Change calendar progress speed
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type

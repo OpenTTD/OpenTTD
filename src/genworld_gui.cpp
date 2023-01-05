@@ -33,11 +33,11 @@
 #include "ai/ai_gui.hpp"
 #include "game/game_gui.hpp"
 #include "industry.h"
+#include "settings_table.h"
 
 #include "widgets/genworld_widget.h"
 
 #include "safeguards.h"
-
 
 extern void MakeNewgameSettingsLive();
 
@@ -130,6 +130,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 							NWidget(NWID_SPACER),
 						EndContainer(),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DATE, STR_NULL), SetFill(1, 1),
+						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_CALENDAR_PROGRESS_SPEED, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TOWN_NAME_LABEL, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_NULL), SetFill(1, 1),
@@ -159,6 +160,12 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_START_DATE_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD), SetFill(0, 1),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_START_DATE_TEXT), SetDataTip(STR_BLACK_DATE_LONG, STR_NULL), SetFill(1, 0),
 							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_START_DATE_UP), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD), SetFill(0, 1),
+						EndContainer(),
+						/* Calendar progress speed. */
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_CALENDAR_PROGRESS_SPEED_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED), SetFill(0, 1),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_CALENDAR_PROGRESS_SPEED_TEXT), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
+							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_CALENDAR_PROGRESS_SPEED_UP), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_INCREASE_CALENDAR_SPEED), SetFill(0, 1),
 						EndContainer(),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWNNAME_DROPDOWN), SetDataTip(STR_BLACK_STRING, STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
@@ -275,6 +282,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 									NWidget(NWID_SPACER),
 								EndContainer(),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DATE, STR_NULL), SetFill(1, 1),
+								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_CALENDAR_PROGRESS_SPEED, STR_NULL), SetFill(1, 1),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TOWN_NAME_LABEL, STR_NULL), SetFill(1, 1),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_NULL), SetFill(1, 1),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_NULL), SetFill(1, 1),
@@ -303,6 +311,12 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_START_DATE_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD), SetFill(0, 1),
 									NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_START_DATE_TEXT), SetDataTip(STR_BLACK_DATE_LONG, STR_NULL), SetFill(1, 0),
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_START_DATE_UP), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD), SetFill(0, 1),
+								EndContainer(),
+								/* Calendar progress speed. */
+								NWidget(NWID_HORIZONTAL),
+									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_CALENDAR_PROGRESS_SPEED_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED), SetFill(0, 1),
+									NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_CALENDAR_PROGRESS_SPEED_TEXT), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
+									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_CALENDAR_PROGRESS_SPEED_UP), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_INCREASE_CALENDAR_SPEED), SetFill(0, 1),
 								EndContainer(),
 								NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWNNAME_DROPDOWN), SetDataTip(STR_BLACK_STRING, STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP), SetFill(1, 0),
 								NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
@@ -438,6 +452,15 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GL_START_DATE_TEXT:      SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); break;
+			case WID_GL_CALENDAR_PROGRESS_SPEED_TEXT:
+				if (_settings_newgame.economy.calendar_progress_speed == FROZEN_CALENDAR_PROGRESS_SPEED) {
+					SetDParam(0, STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED_FROZEN);
+					SetDParam(1, _settings_newgame.economy.calendar_progress_speed);
+				} else {
+					SetDParam(0, STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED);
+					SetDParam(1, _settings_newgame.economy.calendar_progress_speed);
+				}
+				break;
 			case WID_GL_MAPSIZE_X_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_x); break;
 			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_y); break;
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: SetDParam(0, _settings_newgame.game_creation.heightmap_height); break;
@@ -572,6 +595,8 @@ struct GenerateLandscapeWindow : public Window {
 		}
 		this->SetWidgetDisabledState(WID_GL_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(WID_GL_CALENDAR_PROGRESS_SPEED_DOWN, _settings_newgame.economy.calendar_progress_speed <= FROZEN_CALENDAR_PROGRESS_SPEED);
+		this->SetWidgetDisabledState(WID_GL_CALENDAR_PROGRESS_SPEED_UP, _settings_newgame.economy.calendar_progress_speed >= MAX_CALENDAR_PROGRESS_SPEED);
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_DOWN, _settings_newgame.game_creation.snow_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_UP,   _settings_newgame.game_creation.snow_coverage >= 100 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_DOWN, _settings_newgame.game_creation.desert_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_TROPIC);
@@ -601,6 +626,11 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_START_DATE_TEXT:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
 				*size = maxdim(*size, GetStringBoundingBox(STR_BLACK_DATE_LONG));
+				break;
+
+			case WID_GL_CALENDAR_PROGRESS_SPEED_TEXT:
+				SetDParam(0, MAX_CALENDAR_PROGRESS_SPEED);
+				*size = maxdim(*size, GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED_FROZEN));
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN:
@@ -758,7 +788,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_START_DATE_DOWN:
 			case WID_GL_START_DATE_UP: // Year buttons
-				/* Don't allow too fast scrolling */
+				/* Don't allow the player to click too quickly. */
 				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 
@@ -772,6 +802,25 @@ struct GenerateLandscapeWindow : public Window {
 				this->widget_id = WID_GL_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
 				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				break;
+
+			case WID_GL_CALENDAR_PROGRESS_SPEED_DOWN:
+			case WID_GL_CALENDAR_PROGRESS_SPEED_UP: // Calendar progress speed buttons
+				/* Don't allow the player to click too quickly. */
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
+					this->HandleButtonClick(widget);
+
+					_settings_newgame.economy.calendar_progress_speed = Clamp(_settings_newgame.economy.calendar_progress_speed + widget - WID_GL_CALENDAR_PROGRESS_SPEED_TEXT, FROZEN_CALENDAR_PROGRESS_SPEED, MAX_CALENDAR_PROGRESS_SPEED);
+					ChangeCalendarProgressSpeed(0);
+					this->InvalidateData();
+				}
+				_left_button_clicked = false;
+				break;
+
+			case WID_GL_CALENDAR_PROGRESS_SPEED_TEXT: // Calendar progress speed text
+				this->widget_id = WID_GL_CALENDAR_PROGRESS_SPEED_TEXT;
+				SetDParam(0, _settings_newgame.economy.calendar_progress_speed);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_CALENDAR_PROGRESS_SPEED_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case WID_GL_SNOW_COVERAGE_DOWN:
@@ -883,8 +932,8 @@ struct GenerateLandscapeWindow : public Window {
 
 	void OnTimeout() override
 	{
-		static const int newgame_raise_widgets[] = {WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
-		static const int heightmap_raise_widgets[] = {WID_GL_HEIGHTMAP_HEIGHT_DOWN, WID_GL_HEIGHTMAP_HEIGHT_UP, WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
+		static const int newgame_raise_widgets[] = {WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_CALENDAR_PROGRESS_SPEED_DOWN, WID_GL_CALENDAR_PROGRESS_SPEED_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
+		static const int heightmap_raise_widgets[] = {WID_GL_HEIGHTMAP_HEIGHT_DOWN, WID_GL_HEIGHTMAP_HEIGHT_UP, WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_CALENDAR_PROGRESS_SPEED_DOWN, WID_GL_CALENDAR_PROGRESS_SPEED_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
 
 		const int *widget = (mode == GLWM_HEIGHTMAP) ? heightmap_raise_widgets : newgame_raise_widgets;
 
@@ -968,6 +1017,7 @@ struct GenerateLandscapeWindow : public Window {
 			switch (this->widget_id) {
 				case WID_GL_HEIGHTMAP_HEIGHT_TEXT: value = MAP_HEIGHT_LIMIT_AUTO_MINIMUM; break;
 				case WID_GL_START_DATE_TEXT: value = DEF_START_YEAR; break;
+				case WID_GL_CALENDAR_PROGRESS_SPEED_TEXT: value = DEF_CALENDAR_PROGRESS_SPEED; break;
 				case WID_GL_SNOW_COVERAGE_TEXT: value = DEF_SNOW_COVERAGE; break;
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
 				case WID_GL_TOWN_PULLDOWN: value = 1; break;
@@ -987,6 +1037,12 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_START_DATE_TEXT:
 				this->SetWidgetDirty(WID_GL_START_DATE_TEXT);
 				_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+				break;
+
+			case WID_GL_CALENDAR_PROGRESS_SPEED_TEXT:
+				this->SetWidgetDirty(WID_GL_CALENDAR_PROGRESS_SPEED_TEXT);
+				_settings_newgame.economy.calendar_progress_speed = Clamp(value, FROZEN_CALENDAR_PROGRESS_SPEED, MAX_CALENDAR_PROGRESS_SPEED);
+				ChangeCalendarProgressSpeed(0);
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT:
@@ -1108,6 +1164,15 @@ struct CreateScenarioWindow : public Window
 				SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 				break;
 
+			case WID_CS_CALENDAR_PROGRESS_SPEED_TEXT:
+				if (_settings_newgame.economy.calendar_progress_speed == FROZEN_CALENDAR_PROGRESS_SPEED) {
+					SetDParam(0, STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED_FROZEN);
+				} else {
+					SetDParam(0, STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED);
+					SetDParam(1, _settings_newgame.economy.calendar_progress_speed);
+				}
+				break;
+
 			case WID_CS_MAPSIZE_X_PULLDOWN:
 				SetDParam(0, 1LL << _settings_newgame.game_creation.map_x);
 				break;
@@ -1126,6 +1191,8 @@ struct CreateScenarioWindow : public Window
 	{
 		this->SetWidgetDisabledState(WID_CS_START_DATE_DOWN,       _settings_newgame.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(WID_CS_START_DATE_UP,         _settings_newgame.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(WID_CS_CALENDAR_PROGRESS_SPEED_DOWN, _settings_newgame.economy.calendar_progress_speed <= FROZEN_CALENDAR_PROGRESS_SPEED);
+		this->SetWidgetDisabledState(WID_CS_CALENDAR_PROGRESS_SPEED_UP, _settings_newgame.economy.calendar_progress_speed >= MAX_CALENDAR_PROGRESS_SPEED);
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_DOWN, _settings_newgame.game_creation.se_flat_world_height <= 0);
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_UP,   _settings_newgame.game_creation.se_flat_world_height >= GetMapHeightLimit());
 
@@ -1144,6 +1211,11 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_START_DATE_TEXT:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
 				str = STR_BLACK_DATE_LONG;
+				break;
+
+			case WID_CS_CALENDAR_PROGRESS_SPEED_TEXT:
+				SetDParam(0, MAX_CALENDAR_PROGRESS_SPEED);
+				*size = maxdim(*size, GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_TOOLTIP_CALENDAR_SPEED_FROZEN));
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
@@ -1192,7 +1264,7 @@ struct CreateScenarioWindow : public Window
 
 			case WID_CS_START_DATE_DOWN:
 			case WID_CS_START_DATE_UP: // Year buttons
-				/* Don't allow too fast scrolling */
+				/* Don't allow the player to click too quickly. */
 				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
@@ -1200,6 +1272,25 @@ struct CreateScenarioWindow : public Window
 					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_CS_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
 				}
 				_left_button_clicked = false;
+				break;
+
+			case WID_CS_CALENDAR_PROGRESS_SPEED_DOWN:
+			case WID_CS_CALENDAR_PROGRESS_SPEED_UP: // Calendar progress speed buttons
+				/* Don't allow the player to click too quickly. */
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
+					this->HandleButtonClick(widget);
+
+					_settings_newgame.economy.calendar_progress_speed = Clamp(_settings_newgame.economy.calendar_progress_speed + widget - WID_CS_CALENDAR_PROGRESS_SPEED_TEXT, FROZEN_CALENDAR_PROGRESS_SPEED, MAX_CALENDAR_PROGRESS_SPEED);
+					ChangeCalendarProgressSpeed(0);
+					this->InvalidateData();
+				}
+				_left_button_clicked = false;
+				break;
+
+			case WID_CS_CALENDAR_PROGRESS_SPEED_TEXT: // Calendar progress speed text
+				this->widget_id = WID_CS_CALENDAR_PROGRESS_SPEED_TEXT;
+				SetDParam(0, _settings_newgame.economy.calendar_progress_speed);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_CALENDAR_PROGRESS_SPEED_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case WID_CS_START_DATE_TEXT: // Year text
@@ -1230,7 +1321,7 @@ struct CreateScenarioWindow : public Window
 
 	void OnTimeout() override
 	{
-		static const int raise_widgets[] = {WID_CS_START_DATE_DOWN, WID_CS_START_DATE_UP, WID_CS_FLAT_LAND_HEIGHT_DOWN, WID_CS_FLAT_LAND_HEIGHT_UP, WIDGET_LIST_END};
+		static const int raise_widgets[] = {WID_CS_START_DATE_DOWN, WID_CS_START_DATE_UP, WID_CS_CALENDAR_PROGRESS_SPEED_DOWN, WID_CS_CALENDAR_PROGRESS_SPEED_UP, WID_CS_FLAT_LAND_HEIGHT_DOWN, WID_CS_FLAT_LAND_HEIGHT_UP, WIDGET_LIST_END};
 		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
 			if (this->IsWidgetLowered(*widget)) {
 				this->RaiseWidget(*widget);
@@ -1257,6 +1348,12 @@ struct CreateScenarioWindow : public Window
 				case WID_CS_START_DATE_TEXT:
 					this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
 					_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+					break;
+
+				case WID_CS_CALENDAR_PROGRESS_SPEED_TEXT:
+					this->SetWidgetDirty(WID_CS_CALENDAR_PROGRESS_SPEED_TEXT);
+					_settings_newgame.economy.calendar_progress_speed = Clamp(value, FROZEN_CALENDAR_PROGRESS_SPEED, MAX_CALENDAR_PROGRESS_SPEED);
+					ChangeCalendarProgressSpeed(0);
 					break;
 
 				case WID_CS_FLAT_LAND_HEIGHT_TEXT:
@@ -1307,6 +1404,14 @@ static const NWidgetPart _nested_create_scenario_widgets[] = {
 					NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_START_DATE_DOWN), SetFill(0, 1), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CS_START_DATE_TEXT), SetDataTip(STR_BLACK_DATE_LONG, STR_NULL),
 					NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_START_DATE_UP), SetFill(0, 1), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD),
+				EndContainer(),
+				/* Calendar progress speed. */
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_CALENDAR_PROGRESS_SPEED, STR_NULL), SetPadding(1, 0, 0, 0),
+					NWidget(NWID_SPACER), SetMinimalSize(6, 0), SetFill(1, 0),
+					NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_CALENDAR_PROGRESS_SPEED_DOWN), SetFill(0, 1), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_DECREASE_CALENDAR_SPEED),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CS_CALENDAR_PROGRESS_SPEED_TEXT), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_NULL),
+					NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_CALENDAR_PROGRESS_SPEED_UP), SetFill(0, 1), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_INCREASE_CALENDAR_SPEED),
 				EndContainer(),
 				/* Flat map height. */
 				NWidget(NWID_HORIZONTAL),

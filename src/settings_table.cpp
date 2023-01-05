@@ -484,4 +484,30 @@ static void UpdateClientConfigValues()
 	}
 }
 
+/**
+ * If the player disables real-time units, ensure that calendar progress speed is the default 100%.
+ * @param new_value Unused.
+ */
+static void UseRealtimeUnits(int32 new_value)
+{
+	if (!_settings_newgame.economy.use_realtime_units) {
+		_settings_newgame.economy.calendar_progress_speed = DEF_CALENDAR_PROGRESS_SPEED;
+		InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	}
+
+	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+}
+
+/**
+ * If the player changes the calendar progress speed, we need to ensure we're using real-time units.
+ * @param new_value Unused.
+ */
+static void ChangeCalendarProgressSpeed(int32 new_value)
+{
+	if (_settings_newgame.economy.calendar_progress_speed != DEF_CALENDAR_PROGRESS_SPEED) {
+		_settings_newgame.economy.use_realtime_units = true;
+		InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	}
+}
+
 /* End - Callback Functions */

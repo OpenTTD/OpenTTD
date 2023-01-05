@@ -42,4 +42,6 @@ static const uint GAME_DIFFICULTY_NUM = 18;
 extern const std::array<std::string, GAME_DIFFICULTY_NUM> _old_diff_settings;
 extern uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
 
+void ChangeCalendarProgressSpeed(int32 new_value);
+
 #endif /* SETTINGS_TABLE_H */

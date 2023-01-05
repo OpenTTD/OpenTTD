@@ -80,6 +80,29 @@ void SetDate(Date date, DateFract fract)
 	_cur_month = ymd.month;
 }
 
+/**
+ * Set the economy date.
+ * @param date  New date
+ * @param fract The number of ticks that have passed on this date.
+ */
+void SetEconomyDate(Date date, DateFract fract)
+{
+	_economy_date = date;
+	_economy_date_fract = fract;
+
+	/* If we're using real-time units, economy months have 30 days and an economy year has 360 days.
+	 * Otherwise, we need to keep economy months and years in sync with the calendar. */
+	if (_settings_game.economy.use_realtime_units) {
+		_cur_economy_year = _economy_date / DAYS_IN_ECONOMY_YEAR;
+		_cur_economy_month = _economy_date / DAYS_IN_ECONOMY_MONTH % MONTHS_IN_ECONOMY_YEAR;
+	} else {
+		YearMonthDay ymd;
+		ConvertDateToYMD(date, &ymd);
+		_cur_economy_year = ymd.year;
+		_cur_economy_month = ymd.month;
+	}
+}
+
 #define M(a, b) ((a << 5) | b)
 static const uint16 _month_date_from_year_day[] = {
 	M( 0, 1), M( 0, 2), M( 0, 3), M( 0, 4), M( 0, 5), M( 0, 6), M( 0, 7), M( 0, 8), M( 0, 9), M( 0, 10), M( 0, 11), M( 0, 12), M( 0, 13), M( 0, 14), M( 0, 15), M( 0, 16), M( 0, 17), M( 0, 18), M( 0, 19), M( 0, 20), M( 0, 21), M( 0, 22), M( 0, 23), M( 0, 24), M( 0, 25), M( 0, 26), M( 0, 27), M( 0, 28), M( 0, 29), M( 0, 30), M( 0, 31),
@@ -330,11 +353,15 @@ static void OnNewEconomyDay()
 
 static void IncreaseCalendarDate()
 {
-	_date_fract++;
-	if (_date_fract < DAY_TICKS) return;
-	_date_fract = 0;
+	/* If calendar day progress is frozen, don't try to advance the date (particularly since this would divide by 0). */
+	if (_settings_game.economy.calendar_progress_speed == FROZEN_CALENDAR_PROGRESS_SPEED) return;
 
-	/* increase day counter */
+	/* Scale calendar day progression by the chosen speed percentage,
+	   then bail out if it's not time to increase the calendar date yet. */
+	if (++_date_fract < (DAY_TICKS * 100) / _settings_game.economy.calendar_progress_speed) return;
+
+	/* Reset fract counter and increase day counter */
+	_date_fract = 0;
 	_date++;
 
 	YearMonthDay ymd;
@@ -368,8 +395,21 @@ static void IncreaseEconomyDate()
 
 	_economy_date++;
 
-	bool new_month = _economy_date % DAYS_IN_ECONOMY_MONTH == 0;
-	bool new_year = _economy_date % DAYS_IN_ECONOMY_YEAR == 0;
+	bool new_month;
+	bool new_year;
+
+	/* If we're using real-time units, economy months have 30 days and an economy year has 360 days.
+	 * Otherwise, we need to keep economy months and years in sync with the calendar. */
+	if (_settings_game.economy.use_realtime_units) {
+		new_month = _economy_date % DAYS_IN_ECONOMY_MONTH == 0;
+		new_year = _economy_date % DAYS_IN_ECONOMY_YEAR == 0;
+	} else {
+		YearMonthDay ymd;
+		ConvertDateToYMD(_economy_date, &ymd);
+
+		new_month = ymd.month != _cur_economy_month;
+		new_year = ymd.year != _cur_economy_year;
+	}
 
 	if (new_year) {
 		_cur_economy_month = 0;
