@@ -59,6 +59,15 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
  */
 bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl, byte colour_fmt, byte container_format)
 {
+	/*
+	 * Original sprite height was max 255 pixels, with 4x extra zoom => 1020 pixels.
+	 * Original maximum width for sprites was 640 pixels, with 4x extra zoom => 2560 pixels.
+	 * Now up to 5 bytes per pixel => 1020 * 2560 * 5 => ~ 12.5 MiB.
+	 *
+	 * So, any sprite data more than 64 MiB is way larger that we would even expect; prevent allocating more memory!
+	 */
+	if (num < 0 || num > 64 * 1024 * 1024) return WarnCorruptSprite(file, file_pos, __LINE__);
+
 	std::unique_ptr<byte[]> dest_orig(new byte[num]);
 	byte *dest = dest_orig.get();
 	const int64 dest_size = num;
