@@ -1828,7 +1828,7 @@ struct StationViewWindow : public Window {
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 		}
 
-		DrawString(tr, STR_STATION_VIEW_SUPPLY_RATINGS_TITLE);
+		DrawString(tr, STR_STATION_VIEW_SUPPLY_RATINGS);
 		tr.top += FONT_HEIGHT_NORMAL;
 
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {

@@ -388,14 +388,14 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 						SetDParam(0, back.cargo);
 						SetDParam(1, back.Usage());
 						SetDParam(2, back.Usage() * 100 / (back.capacity + 1));
-						buf_end = GetString(buf, STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION, lastof(buf));
+						buf_end = GetString(buf, STR_LINKGRAPH_HOVER_TOOLTIP_RETURN_EXTENSION, lastof(buf));
 					}
 				}
 				/* Add information about the travel time if known. */
 				const auto time = link.time ? back_time ? ((link.time + back_time) / 2) : link.time : back_time;
 				if (time > 0) {
-					SetDParam(0, time);
-					buf_end = GetString(buf_end, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION, lastof(buf));
+					SetDParam(0, time * SECONDS_PER_DAY);
+					buf_end = GetString(buf_end, STR_LINKGRAPH_HOVER_TOOLTIP_TIME_EXTENSION, lastof(buf));
 				}
 				SetDParam(0, link.cargo);
 				SetDParam(1, link.Usage());
@@ -403,7 +403,7 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 				SetDParam(3, j->first);
 				SetDParam(4, link.Usage() * 100 / (link.capacity + 1));
 				SetDParamStr(5, buf);
-				GuiShowTooltips(this->window, STR_LINKGRAPH_STATS_TOOLTIP, 7, nullptr, close_cond);
+				GuiShowTooltips(this->window, STR_LINKGRAPH_HOVER_TOOLTIP, 7, nullptr, close_cond);
 				return true;
 			}
 		}

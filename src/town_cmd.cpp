@@ -3097,7 +3097,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 		SetDParam(0, t->index);
 		SetDParamStr(1, company_name->string);
 
-		AddNewsItem(STR_NEWS_ROAD_REBUILDING, NT_GENERAL, NF_NORMAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, company_name);
+		AddNewsItem(STR_NEWS_ROAD_REBUILDING_MINUTES, NT_GENERAL, NF_NORMAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, company_name);
 		AI::BroadcastNewEvent(new ScriptEventRoadReconstruction((ScriptCompany::CompanyID)(Owner)_current_company, t->index));
 		Game::NewEvent(new ScriptEventRoadReconstruction((ScriptCompany::CompanyID)(Owner)_current_company, t->index));
 	}

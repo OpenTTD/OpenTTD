@@ -31,7 +31,9 @@
  *    o NewGRF variables which can be used to determine visual styles or behavior based on the time of year
  *    o Snow line movement
  *  - Economy time
+ *    o Industry and house production/consumption, etc.
  *    o Vehicle service interval and time since last service
+ *    o Autosave frequency and other settings
  *
  * Calendar time is kept in a common Gregorian calendar, with 365 days in a year, leap years, variable
  * length months, and so on.
@@ -42,6 +44,9 @@
  * In the user interface, all elements that run on economy time are presented in real time units:
  *  - Seconds (multiples of 2), for things which were originally daily
  *  - Minutes, for things which were originally monthly:
+ *    o Industry production per minute
+ *    o Passengers last minute
+ *    o Industry construction/close down time
  *    o Vehicle service intervals and time since last service
  *  - Pentas (one-fifth hour, i.e. 12 minutes) for things which were originally yearly:
  *
@@ -212,10 +217,10 @@ extern void ShowEndGameChart();
 /** Available settings for autosave intervals. */
 static const Month _autosave_months[] = {
 	 0, ///< never
-	 1, ///< every month
-	 3, ///< every 3 months
-	 6, ///< every 6 months
-	12, ///< every 12 months
+	 1, ///< every 1 minute
+	 3, ///< every 3 minutes
+	 6, ///< every 6 minutes
+	12, ///< every 12 minutes
 };
 
 /**

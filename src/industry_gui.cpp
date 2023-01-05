@@ -919,7 +919,7 @@ public:
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
 				if (has_accept) ir.top += WidgetDimensions::scaled.vsep_wide;
-				DrawString(ir, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
+				DrawString(ir, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE);
 				ir.top += FONT_HEIGHT_NORMAL;
 				if (this->editable == EA_RATE) this->production_offset_y = ir.top;
 				first = false;

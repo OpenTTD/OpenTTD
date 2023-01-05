@@ -394,13 +394,13 @@ public:
 		SetDParam(0, 1 << CT_PASSENGERS);
 		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_act);
 		SetDParam(2, this->town->supplied[CT_PASSENGERS].old_max);
-		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX);
 		tr.top += FONT_HEIGHT_NORMAL;
 
 		SetDParam(0, 1 << CT_MAIL);
 		SetDParam(1, this->town->supplied[CT_MAIL].old_act);
 		SetDParam(2, this->town->supplied[CT_MAIL].old_max);
-		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX);
 		tr.top += FONT_HEIGHT_NORMAL;
 
 		bool first = true;
