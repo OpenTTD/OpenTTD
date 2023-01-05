@@ -37,6 +37,7 @@ jobs:
 
     - name: Name branch
       run: |
+        git config --global --add safe.directory ${GITHUB_WORKSPACE}
         name=$(echo "${{ github.event.client_payload.folder }}")
         git checkout -b ${name}
 
