@@ -199,6 +199,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}ح
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}حصان
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}ك واط
 
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP} طن
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}طن
@@ -956,11 +957,12 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}تسريع الأجهزة
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}حدد هذا المربع للسماح لـ OpenTTD بمحاولة استخدام تسريع الأجهزة. سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}اخترهذا المربع للسماح لـ OpenTTD بمحاولة استخدام تسريع الأجهزة. سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}لن يعمل الإعداد إلا بعد إعادة تشغيل اللعبة
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}اختر هذا المربع لكشف حجم الواجهة تلقائيا
 
 
 
@@ -1556,6 +1558,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :اشارات ا
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل واضح
 
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :اشارات الطريق فقط
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :تصميم الطرق للمدن الجديدة : {STRING}
 ###length 5
@@ -1615,6 +1618,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :سريع
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :سريع جدا
 
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :عدد المدن التي ستصبح مدينة كبيرة، وبالتالي اي مدينة تبدء اكبر وتنمو بطريقة سريعة.
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 في {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف المدن المبدئي: {STRING}
 
@@ -1951,6 +1955,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}اللاعبون عبر الإنترنت
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}الاسم
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جديدة)
 
 # Matches ConnectionType
@@ -2594,6 +2599,7 @@ STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  مخط
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 
 ###length 15
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 : تكتكة القطار
 STR_FRAMETIME_CAPTION_SOUND                                     :اختلاط الصوت
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :كتابة اللعبة
 
@@ -3026,6 +3032,7 @@ STR_STATION_VIEW_GROUP                                          :{BLACK}جمع �
 STR_STATION_VIEW_WAITING_AMOUNT                                 :الكمية: في الانتظار
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :المبلغ: تم تخطيطه
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} من {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} من خلال {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} إلى {STATION}
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} إلى أي محطة
 
@@ -3822,13 +3829,14 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}حول �
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}جدولة الأوامر - اضغط على الامر لاظهارة
 
 STR_TIMETABLE_NO_TRAVEL                                         :لا رحيل
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: بواسطة الامر اليدوي التالي)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: مجدول بواسطة الامر اليدوي التالي)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (غير مجدوله)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر(بدون جدول زمني) مع تقريبا {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :سافر(إلى {STRING}, بدون جدول زمني)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :سافر (إلى {STRING}, بدون الجدول الزمني) مع تقريبا {VELOCITY}
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(البقاء ل{STRING}، ليس مجدول)
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}يوم
@@ -3905,6 +3913,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاش
 
 # AI configuration window
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}مخطوطات اللعبة الذي سيتم تحميله في اللعبة التالية
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}الذكاء الاصطناعي الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
 STR_AI_CONFIG_NONE                                              :(لا شيء)

@@ -200,8 +200,15 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}dk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}dk
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/waktu
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -228,9 +235,9 @@ STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Kata penyaring:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan kata penyaring
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring daftar
+STR_LIST_FILTER_TITLE                                           :{BLACK}Saring:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan satu atau lebih kata kunci untuk penyaringan pada list
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan 1 atau lebih kata kunci untuk menyaring daftar
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Pilihkan urutan kelompok
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih modus pengurutan (menurun/menaik)
@@ -381,7 +388,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pembangu
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Pembangunan Jalur Tram
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Menanam Pohon. Shift untuk menampilkan perkiraan biaya
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Memasang pengenal
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Tempatkan Obyek. Shift untuk menampilkan perkiraan biaya
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Tempatkan Obyek. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 
 # Scenario editor file menu
 ###length 7
@@ -1003,12 +1010,17 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pengenda
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Ukuran antarmuka
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Geser slider untuk mengatur ukuran antarmuka. Tekan tombol Ctrl untuk pengaturan terus menerus
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Otomatis deteksi ukuran
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Pilih kotak ini untuk mendeteksi ukuran antarmuka secara otomatis
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala bevel
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Pilih kotak ini untuk pengaturan perbandingan ukuran bevel dengan ukuran antarmuka
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -1134,7 +1146,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak te
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Pengaturan
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Penyaring kata:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Saring:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Atur ulang semua pengaturan
@@ -1420,6 +1432,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Tebalnya garis 
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Tampilkan nama NewGRF di jendela beli kendaraan: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tambahkan garis ke jendela beli kendaraan, yang menunjukkan NewGRF kendaraan yang dipilih berasal.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Tampilkan di windows senarai jenis kargo yang bisa diangkut oleh kendaraan {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Jika aktif maka beban transportasi kendaraan akan terlihat diatasnya di daftar kendaraan
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Bentang Darat: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Lanskap mendefinisikan skenario gameplay dasar dengan kargo yang berbeda dan persyaratan pertumbuhan kota. NewGRF dan Game Scripts memungkinkan kontrol yang lebih halus
@@ -2055,6 +2069,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel Ni
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari Konten Daring
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Pengaturan AI
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Pengaturan Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
@@ -2075,6 +2090,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilka
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan pengaturan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan pengaturan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Tampilkan pengaturan AI
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Tampilan pengaturan game script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
 
@@ -2466,13 +2482,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :menunggu pembar
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :pergi
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} telah bergabung
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} sudah bergabung ke dalam permainan (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} bergabung dalam perusahaan #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} sudah bergabung ke dalam permainan (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} bergabung dengan perusahaan #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} bergabung menjadi penonton
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} mulai mendirikan perusahaan (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} meninggalkan permainan ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} mulai mendirikan perusahaan (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} meninggalkan permainan ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah mengganti namanya menjadi {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} memberikan {2:CURRENCY_LONG} kepada {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} memberikan {2:CURRENCY_LONG} kepada {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server menutup sesi
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} telah dikeluarkan. Alasan: ({STRING})
@@ -2588,6 +2604,8 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} di transportasikan per bulan dari {STATION} ke {STATION} ({COMMA}% dari kapasitas){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} akan dikirim kembali ({COMMA}% dari kapasitas)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Rataan waktu tempuh: {NUM}{NBSP}hari{}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Jangkauan layanan
@@ -2785,11 +2803,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses L
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Turunkan penjuru dataran. Drag untuk menurunkan penjuru pertama dan meratakan area setinggi penjuru yg baru. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Naikkan penjuru dataran. Drag untuk menaikkan penjuru pertama dan meratakan area setinggi penjuru yg baru. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan permukaan setinggi ujung kotak terpilih. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan. Shift untuk menampilkan perkiraan biaya
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan. Ctrl memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pemilihan obyek
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun. Shift untuk menampilkan perkiraan biaya
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pilih kelas dari objek yang dibangun
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pra-tayang obyek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} kotak
@@ -2834,6 +2852,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Membangu
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Buat kota secara acak
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dukung Peta dengan penempatan kota secara otomatis
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Perluas seluruh kota
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Buat seluruh kota sedikit berkembang
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nama kota:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Masukkan nama kota
@@ -3098,7 +3117,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Rincian 
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tidak ada informasi yang tersedia
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter string:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Saring:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Timpa Berkas
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Yakin ingin menimpa berkas yang ada?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Direktori)
@@ -3134,9 +3153,11 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Kehalusan:
 STR_MAPGEN_VARIETY                                              :{BLACK}Macam penyebaran:
 STR_MAPGEN_GENERATE                                             :{WHITE}Buat Peta
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Pengaturan NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Tampilkan pengaturan NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Pengaturan AI
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Tampilkan pengaturan AI
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Pengaturan Script Permainan
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Tampilkan pengaturan game script
 
 ###length 21
@@ -3219,7 +3240,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Rincian 
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}File NewGRF aktif
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}File NewGRF tidak aktif
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Pilih preset:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Saring kata:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Saring:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Baca kembali setingan terdahulu yang terpilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Simpan daftar ini dalam daftar aturan
@@ -3311,6 +3332,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pindahka
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Offset di tengah
 STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite di tengah
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Crosshair
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reset relatif
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reset offset relatif saat ini
@@ -3329,15 +3351,15 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SI
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kesalahan fatal NewGRF telah terjadi:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Terjadi galat pada NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} tidak akan bekerja dengan versi TTDPatch yang telah dilaporkan oleh OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} untuk TTD versi {STRING}
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} didesain untuk digunakan dengan {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parameter yang salah untuk {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} harus dimuat sebelum {STRING}
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} harus dimuat sesudah {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} membutuhkan OpenTTD versi {STRING} atau yang lebih tinggi
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} untuk TTD versi {2:STRING}
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} didesain untuk digunakan dengan {2:STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parameter yang salah untuk {1:STRING}: parameter {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} harus dimuat sebelum {2:STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} harus dimuat sesudah {2:STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} membutuhkan OpenTTD versi {2:STRING} atau diatasnya
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Berkas NewGRF telah didesain untuk diterjemahkan
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak berkas NewGRF yang dimuat
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {1:STRING} secara statis dengan {STRING} dapat menyebabkan de-sinkronisasi
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {1:STRING} secara statis dengan {2:STRING} dapat menyebabkan de-sinkronisasi
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite salah / tidak terduga (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Properti Action 0 tidak diketahui {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggunakan ID invalid (sprite {3:NUM})
@@ -3469,14 +3491,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak transp
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suap pemkot setempat
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan penggalak sementara pada peringkat stasiun dalam radius kecil di sekitar pusat kota.{}Biaya:{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan penggalak sementara pada peringkat stasiun dalam radius sedang di sekitar pusat kota.{}Biaya:{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan penggalak sementara pada peringkat stasiun dalam radius besar di sekitar pusat kota.{}Biaya: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Danai perbaikan jalanan perkotaan.{}Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}Biaya: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Memberikan penggalak permanen pada peringkat stasiun di kota ini.{}Biaya: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biayai pembangunan gedung baru di kota.{}Memberikan penggalak sementara pada pertumbuhan kota di kota ini,{}Biaya: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun.{}Pemerintah kota tidak akan mengizinkan penumpang dan kargo untuk memakai stasiun pesaing Anda.{} Biaya: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Prakarsai kampanye iklan singkat, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan peningkatan sementara pada peringkat stasiun dalam radius kecil disekitar pusat kota.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan peningkatan sementara pada peringkat stasiun dalam radius sedang di sekitar pusat kota.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Memberikan penggalak sementara pada peringkat stasiun dalam radius besar di sekitar pusat kota..{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Danai perbaikan jalanan perkotaan.{}Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Memberikan peningkatan permanen pada mutu stasiun di kota ini.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Biayai pembangunan gedung baru di kota.{}Memberikan penggalak sementara pada pertumbuhan kota di kota ini,{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun.{}Pemerintah kota tidak akan mengizinkan penumpang dan kargo untuk memakai stasiun pesaing Anda.{}{POP_COLOUR} Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Lakukan suap pada pemkot untuk menaikan peringkat, beresiko denda jika tertangkap.{}{POP_COLOUR}Biaya: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Target
@@ -3653,12 +3675,14 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total
 STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Keuntungan
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Dana Pribadi
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
 STR_FINANCES_INTEREST_RATE                                      :{WHITE}Bunga Pinjaman: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman maks.: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tambah jumlah pinjaman. Tekan Ctrl+Click untuk meminjam sebanyak mungkin.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Bayar {CURRENCY_LONG}
@@ -3759,7 +3783,7 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produksi
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Membutuhkan:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} menunggu{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi (kelipatan 8, hingga 2040)
@@ -3789,6 +3813,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Kirim pe
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Ganti kendaraan
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Perintahkan untuk diperbaiki
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Laba tahun ini: {CURRENCY_LONG} (tahun lalu: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Perintahkan ke bengkel
@@ -3882,6 +3907,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jangkaua
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Jenis pesawat: {GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Semua jenis kargo
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Kargo
 STR_CARGO_TYPE_FILTER_NONE                                      :Tidak ada
 
 ###length VEHICLE_TYPES
@@ -4052,7 +4079,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :pesawat
 STR_ENGINE_PREVIEW_SHIP                                         :kapal
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY_LONG}/thn{}Kapasitas: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY_LONG}/yr{}Kapasitas: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {0:CURRENCY_LONG} Berat: {1:WEIGHT_SHORT}{}Kecepatan: {2:VELOCITY} Daya: {3:POWER} Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY_LONG}/yr{}Kapasitas: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING}{}Kapasitas: {CARGO_LONG}, {CARGO_LONG}{}Biaya operasi: {CURRENCY_LONG}/thn
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max.: {VELOCITY}{}Jenis pesawat: {STRING}{}Kapasitas: {CARGO_LONG}{}Biaya operasi: {CURRENCY_LONG}/thn
@@ -4211,12 +4238,13 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun lalu: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun kemarin: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak perbaikan terakhir : {LTBLUE}{COMMA} kali
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasitas: {LTBLUE}{0:CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{0:CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY_LONG}
@@ -4485,22 +4513,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tanggal 
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pilih tanggal titik mula timetable. Ctrl+Click untuk mendistribusikan semua kendaraan dengan instruksi sama secara merata dari tanggal yang telah dipilih berdasarkan instruksi relatif tiap kendaraan, hanya jika intruksi tersebut sepenuhnya terjadwal.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih. Ctrl+Click untuk mengubah keseluruhan tujuan
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Hapus waktu
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus jumlah waktu pada tujuan yang terpilih
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus jumlah waktu pada tujuan yang terpilih. Ctrl+Click untuk menghapus keseluruan tujuan
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ubah batas kecepatan
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ubah batas kecepatan maks. pada tujuan terpilih
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ubah batas kecepatan maks pada tujuan terpilih. Ctrl+Click mengeset kecepatan di seluruh pilihan
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hapus batas kecepatan
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Hapus batas kecepatan maks. pada tujuan terpilih
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Hapus batas kecepatan maks pada tujuan terpilih. Ctrl+Click mengeset kecepatan di seluruh pilihan
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalikan penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-klik agar waktu tinggalnya tetap)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis berdasarkan perjalanan berikutnya. Ctrl+klik untuk mempertahankan waktu tunggu)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Harapan
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadwalkan
@@ -4563,7 +4591,7 @@ STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Paramet
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Pilih AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skrip Permainan
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Skrip Permainan
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat skrip yang lain
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasikan
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonfigurasi parameter skrip AI
@@ -4592,7 +4620,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Tangkapa
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Tangkapan layar minimap
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parameter AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4756,6 +4784,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... terl
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak dapat membangkitkan/membuat industri...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak dapat membangun {STRING} disini...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tidak dapat membangun industri ini disini...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Tidak mampu memprospek industri...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... terlalu dekat dengan industri lain
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... harus membangun kota terlebih dahulu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... hanya diizinkan satu di setiap kota
@@ -4770,6 +4799,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... huta
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... hanya bisa dibangun diatas garis salju
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... hanya dapat dibangun di bawah batas salju
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Rencana pendanaan mengalami kegagalan; mohon dicoba kembali
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE} Tidak ada tempat yang tepat untuk memprospek industri ini
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Tidak ada tempat yang sesuai untuk industri '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ubah pembuatan peta untuk memperoleh peta yang lebih baik
 
@@ -4937,6 +4968,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalan
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... terhalang kantor pusat perusahaan
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tidak dapat membeli area ini
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... anda sudah memilikinya!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... batas konstruksi objek telah tercapai
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Tidak data membuat kelompok...
@@ -5009,6 +5041,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak da
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kendaraan hancur
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... tidak semua kendaraan identik
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Tak satupun kendaraan tersedia
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Tukarkan konfigurasi NewGRF anda
@@ -5036,6 +5069,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Tidak da
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kendaraan tidak dapat menuju ke semua stasiun
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kendaraan tidak dapat menuju ke stasiun tersebut
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kendaraan yang berbagi tujuan yang sama tidak dapat menuju stasiun tersebut
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... Tidak semua kendaraan memiliki urutan yang sama
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... tidak semua kendaraan akan berbagi urutan.
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Tidak dapat berbagi perintah...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Tidak dapat menghentikan pembagian daftar perintah...

@@ -1024,10 +1024,10 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphik
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Refresh rate uweisen
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wiel d'Refresh rate vum Bildschirm aus
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Bildfrequenz
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wiel d'Frequenz vum Bildschirm aus
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
-STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates déi méi grouss wéi 60Hz sinn, kënnen d'Performance beaflossen
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Bildfrequenzen iwwert 60Hz kënnen d'Performance beaflossen
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wielt de Basis Grafikset dee soll benotzt ginn
