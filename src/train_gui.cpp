@@ -27,7 +27,7 @@
  * @param new_veh_id ID of the ne vehicle.
  * @param tile   The tile the command was executed on.
  */
-void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, TileIndex tile, EngineID, bool, CargoID, ClientID)
+void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, CargoArray, TileIndex tile, EngineID, bool, CargoID, ClientID)
 {
 	if (result.Failed()) return;
 
