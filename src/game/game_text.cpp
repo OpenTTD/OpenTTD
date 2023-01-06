@@ -225,6 +225,7 @@ public:
 GameStrings *LoadTranslations()
 {
 	const GameInfo *info = Game::GetInfo();
+	assert(info != nullptr);
 	std::string basename(info->GetMainScript());
 	auto e = basename.rfind(PATHSEPCHAR);
 	if (e == std::string::npos) return nullptr;

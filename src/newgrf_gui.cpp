@@ -1464,6 +1464,9 @@ private:
 				this->avails.push_back(c);
 			} else {
 				const GRFConfig *best = FindGRFConfig(c->ident.grfid, HasBit(c->flags, GCF_INVALID) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
+				/* Never triggers; FindGRFConfig returns either c, or a newer version of c. */
+				assert(best != nullptr);
+
 				/*
 				 * If the best version is 0, then all NewGRF with this GRF ID
 				 * have version 0, so for backward compatibility reasons we

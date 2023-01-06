@@ -27,6 +27,7 @@
 	if (!IsValid(setting)) return -1;
 
 	const SettingDesc *sd = GetSettingFromName(setting);
+	assert(sd != nullptr);
 	return sd->AsIntSetting()->Read(&_settings_game);
 }
 
@@ -35,6 +36,7 @@
 	if (!IsValid(setting)) return false;
 
 	const SettingDesc *sd = GetSettingFromName(setting);
+	assert(sd != nullptr);
 
 	if ((sd->flags & SF_NO_NETWORK_SYNC) != 0) return false;
 
