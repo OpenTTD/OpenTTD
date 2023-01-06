@@ -30,6 +30,7 @@
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val, ModifyTimetableFlags mtf, bool timetabled)
 {
 	Order *order = v->GetOrder(order_number);
+	assert(order != nullptr);
 	int total_delta = 0;
 	int timetable_delta = 0;
 
@@ -390,6 +391,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (v->cur_real_order_index >= v->GetNumOrders()) return;
 	Order *real_current_order = v->GetOrder(v->cur_real_order_index);
+	assert(real_current_order != nullptr);
 
 	VehicleOrderID first_manual_order = 0;
 	for (Order *o = v->GetFirstOrder(); o != nullptr && o->IsType(OT_IMPLICIT); o = o->next) {

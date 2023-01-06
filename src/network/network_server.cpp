@@ -1532,6 +1532,7 @@ static void NetworkAutoCleanCompanies()
 
 	if (!_network_dedicated) {
 		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
+		assert(ci != nullptr);
 		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
@@ -1918,6 +1919,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	if (client_id == CLIENT_ID_SERVER && _network_dedicated) return;
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
+	assert(ci != nullptr);
 
 	/* No need to waste network resources if the client is in the company already! */
 	if (ci->client_playas == company_id) return;
