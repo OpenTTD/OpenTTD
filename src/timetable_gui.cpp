@@ -310,13 +310,13 @@ struct TimetableWindow : Window {
 			bool disable = true;
 			if (selected != -1) {
 				const Order *order = v->GetOrder(((selected + 1) / 2) % v->GetNumOrders());
-				if (selected % 2 == 1) {
+				if (selected % 2 != 0) {
 					disable = order != nullptr && (order->IsType(OT_CONDITIONAL) || order->IsType(OT_IMPLICIT));
 				} else {
 					disable = order == nullptr || ((!order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) && !order->IsType(OT_CONDITIONAL));
 				}
 			}
-			bool disable_speed = disable || selected % 2 != 1 || v->type == VEH_AIRCRAFT;
+			bool disable_speed = disable || selected % 2 == 0 || v->type == VEH_AIRCRAFT;
 
 			this->SetWidgetDisabledState(WID_VT_CHANGE_TIME, disable);
 			this->SetWidgetDisabledState(WID_VT_CLEAR_TIME, disable);
@@ -505,7 +505,7 @@ struct TimetableWindow : Window {
 	static inline std::tuple<VehicleOrderID, ModifyTimetableFlags> PackTimetableArgs(const Vehicle *v, uint selected, bool speed)
 	{
 		uint order_number = (selected + 1) / 2;
-		ModifyTimetableFlags mtf = (selected % 2 == 1) ? (speed ? MTF_TRAVEL_SPEED : MTF_TRAVEL_TIME) : MTF_WAIT_TIME;
+		ModifyTimetableFlags mtf = (selected % 2 != 0) ? (speed ? MTF_TRAVEL_SPEED : MTF_TRAVEL_TIME) : MTF_WAIT_TIME;
 
 		if (order_number >= v->GetNumOrders()) order_number = 0;
 
@@ -543,7 +543,7 @@ struct TimetableWindow : Window {
 				StringID current = STR_EMPTY;
 
 				if (order != nullptr) {
-					uint time = (selected % 2 == 1) ? order->GetTravelTime() : order->GetWaitTime();
+					uint time = (selected % 2 != 0) ? order->GetTravelTime() : order->GetWaitTime();
 					if (!_settings_client.gui.timetable_in_ticks) time /= DAY_TICKS;
 
 					if (time != 0) {
