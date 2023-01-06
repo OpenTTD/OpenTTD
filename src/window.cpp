@@ -1179,6 +1179,18 @@ Window *FindWindowByClass(WindowClass cls)
 }
 
 /**
+ * Get the main window, i.e. FindWindowById(WC_MAIN_WINDOW, 0).
+ * If the main window is not available, this function will trigger an assert.
+ * @return Pointer to the main window.
+ */
+Window *GetMainWindow()
+{
+	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	assert(w != nullptr);
+	return w;
+}
+
+/**
  * Close a window by its class and window number (if it is open).
  * @param cls Window class
  * @param number Number of the window within the window class
@@ -2431,7 +2443,7 @@ static EventState HandleViewportScroll()
 		return ES_NOT_HANDLED;
 	}
 
-	if (_last_scroll_window == FindWindowById(WC_MAIN_WINDOW, 0) && _last_scroll_window->viewport->follow_vehicle != INVALID_VEHICLE) {
+	if (_last_scroll_window == GetMainWindow() && _last_scroll_window->viewport->follow_vehicle != INVALID_VEHICLE) {
 		/* If the main window is following a vehicle, then first let go of it! */
 		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle);
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
@@ -2776,9 +2788,7 @@ const std::chrono::milliseconds TIME_BETWEEN_DOUBLE_CLICK(500); ///< Time betwee
 static void ScrollMainViewport(int x, int y)
 {
 	if (_game_mode != GM_MENU) {
-		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-		assert(w);
-
+		Window *w = GetMainWindow();
 		w->viewport->dest_scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
 		w->viewport->dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
 	}

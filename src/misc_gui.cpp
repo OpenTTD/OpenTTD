@@ -1264,7 +1264,7 @@ static WindowDesc _query_desc(
  */
 void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback)
 {
-	if (parent == nullptr) parent = FindWindowById(WC_MAIN_WINDOW, 0);
+	if (parent == nullptr) parent = GetMainWindow();
 
 	for (Window *w : Window::Iterate()) {
 		if (w->window_class != WC_CONFIRM_POPUP_QUERY) continue;

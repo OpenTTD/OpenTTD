@@ -222,7 +222,7 @@ struct SelectGameWindow : public Window {
 		}
 
 		IntroGameViewportCommand &vc = intro_viewport_commands[this->cur_viewport_command_index];
-		Window *mw = FindWindowByClass(WC_MAIN_WINDOW);
+		Window *mw = GetMainWindow();
 		Viewport *vp = mw->viewport;
 
 		/* Early exit if the current command hasn't elapsed and isn't animated. */

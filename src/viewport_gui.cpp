@@ -63,7 +63,7 @@ public:
 		Point pt;
 		if (tile == INVALID_TILE) {
 			/* No tile? Use center of main viewport. */
-			const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			const Window *w = GetMainWindow();
 
 			/* center on same place as main window (zoom is maximum, no adjustment needed) */
 			pt.x = w->viewport->scrollpos_x + w->viewport->virtual_width / 2;
@@ -95,7 +95,7 @@ public:
 			case WID_EV_ZOOM_OUT: DoZoomInOutWindow(ZOOM_OUT, this); break;
 
 			case WID_EV_MAIN_TO_VIEW: { // location button (move main view to same spot as this view) 'Paste Location'
-				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				Window *w = GetMainWindow();
 				int x = this->viewport->scrollpos_x; // Where is the main looking at
 				int y = this->viewport->scrollpos_y;
 
@@ -107,7 +107,7 @@ public:
 			}
 
 			case WID_EV_VIEW_TO_MAIN: { // inverse location button (move this view to same spot as main view) 'Copy Location'
-				const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				const Window *w = GetMainWindow();
 				int x = w->viewport->scrollpos_x;
 				int y = w->viewport->scrollpos_y;
 

@@ -884,7 +884,7 @@ static CallBackFunction MenuClickShowAir(int index)
 
 static CallBackFunction ToolbarZoomInClick(Window *w)
 {
-	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
+	if (DoZoomInOutWindow(ZOOM_IN, GetMainWindow())) {
 		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)WID_TE_ZOOM_IN : (byte)WID_TN_ZOOM_IN);
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
@@ -895,7 +895,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 
 static CallBackFunction ToolbarZoomOutClick(Window *w)
 {
-	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
+	if (DoZoomInOutWindow(ZOOM_OUT, GetMainWindow())) {
 		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)WID_TE_ZOOM_OUT : (byte)WID_TN_ZOOM_OUT);
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
@@ -2146,7 +2146,7 @@ struct MainToolbarWindow : Window {
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != nullptr) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
+		HandleZoomMessage(this, GetMainWindow()->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
 	}
 
 	static HotkeyList hotkeys;
@@ -2520,7 +2520,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != nullptr) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, WID_TE_ZOOM_IN, WID_TE_ZOOM_OUT);
+		HandleZoomMessage(this, GetMainWindow()->viewport, WID_TE_ZOOM_IN, WID_TE_ZOOM_OUT);
 	}
 
 	void OnQueryTextFinished(char *str) override
