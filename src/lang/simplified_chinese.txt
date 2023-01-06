@@ -2603,8 +2603,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}超载
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} 每月待从{STATION}运输到{STATION}为({COMMA}%产量){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG}要运回({COMMA}% of capacity)
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}每月有{CARGO_LONG}待从{STATION}运输到{STATION}(运载能力的{COMMA}%){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}有{CARGO_LONG}要运回(运载能力的{COMMA}%)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均行驶时间: {NUM}{NBSP}天
 
 # Base for station construction window(s)

@@ -236,7 +236,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv in sökfilter
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv in ett eller flera sökord att filtrera listan efter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv in ett eller flera sökord att filtrera listan efter
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Välj order att gruppera på
@@ -257,7 +257,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka o
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan upp/ned
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan höger/vänster
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl väljer yta diagonalt. Shift växlar mellan att riva/visa beräknad kostnad
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl väljer ytan diagonalt. Shift växlar mellan att riva/visa beräknad kostnad
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -388,7 +388,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygg vä
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Spårvägskonstruktion
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantera träd. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placera skylt
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placera objekt. Ctrl markerkar området diagonalt. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placera objekt. Ctrl väljer ytan diagonalt. Shift växlar mellan att bygga/visa beräknad kostnad
 
 # Scenario editor file menu
 ###length 7
@@ -1701,7 +1701,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorst
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan skript sätts i viloläge: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximalt antal beräkningssteg ett skript kan utföra i en omgång
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maximalt minnesanvändning per skript: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maximal minnesanvändning per skript: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hur mycket minne ett enda skript kan konsumera innan det tvingas avslutas. Det kan behöva ökas för stora kartor.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
@@ -2798,14 +2798,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Generera
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsplanering
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Vid dragning kommer hörnet och vald yta att sänkas ner till hörnets nya höjd. Ctrl väljer yta diagonalt. Shift växlar mellan att sänka/visa beräknad kostnad
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj ett hörn av marken. Vid dragning kommer hörnet och vald yta att höjas upp till hörnets nya höjd. Ctrl väljer yta diagonalt. Shift växlar mellan att höja/visa beräknad kostnad
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna land till höjden av det först valda hörnet. Ctrl väljer området diagonalt. Shift växlar mellan att utjämna/visa beräknad kostnad
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning. Ctrl väljer området diagonalt. Shift växlar mellan att köpa mark/visa beräknad kostnad
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Vid dragning kommer hörnet och vald yta att sänkas ner till hörnets nya höjd. Ctrl väljer ytan diagonalt. Shift växlar mellan att sänka/visa beräknad kostnad
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj ett hörn av marken. Vid dragning kommer hörnet och vald yta att höjas upp till hörnets nya höjd. Ctrl väljer ytan diagonalt. Shift växlar mellan att höja/visa beräknad kostnad
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna land till höjden av det först valda hörnet. Ctrl väljer ytan diagonalt. Shift växlar mellan att utjämna/visa beräknad kostnad
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning. Ctrl väljer ytan diagonalt. Shift växlar mellan att köpa mark/visa beräknad kostnad
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Val av objekt
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Välj objekt att bygga. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Välj objekt att bygga. Ctrl väljer ytan diagonalt. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Välj typ av objekt att bygga
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Förhandsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM} x {NUM} rutor
@@ -3348,7 +3348,7 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {S
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ett fatalt NewGRF-fel har uppstått:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Ett NewGRF-fel har uppstått:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} kommer inte att fungera med den TTDPatchversion som rapporterades av OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} är för {STRING}versionen av TTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} är för {2:STRING}-versionen av TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} är designat för att användas med {2:STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parameter för {1:STRING}: parameter {2:STRING} ({3:NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} måste laddas in innan {2:STRING}
@@ -3489,11 +3489,11 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Muta de lokala 
 
 ###length 8
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Starta en liten lokal reklamkampanj för att attrahera fler passagerare och mer gods till dina tranporttjänster.{}Ger en temporär boost till stationers betyg i en liten radie runt stadens centrum.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Starta en medelstor lokal reklamkampanj, för att attrahera fler passagerare och mer gods till dina tranporttjänster.{}Ger en temporär boost till stationers betyg i en medelstor radie runt stadens centrum.{}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och mer gods till dina transporttjänster.{}Ger en temporär boost till stationers betyg i en stor radie runt stadens centrum.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Starta en medelstor lokal reklamkampanj, för att attrahera fler passagerare och mer gods till dina tranporttjänster.{}Ger en temporär boost till stationers betyg i en medelstor radie runt stadens centrum.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och mer gods till dina transporttjänster.{}Ger en temporär boost till stationers betyg i en stor radie runt stadens centrum.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Bekosta ombyggnad av stadens vägnätverk.{}Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg en staty i ditt företags ära.{}Ger en permanent boost till stationers betyg i staden.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bekosta uppbyggnad av nya byggnader i staden.{}Ger en temporär boost till stadens tillväxt.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Bygg en staty till ditt företags ära.{}Ger en permanent boost till stationers betyg i staden.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Bekosta konstruktion av nya byggnader i staden.{}Ger en temporär boost till stadens tillväxt.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Köp 1 års exklusiva transporträttigheter i staden.{}De lokala myndigheterna kommer inte tillåta passagerare och gods att använda dina motståndares stationer.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW} Muta de lokala myndigheterna för att öka din värdering, med risk för att få höga böter om du blir upptäckt.{}{POP_COLOUR}Kostnad: {CURRENCY_LONG}
 
@@ -4587,7 +4587,7 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spelskr
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametrar
 STR_AI_CONFIG_AI                                                :{SILVER}Datorspelare
 
-STR_AI_CONFIG_CHANGE_AI                                         :Datorspelare
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Välj datorspelare
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Välj spelskript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Läs in ett annat skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurera
@@ -4617,7 +4617,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Skärmdu
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Skärmdump av miniatyrkartan
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :Datorspelarens
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Datorspelarens parametrar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4673,7 +4673,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sparfilen är g
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Filen är inte läsbar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Filen är inte skrivbar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetskontrollen på datan misslyckades
-STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Sparat spel är från en modifierat version
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Sparat spel är från en modifierad version
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
@@ -4965,6 +4965,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt i
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... huvudkontor i vägen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan inte köpa denna mark...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du äger den redan!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... gränsen för konstruktion av objekt är nådd
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan inte skapa grupp...

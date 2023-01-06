@@ -866,7 +866,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Rezerve noi de cărbune la {INDUSTRY}!{}Se preconizează dublarea producţiei!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Rezerve noi de petrol la {INDUSTRY}!{}Se preconizează dublarea producţiei!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea producţiei!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Producţia de {STRING} de la {INDUSTRY} creste cu {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Producţia de {STRING} de la {INDUSTRY} crește cu {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} scade producţia cu 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insectele cauzează distrugeri masive la {INDUSTRY}!{}Producţia scade cu 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Producţia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
@@ -4189,13 +4189,13 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acțiune
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Încărcare / Descărcare
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Pleaca
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Pleacă
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Defect
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oprit
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Oprire, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Fara curent
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Astept cale libera
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Aștept cale liberă
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Prea departe pentru următoarea destinație
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Spre {STATION}, {VELOCITY}
