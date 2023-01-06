@@ -2517,6 +2517,6 @@ void ShowNetworkAskRelay(const std::string &server_connection_string, const std:
 {
 	CloseWindowByClass(WC_NETWORK_ASK_RELAY);
 
-	Window *parent = FindWindowById(WC_MAIN_WINDOW, 0);
+	Window *parent = GetMainWindow();
 	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
 }

@@ -732,7 +732,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint3
 		case SC_CRASHLOG: {
 			assert(width == 0 && height == 0);
 
-			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			Window *w = GetMainWindow();
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
 			vp->virtual_width  = w->viewport->virtual_width;
@@ -776,7 +776,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint3
 		default: {
 			vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
 
-			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			Window *w = GetMainWindow();
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
 

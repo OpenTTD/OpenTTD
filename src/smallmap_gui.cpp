@@ -941,7 +941,7 @@ void SmallMapWindow::DrawTowns(const DrawPixelInfo *dpi) const
 void SmallMapWindow::DrawMapIndicators() const
 {
 	/* Find main viewport. */
-	const Viewport *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+	const Viewport *vp = GetMainWindow()->viewport;
 
 	Point upper_left_smallmap_coord  = InverseRemapCoords2(vp->virtual_left, vp->virtual_top);
 	Point lower_right_smallmap_coord = InverseRemapCoords2(vp->virtual_left + vp->virtual_width - 1, vp->virtual_top + vp->virtual_height - 1);
@@ -1433,7 +1433,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 			if (click_count > 0) this->mouse_capture_widget = widget;
 
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			Window *w = GetMainWindow();
 			int sub;
 			pt = this->PixelToTile(pt.x - wid->pos_x, pt.y - wid->pos_y, &sub);
 			ScrollWindowTo(this->scroll_x + pt.x * TILE_SIZE, this->scroll_y + pt.y * TILE_SIZE, -1, w);
@@ -1665,7 +1665,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
  */
 void SmallMapWindow::SmallMapCenterOnCurrentPos()
 {
-	const Viewport *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+	const Viewport *vp = GetMainWindow()->viewport;
 	Point viewport_center = InverseRemapCoords2(vp->virtual_left + vp->virtual_width / 2, vp->virtual_top + vp->virtual_height / 2);
 
 	int sub;
@@ -1882,7 +1882,7 @@ void ShowSmallMap()
  */
 bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 {
-	bool res = ScrollWindowTo(x, y, z, FindWindowById(WC_MAIN_WINDOW, 0), instant);
+	bool res = ScrollWindowTo(x, y, z, GetMainWindow(), instant);
 
 	/* If a user scrolls to a tile (via what way what so ever) and already is on
 	 * that tile (e.g.: pressed twice), move the smallmap to that location,
