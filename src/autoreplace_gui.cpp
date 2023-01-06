@@ -523,8 +523,7 @@ public:
 					const Engine *e = Engine::Get(this->sel_engine[side]);
 					TestedEngineDetails ted;
 					ted.cost = 0;
-					ted.cargo = e->GetDefaultCargoType();
-					ted.capacity = e->GetDisplayDefaultCapacity(&ted.mail_capacity);
+					ted.FillDefaultCapacities(e);
 
 					const Rect r = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS)->GetCurrentRect()
 							.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);

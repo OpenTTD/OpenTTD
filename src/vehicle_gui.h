@@ -43,6 +43,9 @@ struct TestedEngineDetails {
 	CargoID cargo;        ///< Cargo type
 	uint capacity;        ///< Cargo capacity
 	uint16 mail_capacity; ///< Mail capacity if available
+	CargoArray all_capacities; ///< Capacities for all cargoes
+
+	void FillDefaultCapacities(const Engine *e);
 };
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te);
