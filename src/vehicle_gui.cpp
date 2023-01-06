@@ -892,7 +892,7 @@ struct RefitWindow : public Window {
 	StringID GetCapacityString(RefitOption *option) const
 	{
 		assert(_current_company == _local_company);
-		auto [cost, refit_capacity, mail_capacity] = Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, this->selected_vehicle, option->cargo, option->subtype, this->auto_refit, false, this->num_vehicles);
+		auto [cost, refit_capacity, mail_capacity, cargo_capacities] = Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, this->selected_vehicle, option->cargo, option->subtype, this->auto_refit, false, this->num_vehicles);
 
 		if (cost.Failed()) return INVALID_STRING_ID;
 
@@ -3356,7 +3356,7 @@ void StopGlobalFollowVehicle(const Vehicle *v)
  * @param result indicates completion (or not) of the operation
  * @param new_veh_id ID of the new vehicle.
  */
-void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16)
+void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, CargoArray)
 {
 	if (result.Failed()) return;
 
