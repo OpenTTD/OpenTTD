@@ -160,8 +160,8 @@ STR_ABBREV_TOFFEE                                               :{TINY_FONT}ŞL
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}Pİ
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}İÇ
-STR_ABBREV_NONE                                                 :{TINY_FONT}YOK
-STR_ABBREV_ALL                                                  :{TINY_FONT}HEPSİ
+STR_ABBREV_NONE                                                 :{TINY_FONT}YO
+STR_ABBREV_ALL                                                  :{TINY_FONT}TÜMÜ
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}yolcu
@@ -2105,9 +2105,9 @@ STR_QUIT_YES                                                    :{BLACK}Evet
 STR_QUIT_NO                                                     :{BLACK}Hayır
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ana Menüye Dön
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinize emin misiniz?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinize emin misiniz?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Oyunu Terk Et
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bu oyunu terk etmek istediğinize emin misiniz?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryoyu terk etmek istediğinize emin misiniz?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
@@ -2783,14 +2783,14 @@ STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Havalima
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Yerleşim {NUM}
 
 STR_AIRPORT_SMALL                                               :Küçük
-STR_AIRPORT_CITY                                                :Şehirlerarası
+STR_AIRPORT_CITY                                                :Şehir
 STR_AIRPORT_METRO                                               :Büyükşehir
 STR_AIRPORT_INTERNATIONAL                                       :Uluslararası
 STR_AIRPORT_COMMUTER                                            :Abonman
 STR_AIRPORT_INTERCONTINENTAL                                    :Kıtalararası
-STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIPORT                                            :Heli pisti
 STR_AIRPORT_HELIDEPOT                                           :Heligaraj
-STR_AIRPORT_HELISTATION                                         :Helistasyon
+STR_AIRPORT_HELISTATION                                         :Heli istasyonu
 
 STR_AIRPORT_CLASS_SMALL                                         :Küçük havalimanları
 STR_AIRPORT_CLASS_LARGE                                         :Büyük Havalimanları
@@ -4549,14 +4549,14 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Yılı s
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
+STR_AI_DEBUG                                                    :{WHITE}YZ/Oyun Betiği Hata Ayıklama
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Betik adı
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Betik ayarlarını değiştir
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ log iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ kayıt iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Geldiğinde duraklatılacak metin:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Geldiğinde duraklatılacak metin
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Bir YZ log mesajı metin ile eşleşirse, oyun duraklatılır
@@ -4573,14 +4573,14 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalış
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Konfigürasyonu
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Oyun Betiği Konfigürasyonu
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Yapılandırması
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Oyun Betiği Yapılandırması
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonraki oyunda yüklenecek YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
 STR_AI_CONFIG_NONE                                              :(hiçbiri)
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla yarışmacı sayısı: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Yukarı taşı
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Seçilen YZ'yi listede yukarı taşı
