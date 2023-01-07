@@ -648,12 +648,11 @@ bool VideoDriver_SDL_Base::ChangeResolution(int w, int h)
 
 bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 {
-	int w, h;
-
 	/* Remember current window size */
-	if (fullscreen) {
-		SDL_GetWindowSize(this->sdl_window, &w, &h);
+	int w, h;
+	SDL_GetWindowSize(this->sdl_window, &w, &h);
 
+	if (fullscreen) {
 		/* Find fullscreen window size */
 		SDL_DisplayMode dm;
 		if (SDL_GetCurrentDisplayMode(0, &dm) < 0) {
