@@ -4589,6 +4589,8 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
 STR_AI_CONFIG_RANDOM_AI                                         :Random AI
 STR_AI_CONFIG_NONE                                              :(none)
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA}
+STR_AI_CONFIG_START_NEXT                                        :{LTBLUE}Start delay between AIs (give or take): {ORANGE}{STRING1}
+STR_AI_CONFIG_START_NEXT_TOOLTIP                                :{BLACK}Number of days to wait before starting an AI, or subsequent AI(s) after the previous one.{}If the number of days is different than zero, a random deviation of 60 days is added, and the actual value in-game will be 'number_of_days + random(-60 days, 60 days)', with a minimum of 1 day and a maximum of 3600 days.{}If the number of days is zero, the AI(s) will start immediately.
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Move Up
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move selected AI up in the list

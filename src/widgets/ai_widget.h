@@ -15,6 +15,9 @@
 /** Widgets of the #AIConfigWindow class. */
 enum AIConfigWidgets {
 	WID_AIC_BACKGROUND,       ///< Window background.
+	WID_AIC_SN_DECREASE,      ///< Decrease the AI start delay.
+	WID_AIC_SN_INCREASE,      ///< Increase the AI start delay.
+	WID_AIC_START_NEXT,       ///< Days to wait before starting an AI.
 	WID_AIC_DECREASE,         ///< Decrease the number of AIs.
 	WID_AIC_INCREASE,         ///< Increase the number of AIs.
 	WID_AIC_NUMBER,           ///< Number of AIs.
