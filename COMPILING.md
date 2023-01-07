@@ -97,7 +97,7 @@ Via CMake, several options can be influenced to get different types of
 builds.
 
 - `-DCMAKE_BUILD_TYPE=RelWithDebInfo`: build a release build. This is
-   significant faster than a debug build, but has far less useful information
+   significantly faster than a debug build, but has far less useful information
    in case of a crash.
 - `-DOPTION_DEDICATED=ON`: build OpenTTD without a GUI. Useful if you are
    running a headless server, as it requires less libraries to operate.
