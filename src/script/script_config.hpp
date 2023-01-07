@@ -51,8 +51,6 @@ struct ScriptConfigItem {
 
 typedef std::list<ScriptConfigItem> ScriptConfigItemList; ///< List of ScriptConfig items.
 
-extern ScriptConfigItem _start_date_config;
-
 /**
  * Script settings.
  */
