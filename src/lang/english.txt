@@ -1704,6 +1704,10 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Hard
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING2}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI computer players to participate in multiplayer games
 
+STR_CONFIG_SETTING_AI_START_NEXT                                :Start delay between AIs (give or take): {STRING2}
+STR_CONFIG_SETTING_AI_START_NEXT_HELPTEXT                       :Number of days to wait before starting an AI, or subsequent AI(s) after the previous one.{}If the number of days is different than zero, a random deviation of 60 days is added, and the actual value in-game will be 'number_of_days + random(-60 days, 60 days)', with a minimum of 1 day and a maximum of 3600 days
+STR_CONFIG_SETTING_AI_START_NEXT_VALUE                          :{COMMA}{NBSP}day{P 0 "" s}
+
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING2}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximum number of computation steps that a script can take in one turn
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Max memory usage per script: {STRING2}

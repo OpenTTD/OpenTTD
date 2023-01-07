@@ -15,6 +15,7 @@
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
+#include "../script/api/script_object.hpp"
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
@@ -291,9 +292,20 @@
 
 /* static */ int AI::GetStartNextTime()
 {
-	/* Find the first company which doesn't exist yet */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->GetSetting("start_date");
+	int start_next = _settings_game.ai.ai_start_next;
+	if (start_next > 0) {
+		/* Find the first company which doesn't exist yet */
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+			if (!Company::IsValidID(c)) {
+				/* Add random deviation */
+				start_next += ScriptObject::GetRandomizer(c).Next(AI::START_NEXT_DEVIATION * 2 + 1) - AI::START_NEXT_DEVIATION;
+
+				/* ai_start_next = 0 is a special case, where random deviation does not occur.
+				 * If ai_start_next was not already 0, then a minimum value of 1 must apply. */
+				start_next = Clamp(start_next, 1, AI::START_NEXT_MAX);
+				return start_next;
+			}
+		}
 	}
 
 	/* Currently no AI can be started, check again in a year. */

@@ -3203,6 +3203,10 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_AI_START_NEXT)) {
+		_settings_game.ai.ai_start_next = AI::START_NEXT;
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 

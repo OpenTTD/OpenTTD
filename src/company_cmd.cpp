@@ -727,13 +727,14 @@ void OnTick_Companies()
 
 	if (_game_mode != GM_MENU && AI::CanStartNew() && --_next_competitor_start == 0) {
 		/* Allow multiple AIs to possibly start in the same tick. */
-		do {
+		for (;;) {
 			if (!MaybeStartNewCompany()) break;
+			if (_settings_game.ai.ai_start_next != 0) break;
 
 			/* In networking mode, we can only send a command to start but it
 			 * didn't execute yet, so we cannot loop. */
 			if (_networking) break;
-		} while (AI::GetStartNextTime() == 0);
+		}
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
