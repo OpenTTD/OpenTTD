@@ -1680,16 +1680,16 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Nr. max. de nav
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numărul maxim de nave pe care o companie le poate deține
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Dezactivează trenurile pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi trenuri
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi trenuri
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi vehicule rutiere
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi vehicule rutiere
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi aeronave
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi aeronave
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi nave
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi nave
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Configurația implicită: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Alege o configurație care va fi folosită pentru AI aleator, sau care va fi furniza valori implicite când se adaugă un nou AI sau script
@@ -3808,9 +3808,9 @@ STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicule dispon
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Nave disponibile
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronave disponibile
 
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestioneaza lista
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Trimite instructiunile tuturor vehiculelor din aceasta lista
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Inlocuieste vehiculele
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestionează lista
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Trimite instrucțiuni tuturor vehiculelor din această listă
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Înlocuiește vehiculele
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Trimite in service
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit anul acesta: {CURRENCY_LONG} (anul trecut: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
@@ -3822,7 +3822,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Trimite la depo
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Trimite la hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click pt oprirea tuturor vehiculelor din listă
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Apasă pentru pornirea tuturor vehiclulelor din listă
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vezi o listă de proiecte de motoare disponibile pentru acest tip de vehicul
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Comenzi sincronizate pentru {COMMA} {P vehicul vehicule "de vehicule"}
