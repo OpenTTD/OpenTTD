@@ -1922,7 +1922,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 	}
 
 	/* Allocate station specs if necessary */
-	if (_cur.grffile->stations == nullptr) _cur.grffile->stations = CallocT<StationSpec*>(NUM_STATIONS_PER_GRF);
+	if (_cur.grffile->stations.size() < stid + numinfo) _cur.grffile->stations.resize(stid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		StationSpec *statspec = _cur.grffile->stations[stid + i];
@@ -1998,7 +1998,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x0A: { // Copy sprite layout
 				byte srcid = buf->ReadByte();
-				const StationSpec *srcstatspec = srcid >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[srcid];
+				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid];
 
 				if (srcstatspec == nullptr) {
 					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy sprite layout to %u.", srcid, stid + i);
@@ -2052,7 +2052,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x0F: { // Copy custom layout
 				byte srcid = buf->ReadByte();
-				const StationSpec *srcstatspec = srcid >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[srcid];
+				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid];
 
 				if (srcstatspec == nullptr) {
 					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy tile layout to %u.", srcid, stid + i);
@@ -2367,9 +2367,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 	}
 
 	/* Allocate house specs if they haven't been allocated already. */
-	if (_cur.grffile->housespec == nullptr) {
-		_cur.grffile->housespec = CallocT<HouseSpec*>(NUM_HOUSES_PER_GRF);
-	}
+	if (_cur.grffile->housespec.size() < hid + numinfo) _cur.grffile->housespec.resize(hid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		HouseSpec *housespec = _cur.grffile->housespec[hid + i];
@@ -3206,9 +3204,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 	}
 
 	/* Allocate industry tile specs if they haven't been allocated already. */
-	if (_cur.grffile->indtspec == nullptr) {
-		_cur.grffile->indtspec = CallocT<IndustryTileSpec*>(NUM_INDUSTRYTILES_PER_GRF);
-	}
+	if (_cur.grffile->indtspec.size() < indtid + numinfo) _cur.grffile->indtspec.resize(indtid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		IndustryTileSpec *tsp = _cur.grffile->indtspec[indtid + i];
@@ -3467,9 +3463,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 	}
 
 	/* Allocate industry specs if they haven't been allocated already. */
-	if (_cur.grffile->industryspec == nullptr) {
-		_cur.grffile->industryspec = CallocT<IndustrySpec*>(NUM_INDUSTRYTYPES_PER_GRF);
-	}
+	if (_cur.grffile->industryspec.size() < indid + numinfo) _cur.grffile->industryspec.resize(indid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		IndustrySpec *indsp = _cur.grffile->industryspec[indid + i];
@@ -3876,9 +3870,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 	}
 
 	/* Allocate industry specs if they haven't been allocated already. */
-	if (_cur.grffile->airportspec == nullptr) {
-		_cur.grffile->airportspec = CallocT<AirportSpec*>(NUM_AIRPORTS_PER_GRF);
-	}
+	if (_cur.grffile->airportspec.size() < airport + numinfo) _cur.grffile->airportspec.resize(airport + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		AirportSpec *as = _cur.grffile->airportspec[airport + i];
@@ -4102,9 +4094,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 	}
 
 	/* Allocate object specs if they haven't been allocated already. */
-	if (_cur.grffile->objectspec == nullptr) {
-		_cur.grffile->objectspec = CallocT<ObjectSpec*>(NUM_OBJECTS_PER_GRF);
-	}
+	if (_cur.grffile->objectspec.size() < id + numinfo) _cur.grffile->objectspec.resize(id + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		ObjectSpec *spec = _cur.grffile->objectspec[id + i];
@@ -4667,9 +4657,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 	}
 
 	/* Allocate airport tile specs if they haven't been allocated already. */
-	if (_cur.grffile->airtspec == nullptr) {
-		_cur.grffile->airtspec = CallocT<AirportTileSpec*>(NUM_AIRPORTTILES_PER_GRF);
-	}
+	if (_cur.grffile->airtspec.size() < airtid + numinfo) _cur.grffile->airtspec.resize(airtid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		AirportTileSpec *tsp = _cur.grffile->airtspec[airtid + i];
@@ -4796,7 +4784,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 		return CIR_INVALID_ID;
 	}
 
-	if (_cur.grffile->roadstops == nullptr) _cur.grffile->roadstops = CallocT<RoadStopSpec*>(NUM_ROADSTOPS_PER_GRF);
+	if (_cur.grffile->roadstops.size() < id + numinfo) _cur.grffile->roadstops.resize(id + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
 		RoadStopSpec *rs = _cur.grffile->roadstops[id + i];
@@ -5703,7 +5691,7 @@ static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->stations == nullptr) {
+	if (_cur.grffile->stations.empty()) {
 		grfmsg(1, "StationMapSpriteGroup: No stations defined, skipping");
 		return;
 	}
@@ -5724,7 +5712,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (auto &station : stations) {
-			StationSpec *statspec = station >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[station];
+			StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station];
 
 			if (statspec == nullptr) {
 				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", station);
@@ -5739,7 +5727,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
 	for (auto &station : stations) {
-		StationSpec *statspec = station >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[station];
+		StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station];
 
 		if (statspec == nullptr) {
 			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", station);
@@ -5761,7 +5749,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->housespec == nullptr) {
+	if (_cur.grffile->housespec.empty()) {
 		grfmsg(1, "TownHouseMapSpriteGroup: No houses defined, skipping");
 		return;
 	}
@@ -5780,7 +5768,7 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
 	for (auto &house : houses) {
-		HouseSpec *hs = house >= NUM_HOUSES_PER_GRF ? nullptr : _cur.grffile->housespec[house];
+		HouseSpec *hs = house >= _cur.grffile->housespec.size() ? nullptr : _cur.grffile->housespec[house];
 
 		if (hs == nullptr) {
 			grfmsg(1, "TownHouseMapSpriteGroup: House %d undefined, skipping.", house);
@@ -5793,7 +5781,7 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->industryspec == nullptr) {
+	if (_cur.grffile->industryspec.empty()) {
 		grfmsg(1, "IndustryMapSpriteGroup: No industries defined, skipping");
 		return;
 	}
@@ -5812,7 +5800,7 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
 	for (auto &industry : industries) {
-		IndustrySpec *indsp = industry >= NUM_INDUSTRYTYPES_PER_GRF ? nullptr : _cur.grffile->industryspec[industry];
+		IndustrySpec *indsp = industry >= _cur.grffile->industryspec.size() ? nullptr : _cur.grffile->industryspec[industry];
 
 		if (indsp == nullptr) {
 			grfmsg(1, "IndustryMapSpriteGroup: Industry %d undefined, skipping", industry);
@@ -5825,7 +5813,7 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->indtspec == nullptr) {
+	if (_cur.grffile->indtspec.empty()) {
 		grfmsg(1, "IndustrytileMapSpriteGroup: No industry tiles defined, skipping");
 		return;
 	}
@@ -5844,7 +5832,7 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
 	for (auto &indtile : indtiles) {
-		IndustryTileSpec *indtsp = indtile >= NUM_INDUSTRYTILES_PER_GRF ? nullptr : _cur.grffile->indtspec[indtile];
+		IndustryTileSpec *indtsp = indtile >= _cur.grffile->indtspec.size() ? nullptr : _cur.grffile->indtspec[indtile];
 
 		if (indtsp == nullptr) {
 			grfmsg(1, "IndustrytileMapSpriteGroup: Industry tile %d undefined, skipping", indtile);
@@ -5884,7 +5872,7 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->objectspec == nullptr) {
+	if (_cur.grffile->objectspec.empty()) {
 		grfmsg(1, "ObjectMapSpriteGroup: No object tiles defined, skipping");
 		return;
 	}
@@ -5905,7 +5893,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (auto &object : objects) {
-			ObjectSpec *spec = object >= NUM_OBJECTS_PER_GRF ? nullptr : _cur.grffile->objectspec[object];
+			ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object];
 
 			if (spec == nullptr) {
 				grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", object);
@@ -5920,7 +5908,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "ObjectMapSpriteGroup")) return;
 
 	for (auto &object : objects) {
-		ObjectSpec *spec = object >= NUM_OBJECTS_PER_GRF ? nullptr : _cur.grffile->objectspec[object];
+		ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object];
 
 		if (spec == nullptr) {
 			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", object);
@@ -6006,7 +5994,7 @@ static void RoadTypeMapSpriteGroup(ByteReader *buf, uint8 idcount, RoadTramType 
 
 static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->airportspec == nullptr) {
+	if (_cur.grffile->airportspec.empty()) {
 		grfmsg(1, "AirportMapSpriteGroup: No airports defined, skipping");
 		return;
 	}
@@ -6025,7 +6013,7 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "AirportMapSpriteGroup")) return;
 
 	for (auto &airport : airports) {
-		AirportSpec *as = airport >= NUM_AIRPORTS_PER_GRF ? nullptr : _cur.grffile->airportspec[airport];
+		AirportSpec *as = airport >= _cur.grffile->airportspec.size() ? nullptr : _cur.grffile->airportspec[airport];
 
 		if (as == nullptr) {
 			grfmsg(1, "AirportMapSpriteGroup: Airport %d undefined, skipping", airport);
@@ -6038,7 +6026,7 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->airtspec == nullptr) {
+	if (_cur.grffile->airtspec.empty()) {
 		grfmsg(1, "AirportTileMapSpriteGroup: No airport tiles defined, skipping");
 		return;
 	}
@@ -6057,7 +6045,7 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "AirportTileMapSpriteGroup")) return;
 
 	for (auto &airptile : airptiles) {
-		AirportTileSpec *airtsp = airptile >= NUM_AIRPORTTILES_PER_GRF ? nullptr : _cur.grffile->airtspec[airptile];
+		AirportTileSpec *airtsp = airptile >= _cur.grffile->airtspec.size() ? nullptr : _cur.grffile->airtspec[airptile];
 
 		if (airtsp == nullptr) {
 			grfmsg(1, "AirportTileMapSpriteGroup: Airport tile %d undefined, skipping", airptile);
@@ -6070,7 +6058,7 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	if (_cur.grffile->roadstops == nullptr) {
+	if (_cur.grffile->roadstops.empty()) {
 		grfmsg(1, "RoadStopMapSpriteGroup: No roadstops defined, skipping");
 		return;
 	}
@@ -6091,7 +6079,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (auto &roadstop : roadstops) {
-			RoadStopSpec *roadstopspec = roadstop >= NUM_ROADSTOPS_PER_GRF ? nullptr : _cur.grffile->roadstops[roadstop];
+			RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop];
 
 			if (roadstopspec == nullptr) {
 				grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping", roadstop);
@@ -6106,7 +6094,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "RoadStopMapSpriteGroup")) return;
 
 	for (auto &roadstop : roadstops) {
-		RoadStopSpec *roadstopspec = roadstop >= NUM_ROADSTOPS_PER_GRF ? nullptr : _cur.grffile->roadstops[roadstop];
+		RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop];
 
 		if (roadstopspec == nullptr) {
 			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping.", roadstop);
@@ -6307,7 +6295,7 @@ static void FeatureNewName(ByteReader *buf)
 
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
-						if (GB(id, 0, 8) >= NUM_STATIONS_PER_GRF || _cur.grffile->stations == nullptr || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
 							StationClassID cls_id = _cur.grffile->stations[GB(id, 0, 8)]->cls_id;
@@ -6316,7 +6304,7 @@ static void FeatureNewName(ByteReader *buf)
 						break;
 
 					case 0xC5: // Station name
-						if (GB(id, 0, 8) >= NUM_STATIONS_PER_GRF || _cur.grffile->stations == nullptr || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
 							_cur.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
@@ -6324,7 +6312,7 @@ static void FeatureNewName(ByteReader *buf)
 						break;
 
 					case 0xC7: // Airporttile name
-						if (GB(id, 0, 8) >= NUM_AIRPORTTILES_PER_GRF || _cur.grffile->airtspec == nullptr || _cur.grffile->airtspec[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur.grffile->airtspec.size() || _cur.grffile->airtspec[GB(id, 0, 8)] == nullptr) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined airport tile 0x%X, ignoring", GB(id, 0, 8));
 						} else {
 							_cur.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
@@ -6332,7 +6320,7 @@ static void FeatureNewName(ByteReader *buf)
 						break;
 
 					case 0xC9: // House name
-						if (GB(id, 0, 8) >= NUM_HOUSES_PER_GRF || _cur.grffile->housespec == nullptr || _cur.grffile->housespec[GB(id, 0, 8)] == nullptr) {
+						if (GB(id, 0, 8) >= _cur.grffile->housespec.size() || _cur.grffile->housespec[GB(id, 0, 8)] == nullptr) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined house 0x%X, ignoring.", GB(id, 0, 8));
 						} else {
 							_cur.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
@@ -8694,19 +8682,11 @@ static void InitializeGRFSpecial()
 static void ResetCustomStations()
 {
 	for (GRFFile * const file : _grf_files) {
-		StationSpec **&stations = file->stations;
-		if (stations == nullptr) continue;
-		for (uint i = 0; i < NUM_STATIONS_PER_GRF; i++) {
-			if (stations[i] == nullptr) continue;
-			StationSpec *statspec = stations[i];
-
-			/* Release this station */
+		for (auto statspec : file->stations) {
 			delete statspec;
 		}
-
 		/* Free and reset the station data */
-		free(stations);
-		stations = nullptr;
+		file->stations.clear();
 	}
 }
 
@@ -8714,14 +8694,10 @@ static void ResetCustomStations()
 static void ResetCustomHouses()
 {
 	for (GRFFile * const file : _grf_files) {
-		HouseSpec **&housespec = file->housespec;
-		if (housespec == nullptr) continue;
-		for (uint i = 0; i < NUM_HOUSES_PER_GRF; i++) {
-			free(housespec[i]);
+		for (auto housespec : file->housespec) {
+			free(housespec);
 		}
-
-		free(housespec);
-		housespec = nullptr;
+		file->housespec.clear();
 	}
 }
 
@@ -8729,36 +8705,26 @@ static void ResetCustomHouses()
 static void ResetCustomAirports()
 {
 	for (GRFFile * const file : _grf_files) {
-		AirportSpec **aslist = file->airportspec;
-		if (aslist != nullptr) {
-			for (uint i = 0; i < NUM_AIRPORTS_PER_GRF; i++) {
-				AirportSpec *as = aslist[i];
-
-				if (as != nullptr) {
-					/* We need to remove the tiles layouts */
-					for (int j = 0; j < as->num_table; j++) {
-						/* remove the individual layouts */
-						free(as->table[j]);
-					}
-					free(as->table);
-					free(as->depot_table);
-					free(as->rotation);
-
-					free(as);
+		for (auto as : file->airportspec) {
+			if (as != nullptr) {
+				/* We need to remove the tiles layouts */
+				for (int j = 0; j < as->num_table; j++) {
+					/* remove the individual layouts */
+					free(as->table[j]);
 				}
-			}
-			free(aslist);
-			file->airportspec = nullptr;
-		}
+				free(as->table);
+				free(as->depot_table);
+				free(as->rotation);
 
-		AirportTileSpec **&airporttilespec = file->airtspec;
-		if (airporttilespec != nullptr) {
-			for (uint i = 0; i < NUM_AIRPORTTILES_PER_GRF; i++) {
-				free(airporttilespec[i]);
+				free(as);
 			}
-			free(airporttilespec);
-			airporttilespec = nullptr;
 		}
+		file->airportspec.clear();
+
+		for (auto ats : file->airtspec) {
+			free(ats);
+		}
+		file->airtspec.clear();
 	}
 }
 
@@ -8766,28 +8732,17 @@ static void ResetCustomAirports()
 static void ResetCustomIndustries()
 {
 	for (GRFFile * const file : _grf_files) {
-		IndustrySpec **&industryspec = file->industryspec;
-		IndustryTileSpec **&indtspec = file->indtspec;
-
 		/* We are verifiying both tiles and industries specs loaded from the grf file
 		 * First, let's deal with industryspec */
-		if (industryspec != nullptr) {
-			for (uint i = 0; i < NUM_INDUSTRYTYPES_PER_GRF; i++) {
-				IndustrySpec *ind = industryspec[i];
-				delete ind;
-			}
-
-			free(industryspec);
-			industryspec = nullptr;
+		for (auto indsp : file->industryspec) {
+			delete indsp;
 		}
+		file->industryspec.clear();
 
-		if (indtspec == nullptr) continue;
-		for (uint i = 0; i < NUM_INDUSTRYTILES_PER_GRF; i++) {
-			free(indtspec[i]);
+		for (auto indtsp : file->indtspec) {
+			free(indtsp);
 		}
-
-		free(indtspec);
-		indtspec = nullptr;
+		file->indtspec.clear();
 	}
 }
 
@@ -8795,28 +8750,20 @@ static void ResetCustomIndustries()
 static void ResetCustomObjects()
 {
 	for (GRFFile * const file : _grf_files) {
-		ObjectSpec **&objectspec = file->objectspec;
-		if (objectspec == nullptr) continue;
-		for (uint i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
-			free(objectspec[i]);
+		for (auto objectspec : file->objectspec) {
+			free(objectspec);
 		}
-
-		free(objectspec);
-		objectspec = nullptr;
+		file->objectspec.clear();
 	}
 }
 
 static void ResetCustomRoadStops()
 {
 	for (auto file : _grf_files) {
-		RoadStopSpec **&roadstopspec = file->roadstops;
-		if (roadstopspec == nullptr) continue;
-			for (uint i = 0; i < NUM_ROADSTOPS_PER_GRF; i++) {
-			free(roadstopspec[i]);
+		for (auto roadstopspec : file->roadstops) {
+			free(roadstopspec);
 		}
-
-		free(roadstopspec);
-		roadstopspec = nullptr;
+		file->roadstops.clear();
 	}
 }
 
@@ -9389,17 +9336,17 @@ static void FinaliseHouseArray()
 	 * minimum introduction date to 0.
 	 */
 	for (GRFFile * const file : _grf_files) {
-		HouseSpec **&housespec = file->housespec;
-		if (housespec == nullptr) continue;
+		if (file->housespec.empty()) continue;
 
-		for (int i = 0; i < NUM_HOUSES_PER_GRF; i++) {
-			HouseSpec *hs = housespec[i];
+		size_t num_houses = file->housespec.size();
+		for (size_t i = 0; i < num_houses; i++) {
+			HouseSpec *hs = file->housespec[i];
 
 			if (hs == nullptr) continue;
 
-			const HouseSpec *next1 = (i + 1 < NUM_HOUSES_PER_GRF ? housespec[i + 1] : nullptr);
-			const HouseSpec *next2 = (i + 2 < NUM_HOUSES_PER_GRF ? housespec[i + 2] : nullptr);
-			const HouseSpec *next3 = (i + 3 < NUM_HOUSES_PER_GRF ? housespec[i + 3] : nullptr);
+			const HouseSpec *next1 = (i + 1 < num_houses ? file->housespec[i + 1] : nullptr);
+			const HouseSpec *next2 = (i + 2 < num_houses ? file->housespec[i + 2] : nullptr);
+			const HouseSpec *next3 = (i + 3 < num_houses ? file->housespec[i + 3] : nullptr);
 
 			if (!IsHouseSpecValid(hs, next1, next2, next3, file->filename)) continue;
 
@@ -9407,7 +9354,7 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	for (int i = 0; i < NUM_HOUSES; i++) {
+	for (size_t i = 0; i < NUM_HOUSES; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
 		const HouseSpec *next1 = (i + 1 < NUM_HOUSES ? HouseSpec::Get(i + 1) : nullptr);
 		const HouseSpec *next2 = (i + 2 < NUM_HOUSES ? HouseSpec::Get(i + 2) : nullptr);
@@ -9451,50 +9398,41 @@ static void FinaliseHouseArray()
 static void FinaliseIndustriesArray()
 {
 	for (GRFFile * const file : _grf_files) {
-		IndustrySpec **&industryspec = file->industryspec;
-		IndustryTileSpec **&indtspec = file->indtspec;
-		if (industryspec != nullptr) {
-			for (int i = 0; i < NUM_INDUSTRYTYPES_PER_GRF; i++) {
-				IndustrySpec *indsp = industryspec[i];
+		for (auto indsp : file->industryspec) {
+			if (indsp == nullptr || !indsp->enabled) continue;
 
-				if (indsp != nullptr && indsp->enabled) {
-					StringID strid;
-					/* process the conversion of text at the end, so to be sure everything will be fine
-					 * and available.  Check if it does not return undefind marker, which is a very good sign of a
-					 * substitute industry who has not changed the string been examined, thus using it as such */
-					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->name);
-					if (strid != STR_UNDEFINED) indsp->name = strid;
+			StringID strid;
+			/* process the conversion of text at the end, so to be sure everything will be fine
+				* and available.  Check if it does not return undefind marker, which is a very good sign of a
+				* substitute industry who has not changed the string been examined, thus using it as such */
+			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->name);
+			if (strid != STR_UNDEFINED) indsp->name = strid;
 
-					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->closure_text);
-					if (strid != STR_UNDEFINED) indsp->closure_text = strid;
+			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->closure_text);
+			if (strid != STR_UNDEFINED) indsp->closure_text = strid;
 
-					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_up_text);
-					if (strid != STR_UNDEFINED) indsp->production_up_text = strid;
+			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_up_text);
+			if (strid != STR_UNDEFINED) indsp->production_up_text = strid;
 
-					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_down_text);
-					if (strid != STR_UNDEFINED) indsp->production_down_text = strid;
+			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_down_text);
+			if (strid != STR_UNDEFINED) indsp->production_down_text = strid;
 
-					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
-					if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
+			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
+			if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
 
-					if (indsp->station_name != STR_NULL) {
-						/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
-						 * station's name. Don't want to lose the value, therefore, do not process. */
-						strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->station_name);
-						if (strid != STR_UNDEFINED) indsp->station_name = strid;
-					}
-
-					_industry_mngr.SetEntitySpec(indsp);
-				}
+			if (indsp->station_name != STR_NULL) {
+				/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
+					* station's name. Don't want to lose the value, therefore, do not process. */
+				strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->station_name);
+				if (strid != STR_UNDEFINED) indsp->station_name = strid;
 			}
+
+			_industry_mngr.SetEntitySpec(indsp);
 		}
 
-		if (indtspec != nullptr) {
-			for (int i = 0; i < NUM_INDUSTRYTILES_PER_GRF; i++) {
-				IndustryTileSpec *indtsp = indtspec[i];
-				if (indtsp != nullptr) {
-					_industile_mngr.SetEntitySpec(indtsp);
-				}
+		for (auto indtsp : file->indtspec) {
+			if (indtsp != nullptr) {
+				_industile_mngr.SetEntitySpec(indtsp);
 			}
 		}
 	}
@@ -9520,12 +9458,9 @@ static void FinaliseIndustriesArray()
 static void FinaliseObjectsArray()
 {
 	for (GRFFile * const file : _grf_files) {
-		ObjectSpec **&objectspec = file->objectspec;
-		if (objectspec != nullptr) {
-			for (int i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
-				if (objectspec[i] != nullptr && objectspec[i]->grf_prop.grffile != nullptr && objectspec[i]->IsEnabled()) {
-					_object_mngr.SetEntitySpec(objectspec[i]);
-				}
+		for (auto objectspec : file->objectspec) {
+			if (objectspec != nullptr && objectspec->grf_prop.grffile != nullptr && objectspec->IsEnabled()) {
+				_object_mngr.SetEntitySpec(objectspec);
 			}
 		}
 	}
@@ -9541,21 +9476,15 @@ static void FinaliseObjectsArray()
 static void FinaliseAirportsArray()
 {
 	for (GRFFile * const file : _grf_files) {
-		AirportSpec **&airportspec = file->airportspec;
-		if (airportspec != nullptr) {
-			for (int i = 0; i < NUM_AIRPORTS_PER_GRF; i++) {
-				if (airportspec[i] != nullptr && airportspec[i]->enabled) {
-					_airport_mngr.SetEntitySpec(airportspec[i]);
-				}
+		for (auto as : file->airportspec) {
+			if (as != nullptr && as->enabled) {
+				_airport_mngr.SetEntitySpec(as);
 			}
 		}
 
-		AirportTileSpec **&airporttilespec = file->airtspec;
-		if (airporttilespec != nullptr) {
-			for (uint i = 0; i < NUM_AIRPORTTILES_PER_GRF; i++) {
-				if (airporttilespec[i] != nullptr && airporttilespec[i]->enabled) {
-					_airporttile_mngr.SetEntitySpec(airporttilespec[i]);
-				}
+		for (auto ats : file->airtspec) {
+			if (ats != nullptr && ats->enabled) {
+				_airporttile_mngr.SetEntitySpec(ats);
 			}
 		}
 	}
