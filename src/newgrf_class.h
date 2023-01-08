@@ -12,15 +12,16 @@
 
 #include "strings_type.h"
 
+#include <vector>
+
 /**
  * Struct containing information relating to NewGRF classes for stations and airports.
  */
 template <typename Tspec, typename Tid, Tid Tmax>
 struct NewGRFClass {
 private:
-	uint count;       ///< Number of specs in this class.
-	uint ui_count;    ///< Number of specs in this class potentially available to the user.
-	Tspec **spec;     ///< Array of specifications.
+	uint ui_count;             ///< Number of specs in this class potentially available to the user.
+	std::vector<Tspec *> spec; ///< List of specifications.
 
 	/**
 	 * The actual classes.
@@ -41,7 +42,7 @@ public:
 	void Insert(Tspec *spec);
 
 	/** Get the number of allocated specs within the class. */
-	uint GetSpecCount() const { return this->count; }
+	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
 	/** Get the number of potentially user-available specs within the class. */
 	uint GetUISpecCount() const { return this->ui_count; }
 	int GetUIFromIndex(int index) const;
