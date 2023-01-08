@@ -3834,8 +3834,8 @@ HouseSpec _house_specs[NUM_HOUSES];
 
 void ResetHouses()
 {
-	memset(&_house_specs, 0, sizeof(_house_specs));
-	memcpy(&_house_specs, &_original_house_specs, sizeof(_original_house_specs));
+	auto insert = std::copy(std::begin(_original_house_specs), std::end(_original_house_specs), std::begin(_house_specs));
+	std::fill(insert, std::end(_house_specs), HouseSpec{});
 
 	/* Reset any overrides that have been set. */
 	_house_mngr.ResetOverride();

@@ -152,9 +152,10 @@ bool AirportSpec::IsWithinMapBounds(byte table, TileIndex tile) const
  */
 void AirportSpec::ResetAirports()
 {
-	extern const AirportSpec _origin_airport_specs[];
-	memset(&AirportSpec::specs, 0, sizeof(AirportSpec::specs));
-	memcpy(&AirportSpec::specs, &_origin_airport_specs, sizeof(AirportSpec) * NEW_AIRPORT_OFFSET);
+	extern const AirportSpec _origin_airport_specs[NEW_AIRPORT_OFFSET];
+
+	auto insert = std::copy(std::begin(_origin_airport_specs), std::end(_origin_airport_specs), std::begin(AirportSpec::specs));
+	std::fill(insert, std::end(AirportSpec::specs), AirportSpec{});
 
 	_airport_mngr.ResetOverride();
 }

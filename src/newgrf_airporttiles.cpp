@@ -57,8 +57,8 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
  */
 void AirportTileSpec::ResetAirportTiles()
 {
-	memset(&AirportTileSpec::tiles, 0, sizeof(AirportTileSpec::tiles));
-	memcpy(&AirportTileSpec::tiles, &_origin_airporttile_specs, sizeof(_origin_airporttile_specs));
+	auto insert = std::copy(std::begin(_origin_airporttile_specs), std::end(_origin_airporttile_specs), std::begin(AirportTileSpec::tiles));
+	std::fill(insert, std::end(AirportTileSpec::tiles), AirportTileSpec{});
 
 	/* Reset any overrides that have been set. */
 	_airporttile_mngr.ResetOverride();
