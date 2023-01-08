@@ -76,21 +76,16 @@ IndustryBuildData _industry_builder; ///< In-game manager of industries.
  */
 void ResetIndustries()
 {
-	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		/* Reset the spec to default */
-		if (i < lengthof(_origin_industry_specs)) {
-			_industry_specs[i] = _origin_industry_specs[i];
-		} else {
-			_industry_specs[i] = IndustrySpec{};
-		}
+	auto industry_insert = std::copy(std::begin(_origin_industry_specs), std::end(_origin_industry_specs), std::begin(_industry_specs));
+	std::fill(industry_insert, std::end(_industry_specs), IndustrySpec{});
 
+	for (IndustryType i = 0; i < lengthof(_origin_industry_specs); i++) {
 		/* Enable only the current climate industries */
-		_industry_specs[i].enabled = i < NEW_INDUSTRYOFFSET &&
-				HasBit(_origin_industry_specs[i].climate_availability, _settings_game.game_creation.landscape);
+		_industry_specs[i].enabled = HasBit(_industry_specs[i].climate_availability, _settings_game.game_creation.landscape);
 	}
 
-	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
-	memcpy(&_industry_tile_specs, &_origin_industry_tile_specs, sizeof(_origin_industry_tile_specs));
+	auto industry_tile_insert = std::copy(std::begin(_origin_industry_tile_specs), std::end(_origin_industry_tile_specs), std::begin(_industry_tile_specs));
+	std::fill(industry_tile_insert, std::end(_industry_tile_specs), IndustryTileSpec{});
 
 	/* Reset any overrides that have been set. */
 	_industile_mngr.ResetOverride();
