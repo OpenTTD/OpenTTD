@@ -2061,8 +2061,6 @@ STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... по
 
 
 # Road construction errors
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... не постои патот
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... не постои трамвајски
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Не може да се направи канал овде...

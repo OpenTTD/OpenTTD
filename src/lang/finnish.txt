@@ -4916,8 +4916,6 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tietä e
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tähän ei voi rakentaa raitiotietä.
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tietä ei voi poistaa.
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tästä ei voi poistaa raitiotietä.
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... tässä ei ole tietä
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tässä ei ole raitiotietä
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tien tyyppiä ei voi muuntaa tässä...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Raitiotien tyyppiä ei voi muuntaa tässä...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ei sopivaa tietä
