@@ -7758,8 +7758,8 @@ static void FeatureTownName(ByteReader *buf)
 		bool new_scheme = _cur.grffile->grf_version >= 7;
 
 		byte lang = buf->ReadByte();
+		StringID style = STR_UNDEFINED;
 
-		byte nb_gen = townname->nb_gen;
 		do {
 			ClrBit(lang, 7);
 
@@ -7768,53 +7768,48 @@ static void FeatureTownName(ByteReader *buf)
 			std::string lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
 			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, lang_name.c_str());
 
-			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
+			style = AddGRFString(grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 
 			lang = buf->ReadByte();
 		} while (lang != 0);
-		townname->id[nb_gen] = id;
-		townname->nb_gen++;
+		townname->styles.emplace_back(style, id);
 	}
 
-	byte nb = buf->ReadByte();
-	grfmsg(6, "FeatureTownName: %u parts", nb);
+	uint8 parts = buf->ReadByte();
+	grfmsg(6, "FeatureTownName: %u parts", parts);
 
-	townname->nbparts[id] = nb;
-	townname->partlist[id] = CallocT<NamePartList>(nb);
+	townname->partlists[id].reserve(parts);
+	for (uint partnum = 0; partnum < parts; partnum++) {
+		NamePartList &partlist = townname->partlists[id].emplace_back();
+		uint8 texts = buf->ReadByte();
+		partlist.bitstart = buf->ReadByte();
+		partlist.bitcount = buf->ReadByte();
+		partlist.maxprob  = 0;
+		grfmsg(6, "FeatureTownName: part %u contains %u texts and will use GB(seed, %u, %u)", partnum, texts, partlist.bitstart, partlist.bitcount);
 
-	for (int i = 0; i < nb; i++) {
-		byte nbtext =  buf->ReadByte();
-		townname->partlist[id][i].bitstart  = buf->ReadByte();
-		townname->partlist[id][i].bitcount  = buf->ReadByte();
-		townname->partlist[id][i].maxprob   = 0;
-		townname->partlist[id][i].partcount = nbtext;
-		townname->partlist[id][i].parts     = CallocT<NamePart>(nbtext);
-		grfmsg(6, "FeatureTownName: part %d contains %d texts and will use GB(seed, %d, %d)", i, nbtext, townname->partlist[id][i].bitstart, townname->partlist[id][i].bitcount);
+		partlist.parts.reserve(texts);
+		for (uint textnum = 0; textnum < texts; textnum++) {
+			NamePart &part = partlist.parts.emplace_back();
+			part.prob = buf->ReadByte();
 
-		for (int j = 0; j < nbtext; j++) {
-			byte prob = buf->ReadByte();
-
-			if (HasBit(prob, 7)) {
+			if (HasBit(part.prob, 7)) {
 				byte ref_id = buf->ReadByte();
-
-				if (townname->nbparts[ref_id] == 0) {
+				if (ref_id >= GRFTownName::MAX_LISTS || townname->partlists[ref_id].empty()) {
 					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
 					DelGRFTownName(grfid);
 					DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
 					return;
 				}
-
-				grfmsg(6, "FeatureTownName: part %d, text %d, uses intermediate definition 0x%02X (with probability %d)", i, j, ref_id, prob & 0x7F);
-				townname->partlist[id][i].parts[j].data.id = ref_id;
+				part.id = ref_id;
+				grfmsg(6, "FeatureTownName: part %u, text %u, uses intermediate definition 0x%02X (with probability %u)", partnum, textnum, ref_id, part.prob & 0x7F);
 			} else {
 				const char *text = buf->ReadString();
-				townname->partlist[id][i].parts[j].data.text = stredup(TranslateTTDPatchCodes(grfid, 0, false, text).c_str());
-				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
+				part.text = TranslateTTDPatchCodes(grfid, 0, false, text);
+				grfmsg(6, "FeatureTownName: part %u, text %u, '%s' (with probability %u)", partnum, textnum, part.text.c_str(), part.prob);
 			}
-			townname->partlist[id][i].parts[j].prob = prob;
-			townname->partlist[id][i].maxprob += GB(prob, 0, 7);
+			partlist.maxprob += GB(part.prob, 0, 7);
 		}
-		grfmsg(6, "FeatureTownName: part %d, total probability %d", i, townname->partlist[id][i].maxprob);
+		grfmsg(6, "FeatureTownName: part %u, total probability %u", partnum, partlist.maxprob);
 	}
 }
 
