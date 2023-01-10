@@ -2106,7 +2106,7 @@ STR_QUIT_NO                                                     :{BLACK}Nee
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill ofbriechen
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bass du sécher, dass du des Partie ofbrieche wëlls?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sécher, dass du aus dësem Szenario eraus wëlls goen?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bass du sécher, dass du dëse Szenario ofbrieche wëlls?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheater
@@ -3846,8 +3846,8 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen 
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klick fir eng Grupp ze maachen
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Déi ungewielte Grupp läschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Déi ungewielte Grupp ëmbenennen
-STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wiessel d'Faarwschema vun dem ausgewielte Grupp
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen. Ctrl+klick protegéiert och Ennergruppen
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wiessel d'Faarwschema vun der ausgewielter Grupp
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen. Ctrl+Klick protegéiert och Ennergruppen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grupp läschen
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bassde sécher, dass du des Grupp an all Ennergruppen läsche wëlls?
