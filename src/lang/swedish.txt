@@ -1013,6 +1013,8 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Dra i re
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Känn av storleken automatiskt
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Kryssa i den här rutan för automatisk inställning av gränssnittets storlek
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skala bården
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Kryssa i den här rutan för att skala bården efter gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -3324,17 +3326,18 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå till
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare spriteobjekt
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till föregående normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om från slutet efter första spriteobjektet
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets. Ctrl+klicka för att flyta runt objektet åtta steg i taget
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet och ändra förskjutningen i X- och Y-led. Ctrl+klicka för att flytta runt objektet åtta steg i taget
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Förskjutningscentrerad
 STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite-centrerad
 
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Hårkors
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Återställ relativ
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Återställ den nuvarande relativa offsetten
-STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offsett: {NUM}, Y offsett: {NUM} (Absolut)
-STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offsett: {NUM}, Y offsett: {NUM} (Relativ)
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Återställ den nuvarande relativa förskjutningen
+STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Förskjutning X-led : {NUM}, Förskjutning Y-led: {NUM} (Absolut)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Förskjutning X-led: {NUM}, Förskjutning Y-led: {NUM} (Relativ)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Välj objekt
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Välj ett objekt på bildskärmen
 
