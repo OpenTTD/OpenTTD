@@ -11,6 +11,7 @@
 #include "script_company.hpp"
 #include "script_error.hpp"
 #include "script_companymode.hpp"
+#include "script_base.hpp"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../company_manager_face.h"
@@ -24,6 +25,7 @@
 #include "../../misc_cmd.h"
 #include "../../object_cmd.h"
 #include "../../settings_cmd.h"
+#include "../../network/network.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -98,8 +100,8 @@
 	EnforcePrecondition(false, GetPresidentGender(ScriptCompany::COMPANY_SELF) != gender);
 
 	CompanyManagerFace cmf;
-	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (::InteractiveRandom() & (1 << ETHNICITY_BLACK)));
-	RandomCompanyManagerFaceBits(cmf, ge, false);
+	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (ScriptBase::Rand() & (1 << ETHNICITY_BLACK)));
+	RandomCompanyManagerFaceBits(cmf, ge, false, _networking);
 
 	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
 }

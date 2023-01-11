@@ -114,9 +114,10 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
  * Generates valid town name.
  * @param townnameparts if a name is generated, it's stored there
  * @param town_names if a name is generated, check its uniqueness with the set
+ * @param force_random whether to force the use of Random() over InteractiveRandom()
  * @return true iff a name was generated
  */
-bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
+bool GenerateTownName(uint32 *townnameparts, TownNames *town_names, bool force_random)
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
@@ -130,7 +131,7 @@ bool GenerateTownName(uint32 *townnameparts, TownNames *town_names)
 	 * the other towns may take considerable amount of time (10000 is
 	 * too much). */
 	for (int i = 1000; i != 0; i--) {
-		uint32 r = _generating_world ? Random() : InteractiveRandom();
+		uint32 r = (_generating_world || force_random) ? Random() : InteractiveRandom();
 		if (!VerifyTownName(r, &par, town_names)) continue;
 
 		*townnameparts = r;

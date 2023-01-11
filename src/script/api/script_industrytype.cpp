@@ -11,10 +11,10 @@
 #include "script_industrytype.hpp"
 #include "script_map.hpp"
 #include "script_error.hpp"
+#include "script_base.hpp"
 #include "../../strings_func.h"
 #include "../../industry.h"
 #include "../../newgrf_industries.h"
-#include "../../core/random_func.hpp"
 #include "../../industry_cmd.h"
 
 #include "../../safeguards.h"
@@ -121,8 +121,8 @@
 	EnforcePrecondition(false, CanBuildIndustry(industry_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
-	uint32 seed = ::InteractiveRandom();
-	uint32 layout_index = ::InteractiveRandomRange((uint32)::GetIndustrySpec(industry_type)->layouts.size());
+	uint32 seed = ScriptBase::Rand();
+	uint32 layout_index = ScriptBase::RandRange((uint32)::GetIndustrySpec(industry_type)->layouts.size());
 	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
 }
 
@@ -130,7 +130,7 @@
 {
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
-	uint32 seed = ::InteractiveRandom();
+	uint32 seed = ScriptBase::Rand();
 	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(0, industry_type, 0, false, seed);
 }
 

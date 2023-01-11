@@ -18,6 +18,7 @@
 #include "../../station_base.h"
 #include "../../landscape.h"
 #include "../../town_cmd.h"
+#include "../../network/network.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -301,7 +302,7 @@
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 	}
 	uint32 townnameparts;
-	if (!GenerateTownName(&townnameparts)) {
+	if (!GenerateTownName(&townnameparts, nullptr, !_networking)) {
 		ScriptObject::SetLastError(ScriptError::ERR_NAME_IS_NOT_UNIQUE);
 		return false;
 	}

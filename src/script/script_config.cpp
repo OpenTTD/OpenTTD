@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
-#include "../core/random_func.hpp"
+#include "script_base.hpp"
 #include "script_info.hpp"
 #include "../textfile_gui.h"
 #include "../string_func.h"
@@ -35,7 +35,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 		 *  for the Script that have the random flag to a random value. */
 		for (const auto &item : *this->info->GetConfigList()) {
 			if (item.flags & SCRIPTCONFIG_RANDOM) {
-				this->SetSetting(item.name, InteractiveRandomRange(item.max_value + 1 - item.min_value) + item.min_value);
+				this->SetSetting(item.name, ScriptBase::RandRange(item.max_value + 1 - item.min_value) + item.min_value);
 			}
 		}
 
@@ -157,7 +157,7 @@ void ScriptConfig::AddRandomDeviation()
 {
 	for (const auto &item : *this->GetConfigList()) {
 		if (item.random_deviation != 0) {
-			this->SetSetting(item.name, InteractiveRandomRange(item.random_deviation * 2 + 1) - item.random_deviation + this->GetSetting(item.name));
+			this->SetSetting(item.name, ScriptBase::RandRange(item.random_deviation * 2 + 1) - item.random_deviation + this->GetSetting(item.name));
 		}
 	}
 }
