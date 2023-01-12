@@ -10,6 +10,7 @@ struct SQClassMember {
 		val = o.val;
 		attrs = o.attrs;
 	}
+	SQClassMember& operator=(SQClassMember &o) = delete;
 	SQObjectPtr val;
 	SQObjectPtr attrs;
 };
