@@ -286,7 +286,11 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
 		case 2: {
 			uint32 level;
 			if (GetArgumentInteger(&level, argv[1])) {
-				if (level < ZOOM_LVL_MIN) {
+				/* In case ZOOM_LVL_MIN is more than 0, the next if statement needs to be amended.
+				 * A simple check for less than ZOOM_LVL_MIN does not work here because we are
+				 * reading an unsigned integer from the console, so just check for a '-' char. */
+				static_assert(ZOOM_LVL_MIN == 0);
+				if (argv[1][0] == '-') {
 					IConsolePrint(CC_ERROR, "Zoom-in levels below {} are not supported.", ZOOM_LVL_MIN);
 				} else if (level < _settings_client.gui.zoom_min) {
 					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming in below level {}.", _settings_client.gui.zoom_min);
@@ -2012,18 +2016,15 @@ DEF_CONSOLE_CMD(ConFont)
 		bool aa = setting->aa;
 
 		byte arg_index = 2;
-
-		if (argc > arg_index) {
-			/* We may encounter "aa" or "noaa" but it must be the last argument. */
-			if (strcasecmp(argv[arg_index], "aa") == 0 || strcasecmp(argv[arg_index], "noaa") == 0) {
-				aa = strncasecmp(argv[arg_index++], "no", 2) != 0;
-				if (argc > arg_index) return false;
-			} else {
-				/* For <name> we want a string. */
-				uint v;
-				if (!GetArgumentInteger(&v, argv[arg_index])) {
-					font = argv[arg_index++];
-				}
+		/* We may encounter "aa" or "noaa" but it must be the last argument. */
+		if (strcasecmp(argv[arg_index], "aa") == 0 || strcasecmp(argv[arg_index], "noaa") == 0) {
+			aa = strncasecmp(argv[arg_index++], "no", 2) != 0;
+			if (argc > arg_index) return false;
+		} else {
+			/* For <name> we want a string. */
+			uint v;
+			if (!GetArgumentInteger(&v, argv[arg_index])) {
+				font = argv[arg_index++];
 			}
 		}
 

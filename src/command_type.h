@@ -25,7 +25,7 @@ class CommandCost {
 	ExpensesType expense_type; ///< the type of expence as shown on the finances view
 	Money cost;       ///< The cost of this action
 	StringID message; ///< Warning message for when success is unset
-	bool success;     ///< Whether the comment went fine up to this moment
+	bool success;     ///< Whether the command went fine up to this moment
 	const GRFFile *textref_stack_grffile; ///< NewGRF providing the #TextRefStack content.
 	uint textref_stack_size;   ///< Number of uint32 values to put on the #TextRefStack for the error message.
 
