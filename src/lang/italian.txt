@@ -3187,7 +3187,6 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Aree des
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Aumenta la copertura del deserto del dieci percento
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuisci la copertura del deserto del dieci percento
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Livello di mare:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:

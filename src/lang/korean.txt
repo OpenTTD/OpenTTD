@@ -3147,7 +3147,6 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}사막 �
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}눈이 내린 곳의 비율을 10%p 줄입니다.
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}사막 지역의 비율을 10%p 줄입니다.
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}해수면:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}강:

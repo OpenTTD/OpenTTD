@@ -3252,7 +3252,6 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Κάλυ
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Αύξηση κάλυψης ερήμου κατά δέκα τοις εκατό
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Μείωση κάλυψης ερήμου κατά δέκα τοις εκατό
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Επίπεδο θάλασσας:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτάμια:

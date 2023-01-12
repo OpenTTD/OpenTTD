@@ -2818,7 +2818,6 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Enwau Tr
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Dewis arddull yr enwau trefi
 STR_MAPGEN_DATE                                                 :{BLACK}Dyddiad:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer diwydiannau:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Math Tirwedd:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Lefel y Môr:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Afonydd:

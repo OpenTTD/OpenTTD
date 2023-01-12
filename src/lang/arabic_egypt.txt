@@ -960,8 +960,10 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}تسري
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}اخترهذا المربع للسماح لـ OpenTTD بمحاولة استخدام تسريع الأجهزة. سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}لن يعمل الإعداد إلا بعد إعادة تشغيل اللعبة
 
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}حدد هذا المربع لمزامنة الشاشة (v-sync). سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة. يعمل فقط مع تمكين تسريع الأجهزة (hardware acceleration)
 
 
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}الكشف التلقائي عن الحجم
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}اختر هذا المربع لكشف حجم الواجهة تلقائيا
 
 
@@ -1148,6 +1150,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} سنة
 
 STR_CONFIG_SETTING_RECESSIONS                                   :حالات الركود: {STRING}
 
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :عدم السماح بعودة القطار إلى الخلف في المحطات: {STRING}
 
 STR_CONFIG_SETTING_DISASTERS                                    :الكوارث: {STRING}
 
@@ -1271,6 +1274,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} ثان�
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :أعرض عدد السكان مع الاسم على العلامة: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :اعرض عدد سكان البلدات في علماتها على الخريطة
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :سمك الخطوط في العرض: {STRING}
 
@@ -1349,6 +1353,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :اخضر غام
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفسجي
 
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :رمادي إلى أحمر
 
 ###length 4
 
@@ -1393,7 +1398,7 @@ STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :اختر الو
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :استخدم {STRING} نمط التاريخ لاسم اللعبة المحفوظة
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 ديسمبر 2008
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :إيقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {STRING}
@@ -1492,6 +1497,7 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :السماح ب
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :تعطيل سكة القطار الكهربائي: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :وصول اول مركبة لمحطة اللاعب: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :عرض جريدة عندما تصل السيارة الأولى إلى محطة اللاعب الجديد
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :وصول اول مركبة لمحطة الخصوم: {STRING}
 
@@ -1545,6 +1551,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :لا تنتهي
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :مجمد
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات الاخرى: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :عند التمكين ، السماح بشراء وبيع أسهم الشركة. ستكون الأسهم متاحة فقط للشركات التي بلغت سنًا معينة
 
 
 
@@ -1553,6 +1560,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :عند السح
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة استخدام الأشارات بالأعلام قبل :{STRING}
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :الدوران خلال الاشارات: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :حدد أنواع الإشارات التي تريد التنقل خلالها عند النقر (Ctrl+Click) فوق إشارة مبنية باستخدام أداة الإشارة
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل واضح
@@ -1593,6 +1601,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :موقع شري
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :غير مفعل
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :حدود نعومة النوافذ - غير ملتصقة - :{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :عدد النوافذ المفتوحة غير اللاصقة قبل أن يتم إغلاق النوافذ القديمة تلقائيًا لإفساح المجال للنوافذ الجديدة
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :غير مفعل
 
@@ -1630,6 +1639,7 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :كلما قمت
 
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :ضبط هذا إلى أقل من 100٪ يؤدي إلى جعل التوزيع المتماثل يتصرف مثل التوزيع غير المتماثل. سيتم إعادة شحنات أقل غصبا إذا تم إرسال مبلغ معين إلى المحطة. إذا قمت بتعيينه على 0٪ ، فإن التوزيع المتماثل يتصرف تمامًا مثل التوزيع غير المتماثل
 
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :تشبع المسارات القصيرة قبل استخدام المسارات عالية القدرة: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :وحدات السرعة: {STRING}
 ###length 4
@@ -1678,6 +1688,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الط
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :مكتشف المسار لاستخدامه لعربات الطرق
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :موجد طريق العبور للسفن: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :مكتشف المسار لاستخدامه للسفن
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :العكس عند الإشارات: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1956,6 +1967,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}اللاعبون عبر الإنترنت
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}الاسم
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :المشاهدين
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جديدة)
 
 # Matches ConnectionType
@@ -1966,6 +1978,7 @@ STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :منع
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}هل أنت متأكد أنك تريد طرد اللاعب '{STRING}'؟
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}هل أنت متأكد أنك تريد حظر اللاعب '{STRING}'؟
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}هل أنت متأكد أنك تريد حذف شركة '{COMPANY}'؟
 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}لا
 
@@ -2645,8 +2658,8 @@ STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}قم ب�
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}تغطية الثلج:
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}تقليل تغطية الثلوج بنسبة عشرة بالمائة
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}مدى تغطيت السحراء:
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}تقليل التغطية الصحراوية بنسبة عشرة بالمائة
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}مستوى البحر
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}انهار:
@@ -2810,11 +2823,12 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}اذهب
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}العفريتة السابقة.
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نابع للعفريتة الطبيعية التالية، تجاوز اي عفريتة موقوفة/ مصبوغة/مخطوطة و انهي في البداية.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}عرض العفريتة المختارة حاليا. يتم تجاهل الموائمة عند رسم هذا العفريت.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}حرك العفريتة في الجوار، غير الاحداثيات س ، ص.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}حرك الرسمة، وقم بتغيير إزاحة X وY. قم ب Ctrl+Click لتحريك الكائن ثماني وحدات في المرة الواحدة
 
 ###length 2
 
 
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}الازاحة (X): {NUM}، الازاحة (Y): {NUM} (نسبي)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}اختر عفريتة
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}اختر عفريتة من اي مكان في الشاشة.
 
@@ -3912,6 +3926,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط للخادم (سرڤر)
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}اعدادات االذكاء الاصطناعي
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}مخطوطات اللعبة الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}الذكاء الاصطناعي الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
@@ -4198,6 +4213,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :مستودع خ
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} طويل للغايه بعد اﻹستبدال
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}لا يوجد نظام مطبق للتبديل/ التجديد
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(حدود التكلفة للتبديل)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}العربة الجديدة لا تستطيع حمل {STRING}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}تركيبة سكك غير صالحة
@@ -4226,6 +4242,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}تعذر
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}تعذر إزاله سكه الترام من هنا...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... لا يوجد طريق
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... لا يوجد سكه ترام هنا
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}لا يوجد طريق مناسب
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}لا يوجد ترام مناسب
 
 # Waterway construction errors

@@ -2391,7 +2391,6 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Urbonomo
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Elektu stilon de urbonomoj
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da industrioj:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Marnivelo:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Riveroj:

@@ -3147,7 +3147,6 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Wüstenb
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Wüstenabdeckung um zehn Prozent erhöhen
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Wüstenbedeckung um zehn Prozent verringern
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Gewässermenge:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flüsse:

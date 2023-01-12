@@ -3146,7 +3146,6 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Cakupan 
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Meningkatkan cakupan gurun sepuluh persen
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Kurangi cakupan gurun pasir sebesar sepuluh persen
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Area perairan:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:

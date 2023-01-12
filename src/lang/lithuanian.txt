@@ -3316,7 +3316,6 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Dykumų 
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Padidinti dykumų aprėptį 10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sumažinti dykumų aprėptį 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generavimo algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Jūros lygis:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių kiekis:

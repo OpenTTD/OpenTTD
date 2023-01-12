@@ -2967,7 +2967,6 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Imena me
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Izberi slog imena mest
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Število industrij:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ustvarjalec terena:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip terena:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Morska gladina:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Reke:

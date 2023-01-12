@@ -3036,7 +3036,6 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomina o
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Eligere oppidorum nomina
 STR_MAPGEN_DATE                                                 :{BLACK}Dies:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numerus industriarum:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatrum terrae:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typus terrae:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Magnitudo maris:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Numerus fluviorum:

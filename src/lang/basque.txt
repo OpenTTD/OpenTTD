@@ -2718,7 +2718,6 @@ STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Herrien 
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Herrien izenen estiloak aukeratu
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industria kopurua:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Itsaso kopurua:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Errekak:
