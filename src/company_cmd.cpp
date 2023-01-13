@@ -573,7 +573,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	if (_company_manager_face != 0 && !is_ai && !_networking) {
 		c->face = _company_manager_face;
 	} else {
-		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false);
+		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, _random);
 	}
 
 	SetDefaultCompanySettings(c->index);
