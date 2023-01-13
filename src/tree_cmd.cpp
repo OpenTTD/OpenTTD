@@ -384,9 +384,10 @@ void GenerateTrees()
  * @param tile end tile of area-drag
  * @param start_tile start tile of area-drag of tree plantation
  * @param tree_to_plant tree type, TREE_INVALID means random.
+ * @param diagonal Whether to use the Orthogonal (false) or Diagonal (true) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant)
+CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant, bool diagonal)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
@@ -398,8 +399,9 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
 
-	TileArea ta(tile, start_tile);
-	for (TileIndex current_tile : ta) {
+	std::unique_ptr<TileIterator> iter(diagonal ? static_cast<TileIterator *>(new DiagonalTileIterator(tile, start_tile)) : static_cast<TileIterator *>(new OrthogonalTileIterator(tile, start_tile)));
+	for (; *iter != INVALID_TILE; ++(*iter)) {
+		TileIndex current_tile = *iter;
 		switch (GetTileType(current_tile)) {
 			case MP_TREES:
 				/* no more space for trees? */
