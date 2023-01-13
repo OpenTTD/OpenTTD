@@ -287,7 +287,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, tile, TREE_INVALID);
+	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, tile, TREE_INVALID, false);
 }
 
 /* static */ bool ScriptTile::PlantTreeRectangle(TileIndex tile, uint width, uint height)
@@ -298,7 +298,7 @@
 	EnforcePrecondition(false, height >= 1 && height <= 20);
 	TileIndex end_tile = tile + ::TileDiffXY(width - 1, height - 1);
 
-	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, end_tile, TREE_INVALID);
+	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, end_tile, TREE_INVALID, false);
 }
 
 /* static */ bool ScriptTile::IsWithinTownInfluence(TileIndex tile, TownID town_id)
