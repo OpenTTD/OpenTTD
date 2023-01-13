@@ -369,12 +369,10 @@ bool Textbuf::MovePos(uint16 keycode)
  * @param max_chars maximum size in chars, including terminating '\0'
  */
 Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
-	: buf(MallocT<char>(max_bytes))
+	: buf(MallocT<char>(max_bytes)), char_iter(StringIterator::Create())
 {
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
-
-	this->char_iter = StringIterator::Create();
 
 	this->afilter    = CS_ALPHANUMERAL;
 	this->max_bytes  = max_bytes;
@@ -385,7 +383,6 @@ Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
 
 Textbuf::~Textbuf()
 {
-	delete this->char_iter;
 	free(this->buf);
 }
 

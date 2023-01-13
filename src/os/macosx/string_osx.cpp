@@ -443,9 +443,9 @@ int MacOSStringCompare(const char *s1, const char *s2)
 	return this->utf16_to_utf8[this->cur_pos];
 }
 
-/* static */ StringIterator *OSXStringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> OSXStringIterator::Create()
 {
 	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
 
-	return new OSXStringIterator();
+	return std::make_unique<OSXStringIterator>();
 }

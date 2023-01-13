@@ -765,9 +765,9 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 
 #ifdef WITH_UNISCRIBE
 
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	return new UniscribeStringIterator();
+	return std::make_unique<UniscribeStringIterator>();
 }
 
 #elif defined(WITH_ICU_I18N)
@@ -921,9 +921,9 @@ public:
 	}
 };
 
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	return new IcuStringIterator();
+	return std::make_unique<IcuStringIterator>();
 }
 
 #else
@@ -1032,17 +1032,17 @@ public:
 };
 
 #if defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN)
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	StringIterator *i = OSXStringIterator::Create();
+	std::unique_ptr<StringIterator> i = OSXStringIterator::Create();
 	if (i != nullptr) return i;
 
-	return new DefaultStringIterator();
+	return std::make_unique<DefaultStringIterator>();
 }
 #else
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	return new DefaultStringIterator();
+	return std::make_unique<DefaultStringIterator>();
 }
 #endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 
