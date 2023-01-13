@@ -33,7 +33,7 @@ public:
 	size_t Next(IterType what) override;
 	size_t Prev(IterType what) override;
 
-	static StringIterator *Create();
+	static std::unique_ptr<StringIterator> Create();
 };
 
 /**

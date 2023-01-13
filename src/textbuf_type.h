@@ -67,7 +67,7 @@ struct Textbuf {
 	void DiscardMarkedText(bool update = true);
 
 private:
-	StringIterator *char_iter;
+	std::unique_ptr<StringIterator> char_iter;
 
 	bool CanDelChar(bool backspace);
 
