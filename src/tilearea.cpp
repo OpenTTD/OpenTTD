@@ -280,3 +280,18 @@ TileIterator &DiagonalTileIterator::operator++()
 	if (this->b_max == this->b_cur) this->tile = INVALID_TILE;
 	return *this;
 }
+
+/**
+ * Create either an OrthogonalTileIterator or DiagonalTileIterator given the diagonal parameter.
+ * @param corner1 Tile from where to begin iterating.
+ * @param corner2 Tile where to end the iterating.
+ * @param diagonal Whether to create a DiagonalTileIterator or OrthogonalTileIterator.
+ * @return unique_ptr to the allocated TileIterator.
+ */
+/* static */ std::unique_ptr<TileIterator> TileIterator::Create(TileIndex corner1, TileIndex corner2, bool diagonal)
+{
+	if (diagonal) {
+		return std::make_unique<DiagonalTileIterator>(corner1, corner2);
+	}
+	return std::make_unique<OrthogonalTileIterator>(corner1, corner2);
+}
