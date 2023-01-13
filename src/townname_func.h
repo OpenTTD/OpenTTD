@@ -10,12 +10,13 @@
 #ifndef TOWNNAME_FUNC_H
 #define TOWNNAME_FUNC_H
 
+#include "core/random_func.hpp"
 #include "townname_type.h"
 
 char *GenerateTownNameString(char *buf, const char *last, size_t lang, uint32 seed);
 char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, const char *last);
 char *GetTownName(char *buff, const Town *t, const char *last);
 bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names = nullptr);
-bool GenerateTownName(uint32 *townnameparts, TownNames *town_names = nullptr);
+bool GenerateTownName(Randomizer &randomizer, uint32 *townnameparts, TownNames *town_names = nullptr);
 
 #endif /* TOWNNAME_FUNC_H */
