@@ -311,3 +311,10 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 
 	NOT_REACHED();
 }
+
+Randomizer &ScriptObject::GetRandomizer()
+{
+	/* We pick _random if we are in SP (so when saved, we do the same over and over)
+	 * but we pick _interactive_random if we are a network_server or network-client. */
+	return _networking ? _interactive_random : _random;
+}
