@@ -10,17 +10,12 @@
 #include "../../stdafx.h"
 #include "script_base.hpp"
 #include "script_error.hpp"
-#include "../../network/network.h"
-#include "../../core/random_func.hpp"
 
 #include "../../safeguards.h"
 
 /* static */ uint32 ScriptBase::Rand()
 {
-	/* We pick RandomRange if we are in SP (so when saved, we do the same over and over)
-	 *   but we pick InteractiveRandomRange if we are a network_server or network-client. */
-	if (_networking) return ::InteractiveRandom();
-	return ::Random();
+	return ScriptObject::GetRandomizer().Next();
 }
 
 /* static */ uint32 ScriptBase::RandItem(int unused_param)
@@ -30,10 +25,7 @@
 
 /* static */ uint ScriptBase::RandRange(uint max)
 {
-	/* We pick RandomRange if we are in SP (so when saved, we do the same over and over)
-	 *   but we pick InteractiveRandomRange if we are a network_server or network-client. */
-	if (_networking) return ::InteractiveRandomRange(max);
-	return ::RandomRange(max);
+	return ScriptObject::GetRandomizer().Next(max);
 }
 
 /* static */ uint32 ScriptBase::RandRangeItem(int unused_param, uint max)

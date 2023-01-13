@@ -15,6 +15,7 @@
 #include "../../rail_type.h"
 #include "../../string_func.h"
 #include "../../command_func.h"
+#include "../../core/random_func.hpp"
 
 #include "script_types.hpp"
 #include "../script_suspend.hpp"
@@ -72,6 +73,11 @@ public:
 	 * @return The instance.
 	 */
 	static class ScriptInstance *GetActiveInstance();
+
+	/**
+	 * Get a reference of the randomizer that brings this script random values.
+	 */
+	static Randomizer &GetRandomizer();
 
 protected:
 	template<Commands TCmd, typename T> struct ScriptDoCommandHelper;
