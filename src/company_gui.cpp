@@ -1694,7 +1694,7 @@ public:
 
 			/* Randomize face button */
 			case WID_SCMF_RANDOM_NEW_FACE:
-				RandomCompanyManagerFaceBits(this->face, this->ge, this->advanced);
+				RandomCompanyManagerFaceBits(this->face, this->ge, this->advanced, _interactive_random);
 				this->UpdateData();
 				this->SetDirty();
 				break;

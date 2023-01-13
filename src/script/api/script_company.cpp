@@ -99,7 +99,7 @@
 
 	CompanyManagerFace cmf;
 	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (::InteractiveRandom() & (1 << ETHNICITY_BLACK)));
-	RandomCompanyManagerFaceBits(cmf, ge, false);
+	RandomCompanyManagerFaceBits(cmf, ge, false, _interactive_random);
 
 	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
 }
