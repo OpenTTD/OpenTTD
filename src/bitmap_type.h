@@ -126,9 +126,9 @@ public:
 		return *this;
 	}
 
-	virtual TileIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new BitmapTileIterator(*this);
+		return std::make_unique<BitmapTileIterator>(*this);
 	}
 };
 
