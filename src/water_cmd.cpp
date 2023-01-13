@@ -445,13 +445,7 @@ CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_t
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	std::unique_ptr<TileIterator> iter;
-	if (diagonal) {
-		iter = std::make_unique<DiagonalTileIterator>(tile, start_tile);
-	} else {
-		iter = std::make_unique<OrthogonalTileIterator>(tile, start_tile);
-	}
-
+	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex current_tile = *iter;
 		CommandCost ret;
