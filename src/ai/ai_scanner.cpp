@@ -14,6 +14,7 @@
 #include "../core/random_func.hpp"
 
 #include "../script/squirrel_class.hpp"
+#include "../script/api/script_object.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 
@@ -77,12 +78,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 	}
 
 	/* Find a random AI */
-	uint pos;
-	if (_networking) {
-		pos = InteractiveRandomRange(num_random_ais);
-	} else {
-		pos = RandomRange(num_random_ais);
-	}
+	uint pos = ScriptObject::GetRandomizer(OWNER_NONE).Next(num_random_ais);
 
 	/* Find the Nth item from the array */
 	ScriptInfoList::const_iterator it = this->info_single_list.begin();
