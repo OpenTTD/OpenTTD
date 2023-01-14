@@ -2054,7 +2054,7 @@ DEF_CONSOLE_CMD(ConFont)
 			InitFontCache(fs == FS_MONO);
 			fc = FontCache::Get(fs);
 		}
-		IConsolePrint(CC_DEFAULT, "{}: \"{}\" {} {} [\"{}\" {} {}]", FontSizeToName(fs), fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs), setting->font, setting->size, setting->aa);
+		IConsolePrint(CC_DEFAULT, "{}: \"{}\" {} {} [\"{}\" {} {}]", FontSizeToName(fs), fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs) ? "aa" : "noaa", setting->font, setting->size, setting->aa ? "aa" : "noaa");
 	}
 
 	return true;
