@@ -233,46 +233,21 @@ err1:
 }
 #endif /* WITH_FREETYPE */
 
-class FontList {
-protected:
-	wchar_t **fonts;
-	uint items;
-	uint capacity;
-
-public:
-	FontList() : fonts(nullptr), items(0), capacity(0) { };
-
-	~FontList() {
-		if (this->fonts == nullptr) return;
-
-		for (uint i = 0; i < this->items; i++) {
-			free(this->fonts[i]);
-		}
-
-		free(this->fonts);
-	}
-
-	bool Add(const wchar_t *font) {
-		for (uint i = 0; i < this->items; i++) {
-			if (wcscmp(this->fonts[i], font) == 0) return false;
-		}
-
-		if (this->items == this->capacity) {
-			this->capacity += 10;
-			this->fonts = ReallocT(this->fonts, this->capacity);
-		}
-
-		this->fonts[this->items++] = wcsdup(font);
-
-		return true;
-	}
-};
-
 struct EFCParam {
 	FontCacheSettings *settings;
 	LOCALESIGNATURE  locale;
 	MissingGlyphSearcher *callback;
-	FontList fonts;
+	std::vector<std::wstring> fonts;
+
+	bool Add(const std::wstring_view &font) {
+		for (const auto &entry : this->fonts) {
+			if (font.compare(entry) == 0) return false;
+		}
+
+		this->fonts.emplace_back(font);
+
+		return true;
+	}
 };
 
 static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXTMETRICEX *metric, DWORD type, LPARAM lParam)
@@ -280,7 +255,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	EFCParam *info = (EFCParam *)lParam;
 
 	/* Skip duplicates */
-	if (!info->fonts.Add((const wchar_t *)logfont->elfFullName)) return 1;
+	if (!info->Add(logfont->elfFullName)) return 1;
 	/* Only use TrueType fonts */
 	if (!(type & TRUETYPE_FONTTYPE)) return 1;
 	/* Don't use SYMBOL fonts */
