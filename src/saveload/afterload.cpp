@@ -251,6 +251,8 @@ static void InitializeWindowsAndCaches()
 	UpdateAllVirtCoords();
 	ResetViewportAfterLoadGame();
 
+	ScriptObject::InitializeRandomizers();
+
 	for (Company *c : Company::Iterate()) {
 		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
 		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,

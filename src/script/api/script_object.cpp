@@ -312,9 +312,18 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 	NOT_REACHED();
 }
 
-Randomizer &ScriptObject::GetRandomizer()
+
+/* static */ Randomizer ScriptObject::random_states[OWNER_END];
+
+Randomizer &ScriptObject::GetRandomizer(Owner owner)
 {
-	/* We pick _random if we are in SP (so when saved, we do the same over and over)
-	 * but we pick _interactive_random if we are a network_server or network-client. */
-	return _networking ? _interactive_random : _random;
+	return ScriptObject::random_states[owner];
+}
+
+void ScriptObject::InitializeRandomizers()
+{
+	Randomizer random = _random;
+	for (Owner owner = OWNER_BEGIN; owner < OWNER_END; owner++) {
+		ScriptObject::GetRandomizer(owner).SetSeed(random.Next());
+	}
 }
