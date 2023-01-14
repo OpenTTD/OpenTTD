@@ -2064,6 +2064,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vise tav
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Vis innstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-instillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Se etter nytt og oppdatert innhold for nedlasting
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Vis KI innstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Det valgte innebygde grafikksettet mangler {NUM} sprite{P "" r}. Se etter oppdateringer for settet.
