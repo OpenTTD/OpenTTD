@@ -58,6 +58,8 @@ enum IndustryDensity {
 	ID_NORMAL,    ///< Normal amount of industries at game start.
 	ID_HIGH,      ///< Many industries at game start.
 
+	ID_CUSTOM,    ///< Custom number of industries.
+
 	ID_END,       ///< Number of industry density settings.
 };
 
@@ -326,6 +328,7 @@ struct GameCreationSettings {
 	byte   landscape;                        ///< the landscape we're currently in
 	byte   water_borders;                    ///< bitset of the borders that are water
 	uint16 custom_town_number;               ///< manually entered number of towns
+	uint16 custom_industry_number;           ///< manually entered number of industries
 	byte   variety;                          ///< variety level applied to TGP
 	byte   custom_terrain_type;              ///< manually entered height for TGP to aim for
 	byte   custom_sea_level;                 ///< manually entered percentage of water in the map
