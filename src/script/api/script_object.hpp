@@ -76,8 +76,15 @@ public:
 
 	/**
 	 * Get a reference of the randomizer that brings this script random values.
+	 * @param owner The owner/script to get the randomizer for. This defaults to ScriptObject::GetRootCompany()
 	 */
-	static Randomizer &GetRandomizer();
+	static Randomizer &GetRandomizer(Owner owner = ScriptObject::GetRootCompany());
+
+	/**
+	 * Initialize/reset the script random states. The state of the scripts are
+	 * based on the current _random seed, but _random does not get changed.
+	 */
+	static void InitializeRandomizers();
 
 protected:
 	template<Commands TCmd, typename T> struct ScriptDoCommandHelper;
@@ -279,6 +286,7 @@ private:
 	static std::tuple<bool, bool, bool> DoCommandPrep();
 	static bool DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only);
 	static CommandCallbackData *GetDoCommandCallback();
+	static Randomizer random_states[OWNER_END]; ///< Random states for each of the scripts (game script uses OWNER_DEITY)
 };
 
 namespace ScriptObjectInternal {
