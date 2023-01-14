@@ -1064,11 +1064,7 @@ static bool MakeLake(TileIndex tile, void *user_data)
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
 		if (IsWaterTile(t2)) {
-			MakeRiver(tile, Random());
-			MarkTileDirtyByTile(tile);
-			/* Remove desert directly around the river tile. */
-			TileIndex t = tile;
-			CircularTileSearch(&t, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+			MakeRiverAndModifyDesertZoneAround(tile);
 			return false;
 		}
 	}
@@ -1202,12 +1198,7 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 			/* If the tile upstream isn't flat, don't bother. */
 			if (GetTileSlope(downstream_tile) != SLOPE_FLAT) return false;
 
-			MakeRiver(downstream_tile, Random());
-			MarkTileDirtyByTile(downstream_tile);
-
-			/* Remove desert directly around the river tile. */
-			TileIndex cur_tile = downstream_tile;
-			CircularTileSearch(&cur_tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+			MakeRiverAndModifyDesertZoneAround(downstream_tile);
 		}
 
 		/* If upstream is dry and flat, try making it a river tile. */
@@ -1215,23 +1206,13 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 			/* If the tile upstream isn't flat, don't bother. */
 			if (GetTileSlope(upstream_tile) != SLOPE_FLAT) return false;
 
-			MakeRiver(upstream_tile, Random());
-			MarkTileDirtyByTile(upstream_tile);
-
-			/* Remove desert directly around the river tile. */
-			TileIndex cur_tile = upstream_tile;
-			CircularTileSearch(&cur_tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+			MakeRiverAndModifyDesertZoneAround(upstream_tile);
 		}
 	}
 
 	/* If the tile slope matches the desired slope, add a river tile. */
 	if (cur_slope == desired_slope) {
-		MakeRiver(tile, Random());
-		MarkTileDirtyByTile(tile);
-
-		/* Remove desert directly around the river tile. */
-		TileIndex cur_tile = tile;
-		CircularTileSearch(&cur_tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+		MakeRiverAndModifyDesertZoneAround(tile);
 	}
 
 	/* Always return false to keep searching. */
@@ -1310,10 +1291,7 @@ static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 	for (PathNode *path = &current->path; path != nullptr; path = path->parent, cur_pos++) {
 		TileIndex tile = path->node.tile;
 		if (!IsWaterTile(tile)) {
-			MakeRiver(tile, Random());
-			MarkTileDirtyByTile(tile);
-			/* Remove desert directly around the river tile. */
-			CircularTileSearch(&tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+			MakeRiverAndModifyDesertZoneAround(tile);
 		}
 	}
 
@@ -1453,11 +1431,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 				/* We only want a lake if the river is long enough. */
 				DistanceManhattan(spring, lakeCenter) > min_river_length) {
 			end = lakeCenter;
-			MakeRiver(lakeCenter, Random());
-			MarkTileDirtyByTile(lakeCenter);
-			/* Remove desert directly around the river tile. */
-			CircularTileSearch(&lakeCenter, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
-			lakeCenter = end;
+			MakeRiverAndModifyDesertZoneAround(lakeCenter);
 			uint range = RandomRange(8) + 3;
 			CircularTileSearch(&lakeCenter, range, MakeLake, &height);
 			/* Call the search a second time so artefacts from going circular in one direction get (mostly) hidden. */
