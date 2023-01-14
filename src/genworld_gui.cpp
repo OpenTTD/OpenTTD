@@ -32,6 +32,7 @@
 #include "video/video_driver.hpp"
 #include "ai/ai_gui.hpp"
 #include "game/game_gui.hpp"
+#include "industry.h"
 
 #include "widgets/genworld_widget.h"
 
@@ -399,7 +400,7 @@ static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
 static const StringID _landscape[]   = {STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL, STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM, INVALID_STRING_ID};
-static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, INVALID_STRING_ID};
+static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM, INVALID_STRING_ID};
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH, INVALID_STRING_ID};
 
 static_assert(lengthof(_num_inds) == ID_END + 1);
@@ -461,8 +462,19 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 			}
 
-			case WID_GL_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_CONFIG_SETTING_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
+			case WID_GL_INDUSTRY_PULLDOWN:
+				if (_game_mode == GM_EDITOR) {
+					SetDParam(0, STR_CONFIG_SETTING_OFF);
+				} else if (_settings_newgame.difficulty.industry_density == ID_CUSTOM) {
+					SetDParam(0, STR_NUM_CUSTOM_NUMBER);
+					SetDParam(1, _settings_newgame.game_creation.custom_industry_number);
+				} else {
+					SetDParam(0, _num_inds[_settings_newgame.difficulty.industry_density]);
+				}
+				break;
+
 			case WID_GL_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
+
 			case WID_GL_TERRAIN_PULLDOWN:
 				if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
 					SetDParam(0, STR_TERRAIN_TYPE_CUSTOM_VALUE);
@@ -619,7 +631,12 @@ struct GenerateLandscapeWindow : public Window {
 				*size = maxdim(*size, GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER));
 				break;
 
-			case WID_GL_INDUSTRY_PULLDOWN:   strs = _num_inds; break;
+			case WID_GL_INDUSTRY_PULLDOWN:
+				strs = _num_inds;
+				SetDParamMaxValue(0, IndustryPool::MAX_SIZE);
+				*size = maxdim(*size, GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER));
+				break;
+
 			case WID_GL_LANDSCAPE_PULLDOWN:  strs = _landscape; break;
 
 			case WID_GL_TERRAIN_PULLDOWN:
@@ -919,7 +936,15 @@ struct GenerateLandscapeWindow : public Window {
 				}
 				break;
 
-			case WID_GL_INDUSTRY_PULLDOWN: _settings_newgame.difficulty.industry_density = index; break;
+			case WID_GL_INDUSTRY_PULLDOWN:
+				if ((uint)index == ID_CUSTOM) {
+					this->widget_id = widget;
+					SetDParam(0, _settings_newgame.game_creation.custom_industry_number);
+					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_INDUSTRIES, 5, this, CS_NUMERAL, QSF_NONE);
+				}
+				_settings_newgame.difficulty.industry_density = index;
+				break;
+
 			case WID_GL_TERRAIN_PULLDOWN: {
 				if ((uint)index == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
@@ -959,6 +984,7 @@ struct GenerateLandscapeWindow : public Window {
 				case WID_GL_SNOW_COVERAGE_TEXT: value = DEF_SNOW_COVERAGE; break;
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
 				case WID_GL_TOWN_PULLDOWN: value = 1; break;
+				case WID_GL_INDUSTRY_PULLDOWN: value = 1; break;
 				case WID_GL_TERRAIN_PULLDOWN: value = MIN_MAP_HEIGHT_LIMIT; break;
 				case WID_GL_WATER_PULLDOWN: value = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE; break;
 				default: NOT_REACHED();
@@ -988,6 +1014,10 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_TOWN_PULLDOWN:
 				_settings_newgame.game_creation.custom_town_number = Clamp(value, 1, CUSTOM_TOWN_MAX_NUMBER);
+				break;
+
+			case WID_GL_INDUSTRY_PULLDOWN:
+				_settings_newgame.game_creation.custom_industry_number = Clamp(value, 1, IndustryPool::MAX_SIZE);
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN:
