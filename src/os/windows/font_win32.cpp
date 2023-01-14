@@ -440,10 +440,6 @@ void Win32FontCache::ClearFontCache()
 	DWORD size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, 0, nullptr, &mat);
 	if (size == GDI_ERROR) usererror("Unable to render font glyph");
 
-	/* Call GetGlyphOutline again with size to actually render the glyph. */
-	byte *bmp = AllocaM(byte, size);
-	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
-
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
 	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
 	uint width = std::max(1U, (uint)gm.gmBlackBoxX + shadow);
@@ -451,6 +447,10 @@ void Win32FontCache::ClearFontCache()
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
+
+	/* Call GetGlyphOutline again with size to actually render the glyph. */
+	byte *bmp = AllocaM(byte, size);
+	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
 	SpriteLoader::Sprite sprite;
