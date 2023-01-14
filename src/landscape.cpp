@@ -1095,7 +1095,7 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 	/* If the tile is at height 0 after terraforming but the ocean hasn't flooded yet, don't build river. */
 	if (GetTileMaxZ(tile) == 0) return false;
 
-	TileIndex origin_tile = *(TileIndex *)data;;
+	TileIndex origin_tile = *(TileIndex *)data;
 	Slope cur_slope = GetTileSlope(tile);
 	Slope desired_slope = GetTileSlope(origin_tile); // Initialize matching the origin tile as a shortcut if no terraforming is needed.
 
@@ -1133,7 +1133,7 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 					}
 				}
 				/* If we find an adjacent river tile, remember it. We'll terraform to match it later if we don't find a slope. */
-				if (IsTileFlat(tile)) flat_river_found = true;
+				if (IsTileFlat(other_tile)) flat_river_found = true;
 			}
 		}
 		/* We didn't find either an inclined or flat river, so we're climbing the wrong slope. Bail out. */
@@ -1205,6 +1205,11 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 			if (GetTileSlope(downstream_tile) != SLOPE_FLAT) return false;
 
 			MakeRiver(downstream_tile, Random());
+			MarkTileDirtyByTile(downstream_tile);
+
+			/* Remove desert directly around the river tile. */
+			TileIndex cur_tile = downstream_tile;
+			CircularTileSearch(&cur_tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
 		}
 
 		/* If upstream is dry and flat, try making it a river tile. */
@@ -1213,16 +1218,21 @@ static bool RiverMakeWider(TileIndex tile, void *data)
 			if (GetTileSlope(upstream_tile) != SLOPE_FLAT) return false;
 
 			MakeRiver(upstream_tile, Random());
+			MarkTileDirtyByTile(upstream_tile);
+
+			/* Remove desert directly around the river tile. */
+			TileIndex cur_tile = upstream_tile;
+			CircularTileSearch(&cur_tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
 		}
 	}
 
 	/* If the tile slope matches the desired slope, add a river tile. */
 	if (cur_slope == desired_slope) {
 		MakeRiver(tile, Random());
+		MarkTileDirtyByTile(tile);
 
 		/* Remove desert directly around the river tile. */
 		TileIndex cur_tile = tile;
-		MarkTileDirtyByTile(cur_tile);
 		CircularTileSearch(&cur_tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
 	}
 
@@ -1495,6 +1505,9 @@ static void CreateRivers()
 			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length))) break;
 		}
 	}
+
+	/* Widening rivers may have left some tiles requiring to be watered. */
+	ConvertGroundTilesIntoWaterTiles();
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != 256; i++) {
