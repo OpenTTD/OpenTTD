@@ -436,22 +436,13 @@ void Win32FontCache::ClearFontCache()
 	GLYPHMETRICS gm;
 	MAT2 mat = { {0, 1}, {0, 0}, {0, 0}, {0, 1} };
 
-	/* Make a guess for the needed memory size. */
-	DWORD size = this->glyph_size.cy * Align(aa ? this->glyph_size.cx : std::max(this->glyph_size.cx / 8l, 1l), 4); // Bitmap data is DWORD-aligned rows.
-	byte *bmp = AllocaM(byte, size);
-	size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
+	/* Call GetGlyphOutline with zero size initially to get required memory size. */
+	DWORD size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, 0, nullptr, &mat);
+	if (size == GDI_ERROR) usererror("Unable to render font glyph");
 
-	if (size == GDI_ERROR) {
-		/* No dice with the guess. First query size of needed glyph memory, then allocate the
-		 * memory and query again. This dance is necessary as some glyphs will only render with
-		 * the exact matching size; e.g. the space glyph has no pixels and must be requested
-		 * with size == 0, anything else fails. Unfortunately, a failed call doesn't return any
-		 * info about the size and thus the triple GetGlyphOutline()-call. */
-		size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, 0, nullptr, &mat);
-		if (size == GDI_ERROR) usererror("Unable to render font glyph");
-		bmp = AllocaM(byte, size);
-		GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
-	}
+	/* Call GetGlyphOutline again with size to actually render the glyph. */
+	byte *bmp = AllocaM(byte, size);
+	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
 	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
