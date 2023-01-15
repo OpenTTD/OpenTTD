@@ -552,8 +552,6 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 			next_run = this->buffer_begin + iter->first;
 			begin = this->buffer;
-
-			last_space = nullptr;
 		}
 
 		if (IsWhitespace(c)) last_space = this->buffer;
@@ -591,7 +589,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		this->buffer++;
 	}
 
-	if (l->size() == 0 || last_char - begin != 0) {
+	if (l->size() == 0 || last_char - begin > 0) {
 		int w = l->GetWidth();
 		l->emplace_back(iter->second, begin, last_char - begin, w);
 	}
