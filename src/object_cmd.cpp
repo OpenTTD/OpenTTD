@@ -437,7 +437,7 @@ static void DrawTile_Object(TileInfo *ti)
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	/* Fall back for when the object doesn't exist anymore. */
-	if (!spec->enabled) type = OBJECT_TRANSMITTER;
+	if (!spec->IsEnabled()) type = OBJECT_TRANSMITTER;
 
 	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
@@ -906,7 +906,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, int
 				/* If the callback fails, allow autoslope. */
 				uint16 res = GetObjectCallback(CBID_OBJECT_AUTOSLOPE, 0, 0, spec, Object::GetByTile(tile), tile);
 				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(spec->grf_prop.grffile, CBID_OBJECT_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
-			} else if (spec->enabled) {
+			} else if (spec->IsEnabled()) {
 				/* allow autoslope */
 				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			}
