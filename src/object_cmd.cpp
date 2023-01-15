@@ -808,21 +808,20 @@ void GenerateObjects()
 	}
 
 	/* Iterate over all possible object types */
-	for (uint i = 0; i < ObjectSpec::Count(); i++) {
-		const ObjectSpec *spec = ObjectSpec::Get(i);
+	for (const auto &spec : ObjectSpec::Specs()) {
 
 		/* Continue, if the object was never available till now or shall not be placed */
-		if (!spec->WasEverAvailable() || spec->generate_amount == 0) continue;
+		if (!spec.WasEverAvailable() || spec.generate_amount == 0) continue;
 
-		uint16 amount = spec->generate_amount;
+		uint16 amount = spec.generate_amount;
 
 		/* Scale by map size */
-		if ((spec->flags & OBJECT_FLAG_SCALE_BY_WATER) && _settings_game.construction.freeform_edges) {
+		if ((spec.flags & OBJECT_FLAG_SCALE_BY_WATER) && _settings_game.construction.freeform_edges) {
 			/* Scale the amount of lighthouses with the amount of land at the borders.
 			 * The -6 is because the top borders are MP_VOID (-2) and all corners
 			 * are counted twice (-4). */
 			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
-		} else if (spec->flags & OBJECT_FLAG_SCALE_BY_WATER) {
+		} else if (spec.flags & OBJECT_FLAG_SCALE_BY_WATER) {
 			amount = Map::ScaleBySize1D(amount);
 		} else {
 			amount = Map::ScaleBySize(amount);
@@ -830,7 +829,7 @@ void GenerateObjects()
 
 		/* Now try to place the requested amount of this object */
 		for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
-			switch (i) {
+			switch (spec.Index()) {
 				case OBJECT_TRANSMITTER:
 					if (TryBuildTransmitter()) amount--;
 					break;
@@ -840,8 +839,8 @@ void GenerateObjects()
 					break;
 
 				default:
-					uint8 view = RandomRange(spec->views);
-					if (CmdBuildObject(DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, RandomTile(), i, view).Succeeded()) amount--;
+					uint8 view = RandomRange(spec.views);
+					if (CmdBuildObject(DC_EXEC | DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, RandomTile(), spec.Index(), view).Succeeded()) amount--;
 					break;
 			}
 		}

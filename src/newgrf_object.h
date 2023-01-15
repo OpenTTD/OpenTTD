@@ -99,6 +99,7 @@ struct ObjectSpec {
 	bool IsAvailable() const;
 	uint Index() const;
 
+	static const std::vector<ObjectSpec> &Specs();
 	static size_t Count();
 	static const ObjectSpec *Get(ObjectType index);
 	static const ObjectSpec *GetByTile(TileIndex tile);
