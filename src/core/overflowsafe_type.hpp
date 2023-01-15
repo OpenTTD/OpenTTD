@@ -176,6 +176,9 @@ public:
 	inline constexpr bool operator <= (const int other) const { return !(*this > other); }
 
 	inline constexpr operator T () const { return this->m_value; }
+
+	static inline constexpr OverflowSafeInt<T> max() { return T_MAX; }
+	static inline constexpr OverflowSafeInt<T> min() { return T_MIN; }
 };
 
 
