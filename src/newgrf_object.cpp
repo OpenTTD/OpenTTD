@@ -31,6 +31,11 @@ extern const ObjectSpec _original_objects[NEW_OBJECT_OFFSET];
 /** All the object specifications. */
 std::vector<ObjectSpec> _object_specs;
 
+const std::vector<ObjectSpec> &ObjectSpec::Specs()
+{
+	return _object_specs;
+}
+
 size_t ObjectSpec::Count()
 {
 	return _object_specs.size();
