@@ -757,8 +757,8 @@ bool AddInflation(bool check_year)
  */
 void RecomputePrices()
 {
-	/* Setup maximum loan */
-	_economy.max_loan = ((uint64)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / 50000 * 50000;
+	/* Setup maximum loan as a rounded down multiple of LOAN_INTERVAL. */
+	_economy.max_loan = ((uint64)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
 
 	/* Setup price bases */
 	for (Price i = PR_BEGIN; i < PR_END; i++) {
