@@ -1757,12 +1757,16 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 
 		if (!IsTunnel(tile)) {
 			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+			/* rail speed special-cases 0 as unlimited, hides display of limit etc. */
+			if (spd == UINT16_MAX) spd = 0;
 			if (td->rail_speed == 0 || spd < td->rail_speed) {
 				td->rail_speed = spd;
 			}
 		}
 	} else if (tt == TRANSPORT_ROAD && !IsTunnel(tile)) {
 		uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+		/* road speed special-cases 0 as unlimited, hides display of limit etc. */
+		if (spd == UINT16_MAX) spd = 0;
 		if (road_rt != INVALID_ROADTYPE && (td->road_speed == 0 || spd < td->road_speed)) td->road_speed = spd;
 		if (tram_rt != INVALID_ROADTYPE && (td->tram_speed == 0 || spd < td->tram_speed)) td->tram_speed = spd;
 	}
