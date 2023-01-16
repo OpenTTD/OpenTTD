@@ -286,7 +286,7 @@ public:
 	 *         not be compared with map distances
 	 * @see ScriptOrder::GetOrderDistance
 	 */
-	static uint GetMaximumOrderDistance(EngineID engine_id);
+	static int64 GetMaximumOrderDistance(EngineID engine_id);
 
 	/**
 	 * Allows a company to use an engine before its intro date or after retirement.

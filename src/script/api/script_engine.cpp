@@ -265,13 +265,13 @@
 	return (ScriptAirport::PlaneType)::AircraftVehInfo(engine_id)->subtype;
 }
 
-/* static */ uint ScriptEngine::GetMaximumOrderDistance(EngineID engine_id)
+/* static */ int64 ScriptEngine::GetMaximumOrderDistance(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return 0;
+	if (!IsValidEngine(engine_id)) return -1;
 
 	switch (GetVehicleType(engine_id)) {
 		case ScriptVehicle::VT_AIR:
-			return ::Engine::Get(engine_id)->GetRange() * ::Engine::Get(engine_id)->GetRange();
+			return (uint32)::Engine::Get(engine_id)->GetRange() * (uint32)::Engine::Get(engine_id)->GetRange();
 
 		default:
 			return 0;
