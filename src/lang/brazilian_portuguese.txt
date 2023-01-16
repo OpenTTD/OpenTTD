@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Geraçã
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Geração de indústria
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Contrução de rodovias
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construção de trilho de bonde
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Shift alterna construção/exibição de preço estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Ctrl seleciona a área na diagonal. Shift alterna construir/mostrar estimativa de custo
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placa
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl seleciona a área na diagonal. Shift alterna construir/mostrar estimativa de custo
 
@@ -2820,7 +2820,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecionar um tipo de árvore para plantar. Se o local já tiver uma árvore, isso irá adicionar mais árvores do tipo misto indepentendemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório, Shift alterna entre construção/preço estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Coloque árvores de tipo aleatório. Ctrl seleciona a área na diagonal. Shift alterna construir/mostrar estimativa de custo
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente pelo terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
