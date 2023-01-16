@@ -90,6 +90,18 @@ uint ObjectSpec::Index() const
 	return this - _object_specs;
 }
 
+/**
+ * Tie all ObjectSpecs to their class.
+ */
+/* static */ void ObjectSpec::BindToClasses()
+{
+	for (auto &spec : _object_specs) {
+		if (spec.IsEnabled() && spec.cls_id != INVALID_OBJECT_CLASS) {
+			ObjectClass::Assign(&spec);
+		}
+	}
+}
+
 /** This function initialize the spec arrays of objects. */
 void ResetObjects()
 {
@@ -104,20 +116,17 @@ void ResetObjects()
 	for (uint16 i = 0; i < lengthof(_original_objects); i++) {
 		_object_specs[i].grf_prop.local_id = i;
 	}
+
+	/* Set class for originals. */
+	_object_specs[OBJECT_LIGHTHOUSE].cls_id = ObjectClass::Allocate('LTHS');
+	_object_specs[OBJECT_TRANSMITTER].cls_id = ObjectClass::Allocate('TRNS');
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>
 /* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 {
-	ObjectClassID cls = ObjectClass::Allocate('LTHS');
-	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_LTHS;
-	_object_specs[OBJECT_LIGHTHOUSE].cls_id = cls;
-	ObjectClass::Assign(&_object_specs[OBJECT_LIGHTHOUSE]);
-
-	cls = ObjectClass::Allocate('TRNS');
-	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_TRNS;
-	_object_specs[OBJECT_TRANSMITTER].cls_id = cls;
-	ObjectClass::Assign(&_object_specs[OBJECT_TRANSMITTER]);
+	ObjectClass::Get(ObjectClass::Allocate('LTHS'))->name = STR_OBJECT_CLASS_LTHS;
+	ObjectClass::Get(ObjectClass::Allocate('TRNS'))->name = STR_OBJECT_CLASS_TRNS;
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>
