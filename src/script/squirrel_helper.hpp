@@ -44,7 +44,7 @@ namespace SQConvert {
 
 	template <> struct Return<uint8>        { static inline int Set(HSQUIRRELVM vm, uint8 res)       { sq_pushinteger(vm, (int32)res); return 1; } };
 	template <> struct Return<uint16>       { static inline int Set(HSQUIRRELVM vm, uint16 res)      { sq_pushinteger(vm, (int32)res); return 1; } };
-	template <> struct Return<uint32>       { static inline int Set(HSQUIRRELVM vm, uint32 res)      { sq_pushinteger(vm, (int32)res); return 1; } };
+	template <> struct Return<uint32>       { static inline int Set(HSQUIRRELVM vm, uint32 res)      { sq_pushinteger(vm, (int64)res); return 1; } };
 	template <> struct Return<int8>         { static inline int Set(HSQUIRRELVM vm, int8 res)        { sq_pushinteger(vm, res); return 1; } };
 	template <> struct Return<int16>        { static inline int Set(HSQUIRRELVM vm, int16 res)       { sq_pushinteger(vm, res); return 1; } };
 	template <> struct Return<int32>        { static inline int Set(HSQUIRRELVM vm, int32 res)       { sq_pushinteger(vm, res); return 1; } };
