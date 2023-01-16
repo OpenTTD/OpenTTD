@@ -251,7 +251,7 @@ public:
 	 * @note Goals can change over time. For example with a changing snowline, or
 	 *  with a growing town.
 	 */
-	static uint32 GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
+	static int64 GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
 	 * Set the amount of days between town growth.
