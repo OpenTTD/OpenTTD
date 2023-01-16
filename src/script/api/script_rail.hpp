@@ -494,7 +494,7 @@ public:
 	 * @pre IsRailTypeAvailable(railtype)
 	 * @return Maintenance cost factor of the railtype.
 	 */
-	static uint16 GetMaintenanceCostFactor(RailType railtype);
+	static int GetMaintenanceCostFactor(RailType railtype);
 };
 
 #endif /* SCRIPT_RAIL_HPP */

@@ -632,9 +632,9 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return GetRoadTypeInfo((::RoadType)road_type)->max_speed;
 }
 
-/* static */ uint16 ScriptRoad::GetMaintenanceCostFactor(RoadType roadtype)
+/* static */ int ScriptRoad::GetMaintenanceCostFactor(RoadType roadtype)
 {
-	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return 0;
+	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return -1;
 
 	return GetRoadTypeInfo((::RoadType)roadtype)->maintenance_multiplier;
 }

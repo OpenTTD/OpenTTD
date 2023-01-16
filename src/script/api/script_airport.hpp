@@ -198,7 +198,7 @@ public:
 	 * @pre IsAirportInformationAvailable(type)
 	 * @return Maintenance cost factor of the airport type.
 	 */
-	static uint16 GetMaintenanceCostFactor(AirportType type);
+	static int GetMaintenanceCostFactor(AirportType type);
 
 	/**
 	 * Get the monthly maintenance cost of an airport type.

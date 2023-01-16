@@ -156,9 +156,9 @@
 	return AirportGetNearestTown(as, AirportTileTableIterator(as->table[0], tile), dist)->index;
 }
 
-/* static */ uint16 ScriptAirport::GetMaintenanceCostFactor(AirportType type)
+/* static */ int ScriptAirport::GetMaintenanceCostFactor(AirportType type)
 {
-	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
+	if (!IsAirportInformationAvailable(type)) return -1;
 
 	return AirportSpec::Get(type)->maintenance_cost;
 }

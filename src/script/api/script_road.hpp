@@ -569,7 +569,7 @@ public:
 	 * @pre IsRoadTypeAvailable(roadtype)
 	 * @return Maintenance cost factor of the roadtype.
 	 */
-	static uint16 GetMaintenanceCostFactor(RoadType roadtype);
+	static int GetMaintenanceCostFactor(RoadType roadtype);
 
 private:
 
