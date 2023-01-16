@@ -225,7 +225,7 @@ public:
 	 * @pre IsValidGroup(group_id).
 	 * @return The current usage of the group.
 	 */
-	static uint32 GetCurrentUsage(GroupID group_id);
+	static int32 GetCurrentUsage(GroupID group_id);
 
 	/**
 	 * Set primary colour for a group.

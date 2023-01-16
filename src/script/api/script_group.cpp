@@ -183,7 +183,7 @@
 	return ::Group::Get(group_id)->statistics.profit_last_year;
 }
 
-/* static */ uint32 ScriptGroup::GetCurrentUsage(GroupID group_id)
+/* static */ int32 ScriptGroup::GetCurrentUsage(GroupID group_id)
 {
 	if (!IsValidGroup(group_id)) return -1;
 
