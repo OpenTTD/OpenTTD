@@ -627,7 +627,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ int32 ScriptRoad::GetMaxSpeed(RoadType road_type)
 {
-	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return 0;
+	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return -1;
 
 	return GetRoadTypeInfo((::RoadType)road_type)->max_speed;
 }
