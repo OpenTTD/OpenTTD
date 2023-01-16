@@ -19,6 +19,13 @@
 class ScriptBridge : public ScriptObject {
 public:
 	/**
+	 * The types of bridges available in the game.
+	 */
+	enum BridgeID {
+		BRIDGE_INVALID = -1, ///< Invalid Bridge ID.
+	};
+
+	/**
 	 * All bridge related error messages.
 	 */
 	enum ErrorMessages {

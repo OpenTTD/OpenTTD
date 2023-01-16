@@ -17,15 +17,15 @@
 ScriptBridgeList::ScriptBridgeList()
 {
 	for (byte j = 0; j < MAX_BRIDGES; j++) {
-		if (ScriptBridge::IsValidBridge(j)) this->AddItem(j);
+		if (ScriptBridge::IsValidBridge((ScriptBridge::BridgeID)j)) this->AddItem(j);
 	}
 }
 
 ScriptBridgeList_Length::ScriptBridgeList_Length(uint length)
 {
 	for (byte j = 0; j < MAX_BRIDGES; j++) {
-		if (ScriptBridge::IsValidBridge(j)) {
-			if (length >= (uint)ScriptBridge::GetMinLength(j) && length <= (uint)ScriptBridge::GetMaxLength(j)) this->AddItem(j);
+		if (ScriptBridge::IsValidBridge((ScriptBridge::BridgeID)j)) {
+			if (length >= (uint)ScriptBridge::GetMinLength((ScriptBridge::BridgeID)j) && length <= (uint)ScriptBridge::GetMaxLength((ScriptBridge::BridgeID)j)) this->AddItem(j);
 		}
 	}
 }

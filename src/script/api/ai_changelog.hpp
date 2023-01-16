@@ -20,6 +20,7 @@
  * API additions:
  * \li AITown::ROAD_LAYOUT_RANDOM
  * \li AIVehicle::IsPrimaryVehicle
+ * \li AIBridge::BRIDGE_INVALID
  *
  * API removals:
  * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
