@@ -609,7 +609,7 @@ public:
 	 *         not be compared with map distances
 	 * @see ScriptOrder::GetOrderDistance
 	 */
-	static uint GetMaximumOrderDistance(VehicleID vehicle_id);
+	static int64 GetMaximumOrderDistance(VehicleID vehicle_id);
 
 private:
 	/**

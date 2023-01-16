@@ -473,9 +473,9 @@
 	return ::ToPercent16(v->reliability);
 }
 
-/* static */ uint ScriptVehicle::GetMaximumOrderDistance(VehicleID vehicle_id)
+/* static */ int64 ScriptVehicle::GetMaximumOrderDistance(VehicleID vehicle_id)
 {
-	if (!IsPrimaryVehicle(vehicle_id)) return 0;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
 	switch (v->type) {
