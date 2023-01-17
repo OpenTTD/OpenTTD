@@ -147,3 +147,11 @@ AIRoad.GetMaintenanceCostFactor <- function(roadtype)
 	if (!AIRoad.IsRoadTypeAvailable(roadtype)) return 0;
 	return AIRoad._GetMaintenanceCostFactor(roadtype);
 }
+
+/* 14 returns a max speed of -1 for unavailable road types */
+AIRoad._GetMaxSpeed <- AIRoad.GetMaxSpeed
+AIRoad.GetMaxSpeed <- function(road_type)
+{
+	if (!AIRoad.IsRoadTypeAvailable(road_type)) return 0;
+	return AIRoad._GetMaxSpeed(road_type);
+}

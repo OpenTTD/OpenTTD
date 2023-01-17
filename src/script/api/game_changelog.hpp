@@ -29,6 +29,7 @@
  * \li GSAirport::GetMaintenanceCostFactor returns -1 for unavailable airport information instead of 65535
  * \li GSRail::GetMaintenanceCostFactor returns -1 for unavailable rail types instead of 0
  * \li GSRoad::GetMaintenanceCostFactor returns -1 for unavailable road types instead of 0
+ * \li GSRoad::GetMaxSpeed now correctly returns -1 for invalid road types instead of 0
  *
  * \b 13.0
  *

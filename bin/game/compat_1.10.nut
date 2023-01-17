@@ -92,3 +92,11 @@ GSRoad.GetMaintenanceCostFactor <- function(roadtype)
 	if (!GSRoad.IsRoadTypeAvailable(roadtype)) return 0;
 	return GSRoad._GetMaintenanceCostFactor(roadtype);
 }
+
+/* 14 returns a max speed of -1 for unavailable road types */
+GSRoad._GetMaxSpeed <- GSRoad.GetMaxSpeed
+GSRoad.GetMaxSpeed <- function(road_type)
+{
+	if (!GSRoad.IsRoadTypeAvailable(road_type)) return 0;
+	return GSRoad._GetMaxSpeed(road_type);
+}
