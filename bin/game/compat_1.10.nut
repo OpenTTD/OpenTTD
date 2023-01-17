@@ -26,3 +26,45 @@ GSRoad.HasRoadType <- function(tile, road_type)
 	}
 	return false;
 }
+
+/* 14 Rand no longer returns negative values */
+GSBase._Rand <- GSBase.Rand;
+GSBase.Rand <- function()
+{
+	local r = GSBase._Rand();
+	return (r & 1 << 31) != 0 ? r | ~((1 << 31) - 1) : r;
+}
+
+/* 14 RandItem no longer returns negative values */
+GSBase.RandItem <- function(unused_param)
+{
+	return GSBase.Rand();
+}
+
+/* 14 RandRange no longer returns negative values */
+GSBase._RandRange <- GSBase.RandRange
+GSBase.RandRange <- function(max)
+{
+	local r = GSBase._RandRange(max);
+	return (r & 1 << 31) != 0 ? r | ~((1 << 31) - 1) : r;
+}
+
+/* 14 RandRangeItem no longer returns negative values */
+GSBase.RandRangeItem <- function(unused_param, max)
+{
+	return GSBase.RandRange(max);
+}
+
+/* 14 Chance no longer compares against randomized negative values */
+GSBase._Chance <- GSBase.Chance
+GSBase.Chance <- function(out, max)
+{
+	if (out > max) return GSBase._Chance(out, max);
+	return GSBase.RandRange(max) < out;
+}
+
+/* 14 ChanceItem no longer compares against randomized negative values */
+GSBase.ChanceItem <- function(unused_param, out, max)
+{
+	return GSBase.Chance(out, max);
+}

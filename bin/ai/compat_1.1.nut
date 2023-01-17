@@ -81,3 +81,45 @@ AIRoad.HasRoadType <- function(tile, road_type)
 	}
 	return false;
 }
+
+/* 14 Rand no longer returns negative values */
+AIBase._Rand <- AIBase.Rand;
+AIBase.Rand <- function()
+{
+	local r = AIBase._Rand();
+	return (r & 1 << 31) != 0 ? r | ~((1 << 31) - 1) : r;
+}
+
+/* 14 RandItem no longer returns negative values */
+AIBase.RandItem <- function(unused_param)
+{
+	return AIBase.Rand();
+}
+
+/* 14 RandRange no longer returns negative values */
+AIBase._RandRange <- AIBase.RandRange
+AIBase.RandRange <- function(max)
+{
+	local r = AIBase._RandRange(max);
+	return (r & 1 << 31) != 0 ? r | ~((1 << 31) - 1) : r;
+}
+
+/* 14 RandRangeItem no longer returns negative values */
+AIBase.RandRangeItem <- function(unused_param, max)
+{
+	return AIBase.RandRange(max);
+}
+
+/* 14 Chance no longer compares against randomized negative values */
+AIBase._Chance <- AIBase.Chance
+AIBase.Chance <- function(out, max)
+{
+	if (out > max) return AIBase._Chance(out, max);
+	return AIBase.RandRange(max) < out;
+}
+
+/* 14 ChanceItem no longer compares against randomized negative values */
+AIBase.ChanceItem <- function(unused_param, out, max)
+{
+	return AIBase.Chance(out, max);
+}
