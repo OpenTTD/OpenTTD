@@ -108,3 +108,11 @@ GSEngine.GetMaximumOrderDistance <- function (engine_id)
 	if (!GSEngine.IsValidEngine(engine_id)) return 0;
 	return GSEngine._GetMaximumOrderDistance(engine_id);
 }
+
+/* 14 returns a distance of -1 for invalid vehicles */
+GSVehicle._GetMaximumOrderDistance <- GSVehicle.GetMaximumOrderDistance
+GSVehicle.GetMaximumOrderDistance <- function(vehicle_id)
+{
+	if (!GSVehicle.IsValidVehicle(vehicle_id)) return 0;
+	return GSVehicle._GetMaximumOrderDistance(vehicle_id);
+}

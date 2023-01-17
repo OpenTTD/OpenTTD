@@ -163,3 +163,11 @@ AIEngine.GetMaximumOrderDistance <- function (engine_id)
 	if (!AIEngine.IsValidEngine(engine_id)) return 0;
 	return AIEngine._GetMaximumOrderDistance(engine_id);
 }
+
+/* 14 returns a distance of -1 for invalid vehicles */
+AIVehicle._GetMaximumOrderDistance <- AIVehicle.GetMaximumOrderDistance
+AIVehicle.GetMaximumOrderDistance <- function(vehicle_id)
+{
+	if (!AIVehicle.IsValidVehicle(vehicle_id)) return 0;
+	return AIVehicle._GetMaximumOrderDistance(vehicle_id);
+}

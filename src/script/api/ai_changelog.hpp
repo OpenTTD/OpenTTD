@@ -31,6 +31,7 @@
  * \li AIRoad::GetMaintenanceCostFactor returns -1 for unavailable road types instead of 0
  * \li AIRoad::GetMaxSpeed now correctly returns -1 for invalid road types instead of 0
  * \li AIEngine::GetMaximumOrderDistance returns -1 for invalid engines instead of 0
+ * \li AIVehicle::GetMaximumOrderDistance returns -1 for invalid vehicles instead of 0
  *
  * \b 13.0
  *
