@@ -80,3 +80,11 @@ AIRoad.GetMaxSpeed <- function(road_type)
 	if (!AIRoad.IsRoadTypeAvailable(road_type)) return 0;
 	return AIRoad._GetMaxSpeed(road_type);
 }
+
+/* 14 returns a distance of -1 for invalid engines */
+AIEngine._GetMaximumOrderDistance <- AIEngine.GetMaximumOrderDistance
+AIEngine.GetMaximumOrderDistance <- function (engine_id)
+{
+	if (!AIEngine.IsValidEngine(engine_id)) return 0;
+	return AIEngine._GetMaximumOrderDistance(engine_id);
+}

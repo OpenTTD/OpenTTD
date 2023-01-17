@@ -72,3 +72,11 @@ GSRoad.GetMaintenanceCostFactor <- function(roadtype)
 	if (!GSRoad.IsRoadTypeAvailable(roadtype)) return 0;
 	return GSRoad._GetMaintenanceCostFactor(roadtype);
 }
+
+/* 14 returns a distance of -1 for invalid engines */
+GSEngine._GetMaximumOrderDistance <- GSEngine.GetMaximumOrderDistance
+GSEngine.GetMaximumOrderDistance <- function (engine_id)
+{
+	if (!GSEngine.IsValidEngine(engine_id)) return 0;
+	return GSEngine._GetMaximumOrderDistance(engine_id);
+}
