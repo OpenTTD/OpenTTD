@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generaci
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generació d'indústries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcció de carreteres
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcció de vies de tramvia
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Shift per sols mostrar el cost estimat.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, no es realitza l'acció però es mostra el seu cost estimat.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situa un senyal
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Crea un objecte. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, es commuta entre construir o mostrar el cost estimat.
 
@@ -1926,13 +1926,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING}{
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mode de distribució per passatgers: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simètric" vol dir que aproximadament el mateix nombre de passatgers aniran des de l'estació A a la B que de B a A. "asimètric" significa que un nombre arbitrari de passatgers poden anar en qualsevol dels dos sentits. "manual" vol dir que no s'aplicarà una distribució automàtica pels passatgers.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simètric" vol dir que aproximadament el mateix nombre de passatgers aniran des de l'estació A a la B que de B a A. "Asimètric" significa que un nombre arbitrari de passatgers poden anar en qualsevol dels dos sentits. "Manual" vol dir que no s'aplicarà una distribució automàtica pels passatgers.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Mode de distribució pel correu: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simètric" vol dir que aproximadament la mateixa quantitat de correu serà enviada des de l'estació A a la B que de B a A. "asimètric" significa que una quantitat arbitrària de correu pot ser enviada en qualsevol dels dos sentits. "manual" vol dir que no s'aplicarà una distribució automàtica pel correu.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simètric" vol dir que aproximadament la mateixa quantitat de correu serà enviada des de l'estació A a la B que de B a A. "Asimètric" significa que una quantitat arbitrària de correu pot ser enviada en qualsevol dels dos sentits. "Manual" vol dir que no s'aplicarà una distribució automàtica pel correu.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Mode de distribució per la classe de càrrega BLINDADA: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de càrrega BLINDADA conté objectes de valor a la zona temperada, diamants a la subtropical o or al clima subàrtic. Els NewGRF poden canviar això. "simètric" significa que aproximadament la mateixa quantitat d'aquesta càrrega s'enviarà de l'estació A a la B que de B a A. "asimètric" vol dir que quantitats arbitràries d'aquesta càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquesta càrrega. Es recomana indicar asimètric o manual en clima subàrtic, doncs els bancs no enviaran or de tornada a les mines. Pels climes temperat i subtropical podeu també seleccionar simètric, doncs els bancs enviaran objectes de valor de tornada al banc d'origen.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de càrrega BLINDADA conté objectes de valor a la zona temperada, diamants a la subtropical o or al clima subàrtic. Els NewGRF poden canviar això. "Simètric" significa que aproximadament la mateixa quantitat d'aquesta càrrega s'enviarà de l'estació A a la B que de B a A. "Asimètric" vol dir que quantitats arbitràries d'aquesta càrrega poden ser enviades en qualsevol sentit. "Manual" significa que no s'aplicarà cap distribució automàtica a aquesta càrrega. Es recomana indicar asimètric o manual en clima subàrtic, doncs els bancs no enviaran or de tornada a les mines. Pels climes temperat i subtropical també podeu seleccionar simètric, doncs els bancs enviaran objectes de valor de tornada al banc d'origen.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Mode de distribució per altres classes de càrrega: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "Manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
@@ -2820,7 +2820,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissors
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar. Si la casella ja conté un arbre, s'afegiran més arbres d'altres espècies independentment de quin estigui seleccionat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situar arbres de tipus aleatori. Shift commuta construeix/mostra el cost estimat
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situa arbres de tipus aleatori. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj., es commuta entre construir i mostrar el cost estimat.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Planta arbres
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta arbres aleatòriament al paisatge
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Creació
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generación de industria
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcción de carreteras
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcción de tranvía
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Mayús permite mostrar una estimación del precio
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar letrero
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 
@@ -1926,11 +1926,11 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING}{N
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del grafo de distribución. Cuanto menor sea este valor, más probable es que se produzca ralentización en el juego. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "simétrica", se envía la misma cantidad de pasajeros de la estación A a la B que de la B a la A. En una distribución "asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. "Manual" significa que no se realiza una distribución automática para los pasajeros
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica", se envía la misma cantidad de pasajeros de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. "Manual" significa que no se realiza una distribución automática para los pasajeros.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribución para el correo: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución "simétrica", se envía la misma cantidad de carga de la estación A a la B que de la B a la A. En una distribución "asimétrica" se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no se realiza una distribución automática para el correo
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución "Simétrica", se envía la misma cantidad de carga de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no se realiza una distribución automática para el correo.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para la clase de carga BLINDADA: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La clase de carga BLINDADA contiene objetos de valor en el clima templado, diamantes en el clima subtropical y oro en el clima subártico. Los NewGRFs pueden modificar esto. En una distribución "simétrica", se envía la misma cantidad de carga de la estación A a la B que de la B a la A. En una distribución "asimétrica" se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución en "asimétrica" o en "manual" al jugar en clima subártico, ya que así los bancos no enviarán oro de vuelta a sus minas de procedencia. En los climas templado y subtropical es factible escoger "simétrica" ya que los bancos pueden enviar de vuelta objetos de valor al banco origen de los mismos.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :El tipo de carga BLINDADA contiene objetos de valor en el clima templado, diamantes en el clima subtropical y oro en el clima subártico. Los NewGRFs pueden modificar esto. En una distribución "Simétrica", se envía la misma cantidad de carga de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución en "Asimétrica" o en "Manual" al jugar en los clima subártico y subtropical, ya que los bancos sólo reciben carga en esos climas. En el clima templado es factible escoger "Simétrica" ya que los bancos pueden enviar objetos de valor de vuelta al banco de origen.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otras clases de carga: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que se pueden mover cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para estos tipos de carga.
 ###length 3
@@ -2820,7 +2820,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmisor
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipo de árboles a plantar. Si la casilla ya tiene un árbol, se añadirán más árboles de distintos tipos sin importar el tipo elegido
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipo aleatorio
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planta distintos árboles al azar. Mayús permite mostrar una estimación del precio
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planta distintos árboles al azar. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árboles al azar en el terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
