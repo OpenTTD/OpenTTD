@@ -138,3 +138,12 @@ GSVehicle.GetMaximumOrderDistance <- function(vehicle_id)
 	if (!GSVehicle.IsValidVehicle(vehicle_id)) return 0;
 	return GSVehicle._GetMaximumOrderDistance(vehicle_id);
 }
+
+/* 14 returns -1 for invalid towns and invalid town effect ids */
+GSTown._GetCargoGoal <- GSTown.GetCargoGoal
+GSTown.GetCargoGoal <- function(town_id, towneffect_id)
+{
+	if (!GSTown.IsValidTown(town_id)) return 0xFFFFFFFF;
+	if (!GSCargo.IsValidTownEffect(towneffect_id)) return 0xFFFFFFFF;
+	return GSTown._GetCargoGoal(town_id, towneffect_id);
+}

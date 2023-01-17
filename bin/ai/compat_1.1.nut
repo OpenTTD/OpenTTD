@@ -171,3 +171,12 @@ AIVehicle.GetMaximumOrderDistance <- function(vehicle_id)
 	if (!AIVehicle.IsValidVehicle(vehicle_id)) return 0;
 	return AIVehicle._GetMaximumOrderDistance(vehicle_id);
 }
+
+/* 14 returns -1 for invalid towns and invalid town effect ids */
+AITown._GetCargoGoal <- AITown.GetCargoGoal
+AITown.GetCargoGoal <- function(town_id, towneffect_id)
+{
+	if (!AITown.IsValidTown(town_id)) return 0xFFFFFFFF;
+	if (!AICargo.IsValidTownEffect(towneffect_id)) return 0xFFFFFFFF;
+	return AITown._GetCargoGoal(town_id, towneffect_id);
+}
