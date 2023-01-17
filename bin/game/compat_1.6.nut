@@ -75,3 +75,27 @@ GSBase.ChanceItem <- function(unused_param, out, max)
 {
 	return GSBase.Chance(out, max);
 }
+
+/* 14 airport maintenance cost factor returns -1 for unavailable airports */
+GSAirport._GetMaintenanceCostFactor <- GSAirport.GetMaintenanceCostFactor
+GSAirport.GetMaintenanceCostFactor <- function(type)
+{
+	if (!GSAirport.IsAirportInformationAvailable(type)) return 0xFFFF;
+	return GSAirport._GetMaintenanceCostFactor(type);
+}
+
+/* 14 railtype maintenance cost factor returns -1 for unavailable railtypes */
+GSRail._GetMaintenanceCostFactor <- GSRail.GetMaintenanceCostFactor
+GSRail.GetMaintenanceCostFactor <- function(railtype)
+{
+	if (!GSRail.IsRailTypeAvailable(railtype)) return 0;
+	return GSRail._GetMaintenanceCostFactor(railtype);
+}
+
+/* 14 roadtype maintenance cost factor returns -1 for unavailable roadtypes */
+GSRoad._GetMaintenanceCostFactor <- GSRoad.GetMaintenanceCostFactor
+GSRoad.GetMaintenanceCostFactor <- function(roadtype)
+{
+	if (!GSRoad.IsRoadTypeAvailable(roadtype)) return 0;
+	return GSRoad._GetMaintenanceCostFactor(roadtype);
+}
