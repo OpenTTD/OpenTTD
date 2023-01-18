@@ -1166,7 +1166,7 @@ struct AIDebugWindow : public Window {
 					TextColour colour;
 					switch (log->type[pos]) {
 						case ScriptLog::LOG_SQ_INFO:  colour = TC_BLACK;  break;
-						case ScriptLog::LOG_SQ_ERROR: colour = TC_RED;    break;
+						case ScriptLog::LOG_SQ_ERROR: colour = TC_WHITE;    break;
 						case ScriptLog::LOG_INFO:     colour = TC_BLACK;  break;
 						case ScriptLog::LOG_WARNING:  colour = TC_YELLOW; break;
 						case ScriptLog::LOG_ERROR:    colour = TC_RED;    break;
