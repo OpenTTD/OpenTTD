@@ -23,15 +23,13 @@ extern GroupPool _group_pool; ///< Pool of groups.
 
 /** Statistics and caches on the vehicles in a group. */
 struct GroupStatistics {
-	uint16 num_vehicle;                     ///< Number of vehicles.
 	Money profit_last_year;                 ///< Sum of profits for all vehicles.
+	Money profit_last_year_min_age;         ///< Sum of profits for vehicles considered for profit statistics.
 	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
-
+	uint16 num_vehicle;                     ///< Number of vehicles.
+	uint16 num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
 	bool autoreplace_defined;               ///< Are any autoreplace rules set?
 	bool autoreplace_finished;              ///< Have all autoreplacement finished?
-
-	uint16 num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
-	Money profit_last_year_min_age;         ///< Sum of profits for considered vehicles.
 
 	GroupStatistics();
 	~GroupStatistics();
