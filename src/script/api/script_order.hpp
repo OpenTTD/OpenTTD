@@ -595,13 +595,15 @@ public:
 	 * @param vehicle_type The vehicle type to get the distance for.
 	 * @param origin_tile Origin, can be any tile or a tile of a specific station.
 	 * @param dest_tile Destination, can be any tile or a tile of a specific station.
+	 * @pre vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL ||
+	 *   vehicle_type == ScriptVehicle::VT_WATER || vehicle_type == ScriptVehicle::VT_AIR
 	 * @return The distance between the origin and the destination for a
 	 *         vehicle of the given vehicle type.
 	 * @note   The unit of the order distances is unspecified and should
 	 *         not be compared with map distances
 	 * @see ScriptEngine::GetMaximumOrderDistance and ScriptVehicle::GetMaximumOrderDistance
 	 */
-	static uint GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile);
+	static int GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile);
 };
 DECLARE_ENUM_AS_BIT_SET(ScriptOrder::ScriptOrderFlags)
 
