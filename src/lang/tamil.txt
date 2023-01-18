@@ -966,6 +966,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}அசைவூட்டங்கள்
 
@@ -1172,7 +1174,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :இயக்க
 
 STR_CONFIG_SETTING_DISASTERS                                    :பேரழிவுகள்: {STRING}
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :நகர மறு அமைப்பின் மீது நகராட்சியின் நிலை: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :நகராட்சியின் மனப்பாங்கு: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :நிறுவனங்களின் சத்தம் மற்றும் சுற்றுச்சூழல் சேதம் அவர்களின் நகர மதிப்பீட்டை பாதிக்கும் மற்றும் அவற்றின் பகுதியில் மேலும் கட்டுமான நடவடிக்கைகளைத் தேர்வுசெய்க
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :வரைபட உயர வரம்பு: {STRING}
@@ -1398,6 +1400,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :சாம்பல் நிறமான காட்சி
 
+STR_CONFIG_SETTING_SCROLLMODE                                   :பார்படத்தின் பக்கமுருட்டல் நடத்தை: {STRING}
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :வலது சுட்டி பொத்தானைக் கொண்டு வரைபடத்தை நகர்த்தவும்
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :இடது சுட்டி பொத்தானைக் கொண்டு வரைபடத்தை நகர்த்தவும்
@@ -1485,6 +1488,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :பயன்ப
 
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :முன்னோக்கியின் வேக வரம்பு: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% இயல்பான விலையாட்டு வேகம்
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :வரம்பு இல்லை (உங்கள் கணினி அனுமதிக்கும் அளவுக்கு வேகமாக)
 
@@ -1645,6 +1649,7 @@ STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :சிக்ன
 ###length 2
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :புதிய நகரங்களுக்கான சாலை கட்டங்கள்: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :நகரங்களுக்கான சாலை தளவமைப்பு
 ###length 5
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :அசலான
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :நல்ல சாலைகள்
@@ -2091,6 +2096,7 @@ STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}அன�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(புதிய நிறுவனம்)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}புதிய நிறுவனத்தினை நிறுவி விளையாடு
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :இது நீன்கள்
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}இது விலையாட்டின் வழங்குபவர்
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} வாடிக்கையாளர்{P "" கள்} / {NUM} நிறுவன{P ம் ங்கள்}
 
 # Matches ConnectionType
@@ -2902,6 +2908,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}பத�
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}குறைந்த். பயன்படுத்தக்கூடிய பதிப்பு: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}தட்டு: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :இயல்பிருப்பு (D)
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :முதன்மை / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :மரபுரிமை (W)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}குணாதிசயங்கள்: {SILVER}{STRING}
@@ -2960,6 +2967,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}எச்�
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}பிழை: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}மரணம்: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}மரணமான NewGRF பிழை ஏற்பட்டுள்ளது:{}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTDஆல் தெரிவித்த TTDPatch விருத்துடன் {1:STRING} செயல்படாது
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ஆனது {STRING} TTD பதிப்பிற்காகவே
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ஆனது {STRING} உடன் இணைந்து பயன்படுத்த வடிவமைக்கப்பட்டுள்ளது
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :செல்லாத குணாதிசயம் {1:STRING} இன்: குணாதிசயம் {STRING} ({NUM})
@@ -3479,6 +3487,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}கப�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}விமானத்தை வாங்கு
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}வாகனத்தை வாங்கி மாற்றியமை
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}வாகனத்தை வாங்கி மாற்றியமை
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}கப்பலை வாங்கி மாற்றியமை
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}விமானத்தை வாங்கி மாற்றியமை

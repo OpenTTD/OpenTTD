@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo th
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nhà máy
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Xây dựng đường xe điện
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Nhấn Shift để xem chi phí dự tính
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Ctrl chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Ctrl để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
 
@@ -1925,13 +1925,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dùng {STRING}{
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Thời gian cần thiết cho mỗi bước tính toán đồ thị liên kết. Mỗi khi bắt đầu, chương trình tính toán sẽ được phép chạy trong một số ngày nào đó tùy theo giá trị này. Nếu quá ít có thể không đủ để tính toán, mà nếu quá nhiều thì nó sẽ kéo dài việc tính toán lại phân phối mỗi khi đường đi thay đổi.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Chế độ phân phối đối với hành khách: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Hành khách có thể di chuyển đối xứng (số lượng A đến B bằng B đến A) hoặc bất đối xứng, hoặc bằng tay.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Đối xứng" có nghĩa là số lượng hành khách đi từ nhà ga A đến nhà ga B và từ B đến A sẽ tương đương nhau . "Không đối xứng" có nghĩa là số lượng hành khách tùy ý có thể đi theo một trong hai hướng. "Thủ công" có nghĩa là hành khách sẽ không được phân phối tự động.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Chế độ phân phối đối với thư tín: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Thư tín có thể gửi đối xứng (khối lượng từ A đến B bằng B đến A) hoặc bất đối xứng, hoặc bằng tay.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Đối xứng" có nghĩa là cùng một lượng thư sẽ được gửi từ trạm A đến trạm B cũng như từ B đến A. "Không đối xứng" có nghĩa là lượng thư tùy ý có thể được gửi theo một trong hai hướng. "Thủ công" có nghĩa là thư sẽ không được phân phối tự động.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Chế độ phân phối đối với hàng hóa đóng két: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Hàng hóa được đóng két là gói hàng có giá trong địa hình nhiệt đới, kim cương trong hoang mạc, vàng trong địa hình vùng cực lạnh. NewGRF có thể khác. Bạn nên đặt là bất đối xứng hoặc bằng tay nếu ở địa hình cực lạnh, vì ngân hàng sẽ không gửi vàng trở lại mỏ vàng. Với địa hình nhiệt đới hoặc hoang mạc thì có thể chọn đối xứng bởi các ngân hàng có thể gửi hai chiều với nhau.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Loại hàng hóa "ARMORED" chứa các vật có giá trị ở vùng ôn đới, kim cương ở vùng cận nhiệt đới hoặc vàng ở vùng khí hậu cận Bắc Cực. NewGRF có thể thay đổi điều đó. "Đối xứng" có nghĩa là cùng một lượng hàng hóa đó sẽ được gửi từ nhà ga A đến nhà ga B cũng như từ B đến A. "Không đối xứng" có nghĩa là lượng hàng hóa đó có thể được gửi tùy ý theo một trong hai hướng. "Thủ công" có nghĩa là sẽ không có hoạt động phân phối tự động nào đối với hàng hóa đó. Bạn nên đặt chế độ này thành bất đối xứng hoặc thủ công khi chơi ở vùng cận Bắc cực hoặc cận nhiệt đới, vì các ngân hàng chỉ nhận hàng ở những vùng khí hậu này. Đối với ôn hòa, bạn cũng có thể chọn đối xứng vì các ngân hàng sẽ gửi các vật có giá trị trở lại ngân hàng gốc.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Chế độ phân phối đối với các loại hàng hóa mặc định: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"bất đối xứng" là khối lượng hàng hóa tùy ý có thể gửi theo chiều bất kỳ. "bằng tay" là sẽ không phân phối tự động mà bạn sẽ phải chỉ ra.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Không đối xứng" có nghĩa là số lượng hàng hóa tùy ý có thể được gửi theo một trong hai hướng. "Thủ công" có nghĩa là những loại hàng hóa đó sẽ không được phân phối tự động.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :bằng tay
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :bất đối xứng
@@ -2819,7 +2819,7 @@ STR_OBJECT_CLASS_TRNS                                           :Tháp tín hi�
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây Cối
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng. Nếu ô đó đã có cây, thao tác này sẽ thêm hỗn hợp nhiều cây khác độc lập với loại đã chọn
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Loại cây ngẫu nhiên
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Trồng ngẫu nhiên các loại cây. Shift+Click để xem chi phí dự tính
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Đặt các loại cây ngẫu nhiên. Ctrl chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Trồng ngẫu nhiên
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Trồng cây ngẫu nhiên trên khoảnh đất
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Bình thường
