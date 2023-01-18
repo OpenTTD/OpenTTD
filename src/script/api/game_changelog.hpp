@@ -33,6 +33,7 @@
  * \li GSEngine::GetMaximumOrderDistance returns -1 for invalid engines instead of 0
  * \li GSVehicle::GetMaximumOrderDistance returns -1 for invalid vehicles instead of 0
  * \li GSTown::GetCargoGoal returns -1 for invalid towns or invalid town effects instead of UINT32_MAX
+ * \li GSOrder::GetOrderDistance now tests the validity of the vehicle type, returning -1 for invalid vehicle types
  *
  * \b 13.0
  *

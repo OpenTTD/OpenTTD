@@ -147,3 +147,11 @@ GSTown.GetCargoGoal <- function(town_id, towneffect_id)
 	if (!GSCargo.IsValidTownEffect(towneffect_id)) return 0xFFFFFFFF;
 	return GSTown._GetCargoGoal(town_id, towneffect_id);
 }
+
+/* 14 tests whether the vehicle type is valid */
+GSOrder._GetOrderDistance <- GSOrder.GetOrderDistance
+GSOrder.GetOrderDistance <- function(vehicle_type, origin_tile, dest_tile)
+{
+	if (vehicle_type < GSVehicle.VT_RAIL || vehicle_type > GSVehicle.VT_AIR) return GSMap.DistanceManhattan(origin_tile, dest_tile);
+	return GSOrder._GetOrderDistance(vehicle_type, origin_tile, dest_tile);
+}

@@ -105,3 +105,11 @@ AITown.GetCargoGoal <- function(town_id, towneffect_id)
 	if (!AICargo.IsValidTownEffect(towneffect_id)) return 0xFFFFFFFF;
 	return AITown._GetCargoGoal(town_id, towneffect_id);
 }
+
+/* 14 tests whether the vehicle type is valid */
+AIOrder._GetOrderDistance <- AIOrder.GetOrderDistance
+AIOrder.GetOrderDistance <- function(vehicle_type, origin_tile, dest_tile)
+{
+	if (vehicle_type < AIVehicle.VT_RAIL || vehicle_type > AIVehicle.VT_AIR) return AIMap.DistanceManhattan(origin_tile, dest_tile);
+	return AIOrder._GetOrderDistance(vehicle_type, origin_tile, dest_tile);
+}
