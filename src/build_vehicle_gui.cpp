@@ -1334,8 +1334,7 @@ struct BuildVehicleWindow : Window {
 	{
 		std::vector<EngineID> variants;
 		EngineID sel_id = INVALID_ENGINE;
-		int num_engines = 0;
-		int num_wagons  = 0;
+		size_t num_engines = 0;
 
 		list.clear();
 
@@ -1356,12 +1355,7 @@ struct BuildVehicleWindow : Window {
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
-			if (rvi->railveh_type != RAILVEH_WAGON) {
-				num_engines++;
-			} else {
-				num_wagons++;
-			}
-
+			if (rvi->railveh_type != RAILVEH_WAGON) num_engines++;
 			if (e->info.variant_id != eid && e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
 			if (eid == this->sel_engine) sel_id = eid;
 		}
@@ -1371,6 +1365,7 @@ struct BuildVehicleWindow : Window {
 			if (std::find(list.begin(), list.end(), variant) == list.end()) {
 				const Engine *e = Engine::Get(variant);
 				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlags::Shaded, 0);
+				if (e->u.rail.railveh_type != RAILVEH_WAGON) num_engines++;
 			}
 		}
 
@@ -1388,7 +1383,7 @@ struct BuildVehicleWindow : Window {
 		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
 
 		/* and finally sort wagons */
-		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], num_engines, num_wagons);
+		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
 	}
 
 	/* Figure out what road vehicle EngineIDs to put in the list */
