@@ -418,7 +418,6 @@ public:
 	 * @param tile The tile to raise.
 	 * @param slope Corners to raise (SLOPE_xxx).
 	 * @pre tile < ScriptMap::GetMapSize().
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @exception ScriptTile::ERR_TILE_TOO_HIGH
@@ -435,7 +434,6 @@ public:
 	 * @param tile The tile to lower.
 	 * @param slope Corners to lower (SLOPE_xxx).
 	 * @pre tile < ScriptMap::GetMapSize().
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @exception ScriptTile::ERR_TILE_TOO_LOW
@@ -451,7 +449,6 @@ public:
 	 * @param end_tile The opposite corner of the rectangle.
 	 * @pre start_tile < ScriptMap::GetMapSize().
 	 * @pre end_tile < ScriptMap::GetMapSize().
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @return True if one or more tiles were leveled.
@@ -475,7 +472,6 @@ public:
 	 * Create a random tree on a tile.
 	 * @param tile The tile to build a tree on.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if a tree was added on the tile.
 	 */
 	static bool PlantTree(TileIndex tile);
@@ -488,7 +484,6 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre width >= 1 && width <= 20.
 	 * @pre height >= 1 && height <= 20.
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if a tree was added on any of the tiles in the rectangle.
 	 */
 	static bool PlantTreeRectangle(TileIndex tile, SQInteger width, SQInteger height);
