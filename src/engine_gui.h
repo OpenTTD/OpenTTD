@@ -32,7 +32,7 @@ typedef GUIList<GUIEngineListItem, CargoID> GUIEngineList;
 
 typedef bool EngList_SortTypeFunction(const GUIEngineListItem&, const GUIEngineListItem&); ///< argument type for #EngList_Sort.
 void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare);
-void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items);
+void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, size_t begin, size_t num_items);
 
 StringID GetEngineCategoryName(EngineID engine);
 StringID GetEngineInfoString(EngineID engine);
