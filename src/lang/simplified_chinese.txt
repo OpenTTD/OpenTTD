@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}生成�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}生成工业
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}公路建设
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}电车道建设
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植树。Shift显示预计花费。
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植树。按 Ctrl 沿对角线建造，按 Shift 显示预计花费。
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置标志
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物体，按住Ctrl可沿对角线选择区域，按住Shift键操作显示预计费用
 
@@ -1925,9 +1925,9 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :容许系统用
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :当刷新货物分配图时，系统会创建一条线程。此处设定的数值即该线程的持续时间。{}赋值越小，线程越有可能在应当停止的时候还未完成，游戏会暂停运作至线程完成工作。相反，赋值越大，则货物分配功能需要较长时间反映线路网变动的影晌。
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乗客分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的乗客数量與乙站往甲站的乗客数量大致相同。“不对称”指任何一站往另一站的乗客数量皆由系统随意决定。“手动”指系统不会自动分配乗客的目的地。
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的乗客数量与乙站往甲站的乘客数量大致相同。“不对称”指任何一站往另一站的乘客数量皆由系统随意决定。“手动”指系统不会自动分配乘客的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :邮件分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量與乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量与乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :“装甲货物”包括温带场景的“贵重品”、寒带场景的“金块”及沙漠场景的“钻石”。使用 NewGRF 可能会改变以上设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量与乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议在温带及沙漠场景使用“对称”，因为银行之间会相互发送贵重品或钻石；在寒带则应使用“不对称”，因为银行不会把金块送回金矿。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
@@ -2819,7 +2819,7 @@ STR_OBJECT_CLASS_TRNS                                           :发射机
 STR_PLANT_TREE_CAPTION                                          :{WHITE}树木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型。如果格子内已经有树木，将种植随机类型的树木
 STR_TREES_RANDOM_TYPE                                           :{BLACK}随机类型的树木
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木，按住 Shift 键可以显示所需资金
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木。按 Ctrl 键沿对角线建造，按住 Shift 键可以显示所需资金
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}随机树木
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}随机地种植一些树木
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}正常

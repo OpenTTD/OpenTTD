@@ -1188,6 +1188,7 @@ STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :تمكين ال
 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :الارتفاع الأقصى لبناء الجسور
 
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :الطول الأقصى لبناء الأنفاق
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :طريقة بناء المصانع الأولية يدوية : {STRING}
 ###length 3
@@ -1484,6 +1485,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :السماح ب
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :السماح بلاعبين كمبيوترالذكاء الصناعي بالمشاركة في الالعاب الجماعية.
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes قبل تعليق الاسكربت: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :فترات الصيانة بالنسبة المئوية : {STRING}
 
@@ -1588,6 +1590,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :محذور
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :مسموح
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :مسموح - نمط مدينة قابل للتعديل
 
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :توليد البضائع في المدينة: {STRING}
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :تربيعي (أصلي)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :خطي
@@ -1598,6 +1601,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :تنموا ول
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :موقع شريط الأدوات الرئيسي: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :موقع شريط المعلومات: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :دائرة تثبيت النافذة: {STRING}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :غير مفعل
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :حدود نعومة النوافذ - غير ملتصقة - :{STRING}
@@ -1683,6 +1687,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE} مصا
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزيع البضائع{ORANGE}
 STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}شبكة الاتصال
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الطريق- قصاص الطريق - للقطارات:{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}
@@ -2613,6 +2618,7 @@ STR_FRAMERATE_AI                                                :{BLACK}   AI {N
 
 ###length 15
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 : تكتكة القطار
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :تأخر ارتباط الرسم البياني
 STR_FRAMETIME_CAPTION_SOUND                                     :اختلاط الصوت
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :كتابة اللعبة
 
@@ -2657,6 +2663,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد �
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}قم بزيادة أقصى ارتفاع لأعلى قمة على الخريطة بواحد
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}تغطية الثلج:
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}تقليل تغطية الثلوج بنسبة عشرة بالمائة
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}مدى تغطيت السحراء:
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}تقليل التغطية الصحراوية بنسبة عشرة بالمائة
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
@@ -3049,6 +3056,7 @@ STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} من خلال {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} إلى {STATION}
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} إلى أي محطة
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} بدون توقف
 
 STR_STATION_VIEW_GROUP_V_S_D                                    :عبر-المصدر-الوجهة
 
@@ -3301,6 +3309,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}التك
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}التكلفة: {GOLD}{CURRENCY_LONG}{BLACK} (تكلفة التغيير: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}الوزن: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}التكلفة: {GOLD}{CURRENCY_LONG}{BLACK} السرعة : {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}التكلفة: {GOLD}{CURRENCY_LONG}{BLACK} (تكلفة التغير: {GOLD}{CURRENCY_LONG}{BLACK}) السرعة: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK} السعة {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} العربات ذات الطاقة: {GOLD}+{POWER}{BLACK} الوزن: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}{STRING}
@@ -3326,6 +3335,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}شراء
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}شراء العربة وتجديد بضائعها
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}شراء وإعادة تجهيز السفينة
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}شراء العربة الموضحة
@@ -3927,6 +3937,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاش
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}اعدادات االذكاء الاصطناعي
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}تكوين مخطوط اللعبة
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}مخطوطات اللعبة الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}الذكاء الاصطناعي الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني

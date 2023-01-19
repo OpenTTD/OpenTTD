@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}도시�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업시설을 건설합니다.
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로를 건설합니다.
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}전찻길 건설
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무를 심습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무를 심습니다. CTRL 키를 누른 채로 사용하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}팻말을 답니다.
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트를 설치합니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 
@@ -1930,7 +1930,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"대칭"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "비대칭"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :귀금속 화물에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :귀금속 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대 기후에서는 대칭으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :귀금속 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대나 아열대 기후에서는 대칭으로 설정하면 은행이 금을 받기만 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후에서는 은행이 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "비대칭"이나 "수동"으로 설정하십시오.
 ###length 3
@@ -2820,7 +2820,7 @@ STR_OBJECT_CLASS_TRNS                                           :송신기
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심고싶은 나무의 종류를 선택합니다. 이미 나무가 심어져있는 경우에는 선택한 나무의 크기를 키웁니다
 STR_TREES_RANDOM_TYPE                                           :{BLACK}여러 종류의 나무 같이 심기
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. SHIFT 키를 이용하면 예상 비용을 볼 수 있습니다
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 이용하면 예상 비용을 볼 수 있습니다
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}무작위로 나무 심기
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}전 지역에 걸쳐 무작위로 나무를 심습니다
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}일반
