@@ -657,28 +657,15 @@ void Gamelog::GRFAddList(const GRFConfig *newg)
 	}
 }
 
-/** List of GRFs using array of pointers instead of linked list */
-struct GRFList {
-	uint n;
-	const GRFConfig *grf[];
-};
-
 /**
  * Generates GRFList
  * @param grfc head of GRF linked list
  */
-static GRFList *GenerateGRFList(const GRFConfig *grfc)
+static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfig *grfc)
 {
-	uint n = 0;
+	std::vector<const GRFConfig *> list;
 	for (const GRFConfig *g = grfc; g != nullptr; g = g->next) {
-		if (IsLoggableGrfConfig(g)) n++;
-	}
-
-	GRFList *list = (GRFList*)MallocT<byte>(sizeof(GRFList) + n * sizeof(GRFConfig*));
-
-	list->n = 0;
-	for (const GRFConfig *g = grfc; g != nullptr; g = g->next) {
-		if (IsLoggableGrfConfig(g)) list->grf[list->n++] = g;
+		if (IsLoggableGrfConfig(g)) list.push_back(g);
 	}
 
 	return list;
@@ -691,66 +678,66 @@ static GRFList *GenerateGRFList(const GRFConfig *grfc)
  */
 void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 {
-	GRFList *ol = GenerateGRFList(oldc);
-	GRFList *nl = GenerateGRFList(newc);
+	std::vector<const GRFConfig *> ol = GenerateGRFList(oldc);
+	std::vector<const GRFConfig *> nl = GenerateGRFList(newc);
 
 	uint o = 0, n = 0;
 
-	while (o < ol->n && n < nl->n) {
-		const GRFConfig *og = ol->grf[o];
-		const GRFConfig *ng = nl->grf[n];
+	while (o < ol.size() && n < nl.size()) {
+		const GRFConfig *og = ol[o];
+		const GRFConfig *ng = nl[n];
 
 		if (og->ident.grfid != ng->ident.grfid) {
 			uint oi, ni;
-			for (oi = 0; oi < ol->n; oi++) {
-				if (ol->grf[oi]->ident.grfid == nl->grf[n]->ident.grfid) break;
+			for (oi = 0; oi < ol.size(); oi++) {
+				if (ol[oi]->ident.grfid == nl[n]->ident.grfid) break;
 			}
 			if (oi < o) {
 				/* GRF was moved, this change has been logged already */
 				n++;
 				continue;
 			}
-			if (oi == ol->n) {
+			if (oi == ol.size()) {
 				/* GRF couldn't be found in the OLD list, GRF was ADDED */
-				this->GRFAdd(nl->grf[n++]);
+				this->GRFAdd(nl[n++]);
 				continue;
 			}
-			for (ni = 0; ni < nl->n; ni++) {
-				if (nl->grf[ni]->ident.grfid == ol->grf[o]->ident.grfid) break;
+			for (ni = 0; ni < nl.size(); ni++) {
+				if (nl[ni]->ident.grfid == ol[o]->ident.grfid) break;
 			}
 			if (ni < n) {
 				/* GRF was moved, this change has been logged already */
 				o++;
 				continue;
 			}
-			if (ni == nl->n) {
+			if (ni == nl.size()) {
 				/* GRF couldn't be found in the NEW list, GRF was REMOVED */
-				this->GRFRemove(ol->grf[o++]->ident.grfid);
+				this->GRFRemove(ol[o++]->ident.grfid);
 				continue;
 			}
 
 			/* o < oi < ol->n
 			 * n < ni < nl->n */
-			assert(ni > n && ni < nl->n);
-			assert(oi > o && oi < ol->n);
+			assert(ni > n && ni < nl.size());
+			assert(oi > o && oi < ol.size());
 
 			ni -= n; // number of GRFs it was moved downwards
 			oi -= o; // number of GRFs it was moved upwards
 
 			if (ni >= oi) { // prefer the one that is moved further
 				/* GRF was moved down */
-				this->GRFMove(ol->grf[o++]->ident.grfid, ni);
+				this->GRFMove(ol[o++]->ident.grfid, ni);
 			} else {
-				this->GRFMove(nl->grf[n++]->ident.grfid, -(int)oi);
+				this->GRFMove(nl[n++]->ident.grfid, -(int)oi);
 			}
 		} else {
 			if (memcmp(og->ident.md5sum, ng->ident.md5sum, sizeof(og->ident.md5sum)) != 0) {
 				/* md5sum changed, probably loading 'compatible' GRF */
-				this->GRFCompatible(&nl->grf[n]->ident);
+				this->GRFCompatible(&nl[n]->ident);
 			}
 
 			if (og->num_params != ng->num_params || memcmp(og->param, ng->param, og->num_params * sizeof(og->param[0])) != 0) {
-				this->GRFParameters(ol->grf[o]->ident.grfid);
+				this->GRFParameters(ol[o]->ident.grfid);
 			}
 
 			o++;
@@ -758,11 +745,8 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 		}
 	}
 
-	while (o < ol->n) this->GRFRemove(ol->grf[o++]->ident.grfid); // remaining GRFs were removed ...
-	while (n < nl->n) this->GRFAdd   (nl->grf[n++]);              // ... or added
-
-	free(ol);
-	free(nl);
+	while (o < ol.size()) this->GRFRemove(ol[o++]->ident.grfid); // remaining GRFs were removed ...
+	while (n < nl.size()) this->GRFAdd   (nl[n++]);              // ... or added
 }
 
 /**
