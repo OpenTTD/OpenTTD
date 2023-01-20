@@ -2529,8 +2529,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}הגדל
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}בחר סוג הגשר עליו תעבור המסילה
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}בחירת גשר לכביש
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} בחירת סוג הגשר – בחר את הסוג שברצונך לבנות
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :גשר תלוי, ברזל
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :גשר קורות, ברזל
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :גשר זיז, פלדה

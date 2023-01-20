@@ -2062,8 +2062,6 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto d
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elektu Relan Ponton
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elektu Vojan Ponton
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pontelekto - klaku vian preferatan ponton por konstrui ĝin
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ŝtala pendanta
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ŝtala ebena
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ŝtala luksa

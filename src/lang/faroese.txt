@@ -2233,8 +2233,6 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Úrval a
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vel jarnbreyta brúgv
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vel vega brúgv
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brúgva úrval - trýst á ta brúnna tær dámar fyri at byggja hana
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Heingibrúgv, stál
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjálkabrúgv, stál
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, stál

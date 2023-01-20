@@ -2650,8 +2650,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Méadaig
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Roghnaigh Droichead Iarnróid
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Roghnaigh Droichead Bóthair
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Droichead a roghnú - cliceáil ar an droichead is rogha leat chun é a thógáil
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Crochta, Cruach
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cearchaill, Cruach
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Starrmhaide, Cruach

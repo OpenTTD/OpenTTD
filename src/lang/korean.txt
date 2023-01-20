@@ -2699,8 +2699,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}드래�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}철교 선택
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 종류를 선택하세요
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :강철 현수교
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :강철 거더교
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :강철 캔틸레버교

@@ -2666,8 +2666,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augere i
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eligere Pontem Ferriviarium
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Eligere Pontem Viarium
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Electio pontium - preme in pontem delectum ut struatur
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Pendulus, Chalybeius
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Trabum, Chalybeius
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Prominens, Chalybeius
