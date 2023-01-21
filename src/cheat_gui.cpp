@@ -229,8 +229,8 @@ struct CheatWindow : Window {
 
 	void OnInit() override
 	{
-		this->box = maxdim(GetSpriteSize(SPR_BOX_EMPTY), GetSpriteSize(SPR_BOX_CHECKED));
-		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
+		this->box = maxdim(GetScaledSpriteSize(SPR_BOX_EMPTY), GetScaledSpriteSize(SPR_BOX_CHECKED));
+		this->icon = GetScaledSpriteSize(SPR_COMPANY_ICON);
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -241,26 +241,24 @@ struct CheatWindow : Window {
 		int y = ir.top;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint box_left    = rtl ? ir.right - this->box.width - WidgetDimensions::scaled.hsep_wide : ir.left + WidgetDimensions::scaled.hsep_wide;
-		uint button_left = rtl ? ir.right - this->box.width - WidgetDimensions::scaled.hsep_wide * 2 - SETTING_BUTTON_WIDTH : ir.left + this->box.width + WidgetDimensions::scaled.hsep_wide * 2;
-		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH);
-		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH : 0);
+		Rect box    = ir.Indent(WidgetDimensions::scaled.hsep_wide, rtl).WithWidth(this->box.width, rtl);
+		Rect button = ir.Indent(WidgetDimensions::scaled.hsep_wide * 2 + this->box.width, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl);
+		Rect text   = ir.Indent(WidgetDimensions::scaled.hsep_wide * 3 + this->box.width + SETTING_BUTTON_WIDTH, rtl);
 
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
-		int box_y_offset = (this->line_height - this->box.height) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
 
-			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, box_left, y + box_y_offset);
+			DrawSpriteIgnorePadding((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, box.WithTopAndHeight(y, this->line_height), false, SA_CENTER);
 
 			switch (ce->type) {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawBoolButton(button_left, y + button_y_offset, on, true);
+					DrawBoolButton(button.left, y + button_y_offset, on, true);
 					SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 					break;
 				}
@@ -270,7 +268,7 @@ struct CheatWindow : Window {
 					char buf[512];
 
 					/* Draw [<][>] boxes for settings of an integer-type */
-					DrawArrowButtons(button_left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
+					DrawArrowButtons(button.left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
 
 					switch (ce->str) {
 						/* Display date for change date cheat */
@@ -281,7 +279,7 @@ struct CheatWindow : Window {
 							SetDParam(0, val + 1);
 							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
 							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(buf).width;
-							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
+							DrawCompanyIcon(_local_company, rtl ? text.right - offset - WidgetDimensions::scaled.hsep_indent : text.left + offset, y + icon_y_offset);
 							break;
 						}
 
@@ -291,7 +289,7 @@ struct CheatWindow : Window {
 				}
 			}
 
-			DrawString(text_left, text_right, y + text_y_offset, ce->str);
+			DrawString(text.left, text.right, y + text_y_offset, ce->str);
 
 			y += this->line_height;
 		}
