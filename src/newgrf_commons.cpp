@@ -44,21 +44,10 @@ OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 i
 	max_new_entities = maximum;
 	invalid_ID = invalid;
 
-	mapping_ID = CallocT<EntityIDMapping>(max_new_entities);
-	entity_overrides = MallocT<uint16>(max_offset);
-	for (size_t i = 0; i < max_offset; i++) entity_overrides[i] = invalid;
-	grfid_overrides = CallocT<uint32>(max_offset);
-}
-
-/**
- * Destructor of the generic class.
- * Frees allocated memory of constructor
- */
-OverrideManagerBase::~OverrideManagerBase()
-{
-	free(mapping_ID);
-	free(entity_overrides);
-	free(grfid_overrides);
+	this->mapping_ID.resize(this->max_new_entities);
+	this->entity_overrides.resize(this->max_offset);
+	std::fill(this->entity_overrides.begin(), this->entity_overrides.end(), this->invalid_ID);
+	this->grfid_overrides.resize(this->max_offset);
 }
 
 /**
@@ -81,16 +70,14 @@ void OverrideManagerBase::Add(uint8 local_id, uint32 grfid, uint entity_type)
 /** Resets the mapping, which is used while initializing game */
 void OverrideManagerBase::ResetMapping()
 {
-	memset(mapping_ID, 0, (max_new_entities - 1) * sizeof(EntityIDMapping));
+	std::fill(this->mapping_ID.begin(), this->mapping_ID.end(), EntityIDMapping{});
 }
 
 /** Resets the override, which is used while initializing game */
 void OverrideManagerBase::ResetOverride()
 {
-	for (uint16 i = 0; i < max_offset; i++) {
-		entity_overrides[i] = invalid_ID;
-		grfid_overrides[i] = 0;
-	}
+	std::fill(this->entity_overrides.begin(), this->entity_overrides.end(), this->invalid_ID);
+	std::fill(this->grfid_overrides.begin(), this->grfid_overrides.end(), uint32());
 }
 
 /**
