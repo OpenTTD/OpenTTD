@@ -50,6 +50,12 @@ public:
 	debug_inline Tile(TileIndex tile) : tile(tile) {}
 
 	/**
+	 * Create the tile wrapper for the given tile.
+	 * @param tile The tile to access the map for.
+	 */
+	Tile(uint tile) : tile(tile) {}
+
+	/**
 	 * Implicit conversion to the TileIndex.
 	 */
 	debug_inline constexpr operator TileIndex() const { return tile; }
@@ -189,16 +195,16 @@ private:
 	 * Iterator to iterate all Tiles
 	 */
 	struct Iterator {
-		typedef TileIndex value_type;
-		typedef TileIndex *pointer;
-		typedef TileIndex &reference;
+		typedef Tile value_type;
+		typedef Tile *pointer;
+		typedef Tile &reference;
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 
 		explicit Iterator(TileIndex index) : index(index) {}
 		bool operator==(const Iterator &other) const { return this->index == other.index; }
 		bool operator!=(const Iterator &other) const { return !(*this == other); }
-		TileIndex operator*() const { return this->index; }
+		Tile operator*() const { return this->index; }
 		Iterator & operator++() { this->index++; return *this; }
 	private:
 		TileIndex index;

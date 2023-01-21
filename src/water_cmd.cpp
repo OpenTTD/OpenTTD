@@ -158,7 +158,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 	return cost;
 }
 
-bool IsPossibleDockingTile(TileIndex t)
+bool IsPossibleDockingTile(Tile t)
 {
 	assert(IsValidTile(t));
 	switch (GetTileType(t)) {

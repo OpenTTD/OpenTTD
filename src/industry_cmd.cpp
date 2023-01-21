@@ -103,7 +103,7 @@ void ResetIndustries()
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return general type for this industry, as defined in industry.h
  */
-IndustryType GetIndustryType(TileIndex tile)
+IndustryType GetIndustryType(Tile tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 
