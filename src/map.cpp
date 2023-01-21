@@ -27,7 +27,7 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 /* static */ uint Map::size;      ///< The number of tiles on the map
 /* static */ uint Map::tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
-Tile *_m = nullptr;          ///< Tiles of the map
+TileBase *_m = nullptr;          ///< Tiles of the map
 TileExtended *_me = nullptr; ///< Extended Tiles of the map
 
 
@@ -59,7 +59,7 @@ TileExtended *_me = nullptr; ///< Extended Tiles of the map
 	free(_m);
 	free(_me);
 
-	_m = CallocT<Tile>(Map::size);
+	_m = CallocT<TileBase>(Map::size);
 	_me = CallocT<TileExtended>(Map::size);
 }
 
