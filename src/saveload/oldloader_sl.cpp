@@ -47,9 +47,7 @@ void FixOldMapArray()
 {
 	/* TTO/TTD/TTDP savegames could have buoys at tile 0
 	 * (without assigned station struct) */
-	MemSetT(&_m[0], 0);
-	SetTileType(0, MP_WATER);
-	SetTileOwner(0, OWNER_WATER);
+	MakeSea(0);
 }
 
 static void FixTTDMapArray()
@@ -1467,8 +1465,7 @@ static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
 static bool LoadOldMapPart1(LoadgameState *ls, int num)
 {
 	if (_savegame_type == SGT_TTO) {
-		MemSetT(_m, 0, OLD_MAP_SIZE);
-		MemSetT(_me, 0, OLD_MAP_SIZE);
+		AllocateMap(OLD_MAP_SIZE, OLD_MAP_SIZE);
 	}
 
 	for (uint i = 0; i < OLD_MAP_SIZE; i++) {
