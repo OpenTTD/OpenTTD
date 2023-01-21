@@ -41,105 +41,120 @@ extern Tile *_m;
  */
 extern TileExtended *_me;
 
-void AllocateMap(uint size_x, uint size_y);
-
 /**
- * Logarithm of the map size along the X side.
- * @note try to avoid using this one
- * @return 2^"return value" == MapSizeX()
+ * Size related data of the map.
  */
-static inline uint MapLogX()
-{
-	extern uint _map_log_x;
-	return _map_log_x;
-}
+struct Map {
+	static void Allocate(uint size_x, uint size_y);
 
-/**
- * Logarithm of the map size along the y side.
- * @note try to avoid using this one
- * @return 2^"return value" == MapSizeY()
- */
-static inline uint MapLogY()
-{
-	extern uint _map_log_y;
-	return _map_log_y;
-}
+	/**
+	 * Logarithm of the map size along the X side.
+	 * @note try to avoid using this one
+	 * @return 2^"return value" == Map::SizeX()
+	 */
+	static inline uint LogX()
+	{
+		extern uint _map_log_x;
+		return _map_log_x;
+	}
 
-/**
- * Get the size of the map along the X
- * @return the number of tiles along the X of the map
- */
-static inline uint MapSizeX()
-{
-	extern uint _map_size_x;
-	return _map_size_x;
-}
+	/**
+	 * Logarithm of the map size along the y side.
+	 * @note try to avoid using this one
+	 * @return 2^"return value" == Map::SizeY()
+	 */
+	static inline uint LogY()
+	{
+		extern uint _map_log_y;
+		return _map_log_y;
+	}
 
-/**
- * Get the size of the map along the Y
- * @return the number of tiles along the Y of the map
- */
-static inline uint MapSizeY()
-{
-	extern uint _map_size_y;
-	return _map_size_y;
-}
+	/**
+	 * Get the size of the map along the X
+	 * @return the number of tiles along the X of the map
+	 */
+	static inline uint SizeX()
+	{
+		extern uint _map_size_x;
+		return _map_size_x;
+	}
 
-/**
- * Get the size of the map
- * @return the number of tiles of the map
- */
-static inline uint MapSize()
-{
-	extern uint _map_size;
-	return _map_size;
-}
+	/**
+	 * Get the size of the map along the Y
+	 * @return the number of tiles along the Y of the map
+	 */
+	static inline uint SizeY()
+	{
+		extern uint _map_size_y;
+		return _map_size_y;
+	}
 
-/**
- * Gets the maximum X coordinate within the map, including MP_VOID
- * @return the maximum X coordinate
- */
-static inline uint MapMaxX()
-{
-	return MapSizeX() - 1;
-}
+	/**
+	 * Get the size of the map
+	 * @return the number of tiles of the map
+	 */
+	static inline uint Size()
+	{
+		extern uint _map_size;
+		return _map_size;
+	}
 
-/**
- * Gets the maximum Y coordinate within the map, including MP_VOID
- * @return the maximum Y coordinate
- */
-static inline uint MapMaxY()
-{
-	return MapSizeY() - 1;
-}
+	/**
+	 * Gets the maximum X coordinate within the map, including MP_VOID
+	 * @return the maximum X coordinate
+	 */
+	static inline uint MaxX()
+	{
+		return Map::SizeX() - 1;
+	}
 
-/**
- * Scales the given value by the map size, where the given value is
- * for a 256 by 256 map.
- * @param n the value to scale
- * @return the scaled size
- */
-static inline uint ScaleByMapSize(uint n)
-{
-	/* Subtract 12 from shift in order to prevent integer overflow
-	 * for large values of n. It's safe since the min mapsize is 64x64. */
-	return CeilDiv(n << (MapLogX() + MapLogY() - 12), 1 << 4);
-}
+	/**
+	 * Gets the maximum Y coordinate within the map, including MP_VOID
+	 * @return the maximum Y coordinate
+	 */
+	static inline uint MaxY()
+	{
+		return Map::SizeY() - 1;
+	}
 
+	/**
+	 * Scales the given value by the map size, where the given value is
+	 * for a 256 by 256 map.
+	 * @param n the value to scale
+	 * @return the scaled size
+	 */
+	static inline uint ScaleBySize(uint n)
+	{
+		/* Subtract 12 from shift in order to prevent integer overflow
+		 * for large values of n. It's safe since the min mapsize is 64x64. */
+		return CeilDiv(n << (Map::LogX() + Map::LogY() - 12), 1 << 4);
+	}
 
-/**
- * Scales the given value by the maps circumference, where the given
- * value is for a 256 by 256 map
- * @param n the value to scale
- * @return the scaled size
- */
-static inline uint ScaleByMapSize1D(uint n)
-{
-	/* Normal circumference for the X+Y is 256+256 = 1<<9
-	 * Note, not actually taking the full circumference into account,
-	 * just half of it. */
-	return CeilDiv((n << MapLogX()) + (n << MapLogY()), 1 << 9);
-}
+	/**
+	 * Scales the given value by the maps circumference, where the given
+	 * value is for a 256 by 256 map
+	 * @param n the value to scale
+	 * @return the scaled size
+	 */
+	static inline uint ScaleBySize1D(uint n)
+	{
+		/* Normal circumference for the X+Y is 256+256 = 1<<9
+		 * Note, not actually taking the full circumference into account,
+		 * just half of it. */
+		return CeilDiv((n << Map::LogX()) + (n << Map::LogY()), 1 << 9);
+	}
+};
+
+static inline void AllocateMap(uint size_x, uint size_y) { Map::Allocate(size_x, size_y); }
+static inline uint MapLogX() { return Map::LogX(); }
+static inline uint MapLogY() { return Map::LogY(); }
+static inline uint MapSizeX() { return Map::SizeX(); }
+static inline uint MapSizeY() { return Map::SizeY(); }
+static inline uint MapSize() { return Map::Size(); }
+static inline uint MapMaxX() { return Map::MaxX(); }
+static inline uint MapMaxY() { return Map::MaxY(); }
+static inline uint ScaleByMapSize(uint n) { return Map::ScaleBySize(n); }
+static inline uint ScaleByMapSize1D(uint n) { return Map::ScaleBySize1D(n); }
 
 /**
  * An offset value between two tiles.
