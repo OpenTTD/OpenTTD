@@ -16,22 +16,6 @@
 #include "direction_func.h"
 
 /**
- * Pointer to the tile-array.
- *
- * This variable points to the tile-array which contains the tiles of
- * the map.
- */
-extern TileBase *_m;
-
-/**
- * Pointer to the extended tile-array.
- *
- * This variable points to the extended tile-array which contains the tiles
- * of the map.
- */
-extern TileExtended *_me;
-
-/**
  * Wrapper class to abstract away the way the tiles are stored. It is
  * intended to be used to access the "map" data of a single tile.
  *
@@ -40,6 +24,36 @@ extern TileExtended *_me;
  */
 class Tile {
 private:
+	friend struct Map;
+	/**
+	 * Data that is stored per tile. Also used TileExtended for this.
+	 * Look at docs/landscape.html for the exact meaning of the members.
+	 */
+	struct TileBase {
+		byte   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
+		byte   height; ///< The height of the northern corner.
+		uint16 m2;     ///< Primarily used for indices to towns, industries and stations
+		byte   m1;     ///< Primarily used for ownership information
+		byte   m3;     ///< General purpose
+		byte   m4;     ///< General purpose
+		byte   m5;     ///< General purpose
+	};
+
+	static_assert(sizeof(TileBase) == 8);
+
+	/**
+	 * Data that is stored per tile. Also used TileBase for this.
+	 * Look at docs/landscape.html for the exact meaning of the members.
+	 */
+	struct TileExtended {
+		byte m6;   ///< General purpose
+		byte m7;   ///< Primarily used for newgrf support
+		uint16 m8; ///< General purpose
+	};
+
+	static TileBase *base_tiles;         ///< Pointer to the tile-array.
+	static TileExtended *extended_tiles; ///< Pointer to the extended tile-array.
+
 	TileIndex tile; ///< The tile to access the map data for.
 
 public:
@@ -74,7 +88,7 @@ public:
 	 */
 	debug_inline byte &type()
 	{
-		return _m[tile].type;
+		return base_tiles[tile].type;
 	}
 
 	/**
@@ -86,7 +100,7 @@ public:
 	 */
 	debug_inline byte &height()
 	{
-		return _m[tile].height;
+		return base_tiles[tile].height;
 	}
 
 	/**
@@ -98,7 +112,7 @@ public:
 	 */
 	debug_inline byte &m1()
 	{
-		return _m[tile].m1;
+		return base_tiles[tile].m1;
 	}
 
 	/**
@@ -110,7 +124,7 @@ public:
 	 */
 	debug_inline uint16 &m2()
 	{
-		return _m[tile].m2;
+		return base_tiles[tile].m2;
 	}
 
 	/**
@@ -122,7 +136,7 @@ public:
 	 */
 	debug_inline byte &m3()
 	{
-		return _m[tile].m3;
+		return base_tiles[tile].m3;
 	}
 
 	/**
@@ -134,7 +148,7 @@ public:
 	 */
 	debug_inline byte &m4()
 	{
-		return _m[tile].m4;
+		return base_tiles[tile].m4;
 	}
 
 	/**
@@ -146,7 +160,7 @@ public:
 	 */
 	debug_inline byte &m5()
 	{
-		return _m[tile].m5;
+		return base_tiles[tile].m5;
 	}
 
 	/**
@@ -158,7 +172,7 @@ public:
 	 */
 	debug_inline byte &m6()
 	{
-		return _me[tile].m6;
+		return extended_tiles[tile].m6;
 	}
 
 	/**
@@ -170,7 +184,7 @@ public:
 	 */
 	debug_inline byte &m7()
 	{
-		return _me[tile].m7;
+		return extended_tiles[tile].m7;
 	}
 
 	/**
@@ -182,7 +196,7 @@ public:
 	 */
 	debug_inline uint16 &m8()
 	{
-		return _me[tile].m8;
+		return extended_tiles[tile].m8;
 	}
 };
 
@@ -339,7 +353,7 @@ public:
 	 */
 	static bool IsInitialized()
 	{
-		return _m != nullptr;
+		return Tile::base_tiles != nullptr;
 	}
 
 	/**

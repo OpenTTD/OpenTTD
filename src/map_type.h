@@ -11,32 +11,6 @@
 #define MAP_TYPE_H
 
 /**
- * Data that is stored per tile. Also used TileExtended for this.
- * Look at docs/landscape.html for the exact meaning of the members.
- */
-struct TileBase {
-	byte   type;        ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
-	byte   height;      ///< The height of the northern corner.
-	uint16 m2;          ///< Primarily used for indices to towns, industries and stations
-	byte   m1;          ///< Primarily used for ownership information
-	byte   m3;          ///< General purpose
-	byte   m4;          ///< General purpose
-	byte   m5;          ///< General purpose
-};
-
-static_assert(sizeof(TileBase) == 8);
-
-/**
- * Data that is stored per tile. Also used TileBase for this.
- * Look at docs/landscape.html for the exact meaning of the members.
- */
-struct TileExtended {
-	byte m6;   ///< General purpose
-	byte m7;   ///< Primarily used for newgrf support
-	uint16 m8; ///< General purpose
-};
-
-/**
  * An offset value between two tiles.
  *
  * This value is used for the difference between
