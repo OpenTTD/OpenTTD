@@ -15,16 +15,6 @@
 #include "map_type.h"
 #include "direction_func.h"
 
-extern uint _map_tile_mask;
-
-/**
- * 'Wraps' the given tile to it is within the map. It does
- * this by masking the 'high' bits of.
- * @param x the tile to 'wrap'
- */
-
-#define TILE_MASK(x) ((x) & _map_tile_mask)
-
 /**
  * Pointer to the tile-array.
  *
@@ -115,6 +105,18 @@ struct Map {
 	static inline uint MaxY()
 	{
 		return Map::SizeY() - 1;
+	}
+
+
+	/**
+	 * 'Wraps' the given "tile" so it is within the map.
+	 * It does this by masking the 'high' bits of.
+	 * @param tile the tile to 'wrap'
+	 */
+	static inline TileIndex WrapToMap(uint tile)
+	{
+		extern uint _map_tile_mask;
+		return tile & _map_tile_mask;
 	}
 
 	/**
@@ -429,7 +431,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  */
 static inline TileIndex RandomTileSeed(uint32 r)
 {
-	return TILE_MASK(r);
+	return Map::WrapToMap(r);
 }
 
 /**
