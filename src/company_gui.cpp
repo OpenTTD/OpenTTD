@@ -605,14 +605,10 @@ public:
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		int icon_y = CenterBounds(r.top, r.bottom, 0);
-		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext);
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
-				   rtl ? tr.right - ScaleGUITrad(14) : tr.left + ScaleGUITrad(14),
-				   icon_y);
+		DrawSpriteIgnorePadding(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END), tr.WithWidth(ScaleGUITrad(28), rtl), false, SA_CENTER);
 		tr = tr.Indent(ScaleGUITrad(28) + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawString(tr.left, tr.right, text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(tr.WithTopCentre(FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -2382,10 +2378,7 @@ struct CompanyWindow : Window
 			}
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
-				Point offset;
-				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
-				d.width -= offset.x;
-				d.height -= offset.y;
+				Dimension d = GetScaledSpriteSize(SPR_VEH_BUS_SW_VIEW);
 				*size = maxdim(*size, d);
 				break;
 			}
@@ -2521,13 +2514,9 @@ struct CompanyWindow : Window
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
-			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
-				Point offset;
-				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
-				d.height -= offset.y;
-				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r.left - offset.x, CenterBounds(r.top, r.bottom, d.height) - offset.y);
+			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE:
+				DrawSpriteIgnorePadding(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r, false, SA_CENTER);
 				break;
-			}
 
 			case WID_C_DESC_VEHICLE_COUNTS:
 				DrawVehicleCountsWidget(r, c);
