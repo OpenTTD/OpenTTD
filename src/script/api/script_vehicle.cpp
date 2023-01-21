@@ -34,6 +34,13 @@
 	return v != nullptr && (v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()));
 }
 
+/* static */ bool ScriptVehicle::IsPrimaryVehicle(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return false;
+
+	return ::Vehicle::Get(vehicle_id)->IsPrimaryVehicle();
+}
+
 /* static */ ScriptCompany::CompanyID ScriptVehicle::GetOwner(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return ScriptCompany::COMPANY_INVALID;
@@ -102,7 +109,7 @@
 /* static */ VehicleID ScriptVehicle::CloneVehicle(TileIndex depot, VehicleID vehicle_id, bool share_orders)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
 	if (!ScriptObject::Command<CMD_CLONE_VEHICLE>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, vehicle_id, share_orders)) return VEHICLE_INVALID;
 
@@ -191,7 +198,7 @@
 /* static */ bool ScriptVehicle::SendVehicleToDepot(VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
 	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(vehicle_id, DepotCommand::None, {});
 }
@@ -199,7 +206,7 @@
 /* static */ bool ScriptVehicle::SendVehicleToDepotForServicing(VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
 	return ScriptObject::Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(vehicle_id, DepotCommand::Service, {});
 }
@@ -219,7 +226,7 @@
 /* static */ bool ScriptVehicle::StartStopVehicle(VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 
 	return ScriptObject::Command<CMD_START_STOP_VEHICLE>::Do(vehicle_id, false);
 }
@@ -227,7 +234,7 @@
 /* static */ bool ScriptVehicle::ReverseVehicle(VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_ROAD || ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
 
 	switch (::Vehicle::Get(vehicle_id)->type) {
@@ -242,7 +249,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
@@ -286,14 +293,14 @@
 
 /* static */ int32 ScriptVehicle::GetUnitNumber(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->unitnumber;
 }
 
 /* static */ char *ScriptVehicle::GetName(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return nullptr;
+	if (!IsPrimaryVehicle(vehicle_id)) return nullptr;
 
 	::SetDParam(0, vehicle_id);
 	return GetString(STR_VEHICLE_NAME);
@@ -320,21 +327,21 @@
 
 /* static */ int32 ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->max_age;
 }
 
 /* static */ int32 ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age;
 }
 
 /* static */ int32 ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return (v->vehstatus & (::VS_STOPPED | ::VS_CRASHED)) == 0 ? v->GetDisplaySpeed() : 0; // km-ish/h
@@ -357,21 +364,21 @@
 
 /* static */ Money ScriptVehicle::GetRunningCost(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->GetRunningCost() >> 8;
 }
 
 /* static */ Money ScriptVehicle::GetProfitThisYear(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->GetDisplayProfitThisYear();
 }
 
 /* static */ Money ScriptVehicle::GetProfitLastYear(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->GetDisplayProfitLastYear();
 }
@@ -432,7 +439,7 @@
 
 /* static */ GroupID ScriptVehicle::GetGroupID(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return ScriptGroup::GROUP_INVALID;
+	if (!IsPrimaryVehicle(vehicle_id)) return ScriptGroup::GROUP_INVALID;
 
 	return ::Vehicle::Get(vehicle_id)->group_id;
 }
@@ -452,7 +459,7 @@
 
 /* static */ bool ScriptVehicle::HasSharedOrders(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return false;
+	if (!IsPrimaryVehicle(vehicle_id)) return false;
 
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return v->orders != nullptr && v->orders->GetNumVehicles() > 1;
@@ -460,7 +467,7 @@
 
 /* static */ int ScriptVehicle::GetReliability(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return -1;
+	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return ::ToPercent16(v->reliability);
@@ -468,7 +475,7 @@
 
 /* static */ uint ScriptVehicle::GetMaximumOrderDistance(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return 0;
+	if (!IsPrimaryVehicle(vehicle_id)) return 0;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
 	switch (v->type) {

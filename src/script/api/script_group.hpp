@@ -147,7 +147,7 @@ public:
 	 * @param group_id The group to move the vehicle to.
 	 * @param vehicle_id The vehicle to move to the group.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT.
-	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsPrimaryVehicle(vehicle_id).
 	 * @return True if and only if the vehicle was successfully moved to the group.
 	 * @note A vehicle can be in only one group at the same time. To remove it from
 	 *  a group, move it to another or to GROUP_DEFAULT. Moving the vehicle to the

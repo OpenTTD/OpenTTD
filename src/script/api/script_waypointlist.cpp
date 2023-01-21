@@ -25,7 +25,7 @@ ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_typ
 
 ScriptWaypointList_Vehicle::ScriptWaypointList_Vehicle(VehicleID vehicle_id)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 

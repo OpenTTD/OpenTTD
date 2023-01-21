@@ -121,7 +121,7 @@
 /* static */ bool ScriptGroup::MoveVehicle(GroupID group_id, VehicleID vehicle_id)
 {
 	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT);
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 
 	return ScriptObject::Command<CMD_ADD_VEHICLE_GROUP>::Do(group_id, vehicle_id, false);
 }

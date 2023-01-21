@@ -50,7 +50,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 /* static */ bool ScriptOrder::IsValidVehicleOrder(VehicleID vehicle_id, OrderPosition order_position)
 {
-	return ScriptVehicle::IsValidVehicle(vehicle_id) && order_position >= 0 && (order_position < ::Vehicle::Get(vehicle_id)->GetNumManualOrders() || order_position == ORDER_CURRENT);
+	return ScriptVehicle::IsPrimaryVehicle(vehicle_id) && order_position >= 0 && (order_position < ::Vehicle::Get(vehicle_id)->GetNumManualOrders() || order_position == ORDER_CURRENT);
 }
 
 /**
@@ -158,7 +158,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 /* static */ bool ScriptOrder::IsCurrentOrderPartOfOrderList(VehicleID vehicle_id)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return false;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return false;
 	if (GetOrderCount(vehicle_id) == 0) return false;
 
 	const Order *order = &::Vehicle::Get(vehicle_id)->current_order;
@@ -168,7 +168,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 /* static */ ScriptOrder::OrderPosition ScriptOrder::ResolveOrderPosition(VehicleID vehicle_id, OrderPosition order_position)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return ORDER_INVALID;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return ORDER_INVALID;
 
 	int num_manual_orders = ::Vehicle::Get(vehicle_id)->GetNumManualOrders();
 	if (num_manual_orders == 0) return ORDER_INVALID;
@@ -236,7 +236,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 /* static */ int32 ScriptOrder::GetOrderCount(VehicleID vehicle_id)
 {
-	return ScriptVehicle::IsValidVehicle(vehicle_id) ? ::Vehicle::Get(vehicle_id)->GetNumManualOrders() : -1;
+	return ScriptVehicle::IsPrimaryVehicle(vehicle_id) ? ::Vehicle::Get(vehicle_id)->GetNumManualOrders() : -1;
 }
 
 /* static */ TileIndex ScriptOrder::GetOrderDestination(VehicleID vehicle_id, OrderPosition order_position)
@@ -443,7 +443,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 /* static */ bool ScriptOrder::AppendOrder(VehicleID vehicle_id, TileIndex destination, ScriptOrderFlags order_flags)
 {
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
 	return InsertOrder(vehicle_id, (ScriptOrder::OrderPosition)::Vehicle::Get(vehicle_id)->GetNumManualOrders(), destination, order_flags);
@@ -451,7 +451,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 /* static */ bool ScriptOrder::AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to)
 {
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to));
 
 	return InsertConditionalOrder(vehicle_id, (ScriptOrder::OrderPosition)::Vehicle::Get(vehicle_id)->GetNumManualOrders(), jump_to);
@@ -462,7 +462,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	/* IsValidVehicleOrder is not good enough because it does not allow appending. */
 	if (order_position == ORDER_CURRENT) order_position = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position);
 
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumManualOrders());
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
@@ -516,7 +516,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	/* IsValidVehicleOrder is not good enough because it does not allow appending. */
 	if (order_position == ORDER_CURRENT) order_position = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position);
 
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumManualOrders());
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to) && jump_to != ORDER_CURRENT);
 
@@ -645,23 +645,23 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 
 /* static */ bool ScriptOrder::CopyOrders(VehicleID vehicle_id, VehicleID main_vehicle_id)
 {
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(main_vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(main_vehicle_id));
 
 	return ScriptObject::Command<CMD_CLONE_ORDER>::Do(0, CO_COPY, vehicle_id, main_vehicle_id);
 }
 
 /* static */ bool ScriptOrder::ShareOrders(VehicleID vehicle_id, VehicleID main_vehicle_id)
 {
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(main_vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(main_vehicle_id));
 
 	return ScriptObject::Command<CMD_CLONE_ORDER>::Do(0, CO_SHARE, vehicle_id, main_vehicle_id);
 }
 
 /* static */ bool ScriptOrder::UnshareOrders(VehicleID vehicle_id)
 {
-	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
+	EnforcePrecondition(false, ScriptVehicle::IsPrimaryVehicle(vehicle_id));
 
 	return ScriptObject::Command<CMD_CLONE_ORDER>::Do(0, CO_UNSHARE, vehicle_id, 0);
 }

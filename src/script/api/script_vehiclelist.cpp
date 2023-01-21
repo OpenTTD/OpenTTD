@@ -91,7 +91,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 
 ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle_id)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return;
 
 	for (const Vehicle *v = Vehicle::Get(vehicle_id)->FirstShared(); v != nullptr; v = v->NextShared()) {
 		this->AddItem(v->index);
