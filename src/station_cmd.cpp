@@ -78,7 +78,7 @@
  * @pre IsTileType(t, MP_STATION)
  * @return true if and only if the tile is a hangar.
  */
-bool IsHangar(TileIndex t)
+bool IsHangar(Tile t)
 {
 	assert(IsTileType(t, MP_STATION));
 
@@ -89,7 +89,7 @@ bool IsHangar(TileIndex t)
 	const AirportSpec *as = st->airport.GetSpec();
 
 	for (uint i = 0; i < as->nof_depots; i++) {
-		if (st->airport.GetHangarTile(i) == t) return true;
+		if (st->airport.GetHangarTile(i) == TileIndex(t)) return true;
 	}
 
 	return false;
@@ -2462,11 +2462,12 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_ty
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
 		for (AirportTileTableIterator iter(as->table[layout], tile); iter != INVALID_TILE; ++iter) {
-			MakeAirport(iter, st->owner, st->index, iter.GetStationGfx(), WATER_CLASS_INVALID);
-			SetStationTileRandomBits(iter, GB(Random(), 0, 4));
+			Tile t(iter);
+			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WATER_CLASS_INVALID);
+			SetStationTileRandomBits(t, GB(Random(), 0, 4));
 			st->airport.Add(iter);
 
-			if (AirportTileSpec::Get(GetTranslatedAirportTileID(iter.GetStationGfx()))->animation.status != ANIM_STATUS_NO_ANIMATION) AddAnimatedTile(iter);
+			if (AirportTileSpec::Get(GetTranslatedAirportTileID(iter.GetStationGfx()))->animation.status != ANIM_STATUS_NO_ANIMATION) AddAnimatedTile(t);
 		}
 
 		/* Only call the animation trigger after all tiles have been built */

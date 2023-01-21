@@ -69,7 +69,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 		encoded_text = text->GetEncodedText();
 		EnforcePreconditionEncodedText(STORY_PAGE_ELEMENT_INVALID, encoded_text);
 	}
-	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_LOCATION || ::IsValidTile(reference));
+	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_LOCATION || ::IsValidTile((::TileIndex)reference));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || ScriptGoal::IsValidGoal((ScriptGoal::GoalID)reference));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || !(StoryPage::Get(story_page_id)->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
@@ -118,7 +118,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 		encoded_text = text->GetEncodedText();
 		EnforcePreconditionEncodedText(false, encoded_text);
 	}
-	EnforcePrecondition(false, type != ::SPET_LOCATION || ::IsValidTile(reference));
+	EnforcePrecondition(false, type != ::SPET_LOCATION || ::IsValidTile((::TileIndex)reference));
 	EnforcePrecondition(false, type != ::SPET_GOAL || ScriptGoal::IsValidGoal((ScriptGoal::GoalID)reference));
 	EnforcePrecondition(false, type != ::SPET_GOAL || !(p->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 

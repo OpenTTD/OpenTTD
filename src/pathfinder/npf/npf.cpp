@@ -144,7 +144,7 @@ static uint NPFHash(uint key1, uint key2)
 	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
 
 	assert(IsValidTrackdir((Trackdir)key2));
-	assert(IsValidTile(key1));
+	assert(IsValidTile((TileIndex)key1));
 	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
