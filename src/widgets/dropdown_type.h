@@ -83,7 +83,6 @@ class DropDownListIconItem : public DropDownListParamStringItem {
 	SpriteID sprite;
 	PaletteID pal;
 	Dimension dim;
-	uint sprite_y;
 public:
 	DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked);
 

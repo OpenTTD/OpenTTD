@@ -73,8 +73,7 @@ StringID DropDownListCharStringItem::String() const
 
 DropDownListIconItem::DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked) : DropDownListParamStringItem(string, result, masked), sprite(sprite), pal(pal)
 {
-	this->dim = GetSpriteSize(sprite);
-	this->sprite_y = dim.height;
+	this->dim = GetScaledSpriteSize(sprite);
 }
 
 uint DropDownListIconItem::Height(uint width) const
@@ -92,7 +91,7 @@ void DropDownListIconItem::Draw(const Rect &r, bool sel, Colours bg_colour) cons
 	bool rtl = _current_text_dir == TD_RTL;
 	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
 	Rect tr = ir.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl);
-	DrawSprite(this->sprite, this->pal, ir.WithWidth(this->dim.width, rtl).left, CenterBounds(r.top, r.bottom, this->sprite_y));
+	DrawSpriteIgnorePadding(this->sprite, this->pal, ir.WithWidth(this->dim.width, rtl), 0, SA_CENTER);
 	DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 

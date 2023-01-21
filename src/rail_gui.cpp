@@ -2248,7 +2248,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		for (const auto &rt : _sorted_railtypes) {
 			if (!HasBit(used_railtypes, rt)) continue;
 			const RailtypeInfo *rti = GetRailTypeInfo(rt);
-			d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_rail));
+			d = maxdim(d, GetScaledSpriteSize(rti->gui_sprites.build_x_rail));
 		}
 	}
 
