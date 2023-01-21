@@ -797,6 +797,11 @@ public:
 		}
 	}
 
+	void OnInit() override
+	{
+		this->square = GetScaledSpriteSize(SPR_SQUARE);
+	}
+
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
@@ -821,7 +826,6 @@ public:
 
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
-				this->square = GetSpriteSize(SPR_SQUARE);
 				this->line_height = std::max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
 
 				size->height = 11 * this->line_height;
@@ -838,7 +842,7 @@ public:
 				FALLTHROUGH;
 
 			case WID_SCL_PRI_COL_DROPDOWN: {
-				this->square = GetSpriteSize(SPR_SQUARE);
+				this->square = GetScaledSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = std::max(size->width, GetStringBoundingBox(*id).width + string_padding);
@@ -926,7 +930,6 @@ public:
 		sec = sec.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
 		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
-		int square_offs = (ir.Height() - this->square.height) / 2;
 		int text_offs   = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
 
 		int y = ir.top;
@@ -937,12 +940,12 @@ public:
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, sel ? TC_WHITE : TC_BLACK);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), pri_squ.left, y + square_offs);
+			DrawSpriteIgnorePadding(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), pri_squ.WithTopAndHeight(y, ir.Height()), false, SA_CENTER);
 			DrawString(pri.left, pri.right, y + text_offs, (def || HasBit(liv.in_use, 0)) ? STR_COLOUR_DARK_BLUE + liv.colour1 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), sec_squ.left, y + square_offs);
+				DrawSpriteIgnorePadding(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), sec_squ.WithTopAndHeight(y, ir.Height()), false, SA_CENTER);
 				DrawString(sec.left, sec.right, y + text_offs, (def || HasBit(liv.in_use, 1)) ? STR_COLOUR_DARK_BLUE + liv.colour2 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 			}
 
