@@ -398,9 +398,8 @@ protected:
 
 		/* show highlighted item with a different colour */
 		if (highlight) {
-			Rect r = {name.left, y, info.right, y + (int)this->resize.step_height - 1};
-			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-			GfxFillRect(ir.left, ir.top, ir.right, ir.bottom, PC_GREY);
+			Rect r = {std::min(name.left, info.left), y, std::max(name.right, info.right), y + (int)this->resize.step_height - 1};
+			GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_GREY);
 		}
 
 		/* offsets to vertically centre text and icons */
