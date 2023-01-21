@@ -102,8 +102,8 @@ public:
 		this->Add(new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_YEARS_CAPTION, STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP));
 
 		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
-		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
-		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width, 12);
+		leaf->SetMinimalSize(WidgetDimensions::unscaled.framerect.Horizontal() + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
+		                              + WidgetDimensions::unscaled.hsep_normal + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width, 12);
 		leaf->SetFill(0, 1);
 		this->Add(leaf);
 
@@ -232,9 +232,8 @@ protected:
 	GUITimer requery_timer;         ///< Timer for network requery.
 	bool searched_internet = false; ///< Did we ever press "Search Internet" button?
 
-	int lock_offset; ///< Left offset for lock icon.
-	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
-	int flag_offset; ///< Left offset for language flag icon.
+	Dimension lock_size; ///< Dimension of lock icon.
+	Dimension blot_size; ///< Dimension of green/yellow/red compatibility icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some
@@ -394,7 +393,7 @@ protected:
 	void DrawServerLine(const NetworkGameList *cur_item, int y, bool highlight) const
 	{
 		Rect name = this->GetWidget<NWidgetBase>(WID_NG_NAME)->GetCurrentRect();
-		Rect info = this->GetWidget<NWidgetBase>(WID_NG_INFO)->GetCurrentRect();
+		Rect info = this->GetWidget<NWidgetBase>(WID_NG_INFO)->GetCurrentRect().WithTopAndHeight(y, this->resize.step_height);
 
 		/* show highlighted item with a different colour */
 		if (highlight) {
@@ -404,8 +403,6 @@ protected:
 
 		/* offsets to vertically centre text and icons */
 		int text_y_offset = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2 + 1;
-		int icon_y_offset = (this->resize.step_height - GetSpriteSize(SPR_BLOT).height) / 2;
-		int lock_y_offset = (this->resize.step_height - GetSpriteSize(SPR_LOCK).height) / 2;
 
 		name = name.Shrink(WidgetDimensions::scaled.framerect);
 		DrawString(name.left, name.right, y + text_y_offset, cur_item->info.server_name, TC_BLACK);
@@ -450,11 +447,14 @@ protected:
 				DrawString(years.left, years.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}
 
+			info = info.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
+			bool rtl = _current_text_dir == TD_RTL;
+
 			/* draw a lock if the server is password protected */
-			if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, info.left + this->lock_offset, y + lock_y_offset);
+			if (cur_item->info.use_password) DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, info.WithWidth(this->lock_size.width, rtl), false, SA_CENTER);
 
 			/* draw red or green icon, depending on compatibility with server */
-			DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), info.left + this->blot_offset, y + icon_y_offset + 1);
+			DrawSpriteIgnorePadding(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), info.WithWidth(this->blot_size.width, !rtl), false, SA_CENTER);
 		}
 	}
 
@@ -514,22 +514,21 @@ public:
 
 	void OnInit() override
 	{
-		this->lock_offset = ScaleGUITrad(5);
-		this->blot_offset = this->lock_offset + ScaleGUITrad(3) + GetSpriteSize(SPR_LOCK).width;
-		this->flag_offset = this->blot_offset + ScaleGUITrad(2) + GetSpriteSize(SPR_BLOT).width;
+		this->lock_size = GetScaledSpriteSize(SPR_LOCK);
+		this->blot_size = GetScaledSpriteSize(SPR_BLOT);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
+				resize->height = std::max({this->blot_size.height, this->lock_size.height, (uint)FONT_HEIGHT_NORMAL}) + padding.height;
 				fill->height = resize->height;
 				size->height = 12 * resize->height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WidgetDimensions::scaled.matrix.Vertical();
+				size->height = std::max({this->blot_size.height, this->lock_size.height, (uint)FONT_HEIGHT_NORMAL}) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
