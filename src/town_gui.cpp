@@ -830,8 +830,8 @@ public:
 
 				/* At least one town available. */
 				bool rtl = _current_text_dir == TD_RTL;
-				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
-				int icon_x = tr.WithWidth(icon_size.width, rtl).left;
+				Dimension icon_size = GetScaledSpriteSize(SPR_TOWN_RATING_GOOD);
+				Rect ir = tr.WithWidth(icon_size.width, rtl);
 				tr = tr.Indent(icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
 				for (uint i = this->vscroll->GetPosition(); i < this->towns.size(); i++) {
@@ -840,12 +840,12 @@ public:
 
 					/* Draw rating icon. */
 					if (_game_mode == GM_EDITOR || !HasBit(t->have_ratings, _local_company)) {
-						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
+						DrawSpriteIgnorePadding(SPR_TOWN_RATING_NA, PAL_NONE, ir.WithTopAndHeight(tr.top, this->resize.step_height), false, SA_CENTER);
 					} else {
 						SpriteID icon = SPR_TOWN_RATING_APALLING;
 						if (t->ratings[_local_company] > RATING_VERYPOOR) icon = SPR_TOWN_RATING_MEDIOCRE;
 						if (t->ratings[_local_company] > RATING_GOOD)     icon = SPR_TOWN_RATING_GOOD;
-						DrawSprite(icon, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
+						DrawSpriteIgnorePadding(icon, PAL_NONE, ir.WithTopAndHeight(tr.top, this->resize.step_height), false, SA_CENTER);
 					}
 
 					SetDParam(0, t->index);
@@ -891,9 +891,9 @@ public:
 					SetDParamMaxDigits(1, 8);
 					d = maxdim(d, GetStringBoundingBox(GetTownString(t)));
 				}
-				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
-				d.width += icon_size.width + 2;
-				d.height = std::max(d.height, icon_size.height);
+				Dimension icon_size = GetScaledSpriteSize(SPR_TOWN_RATING_GOOD);
+				d.width += icon_size.width + WidgetDimensions::scaled.hsep_normal;
+				d.height = std::max(d.height, icon_size.height + WidgetDimensions::scaled.vsep_normal);
 				resize->height = d.height;
 				d.height *= 5;
 				d.width += padding.width;
