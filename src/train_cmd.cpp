@@ -1753,7 +1753,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound, bool force_bar)
 
 	/* Check if an adjacent crossing is barred. */
 	for (DiagDirection dir : { dir1, dir2 }) {
-		for (TileIndex t = tile; !forced_state && t < MapSize() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, dir)) {
+		for (TileIndex t = tile; !forced_state && t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, dir)) {
 			forced_state |= CheckLevelCrossing(t);
 		}
 	}
@@ -1762,7 +1762,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound, bool force_bar)
 	 * we need to update those tiles. We start with the tile itself, then look along the road axis. */
 	UpdateLevelCrossingTile(tile, sound, forced_state);
 	for (DiagDirection dir : { dir1, dir2 }) {
-		for (TileIndex t = TileAddByDiagDir(tile, dir); t < MapSize() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, dir)) {
+		for (TileIndex t = TileAddByDiagDir(tile, dir); t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, dir)) {
 			UpdateLevelCrossingTile(t, sound, forced_state);
 		}
 	}
@@ -1778,7 +1778,7 @@ void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis)
 	const DiagDirection dir2 = ReverseDiagDir(dir1);
 	for (DiagDirection dir : { dir1, dir2 }) {
 		const TileIndex t = TileAddByDiagDir(tile, dir);
-		if (t < MapSize() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
+		if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
 			MarkTileDirtyByTile(t);
 		}
 	}

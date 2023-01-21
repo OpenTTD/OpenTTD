@@ -1657,7 +1657,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 CommandCost CmdRemoveFromRailStation(DoCommandFlag flags, TileIndex start, TileIndex end, bool keep_rail)
 {
 	if (end == 0) end = start;
-	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
+	if (start >= Map::Size() || end >= Map::Size()) return CMD_ERROR;
 
 	TileArea ta(start, end);
 	std::vector<Station *> affected_stations;
@@ -1690,7 +1690,7 @@ CommandCost CmdRemoveFromRailStation(DoCommandFlag flags, TileIndex start, TileI
 CommandCost CmdRemoveFromRailWaypoint(DoCommandFlag flags, TileIndex start, TileIndex end, bool keep_rail)
 {
 	if (end == 0) end = start;
-	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
+	if (start >= Map::Size() || end >= Map::Size()) return CMD_ERROR;
 
 	TileArea ta(start, end);
 	std::vector<Waypoint *> affected_stations;
@@ -4071,10 +4071,10 @@ void UpdateStationDockingTiles(Station *st)
 
 	/* Expand the area by a tile on each side while
 	 * making sure that we remain inside the map. */
-	int x2 = std::min<int>(x + area->w + 1, MapSizeX());
+	int x2 = std::min<int>(x + area->w + 1, Map::SizeX());
 	int x1 = std::max<int>(x - 1, 0);
 
-	int y2 = std::min<int>(y + area->h + 1, MapSizeY());
+	int y2 = std::min<int>(y + area->h + 1, Map::SizeY());
 	int y1 = std::max<int>(y - 1, 0);
 
 	TileArea ta(TileXY(x1, y1), TileXY(x2 - 1, y2 - 1));

@@ -56,7 +56,7 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	CargoTypes cargo_mask = 0;
-	if (_thd.drawstyle == HT_RECT && tile < MapSize()) {
+	if (_thd.drawstyle == HT_RECT && tile < Map::Size()) {
 		CargoArray cargoes;
 		if (supplies) {
 			cargoes = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
@@ -99,7 +99,7 @@ static void FindStationsAroundSelection()
 	uint y = TileY(location.tile);
 
 	int max_c = 1;
-	TileArea ta(TileXY(std::max<int>(0, x - max_c), std::max<int>(0, y - max_c)), TileXY(std::min<int>(MapMaxX(), x + location.w + max_c), std::min<int>(MapMaxY(), y + location.h + max_c)));
+	TileArea ta(TileXY(std::max<int>(0, x - max_c), std::max<int>(0, y - max_c)), TileXY(std::min<int>(Map::MaxX(), x + location.w + max_c), std::min<int>(Map::MaxY(), y + location.h + max_c)));
 
 	Station *adjacent = nullptr;
 
@@ -2187,7 +2187,7 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 
 	/* Check the inside, to return, if we sit on another station */
 	for (TileIndex t : ta) {
-		if (t < MapSize() && IsTileType(t, MP_STATION) && T::IsValidID(GetStationIndex(t))) return T::GetByTile(t);
+		if (t < Map::Size() && IsTileType(t, MP_STATION) && T::IsValidID(GetStationIndex(t))) return T::GetByTile(t);
 	}
 
 	/* Look for deleted stations */

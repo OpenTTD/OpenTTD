@@ -316,8 +316,8 @@ void GenerateClearTile()
 	TileIndex tile;
 
 	/* add rough tiles */
-	i = ScaleByMapSize(GB(Random(), 0, 10) + 0x400);
-	gi = ScaleByMapSize(GB(Random(), 0, 7) + 0x80);
+	i = Map::ScaleBySize(GB(Random(), 0, 10) + 0x400);
+	gi = Map::ScaleBySize(GB(Random(), 0, 7) + 0x80);
 
 	SetGeneratingWorldProgress(GWP_ROUGH_ROCKY, gi + i);
 	do {

@@ -61,9 +61,9 @@ static void FillIndustryCatchment(const Industry *i, int radius, BitmapTileArea 
 		int tx = TileX(cur_tile);
 		int ty = TileY(cur_tile);
 		for (int y = -radius; y <= radius; y++) {
-			if (ty + y < 0 || ty + y > (int)MapMaxY()) continue;
+			if (ty + y < 0 || ty + y > (int)Map::MaxY()) continue;
 			for (int x = -radius; x <= radius; x++) {
-				if (tx + x < 0 || tx + x > (int)MapMaxX()) continue;
+				if (tx + x < 0 || tx + x > (int)Map::MaxX()) continue;
 				TileIndex tile = TileXY(tx + x, ty + y);
 				if (!IsValidTile(tile)) continue;
 				if (::IsTileType(tile, MP_INDUSTRY) && ::GetIndustryIndex(tile) == i->index) continue;

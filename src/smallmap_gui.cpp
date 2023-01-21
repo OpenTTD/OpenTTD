@@ -844,7 +844,7 @@ void SmallMapWindow::DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, 
 
 	do {
 		/* Check if the tile (xc,yc) is within the map range */
-		if (xc >= MapMaxX() || yc >= MapMaxY()) continue;
+		if (xc >= Map::MaxX() || yc >= Map::MaxY()) continue;
 
 		/* Check if the dst pointer points to a pixel inside the screen buffer */
 		if (dst < _screen.dst_ptr) continue;
@@ -1629,16 +1629,16 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
 		sx = -hv.x;
 		sub = 0;
 	}
-	if (sx > (int)(MapMaxX() * TILE_SIZE) - hv.x) {
-		sx = MapMaxX() * TILE_SIZE - hv.x;
+	if (sx > (int)(Map::MaxX() * TILE_SIZE) - hv.x) {
+		sx = Map::MaxX() * TILE_SIZE - hv.x;
 		sub = 0;
 	}
 	if (sy < -hv.y) {
 		sy = -hv.y;
 		sub = 0;
 	}
-	if (sy > (int)(MapMaxY() * TILE_SIZE) - hv.y) {
-		sy = MapMaxY() * TILE_SIZE - hv.y;
+	if (sy > (int)(Map::MaxY() * TILE_SIZE) - hv.y) {
+		sy = Map::MaxY() * TILE_SIZE - hv.y;
 		sub = 0;
 	}
 

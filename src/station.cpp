@@ -346,8 +346,8 @@ Rect Station::GetCatchmentRect() const
 	Rect ret = {
 		std::max<int>(this->rect.left   - catchment_radius, 0),
 		std::max<int>(this->rect.top    - catchment_radius, 0),
-		std::min<int>(this->rect.right  + catchment_radius, MapMaxX()),
-		std::min<int>(this->rect.bottom + catchment_radius, MapMaxY())
+		std::min<int>(this->rect.right  + catchment_radius, Map::MaxX()),
+		std::min<int>(this->rect.bottom + catchment_radius, Map::MaxY())
 	};
 
 	return ret;

@@ -979,7 +979,7 @@ static bool CanConnectToRoad(TileIndex tile, RoadType rt, DiagDirection dir)
  */
 CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai)
 {
-	if (start_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= Map::Size()) return CMD_ERROR;
 
 	if (!ValParamRoadType(rt) || !IsValidAxis(axis) || !IsValidDisallowedRoadDirections(drd)) return CMD_ERROR;
 
@@ -1077,7 +1077,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	if (start_tile >= MapSize()) return { CMD_ERROR, 0 };
+	if (start_tile >= Map::Size()) return { CMD_ERROR, 0 };
 	if (!ValParamRoadType(rt) || !IsValidAxis(axis)) return { CMD_ERROR, 0 };
 
 	/* Only drag in X or Y direction dictated by the direction variable */
@@ -1725,7 +1725,7 @@ static void DrawTile_Road(TileInfo *ti)
 				uint adjacent_diagdirs = 0;
 				for (DiagDirection dir : { dir1, dir2 }) {
 					const TileIndex t = TileAddByDiagDir(ti->tile, dir);
-					if (t < MapSize() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
+					if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
 						SetBit(adjacent_diagdirs, dir);
 					}
 				}
@@ -1873,7 +1873,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 {
 	assert(!invalidate || _generating_world);
 
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (IsTileType(t, MP_ROAD) && !IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
 			TownID tid = INVALID_TOWN;
 			if (!invalidate) {
@@ -2391,7 +2391,7 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 	TileIndex area_end = tile;
 
 	if (!ValParamRoadType(to_type)) return CMD_ERROR;
-	if (area_start >= MapSize()) return CMD_ERROR;
+	if (area_start >= Map::Size()) return CMD_ERROR;
 
 	RoadVehicleList affected_rvs;
 	RoadTramType rtt = GetRoadTramType(to_type);

@@ -93,7 +93,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 	/* Mark tile dirty in all cases */
 	MarkTileDirtyByTile(t);
 
-	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1) {
+	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1) {
 		/* tiles at map borders are always WATER_CLASS_SEA */
 		SetWaterClass(t, WATER_CLASS_SEA);
 		return;
@@ -150,7 +150,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 
 static void ConvertTownOwner()
 {
-	for (TileIndex tile = 0; tile != MapSize(); tile++) {
+	for (TileIndex tile = 0; tile != Map::Size(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
 				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m3, 7)) {
@@ -203,8 +203,8 @@ static void UpdateCurrencies()
  */
 static void UpdateVoidTiles()
 {
-	for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, MapMaxY()));
-	for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(MapMaxX(), y));
+	for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, Map::MaxY()));
+	for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(Map::MaxX(), y));
 }
 
 static inline RailType UpdateRailType(RailType rt, RailType min)
@@ -564,7 +564,7 @@ bool AfterLoadGame()
 {
 	SetSignalHandlers();
 
-	TileIndex map_size = MapSize();
+	TileIndex map_size = Map::Size();
 
 	extern TileIndex _cur_tileloop_tile; // From landscape.cpp.
 	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
@@ -838,7 +838,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_72)) {
 		/* Locks in very old savegames had OWNER_WATER as owner */
-		for (TileIndex t = 0; t < MapSize(); t++) {
+		for (TileIndex t = 0; t < Map::Size(); t++) {
 			switch (GetTileType(t)) {
 				default: break;
 
@@ -1833,7 +1833,7 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			/* skip oil rigs at borders! */
 			if ((IsTileType(t, MP_WATER) || IsBuoyTile(t)) &&
-					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1)) {
+					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1)) {
 				/* Some version 86 savegames have wrong water class at map borders (under buoy, or after removing buoy).
 				 * This conversion has to be done before buoys with invalid owner are removed. */
 				SetWaterClass(t, WATER_CLASS_SEA);
@@ -3197,7 +3197,7 @@ bool AfterLoadGame()
 		}
 
 		/* Refresh all level crossings to bar adjacent crossing tiles. */
-		for (TileIndex tile = 0; tile < MapSize(); tile++) {
+		for (TileIndex tile = 0; tile < Map::Size(); tile++) {
 			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false, true);
 		}
 	}

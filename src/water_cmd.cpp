@@ -450,7 +450,7 @@ void MakeRiverAndModifyDesertZoneAround(TileIndex tile) {
  */
 CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal)
 {
-	if (start_tile >= MapSize() || !IsValidWaterClass(wc)) return CMD_ERROR;
+	if (start_tile >= Map::Size() || !IsValidWaterClass(wc)) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
 	if (wc != WATER_CLASS_CANAL && _game_mode != GM_EDITOR) return CMD_ERROR;
@@ -528,8 +528,8 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 
 			Money base_cost = IsCanal(tile) ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER];
 			/* Make sure freeform edges are allowed or it's not an edge tile. */
-			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, MapMaxX() - 1) ||
-					!IsInsideMM(TileY(tile), 1, MapMaxY() - 1))) {
+			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, Map::MaxX() - 1) ||
+					!IsInsideMM(TileY(tile), 1, Map::MaxY() - 1))) {
 				return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
 
@@ -1257,7 +1257,7 @@ void ConvertGroundTilesIntoWaterTiles()
 {
 	int z;
 
-	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile < Map::Size(); ++tile) {
 		Slope slope = GetTileSlope(tile, &z);
 		if (IsTileType(tile, MP_CLEAR) && z == 0) {
 			/* Make both water for tiles at level 0

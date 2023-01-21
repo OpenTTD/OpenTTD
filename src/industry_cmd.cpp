@@ -1044,7 +1044,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	/* check the amount of bad tiles */
 	int count = 0;
 	for (TileIndex cur_tile : ta) {
-		assert(cur_tile < MapSize());
+		assert(cur_tile < Map::Size());
 		count += IsSuitableForFarmField(cur_tile, false);
 	}
 	if (count * 2 < ta.w * ta.h) return;
@@ -1056,7 +1056,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 
 	/* make field */
 	for (TileIndex cur_tile : ta) {
-		assert(cur_tile < MapSize());
+		assert(cur_tile < Map::Size());
 		if (IsSuitableForFarmField(cur_tile, true)) {
 			MakeField(cur_tile, field_type, industry);
 			SetClearCounter(cur_tile, counter);
@@ -1253,8 +1253,8 @@ static bool CheckScaledDistanceFromEdge(TileIndex tile, uint maxdist)
 	uint maxdist_x = maxdist;
 	uint maxdist_y = maxdist;
 
-	if (MapSizeX() > 256) maxdist_x *= MapSizeX() / 256;
-	if (MapSizeY() > 256) maxdist_y *= MapSizeY() / 256;
+	if (Map::SizeX() > 256) maxdist_x *= Map::SizeX() / 256;
+	if (Map::SizeY() > 256) maxdist_y *= Map::SizeY() / 256;
 
 	if (DistanceFromEdgeDir(tile, DIAGDIR_NE) < maxdist_x) return true;
 	if (DistanceFromEdgeDir(tile, DIAGDIR_NW) < maxdist_y) return true;
@@ -1604,7 +1604,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	TileArea ta(tile + TileDiffXY(-_settings_game.construction.industry_platform, -_settings_game.construction.industry_platform),
 			max_x + 2 + 2 * _settings_game.construction.industry_platform, max_y + 2 + 2 * _settings_game.construction.industry_platform);
 
-	if (TileX(ta.tile) + ta.w >= MapMaxX() || TileY(ta.tile) + ta.h >= MapMaxY()) return false;
+	if (TileX(ta.tile) + ta.w >= Map::MaxX() || TileY(ta.tile) + ta.h >= Map::MaxY()) return false;
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
@@ -2190,7 +2190,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 		chance *= 16; // to increase precision
 		/* We want industries appearing at coast to appear less often on bigger maps, as length of coast increases slower than map area.
 		 * For simplicity we scale in both cases, though scaling the probabilities of all industries has no effect. */
-		chance = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(chance) : ScaleByMapSize(chance);
+		chance = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? Map::ScaleBySize1D(chance) : Map::ScaleBySize(chance);
 
 		*force_at_least_one = (chance > 0) && !(ind_spc->behaviour & INDUSTRYBEH_NOBUILT_MAPCREATION) && (_game_mode != GM_EDITOR);
 		return chance;
@@ -2245,7 +2245,7 @@ static uint GetNumberOfIndustries()
 
 	if (difficulty == ID_CUSTOM) return std::min<uint>(IndustryPool::MAX_SIZE, _settings_game.game_creation.custom_industry_number);
 
-	return std::min<uint>(IndustryPool::MAX_SIZE, ScaleByMapSize(numof_industry_table[difficulty]));
+	return std::min<uint>(IndustryPool::MAX_SIZE, Map::ScaleBySize(numof_industry_table[difficulty]));
 }
 
 /**
@@ -2321,9 +2321,9 @@ void IndustryBuildData::MonthlyLoop()
 
 	/* To prevent running out of unused industries for the player to connect,
 	 * add a fraction of new industries each month, but only if the manager can keep up. */
-	uint max_behind = 1 + std::min(99u, ScaleByMapSize(3)); // At most 2 industries for small maps, and 100 at the biggest map (about 6 months industry build attempts).
+	uint max_behind = 1 + std::min(99u, Map::ScaleBySize(3)); // At most 2 industries for small maps, and 100 at the biggest map (about 6 months industry build attempts).
 	if (GetCurrentTotalNumberOfIndustries() + max_behind >= (this->wanted_inds >> 16)) {
-		this->wanted_inds += ScaleByMapSize(NEWINDS_PER_MONTH);
+		this->wanted_inds += Map::ScaleBySize(NEWINDS_PER_MONTH);
 	}
 }
 

@@ -614,7 +614,7 @@ public:
 		for (Industry *industry : Industry::Iterate()) delete industry;
 
 		/* Clear farmland. */
-		for (TileIndex tile = 0; tile < MapSize(); tile++) {
+		for (TileIndex tile = 0; tile < Map::Size(); tile++) {
 			if (IsTileType(tile, MP_CLEAR) && GetRawClearGround(tile) == CLEAR_FIELDS) {
 				MakeClear(tile, CLEAR_GRASS, 3);
 			}

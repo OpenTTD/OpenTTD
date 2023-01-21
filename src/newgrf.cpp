@@ -7076,8 +7076,8 @@ static uint32 GetPatchVariable(uint8 param)
 		 */
 		case 0x13: {
 			byte map_bits = 0;
-			byte log_X = MapLogX() - 6; // subtraction is required to make the minimal size (64) zero based
-			byte log_Y = MapLogY() - 6;
+			byte log_X = Map::LogX() - 6; // subtraction is required to make the minimal size (64) zero based
+			byte log_Y = Map::LogY() - 6;
 			byte max_edge = std::max(log_X, log_Y);
 
 			if (log_X == log_Y) { // we have a squared map, since both edges are identical

@@ -191,12 +191,12 @@ void DisasterVehicle::UpdatePosition(int x, int y, int z)
 
 	DisasterVehicle *u = this->Next();
 	if (u != nullptr) {
-		int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
-		int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
+		int safe_x = Clamp(x, 0, Map::MaxX() * TILE_SIZE);
+		int safe_y = Clamp(y - 1, 0, Map::MaxY() * TILE_SIZE);
 
 		u->x_pos = x;
 		u->y_pos = y - 1 - (std::max(z - GetSlopePixelZ(safe_x, safe_y), 0) >> 3);
-		safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
+		safe_y = Clamp(u->y_pos, 0, Map::MaxY() * TILE_SIZE);
 		u->z_pos = GetSlopePixelZ(safe_x, safe_y);
 		u->direction = this->direction;
 
@@ -250,7 +250,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 			}
 		}
 
-		if (v->y_pos >= (int)((MapSizeY() + 9) * TILE_SIZE - 1)) {
+		if (v->y_pos >= (int)((Map::SizeY() + 9) * TILE_SIZE - 1)) {
 			delete v;
 			return false;
 		}
@@ -400,7 +400,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 
 static void DestructIndustry(Industry *i)
 {
-	for (TileIndex tile = 0; tile != MapSize(); tile++) {
+	for (TileIndex tile = 0; tile != Map::Size(); tile++) {
 		if (i->TileBelongsToIndustry(tile)) {
 			ResetIndustryConstructionStage(tile);
 			MarkTileDirtyByTile(tile);
@@ -429,7 +429,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
-	if ((leave_at_top && gp.x < (-10 * (int)TILE_SIZE)) || (!leave_at_top && gp.x > (int)(MapSizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1)) {
+	if ((leave_at_top && gp.x < (-10 * (int)TILE_SIZE)) || (!leave_at_top && gp.x > (int)(Map::SizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1)) {
 		delete v;
 		return false;
 	}
@@ -465,7 +465,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 		int x = v->x_pos + ((leave_at_top ? -15 : 15) * TILE_SIZE);
 		int y = v->y_pos;
 
-		if ((uint)x > MapMaxX() * TILE_SIZE - 1) return true;
+		if ((uint)x > Map::MaxX() * TILE_SIZE - 1) return true;
 
 		TileIndex tile = TileVirtXY(x, y);
 		if (!IsTileType(tile, MP_INDUSTRY)) return true;
@@ -623,7 +623,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
-	if (gp.x > (int)(MapSizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1) {
+	if (gp.x > (int)(Map::SizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1) {
 		delete v;
 		return false;
 	}
@@ -751,7 +751,7 @@ static void Disaster_Small_Ufo_Init()
 
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 	DisasterVehicle *v = new DisasterVehicle(x, 0, DIR_SE, ST_SMALL_UFO);
-	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
+	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
 	/* Allocate shadow */
 	DisasterVehicle *u = new DisasterVehicle(x, 0, DIR_SE, ST_SMALL_UFO_SHADOW);
@@ -776,7 +776,7 @@ static void Disaster_Airplane_Init()
 	if (found == nullptr) return;
 
 	/* Start from the bottom (south side) of the map */
-	int x = (MapSizeX() + 9) * TILE_SIZE - 1;
+	int x = (Map::SizeX() + 9) * TILE_SIZE - 1;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
 	DisasterVehicle *v = new DisasterVehicle(x, y, DIR_NE, ST_AIRPLANE);
@@ -820,10 +820,10 @@ static void Disaster_Big_Ufo_Init()
 	if (!Vehicle::CanAllocateItem(2)) return;
 
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
-	int y = MapMaxX() * TILE_SIZE - 1;
+	int y = Map::MaxX() * TILE_SIZE - 1;
 
 	DisasterVehicle *v = new DisasterVehicle(x, y, DIR_NW, ST_BIG_UFO);
-	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
+	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
 	/* Allocate shadow */
 	DisasterVehicle *u = new DisasterVehicle(x, y, DIR_NW, ST_BIG_UFO_SHADOW);
@@ -841,7 +841,7 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (HasBit(r, 31)) {
-		y = MapMaxY() * TILE_SIZE - TILE_SIZE / 2 - 1;
+		y = Map::MaxY() * TILE_SIZE - TILE_SIZE / 2 - 1;
 		dir = DIR_NW;
 	} else {
 		y = TILE_SIZE / 2;

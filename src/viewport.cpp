@@ -1224,8 +1224,8 @@ static void ViewportAddLandscape()
 			tile_info.x = tilecoord.x * TILE_SIZE; // FIXME tile_info should use signed integers
 			tile_info.y = tilecoord.y * TILE_SIZE;
 
-			if (IsInsideBS(tilecoord.x, 0, MapSizeX()) && IsInsideBS(tilecoord.y, 0, MapSizeY())) {
-				/* This includes the south border at MapMaxX / MapMaxY. When terraforming we still draw tile selections there. */
+			if (IsInsideBS(tilecoord.x, 0, Map::SizeX()) && IsInsideBS(tilecoord.y, 0, Map::SizeY())) {
+				/* This includes the south border at Map::MaxX / Map::MaxY. When terraforming we still draw tile selections there. */
 				tile_info.tile = TileXY(tilecoord.x, tilecoord.y);
 				tile_type = GetTileType(tile_info.tile);
 			} else {
@@ -1892,7 +1892,7 @@ void UpdateViewportPosition(Window *w)
 		bool update_overlay = false;
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
-				int max_scroll = ScaleByMapSize1D(512 * ZOOM_LVL_BASE);
+				int max_scroll = Map::ScaleBySize1D(512 * ZOOM_LVL_BASE);
 				/* Not at our desired position yet... */
 				w->viewport->scrollpos_x += Clamp(DivAwayFromZero(delta_x, 4), -max_scroll, max_scroll);
 				w->viewport->scrollpos_y += Clamp(DivAwayFromZero(delta_y, 4), -max_scroll, max_scroll);
@@ -2034,11 +2034,11 @@ static void SetSelectionTilesDirty()
 		assert(x_size >= 0);
 		assert(y_size >= 0);
 
-		int x_end = Clamp(x_start + x_size, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
-		int y_end = Clamp(y_start + y_size, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
+		int x_end = Clamp(x_start + x_size, 0, Map::SizeX() * TILE_SIZE - TILE_SIZE);
+		int y_end = Clamp(y_start + y_size, 0, Map::SizeY() * TILE_SIZE - TILE_SIZE);
 
-		x_start = Clamp(x_start, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
-		y_start = Clamp(y_start, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
+		x_start = Clamp(x_start, 0, Map::SizeX() * TILE_SIZE - TILE_SIZE);
+		y_start = Clamp(y_start, 0, Map::SizeY() * TILE_SIZE - TILE_SIZE);
 
 		/* make sure everything is multiple of TILE_SIZE */
 		assert((x_end | y_end | x_start | y_start) % TILE_SIZE == 0);
@@ -2114,7 +2114,7 @@ static void SetSelectionTilesDirty()
 				uint x = (_thd.pos.x + (a + b) / 2) / TILE_SIZE;
 				uint y = (_thd.pos.y + (a - b) / 2) / TILE_SIZE;
 
-				if (x < MapMaxX() && y < MapMaxY()) {
+				if (x < Map::MaxX() && y < Map::MaxY()) {
 					MarkTileDirtyByTile(TileXY(x, y));
 				}
 			}
@@ -2411,8 +2411,8 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
 	if (z == -1) {
-		if ( x >= 0 && x <= (int)MapSizeX() * (int)TILE_SIZE - 1
-				&& y >= 0 && y <= (int)MapSizeY() * (int)TILE_SIZE - 1) {
+		if ( x >= 0 && x <= (int)Map::SizeX() * (int)TILE_SIZE - 1
+				&& y >= 0 && y <= (int)Map::SizeY() * (int)TILE_SIZE - 1) {
 			z = GetSlopePixelZ(x, y);
 		} else {
 			z = TileHeightOutsideMap(x / (int)TILE_SIZE, y / (int)TILE_SIZE);
@@ -2981,9 +2981,9 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 					/* Make sure we do not overflow the map! */
 					CheckUnderflow(x, y, 1);
 					CheckUnderflow(y, x, 1);
-					CheckOverflow(x, y, (MapMaxX() - 1) * TILE_SIZE, 1);
-					CheckOverflow(y, x, (MapMaxY() - 1) * TILE_SIZE, 1);
-					assert(x >= 0 && y >= 0 && x <= (int)(MapMaxX() * TILE_SIZE) && y <= (int)(MapMaxY() * TILE_SIZE));
+					CheckOverflow(x, y, (Map::MaxX() - 1) * TILE_SIZE, 1);
+					CheckOverflow(y, x, (Map::MaxY() - 1) * TILE_SIZE, 1);
+					assert(x >= 0 && y >= 0 && x <= (int)(Map::MaxX() * TILE_SIZE) && y <= (int)(Map::MaxY() * TILE_SIZE));
 				}
 				break;
 
@@ -3016,9 +3016,9 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 					/* Make sure we do not overflow the map! */
 					CheckUnderflow(x, y, -1);
 					CheckUnderflow(y, x, -1);
-					CheckOverflow(x, y, (MapMaxX() - 1) * TILE_SIZE, -1);
-					CheckOverflow(y, x, (MapMaxY() - 1) * TILE_SIZE, -1);
-					assert(x >= 0 && y >= 0 && x <= (int)(MapMaxX() * TILE_SIZE) && y <= (int)(MapMaxY() * TILE_SIZE));
+					CheckOverflow(x, y, (Map::MaxX() - 1) * TILE_SIZE, -1);
+					CheckOverflow(y, x, (Map::MaxY() - 1) * TILE_SIZE, -1);
+					assert(x >= 0 && y >= 0 && x <= (int)(Map::MaxX() * TILE_SIZE) && y <= (int)(Map::MaxY() * TILE_SIZE));
 				}
 				break;
 
@@ -3440,7 +3440,7 @@ Point GetViewportStationMiddle(const Viewport *vp, const Station *st)
 {
 	int x = TileX(st->xy) * TILE_SIZE;
 	int y = TileY(st->xy) * TILE_SIZE;
-	int z = GetSlopePixelZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
+	int z = GetSlopePixelZ(Clamp(x, 0, Map::SizeX() * TILE_SIZE - 1), Clamp(y, 0, Map::SizeY() * TILE_SIZE - 1));
 
 	Point p = RemapCoords(x, y, z);
 	p.x = UnScaleByZoom(p.x - vp->virtual_left, vp->zoom) + vp->left;
