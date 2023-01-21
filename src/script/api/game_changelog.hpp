@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li GSTown::ROAD_LAYOUT_RANDOM
+ * \li GSVehicle::IsPrimaryVehicle
  *
  * \b 13.0
  *

@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li AITown::ROAD_LAYOUT_RANDOM
+ * \li AIVehicle::IsPrimaryVehicle
  *
  * \b 13.0
  *

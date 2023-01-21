@@ -97,8 +97,19 @@ public:
 	 * Checks whether the given vehicle is valid and owned by you.
 	 * @param vehicle_id The vehicle to check.
 	 * @return True if and only if the vehicle is valid.
+	 * @note Also returns true when the leading part of the vehicle is a wagon.
+	 *       Use IsPrimaryVehicle() to check for a valid vehicle with a leading engine.
 	 */
 	static bool IsValidVehicle(VehicleID vehicle_id);
+
+	/**
+	 * Checks whether this is a primary vehicle.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return True if the vehicle is a primary vehicle.
+	 * @note Returns false when the leading part of the vehicle is a wagon.
+	 */
+	static bool IsPrimaryVehicle(VehicleID vehicle_id);
 
 	/**
 	 * Get the number of wagons a vehicle has.
@@ -112,7 +123,7 @@ public:
 	 * Set the name of a vehicle.
 	 * @param vehicle_id The vehicle to set the name for.
 	 * @param name The name for the vehicle (can be either a raw string, or a ScriptText object).
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @pre name != null && len(name) != 0.
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
@@ -123,7 +134,7 @@ public:
 	/**
 	 * Get the name of a vehicle.
 	 * @param vehicle_id The vehicle to get the name of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The name the vehicle has.
 	 */
 	static char *GetName(VehicleID vehicle_id);
@@ -166,7 +177,7 @@ public:
 	/**
 	 * Get the unitnumber of a vehicle.
 	 * @param vehicle_id The vehicle to get the unitnumber of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The unitnumber the vehicle has.
 	 */
 	static int32 GetUnitNumber(VehicleID vehicle_id);
@@ -194,7 +205,7 @@ public:
 	/**
 	 * Get the maximum age of a vehicle.
 	 * @param vehicle_id The vehicle to get the age of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The maximum age the vehicle has.
 	 * @note The age is in days.
 	 */
@@ -203,7 +214,7 @@ public:
 	/**
 	 * Get the age a vehicle has left (maximum - current).
 	 * @param vehicle_id The vehicle to get the age of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The age the vehicle has left.
 	 * @note The age is in days.
 	 */
@@ -212,7 +223,7 @@ public:
 	/**
 	 * Get the current speed of a vehicle.
 	 * @param vehicle_id The vehicle to get the speed of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The current speed of the vehicle.
 	 * @note The speed is in OpenTTD's internal speed unit.
 	 *       This is mph / 1.6, which is roughly km/h.
@@ -231,7 +242,7 @@ public:
 	/**
 	 * Get the running cost of this vehicle.
 	 * @param vehicle_id The vehicle to get the running cost of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The running cost of the vehicle per year.
 	 * @note Cost is per year; divide by 365 to get per day.
 	 * @note This is not equal to ScriptEngine::GetRunningCost for Trains, because
@@ -242,7 +253,7 @@ public:
 	/**
 	 * Get the current profit of a vehicle.
 	 * @param vehicle_id The vehicle to get the profit of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The current profit the vehicle has.
 	 */
 	static Money GetProfitThisYear(VehicleID vehicle_id);
@@ -250,7 +261,7 @@ public:
 	/**
 	 * Get the profit of last year of a vehicle.
 	 * @param vehicle_id The vehicle to get the profit of.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The profit the vehicle had last year.
 	 */
 	static Money GetProfitLastYear(VehicleID vehicle_id);
@@ -363,7 +374,7 @@ public:
 	 * @param vehicle_id The vehicle to use as example for the new vehicle.
 	 * @param share_orders Should the orders be copied or shared?
 	 * @pre The tile 'depot' has a depot on it, allowing 'vehicle_id'-type vehicles.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
 	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
@@ -481,7 +492,7 @@ public:
 	 * Sends the given vehicle to a depot. If the vehicle has already been
 	 * sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
 	 * @return True if the current order was changed.
@@ -492,7 +503,7 @@ public:
 	 * Sends the given vehicle to a depot for servicing. If the vehicle has
 	 * already been sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot for servicing.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
 	 * @return True if the current order was changed.
@@ -502,7 +513,7 @@ public:
 	/**
 	 * Starts or stops the given vehicle depending on the current state.
 	 * @param vehicle_id The vehicle to start/stop.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP
 	 * @exception (For aircraft only): ScriptVehicle::ERR_VEHICLE_IN_FLIGHT
@@ -514,7 +525,7 @@ public:
 	/**
 	 * Turn the given vehicle so it'll drive the other way.
 	 * @param vehicle_id The vehicle to turn.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @pre GetVehicleType(vehicle_id) == VT_ROAD || GetVehicleType(vehicle_id) == VT_RAIL.
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if and only if the vehicle has started to turn.
@@ -555,6 +566,7 @@ public:
 	/**
 	 * Get the group of a given vehicle.
 	 * @param vehicle_id The vehicle to get the group from.
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The group of the given vehicle.
 	 */
 	static GroupID GetGroupID(VehicleID vehicle_id);
@@ -571,7 +583,7 @@ public:
 	/**
 	 * Check if the vehicle has shared orders.
 	 * @param vehicle_id The vehicle to check.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return True if the vehicle has shared orders.
 	 */
 	static bool HasSharedOrders(VehicleID vehicle_id);
@@ -579,7 +591,7 @@ public:
 	/**
 	 * Get the current reliability of a vehicle.
 	 * @param vehicle_id The vehicle to check.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The current reliability (0-100%).
 	 */
 	static int GetReliability(VehicleID vehicle_id);
@@ -590,7 +602,7 @@ public:
 	 * map distances, you may use the result of this function to compare it
 	 * with the result of ScriptOrder::GetOrderDistance.
 	 * @param vehicle_id The vehicle to get the distance for.
-	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The maximum distance between two orders for this vehicle
 	 *         or 0 if the distance is unlimited.
 	 * @note   The unit of the order distances is unspecified and should
