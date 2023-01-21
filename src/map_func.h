@@ -146,15 +146,6 @@ struct Map {
 };
 
 static inline void AllocateMap(uint size_x, uint size_y) { Map::Allocate(size_x, size_y); }
-static inline uint MapLogX() { return Map::LogX(); }
-static inline uint MapLogY() { return Map::LogY(); }
-static inline uint MapSizeX() { return Map::SizeX(); }
-static inline uint MapSizeY() { return Map::SizeY(); }
-static inline uint MapSize() { return Map::Size(); }
-static inline uint MapMaxX() { return Map::MaxX(); }
-static inline uint MapMaxY() { return Map::MaxY(); }
-static inline uint ScaleByMapSize(uint n) { return Map::ScaleBySize(n); }
-static inline uint ScaleByMapSize1D(uint n) { return Map::ScaleBySize1D(n); }
 
 /**
  * An offset value between two tiles.
@@ -177,7 +168,7 @@ typedef int32 TileIndexDiff;
  */
 static inline TileIndex TileXY(uint x, uint y)
 {
-	return (y << MapLogX()) + x;
+	return (y << Map::LogX()) + x;
 }
 
 /**
@@ -197,7 +188,7 @@ static inline TileIndexDiff TileDiffXY(int x, int y)
 	 * 0 << shift isn't optimized to 0 properly.
 	 * Typically x and y are constants, and then this doesn't result
 	 * in any actual multiplication in the assembly code.. */
-	return (y * MapSizeX()) + x;
+	return (y * Map::SizeX()) + x;
 }
 
 /**
@@ -208,7 +199,7 @@ static inline TileIndexDiff TileDiffXY(int x, int y)
  */
 static inline TileIndex TileVirtXY(uint x, uint y)
 {
-	return (y >> 4 << MapLogX()) + (x >> 4);
+	return (y >> 4 << Map::LogX()) + (x >> 4);
 }
 
 
@@ -219,7 +210,7 @@ static inline TileIndex TileVirtXY(uint x, uint y)
  */
 static inline uint TileX(TileIndex tile)
 {
-	return tile.value & MapMaxX();
+	return tile.value & Map::MaxX();
 }
 
 /**
@@ -229,7 +220,7 @@ static inline uint TileX(TileIndex tile)
  */
 static inline uint TileY(TileIndex tile)
 {
-	return tile.value >> MapLogX();
+	return tile.value >> Map::LogX();
 }
 
 /**
@@ -244,7 +235,7 @@ static inline uint TileY(TileIndex tile)
  */
 static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 {
-	return (tidc.y << MapLogX()) + tidc.x;
+	return (tidc.y << Map::LogX()) + tidc.x;
 }
 
 
@@ -317,7 +308,7 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 	int x = TileX(tile) + diff.x;
 	int y = TileY(tile) + diff.y;
 	/* Negative value will become big positive value after cast */
-	if ((uint)x >= MapSizeX() || (uint)y >= MapSizeY()) return INVALID_TILE;
+	if ((uint)x >= Map::SizeX() || (uint)y >= Map::SizeY()) return INVALID_TILE;
 	return TileXY(x, y);
 }
 

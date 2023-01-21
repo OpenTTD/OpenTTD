@@ -52,7 +52,7 @@ void AfterLoadLabelMaps()
 			railtype_conversion_map.push_back(r);
 		}
 
-		for (TileIndex t = 0; t < MapSize(); t++) {
+		for (TileIndex t = 0; t < Map::Size(); t++) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);

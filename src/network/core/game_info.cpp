@@ -126,8 +126,8 @@ void FillStaticNetworkServerGameInfo()
 	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
-	_network_game_info.map_width      = MapSizeX();
-	_network_game_info.map_height     = MapSizeY();
+	_network_game_info.map_width      = Map::SizeX();
+	_network_game_info.map_height     = Map::SizeY();
 	_network_game_info.landscape      = _settings_game.game_creation.landscape;
 	_network_game_info.dedicated      = _network_dedicated;
 	_network_game_info.grfconfig      = _grfconfig;

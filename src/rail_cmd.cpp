@@ -883,7 +883,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
 	if ((!remove && !ValParamRailtype(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
-	if (end_tile >= MapSize() || tile >= MapSize()) return CMD_ERROR;
+	if (end_tile >= Map::Size() || tile >= Map::Size()) return CMD_ERROR;
 
 	Trackdir trackdir = TrackToTrackdir(track);
 
@@ -1244,7 +1244,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
-	if (end_tile >= MapSize() || !ValParamTrackOrientation(track)) return CMD_ERROR;
+	if (end_tile >= Map::Size() || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 	if (!remove && (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE)) return CMD_ERROR;
 
@@ -1540,7 +1540,7 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 	TileIndex area_end = tile;
 
 	if (!ValParamRailtype(totype)) return CMD_ERROR;
-	if (area_start >= MapSize()) return CMD_ERROR;
+	if (area_start >= Map::Size()) return CMD_ERROR;
 
 	TrainList affected_trains;
 

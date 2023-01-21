@@ -386,7 +386,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
  */
 CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8 view, bool diagonal)
 {
-	if (start_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= Map::Size()) return CMD_ERROR;
 
 	if (type >= NUM_OBJECTS) return CMD_ERROR;
 	const ObjectSpec *spec = ObjectSpec::Get(type);
@@ -735,8 +735,8 @@ static bool HasTransmitter(TileIndex tile, void *user)
  */
 static bool TryBuildLightHouse()
 {
-	uint maxx = MapMaxX();
-	uint maxy = MapMaxY();
+	uint maxx = Map::MaxX();
+	uint maxy = Map::MaxY();
 	uint r = Random();
 
 	/* Scatter the lighthouses more evenly around the perimeter */
@@ -762,7 +762,7 @@ static bool TryBuildLightHouse()
 		int h;
 		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
 			BuildObject(OBJECT_LIGHTHOUSE, tile);
-			assert(tile < MapSize());
+			assert(tile < Map::Size());
 			return true;
 		}
 		tile += TileOffsByDiagDir(dir);
@@ -797,13 +797,13 @@ void GenerateObjects()
 	/* Determine number of water tiles at map border needed for freeform_edges */
 	uint num_water_tiles = 0;
 	if (_settings_game.construction.freeform_edges) {
-		for (uint x = 0; x < MapMaxX(); x++) {
+		for (uint x = 0; x < Map::MaxX(); x++) {
 			if (IsTileType(TileXY(x, 1), MP_WATER)) num_water_tiles++;
-			if (IsTileType(TileXY(x, MapMaxY() - 1), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(x, Map::MaxY() - 1), MP_WATER)) num_water_tiles++;
 		}
-		for (uint y = 1; y < MapMaxY() - 1; y++) {
+		for (uint y = 1; y < Map::MaxY() - 1; y++) {
 			if (IsTileType(TileXY(1, y), MP_WATER)) num_water_tiles++;
-			if (IsTileType(TileXY(MapMaxX() - 1, y), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(Map::MaxX() - 1, y), MP_WATER)) num_water_tiles++;
 		}
 	}
 
@@ -821,15 +821,15 @@ void GenerateObjects()
 			/* Scale the amount of lighthouses with the amount of land at the borders.
 			 * The -6 is because the top borders are MP_VOID (-2) and all corners
 			 * are counted twice (-4). */
-			amount = ScaleByMapSize1D(amount * num_water_tiles) / (2 * MapMaxY() + 2 * MapMaxX() - 6);
+			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
 		} else if (spec->flags & OBJECT_FLAG_SCALE_BY_WATER) {
-			amount = ScaleByMapSize1D(amount);
+			amount = Map::ScaleBySize1D(amount);
 		} else {
-			amount = ScaleByMapSize(amount);
+			amount = Map::ScaleBySize(amount);
 		}
 
 		/* Now try to place the requested amount of this object */
-		for (uint j = ScaleByMapSize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
+		for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 			switch (i) {
 				case OBJECT_TRANSMITTER:
 					if (TryBuildTransmitter()) amount--;

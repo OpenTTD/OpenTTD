@@ -250,7 +250,7 @@ void PlaceTreesRandomly()
 {
 	int i, j, ht;
 
-	i = ScaleByMapSize(DEFAULT_TREE_STEPS);
+	i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 	do {
 		uint32 r = Random();
@@ -278,7 +278,7 @@ void PlaceTreesRandomly()
 
 	/* place extra trees at rainforest area */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		i = ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
+		i = Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
 		if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 
 		do {
@@ -365,10 +365,10 @@ void GenerateTrees()
 		default: NOT_REACHED();
 	}
 
-	total = ScaleByMapSize(DEFAULT_TREE_STEPS);
-	if (_settings_game.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
+	total = Map::ScaleBySize(DEFAULT_TREE_STEPS);
+	if (_settings_game.game_creation.landscape == LT_TROPIC) total += Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
 	total *= i;
-	uint num_groups = (_settings_game.game_creation.landscape != LT_TOYLAND) ? ScaleByMapSize(GB(Random(), 0, 5) + 25) : 0;
+	uint num_groups = (_settings_game.game_creation.landscape != LT_TOYLAND) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
 	total += num_groups * DEFAULT_TREE_STEPS;
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
@@ -393,7 +393,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
 
-	if (start_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
 	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
 
@@ -827,7 +827,7 @@ bool DecrementTreeCounter()
 
 	/* byte underflow */
 	byte old_trees_tick_ctr = _trees_tick_ctr;
-	_trees_tick_ctr -= ScaleByMapSize(1);
+	_trees_tick_ctr -= Map::ScaleBySize(1);
 	return old_trees_tick_ctr <= _trees_tick_ctr;
 }
 
@@ -843,12 +843,12 @@ void OnTick_Trees()
 	/* Skip some tree ticks for map sizes below 256 * 256. 64 * 64 is 16 times smaller, so
 	 * this is the maximum number of ticks that are skipped. Number of ticks to skip is
 	 * inversely proportional to map size, so that is handled to create a mask. */
-	int skip = ScaleByMapSize(16);
+	int skip = Map::ScaleBySize(16);
 	if (skip < 16 && (_tick_counter & (16 / skip - 1)) != 0) return;
 
 	/* place a tree at a random rainforest spot */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		for (uint c = ScaleByMapSize(1); c > 0; c--) {
+		for (uint c = Map::ScaleBySize(1); c > 0; c--) {
 			if ((r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 				CanPlantTreesOnTile(tile, false) &&
 				(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {

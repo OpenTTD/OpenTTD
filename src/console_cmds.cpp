@@ -344,7 +344,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 		case 1: {
 			uint32 result;
 			if (GetArgumentInteger(&result, argv[arg_index])) {
-				if (result >= MapSize()) {
+				if (result >= Map::Size()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
@@ -357,7 +357,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 		case 2: {
 			uint32 x, y;
 			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
-				if (x >= MapSizeX() || y >= MapSizeY()) {
+				if (x >= Map::SizeX() || y >= Map::SizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
@@ -1143,8 +1143,8 @@ DEF_CONSOLE_CMD(ConRestart)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = MapLogX();
-	_settings_game.game_creation.map_y = MapLogY();
+	_settings_game.game_creation.map_x = Map::LogX();
+	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RESTARTGAME;
 	return true;
 }
@@ -1160,8 +1160,8 @@ DEF_CONSOLE_CMD(ConReload)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = MapLogX();
-	_settings_game.game_creation.map_y = MapLogY();
+	_settings_game.game_creation.map_x = Map::LogX();
+	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RELOADGAME;
 	return true;
 }

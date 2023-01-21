@@ -113,8 +113,8 @@ Point InverseRemapCoords2(int x, int y, bool clamp_to_map, bool *clamped)
 	Point pt = InverseRemapCoords(x, y);
 
 	const uint min_coord = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
-	const uint max_x = MapMaxX() * TILE_SIZE - 1;
-	const uint max_y = MapMaxY() * TILE_SIZE - 1;
+	const uint max_x = Map::MaxX() * TILE_SIZE - 1;
+	const uint max_y = Map::MaxY() * TILE_SIZE - 1;
 
 	if (clamp_to_map) {
 		/* Bring the coordinates near to a valid range. At the top we allow a number
@@ -360,7 +360,7 @@ int GetSlopePixelZ(int x, int y)
  */
 int GetSlopePixelZOutsideMap(int x, int y)
 {
-	if (IsInsideBS(x, 0, MapSizeX() * TILE_SIZE) && IsInsideBS(y, 0, MapSizeY() * TILE_SIZE)) {
+	if (IsInsideBS(x, 0, Map::SizeX() * TILE_SIZE) && IsInsideBS(y, 0, Map::SizeY() * TILE_SIZE)) {
 		return GetSlopePixelZ(x, y);
 	} else {
 		return _tile_type_procs[MP_VOID]->get_slope_z_proc(INVALID_TILE, x, y);
@@ -748,7 +748,7 @@ CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile)
  */
 std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal)
 {
-	if (start_tile >= MapSize()) return { CMD_ERROR, 0 };
+	if (start_tile >= Map::Size()) return { CMD_ERROR, 0 };
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -816,10 +816,10 @@ void RunTileLoop()
 		0xD8F, 0x1296, 0x2496, 0x4357, 0x8679, 0x1030E, 0x206CD, 0x403FE, 0x807B8, 0x1004B2, 0x2006A8, 0x4004B2, 0x800B87
 	};
 	static_assert(lengthof(feedbacks) == 2 * MAX_MAP_SIZE_BITS - 2 * MIN_MAP_SIZE_BITS + 1);
-	const uint32 feedback = feedbacks[MapLogX() + MapLogY() - 2 * MIN_MAP_SIZE_BITS];
+	const uint32 feedback = feedbacks[Map::LogX() + Map::LogY() - 2 * MIN_MAP_SIZE_BITS];
 
 	/* We update every tile every 256 ticks, so divide the map size by 2^8 = 256 */
-	uint count = 1 << (MapLogX() + MapLogY() - 8);
+	uint count = 1 << (Map::LogX() + Map::LogY() - 8);
 
 	TileIndex tile = _cur_tileloop_tile;
 	/* The LFSR cannot have a zeroed state. */
@@ -843,8 +843,8 @@ void RunTileLoop()
 
 void InitializeLandscape()
 {
-	for (uint y = _settings_game.construction.freeform_edges ? 1 : 0; y < MapMaxY(); y++) {
-		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < MapMaxX(); x++) {
+	for (uint y = _settings_game.construction.freeform_edges ? 1 : 0; y < Map::MaxY(); y++) {
+		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < Map::MaxX(); x++) {
 			MakeClear(TileXY(x, y), CLEAR_GRASS, 3);
 			SetTileHeight(TileXY(x, y), 0);
 			SetTropicZone(TileXY(x, y), TROPICZONE_NORMAL);
@@ -852,8 +852,8 @@ void InitializeLandscape()
 		}
 	}
 
-	for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, MapMaxY()));
-	for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(MapMaxX(), y));
+	for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, Map::MaxY()));
+	for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(Map::MaxX(), y));
 }
 
 static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
@@ -866,8 +866,8 @@ static void GenerateTerrain(int type, uint flag)
 	const Sprite *templ = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845, ST_MAPGEN);
 	if (templ == nullptr) usererror("Map generator sprites could not be loaded");
 
-	uint x = r & MapMaxX();
-	uint y = (r >> MapLogX()) & MapMaxY();
+	uint x = r & Map::MaxX();
+	uint y = (r >> Map::LogX()) & Map::MaxY();
 
 	uint edge_distance = 1 + (_settings_game.construction.freeform_edges ? 1 : 0);
 	if (x <= edge_distance || y <= edge_distance) return;
@@ -881,14 +881,14 @@ static void GenerateTerrain(int type, uint flag)
 	const byte *p = templ->data;
 
 	if ((flag & 4) != 0) {
-		uint xw = x * MapSizeY();
-		uint yw = y * MapSizeX();
-		uint bias = (MapSizeX() + MapSizeY()) * 16;
+		uint xw = x * Map::SizeY();
+		uint yw = y * Map::SizeX();
+		uint bias = (Map::SizeX() + Map::SizeY()) * 16;
 
 		switch (flag & 3) {
 			default: NOT_REACHED();
 			case 0:
-				if (xw + yw > MapSize() - bias) return;
+				if (xw + yw > Map::Size() - bias) return;
 				break;
 
 			case 1:
@@ -896,7 +896,7 @@ static void GenerateTerrain(int type, uint flag)
 				break;
 
 			case 2:
-				if (xw + yw < MapSize() + bias) return;
+				if (xw + yw < Map::Size() + bias) return;
 				break;
 
 			case 3:
@@ -905,8 +905,8 @@ static void GenerateTerrain(int type, uint flag)
 		}
 	}
 
-	if (x + w >= MapMaxX()) return;
-	if (y + h >= MapMaxY()) return;
+	if (x + w >= Map::MaxX()) return;
+	if (y + h >= Map::MaxY()) return;
 
 	TileIndex tile = TileXY(x, y);
 
@@ -973,10 +973,10 @@ static void GenerateTerrain(int type, uint flag)
 
 static void CreateDesertOrRainForest(uint desert_tropic_line)
 {
-	TileIndex update_freq = MapSize() / 4;
+	TileIndex update_freq = Map::Size() / 4;
 	const TileIndexDiffC *data;
 
-	for (TileIndex tile = 0; tile != MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile != Map::Size(); ++tile) {
 		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		if (!IsValidTile(tile)) continue;
@@ -997,7 +997,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 		RunTileLoop();
 	}
 
-	for (TileIndex tile = 0; tile != MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile != Map::Size(); ++tile) {
 		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		if (!IsValidTile(tile)) continue;
@@ -1454,7 +1454,7 @@ static void CreateRivers()
 	int amount = _settings_game.game_creation.amount_of_rivers;
 	if (amount == 0) return;
 
-	uint wells = ScaleByMapSize(4 << _settings_game.game_creation.amount_of_rivers);
+	uint wells = Map::ScaleBySize(4 << _settings_game.game_creation.amount_of_rivers);
 	const uint num_short_rivers = wells - std::max(1u, wells / 10);
 	SetGeneratingWorldProgress(GWP_RIVER, wells + 256 / 64); // Include the tile loop calls below.
 
@@ -1520,7 +1520,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 	std::array<int, MAX_TILE_HEIGHT + 1> edge_histogram = {};
 
 	/* Build a histogram of the map height. */
-	for (TileIndex tile = 0; tile < MapSize(); tile++) {
+	for (TileIndex tile = 0; tile < Map::Size(); tile++) {
 		uint h = TileHeight(tile);
 		histogram[h]++;
 
@@ -1536,7 +1536,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 	}
 
 	/* The amount of land we have is the map size minus the first (sea) layer. */
-	uint land_tiles = MapSize() - histogram[0];
+	uint land_tiles = Map::Size() - histogram[0];
 	int best_score = land_tiles;
 
 	/* Our goal is the coverage amount of the land-mass. */
@@ -1619,19 +1619,19 @@ void GenerateLandscape(byte mode)
 	} else {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_ORIGINAL);
 		if (_settings_game.construction.freeform_edges) {
-			for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
-			for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+			for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
+			for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
 		}
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC: {
 				uint32 r = Random();
 
-				for (uint i = ScaleByMapSize(GB(r, 0, 7) + 950); i != 0; --i) {
+				for (uint i = Map::ScaleBySize(GB(r, 0, 7) + 950); i != 0; --i) {
 					GenerateTerrain(2, 0);
 				}
 
 				uint flag = GB(r, 7, 2) | 4;
-				for (uint i = ScaleByMapSize(GB(r, 9, 7) + 450); i != 0; --i) {
+				for (uint i = Map::ScaleBySize(GB(r, 9, 7) + 450); i != 0; --i) {
 					GenerateTerrain(4, flag);
 				}
 				break;
@@ -1640,18 +1640,18 @@ void GenerateLandscape(byte mode)
 			case LT_TROPIC: {
 				uint32 r = Random();
 
-				for (uint i = ScaleByMapSize(GB(r, 0, 7) + 170); i != 0; --i) {
+				for (uint i = Map::ScaleBySize(GB(r, 0, 7) + 170); i != 0; --i) {
 					GenerateTerrain(0, 0);
 				}
 
 				uint flag = GB(r, 7, 2) | 4;
-				for (uint i = ScaleByMapSize(GB(r, 9, 8) + 1700); i != 0; --i) {
+				for (uint i = Map::ScaleBySize(GB(r, 9, 8) + 1700); i != 0; --i) {
 					GenerateTerrain(0, flag);
 				}
 
 				flag ^= 2;
 
-				for (uint i = ScaleByMapSize(GB(r, 17, 7) + 410); i != 0; --i) {
+				for (uint i = Map::ScaleBySize(GB(r, 17, 7) + 410); i != 0; --i) {
 					GenerateTerrain(3, flag);
 				}
 				break;
@@ -1661,7 +1661,7 @@ void GenerateLandscape(byte mode)
 				uint32 r = Random();
 
 				assert(_settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY);
-				uint i = ScaleByMapSize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
+				uint i = Map::ScaleBySize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					/* Make sure we do not overflow. */
 					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, 0, 3), 0);

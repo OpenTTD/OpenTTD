@@ -152,7 +152,7 @@ public:
 		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, std::tuple<Targs...>>>) {
 			/* Do not even think about executing out-of-bounds tile-commands. */
 			TileIndex tile = std::get<0>(std::make_tuple(args...));
-			if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return MakeResult(CMD_ERROR);
+			if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return MakeResult(CMD_ERROR);
 		}
 
 		RecursiveCommandCounter counter{};
@@ -225,7 +225,7 @@ public:
 		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, decltype(args)>>) {
 			/* Do not even think about executing out-of-bounds tile-commands. */
 			TileIndex tile = std::get<0>(args);
-			if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
+			if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
 		}
 
 		return InternalPost(err_message, callback, my_cmd, true, location, std::move(args));
@@ -306,7 +306,7 @@ protected:
 	static bool InternalPost(StringID err_message, Tcallback *callback, bool my_cmd, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Do not even think about executing out-of-bounds tile-commands. */
-		if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
+		if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
 
 		auto [err, estimate_only, only_sending] = InternalPostBefore(Tcmd, GetCommandFlags<Tcmd>(), tile, err_message, network_command);
 		if (err) return false;

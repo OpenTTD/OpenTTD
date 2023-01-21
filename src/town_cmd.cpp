@@ -121,7 +121,7 @@ Town::~Town()
 #endif /* WITH_ASSERT */
 
 	/* Check no tile is related to us. */
-	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile < Map::Size(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
 				assert(GetTownIndex(tile) != this->index);
@@ -974,7 +974,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 
 static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	CommandCost r = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER, tile, edges, dir));
 	if (r.Failed() || r.GetCost() >= (_price[PR_TERRAFORM] + 2) * 8) return false;
@@ -984,7 +984,7 @@ static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 
 static void LevelTownLand(TileIndex tile)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	/* Don't terraform if land is plain or if there's a house there. */
 	if (IsTileType(tile, MP_HOUSE)) return;
@@ -1384,7 +1384,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	RoadBits rcmd = ROAD_NONE;  // RoadBits for the road construction command
 	TileIndex tile = *tile_ptr; // The main tile on which we base our growth
 
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	if (cur_rb == ROAD_NONE) {
 		/* Tile has no road. First reset the status counter
@@ -1632,7 +1632,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 	 */
 	DiagDirection target_dir = DIAGDIR_END; // The direction in which we want to extend the town
 
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	/* Number of times to search.
 	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
@@ -2231,7 +2231,7 @@ bool GenerateTowns(TownLayout layout)
 {
 	uint current_number = 0;
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
-	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7));
 	total = std::min<uint>(TownPool::MAX_SIZE, total);
 	uint32 townnameparts;
 	TownNames town_names;
@@ -2991,7 +2991,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	 * these do not directly have an owner so we need to check adjacent
 	 * tiles. This won't work correctly in the same loop if the adjacent
 	 * tile was already deleted earlier in the loop. */
-	for (TileIndex current_tile = 0; current_tile < MapSize(); ++current_tile) {
+	for (TileIndex current_tile = 0; current_tile < Map::Size(); ++current_tile) {
 		if (IsTileType(current_tile, MP_TUNNELBRIDGE) && TestTownOwnsBridge(current_tile, t)) {
 			CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
 			if (ret.Failed()) return ret;
@@ -2999,7 +2999,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	}
 
 	/* Check all remaining tiles for town ownership. */
-	for (TileIndex current_tile = 0; current_tile < MapSize(); ++current_tile) {
+	for (TileIndex current_tile = 0; current_tile < Map::Size(); ++current_tile) {
 		bool try_clear = false;
 		switch (GetTileType(current_tile)) {
 			case MP_ROAD:
@@ -3758,7 +3758,7 @@ void TownsMonthlyLoop()
 void TownsYearlyLoop()
 {
 	/* Increment house ages */
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 		IncrementHouseAge(t);
 	}
