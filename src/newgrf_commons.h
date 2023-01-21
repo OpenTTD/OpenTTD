@@ -191,8 +191,8 @@ struct EntityIDMapping {
 
 class OverrideManagerBase {
 protected:
-	uint16 *entity_overrides;
-	uint32 *grfid_overrides;
+	std::vector<uint16> entity_overrides;
+	std::vector<uint32> grfid_overrides;
 
 	uint16 max_offset;       ///< what is the length of the original entity's array of specs
 	uint16 max_new_entities; ///< what is the amount of entities, old and new summed
@@ -201,10 +201,10 @@ protected:
 	virtual bool CheckValidNewID(uint16 testid) { return true; }
 
 public:
-	EntityIDMapping *mapping_ID; ///< mapping of ids from grf files.  Public out of convenience
+	std::vector<EntityIDMapping> mapping_ID; ///< mapping of ids from grf files.  Public out of convenience
 
 	OverrideManagerBase(uint16 offset, uint16 maximum, uint16 invalid);
-	virtual ~OverrideManagerBase();
+	virtual ~OverrideManagerBase() {}
 
 	void ResetOverride();
 	void ResetMapping();
@@ -267,7 +267,7 @@ public:
 struct AirportTileSpec;
 class AirportTileOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
+	virtual bool CheckValidNewID(uint16 testid) override { return testid != 0xFF; }
 public:
 	AirportTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
@@ -278,7 +278,7 @@ public:
 struct ObjectSpec;
 class ObjectOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
+	virtual bool CheckValidNewID(uint16 testid) override { return testid != 0xFF; }
 public:
 	ObjectOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
