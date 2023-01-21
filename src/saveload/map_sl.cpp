@@ -49,7 +49,7 @@ struct MAPSChunkHandler : ChunkHandler {
 		SlGlobList(slt);
 		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many MAPS entries");
 
-		AllocateMap(_map_dim_x, _map_dim_y);
+		Map::Allocate(_map_dim_x, _map_dim_y);
 	}
 
 	void LoadCheck(size_t) const override
