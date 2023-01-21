@@ -32,6 +32,155 @@ extern TileBase *_m;
 extern TileExtended *_me;
 
 /**
+ * Wrapper class to abstract away the way the tiles are stored. It is
+ * intended to be used to access the "map" data of a single tile.
+ *
+ * The wrapper is expected to be fully optimized away by the compiler, even
+ * with low optimization levels except when completely disabling it.
+ */
+class Tile {
+private:
+	TileIndex tile; ///< The tile to access the map data for.
+
+public:
+	/**
+	 * Create the tile wrapper for the given tile.
+	 * @param tile The tile to access the map for.
+	 */
+	debug_inline Tile(TileIndex tile) : tile(tile) {}
+
+	/**
+	 * Implicit conversion to the TileIndex.
+	 */
+	debug_inline constexpr operator TileIndex() const { return tile; }
+
+	/**
+	 * Implicit conversion to the uint for bounds checking.
+	 */
+	debug_inline constexpr operator uint() const { return tile; }
+
+	/**
+	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &type()
+	{
+		return _m[tile].type;
+	}
+
+	/**
+	 * The height of the northern corner
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the height for.
+	 * @return reference to the byte holding the height.
+	 */
+	debug_inline byte &height()
+	{
+		return _m[tile].height;
+	}
+
+	/**
+	 * Primarily used for ownership information
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m1()
+	{
+		return _m[tile].m1;
+	}
+
+	/**
+	 * Primarily used for indices to towns, industries and stations
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the uint16 holding the data.
+	 */
+	debug_inline uint16 &m2()
+	{
+		return _m[tile].m2;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m3()
+	{
+		return _m[tile].m3;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m4()
+	{
+		return _m[tile].m4;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m5()
+	{
+		return _m[tile].m5;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m6()
+	{
+		return _me[tile].m6;
+	}
+
+	/**
+	 * Primarily used for newgrf support
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m7()
+	{
+		return _me[tile].m7;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the uint16 holding the data.
+	 */
+	debug_inline uint16 &m8()
+	{
+		return _me[tile].m8;
+	}
+};
+
+/**
  * Size related data of the map.
  */
 struct Map {
