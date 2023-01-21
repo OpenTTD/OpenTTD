@@ -12,6 +12,7 @@
 #include "script_cargo.hpp"
 #include "script_gamesettings.hpp"
 #include "script_group.hpp"
+#include "script_map.hpp"
 #include "../script_instance.hpp"
 #include "../../string_func.h"
 #include "../../strings_func.h"
@@ -256,8 +257,8 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (v->type == VEH_AIRCRAFT) {
-		uint x = Clamp(v->x_pos / TILE_SIZE, 0, ::MapSizeX() - 2);
-		uint y = Clamp(v->y_pos / TILE_SIZE, 0, ::MapSizeY() - 2);
+		uint x = Clamp(v->x_pos / TILE_SIZE, 0, ScriptMap::GetMapSizeX() - 2);
+		uint y = Clamp(v->y_pos / TILE_SIZE, 0, ScriptMap::GetMapSizeY() - 2);
 		return ::TileXY(x, y);
 	}
 
