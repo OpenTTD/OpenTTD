@@ -36,6 +36,34 @@ extern TileExtended *_me;
  */
 struct Map {
 private:
+	/**
+	 * Iterator to iterate all Tiles
+	 */
+	struct Iterator {
+		typedef TileIndex value_type;
+		typedef TileIndex *pointer;
+		typedef TileIndex &reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit Iterator(TileIndex index) : index(index) {}
+		bool operator==(const Iterator &other) const { return this->index == other.index; }
+		bool operator!=(const Iterator &other) const { return !(*this == other); }
+		TileIndex operator*() const { return this->index; }
+		Iterator & operator++() { this->index++; return *this; }
+	private:
+		TileIndex index;
+	};
+
+	/*
+	 * Iterable ensemble of all Tiles
+	 */
+	struct IterateWrapper {
+		Iterator begin() { return Iterator(0); }
+		Iterator end() { return Iterator(Map::Size()); }
+		bool empty() { return false; }
+	};
+
 	static uint log_x;     ///< 2^_map_log_x == _map_size_x
 	static uint log_y;     ///< 2^_map_log_y == _map_size_y
 	static uint size_x;    ///< Size of the map along the X
@@ -158,6 +186,12 @@ public:
 	{
 		return _m != nullptr;
 	}
+
+	/**
+	 * Returns an iterable ensemble of all Tiles
+	 * @return an iterable ensemble of all Tiles
+	 */
+	static IterateWrapper Iterate() { return IterateWrapper(); }
 };
 
 /**
