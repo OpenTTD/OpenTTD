@@ -1536,7 +1536,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 	}
 
 	/* The amount of land we have is the map size minus the first (sea) layer. */
-	uint land_tiles = MapSizeX() * MapSizeY() - histogram[0];
+	uint land_tiles = MapSize() - histogram[0];
 	int best_score = land_tiles;
 
 	/* Our goal is the coverage amount of the land-mass. */
