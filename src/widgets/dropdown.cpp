@@ -259,10 +259,10 @@ struct DropdownWindow : Window {
 				bool selected = (this->selected_index == item->result);
 				if (selected) GfxFillRect(ir.left, y, ir.right, y + item_height - 1, PC_BLACK);
 
-				item->Draw({ir.left, y, ir.right, y + item_height - 1}, selected, colour);
+				item->Draw(ir.WithTopAndHeight(y, item_height), selected, colour);
 
 				if (item->masked) {
-					GfxFillRect(ir.left, y, ir.right, y + item_height - 1, _colour_gradient[colour][5], FILLRECT_CHECKER);
+					GfxFillRect(ir.WithTopAndHeight(y, item_height), _colour_gradient[colour][5], FILLRECT_CHECKER);
 				}
 			}
 			y += item_height;
