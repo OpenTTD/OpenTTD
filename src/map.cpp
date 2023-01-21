@@ -92,7 +92,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 #endif
 	}
 
-	assert(TileXY(x, y) == TILE_MASK(tile + add));
+	assert(TileXY(x, y) == Map::WrapToMap(tile + add));
 
 	return TileXY(x, y);
 }

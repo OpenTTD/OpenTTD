@@ -433,7 +433,7 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets, Axi
 	if (axis == AXIS_Y) Swap(x, y);
 
 	/* Make sure we never roam outside of the map, better wrap in that case */
-	return TILE_MASK(tile + TileDiffXY(x, y));
+	return Map::WrapToMap(tile + TileDiffXY(x, y));
 }
 
 /**

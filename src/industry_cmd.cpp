@@ -1010,7 +1010,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, DiagDirecti
 	TileIndexDiff diff = (DiagDirToAxis(side) == AXIS_Y ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	do {
-		tile = TILE_MASK(tile);
+		tile = Map::WrapToMap(tile);
 
 		if (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS)) {
 			byte or_ = type;
