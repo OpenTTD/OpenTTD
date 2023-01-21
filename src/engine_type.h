@@ -182,7 +182,7 @@ enum EngineFlags {
 	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
 };
 
-static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 32; ///< The maximum length of an engine name in characters including '\0'
+static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 128; ///< The maximum length of an engine name in characters including '\0'
 
 static const EngineID INVALID_ENGINE = 0xFFFF; ///< Constant denoting an invalid engine.
 
