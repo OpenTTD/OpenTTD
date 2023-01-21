@@ -21,7 +21,7 @@
  * This variable points to the tile-array which contains the tiles of
  * the map.
  */
-extern Tile *_m;
+extern TileBase *_m;
 
 /**
  * Pointer to the extended tile-array.

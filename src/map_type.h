@@ -14,7 +14,7 @@
  * Data that is stored per tile. Also used TileExtended for this.
  * Look at docs/landscape.html for the exact meaning of the members.
  */
-struct Tile {
+struct TileBase {
 	byte   type;        ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 	byte   height;      ///< The height of the northern corner.
 	uint16 m2;          ///< Primarily used for indices to towns, industries and stations
@@ -24,10 +24,10 @@ struct Tile {
 	byte   m5;          ///< General purpose
 };
 
-static_assert(sizeof(Tile) == 8);
+static_assert(sizeof(TileBase) == 8);
 
 /**
- * Data that is stored per tile. Also used Tile for this.
+ * Data that is stored per tile. Also used TileBase for this.
  * Look at docs/landscape.html for the exact meaning of the members.
  */
 struct TileExtended {
