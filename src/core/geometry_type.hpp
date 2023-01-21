@@ -221,6 +221,16 @@ struct Rect {
 	}
 
 	/**
+	 * Copy Rect and vertically centre.
+	 * @param height height in pixels for new Rect.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect WithTopCentre(int height) const
+	{
+		return this->WithTopAndHeight((this->top + this->bottom - height + 1) / 2, height);
+	}
+
+	/**
 	 * Test if a point falls inside this Rect.
 	 * @param pt the point to test.
 	 * @return true iif the point falls inside the Rect.

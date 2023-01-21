@@ -1583,8 +1583,9 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 void SettingsPage::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _circle_size.width : left, y + (SETTING_HEIGHT - _circle_size.height) / 2);
-	DrawString(rtl ? left : left + _circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, this->title);
+	Rect r = {left, y, right, y + SETTING_HEIGHT - 1};
+	DrawSpriteIgnorePadding((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, r.WithWidth(_circle_size.width, rtl), false, SA_CENTER);
+	DrawString(r.Indent(_circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl).WithTopCentre(FONT_HEIGHT_NORMAL), this->title);
 }
 
 /** Construct settings tree */
@@ -1982,7 +1983,7 @@ struct GameSettingsWindow : Window {
 
 	void OnInit() override
 	{
-		_circle_size = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
+		_circle_size = maxdim(GetScaledSpriteSize(SPR_CIRCLE_FOLDED), GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED));
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
