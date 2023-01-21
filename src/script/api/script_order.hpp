@@ -357,7 +357,6 @@ public:
 	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
 	 * @return Whether the order has been/can be changed.
-	 * @api -game
 	 */
 	static bool SetOrderJumpTo(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
 
@@ -370,7 +369,6 @@ public:
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
 	 * @pre condition >= OC_LOAD_PERCENTAGE && condition <= OC_UNCONDITIONALLY.
 	 * @return Whether the order has been/can be changed.
-	 * @api -game
 	 */
 	static bool SetOrderCondition(VehicleID vehicle_id, OrderPosition order_position, OrderCondition condition);
 
@@ -383,7 +381,6 @@ public:
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
 	 * @pre compare >= CF_EQUALS && compare <= CF_IS_FALSE.
 	 * @return Whether the order has been/can be changed.
-	 * @api -game
 	 */
 	static bool SetOrderCompareFunction(VehicleID vehicle_id, OrderPosition order_position, CompareFunction compare);
 
@@ -396,7 +393,6 @@ public:
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
 	 * @pre value >= 0 && value < 2048.
 	 * @return Whether the order has been/can be changed.
-	 * @api -game
 	 */
 	static bool SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, int32 value);
 
@@ -410,7 +406,6 @@ public:
 	 * @pre IsGotoStationOrder(vehicle_id, order_position).
 	 * @pre stop_location >= STOPLOCATION_NEAR && stop_location <= STOPLOCATION_FAR
 	 * @return Whether the order has been/can be changed.
-	 * @api -game
 	 */
 	static bool SetStopLocation(VehicleID vehicle_id, OrderPosition order_position, StopLocation stop_location);
 
@@ -423,7 +418,6 @@ public:
 	 * @pre IsGotoStationOrder(vehicle_id, order_position) || (IsGotoDepotOrder(vehicle_id, order_position) && refit_cargo != CT_AUTO_REFIT).
 	 * @pre ScriptCargo::IsValidCargo(refit_cargo) || refit_cargo == CT_AUTO_REFIT || refit_cargo == CT_NO_REFIT
 	 * @return Whether the order has been/can be changed.
-	 * @api -game
 	 */
 	static bool SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoID refit_cargo);
 
@@ -438,7 +432,6 @@ public:
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
 	 * @return True if and only if the order was appended.
-	 * @api -game
 	 */
 	static bool AppendOrder(VehicleID vehicle_id, TileIndex destination, ScriptOrderFlags order_flags);
 
@@ -451,7 +444,6 @@ public:
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the order was appended.
-	 * @api -game
 	 */
 	static bool AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to);
 
@@ -467,7 +459,6 @@ public:
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
 	 * @return True if and only if the order was inserted.
-	 * @api -game
 	 */
 	static bool InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, ScriptOrderFlags order_flags);
 
@@ -481,7 +472,6 @@ public:
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the order was inserted.
-	 * @api -game
 	 */
 	static bool InsertConditionalOrder(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
 
@@ -492,7 +482,6 @@ public:
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was removed.
-	 * @api -game
 	 */
 	static bool RemoveOrder(VehicleID vehicle_id, OrderPosition order_position);
 
@@ -512,7 +501,6 @@ public:
 	 * @pre (order_flags & OF_GOTO_NEAREST_DEPOT) == (GetOrderFlags(vehicle_id, order_position) & OF_GOTO_NEAREST_DEPOT).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was changed.
-	 * @api -game
 	 */
 	static bool SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, ScriptOrderFlags order_flags);
 
@@ -530,7 +518,6 @@ public:
 	 *  the target order is moved upwards (e.g. 3). If the order is moved
 	 *  to a higher place (e.g. from 7 to 9) the target will be moved
 	 *  downwards (e.g. 8).
-	 * @api -game
 	 */
 	static bool MoveOrder(VehicleID vehicle_id, OrderPosition order_position_move, OrderPosition order_position_target);
 
@@ -541,7 +528,6 @@ public:
 	 * @pre IsValidVehicleOrder(vehicle_id, next_order).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only the current order was changed.
-	 * @api -game
 	 */
 	static bool SkipToOrder(VehicleID vehicle_id, OrderPosition next_order);
 
@@ -556,7 +542,6 @@ public:
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @exception ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE
 	 * @return True if and only if the copying succeeded.
-	 * @api -game
 	 */
 	static bool CopyOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);
 
@@ -570,7 +555,6 @@ public:
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE
 	 * @return True if and only if the sharing succeeded.
-	 * @api -game
 	 */
 	static bool ShareOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);
 
@@ -580,7 +564,6 @@ public:
 	 * @param vehicle_id The vehicle to remove from the shared order list.
 	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the unsharing succeeded.
-	 * @api -game
 	 */
 	static bool UnshareOrders(VehicleID vehicle_id);
 
