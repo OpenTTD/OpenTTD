@@ -36,7 +36,7 @@ TileExtended *_me = nullptr; ///< Extended Tiles of the map
  * @param size_x the width of the map along the NE/SW edge
  * @param size_y the 'height' of the map along the SE/NW edge
  */
-void AllocateMap(uint size_x, uint size_y)
+/* static */ void Map::Allocate(uint size_x, uint size_y)
 {
 	/* Make sure that the map size is within the limits and that
 	 * size of both axes is a power of 2. */
