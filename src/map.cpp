@@ -20,12 +20,12 @@
 extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 #endif
 
-uint _map_log_x;     ///< 2^_map_log_x == _map_size_x
-uint _map_log_y;     ///< 2^_map_log_y == _map_size_y
-uint _map_size_x;    ///< Size of the map along the X
-uint _map_size_y;    ///< Size of the map along the Y
-uint _map_size;      ///< The number of tiles on the map
-uint _map_tile_mask; ///< _map_size - 1 (to mask the mapsize)
+/* static */ uint Map::log_x;     ///< 2^_map_log_x == _map_size_x
+/* static */ uint Map::log_y;     ///< 2^_map_log_y == _map_size_y
+/* static */ uint Map::size_x;    ///< Size of the map along the X
+/* static */ uint Map::size_y;    ///< Size of the map along the Y
+/* static */ uint Map::size;      ///< The number of tiles on the map
+/* static */ uint Map::tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
 Tile *_m = nullptr;          ///< Tiles of the map
 TileExtended *_me = nullptr; ///< Extended Tiles of the map
@@ -49,18 +49,18 @@ TileExtended *_me = nullptr; ///< Extended Tiles of the map
 
 	Debug(map, 1, "Allocating map of size {}x{}", size_x, size_y);
 
-	_map_log_x = FindFirstBit(size_x);
-	_map_log_y = FindFirstBit(size_y);
-	_map_size_x = size_x;
-	_map_size_y = size_y;
-	_map_size = size_x * size_y;
-	_map_tile_mask = _map_size - 1;
+	Map::log_x = FindFirstBit(size_x);
+	Map::log_y = FindFirstBit(size_y);
+	Map::size_x = size_x;
+	Map::size_y = size_y;
+	Map::size = size_x * size_y;
+	Map::tile_mask = Map::size - 1;
 
 	free(_m);
 	free(_me);
 
-	_m = CallocT<Tile>(_map_size);
-	_me = CallocT<TileExtended>(_map_size);
+	_m = CallocT<Tile>(Map::size);
+	_me = CallocT<TileExtended>(Map::size);
 }
 
 

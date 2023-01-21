@@ -35,6 +35,15 @@ extern TileExtended *_me;
  * Size related data of the map.
  */
 struct Map {
+private:
+	static uint log_x;     ///< 2^_map_log_x == _map_size_x
+	static uint log_y;     ///< 2^_map_log_y == _map_size_y
+	static uint size_x;    ///< Size of the map along the X
+	static uint size_y;    ///< Size of the map along the Y
+	static uint size;      ///< The number of tiles on the map
+	static uint tile_mask; ///< _map_size - 1 (to mask the mapsize)
+
+public:
 	static void Allocate(uint size_x, uint size_y);
 
 	/**
@@ -44,8 +53,7 @@ struct Map {
 	 */
 	static inline uint LogX()
 	{
-		extern uint _map_log_x;
-		return _map_log_x;
+		return Map::log_x;
 	}
 
 	/**
@@ -55,8 +63,7 @@ struct Map {
 	 */
 	static inline uint LogY()
 	{
-		extern uint _map_log_y;
-		return _map_log_y;
+		return Map::log_y;
 	}
 
 	/**
@@ -65,8 +72,7 @@ struct Map {
 	 */
 	static inline uint SizeX()
 	{
-		extern uint _map_size_x;
-		return _map_size_x;
+		return Map::size_x;
 	}
 
 	/**
@@ -75,8 +81,7 @@ struct Map {
 	 */
 	static inline uint SizeY()
 	{
-		extern uint _map_size_y;
-		return _map_size_y;
+		return Map::size_y;
 	}
 
 	/**
@@ -85,8 +90,7 @@ struct Map {
 	 */
 	static inline uint Size()
 	{
-		extern uint _map_size;
-		return _map_size;
+		return Map::size;
 	}
 
 	/**
@@ -115,8 +119,7 @@ struct Map {
 	 */
 	static inline TileIndex WrapToMap(uint tile)
 	{
-		extern uint _map_tile_mask;
-		return tile & _map_tile_mask;
+		return tile & Map::tile_mask;
 	}
 
 	/**
@@ -145,9 +148,17 @@ struct Map {
 		 * just half of it. */
 		return CeilDiv((n << Map::LogX()) + (n << Map::LogY()), 1 << 9);
 	}
-};
 
-static inline void AllocateMap(uint size_x, uint size_y) { Map::Allocate(size_x, size_y); }
+	/**
+	 * Check whether the map has been initialized, as to not try to save the map
+	 * during crashlog when the map is not there yet.
+	 * @return true when the map has been allocated/initialized.
+	 */
+	static bool IsInitialized()
+	{
+		return _m != nullptr;
+	}
+};
 
 /**
  * An offset value between two tiles.
