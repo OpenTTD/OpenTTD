@@ -840,22 +840,17 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_FILE_LIST)->resize_y;
-				Dimension square = GetSpriteSize(SPR_SQUARE);
-				Dimension warning = GetSpriteSize(SPR_WARNING_SIGN);
-				int square_offset_y = (step_height - square.height) / 2;
-				int warning_offset_y = (step_height - warning.height) / 2;
-				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
+				Dimension square_size = GetScaledSpriteSize(SPR_SQUARE);
+				Dimension warning = GetScaledSpriteSize(SPR_WARNING_SIGN);
 
 				bool rtl = _current_text_dir == TD_RTL;
-				uint text_left    = rtl ? tr.left : tr.left + square.width + 13;
-				uint text_right   = rtl ? tr.right - square.width - 13 : tr.right;
-				uint square_left  = rtl ? tr.right - square.width - 3 : tr.left + 3;
-				uint warning_left = rtl ? tr.right - square.width - warning.width - 8 : tr.left + square.width + 8;
+				Rect square = tr.WithWidth(square_size.width, rtl);
+				Rect text = tr.Indent(square_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
+				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 
 				int i = 0;
 				for (const GRFConfig *c = this->actives; c != nullptr; c = c->next, i++) {
 					if (this->vscroll->IsVisible(i)) {
-						const char *text = c->GetName();
 						bool h = (this->active_sel == c);
 						PaletteID pal = this->GetPalette(c);
 
@@ -870,10 +865,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 								GfxFillRect(tr.left, top - 1, tr.right, top + 1, PC_GREY);
 							}
 						}
-						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
-						if (c->error != nullptr) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
-						uint txtoffset = c->error == nullptr ? 0 : warning.width;
-						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, text, h ? TC_WHITE : TC_ORANGE);
+						DrawSpriteIgnorePadding(SPR_SQUARE, pal, square.WithTopAndHeight(tr.top, step_height), false, SA_CENTER);
+						if (c->error != nullptr) DrawSpriteIgnorePadding(SPR_WARNING_SIGN, 0, text.WithWidth(warning.width, rtl).WithTopAndHeight(tr.top, step_height), false, SA_CENTER);
+						uint txtoffset = c->error == nullptr ? 0 : warning.width + WidgetDimensions::scaled.hsep_normal;
+						DrawString(text.Indent(txtoffset, rtl).WithTopAndHeight(tr.top + offset_y, FONT_HEIGHT_NORMAL), c->GetName(), h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
 				}
