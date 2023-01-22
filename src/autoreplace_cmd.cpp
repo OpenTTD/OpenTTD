@@ -422,6 +422,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	if (cost.Succeeded() && old_head != new_head && (flags & DC_EXEC) != 0) {
 		/* Copy other things which cannot be copied by a command and which shall not stay resetted from the build vehicle command */
 		new_head->CopyVehicleConfigAndStatistics(old_head);
+		GroupStatistics::AddProfitLastYear(new_head);
 
 		/* Switch vehicle windows/news to the new vehicle, so they are not closed/deleted when the old vehicle is sold */
 		ChangeVehicleViewports(old_head->index, new_head->index);

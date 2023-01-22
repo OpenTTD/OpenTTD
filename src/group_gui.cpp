@@ -302,13 +302,13 @@ private:
 		/* draw the profit icon */
 		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_PROFIT].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_AUTOREPLACE].width;
 		SpriteID spr;
-		uint num_profit_vehicle = GetGroupNumProfitVehicle(this->vli.company, g_id, this->vli.vtype);
-		Money profit_last_year = GetGroupProfitLastYear(this->vli.company, g_id, this->vli.vtype);
-		if (num_profit_vehicle == 0) {
+		uint num_vehicle_min_age = GetGroupNumVehicleMinAge(this->vli.company, g_id, this->vli.vtype);
+		Money profit_last_year_min_age = GetGroupProfitLastYearMinAge(this->vli.company, g_id, this->vli.vtype);
+		if (num_vehicle_min_age == 0) {
 			spr = SPR_PROFIT_NA;
-		} else if (profit_last_year < 0) {
+		} else if (profit_last_year_min_age < 0) {
 			spr = SPR_PROFIT_NEGATIVE;
-		} else if (profit_last_year < VEHICLE_PROFIT_THRESHOLD * num_profit_vehicle) {
+		} else if (profit_last_year_min_age < VEHICLE_PROFIT_THRESHOLD * num_vehicle_min_age) {
 			spr = SPR_PROFIT_SOME;
 		} else {
 			spr = SPR_PROFIT_LOT;
