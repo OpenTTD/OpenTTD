@@ -96,6 +96,8 @@ struct BaseVehicleListWindow : public Window {
 	StringID cargo_filter_texts[NUM_CARGO + 4]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
 	byte cargo_filter_criteria;                 ///< Selected cargo filter index
 	uint order_arrow_width;                     ///< Width of the arrow in the small order list.
+	Dimension profit_size;                      ///< Dimension of profit icon.
+	Dimension warning_size;                     ///< Dimension of warning icon.
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
 	typedef GUIVehicleList::SortFunction VehicleIndividualSortFunction;
