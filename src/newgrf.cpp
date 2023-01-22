@@ -1237,7 +1237,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			}
 
 			case 0x1E: // Callback
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case PROP_TRAIN_TRACTIVE_EFFORT: // 0x1F Tractive effort coefficient
@@ -1334,6 +1334,10 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x30: // Extra miscellaneous flags
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x31: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
 				break;
 
 			default:
@@ -1454,7 +1458,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			}
 
 			case 0x17: // Callback mask
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case PROP_ROADVEH_TRACTIVE_EFFORT: // Tractive effort coefficient in 1/256.
@@ -1536,6 +1540,10 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x27: // Extra miscellaneous flags
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x28: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
 				break;
 
 			default:
@@ -1638,7 +1646,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			}
 
 			case 0x12: // Callback mask
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case 0x13: // Refit cost
@@ -1716,6 +1724,10 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x21: // Extra miscellaneous flags
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x22: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
 				break;
 
 			default:
@@ -1814,7 +1826,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			}
 
 			case 0x14: // Callback mask
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case 0x15: // Refit cost
@@ -1878,6 +1890,10 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x21: // Extra miscellaneous flags
 				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x22: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
 				break;
 
 			default:
