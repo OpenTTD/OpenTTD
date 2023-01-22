@@ -31,7 +31,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 	StringID str;
 	Money feeder_share = 0;
 
-	SetDParam(0, v->engine_type);
+	SetDParam(0, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails));
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
 	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);

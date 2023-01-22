@@ -228,11 +228,11 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 {
 	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
-		SetDParam(0, v->engine_type);
+		SetDParam(0, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails));
 		SetDParam(1, v->value);
 		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE);
 	} else {
-		SetDParam(0, v->engine_type);
+		SetDParam(0, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails));
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
 		DrawString(left, right, y, STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE);
