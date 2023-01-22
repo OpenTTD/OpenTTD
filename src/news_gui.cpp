@@ -601,7 +601,7 @@ private:
 				return STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE;
 
 			case WID_N_VEH_NAME:
-				SetDParam(0, engine);
+				SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
 				return STR_NEWS_NEW_VEHICLE_TYPE;
 
 			default:

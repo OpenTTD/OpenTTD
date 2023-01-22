@@ -145,13 +145,14 @@ static bool EngineNameSorter(const GUIEngineListItem &a, const GUIEngineListItem
 
 	if (a.engine_id != _last_engine[0]) {
 		_last_engine[0] = a.engine_id;
-		SetDParam(0, a.engine_id);
+		SetDParam(0, PackEngineNameDParam(a.engine_id, EngineNameContext::PurchaseList));
+
 		GetString(last_name[0], STR_ENGINE_NAME, lastof(last_name[0]));
 	}
 
 	if (b.engine_id != _last_engine[1]) {
 		_last_engine[1] = b.engine_id;
-		SetDParam(0, b.engine_id);
+		SetDParam(0, PackEngineNameDParam(b.engine_id, EngineNameContext::PurchaseList));
 		GetString(last_name[1], STR_ENGINE_NAME, lastof(last_name[1]));
 	}
 
@@ -1036,7 +1037,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
 		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : (TC_NO_SHADE | ((hidden | shaded) ? TC_GREY : TC_BLACK));
 
-		SetDParam(0, item.engine_id);
+		SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::PurchaseList, item.indent));
 		Rect itr = tr.Indent(indent, rtl);
 		DrawString(itr.left, itr.right, y + normal_text_y_offset, str, tc);
 		int sprite_x = ir.Indent(indent + circle_width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(sprite_width, rtl).left + sprite_left;
@@ -1598,7 +1599,7 @@ struct BuildVehicleWindow : Window {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
 					this->rename_engine = sel_eng;
-					SetDParam(0, sel_eng);
+					SetDParam(0, PackEngineNameDParam(sel_eng, EngineNameContext::Generic));
 					ShowQueryString(STR_ENGINE_NAME, STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + this->vehicle_type, MAX_LENGTH_ENGINE_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				}
 				break;
