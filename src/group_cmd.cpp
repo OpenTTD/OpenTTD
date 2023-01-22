@@ -43,8 +43,9 @@ GroupStatistics::~GroupStatistics()
 void GroupStatistics::Clear()
 {
 	this->num_vehicle = 0;
-	this->num_profit_vehicle = 0;
 	this->profit_last_year = 0;
+	this->num_vehicle_min_age = 0;
+	this->profit_last_year_min_age = 0;
 
 	/* This is also called when NewGRF change. So the number of engines might have changed. Reallocate. */
 	free(this->num_engines);
@@ -136,13 +137,15 @@ void GroupStatistics::Clear()
 	GroupStatistics &stats = GroupStatistics::Get(v);
 
 	stats_all.num_vehicle += delta;
+	stats_all.profit_last_year += v->GetDisplayProfitLastYear() * delta;
 	stats.num_vehicle += delta;
+	stats.profit_last_year += v->GetDisplayProfitLastYear() * delta;
 
 	if (v->age > VEHICLE_PROFIT_MIN_AGE) {
-		stats_all.num_profit_vehicle += delta;
-		stats_all.profit_last_year += v->GetDisplayProfitLastYear() * delta;
-		stats.num_profit_vehicle += delta;
-		stats.profit_last_year += v->GetDisplayProfitLastYear() * delta;
+		stats_all.num_vehicle_min_age += delta;
+		stats_all.profit_last_year_min_age += v->GetDisplayProfitLastYear() * delta;
+		stats.num_vehicle_min_age += delta;
+		stats.profit_last_year_min_age += v->GetDisplayProfitLastYear() * delta;
 	}
 }
 
@@ -159,17 +162,29 @@ void GroupStatistics::Clear()
 }
 
 /**
- * Add a vehicle to the profit sum of its group.
+ * Add a vehicle's last year profit to the profit sum of its group.
  */
-/* static */ void GroupStatistics::VehicleReachedProfitAge(const Vehicle *v)
+/* static */ void GroupStatistics::AddProfitLastYear(const Vehicle *v)
 {
 	GroupStatistics &stats_all = GroupStatistics::GetAllGroup(v);
 	GroupStatistics &stats = GroupStatistics::Get(v);
 
-	stats_all.num_profit_vehicle++;
 	stats_all.profit_last_year += v->GetDisplayProfitLastYear();
-	stats.num_profit_vehicle++;
 	stats.profit_last_year += v->GetDisplayProfitLastYear();
+}
+
+/**
+ * Add a vehicle to the profit sum of its group.
+ */
+/* static */ void GroupStatistics::VehicleReachedMinAge(const Vehicle *v)
+{
+	GroupStatistics &stats_all = GroupStatistics::GetAllGroup(v);
+	GroupStatistics &stats = GroupStatistics::Get(v);
+
+	stats_all.num_vehicle_min_age++;
+	stats_all.profit_last_year_min_age += v->GetDisplayProfitLastYear();
+	stats.num_vehicle_min_age++;
+	stats.profit_last_year_min_age += v->GetDisplayProfitLastYear();
 }
 
 /**
@@ -191,7 +206,10 @@ void GroupStatistics::Clear()
 	}
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->IsPrimaryVehicle() && v->age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedProfitAge(v);
+		if (v->IsPrimaryVehicle()) {
+			GroupStatistics::AddProfitLastYear(v);
+			if (v->age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedMinAge(v);
+		}
 	}
 }
 
@@ -789,30 +807,30 @@ uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type)
  * @param type The vehicle type of the group
  * @return The number of vehicles above profit minimum age in the group
  */
-uint GetGroupNumProfitVehicle(CompanyID company, GroupID id_g, VehicleType type)
+uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type)
 {
 	uint count = 0;
 	for (const Group *g : Group::Iterate()) {
-		if (g->parent == id_g) count += GetGroupNumProfitVehicle(company, g->index, type);
+		if (g->parent == id_g) count += GetGroupNumVehicleMinAge(company, g->index, type);
 	}
-	return count + GroupStatistics::Get(company, id_g, type).num_profit_vehicle;
+	return count + GroupStatistics::Get(company, id_g, type).num_vehicle_min_age;
 }
 
 /**
- * Get last year's profit for the group with GroupID
- * id_g and its sub-groups.
+ * Get last year's profit of vehicles above minimum age
+ * for the group with GroupID id_g and its sub-groups.
  * @param company The company the group belongs to
  * @param id_g The GroupID of the group used
  * @param type The vehicle type of the group
- * @return Last year's profit for the group
+ * @return Last year's profit of vehicles above minimum age for the group
  */
-Money GetGroupProfitLastYear(CompanyID company, GroupID id_g, VehicleType type)
+Money GetGroupProfitLastYearMinAge(CompanyID company, GroupID id_g, VehicleType type)
 {
 	Money sum = 0;
 	for (const Group *g : Group::Iterate()) {
-		if (g->parent == id_g) sum += GetGroupProfitLastYear(company, g->index, type);
+		if (g->parent == id_g) sum += GetGroupProfitLastYearMinAge(company, g->index, type);
 	}
-	return sum + GroupStatistics::Get(company, id_g, type).profit_last_year;
+	return sum + GroupStatistics::Get(company, id_g, type).profit_last_year_min_age;
 }
 
 void RemoveAllGroupsForCompany(const CompanyID company)
