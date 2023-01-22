@@ -34,7 +34,7 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 	int y = r.top;
 	for (const Aircraft *u = v; u != nullptr; u = u->Next()) {
 		if (u->IsNormalAircraft()) {
-			SetDParam(0, u->engine_type);
+			SetDParam(0, PackEngineNameDParam(u->engine_type, EngineNameContext::VehicleDetails));
 			SetDParam(1, u->build_year);
 			SetDParam(2, u->value);
 			DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);

@@ -182,6 +182,22 @@ enum EngineFlags {
 	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
 };
 
+/**
+ * Contexts an engine name can be shown in.
+ */
+enum EngineNameContext : uint8 {
+	Generic        = 0x00, ///< No specific context available.
+	VehicleDetails = 0x11, ///< Name is shown in the vehicle details GUI.
+	PurchaseList   = 0x20, ///< Name is shown in the purchase list (including autoreplace window).
+	PreviewNews    = 0x21, ///< Name is shown in exclusive preview or newspaper.
+};
+
+/** Combine an engine ID and a name context to an engine name dparam. */
+inline uint64 PackEngineNameDParam(EngineID engine_id, EngineNameContext context, uint32 extra_data = 0)
+{
+	return engine_id | (static_cast<uint64>(context) << 32) | (static_cast<uint64>(extra_data) << 40);
+}
+
 static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 32; ///< The maximum length of an engine name in characters including '\0'
 
 static const EngineID INVALID_ENGINE = 0xFFFF; ///< Constant denoting an invalid engine.
