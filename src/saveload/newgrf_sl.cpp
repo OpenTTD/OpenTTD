@@ -32,10 +32,10 @@ void NewGRFMappingChunkHandler::Save() const
 	SlTableHeader(_newgrf_mapping_desc);
 
 	for (uint i = 0; i < this->mapping.GetMaxMapping(); i++) {
-		if (this->mapping.mapping_ID[i].grfid == 0 &&
-			this->mapping.mapping_ID[i].entity_id == 0) continue;
+		if (this->mapping.mappings[i].grfid == 0 &&
+			this->mapping.mappings[i].entity_id == 0) continue;
 		SlSetArrayIndex(i);
-		SlObject(&this->mapping.mapping_ID[i], _newgrf_mapping_desc);
+		SlObject(&this->mapping.mappings[i], _newgrf_mapping_desc);
 	}
 }
 
@@ -55,7 +55,7 @@ void NewGRFMappingChunkHandler::Load() const
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		if ((uint)index >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
-		SlObject(&this->mapping.mapping_ID[index], slt);
+		SlObject(&this->mapping.mappings[index], slt);
 	}
 }
 

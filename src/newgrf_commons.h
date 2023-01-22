@@ -194,14 +194,14 @@ protected:
 	std::vector<uint16> entity_overrides;
 	std::vector<uint32> grfid_overrides;
 
-	uint16 max_offset;       ///< what is the length of the original entity's array of specs
-	uint16 max_new_entities; ///< what is the amount of entities, old and new summed
+	uint16 max_offset;   ///< what is the length of the original entity's array of specs
+	uint16 max_entities; ///< what is the amount of entities, old and new summed
 
-	uint16 invalid_ID;       ///< ID used to detected invalid entities;
+	uint16 invalid_id;   ///< ID used to detected invalid entities;
 	virtual bool CheckValidNewID(uint16 testid) { return true; }
 
 public:
-	std::vector<EntityIDMapping> mapping_ID; ///< mapping of ids from grf files.  Public out of convenience
+	std::vector<EntityIDMapping> mappings; ///< mapping of ids from grf files.  Public out of convenience
 
 	OverrideManagerBase(uint16 offset, uint16 maximum, uint16 invalid);
 	virtual ~OverrideManagerBase() {}
@@ -216,7 +216,7 @@ public:
 	uint16 GetSubstituteID(uint16 entity_id) const;
 	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid) const;
 
-	inline uint16 GetMaxMapping() const { return this->max_new_entities; }
+	inline uint16 GetMaxMapping() const { return this->max_entities; }
 	inline uint16 GetMaxOffset() const { return this->max_offset; }
 };
 
