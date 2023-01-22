@@ -123,7 +123,7 @@ public:
 	void OnInit() override
 	{
 		this->icon_size      = GetScaledSpriteSize(SPR_COMPANY_ICON);
-		this->exclusive_size = GetSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
+		this->exclusive_size = GetScaledSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
 	}
 
 	void OnPaint() override
@@ -149,7 +149,6 @@ public:
 		Rect r = this->GetWidget<NWidgetBase>(WID_TA_RATING_INFO)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
 		int text_y_offset      = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
-		int exclusive_y_offset = (this->resize.step_height - this->exclusive_size.height) / 2;
 
 		DrawString(r.left, r.right, r.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
 		r.top += this->resize.step_height;
@@ -179,7 +178,7 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.left, text.top + exclusive_y_offset);
+					DrawSpriteIgnorePadding(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.WithTopAndHeight(text.top, this->resize.step_height), false, SA_CENTER);
 				}
 
 				DrawString(text.left, text.right, text.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATING);
