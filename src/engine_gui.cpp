@@ -112,7 +112,7 @@ struct EnginePreviewWindow : Window {
 		SetDParam(0, GetEngineCategoryName(engine));
 		int y = DrawStringMultiLine(r, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
-		SetDParam(0, engine);
+		SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
 		DrawString(r.left, r.right, y, STR_ENGINE_NAME, TC_BLACK, SA_HOR_CENTER);
 		y += FONT_HEIGHT_NORMAL;
 

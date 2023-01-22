@@ -458,7 +458,7 @@ public:
 						bool when_old = false;
 						EngineID e = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group, &when_old);
 						str = when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME;
-						SetDParam(0, e);
+						SetDParam(0, PackEngineNameDParam(e, EngineNameContext::PurchaseList));
 					}
 				} else {
 					str = STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED;
