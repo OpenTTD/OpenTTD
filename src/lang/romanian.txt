@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generare
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generare industrii
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcţii rutiere
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcție tramvai
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantează arbori. Shift comută între plantare/afişare cost estimat
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantează arbori. Ctrl selectează zona în diagonală. Shift comută între plantare/afişare cost estimat
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plasează semn
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasați obiectul. Ctrl selectează zona în diagonală. Shift comută construirea/afișarea estimării costurilor
 
@@ -1925,13 +1925,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Timpul necesar pentru fiecare recalculare a unei componente a graficului de legătură. Când se începe o recalculare, este generat un fir de execuție căruia i se permite să ruleze pentru acest număr de zile. Cu cât setați acest lucru mai scurt, cu atât este mai probabil ca firul să nu fie terminat atunci când trebuie. Apoi jocul se oprește până când este ("lag"). Cu cât îl setați mai mult, cu atât este nevoie de mai mult pentru ca distribuția să fie actualizată când se schimbă rutele.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetric" înseamnă că aproximativ același număr de pasageri va fi transportat din stația A spre stația B, precum de la B la A. "asimetric" presupune transportul unui număr arbitrar de pasageri în fiecare direcție. "manual" înseamnă că repartizarea pasagerilor nu va fi automatizată.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetric" înseamnă că aproximativ același număr de pasageri va fi transportat din stația A spre stația B, precum de la B la A. "Asimetric" presupune transportul unui număr arbitrar de pasageri în fiecare direcție. "Manual" înseamnă că repartizarea pasagerilor nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modalitatea de distribuire a poştei: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetric" înseamnă că aproximativ aceeași cantitate de poștă va fi expediată din stația A spre stația B, precum de la B la A. "asimetric" presupune expedierea de cantități arbitrare de poștă în fiecare direcție. "manual" înseamnă că repartizarea poștei nu va fi automatizată.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetric" înseamnă că aproximativ aceeași cantitate de poștă va fi expediată din stația A spre stația B, precum de la B la A. "Asimetric" presupune expedierea de cantități arbitrare de poștă în fiecare direcție. "Manual" înseamnă că repartizarea poștei nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalitatea de distribuire pentru clasa de cargo BLINDAT: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Clasa de marfă ARMORED conține obiecte de valoare în climat temperat, diamante în climat subtropical sau aur în climat subarctic. NewGRF-urile pot schimba asta. „simetric” înseamnă că aproximativ aceeași cantitate din acea marfă va fi trimisă de la o stație A la o stație B ca de la B la A. „asimetric” înseamnă că cantități arbitrare ale acelei mărfuri pot fi trimise în ambele direcții. „manual” înseamnă că nu va avea loc nicio distribuție automată pentru acea marfă. Este recomandat să setați acest lucru la asimetric sau manual atunci când jucați subarctic, deoarece băncile nu vor trimite aur înapoi la minele de aur. Pentru cele temperate și subtropicale, puteți alege și simetric, deoarece băncile vor trimite obiectele de valoare înapoi la banca de origine a unei încărcături de obiecte de valoare.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Clasa de marfă ARMORED conține obiecte de valoare în climat temperat, diamante în climat subtropical sau aur în climat subarctic. NewGRF-urile pot schimba asta. „Simetric” înseamnă că aproximativ aceeași cantitate din acea marfă va fi trimisă de la o stație A la o stație B ca de la B la A. „Asimetric” înseamnă că cantități arbitrare ale acelei mărfuri pot fi trimise în ambele direcții. „Manual” înseamnă că nu va avea loc nicio distribuție automată pentru acea marfă. Este recomandat să setați acest lucru la asimetric sau manual atunci când jucați subarctic sau subtropical, deoarece băncile doar primesc bunuri in aceste climate. Pentru climatul temperat, puteți alege și simetric, deoarece băncile vor trimite obiectele de valoare înapoi la banca de origine a unei încărcături.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modalitatea de distribuire pentru alte clase de cargo: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimetric" înseamnă că pot fi trimise cantități diferite de marfă în ambele direcții. "manual" înseamnă că nu se va face distribuție automată pentru acele mărfuri.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimetric" înseamnă că pot fi trimise cantități diferite de marfă în ambele direcții. "Manual" înseamnă că nu se va face distribuție automată pentru acele mărfuri.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
@@ -2698,6 +2698,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte 
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege pod de cale ferată
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Alege pod rutier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - click pe podul preferat pentru a-l construi
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensie, Oţel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Grindă, Oţel
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Arc, Oţel
@@ -2817,7 +2821,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmiţătoar
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbori
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat. Dacă există deja un arbore în locația dorită, se vor adăuga arbori de tip mixt, indiferent de specia selectată
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori din specii aleatoare
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantează arbori din diverse specii la întâmplare. Shift comută între plantare/afişare cost estimat
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantează arbori din diverse specii la întâmplare. Ctrl selectează zona în diagonală. Shift comută între plantare/afişare cost estimat
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbori aleatori
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantează aleator arbori pe uscat
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
