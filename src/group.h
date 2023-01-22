@@ -23,14 +23,13 @@ extern GroupPool _group_pool; ///< Pool of groups.
 
 /** Statistics and caches on the vehicles in a group. */
 struct GroupStatistics {
-	uint16 num_vehicle;                     ///< Number of vehicles.
+	Money profit_last_year;                 ///< Sum of profits for all vehicles.
+	Money profit_last_year_min_age;         ///< Sum of profits for vehicles considered for profit statistics.
 	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
-
+	uint16 num_vehicle;                     ///< Number of vehicles.
+	uint16 num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
 	bool autoreplace_defined;               ///< Are any autoreplace rules set?
 	bool autoreplace_finished;              ///< Have all autoreplacement finished?
-
-	uint16 num_profit_vehicle;              ///< Number of vehicles considered for profit statistics;
-	Money profit_last_year;                 ///< Sum of profits for all vehicles.
 
 	GroupStatistics();
 	~GroupStatistics();
@@ -39,8 +38,10 @@ struct GroupStatistics {
 
 	void ClearProfits()
 	{
-		this->num_profit_vehicle = 0;
 		this->profit_last_year = 0;
+
+		this->num_vehicle_min_age = 0;
+		this->profit_last_year_min_age = 0;
 	}
 
 	void ClearAutoreplace()
@@ -55,7 +56,8 @@ struct GroupStatistics {
 
 	static void CountVehicle(const Vehicle *v, int delta);
 	static void CountEngine(const Vehicle *v, int delta);
-	static void VehicleReachedProfitAge(const Vehicle *v);
+	static void AddProfitLastYear(const Vehicle *v);
+	static void VehicleReachedMinAge(const Vehicle *v);
 
 	static void UpdateProfits();
 	static void UpdateAfterLoad();
@@ -104,8 +106,8 @@ static inline bool IsAllGroupID(GroupID id_g)
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type);
-uint GetGroupNumProfitVehicle(CompanyID company, GroupID id_g, VehicleType type);
-Money GetGroupProfitLastYear(CompanyID company, GroupID id_g, VehicleType type);
+uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type);
+Money GetGroupProfitLastYearMinAge(CompanyID company, GroupID id_g, VehicleType type);
 
 void SetTrainGroupID(Train *v, GroupID grp);
 void UpdateTrainGroupID(Train *v);
