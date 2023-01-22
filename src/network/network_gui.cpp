@@ -1443,7 +1443,7 @@ public:
 		colour(colour),
 		disabled(disabled)
 	{
-		Dimension d = GetSpriteSize(sprite);
+		Dimension d = GetScaledSpriteSize(sprite);
 		this->height = d.height + WidgetDimensions::scaled.framerect.Vertical();
 		this->width = d.width + WidgetDimensions::scaled.framerect.Horizontal();
 	}
@@ -1703,7 +1703,7 @@ private:
 				return button.get();
 			}
 
-			int width = button->width + WidgetDimensions::scaled.framerect.Horizontal();
+			int width = button->width + WidgetDimensions::scaled.hsep_normal;
 			x += rtl ? width : -width;
 		}
 
@@ -1747,7 +1747,7 @@ public:
 				break;
 
 			case WID_CL_MATRIX: {
-				uint height = std::max({GetSpriteSize(SPR_COMPANY_ICON).height, GetSpriteSize(SPR_JOIN).height, GetSpriteSize(SPR_ADMIN).height, GetSpriteSize(SPR_CHAT).height});
+				uint height = std::max({GetScaledSpriteSize(SPR_COMPANY_ICON).height, GetScaledSpriteSize(SPR_JOIN).height, GetScaledSpriteSize(SPR_ADMIN).height, GetScaledSpriteSize(SPR_CHAT).height});
 				height += WidgetDimensions::scaled.framerect.Vertical();
 				this->line_height = std::max(height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
 
@@ -1843,14 +1843,13 @@ public:
 				bool rtl = _current_text_dir == TD_RTL;
 				Rect matrix = this->GetWidget<NWidgetBase>(WID_CL_MATRIX)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
-				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-				uint text_left  = matrix.left  + (rtl ? 0 : d.width + WidgetDimensions::scaled.hsep_wide);
-				uint text_right = matrix.right - (rtl ? d.width + WidgetDimensions::scaled.hsep_wide : 0);
+				Dimension d = GetScaledSpriteSize(SPR_COMPANY_ICON);
+				Rect tr = matrix.Indent(d.width + WidgetDimensions::scaled.hsep_wide, rtl);
 
-				Dimension d2 = GetSpriteSize(SPR_PLAYER_SELF);
+				Dimension d2 = GetScaledSpriteSize(SPR_PLAYER_SELF);
 				uint offset_x = WidgetDimensions::scaled.hsep_indent - d2.width - ScaleGUITrad(3);
 
-				uint player_icon_x = rtl ? text_right - offset_x - d2.width : text_left + offset_x;
+				uint player_icon_x = rtl ? tr.right - offset_x - d2.width : tr.left + offset_x;
 
 				if (IsInsideMM(pt.x, player_icon_x, player_icon_x + d2.width)) {
 					if (index == this->player_self_index) {
@@ -1995,7 +1994,7 @@ public:
 			r.bottom = r.top + button->height - 1;
 
 			DrawFrameRect(r, button->colour, FR_NONE);
-			DrawSprite(button->sprite, PAL_NONE, r.left + WidgetDimensions::scaled.framerect.left, r.top + WidgetDimensions::scaled.framerect.top);
+			DrawSpriteIgnorePadding(button->sprite, PAL_NONE, r, false, SA_CENTER);
 			if (button->disabled) {
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[button->colour & 0xF][2], FILLRECT_CHECKER);
 			}
@@ -2021,36 +2020,36 @@ public:
 		uint line_start = this->vscroll->GetPosition();
 		uint line_end = line_start + this->vscroll->GetCapacity();
 
-		uint y = r.top + (this->line_height * (line - line_start));
+		Rect row = r.WithHeight(this->line_height).Translate(0, this->line_height * (line - line_start));
 
 		/* Draw the company line (if in range of scrollbar). */
 		if (IsInsideMM(line, line_start, line_end)) {
-			Rect icon = r.WithWidth(d.width, rtl).WithTopAndHeight(y, this->line_height);
-			Rect tr = r.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
+			Rect icon = row.WithWidth(d.width, rtl);
+			Rect tr = row.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 			int &x = rtl ? tr.left : tr.right;
 
 			/* If there are buttons for this company, draw them. */
 			auto button_find = this->buttons.find(line);
 			if (button_find != this->buttons.end()) {
-				this->DrawButtons(x, y, button_find->second);
+				this->DrawButtons(x, row.top, button_find->second);
 			}
 
 			if (company_id == COMPANY_SPECTATOR) {
 				DrawSpriteIgnorePadding(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon, false, SA_CENTER);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
 			} else if (company_id == COMPANY_NEW_COMPANY) {
 				DrawSpriteIgnorePadding(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon, false, SA_CENTER);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_NETWORK_CLIENT_LIST_NEW_COMPANY, TC_WHITE);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_NETWORK_CLIENT_LIST_NEW_COMPANY, TC_WHITE);
 			} else {
 				DrawCompanyIcon(company_id, icon, false);
 
 				SetDParam(0, company_id);
 				SetDParam(1, company_id);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_COMPANY_NAME, TC_SILVER);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_COMPANY_NAME, TC_SILVER);
 			}
 		}
 
-		y += this->line_height;
+		row = row.Translate(0, this->line_height);
 		line++;
 
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
@@ -2058,13 +2057,13 @@ public:
 
 			/* Draw the player line (if in range of scrollbar). */
 			if (IsInsideMM(line, line_start, line_end)) {
-				Rect tr = r.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
+				Rect tr = row.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
 
 				/* If there are buttons for this client, draw them. */
 				auto button_find = this->buttons.find(line);
 				if (button_find != this->buttons.end()) {
 					int &x = rtl ? tr.left : tr.right;
-					this->DrawButtons(x, y, button_find->second);
+					this->DrawButtons(x, row.top, button_find->second);
 				}
 
 				SpriteID player_icon = 0;
@@ -2075,17 +2074,16 @@ public:
 				}
 
 				if (player_icon != 0) {
-					Dimension d2 = GetSpriteSize(player_icon);
-					int offset_y = CenterBounds(0, this->line_height, d2.height);
-					DrawSprite(player_icon, PALETTE_TO_GREY, rtl ? tr.right - d2.width : tr.left, y + offset_y);
+					Dimension d2 = GetScaledSpriteSize(player_icon);
+					DrawSpriteIgnorePadding(player_icon, PALETTE_TO_GREY, tr.WithWidth(d2.width, rtl), false, SA_CENTER);
 					tr = tr.Indent(d2.width + WidgetDimensions::scaled.hsep_normal, rtl);
 				}
 
 				SetDParamStr(0, ci->client_name);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
 			}
 
-			y += this->line_height;
+			row = row.Translate(0, this->line_height);
 			line++;
 		}
 	}
