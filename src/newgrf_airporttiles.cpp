@@ -67,7 +67,7 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 {
 	StationGfx airpt_id = this->AddEntityID(airpts->grf_prop.local_id, airpts->grf_prop.grffile->grfid, airpts->grf_prop.subst_id);
 
-	if (airpt_id == invalid_ID) {
+	if (airpt_id == this->invalid_ID) {
 		grfmsg(1, "AirportTile.SetEntitySpec: Too many airport tiles allocated. Ignoring.");
 		return;
 	}
@@ -75,15 +75,15 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 	memcpy(&AirportTileSpec::tiles[airpt_id], airpts, sizeof(*airpts));
 
 	/* Now add the overrides. */
-	for (int i = 0; i < max_offset; i++) {
+	for (int i = 0; i < this->max_offset; i++) {
 		AirportTileSpec *overridden_airpts = &AirportTileSpec::tiles[i];
 
-		if (entity_overrides[i] != airpts->grf_prop.local_id || grfid_overrides[i] != airpts->grf_prop.grffile->grfid) continue;
+		if (this->entity_overrides[i] != airpts->grf_prop.local_id || this->grfid_overrides[i] != airpts->grf_prop.grffile->grfid) continue;
 
 		overridden_airpts->grf_prop.override = airpt_id;
 		overridden_airpts->enabled = false;
-		entity_overrides[i] = invalid_ID;
-		grfid_overrides[i] = 0;
+		this->entity_overrides[i] = this->invalid_ID;
+		this->grfid_overrides[i] = 0;
 	}
 }
 

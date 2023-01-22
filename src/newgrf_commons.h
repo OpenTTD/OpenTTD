@@ -216,8 +216,8 @@ public:
 	uint16 GetSubstituteID(uint16 entity_id) const;
 	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid) const;
 
-	inline uint16 GetMaxMapping() const { return max_new_entities; }
-	inline uint16 GetMaxOffset() const { return max_offset; }
+	inline uint16 GetMaxMapping() const { return this->max_new_entities; }
+	inline uint16 GetMaxOffset() const { return this->max_offset; }
 };
 
 
