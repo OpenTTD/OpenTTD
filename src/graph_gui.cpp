@@ -65,8 +65,8 @@ struct GraphLegendWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 
 		const Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
-		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, rtl ? ir.right - d.width : ir.left, CenterBounds(ir.top, ir.bottom, d.height));
+		Dimension d = GetScaledSpriteSize(SPR_COMPANY_ICON);
+		DrawCompanyIcon(cid, ir.WithWidth(d.width, rtl), false);
 
 		const Rect tr = ir.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 		SetDParam(0, cid);
@@ -1201,9 +1201,7 @@ struct PerformanceRatingDetailWindow : Window {
 		if (IsInsideMM(widget, WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST + 1)) {
 			if (this->IsWidgetDisabled(widget)) return;
 			CompanyID cid = (CompanyID)(widget - WID_PRD_COMPANY_FIRST);
-			int offset = (cid == this->company) ? WidgetDimensions::scaled.pressed : 0;
-			Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-			DrawCompanyIcon(cid, CenterBounds(r.left, r.right, sprite_size.width) + offset, CenterBounds(r.top, r.bottom, sprite_size.height) + offset);
+			DrawCompanyIcon(cid, r, cid == this->company);
 			return;
 		}
 

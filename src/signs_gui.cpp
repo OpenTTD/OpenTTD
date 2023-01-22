@@ -137,7 +137,7 @@ enum SignListHotkeys {
 
 struct SignListWindow : Window, SignList {
 	QueryString filter_editbox; ///< Filter editbox;
-	int text_offset; ///< Offset of the sign text relative to the left edge of the WID_SIL_LIST widget.
+	Dimension icon_size; ///< Size of company colour icon.
 	Scrollbar *vscroll;
 
 	SignListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), filter_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
@@ -167,6 +167,8 @@ struct SignListWindow : Window, SignList {
 		this->signs.ForceResort();
 		this->SortSignsList();
 		this->SetDirty();
+
+		this->icon_size = GetScaledSpriteSize(SPR_COMPANY_ICON);
 	}
 
 	/**
@@ -195,25 +197,23 @@ struct SignListWindow : Window, SignList {
 		switch (widget) {
 			case WID_SIL_LIST: {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint text_offset_y = (this->resize.step_height - FONT_HEIGHT_NORMAL + 1) / 2;
+				uint text_offset_y = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
 				/* No signs? */
 				if (this->vscroll->GetCount() == 0) {
 					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_STATION_LIST_NONE);
 					return;
 				}
 
-				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
 				bool rtl = _current_text_dir == TD_RTL;
-				int sprite_offset_y = (this->resize.step_height - d.height + 1) / 2;
-				uint icon_left = rtl ? tr.right - this->text_offset : tr.left;
-				tr = tr.Indent(this->text_offset, rtl);
+				Rect icon = tr.WithWidth(this->icon_size.width, rtl);
+				tr = tr.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
 				/* At least one sign available. */
 				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++)
 				{
 					const Sign *si = this->signs[i];
 
-					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
+					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon.WithTopAndHeight(tr.top, this->resize.step_height), false);
 
 					SetDParam(0, si->index);
 					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
@@ -265,10 +265,8 @@ struct SignListWindow : Window, SignList {
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
-				Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
-				this->text_offset = WidgetDimensions::scaled.frametext.left + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
-				resize->height = std::max<uint>(FONT_HEIGHT_NORMAL, spr_dim.height + 2);
-				Dimension d = {(uint)(this->text_offset + WidgetDimensions::scaled.frametext.right), padding.height + 5 * resize->height};
+				resize->height = std::max<uint>(FONT_HEIGHT_NORMAL, this->icon_size.height + WidgetDimensions::scaled.vsep_normal);
+				Dimension d = {padding.width + this->icon_size.width + WidgetDimensions::scaled.hsep_normal, padding.height + 5 * resize->height};
 				*size = maxdim(*size, d);
 				break;
 			}

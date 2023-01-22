@@ -614,8 +614,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
-		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, CenterBounds(br.left, br.right, sprite_size.width), CenterBounds(br.top, br.bottom, sprite_size.height));
+		DrawCompanyIcon(cid, br, false);
 	}
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
 		uint8 colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];

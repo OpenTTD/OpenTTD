@@ -122,7 +122,7 @@ public:
 
 	void OnInit() override
 	{
-		this->icon_size      = GetSpriteSize(SPR_COMPANY_ICON);
+		this->icon_size      = GetScaledSpriteSize(SPR_COMPANY_ICON);
 		this->exclusive_size = GetSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
 	}
 
@@ -149,7 +149,6 @@ public:
 		Rect r = this->GetWidget<NWidgetBase>(WID_TA_RATING_INFO)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
 		int text_y_offset      = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
-		int icon_y_offset      = (this->resize.step_height - this->icon_size.height) / 2;
 		int exclusive_y_offset = (this->resize.step_height - this->exclusive_size.height) / 2;
 
 		DrawString(r.left, r.right, r.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
@@ -163,7 +162,7 @@ public:
 		/* Draw list of companies */
 		for (const Company *c : Company::Iterate()) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
+				DrawCompanyIcon(c->index, icon.WithTopAndHeight(text.top, this->resize.step_height), false);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);

@@ -247,7 +247,6 @@ struct CheatWindow : Window {
 
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
@@ -279,7 +278,7 @@ struct CheatWindow : Window {
 							SetDParam(0, val + 1);
 							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
 							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(buf).width;
-							DrawCompanyIcon(_local_company, rtl ? text.right - offset - WidgetDimensions::scaled.hsep_indent : text.left + offset, y + icon_y_offset);
+							DrawCompanyIcon(_local_company, text.Indent(offset, rtl).WithWidth(this->icon.width, rtl).WithTopAndHeight(y, this->line_height), false);
 							break;
 						}
 

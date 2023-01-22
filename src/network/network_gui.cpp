@@ -1300,7 +1300,7 @@ static void ShowNetworkStartServerWindow()
 /* The window below gives information about the connected clients
  * and also makes able to kick them (if server) and stuff like that. */
 
-extern void DrawCompanyIcon(CompanyID cid, int x, int y);
+extern void DrawCompanyIcon(CompanyID c, const Rect &r, bool lowered);
 
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -2016,8 +2016,7 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		int text_y_offset = CenterBounds(0, this->line_height, FONT_HEIGHT_NORMAL);
 
-		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		int offset = CenterBounds(0, this->line_height, d.height);
+		Dimension d = GetScaledSpriteSize(SPR_COMPANY_ICON);
 
 		uint line_start = this->vscroll->GetPosition();
 		uint line_end = line_start + this->vscroll->GetCapacity();
@@ -2026,7 +2025,7 @@ public:
 
 		/* Draw the company line (if in range of scrollbar). */
 		if (IsInsideMM(line, line_start, line_end)) {
-			int icon_left = r.WithWidth(d.width, rtl).left;
+			Rect icon = r.WithWidth(d.width, rtl).WithTopAndHeight(y, this->line_height);
 			Rect tr = r.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 			int &x = rtl ? tr.left : tr.right;
 
@@ -2037,13 +2036,13 @@ public:
 			}
 
 			if (company_id == COMPANY_SPECTATOR) {
-				DrawSprite(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon_left, y + offset);
+				DrawSpriteIgnorePadding(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon, false, SA_CENTER);
 				DrawString(tr.left, tr.right, y + text_y_offset, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
 			} else if (company_id == COMPANY_NEW_COMPANY) {
-				DrawSprite(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon_left, y + offset);
+				DrawSpriteIgnorePadding(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon, false, SA_CENTER);
 				DrawString(tr.left, tr.right, y + text_y_offset, STR_NETWORK_CLIENT_LIST_NEW_COMPANY, TC_WHITE);
 			} else {
-				DrawCompanyIcon(company_id, icon_left, y + offset);
+				DrawCompanyIcon(company_id, icon, false);
 
 				SetDParam(0, company_id);
 				SetDParam(1, company_id);

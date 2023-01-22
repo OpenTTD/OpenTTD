@@ -128,7 +128,7 @@ public:
 
 	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed)
 	{
-		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
+		this->icon_size = GetScaledSpriteSize(SPR_COMPANY_ICON);
 		this->lock_size = GetScaledSpriteSize(SPR_LOCK);
 	}
 
@@ -159,10 +159,9 @@ public:
 		if (!Company::IsValidID(company)) return;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
-		int icon_y = CenterBounds(r.top, r.bottom, icon_size.height);
 		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 
-		DrawCompanyIcon(company, tr.WithWidth(this->icon_size.width, rtl).left, icon_y);
+		DrawCompanyIcon(company, tr.WithWidth(this->icon_size.width, rtl), false);
 		if (NetworkCompanyIsPassworded(company)) {
 			DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, tr.WithWidth(this->lock_size.width, !rtl), false, SA_CENTER);
 		}

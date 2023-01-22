@@ -52,6 +52,17 @@
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
 
+/**
+ * Draw the icon of a company.
+ * @param c Company that needs its icon drawn.
+ * @param r Rect of the icon.
+ * @param lowered True iff the icon should be displayed as lowered.
+ */
+void DrawCompanyIcon(CompanyID c, const Rect &r, bool lowered)
+{
+	DrawSpriteIgnorePadding(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), r, lowered, SA_CENTER);
+}
+
 /** List of revenues. */
 static ExpensesType _expenses_list_revenue[] = {
 	EXPENSES_TRAIN_REVENUE,

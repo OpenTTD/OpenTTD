@@ -140,17 +140,6 @@ TextColour GetDrawStringCompanyColour(CompanyID company)
 }
 
 /**
- * Draw the icon of a company.
- * @param c Company that needs its icon drawn.
- * @param x Horizontal coordinate of the icon.
- * @param y Vertical coordinate of the icon.
- */
-void DrawCompanyIcon(CompanyID c, int x, int y)
-{
-	DrawSprite(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
-}
-
-/**
  * Checks whether a company manager's face is a valid encoding.
  * Unused bits are not enforced to be 0.
  * @param cmf the fact to check
