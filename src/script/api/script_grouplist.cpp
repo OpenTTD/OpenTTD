@@ -16,7 +16,7 @@
 
 ScriptGroupList::ScriptGroupList()
 {
-	EnforceDeityOrCompanyModeValid_Void();
+	EnforceCompanyModeValid_Void();
 	for (const Group *g : Group::Iterate()) {
 		if (g->owner == ScriptObject::GetCompany()) this->AddItem(g->index);
 	}

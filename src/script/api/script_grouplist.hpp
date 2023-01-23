@@ -15,11 +15,14 @@
 /**
  * Creates a list of groups of which you are the owner.
  * @note Neither ScriptGroup::GROUP_ALL nor ScriptGroup::GROUP_DEFAULT is in this list.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptGroupList : public ScriptList {
 public:
+	/**
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 */
 	ScriptGroupList();
 };
 

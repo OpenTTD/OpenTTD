@@ -103,7 +103,7 @@ ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle
 
 ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
-	EnforceDeityOrCompanyModeValid_Void();
+	EnforceCompanyModeValid_Void();
 	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
@@ -115,7 +115,7 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 
 ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type)
 {
-	EnforceDeityOrCompanyModeValid_Void();
+	EnforceCompanyModeValid_Void();
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {

@@ -45,6 +45,35 @@
  * \li GSCompany::SetAutoRenewMonths
  * \li GSCompany::SetAutoRenewMoney
  * \li GSGameSettings::IsDisabledVehicleType
+ * \li GSGroup::GroupID
+ * \li GSGroup::IsValidGroup
+ * \li GSGroup::CreateGroup
+ * \li GSGroup::DeleteGroup
+ * \li GSGroup::GetVehicleType
+ * \li GSGroup::SetName
+ * \li GSGroup::GetName
+ * \li GSGroup::SetParent
+ * \li GSGroup::GetParent
+ * \li GSGroup::EnableAutoReplaceProtection
+ * \li GSGroup::GetAutoReplaceProtection
+ * \li GSGroup::GetNumEngines
+ * \li GSGroup::GetNumVehicles
+ * \li GSGroup::MoveVehicle
+ * \li GSGroup::EnableWagonRemoval
+ * \li GSGroup::HasWagonRemoval
+ * \li GSGroup::SetAutoReplace
+ * \li GSGroup::GetEngineReplacement
+ * \li GSGroup::StopAutoReplace
+ * \li GSGroup::GetProfitThisYear
+ * \li GSGroup::GetProfitLastYear
+ * \li GSGroup::GetCurrentUsage
+ * \li GSGroup::SetPrimaryColour
+ * \li GSGroup::SetSecondaryColour
+ * \li GSGroup::GetPrimaryColour
+ * \li GSGroup::GetSecondaryColour
+ * \li GSGroupList
+ * \li GSVehicleList_Group
+ * \li GSVehicleList_DefaultGroup
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
