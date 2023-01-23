@@ -31,6 +31,13 @@
 	return g != nullptr && g->owner == ScriptObject::GetCompany();
 }
 
+/* static */ ScriptCompany::CompanyID ScriptGroup::GetOwner(GroupID group_id)
+{
+	if (!IsValidGroup(group_id)) return ScriptCompany::COMPANY_INVALID;
+
+	return ScriptCompany::ToScriptCompanyID(::Group::Get(group_id)->owner);
+}
+
 /* static */ GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
 {
 	EnforceCompanyModeValid(GROUP_INVALID);
