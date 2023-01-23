@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSGroup::GetOwner
  *
  * \b 14.0
  *
