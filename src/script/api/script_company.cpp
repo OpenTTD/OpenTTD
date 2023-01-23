@@ -40,6 +40,7 @@
 
 /* static */ bool ScriptCompany::IsMine(ScriptCompany::CompanyID company)
 {
+	EnforceCompanyModeValid(false);
 	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
 }
 
