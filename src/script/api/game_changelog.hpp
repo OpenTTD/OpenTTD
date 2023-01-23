@@ -17,6 +17,25 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li GSOrder::SetOrderJumpTo
+ * \li GSOrder::SetOrderCondition
+ * \li GSOrder::SetOrderCompareFunction
+ * \li GSOrder::SetOrderCompareValue
+ * \li GSOrder::SetStopLocation
+ * \li GSOrder::SetOrderRefit
+ * \li GSOrder::AppendOrder
+ * \li GSOrder::AppendConditionalOrder
+ * \li GSOrder::InsertOrder
+ * \li GSOrder::InsertConditionalOrder
+ * \li GSOrder::RemoveOrder
+ * \li GSOrder::SetOrderFlags
+ * \li GSOrder::MoveOrder
+ * \li GSOrder::SkipToOrder
+ * \li GSOrder::CopyOrders
+ * \li GSOrder::ShareOrders
+ * \li GSOrder::UnshareOrders
+ *
  * \b 13.0
  *
  * API additions:
