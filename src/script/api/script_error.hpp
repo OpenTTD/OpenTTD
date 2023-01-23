@@ -56,6 +56,15 @@
 	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
 
 /**
+ * Helper to enforce the precondition that the company mode is valid.
+ */
+#define EnforceCompanyModeValid_Void() \
+	if (!ScriptCompanyMode::IsValid()) { \
+		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY); \
+		return; \
+	}
+
+/**
  * Helper to enforce the precondition that we are in a deity mode.
  * @param returnval The value to return on failure.
  */

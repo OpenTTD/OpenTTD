@@ -30,7 +30,7 @@ def check_mode_enforcement(path):
                 continue
 
             if re.match(
-                r"\t(EnforceDeityMode|EnforceCompanyModeValid|EnforceDeityOrCompanyModeValid|EnforceDeityOrCompanyModeValid_Void)\(",
+                r"\t(EnforceDeityMode|EnforceCompanyModeValid|EnforceCompanyModeValid_Void|EnforceDeityOrCompanyModeValid|EnforceDeityOrCompanyModeValid_Void)\(",
                 line,
             ):
                 # Mode enforcement macro found
