@@ -129,8 +129,8 @@ public:
 	/**
 	 * Check if a CompanyID is your CompanyID, to ease up checks.
 	 * @param company The company index to check.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if this company is your CompanyID.
-	 * @api -game
 	 */
 	static bool IsMine(CompanyID company);
 
@@ -177,7 +177,6 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if the gender was changed.
 	 * @note When successful a random face will be created.
-	 * @api -game
 	 */
 	static bool SetPresidentGender(Gender gender);
 
@@ -338,7 +337,6 @@ public:
 	 * @param autorenew The new autorenew status.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if autorenew status has been modified.
-	 * @api -game
 	 */
 	static bool SetAutoRenewStatus(bool autorenew);
 
@@ -356,7 +354,6 @@ public:
 	 *               The value will be clamped to MIN(int16) .. MAX(int16).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if autorenew months has been modified.
-	 * @api -game
 	 */
 	static bool SetAutoRenewMonths(SQInteger months);
 
@@ -375,7 +372,6 @@ public:
 	 * @return True if autorenew money has been modified.
 	 * @pre money >= 0
 	 * @pre money <  2**32
-	 * @api -game
 	 */
 	static bool SetAutoRenewMoney(Money money);
 

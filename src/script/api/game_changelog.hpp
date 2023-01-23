@@ -39,6 +39,11 @@
  * \li GSOrder::CopyOrders
  * \li GSOrder::ShareOrders
  * \li GSOrder::UnshareOrders
+ * \li GSCompany::IsMine
+ * \li GSCompany::SetPresidentGender
+ * \li GSCompany::SetAutoRenewStatus
+ * \li GSCompany::SetAutoRenewMonths
+ * \li GSCompany::SetAutoRenewMoney
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
