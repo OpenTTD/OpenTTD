@@ -75,7 +75,6 @@ public:
 	 * Checks whether the given vehicle-type is disabled for companies.
 	 * @param vehicle_type The vehicle-type to check.
 	 * @return True if the vehicle-type is disabled.
-	 * @api -game
 	 */
 	static bool IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type);
 };

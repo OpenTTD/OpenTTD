@@ -44,6 +44,7 @@
  * \li GSCompany::SetAutoRenewStatus
  * \li GSCompany::SetAutoRenewMonths
  * \li GSCompany::SetAutoRenewMoney
+ * \li GSGameSettings::IsDisabledVehicleType
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
