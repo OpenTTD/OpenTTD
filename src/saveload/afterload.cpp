@@ -1983,13 +1983,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_102)) {
-		for (TileIndex t = 0; t < map_size; t++) {
-			/* Now all crossings should be in correct state */
-			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t, false);
-		}
-	}
-
 	if (IsSavegameVersionBefore(SLV_103)) {
 		/* Non-town-owned roads now store the closest town */
 		UpdateNearestTownForRoadTiles(false);
@@ -3196,9 +3189,9 @@ bool AfterLoadGame()
 			}
 		}
 
-		/* Refresh all level crossings to bar adjacent crossing tiles. */
+		/* Refresh all level crossings to bar adjacent crossing tiles, if needed. */
 		for (TileIndex tile = 0; tile < MapSize(); tile++) {
-			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false, true);
+			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false);
 		}
 	}
 
