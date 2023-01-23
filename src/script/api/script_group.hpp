@@ -32,6 +32,15 @@ public:
 	static bool IsValidGroup(GroupID group_id);
 
 	/**
+	 * Get the owner of a group.
+	 * @param group_id The group to get the owner of.
+	 * @pre IsValidGroup(group_id).
+	 * @return The owner the group has.
+	 * @api -ai
+	 */
+	static ScriptCompany::CompanyID GetOwner(GroupID group_id);
+
+	/**
 	 * Create a new group.
 	 * @param vehicle_type The type of vehicle to create a group for.
 	 * @param parent_group_id The parent group id to create this group under, INVALID_GROUP for top-level.
