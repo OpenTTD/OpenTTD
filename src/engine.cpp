@@ -21,6 +21,7 @@
 #include "autoreplace_gui.h"
 #include "string_func.h"
 #include "ai/ai.hpp"
+#include "game/game.hpp"
 #include "core/pool_func.hpp"
 #include "engine_gui.h"
 #include "engine_func.h"
@@ -1126,6 +1127,9 @@ static void NewVehicleAvailable(Engine *e)
 
 	/* Only broadcast event if AIs are able to build this vehicle type. */
 	if (!IsVehicleTypeDisabled(e->type, true)) AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
+
+	/* Only send the event to Game Script if engine can be built. */
+	if (!IsVehicleTypeDisabled(e->type, false)) Game::NewEvent(new ScriptEventEngineAvailable(index));
 
 	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
 	if (!IsVehicleTypeDisabled(e->type, false) && !e->info.extra_flags.Test(ExtraEngineFlag::NoNews)) {

@@ -245,7 +245,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 				v->age = CalendarTime::MIN_DATE;
 
 				AddTileNewsItem(GetEncodedString(STR_NEWS_DISASTER_ZEPPELIN, GetStationIndex(v->tile)), NewsType::Accident, v->tile);
-				AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCrashed(GetStationIndex(v->tile)));
+				ScriptTrigger::NewEvent<ScriptEventDisasterZeppelinerCrashed>(GetTileOwner(v->tile), GetStationIndex(v->tile));
 			}
 		}
 
@@ -263,7 +263,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 			Station *st = Station::GetByTile(v->tile);
 			st->airport.blocks.Reset(AirportBlock::RunwayIn);
-			AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCleared(st->index));
+			ScriptTrigger::NewEvent<ScriptEventDisasterZeppelinerCleared>(GetTileOwner(v->tile), st->index);
 		}
 
 		v->UpdatePosition(v->x_pos, v->y_pos, GetAircraftFlightLevel(v));

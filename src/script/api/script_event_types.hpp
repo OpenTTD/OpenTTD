@@ -568,7 +568,7 @@ private:
 
 /**
  * Event Vehicle Lost, indicating a vehicle can't find its way to its destination.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleLost : public ScriptEvent {
 public:
@@ -601,7 +601,7 @@ private:
 
 /**
  * Event VehicleWaitingInDepot, indicating a vehicle has arrived a depot and is now waiting there.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleWaitingInDepot : public ScriptEvent {
 public:
@@ -634,7 +634,7 @@ private:
 
 /**
  * Event Vehicle Unprofitable, indicating a vehicle lost money last year.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleUnprofitable : public ScriptEvent {
 public:
@@ -733,7 +733,7 @@ private:
 
 /**
  * Event Engine Available, indicating a new engine is available.
- * @api ai
+ * @api ai game
  */
 class ScriptEventEngineAvailable : public ScriptEvent {
 public:
@@ -808,7 +808,7 @@ private:
 
 /**
  * Event Disaster Zeppeliner Crashed, indicating a zeppeliner has crashed on an airport and is blocking the runway.
- * @api ai
+ * @api ai game
  */
 class ScriptEventDisasterZeppelinerCrashed : public ScriptEvent {
 public:
@@ -841,7 +841,7 @@ private:
 
 /**
  * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been removed, and the airport is operating again.
- * @api ai
+ * @api ai game
  */
 class ScriptEventDisasterZeppelinerCleared : public ScriptEvent {
 public:
@@ -909,7 +909,7 @@ private:
  * Event AircraftDestTooFar, indicating the next destination of an aircraft is too far away.
  * This event can be triggered when the current order of an aircraft changes, usually either when
  * loading is done or when switched manually.
- * @api ai
+ * @api ai game
  */
 class ScriptEventAircraftDestTooFar : public ScriptEvent {
 public:
@@ -1177,7 +1177,7 @@ public:
 
 /**
  * Event VehicleAutoReplaced, indicating a vehicle has been auto replaced.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleAutoReplaced : public ScriptEvent {
 public:

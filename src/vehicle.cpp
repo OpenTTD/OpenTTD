@@ -29,7 +29,7 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "station_base.h"
-#include "ai/ai.hpp"
+#include "script/script_trigger.hpp"
 #include "depot_func.h"
 #include "network/network.h"
 #include "core/pool_func.hpp"
@@ -812,7 +812,7 @@ void Vehicle::HandlePathfindingResult(bool path_found)
 	this->ResetDepotUnbunching();
 
 	/* Notify user about the event. */
-	AI::NewEvent(this->owner, new ScriptEventVehicleLost(this->index));
+	ScriptTrigger::NewEvent<ScriptEventVehicleLost>(this->owner, this->index);
 	if (_settings_client.gui.lost_vehicle_warn && this->owner == _local_company) {
 		AddVehicleAdviceNewsItem(AdviceType::VehicleLost, GetEncodedString(STR_NEWS_VEHICLE_IS_LOST, this->index), this->index);
 	}
@@ -1657,7 +1657,7 @@ void VehicleEnterDepot(Vehicle *v)
 			if (v->owner == _local_company) {
 				AddVehicleAdviceNewsItem(AdviceType::VehicleWaiting, GetEncodedString(STR_NEWS_TRAIN_IS_WAITING + v->type, v->index), v->index);
 			}
-			AI::NewEvent(v->owner, new ScriptEventVehicleWaitingInDepot(v->index));
+			ScriptTrigger::NewEvent<ScriptEventVehicleWaitingInDepot>(v->owner, v->index);
 		}
 
 		/* If we've entered our unbunching depot, record the round trip duration. */
@@ -3020,7 +3020,7 @@ static IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconom
 						GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD : STR_NEWS_VEHICLE_UNPROFITABLE_YEAR, v->index, profit),
 						v->index);
 				}
-				AI::NewEvent(v->owner, new ScriptEventVehicleUnprofitable(v->index));
+				ScriptTrigger::NewEvent<ScriptEventVehicleUnprofitable>(v->owner, v->index);
 			}
 
 			v->profit_last_year = v->profit_this_year;
