@@ -51,7 +51,7 @@ public:
 	 * @note try to avoid using this one
 	 * @return 2^"return value" == Map::SizeX()
 	 */
-	static inline uint LogX()
+	debug_inline static uint LogX()
 	{
 		return Map::log_x;
 	}
@@ -70,7 +70,7 @@ public:
 	 * Get the size of the map along the X
 	 * @return the number of tiles along the X of the map
 	 */
-	static inline uint SizeX()
+	debug_inline static uint SizeX()
 	{
 		return Map::size_x;
 	}
@@ -88,7 +88,7 @@ public:
 	 * Get the size of the map
 	 * @return the number of tiles of the map
 	 */
-	static inline uint Size()
+	debug_inline static uint Size()
 	{
 		return Map::size;
 	}
@@ -97,7 +97,7 @@ public:
 	 * Gets the maximum X coordinate within the map, including MP_VOID
 	 * @return the maximum X coordinate
 	 */
-	static inline uint MaxX()
+	debug_inline static uint MaxX()
 	{
 		return Map::SizeX() - 1;
 	}
@@ -179,7 +179,7 @@ typedef int32 TileIndexDiff;
  * @param y The y coordinate of the tile
  * @return The TileIndex calculated by the coordinate
  */
-static inline TileIndex TileXY(uint x, uint y)
+debug_inline static TileIndex TileXY(uint x, uint y)
 {
 	return (y << Map::LogX()) + x;
 }
@@ -210,7 +210,7 @@ static inline TileIndexDiff TileDiffXY(int x, int y)
  * @param y The virtual y coordinate of the tile.
  * @return The TileIndex calculated by the coordinate.
  */
-static inline TileIndex TileVirtXY(uint x, uint y)
+debug_inline static TileIndex TileVirtXY(uint x, uint y)
 {
 	return (y >> 4 << Map::LogX()) + (x >> 4);
 }
@@ -221,7 +221,7 @@ static inline TileIndex TileVirtXY(uint x, uint y)
  * @param tile the tile to get the X component of
  * @return the X component
  */
-static inline uint TileX(TileIndex tile)
+debug_inline static uint TileX(TileIndex tile)
 {
 	return tile.value & Map::MaxX();
 }
@@ -231,7 +231,7 @@ static inline uint TileX(TileIndex tile)
  * @param tile the tile to get the Y component of
  * @return the Y component
  */
-static inline uint TileY(TileIndex tile)
+debug_inline static uint TileY(TileIndex tile)
 {
 	return tile.value >> Map::LogX();
 }
