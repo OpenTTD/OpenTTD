@@ -323,6 +323,51 @@
 #   define PRINTF_SIZEX "%zX"
 #endif
 
+/*
+ * When making a (pure) debug build, the compiler will by default disable
+ * inlining of functions. This has a detremental effect on the performance of
+ * debug builds, especially when more and more trivial (wrapper) functions get
+ * added to the code base.
+ * Take for example the savegame called "Wentbourne", when running this game
+ * for 100 ticks with the null video driver a number of fairly trivial
+ * functions show up on top. The most common one is the implicit conversion
+ * operator of TileIndex to unsigned int, which takes up over 5% of the total
+ * run time and functionally does absolutely nothing. The remaining functions
+ * for the top 5 are GB, GetTileType, Map::Size and IsTileType to a total of
+ * about 12.5% of the game's total run time.
+ * It is possible to still force inlining in the most commonly used compilers,
+ * but that is at the cost of some problems with debugging due to the forced
+ * inlining. However, the performance benefit can be enormous; when forcing
+ * inlining for the previously mentioned top 5, the debug build ran about 15%
+ * quicker.
+ * The following debug_inline annotation may be added to functions comply
+ * with the following preconditions:
+ *  1: the function takes more than 0.5% of a profiled debug runtime
+ *  2: the function does not modify the game state
+ *  3: the function does not contain selection or iteration statements,
+ *     i.e. no if, switch, for, do, while, etcetera.
+ *  4: the function is one line of code, excluding assertions.
+ *  5: the function is defined in a header file.
+ * The debug_inline annotation must be placed in front of the function, i.e.
+ * before the optional static or constexpr modifier.
+ */
+#if !defined(_DEBUG) || defined(NO_DEBUG_INLINE)
+/*
+ * Do not force inlining when not in debug. This way we do not work against
+ * any carefully designed compiler optimizations.
+ */
+#define debug_inline inline
+#elif defined(__clang__) || defined(__GNUC__)
+#define debug_inline [[gnu::always_inline]] inline
+#else
+/*
+ * MSVC explicitly disables inlining, even forced inlining, in debug builds
+ * so __forceinline makes no difference compared to inline. Other unknown
+ * compilers can also just fallback to a normal inline.
+ */
+#define debug_inline inline
+#endif
+
 typedef unsigned char byte;
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */
