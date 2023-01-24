@@ -21,9 +21,6 @@
 class ScriptGroupList : public ScriptList {
 public:
 #ifdef DOXYGEN_API
-	/**
-	 * @game @pre ScriptCompanyMode::IsValid().
-	 */
 	ScriptGroupList();
 
 	/**
