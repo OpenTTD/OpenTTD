@@ -134,7 +134,7 @@ public:
 	 * @pre ScriptEngine::IsValidEngine(engine_id).
 	 * @pre (IsValidGroup(group_id) && ScriptEngine::GetVehicleType(engine_id) == GetVehicleType(group_id)) ||
 	     group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
-	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @game @pre ScriptCompanyMode::IsValid() when group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @return The number of engines with id engine_id in the group with id group_id.
 	 */
 	static SQInteger GetNumEngines(GroupID group_id, EngineID engine_id);
@@ -146,7 +146,7 @@ public:
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @pre IsValidGroup(group_id) || vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL ||
 	 *   vehicle_type == ScriptVehicle::VT_WATER || vehicle_type == ScriptVehicle::VT_AIR
-	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @game @pre ScriptCompanyMode::IsValid() when group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @return The total number of vehicles in the group with id group_id and it's sub-groups.
 	 * @note If the group is valid (neither GROUP_ALL nor GROUP_DEFAULT), the value of
 	 *  vehicle_type is retrieved from the group itself and not from the input value.
@@ -194,7 +194,7 @@ public:
 	 * @param engine_id_new The engine id to replace with.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL.
 	 * @pre ScriptEngine.IsBuildable(engine_id_new).
-	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @game @pre ScriptCompanyMode::IsValid() when group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @return True if and if the replacing was successfully started.
 	 * @note To stop autoreplacing engine_id_old, call StopAutoReplace(group_id, engine_id_old).
 	 */

@@ -16,9 +16,12 @@
 
 ScriptGroupList::ScriptGroupList(HSQUIRRELVM vm)
 {
-	EnforceCompanyModeValid_Void();
+	EnforceDeityOrCompanyModeValid_Void();
+
+	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
+
 	ScriptList::FillList<Group>(vm, this,
-		[owner](const Group *g) { return g->owner == owner; }
+		[owner, is_deity](const Group *g) { return g->owner == owner || is_deity; }
 	);
 }

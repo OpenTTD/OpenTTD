@@ -28,7 +28,7 @@
 {
 	EnforceDeityOrCompanyModeValid(false);
 	const Group *g = ::Group::GetIfValid(group_id);
-	return g != nullptr && g->owner == ScriptObject::GetCompany();
+	return g != nullptr && (g->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity());
 }
 
 /* static */ ScriptCompany::CompanyID ScriptGroup::GetOwner(GroupID group_id)
@@ -117,23 +117,29 @@
 
 /* static */ SQInteger ScriptGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
 {
-	EnforceCompanyModeValid(-1);
+	if (group_id == GROUP_DEFAULT || group_id == GROUP_ALL) EnforceCompanyModeValid(-1);
+	EnforceDeityOrCompanyModeValid(-1);
 	if (!ScriptEngine::IsValidEngine(engine_id)) return -1;
 	bool valid_group = IsValidGroup(group_id);
 	if (!valid_group && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
 	if (valid_group && ScriptEngine::GetVehicleType(engine_id) != GetVehicleType(group_id)) return -1;
 
-	return GetGroupNumEngines(ScriptObject::GetCompany(), group_id, engine_id);
+	::CompanyID company = (valid_group && ScriptCompanyMode::IsDeity()) ? ::Group::Get(group_id)->owner : ScriptObject::GetCompany();
+
+	return GetGroupNumEngines(company, group_id, engine_id);
 }
 
 /* static */ SQInteger ScriptGroup::GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type)
 {
-	EnforceCompanyModeValid(-1);
+	if (group_id == GROUP_DEFAULT || group_id == GROUP_ALL) EnforceCompanyModeValid(-1);
+	EnforceDeityOrCompanyModeValid(-1);
 	bool valid_group = IsValidGroup(group_id);
 	if (!valid_group && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
 	if (!valid_group && (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR)) return -1;
 
-	return GetGroupNumVehicle(ScriptObject::GetCompany(), group_id, valid_group ? ::Group::Get(group_id)->vehicle_type : (::VehicleType)vehicle_type);
+	::CompanyID company = (valid_group && ScriptCompanyMode::IsDeity()) ? ::Group::Get(group_id)->owner : ScriptObject::GetCompany();
+
+	return GetGroupNumVehicle(company, group_id, valid_group ? ::Group::Get(group_id)->vehicle_type : (::VehicleType)vehicle_type);
 }
 
 /* static */ bool ScriptGroup::MoveVehicle(GroupID group_id, VehicleID vehicle_id)
@@ -170,10 +176,14 @@
 
 /* static */ EngineID ScriptGroup::GetEngineReplacement(GroupID group_id, EngineID engine_id)
 {
-	EnforceCompanyModeValid(::EngineID::Invalid());
-	if (!IsValidGroup(group_id) && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return ::EngineID::Invalid();
+	if (group_id == GROUP_DEFAULT || group_id == GROUP_ALL) EnforceCompanyModeValid(::EngineID::Invalid());
+	EnforceDeityOrCompanyModeValid(::EngineID::Invalid());
+	bool valid_group = IsValidGroup(group_id);
+	if (!valid_group && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return ::EngineID::Invalid();
 
-	return ::EngineReplacementForCompany(Company::Get(ScriptObject::GetCompany()), engine_id, group_id);
+	::CompanyID company = (valid_group && ScriptCompanyMode::IsDeity()) ? ::Group::Get(group_id)->owner : ScriptObject::GetCompany();
+
+	return ::EngineReplacementForCompany(Company::Get(company), engine_id, group_id);
 }
 
 /* static */ bool ScriptGroup::StopAutoReplace(GroupID group_id, EngineID engine_id)
