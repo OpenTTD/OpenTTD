@@ -400,7 +400,7 @@ public:
 	 * @param size The town size of the new town.
 	 * @param city True if the new town should be a city.
 	 * @param layout The town layout of the new town.
-	 * @param name The name of the new town. Pass nullptr to use a random town name.
+	 * @param name The name of the new town. Pass null to use a random town name.
 	 * @game @pre no company mode in scope || ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @ai @pre ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @game @pre no company mode in scope || size != TOWN_SIZE_LARGE.

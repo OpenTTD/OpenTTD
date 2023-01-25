@@ -202,7 +202,7 @@ public:
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page).
-	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && len(text) != 0).
+	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
 	 * @pre if type is SPET_GOAL and story_page is a global page, then referenced goal must be global.
@@ -217,7 +217,7 @@ public:
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page).
-	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && len(text) != 0).
+	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
 	 * @pre if type is SPET_GOAL and story_page is a global page, then referenced goal must be global.

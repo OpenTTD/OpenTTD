@@ -72,7 +72,7 @@ public:
 	 * @param footer The optional footer text for the table (null is allowed).
 	 * @return The new LeagueTableID, or LEAGUE_TABLE_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre title != nullptr && len(title) != 0.
+	 * @pre title != null && len(title) != 0.
 	 */
 	static LeagueTableID New(Text *title, Text *header, Text *footer);
 
@@ -88,8 +88,8 @@ public:
 	 * @return The new LeagueTableElementID, or LEAGUE_TABLE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidLeagueTable(table).
-	 * @pre text != nullptr && len(text) != 0.
-	 * @pre score != nullptr && len(score) != 0.
+	 * @pre text != null && len(text) != 0.
+	 * @pre score != null && len(score) != 0.
 	 * @pre IsValidLink(Link(link_type, link_target)).
 	 */
 	static LeagueTableElementID NewElement(LeagueTableID table, int64 rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, LinkTargetID link_target);
@@ -104,7 +104,7 @@ public:
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidLeagueTableElement(element).
-	 * @pre text != nullptr && len(text) != 0.
+	 * @pre text != null && len(text) != 0.
 	 * @pre IsValidLink(Link(link_type, link_target)).
 	 */
 	static bool UpdateElementData(LeagueTableElementID element, ScriptCompany::CompanyID company, Text *text, LinkType link_type, LinkTargetID link_target);
@@ -117,7 +117,7 @@ public:
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidLeagueTableElement(element).
-	 * @pre score != nullptr && len(score) != 0.
+	 * @pre score != null && len(score) != 0.
 	 */
 	static bool UpdateElementScore(LeagueTableElementID element, int64 rating, Text *score);
 
