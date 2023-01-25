@@ -28,6 +28,7 @@
  * \li GSEventAircraftDestTooFar
  * \li GSEventVehicleAutoReplaced
  * \li GSEventCompanyAskMerger
+ * \li GSEventEnginePreview
  *
  * \b 14.0
  *
