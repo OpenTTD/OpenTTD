@@ -28,6 +28,7 @@
  * \li GSEventDisasterZeppelinerCleared
  * \li GSEventAircraftDestTooFar
  * \li GSEventVehicleAutoReplaced
+ * \li GSEventCompanyAskMerger
  *
  * \b 14.0
  *

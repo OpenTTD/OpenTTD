@@ -113,6 +113,7 @@ bool ScriptEventEnginePreview::AcceptPreview()
 bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
 	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ScriptObject::GetCompany() == (::CompanyID)this->buyer);
 	return ScriptObject::Command<CMD_BUY_COMPANY>::Do((::CompanyID)this->owner, false);
 }
 
