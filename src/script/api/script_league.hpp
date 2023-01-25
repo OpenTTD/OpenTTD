@@ -68,6 +68,8 @@ public:
 	/**
 	 * Create a new league table.
 	 * @param title League table title (can be either a raw string, or ScriptText object).
+	 * @param header The optional header text for the table (null is allowed).
+	 * @param footer The optional footer text for the table (null is allowed).
 	 * @return The new LeagueTableID, or LEAGUE_TABLE_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre title != nullptr && len(title) != 0.

@@ -232,6 +232,7 @@ public:
 	 * @param group_id The group id to set the colour of.
 	 * @param colour Colour to set.
 	 * @pre IsValidGroup(group_id).
+	 * @return True iff the colour was set successfully.
 	 */
 	static bool SetPrimaryColour(GroupID group_id, ScriptCompany::Colours colour);
 
@@ -240,6 +241,7 @@ public:
 	 * @param group_id The group id to set the colour of.
 	 * @param colour Colour to set.
 	 * @pre IsValidGroup(group_id).
+	 * @return True iff the colour was set successfully.
 	 */
 	static bool SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour);
 
@@ -247,6 +249,7 @@ public:
 	 * Get primary colour of a group.
 	 * @param group_id The group id to get the colour of.
 	 * @pre IsValidGroup(group_id).
+	 * @return The primary colour of the group.
 	 */
 	static ScriptCompany::Colours GetPrimaryColour(GroupID group_id);
 
@@ -254,6 +257,7 @@ public:
 	 * Get secondary colour for a group.
 	 * @param group_id The group id to get the colour of.
 	 * @pre IsValidGroup(group_id).
+	 * @return The secondary colour of the group.
 	 */
 	static ScriptCompany::Colours GetSecondaryColour(GroupID group_id);
 };
