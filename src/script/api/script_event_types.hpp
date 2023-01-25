@@ -373,17 +373,19 @@ private:
 
 /**
  * Event Company Ask Merger, indicating a company can be bought (cheaply) by you.
- * @api ai
+ * @api ai game
  */
 class ScriptEventCompanyAskMerger : public ScriptEvent {
 public:
 #ifndef DOXYGEN_API
 	/**
+	 * @param buyer The company that can buy.
 	 * @param owner The company that can be bought.
 	 * @param value The value/costs of buying the company.
 	 */
-	ScriptEventCompanyAskMerger(Owner owner, Money value) :
+	ScriptEventCompanyAskMerger(Owner buyer, Owner owner, Money value) :
 		ScriptEvent(ET_COMPANY_ASK_MERGER),
+		buyer((ScriptCompany::CompanyID)buyer),
 		owner((ScriptCompany::CompanyID)owner),
 		value(value)
 	{}
@@ -395,6 +397,14 @@ public:
 	 * @return The converted instance.
 	 */
 	static ScriptEventCompanyAskMerger *Convert(ScriptEvent *instance) { return (ScriptEventCompanyAskMerger *)instance; }
+
+	/**
+	 * Get the CompanyID of the company that can purchase the other.
+	 * @return The CompanyID of the company that can purchase.
+	 * @note If the company is bought this will become invalid.
+	 * @api -ai
+	 */
+	ScriptCompany::CompanyID GetBuyerID() { return this->buyer; }
 
 	/**
 	 * Get the CompanyID of the company that can be bought.
@@ -417,8 +427,9 @@ public:
 	bool AcceptMerger();
 
 private:
+	ScriptCompany::CompanyID buyer; ///< The company that is buying.
 	ScriptCompany::CompanyID owner; ///< The company that is in trouble.
-	Money value;                ///< The value of the company, i.e. the amount you would pay.
+	Money value;                    ///< The value of the company in trouble, i.e. the amount you would pay.
 };
 
 /**
