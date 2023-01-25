@@ -97,7 +97,7 @@ public:
 	 * @param destination The destination of the \a type type.
 	 * @return The new GoalID, or GOAL_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre goal != nullptr && len(goal) != 0.
+	 * @pre goal != null && len(goal) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre if type is GT_STORY_PAGE, the company of the goal and the company of the story page need to match:
 	 *       \li Global goals can only reference global story pages.
@@ -120,7 +120,7 @@ public:
 	 * @param goal The new goal text (can be either a raw string, or a ScriptText object).
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre goal != nullptr && len(goal) != 0.
+	 * @pre goal != null && len(goal) != 0.
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool SetText(GoalID goal_id, Text *goal);
@@ -131,7 +131,7 @@ public:
 	 * the progress string short.
 	 * @param goal_id The goal to update.
 	 * @param progress The new progress text for the goal (can be either a raw string,
-	 * or a ScriptText object). To clear the progress string you can pass nullptr or an
+	 * or a ScriptText object). To clear the progress string you can pass null or an
 	 * empty string.
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
@@ -167,7 +167,7 @@ public:
 	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre question != nullptr && len(question) != 0.
+	 * @pre question != null && len(question) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
 	 * @note Replies to the question are given by you via the event ScriptEvent_GoalQuestionAnswer.
@@ -185,7 +185,7 @@ public:
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre ScriptGame::IsMultiplayer()
-	 * @pre question != nullptr && len(question) != 0.
+	 * @pre question != null && len(question) != 0.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
 	 * @note Replies to the question are given by you via the event ScriptEvent_GoalQuestionAnswer.

@@ -113,7 +113,7 @@ public:
 	 * @param vehicle_id The vehicle to set the name for.
 	 * @param name The name for the vehicle (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre name != nullptr && len(name) != 0.
+	 * @pre name != null && len(name) != 0.
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
