@@ -238,16 +238,18 @@ private:
  * Event Engine Preview, indicating a manufacturer offer you to test a new engine.
  *  You can get the same information about the offered engine as a real user
  *  would see in the offer window. And you can also accept the offer.
- * @api ai
+ * @api ai game
  */
 class ScriptEventEnginePreview : public ScriptEvent {
 public:
 #ifndef DOXYGEN_API
 	/**
+	 * @param owner The company being offered the test engine.
 	 * @param engine The engine offered to test.
 	 */
-	ScriptEventEnginePreview(EngineID engine) :
+	ScriptEventEnginePreview(Owner owner, EngineID engine) :
 		ScriptEvent(ET_ENGINE_PREVIEW),
+		owner(ScriptCompany::ToScriptCompanyID(owner)),
 		engine(engine)
 	{}
 #endif /* DOXYGEN_API */
@@ -258,6 +260,13 @@ public:
 	 * @return The converted instance.
 	 */
 	static ScriptEventEnginePreview *Convert(ScriptEvent *instance) { return (ScriptEventEnginePreview *)instance; }
+
+	/**
+	 * Get the company being offered the test engine.
+	 * @return The company being offered to test the engine.
+	 * @api -ai
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
 
 	/**
 	 * Get the name of the offered engine.
@@ -319,6 +328,7 @@ public:
 	bool AcceptPreview();
 
 private:
+	ScriptCompany::CompanyID owner; ///< The company the engine preview is for.
 	EngineID engine; ///< The engine the preview is for.
 
 	/**

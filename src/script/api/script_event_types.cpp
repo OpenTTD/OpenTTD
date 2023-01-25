@@ -106,6 +106,7 @@ int32_t ScriptEventEnginePreview::GetVehicleType()
 bool ScriptEventEnginePreview::AcceptPreview()
 {
 	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ScriptObject::GetCompany() == ScriptCompany::FromScriptCompanyID(this->owner));
 	if (!this->IsEngineValid()) return false;
 	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
 }
