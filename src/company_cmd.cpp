@@ -730,7 +730,7 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
 
-	AI::NewEvent(best->index, new ScriptEventCompanyAskMerger(c->index, c->bankrupt_value));
+	ScriptTrigger::NewEvent<ScriptEventCompanyAskMerger>(best->index, best->index, c->index, c->bankrupt_value);
 	if (IsInteractiveCompany(best->index)) {
 		ShowBuyCompanyDialog(c->index, false);
 	}

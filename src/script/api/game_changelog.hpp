@@ -36,6 +36,7 @@
  * \li GSEventDisasterZeppelinerCleared
  * \li GSEventAircraftDestTooFar
  * \li GSEventVehicleAutoReplaced
+ * \li GSEventCompanyAskMerger
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
