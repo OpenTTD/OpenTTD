@@ -48,7 +48,7 @@ public:
 	 * Get the name of a loaded NewGRF.
 	 * @param grfid The NewGRF to query.
 	 * @pre ScriptNewGRF::IsLoaded(grfid).
-	 * @return The name of the NewGRF or nullptr if no name is defined.
+	 * @return The name of the NewGRF or null if no name is defined.
 	 */
 	static char *GetName(uint32 grfid);
 };
