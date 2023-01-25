@@ -33,6 +33,7 @@ public:
 		CRASH_FLOODED,              ///< Vehicle was flooded
 	};
 
+#ifndef DOXYGEN_API
 	/**
 	 * @param vehicle The vehicle that crashed.
 	 * @param crash_site Where the vehicle crashed.
@@ -44,6 +45,7 @@ public:
 		vehicle(vehicle),
 		crash_reason(crash_reason)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -82,6 +84,7 @@ private:
  */
 class ScriptEventSubsidyOffer : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -89,6 +92,7 @@ public:
 		ScriptEvent(ET_SUBSIDY_OFFER),
 		subsidy_id(subsidy_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -113,6 +117,7 @@ private:
  */
 class ScriptEventSubsidyOfferExpired : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -120,6 +125,7 @@ public:
 		ScriptEvent(ET_SUBSIDY_OFFER_EXPIRED),
 		subsidy_id(subsidy_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -144,6 +150,7 @@ private:
  */
 class ScriptEventSubsidyAwarded : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -151,6 +158,7 @@ public:
 		ScriptEvent(ET_SUBSIDY_AWARDED),
 		subsidy_id(subsidy_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -175,6 +183,7 @@ private:
  */
 class ScriptEventSubsidyExpired : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -182,6 +191,7 @@ public:
 		ScriptEvent(ET_SUBSIDY_EXPIRED),
 		subsidy_id(subsidy_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -208,6 +218,7 @@ private:
  */
 class ScriptEventEnginePreview : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param engine The engine offered to test.
 	 */
@@ -215,6 +226,7 @@ public:
 		ScriptEvent(ET_ENGINE_PREVIEW),
 		engine(engine)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -297,6 +309,7 @@ private:
  */
 class ScriptEventCompanyNew : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param owner The new company.
 	 */
@@ -304,6 +317,7 @@ public:
 		ScriptEvent(ET_COMPANY_NEW),
 		owner((ScriptCompany::CompanyID)owner)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -329,6 +343,7 @@ private:
  */
 class ScriptEventCompanyInTrouble : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param owner The company that is in trouble.
 	 */
@@ -336,6 +351,7 @@ public:
 		ScriptEvent(ET_COMPANY_IN_TROUBLE),
 		owner((ScriptCompany::CompanyID)owner)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -360,6 +376,7 @@ private:
  */
 class ScriptEventCompanyAskMerger : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param owner The company that can be bought.
 	 * @param value The value/costs of buying the company.
@@ -369,6 +386,7 @@ public:
 		owner((ScriptCompany::CompanyID)owner),
 		value(value)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -408,6 +426,7 @@ private:
  */
 class ScriptEventCompanyMerger : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param old_owner The company bought off.
 	 * @param new_owner The company that bought owner.
@@ -417,6 +436,7 @@ public:
 		old_owner((ScriptCompany::CompanyID)old_owner),
 		new_owner((ScriptCompany::CompanyID)new_owner)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -451,6 +471,7 @@ private:
  */
 class ScriptEventCompanyBankrupt : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param owner The company that has gone bankrupt.
 	 */
@@ -458,6 +479,7 @@ public:
 		ScriptEvent(ET_COMPANY_BANKRUPT),
 		owner((ScriptCompany::CompanyID)owner)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -482,6 +504,7 @@ private:
  */
 class ScriptEventVehicleLost : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param vehicle_id The vehicle that is lost.
 	 */
@@ -489,6 +512,7 @@ public:
 		ScriptEvent(ET_VEHICLE_LOST),
 		vehicle_id(vehicle_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -513,6 +537,7 @@ private:
  */
 class ScriptEventVehicleWaitingInDepot : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param vehicle_id The vehicle that is waiting in a depot.
 	 */
@@ -520,6 +545,7 @@ public:
 		ScriptEvent(ET_VEHICLE_WAITING_IN_DEPOT),
 		vehicle_id(vehicle_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -544,6 +570,7 @@ private:
  */
 class ScriptEventVehicleUnprofitable : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param vehicle_id The vehicle that was unprofitable.
 	 */
@@ -551,6 +578,7 @@ public:
 		ScriptEvent(ET_VEHICLE_UNPROFITABLE),
 		vehicle_id(vehicle_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -575,6 +603,7 @@ private:
  */
 class ScriptEventIndustryOpen : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param industry_id The new industry.
 	 */
@@ -582,6 +611,7 @@ public:
 		ScriptEvent(ET_INDUSTRY_OPEN),
 		industry_id(industry_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -606,6 +636,7 @@ private:
  */
 class ScriptEventIndustryClose : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param industry_id The new industry.
 	 */
@@ -613,6 +644,7 @@ public:
 		ScriptEvent(ET_INDUSTRY_CLOSE),
 		industry_id(industry_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -637,6 +669,7 @@ private:
  */
 class ScriptEventEngineAvailable : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param engine The engine that is available.
 	 */
@@ -644,6 +677,7 @@ public:
 		ScriptEvent(ET_ENGINE_AVAILABLE),
 		engine(engine)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -668,6 +702,7 @@ private:
  */
 class ScriptEventStationFirstVehicle : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param station The station visited for the first time.
 	 * @param vehicle The vehicle visiting the station.
@@ -677,6 +712,7 @@ public:
 		station(station),
 		vehicle(vehicle)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -708,6 +744,7 @@ private:
  */
 class ScriptEventDisasterZeppelinerCrashed : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param station The station containing the affected airport
 	 */
@@ -715,6 +752,7 @@ public:
 		ScriptEvent(ET_DISASTER_ZEPPELINER_CRASHED),
 		station(station)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -739,6 +777,7 @@ private:
  */
 class ScriptEventDisasterZeppelinerCleared : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param station The station containing the affected airport
 	 */
@@ -746,6 +785,7 @@ public:
 		ScriptEvent(ET_DISASTER_ZEPPELINER_CLEARED),
 		station(station)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -770,6 +810,7 @@ private:
  */
 class ScriptEventTownFounded : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param town The town that was created.
 	 */
@@ -777,6 +818,7 @@ public:
 		ScriptEvent(ET_TOWN_FOUNDED),
 		town(town)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -803,6 +845,7 @@ private:
  */
 class ScriptEventAircraftDestTooFar : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param vehicle_id The aircraft whose destination is too far away.
 	 */
@@ -810,6 +853,7 @@ public:
 		ScriptEvent(ET_AIRCRAFT_DEST_TOO_FAR),
 		vehicle_id(vehicle_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -834,10 +878,12 @@ private:
  */
 class ScriptEventAdminPort : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param json The JSON string which got sent.
 	 */
 	ScriptEventAdminPort(const std::string &json);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -882,6 +928,7 @@ private:
  */
 class ScriptEventWindowWidgetClick : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param window The windowclass that was clicked.
 	 * @param number The windownumber that was clicked.
@@ -893,6 +940,7 @@ public:
 		number(number),
 		widget(widget)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -930,6 +978,7 @@ private:
  */
 class ScriptEventGoalQuestionAnswer : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param uniqueid The uniqueID you have given this question.
 	 * @param company The company that is replying.
@@ -941,6 +990,7 @@ public:
 		company(company),
 		button(button)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -976,6 +1026,7 @@ private:
  */
 class ScriptEventCompanyTown : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param event The eventtype.
 	 * @param company The company.
@@ -986,6 +1037,7 @@ public:
 		company(company),
 		town(town)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -1018,6 +1070,7 @@ private:
  */
 class ScriptEventExclusiveTransportRights : public ScriptEventCompanyTown {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param company The company.
 	 * @param town The town.
@@ -1025,6 +1078,7 @@ public:
 	ScriptEventExclusiveTransportRights(ScriptCompany::CompanyID company, TownID town) :
 		ScriptEventCompanyTown(ET_EXCLUSIVE_TRANSPORT_RIGHTS, company, town)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -1041,6 +1095,7 @@ public:
  */
 class ScriptEventRoadReconstruction : public ScriptEventCompanyTown {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param company The company.
 	 * @param town The town.
@@ -1048,6 +1103,7 @@ public:
 	ScriptEventRoadReconstruction(ScriptCompany::CompanyID company, TownID town) :
 		ScriptEventCompanyTown(ET_ROAD_RECONSTRUCTION, company, town)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -1063,6 +1119,7 @@ public:
  */
 class ScriptEventVehicleAutoReplaced : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param old_id The vehicle that has been replaced.
 	 * @param new_id The vehicle that has been created in replacement.
@@ -1072,6 +1129,7 @@ public:
 		old_id(old_id),
 		new_id(new_id)
 	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -1103,6 +1161,7 @@ private:
  */
 class ScriptEventStoryPageButtonClick : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param company_id  Which company triggered the event.
 	 * @param page_id     Which page was the clicked button on.
@@ -1113,7 +1172,8 @@ public:
 		company_id((ScriptCompany::CompanyID)company_id),
 		page_id(page_id),
 		element_id(element_id)
-	{ }
+	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -1143,6 +1203,7 @@ private:
  */
 class ScriptEventStoryPageTileSelect : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param company_id  Which company triggered the event.
 	 * @param page_id     Which page is the used selection button on.
@@ -1155,7 +1216,8 @@ public:
 		page_id(page_id),
 		element_id(element_id),
 		tile_index(tile_index)
-	{ }
+	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -1189,6 +1251,7 @@ private:
  */
 class ScriptEventStoryPageVehicleSelect : public ScriptEvent {
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * @param company_id  Which company triggered the event.
 	 * @param page_id     Which page is the used selection button on.
@@ -1201,7 +1264,8 @@ public:
 		page_id(page_id),
 		element_id(element_id),
 		vehicle_id(vehicle_id)
-	{ }
+	{}
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
