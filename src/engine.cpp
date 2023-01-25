@@ -20,8 +20,7 @@
 #include "window_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "core/pool_func.hpp"
 #include "engine_gui.h"
 #include "engine_func.h"
@@ -992,7 +991,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 				 * boost that they wouldn't have gotten against other human companies. The check on
 				 * the line below is just to make AIs not notice that they have a preview if they
 				 * cannot build the vehicle. */
-				if (!IsVehicleTypeDisabled(e->type, true)) AI::NewEvent(e->preview_company, new ScriptEventEnginePreview(i));
+				if (!IsVehicleTypeDisabled(e->type, true)) ScriptTrigger::NewEvent<ScriptEventEnginePreview>(e->preview_company, e->preview_company, i);
 				if (IsInteractiveCompany(e->preview_company)) ShowEnginePreviewWindow(i);
 			}
 		}
