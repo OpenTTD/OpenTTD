@@ -315,6 +315,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_PUSH element parameters.
 	 * @param colour The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
 	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags);
@@ -322,6 +323,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_TILE element parameters.
 	 * @param colour The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
@@ -330,6 +332,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
 	 * @param colour  The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor  The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
 	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.

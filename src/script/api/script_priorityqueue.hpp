@@ -61,6 +61,7 @@ public:
 
 	/**
 	 * Check if an items is already included in the queue.
+	 * @param item The item to check whether it's already in this queue.
 	 * @return true if the items is already in the queue.
 	 * @note Performance is O(n), use only when absolutely required.
 	 */
