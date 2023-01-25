@@ -892,10 +892,19 @@ public:
 	 */
 	static ScriptEventAdminPort *Convert(ScriptEvent *instance) { return (ScriptEventAdminPort *)instance; }
 
+#ifndef DOXYGEN_API
 	/**
-	 * Get the information that was sent to you back as Squirrel object.
+	 * The GetObject() wrapper from Squirrel.
 	 */
 	SQInteger GetObject(HSQUIRRELVM vm);
+#else
+	/**
+	 * Get the information that was sent to you back as Squirrel object.
+	 * @return The object.
+	 */
+	SQObject GetObject();
+#endif /* DOXYGEN_API */
+
 
 private:
 	std::string json; ///< The JSON string.
@@ -951,16 +960,19 @@ public:
 
 	/**
 	 * Get the class of the window that was clicked.
+	 * @return The clicked window class.
 	 */
 	ScriptWindow::WindowClass GetWindowClass() { return this->window; }
 
 	/**
 	 * Get the number of the window that was clicked.
+	 * @return The clicked identifying number of the widget within the class.
 	 */
 	uint32 GetWindowNumber() { return this->number; }
 
 	/**
 	 * Get the number of the widget that was clicked.
+	 * @return The number of the clicked widget.
 	 */
 	uint8 GetWidgetNumber() { return this->widget; }
 
@@ -1001,16 +1013,19 @@ public:
 
 	/**
 	 * Get the unique id of the question.
+	 * @return The unique id.
 	 */
 	uint16 GetUniqueID() { return this->uniqueid; }
 
 	/**
 	 * Get the company that pressed a button.
+	 * @return The company.
 	 */
 	ScriptCompany::CompanyID GetCompany() { return this->company; }
 
 	/**
 	 * Get the button that got pressed.
+	 * @return The button.
 	 */
 	ScriptGoal::QuestionButton GetButton() { return this->button; }
 
@@ -1182,13 +1197,22 @@ public:
 	 */
 	static ScriptEventStoryPageButtonClick *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageButtonClick *)instance; }
 
-	/** Get the CompanyID of the player that selected a tile. */
+	/**
+	 * Get the CompanyID of the player that selected a tile.
+	 * @return The ID of the company.
+	 */
 	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
 
-	/** Get the StoryPageID of the storybook page the clicked button is located on. */
+	/**
+	 * Get the StoryPageID of the storybook page the clicked button is located on.
+	 * @return The ID of the page in the story book the click was on.
+	 */
 	StoryPageID GetStoryPageID() { return this->page_id; }
 
-	/** Get the StoryPageElementID of the button element that was clicked. */
+	/**
+	 * Get the StoryPageElementID of the button element that was clicked.
+	 * @return The ID of the element that was clicked.
+	 */
 	StoryPageElementID GetElementID() { return this->element_id; }
 
 private:
@@ -1226,16 +1250,28 @@ public:
 	 */
 	static ScriptEventStoryPageTileSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageTileSelect *)instance; }
 
-	/** Get the CompanyID of the player that selected a tile. */
+	/**
+	 * Get the CompanyID of the player that selected a tile.
+	 * @return The company that selected the tile.
+	 */
 	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
 
-	/** Get the StoryPageID of the storybook page the used selection button is located on. */
+	/**
+	 * Get the StoryPageID of the storybook page the used selection button is located on.
+	 * @return The ID of the story page selection was done from.
+	 */
 	StoryPageID GetStoryPageID() { return this->page_id; }
 
-	/** Get the StoryPageElementID of the selection button used to select the tile. */
+	/**
+	 * Get the StoryPageElementID of the selection button used to select the tile.
+	 * @return The ID of the element that was used to select the tile.
+	 */
 	StoryPageElementID GetElementID() { return this->element_id; }
 
-	/** Get the TileIndex of the tile the player selected */
+	/**
+	 * Get the TileIndex of the tile the player selected.
+	 * @return The selected tile.
+	 */
 	TileIndex GetTile() { return this->tile_index; }
 
 private:
@@ -1274,16 +1310,28 @@ public:
 	 */
 	static ScriptEventStoryPageVehicleSelect *Convert(ScriptEvent *instance) { return (ScriptEventStoryPageVehicleSelect *)instance; }
 
-	/** Get the CompanyID of the player that selected a tile. */
+	/**
+	 * Get the CompanyID of the player that selected a tile.
+	 * @return The company's ID.
+	 */
 	ScriptCompany::CompanyID GetCompanyID() { return this->company_id; }
 
-	/** Get the StoryPageID of the storybook page the used selection button is located on. */
+	/**
+	 * Get the StoryPageID of the storybook page the used selection button is located on.
+	 * @return The ID of the storybook page the selected element is on.
+	 */
 	StoryPageID GetStoryPageID() { return this->page_id; }
 
-	/** Get the StoryPageElementID of the selection button used to select the vehicle. */
+	/**
+	 * Get the StoryPageElementID of the selection button used to select the vehicle.
+	 * @return The ID of the selected element of the story page.
+	 */
 	StoryPageElementID GetElementID() { return this->element_id; }
 
-	/** Get the VehicleID of the vehicle the player selected */
+	/**
+	 * Get the VehicleID of the vehicle the player selected.
+	 * @return The ID of the vehicle.
+	 */
 	VehicleID GetVehicleID() { return this->vehicle_id; }
 
 private:
