@@ -53,6 +53,7 @@ public:
 
 	/**
 	 * Get the current landscape.
+	 * @return The type of landscape.
 	 */
 	static LandscapeType GetLandscape();
 
