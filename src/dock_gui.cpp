@@ -547,15 +547,13 @@ public:
 				Axis axis = widget == WID_BDD_X ? AXIS_X : AXIS_Y;
 
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
-					DrawPixelInfo *old_dpi = _cur_dpi;
-					_cur_dpi = &tmp_dpi;
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					int x = (r.Width()  - ScaleSpriteTrad(96)) / 2;
 					int y = (r.Height() - ScaleSpriteTrad(64)) / 2;
 					int x1 = ScaleSpriteTrad(63);
 					int x2 = ScaleSpriteTrad(31);
 					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DEPOT_PART_NORTH);
 					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DEPOT_PART_SOUTH);
-					_cur_dpi = old_dpi;
 				}
 				break;
 			}

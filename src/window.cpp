@@ -980,9 +980,8 @@ static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bo
  */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
-	DrawPixelInfo *old_dpi = _cur_dpi;
 	DrawPixelInfo bk;
-	_cur_dpi = &bk;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &bk);
 
 	for (Window *w : Window::IterateFromBack()) {
 		if (MayBeShown(w) &&
@@ -994,7 +993,6 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 			DrawOverlappedWindow(w, std::max(left, w->left), std::max(top, w->top), std::min(right, w->left + w->width), std::min(bottom, w->top + w->height));
 		}
 	}
-	_cur_dpi = old_dpi;
 }
 
 /**

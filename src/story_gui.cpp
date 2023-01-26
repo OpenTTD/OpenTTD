@@ -698,8 +698,7 @@ public:
 		DrawPixelInfo tmp_dpi;
 		if (!FillDrawPixelInfo(&tmp_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
 
-		DrawPixelInfo *old_dpi = _cur_dpi;
-		_cur_dpi = &tmp_dpi;
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
 		fr = fr.Translate(-fr.left, -fr.top);
@@ -758,9 +757,6 @@ public:
 				default: NOT_REACHED();
 			}
 		}
-
-		/* Restore clipping region. */
-		_cur_dpi = old_dpi;
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override

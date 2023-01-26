@@ -8,6 +8,7 @@
 /** @file statusbar_gui.cpp The GUI for the bottom status bar. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "date_func.h"
 #include "gfx_func.h"
 #include "news_func.h"
@@ -68,10 +69,8 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 	int width = GetStringBoundingBox(buffer).width;
 	int pos = (_current_text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
 
-	DrawPixelInfo *old_dpi = _cur_dpi;
-	_cur_dpi = &tmp_dpi;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 	DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
-	_cur_dpi = old_dpi;
 
 	return (_current_text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }

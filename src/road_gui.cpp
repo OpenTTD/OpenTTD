@@ -984,12 +984,10 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 
 		DrawPixelInfo tmp_dpi;
 		if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
-			DrawPixelInfo *old_dpi = _cur_dpi;
-			_cur_dpi = &tmp_dpi;
+			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (r.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
 			DrawRoadDepotSprite(x, y, (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
-			_cur_dpi = old_dpi;
 		}
 	}
 
@@ -1119,12 +1117,10 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 
 		DrawPixelInfo tmp_dpi;
 		if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
-			DrawPixelInfo *old_dpi = _cur_dpi;
-			_cur_dpi = &tmp_dpi;
+			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (r.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
 			StationPickerDrawSprite(x, y, st, INVALID_RAILTYPE, _cur_roadtype, widget - WID_BROS_STATION_NE);
-			_cur_dpi = old_dpi;
 		}
 	}
 
