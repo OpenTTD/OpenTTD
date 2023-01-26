@@ -96,7 +96,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
 
-	DrawPixelInfo tmp_dpi, *old_dpi;
+	DrawPixelInfo tmp_dpi;
 	/* Position of highlight box */
 	int highlight_l = 0;
 	int highlight_r = 0;
@@ -104,55 +104,54 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 
 	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
 
-	old_dpi = _cur_dpi;
-	_cur_dpi = &tmp_dpi;
+	{
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
-	int px = rtl ? max_width + skip : -skip;
-	int y = r.Height() / 2;
-	bool sel_articulated = false;
-	bool dragging = (drag_dest != INVALID_VEHICLE);
-	bool drag_at_end_of_train = (drag_dest == v->index); // Head index is used to mark dragging at end of train.
-	for (; v != nullptr && (rtl ? px > 0 : px < max_width); v = v->Next()) {
-		if (dragging && !drag_at_end_of_train && drag_dest == v->index) {
-			/* Highlight the drag-and-drop destination inside the train. */
-			int drag_hlight_width = HighlightDragPosition(px, max_width, y, selection, _cursor.vehchain);
-			px += rtl ? -drag_hlight_width : drag_hlight_width;
-		}
-
-		Point offset;
-		int width = Train::From(v)->GetDisplayImageWidth(&offset);
-
-		if (rtl ? px + width > 0 : px - width < max_width) {
-			PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-			VehicleSpriteSeq seq;
-			v->GetImage(dir, image_type, &seq);
-			seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, (v->vehstatus & VS_CRASHED) != 0);
-		}
-
-		if (!v->IsArticulatedPart()) sel_articulated = false;
-
-		if (v->index == selection) {
-			/* Set the highlight position */
-			highlight_l = rtl ? px - width : px;
-			highlight_r = rtl ? px - 1 : px + width - 1;
-			sel_articulated = true;
-		} else if ((_cursor.vehchain && highlight_r != 0) || sel_articulated) {
-			if (rtl) {
-				highlight_l -= width;
-			} else {
-				highlight_r += width;
+		int px = rtl ? max_width + skip : -skip;
+		int y = r.Height() / 2;
+		bool sel_articulated = false;
+		bool dragging = (drag_dest != INVALID_VEHICLE);
+		bool drag_at_end_of_train = (drag_dest == v->index); // Head index is used to mark dragging at end of train.
+		for (; v != nullptr && (rtl ? px > 0 : px < max_width); v = v->Next()) {
+			if (dragging && !drag_at_end_of_train && drag_dest == v->index) {
+				/* Highlight the drag-and-drop destination inside the train. */
+				int drag_hlight_width = HighlightDragPosition(px, max_width, y, selection, _cursor.vehchain);
+				px += rtl ? -drag_hlight_width : drag_hlight_width;
 			}
+
+			Point offset;
+			int width = Train::From(v)->GetDisplayImageWidth(&offset);
+
+			if (rtl ? px + width > 0 : px - width < max_width) {
+				PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+				VehicleSpriteSeq seq;
+				v->GetImage(dir, image_type, &seq);
+				seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, (v->vehstatus & VS_CRASHED) != 0);
+			}
+
+			if (!v->IsArticulatedPart()) sel_articulated = false;
+
+			if (v->index == selection) {
+				/* Set the highlight position */
+				highlight_l = rtl ? px - width : px;
+				highlight_r = rtl ? px - 1 : px + width - 1;
+				sel_articulated = true;
+			} else if ((_cursor.vehchain && highlight_r != 0) || sel_articulated) {
+				if (rtl) {
+					highlight_l -= width;
+				} else {
+					highlight_r += width;
+				}
+			}
+
+			px += rtl ? -width : width;
 		}
 
-		px += rtl ? -width : width;
+		if (dragging && drag_at_end_of_train) {
+			/* Highlight the drag-and-drop destination at the end of the train. */
+			HighlightDragPosition(px, max_width, y, selection, _cursor.vehchain);
+		}
 	}
-
-	if (dragging && drag_at_end_of_train) {
-		/* Highlight the drag-and-drop destination at the end of the train. */
-		HighlightDragPosition(px, max_width, y, selection, _cursor.vehchain);
-	}
-
-	_cur_dpi = old_dpi;
 
 	if (highlight_l != highlight_r) {
 		/* Draw the highlight. Now done after drawing all the engines, as

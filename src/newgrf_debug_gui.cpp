@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include <stdarg.h>
+#include "core/backup_type.hpp"
 #include "window_gui.h"
 #include "window_func.h"
 #include "random_access_file_type.h"
@@ -895,17 +896,13 @@ struct SpriteAlignerWindow : Window {
 
 				DrawPixelInfo new_dpi;
 				if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) break;
-				DrawPixelInfo *old_dpi = _cur_dpi;
-				_cur_dpi = &new_dpi;
+				AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, ZOOM_LVL_GUI);
 				if (this->crosshair) {
 					GfxDrawLine(x, 0, x, ir.Height() - 1, PC_WHITE, 1, 1);
 					GfxDrawLine(0, y, ir.Width() - 1, y, PC_WHITE, 1, 1);
 				}
-
-				_cur_dpi = old_dpi;
-
 				break;
 			}
 

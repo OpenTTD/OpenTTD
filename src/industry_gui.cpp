@@ -2920,10 +2920,9 @@ struct IndustryCargoesWindow : public Window {
 		if (widget != WID_IC_PANEL) return;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
-		DrawPixelInfo tmp_dpi, *old_dpi;
+		DrawPixelInfo tmp_dpi;
 		if (!FillDrawPixelInfo(&tmp_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
-		old_dpi = _cur_dpi;
-		_cur_dpi = &tmp_dpi;
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 		int left_pos = ir.left;
 		if (this->ind_cargo >= NUM_INDUSTRYTYPES) left_pos += (CargoesField::industry_width + CargoesField::cargo_field_width) / 2;
@@ -2952,8 +2951,6 @@ struct IndustryCargoesWindow : public Window {
 			vpos += row_height;
 			if (vpos >= height) break;
 		}
-
-		_cur_dpi = old_dpi;
 	}
 
 	/**
