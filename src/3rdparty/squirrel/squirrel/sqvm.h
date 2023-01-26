@@ -36,7 +36,6 @@ struct SQVM : public CHAINABLE_OBJ
 	};
 
 	struct CallInfo{
-		//CallInfo() { _generator._type = OT_NULL;}
 		SQInstruction *_ip;
 		SQObjectPtr *_literals;
 		SQObjectPtr _closure;

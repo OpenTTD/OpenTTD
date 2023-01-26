@@ -618,7 +618,6 @@ size_t Utf8Decode(WChar *c, const char *s)
 		}
 	}
 
-	/* Debug(misc, 1, "[utf8] invalid UTF-8 sequence"); */
 	*c = '?';
 	return 1;
 }
@@ -654,7 +653,6 @@ inline size_t Utf8Encode(T buf, WChar c)
 		return 4;
 	}
 
-	/* Debug(misc, 1, "[utf8] can't UTF-8 encode value 0x{:X}", c); */
 	*buf = '?';
 	return 1;
 }
