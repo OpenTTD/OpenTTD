@@ -43,7 +43,7 @@ struct MusicSystem {
 		uint set_index;        ///< index of song in set
 
 		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
-		bool IsValid() const { return !StrEmpty(this->songname); }
+		bool IsValid() const { return !this->songname.empty(); }
 	};
 	typedef std::vector<PlaylistEntry> Playlist;
 

@@ -289,7 +289,7 @@ enum MusicTrackType {
 
 /** Metadata about a music track. */
 struct MusicSongInfo {
-	char songname[32];       ///< name of song displayed in UI
+	std::string songname;    ///< name of song displayed in UI
 	byte tracknr;            ///< track number of song displayed in UI
 	const char *filename;    ///< file on disk containing song (when used in MusicSet class, this pointer is owned by MD5File object for the file)
 	MusicTrackType filetype; ///< decoder required for song file
