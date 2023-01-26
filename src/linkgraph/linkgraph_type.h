@@ -14,7 +14,7 @@ typedef uint16 LinkGraphID;
 static const LinkGraphID INVALID_LINK_GRAPH = UINT16_MAX;
 
 typedef uint16 LinkGraphJobID;
-static const LinkGraphID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
+static const LinkGraphJobID INVALID_LINK_GRAPH_JOB = UINT16_MAX;
 
 typedef uint16 NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;
