@@ -140,7 +140,6 @@ void SQVM::Finalize()
 SQVM::~SQVM()
 {
 	Finalize();
-	//sq_free(_callsstack,_alloccallsstacksize*sizeof(CallInfo));
 	REMOVE_FROM_CHAIN(&_ss(this)->_gc_chain,this);
 }
 
@@ -712,7 +711,6 @@ bool SQVM::Execute(SQObjectPtr &closure, SQInteger target, SQInteger nargs, SQIn
 				return false;
 			}
 			if (_funcproto(_closure(temp_reg)->_function)->_bgenerator) {
-				//SQFunctionProto *f = _funcproto(_closure(temp_reg)->_function);
 				SQGenerator *gen = SQGenerator::Create(_ss(this), _closure(temp_reg));
 				_GUARD(gen->Yield(this));
 				Return(1, ci->_target, temp_reg);
@@ -747,8 +745,10 @@ exception_restore:
 			if (ShouldSuspend()) { _suspended = SQTrue; _suspended_traps = traps; return true; }
 
 			const SQInstruction &_i_ = *ci->_ip++;
-			//dumpstack(_stackbase);
-			//printf("%s %d %d %d %d\n",g_InstrDesc[_i_.op].name,arg0,arg1,arg2,arg3);
+#ifdef _DEBUG_DUMP
+			dumpstack(_stackbase);
+			printf("%s %d %d %d %d\n",g_InstrDesc[_i_.op].name,arg0,arg1,arg2,arg3);
+#endif
 			switch(_i_.op)
 			{
 			case _OP_LINE:
@@ -1053,7 +1053,9 @@ common_call:
 exception_trap:
 	{
 		SQObjectPtr currerror = _lasterror;
-//		dumpstack(_stackbase);
+#ifdef _DEBUG_DUMP
+		dumpstack(_stackbase);
+#endif
 		SQInteger n = 0;
 		SQInteger last_top = _top;
 		if(ci) {

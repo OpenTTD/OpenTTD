@@ -1067,7 +1067,7 @@ static inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLo
  */
 static inline VarType GetVarMemType(VarType type)
 {
-	return type & 0xF0; // GB(type, 4, 4) << 4;
+	return GB(type, 4, 4) << 4;
 }
 
 /**
@@ -1078,7 +1078,7 @@ static inline VarType GetVarMemType(VarType type)
  */
 static inline VarType GetVarFileType(VarType type)
 {
-	return type & 0xF; // GB(type, 0, 4);
+	return GB(type, 0, 4);
 }
 
 /**
