@@ -234,7 +234,9 @@ static int GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
 
 	int z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + std::min<int8>(x_pcp_offsets[PCPpos], TILE_SIZE - 1),
 	                       TileY(tile) * TILE_SIZE + std::min<int8>(y_pcp_offsets[PCPpos], TILE_SIZE - 1));
-	return (z + 2) & ~3; // this means z = (z + TILE_HEIGHT / 4) / (TILE_HEIGHT / 2) * (TILE_HEIGHT / 2);
+	/* Round the Z to the nearest half tile height. */
+	static const uint HALF_TILE_HEIGHT = TILE_HEIGHT / 2;
+	return (z + HALF_TILE_HEIGHT / 2) / HALF_TILE_HEIGHT * HALF_TILE_HEIGHT;
 }
 
 /**
