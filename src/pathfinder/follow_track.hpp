@@ -371,7 +371,7 @@ protected:
 			/* entered railway station
 			 * get platform length */
 			uint length = BaseStation::GetByTile(m_new_tile)->GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
-			/* how big step we must do to get to the last platform tile; */
+			/* how big step we must do to get to the last platform tile? */
 			m_tiles_skipped = length - 1;
 			/* move to the platform end */
 			TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);

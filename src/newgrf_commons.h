@@ -197,7 +197,7 @@ protected:
 	uint16 max_offset;   ///< what is the length of the original entity's array of specs
 	uint16 max_entities; ///< what is the amount of entities, old and new summed
 
-	uint16 invalid_id;   ///< ID used to detected invalid entities;
+	uint16 invalid_id;   ///< ID used to detected invalid entities
 	virtual bool CheckValidNewID(uint16 testid) { return true; }
 
 public:

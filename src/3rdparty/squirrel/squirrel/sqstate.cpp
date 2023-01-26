@@ -453,7 +453,7 @@ void RefTable::Resize(SQUnsignedInteger size)
 	[[maybe_unused]] SQUnsignedInteger nfound = 0;
 	for(SQUnsignedInteger n = 0; n < oldnumofslots; n++) {
 		if(type(t->obj) != OT_NULL) {
-			//add back;
+			//add back
 			assert(t->refs != 0);
 			RefNode *nn = Add(::HashObj(t->obj)&(_numofslots-1),t->obj);
 			nn->refs = t->refs;
