@@ -67,9 +67,7 @@
 
 #include "safeguards.h"
 
-/* static */ const char *CrashLog::message = nullptr;
-/* static */ char *CrashLog::gamelog_buffer = nullptr;
-/* static */ const char *CrashLog::gamelog_last = nullptr;
+/* static */ std::string CrashLog::message{ "<none>" };
 
 char *CrashLog::LogCompiler(char *buffer, const char *last) const
 {
@@ -280,15 +278,6 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 }
 
 /**
- * Helper function for printing the gamelog.
- * @param s the string to print.
- */
-/* static */ void CrashLog::GamelogFillCrashLog(const char *s)
-{
-	CrashLog::gamelog_buffer += seprintf(CrashLog::gamelog_buffer, CrashLog::gamelog_last, "%s\n", s);
-}
-
-/**
  * Writes the gamelog data to the buffer.
  * @param buffer The begin where to write at.
  * @param last   The last position in the buffer to write to.
@@ -296,10 +285,10 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
  */
 char *CrashLog::LogGamelog(char *buffer, const char *last) const
 {
-	CrashLog::gamelog_buffer = buffer;
-	CrashLog::gamelog_last = last;
-	GamelogPrint(&CrashLog::GamelogFillCrashLog);
-	return CrashLog::gamelog_buffer + seprintf(CrashLog::gamelog_buffer, last, "\n");
+	GamelogPrint([&buffer, last](const char *s) {
+		buffer += seprintf(buffer, last, "%s\n", s);
+	});
+	return buffer + seprintf(buffer, last, "\n");
 }
 
 /**
@@ -358,7 +347,7 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	ConvertDateToYMD(_date, &ymd);
 	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, _date_fract);
 
-	buffer = this->LogError(buffer, last, CrashLog::message);
+	buffer = this->LogError(buffer, last, CrashLog::message.c_str());
 	buffer = this->LogOpenTTDVersion(buffer, last);
 	buffer = this->LogRegisters(buffer, last);
 	buffer = this->LogStacktrace(buffer, last);

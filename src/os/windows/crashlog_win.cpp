@@ -114,7 +114,7 @@ public:
 			" Message:   %s\n\n",
 			(int)ep->ExceptionRecord->ExceptionCode,
 			(size_t)ep->ExceptionRecord->ExceptionAddress,
-			message == nullptr ? "<none>" : message
+			message
 	);
 }
 
