@@ -189,7 +189,7 @@ typedef SmallMap<uint32, GRFPresence> GrfIDMapping;
  * Prints active gamelog
  * @param proc the procedure to draw with
  */
-void GamelogPrint(GamelogPrintProc *proc)
+void GamelogPrint(std::function<void(const char*)> proc)
 {
 	char buffer[1024];
 	GrfIDMapping grf_names;
@@ -341,24 +341,13 @@ void GamelogPrint(GamelogPrintProc *proc)
 }
 
 
-static void GamelogPrintConsoleProc(const char *s)
-{
-	IConsolePrint(CC_WARNING, s);
-}
-
 /** Print the gamelog data to the console. */
 void GamelogPrintConsole()
 {
-	GamelogPrint(&GamelogPrintConsoleProc);
+	GamelogPrint([](const char *s) {
+		IConsolePrint(CC_WARNING, s);
+	});
 }
-
-static int _gamelog_print_level = 0; ///< gamelog debug level we need to print stuff
-
-static void GamelogPrintDebugProc(const char *s)
-{
-	Debug(gamelog, _gamelog_print_level, "{}", s);
-}
-
 
 /**
  * Prints gamelog to debug output. Code is executed even when
@@ -368,8 +357,9 @@ static void GamelogPrintDebugProc(const char *s)
  */
 void GamelogPrintDebug(int level)
 {
-	_gamelog_print_level = level;
-	GamelogPrint(&GamelogPrintDebugProc);
+	GamelogPrint([level](const char *s) {
+		Debug(gamelog, level, "{}", s);
+	});
 }
 
 
