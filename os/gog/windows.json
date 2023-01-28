@@ -1,0 +1,94 @@
+{
+    "project": {
+        "baseProductId": "1293297882",
+        "clientId": "CLIENT_ID",
+        "clientSecret": "CLIENT_SECRET",
+        "version": "VERSION",
+        "installDirectory": "OpenTTD",
+        "name": "OpenTTD",
+        "platform": "windows",
+        "tags": [
+            "editor_v_1_4_0"
+        ],
+        "languageMode": "together",
+        "products": [
+            {
+                "name": "OpenTTD",
+                "productId": "1293297882",
+                "depots": [
+                    {
+                        "name": "Win32",
+                        "folder": "win32",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "osBitness": [
+                            "32"
+                        ]
+                    },
+                    {
+                        "name": "Win64",
+                        "folder": "win64",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "osBitness": [
+                            "64"
+                        ]
+                    },
+                    {
+                        "name": "OpenGFX",
+                        "folder": "opengfx",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "osBitness": [
+                            "32",
+                            "64"
+                        ]
+                    },
+                    {
+                        "name": "OpenMSX",
+                        "folder": "openmsx",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "osBitness": [
+                            "32",
+                            "64"
+                        ]
+                    },
+                    {
+                        "name": "OpenSFX",
+                        "folder": "opensfx",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "osBitness": [
+                            "32",
+                            "64"
+                        ]
+                    }
+                ],
+                "tasks": [
+                    {
+                        "type": "FileTask",
+                        "name": "OpenTTD",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "category": "game",
+                        "path": "openttd.exe",
+                        "isPrimary": true,
+                        "osBitness": [
+                            "32",
+                            "64"
+                        ]
+                    }
+                ],
+                "supportDepots": []
+            }
+        ],
+        "scriptInterpreter": true
+    }
+}
