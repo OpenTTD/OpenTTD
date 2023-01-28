@@ -931,7 +931,7 @@ static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag fl
 							affected_vehicles.push_back(v);
 						}
 					}
-					CommandCost ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
+					ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 					/* With flags & ~DC_EXEC CmdLandscapeClear would fail since the rail still exists */
@@ -1018,7 +1018,7 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 					if (road_owner == OWNER_TOWN) {
 						if (!_settings_game.construction.road_stop_on_town_road) return_cmd_error(STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD);
 					} else if (!_settings_game.construction.road_stop_on_competitor_road && road_owner != OWNER_NONE) {
-						CommandCost ret = CheckOwnership(road_owner);
+						ret = CheckOwnership(road_owner);
 						if (ret.Failed()) return ret;
 					}
 					uint num_pieces = CountBits(GetRoadBits(cur_tile, RTT_ROAD));
@@ -1026,7 +1026,7 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 					if (RoadTypeIsRoad(rt) && !HasPowerOnRoad(rt, road_rt)) return_cmd_error(STR_ERROR_NO_SUITABLE_ROAD);
 
 					if (GetDisallowedRoadDirections(cur_tile) != DRD_NONE && road_owner != OWNER_TOWN) {
-						CommandCost ret = CheckOwnership(road_owner);
+						ret = CheckOwnership(road_owner);
 						if (ret.Failed()) return ret;
 					}
 
@@ -1044,7 +1044,7 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 							/* Disallow breaking end-of-line of someone else
 							 * so trams can still reverse on this tile. */
 							HasExactlyOneBit(GetRoadBits(cur_tile, RTT_TRAM)))) {
-						CommandCost ret = CheckOwnership(tram_owner);
+						ret = CheckOwnership(tram_owner);
 						if (ret.Failed()) return ret;
 					}
 					uint num_pieces = CountBits(GetRoadBits(cur_tile, RTT_TRAM));
@@ -1308,7 +1308,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 	if (ret.Failed()) return ret;
 
 	if (st != nullptr && st->train_station.tile != INVALID_TILE) {
-		CommandCost ret = CanExpandRailStation(st, new_location, axis);
+		ret = CanExpandRailStation(st, new_location, axis);
 		if (ret.Failed()) return ret;
 	}
 
@@ -1573,7 +1573,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 		if (st == nullptr) continue;
 
 		if (_current_company != OWNER_WATER) {
-			CommandCost ret = CheckOwnership(st->owner);
+			ret = CheckOwnership(st->owner);
 			error.AddCost(ret);
 			if (ret.Failed()) continue;
 		}
@@ -2236,13 +2236,13 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_ty
 		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
 
-	AirportTileTableIterator iter(as->table[layout], tile);
-	CommandCost cost = CheckFlatLandAirport(iter, flags);
+	AirportTileTableIterator tile_iter(as->table[layout], tile);
+	CommandCost cost = CheckFlatLandAirport(tile_iter, flags);
 	if (cost.Failed()) return cost;
 
 	/* The noise level is the noise from the airport and reduce it to account for the distance to the town center. */
 	uint dist;
-	Town *nearest = AirportGetNearestTown(as, iter, dist);
+	Town *nearest = AirportGetNearestTown(as, tile_iter, dist);
 	uint newnoise_level = GetAirportNoiseLevelForDistance(as, dist);
 
 	/* Check if local auth would allow a new airport */
@@ -2986,7 +2986,6 @@ draw_default_foundation:
 
 			/* PBS debugging, draw reserved tracks darker */
 			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationRail(ti->tile) && HasStationReservation(ti->tile)) {
-				const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 				DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH);
 			}
 		}
@@ -3033,17 +3032,17 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	int32 total_offset = 0;
 	PaletteID pal = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *t = GetStationTileLayout(st, image);
-	const RailtypeInfo *rti = nullptr;
+	const RailtypeInfo *railtype_info = nullptr;
 
 	if (railtype != INVALID_RAILTYPE) {
-		rti = GetRailTypeInfo(railtype);
-		total_offset = rti->GetRailtypeSpriteOffset();
+		railtype_info = GetRailTypeInfo(railtype);
+		total_offset = railtype_info->GetRailtypeSpriteOffset();
 	}
 
 	SpriteID img = t->ground.sprite;
 	RailTrackOffset overlay_offset;
-	if (rti != nullptr && rti->UsesOverlay() && SplitGroundSpriteForOverlay(nullptr, &img, &overlay_offset)) {
-		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
+	if (railtype_info != nullptr && railtype_info->UsesOverlay() && SplitGroundSpriteForOverlay(nullptr, &img, &overlay_offset)) {
+		SpriteID ground = GetCustomRailSprite(railtype_info, INVALID_TILE, RTSG_GROUND);
 		DrawSprite(img, PAL_NONE, x, y);
 		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
 	} else {
@@ -3051,25 +3050,25 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	}
 
 	if (roadtype != INVALID_ROADTYPE) {
-		const RoadTypeInfo* rti = GetRoadTypeInfo(roadtype);
+		const RoadTypeInfo *roadtype_info = GetRoadTypeInfo(roadtype);
 		if (image >= 4) {
 			/* Drive-through stop */
 			uint sprite_offset = 5 - image;
 
 			/* Road underlay takes precedence over tram */
-			if (rti->UsesOverlay()) {
-				SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_GROUND);
+			if (roadtype_info->UsesOverlay()) {
+				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_GROUND);
 				DrawSprite(ground + sprite_offset, PAL_NONE, x, y);
 
-				SpriteID overlay = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_OVERLAY);
+				SpriteID overlay = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_OVERLAY);
 				if (overlay) DrawSprite(overlay + sprite_offset, PAL_NONE, x, y);
 			} else if (RoadTypeIsTram(roadtype)) {
 				DrawSprite(SPR_TRAMWAY_TRAM + sprite_offset, PAL_NONE, x, y);
 			}
 		} else {
 			/* Drive-in stop */
-			if (RoadTypeIsRoad(roadtype) && rti->UsesOverlay()) {
-				SpriteID ground = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_ROADSTOP);
+			if (RoadTypeIsRoad(roadtype) && roadtype_info->UsesOverlay()) {
+				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_ROADSTOP);
 				DrawSprite(ground + image, PAL_NONE, x, y);
 			}
 		}

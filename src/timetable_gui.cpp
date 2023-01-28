@@ -91,14 +91,14 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 	assert(v->GetNumOrders() >= 2);
 	assert(start < v->GetNumOrders());
 
-	Ticks sum = offset;
-	VehicleOrderID i = start;
-	const Order *order = v->GetOrder(i);
-
 	/* Pre-initialize with unknown time */
 	for (int i = 0; i < v->GetNumOrders(); ++i) {
 		table[i].arrival = table[i].departure = INVALID_TICKS;
 	}
+
+	Ticks sum = offset;
+	VehicleOrderID i = start;
+	const Order *order = v->GetOrder(i);
 
 	/* Cyclically loop over all orders until we reach the current one again.
 	 * As we may start at the current order, do a post-checking loop */

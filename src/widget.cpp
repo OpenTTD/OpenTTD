@@ -3215,7 +3215,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase **par
 		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == NWID_MATRIX
 							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION)) {
 			NWidgetBase *sub_ptr = sub_widget;
-			int num_used = MakeWidgetTree(parts, count - total_used, &sub_ptr, biggest_index);
+			num_used = MakeWidgetTree(parts, count - total_used, &sub_ptr, biggest_index);
 			parts += num_used;
 			total_used += num_used;
 		}

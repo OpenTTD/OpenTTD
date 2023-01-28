@@ -662,8 +662,6 @@ static void AnimateTile_Industry(TileIndex tile)
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
 		if ((_tick_counter & 3) == 0) {
-			IndustryGfx gfx = GetIndustryGfx(tile);
-
 			gfx = (gfx < 155) ? gfx + 1 : 148;
 			SetIndustryGfx(tile, gfx);
 			MarkTileDirtyByTile(tile);
@@ -675,8 +673,6 @@ static void AnimateTile_Industry(TileIndex tile)
 	case GFX_OILWELL_ANIMATED_3:
 		if ((_tick_counter & 7) == 0) {
 			bool b = Chance16(1, 7);
-			IndustryGfx gfx = GetIndustryGfx(tile);
-
 			byte m = GetAnimationFrame(tile) + 1;
 			if (m == 4 && (m = 0, ++gfx) == GFX_OILWELL_ANIMATED_3 + 1 && (gfx = GFX_OILWELL_ANIMATED_1, b)) {
 				SetIndustryGfx(tile, GFX_OILWELL_NOT_ANIMATED);
@@ -1467,13 +1463,13 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
 				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
-				CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, cur_tile);
+				ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, cur_tile);
 				cur_company.Restore();
 
 				if (ret.Failed()) return ret;
 			} else {
 				/* Clear the tiles, but do not affect town ratings */
-				CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile);
+				ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, cur_tile);
 				if (ret.Failed()) return ret;
 			}
 		}

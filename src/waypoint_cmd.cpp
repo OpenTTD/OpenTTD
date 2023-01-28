@@ -217,11 +217,11 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 		/* check if we want to expand an already existing waypoint? */
 		if (wp->train_station.tile != INVALID_TILE) {
-			CommandCost ret = CanExpandRailStation(wp, new_location, axis);
+			ret = CanExpandRailStation(wp, new_location, axis);
 			if (ret.Failed()) return ret;
 		}
 
-		CommandCost ret = wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST);
+		ret = wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST);
 		if (ret.Failed()) return ret;
 	} else {
 		/* allocate and initialize new waypoint */

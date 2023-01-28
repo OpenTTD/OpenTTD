@@ -1285,16 +1285,16 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			WIDGET_LIST_END
 		);
 
-		const GRFConfig *c = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
+		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, c == nullptr || c->GetTextfile(tft) == nullptr);
+			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || selected_config->GetTextfile(tft) == nullptr);
 		}
-		this->SetWidgetDisabledState(WID_NS_OPEN_URL, c == nullptr || StrEmpty(c->GetURL()));
+		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || StrEmpty(selected_config->GetURL()));
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all ||
-				(!(_settings_client.gui.newgrf_developer_tools || _settings_client.gui.scenario_developer) && ((c->palette & GRFP_GRF_MASK) != GRFP_GRF_UNSET)));
+				(!(_settings_client.gui.newgrf_developer_tools || _settings_client.gui.scenario_developer) && ((selected_config->palette & GRFP_GRF_MASK) != GRFP_GRF_UNSET)));
 
 		if (!disable_all) {
 			/* All widgets are now enabled, so disable widgets we can't use */
