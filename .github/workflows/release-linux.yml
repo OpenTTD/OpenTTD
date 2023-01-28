@@ -1,0 +1,100 @@
+name: Release (Linux)
+
+on:
+  workflow_call:
+
+jobs:
+  linux:
+    name: Linux (Generic)
+
+    runs-on: ubuntu-20.04
+    container:
+      # manylinux2014 is based on CentOS 7, but already has a lot of things
+      # installed and preconfigured. It makes it easier to build OpenTTD.
+      image: quay.io/pypa/manylinux2014_x86_64
+
+    steps:
+    - name: Download source
+      uses: actions/download-artifact@v3
+      with:
+        name: internal-source
+
+    - name: Unpack source
+      run: |
+        tar -xf source.tar.gz --strip-components=1
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Install dependencies"
+        yum install -y \
+          fontconfig-devel \
+          freetype-devel \
+          libicu-devel \
+          libpng-devel \
+          lzo-devel \
+          SDL2-devel \
+          wget \
+          xz-devel \
+          zlib-devel \
+          # EOF
+        echo "::endgroup::"
+
+        # The yum variant of fluidsynth depends on all possible audio drivers,
+        # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
+        # as we route the output of fluidsynth back via our sound driver, and
+        # as such do not use these audio driver outputs at all. So instead,
+        # we compile fluidsynth ourselves, with as little dependencies as
+        # possible. This currently means it picks up SDL2, but this is fine,
+        # as we need SDL2 anyway.
+        echo "::group::Install fluidsynth"
+        wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
+        tar xf v2.1.6.tar.gz
+        (
+          cd fluidsynth-2.1.6
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
+          cmake --build . -j $(nproc)
+          cmake --install .
+        )
+        echo "::endgroup::"
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir -p build
+        cd build
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_PACKAGE_DEPENDENCIES=ON \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
+
+    - name: Create bundles
+      run: |
+        cd ${GITHUB_WORKSPACE}/build
+        echo "::group::Run CPack"
+        cpack
+        echo "::endgroup::"
+
+        echo "::group::Cleanup"
+        # Remove the sha256 files CPack generates; we will do this ourself at
+        # the end of this workflow.
+        rm -f bundles/*.sha256
+        echo "::endgroup::"
+
+    - name: Store bundles
+      uses: actions/upload-artifact@v3
+      with:
+        name: openttd-linux-generic
+        path: build/bundles
+        retention-days: 5
