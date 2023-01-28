@@ -781,7 +781,6 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id)
 		RestoreRandomSeeds(saved_seeds);
 
 		if (cost.Succeeded() && (flags & DC_EXEC) != 0) {
-			CommandCost ret;
 			if (free_wagon) {
 				ret = ReplaceFreeUnit(&v, flags, &nothing_to_do);
 			} else {

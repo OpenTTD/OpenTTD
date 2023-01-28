@@ -472,9 +472,9 @@ int CDECL main(int argc, char *argv[])
 
 			case 'P':
 				printf("name\tflags\tdefault\tdescription\n");
-				for (size_t i = 0; i < lengthof(_pragmas); i++) {
+				for (size_t j = 0; j < lengthof(_pragmas); j++) {
 					printf("\"%s\"\t%s\t\"%s\"\t\"%s\"\n",
-							_pragmas[i][0], _pragmas[i][1], _pragmas[i][2], _pragmas[i][3]);
+							_pragmas[j][0], _pragmas[j][1], _pragmas[j][2], _pragmas[j][3]);
 				}
 				return 0;
 

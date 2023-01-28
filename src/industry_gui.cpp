@@ -2775,7 +2775,7 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
 		int num_indrows = std::max(3, std::max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow &row = this->fields.emplace_back();
+			row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
 			row.columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
 			row.columns[2].MakeEmpty(CFT_EMPTY);
@@ -2850,7 +2850,7 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
 		int num_indrows = std::max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow &row = this->fields.emplace_back();
+			row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
 			row.columns[1].MakeCargo(&cid, 1);
 			row.columns[2].MakeEmpty(CFT_EMPTY);

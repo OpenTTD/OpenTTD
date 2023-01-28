@@ -1327,7 +1327,6 @@ void DoPaletteAnimations()
 	const ExtraPaletteValues *ev = &_extra_palette_values;
 	Colour old_val[PALETTE_ANIM_SIZE];
 	const uint old_tc = palette_animation_counter;
-	uint i;
 	uint j;
 
 	if (blitter != nullptr && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
@@ -1342,7 +1341,7 @@ void DoPaletteAnimations()
 	/* Fizzy Drink bubbles animation */
 	s = ev->fizzy_drink;
 	j = EXTR2(512, EPV_CYCLES_FIZZY_DRINK);
-	for (i = 0; i != EPV_CYCLES_FIZZY_DRINK; i++) {
+	for (uint i = 0; i != EPV_CYCLES_FIZZY_DRINK; i++) {
 		*palette_pos++ = s[j];
 		j++;
 		if (j == EPV_CYCLES_FIZZY_DRINK) j = 0;
@@ -1351,7 +1350,7 @@ void DoPaletteAnimations()
 	/* Oil refinery fire animation */
 	s = ev->oil_refinery;
 	j = EXTR2(512, EPV_CYCLES_OIL_REFINERY);
-	for (i = 0; i != EPV_CYCLES_OIL_REFINERY; i++) {
+	for (uint i = 0; i != EPV_CYCLES_OIL_REFINERY; i++) {
 		*palette_pos++ = s[j];
 		j++;
 		if (j == EPV_CYCLES_OIL_REFINERY) j = 0;
@@ -1391,7 +1390,7 @@ void DoPaletteAnimations()
 	/* Handle lighthouse and stadium animation */
 	s = ev->lighthouse;
 	j = EXTR(256, EPV_CYCLES_LIGHTHOUSE);
-	for (i = 0; i != EPV_CYCLES_LIGHTHOUSE; i++) {
+	for (uint i = 0; i != EPV_CYCLES_LIGHTHOUSE; i++) {
 		*palette_pos++ = s[j];
 		j++;
 		if (j == EPV_CYCLES_LIGHTHOUSE) j = 0;
@@ -1400,7 +1399,7 @@ void DoPaletteAnimations()
 	/* Dark blue water */
 	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
 	j = EXTR(320, EPV_CYCLES_DARK_WATER);
-	for (i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
+	for (uint i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
 		*palette_pos++ = s[j];
 		j++;
 		if (j == EPV_CYCLES_DARK_WATER) j = 0;
@@ -1409,7 +1408,7 @@ void DoPaletteAnimations()
 	/* Glittery water */
 	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
 	j = EXTR(128, EPV_CYCLES_GLITTER_WATER);
-	for (i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
+	for (uint i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
 		*palette_pos++ = s[j];
 		j += 3;
 		if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
@@ -1669,23 +1668,23 @@ void DrawDirtyBlocks()
 
 				while (right != w) {
 					byte *p2 = ++p;
-					int h = h2;
+					int i = h2;
 					/* Check if a full line of dirty flags is set. */
 					do {
 						if (!*p2) goto no_more_coalesc;
 						p2 += _dirty_bytes_per_line;
-					} while (--h != 0);
+					} while (--i != 0);
 
 					/* Wohoo, can combine it one step to the right!
 					 * Do that, and clear the bits. */
 					right += DIRTY_BLOCK_WIDTH;
 
-					h = h2;
+					i = h2;
 					p2 = p;
 					do {
 						*p2 = 0;
 						p2 += _dirty_bytes_per_line;
-					} while (--h != 0);
+					} while (--i != 0);
 				}
 				no_more_coalesc:
 

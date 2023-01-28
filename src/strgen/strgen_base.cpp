@@ -877,7 +877,7 @@ static int TranslateArgumentIdx(int argidx, int offset)
 	}
 
 	for (int i = sum = 0; i < argidx; i++) {
-		const CmdStruct *cs = _cur_pcs.cmd[i];
+		cs = _cur_pcs.cmd[i];
 
 		sum += (cs != nullptr) ? cs->consumes : 1;
 	}

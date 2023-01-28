@@ -264,7 +264,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 
 	/* do not check for ship on tile when company goes bankrupt */
 	if (!(flags & DC_BANKRUPT)) {
-		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile2);
 		if (ret.Failed()) return ret;
 	}
@@ -539,7 +539,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 
 			Owner owner = GetTileOwner(tile);
 			if (owner != OWNER_WATER && owner != OWNER_NONE) {
-				CommandCost ret = CheckTileOwnership(tile);
+				ret = CheckTileOwnership(tile);
 				if (ret.Failed()) return ret;
 			}
 

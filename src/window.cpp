@@ -257,7 +257,7 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
 		/* If we disable a highlight, check all widgets if anyone still has a highlight */
 		bool valid = false;
 		for (uint i = 0; i < this->nested_array_size; i++) {
-			NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
+			nwid = this->GetWidget<NWidgetBase>(i);
 			if (nwid == nullptr) continue;
 			if (!nwid->IsHighlighted()) continue;
 

@@ -1054,11 +1054,11 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		 * After that's done run over them once again to test their children
 		 * to unselect. Don't do it immediately because it'll do exactly what
 		 * we're doing now. */
-		for (const ContentInfo *c : parents) {
-			if (c->state == ContentInfo::AUTOSELECTED) this->Unselect(c->id);
+		for (const ContentInfo *parent : parents) {
+			if (parent->state == ContentInfo::AUTOSELECTED) this->Unselect(parent->id);
 		}
-		for (const ContentInfo *c : parents) {
-			this->CheckDependencyState(this->GetContent(c->id));
+		for (const ContentInfo *parent : parents) {
+			this->CheckDependencyState(this->GetContent(parent->id));
 		}
 	}
 }

@@ -93,7 +93,7 @@ static bool TestTownOwnsBridge(TileIndex tile, const Town *t)
 
 	if (!town_owned) {
 		/* Or other adjacent road */
-		TileIndex adjacent = tile + TileOffsByDiagDir(ReverseDiagDir(GetTunnelBridgeDirection(GetOtherTunnelBridgeEnd(tile))));
+		adjacent = tile + TileOffsByDiagDir(ReverseDiagDir(GetTunnelBridgeDirection(GetOtherTunnelBridgeEnd(tile))));
 		town_owned = IsTileType(adjacent, MP_ROAD) && IsTileOwner(adjacent, OWNER_TOWN) && GetTownIndex(adjacent) == t->index;
 	}
 
@@ -2656,15 +2656,15 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		byte construction_stage = 0;
 
 		if (_generating_world || _game_mode == GM_EDITOR) {
-			uint32 r = Random();
+			uint32 construction_random = Random();
 
 			construction_stage = TOWN_HOUSE_COMPLETED;
-			if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
+			if (Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
 
 			if (construction_stage == TOWN_HOUSE_COMPLETED) {
 				ChangePopulation(t, hs->population);
 			} else {
-				construction_counter = GB(r, 2, 2);
+				construction_counter = GB(construction_random, 2, 2);
 			}
 		}
 

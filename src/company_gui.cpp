@@ -633,7 +633,6 @@ private:
 	void ShowColourDropDownMenu(uint32 widget)
 	{
 		uint32 used_colours = 0;
-		const Company *c;
 		const Livery *livery, *default_livery = nullptr;
 		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
 		byte default_col = 0;
@@ -645,7 +644,7 @@ private:
 			}
 		}
 
-		c = Company::Get((CompanyID)this->window_number);
+		const Company *c = Company::Get((CompanyID)this->window_number);
 
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Get the first selected livery to use as the default dropdown item */

@@ -1120,8 +1120,8 @@ void OpenGLBackend::PopulateCursorCache()
 		if (!this->cursor_cache.Contains(sprite)) {
 			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, ST_NORMAL, &SimpleSpriteAlloc, this));
 			if (old != nullptr) {
-				OpenGLSprite *sprite = (OpenGLSprite *)old->data;
-				sprite->~OpenGLSprite();
+				OpenGLSprite *gl_sprite = (OpenGLSprite *)old->data;
+				gl_sprite->~OpenGLSprite();
 				free(old);
 			}
 		}
