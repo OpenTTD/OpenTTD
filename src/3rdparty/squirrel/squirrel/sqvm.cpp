@@ -1064,11 +1064,11 @@ exception_trap:
 			if(traps) {
 				do {
 					if(ci->_etraps > 0) {
-						SQExceptionTrap &et = _etraps.top();
-						ci->_ip = et._ip;
-						_top = et._stacksize;
-						_stackbase = et._stackbase;
-						_stack._vals[_stackbase+et._extarget] = currerror;
+						SQExceptionTrap &trap = _etraps.top();
+						ci->_ip = trap._ip;
+						_top = trap._stacksize;
+						_stackbase = trap._stackbase;
+						_stack._vals[_stackbase+trap._extarget] = currerror;
 						_etraps.pop_back(); traps--; ci->_etraps--;
 						CLEARSTACK(last_top);
 						goto exception_restore;

@@ -528,10 +528,10 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID
 
 	if (new_g == NEW_GROUP) {
 		/* Create new group. */
-		auto [ret, group_id] = CmdCreateGroup(flags, v->type, INVALID_GROUP);
-		if (ret.Failed()) return { ret, group_id };
+		auto [ret, new_group_id] = CmdCreateGroup(flags, v->type, INVALID_GROUP);
+		if (ret.Failed()) return { ret, new_group_id };
 
-		new_g = group_id;
+		new_g = new_group_id;
 	}
 
 	if (flags & DC_EXEC) {
