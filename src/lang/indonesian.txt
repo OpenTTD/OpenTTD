@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pertumbu
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Membuat Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pembangunan Jalan
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Pembangunan Jalur Tram
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Menanam Pohon. Shift untuk menampilkan perkiraan biaya
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Tanam Pohon. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Memasang pengenal
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Tempatkan Obyek. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 
@@ -2817,7 +2817,7 @@ STR_OBJECT_CLASS_TRNS                                           :Pemancar
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pepohonan
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pohon untuk ditanam. Jika pohon sudah tertanam, ini akan menambah jenis pohon secara acak dari tipe yang sama.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon secara acak
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tempatkan tipe tumbuhan secara acak. Shift untuk menampilkan perkiraan biaya
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tanam tipe pepohonan secara acak. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Pohon Acak
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Menanam pohon secara acak pada lansekap
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

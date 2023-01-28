@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Créatio
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Création des industries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construction routière
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construction de tramway
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planter des arbres.{}Shift pour afficher seulement le coût estimé.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planter des arbres.{}Ctrl pour sélectionner en diagonale.{}Shift pour afficher seulement le coût estimé.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placer un panneau
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placer un objet.{}Ctrl pour sélectionner en diagonale.{}Shift pour afficher seulement le coût estimé.
 
@@ -2822,7 +2822,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmetteurs
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre. S'il y a déjà un arbre dans la case, plusieurs arbres de types différents y seront ajoutés, indépendamment du type sélectionné.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasard
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planter des arbres provenant d'espèces choisies au hasard.{}Shift pour afficher seulement le coût estimé.
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planter des arbres provenant d'espèces choisies au hasard.{}Ctrl pour sélectionner en diagonale.{}Shift pour afficher seulement le coût estimé.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Ajouter des arbres au hasard
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Semer des arbres au hasard sur l'ensemble du terrain
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

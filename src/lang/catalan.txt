@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generaci
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generació d'indústries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcció de carreteres
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcció de vies de tramvia
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Shift per sols mostrar el cost estimat.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, no es realitza l'acció però es mostra el seu cost estimat.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situa un senyal
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Crea un objecte. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj, es commuta entre construir o mostrar el cost estimat.
 
@@ -2818,7 +2818,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissors
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar. Si la casella ja conté un arbre, s'afegiran més arbres d'altres espècies independentment de quin estigui seleccionat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situar arbres de tipus aleatori. Shift commuta construeix/mostra el cost estimat
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situa arbres de tipus aleatori. Amb Ctrl, es selecciona una àrea diagonal. Amb Maj., es commuta entre construir i mostrar el cost estimat.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Planta arbres
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta arbres aleatòriament al paisatge
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

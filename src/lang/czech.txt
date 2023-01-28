@@ -461,7 +461,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generov�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generování průmyslu
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Výstavba silniční sítě
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Výstavba tramvajové tratě
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Vysadit stromy. Shift zobrazí odhad ceny
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Vysadit stromy. Ctrl vybírá území úhlopříčně. Shift zobrazí odhad ceny
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umístit popisek
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umisťte objekt. Pro zobrazení odhadu ceny podrž Shift. Ctrl vybírá oblast diagonálně
 
@@ -2908,7 +2908,7 @@ STR_OBJECT_CLASS_TRNS                                           :Vysílače
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Zvol druh stromu na vysazení. Pokud se na políčku už nějaký strom nachází, přidá se k němu několik různých druhů bez ohledu na výběr druhu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Různé stromy
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umístit nahodné stromy. Stisknutý Shift pro zobrazení odhadu ceny
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umístit nahodné stromy. Ctrl vybírá území úhlopříčně. Stisknutý Shift pro zobrazení odhadu ceny
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Náhodné stromy
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Umístit stromy náhodně po krajině
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normální

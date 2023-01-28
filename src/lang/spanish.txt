@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Creació
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generación de industria
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcción de carreteras
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcción de tranvía
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Mayús permite mostrar una estimación del precio
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar letrero
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 
@@ -2822,7 +2822,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmisor
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipo de árboles a plantar. Si la casilla ya tiene un árbol, se añadirán más árboles de distintos tipos sin importar el tipo elegido
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipo aleatorio
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planta distintos árboles al azar. Mayús permite mostrar una estimación del precio
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planta distintos árboles al azar. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árboles al azar en el terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

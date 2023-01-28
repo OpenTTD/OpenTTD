@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo th
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nhà máy
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Xây dựng đường xe điện
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Nhấn Shift để xem chi phí dự tính
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Ctrl chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Ctrl để chọn khu vực theo đường chéo. Shift để xem chi phí dự tính
 
@@ -2821,7 +2821,7 @@ STR_OBJECT_CLASS_TRNS                                           :Tháp tín hi�
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây Cối
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng. Nếu ô đó đã có cây, thao tác này sẽ thêm hỗn hợp nhiều cây khác độc lập với loại đã chọn
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Loại cây ngẫu nhiên
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Trồng ngẫu nhiên các loại cây. Shift+Click để xem chi phí dự tính
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Đặt các loại cây ngẫu nhiên. Ctrl chọn vùng theo đường chéo. Shift bật tắt xây dựng/hiển thị ước tính chi phí
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Trồng ngẫu nhiên
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Trồng cây ngẫu nhiên trên khoảnh đất
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Bình thường
