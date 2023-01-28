@@ -29,7 +29,7 @@ static std::vector<TCPConnecter *> _tcp_connecters;
  * @param default_port If not indicated in connection_string, what port to use.
  * @param bind_address The local bind address to use. Defaults to letting the OS find one.
  */
-TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address, int family) :
+TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port, const NetworkAddress &bind_address, int family) :
 	bind_address(bind_address),
 	family(family)
 {
