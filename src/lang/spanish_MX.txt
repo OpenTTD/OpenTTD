@@ -2699,8 +2699,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selección de puente de ferrocarril
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selección de puente de carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente. Clic para construir
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante (acero)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas (acero)
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Voladizo (acero)
@@ -2852,6 +2850,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localida
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar la localidad en un lugar aleatorio
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Muchas localidades aleatorias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubrir el mapa con localidades colocadas al azar
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandir todas las localidades
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nombre de la localidad:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Ingresar el nombre de la localidad
@@ -4780,6 +4779,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... dema
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No se pueden crear industrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}No se puede construir {STRING} aquí...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}No se puede construir este tipo de industria aquí...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}No se puede hacer prospección para la industria...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... demasiado cerca de otra industria
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... primero se debe crear al menos una localidad
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... solo se permite una por localidad
@@ -4794,6 +4794,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... los 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solo se puede construir por encima del nivel de nieve
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solo se puede construir por debajo del nivel de nieve
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}No se encontraron lugares aptos para hacer prospección de esta industria
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No hubo espacio para industrias de tipo "{STRING}"
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Cambia las opciones de generación para crear un mejor mapa
 

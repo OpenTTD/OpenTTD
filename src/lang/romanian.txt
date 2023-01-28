@@ -866,7 +866,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Rezerve noi de cărbune la {INDUSTRY}!{}Se preconizează dublarea producţiei!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Rezerve noi de petrol la {INDUSTRY}!{}Se preconizează dublarea producţiei!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea producţiei!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Producţia de {STRING} de la {INDUSTRY} creste cu {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Producţia de {STRING} de la {INDUSTRY} crește cu {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} scade producţia cu 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insectele cauzează distrugeri masive la {INDUSTRY}!{}Producţia scade cu 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Producţia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
@@ -1302,7 +1302,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lungimea maxim�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de tuneluri
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metoda manuală de construcţie a industriilor primare: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda de finanţare a industriilor primare. 'nici una' înseamnă că nu este posibile să se finanţeze nici una, 'prospectare' înseamnă ca finanţarea este posibilă, dar construcţia se realizează intr-un loc aleator şi poate eşua, 'la fel ca celelalte industrii' inseamnă că industriile de materie primă pot fi construite de către companii la fel ca industriile procesatoare, în orice locaţie doresc
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda de finanțare a industriilor primare. „niciuna” înseamnă că nu este posibil să se finanțeze niciuna, „prospectare” înseamnă că finanțarea este posibilă, dar construcția se realizează într-un loc aleator și poate eșua, „la fel ca celelalte industrii” înseamnă că industriile de materie primă pot fi construite de către companii la fel ca industriile procesatoare, în orice locație doresc
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
@@ -1680,16 +1680,16 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Nr. max. de nav
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numărul maxim de nave pe care o companie le poate deține
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Dezactivează trenurile pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi trenuri
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi trenuri
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi vehicule rutiere
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi vehicule rutiere
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi aeronave
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi aeronave
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlaţi de calculator: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi nave
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Prin activarea acestei opțiuni, jucătorul controlat de calculator nu poate construi nave
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Configurația implicită: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Alege o configurație care va fi folosită pentru AI aleator, sau care va fi furniza valori implicite când se adaugă un nou AI sau script
@@ -1925,13 +1925,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Timpul necesar pentru fiecare recalculare a unei componente a graficului de legătură. Când se începe o recalculare, este generat un fir de execuție căruia i se permite să ruleze pentru acest număr de zile. Cu cât setați acest lucru mai scurt, cu atât este mai probabil ca firul să nu fie terminat atunci când trebuie. Apoi jocul se oprește până când este ("lag"). Cu cât îl setați mai mult, cu atât este nevoie de mai mult pentru ca distribuția să fie actualizată când se schimbă rutele.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalitatea de distribuire a pasagerilor: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetric" înseamnă că aproximativ același număr de pasageri va fi transportat din stația A spre stația B, precum de la B la A. "asimetric" presupune transportul unui număr arbitrar de pasageri în fiecare direcție. "manual" înseamnă că repartizarea pasagerilor nu va fi automatizată.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetric" înseamnă că aproximativ același număr de pasageri va fi transportat din stația A spre stația B, precum de la B la A. "Asimetric" presupune transportul unui număr arbitrar de pasageri în fiecare direcție. "Manual" înseamnă că repartizarea pasagerilor nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modalitatea de distribuire a poştei: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetric" înseamnă că aproximativ aceeași cantitate de poștă va fi expediată din stația A spre stația B, precum de la B la A. "asimetric" presupune expedierea de cantități arbitrare de poștă în fiecare direcție. "manual" înseamnă că repartizarea poștei nu va fi automatizată.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetric" înseamnă că aproximativ aceeași cantitate de poștă va fi expediată din stația A spre stația B, precum de la B la A. "Asimetric" presupune expedierea de cantități arbitrare de poștă în fiecare direcție. "Manual" înseamnă că repartizarea poștei nu va fi automatizată.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modalitatea de distribuire pentru clasa de cargo BLINDAT: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Clasa de marfă ARMORED conține obiecte de valoare în climat temperat, diamante în climat subtropical sau aur în climat subarctic. NewGRF-urile pot schimba asta. „simetric” înseamnă că aproximativ aceeași cantitate din acea marfă va fi trimisă de la o stație A la o stație B ca de la B la A. „asimetric” înseamnă că cantități arbitrare ale acelei mărfuri pot fi trimise în ambele direcții. „manual” înseamnă că nu va avea loc nicio distribuție automată pentru acea marfă. Este recomandat să setați acest lucru la asimetric sau manual atunci când jucați subarctic, deoarece băncile nu vor trimite aur înapoi la minele de aur. Pentru cele temperate și subtropicale, puteți alege și simetric, deoarece băncile vor trimite obiectele de valoare înapoi la banca de origine a unei încărcături de obiecte de valoare.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Clasa de marfă ARMORED conține obiecte de valoare în climat temperat, diamante în climat subtropical sau aur în climat subarctic. NewGRF-urile pot schimba asta. „Simetric” înseamnă că aproximativ aceeași cantitate din acea marfă va fi trimisă de la o stație A la o stație B ca de la B la A. „Asimetric” înseamnă că cantități arbitrare ale acelei mărfuri pot fi trimise în ambele direcții. „Manual” înseamnă că nu va avea loc nicio distribuție automată pentru acea marfă. Este recomandat să setați acest lucru la asimetric sau manual atunci când jucați subarctic sau subtropical, deoarece băncile doar primesc bunuri in aceste climate. Pentru climatul temperat, puteți alege și simetric, deoarece băncile vor trimite obiectele de valoare înapoi la banca de origine a unei încărcături.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modalitatea de distribuire pentru alte clase de cargo: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimetric" înseamnă că pot fi trimise cantități diferite de marfă în ambele direcții. "manual" înseamnă că nu se va face distribuție automată pentru acele mărfuri.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimetric" înseamnă că pot fi trimise cantități diferite de marfă în ambele direcții. "Manual" înseamnă că nu se va face distribuție automată pentru acele mărfuri.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
@@ -2605,6 +2605,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 # Linkgraph tooltip
 STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} care urmează să fie transportat pe lună de la {STATION} la {STATION} ({COMMA}% din capacitate){STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} de transportat înapoi ({COMMA}% din capacitate)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Durată medie de călătorie: {NUM}{NBSP}{P "zi" "zile" "de zile"}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
@@ -2697,8 +2698,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte 
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege pod de cale ferată
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Alege pod rutier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - click pe podul preferat pentru a-l construi
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensie, Oţel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Grindă, Oţel
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Arc, Oţel
@@ -3807,9 +3810,9 @@ STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicule dispon
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Nave disponibile
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronave disponibile
 
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestioneaza lista
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Trimite instructiunile tuturor vehiculelor din aceasta lista
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Inlocuieste vehiculele
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestionează lista
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Trimite instrucțiuni tuturor vehiculelor din această listă
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Înlocuiește vehiculele
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Trimite in service
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit anul acesta: {CURRENCY_LONG} (anul trecut: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
@@ -3821,7 +3824,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Trimite la depo
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Trimite la hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click pt oprirea tuturor vehiculelor din listă
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Apasă pentru pornirea tuturor vehiclulelor din listă
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vezi o listă de proiecte de motoare disponibile pentru acest tip de vehicul
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Comenzi sincronizate pentru {COMMA} {P vehicul vehicule "de vehicule"}
@@ -4188,13 +4191,13 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acțiune
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Încărcare / Descărcare
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Pleaca
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Pleacă
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Defect
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oprit
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Oprire, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Fara curent
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Astept cale libera
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Aștept cale liberă
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Prea departe pentru următoarea destinație
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Spre {STATION}, {VELOCITY}
@@ -4798,6 +4801,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... păd
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... poate fi construit doar deasupra liniei zăpezii
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... poate fi construit doar sub linia zăpezii
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Ghinion, finanțarea prospectării a eșuat. Încearcă din nou
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Nu există locuri potrivite de prospectat pentru această industrie
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nu s-au găsit locuri potrivite pentru industriile '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifică parametrii generatorului ca să obții o hartă mai bună

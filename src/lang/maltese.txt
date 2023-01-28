@@ -855,7 +855,6 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Signal window
 
 # Bridge selection window
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 
 
 # Road construction toolbar

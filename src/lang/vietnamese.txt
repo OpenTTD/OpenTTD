@@ -1925,13 +1925,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dùng {STRING}{
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Thời gian cần thiết cho mỗi bước tính toán đồ thị liên kết. Mỗi khi bắt đầu, chương trình tính toán sẽ được phép chạy trong một số ngày nào đó tùy theo giá trị này. Nếu quá ít có thể không đủ để tính toán, mà nếu quá nhiều thì nó sẽ kéo dài việc tính toán lại phân phối mỗi khi đường đi thay đổi.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Chế độ phân phối đối với hành khách: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Hành khách có thể di chuyển đối xứng (số lượng A đến B bằng B đến A) hoặc bất đối xứng, hoặc bằng tay.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Đối xứng" có nghĩa là số lượng hành khách đi từ nhà ga A đến nhà ga B và từ B đến A sẽ tương đương nhau . "Không đối xứng" có nghĩa là số lượng hành khách tùy ý có thể đi theo một trong hai hướng. "Thủ công" có nghĩa là hành khách sẽ không được phân phối tự động.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Chế độ phân phối đối với thư tín: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Thư tín có thể gửi đối xứng (khối lượng từ A đến B bằng B đến A) hoặc bất đối xứng, hoặc bằng tay.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Đối xứng" có nghĩa là cùng một lượng thư sẽ được gửi từ trạm A đến trạm B cũng như từ B đến A. "Không đối xứng" có nghĩa là lượng thư tùy ý có thể được gửi theo một trong hai hướng. "Thủ công" có nghĩa là thư sẽ không được phân phối tự động.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Chế độ phân phối đối với hàng hóa đóng két: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Hàng hóa được đóng két là gói hàng có giá trong địa hình nhiệt đới, kim cương trong hoang mạc, vàng trong địa hình vùng cực lạnh. NewGRF có thể khác. Bạn nên đặt là bất đối xứng hoặc bằng tay nếu ở địa hình cực lạnh, vì ngân hàng sẽ không gửi vàng trở lại mỏ vàng. Với địa hình nhiệt đới hoặc hoang mạc thì có thể chọn đối xứng bởi các ngân hàng có thể gửi hai chiều với nhau.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Loại hàng hóa "ARMORED" chứa các vật có giá trị ở vùng ôn đới, kim cương ở vùng cận nhiệt đới hoặc vàng ở vùng khí hậu cận Bắc Cực. NewGRF có thể thay đổi điều đó. "Đối xứng" có nghĩa là cùng một lượng hàng hóa đó sẽ được gửi từ nhà ga A đến nhà ga B cũng như từ B đến A. "Không đối xứng" có nghĩa là lượng hàng hóa đó có thể được gửi tùy ý theo một trong hai hướng. "Thủ công" có nghĩa là sẽ không có hoạt động phân phối tự động nào đối với hàng hóa đó. Bạn nên đặt chế độ này thành bất đối xứng hoặc thủ công khi chơi ở vùng cận Bắc cực hoặc cận nhiệt đới, vì các ngân hàng chỉ nhận hàng ở những vùng khí hậu này. Đối với ôn hòa, bạn cũng có thể chọn đối xứng vì các ngân hàng sẽ gửi các vật có giá trị trở lại ngân hàng gốc.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Chế độ phân phối đối với các loại hàng hóa mặc định: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"bất đối xứng" là khối lượng hàng hóa tùy ý có thể gửi theo chiều bất kỳ. "bằng tay" là sẽ không phân phối tự động mà bạn sẽ phải chỉ ra.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Không đối xứng" có nghĩa là số lượng hàng hóa tùy ý có thể được gửi theo một trong hai hướng. "Thủ công" có nghĩa là những loại hàng hóa đó sẽ không được phân phối tự động.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :bằng tay
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :bất đối xứng
@@ -2698,8 +2698,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tăng m�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Tàu Hỏa
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Đường Bộ
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Chọn cầu - chọn loại cầu bạn muốn xây dựng
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Cầu treo thép
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cầu dầm thép
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cầu dầm chìa thép
@@ -2851,6 +2849,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tạo đ
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Tìm đô thị vị trí ngẫu nhiên
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Nhiều đô thị ngẫu nhiên
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Phủ bản đồ bằng cách tạo đô thị ngẫu nhiên
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Mở xuống tất cả đô thị
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Làm cho mọi đô thị tăng trưởng một chút
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Tên thị trấn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Nhập tên thị trấn
@@ -3327,7 +3327,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo nh�
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets. Ctrl+Click để di chuyển sprite tám đơn vị một lúc
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Toạ độ về trung tâm
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite về trung tâm
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Chữ thập
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Đặt lại tương đối
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Đặt lại các dịch chuyển tương đối hiện tại
@@ -4508,22 +4511,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ngày b�
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Lựa chọn ngày bắt đầu trong bảng lịch trình này. Ctrl+Click phân bổ cho tất cả các phương tiện chia sẻ lộ trình này bắt đầu từ ngày được chọn một cách đồng đều theo thứ tự tương đối giữa chúng, nếu như lộ trình đã lên lịch đầy đủ.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng. Ctrl+Click đặt thời gian cho mọi lộ trình
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Xoá thời gian
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình. Ctrl+Click xoá tất cả thời gian cho mọi lộ trình
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Thay Đổi Giới Hạn Tốc Độ
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Thay đổi tốc độ tối đa của lộ trình được chọn
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Thay đổi tốc độ tối đa của lộ trình được chọn. Ctrl+Click đặt tốc độ cho mọi lộ trình
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Xóa Giới Hạn Tốc Độ
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Xóa tốc độ đối đa đối với lộ trình được chọn
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Xóa tốc độ đối đa đối với lộ trình được chọn. Ctrl+Click xoá tốc độ cho mọi lộ trình
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Lập lại bộ đếm trễ
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Thiết lập lại bộ đếm trễ giờ, để việc di chuyển phương tiện được tính lại đúng đắn
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Tự điền
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự điền bảng lịch trình qua việc đo thời gian hành trình kế tiếp (Ctrl+Click để cố giữ thời gian chờ không đổi)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự điền bảng lịch trình qua việc đo thời gian hành trình kế tiếp. Ctrl+Click để cố giữ thời gian chờ không đổi
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong muốn
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
@@ -4779,6 +4782,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... quá
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Không thể tạo nhà máy...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Không thể xây {STRING} ở đây...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Không thể xây loại nhà máy này ở đây...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Không thể dò tìm nhà máy...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... quá gần nhà máy khác
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... phải có ở thị trấn cái đã
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... mỗi đô thị chỉ được có một cái
@@ -4793,6 +4797,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừ
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía trên núi cao có tuyết
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía dưới núi cao có tuyết
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Không may là việc góp vốn cho tìm kiếm nhà máy thất bại; hãy thử lại
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Không có một nơi phù hợp nào để dò tìm nhà máy này
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Không có vùng đất nào phù hợp với nhà máy '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Thay đổi thông số khởi tạo bản đồ để có được bản đồ tốt hơn
 

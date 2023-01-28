@@ -2830,8 +2830,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Павя
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберыце чыгуначны мост
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Выберыце аўтамабiльны мост
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Выбар моста — пстрыкніце па малюнку моста, які Вы хочаце пабудаваць
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Падвесны сталёвы
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Бэлечны сталёвы
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Кансольны сталёвы

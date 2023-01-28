@@ -1925,13 +1925,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Take {STRING}{N
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of days. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribution mode for passengers: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "asymmetric" means that arbitrary numbers of passengers can go in either direction. "manual" means that no automatic distribution will take place for passengers.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "Asymmetric" means that arbitrary numbers of passengers can go in either direction. "Manual" means that no automatic distribution will take place for passengers.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribution mode for mail: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetric" means that roughly the same amount of mail will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of mail can be sent in either direction. "manual" means that no automatic distribution will take place for mail.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetric" means that roughly the same amount of mail will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of mail can be sent in either direction. "Manual" means that no automatic distribution will take place for mail.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribution mode for the ARMORED cargo class: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical, or gold in the subarctic climate. NewGRFs may change that. "symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of that cargo can be sent in either direction. "manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic, as banks won't send any gold back to gold mines. For temperate and subtropical you can also choose symmetric as banks will send valuables back to the origin bank of some load of valuables.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical, or gold in the subarctic climate. NewGRFs may change that. "Symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "Asymmetric" means that arbitrary amounts of that cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic or subtropic, as banks only receive cargo in these climates. For temperate you can also choose symmetric as banks will send valuables back to the origin bank.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribution mode for other cargo classes: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "manual" means that no automatic distribution will take place for those cargos.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "Manual" means that no automatic distribution will take place for those cargoes.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetric
@@ -2698,8 +2698,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Select Rail Bridge
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Select Road Bridge
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Bridge selection - click on your preferred bridge to build it
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspension, Steel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Girder, Steel
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Steel

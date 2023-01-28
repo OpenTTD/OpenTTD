@@ -1433,6 +1433,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Épaisseur de l
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Afficher le nom du NewGRF dans la fenêtre d'achat des véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Ajoute une ligne à la fenêtre d'achat des véhicules, montrant de quel NewGRF provient le véhicule sélectionné.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Afficher les cargaisons que peuvent transporter les véhicules dans les fenêtres de liste {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Quand il est actif, ce qu'un véhicule peut transporter est affiché au dessus de lui dans les listes de véhicules
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paysage{NBSP}: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Les paysages définissent les scénarios de jouabilité classique avec différentes marchandises et exigences pour la croissance des villes. Les NewGRFs et les scripts de jeux autorisent cependant un contrôle plus fin
@@ -2697,8 +2699,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmente
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir un pont ferroviaire
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir un pont routier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - Cliquer sur le type de pont désiré pour le construire.
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en acier
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Porte-à-faux en acier
@@ -2850,6 +2850,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Créer u
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonder une ville à un emplacement choisi au hasard
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Beaucoup de villes au hasard
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Couvrir la carte de villes placées au hasard
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Étendre toutes les villes
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Faire croître toutes les villes légèrement
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la ville{NBSP}:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Entrer un nom de ville
@@ -3326,7 +3328,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represen
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Déplacer le sprite, en modifiant les décalages X et Y. Ctrl-clic pour déplacer le sprite de 8 unités à la fois.
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Décalage centré
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centré
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Croix
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Réinitialiser les relatifs
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Réinitialiser les décalages relatifs courants
@@ -3807,6 +3812,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envoyer 
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Remplacer des véhicules
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envoyer à l'entretien
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit cette année{NBSP}: {CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Envoyer au dépôt
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Envoyer au dépôt
@@ -4505,22 +4512,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de 
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Choisir une date comme point de départ de cet horaire. Ctrl-clic pour répartir tous les véhicules partageant cet ordre uniformément à partir de la date donnée selon leur ordre relatif, si l'ordre est complètement planifié
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné. Ctrl-clic pour définir la durée pour tous les ordres
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler la durée
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné. Ctrl-clic pour annuler la durée de tous les ordres
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modifier la vitesse limite
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Modifier la vitesse maximale de déplacement de l'ordre sélectionné
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Modifier la vitesse maximale de déplacement de l'ordre sélectionné. Ctrl-Clic pour définir la vitesse pour tous les ordres
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Annuler la vitesse limite
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Annuler la vitesse maximale de déplacement de l'ordre sélectionné
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Annuler la vitesse maximale de déplacement de l'ordre sélectionné. Ctrl-clic pour annuler la vitesse de tous les ordres
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}RAZ compteur de retard
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remettre à zéro le compteur de retard (le véhicule sera donc à l'heure)
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplir l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplir l'horaire automatiquement avec les valeurs du prochain trajet. Ctrl-clic pour essayer de préserver les temps d'attente
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Attendu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planifié
@@ -4776,6 +4783,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... trop
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ne peut pas générer les industries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossible de construire {STRING} ici...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossible de construire cette industrie ici...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Impossible de prospecter l'industrie...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... trop proche d'une autre industrie
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... une ville doit d'abord être construite
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... droit à un seul par ville
@@ -4790,6 +4798,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... peut seulement être construit au dessus de l'altitude d'enneigement
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... peut seulement être construit en dessous de l'altitude d'enneigement
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}La prospection a échoué par manque de chance; essayez à nouveau
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Il n'y avait pas d'emplacements appropriés pour la prospection de cette industrie
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Il n'y avait pas d'emplacements appropriés pour les industries '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Modifier les paramètres de la génération de la carte pour obtenir une meilleure carte
 
@@ -5030,6 +5040,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossib
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... véhicule détruit
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... les véhicules ne sont pas tous identiques
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Aucun véhicule ne sera disponible
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Modifier votre configuration NewGRF
@@ -5057,6 +5068,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... le véhicule ne peut pas aller dans toutes les stations
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... le véhicule ne peut pas aller dans cette station
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un véhicule partageant cet ordre ne peut pas aller dans cette station
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... les véhicules n'ont pas tous les même ordres
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... les véhicules ne partagent pas tous les ordres
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossible de partager les ordres...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossible d'arrêter le partage des ordres...

@@ -2165,8 +2165,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}زیاد
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}ساخت پل ماشین رو
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :معلق، فولادی
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :پیوسته، فولادی
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :پایه دار، فولادی
