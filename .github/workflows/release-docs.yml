@@ -1,0 +1,85 @@
+name: Release (Docs)
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+
+jobs:
+  docs:
+    name: Docs
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Download source
+      uses: actions/download-artifact@v3
+      with:
+        name: internal-source
+
+    - name: Unpack source
+      run: |
+        tar -xf source.tar.gz --strip-components=1
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Update apt"
+        sudo apt-get update
+        echo "::endgroup::"
+
+        echo "::group::Install dependencies"
+        sudo apt-get install -y --no-install-recommends \
+          doxygen \
+          # EOF
+        echo "::endgroup::"
+      env:
+        DEBIAN_FRONTEND: noninteractive
+
+    - name: Build
+      run: |
+        mkdir -p ${GITHUB_WORKSPACE}/build
+        cd ${GITHUB_WORKSPACE}/build
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_DOCS_ONLY=ON \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build . --target docs
+        echo "::endgroup::"
+
+    - name: Create bundles
+      run: |
+        BASENAME=openttd-${{ inputs.version }}
+
+        cd ${GITHUB_WORKSPACE}/build
+
+        mv docs/source ${BASENAME}-docs
+        mv docs/ai-api ${BASENAME}-docs-ai
+        mv docs/gs-api ${BASENAME}-docs-gs
+
+        mkdir -p bundles
+
+        echo "::group::Create docs bundle"
+        tar --xz -cf bundles/${BASENAME}-docs.tar.xz ${BASENAME}-docs
+        echo "::endgroup::"
+
+        echo "::group::Create AI API docs bundle"
+        tar --xz -cf bundles/${BASENAME}-docs-ai.tar.xz ${BASENAME}-docs-ai
+        echo "::endgroup::"
+
+        echo "::group::Create GameScript API docs bundle"
+        tar --xz -cf bundles/${BASENAME}-docs-gs.tar.xz ${BASENAME}-docs-gs
+        echo "::endgroup::"
+
+    - name: Store bundles
+      uses: actions/upload-artifact@v3
+      with:
+        name: openttd-docs
+        path: build/bundles/*.tar.xz
+        retention-days: 5
