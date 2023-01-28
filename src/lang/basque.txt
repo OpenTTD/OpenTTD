@@ -2354,8 +2354,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Seinale 
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Trenbide zubia aukeratu
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Errepide zubia aukeratu
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Zubi aukerak - eraiki nahi duzun zubian klik egin
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Altzairuzko zubi esekia
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Altzairuzko habe zubia
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Altzairuzko mentsula zubia

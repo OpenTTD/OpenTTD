@@ -160,8 +160,8 @@ STR_ABBREV_TOFFEE                                               :{TINY_FONT}ŞL
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}Pİ
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}İÇ
-STR_ABBREV_NONE                                                 :{TINY_FONT}YOK
-STR_ABBREV_ALL                                                  :{TINY_FONT}HEPSİ
+STR_ABBREV_NONE                                                 :{TINY_FONT}YO
+STR_ABBREV_ALL                                                  :{TINY_FONT}TÜMÜ
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}yolcu
@@ -2105,9 +2105,9 @@ STR_QUIT_YES                                                    :{BLACK}Evet
 STR_QUIT_NO                                                     :{BLACK}Hayır
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ana Menüye Dön
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinize emin misiniz?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryodan çıkmak istediğinize emin misiniz?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Oyunu Terk Et
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bu oyunu terk etmek istediğinize emin misiniz?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryoyu terk etmek istediğinize emin misiniz?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
@@ -2699,8 +2699,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Sinyal s
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Tren Köprüsü Seç
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Köprü Seç
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Köprü seçimi - tercih ettiğiniz köprüyü yapmak için tıklayın
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Çelik, Asma
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Çelik, Kirişli
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Çelik, Ağ
@@ -2783,14 +2781,14 @@ STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Havalima
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Yerleşim {NUM}
 
 STR_AIRPORT_SMALL                                               :Küçük
-STR_AIRPORT_CITY                                                :Şehirlerarası
+STR_AIRPORT_CITY                                                :Şehir
 STR_AIRPORT_METRO                                               :Büyükşehir
 STR_AIRPORT_INTERNATIONAL                                       :Uluslararası
 STR_AIRPORT_COMMUTER                                            :Abonman
 STR_AIRPORT_INTERCONTINENTAL                                    :Kıtalararası
-STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIPORT                                            :Heli pisti
 STR_AIRPORT_HELIDEPOT                                           :Heligaraj
-STR_AIRPORT_HELISTATION                                         :Helistasyon
+STR_AIRPORT_HELISTATION                                         :Heli istasyonu
 
 STR_AIRPORT_CLASS_SMALL                                         :Küçük havalimanları
 STR_AIRPORT_CLASS_LARGE                                         :Büyük Havalimanları
@@ -2852,6 +2850,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Rastgele
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir kur
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Birçok rastgele şehir
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Haritayı rastgele şehirlerle doldur
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Tüm şehirleri genişlet
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Tüm şehirleri birazcık büyüt
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Kasaba adı:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Kasaba adı girin
@@ -3328,7 +3328,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Seçili 
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nesneyi X ve Y ofsetlerini değiştirerek gezdir. Ctrl+Tıklama ile nesneleri bir kerede sekiz birim kaydır
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Ofset ortalandı
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Nesne ortalandı
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Artı imleci
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Bağılı sıfırla
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Geçerli bağıl ofsetleri sıfırla
@@ -4509,22 +4512,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Başlang
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Bu zaman çizelgesinin başlangıcı olarak bir tarih seçin. Ctrl+Tıklama eğer komuta zaman çizelgesi uygulanmışsa bu komutu paylaşan tüm araçlara göreli komutlarını baz alarak belirtilen tarihten itibaren eşit dağıtır.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir. Ctrl+Tıklama bütün talimatların süresini değiştirir
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zamanı Temizle
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Seçili talimatın harcaması gereken süreyi sil
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Seçili talimatın harcaması gereken süreyi sil. Ctrl+Tıklama bütün talimatların sürelerini siler
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Hız Sınırını Değiştir
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Seçili emrin azami hızını değiştir
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Seçili emrin azami seyahat hızını değiştir. Ctrl+Tıklama bütün emirlerin azami hızlarını değiştirir
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hız Sınırını Kaldır
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Seçili emrin azami hızını kaldır
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Seçili emrin azami seyahat hızını sil. Ctrl+Tıklama bütün emirlerin azami hızlarını siler
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Gecikme sayacını sıfırla
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur (Bekleme sürelerini tutmak için Ctrl ile tıklanır)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur Bekleme sürelerini tutmak için Ctrl ile tıklanır
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Beklenen
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programlanan
@@ -4544,14 +4547,14 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Yılı s
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
+STR_AI_DEBUG                                                    :{WHITE}YZ/Oyun Betiği Hata Ayıklama
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Betik adı
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Betik ayarlarını değiştir
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ log iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ kayıt iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Geldiğinde duraklatılacak metin:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Geldiğinde duraklatılacak metin
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Bir YZ log mesajı metin ile eşleşirse, oyun duraklatılır
@@ -4568,14 +4571,14 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalış
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Konfigürasyonu
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Oyun Betiği Konfigürasyonu
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Yapılandırması
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Oyun Betiği Yapılandırması
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonraki oyunda yüklenecek YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
 STR_AI_CONFIG_NONE                                              :(hiçbiri)
-STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}En fazla yarışmacı sayısı: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Yukarı taşı
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Seçilen YZ'yi listede yukarı taşı
@@ -4780,6 +4783,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Fabrika yapılamıyor...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Buraya {STRING} yapılamaz...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Buraya bu fabrikadan yapılamaz...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Endüstri araştırılamaz...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... başka bir fabrikaya çok yakın
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... önce şehir yapılmalı
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... her şehirde yalnızca bir tane olabilir
@@ -4794,6 +4798,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orma
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin üzerinde yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin altında yapılabilir
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Maalesef finansman sağlanamadı, tekrar deneyin.
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Bu endüstri için uygun bir konum bulunamadı
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}'{STRING}' fabrikaları için uygun bir alan yoktu
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Daha iyi bir harita için harita oluşturma parametrelerini değiştirin
 

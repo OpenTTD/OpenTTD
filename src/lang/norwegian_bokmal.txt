@@ -202,6 +202,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hk
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
@@ -397,6 +398,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Innstillinger
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Innstillinger for spill-skript
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Vis bynavn
@@ -1000,6 +1002,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Merk av 
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikk
 
@@ -2040,6 +2044,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tavle me
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Innstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter innhold på nettet
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nytt spill. Ctrl+klikk hopper over kartkonfigurering
@@ -2059,6 +2064,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vise tav
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Vis innstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-instillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Se etter nytt og oppdatert innhold for nedlasting
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Vis KI innstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Det valgte innebygde grafikksettet mangler {NUM} sprite{P "" r}. Se etter oppdateringer for settet.
@@ -2662,8 +2668,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Øk sign
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Velg jernbanebrotype
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Velg veibrotype
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brovalg - klikk på broen du vil ha for å bygge den.
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hengebro, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjelker, stål
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Frittbærende, stål
@@ -2815,6 +2819,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfeldi
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunnlegg en by på et tilfeldig sted
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfeldige byer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dekk kartet med tilfeldig plasserte byer
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Vis alle byer
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Navn på by:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv inn navn på by
@@ -3286,6 +3291,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytt p�
 
 ###length 2
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Trådkors
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Tilbakestill relativt
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nullstill de nåværende relative forskyvningene

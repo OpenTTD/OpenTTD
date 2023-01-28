@@ -1926,13 +1926,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING}{
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mode de distribució per passatgers: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simètric" vol dir que aproximadament el mateix nombre de passatgers aniran des de l'estació A a la B que de B a A. "asimètric" significa que un nombre arbitrari de passatgers poden anar en qualsevol dels dos sentits. "manual" vol dir que no s'aplicarà una distribució automàtica pels passatgers.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simètric" vol dir que aproximadament el mateix nombre de passatgers aniran des de l'estació A a la B que de B a A. "Asimètric" significa que un nombre arbitrari de passatgers poden anar en qualsevol dels dos sentits. "Manual" vol dir que no s'aplicarà una distribució automàtica pels passatgers.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Mode de distribució pel correu: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simètric" vol dir que aproximadament la mateixa quantitat de correu serà enviada des de l'estació A a la B que de B a A. "asimètric" significa que una quantitat arbitrària de correu pot ser enviada en qualsevol dels dos sentits. "manual" vol dir que no s'aplicarà una distribució automàtica pel correu.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simètric" vol dir que aproximadament la mateixa quantitat de correu serà enviada des de l'estació A a la B que de B a A. "Asimètric" significa que una quantitat arbitrària de correu pot ser enviada en qualsevol dels dos sentits. "Manual" vol dir que no s'aplicarà una distribució automàtica pel correu.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Mode de distribució per la classe de càrrega BLINDADA: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de càrrega BLINDADA conté objectes de valor a la zona temperada, diamants a la subtropical o or al clima subàrtic. Els NewGRF poden canviar això. "simètric" significa que aproximadament la mateixa quantitat d'aquesta càrrega s'enviarà de l'estació A a la B que de B a A. "asimètric" vol dir que quantitats arbitràries d'aquesta càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquesta càrrega. Es recomana indicar asimètric o manual en clima subàrtic, doncs els bancs no enviaran or de tornada a les mines. Pels climes temperat i subtropical podeu també seleccionar simètric, doncs els bancs enviaran objectes de valor de tornada al banc d'origen.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de càrrega BLINDADA conté objectes de valor a la zona temperada, diamants a la subtropical o or al clima subàrtic. Els NewGRF poden canviar això. "Simètric" significa que aproximadament la mateixa quantitat d'aquesta càrrega s'enviarà de l'estació A a la B que de B a A. "Asimètric" vol dir que quantitats arbitràries d'aquesta càrrega poden ser enviades en qualsevol sentit. "Manual" significa que no s'aplicarà cap distribució automàtica a aquesta càrrega. Es recomana indicar asimètric o manual en clima subàrtic, doncs els bancs no enviaran or de tornada a les mines. Pels climes temperat i subtropical també podeu seleccionar simètric, doncs els bancs enviaran objectes de valor de tornada al banc d'origen.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Mode de distribució per altres classes de càrrega: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "Manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
@@ -2699,8 +2699,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenta
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Tren
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Pont penjant d'acer
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Pont biga d'acer
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Pont en mènsula d'acer
@@ -2852,6 +2850,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Crea una
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Crea moltes poblacions aleatòries
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Omple el mapa amb poblacions situades aleatòriament
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandeix totes les poblacions
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Fes que totes les poblacions creixin una mica.
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la població nova:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introdueix el nom de la població
@@ -3328,8 +3328,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represen
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Desplaça l'sprite un píxel en el sentit indicat. Amb Ctrl+Clic el desplaça 8 píxels.
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Modificador centrat
 STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centrat
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Punt de mira
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restableix relatius
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restableix els desplaçaments relatius actuals
@@ -4510,22 +4512,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de 
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleccioneu una data com a punt de partida d'aquest horari. Amb Ctrl+Clic, distribueix els vehicles que comparteixen aquesta ruta a partir de la data establerta i la seva ordre relativa, sempre que la ruta tingui l'horari complet.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la quantitat de temps que l'ordre marcada hauria de prendre
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia el emps que l'ordre marcada hauria de prendre. Amb Ctrl+clic estableix el temps per a totes les ordres.
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Esborra Temps
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada. Amb Ctrl+clic, s'esborra el temps per a totes les ordres.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Canvia el límit de velocitat
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia la velocitat de viatge màxima de l'ordre seleccionada
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic s'estableix la velocitat per a totes les ordres.
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Esborra el límit de velocitat
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic s'esborra la velocitat per a totes les ordres.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restablir Retard
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restableix el comptador de retards, de manera que el vehicle serà puntual
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge (CTRL+clic per intentar mantenir els temps d'espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge. CTRL+clic per a intentar mantenir els temps d'espera.
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
@@ -4781,6 +4783,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... mass
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es poden generar indústries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}No es pot fer la prospecció per a la indústria...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... massa prop d'altres indústries
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...abans s'ha de fundar una població.
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... només un permès per població
@@ -4795,6 +4798,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... el b
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... només es pot construir en estatges amb neu
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... només es pot construir en estatges sense neu
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}La fundació ha fallat la prospecció per mala sort. Proveu-ho de nou.
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}No hi havia llocs apropiats per a fer la prospecció per a aquesta indústria.
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No hi havia llocs adequats per a indústries '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Canvia els paràmetres de generació de mapa per a obtenir-ne un de millor
 

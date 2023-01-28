@@ -200,6 +200,8 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}英馬�
 STR_UNITS_POWER_METRIC                                          :{COMMA}仏馬力
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t.
@@ -996,6 +998,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK} 垂直�
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}ここをチェックして垂直同期を有効にします。設定はゲームを再起動した後に適用されます。ハードウェアアクセラレーションが有効な環境でしか機能しません。
 
 
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}インターフェイスのサイズ
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}サイズを自動調整
 
 
 
@@ -1492,7 +1496,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :緑
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :濃緑
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :青紫
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :貨物の流れのオーバーレイに使用される配色を設定します。
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :緑から青
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :ビューポートのスクロール挙動: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :マップのスクロール挙動
@@ -2056,6 +2062,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}ハイ�
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}設定を表示
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRFの有効/無効化、各パラメータの設定ができます
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}公式オンラインコンテンツのデータベースからデータの確認・追加・更新ができます
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI設定を表示
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD を終了します
 
 STR_INTRO_BASESET                                               :現在選択されているグラフィックのベースセットは {NUM} つのスプライトが欠けています。ベースセットの更新を確認してみてください。
@@ -2576,6 +2583,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}停留�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトします
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入貨物: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給貨物: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}メンテナンスコスト: {GOLD}{CURRENCY_SHORT}/年
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}停留施設を統合
@@ -2658,8 +2666,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}ドラ�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}鉄道橋建設
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路橋建設
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}建設したい橋の種類をクリックしてください
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}、{}　{VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :吊橋(S造)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :桁橋(S造)
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :カンチレバートラス橋(S造)
@@ -3111,6 +3117,9 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形のなだらかさ:
 STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRFの設定を表示
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}AI設定を表示
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}ゲームスクリプトの設定を表示
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :イギリス
@@ -3282,6 +3291,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオ
 
 ###length 2
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}十字
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK} 相対値リセット
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK} 現在の相対オフセットをリセットします。
@@ -3614,6 +3624,7 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}その他
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}利益
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}預金残高
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}借入金
 STR_FINANCES_MAX_LOAN                                           :{WHITE}借入上限: {BLACK}{CURRENCY_LONG}
@@ -4501,6 +4512,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行�
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ゲームスクリプトのデバッグウインドウはサーバーでのみ使用できます
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI 設定
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}ゲームスクリプトの構成
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}このゲームスクリプトは次のゲーム開始時からロードされます
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}}このAIは次のゲーム開始時からロードされます
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
@@ -4724,6 +4737,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}雪線�
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}降雪線より上にのみ建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}降雪線より下にのみ建設できます
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}運が悪かったため、資金調達が見込めませんでした。再試行してください
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}この産業で期待できる土地がありませんでした
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}産業「{STRING}」を建設するのに適切な土地がありません
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}よりよいマップを作成するため、生成パラメーターを変更します
 

@@ -2625,8 +2625,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećaj
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Odaberi željeznički most
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Odaberi cestovni most
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Izbor mosta - klikni na most koji želiš izgraditi
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Viseći, čelični
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Noseći, čelični
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konzolni, čelični

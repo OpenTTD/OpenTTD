@@ -1930,7 +1930,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"대칭"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "비대칭"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :귀금속 화물에 대한 분배 형식: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :귀금속 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대 기후에서는 대칭으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :귀금속 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 아한대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "대칭"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 아한대나 아열대 기후에서는 대칭으로 설정하면 은행이 금을 받기만 하기 때문에 비대칭이나 수동으로 설정하는 것을 추천합니다. 온대 기후에서는 은행이 귀금속을 원래 은행으로 보내려고 하기 때문에 대칭을 선택해도 됩니다.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"비대칭"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "비대칭"이나 "수동"으로 설정하십시오.
 ###length 3
@@ -2699,8 +2699,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}드래�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}철교 선택
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 종류를 선택하세요
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :강철 현수교
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :강철 거더교
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :강철 캔틸레버교
