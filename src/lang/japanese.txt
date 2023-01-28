@@ -200,7 +200,11 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}英馬�
 STR_UNITS_POWER_METRIC                                          :{COMMA}仏馬力
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
@@ -397,6 +401,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 ###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプション設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI設定
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :ゲームスクリプト設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透過表示設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :街名を表示
@@ -999,9 +1005,14 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}ここ�
 
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}インターフェイスのサイズ
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}スライダーをドラッグでインターフェースの大きさを調整できます。Ctrl押しながらで微調整できます。
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}サイズを自動調整
 
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}ベベルのスケール
 
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}グラフィクス
 
@@ -1412,6 +1423,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :グラフ画面
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :購入可能な車両の一覧の詳細部分に NewGRF 名を表示する: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :購入可能な車両の一覧の詳細部分に由来する NewGRF を表示します
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :有効にすると車両リスト内で車両の積載可能な貨物が上に表示されます
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :地形: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :地形は様々な貨物と街の成長要件に関する基礎的なゲームプレイシナリオを定義します。NewGRFとゲームスクリプトによってより効果的なコントロールが可能になります。
@@ -1499,6 +1511,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :青紫
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :貨物の流れのオーバーレイに使用される配色を設定します。
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :緑から青
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :灰色から赤
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :グレイスケール
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :ビューポートのスクロール挙動: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :マップのスクロール挙動
@@ -2043,6 +2057,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}ハイ�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインコンテンツの確認
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI設定
 STR_INTRO_QUIT                                                  :{BLACK}終了
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}新規ゲームを開始します。Ctrl＋クリックで地形生成設定をスキップします
@@ -2574,6 +2589,7 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}供給過多
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均移動時間: {NUM}{NBSP}日
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}集荷範囲のハイライト
@@ -2666,6 +2682,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}ドラ�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}鉄道橋建設
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路橋建設
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}建設したい橋の種類をクリックしてください
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :吊橋(S造)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :桁橋(S造)
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :カンチレバートラス橋(S造)
@@ -3117,6 +3134,7 @@ STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形�
 STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRFの設定を表示
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI設定
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}AI設定を表示
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}ゲームスクリプトの設定を表示
 
@@ -3609,6 +3627,9 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}収益
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}営業費
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}資本的支出
 
 
 ###length 13
@@ -3618,10 +3639,12 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}列車運
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}車両運用費
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空機運用費
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶運用費
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}船舶
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}借入金利息
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}その他
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_PROFIT                                             :{WHITE}利益
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}預金残高
@@ -4977,6 +5000,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}点検�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}輸送機器が破壊されます
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... 全車両が同一ではありません
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}利用できる輸送機器が全くなくなります
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRFの設定を変更してください
@@ -5004,6 +5028,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}選択�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}この輸送機器は指令されたいずれの停留施設にも辿り着けません
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}この輸送機器はその停留施設に辿り着けません
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}指令を共有している輸送機器がその停留施設に辿り着けません
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... すべての車両の指令が同じではありません
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... すべての車両の指令が共有されていません
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}指令リストを共有できません
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}指令リストの共有を解除できません
