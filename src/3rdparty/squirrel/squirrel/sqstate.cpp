@@ -246,9 +246,9 @@ void SQSharedState::DelayFinalFree(SQCollectable *collectable)
 	if (!this->_collectable_free_processing) {
 		this->_collectable_free_processing = true;
 		while (!this->_collectable_free_queue.empty()) {
-			SQCollectable *collectable = this->_collectable_free_queue.back();
+			SQCollectable *collectable_to_free = this->_collectable_free_queue.back();
 			this->_collectable_free_queue.pop_back();
-			collectable->FinalFree();
+			collectable_to_free->FinalFree();
 		}
 		this->_collectable_free_processing = false;
 	}

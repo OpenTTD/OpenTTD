@@ -1923,26 +1923,26 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 					Debug(sl, _sl.action == SLA_LOAD ? 2 : 6, "Field '{}' of type 0x{:02x} not found, skipping", key, type);
 
 					std::shared_ptr<SaveLoadHandler> handler = nullptr;
-					SaveLoadType slt;
+					SaveLoadType saveload_type;
 					switch (type & SLE_FILE_TYPE_MASK) {
 						case SLE_FILE_STRING:
 							/* Strings are always marked with SLE_FILE_HAS_LENGTH_FIELD, as they are a list of chars. */
-							slt = SL_STR;
+							saveload_type = SL_STR;
 							break;
 
 						case SLE_FILE_STRUCT:
 							/* Structs are always marked with SLE_FILE_HAS_LENGTH_FIELD as SL_STRUCT is seen as a list of 0/1 in length. */
-							slt = SL_STRUCTLIST;
+							saveload_type = SL_STRUCTLIST;
 							handler = std::make_shared<SlSkipHandler>();
 							break;
 
 						default:
-							slt = (type & SLE_FILE_HAS_LENGTH_FIELD) ? SL_ARR : SL_VAR;
+							saveload_type = (type & SLE_FILE_HAS_LENGTH_FIELD) ? SL_ARR : SL_VAR;
 							break;
 					}
 
 					/* We don't know this field, so read to nothing. */
-					saveloads.push_back({key, slt, ((VarType)type & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, 0, nullptr, 0, handler});
+					saveloads.push_back({key, saveload_type, ((VarType)type & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, 0, nullptr, 0, handler});
 					continue;
 				}
 
