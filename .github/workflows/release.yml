@@ -66,6 +66,9 @@ jobs:
     uses: ./.github/workflows/release-windows-store.yml
     secrets: inherit
 
+    with:
+      version: ${{ needs.source.outputs.version }}
+
   upload-aws:
     name: Upload (AWS)
     needs:
@@ -74,6 +77,11 @@ jobs:
     - linux
     - macos
     - windows
+    - windows-store
+
+    # As windows-store is condition, we need to check ourselves if we need to run.
+    # The always() makes sure the rest is always evaluated.
+    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux.result == 'success' && needs.macos.result == 'success' && needs.windows.result == 'success' && (needs.windows-store.result == 'success' || needs.windows-store.result == 'skipped')
 
     uses: ./.github/workflows/upload-aws.yml
     secrets: inherit
