@@ -186,7 +186,7 @@ static bool MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
 static ViewportDrawer _vd;
 
 TileHighlightData _thd;
-static TileInfo *_cur_ti;
+static TileInfo _cur_ti;
 bool _draw_bounding_boxes = false;
 bool _draw_dirty_blocks = false;
 uint _dirty_block_colour = 0;
@@ -566,7 +566,7 @@ void DrawGroundSpriteAt(SpriteID image, PaletteID pal, int32 x, int32 y, int z, 
 		Point pt = RemapCoords(x, y, z);
 		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, pt.x + extra_offs_x * ZOOM_LVL_BASE, pt.y + extra_offs_y * ZOOM_LVL_BASE);
 	} else {
-		AddTileSpriteToDraw(image, pal, _cur_ti->x + x, _cur_ti->y + y, _cur_ti->z + z, sub, extra_offs_x * ZOOM_LVL_BASE, extra_offs_y * ZOOM_LVL_BASE);
+		AddTileSpriteToDraw(image, pal, _cur_ti.x + x, _cur_ti.y + y, _cur_ti.z + z, sub, extra_offs_x * ZOOM_LVL_BASE, extra_offs_y * ZOOM_LVL_BASE);
 	}
 }
 
@@ -1219,26 +1219,24 @@ static void ViewportAddLandscape()
 			assert(row == tilecoord.y + tilecoord.x);
 
 			TileType tile_type;
-			TileInfo tile_info;
-			_cur_ti = &tile_info;
-			tile_info.x = tilecoord.x * TILE_SIZE; // FIXME tile_info should use signed integers
-			tile_info.y = tilecoord.y * TILE_SIZE;
+			_cur_ti.x = tilecoord.x * TILE_SIZE;
+			_cur_ti.y = tilecoord.y * TILE_SIZE;
 
 			if (IsInsideBS(tilecoord.x, 0, Map::SizeX()) && IsInsideBS(tilecoord.y, 0, Map::SizeY())) {
 				/* This includes the south border at Map::MaxX / Map::MaxY. When terraforming we still draw tile selections there. */
-				tile_info.tile = TileXY(tilecoord.x, tilecoord.y);
-				tile_type = GetTileType(tile_info.tile);
+				_cur_ti.tile = TileXY(tilecoord.x, tilecoord.y);
+				tile_type = GetTileType(_cur_ti.tile);
 			} else {
-				tile_info.tile = INVALID_TILE;
+				_cur_ti.tile = INVALID_TILE;
 				tile_type = MP_VOID;
 			}
 
 			if (tile_type != MP_VOID) {
 				/* We are inside the map => paint landscape. */
-				tile_info.tileh = GetTilePixelSlope(tile_info.tile, &tile_info.z);
+				_cur_ti.tileh = GetTilePixelSlope(_cur_ti.tile, &_cur_ti.z);
 			} else {
 				/* We are outside the map => paint black. */
-				tile_info.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &tile_info.z);
+				_cur_ti.tileh = GetTilePixelSlopeOutsideMap(tilecoord.x, tilecoord.y, &_cur_ti.z);
 			}
 
 			int viewport_y = GetViewportY(tilecoord);
@@ -1257,10 +1255,10 @@ static void ViewportAddLandscape()
 				/* Is tile with buildings visible? */
 				if (min_visible_height < MAX_TILE_EXTENT_TOP) tile_visible = true;
 
-				if (IsBridgeAbove(tile_info.tile)) {
+				if (IsBridgeAbove(_cur_ti.tile)) {
 					/* Is the bridge visible? */
-					TileIndex bridge_tile = GetNorthernBridgeEnd(tile_info.tile);
-					int bridge_height = ZOOM_LVL_BASE * (GetBridgePixelHeight(bridge_tile) - TilePixelHeight(tile_info.tile));
+					TileIndex bridge_tile = GetNorthernBridgeEnd(_cur_ti.tile);
+					int bridge_height = ZOOM_LVL_BASE * (GetBridgePixelHeight(bridge_tile) - TilePixelHeight(_cur_ti.tile));
 					if (min_visible_height < bridge_height + MAX_TILE_EXTENT_TOP) tile_visible = true;
 				}
 
@@ -1281,8 +1279,8 @@ static void ViewportAddLandscape()
 				_vd.last_foundation_child[0] = nullptr;
 				_vd.last_foundation_child[1] = nullptr;
 
-				_tile_type_procs[tile_type]->draw_tile_proc(&tile_info);
-				if (tile_info.tile != INVALID_TILE) DrawTileSelection(&tile_info);
+				_tile_type_procs[tile_type]->draw_tile_proc(&_cur_ti);
+				if (_cur_ti.tile != INVALID_TILE) DrawTileSelection(&_cur_ti);
 			}
 		}
 	}

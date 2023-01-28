@@ -40,8 +40,8 @@ DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus)
 
 /** Tile information, used while rendering the tile */
 struct TileInfo {
-	uint x;         ///< X position of the tile in unit coordinates
-	uint y;         ///< Y position of the tile in unit coordinates
+	int x;          ///< X position of the tile in unit coordinates
+	int y;          ///< Y position of the tile in unit coordinates
 	Slope tileh;    ///< Slope of the tile
 	TileIndex tile; ///< Tile index
 	int z;          ///< Height
