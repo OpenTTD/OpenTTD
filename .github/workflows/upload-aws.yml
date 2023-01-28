@@ -28,9 +28,9 @@ jobs:
         echo "::group::Move bundles to a single folder"
         mkdir bundles
         mv openttd-*/* bundles/
-        cd bundles
-        echo "::group::Build"
+        echo "::endgroup::"
 
+        cd bundles
         for i in $(ls openttd-*); do
           echo "::group::Calculating checksums for ${i}"
           openssl dgst -r -md5 -hex $i > $i.md5sum
@@ -38,6 +38,21 @@ jobs:
           openssl dgst -r -sha256 -hex $i > $i.sha256sum
           echo "::endgroup::"
         done
+
+        # Some targets generate files that are meant for our-eyes-only.
+        # They are stored in the "internal" folder, and contains bundles
+        # for targets like Windows Store. No user has a benefit of knowing
+        # they exist, hence: internal.
+        if [ -e internal ]; then
+          cd internal
+          for i in $(ls openttd-*); do
+            echo "::group::Calculating checksums for ${i}"
+            openssl dgst -r -md5 -hex $i > $i.md5sum
+            openssl dgst -r -sha1 -hex $i > $i.sha1sum
+            openssl dgst -r -sha256 -hex $i > $i.sha256sum
+            echo "::endgroup::"
+          done
+        fi
 
     - name: Upload bundles to AWS
       run: |

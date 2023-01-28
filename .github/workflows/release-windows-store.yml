@@ -2,6 +2,10 @@ name: Release (Windows Store)
 
 on:
   workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 jobs:
   windows-store:
@@ -174,11 +178,15 @@ jobs:
         makeappx build /v /f PackagingLayout.xml /op output\ /bv %OTTD_VERSION% /pv %OTTD_VERSION% /ca
         SignTool sign /fd sha256 /a /f cert.pfx /p password "output\OpenTTD.appxbundle"
 
-    - name: Store appx
+        REM Move resulting files to bundles folder
+        mkdir bundles
+        mkdir bundles\internal
+        move cert.pfx bundles\internal\openttd-${{ inputs.version }}-windows-store.pfx
+        move output\OpenTTD.appxbundle bundles\internal\openttd-${{ inputs.version }}-windows-store.appxbundle
+
+    - name: Store bundles
       uses: actions/upload-artifact@v3
       with:
         name: openttd-windows-store
-        path: |
-          builds/output/OpenTTD.appxbundle
-          builds/cert.pfx
+        path: builds/bundles
         retention-days: 5
