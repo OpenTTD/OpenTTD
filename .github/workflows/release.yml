@@ -107,3 +107,19 @@ jobs:
     with:
       version: ${{ needs.source.outputs.version }}
       trigger_type: ${{ needs.source.outputs.trigger_type }}
+
+  upload-gog:
+    name: Upload (GOG)
+    needs:
+    - source
+    - linux
+    - macos
+    - windows
+
+    if: needs.source.outputs.trigger_type == 'new-tag'
+
+    uses: ./.github/workflows/upload-gog.yml
+    secrets: inherit
+
+    with:
+      version: ${{ needs.source.outputs.version }}
