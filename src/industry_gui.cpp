@@ -71,6 +71,7 @@ struct CargoSuffix {
 	char text[512];             ///< Cargo suffix text.
 };
 
+extern void GenerateIndustries();
 static void ShowIndustryCargoesWindow(IndustryType id);
 
 /**
@@ -598,7 +599,6 @@ public:
 		if (Town::GetNumItems() == 0) {
 			ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO);
 		} else {
-			extern void GenerateIndustries();
 			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
 			BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 			GenerateIndustries();

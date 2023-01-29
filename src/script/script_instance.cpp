@@ -12,6 +12,7 @@
 #include "../saveload/saveload.h"
 
 #include "../script/squirrel_class.hpp"
+#include "../script/squirrel_std.hpp"
 
 #include "script_fatalerror.hpp"
 #include "script_storage.hpp"
@@ -110,7 +111,6 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 
 void ScriptInstance::RegisterAPI()
 {
-	extern void squirrel_register_std(Squirrel *engine);
 	squirrel_register_std(this->engine);
 }
 

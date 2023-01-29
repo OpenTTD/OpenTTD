@@ -128,9 +128,6 @@
 
 /* static */ int ScriptAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
 {
-	extern Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist);
-	extern uint8 GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance);
-
 	if (!::IsValidTile(tile)) return -1;
 	if (!IsAirportInformationAvailable(type)) return -1;
 
@@ -149,8 +146,6 @@
 
 /* static */ TownID ScriptAirport::GetNearestTown(TileIndex tile, AirportType type)
 {
-	extern Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist);
-
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
 

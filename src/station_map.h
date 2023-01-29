@@ -235,6 +235,8 @@ static inline bool IsDriveThroughStopTile(TileIndex t)
 	return IsRoadStopTile(t) && GetStationGfx(t) >= GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET;
 }
 
+StationGfx GetTranslatedAirportTileID(StationGfx gfx);
+
 /**
  * Get the station graphics of this airport tile
  * @param t the tile to query
@@ -244,7 +246,6 @@ static inline bool IsDriveThroughStopTile(TileIndex t)
 static inline StationGfx GetAirportGfx(TileIndex t)
 {
 	assert(IsAirport(t));
-	extern StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 	return GetTranslatedAirportTileID(GetStationGfx(t));
 }
 

@@ -138,4 +138,6 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
 NetworkAddress ParseConnectionString(const std::string &connection_string, uint16 default_port);
 std::string NormalizeConnectionString(const std::string &connection_string, uint16 default_port);
 
+void ClientNetworkEmergencySave();
+
 #endif /* NETWORK_INTERNAL_H */

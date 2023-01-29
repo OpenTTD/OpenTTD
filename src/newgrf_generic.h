@@ -48,6 +48,7 @@ void ResetGenericCallbacks();
 void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *group);
 
 uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 default_selection, IndustryType src_industry, IndustryType dst_industry, uint8 distance, AIConstructionEvent event, uint8 count, uint8 station_size, const GRFFile **file);
+void AmbientSoundEffectCallback(TileIndex tile);
 
 /** Play an ambient sound effect for an empty tile. */
 static inline void AmbientSoundEffect(TileIndex tile)
@@ -55,7 +56,6 @@ static inline void AmbientSoundEffect(TileIndex tile)
 	/* Only run callback if enabled. */
 	if (!HasGrfMiscBit(GMB_AMBIENT_SOUND_CALLBACK)) return;
 
-	extern void AmbientSoundEffectCallback(TileIndex tile);
 	AmbientSoundEffectCallback(tile);
 }
 

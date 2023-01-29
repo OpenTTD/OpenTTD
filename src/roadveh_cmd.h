@@ -15,6 +15,8 @@
 #include "vehicle_type.h"
 
 bool RoadVehLeaveDepot(RoadVehicle *v, bool first);
+bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
+bool RoadVehiclesAreBuilt();
 
 CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **v);
 

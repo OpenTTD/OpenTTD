@@ -42,7 +42,9 @@
 #include "ship.h"
 #include "smallmap_gui.h"
 #include "roadveh.h"
+#include "roadveh_cmd.h"
 #include "vehicle_func.h"
+#include "viewport_func.h"
 #include "void_map.h"
 
 #include "table/strings.h"
@@ -258,7 +260,6 @@ static void TownFoundingChanged(int32 new_value)
 
 static void ZoomMinMaxChanged(int32 new_value)
 {
-	extern void ConstrainAllViewportsZoom();
 	ConstrainAllViewportsZoom();
 	GfxClearSpriteCache();
 	if (_settings_client.gui.zoom_min > _gui_zoom) {
@@ -323,7 +324,6 @@ static void MaxNoAIsChange(int32 new_value)
  */
 static bool CheckRoadSide(int32 &new_value)
 {
-	extern bool RoadVehiclesAreBuilt();
 	return _game_mode == GM_MENU || !RoadVehiclesAreBuilt();
 }
 

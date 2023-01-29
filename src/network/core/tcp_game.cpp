@@ -42,7 +42,6 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 {
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {
-		extern void ClientNetworkEmergencySave(); // from network_client.cpp
 		ClientNetworkEmergencySave();
 		_switch_mode = SM_MENU;
 		_networking = false;

@@ -10,6 +10,7 @@
 #ifndef ERROR_H
 #define ERROR_H
 
+#include <list>
 #include "strings_type.h"
 #include "company_type.h"
 #include "core/geometry_type.hpp"
@@ -57,6 +58,10 @@ public:
 	void CopyOutDParams();
 };
 
+/** Define a queue with errors. */
+typedef std::list<ErrorMessageData> ErrorList;
+
+void ScheduleErrorMessage(ErrorList &datas);
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr);

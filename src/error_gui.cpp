@@ -174,10 +174,8 @@ void ErrorMessageData::SetDParamStr(uint n, const std::string &str)
 	this->SetDParamStr(n, str.c_str());
 }
 
-/** Define a queue with errors. */
-typedef std::list<ErrorMessageData> ErrorList;
 /** The actual queue with errors. */
-ErrorList _error_list;
+static ErrorList _error_list;
 /** Whether the window system is initialized or not. */
 bool _window_system_initialized = false;
 

@@ -950,7 +950,6 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_OPEN_URL: {
 				const GRFConfig *c = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
 
-				extern void OpenBrowser(const char *url);
 				OpenBrowser(c->GetURL());
 				break;
 			}

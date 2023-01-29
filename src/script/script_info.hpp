@@ -164,4 +164,7 @@ private:
 	class ScriptScanner *scanner; ///< ScriptScanner object that was used to scan this script info.
 };
 
+void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
+void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type);
+
 #endif /* SCRIPT_INFO_HPP */

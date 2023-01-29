@@ -58,7 +58,6 @@ std::string _config_file; ///< Configuration file of OpenTTD.
 std::string _private_file; ///< Private configuration file of OpenTTD.
 std::string _secrets_file; ///< Secrets configuration file of OpenTTD.
 
-typedef std::list<ErrorMessageData> ErrorList;
 static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
 
 /**
@@ -1250,7 +1249,6 @@ void LoadFromConfig(bool startup)
 		DebugReconsiderSendRemoteMessages();
 
 		/* Display scheduled errors */
-		extern void ScheduleErrorMessage(ErrorList &datas);
 		ScheduleErrorMessage(_settings_error_list);
 		if (FindWindowById(WC_ERRMSG, 0) == nullptr) ShowFirstError();
 	}
