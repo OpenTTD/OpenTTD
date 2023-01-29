@@ -691,7 +691,7 @@ void ScriptInstance::LoadOnStack(ScriptData *data)
 {
 	ScriptObject::ActiveInstance active(this);
 
-	if (data == nullptr) return;
+	if (this->IsDead() || data == nullptr) return;
 
 	HSQUIRRELVM vm = this->engine->GetVM();
 
