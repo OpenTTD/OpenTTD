@@ -89,7 +89,10 @@ void ResetMusic();
 void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
+extern void AfterLoadCompanyStats();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern void OSOpenBrowser(const char *url);
+extern void RebuildTownCaches();
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
 
@@ -402,7 +405,6 @@ void OpenBrowser(const char *url)
 	/* Make sure we only accept urls that are sure to open a browser. */
 	if (strstr(url, "http://") != url && strstr(url, "https://") != url) return;
 
-	extern void OSOpenBrowser(const char *url);
 	OSOpenBrowser(url);
 }
 
@@ -1161,7 +1163,6 @@ static void CheckCaches()
 		old_town_caches.push_back(t->cache);
 	}
 
-	extern void RebuildTownCaches();
 	RebuildTownCaches();
 	RebuildSubsidisedSourceAndDestinationCache();
 
@@ -1177,7 +1178,6 @@ static void CheckCaches()
 	std::vector<CompanyInfrastructure> old_infrastructure;
 	for (const Company *c : Company::Iterate()) old_infrastructure.push_back(c->infrastructure);
 
-	extern void AfterLoadCompanyStats();
 	AfterLoadCompanyStats();
 
 	i = 0;
@@ -1198,7 +1198,6 @@ static void CheckCaches()
 	}
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		extern void FillNewGRFVehicleCache(const Vehicle *v);
 		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
 
 		uint length = 0;

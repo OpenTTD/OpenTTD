@@ -18,6 +18,7 @@
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
 #include "vehicle_base.h"
+#include "depot_func.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "network/network.h"
@@ -3090,7 +3091,6 @@ void UpdateWindows()
 	PerformanceMeasurer framerate(PFE_DRAWING);
 	PerformanceAccumulator::Reset(PFE_DRAWWORLD);
 
-	extern void ProcessPendingPerformanceMeasurements();
 	ProcessPendingPerformanceMeasurements();
 
 	CallWindowRealtimeTickEvent(delta_ms);
@@ -3386,7 +3386,6 @@ void ReInitAllWindows(bool zoom_changed)
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 	NWidgetScrollbar::InvalidateDimensionCache();
 
-	extern void InitDepotWindowBlockSizes();
 	InitDepotWindowBlockSizes();
 
 	/* When _gui_zoom has changed, we need to resize toolbar and statusbar first,
@@ -3398,7 +3397,6 @@ void ReInitAllWindows(bool zoom_changed)
 		ReInitWindow(w, zoom_changed);
 	}
 
-	void NetworkReInitChatBoxSize();
 	NetworkReInitChatBoxSize();
 
 	/* Make sure essential parts of all windows are visible */

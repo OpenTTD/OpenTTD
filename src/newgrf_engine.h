@@ -121,4 +121,6 @@ void CommitVehicleListOrderChanges();
 
 EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id);
 
+void FillNewGRFVehicleCache(const Vehicle *v);
+
 #endif /* NEWGRF_ENGINE_H */

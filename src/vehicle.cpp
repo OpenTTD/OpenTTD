@@ -871,7 +871,6 @@ void Vehicle::PreDestructor()
 	DeleteVehicleOrders(this);
 	DeleteDepotHighlightOfVehicle(this);
 
-	extern void StopGlobalFollowVehicle(const Vehicle *v);
 	StopGlobalFollowVehicle(this);
 
 	ReleaseDisastersTargetingVehicle(this->index);
@@ -2449,7 +2448,6 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			Aircraft *a = Aircraft::From(this);
 			if (a->state == FLYING && a->targetairport != closestDepot.destination) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
-				extern void AircraftNextAirportPos_and_Order(Aircraft *a);
 				AircraftNextAirportPos_and_Order(a);
 			}
 		}

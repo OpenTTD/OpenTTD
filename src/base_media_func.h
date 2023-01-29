@@ -15,6 +15,8 @@
 #include "ini_type.h"
 #include "string_func.h"
 
+extern void CheckExternalFiles();
+
 /**
  * Try to read a single piece of metadata and return false if it doesn't exist.
  * @param name the name of the item to fetch.
@@ -227,8 +229,6 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::SetSet(const std::string &name)
 {
-	extern void CheckExternalFiles();
-
 	if (name.empty()) {
 		if (!BaseMedia<Tbase_set>::DetermineBestSet()) return false;
 		CheckExternalFiles();

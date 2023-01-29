@@ -2941,7 +2941,6 @@ bool AfterLoadGame()
 				RoadVehicle *u = v;
 				RoadVehicle *prev = nullptr;
 				for (uint sf : skip_frames) {
-					extern bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
 					if (sf >= cur_skip) IndividualRoadVehicleController(u, prev);
 
 					prev = u;

@@ -112,6 +112,7 @@ bool VehicleClicked(const GUIVehicleGroup &vehgroup);
 void StartStopVehicle(const Vehicle *v, bool texteffect);
 
 Vehicle *CheckClickOnVehicle(const struct Viewport *vp, int x, int y);
+void StopGlobalFollowVehicle(const Vehicle *v);
 
 void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip);
 void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type);

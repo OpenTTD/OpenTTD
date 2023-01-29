@@ -367,6 +367,8 @@ void NORETURN SlErrorCorrupt(const char *msg)
 	SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, msg);
 }
 
+void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
+
 /**
  * Issue an SlErrorCorrupt with a format string.
  * @param format format string

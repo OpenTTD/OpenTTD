@@ -21,6 +21,7 @@
 #include "../querystring_gui.h"
 #include "../core/geometry_func.hpp"
 #include "../textfile_gui.h"
+#include "../fios.h"
 #include "network_content_gui.h"
 
 
@@ -263,7 +264,6 @@ public:
 
 				case CONTENT_TYPE_SCENARIO:
 				case CONTENT_TYPE_HEIGHTMAP:
-					extern void ScanScenarios();
 					ScanScenarios();
 					InvalidateWindowData(WC_SAVELOAD, 0, 0);
 					break;
@@ -344,8 +344,6 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Search external websites for content */
 	void OpenExternalSearch()
 	{
-		extern void OpenBrowser(const char *url);
-
 		char url[1024];
 		const char *last = lastof(url);
 
@@ -854,7 +852,6 @@ public:
 
 			case WID_NCL_OPEN_URL:
 				if (this->selected != nullptr) {
-					extern void OpenBrowser(const char *url);
 					OpenBrowser(this->selected->url.c_str());
 				}
 				break;

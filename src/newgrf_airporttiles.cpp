@@ -23,6 +23,7 @@
 
 #include "safeguards.h"
 
+extern uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile);
 
 AirportTileSpec AirportTileSpec::tiles[NUM_AIRPORTTILES];
 
@@ -161,8 +162,6 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 /* virtual */ uint32 AirportTileScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
 	assert(this->st != nullptr);
-
-	extern uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile);
 
 	switch (variable) {
 		/* Terrain type */

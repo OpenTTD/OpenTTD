@@ -42,6 +42,7 @@
 #include "safeguards.h"
 
 void ClearEnginesHiddenFlagOfCompany(CompanyID cid);
+void UpdateObjectColours(const Company *c);
 
 CompanyID _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyID _current_company; ///< Company currently doing an action.
@@ -1029,7 +1030,6 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			if (v->owner == _current_company) v->InvalidateNewGRFCache();
 		}
 
-		extern void UpdateObjectColours(const Company *c);
 		UpdateObjectColours(c);
 	}
 	return CommandCost();

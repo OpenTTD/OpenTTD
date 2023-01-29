@@ -264,7 +264,6 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 	NetworkExecuteLocalCommandQueue();
 
-	extern void StateGameLoop();
 	StateGameLoop();
 
 	/* Check if we are in sync! */

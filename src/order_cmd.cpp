@@ -1996,7 +1996,6 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 						Aircraft *a = Aircraft::From(v);
 						if (a->state == FLYING && a->targetairport != closestDepot.destination) {
 							/* The aircraft is now heading for a different hangar than the next in the orders */
-							extern void AircraftNextAirportPos_and_Order(Aircraft *a);
 							AircraftNextAirportPos_and_Order(a);
 						}
 					}
@@ -2138,7 +2137,6 @@ bool ProcessOrders(Vehicle *v)
 	if (order == nullptr || (v->type == VEH_AIRCRAFT && !CheckForValidOrders(v))) {
 		if (v->type == VEH_AIRCRAFT) {
 			/* Aircraft do something vastly different here, so handle separately */
-			extern void HandleMissingAircraftOrders(Aircraft *v);
 			HandleMissingAircraftOrders(Aircraft::From(v));
 			return false;
 		}
