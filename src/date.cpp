@@ -41,6 +41,7 @@
  * Internally a calendar with 12 months of 30 days is observed. There are no leap periods.
  * In the user interface, if calendar progress speed is not 100%, all elements that run on economy time are presented in real time units:
  *  - Seconds (multiples of 2), for things which were originally daily:
+ *    o Timetables
  *  - Minutes, for things which were originally monthly:
  *    o Industry production per minute
  *    o Passengers last minute
@@ -353,6 +354,9 @@ static void OnNewEconomyDay()
 
 	DisasterEconomyDailyLoop();
 	IndustryEconomyDailyLoop();
+
+	/* Windows that show a relative time need updating every day, not just when triggred by an action. */
+	if (_settings_game.economy.use_realtime_units) SetWindowClassesDirty(WC_VEHICLE_TIMETABLE);
 }
 
 static void IncreaseCalendarDate()
