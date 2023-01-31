@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "strings_func.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "window_func.h"
 #include "window_gui.h"
 #include "date_gui.h"
@@ -25,9 +25,9 @@
 struct SetDateWindow : Window {
 	SetDateCallback *callback; ///< Callback to call when a date has been selected
 	void *callback_data;       ///< Callback data pointer.
-	TimerGameCalendar::YearMonthDay date; ///< The currently selected date
-	TimerGameCalendar::Year min_year; ///< The minimum year in the year dropdown
-	TimerGameCalendar::Year max_year; ///< The maximum year (inclusive) in the year dropdown
+	TimerGameEconomy::YearMonthDay date; ///< The currently selected date
+	TimerGameEconomy::Year min_year; ///< The minimum year in the year dropdown
+	TimerGameEconomy::Year max_year; ///< The maximum year (inclusive) in the year dropdown
 
 	/**
 	 * Create the new 'set date' window
@@ -39,19 +39,19 @@ struct SetDateWindow : Window {
 	 * @param max_year the maximum year (inclusive) to show in the year dropdown
 	 * @param callback the callback to call once a date has been selected
 	 */
-	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, TimerGameCalendar::Date initial_date, TimerGameCalendar::Year min_year, TimerGameCalendar::Year max_year, SetDateCallback *callback, void *callback_data) :
+	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data) :
 			Window(desc),
 			callback(callback),
 			callback_data(callback_data),
-			min_year(std::max(CalendarTime::MIN_YEAR, min_year)),
-			max_year(std::min(CalendarTime::MAX_YEAR, max_year))
+			min_year(std::max(EconomyTime::MIN_YEAR, min_year)),
+			max_year(std::min(EconomyTime::MAX_YEAR, max_year))
 	{
 		assert(this->min_year <= this->max_year);
 		this->parent = parent;
 		this->InitNested(window_number);
 
-		if (initial_date == 0) initial_date = TimerGameCalendar::date;
-		TimerGameCalendar::ConvertDateToYMD(initial_date, &this->date);
+		if (initial_date == 0) initial_date = TimerGameEconomy::date;
+		TimerGameEconomy::ConvertDateToYMD(initial_date, &this->date);
 		this->date.year = Clamp(this->date.year, min_year, max_year);
 	}
 
@@ -88,7 +88,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_YEAR:
-				for (TimerGameCalendar::Year i = this->min_year; i <= this->max_year; i++) {
+				for (TimerGameEconomy::Year i = this->min_year; i <= this->max_year; i++) {
 					SetDParam(0, i);
 					list.push_back(std::make_unique<DropDownListStringItem>(STR_JUST_INT, i.base(), false));
 				}
@@ -147,7 +147,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_SET_DATE:
-				if (this->callback != nullptr) this->callback(this, TimerGameCalendar::ConvertYMDToDate(this->date.year, this->date.month, this->date.day), this->callback_data);
+				if (this->callback != nullptr) this->callback(this, TimerGameEconomy::ConvertYMDToDate(this->date.year, this->date.month, this->date.day), this->callback_data);
 				this->Close();
 				break;
 		}
@@ -212,7 +212,7 @@ static WindowDesc _set_date_desc(__FILE__, __LINE__,
  * @param callback the callback to call once a date has been selected
  * @param callback_data extra callback data
  */
-void ShowSetDateWindow(Window *parent, int window_number, TimerGameCalendar::Date initial_date, TimerGameCalendar::Year min_year, TimerGameCalendar::Year max_year, SetDateCallback *callback, void *callback_data)
+void ShowSetDateWindow(Window *parent, int window_number, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback *callback, void *callback_data)
 {
 	CloseWindowByClass(WC_SET_DATE);
 	new SetDateWindow(&_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback, callback_data);

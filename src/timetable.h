@@ -11,10 +11,10 @@
 #define TIMETABLE_H
 
 #include "timer/timer_game_tick.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "vehicle_type.h"
 
-static const TimerGameCalendar::Year MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in years.
+static const TimerGameEconomy::Year MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in economy years.
 
 enum class TimetableMode : uint8_t {
 	Days,
@@ -22,8 +22,8 @@ enum class TimetableMode : uint8_t {
 	Ticks,
 };
 
-TimerGameTick::TickCounter GetStartTickFromDate(TimerGameCalendar::Date start_date);
-TimerGameCalendar::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick);
+TimerGameTick::TickCounter GetStartTickFromDate(TimerGameEconomy::Date start_date);
+TimerGameEconomy::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick);
 
 void ShowTimetableWindow(const Vehicle *v);
 void UpdateVehicleTimetable(Vehicle *v, bool travelling);
