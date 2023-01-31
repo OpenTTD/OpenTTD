@@ -298,7 +298,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
                 string(APPEND SQUIRREL_EXPORT "\n	/* Allow enums to be used as Squirrel parameters */")
                 foreach(ENUM IN LISTS ENUMS)
                     string(APPEND SQUIRREL_EXPORT "\n	template <> inline ${ENUM} GetParam(ForceType<${ENUM}>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (${ENUM})tmp; }")
-                    string(APPEND SQUIRREL_EXPORT "\n	template <> inline int Return<${ENUM}>(HSQUIRRELVM vm, ${ENUM} res) { sq_pushinteger(vm, (int32)res); return 1; }")
+                    string(APPEND SQUIRREL_EXPORT "\n	template <> inline int Return<${ENUM}>(HSQUIRRELVM vm, ${ENUM} res) { sq_pushinteger(vm, res); return 1; }")
                 endforeach()
             endif()
 
