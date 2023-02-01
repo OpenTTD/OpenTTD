@@ -389,7 +389,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ҫул-йӗр:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Ҫул-йӗр:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцисем:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Тиев:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Укҫӑ:
@@ -1324,7 +1324,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 
 # Finances window
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

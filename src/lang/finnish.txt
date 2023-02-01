@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Näytä tietoja tästä yhtiöstä
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kulkuneuvot:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Kulkuneuvot:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähimmäistuotto:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähimmäistulo:
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Määritä, kui
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tukikerroin: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määritä kuinka paljon tuetuista yhteyksistä maksetaan
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Tuen kesto: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Tuen kesto: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Aseta myönnetyn tuen kesto vuosina.
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} vuo{P "si" "tta"}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ei tukia
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Ei tukia
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Rakennuskustannukset: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määritä rakennus- ja ostokustannusten taso
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Lamat: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, muutaman vuoden välein saattaa ilmaantua taloudellinen lama. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Estä junien kääntyminen asemilla: {STRING}
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Kaikissa näkym
 STR_CONFIG_SETTING_BRIBE                                        :Salli viranomaisten lahjominen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kunnassa kuuteen kuukauteen
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kuntaan, vastustajien matkustaja- ja rahtiasemat eivät vastaanota rahtia seuraavan vuoden ajan
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennusten rahoittaminen: {STRING}
@@ -3486,10 +3486,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Suorita 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pieni mainoskampanja
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Keskikokoinen mainoskampanja
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Suuri mainoskampanja
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Rahoita paikallisen tieverkon uudelleenrakennusta
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Rahoita paikallisen tieverkon uudelleenrakennusta
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Rakenna yhtiön omistajan patsas
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahoita uusia rakennuksia
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta yksinoikeudet kuljetuksiin
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Osta yksinoikeudet kuljetuksiin
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Lahjo viranomaisia
 
 ###length 8
@@ -3650,7 +3650,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa 
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Talous, {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Tuotto

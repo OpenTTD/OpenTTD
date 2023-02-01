@@ -3514,7 +3514,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Recenser
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Res Fiscales {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

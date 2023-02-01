@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Details voor dit bedrijf weergeven
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuigen:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Voertuigen:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. winst:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkomen:
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Bepaal hoe vaak
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidiefactor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duur van subsidie: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Duur van subsidie: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Bepaal het aantal jaar dat de subsidie wordt verleend
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jaar{P "" ""}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Geen subsidie
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Geen subsidie
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten instellen
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld kunnen om de paar jaar recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alle kijkvenste
 STR_CONFIG_SETTING_BRIBE                                        :Omkopen van gemeentebestuur toestaan: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Toestaan dat bedrijven mogen proberen de plaatselijke autoriteiten om te kopen. Als de omkoping wordt opgemerkt door een inspecteur, zal de onderneming niet in staat zijn om in de stad actie te ondernemen voor zes maanden
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kopen van exclusieve transportrechten toestaan: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Kopen van exclusieve transportrechten toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wanneer een bedrijf de exclusieve transportrechten van een stad koopt, ontvangen de stations (zowel passagiers als vracht) van de tegenstanders geen vracht voor één heel jaar.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Financieren van gebouwen toestaan: {STRING}
@@ -3486,10 +3486,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Voer de 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kleine reclamecampagne
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Middelgrote reclamecampagne
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grote reclamecampagne
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Wegreconstructie financieren
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Wegreconstructie financieren
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Standbeeld van directeur bouwen
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Nieuwe gebouwen financieren
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exclusieve transportrechten kopen
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Exclusieve transportrechten kopen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Gemeentebestuur omkopen
 
 ###length 8
@@ -3650,7 +3650,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam rou
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Financiën {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Inkomsten

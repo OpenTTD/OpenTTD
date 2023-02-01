@@ -623,7 +623,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Kyk besonderhede van hierdie maatskappy
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuie:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Voertuie:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasies:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. wins:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkomste:
@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Verstel hoeveel
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruksie kostes: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vlak van konstruksie en aankoop-kostes
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Resessies: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Resessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :As dit geaktiveer is, kan resessie elke paar jaar voorkom. Gedurende 'n resessie word is vervaardiging drasties minder en aan die einde van die resessie word dit weer herstel na normale vlakke.
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verhoed dat treine kan omdraai in stasies: {STRING}
@@ -1277,7 +1277,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elke skerm
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Laat maatskappye die plaaslike dorpsraad probeer omkoop. Indien 'n inspekteur die omkoopgeld opgemerk, sal die maatskappy nie in staat wees om in die dorp te werk vir ses maande.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Laat die koop van eksklusief vervoer regte toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :As 'n maatskapy alleen transportreg koop vir n' dorp. Die teenstanders se stasies (passesiers en vrag) sal geen vrag kry vir n' jaar
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing van geboue: {STRING}
@@ -3360,7 +3360,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansies {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

@@ -707,7 +707,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ukázať detaily tejto spoločnosti
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozidlá:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vozidlá:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zisk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. príjem:
@@ -1291,17 +1291,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Zvoľte ako ča
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Násobiteľ dotácii: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Zvoľte ako veľa sa platí za dotované spojenia
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Trvanie dotácie: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Trvanie dotácie: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Počet rokov, na ktoré sa udelí dotácia
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} rok{P "" "y" "ov"}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Žiadne ponúknuté dotácie
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Žiadne ponúknuté dotácie
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena stavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Zvoľte úroveň cien výstavby a nákupov
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesie: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesie: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ak je povolené, každých pár rokov sa môže vyskytnúť recesia. Počas recesie je všetká produkcia znatelne nižšia (po skončení recesie sa produkcia vráti na normálnu úroveň)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zakázať otáčanie vlakov v staniciach: {STRING}
@@ -1414,7 +1414,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Každý pohľad
 STR_CONFIG_SETTING_BRIBE                                        :Umožniť podplácanie miestnej správy: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Povolí podplácanie miestnej samosprávy. Ak podplácanie zistí inšpektor, spoločnosť nebude môcť podplácať v danom meste počas nasledujúcich 6 mesiacov.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Povoliť zakúpenie exkluzívnych dopravných práv: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Povoliť zakúpenie exkluzívnych dopravných práv: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ak si spoločnosť zakúpi exkluzívne prepravné práva od mesta, stanice protihráčov (pasažieri a náklad) nebudú prijímať žiaden náklad po celý rok !
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Povoliť financovanie stavieb: {STRING}
@@ -3552,10 +3552,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Vykonať
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Malá reklamná kampaň
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Stredná reklamná kampaň
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Veľká reklamná kampaň
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financovať rekonštrukciu ciest
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Financovať rekonštrukciu ciest
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Postaviť sochu majiteľa spoločnosti
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financovať výstavbu budov
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Zakúpiť exkluzívne dopravné práva
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Zakúpiť exkluzívne dopravné práva
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatiť miestnu správu
 
 ###length 8
@@ -3716,7 +3716,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upraviť
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financie spoločnosti {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Výnosy

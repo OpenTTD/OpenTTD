@@ -687,7 +687,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vaata lisainfot selle ettevõtte kohta
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Sõidukeid:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Sõidukeid:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Jaamad:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähim kasum:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähim tulu:
@@ -1254,7 +1254,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määra ära ku
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Ehituse hinnad: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määrab ehitus- ja ostukulude hinnataseme
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Majanduslangused: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Majanduslangused: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kui on aktiveeritud siis võib majanduslangus toimuda iga paari aasta tagant. Majanduslanguse ajal on kõik tootmismahud tunduvalt madalamad (majanduslanguse lõppedes taastuvad endised tootmismahud)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Keela rongide ümberpöörd jaamades: {STRING}
@@ -1367,7 +1367,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Igas vaates
 STR_CONFIG_SETTING_BRIBE                                        :Altkäemaksud kohalikele omavalitsustele: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Võimaldab asulate omavalitsustele altkäemaksu pakkuda. Tabamise korral võetakse ettevõttelt kuueks kuuks ära õigus asulas tegutseda
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ainuveoõiguste ostmine: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Ainuveoõiguste ostmine: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kui ettevõte ostab asulalt kaubaveo ainuõiguse, siis teised ettevõtted ei saa üks aasta uusi kaupu ega reisijaid
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Luba ehitiste rahastamine: {STRING}
@@ -3434,10 +3434,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Soorita 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Väike reklaamikampaania
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Keskmine reklaamikampaania
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Suur reklaamikampaania
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Rahasta kohalikke teehoiutöid
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Rahasta kohalikke teehoiutöid
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Ehita ettevõtte omaniku kuju
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahasta uute hoonete ehitust
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta monopoolsed veoõigused
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Osta monopoolsed veoõigused
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Paku kohalikule omavalitsusele altkäemaksu
 
 ###length 8
@@ -3598,7 +3598,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda me
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} rahavoogude aruanne {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

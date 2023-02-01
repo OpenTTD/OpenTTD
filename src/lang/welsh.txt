@@ -614,7 +614,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Gweld manylion y cwmni hwn
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Cerbydau:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Cerbydau:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Gorsafoedd:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lleiafswm elw:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Lleiafswm incwm:
@@ -1151,7 +1151,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Gosod faint a d
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costau adeiladu: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Gosod lefel costau prynnu ac adeiladu
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Dirwasgiadau: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Dirwasgiadau: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Os y galluogir, gall dirwasgiadau ddigwydd ambell flwyddyn. Yn ystod dirwasgiad bydd lefelau gweithgynhyrchu'n is o lawer (gan ddychwelyd at y lefel gwreiddiol wedi diwedd y dirwasgiad)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Rhwystro trenau rhag gwrthdroi mewn gorsafoedd: {STRING}
@@ -3127,10 +3127,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Gweithre
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Ymgyrch hysbysebu fach
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Ymgyrch hysbysebu gymhedrol
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Ymgyrch hysbysebu fawr
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Ariannu gwaith ffordd lleol
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Ariannu gwaith ffordd lleol
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Adeiladu cerflun o berchennog y cwmni
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Ariannu adeiladau newydd
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Prynu hawliau cludiant cyfyngol
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Prynu hawliau cludiant cyfyngol
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Llwgrwobrwyo awdurdod lleol
 
 ###length 8

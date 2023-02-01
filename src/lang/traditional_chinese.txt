@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}檢視此公司的詳細資訊
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}車輛：
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}車輛：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}車站：
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最低損益：
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最低收入：
@@ -1223,17 +1223,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :控制維修不
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :補助倍率：{STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :設定獲補助服務的總利潤金額相對原有利潤的倍率
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :補助持續時間：{STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :補助持續時間：{STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :設定發放財政補助的年數。
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :沒有補貼
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :沒有補貼
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建造成本：{STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :設定建造和購買物件的成本水平。
 
-STR_CONFIG_SETTING_RECESSIONS                                   :經濟衰退：{STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :經濟衰退：{STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :如果此選項被啟用，經濟衰退將會每隔幾年發生一次。屆時所有工業生產都會大幅下降，直至衰退結束後回到之前的水平。
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :禁止列車在車站內折返：{STRING}
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :所有視野
 STR_CONFIG_SETTING_BRIBE                                        :可向地方政府行賄：{STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :容許公司嘗試賄賂地方政府。如果賄賂行為被調查員揭發，公司在往後六個月內無法接觸有關地方政府。
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允許購買市鎮的專屬運輸權：{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :允許購買市鎮的專屬運輸權：{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一所公司購買了一個市鎮的一年專屬運輸權，其他公司在該市鎮建造的車站在這一年之內將不會收到任何貨物 (包括乘客)。
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :容許資助市鎮建設：{STRING}
@@ -3484,10 +3484,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}辦理�
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :小型廣告活動
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :中型廣告活動
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :大型廣告活動
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :出資重建當地道路
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :出資重建當地道路
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :建造公司所有人的雕像
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :資助市鎮建設
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬運輸權
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :購買專屬運輸權
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
 
 ###length 8
@@ -3648,7 +3648,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 財務狀況 {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}收入

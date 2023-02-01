@@ -605,7 +605,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}مشاهده جزییات درباره این شرکت
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}خودرو ها:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}خودرو ها:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}ایستگاه ها:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}کمینه سود:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}کمینه دریافتی:
@@ -1190,7 +1190,7 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :جابجا‌ش
 
 STR_CONFIG_SETTING_BRIBE                                        :قابلیت رشوه دادن به مقامات محلی: {STRING}
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :قابلیت انحصاری کردن حقوق حمل و نقل: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :قابلیت انحصاری کردن حقوق حمل و نقل: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :اگز یک شرکت حقوق انحصاری حمل و نقل یک شهر را بخرد، ایستگاه های دیگر بازیکنان(از جمله مسافربری و باربری) دیگر هیچگونه باری را طی یکسال قبول نمی کنند
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :اجازه ساخت و ساز ساختمان: {STRING}
@@ -2815,10 +2815,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}انجا
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :برنامه تبلیغاتی کوچک
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :برنامه تبلیغاتی متوسط
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :برنامه تبلیغاتی بزرگ
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :پرداخت هزینه بازسازی آسفالت خیابان ها
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :پرداخت هزینه بازسازی آسفالت خیابان ها
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت تندیس رییس شرکت
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اختمان های جدید
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :خرید انحصاری کلیه حقوق حمل و نقل
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :خرید انحصاری کلیه حقوق حمل و نقل
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :رشوه به مقامات محلی
 
 ###length 8
@@ -2948,7 +2948,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}تغیی
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
 
 # Finances window
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

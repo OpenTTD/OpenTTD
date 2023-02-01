@@ -595,7 +595,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}کمپنی کے بارے مایں تفصیلات دیکھے
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK} ناوقلات:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK} ناوقلات:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK} اسٹیشن:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK} کم سے کم منافع:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK} کم سے کم آمدنی:
@@ -1135,7 +1135,7 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :ونڈو کو �
 
 STR_CONFIG_SETTING_BRIBE                                        :مقامی اتھارٹی کی رشوت کی اجازت دیں: {STRING}
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {STRING}
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :فنڈنگ عمارتوں کی اجازت: {STRING}
 
@@ -2402,7 +2402,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 
 # Finances window
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

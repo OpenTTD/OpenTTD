@@ -615,7 +615,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Виж подробности за тази компания
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Превозни средства:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Превозни средства:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станции:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мин. печалба:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мин. приход:
@@ -1151,7 +1151,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Задава к
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Цени на конструкции: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Задава ниво то на конструиране и цени за закупуване
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Рецесии: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Рецесии: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ако е разрешено, рецесии могат да се появяват на всеки няколко години. По време на рецесия цялото производство е значително намалено (връща се на предишно ниво след края на рецесията)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забрани обръщане на посоката на влакове в гарите: {STRING}
@@ -1258,7 +1258,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Всяка ка
 STR_CONFIG_SETTING_BRIBE                                        :Подкупване на местната власт: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволява на компаниите да се опитват да подкупят местните власти. Ако опитът за подкуп бъде разкрит от местен следовател, тази компания няма да може да действа в града за шест месеца
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Позволи купуване на изклучителни транспортни права: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Позволи купуване на изклучителни транспортни права: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ако някоя компания купи ексклузивни права за даден град, спирките на противниковите компании (пътници и стоки) няма да получават товар през следващата година
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Позволи финансирането на строежи: {STRING}
@@ -3076,10 +3076,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Изпъ
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Малка рекламна кампания
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Средна рекламна кампания
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Голяма рекламна кампания
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Финансиране преустройството на местните пътища
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Финансиране преустройството на местните пътища
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Построяване на статуя на собственика на компанията
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Финансиране построяването на нови сгради
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Покупка на специални транспортни права
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Покупка на специални транспортни права
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Подкупи местните власти
 
 ###length 8
@@ -3226,7 +3226,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Реда
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансов отчет на {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

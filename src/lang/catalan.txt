@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Veure els detalls d'aquesta companyia
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicles:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vehicles:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estacions:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Benefici menor:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ingrés mínim:
@@ -1226,17 +1226,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla cada q
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador del subsidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa quant es paga pels transports subsidiats
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durada dels subsidis: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Durada dels subsidis: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establiu el nombre d'anys que duren els subsidis.
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} any{P "" s}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sense subsidis
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Sense subsidis
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell de construcció i els preus de compra
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està actiu, les recessions poden passar cada pocs anys. Durant una recessió, tota la producció és significativament baixa, tornant al nivell previ quan la recessió s'acabi.
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permetis que els trens canviïn de sentit a les estacions: {STRING}
@@ -1349,7 +1349,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Qualsevol vista
 STR_CONFIG_SETTING_BRIBE                                        :Permet subornar les autoritats locals: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar l'autoritat local. Si el suborn és detectat per un inspector, la companyia no podrà actuar a la població durant sis mesos.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Permet comprar els drets del transport en exclusiva: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una companyia compra els drets de transport en exclusiva d'una població, les estacions dels oponents (passatgers i càrrega) no rebran cap càrrega durant un any sencer.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permet finançar edificis: {STRING}
@@ -3487,10 +3487,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Treure l
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Petita campanya de publicitat
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mitjana campanya de publicitat
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gran campanya de publicitat
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finança la reconstrucció dels carrers de la població
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finança la reconstrucció dels carrers de la població
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construeix una estàtua del propietari de la companyia
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finança nous edificis
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra els drets de transport en exclusiva
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Compra els drets de transport en exclusiva
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna les autoritats locals
 
 ###length 8
@@ -3651,7 +3651,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita el
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingressos

@@ -607,7 +607,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vidu detaloj pri ĉi tio kompanio
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veturiloj:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Veturiloj:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacioj:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Malpleja gajno:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Malpleja enspezo:
@@ -1108,7 +1108,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ŝanĝu kio oni
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kostoj de konstruado: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ŝanĝu nivelon de konstruaj kaj aĉetaj kostoj
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesioj: {STRING}
 
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
@@ -1175,7 +1175,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Ĉiu vidujo
 
 STR_CONFIG_SETTING_BRIBE                                        :Permesu subaĉeti la lokajn estrojn: {STRING}
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permesu aĉeti ekskluzivajn transportrajtojn: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Permesu aĉeti ekskluzivajn transportrajtojn: {STRING}
 
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permesi fondusante lokan stratan rekonstruo: {STRING}
@@ -2654,10 +2654,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Plenumu 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Malgranda reklama kampanjo
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mezgranda reklama kampanjo
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Granda reklama kampanjo
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Fondu lokan vojrekonstruadon
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Fondu lokan vojrekonstruadon
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Konstruu statuon de la kompaniestro
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fondu novajn konstruaĵojn
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉetu ekskluzivan transportrajton
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Aĉetu ekskluzivan transportrajton
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉetu la lokajn estrojn
 
 ###length 8
@@ -2749,7 +2749,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu 
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

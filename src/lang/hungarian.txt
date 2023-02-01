@@ -706,7 +706,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vállalat részletes megtekintése
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Járművek:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Járművek:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Állomások:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profit:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. bevétel:
@@ -1287,17 +1287,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Megfelelően ka
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Támogatási szorzó érték: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Támogatott kapcsolatok kifizetéseinek szorzója
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Támogatások hossza: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Támogatások hossza: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Az elnyert támogatások ennyi időn keresztül lesznek érvényesek.
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} év
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Nincsenek támogatások
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Nincsenek támogatások
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Gazdasági válságok: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, gazdasági válság fog kitörni néhány évente. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
@@ -3544,10 +3544,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}A fenti 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kis reklámhadjárat
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Közepes reklámhadjárat
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Nagy reklámhadjárat
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :A helyi utak helyreállíttatása
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :A helyi utak helyreállíttatása
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Szobor építtetése a vállalat tulajdonosának
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Új épületek építésének támogatása
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kizárólagos szállítási jogok vásárlása
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kizárólagos szállítási jogok vásárlása
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Önkormányzat megvesztegetése
 
 ###length 8
@@ -3708,7 +3708,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőr
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} pénzügyei {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Jövedelem

@@ -592,7 +592,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Sjá smálutir um hesa fyritøkuna
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{G=n}{BLACK}Akfør:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{G=n}{BLACK}Akfør:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Støðir:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. vinningur:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inntøka:
@@ -1110,7 +1110,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Vel hvussu nóg
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bygnings kostnaður: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set hvussu høgur/lágur bygnings- og keypskostnaður skal vera
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Ringar tíðir: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Ringar tíðir: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Um hetta er tendra kunnu ringar tíðir koma fyri við nøkrum ára millumbili. Meðan ringar tíðir eru, er øll framleiðsla munandi lægri (fer aftur á støði ta var áðrenn tá ringu tíðinar eru av)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tok hava ikki loyvi at venda inni á støðum: {STRING}
@@ -1214,7 +1214,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Allir sýnisglu
 STR_CONFIG_SETTING_BRIBE                                        :Loyv mutran av mynduleikum á staðnum: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Loyv fyritøkum at royna at mutra bygda mynduleikan á staðnum. Um mutri verður avdúka av einum eftirlitsmanni, sleppur fyritøkan ikki at gera nakað í bygdini teir næstu seks mánaðinar
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Loyv keypi av flutnings einkarættindum: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Loyv keypi av flutnings einkarættindum: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Um ein fyritøka keypur flutnings einkarættindi í einari bygd, fáa støðinar (ferðafólk og farm) hjá kappingarneytum ongan farm í eitt heilt ár
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Loyv fígging av nýggjum bygningum: {STRING}
@@ -2913,7 +2913,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rætta w
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fíggjar støða {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

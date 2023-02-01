@@ -632,7 +632,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Féach ar na sonraí faoin gcuideachta seo
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Feithiclí:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Feithiclí:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stáisiúin:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Brabús íosta:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ioncam íosta:
@@ -1199,17 +1199,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Rialaigh chomh 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Iolraitheoir na bhfóirdheontas: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Socraigh an méid a íoctar ar naisc atá faoi fhóirdheontas
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Fad na bhfóirdheontas: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Fad na bhfóirdheontas: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Socraigh líon na mblianta a bhronnfar fóirdheontas ina leith
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P "bliain amháin" "bhliain" "bliana" "mbliana" "bliain"}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Gan fóirdheontas
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Gan fóirdheontas
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costais tógála: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Socraigh leibhéal na gcostas tógála agus ceannaigh
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Cúluithe eacnamaíochta: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Cúluithe eacnamaíochta: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Má dhéantar seo a chumasú, féadfaidh cúluithe a bheith ann gach cúpla bliain. Le linn cúlú, bíonn an táirgeadh ar fad cuid mhaith níos ísle (téann sé ar ais chuig an leibhéal roimhe sin nuair a bheidh an cúlú thart)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ná ceadaigh cúlú traenacha i stáisiúin: {STRING}
@@ -3419,10 +3419,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Déan an
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Feachtas beag fógraíochta
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Feachtas meánach fógraíochta
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Feachtas mór fógraíochta
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Tabhair maoiniú le bóithre áitiúla a thógáil
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Tabhair maoiniú le bóithre áitiúla a thógáil
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Tóg dealbh d'úinéir na cuideachta
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tabhair maoiniú d'fhoirgnimh nua
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Ceannaigh cearta eisiacha iompair
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Ceannaigh cearta eisiacha iompair
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Tabhair breab don údarás áitiúil
 
 ###length 8
@@ -3583,7 +3583,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cuir ain
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Airgeadas {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

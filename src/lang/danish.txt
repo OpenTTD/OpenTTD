@@ -632,7 +632,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljer om dette firma
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køretøjer:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Køretøjer:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. afkast:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. indkomst:
@@ -1199,17 +1199,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Indstil hvor ti
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tilskudrate: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Indstil, hvor meget der bliver betalt for tilskudsordninger
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Varighed på tilskudsordning: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Varighed på tilskudsordning: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Styrer hvor mange år tilskudsordninger tildeles for
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} år
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen tilskudsordninger
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Ingen tilskudsordninger
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspriser: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Kriser: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Lavkonjunkturer forekomme hvert 5. år hvis denne indstilling er slået til. Ved lavkonjunktur falder produktionen markant (produktionen returnerer til tidligere niveau når lavkonjunkturen er ovre)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forbyd toge at køre baglængs i stationer: {STRING}
@@ -3429,10 +3429,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Udfør d
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Lille reklamekampagne
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mellem reklamekampagne
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stor reklamekampagne
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansiér lokal vejfornyelse
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finansiér lokal vejfornyelse
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Byg en statue af selskabets ejer
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansiér opførsel af nye bygninger
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Køb eksklusive transportrettigheder i byen
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Køb eksklusive transportrettigheder i byen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestik de lokale myndigheder
 
 ###length 8
@@ -3593,7 +3593,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb w
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanser {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

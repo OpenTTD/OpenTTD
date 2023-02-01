@@ -781,7 +781,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Подробная информация о компании
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Количество ТС:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Количество ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станции:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мин. прибыль:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мин. доход:
@@ -1376,17 +1376,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Вероятн�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множитель субсидий: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Установите множитель оплаты за субсидируемые перевозки
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Длительность субсидий: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Длительность субсидий: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Время, в течение которого выплачиваются субсидии.
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P год года лет}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :субсидии отключены
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :субсидии отключены
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Затраты на строительство: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Установите уровень затрат на строительство и приобретение
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Экономические кризисы: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Экономические кризисы: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :При включении раз в несколько лет в экономике может начаться кризис. В это время объёмы производства значительно снижаются (они возвращаются к прежнему уровню, когда спад заканчивается).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Запретить разворот поездов на станциях: {STRING}
@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :во всех �
 STR_CONFIG_SETTING_BRIBE                                        :Разрешить подкупать местные власти: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволять компаниям подкупать городскую администрацию. Если факт подкупа раскроется, рейтинг компании в городе падает и взимодействие с местной администрацией прекращается на 6 месяцев.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Разрешить покупать эксклюзивные транспортные права: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Разрешить покупать эксклюзивные транспортные права: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Если компания покапает эксклюзивные транспортные права, то на станции конкурентов не будет поступать груз и не будут приходить пассажиры в течение года
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Разрешить финансирование строительства зданий: {STRING}
@@ -3661,10 +3661,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выпо
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Малая рекламная кампания
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Средняя рекламная кампания
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Большая рекламная кампания
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Профинансировать ремонт городских дорог
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Профинансировать ремонт городских дорог
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Установить статую владельца компании
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Профинансировать строительство новых зданий
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купить эксклюзивные транспортные права
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Купить эксклюзивные транспортные права
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Взятка местной администрации
 
 ###length 8
@@ -3825,7 +3825,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назв
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Доходы

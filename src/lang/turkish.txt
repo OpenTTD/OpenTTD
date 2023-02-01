@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Bu şirket hakkındaki ayrıntıları göster
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Araçlar:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Araçlar:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}İstasyonlar:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Asg. kar:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Asg. gelir:
@@ -1226,17 +1226,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Yetersiz bakım
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Ödenek çarpanı: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Teşvik edilen bağlantılara ne kadar ödeneceğini belirler
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Ödenek süresi: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Ödenek süresi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Teşvik verilen yıl süresini ayarla
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} yıl
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Teşvik yok
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Teşvik yok
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :İnşaat maliyetleri: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :İnşaat ve satın alma maliyet seviyesini belirleyin
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Ekonomik krizler: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse, her bir kaç yılda bir ekonomik durgunluk yaşanır. Durgunluk süresince tüm üretim seviyeleri belirgin oranda düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenlerin istasyonda yön değiştirmesini yasakla: {STRING}
@@ -1349,7 +1349,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Tüm görüş a
 STR_CONFIG_SETTING_BRIBE                                        :Belediye rüşveti izinli: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Şirketlerin yerel yönetime rüşvet vermeyi denemelerine izin ver. Şayet rüşvet girişimi bir gözlemci tarafından fark edilirse şirket o bölgede altı ay eylemde bulunamaz
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Şehrin ulaşım haklarını satın alma izinli: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Şehrin ulaşım haklarını satın alma izinli: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Şayet bir şirket bir kasaba için ayrıcalıklı ulaştırma haklarını satın alırsa rakiplerinin istasyonları bir yıl boyunca kargo (yolcu ve yük) almayacaktır
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Binaları finanse etmeye izin ver: {STRING}
@@ -3487,10 +3487,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Seçilen
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Küçük reklam kampanyası
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Orta reklam kampanyası
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Büyük reklam kampanyası
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Bölgesel yol tamiratı için para bağışla
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Bölgesel yol tamiratı için para bağışla
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Şirket sahibinin heykelini dik
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Yeni binalar yapılması için para ver
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Ayrıcalıklı nakliyat haklarını satın al
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Ayrıcalıklı nakliyat haklarını satın al
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Belediyeye rüşvet ver
 
 ###length 8
@@ -3651,7 +3651,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Yerimi a
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Hesaplar {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Gelir

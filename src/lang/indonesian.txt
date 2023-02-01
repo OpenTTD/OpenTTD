@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Lihat penuh informasi perusahaan ini
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kendaraan:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Kendaraan:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasiun:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Laba Min.:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Omzet Min.:
@@ -1223,17 +1223,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Mengontrol sebe
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Pengalian jumlah subsidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Menetapkan banyaknya pembayaran untuk koneksi yang disubsidi
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durasi subsidi: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Durasi subsidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Atur jumlah tahun di mana subsidi diberikan
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} tahun
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Tidak ada subsidi
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Tidak ada subsidi
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Biaya konstruksi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan tingkat biaya konstruksi dan pembelian
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Resesi : {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika dinyalakan, resesi akan terjadi dalam beberapa tahun sekali. Saat resesi semua produksi produk akan berkurang (kembali normal saat resesi selesai)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Semua viewport
 STR_CONFIG_SETTING_BRIBE                                        :Ijinkan kolusi pada penguasa setempat: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Membolehkan perusahaan untuk menyuap pemerintah kota. Jika tertangkap, perusahaan tidak bisa berinteraksi dengan kota selama 6 bulan
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ijinkan pembelian hak ekslusif pengelolaan transportasi: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Ijinkan pembelian hak ekslusif pengelolaan transportasi: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jika perusahaan membeli hak monopoli transportasi for sebuah kota, stasiun lawan (penumpang dan kargo) tidak akan menerima apapun selama setahun
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ijinkan mendanai bangunan: {STRING}
@@ -3480,10 +3480,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Hilangka
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kampanye iklan kecil
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Kampanye iklan sedang
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Kampanye iklan besar-besaran
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Danai perbaikan jalan setempat
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Danai perbaikan jalan setempat
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bangun patung pemilik perusahaan
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Danai pembangunan gedung baru
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak transportasi eksklusif
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Beli hak transportasi eksklusif
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suap pemkot setempat
 
 ###length 8
@@ -3644,7 +3644,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ubah nam
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Keuangan {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :Pendapatan

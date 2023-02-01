@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visa detaljer om detta företag
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fordon:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Fordon:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. vinst:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkomst:
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Styr hur ofta o
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subvention (multiplikativ): {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ange hur mycket betalt som subventionerade anslutningar ger
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subventioners varaktighet: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Subventioners varaktighet: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Ställ in hur många år en subvention ska gälla
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} år
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Inga subventioner
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Inga subventioner
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionskostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Sätt nivån för konstruktions- och inköpskostnader
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat så kan lågkonjunkturer uppstå med ett antal års mellanrum. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Förbjud tåg att vända vid stationer: {STRING}
@@ -3486,10 +3486,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Utför m
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Liten reklamkampanj
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mellanstor reklamkampanj
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stor reklamkampanj
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Bekosta rekonstruktion av vägar
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Bekosta rekonstruktion av vägar
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg staty över företagets ägare
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Bekosta nya byggnader
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Köp exklusiva transporträttigheter
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Köp exklusiva transporträttigheter
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Muta de lokala myndigheterna
 
 ###length 8
@@ -3650,7 +3650,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra n
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Budget {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Inkomst

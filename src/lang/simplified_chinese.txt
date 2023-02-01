@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}查看该公司详情
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}车船数量：
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}车船数量：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}站台数量：
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最小利润：
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最小收入：
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置运输工
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :补贴系数: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置线路补贴额度
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :财政补贴尺度：{STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :财政补贴尺度：{STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :设置发放财政补贴的年数
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :没有财政补贴
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :没有财政补贴
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建设费用: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :设置建设费用和交易费用难度
 
-STR_CONFIG_SETTING_RECESSIONS                                   :经济衰退: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :经济衰退: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :启用后，经济衰退将每隔几年就出现。在衰退期内，所有产出将大幅下降直至衰退结束。
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :禁止列车在站台调头: {STRING}
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :每个视角
 STR_CONFIG_SETTING_BRIBE                                        :允许贿赂地方政府：{STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :“打开”时，允许贿赂地方政府，如果被发现，在该城市将被限制经营活动六个月
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允许买断经营权： {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :允许买断经营权： {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买了城市独家经营权，其它公司的站台将在一年之内不再产生乘客或者货物。
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允许新建房屋: {STRING}
@@ -3486,10 +3486,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}执行�
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :小型广告宣传
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :中型广告宣传
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :大型广告宣传
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :资助市政道路整修
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :资助市政道路整修
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :为公司设立雕像
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :资助新房屋建设
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :购买运输专营权
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :购买运输专营权
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :贿赂地方政府
 
 ###length 8
@@ -3650,7 +3650,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}收入

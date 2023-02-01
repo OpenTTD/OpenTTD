@@ -721,7 +721,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Pogledaj detalje za ovu tvrtku
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vozila:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Postaje:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. dobit:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. prihod:
@@ -1265,14 +1265,14 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroliraj kak
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množitelj za poticaje: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Postavi koliko se plaća za subvencionirane veze
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Trajanje poticaja: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Trajanje poticaja: {STRING}
 
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Građevinski troškovi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Postavi razinu građevinskih troškova i troškova kupnje
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ukoliko je uključeno, recesija se može pojaviti svakih nekoliko godina. Tijekom recesije sva proizvodnja je značajno manja (vraća se na prethodnu razinu kada recesija završi)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zabrani okretanje vlakova na stanicama: {STRING}
@@ -1381,7 +1381,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Svako prikazno 
 STR_CONFIG_SETTING_BRIBE                                        :Dopusti potkupljivanje lokalne samouprave: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Omogućiti tvrtkama pokušavanje podmićivanja lokalne gradske vlasti. Ako mito je primjećeno od strane inspektora, tvrtka neće biti u mogućnosti djelovati u gradu na šest mjeseci
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dopusti kupovinu ekskluzivnih prijevoznih prava: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Dopusti kupovinu ekskluzivnih prijevoznih prava: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ako tvrtka kupi eksluzivna prava prijevoza za neki grad, protivničke postaje (putničke i teretne) neće dobivati ništa tereta tijekom cijele godine
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dopusti financiranje zgrada: {STRING}
@@ -3374,10 +3374,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Izvrši 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Mala oglasna kampanja
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Srednja oglasna kampanja
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Velika oglasna kampanja
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiraj popravljanje lokalne prometnice
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Financiraj popravljanje lokalne prometnice
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Izgradi kip vlasnika tvrtke
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiraj nove građevine
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupi ekskluzivna prava prijevoza
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kupi ekskluzivna prava prijevoza
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmiti lokalnu samoupravu
 
 ###length 8
@@ -3535,7 +3535,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promijen
 
 # Finances window
 STR_FINANCES_CAPTION                                            :Financije tvrtke {WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

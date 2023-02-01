@@ -591,7 +591,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Skoða upplýsingar um þetta fyrirtæki
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Farartæki:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Farartæki:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stöðvar:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lágmarkshagnaður:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Lágmarkstekjur:
@@ -1109,7 +1109,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stillingar fyri
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Mannvirkja kostnaður: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stillingar á byggingum og framkvæmdum
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Efnahagslægð: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Efnahagslægð: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ef virkt getur komið efnahagslægð á nokkurra ára fresti. Meðan á efnahagslægð stendur er öll framleiðsla marktækt minni (framleiðslan fellur í fyrra horf þegar efnahagslægðinni líkur)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Banna lest að snúa í lestarstöð: {STRING}
@@ -1213,7 +1213,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Öll sjónarhor
 STR_CONFIG_SETTING_BRIBE                                        :Leyfilegt að múta bæjaryfirvöldum: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Fyrirtæki geta reint að múta borgarstjórn. Ef eftirlistmenn uppgötva að verið sé múta bæjarstjórn, mun fyrirtækið ekki geta starfað í bænum í sex mánuði
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Heimila sölu á sérleyfi til flutninga: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Heimila sölu á sérleyfi til flutninga: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ef fyrirtæki kaupir sérleyfi af bæjaryfirvöldum munu stöðvar keppinauta (farþegar og farmur) ekki fá neinn farm í heilt ár
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leyfa byggingastyrki: {STRING}
@@ -2948,10 +2948,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Framkvæ
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Lítil auglýsingaherferð
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Meðalstór auglýsingaherferð
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stór auglýsingarherferð
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Fjármagna endurbyggingu vegakerfis
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Fjármagna endurbyggingu vegakerfis
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Byggja styttu af eiganda fyrirtækis
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fjármagna nýjar byggingar
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kaupa sérleyfi til flutninga
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kaupa sérleyfi til flutninga
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Múta bæjaryfirvöldum
 
 ###length 8
@@ -3070,7 +3070,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta n
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fjármál {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

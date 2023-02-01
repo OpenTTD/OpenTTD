@@ -595,7 +595,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Lihat perincian tentang syarikat ini
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kenderaan:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Kenderaan:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stesen-stesen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Keuntungan Min.:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Pendapatan min.:
@@ -1111,7 +1111,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Tetapkan jumlah
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kos pembinaan: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Tetapkan tahap pembinaan dan kos pembelian
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Kemelesetan: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Kemelesetan: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diupayakan, kemelesetan mungkin berlaku setiap tahun. Semasa kemelesetan, pengeluaran adalah lebih rendah (ia kembali ke tahap sebelumnya apabila kemelesetan berakhir)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Kereta api dilarang berpatah balik di stesen: {STRING}
@@ -1212,7 +1212,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Setiap peninjau
 STR_CONFIG_SETTING_BRIBE                                        :Benarkan pihak berkuasa dirasuah: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Membolehkan syarikat untuk cuba merasuah pihak berkuasa bandar tempatan. Jika rasuah disedari oleh pemeriksa, syarikat tidak mampu berbuat apa-apa di bandar selama enam bulan
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Benarkan pembelian hak pengangkutan eksklusif: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Benarkan pembelian hak pengangkutan eksklusif: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jika sebuah syarikat membeli hak pengangkutan eksklusif untuk sebuah bandar, stesen lawan (penumpang dan uatan) tidak akan menerima apa-apa muatan bagi keseluruhan tahun
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Benarkan pembiayaan bangunan: {STRING}
@@ -2848,10 +2848,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Lakukan 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kempen pengiklanan kecil
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Kempen pengiklanan sederhana
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Kempen pengiklanan besar
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Biaya pembinaan semula jalanraya tempatan
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Biaya pembinaan semula jalanraya tempatan
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bina tugu pemilik syarikat
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Biaya pembinaan bangunan baru
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak pengangkutan eksklusif
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Beli hak pengangkutan eksklusif
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Rasuah pihak berkuasa tempatan
 
 ###length 8
@@ -2972,7 +2972,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Tukar na
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Kewangan {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

@@ -586,7 +586,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Погледнете ги деталите за оваа компанија
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}возилата:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}возилата:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}станици:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мин. профит:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мин. приход:
@@ -1597,7 +1597,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 
 # Finances window
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

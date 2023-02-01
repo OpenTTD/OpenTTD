@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NB
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Afficher les détails sur cette compagnie
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Véhicules{NBSP}:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Véhicules{NBSP}:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations{NBSP}:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profit min.{NBSP}:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Revenu min.{NBSP}:
@@ -1226,17 +1226,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fr
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicateur de subvention{NBSP}: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combien rapportent les lignes subventionnées
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durée de subvention{NBSP}: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Durée de subvention{NBSP}: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Définir le nombre d'années pour lesquelles une subvention est accordée
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} an{P "" s}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Pas de subventions
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Pas de subventions
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Récessions{NBSP}: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire toutes les quelques années. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Interdire le retournement des trains dans les stations{NBSP}: {STRING}
@@ -1349,7 +1349,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Chaque vue
 STR_CONFIG_SETTING_BRIBE                                        :Permettre la corruption de la municipalité{NBSP}: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Autoriser les compagnies à essayer de corrompre la municipalité. Si la corruption est découverte par un enquêteur, la compagnie ne pourra rien faire dans la ville pendant six mois
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Autoriser l'achat des droits de transport exclusifs{NBSP}: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Autoriser l'achat des droits de transport exclusifs{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si une compagnie achète les droits de transport exclusifs dans une ville, les stations des concurrents (passagers et marchandises) ne recevront aucune cargaison pendant une année entière.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permettre le financement de bâtiments{NBSP}: {STRING}
@@ -3487,10 +3487,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Lancer l
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Petite campagne de publicité
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Moyenne campagne de publicité
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grande campagne de publicité
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financer la reconstruction du réseau routier local
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Financer la reconstruction du réseau routier local
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construire une statue à votre effigie
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financer de nouveaux bâtiments
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acheter les droits de transports exclusifs
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Acheter les droits de transports exclusifs
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompre la municipalité
 
 ###length 8
@@ -3651,7 +3651,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Revenus

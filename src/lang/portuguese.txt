@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver detalhes sobre esta empresa
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Mín. lucros:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Mín. rendim.:
@@ -1226,17 +1226,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla quão 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de subsídio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Define quanto é pago para ligações subsidiadas
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duração do subsídio: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Duração do subsídio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Define o número de anos de concessão de um subsídio
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} ano{P "" s}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sem subsídios
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Sem subsídios
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construção: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Configurar o nível de construção e custos de compra
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativo, podem ocorrer recessões em intervalos de poucos anos. Durante uma recessão a produção em geral é mais baixa (volta aos níveis anteriores quando termina)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desabilitar inversão de combóios nas estações: {STRING}
@@ -1349,7 +1349,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todos os visual
 STR_CONFIG_SETTING_BRIBE                                        :Permite o suborno da autoridade local: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite que as companhias tentem subornar a autoridade local. Se o suborno for descoberto por um inspector, a companhia não poderá construir nessa localidade durante seis meses
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite comprar direitos de transporte em exclusividade: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Permite comprar direitos de transporte em exclusividade: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma empresa compra direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão cargo durante um ano
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite investir em edifícios: {STRING}
@@ -3487,10 +3487,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Realizar
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pequena campanha publicitária
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Média campanha publicitária
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grande campanha publicitária
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiar a reconstrução das estradas locais
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Financiar a reconstrução das estradas locais
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construir estátua do proprietário da empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edifícios
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusividade da rede de transportes
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Comprar exclusividade da rede de transportes
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 
 ###length 8
@@ -3651,7 +3651,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar n
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanças de {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Receita

@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}이 회사의 성취도에 대한 상세 정보를 봅니다.
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}차량:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}차량:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}역:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}최소 이익:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}최소 수익:
@@ -1236,7 +1236,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :보조금 없�
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :건설 가격: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :건설 및 구매 가격의 수준을 설정하십시오.
 
-STR_CONFIG_SETTING_RECESSIONS                                   :경제 불황: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :경제 불황: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :이 설정을 켜면, 몇 년마다 경제 불황이 발생할 수 있습니다. 불황 기간 동안에는 모든 화물의 생산량이 확연하게 줄어듭니다. (불황이 끝나면 이전 수준으로 회복됩니다.)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :열차가 역 내에서 회차하는 것을 금지: {STRING}
@@ -1349,7 +1349,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :모든 화면�
 STR_CONFIG_SETTING_BRIBE                                        :지역 당국에 뇌물을 주는 행위 허용: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :독점 운송권 구입 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해 동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 것을 허용: {STRING}
@@ -3487,10 +3487,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}선택�
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :소규모의 광고 진행
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :중간 규모의 광고 진행
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :대규모의 광고 진행
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :도로 보수공사 시행
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :도로 보수공사 시행
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :회사 소유주의 동상 건설
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 투자
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :수송 권한 독점권 구입
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에게 뇌물 주기
 
 ###length 8
@@ -3651,7 +3651,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}경유�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}의 재정 {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}수익

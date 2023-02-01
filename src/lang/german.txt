@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Einzelheiten zu dieser Firma anschauen
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fahrzeuge:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Fahrzeuge:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Gewinn:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkommen:
@@ -1224,17 +1224,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Einstellen, wie
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subventions-Multiplikator: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Einstellen, wieviel für subventionierte Verbindungen gezahlt wird
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subventionsdauer: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Subventionsdauer: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Die Anzahl der Jahre, für die eine Subvention vergeben wird
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} Jahr{P "" e}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keine Subventionen
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Keine Subventionen
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Baukosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Höhe der Bau- und Einkaufskosten festlegen
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Rezessionen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen im Abstand von einigen Jahre auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zum gleichen Level zurück wie vor der Rezession)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zügen das Umdrehen in Bahnhöfen verbieten: {STRING}
@@ -3481,10 +3481,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Ausgewä
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kleine Werbekampagne
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mittlere Werbekampagne
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Große Werbekampagne
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Straßenreparaturen des Ortes finanzieren
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Straßenreparaturen des Ortes finanzieren
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Statue des Firmeneigentümers finanzieren
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Neue Gebäude finanzieren
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusive Transportrechte kaufen
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Exklusive Transportrechte kaufen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Die Stadtverwaltung bestechen
 
 ###length 8
@@ -3645,7 +3645,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen de
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} – Finanzen {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Einnahmen

@@ -1022,7 +1022,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Pokaż szczegóły tej firmy
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Pojazdy:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Pojazdy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacje:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zysk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. przychód:
@@ -1605,17 +1605,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroluj jak c
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Mnożnik dofinansowania: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ustaw wysokość zapłaty za połączenia dofinansowywane
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Czas trwania dotacji: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Czas trwania dotacji: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Określ liczbę lat, na które przyznawana jest dotacja
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P rok lata lat}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Brak dotacji
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Brak dotacji
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty konstrukcji: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów konstrukcji i kupna
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Kryzys: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może wystąpić co kilka lat. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nie pozwalaj pociągom zawracać na stacjach: {STRING}
@@ -1728,7 +1728,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Wszystkie okna 
 STR_CONFIG_SETTING_BRIBE                                        :Pozwól dawać łapówki lokalnym władzom: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom na próby przekupienia lokalnych władz miast. Jeśli przekupstwo zostanie wykryte przez inspektora, firma nie będzie mogła działać w danym mieście przez 6 miesięcy
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Pozwól na kupno wyłączności transportowej: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kiedy firma wykupuje wyłączność na transport w mieście, to przystanki i stacje przeciwników (pasażerskie i towarowe) nie otrzymają żadnego ładunku przez cały rok
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fundowanie budynków: {STRING}
@@ -3866,10 +3866,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Wykonaj 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Mała kampania reklamowa
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Średnia kampania reklamowa
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Duża kampania reklamowa
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Ufunduj miastu rekonstrukcję dróg
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Ufunduj miastu rekonstrukcję dróg
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Zbuduj statuę właściciela
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Ufunduj nowe budynki
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kup wyłączność transportową
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kup wyłączność transportową
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Daj łapówkę lokalnym władzom
 
 ###length 8
@@ -4030,7 +4030,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj n
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanse {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Przychody

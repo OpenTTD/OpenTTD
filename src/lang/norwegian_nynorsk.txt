@@ -615,7 +615,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NB
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljar om dette firmaet
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køyrety:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Køyrety:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjonar:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. gevinst:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inntekt:
@@ -1149,7 +1149,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Kor mykje ekstr
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggjekostnadar: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivået kostnadene for konstruksjon og kjøp ligg på
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Nedgangstider: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Nedgangstider: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Skru på at det frå tid til anna kjem nedgangstider. Under nedgangstider fell all produksjon kraftig. (Han går opp att når nedgangstida er over.)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ikkje la tog vende om på stasjonar: {STRING}
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alle tilleggsvi
 
 STR_CONFIG_SETTING_BRIBE                                        :Tillet bestikkelse av bystyret: {STRING}
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillet kjøp av eksklusive transportretter: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Tillet kjøp av eksklusive transportretter: {STRING}
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat sponsing av bygningar: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillat at firma kan gi pengar til byar for finansiering av nye bygningar
@@ -3025,10 +3025,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Gjer den
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Liten reklamekampanje
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Middels stor reklamekampanje
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stor reklamekampanje
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansier lokal ombyggjing av vegnettet
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finansier lokal ombyggjing av vegnettet
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg statue av grunnleggjaren til firmaet
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye bygningar
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettar
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kjøp eksklusive transportrettar
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestikk bystyret
 
 ###length 8
@@ -3183,7 +3183,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre na
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Rekneskapen til {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

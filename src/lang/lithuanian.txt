@@ -834,7 +834,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Rodyti šios kompanijos smulkesnę informaciją
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Automobiliai:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Automobiliai:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stotelės:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. pelnas:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. pajamos:
@@ -1416,17 +1416,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nurodo, kaip da
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidijų daugiklis: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nustato, kiek kartų maršruto įplaukos bus padidintos, gavus subsidiją
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidijų trukmė: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Subsidijų trukmė: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Pasirinkite vietinės valdžios subsidijų trukmę metais
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} met{P ai ai ų}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Be subsidijų
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Be subsidijų
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Statybos kaštų lygis: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nustatykite statybos kaštų lygmenį
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Nuosmukiai: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Nuosmukiai: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Įgalinus šią nusotatą, kas keletą metų gali užklupti ekonomikos nuosmukis. Nuosmukio metų smarkiai smunka gamyba (kuri atsistato nuosmukiai pasibaigus)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Drausti apsisukimus stotelėse: {STRING}
@@ -1539,7 +1539,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Visuose perži�
 STR_CONFIG_SETTING_BRIBE                                        :Leisti papirkinėti miesto valdžią: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Leisti kompanijoms papirkinėti vietinę valdžią. Jei bandymas papirti bus išaiškintas, kompanijai šešiems mėnesiams bus atimta galimybė vykdyti veiklą mieste (pvz., pradėti reklamos kampanija, remontuoti kelius ir pan.)
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Leisti pirkti išskirtines transporto teises: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Leisti pirkti išskirtines transporto teises: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jei kuri nors kompanija išsipirks išimtines transporto teises, kitų kompanijų stotelės vienerius metus nebesulauks naujų keleivių ir/ar krovinių
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leisti namų statybos rėmimą: {STRING}
@@ -3649,10 +3649,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Atlikti 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Maža reklamos kampanija
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Vidutinė reklamos kampanija
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Didelė reklamos kampanija
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansuoti kelių atnaujinimą
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finansuoti kelių atnaujinimą
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Pastatyti kompanijos statulą
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansuoti naujų pastatų statybą
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Išsipirkti isškirtines pervežimo teises
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Išsipirkti isškirtines pervežimo teises
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Papirkti vietinę valdžią
 
 ###length 8
@@ -3813,7 +3813,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redaguot
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansai {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitalinės išlaidos

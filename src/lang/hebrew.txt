@@ -631,7 +631,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}צפה בפרטים אודות חברה זו
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK} : כלי תחבורה
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK} : כלי תחבורה
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK} : תחנות
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}: רווח מינימלי
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}: הכנסה מינימלית
@@ -1175,15 +1175,15 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :שלוט באי
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :מכפיל עבור סובסידיה: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :קבע כמה משולם עבור חיבורים מסובסדים
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :זמן סובסידיה: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :זמן סובסידיה: {STRING}
 
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :אין סובידיות
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :אין סובידיות
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :עלויות בנייה: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :קבע את רמת העלויות של בנייה ורכישה
 
-STR_CONFIG_SETTING_RECESSIONS                                   :מיתונים: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :מיתונים: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :אם מאופשר מיתונים עלולים להתרחש מדי כמה שנים. בתקופת מיתון כל הייצור קטן יותר באופן משמעותי (הוא חוזר לרמתו הקודמת בסוף המיתון)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :מנע החלפת כיוון רכבות בתחנות: {STRING}
@@ -3249,10 +3249,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}ביצו
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :קמפיין פירסום קטן
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :קמפיין פירסום בינוני
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :קמפיין פירסום גדול
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :מימון של שיפוץ הכבישים המקומיים
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :מימון של שיפוץ הכבישים המקומיים
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :בניית פסל של בעל החברה
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ממן מבנים חדשים
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :קניית זכויות הובלה בלעדיות
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :קניית זכויות הובלה בלעדיות
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :שחד את העיריה המקומית
 
 ###length 8
@@ -3408,7 +3408,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ערוך
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} נתונים כלכליים {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}הכנסה

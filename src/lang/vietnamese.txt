@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Hiển thị thông tin chi tiết của công ty này
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Phương tiện:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Phương tiện:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Trạm:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lợi nhuận thấp nhất:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Thu nhập thấp nhất:
@@ -1223,17 +1223,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Thiết lập m
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tỉ lệ chi trả: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Thiết lập mức chi trả cho tuyến vận chuyển phụ trợ
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Thời hạn trợ cấp: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Thời hạn trợ cấp: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Đặt số năm được hưởng trợ cấp dịch vụ
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} năm
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Không có trợ cấp
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Không có trợ cấp
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Chi phí xây dựng: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Thiết lập mức độ xây dựng và chi phí mua sắm
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Suy thoái: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Suy thoái: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Nếu bật, thì các đợt suy thoái sẽ xảy ra vài năm một lần. Trong suy thoái tất cả sản xuất sẽ giảm mạnh (và sẽ trở lại như cũ sau khi suy thoái kết thúc)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Không cho phép tàu hỏa quay đầu ở ga: {STRING}
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Mọi cửa s�
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Cho phép mua quyền vận tải độc quyền: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Nếu một công ty mua quyền vân tải độc quyền tại địa phương, thì các trạm của đối thủ sẽ không nhận được hàng hóa và hành khách trong vòng 1 năm
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Cho phép góp vốn cho các công trình: {STRING}
@@ -3484,10 +3484,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Thực h
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Chiến dịch quảng cáo nhỏ
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Chiến dịch quảng cáo trung bình
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Chiến dịch quảng cáo lớn
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Tài trợ cải tạo đường phố nội thị
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Tài trợ cải tạo đường phố nội thị
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Xây tượng đài công ty
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tài trợ xây nhà cửa
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Mua độc quyền kinh doanh vận tải
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Mua độc quyền kinh doanh vận tải
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan chức địa phương
 
 ###length 8
@@ -3648,7 +3648,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa t�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Tài Chính Công Ty {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Doanh thu

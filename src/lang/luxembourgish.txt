@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Detailer fir des Firma uweisen
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Gefierer:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Gefierer:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Statiounen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Profit:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Akommes:
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontrolléirt w
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidemultiplikator: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixéiert wéivill fir subsidéiert Verbindunge bezuelt gëtt
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidendauer: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Subsidendauer: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Unzuel u Joren fir déi et e Subside gëtt
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} Jo{P er er}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Keng Subsiden
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Keng Subsiden
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktiounskäschten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Bestëmm den Niveau vu Bau- a Kafkäschten
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Rezessiounen: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Rezessiounen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wann ugeschalt kann all puer Joer eng Rezessioun kommen. Während enger Rezessioun ass d'Produktioun däitlech méi niddreg (an klëmmt erëm op den alen Niveau no der Rezessioun)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Den Zich verbidden an enger Statioun emzedréinen: {STRING}
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :All Usiicht
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt d'Gemengen ze bestiechen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Erlaabt Firmen d'Stad ze bestiechen. Wann et opflitt, kann d'Firma während 6 Méint net mat der Stad agéiren
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wann eng Firma exklusiv Transportrechter fir eng Stad keeft, kréien géignerësch Statiounen (Passagéier an Wueren) keng Wueren fir e ganzt Joer
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Gebaier finanzéiren erlaben: {STRING}
@@ -3486,10 +3486,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Féiert 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kleng Marketingaktioun
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mëttel Marketingsaktioun
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grouss Marketingsaktioun
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Stroossenneibau finanzéieren
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Stroossenneibau finanzéieren
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Statu vum Firmenbesëtzer bauen
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Nei Gebaier finanzéieren
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusiv Transportrechter kafen
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Exklusiv Transportrechter kafen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :D'Gemeng bestiechen
 
 ###length 8
@@ -3650,7 +3650,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunkt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Akommes

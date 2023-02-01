@@ -932,7 +932,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Падрабязная інфармацыя аб кампаніі
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Коль-ць ТС:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Коль-ць ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцыі:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мін. прыбытак:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мін. даход:
@@ -1473,14 +1473,14 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Задайце 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множнік субсыдыяў: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Усталюйце множнік аплаты за перавозкі, якія субсыдуюцца
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Працягласць субсідый: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Працягласць субсідый: {STRING}
 
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Выдаткі на будаўніцтва: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Усталюйце ўзровень выдаткаў на будаўніцтва й набыцьцё
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Спады: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Спады: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Калі ўключана, спад можа наставаць раз у некалькі гадоў. Падчас спаду ўвесь аб'ём вытворчасьці значна ніжэй (ён вяртаецца да ранейшага ўзроўня, калі спад сканчаецца)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забараніць разварот цягнікоў на станцыях: {STRING}
@@ -1590,7 +1590,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :ва ўсіх �
 STR_CONFIG_SETTING_BRIBE                                        :Дазволіць падкупляць мясцовыя ўлады: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дазволіць кампаніям спрабаваць даць хабар мясцовай адміністрацыі. Калі хабар будзе выкрыты інспэктарам, кампанія ўвогуле ня зможа дзейнічаць у гэтым населеным пункце на працягу 6-ці месяцаў.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дазволіць купляць эксклюзыўныя трансп. правы: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Дазволіць купляць эксклюзыўныя трансп. правы: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Калі кампанія набывае эксклюзыўныя транспартныя правы ў населеным пункце, станцыі апанэнтаў (пасажырскія ды грузавыя) не атрымаюць ніводнага грузу за цэлы год.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Дазволіць фінансаваньне будаўніцтва будынкаў: {STRING}
@@ -3552,10 +3552,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выка
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Малая рэклямная кампанія
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Сярэдняя рэклямная кампанія
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Вялікая рэклямная кампанія
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Прафінансаваць рамонт гарадзкіх дарогаў
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Прафінансаваць рамонт гарадзкіх дарогаў
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Усталяваць статую ў гонар ўладальніка кампаніі
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Прафінансаваць будаўніцтва новых дамоў
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купіць эксклюзіўныя транспартныя правы
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Купіць эксклюзіўныя транспартныя правы
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Даць хабар мясцовай адміністрацыі
 
 ###length 8
@@ -3711,7 +3711,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назв
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Фінансы — {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

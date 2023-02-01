@@ -771,7 +771,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Проглянути деталі рейтинга цієї компанії
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Транспорт:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Транспорт:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станції:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мін. дохід:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мін. прибуток:
@@ -1351,17 +1351,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Встанов�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множник субсидій: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Встановіть множник оплати за субсидовані перевезення
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Тривалість субсидії: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Тривалість субсидії: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Встановити кількість років, впродовж яких доступна субсидія
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P рік роки років}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Без субсидій
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Без субсидій
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Вартість будівництва: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Встановити рівень витрат на будівництво та придбання
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Рецесії: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Рецесії: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Якщо увімкнено, рецесії можуть відбуватися кожні декілька років. Під час рецессії обсяг виробництва на всіх підприємствах значно знижений (він повертається на попередній рівень, коли рецесія закінчується)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Заборонити поїздам розвертатися на станціях: {STRING}
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Кожне ві
 STR_CONFIG_SETTING_BRIBE                                        :Дозволити підкуп місцевої влади: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дозволяє компаніям давати хабарі місцевій владі. Якщо підкуп буде викрито, протягом 6 місяців компанія не матиме змоги взаємодіяти з владою міста.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дозволити придбання ексклюзивних прав: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Дозволити придбання ексклюзивних прав: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Якщо компанія придбає ексклюзивні транспортні права в місті, то на протязі року станції конкурентів не отримають жодного вантажа або пасажира.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Дозволити фінансування забудови міста: {STRING}
@@ -3611,10 +3611,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Вико
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Мала рекламна кампанія
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Середня рекламна кампанія
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Велика рекламна кампанія
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Провести реконструкцію доріг
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Провести реконструкцію доріг
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Збудувати монумент власника компанії
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Фінансувати нові будівлі
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купити єдине транспортне право
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Купити єдине транспортне право
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Підкупити місцеву владу
 
 ###length 8
@@ -3775,7 +3775,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Пере
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Фінанси {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Дохід

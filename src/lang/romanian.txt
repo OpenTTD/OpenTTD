@@ -643,7 +643,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vizualizează detalii despre această companie
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicule:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vehicule:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Staţii:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profit minim:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Venit minim:
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlează c�
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator al subvențiilor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Alege cât de mult se plătește pentru conexiuni subvenționate
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durată subvenție: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Durată subvenție: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Stabilește numărul de ani pentru care se acordă o subvenție
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P an ani "de ani"}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Fără subvenții
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Fără subvenții
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costuri de construcție: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul de construcție și costurile de achiziție
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesiuni: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesiuni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Dacă este activată, este posibil să existe recesiuni la perioade de câțiva ani. În timpul recesiunii, toată producția este semnificativ redusă (revine la nivelul anterior când recesiunea se termină)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nu permite întoarcerea trenurilor in statie: {STRING}
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :fiecare ecran
 STR_CONFIG_SETTING_BRIBE                                        :Permite mituirea autorităţilor locale: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companiilor să încerce să mituiască autoritatea locală. Daca încercarea este descoperită de către un inspector, compania nu va mai putea executa nici o acțiune în oraș timp de șase luni
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite cumpărarea de drepturi exclusive de transport: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Permite cumpărarea de drepturi exclusive de transport: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Dacă o companie cumpără drepturi exclusive de transport într-un oraș, stațiile concurenței (de pasageri și mărfuri) nu vor primi niciun fel de marfă timp de un an
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite finaţarea clădirilor noi: {STRING}
@@ -3486,10 +3486,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Activeaz
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Campanie publicitară mică
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Campanie publicitară medie
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Campanie publicitară mare
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finanțează reconstrucția străzilor
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finanțează reconstrucția străzilor
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Ridică un monument dedicat preşedintelui companiei
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finanţează construcţia de noi clădiri
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Cumpără drepturi exclusive de transport
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Cumpără drepturi exclusive de transport
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Mituieşte autoritatea locală
 
 ###length 8
@@ -3650,7 +3650,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editeaz�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Situaţia financiară a companiei {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Venit

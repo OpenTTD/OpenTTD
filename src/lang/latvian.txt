@@ -645,7 +645,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Apskatīt šā uzņēmuma informāciju
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Transportlīdzekļi:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Transportlīdzekļi:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacijas:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. pelņa
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ienākumi:
@@ -1225,17 +1225,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nosaka, cik bie
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsīdiju reizinātājs: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Iestatīt, cik daudz maksāt par subsidētajiem savienojumiem
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsīdiju ilgums: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Subsīdiju ilgums: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Nosakiet gadu skaitu, par kuru tiek piešķirta subsīdija
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} {P gads gadu gadus}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subsīdijām
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Bez subsīdijām
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Būvēšanas izmaksas: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Iestatīt būvēšanas un pirkumu izmaksas
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Lejupslīde: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Lejupslīde: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ja ieslēgts, ik pa laikam var gadīties recesijas. To laikā visa ražošana būtiski samazinās (tā atgriežas sākotnējā līmenī pēc recesijas beigām).
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Neatļaut vilcienu apgriešanos stacijās: {STRING}
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :katru skatvietu
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut piekukuļot vietējās pašvaldības: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Lauj uzņēmumiem mēģināt piekukuļot pilsētu vietējo pašvaldību. Ja inspektors paziņo par kukuli, tad uzņēmums pilsētā nevarēs darboties sešus mēnešus
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ja uzņēmums pērk pārvadājumu izņēmuma tiesības pilsētā, pretinieku stacijas (pasažieru un kravas) veselu gadu nesaņems nekādu kravu
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
@@ -3488,10 +3488,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Veikt ie
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Maza reklāmas kampaņa
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Vidēja reklāmas kampaņa
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Liela reklāmas kampaņa
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansēt vietējo ceļu rekonstrukciju
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finansēt vietējo ceļu rekonstrukciju
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Uzbūvēt uzņēmuma vadītāja statuju
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansēt jaunas ēkas
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Pirkt pārvadājumu izņēmuma tiesības
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Pirkt pārvadājumu izņēmuma tiesības
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Dot kukuli pašvaldībai
 
 ###length 8
@@ -3654,7 +3654,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot pi
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} finanses {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ieņēmumi

@@ -574,7 +574,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}या कंपनी बद्दल तपशील पहा
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}वाहने:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}वाहने:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}स्टेशन:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}किमान नफा:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}किमान उत्पन्न:
@@ -1447,7 +1447,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 
 # Finances window
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

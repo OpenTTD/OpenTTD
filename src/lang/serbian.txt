@@ -831,7 +831,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Prikazuje detalje o ovom preduzeću
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vozila:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Najmanja zarada:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Najmanji prihod:
@@ -1418,17 +1418,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Koliko često m
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množilac subvencije: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Podešava koliko se plaća za subvencionisane konekcije
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Trajanje subvencije: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Trajanje subvencije: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Odredi broj godina trajanja subvencije
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} godina
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Bez subvencija
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Bez subvencija
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Troškovi gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Podešava nivo troškova gradnje i kupovine
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ako je omogućeno, recesije mogu da se jave svakih nekoliko godina. Proizvodnja je značajno smanjena tokom recesije (vraća se na prethodni nivo kada se recesija završi)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Onemogući okretanje voza u stanicama: {STRING}
@@ -3675,10 +3675,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Sprovedi
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Manja reklamna kampanja
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Srednja reklamna kampanja
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Veća reklamna kampanja
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansiranje rekonstrukcije puteva
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finansiranje rekonstrukcije puteva
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Izgradnja statue vlasnika preduzeća
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansiranje novih zgrada
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupovina ekskluzivnih prava prevoza
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kupovina ekskluzivnih prava prevoza
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmićivanje lokalne vlasti
 
 ###length 8
@@ -3839,7 +3839,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena 
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansije {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Zarada

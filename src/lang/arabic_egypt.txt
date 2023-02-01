@@ -623,7 +623,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}عرض التفاصيل عن هذه الشركة
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}العربات:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}العربات:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}المحطات:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}المكسب الادنى:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}الدخل الأقل:
@@ -1154,7 +1154,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} سنة
 ###setting-zero-is-special
 
 
-STR_CONFIG_SETTING_RECESSIONS                                   :حالات الركود: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :حالات الركود: {STRING}
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :عدم السماح بعودة القطار إلى الخلف في المحطات: {STRING}
 
@@ -1226,7 +1226,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :غير مفعل
 
 STR_CONFIG_SETTING_BRIBE                                        :السماح برشوة السلطات االمحليه: {STRING}
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :السماح بشراء حقوق النقل الحصري: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :السماح بشراء حقوق النقل الحصري: {STRING}
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :السماح بتمويل المباني: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :السماح للشركات بإعطاء الأموال للمدن لتمويل المنازل الجديدة
@@ -2984,10 +2984,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}نفذ �
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :حملة دعائية صغيرة
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :حملة دعائية متوسطة
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :حملة دعائية كبيرة
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :مول صيانة عامة للطرق
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :مول صيانة عامة للطرق
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :بناء مجسم لمالك الشركة
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :مول انشاء مباني جديدة
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :اشتري حقوق النقل الحصرية للمدينة
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :اشتري حقوق النقل الحصرية للمدينة
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :ارشي السلطات المحلية
 
 ###length 8
@@ -3109,7 +3109,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل �
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} {BLACK} {COMPANY_NUM} سجل المحاسبة
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}الدخل

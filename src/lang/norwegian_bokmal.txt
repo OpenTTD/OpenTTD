@@ -636,7 +636,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NB
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljer om dette firmaet
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kjøretøy:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Kjøretøy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjoner:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fortjeneste:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inntekt:
@@ -1205,17 +1205,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontrollér hvo
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplikator for subsidier: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Angi hvor mye som betales for subsidierte forbindelser
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Subsidiens varighet: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Subsidiens varighet: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Angi antall år som subsidiet tildeles for
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} år{P "" s}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Ingen subsidier
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Ingen subsidier
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggekostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Still kostnadsnivå for bygging og kjøp
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Resesjoner: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Resesjoner: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktivert, resesjoner kan forekomme med noen års mellomrom. Under en lavkonjunktur vil all produksjon være betydelig lavere (den returnerer til tidligere nivå når resesjonen er over)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forby reversering av tog i stasjoner: {STRING}
@@ -1329,7 +1329,7 @@ STR_CONFIG_SETTING_BRIBE                                        :Tillat bestikke
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillat firmaer å prøve å bestikke de lokale myndighetene i byen. Hvis bestikkelsen blir oppdaget av en inspektør, vil selskapet ikke være i stand til å gjøre forretninger i byen de neste seks månedene
 STR_CONFIG_SETTING_BRIBE_HELPTEXT.small                         :firma
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillat kjøp av eksklusive transportrettigheter: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Tillat kjøp av eksklusive transportrettigheter: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Om et firma kjøper eksklusive transportrettigheter for en by, vil ikke motstandernes stasjoner motta varer eller passasjorer på ett år.
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat finansiering av bygninger: {STRING}
@@ -3441,10 +3441,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Utfør d
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Liten reklamekampanje
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Middels stor reklamekampanje
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stor reklamekampanje
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansier ombygging av byens veinett
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Finansier ombygging av byens veinett
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg statue av firmaets grunnlegger
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye bygninger
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettigheter
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kjøp eksklusive transportrettigheter
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestikk bystyret
 
 ###length 8
@@ -3605,7 +3605,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre na
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}s regnskap{BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

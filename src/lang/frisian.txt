@@ -615,7 +615,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Besjoch de details oer dit bedriuw
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fiertugen:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Fiertugen:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjons:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fertsjinste:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ynkomsten:
@@ -1170,7 +1170,7 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jier
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Boukosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stel hichte bouw- en oankeapkosten yn
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Resesjes: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Resesjes: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :By ynskeakeljen kinne der om de safolle jier resesjes plakfine. Under in resesje nim de produksje op alle flakken ôf (sadree in resesje oergean is giet de produkje wer nei it âlde nivo omheech)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ferbied treinen te draaien yn stasjons: {STRING}
@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elts loaitsfins
 STR_CONFIG_SETTING_BRIBE                                        :It omkeapjen fan de gemeente tastean: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Stean ta dat bedriuwen gemeentes omkeapje kinne. At dit ûntdutsem wurdt kin it bedriuw yn kwestje 6 moannen gjin saken dwaan yn de stêd
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Eksklusyfe transportrjochten keapje tastean: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Eksklusyfe transportrjochten keapje tastean: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :At in bedriuw eksklusive transportrjochten keapet foar in stêd sille stasjon fan tsjinstanners in jier lang gjin passazjiers en fracht ûntfange
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Nije gebouwen stipe tastean: {STRING}
@@ -2989,10 +2989,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Fier de 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Lytse promoasjekampanje
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Middelgrutte promoasjekampanje
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grutte promoasjekampanje
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Subsidiearje lokale weiferbouwing
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Subsidiearje lokale weiferbouwing
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou stânbyld fan bedrieuwseigner
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Betelje bouw fan nije gebouwen
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Keapje eksklusive ferfiersrjochten
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Keapje eksklusive ferfiersrjochten
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Keapje it lokale bestjoer om
 
 ###length 8
@@ -3134,7 +3134,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namme fa
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finânsjes {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitaalkosten

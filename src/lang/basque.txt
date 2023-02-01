@@ -609,7 +609,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Konpainia honen xehetasunak ikusi
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ibilgailuak:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Ibilgailuak:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Geltokiak:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Gutxienezko irabaziak
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Irabazi min.:
@@ -1131,7 +1131,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Subsidio garrai
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Eraikuntza kosteak: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta eraikuntza kostuak ezarri
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
@@ -1235,7 +1235,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Ikuspegi lehio 
 STR_CONFIG_SETTING_BRIBE                                        :Udaletxeko agintariak erostea baimendu: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Konpainiei utzi udaletxeak sobornatzen. Inspektore batek sobornoa antzematen badu, konpainiak sei hilabetez debekatua izango du herrian aritzea
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Garraioaren eskubide esklusiboen erosketa baimendu: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Garraioaren eskubide esklusiboen erosketa baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Konpainia batek erabateko garraio eskubideak erosten baditu, aukarien geltokiek (bidaiari zehin ondasun) ez dute inolako ondasunik jasoko urte oso batez
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Eraikinak ordaintzea baimendu: {STRING}
@@ -3017,10 +3017,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Goiko ze
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Iragarki kanpaina txikia
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Iragarki kanpaina ertaina
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Iragarki kanpaina handia
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Errepide sarea berreraikitzeko dirua eman
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Errepide sarea berreraikitzeko dirua eman
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Konpainiako jabearen estatua eraiki
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Eraikin berriak eraiki
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Garraioaren eskubide esklusiboen erosketa
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Garraioaren eskubide esklusiboen erosketa
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Udaletxea sobornatu
 
 ###length 8
@@ -3172,7 +3172,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Bidepunt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finantzak {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 

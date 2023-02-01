@@ -749,7 +749,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Εμφάνιση λεπτομεριών για αυτή την εταιρία
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Οχήματα:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Οχήματα:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Σταθμοί:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Ελάχ. κέρδος:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ελάχ. εισόδημα:
@@ -1329,17 +1329,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Διάρκεια επιδότησης: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Διάρκεια επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Ορίστε τον αριθμό των ετών για τα οποία θα ισχύει η επιδότηση
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} έτος/η
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Χωρίς επιχορηγήσεις
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Χωρίς επιχορηγήσεις
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Υφέσεις: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, μπορεί να υπάρξουν υφέσεις κάθε λίγα χρόνια. Κατά τη διάρκεια μιας ύφεσης, όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Απαγορεύεται η αντιστροφή τρένων στους σταθμούς: {STRING}
@@ -1452,7 +1452,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Κάθε εμφ
 STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Επιτρέπεται στις εταιρείες να προσπαθήσουν να δωροδοκήσουν την τοπική αρχή. Αν η δωροδοκία γίνει αντιληπτή από τον ελεγκτή, η εταιρεία δε θα μπορεί να ενεργήσει στην πόλη για έξι μήνες
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Αν μια εταιρεία αγοράσει τα αποκλειστικά δικαιώματα μεταφορών σε μια πόλη, οι σταθμοί των αντιπάλων δεν θα λαμβάνουν φορτία (επιβάτες και εμπορεύματα) για έναν ολόκληρο χρόνο
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Επιτρέπεται η κατασκευή κτιρίων: {STRING}
@@ -3585,10 +3585,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Διεν
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Μικρή διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Μεσαία διαφημιστική καμπάνια
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Μεγάλη διαφημιστική καμπάνια
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Επιχορήγηση ανακατασκευής τοπικού οδικού δικτύου
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Επιχορήγηση ανακατασκευής τοπικού οδικού δικτύου
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Κτίσιμο αγάλματος του ιδιοκτήτη της εταιρίας
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορήγηση νέων κτιρίων
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκήστε την τοπική αρχή
 
 ###length 8
@@ -3749,7 +3749,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμ
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Οικονομικά {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Έσοδα

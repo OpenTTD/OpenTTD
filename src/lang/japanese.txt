@@ -640,7 +640,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}この会社の詳細情報を見ます
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}黒字車両数:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}黒字車両数:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}稼働停留施設数:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最小利益車両:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最小営業利益:
@@ -1214,17 +1214,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :点検が不十
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗数: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金対象の路線に対して、通常の輸送相場の何倍が支払われるかを設定します
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :助成期間: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :助成期間: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :助成金が配布される年数を設定
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} 年{}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :補助金なし
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :補助金なし
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベルを設定します
 
-STR_CONFIG_SETTING_RECESSIONS                                   :景気後退: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :景気後退: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :設定を有効にすると数年おきに短期間、景気の後退が起こる可能性が出ます。景気後退の間はすべての生産がかなりの落ち込みを見せます (景気後退が終わると元のレベルに戻ります)。
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :列車の転回不可: {STRING}
@@ -1337,7 +1337,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :する (ビュ�
 STR_CONFIG_SETTING_BRIBE                                        :議会の買収: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :街で議会買収を企てられるようになります。成功すれば街での評判が良くなりますが、地元当局に事が発覚した場合罰金を受けた上評判が悪くなり、その上その街では半年間何もできなくなります
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占運送契約の締結: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :独占運送契約の締結: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :会社と街との間で独占運送契約を結ぶことが可能になります。この契約が締結されると、その街にあるすべての競争相手の停留施設は丸一年間、旅客・貨物問わず何も受け入れできなくなります
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :街の開発に出資: {STRING}
@@ -3459,10 +3459,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}上の�
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :小規模広告キャンペーン
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :中規模広告キャンペーン
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :大規模広告キャンペーン
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :道路補修に出資
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :道路補修に出資
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :社長の彫像を建設
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :市街地開発に出資
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占運送契約を締結
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :独占運送契約を締結
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :議会を買収
 
 ###length 8
@@ -3623,7 +3623,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}中継�
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 経営状況　{BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}収益

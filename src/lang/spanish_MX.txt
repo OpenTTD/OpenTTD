@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Mostrar detalles de esta empresa
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehículos:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vehículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estaciones:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Utilidad mín.:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ingreso mín.:
@@ -1226,17 +1226,17 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlar cada 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de subsidio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Establecer cuánto se paga por subsidios conectados
 
-STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración de subsidio: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES                     :Duración de subsidio: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Años que durará un subsidio otorgado
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} año{P "" s}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sin subsidios
+STR_CONFIG_SETTING_SUBSIDY_DURATION_MINUTES_DISABLED            :Sin subsidios
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivel de costos de construcción y adquisición
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Al activarse, habrá recesiones cada cierto año en las que toda la producción decaerá considerablemente, restableciéndose al final de cada recesión
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir a los trenes que den reversa en estaciones: {STRING}
@@ -3487,10 +3487,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Llevar a
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pequeña campaña publicitaria
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Mediana campaña publicitaria
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gran campaña publicitaria
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Pagar la reconstrucción de las carreteras locales
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Pagar la reconstrucción de las carreteras locales
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Poner una estatua al dueño de la empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Pagar la construcción de nuevos edificios
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar los derechos exclusivos de transporte
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Comprar los derechos exclusivos de transporte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar al ayuntamiento
 
 ###length 8
@@ -3651,7 +3651,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambiar 
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanzas de {COMPANY} {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Ingresos

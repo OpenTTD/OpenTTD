@@ -767,7 +767,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Podrobnosti o podjetju
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
+STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES                      :{BLACK}Vozila:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Postaje:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. dobiček:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. prihodek:
@@ -1304,7 +1304,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nastavitev fakt
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cene gradnje: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastavitev cene gradnje in nakupa
 
-STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
+STR_CONFIG_SETTING_ALLOW_RECESSIONS                             :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Če je omogočeno, se recesije lahko pojavijo vsakih nekaj let. Med recesijo je proizvodnja znatno nižja, povrne se v tek po recesiji.
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prepovej obračanje vlakov na postajah: {STRING}
@@ -1411,7 +1411,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Vsi pogledi
 STR_CONFIG_SETTING_BRIBE                                        :Dovoli podkupovanje mestnih oblasti: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dovoli družbam poskus podkupovanja mestne oblasti. Če bo inšpektor odkril podkupovanje, bo družba mirovala v tistem mestu za 6 mesecev.
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dovoli nakup ekskluzivnih prevoznih dovoljenj: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_RIGHTS                       :Dovoli nakup ekskluzivnih prevoznih dovoljenj: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Če podjetje odkupi ekskluzivne transportne pravice v mestu, tekmečeve postaje ne bodo prejemale tovora za 1 leto
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dovoli naložbe v zgradbe: {STRING}
@@ -3277,10 +3277,10 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Izvrši 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Majhna reklamna kampanija
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Srednje velika reklamna kampanija
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Velika reklamna kampanija
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiraj obnovo cest
+STR_LOCAL_AUTHORITY_ACTION_LOCAL_ROAD_RECONSTRUCTION            :Financiraj obnovo cest
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Zgradi spomenik lastniku podjetja
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Sponzoriraj nove stavbe
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupi eksluzivne transportne pravice
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT_RIGHTS           :Kupi eksluzivne transportne pravice
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podkupi lokalno oblast
 
 ###length 8
@@ -3435,7 +3435,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Uredi im
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finance {BLACK}{COMPANY_NUM}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_PERIOD                                             :{WHITE}{NUM}
 
 ###length 3
 
