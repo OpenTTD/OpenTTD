@@ -98,6 +98,7 @@ public:
 		ROAD_LAYOUT_BETTER_ROADS  = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
 		ROAD_LAYOUT_2x2           = ::TL_2X2_GRID,     ///< Geometric 2x2 grid algorithm
 		ROAD_LAYOUT_3x3           = ::TL_3X3_GRID,     ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_RANDOM        = ::TL_RANDOM,       ///< Random road layout
 
 		/* Custom added value, only valid for this API */
 		ROAD_LAYOUT_INVALID       = -1,                ///< The layout for invalid towns.

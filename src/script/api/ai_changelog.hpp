@@ -17,6 +17,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AITown::ROAD_LAYOUT_RANDOM
+ *
  * \b 13.0
  *
  * API additions:
