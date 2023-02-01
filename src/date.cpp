@@ -41,7 +41,12 @@
  * In the user interface, if calendar progress speed is not 100%, all elements that run on economy time are presented in real time units:
  *  - Seconds (multiples of 2), for things which were originally daily:
  *  - Minutes, for things which were originally monthly:
+ *    o Industry production per minute
+ *    o Passengers last minute
+ *    o Industry construction/close down time
+ *    o Vehicle service intervals and time since last service
  *  - Periods (12-minute production periods), for things which were originally yearly:
+ *    o Company finance window
  *
  * Players can choose to display units in real-time units (seconds/minutes/hours) or in the traditional game date units (days/months/years).
  * If calendar progress speed is anything but 100%, they are forced to use real-time units.

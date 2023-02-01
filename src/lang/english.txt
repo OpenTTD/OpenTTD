@@ -3679,6 +3679,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit way
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finances {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}{RTS Year "Economic period"}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Revenue

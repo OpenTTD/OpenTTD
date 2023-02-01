@@ -259,6 +259,7 @@ static void InitializeWindowsAndCaches()
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
 		if (_file_to_saveload.abstract_ftype == FT_SCENARIO && c->inaugurated_year != MIN_YEAR) {
 			c->inaugurated_year = _cur_year;
+			c->inaugurated_economy_year = _cur_economy_year;
 		}
 	}
 
