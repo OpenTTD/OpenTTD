@@ -32,8 +32,7 @@ enum GoalType : byte {
 	GT_STORY_PAGE,   ///< Destination is a story page
 };
 
-typedef uint32 GoalTypeID; ///< Contains either tile, industry ID, town ID or company ID (or INVALID_GOALTYPE)
-static const GoalTypeID INVALID_GOALTYPE = 0xFFFFFFFF; ///< Invalid/unknown index of GoalType
+typedef uint32 GoalTypeID; ///< Contains either tile, industry ID, town ID, company ID, or story page ID
 
 typedef uint16 GoalID; ///< ID of a goal
 struct Goal;

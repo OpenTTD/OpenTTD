@@ -28,9 +28,9 @@ public:
 	/**
 	 * The goal IDs.
 	 */
-	enum GoalID {
+	enum GoalID : uint16 {
 		/* Note: these values represent part of the in-game GoalID enum */
-		GOAL_INVALID = ::INVALID_GOALTYPE, ///< An invalid goal id.
+		GOAL_INVALID = ::INVALID_GOAL, ///< An invalid goal id.
 	};
 
 	/**
