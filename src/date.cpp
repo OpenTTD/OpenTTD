@@ -49,7 +49,8 @@
  *    o Passengers last minute
  *    o Industry construction/close down time
  *    o Vehicle service intervals and time since last service
- *  - Pentas (one-fifth hour, i.e. 12 minutes) for things which were originally yearly:
+ *  - 12-minute "Economic periods" for things which were originally yearly:
+ *    o Company finance window
  *
  * Internally most events will still be referenced as daily/monthly/yearly.
  */

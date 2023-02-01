@@ -137,7 +137,7 @@ static uint GetTotalCategoriesHeight()
  */
 static uint GetMaxCategoriesWidth()
 {
-	uint max_width = 0;
+	uint max_width = GetStringBoundingBox(STR_FINANCES_PERIOD_CAPTION).width;
 
 	/* Loop through categories to check max widths. */
 	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
@@ -174,8 +174,10 @@ static void DrawCategory(const Rect &r, int start_y, ExpensesList list)
  */
 static void DrawCategories(const Rect &r)
 {
-	/* Start with an empty space in the year row, plus the blockspace under the year. */
-	int y = r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
+	int y = r.top;
+	/* Draw description of 12-minute economic period. */
+	DrawString(r.left, r.right, y, (STR_FINANCES_PERIOD_CAPTION), TC_FROMSTRING, SA_LEFT, true);
+	y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 
 	for (uint i = 0; i < lengthof(_expenses_list_types); i++) {
 		/* Draw category title and advance y */
@@ -265,7 +267,7 @@ static void DrawYearColumn(const Rect &r, int year, const Money (&tbl)[EXPENSES_
 
 	/* Year header */
 	SetDParam(0, year);
-	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
+	DrawString(r.left, r.right, y, STR_FINANCES_PERIOD, TC_FROMSTRING, SA_RIGHT, true);
 	y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
@@ -432,10 +434,10 @@ struct CompanyFinancesWindow : Window {
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
-				int age = std::min(_cur_year - c->inaugurated_year, 2);
+				int age = std::min(_cur_economy_year - c->inaugurated_economy_year, 2);
 				int wid_offset = widget - WID_CF_EXPS_PRICE1;
 				if (wid_offset <= age) {
-					DrawYearColumn(r, _cur_year - (age - wid_offset), c->yearly_expenses[age - wid_offset]);
+					DrawYearColumn(r, _cur_economy_year - (age - wid_offset), c->yearly_expenses[age - wid_offset]);
 				}
 				break;
 			}
