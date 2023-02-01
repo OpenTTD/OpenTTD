@@ -109,8 +109,6 @@ add_files(
     currency.h
     date.cpp
     date_func.h
-    date_gui.cpp
-    date_gui.h
     date_type.h
     debug.cpp
     debug.h
