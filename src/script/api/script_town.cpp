@@ -358,10 +358,7 @@
 	int16 new_rating = Clamp(t->ratings[company] + delta, RATING_MINIMUM, RATING_MAXIMUM);
 	if (new_rating == t->ratings[company]) return false;
 
-	uint16 p2 = 0;
-	memcpy(&p2, &new_rating, sizeof(p2));
-
-	return ScriptObject::Command<CMD_TOWN_RATING>::Do(town_id, (::CompanyID)company_id, p2);
+	return ScriptObject::Command<CMD_TOWN_RATING>::Do(town_id, (::CompanyID)company_id, new_rating);
 }
 
 /* static */ int ScriptTown::GetAllowedNoise(TownID town_id)
