@@ -106,7 +106,7 @@ public:
 		void UpdateSupply(uint supply)
 		{
 			this->supply += supply;
-			this->last_update = _date;
+			this->last_update = _economy_date;
 		}
 
 		/**
@@ -195,7 +195,7 @@ public:
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.
 	 */
-	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(_date) {}
+	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(_economy_date) {}
 
 	void Init(uint size);
 	void ShiftDates(int interval);
@@ -249,7 +249,7 @@ public:
 	 */
 	inline uint Monthly(uint base) const
 	{
-		return base * 30 / (_date - this->last_compression + 1);
+		return base * 30 / (_economy_date - this->last_compression + 1);
 	}
 
 	NodeID AddNode(const Station *st);

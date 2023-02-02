@@ -212,7 +212,7 @@ public:
 	 * Check if job is supposed to be finished.
 	 * @return True if job should be finished by now, false if not.
 	 */
-	inline bool IsScheduledToBeJoined() const { return this->join_date <= _date; }
+	inline bool IsScheduledToBeJoined() const { return this->join_date <= _economy_date; }
 
 	/**
 	 * Get the date when the job should be finished.

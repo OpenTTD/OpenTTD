@@ -109,8 +109,6 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
 	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
-	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
-	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
 
 	/* If not using real-time units, we keep economy date in sync with calendar date and must change it also. */

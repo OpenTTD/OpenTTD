@@ -788,6 +788,12 @@ bool AfterLoadGame()
 		_settings_game.game_creation.ending_year = DEF_END_YEAR;
 	}
 
+	/* Settings originally in calendar time must be converted to real-time units. */
+	if (IsSavegameVersionBefore(SLV_NODAYLENGTH)) {
+		_settings_game.linkgraph.recalc_interval = _settings_game.linkgraph.recalc_interval * SECONDS_PER_DAY;
+		_settings_game.linkgraph.recalc_time = _settings_game.linkgraph.recalc_time * SECONDS_PER_DAY;
+	}
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
