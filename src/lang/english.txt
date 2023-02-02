@@ -623,7 +623,7 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Company 
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Company Value Graph
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cargo Payment Rates
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Days in transit
+STR_GRAPH_CARGO_PAYMENT_RATES_TIME_LABEL                        :{TINY_FONT}{BLACK}{TKM Days Seconds} in transit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Payment for delivering 10 units (or 10,000 litres) of cargo a distance of 20 squares
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Enable all
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disable all

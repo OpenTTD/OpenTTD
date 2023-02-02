@@ -170,6 +170,8 @@ protected:
 	static const int GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
 	static const int GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
+	static const int PAYMENT_GRAPH_X_STEP_DAYS    = 20; ///< X-axis step label for cargo payment rates "Days in transit".
+	static const int PAYMENT_GRAPH_X_STEP_SECONDS = 10; ///< X-axis step label for cargo payment rates "Seconds in transit".
 
 	static const TextColour GRAPH_AXIS_LABEL_COLOUR = TC_BLACK; ///< colour of the graph axis label.
 
@@ -883,8 +885,9 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->num_on_x_axis = 20;
 		this->num_vert_lines = 20;
 		this->draw_dates = false;
-		this->x_values_start     = 10;
-		this->x_values_increment = 10;
+		/* The x-axis is labeled in either seconds or days. A day is two seconds, so we adjust the label if needed. */
+		this->x_values_start     = (TimerGameEconomy::UsingWallclockUnits() ? PAYMENT_GRAPH_X_STEP_SECONDS : PAYMENT_GRAPH_X_STEP_DAYS);
+		this->x_values_increment = (TimerGameEconomy::UsingWallclockUnits() ? PAYMENT_GRAPH_X_STEP_SECONDS : PAYMENT_GRAPH_X_STEP_DAYS);
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_CPR_MATRIX_SCROLLBAR);
@@ -1085,7 +1088,7 @@ static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(12, 0), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_TEXT, COLOUR_BROWN, WID_CPR_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
+			NWidget(WWT_TEXT, COLOUR_BROWN, WID_CPR_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TIME_LABEL, STR_NULL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_CPR_RESIZE), SetDataTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
 		EndContainer(),
