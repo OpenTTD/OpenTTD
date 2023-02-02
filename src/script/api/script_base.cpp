@@ -13,33 +13,36 @@
 
 #include "../../safeguards.h"
 
-/* static */ uint32 ScriptBase::Rand()
+/* static */ SQInteger ScriptBase::Rand()
 {
 	return ScriptObject::GetRandomizer().Next();
 }
 
-/* static */ uint32 ScriptBase::RandItem(int unused_param)
+/* static */ SQInteger ScriptBase::RandItem(SQInteger unused_param)
 {
 	return ScriptBase::Rand();
 }
 
-/* static */ uint ScriptBase::RandRange(uint max)
+/* static */ SQInteger ScriptBase::RandRange(SQInteger max)
 {
+	max = Clamp<SQInteger>(max, 0, UINT32_MAX);
 	return ScriptObject::GetRandomizer().Next(max);
 }
 
-/* static */ uint32 ScriptBase::RandRangeItem(int unused_param, uint max)
+/* static */ SQInteger ScriptBase::RandRangeItem(SQInteger unused_param, SQInteger max)
 {
 	return ScriptBase::RandRange(max);
 }
 
-/* static */ bool ScriptBase::Chance(uint out, uint max)
+/* static */ bool ScriptBase::Chance(SQInteger out, SQInteger max)
 {
+	out = Clamp<SQInteger>(out, 0, UINT32_MAX);
+	max = Clamp<SQInteger>(max, 0, UINT32_MAX);
 	EnforcePrecondition(false, out <= max);
 	return ScriptBase::RandRange(max) < out;
 }
 
-/* static */ bool ScriptBase::ChanceItem(int unused_param, uint out, uint max)
+/* static */ bool ScriptBase::ChanceItem(SQInteger unused_param, SQInteger out, SQInteger max)
 {
 	return ScriptBase::Chance(out, max);
 }
