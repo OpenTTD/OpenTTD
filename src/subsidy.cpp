@@ -42,7 +42,7 @@ void Subsidy::AwardTo(CompanyID company)
 	assert(!this->IsAwarded());
 
 	this->awarded = company;
-	this->remaining = _settings_game.difficulty.subsidy_duration * MONTHS_IN_YEAR;
+	this->remaining = _settings_game.difficulty.subsidy_duration + 1; // We get the rest of the economic month for free, since the expiration is checked on each new month.
 
 	SetDParam(0, company);
 	NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));
@@ -52,7 +52,7 @@ void Subsidy::AwardTo(CompanyID company)
 
 	SetDParamStr(0, company_name->string);
 	AddNewsItem(
-		STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
+		STR_NEWS_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 		NT_SUBSIDIES, NF_NORMAL,
 		reftype.first, this->src, reftype.second, this->dst,
 		company_name
@@ -220,7 +220,7 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
 	s->awarded = INVALID_COMPANY;
 
 	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::NewsOffered);
-	AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
+	AddNewsItem(STR_NEWS_SUBSIDY_OFFERED, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
 	SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 	SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));

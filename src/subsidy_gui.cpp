@@ -142,9 +142,6 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		YearMonthDay ymd;
-		ConvertDateToYMD(_date, &ymd);
-
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		int pos = -this->vscroll->GetPosition();
@@ -160,8 +157,8 @@ struct SubsidyListWindow : Window {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Displays the two offered towns */
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
-					SetDParam(7, _date - ymd.day + s->remaining * 32);
-					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_FROM_TO);
+					SetDParam(7, s->remaining);
+					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_FROM_TO_REMAINING);
 				}
 				pos++;
 				num++;
@@ -184,10 +181,10 @@ struct SubsidyListWindow : Window {
 				if (IsInsideMM(pos, 0, cap)) {
 					SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::Gui);
 					SetDParam(7, s->awarded);
-					SetDParam(8, _date - ymd.day + s->remaining * 32);
+					SetDParam(8, s->remaining);
 
 					/* Displays the two connected stations */
-					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_FROM_TO);
+					DrawString(tr.left, tr.right, tr.top + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_FROM_TO_REMAINING);
 				}
 				pos++;
 				num++;

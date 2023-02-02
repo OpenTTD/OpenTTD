@@ -84,7 +84,7 @@ struct DifficultySettings {
 	byte   competitor_speed;                 ///< the speed at which the AI builds
 	byte   vehicle_breakdowns;               ///< likelihood of vehicles breaking down
 	byte   subsidy_multiplier;               ///< payment multiplier for subsidized deliveries
-	uint16 subsidy_duration;                 ///< duration of subsidies
+	uint16 subsidy_duration;                 ///< duration of subsidies in economic months (displayed as minutes)
 	byte   construction_cost;                ///< how expensive is building
 	byte   terrain_type;                     ///< the mountainousness of the landscape
 	byte   quantity_sea_lakes;               ///< the amount of seas/lakes

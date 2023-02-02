@@ -794,6 +794,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_NOCALENDAR)) {
 		_settings_game.linkgraph.recalc_interval = _settings_game.linkgraph.recalc_interval * SECONDS_PER_DAY;
 		_settings_game.linkgraph.recalc_time = _settings_game.linkgraph.recalc_time * SECONDS_PER_DAY;
+		_settings_game.difficulty.subsidy_duration = _settings_game.difficulty.subsidy_duration * 12;
 
 		if (!_settings_client.company.vehicle.servint_ispercent) {
 			UpdateAllServiceInterval(0);
