@@ -375,7 +375,7 @@ struct ScriptSettingsWindow : public Window {
 			if (StrEmpty(config_item.description)) {
 				if (this->slot != OWNER_DEITY && !strcmp(config_item.name, "start_date")) {
 					/* Build-in translation */
-					str = STR_AI_SETTINGS_START_DELAY;
+					str = STR_AI_SETTINGS_START_DELAY_SECONDS;
 					colour = TC_LIGHT_BLUE;
 				} else {
 					str = STR_JUST_STRING;

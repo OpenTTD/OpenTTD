@@ -722,7 +722,7 @@ void OnTick_Companies()
 
 	if (_next_competitor_start == 0) {
 		/* AI::GetStartNextTime() can return 0. */
-		_next_competitor_start = std::max(1, AI::GetStartNextTime() * DAY_TICKS);
+		_next_competitor_start = std::max(1, AI::GetStartNextTime() * DAY_TICKS / SECONDS_PER_DAY);
 	}
 
 	if (_game_mode != GM_MENU && AI::CanStartNew() && --_next_competitor_start == 0) {

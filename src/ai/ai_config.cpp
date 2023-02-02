@@ -19,7 +19,7 @@
 /** Configuration for AI start date, every AI has this setting. */
 ScriptConfigItem _start_date_config = {
 	"start_date",
-	"", // STR_AI_SETTINGS_START_DELAY
+	"", // STR_AI_SETTINGS_START_DELAY_SECONDS
 	AI::START_NEXT_MIN,
 	AI::START_NEXT_MAX,
 	AI::START_NEXT_MEDIUM,
