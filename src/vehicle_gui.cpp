@@ -96,8 +96,8 @@ const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names[] = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_AGE,
-	STR_SORT_BY_PROFIT_THIS_YEAR,
-	STR_SORT_BY_PROFIT_LAST_YEAR,
+	STR_SORT_BY_PROFIT_THIS_PERIOD,
+	STR_SORT_BY_PROFIT_LAST_PERIOD,
 	STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_MAX_SPEED,
@@ -119,10 +119,10 @@ BaseVehicleListWindow::VehicleGroupSortFunction * const BaseVehicleListWindow::v
 
 const StringID BaseVehicleListWindow::vehicle_group_shared_orders_sorter_names[] = {
 	STR_SORT_BY_NUM_VEHICLES,
-	STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR,
-	STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR,
-	STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR,
-	STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR,
+	STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD,
+	STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD,
+	STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD,
+	STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD,
 	INVALID_STRING_ID
 };
 
@@ -1667,7 +1667,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 		SetDParam(0, vehgroup.GetDisplayProfitThisYear());
 		SetDParam(1, vehgroup.GetDisplayProfitLastYear());
-		DrawString(tr.left, tr.right, ir.bottom - FONT_HEIGHT_SMALL - WidgetDimensions::scaled.framerect.bottom, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		DrawString(tr.left, tr.right, ir.bottom - FONT_HEIGHT_SMALL - WidgetDimensions::scaled.framerect.bottom, STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD);
 
 		DrawVehicleProfitButton(vehgroup.GetOldestVehicleAge(), vehgroup.GetDisplayProfitLastYear(), vehgroup.NumVehicles(), vehicle_button_x, ir.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal);
 
@@ -2375,7 +2375,7 @@ struct VehicleDetailsWindow : Window {
 					STR_VEHICLE_INFO_MAX_SPEED,
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED,
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE,
-					STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR,
+					STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD,
 					STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS
 				};
 				for (uint i = 0; i < lengthof(info_strings); i++) {
@@ -2526,9 +2526,9 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(1, v->GetDisplayProfitLastYear());
 				if (v->IsGroundVehicle()) {
 					SetDParam(2, v->GetDisplayMinPowerToWeight());
-					DrawString(tr, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE);
+					DrawString(tr, STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE);
 				} else {
-					DrawString(tr, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
+					DrawString(tr, STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD);
 				}
 				tr.top += FONT_HEIGHT_NORMAL;
 

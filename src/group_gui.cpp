@@ -584,12 +584,12 @@ public:
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
-				DrawString(tr, STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
+				DrawString(tr, STR_GROUP_PROFIT_THIS_PERIOD, TC_BLACK);
 				SetDParam(0, this_year);
 				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
 				tr.top += FONT_HEIGHT_NORMAL;
-				DrawString(tr, STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
+				DrawString(tr, STR_GROUP_PROFIT_LAST_PERIOD, TC_BLACK);
 				SetDParam(0, last_year);
 				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
