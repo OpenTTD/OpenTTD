@@ -790,9 +790,14 @@ bool AfterLoadGame()
 		_settings_game.game_creation.ending_year = DEF_END_YEAR;
 	}
 
-	/* If service intervals are measured in days, convert to minutes. */
-	if (IsSavegameVersionBefore(SLV_NOCALENDAR) && !_settings_client.company.vehicle.servint_ispercent) {
-		UpdateAllServiceInterval(0);
+	/* Settings originally in calendar time must be converted to real-time units. */
+	if (IsSavegameVersionBefore(SLV_NOCALENDAR)) {
+		_settings_game.linkgraph.recalc_interval = _settings_game.linkgraph.recalc_interval * SECONDS_PER_DAY;
+		_settings_game.linkgraph.recalc_time = _settings_game.linkgraph.recalc_time * SECONDS_PER_DAY;
+
+		if (!_settings_client.company.vehicle.servint_ispercent) {
+			UpdateAllServiceInterval(0);
+		}
 	}
 
 	/* Load the sprites */

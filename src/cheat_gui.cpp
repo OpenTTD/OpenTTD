@@ -109,8 +109,6 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	if (p1 == _cur_year) return _cur_year;
 
 	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
-	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
-	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
 	EnginesCalendarMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);

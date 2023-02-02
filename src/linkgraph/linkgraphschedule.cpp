@@ -163,10 +163,10 @@ LinkGraphSchedule::~LinkGraphSchedule()
 }
 
 /**
- * Pause the game if in 2 _date_fract ticks, we would do a join with the next
+ * Pause the game if in 2 _economy_date_fract ticks, we would do a join with the next
  * link graph job, but it is still running.
- * The check is done 2 _date_fract ticks early instead of 1, as in multiplayer
- * calls to DoCommandP are executed after a delay of 1 _date_fract tick.
+ * The check is done 2 _economy_date_fract ticks early instead of 1, as in multiplayer
+ * calls to DoCommandP are executed after a delay of 1 _economy_date_fract tick.
  * If we previously paused, unpause if the job is now ready to be joined with.
  */
 void StateGameLoop_LinkGraphPauseControl()
@@ -178,9 +178,9 @@ void StateGameLoop_LinkGraphPauseControl()
 		}
 	} else if (_pause_mode == PM_UNPAUSED &&
 			_economy_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
-			_date % _settings_game.linkgraph.recalc_interval == _settings_game.linkgraph.recalc_interval / 2 &&
+			_economy_date % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2 &&
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
-		/* Perform check two _date_fract ticks before we would join, to make
+		/* Perform check two _economy_date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
 		Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, true);
 	}
@@ -205,10 +205,10 @@ void AfterLoad_LinkGraphPauseControl()
 void OnTick_LinkGraph()
 {
 	if (_economy_date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
-	Date offset = _date % _settings_game.linkgraph.recalc_interval;
+	Date offset = _economy_date % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY);
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
-	} else if (offset == _settings_game.linkgraph.recalc_interval / 2) {
+	} else if (offset == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2) {
 		if (!_networking || _network_server) {
 			PerformanceMeasurer::SetInactive(PFE_GL_LINKGRAPH);
 			LinkGraphSchedule::instance.JoinNext();

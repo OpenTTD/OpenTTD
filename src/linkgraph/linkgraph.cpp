@@ -66,7 +66,7 @@ void LinkGraph::ShiftDates(int interval)
 
 void LinkGraph::Compress()
 {
-	this->last_compression = (_date + this->last_compression) / 2;
+	this->last_compression = (_economy_date + this->last_compression) / 2;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		this->nodes[node1].supply /= 2;
 		for (NodeID node2 = 0; node2 < this->Size(); ++node2) {
@@ -91,8 +91,8 @@ void LinkGraph::Compress()
  */
 void LinkGraph::Merge(LinkGraph *other)
 {
-	Date age = _date - this->last_compression + 1;
-	Date other_age = _date - other->last_compression + 1;
+	Date age = _economy_date - this->last_compression + 1;
+	Date other_age = _economy_date - other->last_compression + 1;
 	NodeID first = this->Size();
 	for (NodeID node1 = 0; node1 < other->Size(); ++node1) {
 		Station *st = Station::Get(other->nodes[node1].station);
@@ -207,8 +207,8 @@ void LinkGraph::Node::AddEdge(NodeID to, uint capacity, uint usage, uint32 trave
 	edge.travel_time_sum = static_cast<uint64>(travel_time) * capacity;
 	edge.next_edge = first.next_edge;
 	first.next_edge = to;
-	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = _date;
-	if (mode & EUM_RESTRICTED) edge.last_restricted_update = _date;
+	if (mode & EUM_UNRESTRICTED)  edge.last_unrestricted_update = _economy_date;
+	if (mode & EUM_RESTRICTED) edge.last_restricted_update = _economy_date;
 }
 
 /**
@@ -293,8 +293,8 @@ void LinkGraph::Edge::Update(uint capacity, uint usage, uint32 travel_time, Edge
 		}
 		this->edge.usage = std::max(this->edge.usage, usage);
 	}
-	if (mode & EUM_UNRESTRICTED) this->edge.last_unrestricted_update = _date;
-	if (mode & EUM_RESTRICTED) this->edge.last_restricted_update = _date;
+	if (mode & EUM_UNRESTRICTED) this->edge.last_unrestricted_update = _economy_date;
+	if (mode & EUM_RESTRICTED) this->edge.last_restricted_update = _economy_date;
 }
 
 /**

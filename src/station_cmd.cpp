@@ -3619,9 +3619,9 @@ void DeleteStaleLinks(Station *from)
 			Station *to = Station::Get((*lg)[it->first].Station());
 			assert(to->goods[c].node == it->first);
 			++it; // Do that before removing the edge. Anything else may crash.
-			assert(_date >= edge.LastUpdate());
+			assert(_economy_date >= edge.LastUpdate());
 			uint timeout = LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 3);
-			if ((uint)(_date - edge.LastUpdate()) > timeout) {
+			if ((uint)(_economy_date - edge.LastUpdate()) > timeout) {
 				bool updated = false;
 
 				if (auto_distributed) {
@@ -3649,11 +3649,11 @@ void DeleteStaleLinks(Station *from)
 					while (iter != vehicles.end()) {
 						Vehicle *v = *iter;
 						/* Do not refresh links of vehicles that have been stopped in depot for a long time. */
-						if (!v->IsStoppedInDepot() || static_cast<uint>(_date - v->date_of_last_service) <=
+						if (!v->IsStoppedInDepot() || static_cast<uint>(_economy_date - v->date_of_last_service) <=
 								LinkGraph::STALE_LINK_DEPOT_TIMEOUT) {
 							LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
 						}
-						if (edge.LastUpdate() == _date) {
+						if (edge.LastUpdate() == _economy_date) {
 							updated = true;
 							break;
 						}
@@ -3676,16 +3676,16 @@ void DeleteStaleLinks(Station *from)
 					ge.flows.DeleteFlows(to->index);
 					RerouteCargo(from, c, to->index, from->index);
 				}
-			} else if (edge.LastUnrestrictedUpdate() != INVALID_DATE && (uint)(_date - edge.LastUnrestrictedUpdate()) > timeout) {
+			} else if (edge.LastUnrestrictedUpdate() != INVALID_DATE && (uint)(_economy_date - edge.LastUnrestrictedUpdate()) > timeout) {
 				edge.Restrict();
 				ge.flows.RestrictFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
-			} else if (edge.LastRestrictedUpdate() != INVALID_DATE && (uint)(_date - edge.LastRestrictedUpdate()) > timeout) {
+			} else if (edge.LastRestrictedUpdate() != INVALID_DATE && (uint)(_economy_date - edge.LastRestrictedUpdate()) > timeout) {
 				edge.Release();
 			}
 		}
-		assert(_date >= lg->LastCompression());
-		if ((uint)(_date - lg->LastCompression()) > LinkGraph::COMPRESSION_INTERVAL) {
+		assert(_economy_date >= lg->LastCompression());
+		if ((uint)(_economy_date - lg->LastCompression()) > LinkGraph::COMPRESSION_INTERVAL) {
 			lg->Compress();
 		}
 	}
