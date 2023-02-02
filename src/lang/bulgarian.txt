@@ -1128,6 +1128,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимален начален заем: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимално количество заем за компания (без отчитане на инфлацията)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Лихвен процент: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Лихвен процент на заемите; също така контролира инфлацията ако е разрешена

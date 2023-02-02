@@ -1128,6 +1128,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Benthyciad agoriadol uchafsymol: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Y swm uchaf y gall cwmni fenthyca (heb ustyried chwyddiant)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Cyfradd chwyddiant: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Cyfradd chwyddiant y benthyciad; hefyd chwyddiant yr economi os y galluogir

@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rjochts
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimale startersliening: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimale bedrach hokker troch in bedriuw lient wurde kin (sûnder acht te slaan op de ynflaasje)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rinte: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rinte op liening; behearsket ek ynflaasje at dizze oan stiet

@@ -1329,6 +1329,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ris an taobh de
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Iasad tòiseachaidh as motha: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :An t-airgead as motha as urrainn dha chompanaidh fhaighinn mar iasad (a' fàgail an atmhorachd dhan darna taobh)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Luach-rèidh: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Luach-rèidh iasaid; stiùiridh seo an atmhorachd cuideachd ma tha e an comas

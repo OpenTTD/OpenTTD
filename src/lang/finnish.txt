@@ -1206,6 +1206,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Suurin mahdollinen laina alussa: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurin mahdollinen yhtiön ottama laina (ottamatta huomioon inflaatiota)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Korko: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lainan korko; ohjaa myös inflaatiota mikäli käytössä

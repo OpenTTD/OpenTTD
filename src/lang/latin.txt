@@ -1321,6 +1321,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dextro
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Creditum maximum in initio: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Copia crediti maxima (sine inflatione)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Proportio faenoris: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Proportio faenoris creditorum; etiam inflationem afficit, si inflatio adest

@@ -1456,6 +1456,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :правару�
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максымальная сума пазыкі: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максымальная сума пазыкі для кампаніі (без уліку інфляцыі)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Адсоткавая стаўка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Адсоткавая стаўка па пазыках; таксама кантралюе інфляцыю, калі тая ўключана

@@ -1188,6 +1188,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimalt innledende lån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Det maksimale beløp et selskap kan låne (uten å ta inflasjon i betraktning)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lånerente: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerer også inflasjonen, hvis aktivert

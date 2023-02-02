@@ -1158,6 +1158,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :סכום הלוואה ראשוני: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :סכום מירבי שחברה יכולה ללוות (מבלי לקחת בחשבון אינפלציה)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :ריבית: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :ריבית עבור הלוואות; שולטת גם באינפלציה אם זו מאופשרות
