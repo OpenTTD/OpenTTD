@@ -2382,7 +2382,7 @@ struct VehicleDetailsWindow : Window {
 					dim = maxdim(dim, GetStringBoundingBox(info_strings[i]));
 				}
 				SetDParam(0, STR_VEHICLE_INFO_AGE);
-				dim = maxdim(dim, GetStringBoundingBox(STR_VEHICLE_INFO_AGE_RUNNING_COST_YR));
+				dim = maxdim(dim, GetStringBoundingBox(STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD));
 				size->width = dim.width + padding.width;
 				break;
 			}
@@ -2486,7 +2486,7 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
 				SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
 				SetDParam(3, v->GetDisplayRunningCost());
-				DrawString(tr, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
+				DrawString(tr, STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD);
 				tr.top += FONT_HEIGHT_NORMAL;
 
 				/* Draw max speed */

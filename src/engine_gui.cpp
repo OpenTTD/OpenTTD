@@ -184,7 +184,7 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 	} else {
 		SetDParam(5, CT_INVALID);
 	}
-	return (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(e->u.rail.railtype)->acceleration_type != 2) ? STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE : STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER;
+	return (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(e->u.rail.railtype)->acceleration_type != 2) ? STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE_RUNCOST : STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_RUNCOST;
 }
 
 static StringID GetAircraftEngineInfoString(const Engine *e)
@@ -206,10 +206,10 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 		SetDParam(i++, CT_MAIL);
 		SetDParam(i++, mail_capacity);
 		SetDParam(i++, e->GetRunningCost());
-		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST;
+		return range > 0 ? STR_ENGINE_PREVIEW_COST_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_SPEED_TYPE_CAP_CAP_RUNCOST;
 	} else {
 		SetDParam(i++, e->GetRunningCost());
-		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST;
+		return range > 0 ? STR_ENGINE_PREVIEW_COST_SPEED_TYPE_RANGE_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_SPEED_TYPE_CAP_RUNCOST;
 	}
 }
 
@@ -226,7 +226,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 			SetDParam(2, CT_INVALID);
 		}
 		SetDParam(4, e->GetRunningCost());
-		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
+		return STR_ENGINE_PREVIEW_COST_SPEED_CAP_RUNCOST;
 	} else {
 		SetDParam(0, e->GetCost());
 		SetDParam(2, e->GetDisplayMaxSpeed());
@@ -243,7 +243,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 		} else {
 			SetDParam(5, CT_INVALID);
 		}
-		return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE;
+		return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE_RUNCOST;
 	}
 }
 
@@ -254,7 +254,7 @@ static StringID GetShipEngineInfoString(const Engine *e)
 	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
-	return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
+	return STR_ENGINE_PREVIEW_COST_SPEED_CAP_RUNCOST;
 }
 
 
