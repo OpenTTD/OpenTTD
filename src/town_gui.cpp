@@ -450,8 +450,8 @@ public:
 		}
 
 		if (HasBit(this->town->flags, TOWN_IS_GROWING)) {
-			SetDParam(0, RoundDivSU(this->town->growth_rate + 1, DAY_TICKS));
-			DrawString(tr, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED);
+			SetDParam(0, RoundDivSU(this->town->growth_rate + 1, DAY_TICKS / SECONDS_PER_DAY));
+			DrawString(tr, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY_SECONDS : STR_TOWN_VIEW_TOWN_GROWS_EVERY_SECONDS_FUNDED);
 			tr.top += FONT_HEIGHT_NORMAL;
 		} else {
 			DrawString(tr, STR_TOWN_VIEW_TOWN_GROW_STOPPED);
