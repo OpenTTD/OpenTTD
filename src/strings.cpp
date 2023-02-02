@@ -706,7 +706,7 @@ static const Units _units_velocity[] = {
 	{ {    1,  0}, STR_UNITS_VELOCITY_IMPERIAL,     0 },
 	{ {  103,  6}, STR_UNITS_VELOCITY_METRIC,       0 },
 	{ { 1831, 12}, STR_UNITS_VELOCITY_SI,           0 },
-	{ {37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
+	{ {18944, 16}, STR_UNITS_VELOCITY_GAME_UNITS,   1 },
 };
 
 /** Unit conversions for power. */
