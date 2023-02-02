@@ -1144,7 +1144,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 				uint score_info_width = 0;
 				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
-					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
+					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES + i).width);
 				}
 				SetDParamMaxValue(0, 1000);
 				score_info_width += GetStringBoundingBox(STR_BLACK_COMMA).width + WidgetDimensions::scaled.hsep_wide;
@@ -1229,7 +1229,7 @@ struct PerformanceRatingDetailWindow : Window {
 		uint bar_top  = CenterBounds(r.top, r.bottom, this->bar_height);
 		uint text_top = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 
-		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
+		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES + score_type);
 
 		/* Draw the score */
 		SetDParam(0, score);
@@ -1338,9 +1338,9 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 {
 	const StringID performance_tips[] = {
-		STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_PROFITABLE_VEHICLES_TOOLTIP,
 		STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP,
-		STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_VEHICLE_MIN_PROFIT_TOOLTIP,
 		STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP,
 		STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP,
 		STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP,
