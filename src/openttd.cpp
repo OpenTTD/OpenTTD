@@ -855,7 +855,7 @@ static void OnStartScenario()
 
 	/* Make sure all industries were built "this year", to avoid too early closures. (#9918) */
 	for (Industry *i : Industry::Iterate()) {
-		i->last_prod_year = _cur_year;
+		i->last_prod_year = _cur_economy_year;
 	}
 }
 
