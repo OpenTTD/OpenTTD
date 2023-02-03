@@ -1437,8 +1437,8 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate())   st->build_date      += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Engine *e : Engine::Iterate())      e->intro_date       += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Company *c : Company::Iterate()) c->inaugurated_year += CalendarTime::ORIGINAL_BASE_YEAR;
-		for (Industry *i : Industry::Iterate())  i->last_prod_year   += CalendarTime::ORIGINAL_BASE_YEAR;
+		for (Company *c : Company::Iterate()) c->inaugurated_year += EconomyTime::ORIGINAL_BASE_YEAR;
+		for (Industry *i : Industry::Iterate())  i->last_prod_year   += EconomyTime::ORIGINAL_BASE_YEAR;
 
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->date_of_last_service += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;

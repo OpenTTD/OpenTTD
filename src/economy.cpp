@@ -1081,7 +1081,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 
 		uint amount = std::min(num_pieces, 0xFFFFu - it->waiting);
 		it->waiting += amount;
-		it->last_accepted = TimerGameCalendar::date;
+		it->last_accepted = TimerGameEconomy::date;
 		num_pieces -= amount;
 		accepted += amount;
 
