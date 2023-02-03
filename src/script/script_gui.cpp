@@ -25,6 +25,7 @@
 #include "script_gui.h"
 #include "script_log.hpp"
 #include "script_scanner.hpp"
+#include "script_config.hpp"
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"
 #include "../ai/ai_info.hpp"
@@ -497,7 +498,7 @@ struct ScriptSettingsWindow : public Window {
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, old_val);
-					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, INT32_DIGITS_WITH_SIGN_AND_TERMINATION, this, CS_NUMERAL_SIGNED, QSF_NONE);
 				}
 				this->SetDirty();
 				break;

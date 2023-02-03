@@ -21,6 +21,7 @@
 #include "game_config.hpp"
 #include "game_info.hpp"
 #include "../script/script_gui.h"
+#include "../script_config.hpp"
 #include "../table/strings.h"
 
 #include "../safeguards.h"
@@ -340,7 +341,7 @@ struct GSConfigWindow : public Window {
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, old_val);
-					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, INT32_DIGITS_WITH_SIGN_AND_TERMINATION, this, CS_NUMERAL_SIGNED, QSF_NONE);
 				}
 				this->SetDirty();
 				break;
