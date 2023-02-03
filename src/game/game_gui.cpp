@@ -95,7 +95,7 @@ static WindowDesc _gs_config_desc(
  * Window to configure which GSs will start.
  */
 struct GSConfigWindow : public Window {
-	ScriptConfig* gs_config; ///< The configuration we're modifying.
+	ScriptConfig *gs_config; ///< The configuration we're modifying.
 	int line_height;         ///< Height of a single GS-name line.
 	int clicked_button;      ///< The button we clicked.
 	bool clicked_increase;   ///< Whether we clicked the increase or decrease button.
@@ -103,8 +103,8 @@ struct GSConfigWindow : public Window {
 	bool closing_dropdown;   ///< True, if the dropdown list is currently closing.
 	GUITimer timeout;        ///< Timeout for unclicking the button.
 	int clicked_row;         ///< The clicked row of settings.
-	Scrollbar* vscroll;      ///< Cache of the vertical scrollbar.
-	typedef std::vector<const ScriptConfigItem*> VisibleSettingsList; ///< typdef for a vector of script settings
+	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
+	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
 	VisibleSettingsList visible_settings; ///< List of visible GS settings
 
 	GSConfigWindow() : Window(&_gs_config_desc),
@@ -138,7 +138,7 @@ struct GSConfigWindow : public Window {
 	{
 		visible_settings.clear();
 
-		for (const auto& item : *this->gs_config->GetConfigList()) {
+		for (const auto &item : *this->gs_config->GetConfigList()) {
 			bool no_hide = (item.flags & SCRIPTCONFIG_DEVELOPER) == 0;
 			if (no_hide || _settings_client.gui.ai_developer_tools) {
 				visible_settings.push_back(&item);
@@ -148,7 +148,7 @@ struct GSConfigWindow : public Window {
 		this->vscroll->SetCount((int)this->visible_settings.size());
 	}
 
-	void UpdateWidgetSize(int widget, Dimension* size, const Dimension& padding, Dimension* fill, Dimension* resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_GSC_SETTINGS:
@@ -174,7 +174,7 @@ struct GSConfigWindow : public Window {
 		return _game_mode != GM_NORMAL || Game::GetInstance() != nullptr;
 	}
 
-	void DrawWidget(const Rect& r, int widget) const override
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
 			case WID_GSC_GSLIST: {
@@ -190,7 +190,7 @@ struct GSConfigWindow : public Window {
 				break;
 			}
 			case WID_GSC_SETTINGS: {
-				ScriptConfig* config = this->gs_config;
+				ScriptConfig *config = this->gs_config;
 				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 				int i = 0;
 				for (; !this->vscroll->IsVisible(i); i++) it++;
@@ -204,7 +204,7 @@ struct GSConfigWindow : public Window {
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 				int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 				for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
-					const ScriptConfigItem& config_item = **it;
+					const ScriptConfigItem &config_item = **it;
 					int current_value = config->GetSetting((config_item).name);
 					bool editable = this->IsEditableItem(config_item);
 
@@ -212,14 +212,8 @@ struct GSConfigWindow : public Window {
 					TextColour colour;
 					uint idx = 0;
 					if (StrEmpty(config_item.description)) {
-						if (!strcmp(config_item.name, "start_date")) {
-							/* Build-in translation */
-							str = STR_AI_SETTINGS_START_DELAY;
-							colour = TC_LIGHT_BLUE;
-						} else {
-							str = STR_JUST_STRING;
-							colour = TC_ORANGE;
-						}
+						str = STR_JUST_STRING;
+						colour = TC_ORANGE;
 					} else {
 						str = STR_AI_SETTINGS_SETTING;
 						colour = TC_LIGHT_BLUE;
@@ -382,7 +376,7 @@ struct GSConfigWindow : public Window {
 		}
 	}
 
-	void OnQueryTextFinished(char* str) override
+	void OnQueryTextFinished(char *str) override
 	{
 		if (StrEmpty(str)) return;
 		int32 value = atoi(str);
