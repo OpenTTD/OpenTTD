@@ -1069,7 +1069,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 
 		uint amount = std::min(num_pieces, 0xFFFFu - ind->incoming_cargo_waiting[cargo_index]);
 		ind->incoming_cargo_waiting[cargo_index] += amount;
-		ind->last_cargo_accepted_at[cargo_index] = _date;
+		ind->last_cargo_accepted_at[cargo_index] = _economy_date;
 		num_pieces -= amount;
 		accepted += amount;
 
