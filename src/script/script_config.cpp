@@ -215,7 +215,7 @@ std::string ScriptConfig::SettingsToString() const
 	char *s = string;
 	*s = '\0';
 	for (const auto &item : this->settings) {
-		char no[10];
+		char no[INT32_DIGITS_WITH_SIGN_AND_TERMINATION];
 		seprintf(no, lastof(no), "%d", item.second);
 
 		/* Check if the string would fit in the destination */
