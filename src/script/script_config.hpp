@@ -18,6 +18,9 @@
 #include "../textfile_gui.h"
 #include "script_instance.hpp"
 
+/** Maximum of 10 digits for MIN / MAX_INT32, 1 for the sign and 1 for '\0'. */
+static const int INT32_DIGITS_WITH_SIGN_AND_TERMINATION = 10 + 1 + 1;
+
 /** Bitmask of flags for Script settings. */
 enum ScriptConfigFlags {
 	SCRIPTCONFIG_NONE      = 0x0, ///< No flags set.
