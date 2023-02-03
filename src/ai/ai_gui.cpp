@@ -376,7 +376,7 @@ struct AISettingsWindow : public Window {
 			TextColour colour;
 			uint idx = 0;
 			if (StrEmpty(config_item.description)) {
-				if (!strcmp(config_item.name, "start_date")) {
+				if (this->slot != OWNER_DEITY && !strcmp(config_item.name, "start_date")) {
 					/* Build-in translation */
 					str = STR_AI_SETTINGS_START_DELAY;
 					colour = TC_LIGHT_BLUE;
