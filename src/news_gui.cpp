@@ -690,7 +690,7 @@ static void MoveToNextTickerItem()
 		const NewsType type = ni->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameCalendar::date - _news_type_data[type].age > ni->date) continue;
+		if (TimerGameEconomy::date - _news_type_data[type].age > ni->economy_date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
@@ -727,7 +727,7 @@ static void MoveToNextNewsItem()
 		const NewsType type = ni->type;
 
 		/* check the date, don't show too old items */
-		if (TimerGameCalendar::date - _news_type_data[type].age > ni->date) continue;
+		if (TimerGameEconomy::date - _news_type_data[type].age > ni->economy_date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
@@ -804,7 +804,7 @@ static void DeleteNewsItem(NewsItem *ni)
  * @see NewsSubtype
  */
 NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data) :
-	string_id(string_id), date(TimerGameCalendar::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
+	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
@@ -987,7 +987,7 @@ static void RemoveOldNewsItems()
 	NewsItem *next;
 	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != nullptr; cur = next) {
 		next = cur->next;
-		if (TimerGameCalendar::date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
+		if (TimerGameEconomy::date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->economy_date) DeleteNewsItem(cur);
 	}
 }
 
@@ -1011,11 +1011,11 @@ void NewsLoop()
 	/* no news item yet */
 	if (_total_news == 0) return;
 
-	static byte _last_clean_month = 0;
+	static TimerGameEconomy::Month _last_clean_month = 0;
 
-	if (_last_clean_month != TimerGameCalendar::month) {
+	if (_last_clean_month != TimerGameEconomy::month) {
 		RemoveOldNewsItems();
-		_last_clean_month = TimerGameCalendar::month;
+		_last_clean_month = TimerGameEconomy::month;
 	}
 
 	if (ReadyForNextTickerItem()) MoveToNextTickerItem();

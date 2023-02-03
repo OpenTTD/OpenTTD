@@ -12,6 +12,7 @@
 
 #include "core/enum_type.hpp"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "strings_type.h"
 #include "sound_type.h"
 
@@ -127,7 +128,8 @@ struct NewsItem {
 	NewsItem *prev;               ///< Previous news item
 	NewsItem *next;               ///< Next news item
 	StringID string_id;           ///< Message text
-	TimerGameCalendar::Date date; ///< Date of the news
+	TimerGameCalendar::Date date; ///< Calendar date to show for the news
+	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
 	NewsType type;                ///< Type of the news
 	NewsFlag flags;               ///< NewsFlags bits @see NewsFlag
 
