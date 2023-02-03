@@ -691,7 +691,7 @@ static void CompaniesGenStatistics()
 	cur_company.Restore();
 
 	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
-	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
+	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_economy_month)) return;
 
 	for (Company *c : Company::Iterate()) {
 		/* Drop the oldest history off the end */
@@ -844,8 +844,8 @@ static void CompaniesPayInterest()
 		if (c->money < 0) {
 			yearly_fee += -c->money *_economy.interest_rate / 100;
 		}
-		Money up_to_previous_month = yearly_fee * _cur_month / 12;
-		Money up_to_this_month = yearly_fee * (_cur_month + 1) / 12;
+		Money up_to_previous_month = yearly_fee * _cur_economy_month / 12;
+		Money up_to_this_month = yearly_fee * (_cur_economy_month + 1) / 12;
 
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INTEREST, up_to_this_month - up_to_previous_month));
 
