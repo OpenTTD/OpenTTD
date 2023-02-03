@@ -1816,8 +1816,11 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Frozen
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Allow buying shares from other companies: {STRING2}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :When enabled, allow buying and selling of company shares. Shares will only be available for companies reaching a certain age
 
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimum company age to trade shares: {STRING2}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Set the minimum age of a company for others to be able to buy and sell shares from them.
+STR_CONFIG_SETTING_MIN_AGE_FOR_SHARES                           :Minimum company age to trade shares: {STRING2}
+STR_CONFIG_SETTING_MIN_AGE_FOR_SHARES_HELPTEXT                  :Set the minimum age of a company for others to be able to buy and sell shares from them, in 12-minute economic periods
+STR_CONFIG_SETTING_MIN_AGE_FOR_SHARES_VALUE                     :{NUM} economic period{P 0 "" s}
+###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_AGE_FOR_SHARES_NO_MIN                    :No minimum
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING2}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage of income given to the intermediate legs in feeder systems, giving more control over the income
