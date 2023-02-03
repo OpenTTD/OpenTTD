@@ -358,9 +358,10 @@ struct DepotWindow : Window {
 		} else {
 			Rect flag = r.WithWidth(this->flag_size.width, rtl).WithHeight(this->flag_size.height).Translate(0, diff_y);
 			DrawSpriteIgnorePadding((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, flag, false, SA_CENTER);
+			int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
 
 			SetDParam(0, v->unitnumber);
-			DrawString(text, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
+			DrawString(text, (uint16)(v->max_age - days_in_year) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
 		}
 	}
 

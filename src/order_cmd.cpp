@@ -1944,16 +1944,17 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 	bool skip_order = false;
 	OrderConditionComparator occ = order->GetConditionComparator();
 	uint16 value = order->GetConditionValue();
+	int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
 
 	switch (order->GetConditionVariable()) {
 		case OCV_LOAD_PERCENTAGE:    skip_order = OrderConditionCompare(occ, CalcPercentVehicleFilled(v, nullptr), value); break;
 		case OCV_RELIABILITY:        skip_order = OrderConditionCompare(occ, ToPercent16(v->reliability),       value); break;
 		case OCV_MAX_RELIABILITY:    skip_order = OrderConditionCompare(occ, ToPercent16(v->GetEngine()->reliability),   value); break;
 		case OCV_MAX_SPEED:          skip_order = OrderConditionCompare(occ, v->GetDisplayMaxSpeed() * 10 / 16, value); break;
-		case OCV_AGE:                skip_order = OrderConditionCompare(occ, v->age / DAYS_IN_LEAP_YEAR,        value); break;
+		case OCV_AGE:                skip_order = OrderConditionCompare(occ, v->age / days_in_year,             value); break;
 		case OCV_REQUIRES_SERVICE:   skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
 		case OCV_UNCONDITIONALLY:    skip_order = true; break;
-		case OCV_REMAINING_LIFETIME: skip_order = OrderConditionCompare(occ, std::max(v->max_age - v->age + DAYS_IN_LEAP_YEAR - 1, 0) / DAYS_IN_LEAP_YEAR, value); break;
+		case OCV_REMAINING_LIFETIME: skip_order = OrderConditionCompare(occ, std::max(v->max_age - v->age + days_in_year - 1, 0) / days_in_year, value); break;
 		default: NOT_REACHED();
 	}
 

@@ -436,8 +436,9 @@ uint Engine::GetDisplayMaxTractiveEffort() const
  */
 Date Engine::GetLifeLengthInDays() const
 {
-	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
-	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * DAYS_IN_LEAP_YEAR;
+	/* If using calendar time, assume leap years; this gives the player a bit more than the given amount of years, but never less. */
+	int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
+	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * days_in_year;
 }
 
 /**

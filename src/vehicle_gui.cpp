@@ -1726,7 +1726,8 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 				if (v->IsChainInDepot()) {
 					str = STR_BLUE_COMMA;
 				} else {
-					str = (v->age > v->max_age - DAYS_IN_LEAP_YEAR) ? STR_RED_COMMA : STR_BLACK_COMMA;
+					int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
+					str = (v->age > v->max_age - days_in_year) ? STR_RED_COMMA : STR_BLACK_COMMA;
 				}
 
 				SetDParam(0, v->unitnumber);
@@ -2490,9 +2491,11 @@ struct VehicleDetailsWindow : Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				/* Draw running cost */
-				SetDParam(1, v->age / DAYS_IN_LEAP_YEAR);
-				SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
-				SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
+				int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
+
+				SetDParam(1, v->age / days_in_year);
+				SetDParam(0, (v->age + days_in_year < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
+				SetDParam(2, v->max_age / days_in_year);
 				SetDParam(3, v->GetDisplayRunningCost());
 				DrawString(tr, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
 				tr.top += FONT_HEIGHT_NORMAL;

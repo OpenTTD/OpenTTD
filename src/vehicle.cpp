@@ -934,7 +934,7 @@ static void RunVehicleDayProc()
 	if (_game_mode != GM_NORMAL) return;
 
 	/* Run the day_proc for every DAY_TICKS vehicle starting at _date_fract. */
-	for (size_t i = _date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+	for (size_t i = _economy_date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 
@@ -1393,8 +1393,9 @@ void AgeVehicle(Vehicle *v)
 	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
 
 	int age = v->age - v->max_age;
-	if (age == DAYS_IN_LEAP_YEAR * 0 || age == DAYS_IN_LEAP_YEAR * 1 ||
-			age == DAYS_IN_LEAP_YEAR * 2 || age == DAYS_IN_LEAP_YEAR * 3 || age == DAYS_IN_LEAP_YEAR * 4) {
+	int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
+	if (age == days_in_year * 0 || age == days_in_year * 1 ||
+			age == days_in_year * 2 || age == days_in_year * 3 || age == days_in_year * 4) {
 		v->reliability_spd_dec <<= 1;
 	}
 
@@ -1410,11 +1411,11 @@ void AgeVehicle(Vehicle *v)
 	if (EngineHasReplacementForCompany(c, v->engine_type, v->group_id)) return;
 
 	StringID str;
-	if (age == -DAYS_IN_LEAP_YEAR) {
+	if (age == -days_in_year) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_OLD;
 	} else if (age == 0) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD;
-	} else if (age > 0 && (age % DAYS_IN_LEAP_YEAR) == 0) {
+	} else if (age > 0 && (age % days_in_year) == 0) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND;
 	} else {
 		return;

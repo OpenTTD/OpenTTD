@@ -949,9 +949,10 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 
 	/* Draw details that apply to all types except rail wagons. */
 	if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
+		int days_in_year = (_settings_game.economy.use_realtime_units ? DAYS_IN_ECONOMY_YEAR : DAYS_IN_LEAP_YEAR);
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
-		SetDParam(1, e->GetLifeLengthInDays() / DAYS_IN_LEAP_YEAR);
+		SetDParam(1, e->GetLifeLengthInDays() / days_in_year);
 		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE);
 		y += FONT_HEIGHT_NORMAL;
 
