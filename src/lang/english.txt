@@ -3908,7 +3908,7 @@ STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Speed on
 STR_PURCHASE_INFO_RUNNING_COST                                  :{BLACK}Running Cost: {GOLD}{CURRENCY_LONG}/period
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(refittable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} year{P "" s}
+STR_PURCHASE_INFO_DESIGNED_LIFE_PERIODS                         :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} period{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Reliability: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Refit Cost: {GOLD}{CURRENCY_LONG}{BLACK})
@@ -4248,8 +4248,8 @@ STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name shi
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name aircraft
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/period
-STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_PERIOD                                     :{COMMA} period{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_PERIOD_RED                                 :{RED}{COMMA} period{P "" s} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. speed: {LTBLUE}{VELOCITY} {BLACK}Aircraft type: {LTBLUE}{STRING}
@@ -4389,10 +4389,10 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle 
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Load percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
-STR_ORDER_CONDITIONAL_AGE                                       :Age (years)
+STR_ORDER_CONDITIONAL_AGE_PERIODS                               :Age (periods)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requires service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Always
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Remaining lifetime (years)
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME_PERIODS                :Remaining lifetime (periods)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximum reliability
 ###next-name-looks-similar
 

@@ -925,7 +925,7 @@ static void RunVehicleDayProc()
 	if (_game_mode != GM_NORMAL) return;
 
 	/* Run the day_proc for every DAY_TICKS vehicle starting at _date_fract. */
-	for (size_t i = _date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+	for (size_t i = _economy_date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 

@@ -952,7 +952,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
 		SetDParam(1, e->GetLifeLengthInDays() / DAYS_IN_LEAP_YEAR);
-		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE);
+		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE_PERIODS);
 		y += FONT_HEIGHT_NORMAL;
 
 		/* Reliability */
