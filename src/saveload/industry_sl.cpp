@@ -50,12 +50,12 @@ public:
 	/* Old array structure used for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
 	static CargoID old_cargo[INDUSTRY_NUM_INPUTS];
 	static uint16_t old_waiting[INDUSTRY_NUM_INPUTS];
-	static TimerGameCalendar::Date old_last_accepted[INDUSTRY_NUM_INPUTS];
+	static TimerGameEconomy::Date old_last_accepted[INDUSTRY_NUM_INPUTS];
 };
 
 /* static */ CargoID SlIndustryAccepted::old_cargo[INDUSTRY_NUM_INPUTS];
 /* static */ uint16_t SlIndustryAccepted::old_waiting[INDUSTRY_NUM_INPUTS];
-/* static */ TimerGameCalendar::Date SlIndustryAccepted::old_last_accepted[INDUSTRY_NUM_INPUTS];
+/* static */ TimerGameEconomy::Date SlIndustryAccepted::old_last_accepted[INDUSTRY_NUM_INPUTS];
 
 class SlIndustryProducedHistory : public DefaultSaveLoadHandler<SlIndustryProducedHistory, Industry::ProducedCargo> {
 public:

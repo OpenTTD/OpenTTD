@@ -17,12 +17,13 @@
 #include "tilearea_type.h"
 #include "station_base.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
 extern IndustryPool _industry_pool;
 
-static const TimerGameCalendar::Year PROCESSING_INDUSTRY_ABANDONMENT_YEARS = 5; ///< If a processing industry doesn't produce for this many consecutive years, it may close.
+static const TimerGameEconomy::Year PROCESSING_INDUSTRY_ABANDONMENT_YEARS = 5; ///< If a processing industry doesn't produce for this many consecutive economy years, it may close.
 
 /**
  * Production level maximum, minimum and default values.
@@ -86,7 +87,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	struct AcceptedCargo {
 		CargoID cargo; ///< Cargo type
 		uint16_t waiting; ///< Amount of cargo waiting to processed
-		TimerGameCalendar::Date last_accepted; ///< Last day cargo was accepted by this industry
+		TimerGameEconomy::Date last_accepted; ///< Last day cargo was accepted by this industry
 	};
 
 	using ProducedCargoArray = std::array<ProducedCargo, INDUSTRY_NUM_OUTPUTS>;
@@ -103,7 +104,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	IndustryType type;             ///< type of industry.
 	Owner owner;                   ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
 	Colours random_colour;         ///< randomized colour of the industry, for display purpose
-	TimerGameCalendar::Year last_prod_year; ///< last year of production
+	TimerGameEconomy::Year last_prod_year; ///< last economy year of production
 	byte was_cargo_delivered;      ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 	IndustryControlFlags ctlflags; ///< flags overriding standard behaviours
 

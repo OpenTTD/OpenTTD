@@ -1783,7 +1783,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->counter = GB(r, 4, 12);
 	i->random = initial_random_bits;
 	i->was_cargo_delivered = false;
-	i->last_prod_year = TimerGameCalendar::year;
+	i->last_prod_year = TimerGameEconomy::year;
 	i->founder = founder;
 	i->ctlflags = INDCTL_NONE;
 
@@ -2466,7 +2466,7 @@ static void UpdateIndustryStatistics(Industry *i)
 {
 	for (auto &p : i->produced) {
 		if (IsValidCargoID(p.cargo)) {
-			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameCalendar::year;
+			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameEconomy::year;
 
 			/* Move history from this month to last month. */
 			std::rotate(std::rbegin(p.history), std::rbegin(p.history) + 1, std::rend(p.history));
@@ -2889,7 +2889,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
-		if (TimerGameCalendar::year - i->last_prod_year >= PROCESSING_INDUSTRY_ABANDONMENT_YEARS && Chance16(1, original_economy ? 2 : 180)) {
+		if (TimerGameEconomy::year - i->last_prod_year >= PROCESSING_INDUSTRY_ABANDONMENT_YEARS && Chance16(1, original_economy ? 2 : 180)) {
 			closeit = true;
 		}
 	}
