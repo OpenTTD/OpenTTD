@@ -252,7 +252,14 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		if (SQ_FAILED(sq_getstring(vm, -1, &label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
-		int key = atoi(key_string + 1);
+		key_string++;
+		int sign = 1;
+		if (*key_string == '_') {
+			/* When the second character is '_', it indicates the value is negative. */
+			sign = -1;
+			key_string++;
+		}
+		int key = atoi(key_string) * sign;
 		StrMakeValidInPlace(const_cast<char *>(label));
 
 		/* !Contains() prevents stredup from leaking. */
