@@ -960,6 +960,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :כל 12 חוד�
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}שפה
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}בחר את שפת הממשק
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% הסתיים)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}מסך מלא
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}סמן תיבה זו כדי לשחק OpenTTD על כל המסך
@@ -1157,6 +1158,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :סכום הלוואה ראשוני: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :סכום מירבי שחברה יכולה ללוות (מבלי לקחת בחשבון אינפלציה)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :ריבית: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :ריבית עבור הלוואות; שולטת גם באינפלציה אם זו מאופשרות
@@ -1701,6 +1703,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{STRING} :הצ�
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :השנה בה הודעות העיתונות מודפסות בצבע. לפני שנה זו הן מודפסות בשחור-לבן.
 STR_CONFIG_SETTING_STARTING_YEAR                                :{STRING} :שנת התחלה
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :ניקוד סוף שנה: {STRING}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :לעולם לא
 
@@ -1711,6 +1714,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :מקורי
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :אפשר קניית מניות מחברות אחרות: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :כאשר מאופשר, מתיר קנייה ומכירה של מניות של חברות. מניות יהיו זמינות רק עבור חברות המגיעות לגיל מסוים
 
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :גיל מינימלי לחברה לסחור במניותיה: {STRING}
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :אחוז הרווח מקטע נסיעה לתשלום במערכות הזנה: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :אחוז הרווח הניתן לקטעי ביניים במערכות הזנה, דבר הנותן שליטה מוגברת על ההכנסות
@@ -1763,6 +1767,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :לינארי
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :מיקום עצים במהלך המשחק: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :שלוט בהופעה אקראית של עצים במהלך המשחק. זה עלול להשפיע על תעשיות המסתמכות על צמיחת עצים, לדוגמא מנסרות
 ###length 4
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :גדל ומתפשט בכל מקום
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :אל תגדל, אל תתפשט  {RED}(שובר מנסרות)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{STRING} :מיקום הסרגל העיקרי
@@ -2143,6 +2148,7 @@ STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}סקר�
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}מוגן בסיסמה!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}שרת מנותק
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}שרת מלא
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}השרת ישן מדי
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}גרסה לא תואמת
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}אי התאמת קבצים גרפיים
 
@@ -4319,6 +4325,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}בטל
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה את התסריט
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}צלם מסך
+STR_SCREENSHOT_SCREENSHOT                                       :תמונת מסך רגילה
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}זום ברירת מחדל לצילום מסך
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}צילום מסך של כל המפה
 

@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :அதிகபட்ச ஆரம்ப கடன்: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :ஒரு நிறுவனத்தால் பெறமுடியும் கடன் (பணவீக்கத்தினைக் கணக்கில் எடுத்துக் கொள்ளாமல்)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :வட்டி: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :கடன் வட்டி;செயற்படுத்தினால் பணவீக்கத்தினையும் கட்டுப்படுத்தும்
