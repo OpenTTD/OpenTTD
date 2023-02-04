@@ -254,13 +254,16 @@ public:
 	 *  user will see the corresponding name.
 	 * @param setting_name The name of the setting.
 	 * @param value_names A table that maps values to names. The first
-	 *   character of every identifier is ignored and the rest should
+	 *   character of every identifier is ignored, the second character
+	 *   could be '_' to indicate the value is negative, and the rest should
 	 *   be an integer of the value you define a name for. The value
 	 *   is a short description of that value.
 	 * To define labels for a setting named "competition_level" you could
 	 * for example call it like this:
 	 * AddLabels("competition_level", {_0 = "no competition", _1 = "some competition",
 	 * _2 = "a lot of competition"});
+	 * Another example, for a setting with a negative value:
+	 * AddLabels("amount", {__1 = "less than one", _0 = "none", _1 = "more than one"});
 	 *
 	 * @note This is a function provided by OpenTTD, you don't have to
 	 * include it in your Script but should just call it from GetSettings.
