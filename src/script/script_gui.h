@@ -5,11 +5,19 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_gui.hpp %Window for configuring the AIs  */
+ /** @file script_gui.hpp %Window for configuring the scripts  */
 
-#ifndef AI_GUI_HPP
-#define AI_GUI_HPP
+#ifndef SCRIPT_GUI_HPP
+#define SCRIPT_GUI_HPP
 
-void ShowAIConfigWindow();
+#include "../company_type.h"
+#include "../textfile_type.h"
 
-#endif /* AI_GUI_HPP */
+void ShowScriptListWindow(CompanyID slot);
+Window *ShowScriptDebugWindow(CompanyID show_company = INVALID_COMPANY);
+void ShowScriptSettingsWindow(CompanyID slot);
+void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot);
+void ShowScriptDebugWindowIfScriptError();
+void InitializeScriptGui();
+
+#endif /* SCRIPT_GUI_HPP */

@@ -62,7 +62,7 @@
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
+	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
 	return;
 }
 
@@ -113,8 +113,8 @@
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
-	CloseWindowById(WC_AI_SETTINGS, company);
+	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
+	CloseWindowById(WC_SCRIPT_SETTINGS, company);
 }
 
 /* static */ void AI::Pause(CompanyID company)
@@ -338,9 +338,9 @@
 	AI::scanner_library->RescanDir();
 	ResetConfig();
 
-	InvalidateWindowData(WC_AI_LIST, 0, 1);
-	SetWindowClassesDirty(WC_AI_DEBUG);
-	InvalidateWindowClassesData(WC_AI_SETTINGS);
+	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
+	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
+	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 }
 
 /**

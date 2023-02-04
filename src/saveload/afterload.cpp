@@ -40,7 +40,7 @@
 #include "../company_func.h"
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
-#include "../ai/ai_gui.hpp"
+#include "../script/script_gui.h"
 #include "../game/game.hpp"
 #include "../town.h"
 #include "../economy_base.h"
@@ -552,7 +552,7 @@ static void StartScripts()
 		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index, false);
 	}
 
-	ShowAIDebugWindowIfAIError();
+	ShowScriptDebugWindowIfScriptError();
 }
 
 /**

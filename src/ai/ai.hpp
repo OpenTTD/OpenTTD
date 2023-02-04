@@ -13,10 +13,6 @@
 #include "../script/api/script_event_types.hpp"
 #include "../core/string_compare_type.hpp"
 #include "ai_scanner.hpp"
-#include <map>
-
-/** A list that maps AI names to their AIInfo object. */
-typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList;
 
 /**
  * Main AI class. Contains all functions needed to start, stop, save and load AIs.
