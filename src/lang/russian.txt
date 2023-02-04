@@ -1357,6 +1357,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма кредита: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма кредита для компании (без учета инфляции)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентная ставка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по кредитам; также устанавливает уровень инфляции, если та включена.

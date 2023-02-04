@@ -1207,6 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
+###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sense préstec {RED}Fa falta un script de partida que doni els fons inicials
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada
@@ -2699,6 +2702,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenta
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Tren
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona Pont de Carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Pont penjant d'acer
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Pont biga d'acer
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Pont en mènsula d'acer

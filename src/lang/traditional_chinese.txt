@@ -257,7 +257,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}點選�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 - 上下捲動清單
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 - 左右捲動清單
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆卸位於土地上的建築物等。按 Ctrl 以對角線選擇區域。Shift切換建築或顯示預估成本。
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆卸位於土地上的建築物等。按 Ctrl 以對角線選擇區域。按 Shift 可切換建築或顯示預估成本。
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}產生�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}產生工業
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}建造道路
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}鋪設電車軌
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植樹。按 Shift 可切換種植／顯示預估的種植費用
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植樹。按 Ctrl 以對角線選擇區域。按 Shift 可切換種植／顯示預估的種植費用
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置標誌
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物件。按 Ctrl 以對角線選擇區域。按 Shift 可切換興建／顯示預估的興建費用。
 
@@ -1206,6 +1206,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大貸款額：{STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最多可借多少錢（此設定的值排除了通貨膨脹因素）。
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :息率：{STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :設定貸款息率。如啟用了通貨膨脹的設定，則此設定同時決定通脹率。
@@ -1929,7 +1930,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :設使有交通
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :郵件分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的郵件數量大致相同。「不對稱」指任何一站往另一站的郵件數量皆由系統隨意決定。「手動」指系統不會自動分配郵件的目的地。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :裝甲貨物分配方式：{STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :「裝甲貨物」包括溫帶場景的「貴重物品」、寒帶場景的「金塊」及亞熱帶場景的「鑽石」。使用 NewGRF 可能會改變以上設定。{} 設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的裝甲貨物數量大致相同。「不對稱」指任何一站往另一站的裝甲貨物數量皆由系統隨意決定。「手動」指系統不會自動分配裝甲貨物的目的地。{} 建議在溫帶及亞熱帶場景應使用「對稱」，因為銀行會互相發送貴重物品或鑽石；而在寒帶場景應使用「不對稱」，因為銀行不會把金塊送回礦場。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :「裝甲貨物」包括溫帶場景的「貴重物品」、寒帶場景的「金塊」及亞熱帶場景的「鑽石」。使用 NewGRF 可能會改變以上設定。設使有交通路線連接甲、乙兩站，則「對稱」指甲站往乙站的郵件數量與乙站往甲站的裝甲貨物數量大致相同；「不對稱」指任何一站往另一站的裝甲貨物數量皆由系統隨意決定；「手動」指系統不會自動分配裝甲貨物的目的地。建議在亞熱帶及寒帶場景中應使用「不對稱」或「手動」，因為銀行只會接收貨物。在溫帶場景中建議使用「對稱」，因為銀行之間會互相傳送貴重物品。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他貨物分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :如設定此值為「不對稱」，則任何一站往另一站的貨物數量皆由系統隨意決定。如設定此值為「手動」，則系統不會自動分配貨物的目的地。
 ###length 3
@@ -2698,6 +2699,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加 (
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}選擇鐵路橋樑
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}選擇道路橋樑
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}選擇橋樑 - 點選想建的橋樑即可建造
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :吊橋，鋼製
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :桁橋，鋼製
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :懸臂橋，鋼製
@@ -2798,7 +2803,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}產生�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}下降土地上的一角。以拖曳來下降第一個選定的角落並平面化選定的區域到新角落的高度。Ctrl 以對角線選定區域。Shift切換建造/顯示成本估算。
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}下降土地上的一角。以拖曳來下降第一個選定的角落並平面化選定的區域到新角落的高度。按 Ctrl 以對角線選定區域。按 Shift 可切換建造/顯示成本估算。
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}上昇土地上的一角。以拖曳來上昇第一個選定的角落並平面化選定的區域到新角落的高度。按 Ctrl 以對角線選定區域。按 Shift 以切換建造/顯示成本估算。
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}將一片區域正平到首選高度。按 Ctrl 以對角線選擇區域。按 Shift 查看造價預算
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買土地供將來使用。按 Ctrl 以對角線選擇區域。按 Shift 可切換購買／顯示預估的購買費用
@@ -2817,7 +2822,7 @@ STR_OBJECT_CLASS_TRNS                                           :天線塔
 STR_PLANT_TREE_CAPTION                                          :{WHITE}樹木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}選擇要種植的樹種。無論您選擇了甚麼樹種，如所點擊的方格本身已經有樹，遊戲會在該方格加上一棵隨機樹種的樹
 STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機種類樹木
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}種植隨機種類樹木。按 Shift 可切換種植／顯示預估的種植費用
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}種植隨機種類樹木。按 Ctrl 以對角線選擇區域。按 Shift 可切換種植／顯示預估的種植費用。
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}隨機樹種
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}在場景中隨機植樹
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}正常

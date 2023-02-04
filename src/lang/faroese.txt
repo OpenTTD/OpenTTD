@@ -1087,6 +1087,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgra
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hægst loyvda byrjunar lán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Mest loyvda upphæddin ein fyritøka kann lána (uttan at taka virðisminkan til eftirtektar)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rentu stigi: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rentustigi á láni, stýrir eisini virðisminkan um hon er sligin til

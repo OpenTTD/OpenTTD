@@ -1241,6 +1241,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Destra
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Prestito massimo iniziale: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Ammontare massimo di denaro che una compagnia può chiedere in prestito (senza tenere conto dell'inflazione).
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Tasso d'interesse: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasso d'interesse sul prestito; controlla anche l'abilitazione dell'inflazione.
