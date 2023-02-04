@@ -44,6 +44,7 @@ add_files(
     rail_widget.h
     road_widget.h
     screenshot_widget.h
+    script_widget.h
     settings_widget.h
     sign_widget.h
     slider.cpp

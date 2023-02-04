@@ -96,7 +96,7 @@
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
+	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
 }
 
 /* static */ void Game::Uninitialize(bool keepConfig)
@@ -201,9 +201,9 @@
 	Game::scanner_library->RescanDir();
 	ResetConfig();
 
-	InvalidateWindowData(WC_AI_LIST, 0, 1);
-	SetWindowClassesDirty(WC_AI_DEBUG);
-	InvalidateWindowClassesData(WC_AI_SETTINGS);
+	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
+	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
+	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
 }
 

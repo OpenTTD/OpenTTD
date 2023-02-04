@@ -8,39 +8,20 @@
 /** @file game_gui.cpp %Window for configuring the Game Script */
 
 #include "../stdafx.h"
-#include "../table/sprites.h"
 #include "../error.h"
 #include "../settings_gui.h"
 #include "../querystring_gui.h"
-#include "../stringfilter_type.h"
-#include "../company_base.h"
-#include "../company_gui.h"
-#include "../strings_func.h"
 #include "../window_func.h"
-#include "../window_type.h"
-#include "../gfx_func.h"
-#include "../command_func.h"
 #include "../network/network.h"
-#include "../settings_func.h"
 #include "../network/network_content.h"
-#include "../textfile_gui.h"
-#include "../widgets/dropdown_type.h"
 #include "../widgets/dropdown_func.h"
-#include "../hotkeys.h"
-#include "../core/geometry_func.hpp"
-#include "../guitimer_func.h"
-#include "../company_cmd.h"
-#include "../misc_cmd.h"
 
+#include "game.hpp"
 #include "game_gui.hpp"
-#include "../ai/ai_config.hpp"
-#include "../ai/ai_gui.hpp"
-#include "../widgets/game_widget.h"
+#include "game_config.hpp"
+#include "game_info.hpp"
+#include "../script/script_gui.h"
 #include "../table/strings.h"
-#include "../game/game.hpp"
-#include "../game/game_config.hpp"
-#include "../game/game_info.hpp"
-#include "../game/game_instance.hpp"
 
 #include "../safeguards.h"
 
@@ -125,7 +106,7 @@ struct GSConfigWindow : public Window {
 
 	void Close() override
 	{
-		CloseWindowByClass(WC_AI_LIST);
+		CloseWindowByClass(WC_SCRIPT_LIST);
 		this->Window::Close();
 	}
 
@@ -267,12 +248,12 @@ struct GSConfigWindow : public Window {
 		switch (widget) {
 			case WID_GSC_GSLIST: {
 				this->InvalidateData();
-				if (click_count > 1 && _game_mode != GM_NORMAL) ShowAIListWindow((CompanyID)OWNER_DEITY);
+				if (click_count > 1 && _game_mode != GM_NORMAL) ShowScriptListWindow((CompanyID)OWNER_DEITY);
 				break;
 			}
 
 			case WID_GSC_CHANGE:  // choose other Game Script
-				ShowAIListWindow((CompanyID)OWNER_DEITY);
+				ShowScriptListWindow((CompanyID)OWNER_DEITY);
 				break;
 
 			case WID_GSC_CONTENT_DOWNLOAD:

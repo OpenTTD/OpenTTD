@@ -922,8 +922,8 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
-	InvalidateWindowClassesData(WC_AI_SETTINGS);
-	InvalidateWindowClassesData(WC_AI_LIST);
+	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+	InvalidateWindowClassesData(WC_SCRIPT_LIST);
 
 	return CommandCost();
 }
