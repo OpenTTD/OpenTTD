@@ -1,3 +1,10 @@
+13.0 (2023-02-05)
+------------------------------------------------------------------------
+Change #10077: Make maximum loan a positive multiple of the loan interval (#10355)
+Fix #10361: [Script] Don't try to give saved data to a dead script (#10433)
+Fix #10419: Water infrastructure accounting when building ship depots and docks (#10432)
+
+
 13.0-RC2 (2023-01-28)
 ------------------------------------------------------------------------
 Feature: Press Ctrl to build a diagonal area of trees (#10342)
