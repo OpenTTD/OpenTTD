@@ -1259,7 +1259,7 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 
 
 
-# AI Parameters
+# Script Parameters
 
 
 # Textfile window

@@ -4828,7 +4828,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Slika ek
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Slika ekrana sa elevacionom kartom
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika umanjene mape
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametri VI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi

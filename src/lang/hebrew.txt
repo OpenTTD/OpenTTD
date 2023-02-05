@@ -4328,7 +4328,7 @@ STR_SCREENSHOT_SCREENSHOT                                       :תמונת מס
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}זום ברירת מחדל לצילום מסך
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}צילום מסך של כל המפה
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :שחקן מחשב
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל

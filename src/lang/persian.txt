@@ -3476,7 +3476,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}لغو
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}کد را تغییر نده
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :هوش مصنوعی(AI)
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
 STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن

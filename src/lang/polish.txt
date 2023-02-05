@@ -5007,7 +5007,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Zrzut ek
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut ekranu mapy wysokościowej
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut ekranu minimapy
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry SI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj

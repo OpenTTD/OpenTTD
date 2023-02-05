@@ -4623,7 +4623,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Koko kar
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Korkeuskartan kuvakaappaus
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoiskartan kuvakaappaus
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tekoälyn parametrit
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta

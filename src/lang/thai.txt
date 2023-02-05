@@ -4271,7 +4271,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}ไม�
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}บันทึกหน้าจอของ Heightmap
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}จับภาพหน้าจอ มินิแมพ
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}ปิด
 STR_AI_SETTINGS_RESET                                           :{BLACK}เริ่มใหม่

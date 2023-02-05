@@ -3971,7 +3971,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا ت
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}التقط لقطة شاشة كاملة
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}صور الخاريطة الكاملة
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK} اغلاق
 STR_AI_SETTINGS_RESET                                           :{BLACK} اعادة ضبط
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -4110,7 +4110,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Отме
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не променяй AI
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране

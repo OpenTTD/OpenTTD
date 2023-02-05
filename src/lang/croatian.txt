@@ -4472,7 +4472,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Slika ci
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Slika visinske mape
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika mini-mape
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj

@@ -4309,7 +4309,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Preklič
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne spremeni skripte
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj

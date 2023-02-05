@@ -4623,7 +4623,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Schermaf
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Schermafbeelding van de hoogtekaart
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Schermafbeelding van de minikaart
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI-parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen

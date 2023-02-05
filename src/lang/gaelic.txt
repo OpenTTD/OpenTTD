@@ -4427,7 +4427,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Sguir dh
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Na atharraich an sgriobt
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IF
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dùin
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ath-shuidhich

@@ -1453,7 +1453,7 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 

@@ -4617,7 +4617,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK} Tangkap
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Tangkapan layar Peta Ketinggian
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Tangkapan layar minimap
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parameter AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset

@@ -4125,7 +4125,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}மு�
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}உயர்படத்தின் திரைப்பிடிப்பு
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}சிறிய வரைபட திரைபிடிப்பு
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}மூடு
 STR_AI_SETTINGS_RESET                                           :{BLACK}முன்னிருந்தமாதிரி மாற்று

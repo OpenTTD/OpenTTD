@@ -3882,7 +3882,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Annulear
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript net feroare
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Slúte
 STR_AI_SETTINGS_RESET                                           :{BLACK}Weromsette

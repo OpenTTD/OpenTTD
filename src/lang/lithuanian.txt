@@ -4826,7 +4826,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Viso pas
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Teminio žemėlapio kopija
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Mini žemėlapio kopija
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :DI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Uždaryti
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atstatyti

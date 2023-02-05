@@ -4621,7 +4621,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Chụp t
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Chụp bản đồ địa hình
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Chụp màn hình bản đồ nhỏ
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tham số AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại

@@ -3828,7 +3828,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Batal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan ubah skrip
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Semula

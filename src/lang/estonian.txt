@@ -4543,7 +4543,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Terve ka
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Kõrguskaardi ekraanipilt
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pisikaardi ekraanipilt
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulli

@@ -4643,7 +4643,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не з�
 
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Бачная вобласць у максімальным набліжэнні
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :ШI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід

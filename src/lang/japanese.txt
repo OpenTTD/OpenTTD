@@ -4581,7 +4581,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}地図�
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}ハイトマップスクリーンショット
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}ミニマップのスクリーンショット
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット

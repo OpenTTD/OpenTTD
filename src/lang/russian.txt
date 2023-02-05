@@ -4808,7 +4808,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Сним
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Снимок карты высот
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Снимок миникарты
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Параметры ИИ
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыть
 STR_AI_SETTINGS_RESET                                           :{BLACK}Сброс

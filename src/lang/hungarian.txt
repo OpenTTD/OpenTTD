@@ -4681,7 +4681,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Teljes t
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Magasságtérkép mentése
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minitérkép mentése
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}MI paraméterei
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás

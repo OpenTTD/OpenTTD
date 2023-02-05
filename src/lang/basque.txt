@@ -4031,7 +4031,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Ezeztatu
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ez aldatu script-a
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Itxi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Berrabiarazi

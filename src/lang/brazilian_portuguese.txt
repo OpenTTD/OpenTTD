@@ -4622,7 +4622,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Captura 
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura de tela do mapa topográfico
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de tela do minimapa
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parâmetros de IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetar

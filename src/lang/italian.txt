@@ -4658,7 +4658,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Screensh
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Screenshot della heightmap
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Screenshot della minimappa
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametri IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Chiudi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reimposta

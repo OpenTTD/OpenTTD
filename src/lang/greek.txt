@@ -4730,7 +4730,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Στιγ
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγμιότυπο χάρτη υψομετρίας
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά

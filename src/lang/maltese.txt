@@ -1323,7 +1323,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 
 
 
-# AI Parameters
+# Script Parameters
 
 
 # Textfile window

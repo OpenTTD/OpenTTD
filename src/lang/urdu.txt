@@ -2727,7 +2727,7 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھی�
 
 
 
-# AI Parameters
+# Script Parameters
 
 
 # Textfile window

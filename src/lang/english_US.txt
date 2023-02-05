@@ -4623,7 +4623,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Whole ma
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Heightmap screenshot
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap screenshot
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset

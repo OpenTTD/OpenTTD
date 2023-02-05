@@ -4748,7 +4748,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Знят
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Зняток мапи висот
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Зняток мінімапи
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Параметри ШІ
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання

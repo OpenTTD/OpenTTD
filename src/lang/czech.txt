@@ -4717,7 +4717,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Snímek 
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Snímek výškové mapy
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Snímek (náhledové) mapy světa
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení

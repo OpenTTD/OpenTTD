@@ -4621,7 +4621,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Captură
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captură de hartă topografică
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captură de hartă a lumii
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametrii IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează

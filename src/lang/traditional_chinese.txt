@@ -4621,7 +4621,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}截圖�
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}高度圖截圖
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地圖截圖
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI參數
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}關閉
 STR_AI_SETTINGS_RESET                                           :{BLACK}重設

@@ -4624,7 +4624,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}지도 �
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}높이맵 스크린 샷
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니맵 스크린 샷
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}인공지능 매개 변수
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
