@@ -124,6 +124,14 @@ find_package(LibLZMA)
 find_package(LZO)
 find_package(PNG)
 
+if(WIN32 OR EMSCRIPTEN)
+    # Windows uses WinHttp for HTTP requests.
+    # Emscripten uses Javascript for HTTP requests.
+else()
+    # All other targets use libcurl.
+    find_package(CURL)
+endif()
+
 if(NOT OPTION_DEDICATED)
     if(NOT WIN32)
         find_package(Allegro)
@@ -259,6 +267,10 @@ link_package(ZLIB TARGET ZLIB::ZLIB ENCOURAGED)
 link_package(LIBLZMA TARGET LibLZMA::LibLZMA ENCOURAGED)
 link_package(LZO)
 
+if(NOT WIN32 AND NOT EMSCRIPTEN)
+    link_package(CURL ENCOURAGED)
+endif()
+
 if(NOT OPTION_DEDICATED)
     link_package(Fluidsynth)
     link_package(SDL)
@@ -368,6 +380,7 @@ if(WIN32)
         imm32
         usp10
         psapi
+        winhttp
     )
 endif()
 

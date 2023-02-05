@@ -11,7 +11,7 @@
 #define NETWORK_CONTENT_H
 
 #include "core/tcp_content.h"
-#include "core/tcp_http.h"
+#include "core/http.h"
 #include <unordered_map>
 
 /** Vector with content info */

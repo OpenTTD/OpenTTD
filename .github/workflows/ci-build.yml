@@ -102,6 +102,7 @@ jobs:
         echo "::group::Install dependencies"
         sudo apt-get install -y --no-install-recommends \
           liballegro4-dev \
+          libcurl4-openssl-dev \
           libfontconfig-dev \
           libicu-dev \
           liblzma-dev \
@@ -184,6 +185,7 @@ jobs:
     - name: Prepare vcpkg
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-osx \
+          curl \
           liblzma \
           libpng \
           lzo \

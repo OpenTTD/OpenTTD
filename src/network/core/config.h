@@ -15,10 +15,7 @@
 const char *NetworkCoordinatorConnectionString();
 const char *NetworkStunConnectionString();
 const char *NetworkContentServerConnectionString();
-const char *NetworkContentMirrorConnectionString();
-
-/** URL of the HTTP mirror system */
-static const char * const NETWORK_CONTENT_MIRROR_URL            = "/bananas";
+const char *NetworkContentMirrorUriString();
 
 static const uint16 NETWORK_COORDINATOR_SERVER_PORT = 3976;           ///< The default port of the Game Coordinator server (TCP)
 static const uint16 NETWORK_STUN_SERVER_PORT        = 3975;           ///< The default port of the STUN server (TCP)
