@@ -45,4 +45,4 @@ ResizeImage $logoPath 1240 600 "assets\Wide310x150Logo.png"
 
 # Copy the logo for the store for the common package
 New-Item -Path "." -Name "assets-common" -ItemType "directory" -Force
-Copy-Item "assets\StoreLogo.png" -Destination "assets-common\StoreLogo.png"
+Copy-Item "assets\StoreLogo.png" -Destination "assets-common\StoreLogoCommon.png"
