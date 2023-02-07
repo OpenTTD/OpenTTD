@@ -450,14 +450,14 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), false> : CommandHel
 	using CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true>::Post;
 
 	/**
-	 * Shortcut for Post when not using an error message.
+	 * Shortcut for Post when not using a callback.
 	 * @param err_message Message prefix to show on error
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
 	 */
 	static inline bool Post(StringID err_message, TileIndex location, Targs... args) { return Post<CommandCallback>(err_message, nullptr, location, std::forward<Targs>(args)...); }
 	/**
-	 * Shortcut for Post when not using a callback.
+	 * Shortcut for Post when not using an error message.
 	 * @param callback A callback function to call after the command is finished
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
