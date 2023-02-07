@@ -50,12 +50,13 @@ void ShowNewGRFError()
 		/* Only show Fatal and Error level messages */
 		if (c->error == nullptr || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
 
-		SetDParam   (0, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
-		SetDParamStr(1, c->error->custom_message);
-		SetDParamStr(2, c->filename);
-		SetDParamStr(3, c->error->data);
+		SetDParamStr(0, c->GetName());
+		SetDParam   (1, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
+		SetDParamStr(2, c->error->custom_message);
+		SetDParamStr(3, c->filename);
+		SetDParamStr(4, c->error->data);
 		for (uint i = 0; i < lengthof(c->error->param_value); i++) {
-			SetDParam(4 + i, c->error->param_value[i]);
+			SetDParam(5 + i, c->error->param_value[i]);
 		}
 		if (c->error->severity == STR_NEWGRF_ERROR_MSG_FATAL) {
 			ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, WL_CRITICAL);
