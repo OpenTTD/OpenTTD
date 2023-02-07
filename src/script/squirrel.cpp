@@ -644,17 +644,21 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 {
 	ScriptAllocatorScope alloc_scope(this);
 
-	FILE *file;
-	size_t size;
+	const char* dir = nullptr, * lib_dir = nullptr;
 	if (strncmp(this->GetAPIName(), "AI", 2) == 0) {
-		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
-		if (file == nullptr) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
-	} else if (strncmp(this->GetAPIName(), "GS", 2) == 0) {
-		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
-		if (file == nullptr) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
-	} else {
+		dir = AI_DIR;
+		lib_dir = AI_LIBRARY_DIR;
+	}
+	else if (strncmp(this->GetAPIName(), "GS", 2) == 0) {
+		dir = GAME_DIR;
+		lib_dir = GAME_LIBRARY_DIR;
+	}
+	else {
 		NOT_REACHED();
 	}
+
+	FILE* file = FioFOpenFile(filename, "rb", dir, &size);
+	if (file == nullptr) file = FioFOpenFile(filename, "rb", lib_dir, &size);
 
 	if (file == nullptr) {
 		return sq_throwerror(vm, "cannot open the file");
