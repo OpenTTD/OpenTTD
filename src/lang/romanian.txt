@@ -3352,8 +3352,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenţie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O eroare fatală NewGRF a avut loc:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}O eroare NewGRF a avut loc:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nu va funcţiona cu versiunea TTDPatch raportată de OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} este pentru versiunea {2:STRING} a TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} este conceput pentru a fi folosit cu {2:STRING}

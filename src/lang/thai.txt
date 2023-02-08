@@ -3082,8 +3082,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}อันตราย: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}ร้ายแรง: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}เกิดความผิดพลาดร้ายแรงเกี่ยวกับ NewGRF:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}มี NewGRF ที่เกิดข้อผิดพลาดขึ้น! :{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}ไม่สามารถทำงานได้บน TTDPatchเวอร์ชั่นนี่ รายงานโดย OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} สำหรับ {STRING} version of TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ออกแบบมาสำหรับใช้งานกับ {STRING}

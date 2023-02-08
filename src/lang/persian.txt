@@ -2698,7 +2698,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}هشدار: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}خطا: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}خطای وخیم: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}یک خطای وخیم در NewGRF اتفاق افتاده:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} با TTDPatch که ویرایش آن توسط OpenTTD گزارش شده کار نمی کند
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} برای ویرایش {STRING}TTD می باشد
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} طراحی شده برای استفاده با {STRING}

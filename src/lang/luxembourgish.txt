@@ -3352,8 +3352,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}E fatalen NewGRF Fehler ass geschitt:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}En NewGRF Fehler ass geschitt:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} wärt net mat der TTDPatch Versioun déi vun OpenTTD erkannt gouf funktionéiren
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ass fir {2:STRING} Versioun vun TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ass designed fir mat {2:STRING} benotzt ze ginn

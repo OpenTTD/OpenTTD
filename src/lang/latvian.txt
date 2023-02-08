@@ -3351,8 +3351,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdinājums: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Notikusi fatāla NewGRF kļūda:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Radusies NewGRF kļūda:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nedarbosies kopā ar TTDPatch versiju (par ko ziņoja OpenTTD).
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir paredzēts TTD versijai {2:STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir paredzēts lietošanai ar {2:STRING}
