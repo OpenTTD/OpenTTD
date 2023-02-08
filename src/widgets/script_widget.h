@@ -22,15 +22,6 @@ enum ScriptListWidgets {
 	WID_SCRL_CANCEL,    ///< Cancel button.
 };
 
-/** Widgets of the #ScriptSettingsWindow class. */
-enum ScriptSettingsWidgets {
-	WID_SCRS_CAPTION,    ///< Caption of the window.
-	WID_SCRS_BACKGROUND, ///< Panel to draw the settings on.
-	WID_SCRS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
-	WID_SCRS_ACCEPT,     ///< Accept button.
-	WID_SCRS_RESET,      ///< Reset button.
-};
-
 /** Widgets of the #ScriptDebugWindow class. */
 enum ScriptDebugWidgets {
 	WID_SCRD_VIEW,                 ///< The row of company buttons.

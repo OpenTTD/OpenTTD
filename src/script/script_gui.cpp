@@ -10,7 +10,6 @@
 #include "../stdafx.h"
 #include "../table/sprites.h"
 #include "../error.h"
-#include "../settings_gui.h"
 #include "../querystring_gui.h"
 #include "../stringfilter_type.h"
 #include "../company_base.h"
@@ -29,26 +28,23 @@
 #include "../ai/ai_config.hpp"
 #include "../ai/ai_info.hpp"
 #include "../ai/ai_instance.hpp"
+#include "../ai/ai_gui.hpp"
 #include "../game/game.hpp"
 #include "../game/game_config.hpp"
 #include "../game/game_info.hpp"
 #include "../game/game_instance.hpp"
+#include "../game/game_gui.hpp"
 #include "table/strings.h"
 
 #include "../safeguards.h"
 
-
-static ScriptConfig *GetConfig(CompanyID slot)
-{
-	if (slot == OWNER_DEITY) return GameConfig::GetConfig();
-	return AIConfig::GetConfig(slot);
-}
 
 /**
  * Window that let you choose an available Script.
  */
 struct ScriptListWindow : public Window {
 	const ScriptInfoList *info_list;    ///< The list of Scripts.
+	ScriptConfig *script_config;        ///< The configuration we're modifying.
 	int selected;                       ///< The currently selected Script.
 	CompanyID slot;                     ///< The company we're selecting a new Script for.
 	int line_height;                    ///< Height of a row in the matrix widget.
@@ -64,8 +60,10 @@ struct ScriptListWindow : public Window {
 	{
 		if (slot == OWNER_DEITY) {
 			this->info_list = Game::GetUniqueInfoList();
+			this->script_config = GameConfig::GetConfig();
 		} else {
 			this->info_list = AI::GetUniqueInfoList();
+			this->script_config = AIConfig::GetConfig(slot);
 		}
 
 		this->CreateNestedTree();
@@ -76,8 +74,8 @@ struct ScriptListWindow : public Window {
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
-		if (GetConfig(slot)->HasScript()) {
-			ScriptInfo *info = GetConfig(slot)->GetInfo();
+		if (this->script_config->HasScript()) {
+			ScriptInfo *info = this->script_config->GetInfo();
 			int i = 0;
 			for (const auto &item : *this->info_list) {
 				if (item.second == info) {
@@ -164,14 +162,14 @@ struct ScriptListWindow : public Window {
 	void ChangeScript()
 	{
 		if (this->selected == -1) {
-			GetConfig(slot)->Change(nullptr);
+			this->script_config->Change(nullptr);
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->begin();
 			for (int i = 0; i < this->selected; i++) it++;
-			GetConfig(slot)->Change((*it).second->GetName(), (*it).second->GetVersion());
+			this->script_config->Change((*it).second->GetName(), (*it).second->GetVersion());
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
-		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+		if (slot != OWNER_DEITY) InvalidateWindowClassesData(WC_AI_SETTINGS);
 		CloseWindowByClass(WC_QUERY_STRING);
 		InvalidateWindowClassesData(WC_TEXTFILE);
 	}
@@ -271,366 +269,18 @@ void ShowScriptListWindow(CompanyID slot)
 }
 
 
-/**
- * Window for settings the parameters of an AI.
- */
-struct ScriptSettingsWindow : public Window {
-	CompanyID slot;                       ///< The currently show company's setting.
-	ScriptConfig *script_config;          ///< The configuration we're modifying.
-	int clicked_button;                   ///< The button we clicked.
-	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
-	bool clicked_dropdown;                ///< Whether the dropdown is open.
-	bool closing_dropdown;                ///< True, if the dropdown list is currently closing.
-	GUITimer timeout;                     ///< Timeout for unclicking the button.
-	int clicked_row;                      ///< The clicked row of settings.
-	int line_height;                      ///< Height of a row in the matrix widget.
-	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
-	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
-	VisibleSettingsList visible_settings; ///< List of visible AI settings
-
-	/**
-	 * Constructor for the window.
-	 * @param desc The description of the window.
-	 * @param slot The company we're changing the settings for.
-	 */
-	ScriptSettingsWindow(WindowDesc *desc, CompanyID slot) : Window(desc),
-		slot(slot),
-		clicked_button(-1),
-		clicked_dropdown(false),
-		closing_dropdown(false),
-		timeout(0)
-	{
-		this->script_config = GetConfig(slot);
-
-		this->CreateNestedTree();
-		this->vscroll = this->GetScrollbar(WID_SCRS_SCROLLBAR);
-		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
-
-		this->RebuildVisibleSettings();
-	}
-
-	/**
-	 * Rebuilds the list of visible settings. AI settings with the flag
-	 * AICONFIG_AI_DEVELOPER set will only be visible if the game setting
-	 * gui.ai_developer_tools is enabled.
-	 */
-	void RebuildVisibleSettings()
-	{
-		visible_settings.clear();
-
-		for (const auto &item : *this->script_config->GetConfigList()) {
-			bool no_hide = (item.flags & SCRIPTCONFIG_DEVELOPER) == 0;
-			if (no_hide || _settings_client.gui.ai_developer_tools) {
-				visible_settings.push_back(&item);
-			}
-		}
-
-		this->vscroll->SetCount((int)this->visible_settings.size());
-	}
-
-	void SetStringParameters(int widget) const override
-	{
-		if (widget != WID_SCRS_CAPTION) return;
-
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
-	}
-
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
-	{
-		if (widget != WID_SCRS_BACKGROUND) return;
-
-		this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + padding.height;
-
-		resize->width = 1;
-		resize->height = this->line_height;
-		size->height = 5 * this->line_height;
-	}
-
-	void DrawWidget(const Rect &r, int widget) const override
-	{
-		if (widget != WID_SCRS_BACKGROUND) return;
-
-		ScriptConfig *config = this->script_config;
-		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-		int i = 0;
-		for (; !this->vscroll->IsVisible(i); i++) it++;
-
-		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
-		bool rtl = _current_text_dir == TD_RTL;
-		Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
-		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
-
-		int y = r.top;
-		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
-		for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
-			const ScriptConfigItem &config_item = **it;
-			int current_value = config->GetSetting((config_item).name);
-			bool editable = this->IsEditableItem(config_item);
-
-			StringID str;
-			TextColour colour;
-			uint idx = 0;
-			if (StrEmpty(config_item.description)) {
-				if (this->slot != OWNER_DEITY && !strcmp(config_item.name, "start_date")) {
-					/* Build-in translation */
-					str = STR_AI_SETTINGS_START_DELAY;
-					colour = TC_LIGHT_BLUE;
-				} else {
-					str = STR_JUST_STRING;
-					colour = TC_ORANGE;
-				}
-			} else {
-				str = STR_AI_SETTINGS_SETTING;
-				colour = TC_LIGHT_BLUE;
-				SetDParamStr(idx++, config_item.description);
-			}
-
-			if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
-				DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
-				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
-			} else {
-				if (config_item.complete_labels) {
-					DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
-				} else {
-					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
-				}
-				if (config_item.labels != nullptr && config_item.labels->Contains(current_value)) {
-					SetDParam(idx++, STR_JUST_RAW_STRING);
-					SetDParamStr(idx++, config_item.labels->Find(current_value)->second);
-				} else {
-					SetDParam(idx++, STR_JUST_INT);
-					SetDParam(idx++, current_value);
-				}
-			}
-
-			DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
-			y += this->line_height;
-		}
-	}
-
-	void OnPaint() override
-	{
-		if (this->closing_dropdown) {
-			this->closing_dropdown = false;
-			this->clicked_dropdown = false;
-		}
-		this->DrawWidgets();
-	}
-
-	void OnClick(Point pt, int widget, int click_count) override
-	{
-		switch (widget) {
-			case WID_SCRS_BACKGROUND: {
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
-				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
-				if (num >= (int)this->visible_settings.size()) break;
-
-				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-				for (int i = 0; i < num; i++) it++;
-				const ScriptConfigItem config_item = **it;
-				if (!this->IsEditableItem(config_item)) return;
-
-				if (this->clicked_row != num) {
-					this->CloseChildWindows(WC_QUERY_STRING);
-					HideDropDownMenu(this);
-					this->clicked_row = num;
-					this->clicked_dropdown = false;
-				}
-
-				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
-
-				int x = pt.x - r.left;
-				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
-
-				/* One of the arrows is clicked (or green/red rect in case of bool value) */
-				int old_val = this->script_config->GetSetting(config_item.name);
-				if (!bool_item && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && config_item.complete_labels) {
-					if (this->clicked_dropdown) {
-						/* unclick the dropdown */
-						HideDropDownMenu(this);
-						this->clicked_dropdown = false;
-						this->closing_dropdown = false;
-					} else {
-						int rel_y = (pt.y - r.top) % this->line_height;
-
-						Rect wi_rect;
-						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
-						wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
-						wi_rect.top = pt.y - rel_y + (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-						wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
-
-						/* If the mouse is still held but dragged outside of the dropdown list, keep the dropdown open */
-						if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
-							this->clicked_dropdown = true;
-							this->closing_dropdown = false;
-
-							DropDownList list;
-							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.emplace_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
-							}
-
-							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE, true);
-						}
-					}
-				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
-					int new_val = old_val;
-					if (bool_item) {
-						new_val = !new_val;
-					} else if (x >= SETTING_BUTTON_WIDTH / 2) {
-						/* Increase button clicked */
-						new_val += config_item.step_size;
-						if (new_val > config_item.max_value) new_val = config_item.max_value;
-						this->clicked_increase = true;
-					} else {
-						/* Decrease button clicked */
-						new_val -= config_item.step_size;
-						if (new_val < config_item.min_value) new_val = config_item.min_value;
-						this->clicked_increase = false;
-					}
-
-					if (new_val != old_val) {
-						this->script_config->SetSetting(config_item.name, new_val);
-						this->clicked_button = num;
-						this->timeout.SetInterval(150);
-					}
-				} else if (!bool_item && !config_item.complete_labels) {
-					/* Display a query box so users can enter a custom value. */
-					SetDParam(0, old_val);
-					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
-				}
-				this->SetDirty();
-				break;
-			}
-
-			case WID_SCRS_ACCEPT:
-				this->Close();
-				break;
-
-			case WID_SCRS_RESET:
-				this->script_config->ResetEditableSettings(_game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)));
-				this->SetDirty();
-				break;
-		}
-	}
-
-	void OnQueryTextFinished(char *str) override
-	{
-		if (StrEmpty(str)) return;
-		int32 value = atoi(str);
-
-		SetValue(value);
-	}
-
-	void OnDropdownSelect(int widget, int index) override
-	{
-		assert(this->clicked_dropdown);
-		SetValue(index);
-	}
-
-	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
-	{
-		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
-		 * the same dropdown button was clicked again, and then not open the dropdown again.
-		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
-		 * after OnClick. */
-		assert(this->clicked_dropdown);
-		this->closing_dropdown = true;
-		this->SetDirty();
-	}
-
-	void OnResize() override
-	{
-		this->vscroll->SetCapacityFromWidget(this, WID_SCRS_BACKGROUND);
-	}
-
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (this->timeout.Elapsed(delta_ms)) {
-			this->clicked_button = -1;
-			this->SetDirty();
-		}
-	}
-
-	/**
-	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
-	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
-	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
-	{
-		this->RebuildVisibleSettings();
-		HideDropDownMenu(this);
-		this->CloseChildWindows(WC_QUERY_STRING);
-	}
-
-private:
-	bool IsEditableItem(const ScriptConfigItem &config_item) const
-	{
-		return _game_mode == GM_MENU
-			|| _game_mode == GM_EDITOR
-			|| ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot))
-			|| (config_item.flags & SCRIPTCONFIG_INGAME) != 0
-			|| _settings_client.gui.ai_developer_tools;
-	}
-
-	void SetValue(int value)
-	{
-		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-		for (int i = 0; i < this->clicked_row; i++) it++;
-		const ScriptConfigItem config_item = **it;
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
-		this->script_config->SetSetting(config_item.name, value);
-		this->SetDirty();
-	}
-};
-
-/** Widgets for the Script settings window. */
-static const NWidgetPart _nested_script_settings_widgets[] = {
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRS_CAPTION), SetDataTip(STR_AI_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
-	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_SCRS_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0, STR_NULL), SetScrollbar(WID_SCRS_SCROLLBAR),
-		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_SCRS_SCROLLBAR),
-	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_RESET), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_AI_SETTINGS_RESET, STR_NULL),
-		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
-	EndContainer(),
-};
-
-/** Window definition for the Script settings window. */
-static WindowDesc _script_settings_desc(
-	WDP_CENTER, "settings_script", 500, 208,
-	WC_SCRIPT_SETTINGS, WC_NONE,
-	0,
-	_nested_script_settings_widgets, lengthof(_nested_script_settings_widgets)
-);
-
-/**
- * Open the Script settings window to change the Script settings for a Script.
- * @param slot The CompanyID of the Script to change the settings.
- */
-void ShowScriptSettingsWindow(CompanyID slot)
-{
-	CloseWindowByClass(WC_SCRIPT_LIST);
-	CloseWindowByClass(WC_SCRIPT_SETTINGS);
-	new ScriptSettingsWindow(&_script_settings_desc, slot);
-}
-
-
 /** Window for displaying the textfile of a AI. */
 struct ScriptTextfileWindow : public TextfileWindow {
-	CompanyID slot; ///< View the textfile of this CompanyID slot.
+	CompanyID slot;              ///< View the textfile of this CompanyID slot.
+	ScriptConfig *script_config; ///< The configuration we selected.
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
+		if (slot == OWNER_DEITY) {
+			this->script_config = GameConfig::GetConfig();
+		} else {
+			this->script_config = AIConfig::GetConfig(slot);
+		}
 		this->OnInvalidateData();
 	}
 
@@ -638,13 +288,13 @@ struct ScriptTextfileWindow : public TextfileWindow {
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+			SetDParamStr(1, script_config->GetInfo()->GetName());
 		}
 	}
 
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		const char *textfile = script_config->GetTextfile(file_type, slot);
 		if (textfile == nullptr) {
 			this->Close();
 		} else {
@@ -945,8 +595,9 @@ struct ScriptDebugWindow : public Window {
 
 		this->highlight_row = -1; // The highlight of one Script make little sense for another Script.
 
-		/* Close AI settings window to prevent confusion */
-		CloseWindowByClass(WC_SCRIPT_SETTINGS);
+		/* Close script settings windows to prevent confusion */
+		CloseWindowByClass(WC_AI_SETTINGS);
+		CloseWindowById(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GS);
 
 		this->InvalidateData(-1);
 
@@ -977,7 +628,11 @@ struct ScriptDebugWindow : public Window {
 				break;
 
 			case WID_SCRD_SETTINGS:
-				ShowScriptSettingsWindow(script_debug_company);
+				if (script_debug_company == OWNER_DEITY) {
+					ShowGSConfigWindow();
+				} else {
+					ShowAISettingsWindow(script_debug_company);
+				}
 				break;
 
 			case WID_SCRD_BREAK_STR_ON_OFF_BTN:

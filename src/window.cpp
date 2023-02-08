@@ -1368,7 +1368,7 @@ static uint GetWindowZPriority(WindowClass wc)
 		case WC_NETWORK_WINDOW:
 		case WC_GRF_PARAMETERS:
 		case WC_SCRIPT_LIST:
-		case WC_SCRIPT_SETTINGS:
+		case WC_AI_SETTINGS:
 		case WC_TEXTFILE:
 			++z_priority;
 			FALLTHROUGH;

@@ -15,7 +15,6 @@
 
 void ShowScriptListWindow(CompanyID slot);
 Window *ShowScriptDebugWindow(CompanyID show_company = INVALID_COMPANY);
-void ShowScriptSettingsWindow(CompanyID slot);
 void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot);
 void ShowScriptDebugWindowIfScriptError();
 void InitializeScriptGui();

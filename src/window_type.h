@@ -162,10 +162,10 @@ enum WindowClass {
 
 
 	/**
-	 * Script settings; %Window numbers:
-	 *   - 0 = #ScriptSettingsWidgets
+	 * AI settings; %Window numbers:
+	 *   - 0 = #AISettingsWidgets
 	 */
-	WC_SCRIPT_SETTINGS,
+	WC_AI_SETTINGS,
 
 	/**
 	 * NewGRF parameters; %Window numbers:

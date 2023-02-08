@@ -203,7 +203,7 @@
 
 	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
 	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
-	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GS);
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
 }
 

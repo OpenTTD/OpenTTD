@@ -114,7 +114,7 @@
 	cur_company.Restore();
 
 	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
-	CloseWindowById(WC_SCRIPT_SETTINGS, company);
+	CloseWindowById(WC_AI_SETTINGS, company);
 }
 
 /* static */ void AI::Pause(CompanyID company)
@@ -340,7 +340,7 @@
 
 	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
 	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
-	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+	InvalidateWindowClassesData(WC_AI_SETTINGS);
 }
 
 /**

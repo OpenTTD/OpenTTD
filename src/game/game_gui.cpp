@@ -161,8 +161,8 @@ struct GSConfigWindow : public Window {
 			case WID_GSC_GSLIST: {
 				StringID text = STR_AI_CONFIG_NONE;
 
-				if (GameConfig::GetConfig()->GetInfo() != nullptr) {
-					SetDParamStr(0, GameConfig::GetConfig()->GetInfo()->GetName());
+				if (this->gs_config->GetInfo() != nullptr) {
+					SetDParamStr(0, this->gs_config->GetInfo()->GetName());
 					text = STR_JUST_RAW_STRING;
 				}
 
@@ -239,7 +239,7 @@ struct GSConfigWindow : public Window {
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget >= WID_GSC_TEXTFILE && widget < WID_GSC_TEXTFILE + TFT_END) {
-			if (GameConfig::GetConfig() == nullptr) return;
+			if (this->gs_config == nullptr) return;
 
 			ShowScriptTextfileWindow((TextfileType)(widget - WID_GSC_TEXTFILE), (CompanyID)OWNER_DEITY);
 			return;
@@ -320,16 +320,12 @@ struct GSConfigWindow : public Window {
 					int new_val = old_val;
 					if (bool_item) {
 						new_val = !new_val;
-					} else if (x >= SETTING_BUTTON_WIDTH / 2) {
-						/* Increase button clicked */
-						new_val += config_item.step_size;
-						if (new_val > config_item.max_value) new_val = config_item.max_value;
-						this->clicked_increase = true;
 					} else {
-						/* Decrease button clicked */
-						new_val -= config_item.step_size;
-						if (new_val < config_item.min_value) new_val = config_item.min_value;
-						this->clicked_increase = false;
+						/* Increase/Decrease button clicked */
+						this->clicked_increase = (x >= SETTING_BUTTON_WIDTH / 2);
+						new_val = this->clicked_increase ?
+							std::min(config_item.max_value, new_val + config_item.step_size) :
+							std::max(config_item.min_value, new_val - config_item.step_size);
 					}
 
 					if (new_val != old_val) {
@@ -406,7 +402,7 @@ struct GSConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
+			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, this->gs_config->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
 		}
 		this->RebuildVisibleSettings();
 		HideDropDownMenu(this);

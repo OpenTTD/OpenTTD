@@ -29,4 +29,13 @@ enum AIConfigWidgets {
 	WID_AIC_CONTENT_DOWNLOAD = WID_AIC_TEXTFILE + TFT_END, ///< Download content button.
 };
 
+/** Widgets of the #AISettingsWindow class. */
+enum AISettingsWidgets {
+	WID_AIS_CAPTION,    ///< Caption of the window.
+	WID_AIS_BACKGROUND, ///< Panel to draw the settings on.
+	WID_AIS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
+	WID_AIS_ACCEPT,     ///< Accept button.
+	WID_AIS_RESET,      ///< Reset button.
+};
+
 #endif /* WIDGETS_AI_WIDGET_H */

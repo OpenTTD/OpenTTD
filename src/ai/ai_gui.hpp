@@ -10,6 +10,7 @@
 #ifndef AI_GUI_HPP
 #define AI_GUI_HPP
 
+void ShowAISettingsWindow(CompanyID slot);
 void ShowAIConfigWindow();
 
 #endif /* AI_GUI_HPP */
