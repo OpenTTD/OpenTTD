@@ -67,3 +67,8 @@
 	time(&t);
 	return t;
 }
+
+/* static */ ScriptDate::Date ScriptDate::GetEconomyDate()
+{
+	return (ScriptDate::Date)_economy_date;
+}
