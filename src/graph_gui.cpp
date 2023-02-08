@@ -181,13 +181,6 @@ protected:
 	byte num_on_x_axis;
 	byte num_vert_lines;
 
-	/* The starting month and year that values are plotted against. If month is
-	 * 0xFF, use x_values_start and x_values_increment below instead. */
-	byte month;
-	Year year;
-
-	/* These values are used if the graph is being plotted against values
-	 * rather than the dates specified by month and year. */
 	uint16 x_values_start;
 	uint16 x_values_increment;
 
@@ -299,7 +292,7 @@ protected:
 		/* Rect r will be adjusted to contain just the graph, with labels being
 		 * placed outside the area. */
 		r.top    += ScaleGUITrad(5) + GetCharacterHeight(FS_SMALL) / 2;
-		r.bottom -= (this->month == 0xFF ? 1 : 2) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4);
+		r.bottom -= GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4);
 		r.left   += ScaleGUITrad(9);
 		r.right  -= ScaleGUITrad(5);
 
@@ -335,8 +328,11 @@ protected:
 		/* Don't draw the first line, as that's where the axis will be. */
 		x = r.left + x_sep;
 
-		for (int i = 0; i < this->num_vert_lines; i++) {
-			GfxFillRect(x, r.top, x, r.bottom, GRAPH_GRID_COLOUR);
+		int colour;
+		for (int i = 1; i < this->num_vert_lines + 1; i++) {
+			/* Separate periods with a lighter line. */
+			colour = (i % 4 == 0) ? GRAPH_YEAR_LINE_COLOUR : GRAPH_GRID_COLOUR;
+			GfxFillRect(x, r.top, x, r.bottom, colour);
 			x += x_sep;
 		}
 
@@ -377,40 +373,17 @@ protected:
 			y += y_sep;
 		}
 
-		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
-		if (this->month != 0xFF) {
-			x = r.left;
-			y = r.bottom + ScaleGUITrad(2);
-			byte month = this->month;
-			Year year  = this->year;
-			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
-				SetDParam(1, year);
-				DrawStringMultiLine(x, x + x_sep, y, this->height, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
+		/* Draw x-axis labels. */
+		x = r.left;
+		y = r.bottom + ScaleGUITrad(2);
+		uint16 label = this->x_values_start;
 
-				month += 3;
-				if (month >= 12) {
-					month = 0;
-					year++;
+		for (int i = 0; i < this->num_on_x_axis; i++) {
+			SetDParam(0, label);
+			DrawString(x + 1, x + x_sep - 1, y, STR_GRAPH_Y_LABEL_NUMBER, GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
 
-					/* Draw a lighter grid line between years. Top and bottom adjustments ensure we don't draw over top and bottom horizontal grid lines. */
-					GfxFillRect(x + x_sep, r.top + 1, x + x_sep, r.bottom - 1, GRAPH_YEAR_LINE_COLOUR);
-				}
-				x += x_sep;
-			}
-		} else {
-			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
-			x = r.left;
-			y = r.bottom + ScaleGUITrad(2);
-			uint16 label = this->x_values_start;
-
-			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, label);
-				DrawString(x + 1, x + x_sep - 1, y, STR_GRAPH_Y_LABEL_NUMBER, GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
-
-				label += this->x_values_increment;
-				x += x_sep;
-			}
+			label += this->x_values_increment;
+			x += x_sep;
 		}
 
 		/* draw lines and dots */
@@ -496,33 +469,16 @@ public:
 
 		uint x_label_width = 0;
 
-		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
-		if (this->month != 0xFF) {
-			byte month = this->month;
-			Year year  = this->year;
-			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
-				SetDParam(1, year);
-				x_label_width = std::max(x_label_width, GetStringBoundingBox(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH).width);
-
-				month += 3;
-				if (month >= 12) {
-					month = 0;
-					year++;
-				}
-			}
-		} else {
-			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
-			SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
-			x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
-		}
+		/* Draw x-axis labels. */
+		SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
+		x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
 
 		SetDParam(0, this->format_str_y_axis);
 		SetDParam(1, INT64_MAX);
 		uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
 
 		size->width  = std::max<uint>(size->width,  ScaleGUITrad(5) + y_label_width + this->num_on_x_axis * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
-		size->height = std::max<uint>(size->height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->month != 0xFF ? 3 : 1)) * FONT_HEIGHT_SMALL + ScaleGUITrad(4));
+		size->height = std::max<uint>(size->height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + 1) * FONT_HEIGHT_SMALL + ScaleGUITrad(4));
 		size->height = std::max<uint>(size->height, size->width / 3);
 	}
 
@@ -585,16 +541,13 @@ public:
 			mo += 12;
 		}
 
-		if (!initialize && this->excluded_data == excluded_companies && this->num_on_x_axis == nums &&
-				this->year == yr && this->month == mo) {
+		if (!initialize && this->excluded_data == excluded_companies && this->num_on_x_axis == nums) {
 			/* There's no reason to get new stats */
 			return;
 		}
 
 		this->excluded_data = excluded_companies;
 		this->num_on_x_axis = nums;
-		this->year = yr;
-		this->month = mo;
 
 		int numd = 0;
 		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
@@ -622,6 +575,11 @@ struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_CV_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
+		this->num_on_x_axis      = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->num_vert_lines     = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->x_values_start     = ECONOMY_QUARTER_MINUTES;
+		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
+
 		this->InitializeWindow(window_number);
 	}
 
@@ -641,10 +599,12 @@ static const NWidgetPart _nested_operating_profit_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_CV_BACKGROUND),
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
 			NWidget(WWT_EMPTY, COLOUR_BROWN, WID_CV_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetMinimalSize(12, 0), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_CV_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
@@ -673,6 +633,11 @@ struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_CV_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
+		this->num_on_x_axis      = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->num_vert_lines     = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->x_values_start     = ECONOMY_QUARTER_MINUTES;
+		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
+
 		this->InitializeWindow(window_number);
 	}
 
@@ -692,10 +657,12 @@ static const NWidgetPart _nested_income_graph_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_CV_BACKGROUND),
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
 			NWidget(WWT_EMPTY, COLOUR_BROWN, WID_CV_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetMinimalSize(12, 0), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_CV_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
@@ -722,6 +689,11 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_CV_GRAPH, STR_JUST_COMMA)
 	{
+		this->num_on_x_axis      = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->num_vert_lines     = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->x_values_start     = ECONOMY_QUARTER_MINUTES;
+		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
+
 		this->InitializeWindow(window_number);
 	}
 
@@ -741,10 +713,12 @@ static const NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_CV_BACKGROUND),
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
 			NWidget(WWT_EMPTY, COLOUR_BROWN, WID_CV_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetMinimalSize(12, 0), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_CV_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
@@ -771,6 +745,11 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_PHG_GRAPH, STR_JUST_COMMA)
 	{
+		this->num_on_x_axis      = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->num_vert_lines     = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->x_values_start     = ECONOMY_QUARTER_MINUTES;
+		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
+
 		this->InitializeWindow(window_number);
 	}
 
@@ -797,10 +776,12 @@ static const NWidgetPart _nested_performance_history_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_PHG_BACKGROUND),
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
 			NWidget(WWT_EMPTY, COLOUR_BROWN, WID_PHG_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetMinimalSize(12, 0), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_PHG_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_PHG_RESIZE),
 			EndContainer(),
 		EndContainer(),
@@ -827,6 +808,11 @@ struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_CV_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
+		this->num_on_x_axis      = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->num_vert_lines     = MAX_GRAPH_ECONOMY_QUARTERS;
+		this->x_values_start     = ECONOMY_QUARTER_MINUTES;
+		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
+
 		this->InitializeWindow(window_number);
 	}
 
@@ -846,10 +832,12 @@ static const NWidgetPart _nested_company_value_graph_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_CV_BACKGROUND),
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
 			NWidget(WWT_EMPTY, COLOUR_BROWN, WID_CV_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_SPACER), SetMinimalSize(12, 0), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_CV_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, STR_NULL),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
@@ -882,7 +870,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis      = 20;
 		this->num_vert_lines     = 20;
-		this->month = 0xFF;
 		this->x_values_start     = 20;
 		this->x_values_increment = 20;
 

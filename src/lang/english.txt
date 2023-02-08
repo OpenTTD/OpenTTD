@@ -598,8 +598,6 @@ STR_MONTH_DEC                                                   :December
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Key
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Show key to graphs
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING2}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -608,6 +606,8 @@ STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Income G
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Units of cargo delivered
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Company performance ratings (maximum rating=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Company values
+
+STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Last 72 minutes
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cargo Payment Rates
 STR_GRAPH_CARGO_PAYMENT_RATES_TIME_LABEL                        :{TINY_FONT}{BLACK}Seconds in transit

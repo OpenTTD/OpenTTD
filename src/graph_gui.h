@@ -10,6 +10,9 @@
 #ifndef GRAPH_GUI_H
 #define GRAPH_GUI_H
 
+static const int MAX_GRAPH_ECONOMY_QUARTERS = 24;
+static const int ECONOMY_QUARTER_MINUTES = 3;
+
 void ShowOperatingProfitGraph();
 void ShowIncomeGraph();
 void ShowDeliveredCargoGraph();
