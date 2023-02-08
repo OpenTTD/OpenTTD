@@ -27,6 +27,7 @@ enum CompanyValueWidgets : WidgetID {
 	WID_CV_BACKGROUND, ///< Background of the window.
 	WID_CV_GRAPH,      ///< Graph itself.
 	WID_CV_RESIZE,     ///< Resize button.
+	WID_CV_FOOTER,     ///< Footer.
 };
 
 /** Widget of the #PerformanceHistoryGraphWindow class. */
@@ -36,6 +37,7 @@ enum PerformanceHistoryGraphWidgets : WidgetID {
 	WID_PHG_BACKGROUND,           ///< Background of the window.
 	WID_PHG_GRAPH,                ///< Graph itself.
 	WID_PHG_RESIZE,               ///< Resize button.
+	WID_PHG_FOOTER,               ///< Footer.
 };
 
 /** Widget of the #PaymentRatesGraphWindow class. */
