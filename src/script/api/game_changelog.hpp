@@ -22,6 +22,7 @@
  * \li GSCompanyMode::IsDeity
  * \li GSTown::ROAD_LAYOUT_RANDOM
  * \li GSVehicle::IsPrimaryVehicle
+ * \li GSDate::GetEconomyDate
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.

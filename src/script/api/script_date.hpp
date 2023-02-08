@@ -87,6 +87,13 @@ public:
 	 * @note This uses the clock of the host system, which can skew or be set back. Use with caution.
 	 */
 	static SQInteger GetSystemTime();
+
+	/**
+	 * Get the economy date, which counts two-second intervals (equivalent to a calendar day at 100% calendar date progress speed).
+	 * @return The number of two-second intervals since the game started. Note that loading old savegames sets the economy date equivalent to the calendar date,
+	 *         so this should only be used to compare economy dates to each other, not to any fixed point in time.
+	 */
+	static Date GetEconomyDate();
 };
 
 #endif /* SCRIPT_DATE_HPP */
