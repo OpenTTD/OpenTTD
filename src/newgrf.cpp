@@ -6457,6 +6457,14 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 			*value = _cur_year;
 			return true;
 
+		case 0x25: // economy date
+			*value = _economy_date;
+			return true;
+
+		case 0x26: // calendar progress speed percent
+			*value = _settings_game.economy.calendar_progress_speed;
+			return true;
+
 		default: return false;
 	}
 }
