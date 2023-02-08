@@ -181,10 +181,11 @@ protected:
 	byte num_on_x_axis;
 	byte num_vert_lines;
 
-	/* The starting month and year that values are plotted against. If month is
-	 * 0xFF, use x_values_start and x_values_increment below instead. */
+	/* The starting month and year that values are plotted against. */
 	byte month;
 	Year year;
+
+	bool draw_dates = true; ///< Should we draw months and years on the time axis?
 
 	/* These values are used if the graph is being plotted against values
 	 * rather than the dates specified by month and year. */
@@ -299,7 +300,7 @@ protected:
 		/* Rect r will be adjusted to contain just the graph, with labels being
 		 * placed outside the area. */
 		r.top    += ScaleGUITrad(5) + GetCharacterHeight(FS_SMALL) / 2;
-		r.bottom -= (this->month == 0xFF ? 1 : 2) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4);
+		r.bottom -= (this->draw_dates ? 2 : 1) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4);
 		r.left   += ScaleGUITrad(9);
 		r.right  -= ScaleGUITrad(5);
 
@@ -378,7 +379,7 @@ protected:
 		}
 
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
-		if (this->month != 0xFF) {
+		if (this->draw_dates) {
 			x = r.left;
 			y = r.bottom + ScaleGUITrad(2);
 			byte month = this->month;
@@ -497,7 +498,7 @@ public:
 		uint x_label_width = 0;
 
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
-		if (this->month != 0xFF) {
+		if (this->draw_dates) {
 			byte month = this->month;
 			Year year  = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
@@ -522,7 +523,7 @@ public:
 		uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
 
 		size->width  = std::max<uint>(size->width,  ScaleGUITrad(5) + y_label_width + this->num_on_x_axis * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
-		size->height = std::max<uint>(size->height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->month != 0xFF ? 3 : 1)) * FONT_HEIGHT_SMALL + ScaleGUITrad(4));
+		size->height = std::max<uint>(size->height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * FONT_HEIGHT_SMALL + ScaleGUITrad(4));
 		size->height = std::max<uint>(size->height, size->width / 3);
 	}
 
@@ -882,7 +883,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis = 20;
 		this->num_vert_lines = 20;
-		this->month = 0xFF;
+		this->draw_dates = false;
 		this->x_values_start     = 10;
 		this->x_values_increment = 10;
 
