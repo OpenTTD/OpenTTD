@@ -32,7 +32,7 @@ public:
 	/**
 	 * @param length The length of the bridge you want to build.
 	 */
-	ScriptBridgeList_Length(uint length);
+	ScriptBridgeList_Length(SQInteger length);
 };
 
 #endif /* SCRIPT_BRIDGELIST_HPP */
