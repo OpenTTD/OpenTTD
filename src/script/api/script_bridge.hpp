@@ -80,16 +80,17 @@ public:
 	 *       This is mph / 1.6, which is roughly km/h.
 	 *       To get km/h multiply this number by 1.00584.
 	 */
-	static int32 GetMaxSpeed(BridgeID bridge_id);
+	static SQInteger GetMaxSpeed(BridgeID bridge_id);
 
 	/**
 	 * Get the new cost of a bridge, excluding the road and/or rail.
 	 * @param bridge_id The bridge to get the new cost of.
 	 * @param length The length of the bridge.
+	 *               The value will be clamped to 0 .. MAX(int32).
 	 * @pre IsValidBridge(bridge_id).
 	 * @return The new cost the bridge has.
 	 */
-	static Money GetPrice(BridgeID bridge_id, uint length);
+	static Money GetPrice(BridgeID bridge_id, SQInteger length);
 
 	/**
 	 * Get the maximum length of a bridge.
@@ -97,7 +98,7 @@ public:
 	 * @pre IsValidBridge(bridge_id).
 	 * @returns The maximum length the bridge has.
 	 */
-	static int32 GetMaxLength(BridgeID bridge_id);
+	static SQInteger GetMaxLength(BridgeID bridge_id);
 
 	/**
 	 * Get the minimum length of a bridge.
@@ -105,7 +106,7 @@ public:
 	 * @pre IsValidBridge(bridge_id).
 	 * @returns The minimum length the bridge has.
 	 */
-	static int32 GetMinLength(BridgeID bridge_id);
+	static SQInteger GetMinLength(BridgeID bridge_id);
 
 	/**
 	 * Internal function to help BuildBridge in case of road.

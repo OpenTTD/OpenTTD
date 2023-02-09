@@ -132,32 +132,34 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	return GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::GetBridgeSpec(bridge_id)->transport_name[vehicle_type]);
 }
 
-/* static */ int32 ScriptBridge::GetMaxSpeed(BridgeID bridge_id)
+/* static */ SQInteger ScriptBridge::GetMaxSpeed(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
 	return ::GetBridgeSpec(bridge_id)->speed; // km-ish/h
 }
 
-/* static */ Money ScriptBridge::GetPrice(BridgeID bridge_id, uint length)
+/* static */ Money ScriptBridge::GetPrice(BridgeID bridge_id, SQInteger length)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
+
+	length = Clamp<SQInteger>(length, 0, INT32_MAX);
 
 	return ::CalcBridgeLenCostFactor(length) * _price[PR_BUILD_BRIDGE] * ::GetBridgeSpec(bridge_id)->price >> 8;
 }
 
-/* static */ int32 ScriptBridge::GetMaxLength(BridgeID bridge_id)
+/* static */ SQInteger ScriptBridge::GetMaxLength(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return std::min(::GetBridgeSpec(bridge_id)->max_length, _settings_game.construction.max_bridge_length) + 2;
+	return std::min<SQInteger>(::GetBridgeSpec(bridge_id)->max_length, _settings_game.construction.max_bridge_length) + 2;
 }
 
-/* static */ int32 ScriptBridge::GetMinLength(BridgeID bridge_id)
+/* static */ SQInteger ScriptBridge::GetMinLength(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return ::GetBridgeSpec(bridge_id)->min_length + 2;
+	return static_cast<SQInteger>(::GetBridgeSpec(bridge_id)->min_length) + 2;
 }
 
 /* static */ TileIndex ScriptBridge::GetOtherBridgeEnd(TileIndex tile)
