@@ -381,7 +381,7 @@ public:
 	 * @param owner The company that can be bought.
 	 * @param value The value/costs of buying the company.
 	 */
-	ScriptEventCompanyAskMerger(Owner owner, int32 value) :
+	ScriptEventCompanyAskMerger(Owner owner, Money value) :
 		ScriptEvent(ET_COMPANY_ASK_MERGER),
 		owner((ScriptCompany::CompanyID)owner),
 		value(value)
@@ -406,7 +406,7 @@ public:
 	 * Get the value of the new company.
 	 * @return The value of the new company.
 	 */
-	int32 GetValue() { return this->value; }
+	Money GetValue() { return this->value; }
 
 	/**
 	 * Take over the company for this merger.
@@ -416,7 +416,7 @@ public:
 
 private:
 	ScriptCompany::CompanyID owner; ///< The company that is in trouble.
-	int32 value;                ///< The value of the company, i.e. the amount you would pay.
+	Money value;                ///< The value of the company, i.e. the amount you would pay.
 };
 
 /**
