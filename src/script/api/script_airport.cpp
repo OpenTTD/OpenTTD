@@ -49,21 +49,21 @@
 	return ::IsTileType(tile, MP_STATION) && ::IsAirport(tile);
 }
 
-/* static */ int32 ScriptAirport::GetAirportWidth(AirportType type)
+/* static */ SQInteger ScriptAirport::GetAirportWidth(AirportType type)
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
 	return ::AirportSpec::Get(type)->size_x;
 }
 
-/* static */ int32 ScriptAirport::GetAirportHeight(AirportType type)
+/* static */ SQInteger ScriptAirport::GetAirportHeight(AirportType type)
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
 	return ::AirportSpec::Get(type)->size_y;
 }
 
-/* static */ int32 ScriptAirport::GetAirportCoverageRadius(AirportType type)
+/* static */ SQInteger ScriptAirport::GetAirportCoverageRadius(AirportType type)
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
@@ -89,7 +89,7 @@
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
-/* static */ int32 ScriptAirport::GetNumHangars(TileIndex tile)
+/* static */ SQInteger ScriptAirport::GetNumHangars(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return -1;
 	if (!::IsTileType(tile, MP_STATION)) return -1;
@@ -126,7 +126,7 @@
 }
 
 
-/* static */ int ScriptAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
+/* static */ SQInteger ScriptAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
 {
 	if (!::IsValidTile(tile)) return -1;
 	if (!IsAirportInformationAvailable(type)) return -1;
@@ -156,7 +156,7 @@
 	return AirportGetNearestTown(as, AirportTileTableIterator(as->table[0], tile), dist)->index;
 }
 
-/* static */ uint16 ScriptAirport::GetMaintenanceCostFactor(AirportType type)
+/* static */ SQInteger ScriptAirport::GetMaintenanceCostFactor(AirportType type)
 {
 	if (!IsAirportInformationAvailable(type)) return 0;
 
