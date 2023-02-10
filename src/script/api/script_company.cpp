@@ -114,11 +114,12 @@
 	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
 }
 
-/* static */ Money ScriptCompany::GetQuarterlyIncome(ScriptCompany::CompanyID company, uint32 quarter)
+/* static */ Money ScriptCompany::GetQuarterlyIncome(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
+	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
 		return ::Company::Get(company)->cur_economy.income;
@@ -126,11 +127,12 @@
 	return ::Company::Get(company)->old_economy[quarter - 1].income;
 }
 
-/* static */ Money ScriptCompany::GetQuarterlyExpenses(ScriptCompany::CompanyID company, uint32 quarter)
+/* static */ Money ScriptCompany::GetQuarterlyExpenses(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
+	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
 		return ::Company::Get(company)->cur_economy.expenses;
@@ -138,11 +140,12 @@
 	return ::Company::Get(company)->old_economy[quarter - 1].expenses;
 }
 
-/* static */ int32 ScriptCompany::GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, uint32 quarter)
+/* static */ SQInteger ScriptCompany::GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
+	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
 		return ::Company::Get(company)->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
@@ -150,21 +153,22 @@
 	return ::Company::Get(company)->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
 }
 
-/* static */ int32 ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, uint32 quarter)
+/* static */ SQInteger ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
-	if (quarter == CURRENT_QUARTER) return -1;
+	if (quarter <= CURRENT_QUARTER) return -1;
 
 	return ::Company::Get(company)->old_economy[quarter - 1].performance_history;
 }
 
-/* static */ Money ScriptCompany::GetQuarterlyCompanyValue(ScriptCompany::CompanyID company, uint32 quarter)
+/* static */ Money ScriptCompany::GetQuarterlyCompanyValue(ScriptCompany::CompanyID company, SQInteger quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
 	if (quarter > EARLIEST_QUARTER) return -1;
+	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
 		return ::CalculateCompanyValue(::Company::Get(company));
@@ -278,12 +282,13 @@
 	return ::Company::Get(company)->settings.engine_renew;
 }
 
-/* static */ bool ScriptCompany::SetAutoRenewMonths(int16 months)
+/* static */ bool ScriptCompany::SetAutoRenewMonths(SQInteger months)
 {
+	months = Clamp<SQInteger>(months, INT16_MIN, INT16_MAX);
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_months", months);
 }
 
-/* static */ int16 ScriptCompany::GetAutoRenewMonths(CompanyID company)
+/* static */ SQInteger ScriptCompany::GetAutoRenewMonths(CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;

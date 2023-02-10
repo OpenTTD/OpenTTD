@@ -263,7 +263,7 @@ public:
 	 * @pre quarter <= EARLIEST_QUARTER.
 	 * @return The gross income of the company in the given quarter.
 	 */
-	static Money GetQuarterlyIncome(CompanyID company, uint32 quarter);
+	static Money GetQuarterlyIncome(CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the expenses of the company in the given quarter.
@@ -276,7 +276,7 @@ public:
 	 * @pre quarter <= EARLIEST_QUARTER.
 	 * @return The expenses of the company in the given quarter.
 	 */
-	static Money GetQuarterlyExpenses(CompanyID company, uint32 quarter);
+	static Money GetQuarterlyExpenses(CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the amount of cargo delivered by the given company in the given quarter.
@@ -286,7 +286,7 @@ public:
 	 * @pre quarter <= EARLIEST_QUARTER.
 	 * @return The amount of cargo delivered by the given company in the given quarter.
 	 */
-	static int32 GetQuarterlyCargoDelivered(CompanyID company, uint32 quarter);
+	static SQInteger GetQuarterlyCargoDelivered(CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the performance rating of the given company in the given quarter.
@@ -298,7 +298,7 @@ public:
 	 * @note The performance rating is calculated after every quarter, so the value for CURRENT_QUARTER is undefined.
 	 * @return The performance rating of the given company in the given quarter.
 	 */
-	static int32 GetQuarterlyPerformanceRating(CompanyID company, uint32 quarter);
+	static SQInteger GetQuarterlyPerformanceRating(CompanyID company, SQInteger quarter);
 
 	/**
 	 * Get the value of the company in the given quarter.
@@ -308,7 +308,7 @@ public:
 	 * @pre quarter <= EARLIEST_QUARTER.
 	 * @return The value of the company in the given quarter.
 	 */
-	static Money GetQuarterlyCompanyValue(CompanyID company, uint32 quarter);
+	static Money GetQuarterlyCompanyValue(CompanyID company, SQInteger quarter);
 
 	/**
 	 * Build your company's HQ on the given tile.
@@ -351,10 +351,11 @@ public:
 	/**
 	 * Set the number of months before/after max age to autorenew an engine for your company.
 	 * @param months The new months between autorenew.
+	 *               The value will be clamped to MIN(int16) .. MAX(int16).
 	 * @return True if autorenew months has been modified.
 	 * @api -game
 	 */
-	static bool SetAutoRenewMonths(int16 months);
+	static bool SetAutoRenewMonths(SQInteger months);
 
 	/**
 	 * Return the number of months before/after max age to autorenew an engine for a company.
@@ -362,7 +363,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The months before/after max age of engine.
 	 */
-	static int16 GetAutoRenewMonths(CompanyID company);
+	static SQInteger GetAutoRenewMonths(CompanyID company);
 
 	/**
 	 * Set the minimum money needed to autorenew an engine for your company.
