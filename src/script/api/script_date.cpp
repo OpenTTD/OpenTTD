@@ -25,7 +25,7 @@
 	return (ScriptDate::Date)_date;
 }
 
-/* static */ int32 ScriptDate::GetYear(ScriptDate::Date date)
+/* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
@@ -34,7 +34,7 @@
 	return ymd.year;
 }
 
-/* static */ int32 ScriptDate::GetMonth(ScriptDate::Date date)
+/* static */ SQInteger ScriptDate::GetMonth(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
@@ -43,7 +43,7 @@
 	return ymd.month + 1;
 }
 
-/* static */ int32 ScriptDate::GetDayOfMonth(ScriptDate::Date date)
+/* static */ SQInteger ScriptDate::GetDayOfMonth(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
@@ -52,7 +52,7 @@
 	return ymd.day;
 }
 
-/* static */ ScriptDate::Date ScriptDate::GetDate(int32 year, int32 month, int32 day_of_month)
+/* static */ ScriptDate::Date ScriptDate::GetDate(SQInteger year, SQInteger month, SQInteger day_of_month)
 {
 	if (month < 1 || month > 12) return DATE_INVALID;
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
@@ -61,7 +61,7 @@
 	return (ScriptDate::Date)::ConvertYMDToDate(year, month - 1, day_of_month);
 }
 
-/* static */ int32 ScriptDate::GetSystemTime()
+/* static */ SQInteger ScriptDate::GetSystemTime()
 {
 	time_t t;
 	time(&t);
