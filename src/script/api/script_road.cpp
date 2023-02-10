@@ -452,8 +452,8 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ int32 ScriptRoad::GetNeighbourRoadCount(TileIndex tile)
 {
-	if (!::IsValidTile(tile)) return false;
-	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
+	if (!::IsValidTile(tile)) return -1;
+	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return -1;
 
 	::RoadType rt = (::RoadType)GetCurrentRoadType();
 	int32 neighbour = 0;
@@ -627,7 +627,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ int32 ScriptRoad::GetMaxSpeed(RoadType road_type)
 {
-	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return 0;
+	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return -1;
 
 	return GetRoadTypeInfo((::RoadType)road_type)->max_speed;
 }
