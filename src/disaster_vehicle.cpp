@@ -40,8 +40,7 @@
 #include "effectvehicle_func.h"
 #include "roadveh.h"
 #include "train.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
@@ -389,8 +388,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 
 				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NT_ACCIDENT, u->tile);
 
-				AI::NewEvent(u->owner, new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO));
-				Game::NewEvent(new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO));
+				ScriptTrigger::NewEvent<ScriptEventVehicleCrashed>(u->owner, u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO);
 			}
 		}
 

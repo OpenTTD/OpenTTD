@@ -15,7 +15,7 @@
 #include "news_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "ai/ai.hpp"
+#include "script/script_trigger.hpp"
 #include "aircraft.h"
 #include "train.h"
 #include "newgrf_engine.h"
@@ -44,7 +44,6 @@
 #include "core/container_func.hpp"
 #include "cargo_type.h"
 #include "water.h"
-#include "game/game.hpp"
 #include "cargomonitor.h"
 #include "goal_base.h"
 #include "story_base.h"
@@ -598,8 +597,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
 			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, cni);
-			AI::BroadcastNewEvent(new ScriptEventCompanyInTrouble(c->index));
-			Game::NewEvent(new ScriptEventCompanyInTrouble(c->index));
+			ScriptTrigger::BroadcastNewEvent<ScriptEventCompanyInTrouble>(c->index);
 			break;
 		}
 
@@ -2015,8 +2013,7 @@ static void DoAcquireCompany(Company *c, bool hostile_takeover)
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
 	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, cni);
-	AI::BroadcastNewEvent(new ScriptEventCompanyMerger(ci, _current_company));
-	Game::NewEvent(new ScriptEventCompanyMerger(ci, _current_company));
+	ScriptTrigger::BroadcastNewEvent<ScriptEventCompanyMerger>(ci, _current_company);
 
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
