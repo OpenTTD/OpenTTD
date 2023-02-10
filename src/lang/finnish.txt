@@ -3352,6 +3352,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varoitus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Virhe: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Virhe: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF ”{STRING}” on kohdannut vakavan virheen:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF ”{STRING}” on kohdannut virheen:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ei toimi OpenTTD:n ilmoittaman TTDPatch-version kanssa
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on TTD:n {2:STRING}-versiota varten
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} on suunniteltu toimimaan lisäosan {2:STRING} kanssa
@@ -4599,9 +4601,9 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Määrit
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Määritä skriptin parametrit
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Saatavilla {STRING}
-STR_AI_LIST_CAPTION_AI                                          :Tekoälyt
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Peliskriptit
+STR_AI_LIST_CAPTION                                             :{WHITE}Saatavilla olevat {STRING}
+STR_AI_LIST_CAPTION_AI                                          :tekoälyt
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :peliskriptit
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Napsauta valitaksesi skriptin
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Tekijä: {ORANGE}{STRING}
@@ -4622,7 +4624,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Korkeusk
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoiskartan kuvakaappaus
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tekoälyn parametrit
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrit
+STR_AI_SETTINGS_CAPTION_AI                                      :Tekoäly
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Peliskripti
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
