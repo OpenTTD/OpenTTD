@@ -600,7 +600,7 @@ struct TimetableWindow : Window {
 			}
 
 			case WID_VT_RESET_LATENESS: // Reset the vehicle's late counter.
-				Command<CMD_SET_VEHICLE_ON_TIME>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index);
+				Command<CMD_SET_VEHICLE_ON_TIME>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, _ctrl_pressed);
 				break;
 
 			case WID_VT_AUTOFILL: { // Autofill the timetable.

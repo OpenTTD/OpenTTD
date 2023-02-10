@@ -211,9 +211,10 @@ CommandCost CmdBulkChangeTimetable(DoCommandFlag flags, VehicleID veh, ModifyTim
  * Clear the lateness counter to make the vehicle on time.
  * @param flags Operation to perform.
  * @param veh Vehicle with the orders to change.
+ * @param apply_to_group Set to reset the late counter for all vehicles sharing the orders.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh)
+CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh, bool apply_to_group)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
@@ -222,8 +223,23 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh)
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
-		v->lateness_counter = 0;
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		if (apply_to_group) {
+			int32 most_late = 0;
+			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
+				if (u->lateness_counter > most_late) {
+					most_late = u->lateness_counter;
+				}
+			}
+			if (most_late > 0) {
+				for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
+					u->lateness_counter -= most_late;
+					SetWindowDirty(WC_VEHICLE_TIMETABLE, u->index);
+				}
+			}
+		} else {
+			v->lateness_counter = 0;
+			SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		}
 	}
 
 	return CommandCost();
