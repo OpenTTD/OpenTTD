@@ -158,7 +158,7 @@
 
 /* static */ uint16 ScriptAirport::GetMaintenanceCostFactor(AirportType type)
 {
-	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
+	if (!IsAirportInformationAvailable(type)) return 0;
 
 	return AirportSpec::Get(type)->maintenance_cost;
 }
