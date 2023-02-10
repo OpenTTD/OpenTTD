@@ -48,6 +48,7 @@ class ScriptController {
 	friend class ScriptInstance;
 
 public:
+#ifndef DOXYGEN_API
 	/**
 	 * Initializer of the ScriptController.
 	 * @param company The company this Script is normally serving.
@@ -59,6 +60,7 @@ public:
 	 */
 	~ScriptController();
 
+#else
 	/**
 	 * This function is called to start your script. Your script starts here. If you
 	 *   return from this function, your script dies, so make sure that doesn't
@@ -67,7 +69,6 @@ public:
 	 */
 	void Start();
 
-#ifdef DOXYGEN_API
 	/**
 	 * Save the state of the script.
 	 *
