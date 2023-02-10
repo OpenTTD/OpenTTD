@@ -27,8 +27,7 @@
 #include "sound_func.h"
 #include "cheat_type.h"
 #include "company_base.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "company_func.h"
 #include "effectvehicle_func.h"
 #include "station_base.h"
@@ -1345,8 +1344,7 @@ static void CrashAirplane(Aircraft *v)
 		headline = GetEncodedString(STR_NEWS_AIRCRAFT_CRASH, victims, st->index);
 	}
 
-	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims, v->owner));
-	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims, v->owner));
+	ScriptTrigger::NewEvent<ScriptEventVehicleCrashed>(v->owner, v->index, vt, st == nullptr ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING, victims, v->owner);
 
 	NewsType newstype = NewsType::Accident;
 	if (v->owner != _local_company) {
@@ -1411,8 +1409,7 @@ static void AircraftEntersTerminal(Aircraft *v)
 			v->index,
 			st->index
 		);
-		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
-		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
+		ScriptTrigger::NewEvent<ScriptEventStationFirstVehicle>(v->owner, st->index, v->index);
 	}
 
 	v->BeginLoading();

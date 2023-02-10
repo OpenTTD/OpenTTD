@@ -16,7 +16,7 @@
 #include "news_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "ai/ai.hpp"
+#include "script/script_trigger.hpp"
 #include "aircraft.h"
 #include "train.h"
 #include "newgrf_engine.h"
@@ -45,7 +45,6 @@
 #include "core/container_func.hpp"
 #include "cargo_type.h"
 #include "water.h"
-#include "game/game.hpp"
 #include "cargomonitor.h"
 #include "goal_base.h"
 #include "story_base.h"
@@ -585,8 +584,7 @@ static void CompanyCheckBankrupt(Company *c)
 			auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_COMPANY_IN_TROUBLE_TITLE, c);
 			EncodedString headline = GetEncodedString(STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION, cni->company_name);
 			AddCompanyNewsItem(std::move(headline), std::move(cni));
-			AI::BroadcastNewEvent(new ScriptEventCompanyInTrouble(c->index));
-			Game::NewEvent(new ScriptEventCompanyInTrouble(c->index));
+			ScriptTrigger::BroadcastNewEvent<ScriptEventCompanyInTrouble>(c->index);
 			break;
 		}
 
@@ -1998,8 +1996,7 @@ static void DoAcquireCompany(Company *c, bool hostile_takeover)
 		? GetEncodedString(STR_NEWS_MERGER_TAKEOVER_TITLE, cni->company_name, cni->other_company_name)
 		: GetEncodedString(STR_NEWS_COMPANY_MERGER_DESCRIPTION, cni->company_name, cni->other_company_name, c->bankrupt_value);
 	AddCompanyNewsItem(std::move(headline), std::move(cni));
-	AI::BroadcastNewEvent(new ScriptEventCompanyMerger(ci, _current_company));
-	Game::NewEvent(new ScriptEventCompanyMerger(ci, _current_company));
+	ScriptTrigger::BroadcastNewEvent<ScriptEventCompanyMerger>(ci, _current_company);
 
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
