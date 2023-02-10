@@ -40,7 +40,7 @@ public:
 	 * @note When the instance is destroyed, it restores the company that was
 	 *   current when the instance was created!
 	 */
-	ScriptCompanyMode(int company);
+	ScriptCompanyMode(SQInteger company);
 
 	/**
 	 * Destroying this instance reset the company to that what it was
