@@ -15,7 +15,7 @@
 
 #include "../../safeguards.h"
 
-/* static */ int32 ScriptCargoMonitor::GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
+/* static */ SQInteger ScriptCargoMonitor::GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
 {
 	CompanyID cid = static_cast<CompanyID>(company);
 	if (cid >= MAX_COMPANIES) return -1;
@@ -26,7 +26,7 @@
 	return GetDeliveryAmount(monitor, keep_monitoring);
 }
 
-/* static */ int32 ScriptCargoMonitor::GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
+/* static */ SQInteger ScriptCargoMonitor::GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
 {
 	CompanyID cid = static_cast<CompanyID>(company);
 	if (cid >= MAX_COMPANIES) return -1;
@@ -37,7 +37,7 @@
 	return GetDeliveryAmount(monitor, keep_monitoring);
 }
 
-/* static */ int32 ScriptCargoMonitor::GetTownPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
+/* static */ SQInteger ScriptCargoMonitor::GetTownPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring)
 {
 	CompanyID cid = static_cast<CompanyID>(company);
 	if (cid >= MAX_COMPANIES) return -1;
@@ -48,7 +48,7 @@
 	return GetPickupAmount(monitor, keep_monitoring);
 }
 
-/* static */ int32 ScriptCargoMonitor::GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
+/* static */ SQInteger ScriptCargoMonitor::GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring)
 {
 	CompanyID cid = static_cast<CompanyID>(company);
 	if (cid >= MAX_COMPANIES) return -1;

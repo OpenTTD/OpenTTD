@@ -51,7 +51,7 @@ public:
 	 * @return Amount of delivered cargo of the given cargo type to the given town by the given company since the last call, or
 	 * \c -1 if a parameter is out-of-bound.
 	 */
-	static int32 GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring);
+	static SQInteger GetTownDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring);
 
 	/**
 	 * Get the amount of cargo delivered to an industry by a company since the last query, and update the monitoring state.
@@ -62,7 +62,7 @@ public:
 	 * @return Amount of delivered cargo of the given cargo type to the given industry by the given company since the last call, or
 	 * \c -1 if a parameter is out-of-bound.
 	 */
-	static int32 GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring);
+	static SQInteger GetIndustryDeliveryAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring);
 
 	/**
 	 * Get the amount of cargo picked up (and delivered) from a town by a company since the last query, and update the monitoring state.
@@ -74,7 +74,7 @@ public:
 	 * \c -1 if a parameter is out-of-bound.
 	 * @note Amounts of picked-up cargo are added during final delivery of it, to prevent users from getting credit for picking up without delivering it.
 	 */
-	static int32 GetTownPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring);
+	static SQInteger GetTownPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, TownID town_id, bool keep_monitoring);
 
 	/**
 	 * Get the amount of cargo picked up (and delivered) from an industry by a company since the last query, and update the monitoring state.
@@ -86,7 +86,7 @@ public:
 	 * \c -1 if a parameter is out-of-bound.
 	 * @note Amounts of picked-up cargo are added during final delivery of it, to prevent users from getting credit for picking up without delivering it.
 	 */
-	static int32 GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring);
+	static SQInteger GetIndustryPickupAmount(ScriptCompany::CompanyID company, CargoID cargo, IndustryID industry_id, bool keep_monitoring);
 
 	/** Stop monitoring everything. */
 	static void StopAllMonitoring();
