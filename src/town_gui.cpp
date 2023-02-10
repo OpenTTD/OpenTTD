@@ -297,7 +297,7 @@ public:
 				}
 
 				/* When double-clicking, continue */
-				if (click_count == 1 || y < 0) break;
+				if (click_count == 1 || y < 0 || !HasBit(this->available_actions, y)) break;
 				FALLTHROUGH;
 			}
 
