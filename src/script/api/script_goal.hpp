@@ -103,7 +103,7 @@ public:
 	 *       \li Global goals can only reference global story pages.
 	 *       \li Company specific goals can reference global story pages and story pages of the same company.
 	 */
-	static GoalID New(ScriptCompany::CompanyID company, Text *goal, GoalType type, uint32 destination);
+	static GoalID New(ScriptCompany::CompanyID company, Text *goal, GoalType type, SQInteger destination);
 
 	/**
 	 * Remove a goal from the list.
@@ -170,10 +170,11 @@ public:
 	 * @pre question != null && len(question) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
 	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
-	static bool Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons);
+	static bool Question(SQInteger uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, SQInteger buttons);
 
 	/**
 	 * Ask client a question.
@@ -188,28 +189,30 @@ public:
 	 * @pre question != null && len(question) != 0.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
 	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
-	static bool QuestionClient(uint16 uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, int buttons);
+	static bool QuestionClient(SQInteger uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, SQInteger buttons);
 
 	/**
 	 * Close the question on all clients.
 	 * @param uniqueid The uniqueid of the question you want to close.
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
 	 * @note If you send a question to a single company, and get a reply for them,
 	 *   the question is already closed on all clients. Only use this function if
 	 *   you want to timeout a question, or if you send the question to all
 	 *   companies, but you are only interested in the reply of the first.
 	 */
-	static bool CloseQuestion(uint16 uniqueid);
+	static bool CloseQuestion(SQInteger uniqueid);
 
 protected:
 	/**
 	 * Does common checks and asks the question.
 	 */
-	static bool DoQuestion(uint16 uniqueid, uint32 target, bool is_client, Text *question, QuestionType type, uint32 buttons);
+	static bool DoQuestion(SQInteger uniqueid, uint32 target, bool is_client, Text *question, QuestionType type, SQInteger buttons);
 };
 
 #endif /* SCRIPT_GOAL_HPP */
