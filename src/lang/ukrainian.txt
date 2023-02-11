@@ -4747,7 +4747,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Знят
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Зняток мінімапи
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Налаштування
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Параметри ШІ
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий Скрипт
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
