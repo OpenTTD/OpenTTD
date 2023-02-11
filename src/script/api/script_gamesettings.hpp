@@ -57,18 +57,19 @@ public:
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @return The value for the setting.
 	 */
-	static int32 GetValue(const char *setting);
+	static SQInteger GetValue(const char *setting);
 
 	/**
 	 * Sets the value of the game setting.
 	 * @param setting The setting to set the value of.
 	 * @param value The value to set the setting to.
+	 *              The value will be clamped to MIN(int32) .. MAX(int32).
 	 * @pre IsValid(setting).
 	 * @return True if the action succeeded.
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @api -ai
 	 */
-	static bool SetValue(const char *setting, int value);
+	static bool SetValue(const char *setting, SQInteger value);
 
 	/**
 	 * Checks whether the given vehicle-type is disabled for companies.
