@@ -4652,7 +4652,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Скас
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Скасувати обмеження швидкості для виділеного пункту. Ctrl+клац видалить швидкість в усіх завданнях
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Скасувати відхилення
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Скасувати лічильник відхилення від графіка, щоб транспорт встигнув
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Скасувати лічильник відхилення від графіка, щоб транспорт встигнув. Ctrl+клац щоб скасувати лічильник для всіх транспортів. При цьому останній транспорт стане йти за графіком, а інщі опереджати графік.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Авторозрахунок
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично розрахувати розклад впродовж наступної поїздки. Ctrl+клац, щоб спробувати зберегти час очікування

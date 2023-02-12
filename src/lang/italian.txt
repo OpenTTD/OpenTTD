@@ -4570,7 +4570,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Elimina 
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Elimina l'impostazione del limite di velocità per l'ordine selezionato. CTRL+clic rimuove la velocità da tutti gli ordini
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Azzera ritardo
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore dei ritardi, in modo che il veicolo sia puntuale. Ctrl+clic azzera l'intero gruppo, in modo che l'ultimo veicolo sia puntuale e tutti gli altri siano in anticipo.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio. CTRL+clic per cercare di mantenere i tempi di attesa

@@ -4716,7 +4716,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Сбро
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Сбросить ограничение скорости движения для выделенного задания. Ctrl+щелчок - сбросить время для всех заданий.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Сбросить счетчик опозд.
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик отклонения от графика, чтобы транспорт снова считался приходящим вовремя
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик опоздания, чтобы ТС считалось идущим по графику. Ctrl+щелчок сбросит счётчики у всей группы, так что последнее ТС будет идти по графику, а остальные - раньше графика.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Авторасчёт
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить график автоматически временем, затраченным на движение в следующей поездке. Ctrl+щелчок - не изменять время ожидания.

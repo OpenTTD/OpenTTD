@@ -3352,6 +3352,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varning: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF:en "{STRING}" har returnerat ett allvarligt fel:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF:en "{STRING}" har returnerat ett fel:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} kommer inte att fungera med den TTDPatchversion som rapporterades av OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} är för {2:STRING}-versionen av TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} är designat för att användas med {2:STRING}
@@ -4527,7 +4529,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Rensa ha
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Ta bort hastighetsgräns för markerad order. Ctrl+klick tar bort hastighetsgränsen för alla ordrar
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Rensa räknaren för sen ankomst
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollställ räknaren för sen ankomst så att fordonet kommer i tid
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollställ räknaren för sen ankomst så att fordonet kommer i tid. Ctrl+klick nollställer för hela gruppen så att det senaste fordonet kommer att vara i tid och alla andra tidiga
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll i automatiskt
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i tidtabellen automatiskt med värden från nästa resa. Ctrl+klicka för att försöka behålla väntetiderna
