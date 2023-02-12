@@ -94,6 +94,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install dependencies
+      # For the variant without libsdl, we also don't any other libraries.
+      # This way we validate that we can build without any of the (encouraged) dependencies.
+      if: ${{ matrix.libsdl }}
       run: |
         echo "::group::Update apt"
         sudo apt-get update
