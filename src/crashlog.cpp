@@ -64,6 +64,9 @@
 #ifdef WITH_ZLIB
 # include <zlib.h>
 #endif
+#ifdef WITH_CURL
+# include <curl/curl.h>
+#endif
 
 #include "safeguards.h"
 
@@ -271,6 +274,16 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 
 #ifdef WITH_ZLIB
 	buffer += seprintf(buffer, last, " Zlib:       %s\n", zlibVersion());
+#endif
+
+#ifdef WITH_CURL
+	auto *curl_v = curl_version_info(CURLVERSION_NOW);
+	buffer += seprintf(buffer, last, " Curl:       %s\n", curl_v->version);
+	if (curl_v->ssl_version != nullptr) {
+		buffer += seprintf(buffer, last, " Curl SSL:   %s\n", curl_v->ssl_version);
+	} else {
+		buffer += seprintf(buffer, last, " Curl SSL:   none\n");
+	}
 #endif
 
 	buffer += seprintf(buffer, last, "\n");

@@ -45,6 +45,8 @@ jobs:
     - name: Prepare vcpkg
       run: |
         vcpkg install \
+          curl:x64-osx \
+          curl:arm64-osx \
           liblzma:x64-osx \
           liblzma:arm64-osx \
           libpng:x64-osx \

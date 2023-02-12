@@ -311,13 +311,6 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 {
 	bytes = 0;
 
-#ifdef __EMSCRIPTEN__
-	/* Emscripten is loaded via an HTTPS connection. As such, it is very
-	 * difficult to make HTTP connections. So always use the TCP method of
-	 * downloading content. */
-	fallback = true;
-#endif
-
 	ContentIDList content;
 	for (const ContentInfo *ci : this->infos) {
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
@@ -361,7 +354,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
 
 	this->http_response_index = -1;
 
-	new NetworkHTTPContentConnecter(NetworkContentMirrorConnectionString(), this, NETWORK_CONTENT_MIRROR_URL, content_request);
+	NetworkHTTPSocketHandler::Connect(NetworkContentMirrorUriString(), this, content_request);
 	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
 }
 

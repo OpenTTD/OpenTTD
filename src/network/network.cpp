@@ -1268,12 +1268,14 @@ void NetworkStartUp()
 	NetworkUDPInitialize();
 	Debug(net, 3, "Network online, multiplayer available");
 	NetworkFindBroadcastIPs(&_broadcast_list);
+	NetworkHTTPInitialize();
 }
 
 /** This shuts the network down */
 void NetworkShutDown()
 {
 	NetworkDisconnect(true);
+	NetworkHTTPUninitialize();
 	NetworkUDPClose();
 
 	Debug(net, 3, "Shutting down network");

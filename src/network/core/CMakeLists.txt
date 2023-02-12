@@ -9,6 +9,7 @@ add_files(
     game_info.h
     host.cpp
     host.h
+    http.h
     os_abstraction.cpp
     os_abstraction.h
     packet.cpp
@@ -25,8 +26,6 @@ add_files(
     tcp_coordinator.h
     tcp_game.cpp
     tcp_game.h
-    tcp_http.cpp
-    tcp_http.h
     tcp_listen.h
     tcp_stun.cpp
     tcp_stun.h
@@ -34,4 +33,17 @@ add_files(
     tcp_turn.h
     udp.cpp
     udp.h
+)
+
+add_files(
+    http_curl.cpp
+    CONDITION CURL_FOUND
+)
+add_files(
+    http_winhttp.cpp
+    CONDITION WIN32
+)
+add_files(
+    http_none.cpp
+    CONDITION NOT CURL_FOUND AND NOT WIN32
 )
