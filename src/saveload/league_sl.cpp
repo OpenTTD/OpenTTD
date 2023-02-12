@@ -17,7 +17,7 @@
 
 static const SaveLoad _league_table_elements_desc[] = {
 	 SLE_VAR(LeagueTableElement, table,       SLE_UINT8),
-	 SLE_VAR(LeagueTableElement, rating,      SLE_UINT64),
+	 SLE_VAR(LeagueTableElement, rating,      SLE_FILE_U64 | SLE_VAR_I64),
 	 SLE_VAR(LeagueTableElement, company,     SLE_UINT8),
 	SLE_SSTR(LeagueTableElement, text,        SLE_STR | SLF_ALLOW_CONTROL),
 	SLE_SSTR(LeagueTableElement, score,       SLE_STR | SLF_ALLOW_CONTROL),
