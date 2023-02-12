@@ -29,7 +29,7 @@ jobs:
         yum install -y \
           fontconfig-devel \
           freetype-devel \
-          libcurl4-openssl-dev \
+          libcurl-devel \
           libicu-devel \
           libpng-devel \
           lzo-devel \
