@@ -131,7 +131,7 @@ bool NetworkHTTPRequest::Receive()
 	for (int count = 0; count < 100; count++) {
 		/* Check if there was activity in the multi-handle. */
 		int numfds;
-		curl_multi_poll(this->multi_handle, NULL, 0, 0, &numfds);
+		curl_multi_wait(this->multi_handle, NULL, 0, 0, &numfds);
 		if (numfds == 0) return false;
 
 		/* Let CURL process the activity. */
