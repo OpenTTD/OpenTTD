@@ -232,7 +232,9 @@ enum Commands : uint16 {
 	CMD_CHANGE_SERVICE_INT,           ///< change the server interval of a vehicle
 
 	CMD_BUILD_INDUSTRY,               ///< build a new industry
-	CMD_INDUSTRY_CTRL,                ///< change industry properties
+	CMD_INDUSTRY_SET_FLAGS,           ///< change industry control flags
+	CMD_INDUSTRY_SET_EXCLUSIVITY,     ///< change industry exclusive consumer/supplier
+	CMD_INDUSTRY_SET_TEXT,            ///< change additional text for the industry
 
 	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
 	CMD_SET_COMPANY_COLOUR,           ///< set the colour of the company

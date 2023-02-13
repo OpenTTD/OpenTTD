@@ -14,14 +14,17 @@
 #include "company_type.h"
 #include "industry_type.h"
 
-enum class IndustryAction : byte;
 enum IndustryControlFlags : byte;
 
 CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType it, uint32 first_layout, bool fund, uint32 seed);
-CommandCost CmdIndustryCtrl(DoCommandFlag flags, IndustryID ind_id, IndustryAction action, IndustryControlFlags ctlflags, Owner company_id, const std::string &text);
+CommandCost CmdIndustrySetFlags(DoCommandFlag flags, IndustryID ind_id, IndustryControlFlags ctlflags);
+CommandCost CmdIndustrySetExclusivity(DoCommandFlag flags, IndustryID ind_id, Owner company_id, bool consumer);
+CommandCost CmdIndustrySetText(DoCommandFlag flags, IndustryID ind_id, const std::string &text);
 
-DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CMD_DEITY,                CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_INDUSTRY_CTRL,  CmdIndustryCtrl,  CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_FLAGS, CmdIndustrySetFlags, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_EXCLUSIVITY, CmdIndustrySetExclusivity, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_TEXT, CmdIndustrySetText, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 
 void CcBuildIndustry(Commands cmd, const CommandCost &result, TileIndex tile, IndustryType indtype, uint32, bool, uint32);
 
