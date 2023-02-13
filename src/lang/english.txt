@@ -896,6 +896,8 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stopped because an ordered refit failed
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
 
+STR_NEWS_VEHICLE_COPY_WAGONS_FAILED                             :{WHITE}Copying wagons failed on {VEHICLE}
+
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}New {STRING} now available!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} now available!  -  {ENGINE}
@@ -3816,6 +3818,8 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manage l
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instructions to all vehicles in this list
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Replace vehicles
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for Servicing
+STR_VEHICLE_LIST_COPY_TRAIN_WAGONS                              :Copy wagons from
+STR_VEHICLE_LIST_CANCEL_COPYING_TRAIN_WAGONS                    :Stop copying wagons
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING1} {STRING1}
@@ -5049,6 +5053,9 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehi
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... not all vehicles are identical
 
+STR_ERROR_CAN_T_COPY_TRAIN_WAGONS                               :{WHITE}Can't copy train wagons
+STR_ERROR_CAN_T_STOP_COPYING_TRAIN_WAGONS                       :{WHITE}Can't copy train wagons
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}No vehicles will be available at all
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Change your NewGRF configuration
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}No vehicles are available yet
@@ -5609,6 +5616,8 @@ STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING
 STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING1}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_VEHICLE_LIST_ITEM_CAPTION                                   :{TINY_FONT}{BLACK}{STRING1}{STRING1}
+STR_VEHICLE_LIST_ITEM_CAPTION_COPY_FROM                         : <- {VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

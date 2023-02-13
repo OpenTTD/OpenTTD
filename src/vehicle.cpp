@@ -57,7 +57,10 @@
 #include "vehicle_cmd.h"
 
 #include "table/strings.h"
-
+#include <string>
+#include <iostream>
+#include <sstream>
+#include "3rdparty/fmt/format.h"
 #include "safeguards.h"
 
 /* Number of bits in the hash to use from each vehicle coord */
@@ -354,6 +357,7 @@ Vehicle::Vehicle(VehicleType type)
 	this->cargo_age_counter  = 1;
 	this->last_station_visited = INVALID_STATION;
 	this->last_loading_station = INVALID_STATION;
+	this->copy_wagons_from   = this->index;
 }
 
 /**
@@ -1053,32 +1057,48 @@ void CallVehicleTicks()
 		int z = v->z_pos;
 
 		const Company *c = Company::Get(_current_company);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money) c->settings.engine_renew_money));
 		CommandCost res = Command<CMD_AUTOREPLACE_VEHICLE>::Do(DC_EXEC, v->index);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money) c->settings.engine_renew_money));
 
-		if (!IsLocalCompany()) continue;
+		if (IsLocalCompany()) {
+			if (res.Succeeded()) {
+				ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
+			} else {
+				StringID error_message = res.GetErrorMessage();
+				if (error_message != STR_ERROR_AUTOREPLACE_NOTHING_TO_DO && error_message != INVALID_STRING_ID) {
+					if (error_message == STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY)
+						error_message = STR_ERROR_AUTOREPLACE_MONEY_LIMIT;
 
-		if (res.Succeeded()) {
-			ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
-			continue;
+					StringID message;
+					if (error_message == STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
+						message = error_message;
+					} else {
+						message = STR_NEWS_VEHICLE_AUTORENEW_FAILED;
+					}
+
+					SetDParam(0, v->index);
+					SetDParam(1, error_message);
+					AddVehicleAdviceNewsItem(message, v->index);
+				}
+			}
 		}
 
-		StringID error_message = res.GetErrorMessage();
-		if (error_message == STR_ERROR_AUTOREPLACE_NOTHING_TO_DO || error_message == INVALID_STRING_ID) continue;
+		/* Copy wagons from another train */
+		if (v->type == VehicleType::VEH_TRAIN && v->copy_wagons_from != v->index) {
+			SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money) c->settings.engine_renew_money));
+			CommandCost copy_res = Command<CMD_COPY_TRAIN_WAGONS>::Do(DC_EXEC, v->index);
+			SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money) c->settings.engine_renew_money));
+			if (IsLocalCompany()) {
+				if (copy_res.Succeeded()) {
+					ShowCostOrIncomeAnimation(x, y, z, copy_res.GetCost());
+					continue;
+				}
 
-		if (error_message == STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY) error_message = STR_ERROR_AUTOREPLACE_MONEY_LIMIT;
-
-		StringID message;
-		if (error_message == STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
-			message = error_message;
-		} else {
-			message = STR_NEWS_VEHICLE_AUTORENEW_FAILED;
+				SetDParam(0, v->index);
+				AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_COPY_WAGONS_FAILED, v->index);
+			}
 		}
-
-		SetDParam(0, v->index);
-		SetDParam(1, error_message);
-		AddVehicleAdviceNewsItem(message, v->index);
 	}
 
 	cur_company.Restore();
@@ -3044,4 +3064,23 @@ bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)
 		o1 = o1->next;
 		o2 = o2->next;
 	}
+}
+
+/**
+ * Sets a target for this vehicle to copy wagons from
+ * @param src - source vehicle to copy wagons from
+ */
+void Vehicle::CopyWagonsFrom(VehicleID src)
+{
+	this->copy_wagons_from = src;
+}
+
+std::string Vehicle::PrintDetails() const
+{
+	std::stringstream ss;
+	ss << "Vehicle";
+	for (Vehicle *v = this->First(); v!= nullptr; v=v->Next() ){
+		ss << fmt::format(" [i{}/e{}/c{}/cs{}]", v->index, v->engine_type, v->cargo_type, v->cargo_subtype);
+	}
+	return ss.str();
 }

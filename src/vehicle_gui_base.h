@@ -19,6 +19,9 @@
 #include "vehiclelist.h"
 #include "window_gui.h"
 #include "widgets/dropdown_type.h"
+#include "command_func.h"
+#include "tilehighlight_func.h"
+#include "vehicle_cmd.h"
 
 #include <iterator>
 #include <numeric>
@@ -104,6 +107,8 @@ struct BaseVehicleListWindow : public Window {
 		ADI_REPLACE,
 		ADI_SERVICE,
 		ADI_DEPOT,
+		ADI_COPY_TRAIN_WAGONS,
+		ADI_CANCEL_COPY_TRAIN_WAGONS,
 		ADI_ADD_SHARED,
 		ADI_REMOVE_ALL,
 	};
@@ -153,6 +158,15 @@ struct BaseVehicleListWindow : public Window {
 			default:
 				NOT_REACHED();
 		}
+	}
+
+	bool OnVehicleSelect(const Vehicle *v) override
+	{
+		if (v->type == VehicleType::VEH_TRAIN) {
+			Command<CMD_SCHEDULE_COPY_TRAIN_WAGONS>::Post(STR_ERROR_CAN_T_COPY_TRAIN_WAGONS, v->index, this->vli);
+			ResetObjectToPlace();
+		}
+		return true;
 	}
 };
 

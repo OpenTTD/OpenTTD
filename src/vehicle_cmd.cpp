@@ -18,6 +18,7 @@
 #include "newgrf_text.h"
 #include "vehicle_func.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "depot_map.h"
 #include "vehiclelist.h"
 #include "engine_func.h"
@@ -736,6 +737,362 @@ CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, Vehicle
 	}
 	return cost;
 }
+
+/**
+ * Marks all trains in a list to copy wagons from another train when they enter depot next time
+ * @param flags type of operation
+ * @param veh_id The vehicle to copy wagons from
+ * @param vli The identifier of this vehicle list
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdScheduleCopyTrainWagons(DoCommandFlag flags, VehicleID veh_id, const VehicleListIdentifier &vli)
+{
+	if (vli.vtype != VehicleType::VEH_TRAIN) return CMD_ERROR;
+	Vehicle *example = Vehicle::GetIfValid(veh_id);
+	if (example == nullptr || !example->IsPrimaryVehicle()) return CMD_ERROR;
+	VehicleList vl;
+	if (!GenerateVehicleSortList(&vl, vli)) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(example->owner);
+	if (ret.Failed()) return ret;
+
+	if (example->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
+
+	for (const Vehicle *v: vl) {
+		Vehicle::Get(v->index)->CopyWagonsFrom(example->index);
+	}
+	return {};
+}
+
+/**
+ * Marks all trains in this list to not copy wagons.
+ * @param flags type of operation
+ * @param vli  The identifier of this vehicle list
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdStopCopyTrainWagons(DoCommandFlag flags, const VehicleListIdentifier &vli)
+{
+	if (vli.vtype != VehicleType::VEH_TRAIN) return CMD_ERROR;
+	VehicleList vl;
+	if (!GenerateVehicleSortList(&vl, vli)) return CMD_ERROR;
+	for (const Vehicle *v: vl) {
+		Vehicle *veh = Vehicle::Get(v->index);
+		veh->CopyWagonsFrom(v->index);
+	}
+	return {};
+}
+
+//todo: remove for release
+static std::string GetDescrSingleVehicle(Vehicle *v)
+{
+	if (v == nullptr) return "NULL";
+	std::string engine = GetString(v->GetEngine()->info.string_id);
+	std::string cargo = GetString(CargoSpec::Get(v->cargo_type)->name);
+	CargoSpec *cs = CargoSpec::Get(v->cargo_type);
+
+	const std::string &str = fmt::format("{} [{}/{}, {}/{}/{}]", v->index, engine, v->engine_type, cargo, v->cargo_type, v->cargo_subtype);
+	return str;
+}
+
+//todo: remove for release
+std::string GetDescr(Train *train)
+{
+	std::stringstream train_descr;
+	for (Train *t = train->First(); t != nullptr; t = t->GetNextVehicle()) {
+		train_descr << GetDescrSingleVehicle(t) << " | ";
+	}
+	return train_descr.str();
+}
+
+typedef std::tuple<EngineID, CargoID, byte> VehicleFullCargoType;
+
+/**
+ * Returns a VehicleFullCargoType structure out of a vehicle
+ * @param v wagon reference
+ * @return the VehicleFullCargoType structure
+ */
+static inline VehicleFullCargoType GetVehicleFullCargoType(Vehicle *v)
+{
+	return {v->engine_type, v->cargo_type, v->cargo_subtype};
+}
+
+/**
+ * Compares two trains is they are the same engine and cargo-wise
+ * @param v1 first train
+ * @param v2 second train
+ * @return true if they are not nulls, their engine, cargo and subtupe are same
+ */
+static inline bool EqualWagonTypes(Train *v1, Train *v2)
+{
+	return v1 != nullptr && v2 != nullptr
+		   && v1->engine_type == v2->engine_type
+		   && v1->cargo_type == v2->cargo_type
+		   && v1->cargo_subtype == v2->cargo_subtype;
+}
+
+/**
+ * Moves the wagons to follow the order.
+ * @param order - reference to a vector that contains a desired order of Train vehicles.
+ * @return the cost of this operation or an error
+ */
+static inline CommandCost ReorderTrains(std::vector<Train *> &order)
+{
+	CommandCost cost;
+	if (order.size() > 1) {
+		for (auto prev = order.begin(), next = prev + 1; next != order.end(); prev++, next++) {
+			cost.AddCost(Command<CMD_MOVE_RAIL_VEHICLE>::Do(DC_EXEC | DC_NO_CARGO_CAP_CHECK, (*next)->index, (*prev)->index, false));
+			if (cost.Failed()) return cost;
+		}
+	}
+	return cost;
+}
+
+/**
+ * Swaps elements pointed by two indices.
+ * @param container where to swap elements
+ * @param i index 1
+ * @param j index 2
+ */
+template<class T,
+		class A = std::allocator<T>,
+		class V = std::vector<T, A>>
+static void VectorSwap(V &container, typename V::size_type i, typename V::size_type j)
+{
+	auto temp = container[i];
+	container[i] = container[j];
+	container[j] = temp;
+}
+
+/**
+ * Performs copy wagons operation for a train.
+ * @param flags type of operation
+ * @param train train to copy wagons to from its target (train->copy_wagons_from)
+ * @return the cost of this operation or an error
+ */
+static CommandCost CopyTrainWagons(DoCommandFlag flags, Train *train)
+{
+	struct VehicleStatistics {
+		SmallMap<VehicleFullCargoType, int8> wagonsDiffByIdentity;
+		SmallMap<std::pair<EngineID, CargoID>, int8> wagonsDiffByEngineCargo;
+		SmallMap<EngineID, int8> wagonsDiffByEngine;
+
+		void insert(Vehicle *v)
+		{
+			wagonsDiffByIdentity[GetVehicleFullCargoType(v)]++;
+			wagonsDiffByEngineCargo[{v->engine_type, v->cargo_type}]++;
+			wagonsDiffByEngine[v->engine_type]++;
+		}
+
+		void remove(Vehicle *v)
+		{
+			wagonsDiffByIdentity[GetVehicleFullCargoType(v)]--;
+			wagonsDiffByEngineCargo[{v->engine_type, v->cargo_type}]--;
+			wagonsDiffByEngine[v->engine_type]--;
+		}
+
+		void print()
+		{
+			Debug(misc, 0, "\nStats by engine:");
+			for (auto it = wagonsDiffByEngine.begin(); it != wagonsDiffByEngine.end(); it++) {
+				auto[eng, cnt] = *it;
+				std::string engine_str = GetString(Engine::Get(eng)->info.string_id);
+				Debug(misc, 0, "{}({}) : {}", engine_str, eng, cnt);
+			}
+			Debug(misc, 0, "\nStats by engine/cargo:");
+			for (auto it = wagonsDiffByEngineCargo.begin(); it != wagonsDiffByEngineCargo.end(); it++) {
+				auto[key, cnt] = *it;
+				auto[eng, cargo] = key;
+				std::string engine_str = GetString(Engine::Get(eng)->info.string_id);
+				std::string cargo_str = GetString(CargoSpec::Get(cargo)->name);
+				Debug(misc, 0, "{}({})/{}({}) : {}", engine_str, eng, cargo_str, cargo, cnt);
+			}
+			Debug(misc, 0, "\nStats by engine/cargo/subtype:");
+			for (auto it = wagonsDiffByIdentity.begin(); it != wagonsDiffByIdentity.end(); it++) {
+				auto[key, cnt] = *it;
+				auto[eng, cargo, subtype] = key;
+				std::string engine_str = GetString(Engine::Get(eng)->info.string_id);
+				std::string cargo_str = GetString(CargoSpec::Get(cargo)->name);
+				Debug(misc, 0, "{}({})/{}({})/{} : {}", engine_str, eng, cargo_str, cargo, subtype, cnt);
+			}
+		}
+	};
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
+	Train *dst = train;
+	if (dst == nullptr || !dst->IsEngine()) {
+		return CMD_ERROR;
+	}
+	if (dst->copy_wagons_from != dst->index) {
+		Train *src = Train::GetIfValid(dst->copy_wagons_from);
+		if (src == nullptr || !src->IsEngine()) {
+			return CMD_ERROR;
+		}
+		Debug(misc, 0, "src: {}", GetDescr(src));
+		Debug(misc, 0, "dst: {}", GetDescr(dst));
+		VehicleStatistics stats;
+		int32 build_plan_len = 0;
+		for (Train *v = dst; v != nullptr; v = v->GetNextVehicle()) {
+			build_plan_len++;
+			if (v->IsWagon()) {
+				stats.insert(v);
+			}
+		}
+		for (Train *v = src; v != nullptr; v = v->GetNextVehicle()) {
+			build_plan_len++;
+			if (v->IsWagon()) {
+				stats.remove(v);
+			}
+		}
+		stats.print();
+
+		std::vector<Train *> build_plan;
+		build_plan.reserve(build_plan_len);
+		for (Train *v = dst; v != nullptr; v = v->GetNextVehicle()) {
+			build_plan.push_back(v);
+		}
+		std::vector<Train *> dst_original_order = build_plan;
+		std::vector<Train *> new_vehicles;
+		Train *s = src;
+		std::vector<Train *>::size_type di = 0; // di stands for destination index
+		for (; s != nullptr; s = s->GetNextVehicle()) {
+			if (!s->IsWagon()) continue;
+			/* Find next non-engine unit(wagon) in dst */
+			for (; di < build_plan.size() && !build_plan[di]->IsWagon(); ++di) {}
+
+			if (di < build_plan.size() && EqualWagonTypes(s, build_plan[di])) {
+				/* Success path, current unit in dst matches the one in src, simply go to next one. */
+				di++;
+				continue;
+			} else {
+				VehicleFullCargoType srcType = GetVehicleFullCargoType(s);
+				Train *replacement = nullptr;
+				if (di < build_plan.size()) { // The tail is not empty
+					if (stats.wagonsDiffByIdentity[srcType] >= 0) { // And it has an identical wagon somewhere in the tail
+						for (auto dj = di; dj < build_plan.size(); dj++) {
+							if (EqualWagonTypes(s, build_plan[dj])) {
+								replacement = build_plan[dj];
+								VectorSwap<Train*>(build_plan, di,dj);
+								break;
+							}
+						}
+					} else if (stats.wagonsDiffByEngineCargo[{s->engine_type, s->cargo_type}] >= 0) {
+						for (auto dj = di; dj < build_plan.size(); dj++) {
+							auto d = build_plan[dj];
+							if (s->engine_type == d->engine_type && s->cargo_type == d->cargo_type) {
+								if (stats.wagonsDiffByIdentity[GetVehicleFullCargoType(d)] > 0) {
+									replacement = d;
+									VectorSwap<Train*>(build_plan, di, dj);
+									CommandCost refit_cost;
+									std::tie(refit_cost, std::ignore, std::ignore, std::ignore) = RefitVehicle(replacement, true, 1, s->cargo_type, s->cargo_subtype, flags, false);
+									cost.AddCost(refit_cost);
+									break;
+								}
+							}
+						}
+					} else if (stats.wagonsDiffByEngine[s->engine_type] >= 0) {
+						for (auto dj = di; dj < build_plan.size(); dj++) {
+							auto d = build_plan[dj];
+							if (s->engine_type == d->engine_type) {
+								if (stats.wagonsDiffByIdentity[GetVehicleFullCargoType(d)] > 0) {
+									replacement = d;
+									CommandCost refit_cost;
+									std::tie(refit_cost, std::ignore, std::ignore, std::ignore) = RefitVehicle(replacement, true, 1, s->cargo_type, s->cargo_subtype, flags, true);
+									cost.AddCost(refit_cost);
+									VectorSwap<Train*>(build_plan, di, dj);
+									break;
+								}
+							}
+						}
+					}
+				}
+				if (replacement == nullptr) {
+					/* We didn't find enough matching wagons, we have to buy a new one.
+					 * Note: it is possible that there are some matching wagon in the tail.
+					 * But we know that src tail has even more wagons of this type, so anyway we have to buy.
+					 * Algorithm works the way that it knows how many of each type is missing and first buy the
+					 * difference, then reuses existing ones. Anyway we don't buy more than we have to. */
+					CommandCost build_cost;
+					VehicleID new_veh_id;
+					std::tie(build_cost, new_veh_id, std::ignore, std::ignore, std::ignore) = Command<CMD_BUILD_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, dst->tile, s->engine_type, true, s->cargo_type, INVALID_CLIENT_ID);
+					cost.AddCost(build_cost);
+					CommandCost refit_cost;
+					replacement = Train::Get(new_veh_id);
+					std::tie(refit_cost, std::ignore, std::ignore, std::ignore) = RefitVehicle(replacement, true, 1, s->cargo_type, s->cargo_subtype, flags, false);
+					cost.AddCost(refit_cost);
+					new_vehicles.push_back(replacement);
+					if (cost.Failed()) {
+						break;
+					}
+					build_plan.push_back(replacement);
+					VectorSwap<Train *>(build_plan, di, build_plan.size() - 1);
+					/* Since we add a new wagon into the dst train, it needs to update the maps */
+					stats.insert(s);
+				}
+				di++;
+			}
+		}
+		/* 
+		 * Now di points to the first wagon in the tail that we have to sell.
+		 * First we want to rearrange the used wagons, then sell those unused.
+		 * */
+		if (cost.Succeeded()) {
+			cost.AddCost(ReorderTrains(build_plan));
+			if (cost.Succeeded()) {
+				for (; di < build_plan.size(); di++) {
+					Train *t = build_plan[di];
+					if (t->IsWagon()) {
+						CommandCost sellCmd = Command<CMD_SELL_VEHICLE>::Do(flags, t->index, false, false, INVALID_CLIENT_ID);
+						cost.AddCost(sellCmd);
+					}
+				}
+			}
+		}
+		bool exec = flags & DC_EXEC;
+		if (exec) {
+			dst->copy_wagons_from = dst->index;
+		}
+		if (cost.Failed() || !exec) {
+			/* If it's DC_NONE or we had a failre, then it needs to revert the changes.
+			 * We sell vehicles that we bought and reorder them back.
+			 * We do not refit vehicles back to original, though.
+			 * */
+			for (auto &new_vehicle: new_vehicles) {
+				Command<CMD_SELL_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, new_vehicle->index, false, false, INVALID_CLIENT_ID);
+			}
+			ReorderTrains(dst_original_order);
+		}
+	}
+	return cost;
+}
+
+/**
+ * Command to performs copy wagons operation for a train.
+ * @param flags type of operation
+ * @param veh_id train id to copy wagons to from its target (train->copy_wagons_from)
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdCopyTrainWagons(DoCommandFlag flags, VehicleID veh_id)
+{
+	Vehicle *v = Vehicle::GetIfValid(veh_id);
+	if (v->type != VehicleType::VEH_TRAIN) return CMD_ERROR;
+	Train *t = Train::From(v);
+	if (t == nullptr || !t->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(t->owner);
+	if (ret.Failed()) return ret;
+
+	if (t->vehstatus & VS_CRASHED) return CMD_ERROR;
+
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
+	bool was_stopped = ((t->vehstatus & VS_STOPPED) != 0);
+
+	/* Stop the vehicle */
+	if (!was_stopped) cost.AddCost(Command<CMD_START_STOP_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, t->index, true));
+	if (cost.Failed()) return cost;
+	cost.AddCost(CopyTrainWagons(flags, t));
+	if (!was_stopped) cost.AddCost(Command<CMD_START_STOP_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, t->index, false));
+	return cost;
+}
+
 
 /**
  * Test if a name is unique among vehicle names.

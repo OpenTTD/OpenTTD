@@ -381,6 +381,11 @@ DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplac
 	list.emplace_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
 	list.emplace_back(new DropDownListStringItem(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false));
 
+	if (this->vli.vtype == VehicleType::VEH_TRAIN) {
+		list.emplace_back(new DropDownListStringItem(STR_VEHICLE_LIST_COPY_TRAIN_WAGONS, ADI_COPY_TRAIN_WAGONS, false));
+		list.emplace_back(new DropDownListStringItem(STR_VEHICLE_LIST_CANCEL_COPYING_TRAIN_WAGONS, ADI_CANCEL_COPY_TRAIN_WAGONS, false));
+	}
+
 	if (show_group) {
 		list.emplace_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
 		list.emplace_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false));
@@ -1711,13 +1716,26 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 					}
 				} else if (!v->name.empty()) {
 					/* The vehicle got a name so we will print it */
-					SetDParam(0, v->index);
-					DrawString(tr.left, tr.right, ir.top, STR_TINY_BLACK_VEHICLE);
+					SetDParam(0, STR_TINY_BLACK_VEHICLE);
+					SetDParam(1, v->index);
 				} else if (v->group_id != DEFAULT_GROUP) {
 					/* The vehicle has no name, but is member of a group, so print group name */
-					SetDParam(0, v->group_id);
-					DrawString(tr.left, tr.right, ir.top, STR_TINY_GROUP, TC_BLACK);
+					SetDParam(0, STR_TINY_GROUP);
+					SetDParam(1, v->group_id);
+				} else {
+					SetDParam(0, STR_JUST_RAW_STRING);
+					SetDParamStr(1, "");
 				}
+
+				if (v->index != v->copy_wagons_from) {
+					SetDParam(2, STR_VEHICLE_LIST_ITEM_CAPTION_COPY_FROM);
+					SetDParam(3, v->copy_wagons_from);
+				} else {
+					SetDParam(2, STR_JUST_RAW_STRING);
+					SetDParamStr(3, "");
+				}
+
+				DrawString(tr.left, tr.right, ir.top, STR_VEHICLE_LIST_ITEM_CAPTION, TC_BLACK);
 
 				if (show_orderlist) DrawSmallOrderList(v, olr.left, olr.right, ir.top, this->order_arrow_width, v->cur_real_order_index);
 
@@ -1999,7 +2017,7 @@ public:
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
-		    case WID_VL_ORDER_VIEW: // Open the shared orders window
+			case WID_VL_ORDER_VIEW: // Open the shared orders window
 				assert(this->vli.type == VL_SHARED_ORDERS);
 				assert(!this->vehicles.empty());
 				ShowOrdersWindow(this->vehicles[0]);
@@ -2106,7 +2124,12 @@ public:
 					case ADI_DEPOT: // Send to Depots
 						Command<CMD_SEND_VEHICLE_TO_DEPOT>::Post(GetCmdSendToDepotMsg(this->vli.vtype), 0, DepotCommand::MassSend | (index == ADI_SERVICE ? DepotCommand::Service : DepotCommand::None), this->vli);
 						break;
-
+					case ADI_COPY_TRAIN_WAGONS:
+						SetObjectToPlaceWnd(SPR_CURSOR_CLONE_TRAIN, PAL_NONE, HT_VEHICLE, this);
+						break;
+					case ADI_CANCEL_COPY_TRAIN_WAGONS:
+						Command<CMD_STOP_COPYING_TRAIN_WAGONS>::Post(STR_ERROR_CAN_T_STOP_COPYING_TRAIN_WAGONS, this->vli);
+						break;
 					default: NOT_REACHED();
 				}
 				break;
@@ -2873,6 +2896,7 @@ public:
 			SPR_SEND_AIRCRAFT_TODEPOT,
 		};
 		const Vehicle *v = Vehicle::Get(window_number);
+		Debug(misc, 0, "{}", v->PrintDetails());
 		this->GetWidget<NWidgetCore>(WID_VV_GOTO_DEPOT)->widget_data = vehicle_view_goto_depot_sprites[v->type];
 
 		/* Sprites for the 'clone vehicle' button indexed by vehicle type. */
