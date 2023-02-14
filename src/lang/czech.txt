@@ -1295,6 +1295,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximální pů
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jak moc si může společnost půjčit (bez ohledu na inflaci)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Žádná půjčka {RED}Vyžaduje herní skript pro získání základního kapitálu.
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Výše úroků: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků z půjček; rovněž ovlivňuje inflaci, pokud je zapnuta
@@ -4624,7 +4625,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Odstrani
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Odstranit maximální cestovní rychlost u vybraného příkazu. Ctrl+klik odstraní maximální rychlosti u všech příkazů
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Zapomenout zpoždění
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas. Ctrl+Click smaže zpoždění celé skupině, takže poslední vozidlo pojede na čas a ostatní brzy.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automaticky vyplň rozvrh hodnotami z následující cesty. Ctrl+klik pro zachování vyčkávací doby.

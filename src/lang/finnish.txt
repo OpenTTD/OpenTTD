@@ -4529,7 +4529,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tyhjenn�
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Poista suurin sallittu nopeus valitulta käskyltä. Ctrl+napsautus poistaa kaikkien käskyjen nopeusrajoitukset
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nollaa myöhästymislaskuri
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollaa myöhästymislaskuri, jotta vaunu olisi taas aikataulussa
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollaa myöhästymislaskuri, jotta kulkuneuvo olisi taas aikataulussa. Ctrl+napsautus nollaa koko ryhmän, minkä jälkeen eniten myöhässä ollut kulkuneuvo on aikataulussa ja muut ovat etuajassa
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaattinen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä aikataulu automaattisesti seuraavan matkan arvoilla. Ctrl+napsautus: yritä säilyttää odotusajat
