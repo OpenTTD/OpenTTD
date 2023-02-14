@@ -31,12 +31,13 @@
 	CCountedPtr<Text> footer_counter(footer);
 
 	EnforcePrecondition(LEAGUE_TABLE_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
-	EnforcePrecondition(LEAGUE_TABLE_INVALID, title != nullptr);
-	const char *encoded_title = title->GetEncodedText();
-	EnforcePreconditionEncodedText(LEAGUE_TABLE_INVALID, encoded_title);
 
 	auto encoded_header = (header != nullptr ? std::string{ header->GetEncodedText() } : std::string{});
 	auto encoded_footer = (footer != nullptr ? std::string{ footer->GetEncodedText() } : std::string{});
+
+	EnforcePrecondition(LEAGUE_TABLE_INVALID, title != nullptr);
+	const char *encoded_title = title->GetEncodedText();
+	EnforcePreconditionEncodedText(LEAGUE_TABLE_INVALID, encoded_title);
 
 	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE>::Do(&ScriptInstance::DoCommandReturnLeagueTableID, encoded_title, encoded_header, encoded_footer)) return LEAGUE_TABLE_INVALID;
 
