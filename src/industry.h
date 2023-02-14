@@ -33,13 +33,6 @@ enum ProductionLevels {
 	PRODLEVEL_MAXIMUM = 0x80,  ///< the industry is running at full speed
 };
 
-enum class IndustryAction : byte {
-	SetControlFlags = 0,       ///< Set IndustryControlFlags
-	SetExclusiveSupplier = 1,  ///< Set exclusive supplier
-	SetExclusiveConsumer = 2,  ///< Set exclusive consumer
-	SetText = 3,               ///< Set additional text
-};
-
 /**
  * Flags to control/override the behaviour of an industry.
  * These flags are controlled by game scripts.

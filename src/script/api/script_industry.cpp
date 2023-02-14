@@ -60,7 +60,7 @@
 	}
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 
-	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetText, INDCTL_NONE, INVALID_OWNER, std::string{ encoded_text ? encoded_text : "" });
+	return ScriptObject::Command<CMD_INDUSTRY_SET_TEXT>::Do(industry_id, std::string{ encoded_text ? encoded_text : "" });
 }
 
 /* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
@@ -258,7 +258,7 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 	if (ScriptObject::GetCompany() != OWNER_DEITY) return false;
 	if (!IsValidIndustry(industry_id)) return false;
 
-	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetControlFlags, (::IndustryControlFlags)control_flags & ::INDCTL_MASK, INVALID_OWNER, {});
+	return ScriptObject::Command<CMD_INDUSTRY_SET_FLAGS>::Do(industry_id, (::IndustryControlFlags)control_flags & ::INDCTL_MASK);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptIndustry::GetExclusiveSupplier(IndustryID industry_id)
@@ -277,7 +277,7 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
 	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
-	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetExclusiveSupplier, INDCTL_NONE, owner, {});
+	return ScriptObject::Command<CMD_INDUSTRY_SET_EXCLUSIVITY>::Do(industry_id, owner, false);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptIndustry::GetExclusiveConsumer(IndustryID industry_id)
@@ -296,5 +296,5 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
 	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
-	return ScriptObject::Command<CMD_INDUSTRY_CTRL>::Do(industry_id, IndustryAction::SetExclusiveConsumer, INDCTL_NONE, owner, {});
+	return ScriptObject::Command<CMD_INDUSTRY_SET_EXCLUSIVITY>::Do(industry_id, owner, true);
 }

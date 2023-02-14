@@ -2092,56 +2092,73 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType i
 }
 
 /**
- * Change industry properties
+ * Set industry control flags.
  * @param flags Type of operation.
  * @param ind_id IndustryID
- * @param action IndustryAction to perform
- * @param ctlflags IndustryControlFlags (only used with set control flags)
- * @param company_id CompanyID to set or INVALID_OWNER (available to everyone) or
- *                   OWNER_NONE (neutral stations only) or OWNER_DEITY (no one)
- *                   (only used with set exclusive supplier / consumer)
- * @param text - Additional industry text (only used with set text action)
+ * @param ctlflags IndustryControlFlags
  * @return Empty cost or an error.
  */
-CommandCost CmdIndustryCtrl(DoCommandFlag flags, IndustryID ind_id, IndustryAction action, IndustryControlFlags ctlflags, Owner company_id, const std::string &text)
+CommandCost CmdIndustrySetFlags(DoCommandFlag flags, IndustryID ind_id, IndustryControlFlags ctlflags)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
 	Industry *ind = Industry::GetIfValid(ind_id);
 	if (ind == nullptr) return CMD_ERROR;
 
-	switch (action) {
-		case IndustryAction::SetControlFlags: {
-			if (flags & DC_EXEC) ind->ctlflags = ctlflags & INDCTL_MASK;
+	if (flags & DC_EXEC) ind->ctlflags = ctlflags & INDCTL_MASK;
 
-			break;
+	return CommandCost();
+}
+
+/**
+ * Change exclusive consumer or supplier for the industry.
+ * @param flags Type of operation.
+ * @param ind_id IndustryID
+ * @param company_id CompanyID to set or INVALID_OWNER (available to everyone) or
+ *                   OWNER_NONE (neutral stations only) or OWNER_DEITY (no one)
+ * @param consumer Set exclusive consumer if true, supplier if false.
+ * @return Empty cost or an error.
+ */
+CommandCost CmdIndustrySetExclusivity(DoCommandFlag flags, IndustryID ind_id, Owner company_id, bool consumer)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+
+	Industry *ind = Industry::GetIfValid(ind_id);
+	if (ind == nullptr) return CMD_ERROR;
+
+	if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY
+		&& !Company::IsValidID(company_id)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		if (consumer) {
+			ind->exclusive_consumer = company_id;
+		} else {
+			ind->exclusive_supplier = company_id;
 		}
+	}
 
-		case IndustryAction::SetExclusiveSupplier:
-		case IndustryAction::SetExclusiveConsumer: {
-			if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY
-				&& !Company::IsValidID(company_id)) return CMD_ERROR;
 
-			if (flags & DC_EXEC) {
-				if (action == IndustryAction::SetExclusiveSupplier) {
-					ind->exclusive_supplier = company_id;
-				} else {
-					ind->exclusive_consumer = company_id;
-				}
-			}
+	return CommandCost();
+}
 
-			break;
-		}
+/**
+ * Change additional industry text.
+ * @param flags Type of operation.
+ * @param ind_id IndustryID
+ * @param text - Additional industry text.
+ * @return Empty cost or an error.
+ */
+CommandCost CmdIndustrySetText(DoCommandFlag flags, IndustryID ind_id, const std::string &text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
-		case IndustryAction::SetText: {
-			ind->text.clear();
-			if (!text.empty()) ind->text = text;
-			InvalidateWindowData(WC_INDUSTRY_VIEW, ind->index);
-			break;
-		}
+	Industry *ind = Industry::GetIfValid(ind_id);
+	if (ind == nullptr) return CMD_ERROR;
 
-		default:
-			return CMD_ERROR;
+	if (flags & DC_EXEC) {
+		ind->text.clear();
+		if (!text.empty()) ind->text = text;
+		InvalidateWindowData(WC_INDUSTRY_VIEW, ind->index);
 	}
 
 	return CommandCost();
