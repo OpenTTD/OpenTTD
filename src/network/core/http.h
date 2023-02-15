@@ -42,9 +42,9 @@ public:
 	 *
 	 * @param uri      the URI to connect to (https://.../..).
 	 * @param callback the callback to send data back on.
-	 * @param data     optionally, the data we want to send. When set, this will be a POST request, otherwise a GET request.
+	 * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
 	 */
-	static void Connect(const std::string &uri, HTTPCallback *callback, const char *data = nullptr);
+	static void Connect(const std::string &uri, HTTPCallback *callback, const std::string data = "");
 
 	/**
 	 * Do the receiving for all HTTP connections.

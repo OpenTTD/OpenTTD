@@ -337,25 +337,14 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const ContentIDList &content)
 {
-	uint count = (uint)content.size();
-
-	/* Allocate memory for the whole request.
-	 * Requests are "id\nid\n..." (as strings), so assume the maximum ID,
-	 * which is uint32 so 10 characters long. Then the newlines and
-	 * multiply that all with the count and then add the '\0'. */
-	uint bytes = (10 + 1) * count + 1;
-	char *content_request = MallocT<char>(bytes);
-	const char *lastof = content_request + bytes - 1;
-
-	char *p = content_request;
+	std::string content_request;
 	for (const ContentID &id : content) {
-		p += seprintf(p, lastof, "%d\n", id);
+		content_request += std::to_string(id) + "\n";
 	}
 
 	this->http_response_index = -1;
 
 	NetworkHTTPSocketHandler::Connect(NetworkContentMirrorUriString(), this, content_request);
-	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
 }
 
 /**
