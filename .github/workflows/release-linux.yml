@@ -23,29 +23,69 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    - name: Enable vcpkg cache
+      uses: actions/cache@v3
+      with:
+        path: /vcpkg/installed
+        key: ubuntu-20.04-vcpkg-release-0 # Increase the number whenever dependencies are modified
+        restore-keys: |
+          ubuntu-20.04-vcpkg-release
+
     - name: Install dependencies
       run: |
-        echo "::group::Install dependencies"
+        echo "::group::Install system dependencies"
+        # ICU is used as vcpkg fails to install ICU. Other dependencies
+        # are needed either for vcpkg or for the packages installed with
+        # vcpkg.
         yum install -y \
-          fontconfig-devel \
-          freetype-devel \
           libicu-devel \
-          libpng-devel \
-          lzo-devel \
-          SDL2-devel \
+          perl-IPC-Cmd \
           wget \
-          xz-devel \
-          zlib-devel \
+          zip \
           # EOF
+        echo "::endgroup::"
+
+        # We use vcpkg for our dependencies, to get more up-to-date version.
+        echo "::group::Install vcpkg and dependencies"
+
+        # We do a little dance to make sure we copy the cached install folder
+        # into our new clone.
+        git clone --depth=1 https://github.com/microsoft/vcpkg /vcpkg-clone
+        if [ -e /vcpkg/installed ]; then
+          mv /vcpkg/installed /vcpkg-clone/
+          rm -rf /vcpkg
+        fi
+        mv /vcpkg-clone /vcpkg
+
+        (
+          cd /vcpkg
+          ./bootstrap-vcpkg.sh -disableMetrics
+
+          # Make Python3 available for other packages.
+          ./vcpkg install python3
+          ln -sf $(pwd)/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
+
+          ./vcpkg install \
+            curl[http2] \
+            fontconfig \
+            freetype \
+            liblzma \
+            libpng \
+            lzo \
+            sdl2 \
+            zlib \
+            # EOF
+        )
         echo "::endgroup::"
 
         # The yum variant of fluidsynth depends on all possible audio drivers,
         # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
         # as we route the output of fluidsynth back via our sound driver, and
-        # as such do not use these audio driver outputs at all. So instead,
-        # we compile fluidsynth ourselves, with as little dependencies as
-        # possible. This currently means it picks up SDL2, but this is fine,
-        # as we need SDL2 anyway.
+        # as such do not use these audio driver outputs at all.
+        # The vcpkg variant of fluidsynth depends on ALSA. Similar issue here.
+        # So instead, we compile fluidsynth ourselves, with as few
+        # dependencies as possible. This currently means it picks up SDL2, but
+        # this is fine, as we need SDL2 anyway.
         echo "::group::Install fluidsynth"
         wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
         tar xf v2.1.6.tar.gz
@@ -69,6 +109,7 @@ jobs:
 
         echo "::group::CMake"
         cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_TOOLCHAIN_FILE=/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_PACKAGE_DEPENDENCIES=ON \
           # EOF
