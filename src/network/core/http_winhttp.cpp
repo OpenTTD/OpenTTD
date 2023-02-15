@@ -29,10 +29,10 @@ private:
 	HTTPCallback *callback;       ///< Callback to send data back on.
 	const std::string data;       ///< Data to send, if any.
 
-	HINTERNET connection = nullptr; ///< Current connection object.
-	HINTERNET request = nullptr;    ///< Current request object.
-	bool finished = false;          ///< Whether we are finished with the request.
-	int depth = 0;                  ///< Current redirect depth we are in.
+	HINTERNET connection = nullptr;      ///< Current connection object.
+	HINTERNET request = nullptr;         ///< Current request object.
+	std::atomic<bool> finished = false;  ///< Whether we are finished with the request.
+	int depth = 0;                       ///< Current redirect depth we are in.
 
 public:
 	NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data);
@@ -88,6 +88,8 @@ static std::string GetLastErrorAsString()
  */
 void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 {
+	if (this->finished) return;
+
 	switch (code) {
 		case WINHTTP_CALLBACK_STATUS_RESOLVING_NAME:
 		case WINHTTP_CALLBACK_STATUS_NAME_RESOLVED:
@@ -108,8 +110,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			/* Make sure we are not in a redirect loop. */
 			if (this->depth++ > 5) {
 				Debug(net, 0, "HTTP request failed: too many redirects");
-				this->callback->OnFailure();
 				this->finished = true;
+				this->callback->OnFailure();
 				return;
 			}
 			break;
@@ -130,8 +132,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			/* If there is any error, we simply abort the request. */
 			if (status_code >= 400) {
 				Debug(net, 0, "HTTP request failed: status-code {}", status_code);
-				this->callback->OnFailure();
 				this->finished = true;
+				this->callback->OnFailure();
 				return;
 			}
 
@@ -171,20 +173,22 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 		case WINHTTP_CALLBACK_STATUS_SECURE_FAILURE:
 		case WINHTTP_CALLBACK_STATUS_REQUEST_ERROR:
 			Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-			this->callback->OnFailure();
 			this->finished = true;
+			this->callback->OnFailure();
 			break;
 
 		default:
 			Debug(net, 0, "HTTP request failed: unexepected callback code 0x{:x}", code);
-			this->callback->OnFailure();
 			this->finished = true;
+			this->callback->OnFailure();
 			return;
 	}
 }
 
 static void CALLBACK StaticWinHttpCallback(HINTERNET handle, DWORD_PTR context, DWORD code, void *info, DWORD length)
 {
+	if (context == 0) return;
+
 	NetworkHTTPRequest *request = (NetworkHTTPRequest *)context;
 	request->WinHttpCallback(code, info, length);
 }
@@ -219,8 +223,8 @@ void NetworkHTTPRequest::Connect()
 	this->connection = WinHttpConnect(_winhttp_session, url_components.lpszHostName, url_components.nPort, 0);
 	if (this->connection == nullptr) {
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-		this->callback->OnFailure();
 		this->finished = true;
+		this->callback->OnFailure();
 		return;
 	}
 
@@ -229,8 +233,8 @@ void NetworkHTTPRequest::Connect()
 		WinHttpCloseHandle(this->connection);
 
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
-		this->callback->OnFailure();
 		this->finished = true;
+		this->callback->OnFailure();
 		return;
 	}
 
@@ -249,6 +253,13 @@ void NetworkHTTPRequest::Connect()
  */
 bool NetworkHTTPRequest::Receive()
 {
+	if (this->callback->IsCancelled()) {
+		Debug(net, 1, "HTTP request failed: cancelled by user");
+		this->finished = true;
+		this->callback->OnFailure();
+		return true;
+	}
+
 	return this->finished;
 }
 

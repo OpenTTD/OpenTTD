@@ -324,6 +324,8 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
 
+	this->isCancelled = false;
+
 	if (_settings_client.network.no_http_content_downloads || fallback) {
 		this->DownloadSelectedContentFallback(content);
 	} else {
@@ -574,13 +576,14 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	}
 }
 
+bool ClientNetworkContentSocketHandler::IsCancelled() const
+{
+	return this->isCancelled;
+}
+
 /* Also called to just clean up the mess. */
 void ClientNetworkContentSocketHandler::OnFailure()
 {
-	/* If we fail, download the rest via the 'old' system. */
-	uint files, bytes;
-	this->DownloadSelectedContent(files, bytes, true);
-
 	this->http_response.clear();
 	this->http_response.shrink_to_fit();
 	this->http_response_index = -2;
@@ -590,6 +593,13 @@ void ClientNetworkContentSocketHandler::OnFailure()
 
 		fclose(this->curFile);
 		this->curFile = nullptr;
+	}
+
+	/* If we fail, download the rest via the 'old' system. */
+	if (!this->isCancelled) {
+		uint files, bytes;
+
+		this->DownloadSelectedContent(files, bytes, true);
 	}
 }
 
@@ -726,7 +736,8 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	http_response_index(-2),
 	curFile(nullptr),
 	curInfo(nullptr),
-	isConnecting(false)
+	isConnecting(false),
+	isCancelled(false)
 {
 	this->lastActivity = std::chrono::steady_clock::now();
 }
@@ -772,7 +783,10 @@ public:
 void ClientNetworkContentSocketHandler::Connect()
 {
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
+
+	this->isCancelled = false;
 	this->isConnecting = true;
+
 	new NetworkContentConnecter(NetworkContentServerConnectionString());
 }
 
@@ -781,6 +795,7 @@ void ClientNetworkContentSocketHandler::Connect()
  */
 NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
 {
+	this->isCancelled = true;
 	NetworkContentSocketHandler::CloseConnection();
 
 	if (this->sock == INVALID_SOCKET) return NETWORK_RECV_STATUS_OKAY;
