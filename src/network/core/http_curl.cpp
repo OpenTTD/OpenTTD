@@ -53,26 +53,18 @@ public:
 	 *
 	 * @param uri      the URI to connect to (https://.../..).
 	 * @param callback the callback to send data back on.
-	 * @param data     optionally, the data we want to send. When set, this will be a POST request, otherwise a GET request.
+	 * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
 	 */
-	NetworkHTTPRequest(const std::string &uri, HTTPCallback *callback, const char *data = nullptr) :
+	NetworkHTTPRequest(const std::string &uri, HTTPCallback *callback, const std::string &data) :
 		uri(uri),
 		callback(callback),
 		data(data)
 	{
 	}
 
-	/**
-	 * Destructor of the HTTP request.
-	 */
-	~NetworkHTTPRequest()
-	{
-		free(this->data);
-	}
-
-	std::string uri;        ///< URI to connect to.
-	HTTPCallback *callback; ///< Callback to send data back on.
-	const char *data;       ///< Data to send, if any.
+	const std::string uri;        ///< URI to connect to.
+	HTTPCallback *callback;       ///< Callback to send data back on.
+	const std::string data;       ///< Data to send, if any.
 };
 
 static std::thread _http_thread;
@@ -85,7 +77,7 @@ static std::string _http_ca_file = "";
 static std::string _http_ca_path = "";
 #endif /* UNIX */
 
-/* static */ void NetworkHTTPSocketHandler::Connect(const std::string &uri, HTTPCallback *callback, const char *data)
+/* static */ void NetworkHTTPSocketHandler::Connect(const std::string &uri, HTTPCallback *callback, const std::string data)
 {
 #if defined(UNIX)
 	if (_http_ca_file.empty() && _http_ca_path.empty()) {
@@ -154,9 +146,9 @@ void HttpThread()
 		curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
 
 		/* Prepare POST body and URI. */
-		if (request->data != nullptr) {
+		if (!request->data.empty()) {
 			curl_easy_setopt(curl, CURLOPT_POST, 1L);
-			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request->data);
+			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request->data.c_str());
 		}
 		curl_easy_setopt(curl, CURLOPT_URL, request->uri.c_str());
 

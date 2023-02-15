@@ -25,9 +25,9 @@ static HINTERNET _winhttp_session = nullptr;
 /** Single HTTP request. */
 class NetworkHTTPRequest {
 private:
-	std::wstring uri;       ///< URI to connect to.
-	HTTPCallback *callback; ///< Callback to send data back on.
-	const char *data;       ///< Data to send, if any.
+	const std::wstring uri;       ///< URI to connect to.
+	HTTPCallback *callback;       ///< Callback to send data back on.
+	const std::string data;       ///< Data to send, if any.
 
 	HINTERNET connection = nullptr; ///< Current connection object.
 	HINTERNET request = nullptr;    ///< Current request object.
@@ -35,7 +35,7 @@ private:
 	int depth = 0;                  ///< Current redirect depth we are in.
 
 public:
-	NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const char *data = nullptr);
+	NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data);
 
 	~NetworkHTTPRequest();
 
@@ -52,9 +52,9 @@ static std::vector<NetworkHTTPRequest *> _new_http_requests;
  *
  * @param uri      the URI to connect to (https://.../..).
  * @param callback the callback to send data back on.
- * @param data     optionally, the data we want to send. When set, this will be a POST request, otherwise a GET request.
+ * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
  */
-NetworkHTTPRequest::NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const char *data) :
+NetworkHTTPRequest::NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data) :
 	uri(uri),
 	callback(callback),
 	data(data)
@@ -224,7 +224,7 @@ void NetworkHTTPRequest::Connect()
 		return;
 	}
 
-	this->request = WinHttpOpenRequest(connection, data == nullptr ? L"GET" : L"POST", url_components.lpszUrlPath, nullptr, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, url_components.nScheme == INTERNET_SCHEME_HTTPS ? WINHTTP_FLAG_SECURE : 0);
+	this->request = WinHttpOpenRequest(connection, data.empty() ? L"GET" : L"POST", url_components.lpszUrlPath, nullptr, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, url_components.nScheme == INTERNET_SCHEME_HTTPS ? WINHTTP_FLAG_SECURE : 0);
 	if (this->request == nullptr) {
 		WinHttpCloseHandle(this->connection);
 
@@ -235,10 +235,10 @@ void NetworkHTTPRequest::Connect()
 	}
 
 	/* Send the request (possibly with a payload). */
-	if (data == nullptr) {
+	if (data.empty()) {
 		WinHttpSendRequest(this->request, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, reinterpret_cast<DWORD_PTR>(this));
 	} else {
-		WinHttpSendRequest(this->request, L"Content-Type: application/x-www-form-urlencoded\r\n", -1, const_cast<char *>(data), static_cast<DWORD>(strlen(data)), static_cast<DWORD>(strlen(data)), reinterpret_cast<DWORD_PTR>(this));
+		WinHttpSendRequest(this->request, L"Content-Type: application/x-www-form-urlencoded\r\n", -1, const_cast<char *>(data.c_str()), static_cast<DWORD>(data.size()), static_cast<DWORD>(data.size()), reinterpret_cast<DWORD_PTR>(this));
 	}
 }
 
@@ -263,11 +263,9 @@ NetworkHTTPRequest::~NetworkHTTPRequest()
 		WinHttpCloseHandle(this->request);
 		WinHttpCloseHandle(this->connection);
 	}
-
-	free(this->data);
 }
 
-/* static */ void NetworkHTTPSocketHandler::Connect(const std::string &uri, HTTPCallback *callback, const char *data)
+/* static */ void NetworkHTTPSocketHandler::Connect(const std::string &uri, HTTPCallback *callback, const std::string data)
 {
 	auto request = new NetworkHTTPRequest(std::wstring(uri.begin(), uri.end()), callback, data);
 	request->Connect();
