@@ -167,8 +167,10 @@ void HttpThread()
 		 * do about this. */
 		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
 		curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow) -> int {
-			return _http_thread_exit ? 1 : 0;
+			const HTTPCallback *callback = static_cast<HTTPCallback *>(userdata);
+			return (callback->IsCancelled() || _http_thread_exit) ? 1 : 0;
 		});
+		curl_easy_setopt(curl, CURLOPT_XFERINFODATA, request->callback);
 
 		/* Perform the request. */
 		CURLcode res = curl_easy_perform(curl);
@@ -177,7 +179,7 @@ void HttpThread()
 			Debug(net, 1, "HTTP request succeeded");
 			request->callback->OnReceiveData(nullptr, 0);
 		} else {
-			Debug(net, 0, "HTTP request failed: {}", curl_easy_strerror(res));
+			Debug(net, (request->callback->IsCancelled() || _http_thread_exit) ? 1 : 0, "HTTP request failed: {}", curl_easy_strerror(res));
 			request->callback->OnFailure();
 		}
 	}

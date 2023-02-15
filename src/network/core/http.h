@@ -30,6 +30,15 @@ struct HTTPCallback {
 	 */
 	virtual void OnReceiveData(const char *data, size_t length) = 0;
 
+	/**
+	 * Check if there is a request to cancel the transfer.
+	 *
+	 * @return true iff the connection is cancelled.
+	 * @note Cancellations are never instant, and can take a bit of time to be processed.
+	 * The object needs to remain valid until the OnFailure() callback is called.
+	 */
+	virtual bool IsCancelled() const = 0;
+
 	/** Silentium */
 	virtual ~HTTPCallback() {}
 };
