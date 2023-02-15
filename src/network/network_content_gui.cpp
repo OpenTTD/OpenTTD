@@ -100,7 +100,7 @@ static WindowDesc _network_content_download_status_window_desc(
 );
 
 BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc *desc) :
-		Window(desc), cur_id(UINT32_MAX)
+		Window(desc), downloaded_bytes(0), downloaded_files(0), cur_id(UINT32_MAX)
 {
 	_network_content_client.AddCallback(this);
 	_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
@@ -174,7 +174,13 @@ void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInf
 		this->downloaded_files++;
 	}
 
-	this->downloaded_bytes += bytes;
+	/* A negative value means we are resetting; for example, when retrying or using a fallback. */
+	if (bytes < 0) {
+		this->downloaded_bytes = 0;
+	} else {
+		this->downloaded_bytes += bytes;
+	}
+
 	this->SetDirty();
 }
 

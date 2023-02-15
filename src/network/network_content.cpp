@@ -586,9 +586,7 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	this->http_response_index = -2;
 
 	if (this->curFile != nullptr) {
-		/* Revert the download progress when we are going for the old system. */
-		long size = ftell(this->curFile);
-		if (size > 0) this->OnDownloadProgress(this->curInfo, (int)-size);
+		this->OnDownloadProgress(this->curInfo, -1);
 
 		fclose(this->curFile);
 		this->curFile = nullptr;
