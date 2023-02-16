@@ -26,7 +26,10 @@ jobs:
         HOMEBREW_NO_AUTO_UPDATE: 1
         HOMEBREW_NO_INSTALL_CLEANUP: 1
       run: |
-        brew install pandoc
+        brew install \
+          pandoc \
+          pkg-config \
+          # EOF
 
     - name: Prepare cache key
       id: key
