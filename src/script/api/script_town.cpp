@@ -44,29 +44,23 @@
 {
 	CCountedPtr<Text> counter(name);
 
-	const char *text = nullptr;
+	EnforcePrecondition(false, IsValidTown(town_id));
+	std::string text;
 	if (name != nullptr) {
 		text = name->GetDecodedText();
-		EnforcePreconditionEncodedText(false, text);
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 	}
-	EnforcePrecondition(false, IsValidTown(town_id));
 
-	return ScriptObject::Command<CMD_RENAME_TOWN>::Do(town_id, text != nullptr ? std::string{ text } : std::string{});
+	return ScriptObject::Command<CMD_RENAME_TOWN>::Do(town_id, text);
 }
 
 /* static */ bool ScriptTown::SetText(TownID town_id, Text *text)
 {
 	CCountedPtr<Text> counter(text);
 
-	const char *encoded_text = nullptr;
-	if (text != nullptr) {
-		encoded_text = text->GetEncodedText();
-		EnforcePreconditionEncodedText(false, encoded_text);
-	}
 	EnforcePrecondition(false, IsValidTown(town_id));
 
-	return ScriptObject::Command<CMD_TOWN_SET_TEXT>::Do(town_id, encoded_text != nullptr ? std::string{ encoded_text } : std::string{});
+	return ScriptObject::Command<CMD_TOWN_SET_TEXT>::Do(town_id, text != nullptr ? text->GetEncodedText() : std::string{});
 }
 
 /* static */ int32 ScriptTown::GetPopulation(TownID town_id)
@@ -294,10 +288,9 @@
 		layout = (RoadLayout) (byte)_settings_game.economy.town_layout;
 	}
 
-	const char *text = nullptr;
+	std::string text;
 	if (name != nullptr) {
 		text = name->GetDecodedText();
-		EnforcePreconditionEncodedText(false, text);
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 	}
 	uint32 townnameparts;
@@ -306,7 +299,7 @@
 		return false;
 	}
 
-	return ScriptObject::Command<CMD_FOUND_TOWN>::Do(tile, (::TownSize)size, city, (::TownLayout)layout, false, townnameparts, text != nullptr ? std::string{ text } : std::string{});
+	return ScriptObject::Command<CMD_FOUND_TOWN>::Do(tile, (::TownSize)size, city, (::TownLayout)layout, false, townnameparts, text);
 }
 
 /* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)

@@ -244,7 +244,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 	EnforcePrecondition(false, name != nullptr);
-	const char *text = name->GetDecodedText();
+	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 

@@ -42,7 +42,7 @@
  * @param string The string that is checked.
  */
 #define EnforcePreconditionEncodedText(returnval, string)   \
-	if (StrEmpty(string)) { \
+	if (string.empty()) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED); \
 		return returnval; \
 	}
