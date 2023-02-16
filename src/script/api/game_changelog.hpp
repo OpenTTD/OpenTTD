@@ -20,6 +20,9 @@
  * API additions:
  * \li GSTown::ROAD_LAYOUT_RANDOM
  *
+ * API removals:
+ * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
+ *
  * \b 13.0
  *
  * API additions:

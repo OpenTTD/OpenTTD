@@ -11,6 +11,7 @@
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "script_text.hpp"
+#include "../script_fatalerror.hpp"
 #include "../../table/control_codes.h"
 
 #include "table/strings.h"
@@ -181,7 +182,8 @@ const char *ScriptText::GetEncodedText()
 	static char buf[1024];
 	int param_count = 0;
 	this->_GetEncodedText(buf, lastof(buf), param_count);
-	return (param_count > SCRIPT_TEXT_MAX_PARAMETERS) ? nullptr : buf;
+	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError("A string had too many parameters");
+	return buf;
 }
 
 char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
@@ -208,8 +210,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 
 const char *Text::GetDecodedText()
 {
-	const char *encoded_text = this->GetEncodedText();
-	if (encoded_text == nullptr) return nullptr;
+	const std::string &encoded_text = this->GetEncodedText();
 
 	static char buf[1024];
 	::SetDParamStr(0, encoded_text);
