@@ -84,7 +84,7 @@ public:
 	/**
 	 * Set the custom text of an industry, shown in the GUI.
 	 * @param industry_id The industry to set the custom text of.
-	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null is passed, the text will be removed.
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null, or an empty string, is passed, the text will be removed.
 	 * @pre IsValidIndustry(industry_id).
 	 * @return True if the action succeeded.
 	 * @api -ai

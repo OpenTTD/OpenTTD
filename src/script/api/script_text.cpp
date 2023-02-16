@@ -18,13 +18,8 @@
 
 #include "../../safeguards.h"
 
-RawText::RawText(const char *text) : text(stredup(text))
+RawText::RawText(const char *text) : text(text)
 {
-}
-
-RawText::~RawText()
-{
-	free(this->text);
 }
 
 
@@ -177,7 +172,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	return this->_SetParam(k, vm);
 }
 
-const char *ScriptText::GetEncodedText()
+const std::string ScriptText::GetEncodedText()
 {
 	static char buf[1024];
 	int param_count = 0;
@@ -208,7 +203,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 	return p;
 }
 
-const char *Text::GetDecodedText()
+const std::string Text::GetDecodedText()
 {
 	const std::string &encoded_text = this->GetEncodedText();
 

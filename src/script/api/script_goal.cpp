@@ -34,7 +34,7 @@
 
 	EnforcePrecondition(GOAL_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(GOAL_INVALID, goal != nullptr);
-	const char *text = goal->GetEncodedText();
+	const std::string &text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(GOAL_INVALID, text);
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 
@@ -71,9 +71,10 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, goal != nullptr);
-	EnforcePrecondition(false, !StrEmpty(goal->GetEncodedText()));
+	const std::string &text = goal->GetEncodedText();
+	EnforcePreconditionEncodedText(false, text);
 
-	return ScriptObject::Command<CMD_SET_GOAL_TEXT>::Do(goal_id, goal->GetEncodedText());
+	return ScriptObject::Command<CMD_SET_GOAL_TEXT>::Do(goal_id, text);
 }
 
 /* static */ bool ScriptGoal::SetProgress(GoalID goal_id, Text *progress)
@@ -83,12 +84,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 
-	/* Ensure null as used for empty string. */
-	if (progress != nullptr && StrEmpty(progress->GetEncodedText())) {
-		progress = nullptr;
-	}
-
-	return ScriptObject::Command<CMD_SET_GOAL_PROGRESS>::Do(goal_id, progress != nullptr ? std::string{ progress->GetEncodedText() } : std::string{});
+	return ScriptObject::Command<CMD_SET_GOAL_PROGRESS>::Do(goal_id, progress != nullptr ? progress->GetEncodedText() : std::string{});
 }
 
 /* static */ bool ScriptGoal::SetCompleted(GoalID goal_id, bool completed)
@@ -114,7 +110,7 @@
 
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, question != nullptr);
-	const char *text = question->GetEncodedText();
+	const std::string &text = question->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
 	uint min_buttons = (type == QT_QUESTION ? 1 : 0);
 	EnforcePrecondition(false, CountBits(buttons) >= min_buttons && CountBits(buttons) <= 3);

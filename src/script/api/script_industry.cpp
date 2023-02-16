@@ -53,14 +53,9 @@
 {
 	CCountedPtr<Text> counter(text);
 
-	const char *encoded_text = nullptr;
-	if (text != nullptr) {
-		encoded_text = text->GetEncodedText();
-		EnforcePreconditionEncodedText(false, encoded_text);
-	}
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 
-	return ScriptObject::Command<CMD_INDUSTRY_SET_TEXT>::Do(industry_id, std::string{ encoded_text ? encoded_text : "" });
+	return ScriptObject::Command<CMD_INDUSTRY_SET_TEXT>::Do(industry_id, text != nullptr ? text->GetEncodedText() : std::string{});
 }
 
 /* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)

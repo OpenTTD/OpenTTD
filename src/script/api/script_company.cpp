@@ -48,7 +48,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, name != nullptr);
-	const char *text = name->GetDecodedText();
+	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
@@ -69,7 +69,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, name != nullptr);
-	const char *text = name->GetDecodedText();
+	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 

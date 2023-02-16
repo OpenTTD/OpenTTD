@@ -32,11 +32,11 @@
 
 	EnforcePrecondition(LEAGUE_TABLE_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(LEAGUE_TABLE_INVALID, title != nullptr);
-	const char *encoded_title = title->GetEncodedText();
+	const std::string &encoded_title = title->GetEncodedText();
 	EnforcePreconditionEncodedText(LEAGUE_TABLE_INVALID, encoded_title);
 
-	auto encoded_header = (header != nullptr ? std::string{ header->GetEncodedText() } : std::string{});
-	auto encoded_footer = (footer != nullptr ? std::string{ footer->GetEncodedText() } : std::string{});
+	const std::string &encoded_header = (header != nullptr ? header->GetEncodedText() : std::string{});
+	const std::string &encoded_footer = (footer != nullptr ? footer->GetEncodedText() : std::string{});
 
 	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE>::Do(&ScriptInstance::DoCommandReturnLeagueTableID, encoded_title, encoded_header, encoded_footer)) return LEAGUE_TABLE_INVALID;
 
@@ -63,12 +63,11 @@
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, text != nullptr);
-	const char *encoded_text_ptr = text->GetEncodedText();
-	EnforcePreconditionEncodedText(LEAGUE_TABLE_ELEMENT_INVALID, encoded_text_ptr);
-	std::string encoded_text = encoded_text_ptr;  // save into string so GetEncodedText can reuse the internal buffer
+	const std::string &encoded_text = text->GetEncodedText();
+	EnforcePreconditionEncodedText(LEAGUE_TABLE_ELEMENT_INVALID, encoded_text);
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, score != nullptr);
-	const char *encoded_score = score->GetEncodedText();
+	const std::string &encoded_score = score->GetEncodedText();
 	EnforcePreconditionEncodedText(LEAGUE_TABLE_ELEMENT_INVALID, encoded_score);
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, IsValidLink(Link((::LinkType)link_type, link_target)));
@@ -91,7 +90,7 @@
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
 	EnforcePrecondition(false, text != nullptr);
-	const char *encoded_text = text->GetEncodedText();
+	const std::string &encoded_text = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded_text);
 
 	EnforcePrecondition(false, IsValidLink(Link((::LinkType)link_type, link_target)));
@@ -107,7 +106,7 @@
 	EnforcePrecondition(false, IsValidLeagueTableElement(element));
 
 	EnforcePrecondition(false, score != nullptr);
-	const char *encoded_score = score->GetEncodedText();
+	const std::string &encoded_score = score->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded_score);
 
 	return ScriptObject::Command<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE>::Do(element, rating, encoded_score);
