@@ -1274,7 +1274,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximálny počiatočný úver: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálna množstvo peňazí ktoré si môže spoločnosť požičať (bez inflácie)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Žiadny úver {RED}Vyžaduje Herný skript na poskytnutie počiatočných prostriedkov
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Úroková sadzba: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Úroková sadzba úveru; kontroluje infláciu ak je povolená
@@ -3418,6 +3420,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozornenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritická chyba: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "{STRING}" vrátil fatálnu chybu:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}" vrátil chybu:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovať s TTDPatch verziou nahlásenou OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre verziu {2:STRING} TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navrhnutý pre použitie s {2:STRING}
@@ -4593,7 +4597,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Odstrán
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Odstrániť obmedzenie maximánej rýchlosti označeného príkazu. Ctrl+klik vymaže rýchlosť pre všetky príkazy
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset meškania
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Vynulovať počítadlo meškania, takže vozidlo pôjde presne
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Vynulovať počítadlo meškania, takže vozidlo pôjde presne. Ctrl+klik vynuluje celú skupinu, takže posledné vozidlo bude bez meškania a ostatné prídu skôr
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky vyplniť
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplniť časový plán automaticky s hodnotami z nasledujúcej trasy. Ctrl+klik - pokúsiť sa udržať čakacie doby
@@ -4688,7 +4692,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Snímka 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Snímka minimapy
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametre AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Herný skript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavrieť
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetovať
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

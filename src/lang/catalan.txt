@@ -3353,6 +3353,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}El NewGRF "{STRING}" ha retornat un error fatal:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}El NewGRF "{STRING}" ha retornat un error:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionarà amb la versió TTDPatch informada per l'OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} és per a la versió {2:STRING} del TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} està dissenyat per a fer-se servir amb {2:STRING}
@@ -4528,7 +4530,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Esborra 
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic s'esborra la velocitat per a totes les ordres.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restablir Retard
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restableix el comptador de retards, de manera que el vehicle serà puntual
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restableix el comptador de retards, de manera que el vehicle serà puntual. Amb Ctrl+clic, es restableix el grup sencer de manera que el vehicle més endarrerit passa a anar a hora i els altres arribaran abans d'hora.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge. CTRL+clic per a intentar mantenir els temps d'espera.

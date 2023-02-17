@@ -4915,7 +4915,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyś�
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość przejazdu w zaznaczonym poleceniu. Ctrl+klik wyczyści prędkość we wszystkich poleceniach
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy. Ctrl+klik spowoduje wyzerowanie całej grupy, więc ostatni pojazd będzie punktualny, a wszystkie pozostałe będą przed czasem
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automat. wypełnienie
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu. Ctrl+klik, aby spróbować utrzymać czasy oczekiwania
@@ -5011,7 +5011,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut ek
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry SI
+STR_AI_SETTINGS_CAPTION_AI                                      :SI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj

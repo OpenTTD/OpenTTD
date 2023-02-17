@@ -4529,7 +4529,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Snelheid
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijder de maximumsnelheid van de gekozen order. Met Ctrl+klik wis je de snelheid voor alle orders
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Vertragingsteller terugstellen
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Stel de vertragingsteller terug zodat het voertuig op tijd is
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Stel de vertragingsteller terug zodat het voertuig op tijd is. Ctrl+kllik stelt de hele groep terug zodat het laatste voertuig op tijd komt en alle andere te vroeg.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisch vullen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis. Ctrl+klik om te proberen om wachttijden te bewaren

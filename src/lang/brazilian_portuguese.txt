@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Empréstimo Inicial Máximo: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima a ser emprestada para uma companhia (sem levar em conta a inflação)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação, se ativado
@@ -3351,6 +3353,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenção: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O NewGRF "{STRING}" retornou um erro fatal:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}O NewGRF "{STRING}" retornou um erro fatal:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não irá funcionar com a versão do TTDPatch encontrada pelo OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} funciona na versão {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} é projetado para ser usado com {2:STRING}
@@ -4526,7 +4530,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Limpa Li
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a velocidade máxima de viagem da ordem em destaque. Ctrl+Clique limpa as velocidades para todas as ordens
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restabelecer Contador de Atraso
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restabelecer o contador de atraso,então o veículo estará pontual
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Redefina o contador de atrasos, para que o veículo chegue no horário. Ctrl+Clique redefinirá todo o grupo para que o veículo mais recente chegue no horário e todos os outros cheguem mais cedo
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autopreencher
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima viagem. Ctrl+Clique para tentar manter os tempos de espera
@@ -4621,7 +4625,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de tela do minimapa
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parâmetros de IA
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
+STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -3353,6 +3353,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Uyarı: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hata: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Ölümcül hata: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "{STRING}" bir ölümcül hata bildirdi:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}" bir ölümcül hata bildirdi:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {2:STRING} sürümü içindir
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}, {2:STRING} ile kullanılmak için tasarlanmıştır
@@ -4528,7 +4530,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hız Sı
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Seçili emrin azami seyahat hızını sil. Ctrl+Tıklama bütün emirlerin azami hızlarını siler
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Gecikme sayacını sıfırla
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak. Ctrl ile tıklamak bütün grubu sıfırlar böylece en son araç zamanında ve diğer tüm araçlar erken gelmiş sayılacak.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur Bekleme sürelerini tutmak için Ctrl ile tıklanır
@@ -4623,7 +4625,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Yüksekl
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Küçük harita ekran görüntüsü
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametreler
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}YZ Parametreleri
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
