@@ -12,7 +12,23 @@
 
 #include "../core/smallvec_type.hpp"
 
+struct StringParam {
+	enum ParamType {
+		RAW_STRING,
+		STRING,
+		OTHER
+	};
+
+	ParamType type;
+	uint8 consumes;
+
+	StringParam(ParamType type, uint8 consumes) : type(type), consumes(consumes) {}
+};
+using StringParams = std::vector<StringParam>;
+using StringParamsList = std::vector<StringParams>;
+
 const char *GetGameStringPtr(uint id);
+const StringParams &GetGameStringParams(uint id);
 void RegisterGameTranslation(class Squirrel *engine);
 void ReconsiderGameScriptLanguage();
 
@@ -37,6 +53,7 @@ struct GameStrings {
 	std::vector<LanguageStrings> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
 	std::vector<LanguageStrings> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
 	StringList string_names;                       ///< The names of the compiled strings.
+	StringParamsList string_params;                ///< The parameters for the strings.
 
 	void Compile();
 

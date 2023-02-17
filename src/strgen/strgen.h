@@ -136,6 +136,22 @@ struct LanguageWriter {
 	virtual void WriteLang(const StringData &data);
 };
 
+struct CmdStruct;
+
+struct CmdPair {
+	const CmdStruct *a;
+	const char *v;
+};
+
+struct ParsedCommandStruct {
+	uint np;
+	CmdPair pairs[32];
+	const CmdStruct *cmd[32]; // ordered by param #
+};
+
+const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);
+void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings);
+
 void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
 void CDECL strgen_error(const char *s, ...) WARN_FORMAT(1, 2);
 void NORETURN CDECL strgen_fatal(const char *s, ...) WARN_FORMAT(1, 2);
