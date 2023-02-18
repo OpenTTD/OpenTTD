@@ -13,6 +13,8 @@
 #include "script_object.hpp"
 #include "../../core/alloc_type.hpp"
 
+#include <variant>
+
 /**
  * Internal parent object of all Text-like objects.
  * @api -all
@@ -128,9 +130,7 @@ public:
 
 private:
 	StringID string;
-	char *params[SCRIPT_TEXT_MAX_PARAMETERS];
-	int64 parami[SCRIPT_TEXT_MAX_PARAMETERS];
-	ScriptText *paramt[SCRIPT_TEXT_MAX_PARAMETERS];
+	std::variant<SQInteger, std::string, ScriptText *> param[SCRIPT_TEXT_MAX_PARAMETERS];
 	int paramc;
 
 	/**

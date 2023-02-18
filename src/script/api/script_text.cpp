@@ -56,8 +56,7 @@ ScriptText::ScriptText(HSQUIRRELVM vm) :
 ScriptText::~ScriptText()
 {
 	for (int i = 0; i < SCRIPT_TEXT_MAX_PARAMETERS; i++) {
-		free(this->params[i]);
-		if (this->paramt[i] != nullptr) this->paramt[i]->Release();
+		if (std::holds_alternative<ScriptText *>(this->param[i])) std::get<ScriptText *>(this->param[i])->Release();
 	}
 }
 
@@ -65,20 +64,14 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 {
 	if (parameter >= SCRIPT_TEXT_MAX_PARAMETERS) return SQ_ERROR;
 
-	free(this->params[parameter]);
-	if (this->paramt[parameter] != nullptr) this->paramt[parameter]->Release();
-
-	this->parami[parameter] = 0;
-	this->params[parameter] = nullptr;
-	this->paramt[parameter] = nullptr;
+	if (std::holds_alternative<ScriptText *>(this->param[parameter])) std::get<ScriptText *>(this->param[parameter])->Release();
 
 	switch (sq_gettype(vm, -1)) {
 		case OT_STRING: {
 			const SQChar *value;
 			sq_getstring(vm, -1, &value);
 
-			this->params[parameter] = stredup(value);
-			StrMakeValidInPlace(this->params[parameter]);
+			this->param[parameter] = StrMakeValid(value);
 			break;
 		}
 
@@ -86,7 +79,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 			SQInteger value;
 			sq_getinteger(vm, -1, &value);
 
-			this->parami[parameter] = value;
+			this->param[parameter] = value;
 			break;
 		}
 
@@ -110,7 +103,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 
 			ScriptText *value = static_cast<ScriptText *>(real_instance);
 			value->AddRef();
-			this->paramt[parameter] = value;
+			this->param[parameter] = value;
 			break;
 		}
 
@@ -186,17 +179,17 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 	p += Utf8Encode(p, SCC_ENCODED);
 	p += seprintf(p, lastofp, "%X", this->string);
 	for (int i = 0; i < this->paramc; i++) {
-		if (this->params[i] != nullptr) {
-			p += seprintf(p, lastofp, ":\"%s\"", this->params[i]);
+		if (std::holds_alternative<std::string>(this->param[i])) {
+			p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[i]).c_str());
 			param_count++;
 			continue;
 		}
-		if (this->paramt[i] != nullptr) {
+		if (std::holds_alternative<ScriptText *>(this->param[i])) {
 			p += seprintf(p, lastofp, ":");
-			p = this->paramt[i]->_GetEncodedText(p, lastofp, param_count);
+			p = std::get<ScriptText *>(this->param[i])->_GetEncodedText(p, lastofp, param_count);
 			continue;
 		}
-		p += seprintf(p, lastofp,":" OTTD_PRINTFHEX64, this->parami[i]);
+		p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[i]));
 		param_count++;
 	}
 
