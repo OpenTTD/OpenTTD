@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
+#include "../../game/game_text.hpp"
 #include "script_text.hpp"
 #include "../script_fatalerror.hpp"
 #include "../../table/control_codes.h"
@@ -168,19 +169,37 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 {
 	p += Utf8Encode(p, SCC_ENCODED);
 	p += seprintf(p, lastofp, "%X", this->string);
-	for (int i = 0; i < this->paramc; i++) {
-		if (std::holds_alternative<std::string>(this->param[i])) {
-			p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[i]).c_str());
-			param_count++;
-			continue;
+
+	const StringParams &params = GetGameStringParams(this->string);
+	int cur_idx = 0;
+
+	for (const StringParam &cur_param : params) {
+		if (cur_idx >= this->paramc) throw Script_FatalError("Not enough string parameters");
+
+		switch (cur_param.type) {
+			case StringParam::RAW_STRING:
+				if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError("Wrong string parameter type");
+				p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]).c_str());
+				break;
+
+			case StringParam::STRING: {
+				if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError("Wrong string parameter type");
+				int count = 1; // 1 because the string id is included in consumed parameters
+				p += seprintf(p, lastofp, ":");
+				p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count);
+				if (count != cur_param.consumes) throw Script_FatalError("Substring doesn't consume the expected amount of parameters.");
+				break;
+			}
+
+			default:
+				if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError("Not enough string parameters");
+				for (int i = 0; i < cur_param.consumes; i++) {
+					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError("Wrong string parameter type");
+					p += seprintf(p, lastofp,":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
+				}
 		}
-		if (std::holds_alternative<ScriptTextRef>(this->param[i])) {
-			p += seprintf(p, lastofp, ":");
-			p = std::get<ScriptTextRef>(this->param[i])->_GetEncodedText(p, lastofp, param_count);
-			continue;
-		}
-		p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[i]));
-		param_count++;
+
+		param_count += cur_param.consumes;
 	}
 
 	return p;
