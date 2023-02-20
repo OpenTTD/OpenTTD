@@ -1658,6 +1658,19 @@ static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
 	return (v->type == VEH_TRAIN) ? v : nullptr;
 }
 
+/**
+ * Check if a level crossing tile has a train on it
+ * @param tile tile to test
+ * @return true if a train is on the crossing
+ * @pre tile is a level crossing
+ */
+bool TrainOnCrossing(TileIndex tile)
+{
+	assert(IsLevelCrossingTile(tile));
+
+	return HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum);
+}
+
 
 /**
  * Checks if a train is approaching a rail-road crossing
@@ -1709,7 +1722,7 @@ static bool TrainApproachingCrossing(TileIndex tile)
 static inline bool CheckLevelCrossing(TileIndex tile)
 {
 	/* reserved || train on crossing || train approaching crossing */
-	return HasCrossingReservation(tile) || HasVehicleOnPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
+	return HasCrossingReservation(tile) || TrainOnCrossing(tile) || TrainApproachingCrossing(tile);
 }
 
 /**
