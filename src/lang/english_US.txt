@@ -4362,7 +4362,7 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Available cargo
 
 STR_ORDER_SERVICE                                               :{BLACK}Maintenance
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Maintain if needed
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Repair if needed
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Skip this order unless maintenance is needed
 
