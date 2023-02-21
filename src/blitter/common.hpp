@@ -45,7 +45,7 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		return;
 	}
 
-	int frac_diff = width * std::max(dx, dy);
+	int frac_diff = (width - 1) * std::max(dx, dy);
 	if (width > 1) {
 		/* compute frac_diff = width * sqrt(dx*dx + dy*dy)
 		 * Start interval:
