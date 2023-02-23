@@ -148,9 +148,9 @@
  * @param end The part that will be build second.
  * @return True if and only if the road bits can be build.
  */
-static bool CheckAutoExpandedRoadBits(const Array *existing, int32 start, int32 end)
+static bool CheckAutoExpandedRoadBits(const Array<> &existing, int32 start, int32 end)
 {
-	return (start + end == 0) && (existing->size == 0 || existing->array[0] == start || existing->array[0] == end);
+	return (start + end == 0) && (existing.empty() || existing[0] == start || existing[0] == end);
 }
 
 /**
@@ -163,7 +163,7 @@ static bool CheckAutoExpandedRoadBits(const Array *existing, int32 start, int32 
  *         they are build or 2 when building the first part automatically
  *         builds the second part.
  */
-static int32 LookupWithoutBuildOnSlopes(::Slope slope, const Array *existing, int32 start, int32 end)
+static int32 LookupWithoutBuildOnSlopes(::Slope slope, const Array<> &existing, int32 start, int32 end)
 {
 	switch (slope) {
 		/* Flat slopes can always be build. */
@@ -175,9 +175,9 @@ static int32 LookupWithoutBuildOnSlopes(::Slope slope, const Array *existing, in
 		 * in the game have been changed.
 		 */
 		case SLOPE_NE: case SLOPE_SW:
-			return (CheckAutoExpandedRoadBits(existing, start, end) && (start == 1 || end == 1)) ? (existing->size == 0 ? 2 : 1) : 0;
+			return (CheckAutoExpandedRoadBits(existing, start, end) && (start == 1 || end == 1)) ? (existing.empty() ? 2 : 1) : 0;
 		case SLOPE_SE: case SLOPE_NW:
-			return (CheckAutoExpandedRoadBits(existing, start, end) && (start != 1 && end != 1)) ? (existing->size == 0 ? 2 : 1) : 0;
+			return (CheckAutoExpandedRoadBits(existing, start, end) && (start != 1 && end != 1)) ? (existing.empty() ? 2 : 1) : 0;
 
 		/* Any other tile cannot be built on. */
 		default:
@@ -227,7 +227,7 @@ static RoadBits NeighbourToRoadBits(int32 neighbour)
  *         they are build or 2 when building the first part automatically
  *         builds the second part.
  */
-static int32 LookupWithBuildOnSlopes(::Slope slope, Array *existing, int32 start, int32 end)
+static int32 LookupWithBuildOnSlopes(::Slope slope, const Array<> &existing, int32 start, int32 end)
 {
 	/* Steep slopes behave the same as slopes with one corner raised. */
 	if (IsSteepSlope(slope)) {
@@ -277,9 +277,6 @@ static int32 LookupWithBuildOnSlopes(::Slope slope, Array *existing, int32 start
 
 	/* Now perform the actual rotation. */
 	for (int j = 0; j < base_rotate; j++) {
-		for (size_t i = 0; i < existing->size; i++) {
-			existing->array[i] = RotateNeighbour(existing->array[i]);
-		}
 		start = RotateNeighbour(start);
 		end   = RotateNeighbour(end);
 	}
@@ -288,8 +285,11 @@ static int32 LookupWithBuildOnSlopes(::Slope slope, Array *existing, int32 start
 	RoadBits start_roadbits    = NeighbourToRoadBits(start);
 	RoadBits new_roadbits      = start_roadbits | NeighbourToRoadBits(end);
 	RoadBits existing_roadbits = ROAD_NONE;
-	for (size_t i = 0; i < existing->size; i++) {
-		existing_roadbits |= NeighbourToRoadBits(existing->array[i]);
+	for (int32 neighbour : existing) {
+		for (int j = 0; j < base_rotate; j++) {
+			neighbour = RotateNeighbour(neighbour);
+		}
+		existing_roadbits |= NeighbourToRoadBits(neighbour);
 	}
 
 	switch (slope) {
@@ -377,7 +377,7 @@ static bool NormaliseTileOffset(int32 *tile)
 		return false;
 }
 
-/* static */ int32 ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array *existing, TileIndex start_, TileIndex end_)
+/* static */ int32 ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> existing, TileIndex start_, TileIndex end_)
 {
 	::Slope slope = (::Slope)slope_;
 	int32 start = start_;
@@ -386,8 +386,8 @@ static bool NormaliseTileOffset(int32 *tile)
 	/* The start tile and end tile cannot be the same tile either. */
 	if (start == end) return -1;
 
-	for (size_t i = 0; i < existing->size; i++) {
-		if (!NormaliseTileOffset(&existing->array[i])) return -1;
+	for (size_t i = 0; i < existing.size(); i++) {
+		if (!NormaliseTileOffset(&existing[i])) return -1;
 	}
 
 	if (!NormaliseTileOffset(&start)) return -1;
@@ -405,8 +405,6 @@ static bool NormaliseTileOffset(int32 *tile)
 
 	/*                                           ROAD_NW              ROAD_SW             ROAD_SE             ROAD_NE */
 	const TileIndexDiff neighbours[] = {::TileDiffXY(0, -1), ::TileDiffXY(1, 0), ::TileDiffXY(0, 1), ::TileDiffXY(-1, 0)};
-	Array *existing = (Array*)alloca(sizeof(Array) + lengthof(neighbours) * sizeof(int32));
-	existing->size = 0;
 
 	::RoadBits rb = ::ROAD_NONE;
 	if (::IsNormalRoadTile(tile)) {
@@ -414,8 +412,10 @@ static bool NormaliseTileOffset(int32 *tile)
 	} else {
 		rb = ::GetAnyRoadBits(tile, RTT_ROAD) | ::GetAnyRoadBits(tile, RTT_TRAM);
 	}
+
+	Array<> existing;
 	for (uint i = 0; i < lengthof(neighbours); i++) {
-		if (HasBit(rb, i)) existing->array[existing->size++] = neighbours[i];
+		if (HasBit(rb, i)) existing.emplace_back(neighbours[i]);
 	}
 
 	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), existing, start - tile, end - tile);

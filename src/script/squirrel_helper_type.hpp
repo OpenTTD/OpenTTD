@@ -10,10 +10,10 @@
 #ifndef SQUIRREL_HELPER_TYPE_HPP
 #define SQUIRREL_HELPER_TYPE_HPP
 
+#include <vector>
+
 /** Definition of a simple array. */
-struct Array {
-	size_t size;   ///< The size of the array.
-	int32 array[]; ///< The data of the array.
-};
+template <typename Titem = int32>
+using Array = std::vector<Titem>;
 
 #endif /* SQUIRREL_HELPER_TYPE_HPP */
