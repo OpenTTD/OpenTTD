@@ -91,8 +91,9 @@ namespace SQConvert {
 		}
 	};
 
-	template <> struct Param<Array *> {
-		static inline Array *Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
+	template <typename Titem>
+	struct Param<Array<Titem>> {
+		static inline Array<Titem> Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
 		{
 			/* Sanity check of the size. */
 			if (sq_getsize(vm, index) > UINT16_MAX) throw sq_throwerror(vm, "an array used as parameter to a function is too large");
@@ -102,27 +103,15 @@ namespace SQConvert {
 			sq_pushobject(vm, obj);
 			sq_pushnull(vm);
 
-			std::vector<int32> data;
+			Array<Titem> data;
 
 			while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-				SQInteger tmp;
-				if (SQ_SUCCEEDED(sq_getinteger(vm, -1, &tmp))) {
-					data.push_back((int32)tmp);
-				} else {
-					sq_pop(vm, 4);
-					throw sq_throwerror(vm, "a member of an array used as parameter to a function is not numeric");
-				}
-
+				data.emplace_back(Param<Titem>::Get(vm, -1, ptr));
 				sq_pop(vm, 2);
 			}
 			sq_pop(vm, 2);
 
-			Array *arr = (Array *)MallocT<byte>(sizeof(Array) + sizeof(int32) * data.size());
-			arr->size = data.size();
-			memcpy(arr->array, data.data(), sizeof(int32) * data.size());
-
-			ptr->push_back(arr);
-			return arr;
+			return data;
 		}
 	};
 

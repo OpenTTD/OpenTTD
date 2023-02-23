@@ -11,6 +11,7 @@
 #define SCRIPT_ROAD_HPP
 
 #include "script_tile.hpp"
+#include "../squirrel_helper_type.hpp"
 #include "../../../road.h"
 
 /**
@@ -245,7 +246,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
+	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<> existing, TileIndex start, TileIndex end);
 
 	/**
 	 * Lookup function for building road parts independent of whether the
