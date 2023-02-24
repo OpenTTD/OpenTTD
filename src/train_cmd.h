@@ -21,9 +21,9 @@ CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID
 CommandCost CmdForceTrainProceed(DoCommandFlag flags, VehicleID veh_id);
 CommandCost CmdReverseTrainDirection(DoCommandFlag flags, VehicleID veh_id, bool reverse_single_veh);
 
-DEF_CMD_TRAIT(CMD_MOVE_RAIL_VEHICLE,       CmdMoveRailVehicle,       0, CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_FORCE_TRAIN_PROCEED,     CmdForceTrainProceed,     0, CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_REVERSE_TRAIN_DIRECTION, CmdReverseTrainDirection, 0, CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_MOVE_RAIL_VEHICLE,       CmdMoveRailVehicle,       CMD_LOCATION, CMDT_VEHICLE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_FORCE_TRAIN_PROCEED,     CmdForceTrainProceed,     CMD_LOCATION, CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_REVERSE_TRAIN_DIRECTION, CmdReverseTrainDirection, CMD_LOCATION, CMDT_VEHICLE_MANAGEMENT)
 
 void CcBuildWagon(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, CargoArray, TileIndex tile, EngineID, bool, CargoID, ClientID);
 
