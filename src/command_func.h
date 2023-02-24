@@ -37,7 +37,7 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  */
 #define return_cmd_error(errcode) return CommandCost(errcode);
 
-void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex location, const CommandDataBuffer &cmd_data);
+void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, const CommandDataBuffer &cmd_data);
 
 bool IsValidCommand(Commands cmd);
 CommandFlags GetCommandFlags(Commands cmd);
@@ -215,20 +215,13 @@ public:
 	 * @param err_message Message prefix to show on error
 	 * @param callback A callback function to call after the command is finished
 	 * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
-	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
 	 * @return \c true if the command succeeded, else \c false.
 	 */
 	template <typename Tcallback>
-	static bool PostFromNet(StringID err_message, Tcallback *callback, bool my_cmd, TileIndex location, std::tuple<Targs...> args)
+	static bool PostFromNet(StringID err_message, Tcallback *callback, bool my_cmd, std::tuple<Targs...> args)
 	{
-		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, decltype(args)>>) {
-			/* Do not even think about executing out-of-bounds tile-commands. */
-			TileIndex tile = std::get<0>(args);
-			if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
-		}
-
-		return InternalPost(err_message, callback, my_cmd, true, location, std::move(args));
+		return InternalPost(err_message, callback, my_cmd, true, std::move(args));
 	}
 
 	/**
@@ -242,12 +235,7 @@ public:
 	{
 		auto args_tuple = std::forward_as_tuple(args...);
 
-		TileIndex tile{};
-		if constexpr (std::is_same_v<TileIndex, std::tuple_element_t<0, decltype(args_tuple)>>) {
-			tile = std::get<0>(args_tuple);
-		}
-
-		::NetworkSendCommand(Tcmd, err_message, nullptr, _current_company, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args_tuple));
+		::NetworkSendCommand(Tcmd, err_message, nullptr, _current_company, EndianBufferWriter<CommandDataBuffer>::FromValue(args_tuple));
 	}
 
 	/**
@@ -324,9 +312,9 @@ protected:
 			} else if constexpr (std::is_same_v<Tcallback, CommandCallbackData>) {
 				/* Generic callback that takes packed arguments as a buffer. */
 				if constexpr (std::is_same_v<Tret, CommandCost>) {
-					callback(Tcmd, ExtractCommandCost(res), tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), {});
+					callback(Tcmd, ExtractCommandCost(res), EndianBufferWriter<CommandDataBuffer>::FromValue(args), {});
 				} else {
-					callback(Tcmd, ExtractCommandCost(res), tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), EndianBufferWriter<CommandDataBuffer>::FromValue(RemoveFirstTupleElement(res)));
+					callback(Tcmd, ExtractCommandCost(res), EndianBufferWriter<CommandDataBuffer>::FromValue(args), EndianBufferWriter<CommandDataBuffer>::FromValue(RemoveFirstTupleElement(res)));
 				}
 			} else if constexpr (!std::is_same_v<Tret, CommandCost> && std::is_same_v<Tcallback *, typename CommandTraits<Tcmd>::RetCallbackProc>) {
 				std::apply(callback, std::tuple_cat(std::make_tuple(Tcmd), res));
@@ -405,7 +393,7 @@ protected:
 		/* If we are in network, and the command is not from the network
 		 * send it to the command-queue and abort execution. */
 		if (send_net) {
-			::NetworkSendCommand(Tcmd, err_message, callback, _current_company, tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args));
+			::NetworkSendCommand(Tcmd, err_message, callback, _current_company, EndianBufferWriter<CommandDataBuffer>::FromValue(args));
 			cur_company.Restore();
 
 			/* Don't return anything special here; no error, no costs.
@@ -446,8 +434,13 @@ protected:
 template <Commands Tcmd, typename Tret, typename... Targs>
 struct CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), false> : CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true>
 {
-	/* Import Post overloads from our base class. */
-	using CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), true>::Post;
+	/* Do not allow Post without explicit location. */
+	static inline bool Post(StringID err_message, Targs... args) = delete;
+	template <typename Tcallback>
+	static inline bool Post(Tcallback *callback, Targs... args) = delete;
+	static inline bool Post(Targs... args) = delete;
+	template <typename Tcallback>
+	static bool Post(StringID err_message, Tcallback *callback, Targs... args) = delete;
 
 	/**
 	 * Shortcut for Post when not using an error message.
@@ -476,7 +469,6 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), false> : CommandHel
 	 * commands that don't take a TileIndex by themselves.
 	 * @param err_message Message prefix to show on error
 	 * @param callback A callback function to call after the command is finished
-	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
 	 * @return \c true if the command succeeded, else \c false.
 	 */
@@ -492,6 +484,6 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...), false> : CommandHel
 #endif
 
 template <Commands Tcmd>
-using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType, std::is_same_v<TileIndex, std::tuple_element_t<0, typename CommandTraits<Tcmd>::Args>>>;
+using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType, (GetCommandFlags<Tcmd>() & CMD_LOCATION) == 0>;
 
 #endif /* COMMAND_FUNC_H */
