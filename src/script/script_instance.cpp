@@ -744,11 +744,11 @@ SQInteger ScriptInstance::GetOpsTillSuspend()
 	return this->engine->GetOpsTillSuspend();
 }
 
-bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd)
+bool ScriptInstance::DoCommandCallback(const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd)
 {
 	ScriptObject::ActiveInstance active(this);
 
-	if (!ScriptObject::CheckLastCommand(tile, data, cmd)) {
+	if (!ScriptObject::CheckLastCommand(data, cmd)) {
 		Debug(script, 1, "DoCommandCallback terminating a script, last command does not match expected command");
 		return false;
 	}
@@ -763,7 +763,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, TileIndex tile
 		ScriptObject::SetLastCost(result.GetCost());
 	}
 
-	ScriptObject::SetLastCommand(INVALID_TILE, {}, CMD_END);
+	ScriptObject::SetLastCommand({}, CMD_END);
 
 	return true;
 }

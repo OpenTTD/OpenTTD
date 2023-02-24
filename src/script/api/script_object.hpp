@@ -105,12 +105,12 @@ protected:
 	/**
 	 * Store the latest command executed by the script.
 	 */
-	static void SetLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd);
+	static void SetLastCommand(const CommandDataBuffer &data, Commands cmd);
 
 	/**
 	 * Check if it's the latest command executed by the script.
 	 */
-	static bool CheckLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd);
+	static bool CheckLastCommand(const CommandDataBuffer &data, Commands cmd);
 
 	/**
 	 * Sets the DoCommand costs counter to a value.
@@ -340,7 +340,7 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)>
 	if constexpr ((::GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) != 0) ScriptObjectInternal::SetClientIds(args, std::index_sequence_for<Targs...>{});
 
 	/* Store the command for command callback validation. */
-	if (!estimate_only && networking) ScriptObject::SetLastCommand(tile, EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);
+	if (!estimate_only && networking) ScriptObject::SetLastCommand(EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);
 
 	/* Try to perform the command. */
 	Tret res = ::Command<Tcmd>::Unsafe((StringID)0, networking ? ScriptObject::GetDoCommandCallback() : nullptr, false, estimate_only, tile, args);

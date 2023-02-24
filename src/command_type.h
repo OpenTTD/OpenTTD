@@ -386,6 +386,7 @@ enum CommandFlags {
 	CMD_DEITY     = 0x100, ///< the command may be executed by COMPANY_DEITY
 	CMD_STR_CTRL  = 0x200, ///< the command's string may contain control strings
 	CMD_NO_EST    = 0x400, ///< the command is never estimated.
+	CMD_LOCATION  = 0x800, ///< the command has implicit location argument.
 };
 DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 
@@ -477,6 +478,6 @@ typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex 
  * @param result_data Additional returned data from the command
  * @see CommandProc
  */
-typedef void CommandCallbackData(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data);
+typedef void CommandCallbackData(Commands cmd, const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data);
 
 #endif /* COMMAND_TYPE_H */

@@ -28,7 +28,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id);
 
 DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CMD_DEITY | CMD_NO_TEST,  CMDT_LANDSCAPE_CONSTRUCTION) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CMD_DEITY | CMD_SERVER,   CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DO_TOWN_ACTION,   CmdDoTownAction,   0,                        CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_DO_TOWN_ACTION,   CmdDoTownAction,   CMD_LOCATION,             CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_TOWN_CARGO_GOAL,  CmdTownCargoGoal,  CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_TOWN_GROWTH_RATE, CmdTownGrowthRate, CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_TOWN_RATING,      CmdTownRating,     CMD_DEITY,                CMDT_OTHER_MANAGEMENT)

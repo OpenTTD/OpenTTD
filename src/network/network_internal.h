@@ -108,7 +108,7 @@ void UpdateNetworkGameWindow();
  */
 struct CommandPacket {
 	/** Make sure the pointer is nullptr. */
-	CommandPacket() : next(nullptr), company(INVALID_COMPANY), frame(0), my_cmd(false), tile(0) {}
+	CommandPacket() : next(nullptr), company(INVALID_COMPANY), frame(0), my_cmd(false) {}
 	CommandPacket *next; ///< the next command packet (if in queue)
 	CompanyID company;   ///< company that is executing the command
 	uint32 frame;        ///< the frame in which this packet is executed
@@ -117,7 +117,6 @@ struct CommandPacket {
 	Commands cmd;              ///< command being executed.
 	StringID err_msg;          ///< string ID of error message to use.
 	CommandCallback *callback; ///< any callback function executed upon successful completion of the command.
-	TileIndex tile;            ///< location of the command (for e.g. error message or effect display).
 	CommandDataBuffer data;    ///< command parameters.
 };
 
