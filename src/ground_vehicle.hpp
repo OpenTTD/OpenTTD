@@ -165,25 +165,25 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT)) {
 			switch (this->direction) {
 				case DIR_NE:
-					this->z_pos += (this->x_pos & 1); break;
-				case DIR_SW:
 					this->z_pos += (this->x_pos & 1) ^ 1; break;
+				case DIR_SW:
+					this->z_pos += (this->x_pos & 1); break;
 				case DIR_NW:
-					this->z_pos += (this->y_pos & 1); break;
-				case DIR_SE:
 					this->z_pos += (this->y_pos & 1) ^ 1; break;
+				case DIR_SE:
+					this->z_pos += (this->y_pos & 1); break;
 				default: break;
 			}
 		} else if (HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
 			switch (this->direction) {
 				case DIR_NE:
-					this->z_pos -= (this->x_pos & 1); break;
-				case DIR_SW:
 					this->z_pos -= (this->x_pos & 1) ^ 1; break;
+				case DIR_SW:
+					this->z_pos -= (this->x_pos & 1); break;
 				case DIR_NW:
-					this->z_pos -= (this->y_pos & 1); break;
-				case DIR_SE:
 					this->z_pos -= (this->y_pos & 1) ^ 1; break;
+				case DIR_SE:
+					this->z_pos -= (this->y_pos & 1); break;
 				default: break;
 			}
 		}
@@ -212,8 +212,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			int8 d = DiagDirToAxis(dir) == AXIS_X ? x_pos : y_pos;
 			/* We need only the least significant bit */
 			d &= 1;
-			/* Conditional "^ 1". Optimised to "(dir - 1) <= 1". */
-			d ^= (int8)(dir == DIAGDIR_SW || dir == DIAGDIR_SE);
+			d ^= (int8)(dir == DIAGDIR_NW || dir == DIAGDIR_NE);
 			/* Subtraction instead of addition because we are testing for GVF_GOINGUP_BIT.
 			 * GVF_GOINGUP_BIT is used because it's bit 0, so simple AND can be used,
 			 * without any shift */
