@@ -21,7 +21,7 @@
  * @param corner A #Corner.
  * @return true iff corner is in a valid range.
  */
-static inline bool IsValidCorner(Corner corner)
+static constexpr inline bool IsValidCorner(Corner corner)
 {
 	return IsInsideMM(corner, 0, CORNER_END);
 }
@@ -33,7 +33,7 @@ static inline bool IsValidCorner(Corner corner)
  * @param s The given #Slope.
  * @return True if the slope is steep, else false.
  */
-static inline bool IsSteepSlope(Slope s)
+static constexpr inline bool IsSteepSlope(Slope s)
 {
 	return (s & SLOPE_STEEP) != 0;
 }
@@ -44,7 +44,7 @@ static inline bool IsSteepSlope(Slope s)
  * @param s The given #Slope.
  * @return True if the slope is non-continuous, else false.
  */
-static inline bool IsHalftileSlope(Slope s)
+static constexpr inline bool IsHalftileSlope(Slope s)
 {
 	return (s & SLOPE_HALFTILE) != 0;
 }
@@ -57,7 +57,7 @@ static inline bool IsHalftileSlope(Slope s)
  * @param s A #Slope.
  * @return The slope s without its halftile slope.
  */
-static inline Slope RemoveHalftileSlope(Slope s)
+static constexpr inline Slope RemoveHalftileSlope(Slope s)
 {
 	return s & ~SLOPE_HALFTILE_MASK;
 }
@@ -145,7 +145,7 @@ static inline Corner GetHighestSlopeCorner(Slope s)
  * @param s The #Slope.
  * @return  The corner of the leveled halftile.
  */
-static inline Corner GetHalftileSlopeCorner(Slope s)
+static constexpr inline Corner GetHalftileSlopeCorner(Slope s)
 {
 	assert(IsHalftileSlope(s));
 	return (Corner)((s >> 6) & 3);
@@ -157,7 +157,7 @@ static inline Corner GetHalftileSlopeCorner(Slope s)
  * @param s The #Slope.
  * @return Relative height of highest corner.
  */
-static inline int GetSlopeMaxZ(Slope s)
+static constexpr inline int GetSlopeMaxZ(Slope s)
 {
 	if (s == SLOPE_FLAT) return 0;
 	if (IsSteepSlope(s)) return 2;
@@ -170,7 +170,7 @@ static inline int GetSlopeMaxZ(Slope s)
  * @param s The #Slope.
  * @return Relative height of highest corner.
  */
-static inline int GetSlopeMaxPixelZ(Slope s)
+static constexpr inline int GetSlopeMaxPixelZ(Slope s)
 {
 	return GetSlopeMaxZ(s) * TILE_HEIGHT;
 }
@@ -271,7 +271,7 @@ static inline Slope InclinedSlope(DiagDirection dir)
  * @param corner The #Corner of the halftile.
  * @return The #Slope s with the halftile slope added.
  */
-static inline Slope HalftileSlope(Slope s, Corner corner)
+static constexpr inline Slope HalftileSlope(Slope s, Corner corner)
 {
 	assert(IsValidCorner(corner));
 	return (Slope)(s | SLOPE_HALFTILE | (corner << 6));
