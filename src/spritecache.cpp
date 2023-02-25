@@ -51,7 +51,7 @@ static inline SpriteCache *GetSpriteCache(uint index)
 
 static inline bool IsMapgenSpriteID(SpriteID sprite)
 {
-	return IsInsideMM(sprite, 4845, 4882);
+	return IsInsideMM(sprite, SPR_MAPGEN_BEGIN, SPR_MAPGEN_END);
 }
 
 static SpriteCache *AllocateSpriteCache(uint index)

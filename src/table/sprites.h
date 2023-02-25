@@ -1126,6 +1126,10 @@ static const SpriteID SPR_OTTD_N                = 4839;
 static const SpriteID SPR_OTTD_T                = 4836;
 /* Letters not used: R,A,S,Y,C (4837, 4838, 4840, 4843, 4844) */
 
+/* Range of "special" sprites that are used by the old map generation algorithm. */
+static const SpriteID SPR_MAPGEN_BEGIN = 4845;
+static const SpriteID SPR_MAPGEN_END   = 4882;
+
 static const SpriteID SPR_HIGHSCORE_CHART_BEGIN = 4804;
 static const SpriteID SPR_TYCOON_IMG1_BEGIN     = 4814;
 static const SpriteID SPR_TYCOON_IMG2_BEGIN     = 4824;
