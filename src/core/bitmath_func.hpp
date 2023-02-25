@@ -29,7 +29,7 @@
  * @return The selected bits, aligned to a LSB.
  */
 template <typename T>
-debug_inline static uint GB(const T x, const uint8 s, const uint8 n)
+debug_inline constexpr static uint GB(const T x, const uint8 s, const uint8 n)
 {
 	return (x >> s) & (((T)1U << n) - 1);
 }
