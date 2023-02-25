@@ -221,7 +221,7 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
  * @param corners slope to examine
  * @return height of given point of given slope
  */
-uint GetPartialPixelZ(int x, int y, Slope corners)
+static constexpr uint InternalGetPartialPixelZ(int x, int y, Slope corners)
 {
 	if (IsHalftileSlope(corners)) {
 		/* A foundation is placed on half the tile at a specific corner. This means that,
@@ -283,6 +283,21 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 
 		default: NOT_REACHED();
 	}
+}
+
+#include "tests/landscape_partial_pixel_z.h"
+
+/**
+ * Determines height at given coordinate of a slope.
+ * See #InternalGetPartialPixelZ.
+ * @param x x coordinate (value from 0 to 15)
+ * @param y y coordinate (value from 0 to 15)
+ * @param corners slope to examine
+ * @return height of given point of given slope
+ */
+uint GetPartialPixelZ(int x, int y, Slope corners)
+{
+	return InternalGetPartialPixelZ(x, y, corners);
 }
 
 /**
