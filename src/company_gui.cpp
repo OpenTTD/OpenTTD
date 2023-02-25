@@ -2444,6 +2444,70 @@ struct CompanyWindow : Window
 		}
 	}
 
+	void DrawVehicleCountsWidget(const Rect &r, const Company *c) const
+	{
+		static_assert(VEH_COMPANY_END == lengthof(_company_view_vehicle_count_strings));
+
+		int y = r.top;
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			uint amount = c->group_all[type].num_vehicle;
+			if (amount != 0) {
+				SetDParam(0, amount);
+				DrawString(r.left, r.right, y, _company_view_vehicle_count_strings[type]);
+				y += FONT_HEIGHT_NORMAL;
+			}
+		}
+
+		if (y == r.top) {
+			/* No String was emited before, so there must be no vehicles at all. */
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
+		}
+	}
+
+	void DrawInfrastructureCountsWidget(const Rect &r, const Company *c) const
+	{
+		int y = r.top;
+
+		uint rail_pieces = c->infrastructure.signal;
+		for (uint i = 0; i < lengthof(c->infrastructure.rail); i++) rail_pieces += c->infrastructure.rail[i];
+		if (rail_pieces != 0) {
+			SetDParam(0, rail_pieces);
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL);
+			y += FONT_HEIGHT_NORMAL;
+		}
+
+		uint road_pieces = 0;
+		for (uint i = 0; i < lengthof(c->infrastructure.road); i++) road_pieces += c->infrastructure.road[i];
+		if (road_pieces != 0) {
+			SetDParam(0, road_pieces);
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD);
+			y += FONT_HEIGHT_NORMAL;
+		}
+
+		if (c->infrastructure.water != 0) {
+			SetDParam(0, c->infrastructure.water);
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_WATER);
+			y += FONT_HEIGHT_NORMAL;
+		}
+
+		if (c->infrastructure.station != 0) {
+			SetDParam(0, c->infrastructure.station);
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_STATION);
+			y += FONT_HEIGHT_NORMAL;
+		}
+
+		if (c->infrastructure.airport != 0) {
+			SetDParam(0, c->infrastructure.airport);
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT);
+			y += FONT_HEIGHT_NORMAL;
+		}
+
+		if (y == r.top) {
+			/* No String was emited before, so there must be no infrastructure at all. */
+			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+		}
+	}
+
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
@@ -2465,70 +2529,13 @@ struct CompanyWindow : Window
 				break;
 			}
 
-			case WID_C_DESC_VEHICLE_COUNTS: {
-				uint amounts[4];
-				amounts[0] = c->group_all[VEH_TRAIN].num_vehicle;
-				amounts[1] = c->group_all[VEH_ROAD].num_vehicle;
-				amounts[2] = c->group_all[VEH_SHIP].num_vehicle;
-				amounts[3] = c->group_all[VEH_AIRCRAFT].num_vehicle;
-
-				int y = r.top;
-				if (amounts[0] + amounts[1] + amounts[2] + amounts[3] == 0) {
-					DrawString(r.left, r.right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
-				} else {
-					static_assert(lengthof(amounts) == lengthof(_company_view_vehicle_count_strings));
-
-					for (uint i = 0; i < lengthof(amounts); i++) {
-						if (amounts[i] != 0) {
-							SetDParam(0, amounts[i]);
-							DrawString(r.left, r.right, y, _company_view_vehicle_count_strings[i]);
-							y += FONT_HEIGHT_NORMAL;
-						}
-					}
-				}
+			case WID_C_DESC_VEHICLE_COUNTS:
+				DrawVehicleCountsWidget(r, c);
 				break;
-			}
 
-			case WID_C_DESC_INFRASTRUCTURE_COUNTS: {
-				uint y = r.top;
-
-				/* Collect rail and road counts. */
-				uint rail_pieces = c->infrastructure.signal;
-				uint road_pieces = 0;
-				for (uint i = 0; i < lengthof(c->infrastructure.rail); i++) rail_pieces += c->infrastructure.rail[i];
-				for (uint i = 0; i < lengthof(c->infrastructure.road); i++) road_pieces += c->infrastructure.road[i];
-
-				if (rail_pieces == 0 && road_pieces == 0 && c->infrastructure.water == 0 && c->infrastructure.station == 0 && c->infrastructure.airport == 0) {
-					DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
-				} else {
-					if (rail_pieces != 0) {
-						SetDParam(0, rail_pieces);
-						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL);
-						y += FONT_HEIGHT_NORMAL;
-					}
-					if (road_pieces != 0) {
-						SetDParam(0, road_pieces);
-						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD);
-						y += FONT_HEIGHT_NORMAL;
-					}
-					if (c->infrastructure.water != 0) {
-						SetDParam(0, c->infrastructure.water);
-						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_WATER);
-						y += FONT_HEIGHT_NORMAL;
-					}
-					if (c->infrastructure.station != 0) {
-						SetDParam(0, c->infrastructure.station);
-						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_STATION);
-						y += FONT_HEIGHT_NORMAL;
-					}
-					if (c->infrastructure.airport != 0) {
-						SetDParam(0, c->infrastructure.airport);
-						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT);
-					}
-				}
-
+			case WID_C_DESC_INFRASTRUCTURE_COUNTS:
+				DrawInfrastructureCountsWidget(r, c);
 				break;
-			}
 
 			case WID_C_DESC_OWNERS: {
 				uint y = r.top;
