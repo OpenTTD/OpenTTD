@@ -9,6 +9,10 @@ on:
 env:
   CTEST_OUTPUT_ON_FAILURE: 1
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
 jobs:
   emscripten:
     name: Emscripten
