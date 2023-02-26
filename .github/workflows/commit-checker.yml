@@ -3,6 +3,10 @@ name: Commit checker
 on:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
 jobs:
   commit-checker:
     name: Commit checker
