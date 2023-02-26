@@ -109,6 +109,11 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		}
 
 		while (x1 != x2) {
+			if (dash_count < dash) {
+				for (int y = y_low; y != y_high; y += stepy) {
+					if (y >= 0 && y < screen_height) set_pixel(x1, y);
+				}
+			}
 			if (frac_low >= 0) {
 				y_low += stepy;
 				frac_low -= dx;
@@ -117,12 +122,6 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 				y_high += stepy;
 				frac_high -= dx;
 			}
-			if (dash_count < dash) {
-				for (int y = y_low; y != y_high; y += stepy) {
-					if (y >= 0 && y < screen_height) set_pixel(x1, y);
-				}
-			}
-
 			x1++;
 			frac_low += dy;
 			frac_high += dy;
@@ -172,6 +171,11 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		}
 
 		while (y1 != y2) {
+			if (dash_count < dash) {
+				for (int x = x_low; x != x_high; x += stepx) {
+					if (x >= 0 && x < screen_width) set_pixel(x, y1);
+				}
+			}
 			if (frac_low >= 0) {
 				x_low += stepx;
 				frac_low -= dy;
@@ -180,12 +184,6 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 				x_high += stepx;
 				frac_high -= dy;
 			}
-			if (dash_count < dash) {
-				for (int x = x_low; x != x_high; x += stepx) {
-					if (x >= 0 && x < screen_width) set_pixel(x, y1);
-				}
-			}
-
 			y1++;
 			frac_low += dx;
 			frac_high += dx;
