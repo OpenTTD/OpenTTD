@@ -292,6 +292,8 @@ if(NOT OPTION_DEDICATED)
     endif()
 endif()
 
+include(CheckAtomic)
+
 if(APPLE)
     link_package(Iconv TARGET Iconv::Iconv)
 
