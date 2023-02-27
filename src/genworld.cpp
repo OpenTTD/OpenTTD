@@ -87,10 +87,10 @@ static void CountLand()
 {
 	/* Count amount of land */
 	int water = 0;
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		water += IsWaterTile(t);
 	}
-	_map_land_scale = std::clamp(100 * (MapSize() - water) / MapSize(), 1U, 100U);
+	_map_land_scale = std::clamp(100 * (Map::Size() - water) / Map::Size(), 1U, 100U);
 }
 
 /**
