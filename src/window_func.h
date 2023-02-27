@@ -16,6 +16,7 @@
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 Window *FindWindowByClass(WindowClass cls);
+Window *GetMainWindow();
 void ChangeWindowOwner(Owner old_owner, Owner new_owner);
 
 void ResizeWindow(Window *w, int x, int y, bool clamp_to_screen = true);

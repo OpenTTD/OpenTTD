@@ -46,6 +46,7 @@
 	if (colour != TC_INVALID && (::TextColour)colour >= ::TC_END) return;
 
 	Window *w = FindWindowById((::WindowClass)window, number);
+	assert(w != nullptr);
 
 	if (widget == WIDGET_ALL) {
 		if (colour != TC_INVALID) return;

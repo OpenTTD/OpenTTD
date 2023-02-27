@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -33,9 +31,10 @@ void Blitter_40bppAnim::SetPixel(void *video, int x, int y, uint8 colour)
 	if (_screen_disable_anim) {
 		Blitter_32bppOptimized::SetPixel(video, x, y, colour);
 	} else {
-		*((Colour *)video + x + y * _screen.pitch) = _black_colour;
+		size_t y_offset = static_cast<size_t>(y) * _screen.pitch;
+		*((Colour *)video + x + y_offset) = _black_colour;
 
-		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * _screen.pitch] = colour;
+		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y_offset] = colour;
 	}
 }
 
@@ -502,9 +501,9 @@ void Blitter_40bppAnim::ScrollBuffer(void *video, int &left, int &top, int &widt
 	Blitter_32bppBase::ScrollBuffer(video, left, top, width, height, scroll_x, scroll_y);
 }
 
-int Blitter_40bppAnim::BufferSize(int width, int height)
+size_t Blitter_40bppAnim::BufferSize(uint width, uint height)
 {
-	return width * height * (sizeof(uint32) + sizeof(uint8));
+	return (sizeof(uint32) + sizeof(uint8)) * width * height;
 }
 
 Blitter::PaletteAnimation Blitter_40bppAnim::UsePaletteAnimation()

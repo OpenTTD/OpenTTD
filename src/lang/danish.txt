@@ -200,6 +200,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
@@ -391,10 +392,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opsætning
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Indstillinger
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/spilscript-indstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
@@ -965,36 +965,6 @@ STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi (IN
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupiah (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit (MYR)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kør i venstre side
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kør i højre side
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavne:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vælg stil for bynavne
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelske
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franske
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Tyske
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engelske (ekstra)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikanske
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fjollede
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svenske
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandske
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finske
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polske
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakiske
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norske
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarske
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Østrigske
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumænske
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjekkiske
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schweiziske
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danske
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrkiske
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienske
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanske
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
 
@@ -1026,21 +996,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}grænseflade størrelse
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vælg den grænseflade størrelse du ønsker at benytte
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-bestem)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobbelt størrelse
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quad (4x) størrelse
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Skriftstørrelse
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vælg skriftstørrelsen du ønsker i grænsefladen
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-bestem)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbelt størrelse
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad (4x) størrelse
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -1092,8 +1049,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempe
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift brugerdefinerede møntfodsparametre
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Kun finansiering
 STR_MINIMAL                                                     :Minimal
@@ -1142,6 +1097,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tempereret klima
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Arktisk klima
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropisk klima
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Legetøjsland
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Meget fladt
@@ -1221,6 +1182,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimumbeløb et selskab kan låne (uden at tage inflation i betragtning)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lånerente: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerer også inflationen hvis aktiveret
@@ -1500,6 +1462,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbedret
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vejkøretøjer: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vælg køre side
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kør i venstre side
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Kør i højre side
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotér højdekort: {STRING}
 ###length 2
@@ -2029,7 +1995,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vend automatisk
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillad tog at vende ved et signal, hvis det har ventet i lang tid
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalet)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Anbefalet)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Skift indstillingsværdi
 
@@ -2072,7 +2038,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK} Topresu
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spilscript indstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
@@ -2092,7 +2057,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis top
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skærm indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis computerspiller/spilscript indstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Afslut 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK} Det aktuelt valgte base grafiksæt mangler {NUM} sprite {P "" s}. Se venligst efter opdateringer til basesættet.
@@ -2123,12 +2087,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Rediger 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Skift år
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempereret klima
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktisk klima
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropisk klima
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Legetøjsland
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Farvetema
@@ -2609,6 +2567,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}mættet
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overbelastet
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vis dækningsområde
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fra
@@ -2699,8 +2659,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Forøg t
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vælg jernbanebro
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vælg vejbro
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Valg af bro - klik på din foretrukne brotype for at bygge den
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hængebro, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjælkebro, stål
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Gerberbro, stål
@@ -3130,6 +3088,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kortstø
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vælg kortets størrelse i fliser. Antallet af tilgængelige fliser vil være en anelse mindre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byer:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bynavne:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vælg stil for bynavne
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Højeste bjergtop:
@@ -3143,13 +3103,35 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ørkend�
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Forøger ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sænker ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Terrængenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havniveau
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havniveau
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Floder:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Blødhed:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietet af distributionen:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generer
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelske
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franske
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tyske
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelske (ekstra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerikanske
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Fjollede
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svenske
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandske
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finske
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polske
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakiske
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norske
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarske
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østrigske
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumænske
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tjekkiske
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Schweiziske
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danske
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkiske
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italienske
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanske
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kortkanter:
@@ -3295,6 +3277,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsæt til den forrige normal sprite, spring pseudo/omfarvning/font-sprites over og omløb fra starten til slutningen
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen. Ctrl+Klik for at flytte spriten otte enheder af gangen
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nulstil relativ
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nulstil den nuværende relative forskydning
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM} (Absolut)
@@ -3309,8 +3295,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fejl: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-fejl er opstået:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Der er opstået en NewGRF-fejl:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versionen rapporteret af OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er beregnet til {STRING}-versionen af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er designet til brug sammen med {STRING}
@@ -3850,6 +3834,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alle undtagen {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. trækkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rækkevidde: {GOLD}{COMMA} felter
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Fly type: {GOLD}{STRING}
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Togvalgsliste - klik på et køretøj for mere information
@@ -4511,12 +4497,12 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En af de
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspiller/script-debugvindue er kun tilgængeligt for serveren
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration af computerspiller/spilscript
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spilscriptet der vil bliver indlæst i næste spil
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIer der vil bliver loaded i næste spil
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfældig computerspiller
 STR_AI_CONFIG_NONE                                              :(ingen)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flyt op
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flyt valgte computerspiller op i listen
@@ -4526,8 +4512,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flyt val
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spilscript
 STR_AI_CONFIG_AI                                                :{SILVER}KI'er
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vælg {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :Ingen ændringer
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spilscript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs et andet script
@@ -4557,10 +4541,8 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Fuldt ko
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Højdekort skærmbillede
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikort skærmbillede
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spilscript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4976,6 +4958,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mang
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke ændre serviceinterval...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fartøjet er ødelagt
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen køretøjer vil være tilgængelige overhovedet
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Skift din NewGRF-konfiguration

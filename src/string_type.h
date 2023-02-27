@@ -27,6 +27,7 @@ enum CharSetFilter {
 	CS_ALPHANUMERAL,      ///< Both numeric and alphabetic and spaces and stuff
 	CS_NUMERAL,           ///< Only numeric ones
 	CS_NUMERAL_SPACE,     ///< Only numbers and spaces
+	CS_NUMERAL_SIGNED,    ///< Only numbers and '-' for negative values
 	CS_ALPHA,             ///< Only alphabetic values
 	CS_HEXADECIMAL,       ///< Only hexadecimal characters
 };

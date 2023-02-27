@@ -195,6 +195,8 @@ static void OnNewYear()
 	VehiclesYearlyLoop();
 	TownsYearlyLoop();
 	InvalidateWindowClassesData(WC_BUILD_STATION);
+	InvalidateWindowClassesData(WC_BUS_STATION);
+	InvalidateWindowClassesData(WC_TRUCK_STATION);
 	if (_network_server) NetworkServerYearlyLoop();
 
 	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();

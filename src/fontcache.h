@@ -29,11 +29,11 @@ protected:
 	int descender;                    ///< The descender value of the font.
 	int units_per_em;                 ///< The units per EM value of the font.
 
-	static int GetDefaultFontHeight(FontSize fs);
-
 public:
 	FontCache(FontSize fs);
 	virtual ~FontCache();
+
+	static int GetDefaultFontHeight(FontSize fs);
 
 	/**
 	 * Get the FontSize of the font.
@@ -218,10 +218,27 @@ struct FontCacheSettings {
 
 extern FontCacheSettings _fcsettings;
 
+/**
+ * Get the settings of a given font size.
+ * @param fs The font size to look up.
+ * @return The settings.
+ */
+static inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
+{
+	switch (fs) {
+		default: NOT_REACHED();
+		case FS_SMALL:  return &_fcsettings.small;
+		case FS_NORMAL: return &_fcsettings.medium;
+		case FS_LARGE:  return &_fcsettings.large;
+		case FS_MONO:   return &_fcsettings.mono;
+	}
+}
+
 void InitFontCache(bool monospace);
 void UninitFontCache();
 bool HasAntialiasedFonts();
 
 bool GetFontAAState(FontSize size, bool check_blitter = true);
+void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa);
 
 #endif /* FONTCACHE_H */

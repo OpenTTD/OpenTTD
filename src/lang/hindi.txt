@@ -72,6 +72,7 @@ STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 
 
 
+
 # Common window strings
 
 
@@ -115,7 +116,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत
@@ -274,16 +275,6 @@ STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलै
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना (ISK)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :दाईं ओर वाहन चलाएँ
-
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ़्रेंच
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :पोलिश
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :तुर्की
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :इटैलियन
-
 
 # Autosave dropdown
 ###length 5
@@ -296,8 +287,6 @@ STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}
 
 
 
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :सामान्य
 
 
 
@@ -316,7 +305,6 @@ STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक �
 
 
 
-
 STR_VARIETY_MEDIUM                                              :मध्यम
 
 ###length 5
@@ -327,6 +315,8 @@ STR_AI_SPEED_SLOW                                               :धीमा
 ###length 4
 
 ###length 3
+
+###length 4
 
 ###length 4
 
@@ -350,6 +340,7 @@ STR_CONFIG_SETTING_COMPANIES_OFF                                :बन्द
 
 ###length 3
 
+###setting-zero-is-special
 
 
 
@@ -447,6 +438,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
 ###length 3
 
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :दाईं ओर वाहन चलाएँ
 
 ###length 2
 
@@ -636,8 +630,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्�
 
 # Cheat window
 
-###length 4
-
 # Livery window
 
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK} ट्रेन रंग योजनाएं दिखाएं
@@ -730,6 +722,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}डा�
 # Linkgraph legend window
 
 # Linkgraph legend window and linkgraph legend in smallmap
+
+# Linkgraph tooltip
 
 # Base for station construction window(s)
 
@@ -846,6 +840,12 @@ STR_FRAMETIME_CAPTION_GL_ECONOMY                                :माल प�
 
 # World generation
 
+###length 21
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ़्रेंच
+STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :इटैलियन
+
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}जल
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}यादृच्छिक
@@ -875,6 +875,10 @@ STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :मूल (D)
 
 
 # Sprite aligner window
+
+###length 2
+
+
 
 
 # NewGRF (self) generated warnings/errors
@@ -1033,6 +1037,8 @@ STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :नई ट्�
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}मूल्य : {GOLD}{CURRENCY_LONG}{BLACK} भार : {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भार : {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+
+###length 3
 
 ###length VEHICLE_TYPES
 
@@ -1247,14 +1253,13 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 
 
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
 
 
 
-# AI Parameters
+# Script Parameters
 
 
 # Textfile window
@@ -1366,6 +1371,7 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}जह�
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रेल वाहन नहीं बेच सकते...
+
 
 
 

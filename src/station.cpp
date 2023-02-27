@@ -51,8 +51,6 @@ void RebuildStationKdtree()
 
 BaseStation::~BaseStation()
 {
-	free(this->speclist);
-
 	if (CleaningPool()) return;
 
 	CloseWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->index).Pack());
@@ -106,9 +104,9 @@ Station::~Station()
 		if (lg == nullptr) continue;
 
 		for (NodeID node = 0; node < lg->Size(); ++node) {
-			Station *st = Station::Get((*lg)[node].Station());
+			Station *st = Station::Get((*lg)[node].station);
 			st->goods[c].flows.erase(this->index);
-			if ((*lg)[node][this->goods[c].node].LastUpdate() != INVALID_DATE) {
+			if ((*lg)[node].HasEdgeTo(this->goods[c].node) && (*lg)[node][this->goods[c].node].LastUpdate() != INVALID_DATE) {
 				st->goods[c].flows.DeleteFlows(this->index);
 				RerouteCargo(st, c, this->index, st->index);
 			}
@@ -172,6 +170,36 @@ void BaseStation::PostDestructor(size_t index)
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }
 
+void BaseStation::SetRoadStopTileData(TileIndex tile, byte data, bool animation)
+{
+	for (RoadStopTileData &tile_data : this->custom_roadstop_tile_data) {
+		if (tile_data.tile == tile) {
+			if (animation) {
+				tile_data.animation_frame = data;
+			} else {
+				tile_data.random_bits = data;
+			}
+			return;
+		}
+	}
+	RoadStopTileData tile_data;
+	tile_data.tile = tile;
+	tile_data.animation_frame = animation ? data : 0;
+	tile_data.random_bits = animation ? 0 : data;
+	this->custom_roadstop_tile_data.push_back(tile_data);
+}
+
+void BaseStation::RemoveRoadStopTileData(TileIndex tile)
+{
+	for (RoadStopTileData &tile_data : this->custom_roadstop_tile_data) {
+		if (tile_data.tile == tile) {
+			tile_data = this->custom_roadstop_tile_data.back();
+			this->custom_roadstop_tile_data.pop_back();
+			return;
+		}
+	}
+}
+
 /**
  * Get the primary road stop (the first road stop) that the given vehicle can load/unload.
  * @param v the vehicle to get the first road stop for
@@ -227,7 +255,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 		/* Don't waste time updating if there are no custom station graphics
 		 * that might change. Even if there are custom graphics, they might
 		 * not change. Unfortunately we have no way of telling. */
-		if (this->num_specs == 0) return;
+		if (this->speclist.size() == 0) return;
 	}
 
 	for (h = 0; h < train_station.h; h++) {
@@ -348,8 +376,8 @@ Rect Station::GetCatchmentRect() const
 	Rect ret = {
 		std::max<int>(this->rect.left   - catchment_radius, 0),
 		std::max<int>(this->rect.top    - catchment_radius, 0),
-		std::min<int>(this->rect.right  + catchment_radius, MapMaxX()),
-		std::min<int>(this->rect.bottom + catchment_radius, MapMaxY())
+		std::min<int>(this->rect.right  + catchment_radius, Map::MaxX()),
+		std::min<int>(this->rect.bottom + catchment_radius, Map::MaxY())
 	};
 
 	return ret;
@@ -551,8 +579,8 @@ CommandCost StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 		Rect new_rect = {std::min(x, this->left), std::min(y, this->top), std::max(x, this->right), std::max(y, this->bottom)};
 
 		/* check new rect dimensions against preset max */
-		int w = new_rect.right - new_rect.left + 1;
-		int h = new_rect.bottom - new_rect.top + 1;
+		int w = new_rect.Width();
+		int h = new_rect.Height();
 		if (mode != ADD_FORCE && (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread)) {
 			assert(mode != ADD_TRY);
 			return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);

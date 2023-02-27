@@ -94,10 +94,10 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 	int reference_width = ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
 
 	if (offset != nullptr) {
-		offset->x = ScaleGUITrad(reference_width) / 2;
+		offset->x = ScaleSpriteTrad(reference_width) / 2;
 		offset->y = 0;
 	}
-	return ScaleGUITrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
+	return ScaleSpriteTrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
 }
 
 static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleSpriteSeq *result)
@@ -175,8 +175,8 @@ void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs
 	Rect rect;
 	seq.GetBounds(&rect);
 
-	width  = UnScaleGUI(rect.right - rect.left + 1);
-	height = UnScaleGUI(rect.bottom - rect.top + 1);
+	width  = UnScaleGUI(rect.Width());
+	height = UnScaleGUI(rect.Height());
 	xoffs  = UnScaleGUI(rect.left);
 	yoffs  = UnScaleGUI(rect.top);
 }
@@ -346,15 +346,12 @@ static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance
 	}
 }
 
-bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+ClosestDepot RoadVehicle::FindClosestDepot()
 {
 	FindDepotData rfdd = FindClosestRoadDepot(this, 0);
-	if (rfdd.best_length == UINT_MAX) return false;
+	if (rfdd.best_length == UINT_MAX) return ClosestDepot();
 
-	if (location    != nullptr) *location    = rfdd.tile;
-	if (destination != nullptr) *destination = GetDepotIndex(rfdd.tile);
-
-	return true;
+	return ClosestDepot(rfdd.tile, GetDepotIndex(rfdd.tile));
 }
 
 /**
@@ -1004,7 +1001,7 @@ struct RoadDriveEntry {
 
 #include "table/roadveh_movement.h"
 
-static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
+bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 {
 	/* Don't leave unless v and following wagons are in the depot. */
 	for (const RoadVehicle *u = v; u != nullptr; u = u->Next()) {
@@ -1752,4 +1749,17 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
 	/* If vehicle's state is a valid track direction (vehicle is not turning around) return it,
 	 * otherwise transform it into a valid track direction */
 	return (Trackdir)((IsReversingRoadTrackdir((Trackdir)this->state)) ? (this->state - 6) : this->state);
+}
+
+uint16 RoadVehicle::GetMaxWeight() const
+{
+	uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->GetEngine()->DetermineCapacity(this));
+
+	/* Vehicle weight is not added for articulated parts. */
+	if (!this->IsArticulatedPart()) {
+		/* Road vehicle weight is in units of 1/4 t. */
+		weight += GetVehicleProperty(this, PROP_ROADVEH_WEIGHT, RoadVehInfo(this->engine_type)->weight) / 4;
+	}
+
+	return weight;
 }

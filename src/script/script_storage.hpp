@@ -44,7 +44,6 @@ private:
 	uint last_error;                 ///< The last error of the command.
 	bool last_command_res;           ///< The last result of the command.
 
-	TileIndex last_tile;             ///< The last tile passed to a command.
 	CommandDataBuffer last_data;     ///< The last data passed to a command.
 	Commands last_cmd;               ///< The last cmd passed to a command.
 	CommandDataBuffer last_cmd_ret;  ///< The extra data returned by the last command.
@@ -69,7 +68,6 @@ public:
 		last_cost         (0),
 		last_error        (STR_NULL),
 		last_command_res  (true),
-		last_tile         (INVALID_TILE),
 		last_cmd          (CMD_END),
 		/* calback_value (can't be set) */
 		road_type         (INVALID_ROADTYPE),

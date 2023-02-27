@@ -24,7 +24,7 @@ public:
 /** Factory for the XAudio2 sound driver. */
 class FSoundDriver_XAudio2 : public DriverFactoryBase {
 public:
-	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver") {}
+	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver (param bufsize,hz)") {}
 	Driver *CreateInstance() const override { return new SoundDriver_XAudio2(); }
 };
 

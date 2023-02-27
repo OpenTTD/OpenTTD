@@ -20,8 +20,6 @@
 #include "../../tile_type.h"
 #include "../../track_type.h"
 
-//#define AYSTAR_DEBUG
-
 /** Return status of #AyStar methods. */
 enum AystarStatus {
 	AYSTAR_FOUND_END_NODE, ///< An end node was found.

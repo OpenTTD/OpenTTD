@@ -34,14 +34,6 @@ struct Viewport {
 	LinkGraphOverlay *overlay;
 };
 
-/** Margins for the viewport sign */
-enum ViewportSignMargin {
-	VPSM_LEFT   = 1, ///< Left margin
-	VPSM_RIGHT  = 1, ///< Right margin
-	VPSM_TOP    = 1, ///< Top margin
-	VPSM_BOTTOM = 1, ///< Bottom margin
-};
-
 /** Location information about a sign as seen on the viewport */
 struct ViewportSign {
 	int32 center;        ///< The center position of the sign
@@ -123,6 +115,7 @@ enum ViewportDragDropSelectionProcess {
 	DDSP_CREATE_RIVER,         ///< Create rivers
 	DDSP_PLANT_TREES,          ///< Plant trees
 	DDSP_BUILD_BRIDGE,         ///< Bridge placement
+	DDSP_BUILD_OBJECT,         ///< Build an object
 
 	/* Rail specific actions */
 	DDSP_PLACE_RAIL,           ///< Rail placement

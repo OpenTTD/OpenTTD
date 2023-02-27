@@ -191,6 +191,21 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Waypoint::IsValidID(station_to_join))) return CMD_ERROR;
 
+	TileArea new_location(start_tile, width, height);
+
+	/* only AddCost for non-existing waypoints */
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	bool success = false;
+	for (TileIndex cur_tile : new_location) {
+		if (!IsRailWaypointTile(cur_tile)) {
+			cost.AddCost(_price[PR_BUILD_WAYPOINT_RAIL]);
+			success = true;
+		}
+	}
+	if (!success) {
+		return_cmd_error(STR_ERROR_ALREADY_BUILT);
+	}
+
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
 
@@ -203,7 +218,6 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 	}
 
 	Waypoint *wp = nullptr;
-	TileArea new_location(start_tile, width, height);
 	CommandCost ret = FindJoiningWaypoint(est, station_to_join, adjacent, new_location, &wp);
 	if (ret.Failed()) return ret;
 
@@ -217,11 +231,11 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 		/* check if we want to expand an already existing waypoint? */
 		if (wp->train_station.tile != INVALID_TILE) {
-			CommandCost ret = CanExpandRailStation(wp, new_location, axis);
+			ret = CanExpandRailStation(wp, new_location, axis);
 			if (ret.Failed()) return ret;
 		}
 
-		CommandCost ret = wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST);
+		ret = wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST);
 		if (ret.Failed()) return ret;
 	} else {
 		/* allocate and initialize new waypoint */
@@ -279,7 +293,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 		DirtyCompanyInfrastructureWindows(wp->owner);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, count * _price[PR_BUILD_WAYPOINT_RAIL]);
+	return cost;
 }
 
 /**

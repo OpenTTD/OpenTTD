@@ -83,3 +83,4 @@
 #include "rivers/arctic.nfo"
 #include "rivers/tropic.nfo"
 #include "rivers/toyland.nfo"
+#include "fix_gui_icons.nfo"

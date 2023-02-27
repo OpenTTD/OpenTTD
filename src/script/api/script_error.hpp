@@ -42,11 +42,7 @@
  * @param string The string that is checked.
  */
 #define EnforcePreconditionEncodedText(returnval, string)   \
-	if ((string) == nullptr) { \
-		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_TOO_MANY_PARAMETERS); \
-		return returnval; \
-	} \
-	if (StrEmpty(string)) { \
+	if (string.empty()) { \
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED); \
 		return returnval; \
 	}
@@ -94,8 +90,6 @@ public:
 		ERR_PRECONDITION_FAILED,                      // []
 		/** A string supplied was too long */
 		ERR_PRECONDITION_STRING_TOO_LONG,             // []
-		/** A string had too many parameters */
-		ERR_PRECONDITION_TOO_MANY_PARAMETERS,         // []
 		/** The company you use is invalid */
 		ERR_PRECONDITION_INVALID_COMPANY,             // []
 		/** An error returned by a NewGRF. No possibility to get the exact error in an script readable format */

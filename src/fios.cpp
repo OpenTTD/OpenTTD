@@ -295,7 +295,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 	std::string ext = filename.substr(sep);
 
 	char fios_title[64];
-	fios_title[0] = '\0'; // reset the title;
+	fios_title[0] = '\0'; // reset the title
 
 	FiosType type = this->callback_proc(this->fop, filename, ext.c_str(), fios_title, lastof(fios_title));
 	if (type == FIOS_TYPE_INVALID) return false;

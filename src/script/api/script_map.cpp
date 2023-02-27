@@ -20,17 +20,17 @@
 
 /* static */ TileIndex ScriptMap::GetMapSize()
 {
-	return ::MapSize();
+	return ::Map::Size();
 }
 
 /* static */ uint32 ScriptMap::GetMapSizeX()
 {
-	return ::MapSizeX();
+	return ::Map::SizeX();
 }
 
 /* static */ uint32 ScriptMap::GetMapSizeY()
 {
-	return ::MapSizeY();
+	return ::Map::SizeY();
 }
 
 /* static */ int32 ScriptMap::GetTileX(TileIndex t)

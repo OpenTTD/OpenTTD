@@ -316,8 +316,9 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *)src_orig->data;
 
 		for (uint y = src_orig->height; y > 0; y--) {
-			Colour *dst_px = (Colour *)(dst_px_ln + 1);
-			uint16 *dst_n = (uint16 *)(dst_n_ln + 1);
+			/* Index 0 of dst_px and dst_n is left as space to save the length of the row to be filled later. */
+			Colour *dst_px = (Colour *)&dst_px_ln[1];
+			uint16 *dst_n = (uint16 *)&dst_n_ln[1];
 
 			uint16 *dst_len = dst_n++;
 

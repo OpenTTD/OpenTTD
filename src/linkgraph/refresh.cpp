@@ -203,27 +203,28 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 	StationID next_station = next->GetDestination();
 	Station *st = Station::GetIfValid(cur->GetDestination());
 	if (st != nullptr && next_station != INVALID_STATION && next_station != st->index) {
+		Station *st_to = Station::Get(next_station);
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
 			/* Refresh the link and give it a minimum capacity. */
 
 			uint cargo_quantity = this->capacities[c];
 			if (cargo_quantity == 0) continue;
 
+			if (this->vehicle->GetDisplayMaxSpeed() == 0) continue;
+
 			/* If not allowed to merge link graphs, make sure the stations are
 			 * already in the same link graph. */
-			if (!this->allow_merge && st->goods[c].link_graph != Station::Get(next_station)->goods[c].link_graph) {
+			if (!this->allow_merge && st->goods[c].link_graph != st_to->goods[c].link_graph) {
 				continue;
 			}
 
 			/* A link is at least partly restricted if a vehicle can't load at its source. */
 			EdgeUpdateMode restricted_mode = (cur->GetLoadType() & OLFB_NO_LOAD) == 0 ?
 						EUM_UNRESTRICTED : EUM_RESTRICTED;
-			Station *st_to = Station::GetIfValid(next_station);
 			/* This estimates the travel time of the link as the time needed
 			 * to travel between the stations at half the max speed of the consist.
 			 * The result is in tiles/tick (= 2048 km-ish/h). */
-			uint32 time_estimate = (st_to != nullptr) ?
-				DistanceManhattan(st->xy, st_to->xy) * 4096U / this->vehicle->GetDisplayMaxSpeed() : 0;
+			uint32 time_estimate = DistanceManhattan(st->xy, st_to->xy) * 4096U / this->vehicle->GetDisplayMaxSpeed();
 
 			/* If the vehicle is currently full loading, increase the capacities at the station
 			 * where it is loading by an estimate of what it would have transported if it wasn't

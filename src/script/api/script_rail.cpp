@@ -276,11 +276,11 @@
 
 	if (tile - from == 1) {
 		if (to - tile == 1) return (GetRailTracks(tile) & RAILTRACK_NE_SW) != 0;
-		if (to - tile == ::MapSizeX()) return (GetRailTracks(tile) & RAILTRACK_NE_SE) != 0;
-	} else if (tile - from == ::MapSizeX()) {
+		if (to - tile == ScriptMap::GetMapSizeX()) return (GetRailTracks(tile) & RAILTRACK_NE_SE) != 0;
+	} else if (tile - from == ScriptMap::GetMapSizeX()) {
 		if (tile - to == 1) return (GetRailTracks(tile) & RAILTRACK_NW_NE) != 0;
 		if (to - tile == 1) return (GetRailTracks(tile) & RAILTRACK_NW_SW) != 0;
-		if (to - tile == ::MapSizeX()) return (GetRailTracks(tile) & RAILTRACK_NW_SE) != 0;
+		if (to - tile == ScriptMap::GetMapSizeX()) return (GetRailTracks(tile) & RAILTRACK_NW_SE) != 0;
 	} else {
 		return (GetRailTracks(tile) & RAILTRACK_SW_SE) != 0;
 	}
@@ -301,7 +301,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 	} else if (::TileX(from) == ::TileX(*to)) {
 		track = TRACK_Y;
-		*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
+		*to -= ScriptMap::GetMapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 	} else if (::TileY(from) < ::TileY(tile)) {
 		if (::TileX(*to) < ::TileX(tile)) {
 			track = TRACK_UPPER;
@@ -311,7 +311,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
-			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
+			*to -= ScriptMap::GetMapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 		}
 	} else if (::TileY(from) > ::TileY(tile)) {
 		if (::TileX(*to) < ::TileX(tile)) {
@@ -322,7 +322,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
-			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
+			*to -= ScriptMap::GetMapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 		}
 	} else if (::TileX(from) < ::TileX(tile)) {
 		if (::TileY(*to) < ::TileY(tile)) {
@@ -333,7 +333,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
-			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
+			*to -= ScriptMap::GetMapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 		}
 	} else if (::TileX(from) > ::TileX(tile)) {
 		if (::TileY(*to) < ::TileY(tile)) {
@@ -344,7 +344,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
-			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
+			*to -= ScriptMap::GetMapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
 		}
 	}
 	return track;
@@ -365,7 +365,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
 	Track track = SimulateDrag(from, tile, &to);
-	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(tile, to, (::RailType)ScriptRail::GetCurrentRailType(), track, false, true);
+	return ScriptObject::Command<CMD_BUILD_RAILROAD_TRACK>::Do(to, tile, (::RailType)ScriptRail::GetCurrentRailType(), track, false, true);
 }
 
 /* static */ bool ScriptRail::RemoveRail(TileIndex from, TileIndex tile, TileIndex to)
@@ -382,7 +382,7 @@ static Track SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
 	Track track = SimulateDrag(from, tile, &to);
-	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(tile, to, track);
+	return ScriptObject::Command<CMD_REMOVE_RAILROAD_TRACK>::Do(to, tile, track);
 }
 
 /**
@@ -449,7 +449,7 @@ static bool IsValidSignalType(int signal_type)
 	EnforcePrecondition(false, ::IsValidSignalType(signal));
 
 	Track track = INVALID_TRACK;
-	uint signal_cycles;
+	uint signal_cycles = 0;
 
 	int data_index = 2 + (::TileX(front) - ::TileX(tile)) + 2 * (::TileY(front) - ::TileY(tile));
 	for (int i = 0; i < NUM_TRACK_DIRECTIONS; i++) {

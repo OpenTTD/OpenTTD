@@ -93,7 +93,7 @@ static bool TestTownOwnsBridge(TileIndex tile, const Town *t)
 
 	if (!town_owned) {
 		/* Or other adjacent road */
-		TileIndex adjacent = tile + TileOffsByDiagDir(ReverseDiagDir(GetTunnelBridgeDirection(GetOtherTunnelBridgeEnd(tile))));
+		adjacent = tile + TileOffsByDiagDir(ReverseDiagDir(GetTunnelBridgeDirection(GetOtherTunnelBridgeEnd(tile))));
 		town_owned = IsTileType(adjacent, MP_ROAD) && IsTileOwner(adjacent, OWNER_TOWN) && GetTownIndex(adjacent) == t->index;
 	}
 
@@ -121,7 +121,7 @@ Town::~Town()
 #endif /* WITH_ASSERT */
 
 	/* Check no tile is related to us. */
-	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile < Map::Size(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
 				assert(GetTownIndex(tile) != this->index);
@@ -408,7 +408,7 @@ void Town::UpdateVirtCoord()
 	SetDParam(1, this->cache.population);
 	this->cache.sign.UpdatePosition(pt.x, pt.y - 24 * ZOOM_LVL_BASE,
 		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
-		STR_VIEWPORT_TOWN);
+		STR_VIEWPORT_TOWN_TINY_WHITE);
 
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeTown(this->index));
 
@@ -974,7 +974,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 
 static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	CommandCost r = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER, tile, edges, dir));
 	if (r.Failed() || r.GetCost() >= (_price[PR_TERRAFORM] + 2) * 8) return false;
@@ -984,7 +984,7 @@ static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 
 static void LevelTownLand(TileIndex tile)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	/* Don't terraform if land is plain or if there's a house there. */
 	if (IsTileType(tile, MP_HOUSE)) return;
@@ -1161,6 +1161,27 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 }
 
 /**
+ * CircularTileSearch proc which checks for a nearby parallel bridge to avoid building redundant bridges.
+ * @param tile The tile to search.
+ * @param user_data Reference to the valid direction of the proposed bridge.
+ * @return true if another bridge exists, else false.
+ */
+static bool RedundantBridgeExistsNearby(TileIndex tile, void *user_data)
+{
+	/* Don't look into the void. */
+	if (!IsValidTile(tile)) return false;
+
+	/* Only consider bridge head tiles. */
+	if (!IsBridgeTile(tile)) return false;
+
+	/* Only consider road bridges. */
+	if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return false;
+
+	/* If the bridge is facing the same direction as the proposed bridge, we've found a redundant bridge. */
+	return (GetTileSlope(tile) & InclinedSlope(ReverseDiagDir(*(DiagDirection *)user_data)));
+}
+
+/**
  * Grows the town with a bridge.
  *  At first we check if a bridge is reasonable.
  *  If so we check if we are able to build it.
@@ -1220,6 +1241,11 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 
 	/* Make sure the road can be continued past the bridge. At this point, bridge_tile holds the end tile of the bridge. */
 	if (!CanRoadContinueIntoNextTile(t, bridge_tile, bridge_dir)) return false;
+
+	/* If another parallel bridge exists nearby, this one would be redundant and shouldn't be built. We don't care about flat bridges. */
+	TileIndex search = tile;
+	DiagDirection direction_to_match = bridge_dir;
+	if (slope != SLOPE_FLAT && CircularTileSearch(&search, bridge_length, 0, 0, RedundantBridgeExistsNearby, &direction_to_match)) return false;
 
 	for (uint8 times = 0; times <= 22; times++) {
 		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
@@ -1358,7 +1384,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	RoadBits rcmd = ROAD_NONE;  // RoadBits for the road construction command
 	TileIndex tile = *tile_ptr; // The main tile on which we base our growth
 
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	if (cur_rb == ROAD_NONE) {
 		/* Tile has no road. First reset the status counter
@@ -1606,7 +1632,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 	 */
 	DiagDirection target_dir = DIAGDIR_END; // The direction in which we want to extend the town
 
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	/* Number of times to search.
 	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
@@ -2205,7 +2231,7 @@ bool GenerateTowns(TownLayout layout)
 {
 	uint current_number = 0;
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
-	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByWaterLevel(ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7)));
+	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByWaterLevel(Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7)));
 	total = std::min<uint>(TownPool::MAX_SIZE, total);
 	uint32 townnameparts;
 	TownNames town_names;
@@ -2219,7 +2245,7 @@ bool GenerateTowns(TownLayout layout)
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* Get a unique name for the town. */
-		if (!GenerateTownName(&townnameparts, &town_names)) continue;
+		if (!GenerateTownName(_random, &townnameparts, &town_names)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
 		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
 	} while (--total);
@@ -2233,7 +2259,7 @@ bool GenerateTowns(TownLayout layout)
 
 	/* If current_number is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
-	if (GenerateTownName(&townnameparts) &&
+	if (GenerateTownName(_random, &townnameparts) &&
 			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != nullptr) {
 		return true;
 	}
@@ -2630,15 +2656,15 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		byte construction_stage = 0;
 
 		if (_generating_world || _game_mode == GM_EDITOR) {
-			uint32 r = Random();
+			uint32 construction_random = Random();
 
 			construction_stage = TOWN_HOUSE_COMPLETED;
-			if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
+			if (Chance16(1, 7)) construction_stage = GB(construction_random, 0, 2);
 
 			if (construction_stage == TOWN_HOUSE_COMPLETED) {
 				ChangePopulation(t, hs->population);
 			} else {
-				construction_counter = GB(r, 2, 2);
+				construction_counter = GB(construction_random, 2, 2);
 			}
 		}
 
@@ -2965,7 +2991,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	 * these do not directly have an owner so we need to check adjacent
 	 * tiles. This won't work correctly in the same loop if the adjacent
 	 * tile was already deleted earlier in the loop. */
-	for (TileIndex current_tile = 0; current_tile < MapSize(); ++current_tile) {
+	for (TileIndex current_tile = 0; current_tile < Map::Size(); ++current_tile) {
 		if (IsTileType(current_tile, MP_TUNNELBRIDGE) && TestTownOwnsBridge(current_tile, t)) {
 			CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);
 			if (ret.Failed()) return ret;
@@ -2973,7 +2999,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	}
 
 	/* Check all remaining tiles for town ownership. */
-	for (TileIndex current_tile = 0; current_tile < MapSize(); ++current_tile) {
+	for (TileIndex current_tile = 0; current_tile < Map::Size(); ++current_tile) {
 		bool try_clear = false;
 		switch (GetTileType(current_tile)) {
 			case MP_ROAD:
@@ -3267,21 +3293,19 @@ static TownActionProc * const _town_action_proc[] = {
 
 /**
  * Get a list of available actions to do at a town.
- * @param nump if not nullptr add put the number of available actions in it
  * @param cid the company that is querying the town
  * @param t the town that is queried
  * @return bitmasked value of enabled actions
  */
-uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
+TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 {
-	int num = 0;
 	TownActions buttons = TACT_NONE;
 
 	/* Spectators and unwanted have no options */
 	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
 
-		/* Things worth more than this are not shown */
-		Money avail = Company::Get(cid)->money + _price[PR_STATION_VALUE] * 200;
+		/* Actions worth more than this are not able to be performed */
+		Money avail = Company::Get(cid)->money;
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
@@ -3305,12 +3329,10 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 
 			if (avail >= _town_action_costs[i] * _price[PR_TOWN_ACTION] >> 8) {
 				buttons |= cur;
-				num++;
 			}
 		}
 	}
 
-	if (nump != nullptr) *nump = num;
 	return buttons;
 }
 
@@ -3328,7 +3350,7 @@ CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8 action)
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr || action >= lengthof(_town_action_proc)) return CMD_ERROR;
 
-	if (!HasBit(GetMaskOfTownActions(nullptr, _current_company, t), action)) return CMD_ERROR;
+	if (!HasBit(GetMaskOfTownActions(_current_company, t), action)) return CMD_ERROR;
 
 	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * _town_action_costs[action] >> 8);
 
@@ -3736,7 +3758,7 @@ void TownsMonthlyLoop()
 void TownsYearlyLoop()
 {
 	/* Increment house ages */
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 		IncrementHouseAge(t);
 	}

@@ -34,6 +34,7 @@
 #include "debug.h"
 #include "game/game_text.hpp"
 #include "network/network_content_gui.h"
+#include "newgrf_engine.h"
 #include <stack>
 
 #include "table/strings.h"
@@ -708,11 +709,24 @@ static const Units _units_velocity[] = {
 	{ {37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
 };
 
-/** Unit conversions for velocity. */
+/** Unit conversions for power. */
 static const Units _units_power[] = {
 	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL, 0 },
 	{ {4153, 12}, STR_UNITS_POWER_METRIC,   0 },
 	{ {6109, 13}, STR_UNITS_POWER_SI,       0 },
+};
+
+/** Unit conversions for power to weight. */
+static const Units _units_power_to_weight[] = {
+	{ {  29,  5}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL, 1},
+	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC, 1},
+	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI, 1},
+	{ {  59,  6}, STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL, 1},
+	{ {  65,  6}, STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC, 1},
+	{ {  65,  6}, STR_UNITS_POWER_METRIC_TO_WEIGHT_SI, 1},
+	{ { 173,  8}, STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL, 1},
+	{ {   3,  2}, STR_UNITS_POWER_SI_TO_WEIGHT_METRIC, 1},
+	{ {   3,  2}, STR_UNITS_POWER_SI_TO_WEIGHT_SI, 1},
 };
 
 /** Unit conversions for weight. */
@@ -925,7 +939,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 					buff = GetStringWithArgs(buff, MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid), &sub_args, last, true);
 				}
 
-				for (int i = 0; i < 20; i++) {
+				for (i = 0; i < 20; i++) {
 					if (sub_args_need_free[i]) free((void *)sub_args.GetParam(i));
 				}
 				break;
@@ -1031,19 +1045,19 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
 				if (game_script) break;
-				const char *str = (const char *)(size_t)args->GetInt64(SCC_RAW_STRING_POINTER);
-				buff = FormatString(buff, str, args, last);
+				const char *raw_string = (const char *)(size_t)args->GetInt64(SCC_RAW_STRING_POINTER);
+				buff = FormatString(buff, raw_string, args, last);
 				break;
 			}
 
 			case SCC_STRING: {// {STRING}
-				StringID str = args->GetInt32(SCC_STRING);
-				if (game_script && GetStringTab(str) != TEXT_TAB_GAMESCRIPT_START) break;
+				StringID string_id = args->GetInt32(SCC_STRING);
+				if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to nullptr and it will tell you */
 				StringParameters tmp_params(args->GetDataPointer(), args->GetDataLeft(), nullptr);
-				buff = GetStringWithArgs(buff, str, &tmp_params, last, next_substr_case_index, game_script);
+				buff = GetStringWithArgs(buff, string_id, &tmp_params, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
@@ -1056,14 +1070,14 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING6:
 			case SCC_STRING7: { // {STRING1..7}
 				/* Strings that consume arguments */
-				StringID str = args->GetInt32(b);
-				if (game_script && GetStringTab(str) != TEXT_TAB_GAMESCRIPT_START) break;
+				StringID string_id = args->GetInt32(b);
+				if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
 				uint size = b - SCC_STRING1 + 1;
 				if (game_script && size > args->GetDataLeft()) {
 					buff = strecat(buff, "(too many parameters)", last);
 				} else {
 					StringParameters sub_args(*args, size);
-					buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
+					buff = GetStringWithArgs(buff, string_id, &sub_args, last, next_substr_case_index, game_script);
 				}
 				next_substr_case_index = 0;
 				break;
@@ -1252,6 +1266,19 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
+			case SCC_POWER_TO_WEIGHT: { // {POWER_TO_WEIGHT}
+				auto setting = _settings_game.locale.units_power * 3u + _settings_game.locale.units_weight;
+				assert(setting < lengthof(_units_power_to_weight));
+
+				auto const &x = _units_power_to_weight[setting];
+
+				int64 args_array[] = {x.c.ToDisplay(args->GetInt64()), x.decimal_places};
+
+				StringParameters tmp_params(args_array);
+				buff = FormatString(buff, GetStringPtr(x.s), &tmp_params, last);
+				break;
+			}
+
 			case SCC_VELOCITY: { // {VELOCITY}
 				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity));
 				unsigned int decimal_places = _units_velocity[_settings_game.locale.units_velocity].decimal_places;
@@ -1345,17 +1372,38 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_ENGINE_NAME: { // {ENGINE}
-				const Engine *e = Engine::GetIfValid(args->GetInt32(SCC_ENGINE_NAME));
+				int64 arg = args->GetInt64(SCC_ENGINE_NAME);
+				const Engine *e = Engine::GetIfValid(static_cast<EngineID>(arg));
 				if (e == nullptr) break;
 
 				if (!e->name.empty() && e->IsEnabled()) {
 					int64 args_array[] = {(int64)(size_t)e->name.c_str()};
 					StringParameters tmp_params(args_array);
 					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
-				} else {
-					StringParameters tmp_params(nullptr, 0, nullptr);
-					buff = GetStringWithArgs(buff, e->info.string_id, &tmp_params, last);
+
+					break;
 				}
+
+				if (HasBit(e->info.callback_mask, CBM_VEHICLE_NAME)) {
+					uint16 callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32>(arg >> 32), 0, e->index, nullptr);
+					/* Not calling ErrorUnknownCallbackResult due to being inside string processing. */
+					if (callback != CALLBACK_FAILED && callback < 0x400) {
+						const GRFFile *grffile = e->GetGRF();
+						assert(grffile != nullptr);
+
+						StartTextRefStackUsage(grffile, 6);
+						uint64 tmp_dparam[6] = { 0 };
+						WChar tmp_type[6] = { 0 };
+						StringParameters tmp_params(tmp_dparam, 6, tmp_type);
+						buff = GetStringWithArgs(buff, GetGRFStringID(grffile->grfid, 0xD000 + callback), &tmp_params, last);
+						StopTextRefStackUsage();
+
+						break;
+					}
+				}
+
+				StringParameters tmp_params(nullptr, 0, nullptr);
+				buff = GetStringWithArgs(buff, e->info.string_id, &tmp_params, last);
 				break;
 			}
 
@@ -1430,7 +1478,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 					StringParameters tmp_params(args_array);
 					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
-					StringID str = st->string_id;
+					StringID string_id = st->string_id;
 					if (st->indtype != IT_INVALID) {
 						/* Special case where the industry provides the name for the station */
 						const IndustrySpec *indsp = GetIndustrySpec(st->indtype);
@@ -1439,14 +1487,14 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						 * thus cause very strange things. Here we check for that before we
 						 * actually set the station name. */
 						if (indsp->station_name != STR_NULL && indsp->station_name != STR_UNDEFINED) {
-							str = indsp->station_name;
+							string_id = indsp->station_name;
 						}
 					}
 
 					uint64 args_array[] = {STR_TOWN_NAME, st->town->index, st->index};
 					WChar types_array[] = {0, SCC_TOWN_NAME, SCC_NUM};
 					StringParameters tmp_params(args_array, 3, types_array);
-					buff = GetStringWithArgs(buff, str, &tmp_params, last);
+					buff = GetStringWithArgs(buff, string_id, &tmp_params, last);
 				}
 				break;
 			}
@@ -1476,9 +1524,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				} else {
 					int64 args_array[] = {wp->town->index, wp->town_cn + 1};
 					StringParameters tmp_params(args_array);
-					StringID str = ((wp->string_id == STR_SV_STNAME_BUOY) ? STR_FORMAT_BUOY_NAME : STR_FORMAT_WAYPOINT_NAME);
-					if (wp->town_cn != 0) str++;
-					buff = GetStringWithArgs(buff, str, &tmp_params, last);
+					StringID string_id = ((wp->string_id == STR_SV_STNAME_BUOY) ? STR_FORMAT_BUOY_NAME : STR_FORMAT_WAYPOINT_NAME);
+					if (wp->town_cn != 0) string_id++;
+					buff = GetStringWithArgs(buff, string_id, &tmp_params, last);
 				}
 				break;
 			}
@@ -1500,16 +1548,16 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 					int64 args_array[] = {v->unitnumber};
 					StringParameters tmp_params(args_array);
 
-					StringID str;
+					StringID string_id;
 					switch (v->type) {
-						default:           str = STR_INVALID_VEHICLE; break;
-						case VEH_TRAIN:    str = STR_SV_TRAIN_NAME; break;
-						case VEH_ROAD:     str = STR_SV_ROAD_VEHICLE_NAME; break;
-						case VEH_SHIP:     str = STR_SV_SHIP_NAME; break;
-						case VEH_AIRCRAFT: str = STR_SV_AIRCRAFT_NAME; break;
+						default:           string_id = STR_INVALID_VEHICLE; break;
+						case VEH_TRAIN:    string_id = STR_SV_TRAIN_NAME; break;
+						case VEH_ROAD:     string_id = STR_SV_ROAD_VEHICLE_NAME; break;
+						case VEH_SHIP:     string_id = STR_SV_SHIP_NAME; break;
+						case VEH_AIRCRAFT: string_id = STR_SV_AIRCRAFT_NAME; break;
 					}
 
-					buff = GetStringWithArgs(buff, str, &tmp_params, last);
+					buff = GetStringWithArgs(buff, string_id, &tmp_params, last);
 				}
 				break;
 			}

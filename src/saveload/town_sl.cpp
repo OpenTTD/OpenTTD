@@ -38,7 +38,7 @@ void RebuildTownCaches()
 		town->cache.num_houses = 0;
 	}
 
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
 		HouseID house_id = GetHouseType(t);
@@ -66,7 +66,7 @@ void RebuildTownCaches()
  */
 void UpdateHousesAndTowns()
 {
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
 		HouseID house_id = GetCleanHouseType(t);
@@ -79,7 +79,7 @@ void UpdateHousesAndTowns()
 	}
 
 	/* Check for cases when a NewGRF has set a wrong house substitute type. */
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
 		HouseID house_type = GetCleanHouseType(t);
@@ -148,7 +148,7 @@ public:
 	void Load(Town *t) const override
 	{
 		size_t num_cargo = this->GetNumCargo();
-		for (CargoID i = 0; i < num_cargo; i++) {
+		for (size_t i = 0; i < num_cargo; i++) {
 			SlObject(&t->supplied[i], this->GetLoadDescription());
 		}
 	}

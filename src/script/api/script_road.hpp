@@ -11,6 +11,7 @@
 #define SCRIPT_ROAD_HPP
 
 #include "script_tile.hpp"
+#include "../squirrel_helper_type.hpp"
 #include "../../../road.h"
 
 /**
@@ -160,7 +161,7 @@ public:
 	/**
 	 * Check if a road vehicle built for a road type can run on another road type.
 	 * @param engine_road_type The road type the road vehicle is built for.
-	 * @param track_road_type The road type you want to check.
+	 * @param road_road_type The road type you want to check.
 	 * @pre ScriptRoad::IsRoadTypeAvailable(engine_road_type).
 	 * @pre ScriptRoad::IsRoadTypeAvailable(road_road_type).
 	 * @return Whether a road vehicle built for 'engine_road_type' can run on 'road_road_type'.
@@ -245,7 +246,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
+	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<> existing, TileIndex start, TileIndex end);
 
 	/**
 	 * Lookup function for building road parts independent of whether the
@@ -385,7 +386,6 @@ public:
 	 *  the road is made two-way again. If the road already exists but is
 	 *  one-way in the other direction, it's made a 'no'-way road (it's
 	 *  forbidden to enter the tile from any direction).
-	 * @param start The start tile of the road.
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
 	 * @pre 'start' is not equal to 'end'.

@@ -246,9 +246,9 @@ void SQSharedState::DelayFinalFree(SQCollectable *collectable)
 	if (!this->_collectable_free_processing) {
 		this->_collectable_free_processing = true;
 		while (!this->_collectable_free_queue.empty()) {
-			SQCollectable *collectable = this->_collectable_free_queue.back();
+			SQCollectable *collectable_to_free = this->_collectable_free_queue.back();
 			this->_collectable_free_queue.pop_back();
-			collectable->FinalFree();
+			collectable_to_free->FinalFree();
 		}
 		this->_collectable_free_processing = false;
 	}
@@ -450,10 +450,10 @@ void RefTable::Resize(SQUnsignedInteger size)
 	SQUnsignedInteger oldnumofslots = _numofslots;
 	AllocNodes(size);
 	//rehash
-	SQUnsignedInteger nfound = 0;
+	[[maybe_unused]] SQUnsignedInteger nfound = 0;
 	for(SQUnsignedInteger n = 0; n < oldnumofslots; n++) {
 		if(type(t->obj) != OT_NULL) {
-			//add back;
+			//add back
 			assert(t->refs != 0);
 			RefNode *nn = Add(::HashObj(t->obj)&(_numofslots-1),t->obj);
 			nn->refs = t->refs;
@@ -513,7 +513,7 @@ void RefTable::AllocNodes(SQUnsignedInteger size)
 		bucks[n] = nullptr;
 		temp->refs = 0;
 		new (&temp->obj) SQObjectPtr;
-		temp->next = temp+1;
+		temp->next = &temp[1];
 		temp++;
 	}
 	bucks[n] = nullptr;

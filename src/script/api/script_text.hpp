@@ -21,17 +21,17 @@ class Text : public ScriptObject {
 public:
 	/**
 	 * Convert a ScriptText to a normal string.
-	 * @return A string (in a static buffer), or nullptr.
+	 * @return A string.
 	 * @api -all
 	 */
-	virtual const char *GetEncodedText() = 0;
+	virtual const std::string GetEncodedText() = 0;
 
 	/**
 	 * Convert a #ScriptText into a decoded normal string.
-	 * @return A string (in a static buffer), or nullptr.
+	 * @return A string.
 	 * @api -all
 	 */
-	const char *GetDecodedText();
+	const std::string GetDecodedText();
 };
 
 /**
@@ -41,11 +41,10 @@ public:
 class RawText : public Text {
 public:
 	RawText(const char *text);
-	~RawText();
 
-	const char *GetEncodedText() override { return this->text; }
+	const std::string GetEncodedText() override { return this->text; }
 private:
-	const char *text;
+	const std::string text;
 };
 
 /**
@@ -125,7 +124,7 @@ public:
 	/**
 	 * @api -all
 	 */
-	virtual const char *GetEncodedText();
+	virtual const std::string GetEncodedText();
 
 private:
 	StringID string;

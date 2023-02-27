@@ -51,11 +51,6 @@ enum CargoPaymentRatesWidgets {
 	WID_CPR_MATRIX_SCROLLBAR,///< Cargo list scrollbar.
 };
 
-/** Widget of the #CompanyLeagueWindow class. */
-enum CompanyLeagueWidgets {
-	WID_CL_BACKGROUND, ///< Background of the window.
-};
-
 /** Widget of the #PerformanceRatingDetailWindow class. */
 enum PerformanceRatingDetailsWidgets {
 	WID_PRD_SCORE_FIRST, ///< First entry in the score list.

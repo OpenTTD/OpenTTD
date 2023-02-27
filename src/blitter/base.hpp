@@ -170,7 +170,7 @@ public:
 	 * @param height The height of the buffer-to-be.
 	 * @return The size needed for the buffer.
 	 */
-	virtual int BufferSize(int width, int height) = 0;
+	virtual size_t BufferSize(uint width, uint height) = 0;
 
 	/**
 	 * Called when the 8bpp palette is changed; you should redraw all pixels on the screen that

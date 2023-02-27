@@ -48,6 +48,7 @@
 #include "language.h"
 #include "vehicle_base.h"
 #include "road.h"
+#include "newgrf_roadstop.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -328,7 +329,6 @@ struct GRFTempEngineData {
 	uint8 roadtramtype;
 	const GRFFile *defaultcargo_grf; ///< GRF defining the cargo translation table to use if the default cargo is the 'first refittable'.
 	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
-	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 	CargoTypes ctt_include_mask; ///< Cargo types always included in the refit mask.
 	CargoTypes ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
@@ -430,13 +430,7 @@ static GRFFile *GetFileByFilename(const char *filename)
 /** Reset all NewGRFData that was used only while processing data */
 static void ClearTemporaryNewGRFData(GRFFile *gf)
 {
-	/* Clear the GOTO labels used for GRF processing */
-	for (GRFLabel *l = gf->label; l != nullptr;) {
-		GRFLabel *l2 = l->next;
-		free(l);
-		l = l2;
-	}
-	gf->label = nullptr;
+	gf->labels.clear();
 }
 
 /**
@@ -563,10 +557,10 @@ static StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
  */
 StringID MapGRFStringID(uint32 grfid, StringID str)
 {
-	if (IsInsideMM(str, 0xD800, 0xE000)) {
+	if (IsInsideMM(str, 0xD800, 0x10000)) {
 		/* General text provided by NewGRF.
 		 * In the specs this is called the 0xDCxx range (misc persistent texts),
-		 * but we meanwhile extended the range to 0xD800-0xDFFF.
+		 * but we meanwhile extended the range to 0xD800-0xFFFF.
 		 * Note: We are not involved in the "persistent" business, since we do not store
 		 * any NewGRF strings in savegames. */
 		return GetGRFStringID(grfid, str);
@@ -1244,7 +1238,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			}
 
 			case 0x1E: // Callback
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case PROP_TRAIN_TRACTIVE_EFFORT: // 0x1F Tractive effort coefficient
@@ -1295,7 +1289,6 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x27: // Miscellaneous flags
 				ei->misc_flags = buf->ReadByte();
 				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
-				_gted[e->index].prop27_set = true;
 				break;
 
 			case 0x28: // Cargo classes allowed
@@ -1334,6 +1327,18 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case PROP_TRAIN_CURVE_SPEED_MOD: // 0x2E Curve speed modifier
 				rvi->curve_speed_mod = buf->ReadWord();
+				break;
+
+			case 0x2F: // Engine variant
+				ei->variant_id = buf->ReadWord();
+				break;
+
+			case 0x30: // Extra miscellaneous flags
+				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x31: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
 				break;
 
 			default:
@@ -1454,7 +1459,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			}
 
 			case 0x17: // Callback mask
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case PROP_ROADVEH_TRACTIVE_EFFORT: // Tractive effort coefficient in 1/256.
@@ -1529,6 +1534,18 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 				break;
 			}
+
+			case 0x26: // Engine variant
+				ei->variant_id = buf->ReadWord();
+				break;
+
+			case 0x27: // Extra miscellaneous flags
+				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x28: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
+				break;
 
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
@@ -1630,7 +1647,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			}
 
 			case 0x12: // Callback mask
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case 0x13: // Refit cost
@@ -1701,6 +1718,18 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 				break;
 			}
+
+			case 0x20: // Engine variant
+				ei->variant_id = buf->ReadWord();
+				break;
+
+			case 0x21: // Extra miscellaneous flags
+				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x22: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
+				break;
 
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
@@ -1798,7 +1827,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			}
 
 			case 0x14: // Callback mask
-				ei->callback_mask = buf->ReadByte();
+				SB(ei->callback_mask, 0, 8, buf->ReadByte());
 				break;
 
 			case 0x15: // Refit cost
@@ -1854,6 +1883,18 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case PROP_AIRCRAFT_RANGE: // 0x1F Max aircraft range
 				avi->max_range = buf->ReadWord();
+				break;
+
+			case 0x20: // Engine variant
+				ei->variant_id = buf->ReadWord();
+				break;
+
+			case 0x21: // Extra miscellaneous flags
+				ei->extra_flags = static_cast<ExtraEngineFlags>(buf->ReadDWord());
+				break;
+
+			case 0x22: // Callback additional mask
+				SB(ei->callback_mask, 8, 8, buf->ReadByte());
 				break;
 
 			default:
@@ -2166,7 +2207,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 
 			case 0x0A: // Maximum length
 				bridge->max_length = buf->ReadByte();
-				if (bridge->max_length > 16) bridge->max_length = 0xFFFF;
+				if (bridge->max_length > 16) bridge->max_length = UINT16_MAX;
 				break;
 
 			case 0x0B: // Cost factor
@@ -2175,6 +2216,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 
 			case 0x0C: // Maximum speed
 				bridge->speed = buf->ReadWord();
+				if (bridge->speed == 0) bridge->speed = UINT16_MAX;
 				break;
 
 			case 0x0D: { // Bridge sprite tables
@@ -4083,13 +4125,12 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 				if (*ospec == nullptr) {
 					*ospec = CallocT<ObjectSpec>(1);
 					(*ospec)->views = 1; // Default for NewGRFs that don't set it.
-					(*ospec)->size = 0x11; // Default for NewGRFs that manage to not set it (1x1)
+					(*ospec)->size = OBJECT_SIZE_1X1; // Default for NewGRFs that manage to not set it (1x1)
 				}
 
 				/* Swap classid because we read it in BE. */
 				uint32 classid = buf->ReadDWord();
 				(*ospec)->cls_id = ObjectClass::Allocate(BSWAP32(classid));
-				(*ospec)->enabled = true;
 				break;
 			}
 
@@ -4111,7 +4152,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 				spec->size = buf->ReadByte();
 				if (GB(spec->size, 0, 4) == 0 || GB(spec->size, 4, 4) == 0) {
 					grfmsg(0, "ObjectChangeInfo: Invalid object size requested (0x%x) for object id %u. Ignoring.", spec->size, id + i);
-					spec->size = 0x11; // 1x1
+					spec->size = OBJECT_SIZE_1X1;
 				}
 				break;
 
@@ -4246,13 +4287,13 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				int n = buf->ReadByte();
 				for (int j = 0; j != n; j++) {
 					RailTypeLabel label = buf->ReadDWord();
-					RailType rt = GetRailTypeByLabel(BSWAP32(label), false);
-					if (rt != INVALID_RAILTYPE) {
+					RailType resolved_rt = GetRailTypeByLabel(BSWAP32(label), false);
+					if (resolved_rt != INVALID_RAILTYPE) {
 						switch (prop) {
-							case 0x0F: SetBit(rti->powered_railtypes, rt);               FALLTHROUGH; // Powered implies compatible.
-							case 0x0E: SetBit(rti->compatible_railtypes, rt);            break;
-							case 0x18: SetBit(rti->introduction_required_railtypes, rt); break;
-							case 0x19: SetBit(rti->introduces_railtypes, rt);            break;
+							case 0x0F: SetBit(rti->powered_railtypes, resolved_rt);               FALLTHROUGH; // Powered implies compatible.
+							case 0x0E: SetBit(rti->compatible_railtypes, resolved_rt);            break;
+							case 0x18: SetBit(rti->introduction_required_railtypes, resolved_rt); break;
+							case 0x19: SetBit(rti->introduces_railtypes, resolved_rt);            break;
 						}
 					}
 				}
@@ -4460,12 +4501,12 @@ static ChangeInfoResult RoadTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				int n = buf->ReadByte();
 				for (int j = 0; j != n; j++) {
 					RoadTypeLabel label = buf->ReadDWord();
-					RoadType rt = GetRoadTypeByLabel(BSWAP32(label), false);
-					if (rt != INVALID_ROADTYPE) {
+					RoadType resolved_rt = GetRoadTypeByLabel(BSWAP32(label), false);
+					if (resolved_rt != INVALID_ROADTYPE) {
 						switch (prop) {
-							case 0x0F: SetBit(rti->powered_roadtypes, rt);               break;
-							case 0x18: SetBit(rti->introduction_required_roadtypes, rt); break;
-							case 0x19: SetBit(rti->introduces_roadtypes, rt);            break;
+							case 0x0F: SetBit(rti->powered_roadtypes, resolved_rt);               break;
+							case 0x18: SetBit(rti->introduction_required_roadtypes, resolved_rt); break;
+							case 0x19: SetBit(rti->introduces_roadtypes, resolved_rt);            break;
 						}
 					}
 				}
@@ -4707,6 +4748,131 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 	return ret;
 }
 
+/**
+ * Ignore properties for roadstops
+ * @param prop The property to ignore.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
+static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	switch (prop) {
+		case 0x09:
+		case 0x0C:
+			buf->ReadByte();
+			break;
+
+		case 0x0A:
+		case 0x0B:
+			buf->ReadWord();
+			break;
+
+		case 0x08:
+		case 0x0D:
+			buf->ReadDWord();
+			break;
+
+		default:
+			ret = CIR_UNKNOWN;
+			break;
+	}
+
+	return ret;
+}
+
+static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	if (id + numinfo > 255) {
+		grfmsg(1, "RoadStopChangeInfo: RoadStop %u is invalid, max %u, ignoring", id + numinfo, 255);
+		return CIR_INVALID_ID;
+	}
+
+	if (_cur.grffile->roadstops == nullptr) _cur.grffile->roadstops = CallocT<RoadStopSpec*>(255);
+
+	for (int i = 0; i < numinfo; i++) {
+		RoadStopSpec *rs = _cur.grffile->roadstops[id + i];
+
+		if (rs == nullptr && prop != 0x08) {
+			grfmsg(1, "RoadStopChangeInfo: Attempt to modify undefined road stop %u, ignoring", id + i);
+			ChangeInfoResult cir = IgnoreRoadStopProperty(prop, buf);
+			if (cir > ret) ret = cir;
+			continue;
+		}
+
+		switch (prop) {
+			case 0x08: { // Road Stop Class ID
+				RoadStopSpec **spec = &_cur.grffile->roadstops[id + i];
+
+				if (*spec == nullptr) {
+					*spec = CallocT<RoadStopSpec>(1);
+					new (*spec) RoadStopSpec();
+				}
+
+				uint32 classid = buf->ReadDWord();
+				(*spec)->cls_id = RoadStopClass::Allocate(BSWAP32(classid));
+				(*spec)->spec_id = id + i;
+				break;
+			}
+
+			case 0x09: // Road stop type
+				rs->stop_type = (RoadStopAvailabilityType)buf->ReadByte();
+				break;
+
+			case 0x0A: // Road Stop Name
+				AddStringForMapping(buf->ReadWord(), &rs->name);
+				break;
+
+			case 0x0B: // Road Stop Class name
+				AddStringForMapping(buf->ReadWord(), &RoadStopClass::Get(rs->cls_id)->name);
+				break;
+
+			case 0x0C: // The draw mode
+				rs->draw_mode = (RoadStopDrawMode)buf->ReadByte();
+				break;
+
+			case 0x0D: // Cargo types for random triggers
+				rs->cargo_triggers = TranslateRefitMask(buf->ReadDWord());
+				break;
+
+			case 0x0E: // Animation info
+				rs->animation.frames = buf->ReadByte();
+				rs->animation.status = buf->ReadByte();
+				break;
+
+			case 0x0F: // Animation speed
+				rs->animation.speed = buf->ReadByte();
+				break;
+
+			case 0x10: // Animation triggers
+				rs->animation.triggers = buf->ReadWord();
+				break;
+
+			case 0x11: // Callback mask
+				rs->callback_mask = buf->ReadByte();
+				break;
+
+			case 0x12: // General flags
+				rs->flags = (uint8)buf->ReadDWord(); // Future-proofing, size this as 4 bytes, but we only need one byte's worth of flags at present
+				break;
+
+			case 0x15: // Cost multipliers
+				rs->build_cost_multiplier = buf->ReadByte();
+				rs->clear_cost_multiplier = buf->ReadByte();
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	return ret;
+}
+
 static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uint8 feature, uint8 property)
 {
 	switch (cir) {
@@ -4771,6 +4937,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_AIRPORTTILES */  AirportTilesChangeInfo,
 		/* GSF_ROADTYPES */     RoadTypeChangeInfo,
 		/* GSF_TRAMTYPES */     TramTypeChangeInfo,
+		/* GSF_ROADSTOPS */     RoadStopChangeInfo,
 	};
 	static_assert(GSF_END == lengthof(handler));
 
@@ -5249,7 +5416,8 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_HOUSES:
 				case GSF_AIRPORTTILES:
 				case GSF_OBJECTS:
-				case GSF_INDUSTRYTILES: {
+				case GSF_INDUSTRYTILES:
+				case GSF_ROADSTOPS: {
 					byte num_building_sprites = std::max((uint8)1, type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
@@ -5364,7 +5532,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 		}
 	}
 	/* Special cargo types for purchase list and stations */
-	if (feature == GSF_STATIONS && ctype == 0xFE) return CT_DEFAULT_NA;
+	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
 
 	if (_cur.grffile->cargo_list.size() == 0) {
@@ -5883,6 +6051,61 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	}
 }
 
+static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
+{
+	uint8 *roadstops = AllocaM(uint8, idcount);
+	for (uint i = 0; i < idcount; i++) {
+		roadstops[i] = buf->ReadByte();
+	}
+
+	uint8 cidcount = buf->ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8 ctype = buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
+		if (!IsValidGroupID(groupid, "RoadStopMapSpriteGroup")) continue;
+
+		ctype = TranslateCargo(GSF_ROADSTOPS, ctype);
+		if (ctype == CT_INVALID) continue;
+
+		for (uint i = 0; i < idcount; i++) {
+			RoadStopSpec *roadstopspec = _cur.grffile->roadstops == nullptr ? nullptr : _cur.grffile->roadstops[roadstops[i]];
+
+			if (roadstopspec == nullptr) {
+				grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping", roadstops[i]);
+				continue;
+			}
+
+			roadstopspec->grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
+		}
+	}
+
+	uint16 groupid = buf->ReadWord();
+	if (!IsValidGroupID(groupid, "RoadStopMapSpriteGroup")) return;
+
+	if (_cur.grffile->roadstops == nullptr) {
+		grfmsg(0, "RoadStopMapSpriteGroup: No roadstops defined, skipping.");
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		RoadStopSpec *roadstopspec = _cur.grffile->roadstops == nullptr ? nullptr : _cur.grffile->roadstops[roadstops[i]];
+
+		if (roadstopspec == nullptr) {
+			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping.", roadstops[i]);
+			continue;
+		}
+
+		if (roadstopspec->grf_prop.grffile != nullptr) {
+			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X mapped multiple times, skipping", roadstops[i]);
+			continue;
+		}
+
+		roadstopspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.spritegroups[groupid];
+		roadstopspec->grf_prop.grffile = _cur.grffile;
+		roadstopspec->grf_prop.local_id = roadstops[i];
+		RoadStopClass::Assign(roadstopspec);
+	}
+}
 
 /* Action 0x03 */
 static void FeatureMapSpriteGroup(ByteReader *buf)
@@ -5983,6 +6206,10 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 			AirportTileMapSpriteGroup(buf, idcount);
 			return;
 
+		case GSF_ROADSTOPS:
+			RoadStopMapSpriteGroup(buf, idcount);
+			return;
+
 		default:
 			grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x%02X, skipping", feature);
 			return;
@@ -6055,7 +6282,7 @@ static void FeatureNewName(ByteReader *buf)
 				break;
 
 			default:
-				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xD800, 0xE000)) {
+				if (IsInsideMM(id, 0xD000, 0xD400) || IsInsideMM(id, 0xD800, 0x10000)) {
 					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 					break;
 				}
@@ -6170,7 +6397,7 @@ static const Action5Type _action5_types[] = {
 	/* 0x11 */ { A5BLOCK_ALLOW_OFFSET, SPR_ROADSTOP_BASE,            1, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"       },
 	/* 0x12 */ { A5BLOCK_ALLOW_OFFSET, SPR_AQUEDUCT_BASE,            1, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"        },
 	/* 0x13 */ { A5BLOCK_ALLOW_OFFSET, SPR_AUTORAIL_BASE,            1, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"        },
-	/* 0x14 */ { A5BLOCK_ALLOW_OFFSET, SPR_FLAGS_BASE,               1, FLAGS_SPRITE_COUNT,                          "Flag graphics"            },
+	/* 0x14 */ { A5BLOCK_INVALID,      0,                            1, 0,                                           "Flag graphics"            }, // deprecated, no longer used.
 	/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"     },
 	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
 	/* 0x17 */ { A5BLOCK_ALLOW_OFFSET, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
@@ -6250,9 +6477,17 @@ static void GraphicsNew(ByteReader *buf)
 		if (offset <= depot_no_track_offset && offset + num > depot_no_track_offset) _loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_NO_TRACK;
 	}
 
+	/* If the baseset or grf only provides sprites for flat tiles (pre #10282), duplicate those for use on slopes. */
+	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= SPR_ONEWAY_SLOPE_N_OFFSET));
+
 	for (; num > 0; num--) {
 		_cur.nfo_line++;
-		LoadNextSprite(replace == 0 ? _cur.spriteid++ : replace++, *_cur.file, _cur.nfo_line);
+		int load_index = (replace == 0 ? _cur.spriteid++ : replace++);
+		LoadNextSprite(load_index, *_cur.file, _cur.nfo_line);
+		if (dup_oneway_sprites) {
+			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_N_OFFSET);
+			DupSprite(load_index, load_index + SPR_ONEWAY_SLOPE_S_OFFSET);
+		}
 	}
 
 	_cur.skip_sprites = skip_num;
@@ -6715,15 +6950,15 @@ static void SkipIf(ByteReader *buf)
 	 * file. The jump will always be the first matching label that follows
 	 * the current nfo_line. If no matching label is found, the first matching
 	 * label in the file is used. */
-	GRFLabel *choice = nullptr;
-	for (GRFLabel *label = _cur.grffile->label; label != nullptr; label = label->next) {
-		if (label->label != numsprites) continue;
+	const GRFLabel *choice = nullptr;
+	for (const auto &label : _cur.grffile->labels) {
+		if (label.label != numsprites) continue;
 
 		/* Remember a goto before the current line */
-		if (choice == nullptr) choice = label;
+		if (choice == nullptr) choice = &label;
 		/* If we find a label here, this is definitely good */
-		if (label->nfo_line > _cur.nfo_line) {
-			choice = label;
+		if (label.nfo_line > _cur.nfo_line) {
+			choice = &label;
 			break;
 		}
 	}
@@ -7044,8 +7279,8 @@ static uint32 GetPatchVariable(uint8 param)
 		 */
 		case 0x13: {
 			byte map_bits = 0;
-			byte log_X = MapLogX() - 6; // subtraction is required to make the minimal size (64) zero based
-			byte log_Y = MapLogY() - 6;
+			byte log_X = Map::LogX() - 6; // subtraction is required to make the minimal size (64) zero based
+			byte log_Y = Map::LogY() - 6;
 			byte max_edge = std::max(log_X, log_Y);
 
 			if (log_X == log_Y) { // we have a squared map, since both edges are identical
@@ -7571,23 +7806,9 @@ static void DefineGotoLabel(ByteReader *buf)
 
 	byte nfo_label = buf->ReadByte();
 
-	GRFLabel *label = MallocT<GRFLabel>(1);
-	label->label    = nfo_label;
-	label->nfo_line = _cur.nfo_line;
-	label->pos      = _cur.file->GetPos();
-	label->next     = nullptr;
+	_cur.grffile->labels.emplace_back(nfo_label, _cur.nfo_line, _cur.file->GetPos());
 
-	/* Set up a linked list of goto targets which we will search in an Action 0x7/0x9 */
-	if (_cur.grffile->label == nullptr) {
-		_cur.grffile->label = label;
-	} else {
-		/* Attach the label to the end of the list */
-		GRFLabel *l;
-		for (l = _cur.grffile->label; l->next != nullptr; l = l->next) {}
-		l->next = label;
-	}
-
-	grfmsg(2, "DefineGotoLabel: GOTO target with label 0x%02X", label->label);
+	grfmsg(2, "DefineGotoLabel: GOTO target with label 0x%02X", nfo_label);
 }
 
 /**
@@ -8365,89 +8586,90 @@ static void GRFUnsafe(ByteReader *buf)
 /** Initialize the TTDPatch flags */
 static void InitializeGRFSpecial()
 {
-	_ttdpatch_flags[0] = ((_settings_game.station.never_expire_airports ? 1 : 0) << 0x0C)  // keepsmallairport
-	                   |                                                      (1 << 0x0D)  // newairports
-	                   |                                                      (1 << 0x0E)  // largestations
-	                   | ((_settings_game.construction.max_bridge_length > 16 ? 1 : 0) << 0x0F)  // longbridges
-	                   |                                                      (0 << 0x10)  // loadtime
-	                   |                                                      (1 << 0x12)  // presignals
-	                   |                                                      (1 << 0x13)  // extpresignals
-	                   | ((_settings_game.vehicle.never_expire_vehicles ? 1 : 0) << 0x16)  // enginespersist
-	                   |                                                      (1 << 0x1B)  // multihead
-	                   |                                                      (1 << 0x1D)  // lowmemory
-	                   |                                                      (1 << 0x1E); // generalfixes
+	_ttdpatch_flags[0] = ((_settings_game.station.never_expire_airports ? 1U : 0U) << 0x0C)  // keepsmallairport
+	                   |                                                       (1U << 0x0D)  // newairports
+	                   |                                                       (1U << 0x0E)  // largestations
+	                   | ((_settings_game.construction.max_bridge_length > 16 ? 1U : 0U) << 0x0F)  // longbridges
+	                   |                                                       (0U << 0x10)  // loadtime
+	                   |                                                       (1U << 0x12)  // presignals
+	                   |                                                       (1U << 0x13)  // extpresignals
+	                   | ((_settings_game.vehicle.never_expire_vehicles ? 1U : 0U) << 0x16)  // enginespersist
+	                   |                                                       (1U << 0x1B)  // multihead
+	                   |                                                       (1U << 0x1D)  // lowmemory
+	                   |                                                       (1U << 0x1E); // generalfixes
 
-	_ttdpatch_flags[1] =   ((_settings_game.economy.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
-	                   |                                                      (1 << 0x08)  // mammothtrains
-	                   |                                                      (1 << 0x09)  // trainrefit
-	                   |                                                      (0 << 0x0B)  // subsidiaries
-	                   |         ((_settings_game.order.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
-	                   |                                                      (1 << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
-	                   |                                                      (1 << 0x13)  // unifiedmaglevmode - set bit 1 mode
-	                   |                                                      (1 << 0x14)  // bridgespeedlimits
-	                   |                                                      (1 << 0x16)  // eternalgame
-	                   |                                                      (1 << 0x17)  // newtrains
-	                   |                                                      (1 << 0x18)  // newrvs
-	                   |                                                      (1 << 0x19)  // newships
-	                   |                                                      (1 << 0x1A)  // newplanes
-	                   | ((_settings_game.construction.train_signal_side == 1 ? 1 : 0) << 0x1B)  // signalsontrafficside
-	                   |       ((_settings_game.vehicle.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
+	_ttdpatch_flags[1] =   ((_settings_game.economy.station_noise_level ? 1U : 0U) << 0x07)  // moreairports - based on units of noise
+	                   |                                                       (1U << 0x08)  // mammothtrains
+	                   |                                                       (1U << 0x09)  // trainrefit
+	                   |                                                       (0U << 0x0B)  // subsidiaries
+	                   |         ((_settings_game.order.gradual_loading ? 1U : 0U) << 0x0C)  // gradualloading
+	                   |                                                       (1U << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
+	                   |                                                       (1U << 0x13)  // unifiedmaglevmode - set bit 1 mode
+	                   |                                                       (1U << 0x14)  // bridgespeedlimits
+	                   |                                                       (1U << 0x16)  // eternalgame
+	                   |                                                       (1U << 0x17)  // newtrains
+	                   |                                                       (1U << 0x18)  // newrvs
+	                   |                                                       (1U << 0x19)  // newships
+	                   |                                                       (1U << 0x1A)  // newplanes
+	                   | ((_settings_game.construction.train_signal_side == 1 ? 1U : 0U) << 0x1B)  // signalsontrafficside
+	                   |       ((_settings_game.vehicle.disable_elrails ? 0U : 1U) << 0x1C); // electrifiedrailway
 
-	_ttdpatch_flags[2] =                                                      (1 << 0x01)  // loadallgraphics - obsolote
-	                   |                                                      (1 << 0x03)  // semaphores
-	                   |                                                      (1 << 0x0A)  // newobjects
-	                   |                                                      (0 << 0x0B)  // enhancedgui
-	                   |                                                      (0 << 0x0C)  // newagerating
-	                   |  ((_settings_game.construction.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
-	                   |                                                      (1 << 0x0E)  // fullloadany
-	                   |                                                      (1 << 0x0F)  // planespeed
-	                   |                                                      (0 << 0x10)  // moreindustriesperclimate - obsolete
-	                   |                                                      (0 << 0x11)  // moretoylandfeatures
-	                   |                                                      (1 << 0x12)  // newstations
-	                   |                                                      (1 << 0x13)  // tracktypecostdiff
-	                   |                                                      (1 << 0x14)  // manualconvert
-	                   |  ((_settings_game.construction.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
-	                   |                                                      (1 << 0x16)  // canals
-	                   |                                                      (1 << 0x17)  // newstartyear
-	                   |    ((_settings_game.vehicle.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
-	                   |                                                      (1 << 0x19)  // newhouses
-	                   |                                                      (1 << 0x1A)  // newbridges
-	                   |                                                      (1 << 0x1B)  // newtownnames
-	                   |                                                      (1 << 0x1C)  // moreanimation
-	                   |    ((_settings_game.vehicle.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
-	                   |                                                      (1 << 0x1E)  // newshistory
-	                   |                                                      (0 << 0x1F); // custombridgeheads
+	_ttdpatch_flags[2] =                                                       (1U << 0x01)  // loadallgraphics - obsolote
+	                   |                                                       (1U << 0x03)  // semaphores
+	                   |                                                       (1U << 0x0A)  // newobjects
+	                   |                                                       (0U << 0x0B)  // enhancedgui
+	                   |                                                       (0U << 0x0C)  // newagerating
+	                   |  ((_settings_game.construction.build_on_slopes ? 1U : 0U) << 0x0D)  // buildonslopes
+	                   |                                                       (1U << 0x0E)  // fullloadany
+	                   |                                                       (1U << 0x0F)  // planespeed
+	                   |                                                       (0U << 0x10)  // moreindustriesperclimate - obsolete
+	                   |                                                       (0U << 0x11)  // moretoylandfeatures
+	                   |                                                       (1U << 0x12)  // newstations
+	                   |                                                       (1U << 0x13)  // tracktypecostdiff
+	                   |                                                       (1U << 0x14)  // manualconvert
+	                   |  ((_settings_game.construction.build_on_slopes ? 1U : 0U) << 0x15)  // buildoncoasts
+	                   |                                                       (1U << 0x16)  // canals
+	                   |                                                       (1U << 0x17)  // newstartyear
+	                   |    ((_settings_game.vehicle.freight_trains > 1 ? 1U : 0U) << 0x18)  // freighttrains
+	                   |                                                       (1U << 0x19)  // newhouses
+	                   |                                                       (1U << 0x1A)  // newbridges
+	                   |                                                       (1U << 0x1B)  // newtownnames
+	                   |                                                       (1U << 0x1C)  // moreanimation
+	                   |    ((_settings_game.vehicle.wagon_speed_limits ? 1U : 0U) << 0x1D)  // wagonspeedlimits
+	                   |                                                       (1U << 0x1E)  // newshistory
+	                   |                                                       (0U << 0x1F); // custombridgeheads
 
-	_ttdpatch_flags[3] =                                                      (0 << 0x00)  // newcargodistribution
-	                   |                                                      (1 << 0x01)  // windowsnap
-	                   | ((_settings_game.economy.allow_town_roads || _generating_world ? 0 : 1) << 0x02)  // townbuildnoroad
-	                   |                                                      (1 << 0x03)  // pathbasedsignalling
-	                   |                                                      (0 << 0x04)  // aichoosechance
-	                   |                                                      (1 << 0x05)  // resolutionwidth
-	                   |                                                      (1 << 0x06)  // resolutionheight
-	                   |                                                      (1 << 0x07)  // newindustries
-	                   |           ((_settings_game.order.improved_load ? 1 : 0) << 0x08)  // fifoloading
-	                   |                                                      (0 << 0x09)  // townroadbranchprob
-	                   |                                                      (0 << 0x0A)  // tempsnowline
-	                   |                                                      (1 << 0x0B)  // newcargo
-	                   |                                                      (1 << 0x0C)  // enhancemultiplayer
-	                   |                                                      (1 << 0x0D)  // onewayroads
-	                   |                                                      (1 << 0x0E)  // irregularstations
-	                   |                                                      (1 << 0x0F)  // statistics
-	                   |                                                      (1 << 0x10)  // newsounds
-	                   |                                                      (1 << 0x11)  // autoreplace
-	                   |                                                      (1 << 0x12)  // autoslope
-	                   |                                                      (0 << 0x13)  // followvehicle
-	                   |                                                      (1 << 0x14)  // trams
-	                   |                                                      (0 << 0x15)  // enhancetunnels
-	                   |                                                      (1 << 0x16)  // shortrvs
-	                   |                                                      (1 << 0x17)  // articulatedrvs
-	                   |       ((_settings_game.vehicle.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
-	                   |                                                      (1 << 0x1E)  // variablerunningcosts
-	                   |                                                      (1 << 0x1F); // any switch is on
+	_ttdpatch_flags[3] =                                                       (0U << 0x00)  // newcargodistribution
+	                   |                                                       (1U << 0x01)  // windowsnap
+	                   | ((_settings_game.economy.allow_town_roads || _generating_world ? 0U : 1U) << 0x02)  // townbuildnoroad
+	                   |                                                       (1U << 0x03)  // pathbasedsignalling
+	                   |                                                       (0U << 0x04)  // aichoosechance
+	                   |                                                       (1U << 0x05)  // resolutionwidth
+	                   |                                                       (1U << 0x06)  // resolutionheight
+	                   |                                                       (1U << 0x07)  // newindustries
+	                   |           ((_settings_game.order.improved_load ? 1U : 0U) << 0x08)  // fifoloading
+	                   |                                                       (0U << 0x09)  // townroadbranchprob
+	                   |                                                       (0U << 0x0A)  // tempsnowline
+	                   |                                                       (1U << 0x0B)  // newcargo
+	                   |                                                       (1U << 0x0C)  // enhancemultiplayer
+	                   |                                                       (1U << 0x0D)  // onewayroads
+	                   |                                                       (1U << 0x0E)  // irregularstations
+	                   |                                                       (1U << 0x0F)  // statistics
+	                   |                                                       (1U << 0x10)  // newsounds
+	                   |                                                       (1U << 0x11)  // autoreplace
+	                   |                                                       (1U << 0x12)  // autoslope
+	                   |                                                       (0U << 0x13)  // followvehicle
+	                   |                                                       (1U << 0x14)  // trams
+	                   |                                                       (0U << 0x15)  // enhancetunnels
+	                   |                                                       (1U << 0x16)  // shortrvs
+	                   |                                                       (1U << 0x17)  // articulatedrvs
+	                   |       ((_settings_game.vehicle.dynamic_engines ? 1U : 0U) << 0x18)  // dynamic engines
+	                   |                                                       (1U << 0x1E)  // variablerunningcosts
+	                   |                                                       (1U << 0x1F); // any switch is on
 
-	_ttdpatch_flags[4] =                                                      (1 << 0x00)  // larger persistent storage
-	                   |             ((_settings_game.economy.inflation ? 1 : 0) << 0x01); // inflation is on
+	_ttdpatch_flags[4] =                                                       (1U << 0x00)  // larger persistent storage
+	                   |             ((_settings_game.economy.inflation ? 1U : 0U) << 0x01)  // inflation is on
+	                   |                                                       (1U << 0x02); // extended string range
 }
 
 /** Reset and clear all NewGRF stations */
@@ -8566,6 +8788,20 @@ static void ResetCustomObjects()
 	}
 }
 
+static void ResetCustomRoadStops()
+{
+	for (auto file : _grf_files) {
+		RoadStopSpec **&roadstopspec = file->roadstops;
+		if (roadstopspec == nullptr) continue;
+			for (uint i = 0; i < NUM_ROADSTOPS_PER_GRF; i++) {
+			free(roadstopspec[i]);
+		}
+
+		free(roadstopspec);
+		roadstopspec = nullptr;
+	}
+}
+
 /** Reset and clear all NewGRFs */
 static void ResetNewGRF()
 {
@@ -8651,6 +8887,10 @@ void ResetNewGRFData()
 	ResetCustomAirports();
 	AirportSpec::ResetAirports();
 	AirportTileSpec::ResetAirportTiles();
+
+	/* Reset road stop classes */
+	RoadStopClass::Reset();
+	ResetCustomRoadStops();
 
 	/* Reset canal sprite groups and flags */
 	memset(_water_feature, 0, sizeof(_water_feature));
@@ -8983,14 +9223,15 @@ static void FinaliseEngineArray()
 			}
 		}
 
-		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
-
-		/* When the train does not set property 27 (misc flags), but it
-		 * is overridden by a NewGRF graphically we want to disable the
-		 * flipping possibility. */
-		if (e->type == VEH_TRAIN && !_gted[e->index].prop27_set && e->GetGRF() != nullptr && is_custom_sprite(e->u.rail.image_index)) {
-			ClrBit(e->info.misc_flags, EF_RAIL_FLIPS);
+		/* Do final mapping on variant engine ID and set appropriate flags on variant engine */
+		if (e->info.variant_id != INVALID_ENGINE) {
+			e->info.variant_id = GetNewEngineID(e->grf_prop.grffile, e->type, e->info.variant_id);
+			if (e->info.variant_id != INVALID_ENGINE) {
+				Engine::Get(e->info.variant_id)->display_flags |= EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded;
+			}
 		}
+
+		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
 		/* Skip wagons, there livery is defined via the engine */
 		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
@@ -9264,7 +9505,7 @@ static void FinaliseObjectsArray()
 		ObjectSpec **&objectspec = file->objectspec;
 		if (objectspec != nullptr) {
 			for (int i = 0; i < NUM_OBJECTS_PER_GRF; i++) {
-				if (objectspec[i] != nullptr && objectspec[i]->grf_prop.grffile != nullptr && objectspec[i]->enabled) {
+				if (objectspec[i] != nullptr && objectspec[i]->grf_prop.grffile != nullptr && objectspec[i]->IsEnabled()) {
 					_object_mngr.SetEntitySpec(objectspec[i]);
 				}
 			}
@@ -9788,6 +10029,7 @@ static void AfterLoadGRFs()
 			e->info.climates = 0;
 		} else {
 			e->u.rail.railtype = railtype;
+			e->u.rail.intended_railtype = railtype;
 		}
 	}
 

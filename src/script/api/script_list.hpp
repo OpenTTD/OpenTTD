@@ -196,7 +196,7 @@ public:
 	/**
 	 * Remove everything that is in the given list from this list (same item index that is).
 	 * @param list the list of items to remove.
-	 * @pre list != nullptr
+	 * @pre list != null
 	 */
 	void RemoveList(ScriptList *list);
 
@@ -240,7 +240,7 @@ public:
 	/**
 	 * Keeps everything that is in the given list from this list (same item index that is).
 	 * @param list the list of items to keep.
-	 * @pre list != nullptr
+	 * @pre list != null
 	 */
 	void KeepList(ScriptList *list);
 

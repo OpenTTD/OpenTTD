@@ -59,11 +59,11 @@ const char *NetworkContentServerConnectionString()
 }
 
 /**
- * Get the connection string for the content mirror from the environment variable OTTD_CONTENT_MIRROR_CS,
- * or when it has not been set a hard coded default DNS hostname of the production server.
- * @return The content mirror's connection string.
+ * Get the URI string for the content mirror from the environment variable OTTD_CONTENT_MIRROR_URI,
+ * or when it has not been set a hard coded URI of the production server.
+ * @return The content mirror's URI string.
  */
-const char *NetworkContentMirrorConnectionString()
+const char *NetworkContentMirrorUriString()
 {
-	return GetEnv("OTTD_CONTENT_MIRROR_CS", "binaries.openttd.org");
+	return GetEnv("OTTD_CONTENT_MIRROR_URI", "https://binaries.openttd.org/bananas");
 }

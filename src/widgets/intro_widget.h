@@ -32,6 +32,7 @@ enum SelectGameIntroWidgets {
 	WID_SGI_GRF_SETTINGS,          ///< NewGRF button.
 	WID_SGI_CONTENT_DOWNLOAD,      ///< Content Download button.
 	WID_SGI_AI_SETTINGS,           ///< AI button.
+	WID_SGI_GS_SETTINGS,           ///< Game Script button.
 	WID_SGI_EXIT,                  ///< Exit button.
 };
 

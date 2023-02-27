@@ -77,7 +77,7 @@ struct AIPLChunkHandler : ChunkHandler {
 			_ai_saveload_version = -1;
 			SlObject(nullptr, slt);
 
-			if (_networking && !_network_server) {
+			if (_game_mode == GM_MENU || (_networking && !_network_server)) {
 				if (Company::IsValidAiID(index)) AIInstance::LoadEmpty();
 				continue;
 			}
@@ -112,11 +112,8 @@ struct AIPLChunkHandler : ChunkHandler {
 
 			config->StringToSettings(_ai_saveload_settings);
 
-			/* Start the AI directly if it was active in the savegame */
-			if (Company::IsValidAiID(index)) {
-				AI::StartNew(index, false);
-				AI::Load(index, _ai_saveload_version);
-			}
+			/* Load the AI saved data */
+			if (Company::IsValidAiID(index)) config->SetToLoadData(AIInstance::Load(_ai_saveload_version));
 		}
 	}
 

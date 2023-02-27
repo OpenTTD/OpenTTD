@@ -42,6 +42,7 @@
 #include "safeguards.h"
 
 void ClearEnginesHiddenFlagOfCompany(CompanyID cid);
+void UpdateObjectColours(const Company *c);
 
 CompanyID _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyID _current_company; ///< Company currently doing an action.
@@ -63,9 +64,10 @@ Company::Company(uint16 name_1, bool is_ai)
 	this->name_1 = name_1;
 	this->location_of_HQ = INVALID_TILE;
 	this->is_ai = is_ai;
-	this->terraform_limit = (uint32)_settings_game.construction.terraform_frame_burst << 16;
-	this->clear_limit     = (uint32)_settings_game.construction.clear_frame_burst << 16;
-	this->tree_limit      = (uint32)_settings_game.construction.tree_frame_burst << 16;
+	this->terraform_limit    = (uint32)_settings_game.construction.terraform_frame_burst << 16;
+	this->clear_limit        = (uint32)_settings_game.construction.clear_frame_burst << 16;
+	this->tree_limit         = (uint32)_settings_game.construction.tree_frame_burst << 16;
+	this->build_object_limit = (uint32)_settings_game.construction.build_object_frame_burst << 16;
 
 	std::fill(this->share_owners.begin(), this->share_owners.end(), INVALID_OWNER);
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
@@ -114,8 +116,11 @@ void SetLocalCompany(CompanyID new_company)
 
 	_current_company = _local_company = new_company;
 
-	/* Delete any construction windows... */
-	if (switching_company) CloseConstructionWindows();
+	if (switching_company) {
+		InvalidateWindowClassesData(WC_COMPANY);
+		/* Delete any construction windows... */
+		CloseConstructionWindows();
+	}
 
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
@@ -267,9 +272,10 @@ void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cst)
 void UpdateLandscapingLimits()
 {
 	for (Company *c : Company::Iterate()) {
-		c->terraform_limit = std::min<uint64>((uint64)c->terraform_limit + _settings_game.construction.terraform_per_64k_frames, (uint64)_settings_game.construction.terraform_frame_burst << 16);
-		c->clear_limit     = std::min<uint64>((uint64)c->clear_limit     + _settings_game.construction.clear_per_64k_frames,     (uint64)_settings_game.construction.clear_frame_burst << 16);
-		c->tree_limit      = std::min<uint64>((uint64)c->tree_limit      + _settings_game.construction.tree_per_64k_frames,      (uint64)_settings_game.construction.tree_frame_burst << 16);
+		c->terraform_limit    = std::min<uint64>((uint64)c->terraform_limit    + _settings_game.construction.terraform_per_64k_frames,    (uint64)_settings_game.construction.terraform_frame_burst << 16);
+		c->clear_limit        = std::min<uint64>((uint64)c->clear_limit        + _settings_game.construction.clear_per_64k_frames,        (uint64)_settings_game.construction.clear_frame_burst << 16);
+		c->tree_limit         = std::min<uint64>((uint64)c->tree_limit         + _settings_game.construction.tree_per_64k_frames,         (uint64)_settings_game.construction.tree_frame_burst << 16);
+		c->build_object_limit = std::min<uint64>((uint64)c->build_object_limit + _settings_game.construction.build_object_per_64k_frames, (uint64)_settings_game.construction.build_object_frame_burst << 16);
 	}
 }
 
@@ -555,7 +561,8 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	ResetCompanyLivery(c);
 	_company_colours[c->index] = (Colours)c->colour;
 
-	c->money = c->current_loan = (std::min<int64>(INITIAL_LOAN, _economy.max_loan) * _economy.inflation_prices >> 16) / 50000 * 50000;
+	/* Scale the initial loan based on the inflation rounded down to the loan interval. The maximum loan has already been inflation adjusted. */
+	c->money = c->current_loan = std::min<int64>((INITIAL_LOAN * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL, _economy.max_loan);
 
 	std::fill(c->share_owners.begin(), c->share_owners.end(), INVALID_OWNER);
 
@@ -564,11 +571,11 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	c->inaugurated_year = _cur_year;
 
 	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
-	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients, but we choose it here for the first (host) company. */
-	if (_company_manager_face != 0 && !is_ai) {
+	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */
+	if (_company_manager_face != 0 && !is_ai && !_networking) {
 		c->face = _company_manager_face;
 	} else {
-		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false);
+		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, _random);
 	}
 
 	SetDefaultCompanySettings(c->index);
@@ -695,9 +702,9 @@ static void HandleBankruptcyTakeover(Company *c)
 	SetBit(c->bankrupt_asked, best->index);
 
 	c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
-	if (best->is_ai) {
-		AI::NewEvent(best->index, new ScriptEventCompanyAskMerger(c->index, ClampToI32(c->bankrupt_value)));
-	} else if (IsInteractiveCompany(best->index)) {
+
+	AI::NewEvent(best->index, new ScriptEventCompanyAskMerger(c->index, c->bankrupt_value));
+	if (IsInteractiveCompany(best->index)) {
 		ShowBuyCompanyDialog(c->index);
 	}
 }
@@ -887,8 +894,6 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			/* Delete any open window of the company */
-			CloseCompanyWindows(c->index);
 			CompanyNewsInformation *cni = new CompanyNewsInformation(c);
 
 			/* Show the bankrupt news */
@@ -917,8 +922,8 @@ CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
-	InvalidateWindowClassesData(WC_AI_SETTINGS);
-	InvalidateWindowClassesData(WC_AI_LIST);
+	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+	InvalidateWindowClassesData(WC_SCRIPT_LIST);
 
 	return CommandCost();
 }
@@ -1026,7 +1031,6 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			if (v->owner == _current_company) v->InvalidateNewGRFCache();
 		}
 
-		extern void UpdateObjectColours(const Company *c);
 		UpdateObjectColours(c);
 	}
 	return CommandCost();

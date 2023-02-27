@@ -167,15 +167,13 @@ public:
 	}
 
 	/**
-	 * Get a suggested default GUI zoom taking screen DPI into account.
+	 * Get a suggested default GUI scale taking screen DPI into account.
 	 */
-	virtual ZoomLevel GetSuggestedUIZoom()
+	virtual int GetSuggestedUIScale()
 	{
 		float dpi_scale = this->GetDPIScale();
 
-		if (dpi_scale >= 3.0f) return ZOOM_LVL_NORMAL;
-		if (dpi_scale >= 1.5f) return ZOOM_LVL_OUT_2X;
-		return ZOOM_LVL_OUT_4X;
+		return Clamp(dpi_scale * 100, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
 	virtual const char *GetInfoString() const

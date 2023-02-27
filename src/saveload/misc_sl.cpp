@@ -34,18 +34,16 @@ ZoomLevel _saved_scrollpos_zoom;
 
 void SaveViewportBeforeSaveGame()
 {
-	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	const Window *w = GetMainWindow();
 
-	if (w != nullptr) {
-		_saved_scrollpos_x = w->viewport->scrollpos_x;
-		_saved_scrollpos_y = w->viewport->scrollpos_y;
-		_saved_scrollpos_zoom = w->viewport->zoom;
-	}
+	_saved_scrollpos_x = w->viewport->scrollpos_x;
+	_saved_scrollpos_y = w->viewport->scrollpos_y;
+	_saved_scrollpos_zoom = w->viewport->zoom;
 }
 
 void ResetViewportAfterLoadGame()
 {
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	Window *w = GetMainWindow();
 
 	w->viewport->scrollpos_x = _saved_scrollpos_x;
 	w->viewport->scrollpos_y = _saved_scrollpos_y;

@@ -8,6 +8,7 @@
 /** @file screenshot.cpp The creation of screenshots! */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "fileio_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
@@ -27,6 +28,7 @@
 #include "tile_map.h"
 #include "landscape.h"
 #include "video/video_driver.hpp"
+#include "smallmap_gui.h"
 
 #include "table/strings.h"
 
@@ -136,7 +138,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 	/* Setup the file header */
 	BitmapFileHeader bfh;
 	bfh.type = TO_LE16('MB');
-	bfh.size = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size + bytewidth * h);
+	bfh.size = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size + static_cast<size_t>(bytewidth) * h);
 	bfh.reserved = 0;
 	bfh.off_bits = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size);
 
@@ -373,7 +375,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = Clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
-	void *buff = CallocT<uint8>(w * maxlines * bpp); // by default generate 128 lines at a time.
+	void *buff = CallocT<uint8>(static_cast<size_t>(w) * maxlines * bpp); // by default generate 128 lines at a time.
 
 	y = 0;
 	do {
@@ -480,7 +482,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = Clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
-	uint8 *buff = CallocT<uint8>(w * maxlines); // by default generate 128 lines at a time.
+	uint8 *buff = CallocT<uint8>(static_cast<size_t>(w) * maxlines); // by default generate 128 lines at a time.
 
 	y = 0;
 	do {
@@ -616,7 +618,7 @@ static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
 	Viewport *vp = (Viewport *)userdata;
-	DrawPixelInfo dpi, *old_dpi;
+	DrawPixelInfo dpi;
 	int wx, left;
 
 	/* We are no longer rendering to the screen */
@@ -629,8 +631,7 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 	_screen.pitch = pitch;
 	_screen_disable_anim = true;
 
-	old_dpi = _cur_dpi;
-	_cur_dpi = &dpi;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
 
 	dpi.dst_ptr = buf;
 	dpi.height = n;
@@ -653,8 +654,6 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 			ScaleByZoom((y + n) - vp->top, vp->zoom) + vp->virtual_top
 		);
 	}
-
-	_cur_dpi = old_dpi;
 
 	/* Switch back to rendering to the screen */
 	_screen = old_screen;
@@ -680,8 +679,16 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 		}
 	}
 
-	/* Add extension to screenshot file */
 	size_t len = strlen(_screenshot_name);
+
+	/* Handle user-specified filenames ending in # with automatic numbering */
+	if (StrEndsWith(_screenshot_name, "#")) {
+		generate = true;
+		len -= 1;
+		_screenshot_name[len] = '\0';
+	}
+
+	/* Add extension to screenshot file */
 	seprintf(&_screenshot_name[len], lastof(_screenshot_name), ".%s", ext);
 
 	const char *screenshot_dir = crashlog ? _personal_dir.c_str() : FiosGetScreenshotDir();
@@ -723,7 +730,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint3
 		case SC_CRASHLOG: {
 			assert(width == 0 && height == 0);
 
-			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			Window *w = GetMainWindow();
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
 			vp->virtual_width  = w->viewport->virtual_width;
@@ -744,7 +751,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint3
 			vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 
 			TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
-			TileIndex south_tile = MapSize() - 1;
+			TileIndex south_tile = Map::Size() - 1;
 
 			/* We need to account for a hill or high building at tile 0,0. */
 			int extra_height_top = TilePixelHeight(north_tile) + 150;
@@ -767,7 +774,7 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint3
 		default: {
 			vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
 
-			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			Window *w = GetMainWindow();
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
 
@@ -820,8 +827,8 @@ static void HeightmapCallback(void *userdata, void *buffer, uint y, uint pitch, 
 {
 	byte *buf = (byte *)buffer;
 	while (n > 0) {
-		TileIndex ti = TileXY(MapMaxX(), y);
-		for (uint x = MapMaxX(); true; x--) {
+		TileIndex ti = TileXY(Map::MaxX(), y);
+		for (uint x = Map::MaxX(); true; x--) {
 			*buf = 256 * TileHeight(ti) / (1 + _heightmap_highest_peak);
 			buf++;
 			if (x == 0) break;
@@ -847,13 +854,13 @@ bool MakeHeightmapScreenshot(const char *filename)
 	}
 
 	_heightmap_highest_peak = 0;
-	for (TileIndex tile = 0; tile < MapSize(); tile++) {
+	for (TileIndex tile = 0; tile < Map::Size(); tile++) {
 		uint h = TileHeight(tile);
 		_heightmap_highest_peak = std::max(h, _heightmap_highest_peak);
 	}
 
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(filename, HeightmapCallback, nullptr, MapSizeX(), MapSizeY(), 8, palette);
+	return sf->proc(filename, HeightmapCallback, nullptr, Map::SizeX(), Map::SizeY(), 8, palette);
 }
 
 static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the current query is about to confirm.
@@ -880,8 +887,8 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
 	SetupScreenshotViewport(t, &vp);
 
 	bool heightmap_or_minimap = t == SC_HEIGHTMAP || t == SC_MINIMAP;
-	uint64_t width = (heightmap_or_minimap ? MapSizeX() : vp.width);
-	uint64_t height = (heightmap_or_minimap ? MapSizeY() : vp.height);
+	uint64_t width = (heightmap_or_minimap ? Map::SizeX() : vp.width);
+	uint64_t height = (heightmap_or_minimap ? Map::SizeY() : vp.height);
 
 	if (width * height > 8192 * 8192) {
 		/* Ask for confirmation */
@@ -995,57 +1002,16 @@ bool MakeScreenshot(ScreenshotType t, std::string name, uint32 width, uint32 hei
 }
 
 
-/**
- * Return the owner of a tile to display it with in the small map in mode "Owner".
- *
- * @param tile The tile of which we would like to get the colour.
- * @return The owner of tile in the small map in mode "Owner"
- */
-static Owner GetMinimapOwner(TileIndex tile)
-{
-	Owner o;
-
-	if (IsTileType(tile, MP_VOID)) {
-		return OWNER_END;
-	} else {
-		switch (GetTileType(tile)) {
-		case MP_INDUSTRY: o = OWNER_DEITY;        break;
-		case MP_HOUSE:    o = OWNER_TOWN;         break;
-		default:          o = GetTileOwner(tile); break;
-			/* FIXME: For MP_ROAD there are multiple owners.
-			 * GetTileOwner returns the rail owner (level crossing) resp. the owner of ROADTYPE_ROAD (normal road),
-			 * even if there are no ROADTYPE_ROAD bits on the tile.
-			 */
-		}
-
-		return o;
-	}
-}
-
 static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
-	/* Fill with the company colours */
-	byte owner_colours[OWNER_END + 1];
-	for (const Company *c : Company::Iterate()) {
-		owner_colours[c->index] = MKCOLOUR(_colour_gradient[c->colour][5]);
-	}
-
-	/* Fill with some special colours */
-	owner_colours[OWNER_TOWN]    = PC_DARK_RED;
-	owner_colours[OWNER_NONE]    = PC_GRASS_LAND;
-	owner_colours[OWNER_WATER]   = PC_WATER;
-	owner_colours[OWNER_DEITY]   = PC_DARK_GREY; // industry
-	owner_colours[OWNER_END]     = PC_BLACK;
-
 	uint32 *ubuf = (uint32 *)buf;
 	uint num = (pitch * n);
 	for (uint i = 0; i < num; i++) {
 		uint row = y + (int)(i / pitch);
-		uint col = (MapSizeX() - 1) - (i % pitch);
+		uint col = (Map::SizeX() - 1) - (i % pitch);
 
 		TileIndex tile = TileXY(col, row);
-		Owner o = GetMinimapOwner(tile);
-		byte val = owner_colours[o];
+		byte val = GetSmallMapOwnerPixels(tile, GetTileType(tile), IncludeHeightmap::Never) & 0xFF;
 
 		uint32 colour_buf = 0;
 		colour_buf  = (_cur_palette.palette[val].b << 0);
@@ -1063,5 +1029,5 @@ static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 bool MakeMinimapWorldScreenshot()
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), MinimapScreenCallback, nullptr, MapSizeX(), MapSizeY(), 32, _cur_palette.palette);
+	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), MinimapScreenCallback, nullptr, Map::SizeX(), Map::SizeY(), 32, _cur_palette.palette);
 }

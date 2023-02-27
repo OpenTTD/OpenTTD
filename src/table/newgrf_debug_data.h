@@ -10,6 +10,7 @@
 #include "../newgrf_house.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_roadtype.h"
+#include "../newgrf_roadstop.h"
 
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
@@ -42,6 +43,7 @@ static const NICallback _nic_vehicles[] = {
 	NICV(CBID_VEHICLE_SOUND_EFFECT,          CBM_VEHICLE_SOUND_EFFECT),
 	NICV(CBID_VEHICLE_AUTOREPLACE_SELECTION, CBM_NO_BIT),
 	NICV(CBID_VEHICLE_MODIFY_PROPERTY,       CBM_NO_BIT),
+	NICV(CBID_VEHICLE_NAME,                  CBM_VEHICLE_NAME),
 	NIC_END()
 };
 
@@ -606,6 +608,64 @@ static const NIFeature _nif_tramtype = {
 	new NIHRoadType(),
 };
 
+#define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)
+static const NICallback _nic_roadstops[] = {
+	NICRS(CBID_STATION_AVAILABILITY,     CBM_ROAD_STOP_AVAIL),
+	NICRS(CBID_STATION_ANIM_START_STOP,  CBM_NO_BIT),
+	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  CBM_ROAD_STOP_ANIMATION_NEXT_FRAME),
+	NICRS(CBID_STATION_ANIMATION_SPEED,  CBM_ROAD_STOP_ANIMATION_SPEED),
+	NIC_END()
+};
+
+static const NIVariable _nif_roadstops[] = {
+	NIV(0x40, "view/rotation"),
+	NIV(0x41, "stop type"),
+	NIV(0x42, "terrain type"),
+	NIV(0x43, "road type"),
+	NIV(0x44, "tram type"),
+	NIV(0x45, "town zone and Manhattan distance of town"),
+	NIV(0x46, "square of Euclidean distance of town"),
+	NIV(0x47, "player info"),
+	NIV(0x48, "bitmask of accepted cargoes"),
+	NIV(0x49, "current animation frame"),
+	NIV(0x60, "amount of cargo waiting"),
+	NIV(0x61, "time since last cargo pickup"),
+	NIV(0x62, "rating of cargo"),
+	NIV(0x63, "time spent on route"),
+	NIV(0x64, "information about last vehicle picking cargo up"),
+	NIV(0x65, "amount of cargo acceptance"),
+	NIV(0x66, "animation frame of nearby tile"),
+	NIV(0x67, "land info of nearby tiles"),
+	NIV(0x68, "road stop info of nearby tiles"),
+	NIV(0x69, "information about cargo accepted in the past"),
+	NIV(0x6A, "GRFID of nearby road stop tiles"),
+	NIV_END(),
+};
+
+class NIHRoadStop : public NIHelper {
+	bool IsInspectable(uint index) const override        { return GetRoadStopSpec(index) != nullptr; }
+	uint GetParent(uint index) const override            { return GetInspectWindowNumber(GSF_FAKE_TOWNS, BaseStation::GetByTile(index)->town->index); }
+	const void *GetInstance(uint index)const override    { return nullptr; }
+	const void *GetSpec(uint index) const override       { return GetRoadStopSpec(index); }
+	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
+	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetRoadStopSpec(index)->grf_prop.grffile->grfid : 0; }
+
+	uint Resolve(uint index, uint var, uint32 param, bool *avail) const override
+	{
+		int view = GetRoadStopDir(index);
+		if (IsDriveThroughStopTile(index)) view += 4;
+		RoadStopResolverObject ro(GetRoadStopSpec(index), BaseStation::GetByTile(index), index, INVALID_ROADTYPE, GetStationType(index), view);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+	}
+};
+
+static const NIFeature _nif_roadstop = {
+	nullptr,
+	_nic_roadstops,
+	_nif_roadstops,
+	new NIHRoadStop(),
+};
+
 /** Table with all NIFeatures. */
 static const NIFeature * const _nifeatures[] = {
 	&_nif_vehicle,      // GSF_TRAINS
@@ -628,6 +688,7 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_airporttile,  // GSF_AIRPORTTILES
 	&_nif_roadtype,     // GSF_ROADTYPES
 	&_nif_tramtype,     // GSF_TRAMTYPES
+	&_nif_roadstop,     // GSF_ROADSTOPS
 	&_nif_town,         // GSF_FAKE_TOWNS
 };
 static_assert(lengthof(_nifeatures) == GSF_FAKE_END);

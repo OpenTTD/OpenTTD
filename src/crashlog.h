@@ -15,16 +15,8 @@
  */
 class CrashLog {
 private:
-	/** Pointer to the error message. */
-	static const char *message;
-
-	/** Temporary 'local' location of the buffer. */
-	static char *gamelog_buffer;
-
-	/** Temporary 'local' location of the end of the buffer. */
-	static const char *gamelog_last;
-
-	static void GamelogFillCrashLog(const char *s);
+	/** Error message coming from #error(const char *, ...). */
+	static std::string message;
 protected:
 	/**
 	 * Writes OS' version to the buffer.
@@ -46,7 +38,7 @@ protected:
 	 * Writes actually encountered error to the buffer.
 	 * @param buffer  The begin where to write at.
 	 * @param last    The last position in the buffer to write to.
-	 * @param message Message passed to use for possible errors. Can be nullptr.
+	 * @param message Message passed to use for errors.
 	 * @return the position of the \c '\0' character after the buffer.
 	 */
 	virtual char *LogError(char *buffer, const char *last, const char *message) const = 0;

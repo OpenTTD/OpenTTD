@@ -194,30 +194,30 @@ struct SignListWindow : Window, SignList {
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
-				uint y = r.top + WD_FRAMERECT_TOP; // Offset from top of widget.
+				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint text_offset_y = (this->resize.step_height - FONT_HEIGHT_NORMAL + 1) / 2;
 				/* No signs? */
 				if (this->vscroll->GetCount() == 0) {
-					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y + text_offset_y, STR_STATION_LIST_NONE);
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_STATION_LIST_NONE);
 					return;
 				}
 
 				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
 				bool rtl = _current_text_dir == TD_RTL;
 				int sprite_offset_y = (this->resize.step_height - d.height + 1) / 2;
-				uint icon_left  = 4 + (rtl ? r.right - this->text_offset : r.left);
-				uint text_left  = r.left + (rtl ? WD_FRAMERECT_LEFT : this->text_offset);
-				uint text_right = r.right - (rtl ? this->text_offset : WD_FRAMERECT_RIGHT);
+				uint icon_left = rtl ? tr.right - this->text_offset : tr.left;
+				tr = tr.Indent(this->text_offset, rtl);
 
 				/* At least one sign available. */
-				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
+				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++)
+				{
 					const Sign *si = this->signs[i];
 
-					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + sprite_offset_y);
+					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
 
 					SetDParam(0, si->index);
-					DrawString(text_left, text_right, y + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
-					y += this->resize.step_height;
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
+					tr.top += this->resize.step_height;
 				}
 				break;
 			}
@@ -233,7 +233,7 @@ struct SignListWindow : Window, SignList {
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SIL_LIST, WD_FRAMERECT_TOP);
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SIL_LIST, WidgetDimensions::scaled.framerect.top);
 				if (id_v == INT_MAX) return;
 
 				const Sign *si = this->signs[id_v];
@@ -258,7 +258,7 @@ struct SignListWindow : Window, SignList {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_SIL_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, WID_SIL_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -266,9 +266,9 @@ struct SignListWindow : Window, SignList {
 		switch (widget) {
 			case WID_SIL_LIST: {
 				Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
-				this->text_offset = WD_FRAMETEXT_LEFT + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
+				this->text_offset = WidgetDimensions::scaled.frametext.left + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
 				resize->height = std::max<uint>(FONT_HEIGHT_NORMAL, spr_dim.height + 2);
-				Dimension d = {(uint)(this->text_offset + WD_FRAMETEXT_RIGHT), WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM};
+				Dimension d = {(uint)(this->text_offset + WidgetDimensions::scaled.frametext.right), padding.height + 5 * resize->height};
 				*size = maxdim(*size, d);
 				break;
 			}
@@ -368,7 +368,7 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PANEL, COLOUR_BROWN, WID_SIL_LIST), SetMinimalSize(WD_FRAMETEXT_LEFT + 16 + 255 + WD_FRAMETEXT_RIGHT, 0),
+			NWidget(WWT_PANEL, COLOUR_BROWN, WID_SIL_LIST), SetMinimalSize(WidgetDimensions::unscaled.frametext.Horizontal() + 16 + 255, 0),
 								SetResize(1, 1), SetFill(1, 0), SetScrollbar(WID_SIL_SCROLLBAR), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 1),

@@ -346,7 +346,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 			/* Extract tile offset. */
 			int8 x_offs = GB(GetRegister(0x100), 0, 8);
 			int8 y_offs = GB(GetRegister(0x100), 8, 8);
-			TileIndex testtile = TILE_MASK(this->tile + TileDiffXY(x_offs, y_offs));
+			TileIndex testtile = Map::WrapToMap(this->tile + TileDiffXY(x_offs, y_offs));
 
 			StationFinder stations(TileArea(testtile, 1, 1));
 			const StationList *sl = stations.GetStations();
@@ -480,7 +480,7 @@ uint16 GetSimpleHouseCallback(CallbackID callback, uint32 param1, uint32 param2,
 }
 
 /** Helper class for animation control. */
-struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, CargoTypes, GetSimpleHouseCallback> {
+struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, CargoTypes, GetSimpleHouseCallback, TileAnimationFrameAnimationHelper<Town> > {
 	static const CallbackID cb_animation_speed      = CBID_HOUSE_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_HOUSE_ANIMATION_NEXT_FRAME;
 

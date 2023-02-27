@@ -253,7 +253,7 @@
 /* static */ bool ScriptTile::RaiseTile(TileIndex tile, int32 slope)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, tile < ::MapSize());
+	EnforcePrecondition(false, tile < ScriptMap::GetMapSize());
 
 	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, true);
 }
@@ -261,7 +261,7 @@
 /* static */ bool ScriptTile::LowerTile(TileIndex tile, int32 slope)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, tile < ::MapSize());
+	EnforcePrecondition(false, tile < ScriptMap::GetMapSize());
 
 	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, false);
 }
@@ -269,8 +269,8 @@
 /* static */ bool ScriptTile::LevelTiles(TileIndex start_tile, TileIndex end_tile)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
-	EnforcePrecondition(false, start_tile < ::MapSize());
-	EnforcePrecondition(false, end_tile < ::MapSize());
+	EnforcePrecondition(false, start_tile < ScriptMap::GetMapSize());
+	EnforcePrecondition(false, end_tile < ScriptMap::GetMapSize());
 
 	return ScriptObject::Command<CMD_LEVEL_LAND>::Do(end_tile, start_tile, false, LM_LEVEL);
 }
@@ -287,7 +287,7 @@
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, tile, TREE_INVALID);
+	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, tile, TREE_INVALID, false);
 }
 
 /* static */ bool ScriptTile::PlantTreeRectangle(TileIndex tile, uint width, uint height)
@@ -298,7 +298,7 @@
 	EnforcePrecondition(false, height >= 1 && height <= 20);
 	TileIndex end_tile = tile + ::TileDiffXY(width - 1, height - 1);
 
-	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, end_tile, TREE_INVALID);
+	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, end_tile, TREE_INVALID, false);
 }
 
 /* static */ bool ScriptTile::IsWithinTownInfluence(TileIndex tile, TownID town_id)

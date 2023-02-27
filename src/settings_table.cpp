@@ -42,7 +42,9 @@
 #include "ship.h"
 #include "smallmap_gui.h"
 #include "roadveh.h"
+#include "roadveh_cmd.h"
 #include "vehicle_func.h"
+#include "viewport_func.h"
 #include "void_map.h"
 
 #include "table/strings.h"
@@ -258,7 +260,6 @@ static void TownFoundingChanged(int32 new_value)
 
 static void ZoomMinMaxChanged(int32 new_value)
 {
-	extern void ConstrainAllViewportsZoom();
 	ConstrainAllViewportsZoom();
 	GfxClearSpriteCache();
 	if (_settings_client.gui.zoom_min > _gui_zoom) {
@@ -286,7 +287,7 @@ static void InvalidateNewGRFChangeWindows(int32 new_value)
 {
 	InvalidateWindowClassesData(WC_SAVELOAD);
 	CloseWindowByClass(WC_GAME_OPTIONS);
-	ReInitAllWindows(_gui_zoom_cfg);
+	ReInitAllWindows(false);
 }
 
 static void InvalidateCompanyLiveryWindow(int32 new_value)
@@ -323,7 +324,6 @@ static void MaxNoAIsChange(int32 new_value)
  */
 static bool CheckRoadSide(int32 &new_value)
 {
-	extern bool RoadVehiclesAreBuilt();
 	return _game_mode == GM_MENU || !RoadVehiclesAreBuilt();
 }
 
@@ -360,26 +360,26 @@ static bool CheckFreeformEdges(int32 &new_value)
 			}
 		}
 	} else {
-		for (uint i = 0; i < MapMaxX(); i++) {
+		for (uint i = 0; i < Map::MaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
-		for (uint i = 1; i < MapMaxX(); i++) {
-			if (!IsTileType(TileXY(i, MapMaxY() - 1), MP_WATER) || TileHeight(TileXY(1, MapMaxY())) != 0) {
+		for (uint i = 1; i < Map::MaxX(); i++) {
+			if (!IsTileType(TileXY(i, Map::MaxY() - 1), MP_WATER) || TileHeight(TileXY(1, Map::MaxY())) != 0) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
-		for (uint i = 0; i < MapMaxY(); i++) {
+		for (uint i = 0; i < Map::MaxY(); i++) {
 			if (TileHeight(TileXY(1, i)) != 0) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
-		for (uint i = 1; i < MapMaxY(); i++) {
-			if (!IsTileType(TileXY(MapMaxX() - 1, i), MP_WATER) || TileHeight(TileXY(MapMaxX(), i)) != 0) {
+		for (uint i = 1; i < Map::MaxY(); i++) {
+			if (!IsTileType(TileXY(Map::MaxX() - 1, i), MP_WATER) || TileHeight(TileXY(Map::MaxX(), i)) != 0) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
@@ -393,15 +393,15 @@ static void UpdateFreeformEdges(int32 new_value)
 	if (_game_mode == GM_MENU) return;
 
 	if (new_value != 0) {
-		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
-		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+		for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
 	} else {
 		/* Make tiles at the border water again. */
-		for (uint i = 0; i < MapMaxX(); i++) {
+		for (uint i = 0; i < Map::MaxX(); i++) {
 			SetTileHeight(TileXY(i, 0), 0);
 			SetTileType(TileXY(i, 0), MP_WATER);
 		}
-		for (uint i = 0; i < MapMaxY(); i++) {
+		for (uint i = 0; i < Map::MaxY(); i++) {
 			SetTileHeight(TileXY(0, i), 0);
 			SetTileType(TileXY(0, i), MP_WATER);
 		}
@@ -432,7 +432,7 @@ static bool CheckMaxHeightLevel(int32 &new_value)
 
 	/* Check if at least one mountain on the map is higher than the new value.
 	 * If yes, disallow the change. */
-	for (TileIndex t = 0; t < MapSize(); t++) {
+	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if ((int32)TileHeight(t) > new_value) {
 			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
 			/* Return old, unchanged value */

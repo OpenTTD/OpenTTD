@@ -33,7 +33,7 @@ enum RailTileType {
  * @pre IsTileType(t, MP_RAILWAY)
  * @return the RailTileType
  */
-static inline RailTileType GetRailTileType(TileIndex t)
+debug_inline static RailTileType GetRailTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_RAILWAY));
 	return (RailTileType)GB(_m[t].m5, 6, 2);
@@ -46,7 +46,7 @@ static inline RailTileType GetRailTileType(TileIndex t)
  * @pre IsTileType(t, MP_RAILWAY)
  * @return true if and only if the tile is normal rail (with or without signals)
  */
-static inline bool IsPlainRail(TileIndex t)
+debug_inline static bool IsPlainRail(TileIndex t)
 {
 	RailTileType rtt = GetRailTileType(t);
 	return rtt == RAIL_TILE_NORMAL || rtt == RAIL_TILE_SIGNALS;
@@ -57,7 +57,7 @@ static inline bool IsPlainRail(TileIndex t)
  * @param t the tile to get the information from
  * @return true if and only if the tile is normal rail (with or without signals)
  */
-static inline bool IsPlainRailTile(TileIndex t)
+debug_inline static bool IsPlainRailTile(TileIndex t)
 {
 	return IsTileType(t, MP_RAILWAY) && IsPlainRail(t);
 }
@@ -92,7 +92,7 @@ static inline void SetHasSignals(TileIndex tile, bool signals)
  * @pre IsTileType(t, MP_RAILWAY)
  * @return true if and only if the tile is a rail depot
  */
-static inline bool IsRailDepot(TileIndex t)
+debug_inline static bool IsRailDepot(TileIndex t)
 {
 	return GetRailTileType(t) == RAIL_TILE_DEPOT;
 }
@@ -102,7 +102,7 @@ static inline bool IsRailDepot(TileIndex t)
  * @param t the tile to get the information from
  * @return true if and only if the tile is a rail depot
  */
-static inline bool IsRailDepotTile(TileIndex t)
+debug_inline static bool IsRailDepotTile(TileIndex t)
 {
 	return IsTileType(t, MP_RAILWAY) && IsRailDepot(t);
 }

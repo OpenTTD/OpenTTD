@@ -21,7 +21,7 @@
 #include "newgrf_commons.h"
 
 /** Various object behaviours. */
-enum ObjectFlags {
+enum ObjectFlags : uint16 {
 	OBJECT_FLAG_NONE               =       0, ///< Just nothing.
 	OBJECT_FLAG_ONLY_IN_SCENEDIT   = 1 <<  0, ///< Object can only be constructed in the scenario editor.
 	OBJECT_FLAG_CANNOT_REMOVE      = 1 <<  1, ///< Object can not be removed.
@@ -40,10 +40,12 @@ enum ObjectFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
 
+static const uint8 OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size property when the object is 1x1 tiles: low nibble for X, high nibble for Y.
+
 void ResetObjects();
 
 /** Class IDs for objects. */
-enum ObjectClassID {
+enum ObjectClassID : uint8 {
 	OBJECT_CLASS_BEGIN   =    0, ///< The lowest valid value
 	OBJECT_CLASS_MAX     = 0xFF, ///< Maximum number of classes.
 	INVALID_OBJECT_CLASS = 0xFF, ///< Class for the less fortunate.
@@ -58,6 +60,7 @@ DECLARE_POSTFIX_INCREMENT(ObjectClassID)
 struct ObjectSpec {
 	/* 2 because of the "normal" and "buy" sprite stacks. */
 	GRFFilePropsBase<2> grf_prop; ///< Properties related the the grf file
+	AnimationInfo animation;      ///< Information about the animation.
 	ObjectClassID cls_id;         ///< The class to which this spec belongs.
 	StringID name;                ///< The name for this object.
 
@@ -68,12 +71,16 @@ struct ObjectSpec {
 	Date introduction_date;       ///< From when can this object be built.
 	Date end_of_life_date;        ///< When can't this object be built anymore.
 	ObjectFlags flags;            ///< Flags/settings related to the object.
-	AnimationInfo animation;      ///< Information about the animation.
 	uint16 callback_mask;         ///< Bitmask of requested/allowed callbacks.
 	uint8 height;                 ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 	uint8 views;                  ///< The number of views.
 	uint8 generate_amount;        ///< Number of objects which are attempted to be generated per 256^2 map during world generation.
-	bool enabled;                 ///< Is this spec enabled?
+
+	/**
+	 * Test if this object is enabled.
+	 * @return True iif this object is enabled.
+	 */
+	bool IsEnabled() const { return this->views > 0; }
 
 	/**
 	 * Get the cost for building a structure of this type.

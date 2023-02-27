@@ -30,4 +30,6 @@ void MxActivateChannel(MixerChannel*);
 
 uint32 MxSetMusicSource(MxStreamCallback music_callback);
 
+void SetEffectVolume(uint8 volume);
+
 #endif /* MIXER_H */

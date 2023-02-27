@@ -69,7 +69,7 @@ public:
 	 * @param group_id The group to set the name for.
 	 * @param name The name for the group (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidGroup(group_id).
-	 * @pre name != nullptr && len(name) != 0
+	 * @pre name != null && len(name) != 0
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
@@ -147,7 +147,7 @@ public:
 	 * @param group_id The group to move the vehicle to.
 	 * @param vehicle_id The vehicle to move to the group.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT.
-	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsPrimaryVehicle(vehicle_id).
 	 * @return True if and only if the vehicle was successfully moved to the group.
 	 * @note A vehicle can be in only one group at the same time. To remove it from
 	 *  a group, move it to another or to GROUP_DEFAULT. Moving the vehicle to the
@@ -232,6 +232,7 @@ public:
 	 * @param group_id The group id to set the colour of.
 	 * @param colour Colour to set.
 	 * @pre IsValidGroup(group_id).
+	 * @return True iff the colour was set successfully.
 	 */
 	static bool SetPrimaryColour(GroupID group_id, ScriptCompany::Colours colour);
 
@@ -240,6 +241,7 @@ public:
 	 * @param group_id The group id to set the colour of.
 	 * @param colour Colour to set.
 	 * @pre IsValidGroup(group_id).
+	 * @return True iff the colour was set successfully.
 	 */
 	static bool SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour);
 
@@ -247,6 +249,7 @@ public:
 	 * Get primary colour of a group.
 	 * @param group_id The group id to get the colour of.
 	 * @pre IsValidGroup(group_id).
+	 * @return The primary colour of the group.
 	 */
 	static ScriptCompany::Colours GetPrimaryColour(GroupID group_id);
 
@@ -254,6 +257,7 @@ public:
 	 * Get secondary colour for a group.
 	 * @param group_id The group id to get the colour of.
 	 * @pre IsValidGroup(group_id).
+	 * @return The secondary colour of the group.
 	 */
 	static ScriptCompany::Colours GetSecondaryColour(GroupID group_id);
 };

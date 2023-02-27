@@ -311,13 +311,6 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 {
 	bytes = 0;
 
-#ifdef __EMSCRIPTEN__
-	/* Emscripten is loaded via an HTTPS connection. As such, it is very
-	 * difficult to make HTTP connections. So always use the TCP method of
-	 * downloading content. */
-	fallback = true;
-#endif
-
 	ContentIDList content;
 	for (const ContentInfo *ci : this->infos) {
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
@@ -330,6 +323,8 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
+
+	this->isCancelled = false;
 
 	if (_settings_client.network.no_http_content_downloads || fallback) {
 		this->DownloadSelectedContentFallback(content);
@@ -344,25 +339,14 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const ContentIDList &content)
 {
-	uint count = (uint)content.size();
-
-	/* Allocate memory for the whole request.
-	 * Requests are "id\nid\n..." (as strings), so assume the maximum ID,
-	 * which is uint32 so 10 characters long. Then the newlines and
-	 * multiply that all with the count and then add the '\0'. */
-	uint bytes = (10 + 1) * count + 1;
-	char *content_request = MallocT<char>(bytes);
-	const char *lastof = content_request + bytes - 1;
-
-	char *p = content_request;
+	std::string content_request;
 	for (const ContentID &id : content) {
-		p += seprintf(p, lastof, "%d\n", id);
+		content_request += std::to_string(id) + "\n";
 	}
 
 	this->http_response_index = -1;
 
-	new NetworkHTTPContentConnecter(NetworkContentMirrorConnectionString(), this, NETWORK_CONTENT_MIRROR_URL, content_request);
-	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
+	NetworkHTTPSocketHandler::Connect(NetworkContentMirrorUriString(), this, content_request);
 }
 
 /**
@@ -592,24 +576,30 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	}
 }
 
+bool ClientNetworkContentSocketHandler::IsCancelled() const
+{
+	return this->isCancelled;
+}
+
 /* Also called to just clean up the mess. */
 void ClientNetworkContentSocketHandler::OnFailure()
 {
-	/* If we fail, download the rest via the 'old' system. */
-	uint files, bytes;
-	this->DownloadSelectedContent(files, bytes, true);
-
 	this->http_response.clear();
 	this->http_response.shrink_to_fit();
 	this->http_response_index = -2;
 
 	if (this->curFile != nullptr) {
-		/* Revert the download progress when we are going for the old system. */
-		long size = ftell(this->curFile);
-		if (size > 0) this->OnDownloadProgress(this->curInfo, (int)-size);
+		this->OnDownloadProgress(this->curInfo, -1);
 
 		fclose(this->curFile);
 		this->curFile = nullptr;
+	}
+
+	/* If we fail, download the rest via the 'old' system. */
+	if (!this->isCancelled) {
+		uint files, bytes;
+
+		this->DownloadSelectedContent(files, bytes, true);
 	}
 }
 
@@ -746,7 +736,8 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	http_response_index(-2),
 	curFile(nullptr),
 	curInfo(nullptr),
-	isConnecting(false)
+	isConnecting(false),
+	isCancelled(false)
 {
 	this->lastActivity = std::chrono::steady_clock::now();
 }
@@ -792,7 +783,10 @@ public:
 void ClientNetworkContentSocketHandler::Connect()
 {
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
+
+	this->isCancelled = false;
 	this->isConnecting = true;
+
 	new NetworkContentConnecter(NetworkContentServerConnectionString());
 }
 
@@ -801,6 +795,7 @@ void ClientNetworkContentSocketHandler::Connect()
  */
 NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
 {
+	this->isCancelled = true;
 	NetworkContentSocketHandler::CloseConnection();
 
 	if (this->sock == INVALID_SOCKET) return NETWORK_RECV_STATUS_OKAY;
@@ -1054,11 +1049,11 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		 * After that's done run over them once again to test their children
 		 * to unselect. Don't do it immediately because it'll do exactly what
 		 * we're doing now. */
-		for (const ContentInfo *c : parents) {
-			if (c->state == ContentInfo::AUTOSELECTED) this->Unselect(c->id);
+		for (const ContentInfo *parent : parents) {
+			if (parent->state == ContentInfo::AUTOSELECTED) this->Unselect(parent->id);
 		}
-		for (const ContentInfo *c : parents) {
-			this->CheckDependencyState(this->GetContent(c->id));
+		for (const ContentInfo *parent : parents) {
+			this->CheckDependencyState(this->GetContent(parent->id));
 		}
 	}
 }

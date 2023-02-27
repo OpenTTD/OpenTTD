@@ -310,7 +310,7 @@ struct NewsWindow : Window {
 		/* Initialize viewport if it exists. */
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 		if (nvp != nullptr) {
-			nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : (uint32)GetReferenceTile(ni->reftype1, ni->ref1), ZOOM_LVL_NEWS);
+			nvp->InitializeViewport(this, ni->reftype1 == NR_VEHICLE ? 0x80000000 | ni->ref1 : (uint32)GetReferenceTile(ni->reftype1, ni->ref1),ScaleZoomGUI(ZOOM_LVL_NEWS));
 			if (this->ni->flags & NF_NO_TRANSPARENT) nvp->disp_flags |= ND_NO_TRANSPARENCY;
 			if ((this->ni->flags & NF_INCOLOUR) == 0) {
 				nvp->disp_flags |= ND_SHADE_GREY;
@@ -329,12 +329,14 @@ struct NewsWindow : Window {
 
 	void DrawNewsBorder(const Rect &r) const
 	{
-		GfxFillRect(r.left,  r.top,    r.right, r.bottom, PC_WHITE);
+		Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+		GfxFillRect(ir, PC_WHITE);
 
-		GfxFillRect(r.left,  r.top,    r.left,  r.bottom, PC_BLACK);
-		GfxFillRect(r.right, r.top,    r.right, r.bottom, PC_BLACK);
-		GfxFillRect(r.left,  r.top,    r.right, r.top,    PC_BLACK);
-		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, PC_BLACK);
+		ir = ir.Expand(1);
+		GfxFillRect( r.left,   r.top,    ir.left,   r.bottom, PC_BLACK);
+		GfxFillRect(ir.right,  r.top,     r.right,  r.bottom, PC_BLACK);
+		GfxFillRect( r.left,   r.top,     r.right, ir.top,    PC_BLACK);
+		GfxFillRect( r.left,  ir.bottom,  r.right,  r.bottom, PC_BLACK);
 	}
 
 	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
@@ -351,7 +353,7 @@ struct NewsWindow : Window {
 				/* Caption is not a real caption (so that the window cannot be moved)
 				 * thus it doesn't get the default sizing of a caption. */
 				Dimension d2 = GetStringBoundingBox(STR_NEWS_MESSAGE_CAPTION);
-				d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
+				d2.height += WidgetDimensions::scaled.captiontext.Vertical();
 				*size = maxdim(*size, d2);
 				return;
 			}
@@ -389,8 +391,8 @@ struct NewsWindow : Window {
 			case WID_N_SHOW_GROUP:
 				if (this->ni->reftype1 == NR_VEHICLE) {
 					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->widget_data);
-					d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
-					d2.width += WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT;
+					d2.height += WidgetDimensions::scaled.captiontext.Vertical();
+					d2.width += WidgetDimensions::scaled.captiontext.Horizontal();
 					*size = d2;
 				} else {
 					/* Hide 'Show group window' button if this news is not about a vehicle. */
@@ -466,7 +468,7 @@ struct NewsWindow : Window {
 			case WID_N_VEH_SPR: {
 				assert(this->ni->reftype1 == NR_ENGINE);
 				EngineID engine = this->ni->ref1;
-				DrawVehicleEngine(r.left, r.right, (r.left + r.right) / 2, (r.top + r.bottom) / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
@@ -599,7 +601,7 @@ private:
 				return STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE;
 
 			case WID_N_VEH_NAME:
-				SetDParam(0, engine);
+				SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
 				return STR_NEWS_NEW_VEHICLE_TYPE;
 
 			default:
@@ -1135,9 +1137,6 @@ static void DrawNewsString(uint left, uint right, int y, TextColour colour, cons
 }
 
 struct MessageHistoryWindow : Window {
-	static const int top_spacing;    ///< Additional spacing at the top of the #WID_MH_BACKGROUND widget.
-	static const int bottom_spacing; ///< Additional spacing at the bottom of the #WID_MH_BACKGROUND widget.
-
 	int line_height; /// < Height of a single line in the news history window including spacing.
 	int date_width;  /// < Width needed for the date part.
 
@@ -1154,15 +1153,15 @@ struct MessageHistoryWindow : Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			this->line_height = FONT_HEIGHT_NORMAL + 2;
+			this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 			resize->height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */
 			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
-			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
+			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width + WidgetDimensions::scaled.hsep_wide;
 
-			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
+			size->height = 4 * resize->height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 		}
 	}
@@ -1185,17 +1184,15 @@ struct MessageHistoryWindow : Window {
 		}
 
 		/* Fill the widget with news items. */
-		int y = r.top + this->top_spacing;
 		bool rtl = _current_text_dir == TD_RTL;
-		uint date_left  = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width : r.left + WD_FRAMERECT_LEFT;
-		uint date_right = rtl ? r.right - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT + this->date_width;
-		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT + ScaleFontTrad(5);
-		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT - ScaleFontTrad(5) : r.right - WD_FRAMERECT_RIGHT;
+		Rect news = r.Shrink(WidgetDimensions::scaled.framerect).Indent(this->date_width + WidgetDimensions::scaled.hsep_wide, rtl);
+		Rect date = r.Shrink(WidgetDimensions::scaled.framerect).WithWidth(this->date_width, rtl);
+		int y = news.top;
 		for (int n = this->vscroll->GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
-			DrawString(date_left, date_right, y, STR_SHORT_DATE);
+			DrawString(date.left, date.right, y, STR_SHORT_DATE);
 
-			DrawNewsString(news_left, news_right, y, TC_WHITE, ni);
+			DrawNewsString(news.left, news.right, y, TC_WHITE, ni);
 			y += this->line_height;
 
 			ni = ni->prev;
@@ -1220,7 +1217,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == nullptr) return;
 
-			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WD_FRAMERECT_TOP); n > 0; n--) {
+			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WidgetDimensions::scaled.framerect.top); n > 0; n--) {
 				ni = ni->prev;
 				if (ni == nullptr) return;
 			}
@@ -1234,9 +1231,6 @@ struct MessageHistoryWindow : Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_MH_BACKGROUND);
 	}
 };
-
-const int MessageHistoryWindow::top_spacing = WD_FRAMERECT_TOP + 4;
-const int MessageHistoryWindow::bottom_spacing = WD_FRAMERECT_BOTTOM;
 
 static const NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),

@@ -211,6 +211,8 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}כ"ס
 STR_UNITS_POWER_METRIC                                          :{COMMA}כ"ס
 STR_UNITS_POWER_SI                                              :{COMMA}קילו וואט
 
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}ק"ג
@@ -323,6 +325,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :קיבולת ס
 STR_SORT_BY_RANGE                                               :טווח
 STR_SORT_BY_POPULATION                                          :אכלוסיה
 STR_SORT_BY_RATING                                              :דרוג
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :סה"כ רווח שנה שעברה
 
 # Group by options for vehicle list
 
@@ -388,10 +391,10 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :הגדרות
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :הגדרות סקריפטים של משחק/שחקני מחשב
+STR_SETTINGS_MENU_AI_SETTINGS                                   :הגדרות בינה מלאכותית
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :הגדרות GRF חדש
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :אפשרויות שקיפות
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :שמות ערים
@@ -942,36 +945,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :אחר...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :לארי גאורגי (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איראני (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :רובל רוסי (RUB)
-
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :סע בצד שמאל
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :סע בצד ימין
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}שמות הערים
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}בחר סגנון של שמות הערים
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :אנגלית
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :צרפתית
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :גרמנית
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :אנגלית
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :אמריקאי-לטיני
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :מצחיק
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :שוודית
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :הולנדית
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :פינית
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :פולנית
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :סלובקית
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :נורבגית
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :הונגרית
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :אוסטרית
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :רומנית
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :צ'כית
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :שווצרית
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :דנית
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :טורקית
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :איטלקית
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :רומאית
+STR_GAME_OPTIONS_CURRENCY_INR                                   :רופי הודי (INR)
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
@@ -986,6 +960,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :כל 12 חוד�
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}שפה
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}בחר את שפת הממשק
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% הסתיים)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}מסך מלא
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}סמן תיבה זו כדי לשחק OpenTTD על כל המסך
@@ -993,20 +968,21 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}סמן �
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
+
+
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}גודל ממשק
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}בחר את ממשק גודל העצם לשימוש
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :רגיל
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :גודל כפול
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :גודל מרובע
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}גרפיקה
 
-
-
-
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}עדכוני סמך מעל 60Hz עלולים להשפיע על ביצועים.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
@@ -1050,8 +1026,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור
 STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURRENCY_LONG}{LTBLUE} :תצוגה מקדימה
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ליש"ט (£) במטבע שלך
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{ORANGE}{COMMA}{LTBLUE} : מספר מתחרים מירבי
 
 STR_NONE                                                        :ללא
 STR_FUNDING_ONLY                                                :מימון בלבד
@@ -1102,6 +1076,12 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :אקלים ממוזג
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :אקלים קר
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :אקלים טרופי
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :ארץ הצעצועים
+
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :שטוח ביותר
 STR_TERRAIN_TYPE_FLAT                                           :שטוח
@@ -1110,6 +1090,7 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :הררי
 STR_TERRAIN_TYPE_ALPINIST                                       :מטפס הרים
 
 ###length 4
+STR_CITY_APPROVAL_LENIENT                                       :רחמני
 STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין
 STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
@@ -1121,6 +1102,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}הגדר
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}מחרוזת סינון:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}הרחב הכל
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}צמצם הכל
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}אפס את כל הערכים
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(אין הסבר זמין)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}ערך ברירת מחדל: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}סוג הגדרה: {ORANGE}{STRING}
@@ -1129,6 +1111,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :הגדרת מש
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :הגדרת משחק (מאוחסנת במשחק שמור; משפיעה על המשחק הנוכחי בלבד)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :הגדרת חברה (מאוחסנת במשחק שמור; משפיעה על משחקים חדשים בלבד)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :הגדרת חברה (מאוחסנת במשחק שמור; משפיעה על החברה הנוכחית בלבד)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}זהירות!
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}קטגוריה:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}סוג:
@@ -1175,6 +1158,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :סכום הלוואה ראשוני: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :סכום מירבי שחברה יכולה ללוות (מבלי לקחת בחשבון אינפלציה)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :ריבית: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :ריבית עבור הלוואות; שולטת גם באינפלציה אם זו מאופשרות
@@ -1191,8 +1175,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :שלוט באי
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :מכפיל עבור סובסידיה: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :קבע כמה משולם עבור חיבורים מסובסדים
 
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :זמן סובסידיה: {STRING}
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :אין סובידיות
 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :עלויות בנייה: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :קבע את רמת העלויות של בנייה ורכישה
@@ -1218,6 +1204,8 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :אפשר שינ
 STR_CONFIG_SETTING_CATCHMENT                                    :אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :אזורי אגירה בגדלים שונים עבור סוגים שונים של תחנות ונמלי תעופה
 
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :תחנות החברה יכולות לשרת תעשיות עם תחנות ניטרליות צמודות: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :כאשר מופעל, תעשיות עם תחנות צמודות (כגון אסדות נפט) עשויות להיות משורתות גם על ידי תחנות בבעלות החברה שנבנו בקרבת מקום. כאשר מושבת, ניתן לשרת תעשיות אלו רק על ידי התחנות הצמודות שלהן. כל תחנות של החברה הסמוכות לא יוכלו לשרת אותן, וגם התחנה המצורפת לא תשרת שום דבר אחר מלבד התעשייה
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :אפשר הסרה של יותר כבישים גשרים וכו' שבבעלות עיירות: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :הקל על הסרת מבנים ותשתיות בבעלות עיירות
@@ -1339,6 +1327,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}שינו
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :תחזוקת תשתיות: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :כאשר מאופשר, תשתיות גורמות לעלויות תחזוקה. העלות גדלה באופן שהוא מעבר ליחסי לעומת גודל הרשת, וכך משפיע יותר על חברות גדולות מאשר על חברות קטנות
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :בחר צבע התחלתי לחברה
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :בטל התיישנות נמלי תעופה: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :אפשור הגדרה זו גורם לכל סוג נמל תעופה להישאר זמין לעד אחרי השקתו
@@ -1409,7 +1398,9 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :מזקקות נ
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :גובה קו השלג: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :בחר מהו הגובה בו מתחיל השלג באקלים קר. שלג משפיע גם על הדרישות ביצירת תעשייה וגידול ערים
 
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :כיסוי שלג: {STRING}
 
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :כיסוי מדבר: {STRING}
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :רמת חספוס השטח: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(בורא הקרקע בלבד) בחר את תדירות הגבעות: למשטחים חלקים פחות גבעות שמפוזרות במרחב. למשטחים מחוספסים יש הרבה גבעות, שעלולות להיראות מחזוריות
@@ -1434,6 +1425,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :משופר
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :כלי רכב: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :בחר את צד הנסיעה
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :סע בצד שמאל
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :סע בצד ימין
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :סיבוב מפת גבהים: {STRING}
 ###length 2
@@ -1462,6 +1457,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ירוק כהה
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :סגול
 
 ###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :ירוק לאדום (מקורי)
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :התנהגות גלילת תצוגה: {STRING}
 ###length 4
@@ -1564,6 +1560,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :תן צבע ש�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{STRING}: שמור על כלי הבנייה פעילים לאחר השימוש
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :השאר את כלי הבנייה עבור גשרים, מנהרות וכו' פתוחים אחרי השימוש
 
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :הסר רמזורים אוטומטית במהלך בניית פסי רכבת: {STRING}
 
 ###setting-zero-is-special
 
@@ -1607,7 +1604,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :מנע הפעל
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :אפשור הגדרה זו הופך בניית רכבות לבלתי אפשרית עבור שחקן מחשב
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{STRING} :מנע הפעלת אוטובוסים/משאיות ע”י שחקני המחשב
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :אפשור הגדרה זו הופך בניית רכבי כביש לבלתי אפשרית עבור שחקן מחשב
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :אפשור הגדרה זו הופך בניית כלי רכב לבלתי אפשרית עבור שחקן מחשב
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{STRING} :מנע הפעלת כלי טייס ע”י שחקני המחשב
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :אפשור הגדרה זו הופך בניית מטוסים לבלתי אפשרית עבור שחקן מחשב
@@ -1706,13 +1703,18 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{STRING} :הצ�
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :השנה בה הודעות העיתונות מודפסות בצבע. לפני שנה זו הן מודפסות בשחור-לבן.
 STR_CONFIG_SETTING_STARTING_YEAR                                :{STRING} :שנת התחלה
 
+STR_CONFIG_SETTING_ENDING_YEAR                                  :ניקוד סוף שנה: {STRING}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :לעולם לא
 
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :סוג כלכלה: {STRING}
 ###length 3
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :מקורי
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :אפשר קניית מניות מחברות אחרות: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :כאשר מאופשר, מתיר קנייה ומכירה של מניות של חברות. מניות יהיו זמינות רק עבור חברות המגיעות לגיל מסוים
 
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :גיל מינימלי לחברה לסחור במניותיה: {STRING}
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :אחוז הרווח מקטע נסיעה לתשלום במערכות הזנה: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :אחוז הרווח הניתן לקטעי ביניים במערכות הזנה, דבר הנותן שליטה מוגברת על ההכנסות
@@ -1733,6 +1735,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :רמזורי נ
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :הכל
 
 ###length 2
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :כל הרמזורים
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :מתווה דרך לערים חדשות: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :פריסה עבור רשת הכבישים של עיירות
@@ -1759,10 +1762,13 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :מותר
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :מותר, מתווה עיר מותאם אישית
 
 ###length 2
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :לינארי
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :מיקום עצים במהלך המשחק: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :שלוט בהופעה אקראית של עצים במהלך המשחק. זה עלול להשפיע על תעשיות המסתמכות על צמיחת עצים, לדוגמא מנסרות
 ###length 4
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :גדל ומתפשט בכל מקום
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :אל תגדל, אל תתפשט  {RED}(שובר מנסרות)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{STRING} :מיקום הסרגל העיקרי
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :מיקום אופקי של סרגל הכלים הראשי בראש המסך
@@ -1791,6 +1797,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :פי 2
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :פי 4
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :פי 8
 
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :הגבל את הרזולוציה המקסימלית לשימוש עבור ספרייטים. הגבלת רזולוציית הספרייט תמנע משימוש בגרפיקה ברזולוציה גבוהה גם כאשר היא זמינה. זה יכול לעזור לשמור על מראה המשחק אחידה בעת שימוש בשילוב של קבצי GRF עם ובלי גרפיקה ברזולוציה גבוהה.
 ###length 3
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{STRING} : קצב ההתרחבות של העיירות
@@ -1915,7 +1922,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :החלפת כי
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :אפשר לרכבות להחליף כיוון ברמזור, אם הן חיכו שם זמן ממושך
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(מומלץ)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(מומלץ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 
@@ -1940,6 +1947,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}הזיכ
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE} הקצאת {BYTES} בתים של מטמון נכשלה. המטמון הופחת ל-{BYTES} בתים. דבר זה יפחית את הביצועים של OpenTTD. כדי להפחית את דרישות הזיכרון ניתן לנסות לבטל את הגרפיקה ב-32bbp ו/או רמות ה-זום-אין
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... לא נמצא כרטיס מסך תואם, האצת חומרה מושבתת
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1956,7 +1964,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}טבלת
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}הגדרות
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}הגדרות סקריפטים של משחק/שחקני מחשב
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK} הגדרות סקריפטי משחק
 STR_INTRO_QUIT                                                  :{BLACK}יציאה
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
@@ -1976,7 +1984,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}הצג �
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}הצגת הגדרות
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}הצג הגדרות שדרוג גראפי
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK} הצג הגדרות סקריפטים של משחק/שחקני מחשב
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}הצג הגדרות בינה מלאכותית
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}צא מ-'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}חסרים {NUM} ספרייט עבור גרפיקות הבסיס שנבחרו. אנא בדוק עדכונים לערכה זו.
@@ -2006,13 +2014,8 @@ STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}שנה 
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}שנה את השנה הנוכחית
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}אפשר שינוי ערכי התפוקה: {ORANGE}{STRING}
 
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :אקלים ממוזג
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :אקלים קר
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :אקלים טרופי
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :ארץ הצעצועים
-
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - ערכת צבעים
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}הצג הגדרות צבע כלליות
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}הצג הגדרות צבע לרכבות
@@ -2108,6 +2111,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK} שנה 
 
 # Matches ServerGameType
 ###length 3
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :פומבי
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}משחק רשת
@@ -2140,9 +2144,11 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}גרס�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}כתובת השרת: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}תאריך התחלה: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}תאריך נוכחי: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}סקריפט משחק: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}מוגן בסיסמה!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}שרת מנותק
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}שרת מלא
+STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}השרת ישן מדי
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}גרסה לא תואמת
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}אי התאמת קבצים גרפיים
 
@@ -2165,6 +2171,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}השם �
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}קבע סיסמה
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}ראות
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} לקוח{P "" "ות"}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מספר מקסימלי של לקוחות:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספר משתתפים מירבי
@@ -2200,12 +2207,31 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת משתתפים
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}שם השרת שאתה משחק בו
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}האם אנשים אחרים יוכלו לראות את השרת שלך ברשימה הפומבית
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}שחקן
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}פעולות ניהוליות לביצוע עבור לקוח זה
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}שלח הודעה לשחקן הזה
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}שלח הודעה לכל השחקנים של החברה הזאת
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :צופים
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(חברה חדשה)
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}זה מארח המשחק
 
 # Matches ConnectionType
 ###length 5
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}משתתפים מרוחקים לא יכולים להתחבר
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}מאחורי NAT
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :חסום (באן)
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :שחרר סיסמה
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}האם אתה בטוח שברצונך להוציא את '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}אתה בטוח שברצונך מחק את החברה '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}אתה בטוח שברצונך לאפס את סיסמת החברה '{COMPANY}'?
 
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}השתמש ב"relay"?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}לא
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}כן, זה
 
 STR_NETWORK_SPECTATORS                                          :צופים
 
@@ -2245,6 +2271,8 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}הקשר
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}טעינת משחק מקובץ נכשלה
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}הפעלת השרת נכשלה
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}שגיאת התקשרות
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}שם השחקן שלך לא מוגדר, השם יכול להיות מוגדר בראש חלון "Multiplayer"
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}שם השרת שלך לא הוגדר, אפשר להגדיר את שם השרת בחלק העליון של מסך ה"Multiplatyer"
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}אי התאמה לגרסת השרת
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}ססמה שגוייה
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}השרת מלא
@@ -2291,11 +2319,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :המשחק עד
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :המשחק עדיין מופסק ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :המשחק עדיין מופסק ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :משחק עדיין מושהה ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :המשחק עדיין מושהה ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :המשחק הומשך ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :מספר שחקנים
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :מתחבר ללקוחות
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ידני
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :סקריפט משחק
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :מחכה לעדכון גרף קישור
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :עוזב
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :הצטרף למשחק {STRING} ***
@@ -2308,6 +2338,9 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :{STRING} שינ
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}השרת סגר את המשחק
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}השרת מופעל מחדש...{}אנא המתן...
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}הרשמת שרת נכשלה
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE} שרת חדש עם אותו קוד-הזמנה כבר רשם את עצמו, מעביר למצב משחק "מקומי"
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}השרת שלך לא מאפשר חיבורים מרוחקים
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}הורדת תוכן
@@ -2384,6 +2417,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}כן, הורד את הגרפיקה
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}לא, צא מ-OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}הורדת הגרפיקה נכשלה.{}אנא הורד את הגרפיקה ידנית.
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}הגדרות שקיפות
@@ -2409,6 +2443,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}רווי
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}העמסת יתר
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}הדגשת שטח הכיסוי
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}מופסק
@@ -2426,6 +2462,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}חבר �
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}בנה נקודת ציון נפרדת
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}כרגע מבוטל מכייוון שאין רכבים זמינים לתשתית הזאת
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :בניית מסילות
@@ -2476,6 +2513,7 @@ STR_STATION_CLASS_WAYP                                          :נקודות ד
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}בחירת רמזורים
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK} החלף הצגת רמזורים מתקדמים
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}רמזור בלוק (מכאניים){}זהו הרמזורי הפשוט ביותר, מאפשר לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}רמזור כניסה (סמפור){}ירוקים כל עוד יש לפחות רמזור יציאה ירוק מקטע המסילה העוקב. אחרת מראה אדום
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}רמזור יציאה (סמפור){} מתנהג בדומה לרמזור הבלוק, אבל נחוץ להצגת הצבע הנכון ברמזורי כניסה ורמזורים משולבים
@@ -2497,8 +2535,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}הגדל
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}בחר סוג הגשר עליו תעבור המסילה
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}בחירת גשר לכביש
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} בחירת סוג הגשר – בחר את הסוג שברצונך לבנות
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :גשר תלוי, ברזל
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :גשר קורות, ברזל
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :גשר זיז, פלדה
@@ -2530,6 +2566,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}בנה �
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}שנה מצב בנה/הסר כבישים
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}שנה מצב בנה\מחק למבני חשמלית
 
+STR_ROAD_NAME_ROAD                                              :דרך
+STR_ROAD_NAME_TRAM                                              :רכבת קלה
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}כיוון המוסך
@@ -2617,6 +2655,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}נטע עצים מסוג אקראי במקום זה. Shift בורר בניה/הצגה של הערכת עלות
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}עצים אקראיים
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}שתול עצים באופן אקראי על פני השטח
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}יער
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}יצירת טופוגרפיה
@@ -2669,10 +2708,12 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ממן �
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}בחר תעשיה מהרשימה
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :תעשיות אקראיות
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}פזר על המפה תעשיות באופן אקראי
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}צור תעשיות אקראיות
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{YELLOW}{CURRENCY_LONG}{BLACK} :מחיר
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}צפה
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}בנה
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}ממן
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}הסר את כל התעשיות שכרגע על המפה
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}שרשרת תעשיות עבור תעשיה {STRING}
@@ -2714,8 +2755,10 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK} :מקבל {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({1:STRING} {0:COMMA}/8 )
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}סוג מסילה: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}סוג רכבת קלה: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}מגבלת מהירות על המסילה: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}הגבלת מהירות בכביש: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}הגבלת מהירות לרכבת קלה: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :סלעים
@@ -2819,6 +2862,7 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}קצב �
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}קצב סימולציה: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}מספר פעימות משחק לשניה
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}קצב רענון: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}מספר פריימים של וידאו המעובדים בשניה
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK} כמה מהר המשחק כרגע רץ, בהשוואה למהירות הצפוייה בקצב סימולציה רגיל.
 STR_FRAMERATE_CURRENT                                           :נוכחי{WHITE}
@@ -2838,16 +2882,20 @@ STR_FRAMERATE_DRAWING                                           :{WHITE}עיבו
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} תצוגות עולם:
 STR_FRAMERATE_VIDEO                                             :{BLACK}פלט וידאו:
 STR_FRAMERATE_SOUND                                             :{WHITE} ערבוב צליל:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   סקריפט משחק:
 
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :לולאת משחק
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :טיפול במטען
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :פעימות רכבת
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :פעימות כלי רכב
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :פעימות עולם
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :השהיית גרף קשרים
 STR_FRAMETIME_CAPTION_DRAWING                                   :עיבוד גרפיקה
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :עיבוד תצוגת עולם
 STR_FRAMETIME_CAPTION_VIDEO                                     :פלט וידאו
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :סה"כ סקריפטי משחק ובינה מלאכותית
+STR_FRAMETIME_CAPTION_AI                                        :בינה מלאכותית {NUM} {STRING}
 
 
 # Save/load game/scenario
@@ -2873,6 +2921,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין �
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}מחרוזת סינון:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}החלף קובץ
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}הכנס שם לשמירה
 
@@ -2882,15 +2931,41 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}:גוד�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}בחר את גודל המפה במשבצות. מספר המשבצות הזמינות תהיה קצת קטנה יותר.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK} :מספר העיירות
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}שמות הערים
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}בחר סגנון של שמות הערים
 STR_MAPGEN_DATE                                                 :{BLACK} :תאריך
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK} :מספר התעשיות
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :מחולל פני שטח
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}הפסגה הגבוהה ביותר:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}הקטן את הגובה המרבי של הפסגה הגבוהה ביותר במפה באחד
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK} :כמות ימים/אגמים
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK} :כמות ימים/אגמים
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}נהרות:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} :חלקלקות
 STR_MAPGEN_VARIETY                                              :{BLACK}הפצה מגוונת:
 STR_MAPGEN_GENERATE                                             :{WHITE}יצירת קרקע
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :אנגלית
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :צרפתית
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :גרמנית
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :אנגלית
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :אמריקאי-לטיני
+STR_MAPGEN_TOWN_NAME_SILLY                                      :מצחיק
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :שוודית
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :הולנדית
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :פינית
+STR_MAPGEN_TOWN_NAME_POLISH                                     :פולנית
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :סלובקית
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :נורבגית
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :הונגרית
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :אוסטרית
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :רומנית
+STR_MAPGEN_TOWN_NAME_CZECH                                      :צ'כית
+STR_MAPGEN_TOWN_NAME_SWISS                                      :שווצרית
+STR_MAPGEN_TOWN_NAME_DANISH                                     :דנית
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :טורקית
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :איטלקית
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :רומאית
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK} :שולי המפה
@@ -2909,6 +2984,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK} :שם �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}גודל:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} על {NUM}
 
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE} כיסוי שלג באחוזים
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}שנה את שנת הפתיחה
 
 # SE Map generation
@@ -2980,6 +3056,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}גרסא
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}גירסה מינימלת תואמת: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{SILVER}{STRING}{BLACK}: פלטת צבעים
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :ברירת מחדל (D)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{SILVER}{STRING}{BLACK} :פרמטריֿם
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}לא קיים מידע
@@ -3027,6 +3104,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}הספר
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}עבור לספרייט הקודם, כאשר נדלג על כל הספרייטים המיוחדים ונחזור מתחילת הרשימה לסופה
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}הייצוג של הספרייט הנבחר. בעת ציור הספרייט, נתעלם מהיישור שלו
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}הזז את הספרייט, תוך שינוי ההיסט של צירי ה-X וה-Y. לחץ עם ctrl כדי להזיז את הספרייט שמונה יחידות בבת אחת
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}איפוס יחסית
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}איפוס ההיסטים היחסיים הנוכחיים
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}היסט X: {NUM}, היסט Y: {NUM} (מוחלט)
@@ -3041,7 +3122,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}אזהרה: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{SILVER}{STRING}{RED}: שגיאה
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{SILVER}{STRING}{RED} :שגיאה חמורה
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}התרחשה שגיאה קריטית ב-NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} לא יעבוד עם גרסת ה-TTDPatch שדווחה ע"י OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} היא עבור גרסת {STRING} של TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} נועד להיות בשימוש יחד עם {STRING}
@@ -3188,6 +3268,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}שחד 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} מטרות
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}מטרות גלובליות
+STR_GOALS_SPECTATOR                                             :מטרות גלובליות
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- אין -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3330,6 +3411,8 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}הכנסה
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}הוצאות תפעול
 
 
 ###length 13
@@ -3339,6 +3422,8 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}עלות 
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}עלות תפעול רכבים
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD} עלות הפעלת כלי טייס
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD} עלות הפעלת כלי שייט
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}כלי טייס
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}כלי שייט
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}ריבית על ההלוואה
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}אחר
 
@@ -3348,6 +3433,7 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}חשבו
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}הלוואה
 STR_FINANCES_MAX_LOAN                                           :{BLACK}{CURRENCY_LONG}{WHITE}: הלוואה מירבית
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}לווה {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}הגדל את ההלוואה. Ctrl+לחיצה מלווה ככל שניתן
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}החזר {CURRENCY_LONG}
@@ -3384,6 +3470,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}שנה �
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}מקם מחדש את מטה החברה עבור 1% משווי החברה. Shift+לחיצה מציג הערכת עלות ללא מיקום מחדש של המטה
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}פרטים
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}צפה בספירות מפורטות של תשתיות
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}הענק כסף
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}פנים חדשות
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}בחר פנים חדשות למנהל
@@ -3420,7 +3507,14 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}תעשיות
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- אין -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} ו{NUM} ועוד...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}רשימת תעשיות - לחץ על שם כדי להתמקד בתעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התעשייה
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}מטען שיוצר: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :כל סוגי המטען
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :אין
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3430,6 +3524,8 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}מקד �
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}רמת הפקה: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}התעשייה הכריזה על סגירה מתקרבת!
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}דורש: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}דורש:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3462,6 +3558,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}שלח �
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :החלף כלי רכב
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :שלח לטיפול
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}{1:CURRENCY_LONG} :בשנה שעברה{NBSP} {0:CURRENCY_LONG}) :רווח השנה
+STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :שלח רכבת למוסך
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :שלח כלי רכב למוסך
@@ -3492,6 +3589,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}קבוצ
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}לחץ ליצירת קבוצה חדשה
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}מחק את הקבוצה שנבחרה
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}שנה את שם הקבוצה
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}שינוי צבע הקבוצה שנבחרה
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}לחץ על מנת להגן על הכלים בקבוצה בפני החלפה אוטומטית
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}מחק קבוצה
@@ -3519,6 +3617,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :כלי רכב �
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :רכבות זמינות
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :כלי רכב חדשים
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :כלי שייט חדשים
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :כלי טייס חדש
 
@@ -3544,6 +3643,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}כוח �
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}טווח: {GOLD}{COMMA} משבצות
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}סוג כלי טיס: {GOLD}{STRING}
 
+###length 3
+
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK} בחירת קרונות - לחץ על קרון לקבלת מידע
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}רשימת כלי הרכב - בחר כלי רכב למידע
@@ -3557,6 +3658,8 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}רכוש
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}רכוש כלי טייס
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}קנה והתאם כלי שייט
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}קנה והתאם כלי טייס
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}רכוש את קרון הרכבת שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
@@ -3565,6 +3668,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}רכוש
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}רכוש את כלי הטייס שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}לרכוש ולאבזר את הרכבת הנבחרת. לחיצה+מקש Shift תציג עלות משוערת מבלי לבצע רכישה בפועל
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}שנה שם
@@ -3693,6 +3797,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}הודע
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}?חדש/ה! האם אתה מעוניין לבחון כלי זה באופן בלעדי לפני הוצאתו לשוק {STRING} זה עתה סיימנו את תכנונו של
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :קטר רכבת
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :קטר רכבת חשמלי
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פס
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
 
@@ -3740,6 +3845,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}החלף
 STR_REPLACE_ENGINES                                             :מנועים/קטרים
 STR_REPLACE_WAGONS                                              :קרונות
 STR_REPLACE_ALL_RAILTYPE                                        :כלל הרכבות
+STR_REPLACE_ALL_ROADTYPE                                        :כל הכלי רכב
 
 ###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}בחר את סוג המסילה עבורה ברצונך להחליף קטרים
@@ -3751,6 +3857,8 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :רכבות חש
 STR_REPLACE_MONORAIL_VEHICLES                                   :רכבות חד-פס
 STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס-מגנטי
 
+STR_REPLACE_ROAD_VEHICLES                                       :רכבי כביש
+STR_REPLACE_TRAM_VEHICLES                                       :רכבות קלות
 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת
 
@@ -3758,6 +3866,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}מרכז תצוגה ראשית על מיקום הכלי טייס. לחיצה כפולה תעקוב אחר הכלי טייס בתצוגה הראשית. Ctrl+Click פותחת נקודת מבט חדשה במיקום הכלי טייס
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}.שלח את הרכבת למוסך
@@ -3774,6 +3883,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}פעול
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}הכרח את הרכבת להמשיך מבלי להמתין לרמזור
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}שנה את כיוון הנסיעה של הרכבת
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}הכרח את כלי הרכב להסתובב
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}מרכז תצוגה ראשית ביעד ההזמנה. Ctrl+Click פותח נקודת מבט חדשה במיקום יעד ההזמנה
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}התאם את הרכבת לנשיאת משא שונה
@@ -3794,6 +3904,8 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}הצג �
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}הצג פרטי כלי טייס
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}פעולת כלי רכב- לחץ כדי לעצור או להפעיל את כלי הרכב
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}פעולת כלי שייט - לחץ כדי לעצור או להפעיל את כלי השייט
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}טעינה / פריקה
@@ -3812,6 +3924,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {1:VEL
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}בדרך אל {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}קבלת שירות ב{DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}לא יכול להגיע ל {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 ###length 2
@@ -4174,12 +4287,14 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלון הדה-באג זמין רק עבור השרת
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}הגדרות משחק/בינה מלאכותית
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE} הגדרת בינה מלאכותית
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}הגדרות סקריפטי משחק
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}סקריפט המשחק אשר יטען במשחק הבא
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}שחקני המחשב אשר יטענו במשחק הבא
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי
 STR_AI_CONFIG_RANDOM_AI                                         :בינה מלאכותית אקראית
 STR_AI_CONFIG_NONE                                              :(ללא)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{ORANGE}{COMMA}{LTBLUE} : מספר מתחרים מירבי
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}הזז מעלה
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}הזז את ה-AI הנבחר מעלה ברשימה
@@ -4189,8 +4304,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}הזז �
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}סקריפט משחק
 STR_AI_CONFIG_AI                                                :{SILVER}שחקני מחשב
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}בחר {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :שחקן מחשב
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :סקריפט משחק
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}טען סקריפט נוסף
@@ -4212,11 +4325,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר 
 STR_AI_LIST_CANCEL                                              :{BLACK}בטל
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה את התסריט
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}צלם מסך
+STR_SCREENSHOT_SCREENSHOT                                       :תמונת מסך רגילה
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}זום ברירת מחדל לצילום מסך
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}צילום מסך של כל המפה
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} פרמטרים
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :שחקן מחשב
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :סקריפט משחק
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4352,6 +4467,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... אי
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... דרושים {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}לא ניתן להחזיר את ההלוואה...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}לא ניתן למסור כסף שנלווה מהבנק...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}לא ניתן לתת כסף לחברה הזאת...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}לא ניתן לקנות את החברה...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}לא ניתן לבנות את מטה החברה באתר זה...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}אין באפשרותך לקנות 25% ממניות חברה זו...
@@ -4377,6 +4493,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... יו
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}לא ניתן ליצור תעשיות...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}לא ניתן לבנות {STRING} כאן...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}לא ניתן לבנות כאן תעשיה מסוג זה...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}לא יכול להקים תעשייה...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... קרוב מידי לתעשיה אחרת
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... יש להקים עיר קודם
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ניתן רק אחד בכל עיר
@@ -4391,6 +4508,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... יע
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... ניתן/ת לבנייה רק מעל לקו השלג
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... ניתן/ת לבנייה רק מתחת לקו השלג
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}לא היו מקומות מתאימים בשביל התעשייה הזאת
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}אין מיקומים מתאימים לתעשיות '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}שנה את פרמטרי יצירת המפה לקבלת מפה טובה יותר
 
@@ -4478,6 +4596,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :סוג מוסך
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ארוכה מידי לאחר ביצוע ההחלפה {VEHICLE}
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}לא יושמו כללים להחלפה/חידוש אוטומטיים
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(הגבלת כסף)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}רכב חדש לא יכול לנשוא{STRING}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}שילוב מסילות בלתי אפשרי
@@ -4505,6 +4624,8 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}לא ניתן להסיר מסילת רכבת חשמלית מכאן...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... אין כביש
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... אין רכבת קלה
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}לא יכול לשנות סוג רכבת קלה כאן...
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}אין רכבת קלה מתאימה
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}לא ניתן לבנות כאן תעלה...
@@ -4551,6 +4672,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}עצם �
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... מטה חברה חוסם את הדרך
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}לא ניתן לקנות שטח זה...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... שטח זה כבר בבעלותך!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... הגעת למגבלת בניית האובייקטים
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}לא ניתן ליצור קבוצה...
@@ -4621,6 +4743,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא ניתן לשנות את מרווחי הטיפול...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... הרכב נהרס
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}כלי תחבורה לא יהיו זמינים
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}שנה הגדרות NewGRF
@@ -5079,6 +5202,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING.gen} {0:TOWN}
 
 ###length 2

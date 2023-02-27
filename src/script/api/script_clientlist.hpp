@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_clientlist.hpp List all the TODO. */
+/** @file script_clientlist.hpp List all the clients in a game or in a company. */
 
 #ifndef SCRIPT_CLIENTLIST_HPP
 #define SCRIPT_CLIENTLIST_HPP
@@ -32,7 +32,7 @@ public:
 class ScriptClientList_Company : public ScriptList {
 public:
 	/**
-	 * @param company_id The company to list clients for.
+	 * @param company The company to list clients for.
 	 */
 	ScriptClientList_Company(ScriptCompany::CompanyID company);
 };

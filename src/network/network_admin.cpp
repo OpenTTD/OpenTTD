@@ -178,8 +178,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_uint8 (_settings_game.game_creation.landscape);
 	p->Send_uint32(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
-	p->Send_uint16(MapSizeX());
-	p->Send_uint16(MapSizeY());
+	p->Send_uint16(Map::SizeX());
+	p->Send_uint16(Map::SizeY());
 
 	this->SendPacket(p);
 

@@ -59,6 +59,15 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
  */
 bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl, byte colour_fmt, byte container_format)
 {
+	/*
+	 * Original sprite height was max 255 pixels, with 4x extra zoom => 1020 pixels.
+	 * Original maximum width for sprites was 640 pixels, with 4x extra zoom => 2560 pixels.
+	 * Now up to 5 bytes per pixel => 1020 * 2560 * 5 => ~ 12.5 MiB.
+	 *
+	 * So, any sprite data more than 64 MiB is way larger that we would even expect; prevent allocating more memory!
+	 */
+	if (num < 0 || num > 64 * 1024 * 1024) return WarnCorruptSprite(file, file_pos, __LINE__);
+
 	std::unique_ptr<byte[]> dest_orig(new byte[num]);
 	byte *dest = dest_orig.get();
 	const int64 dest_size = num;
@@ -92,7 +101,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 
 	if (num != 0) return WarnCorruptSprite(file, file_pos, __LINE__);
 
-	sprite->AllocateData(zoom_lvl, sprite->width * sprite->height);
+	sprite->AllocateData(zoom_lvl, static_cast<size_t>(sprite->width) * sprite->height);
 
 	/* Convert colour depth to pixel size. */
 	int bpp = 0;
@@ -168,13 +177,14 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 			} while (!last_item);
 		}
 	} else {
-		if (dest_size < sprite->width * sprite->height * bpp) {
+		int64 sprite_size = static_cast<int64>(sprite->width) * sprite->height * bpp;
+		if (dest_size < sprite_size) {
 			return WarnCorruptSprite(file, file_pos, __LINE__);
 		}
 
-		if (dest_size > sprite->width * sprite->height * bpp) {
+		if (dest_size > sprite_size) {
 			static byte warning_level = 0;
-			Debug(sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite->width * sprite->height * bpp, file.GetSimplifiedFilename(), file_pos);
+			Debug(sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite_size, file.GetSimplifiedFilename(), file_pos);
 			warning_level = 6;
 		}
 

@@ -196,6 +196,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}kp
 STR_UNITS_POWER_METRIC                                          :{COMMA}kp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
@@ -286,7 +287,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pozez ob
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Diafana konstrukturi
 
@@ -472,11 +473,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 ###length 42
 
-###length 2
-
-
-###length 21
-
 
 # Autosave dropdown
 ###length 5
@@ -497,9 +493,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
-
 # Custom currency window
-
 
 
 
@@ -536,6 +530,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 
 ###length 4
 
+###length 4
+
 ###length 7
 
 ###length 4
@@ -556,6 +552,7 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 ###length 3
 
+###setting-zero-is-special
 
 
 
@@ -645,6 +642,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
 ###length 3
 
+
+###length 2
 
 ###length 2
 
@@ -820,8 +819,6 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 
 # Cheat window
 
-###length 4
-
 # Livery window
 
 
@@ -905,6 +902,8 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Linkgraph legend window
 
 # Linkgraph legend window and linkgraph legend in smallmap
+
+# Linkgraph tooltip
 
 # Base for station construction window(s)
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}{CARGO_LIST}
@@ -1029,6 +1028,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NovaGRF
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
 
+###length 21
+
 # Strings for map borders at game generation
 
 
@@ -1062,6 +1063,10 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Fervoyo-tipo
 
 
 # Sprite aligner window
+
+###length 2
+
+
 
 
 # NewGRF (self) generated warnings/errors
@@ -1225,6 +1230,8 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aer
 # Vehicle availability
 ###length VEHICLE_TYPES
 
+
+###length 3
 
 ###length VEHICLE_TYPES
 
@@ -1440,14 +1447,13 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 
 
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
 
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
@@ -1565,6 +1571,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ne povas
 ###length VEHICLE_TYPES
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
+
 
 
 

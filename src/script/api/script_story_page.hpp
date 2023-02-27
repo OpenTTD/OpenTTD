@@ -202,7 +202,7 @@ public:
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page).
-	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && len(text) != 0).
+	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
 	 * @pre if type is SPET_GOAL and story_page is a global page, then referenced goal must be global.
@@ -217,7 +217,7 @@ public:
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre IsValidStoryPage(story_page).
-	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && len(text) != 0).
+	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
 	 * @pre if type is SPET_GOAL and story_page is a global page, then referenced goal must be global.
@@ -315,6 +315,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_PUSH element parameters.
 	 * @param colour The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
 	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags);
@@ -322,6 +323,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_TILE element parameters.
 	 * @param colour The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
@@ -330,6 +332,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
 	 * @param colour  The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor  The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
 	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.

@@ -31,7 +31,6 @@
 #include "safeguards.h"
 
 static const uint ICON_HISTORY_SIZE       = 20;
-static const uint ICON_LINE_SPACING       =  2;
 static const uint ICON_RIGHT_BORDERWIDTH  = 10;
 static const uint ICON_BOTTOM_BORDERWIDTH = 12;
 
@@ -121,12 +120,16 @@ struct IConsoleWindow : Window
 	IConsoleWindow() : Window(&_console_window_desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
-		this->line_offset = GetStringBoundingBox("] ").width + 5;
 
 		this->InitNested(0);
 		this->truncate_timer.SetInterval(3000);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
+	}
+
+	void OnInit() override
+	{
+		this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.hsep_normal;
+		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
 	}
 
 	void Close() override
@@ -156,20 +159,20 @@ struct IConsoleWindow : Window
 
 	void OnPaint() override
 	{
-		const int right = this->width - 5;
+		const int right = this->width - WidgetDimensions::scaled.frametext.right;
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
 		int ypos = this->height - this->line_height;
 		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
 			const IConsoleLine &print = _iconsole_buffer[line_index];
 			SetDParamStr(0, print.buffer);
-			ypos = DrawStringMultiLine(5, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
+			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - WidgetDimensions::scaled.hsep_normal;
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DrawString(5, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
 		}
 

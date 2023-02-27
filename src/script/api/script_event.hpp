@@ -61,6 +61,7 @@ public:
 
 	/**
 	 * Constructor of ScriptEvent, to get the type of event.
+	 * @param type The type of event to construct.
 	 */
 	ScriptEvent(ScriptEvent::ScriptEventType type) :
 		type(type)

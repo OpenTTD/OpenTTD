@@ -28,7 +28,8 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid_map(nullptr)
 {
 	this->InitializeUnicodeGlyphMap();
-	this->height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
+	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
+	this->ascender = (this->height - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
 }
 
 /**
@@ -104,7 +105,8 @@ void SpriteFontCache::ClearGlyphToSpriteMap()
 void SpriteFontCache::ClearFontCache()
 {
 	Layouter::ResetFontCache(this->fs);
-	this->height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
+	this->height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
+	this->ascender = (this->height - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->fs))) / 2;
 }
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
@@ -118,7 +120,7 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
-	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
+	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + ScaleSpriteTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()

@@ -21,6 +21,15 @@ struct WagonOverride {
 	const SpriteGroup *group;
 };
 
+/** Flags used client-side in the purchase/autorenew engine list. */
+enum class EngineDisplayFlags : byte {
+	None        = 0,         ///< No flag set.
+	HasVariants = (1U << 0), ///< Set if engine has variants.
+	IsFolded    = (1U << 1), ///< Set if display of variants should be folded (hidden).
+	Shaded      = (1U << 2), ///< Set if engine should be masked.
+};
+DECLARE_ENUM_AS_BIT_SET(EngineDisplayFlags)
+
 typedef Pool<Engine, EngineID, 64, 64000> EnginePool;
 extern EnginePool _engine_pool;
 
@@ -44,6 +53,9 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	CompanyMask company_hidden; ///< Bit for each company whether the engine is normally hidden in the build gui for that company.
 	uint8 original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle
 	VehicleType type;           ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
+
+	EngineDisplayFlags display_flags; ///< NOSAVE client-side-only display flags for build engine list.
+	EngineID display_last_variant;    ///< NOSAVE client-side-only last variant selected.
 
 	EngineInfo info;
 

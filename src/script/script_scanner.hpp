@@ -57,7 +57,7 @@ public:
 	/**
 	 * Get the list of registered scripts to print on the console.
 	 */
-	char *GetConsoleList(char *p, const char *last, bool newest_only) const;
+	std::string GetConsoleList(bool newest_only) const;
 
 	/**
 	 * Check whether we have a script with the exact characteristics as ci.

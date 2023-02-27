@@ -124,28 +124,28 @@ struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 
 	friend struct GroundVehicle<RoadVehicle, VEH_ROAD>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
 
-	void MarkDirty();
-	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_REVENUE : EXPENSES_ROADVEH_RUN; }
-	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
-	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
-	int GetDisplaySpeed() const { return this->gcache.last_speed / 2; }
-	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
-	Money GetRunningCost() const;
+	void MarkDirty() override;
+	void UpdateDeltaXY() override;
+	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_ROADVEH_REVENUE : EXPENSES_ROADVEH_RUN; }
+	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
+	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
+	int GetDisplaySpeed() const override { return this->gcache.last_speed / 2; }
+	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed / 2; }
+	Money GetRunningCost() const override;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const { return this->state == RVSB_IN_DEPOT; }
-	bool Tick();
-	void OnNewDay();
-	uint Crash(bool flooded = false);
-	Trackdir GetVehicleTrackdir() const;
-	TileIndex GetOrderStationLocation(StationID station);
-	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	bool IsInDepot() const override { return this->state == RVSB_IN_DEPOT; }
+	bool Tick() override;
+	void OnNewDay() override;
+	uint Crash(bool flooded = false) override;
+	Trackdir GetVehicleTrackdir() const override;
+	TileIndex GetOrderStationLocation(StationID station) override;
+	ClosestDepot FindClosestDepot() override;
 
 	bool IsBus() const;
 
-	int GetCurrentMaxSpeed() const;
+	int GetCurrentMaxSpeed() const override;
 	int UpdateSpeed();
-	void SetDestTile(TileIndex tile);
+	void SetDestTile(TileIndex tile) override;
 
 protected: // These functions should not be called outside acceleration code.
 
@@ -178,7 +178,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline uint16 GetWeight() const
 	{
-		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.StoredCount()) / 16;
+		uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->cargo.StoredCount());
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {
@@ -188,6 +188,12 @@ protected: // These functions should not be called outside acceleration code.
 
 		return weight;
 	}
+
+	/**
+	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
+	 * @return Weight value in tonnes.
+	 */
+	uint16 GetMaxWeight() const override;
 
 	/**
 	 * Allows to know the tractive effort value that this vehicle will use.

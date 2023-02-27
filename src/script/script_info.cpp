@@ -146,42 +146,42 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (strcmp(key, "min_value") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.min_value = res;
+			config.min_value = ClampToI32(res);
 			items |= 0x004;
 		} else if (strcmp(key, "max_value") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.max_value = res;
+			config.max_value = ClampToI32(res);
 			items |= 0x008;
 		} else if (strcmp(key, "easy_value") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.easy_value = res;
+			config.easy_value = ClampToI32(res);
 			items |= 0x010;
 		} else if (strcmp(key, "medium_value") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.medium_value = res;
+			config.medium_value = ClampToI32(res);
 			items |= 0x020;
 		} else if (strcmp(key, "hard_value") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.hard_value = res;
+			config.hard_value = ClampToI32(res);
 			items |= 0x040;
 		} else if (strcmp(key, "random_deviation") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.random_deviation = res;
+			config.random_deviation = ClampToI32(abs(res));
 			items |= 0x200;
 		} else if (strcmp(key, "custom_value") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.custom_value = res;
+			config.custom_value = ClampToI32(res);
 			items |= 0x080;
 		} else if (strcmp(key, "step_size") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.step_size = res;
+			config.step_size = ClampToI32(res);
 		} else if (strcmp(key, "flags") == 0) {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
@@ -252,7 +252,14 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		if (SQ_FAILED(sq_getstring(vm, -1, &label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
-		int key = atoi(key_string + 1);
+		key_string++;
+		int sign = 1;
+		if (*key_string == '_') {
+			/* When the second character is '_', it indicates the value is negative. */
+			sign = -1;
+			key_string++;
+		}
+		int key = atoi(key_string) * sign;
 		StrMakeValidInPlace(const_cast<char *>(label));
 
 		/* !Contains() prevents stredup from leaking. */

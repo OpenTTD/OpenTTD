@@ -98,6 +98,7 @@ public:
 		ROAD_LAYOUT_BETTER_ROADS  = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
 		ROAD_LAYOUT_2x2           = ::TL_2X2_GRID,     ///< Geometric 2x2 grid algorithm
 		ROAD_LAYOUT_3x3           = ::TL_3X3_GRID,     ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_RANDOM        = ::TL_RANDOM,       ///< Random road layout
 
 		/* Custom added value, only valid for this API */
 		ROAD_LAYOUT_INVALID       = -1,                ///< The layout for invalid towns.
@@ -146,7 +147,7 @@ public:
 	/**
 	 * Rename a town.
 	 * @param town_id The town to rename
-	 * @param name The new name of the town. If null is passed, the town name will be reset to the default name.
+	 * @param name The new name of the town. If null, or an empty string, is passed, the town name will be reset to the default name.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
@@ -156,7 +157,7 @@ public:
 	/**
 	 * Set the custom text of a town, shown in the GUI.
 	 * @param town_id The town to set the custom text of.
-	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null is passed, the text will be removed.
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null, or an empty string, is passed, the text will be removed.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
@@ -400,7 +401,7 @@ public:
 	 * @param size The town size of the new town.
 	 * @param city True if the new town should be a city.
 	 * @param layout The town layout of the new town.
-	 * @param name The name of the new town. Pass nullptr to use a random town name.
+	 * @param name The name of the new town. Pass null, or an empty string, to use a random town name.
 	 * @game @pre no company mode in scope || ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @ai @pre ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @game @pre no company mode in scope || size != TOWN_SIZE_LARGE.

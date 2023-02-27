@@ -11,7 +11,7 @@
 #define NETWORK_CONTENT_H
 
 #include "core/tcp_content.h"
-#include "core/tcp_http.h"
+#include "core/http.h"
 #include <unordered_map>
 
 /** Vector with content info */
@@ -76,6 +76,7 @@ protected:
 	FILE *curFile;        ///< Currently downloaded file
 	ContentInfo *curInfo; ///< Information about the currently downloaded file
 	bool isConnecting;    ///< Whether we're connecting
+	bool isCancelled;     ///< Whether the download has been cancelled
 	std::chrono::steady_clock::time_point lastActivity;  ///< The last time there was network activity
 
 	friend class NetworkContentConnecter;
@@ -94,6 +95,7 @@ protected:
 
 	void OnFailure() override;
 	void OnReceiveData(const char *data, size_t length) override;
+	bool IsCancelled() const override;
 
 	bool BeforeDownload();
 	void AfterDownload();

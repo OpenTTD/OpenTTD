@@ -32,7 +32,7 @@
 #define MARGIN_NORMAL_THRESHOLD 4
 
 /** The SSE4 32 bpp blitter with palette animation. */
-class Blitter_32bppSSE4_Anim FINAL : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE_Base {
+class Blitter_32bppSSE4_Anim FINAL : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE4 {
 private:
 
 public:
@@ -43,13 +43,14 @@ public:
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
 	const char *GetName() override { return "32bpp-sse4-anim"; }
+	using Blitter_32bppSSE2_Anim::LookupColourInPalette;
 };
 
 /** Factory for the SSE4 32 bpp blitter (with palette animation). */
 class FBlitter_32bppSSE4_Anim: public BlitterFactory {
 public:
 	FBlitter_32bppSSE4_Anim() : BlitterFactory("32bpp-sse4-anim", "32bpp SSE4 Blitter (palette animation)", HasCPUIDFlag(1, 2, 19)) {}
-	Blitter *CreateInstance() override { return new Blitter_32bppSSE4_Anim(); }
+	Blitter *CreateInstance() override { return static_cast<Blitter_32bppSSE2_Anim *>(new Blitter_32bppSSE4_Anim()); }
 };
 
 #endif /* WITH_SSE */

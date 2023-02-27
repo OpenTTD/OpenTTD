@@ -121,5 +121,6 @@ public:
 };
 
 void ShowFramerateWindow();
+void ProcessPendingPerformanceMeasurements();
 
 #endif /* FRAMERATE_TYPE_H */

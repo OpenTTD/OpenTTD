@@ -23,13 +23,13 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id);
 
-DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       0,             CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       0,             CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       0,             CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       0,             CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        0,             CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        0,             CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         0,             CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CMD_CLIENT_ID, CMDT_SERVER_SETTING)
 
 template <typename Tcont, typename Titer>

@@ -327,7 +327,9 @@ struct SortableSpriteStruct {
 /** Distance between wire and rail */
 static const uint ELRAIL_ELEVATION = 10;
 /** Wires that a draw one level higher than the north corner. */
-static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT;
+static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT + 1;
+/** Wires that a draw one level lower than the north corner. */
+static const uint ELRAIL_ELEVLOWER = ELRAIL_ELEVATION - 1;
 
 static const SortableSpriteStruct RailCatenarySpriteData[] = {
 /* X direction
@@ -345,9 +347,9 @@ static const SortableSpriteStruct RailCatenarySpriteData[] = {
 
 	/* "down" tiles
 		 * Wires */
-	{ WSO_X_SW_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 6: Wire in X pitch down, pylon on the SW end
-	{ WSO_X_NE_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 7: Wire in X pitch down, pylon on the NE end
-	{ WSO_X_SHORT_DOWN,  0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 8: Wire in X pitch down, pylon on both ends
+	{ WSO_X_SW_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVLOWER }, //! 6: Wire in X pitch down, pylon on the SW end
+	{ WSO_X_NE_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVLOWER }, //! 7: Wire in X pitch down, pylon on the NE end
+	{ WSO_X_SHORT_DOWN,  0,  7, 15,  8,  1, ELRAIL_ELEVLOWER }, //! 8: Wire in X pitch down, pylon on both ends
 
 
 /* Y direction
@@ -365,9 +367,9 @@ static const SortableSpriteStruct RailCatenarySpriteData[] = {
 
 	/* "down" tiles
 		 * Wires */
-	{ WSO_Y_SE_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!15: Wire in Y pitch down, pylon on the SE end
-	{ WSO_Y_NW_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!16: Wire in Y pitch down, pylon on the NW end
-	{ WSO_Y_SHORT_DOWN,  7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!17: Wire in Y pitch down, pylon on both ends
+	{ WSO_Y_SE_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVLOWER }, //!15: Wire in Y pitch down, pylon on the SE end
+	{ WSO_Y_NW_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVLOWER }, //!16: Wire in Y pitch down, pylon on the NW end
+	{ WSO_Y_SHORT_DOWN,  7,  0,  8, 15,  1, ELRAIL_ELEVLOWER }, //!17: Wire in Y pitch down, pylon on both ends
 
 /* NS Direction */
 	{ WSO_NS_SHORT,      8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!18: LEFT  trackbit wire, pylon on both ends

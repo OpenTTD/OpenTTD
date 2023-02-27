@@ -235,6 +235,8 @@ static inline bool IsDriveThroughStopTile(TileIndex t)
 	return IsRoadStopTile(t) && GetStationGfx(t) >= GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET;
 }
 
+StationGfx GetTranslatedAirportTileID(StationGfx gfx);
+
 /**
  * Get the station graphics of this airport tile
  * @param t the tile to query
@@ -244,7 +246,6 @@ static inline bool IsDriveThroughStopTile(TileIndex t)
 static inline StationGfx GetAirportGfx(TileIndex t)
 {
 	assert(IsAirport(t));
-	extern StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 	return GetTranslatedAirportTileID(GetStationGfx(t));
 }
 
@@ -494,6 +495,42 @@ static inline uint GetCustomStationSpecIndex(TileIndex t)
 {
 	assert(HasStationTileRail(t));
 	return _m[t].m4;
+}
+
+/**
+ * Is there a custom road stop spec on this tile?
+ * @param t Tile to query
+ * @pre IsRoadStopTile(t)
+ * @return True if this station is part of a newgrf station.
+ */
+static inline bool IsCustomRoadStopSpecIndex(TileIndex t)
+{
+	assert(IsRoadStopTile(t));
+	return GB(_me[t].m8, 0, 6) != 0;
+}
+
+/**
+ * Set the custom road stop spec for this tile.
+ * @param t Tile to set the stationspec of.
+ * @param specindex The new spec.
+ * @pre IsRoadStopTile(t)
+ */
+static inline void SetCustomRoadStopSpecIndex(TileIndex t, byte specindex)
+{
+	assert(IsRoadStopTile(t));
+	SB(_me[t].m8, 0, 6, specindex);
+}
+
+/**
+ * Get the custom road stop spec for this tile.
+ * @param t Tile to query
+ * @pre IsRoadStopTile(t)
+ * @return The custom station spec of this tile.
+ */
+static inline uint GetCustomRoadStopSpecIndex(TileIndex t)
+{
+	assert(IsRoadStopTile(t));
+	return GB(_me[t].m8, 0, 6);
 }
 
 /**

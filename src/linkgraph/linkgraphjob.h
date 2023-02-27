@@ -28,29 +28,134 @@ extern LinkGraphJobPool _link_graph_job_pool;
  * Class for calculation jobs to be run on link graphs.
  */
 class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool>{
-private:
+public:
+	/**
+	 * Demand between two nodes.
+	 */
+	struct DemandAnnotation {
+		uint demand;             ///< Transport demand between the nodes.
+		uint unsatisfied_demand; ///< Demand over this edge that hasn't been satisfied yet.
+	};
+
 	/**
 	 * Annotation for a link graph edge.
 	 */
 	struct EdgeAnnotation {
-		uint demand;             ///< Transport demand between the nodes.
-		uint unsatisfied_demand; ///< Demand over this edge that hasn't been satisfied yet.
+		const LinkGraph::BaseEdge &base; ///< Reference to the edge that is annotated.
+
 		uint flow;               ///< Planned flow over this edge.
-		void Init();
+
+		EdgeAnnotation(const LinkGraph::BaseEdge &base) : base(base), flow(0) {}
+
+		/**
+		 * Get the total flow on the edge.
+		 * @return Flow.
+		 */
+		uint Flow() const { return this->flow; }
+
+		/**
+		 * Add some flow.
+		 * @param flow Flow to be added.
+		 */
+		void AddFlow(uint flow) { this->flow += flow; }
+
+		/**
+		 * Remove some flow.
+		 * @param flow Flow to be removed.
+		 */
+		void RemoveFlow(uint flow)
+		{
+			assert(flow <= this->flow);
+			this->flow -= flow;
+		}
+
+		friend inline bool operator <(NodeID dest, const EdgeAnnotation &rhs)
+		{
+			return dest < rhs.base.dest_node;
+		}
 	};
 
 	/**
 	 * Annotation for a link graph node.
 	 */
 	struct NodeAnnotation {
+		const LinkGraph::BaseNode &base; ///< Reference to the node that is annotated.
+
 		uint undelivered_supply; ///< Amount of supply that hasn't been distributed yet.
 		PathList paths;          ///< Paths through this node, sorted so that those with flow == 0 are in the back.
 		FlowStatMap flows;       ///< Planned flows to other nodes.
-		void Init(uint supply);
+
+		std::vector<EdgeAnnotation>   edges;   ///< Annotations for all edges originating at this node.
+		std::vector<DemandAnnotation> demands; ///< Annotations for the demand to all other nodes.
+
+		NodeAnnotation(const LinkGraph::BaseNode &node, size_t size) : base(node), undelivered_supply(node.supply), paths(), flows()
+		{
+			this->edges.reserve(node.edges.size());
+			for (auto &e : node.edges) this->edges.emplace_back(e);
+			this->demands.resize(size);
+		}
+
+		/**
+		 * Retrieve an edge starting at this node.
+		 * @param to Remote end of the edge.
+		 * @return Edge between this node and "to".
+		 */
+		EdgeAnnotation &operator[](NodeID to)
+		{
+			auto it = std::find_if(this->edges.begin(), this->edges.end(), [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
+			assert(it != this->edges.end());
+			return *it;
+		}
+
+		/**
+		 * Retrieve an edge starting at this node.
+		 * @param to Remote end of the edge.
+		 * @return Edge between this node and "to".
+		 */
+		const EdgeAnnotation &operator[](NodeID to) const
+		{
+			auto it = std::find_if(this->edges.begin(), this->edges.end(), [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
+			assert(it != this->edges.end());
+			return *it;
+		}
+
+		/**
+		 * Get the transport demand between end the points of the edge.
+		 * @return Demand.
+		 */
+		uint DemandTo(NodeID to) const { return this->demands[to].demand; }
+
+		/**
+		 * Get the transport demand that hasn't been satisfied by flows, yet.
+		 * @return Unsatisfied demand.
+		 */
+		uint UnsatisfiedDemandTo(NodeID to) const { return this->demands[to].unsatisfied_demand; }
+
+		/**
+		 * Satisfy some demand.
+		 * @param demand Demand to be satisfied.
+		 */
+		void SatisfyDemandTo(NodeID to, uint demand)
+		{
+			assert(demand <= this->demands[to].unsatisfied_demand);
+			this->demands[to].unsatisfied_demand -= demand;
+		}
+
+		/**
+		 * Deliver some supply, adding demand to the respective edge.
+		 * @param to Destination for supply.
+		 * @param amount Amount of supply to be delivered.
+		 */
+		void DeliverSupply(NodeID to, uint amount)
+		{
+			this->undelivered_supply -= amount;
+			this->demands[to].demand += amount;
+			this->demands[to].unsatisfied_demand += amount;
+		}
 	};
 
+private:
 	typedef std::vector<NodeAnnotation> NodeAnnotationVector;
-	typedef SmallMatrix<EdgeAnnotation> EdgeAnnotationMatrix;
 
 	friend SaveLoadTable GetLinkGraphJobDesc();
 	friend class LinkGraphSchedule;
@@ -61,7 +166,6 @@ protected:
 	std::thread thread;               ///< Thread the job is running in or a default-constructed thread if it's running in the main thread.
 	Date join_date;                   ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
-	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
 	std::atomic<bool> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
 	std::atomic<bool> job_aborted;    ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
 
@@ -70,199 +174,6 @@ protected:
 	void SpawnThread();
 
 public:
-
-	/**
-	 * A job edge. Wraps a link graph edge and an edge annotation. The
-	 * annotation can be modified, the edge is constant.
-	 */
-	class Edge : public LinkGraph::ConstEdge {
-	private:
-		EdgeAnnotation &anno; ///< Annotation being wrapped.
-	public:
-		/**
-		 * Constructor.
-		 * @param edge Link graph edge to be wrapped.
-		 * @param anno Annotation to be wrapped.
-		 */
-		Edge(const LinkGraph::BaseEdge &edge, EdgeAnnotation &anno) :
-				LinkGraph::ConstEdge(edge), anno(anno) {}
-
-		/**
-		 * Get the transport demand between end the points of the edge.
-		 * @return Demand.
-		 */
-		uint Demand() const { return this->anno.demand; }
-
-		/**
-		 * Get the transport demand that hasn't been satisfied by flows, yet.
-		 * @return Unsatisfied demand.
-		 */
-		uint UnsatisfiedDemand() const { return this->anno.unsatisfied_demand; }
-
-		/**
-		 * Get the total flow on the edge.
-		 * @return Flow.
-		 */
-		uint Flow() const { return this->anno.flow; }
-
-		/**
-		 * Add some flow.
-		 * @param flow Flow to be added.
-		 */
-		void AddFlow(uint flow) { this->anno.flow += flow; }
-
-		/**
-		 * Remove some flow.
-		 * @param flow Flow to be removed.
-		 */
-		void RemoveFlow(uint flow)
-		{
-			assert(flow <= this->anno.flow);
-			this->anno.flow -= flow;
-		}
-
-		/**
-		 * Add some (not yet satisfied) demand.
-		 * @param demand Demand to be added.
-		 */
-		void AddDemand(uint demand)
-		{
-			this->anno.demand += demand;
-			this->anno.unsatisfied_demand += demand;
-		}
-
-		/**
-		 * Satisfy some demand.
-		 * @param demand Demand to be satisfied.
-		 */
-		void SatisfyDemand(uint demand)
-		{
-			assert(demand <= this->anno.unsatisfied_demand);
-			this->anno.unsatisfied_demand -= demand;
-		}
-	};
-
-	/**
-	 * Iterator for job edges.
-	 */
-	class EdgeIterator : public LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator> {
-		EdgeAnnotation *base_anno; ///< Array of annotations to be (indirectly) iterated.
-	public:
-		/**
-		 * Constructor.
-		 * @param base Array of edges to be iterated.
-		 * @param base_anno Array of annotations to be iterated.
-		 * @param current Start offset of iteration.
-		 */
-		EdgeIterator(const LinkGraph::BaseEdge *base, EdgeAnnotation *base_anno, NodeID current) :
-				LinkGraph::BaseEdgeIterator<const LinkGraph::BaseEdge, Edge, EdgeIterator>(base, current),
-				base_anno(base_anno) {}
-
-		/**
-		 * Dereference.
-		 * @return Pair of the edge currently pointed to and the ID of its
-		 *         other end.
-		 */
-		std::pair<NodeID, Edge> operator*() const
-		{
-			return std::pair<NodeID, Edge>(this->current, Edge(this->base[this->current], this->base_anno[this->current]));
-		}
-
-		/**
-		 * Dereference. Has to be repeated here as operator* is different than
-		 * in LinkGraph::EdgeWrapper.
-		 * @return Fake pointer to pair of NodeID/Edge.
-		 */
-		FakePointer operator->() const {
-			return FakePointer(this->operator*());
-		}
-	};
-
-	/**
-	 * Link graph job node. Wraps a constant link graph node and a modifiable
-	 * node annotation.
-	 */
-	class Node : public LinkGraph::ConstNode {
-	private:
-		NodeAnnotation &node_anno;  ///< Annotation being wrapped.
-		EdgeAnnotation *edge_annos; ///< Edge annotations belonging to this node.
-	public:
-
-		/**
-		 * Constructor.
-		 * @param lgj Job to take the node from.
-		 * @param node ID of the node.
-		 */
-		Node (LinkGraphJob *lgj, NodeID node) :
-			LinkGraph::ConstNode(&lgj->link_graph, node),
-			node_anno(lgj->nodes[node]), edge_annos(lgj->edges[node])
-		{}
-
-		/**
-		 * Retrieve an edge starting at this node. Mind that this returns an
-		 * object, not a reference.
-		 * @param to Remote end of the edge.
-		 * @return Edge between this node and "to".
-		 */
-		Edge operator[](NodeID to) const { return Edge(this->edges[to], this->edge_annos[to]); }
-
-		/**
-		 * Iterator for the "begin" of the edge array. Only edges with capacity
-		 * are iterated. The others are skipped.
-		 * @return Iterator pointing to the first edge.
-		 */
-		EdgeIterator Begin() const { return EdgeIterator(this->edges, this->edge_annos, index); }
-
-		/**
-		 * Iterator for the "end" of the edge array. Only edges with capacity
-		 * are iterated. The others are skipped.
-		 * @return Iterator pointing beyond the last edge.
-		 */
-		EdgeIterator End() const { return EdgeIterator(this->edges, this->edge_annos, INVALID_NODE); }
-
-		/**
-		 * Get amount of supply that hasn't been delivered, yet.
-		 * @return Undelivered supply.
-		 */
-		uint UndeliveredSupply() const { return this->node_anno.undelivered_supply; }
-
-		/**
-		 * Get the flows running through this node.
-		 * @return Flows.
-		 */
-		FlowStatMap &Flows() { return this->node_anno.flows; }
-
-		/**
-		 * Get a constant version of the flows running through this node.
-		 * @return Flows.
-		 */
-		const FlowStatMap &Flows() const { return this->node_anno.flows; }
-
-		/**
-		 * Get the paths this node is part of. Paths are always expected to be
-		 * sorted so that those with flow == 0 are in the back of the list.
-		 * @return Paths.
-		 */
-		PathList &Paths() { return this->node_anno.paths; }
-
-		/**
-		 * Get a constant version of the paths this node is part of.
-		 * @return Paths.
-		 */
-		const PathList &Paths() const { return this->node_anno.paths; }
-
-		/**
-		 * Deliver some supply, adding demand to the respective edge.
-		 * @param to Destination for supply.
-		 * @param amount Amount of supply to be delivered.
-		 */
-		void DeliverSupply(NodeID to, uint amount)
-		{
-			this->node_anno.undelivered_supply -= amount;
-			(*this)[to].AddDemand(amount);
-		}
-	};
-
 	/**
 	 * Bare constructor, only for save/load. link_graph, join_date and actually
 	 * settings have to be brutally const-casted in order to populate them.
@@ -326,7 +237,7 @@ public:
 	 * @param num ID of the node.
 	 * @return the Requested node.
 	 */
-	inline Node operator[](NodeID num) { return Node(this, num); }
+	inline NodeAnnotation &operator[](NodeID num) { return this->nodes[num]; }
 
 	/**
 	 * Get the size of the underlying link graph.

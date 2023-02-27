@@ -79,7 +79,7 @@ void ChangeGameSpeed(bool enable_fast_forward);
 void DrawMouseCursor();
 void ScreenSizeChanged();
 void GameSizeChanged();
-void UpdateGUIZoom();
+bool AdjustGUIZoom(bool automatic);
 void UndrawMouseCursor();
 
 /** Size of the buffer used for drawing strings. */
@@ -89,8 +89,10 @@ void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 Dimension GetSpriteSize(SpriteID sprid, Point *offset = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
+Dimension GetScaledSpriteSize(SpriteID sprid); /* widget.cpp */
 void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr);
 void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
+void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool clicked, StringAlignment align); /* widget.cpp */
 std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom = ZOOM_LVL_GUI);
 
 int DrawString(int left, int right, int top, const char *str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
@@ -107,9 +109,46 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
 void GfxDrawLine(int left, int top, int right, int bottom, int colour, int width = 1, int dash = 0);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
+/* Versions of DrawString/DrawStringMultiLine that accept a Rect instead of separate left, right, top and bottom parameters. */
+static inline int DrawString(const Rect &r, const char *str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
+}
+
+static inline int DrawString(const Rect &r, const std::string &str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
+}
+
+static inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
+}
+
+static inline int DrawStringMultiLine(const Rect &r, const char *str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
+}
+
+static inline int DrawStringMultiLine(const Rect &r, const std::string &str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
+}
+
+static inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+{
+	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
+}
+
+static inline void GfxFillRect(const Rect &r, int colour, FillRectMode mode = FILLRECT_OPAQUE)
+{
+	GfxFillRect(r.left, r.top, r.right, r.bottom, colour, mode);
+}
+
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize = FS_NORMAL);
-Dimension GetStringBoundingBox(StringID strid);
+Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize = FS_NORMAL);
+uint GetStringListWidth(const StringID *list, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(const char *str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
 int GetStringLineCount(StringID str, int maxw);
@@ -138,7 +177,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
  */
 static inline int CenterBounds(int min, int max, int size)
 {
-	return min + (max - min - size + 1) / 2;
+	return (min + max - size + 1) / 2;
 }
 
 /* window.cpp */

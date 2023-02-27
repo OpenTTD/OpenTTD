@@ -14,6 +14,8 @@
 #include "mem_func.hpp"
 #include "pool_type.hpp"
 
+extern void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
+
 /**
  * Helper for defining the method's signature.
  * @param type The return type of the method.
@@ -154,8 +156,6 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
  */
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 {
-	extern void NORETURN SlErrorCorruptFmt(const char *format, ...);
-
 	if (index >= Tmax_size) {
 		SlErrorCorruptFmt("%s index " PRINTF_SIZE " out of range (" PRINTF_SIZE ")", this->name, index, Tmax_size);
 	}

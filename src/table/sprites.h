@@ -290,15 +290,13 @@ static const SpriteID SPR_TRAMWAY_DEPOT_NO_TRACK       = SPR_TRAMWAY_BASE + 113;
 static const uint16 TRAMWAY_SPRITE_COUNT = 119;
 
 /** One way road sprites */
-static const SpriteID SPR_ONEWAY_BASE = SPR_TRAMWAY_BASE + TRAMWAY_SPRITE_COUNT;
-static const uint16 ONEWAY_SPRITE_COUNT = 6;
-
-/** Flags sprites (in same order as enum NetworkLanguage) */
-static const SpriteID SPR_FLAGS_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT;
-static const uint16 FLAGS_SPRITE_COUNT = 36;
+static const SpriteID SPR_ONEWAY_BASE           = SPR_TRAMWAY_BASE + TRAMWAY_SPRITE_COUNT;
+static const SpriteID SPR_ONEWAY_SLOPE_N_OFFSET = 6;
+static const SpriteID SPR_ONEWAY_SLOPE_S_OFFSET = 12;
+static const uint16 ONEWAY_SPRITE_COUNT = 18;
 
 /** Tunnel sprites with grass only for custom railtype tunnel. */
-static const SpriteID SPR_RAILTYPE_TUNNEL_BASE = SPR_FLAGS_BASE + FLAGS_SPRITE_COUNT;
+static const SpriteID SPR_RAILTYPE_TUNNEL_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT;
 static const uint16 RAILTYPE_TUNNEL_BASE_COUNT = 16;
 
 /* Not really a sprite, but an empty bounding box. Used to construct bounding boxes that help sorting the sprites, but do not have a sprite associated. */
@@ -1128,6 +1126,10 @@ static const SpriteID SPR_OTTD_N                = 4839;
 static const SpriteID SPR_OTTD_T                = 4836;
 /* Letters not used: R,A,S,Y,C (4837, 4838, 4840, 4843, 4844) */
 
+/* Range of "special" sprites that are used by the old map generation algorithm. */
+static const SpriteID SPR_MAPGEN_BEGIN = 4845;
+static const SpriteID SPR_MAPGEN_END   = 4882;
+
 static const SpriteID SPR_HIGHSCORE_CHART_BEGIN = 4804;
 static const SpriteID SPR_TYCOON_IMG1_BEGIN     = 4814;
 static const SpriteID SPR_TYCOON_IMG2_BEGIN     = 4824;
@@ -1546,18 +1548,18 @@ enum Modifiers {
  * @see SpriteSetup
  */
 enum SpriteMasks {
-	MAX_SPRITES = 1 << SPRITE_WIDTH,       ///< Maximum number of sprites that can be loaded at a given time
+	MAX_SPRITES = 1U << SPRITE_WIDTH,      ///< Maximum number of sprites that can be loaded at a given time
 	SPRITE_MASK = MAX_SPRITES - 1,         ///< The mask to for the main sprite
 
-	MAX_PALETTES = 1 << PALETTE_WIDTH,
+	MAX_PALETTES = 1U << PALETTE_WIDTH,
 	PALETTE_MASK = MAX_PALETTES - 1,       ///< The mask for the auxiliary sprite (the one that takes care of recolouring)
 };
 
-static_assert( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
-static_assert( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
+static_assert( (1U << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
+static_assert( (1U << RECOLOUR_BIT & SPRITE_MASK) == 0 );
 static_assert( TRANSPARENT_BIT != RECOLOUR_BIT );
-static_assert( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
-static_assert( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
+static_assert( (1U << TRANSPARENT_BIT & PALETTE_MASK) == 0 );
+static_assert( (1U << RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
 
 static const PaletteID PAL_NONE                    = 0;

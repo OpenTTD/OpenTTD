@@ -673,9 +673,9 @@ CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportT
 	TileIndexDiff delta = TileOffsByDiagDir(direction);
 	DiagDirection tunnel_in_way_dir;
 	if (DiagDirToAxis(direction) == AXIS_Y) {
-		tunnel_in_way_dir = (TileX(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
+		tunnel_in_way_dir = (TileX(start_tile) < (Map::MaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
 	} else {
-		tunnel_in_way_dir = (TileY(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
+		tunnel_in_way_dir = (TileY(start_tile) < (Map::MaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
 	}
 
 	TileIndex end_tile = start_tile;
@@ -862,7 +862,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 
 		/* Check if you are allowed to remove the tunnel owned by a town
 		 * Removal depends on difficulty settings */
-		CommandCost ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
+		ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
 		if (ret.Failed()) return ret;
 	}
 
@@ -943,7 +943,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 
 		/* Check if you are allowed to remove the bridge owned by a town
 		 * Removal depends on difficulty settings */
-		CommandCost ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
+		ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
 		if (ret.Failed()) return ret;
 	}
 
@@ -968,9 +968,6 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 			if (v != nullptr) FreeTrainTrackReservation(v);
 		}
 
-		bool removetile = false;
-		bool removeendtile = false;
-
 		/* Update company infrastructure counts. */
 		if (rail) {
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
@@ -980,16 +977,12 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RTT_TRAM), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 		} else { // Aqueduct
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.water -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
-			removetile    = IsDockingTile(tile);
-			removeendtile = IsDockingTile(endtile);
 		}
 		DirtyCompanyInfrastructureWindows(owner);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
 
-		if (removetile)    RemoveDockingTile(tile);
-		if (removeendtile) RemoveDockingTile(endtile);
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
 			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
@@ -1314,8 +1307,28 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			const RoadTypeInfo *road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
 			const RoadTypeInfo *tram_rti = tram_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(tram_rt);
 			uint sprite_offset = DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? 1 : 0;
+			bool draw_underlay = true;
 
-			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset);
+			/* Road underlay takes precedence over tram */
+			if (road_rti != nullptr) {
+				if (road_rti->UsesOverlay()) {
+					SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_TUNNEL);
+					if (ground != 0) {
+						DrawGroundSprite(ground + tunnelbridge_direction, PAL_NONE);
+						draw_underlay = false;
+					}
+				}
+			} else {
+				if (tram_rti->UsesOverlay()) {
+					SpriteID ground = GetCustomRoadSprite(tram_rti, ti->tile, ROTSG_TUNNEL);
+					if (ground != 0) {
+						DrawGroundSprite(ground + tunnelbridge_direction, PAL_NONE);
+						draw_underlay = false;
+					}
+				}
+			}
+
+			DrawRoadOverlays(ti, PAL_NONE, road_rti, tram_rti, sprite_offset, sprite_offset, draw_underlay);
 
 			/* Road catenary takes precedence over tram */
 			SpriteID catenary_sprite_base = 0;
@@ -1744,12 +1757,16 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 
 		if (!IsTunnel(tile)) {
 			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+			/* rail speed special-cases 0 as unlimited, hides display of limit etc. */
+			if (spd == UINT16_MAX) spd = 0;
 			if (td->rail_speed == 0 || spd < td->rail_speed) {
 				td->rail_speed = spd;
 			}
 		}
 	} else if (tt == TRANSPORT_ROAD && !IsTunnel(tile)) {
 		uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+		/* road speed special-cases 0 as unlimited, hides display of limit etc. */
+		if (spd == UINT16_MAX) spd = 0;
 		if (road_rt != INVALID_ROADTYPE && (td->road_speed == 0 || spd < td->road_speed)) td->road_speed = spd;
 		if (tram_rt != INVALID_ROADTYPE && (td->tram_speed == 0 || spd < td->tram_speed)) td->tram_speed = spd;
 	}

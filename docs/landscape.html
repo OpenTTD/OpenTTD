@@ -807,8 +807,6 @@
       </table>
      </li>
      <li>m2 bits 5..4: ground density</li>
-     <li>m2 bits 3..0: update counter, incremented on every periodic processing.<br>
-          on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
      <li>m3 bits 7..0: type of trees:
       <table>
        <tr>
@@ -998,6 +996,7 @@
      <li>m7: animation frame (railway stations/waypoints, airports)</li>
      <li>m8 bits 11..6: <a href="#TramType">Tramtype</a></li>
      <li>m8 bits 5..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
+     <li>m8 bits 5..0: custom road stop id; 0 means standard graphics</li>
     </ul>
    </td>
   </tr>

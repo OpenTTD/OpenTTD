@@ -149,10 +149,20 @@ public:
 	 */
 	inline void SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
 	{
-		this->uz_padding_top = top;
-		this->uz_padding_right = right;
-		this->uz_padding_bottom = bottom;
-		this->uz_padding_left = left;
+		this->uz_padding.top = top;
+		this->uz_padding.right = right;
+		this->uz_padding.bottom = bottom;
+		this->uz_padding.left = left;
+		this->AdjustPaddingForZoom();
+	}
+
+	/**
+	 * Set additional space (padding) around the widget.
+	 * @param padding Amount of padding around the widget.
+	 */
+	inline void SetPadding(const RectPadding &padding)
+	{
+		this->uz_padding = padding;
 		this->AdjustPaddingForZoom();
 	}
 
@@ -192,15 +202,8 @@ public:
 	NWidgetBase *next;    ///< Pointer to next widget in container. Managed by parent container widget.
 	NWidgetBase *prev;    ///< Pointer to previous widget in container. Managed by parent container widget.
 
-	uint8 padding_top;    ///< Paddings added to the top of the widget. Managed by parent container widget.
-	uint8 padding_right;  ///< Paddings added to the right of the widget. Managed by parent container widget. (parent container may swap this with padding_left for RTL)
-	uint8 padding_bottom; ///< Paddings added to the bottom of the widget. Managed by parent container widget.
-	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget. (parent container may swap this with padding_right for RTL)
-
-	uint8 uz_padding_top;    ///< Unscaled top padding, for resize calculation.
-	uint8 uz_padding_right;  ///< Unscaled right padding, for resize calculation.
-	uint8 uz_padding_bottom; ///< Unscaled bottom padding, for resize calculation.
-	uint8 uz_padding_left;   ///< Unscaled left padding, for resize calculation.
+	RectPadding padding;    ///< Padding added to the widget. Managed by parent container widget. (parent container may swap left and right for RTL)
+	RectPadding uz_padding; ///< Unscaled padding, for resize calculation.
 
 protected:
 	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);
@@ -458,9 +461,11 @@ public:
 /** Nested widget container flags, */
 enum NWidContainerFlags {
 	NCB_EQUALSIZE = 0, ///< Containers should keep all their (resizing) children equally large.
+	NCB_BIGFIRST  = 1, ///< Allocate space to biggest resize first.
 
 	NC_NONE = 0,                       ///< All flags cleared.
 	NC_EQUALSIZE = 1 << NCB_EQUALSIZE, ///< Value of the #NCB_EQUALSIZE flag.
+	NC_BIGFIRST  = 1 << NCB_BIGFIRST,  ///< Value of the #NCB_BIGFIRST flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidContainerFlags)
 
@@ -918,8 +923,7 @@ struct NWidgetPartWidget {
  * Widget part for storing padding.
  * @ingroup NestedWidgetParts
  */
-struct NWidgetPartPaddings {
-	uint8 top, right, bottom, left; ///< Paddings for all directions.
+struct NWidgetPartPaddings : RectPadding {
 };
 
 /**
@@ -1150,6 +1154,24 @@ static inline NWidgetPart SetPadding(uint8 top, uint8 right, uint8 bottom, uint8
 }
 
 /**
+ * Widget part function for setting additional space around a widget.
+ * @param r The padding around the widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetPadding(const RectPadding &padding)
+{
+	NWidgetPart part;
+
+	part.type = WPT_PADDING;
+	part.u.padding.left = padding.left;
+	part.u.padding.top = padding.top;
+	part.u.padding.right = padding.right;
+	part.u.padding.bottom = padding.bottom;
+
+	return part;
+}
+
+/**
  * Widget part function for setting a padding.
  * @param padding The padding to use for all directions.
  * @ingroup NestedWidgetParts
@@ -1250,5 +1272,7 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest
 NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int *biggest_index, NWidgetStacked **shade_select);
 
 NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip);
+
+void SetupWidgetDimensions();
 
 #endif /* WIDGET_TYPE_H */

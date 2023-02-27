@@ -26,6 +26,7 @@
 #include "../group_cmd.h"
 #include "../industry_cmd.h"
 #include "../landscape_cmd.h"
+#include "../league_cmd.h"
 #include "../misc_cmd.h"
 #include "../news_cmd.h"
 #include "../object_cmd.h"
@@ -149,7 +150,7 @@ constexpr UnpackNetworkCommandProc MakeUnpackNetworkCommandCallback() noexcept
 template <Commands Tcmd, size_t... i>
 constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) noexcept
 {
-	return UnpackDispatchT{{ {MakeUnpackNetworkCommandCallback<Tcmd, i>()}...}};
+	return UnpackDispatchT{{ MakeUnpackNetworkCommandCallback<Tcmd, i>()...}};
 }
 
 template <typename T, T... i, size_t... j>
@@ -260,17 +261,15 @@ static size_t FindCallbackIndex(CommandCallback *callback)
  * @param err_message Message prefix to show on error
  * @param callback A callback function to call after the command is finished
  * @param company The company that wants to send the command
- * @param location Location of the command (e.g. for error message position)
  * @param cmd_data The command proc arguments.
  */
-void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, TileIndex location, const CommandDataBuffer &cmd_data)
+void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *callback, CompanyID company, const CommandDataBuffer &cmd_data)
 {
 	CommandPacket c;
 	c.company  = company;
 	c.cmd      = cmd;
 	c.err_msg  = err_message;
 	c.callback = callback;
-	c.tile     = location;
 	c.data     = cmd_data;
 
 	if (_network_server) {
@@ -428,7 +427,6 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
 	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "single-player only command";
 	cp->err_msg = p->Recv_uint16();
-	cp->tile    = p->Recv_uint32();
 	cp->data    = _cmd_dispatch[cp->cmd].Sanitize(p->Recv_buffer());
 
 	byte callback = p->Recv_uint8();
@@ -448,7 +446,6 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 	p->Send_uint8(cp->company);
 	p->Send_uint16(cp->cmd);
 	p->Send_uint16(cp->err_msg);
-	p->Send_uint32(cp->tile);
 	p->Send_buffer(cp->data);
 
 	size_t callback = FindCallbackIndex(cp->callback);
@@ -539,5 +536,5 @@ template <Commands Tcmd, size_t Tcb>
 void UnpackNetworkCommand(const CommandPacket* cp)
 {
 	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(cp->data);
-	Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, cp->tile, args);
+	Command<Tcmd>::PostFromNet(cp->err_msg, std::get<Tcb>(_callback_tuple), cp->my_cmd, args);
 }

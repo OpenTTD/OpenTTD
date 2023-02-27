@@ -314,7 +314,6 @@ static Vehicle *CountShipProc(Vehicle *v, void *data)
 
 static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
-	/* TileIndex tile = current->tile; */
 	int32 cost = 0;
 	Trackdir trackdir = current->direction;
 
@@ -1114,7 +1113,6 @@ void InitializeNPF()
 	}
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
-	//_npf_aystar.max_search_nodes = 0;
 	/* We will limit the number of nodes for now, until we have a better
 	 * solution to really fix performance */
 	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;

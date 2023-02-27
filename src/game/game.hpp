@@ -12,10 +12,6 @@
 
 #include "../core/string_compare_type.hpp"
 #include "game_scanner.hpp"
-#include <map>
-
-/** A list that maps AI names to their AIInfo object. */
-typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList;
 
 #include "../script/api/script_event_types.hpp"
 
@@ -87,15 +83,10 @@ public:
 	 */
 	static void Save();
 
-	/**
-	 * Load data for a GameScript from a savegame.
-	 */
-	static void Load(int version);
-
 	/** Wrapper function for GameScanner::GetConsoleList */
-	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
+	static std::string GetConsoleList(bool newest_only = false);
 	/** Wrapper function for GameScanner::GetConsoleLibraryList */
-	static char *GetConsoleLibraryList(char *p, const char *last);
+	static std::string GetConsoleLibraryList();
 	/** Wrapper function for GameScanner::GetInfoList */
 	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for GameScanner::GetUniqueInfoList */

@@ -367,7 +367,12 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 			info->palette_size = ReadDword(buffer); // number of colours in palette
 			SkipBytes(buffer, header_size - 16);    // skip the end of info header
 		}
-		if (info->palette_size == 0) info->palette_size = 1 << info->bpp;
+
+		uint maximum_palette_size = 1U << info->bpp;
+		if (info->palette_size == 0) info->palette_size = maximum_palette_size;
+
+		/* More palette colours than palette indices is not supported. */
+		if (info->palette_size > maximum_palette_size) return false;
 
 		data->palette = CallocT<Colour>(info->palette_size);
 
@@ -390,7 +395,7 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	assert(info != nullptr && data != nullptr);
 
-	data->bitmap = CallocT<byte>(info->width * info->height * ((info->bpp == 24) ? 3 : 1));
+	data->bitmap = CallocT<byte>(static_cast<size_t>(info->width) * info->height * ((info->bpp == 24) ? 3 : 1));
 
 	/* Load image */
 	SetStreamOffset(buffer, info->offset);

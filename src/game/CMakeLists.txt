@@ -3,6 +3,8 @@ add_files(
     game_config.cpp
     game_config.hpp
     game_core.cpp
+    game_gui.cpp
+    game_gui.hpp
     game_info.cpp
     game_info.hpp
     game_instance.cpp

@@ -61,9 +61,9 @@ static void FillIndustryCatchment(const Industry *i, int radius, BitmapTileArea 
 		int tx = TileX(cur_tile);
 		int ty = TileY(cur_tile);
 		for (int y = -radius; y <= radius; y++) {
-			if (ty + y < 0 || ty + y > (int)MapMaxY()) continue;
+			if (ty + y < 0 || ty + y > (int)Map::MaxY()) continue;
 			for (int x = -radius; x <= radius; x++) {
-				if (tx + x < 0 || tx + x > (int)MapMaxX()) continue;
+				if (tx + x < 0 || tx + x > (int)Map::MaxX()) continue;
 				TileIndex tile = TileXY(tx + x, ty + y);
 				if (!IsValidTile(tile)) continue;
 				if (::IsTileType(tile, MP_INDUSTRY) && ::GetIndustryIndex(tile) == i->index) continue;
@@ -155,7 +155,7 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
 	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
 
-	TileArea ta(::TileXY(rect->left, rect->top), rect->right - rect->left + 1, rect->bottom - rect->top + 1);
+	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {
 		if (!::IsTileType(cur_tile, MP_STATION)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;

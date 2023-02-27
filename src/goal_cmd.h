@@ -18,7 +18,7 @@ CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal);
 CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &text);
 CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::string &text);
 CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed);
-CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint16 target, bool is_client, uint32 button_mask, GoalQuestionType type, const std::string &text);
+CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target, bool is_client, uint32 button_mask, GoalQuestionType type, const std::string &text);
 CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16 uniqueid, uint8 button);
 
 DEF_CMD_TRAIT(CMD_CREATE_GOAL,          CmdCreateGoal,         CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)

@@ -29,15 +29,15 @@ struct StrongTypedef : StrongTypedefBase {
 
 	T value{}; ///< Backing storage field.
 
-	constexpr StrongTypedef() = default;
-	constexpr StrongTypedef(const StrongTypedef &o) = default;
-	constexpr StrongTypedef(StrongTypedef &&o) = default;
+	debug_inline constexpr StrongTypedef() = default;
+	debug_inline constexpr StrongTypedef(const StrongTypedef &o) = default;
+	debug_inline constexpr StrongTypedef(StrongTypedef &&o) = default;
 
-	constexpr StrongTypedef(const T &value) : value(value) {}
+	debug_inline constexpr StrongTypedef(const T &value) : value(value) {}
 
-	constexpr Tthis &operator =(const StrongTypedef &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
-	constexpr Tthis &operator =(StrongTypedef &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
-	constexpr Tthis &operator =(const T &rhs) { this->value = rhs; return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(const StrongTypedef &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(StrongTypedef &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(const T &rhs) { this->value = rhs; return static_cast<Tthis &>(*this); }
 
 	explicit constexpr operator T() const { return this->value; }
 
@@ -55,6 +55,16 @@ struct StrongTypedef : StrongTypedefBase {
 template <class T, class Tthis>
 struct StrongIntegralTypedef : StrongTypedef<T, Tthis> {
 	using StrongTypedef<T, Tthis>::StrongTypedef;
+
+	debug_inline constexpr StrongIntegralTypedef() = default;
+	debug_inline constexpr StrongIntegralTypedef(const StrongIntegralTypedef &o) = default;
+	debug_inline constexpr StrongIntegralTypedef(StrongIntegralTypedef &&o) = default;
+
+	debug_inline constexpr StrongIntegralTypedef(const T &value) : StrongTypedef<T, Tthis>(value) {}
+
+	debug_inline constexpr Tthis &operator =(const StrongIntegralTypedef &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(StrongIntegralTypedef &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(const T &rhs) { this->value = rhs; return static_cast<Tthis &>(*this); }
 
 	constexpr Tthis &operator ++() { this->value++; return static_cast<Tthis &>(*this); }
 	constexpr Tthis &operator --() { this->value--; return static_cast<Tthis &>(*this); }

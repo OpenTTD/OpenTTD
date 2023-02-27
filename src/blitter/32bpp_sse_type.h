@@ -51,6 +51,7 @@ typedef union ALIGN(16) um128i {
 #define OVERBRIGHT_VALUE_MASK       _mm_setr_epi8(-1,  0, -1,  0, -1,  0,  0,  0, -1,  0, -1,  0, -1,  0,  0,  0)
 #define OVERBRIGHT_CONTROL_MASK     _mm_setr_epi8( 0,  1,  0,  1,  0,  1,  7,  7,  2,  3,  2,  3,  2,  3,  7,  7)
 #define TRANSPARENT_NOM_BASE        _mm_setr_epi16(256, 256, 256, 256, 256, 256, 256, 256)
+#define ALPHA_AND_MASK              _mm_setr_epi16(  0,   0,   0,  -1,   0,   0,   0,  -1)
 
 #endif /* WITH_SSE */
 #endif /* BLITTER_32BPP_SSE_TYPE_H */

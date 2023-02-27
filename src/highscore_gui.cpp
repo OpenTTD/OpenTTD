@@ -126,14 +126,14 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 	void Close() override
 	{
 		if (!_networking) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false); // unpause
-		ShowHighscoreTable(this->window_number, this->rank);
+		if (_game_mode != GM_MENU) ShowHighscoreTable(this->window_number, this->rank);
 		this->EndGameHighScoreBaseWindow::Close();
 	}
 
 	void OnPaint() override
 	{
 		this->SetupHighScoreEndWindow();
-		Point pt = this->GetTopLeft(ScaleGUITrad(640), ScaleGUITrad(480));
+		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
 
 		const Company *c = Company::GetIfValid(_local_company);
 		if (c == nullptr) return;
@@ -144,11 +144,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
 			SetDParam(2, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(pt.x + ScaleGUITrad(15), pt.x + ScaleGUITrad(640) - ScaleGUITrad(25), pt.y + ScaleGUITrad(90), pt.y + ScaleGUITrad(160), STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x + ScaleSpriteTrad(15), pt.x + ScaleSpriteTrad(640) - ScaleSpriteTrad(25), pt.y + ScaleSpriteTrad(90), pt.y + ScaleSpriteTrad(160), STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
 		} else {
 			SetDParam(0, c->index);
 			SetDParam(1, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(pt.x + ScaleGUITrad(36), pt.x + ScaleGUITrad(640), pt.y + ScaleGUITrad(140), pt.y + ScaleGUITrad(206), STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x + ScaleSpriteTrad(36), pt.x + ScaleSpriteTrad(640), pt.y + ScaleSpriteTrad(140), pt.y + ScaleSpriteTrad(206), STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 };
@@ -185,24 +185,24 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		const HighScore *hs = _highscore_table[this->window_number];
 
 		this->SetupHighScoreEndWindow();
-		Point pt = this->GetTopLeft(ScaleGUITrad(640), ScaleGUITrad(480));
+		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
 
 		SetDParam(0, _settings_game.game_creation.ending_year);
-		DrawStringMultiLine(pt.x + ScaleGUITrad(70), pt.x + ScaleGUITrad(570), pt.y, pt.y + ScaleGUITrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
 		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(pt.x + ScaleGUITrad(40), pt.x + ScaleGUITrad(600), pt.y + ScaleGUITrad(140 + i * 55), STR_HIGHSCORE_POSITION);
+			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55), STR_HIGHSCORE_POSITION);
 
 			if (hs[i].company[0] != '\0') {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
 				SetDParamStr(0, hs[i].company);
-				DrawString(pt.x + ScaleGUITrad(71), pt.x + ScaleGUITrad(569), pt.y + ScaleGUITrad(140 + i * 55), STR_JUST_BIG_RAW_STRING, colour);
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55), STR_JUST_BIG_RAW_STRING, colour);
 				SetDParam(0, hs[i].title);
 				SetDParam(1, hs[i].score);
-				DrawString(pt.x + ScaleGUITrad(71), pt.x + ScaleGUITrad(569), pt.y + ScaleGUITrad(140) + FONT_HEIGHT_LARGE + ScaleGUITrad(i * 55), STR_HIGHSCORE_STATS, colour);
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + FONT_HEIGHT_LARGE + ScaleSpriteTrad(i * 55), STR_HIGHSCORE_STATS, colour);
 			}
 		}
 	}

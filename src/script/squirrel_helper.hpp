@@ -37,92 +37,83 @@ namespace SQConvert {
 
 
 	/**
-	 * Special class to make it possible for the compiler to pick the correct GetParam().
+	 * To return a value to squirrel, we use this helper class. It converts to the right format.
+	 * We use a class instead of a plain function to allow us to use partial template specializations.
 	 */
-	template <typename T> class ForceType { };
+	template <typename T> struct Return;
+
+	template <> struct Return<uint8>        { static inline int Set(HSQUIRRELVM vm, uint8 res)       { sq_pushinteger(vm, (int32)res); return 1; } };
+	template <> struct Return<uint16>       { static inline int Set(HSQUIRRELVM vm, uint16 res)      { sq_pushinteger(vm, (int32)res); return 1; } };
+	template <> struct Return<uint32>       { static inline int Set(HSQUIRRELVM vm, uint32 res)      { sq_pushinteger(vm, (int32)res); return 1; } };
+	template <> struct Return<int8>         { static inline int Set(HSQUIRRELVM vm, int8 res)        { sq_pushinteger(vm, res); return 1; } };
+	template <> struct Return<int16>        { static inline int Set(HSQUIRRELVM vm, int16 res)       { sq_pushinteger(vm, res); return 1; } };
+	template <> struct Return<int32>        { static inline int Set(HSQUIRRELVM vm, int32 res)       { sq_pushinteger(vm, res); return 1; } };
+	template <> struct Return<int64>        { static inline int Set(HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, res); return 1; } };
+	template <> struct Return<Money>        { static inline int Set(HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; } };
+	template <> struct Return<TileIndex>    { static inline int Set(HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32)res.value); return 1; } };
+	template <> struct Return<bool>         { static inline int Set(HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; } };
+	template <> struct Return<char *>       { static inline int Set(HSQUIRRELVM vm, char *res)       { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; } };
+	template <> struct Return<const char *> { static inline int Set(HSQUIRRELVM vm, const char *res) { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; } };
+	template <> struct Return<void *>       { static inline int Set(HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; } };
+	template <> struct Return<HSQOBJECT>    { static inline int Set(HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; } };
 
 	/**
-	 * To return a value to squirrel, we call this function. It converts to the right format.
+	 * To get a param from squirrel, we use this helper class. It converts to the right format.
+	 * We use a class instead of a plain function to allow us to use partial template specializations.
 	 */
-	template <typename T> static int Return(HSQUIRRELVM vm, T t);
+	template <typename T> struct Param;
 
-	template <> inline int Return<uint8>       (HSQUIRRELVM vm, uint8 res)       { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline int Return<uint16>      (HSQUIRRELVM vm, uint16 res)      { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline int Return<uint32>      (HSQUIRRELVM vm, uint32 res)      { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline int Return<int8>        (HSQUIRRELVM vm, int8 res)        { sq_pushinteger(vm, res); return 1; }
-	template <> inline int Return<int16>       (HSQUIRRELVM vm, int16 res)       { sq_pushinteger(vm, res); return 1; }
-	template <> inline int Return<int32>       (HSQUIRRELVM vm, int32 res)       { sq_pushinteger(vm, res); return 1; }
-	template <> inline int Return<int64>       (HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, res); return 1; }
-	template <> inline int Return<Money>       (HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; }
-	template <> inline int Return<TileIndex>   (HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32)res.value); return 1; }
-	template <> inline int Return<bool>        (HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; }
-	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; }
-	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; }
-	template <> inline int Return<void *>      (HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; }
-	template <> inline int Return<HSQOBJECT>   (HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; }
+	template <> struct Param<uint8>        { static inline uint8       Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<uint16>       { static inline uint16      Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<uint32>       { static inline uint32      Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<int8>         { static inline int8        Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<int16>        { static inline int16       Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<int32>        { static inline int32       Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<int64>        { static inline int64       Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<TileIndex>    { static inline TileIndex   Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return TileIndex((uint32)(int32)tmp); } };
+	template <> struct Param<Money>        { static inline Money       Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
+	template <> struct Param<bool>         { static inline bool        Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; } };
+	template <> struct Param<void *>       { static inline void       *Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; } };
 
-	/**
-	 * To get a param from squirrel, we call this function. It converts to the right format.
-	 */
-	template <typename T> static T GetParam(ForceType<T>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr);
+	template <> struct Param<const char *> {
+		static inline const char *Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
+		{
+			/* Convert what-ever there is as parameter to a string */
+			sq_tostring(vm, index);
 
-	template <> inline uint8       GetParam(ForceType<uint8>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline uint16      GetParam(ForceType<uint16>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline uint32      GetParam(ForceType<uint32>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline int8        GetParam(ForceType<int8>        , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline int16       GetParam(ForceType<int16>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline int32       GetParam(ForceType<int32>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline int64       GetParam(ForceType<int64>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline TileIndex   GetParam(ForceType<TileIndex>   , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return TileIndex((uint32)(int32)tmp); }
-	template <> inline Money       GetParam(ForceType<Money>       , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; }
-	template <> inline bool        GetParam(ForceType<bool>        , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; }
-	template <> inline void       *GetParam(ForceType<void *>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; }
-	template <> inline const char *GetParam(ForceType<const char *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
-	{
-		/* Convert what-ever there is as parameter to a string */
-		sq_tostring(vm, index);
-
-		const SQChar *tmp;
-		sq_getstring(vm, -1, &tmp);
-		char *tmp_str = stredup(tmp);
-		sq_poptop(vm);
-		ptr->push_back((void *)tmp_str);
-		StrMakeValidInPlace(tmp_str);
-		return tmp_str;
-	}
-
-	template <> inline Array      *GetParam(ForceType<Array *>,      HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
-	{
-		/* Sanity check of the size. */
-		if (sq_getsize(vm, index) > UINT16_MAX) throw sq_throwerror(vm, "an array used as parameter to a function is too large");
-
-		SQObject obj;
-		sq_getstackobj(vm, index, &obj);
-		sq_pushobject(vm, obj);
-		sq_pushnull(vm);
-
-		std::vector<int32> data;
-
-		while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-			SQInteger tmp;
-			if (SQ_SUCCEEDED(sq_getinteger(vm, -1, &tmp))) {
-				data.push_back((int32)tmp);
-			} else {
-				sq_pop(vm, 4);
-				throw sq_throwerror(vm, "a member of an array used as parameter to a function is not numeric");
-			}
-
-			sq_pop(vm, 2);
+			const SQChar *tmp;
+			sq_getstring(vm, -1, &tmp);
+			char *tmp_str = stredup(tmp);
+			sq_poptop(vm);
+			ptr->push_back((void *)tmp_str);
+			StrMakeValidInPlace(tmp_str);
+			return tmp_str;
 		}
-		sq_pop(vm, 2);
+	};
 
-		Array *arr = (Array*)MallocT<byte>(sizeof(Array) + sizeof(int32) * data.size());
-		arr->size = data.size();
-		memcpy(arr->array, data.data(), sizeof(int32) * data.size());
+	template <typename Titem>
+	struct Param<Array<Titem>> {
+		static inline Array<Titem> Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
+		{
+			/* Sanity check of the size. */
+			if (sq_getsize(vm, index) > UINT16_MAX) throw sq_throwerror(vm, "an array used as parameter to a function is too large");
 
-		ptr->push_back(arr);
-		return arr;
-	}
+			SQObject obj;
+			sq_getstackobj(vm, index, &obj);
+			sq_pushobject(vm, obj);
+			sq_pushnull(vm);
+
+			Array<Titem> data;
+
+			while (SQ_SUCCEEDED(sq_next(vm, -2))) {
+				data.emplace_back(Param<Titem>::Get(vm, -1, ptr));
+				sq_pop(vm, 2);
+			}
+			sq_pop(vm, 2);
+
+			return data;
+		}
+	};
 
 	/**
 	 * Helper class to recognize the function type (retval type, args) and use the proper specialization
@@ -148,14 +139,14 @@ namespace SQConvert {
 			[[maybe_unused]] SQAutoFreePointers ptr;
 			if constexpr (std::is_void_v<Tretval>) {
 				(*func)(
-					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+					Param<Targs>::Get(vm, 2 + i, &ptr)...
 				);
 				return 0;
 			} else {
 				Tretval ret = (*func)(
-					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+					Param<Targs>::Get(vm, 2 + i, &ptr)...
 				);
-				return Return(vm, ret);
+				return Return<Tretval>::Set(vm, ret);
 			}
 		}
 	};
@@ -182,14 +173,14 @@ namespace SQConvert {
 			[[maybe_unused]] SQAutoFreePointers ptr;
 			if constexpr (std::is_void_v<Tretval>) {
 				(instance->*func)(
-					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+					Param<Targs>::Get(vm, 2 + i, &ptr)...
 				);
 				return 0;
 			} else {
 				Tretval ret = (instance->*func)(
-					GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+					Param<Targs>::Get(vm, 2 + i, &ptr)...
 				);
-				return Return(vm, ret);
+				return Return<Tretval>::Set(vm, ret);
 			}
 		}
 
@@ -198,7 +189,7 @@ namespace SQConvert {
 		{
 			[[maybe_unused]] SQAutoFreePointers ptr;
 			Tcls *inst = new Tcls(
-				GetParam(ForceType<Targs>(), vm, 2 + i, &ptr)...
+				Param<Targs>::Get(vm, 2 + i, &ptr)...
 			);
 
 			return inst;

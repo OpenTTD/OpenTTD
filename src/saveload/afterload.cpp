@@ -24,6 +24,7 @@
 #include "../string_func.h"
 #include "../date_func.h"
 #include "../roadveh.h"
+#include "../roadveh_cmd.h"
 #include "../train.h"
 #include "../station_base.h"
 #include "../waypoint_base.h"
@@ -39,7 +40,8 @@
 #include "../company_func.h"
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
-#include "../ai/ai_gui.hpp"
+#include "../script/script_gui.h"
+#include "../game/game.hpp"
 #include "../town.h"
 #include "../economy_base.h"
 #include "../animated_tile_func.h"
@@ -56,7 +58,6 @@
 #include "../disaster_vehicle.h"
 #include "../ship.h"
 #include "../water.h"
-
 
 #include "saveload_internal.h"
 
@@ -92,7 +93,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 	/* Mark tile dirty in all cases */
 	MarkTileDirtyByTile(t);
 
-	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1) {
+	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1) {
 		/* tiles at map borders are always WATER_CLASS_SEA */
 		SetWaterClass(t, WATER_CLASS_SEA);
 		return;
@@ -149,7 +150,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 
 static void ConvertTownOwner()
 {
-	for (TileIndex tile = 0; tile != MapSize(); tile++) {
+	for (TileIndex tile = 0; tile != Map::Size(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
 				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m3, 7)) {
@@ -202,8 +203,8 @@ static void UpdateCurrencies()
  */
 static void UpdateVoidTiles()
 {
-	for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, MapMaxY()));
-	for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(MapMaxX(), y));
+	for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, Map::MaxY()));
+	for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(Map::MaxX(), y));
 }
 
 static inline RailType UpdateRailType(RailType rt, RailType min)
@@ -249,6 +250,8 @@ static void InitializeWindowsAndCaches()
 	ClearAllCachedNames();
 	UpdateAllVirtCoords();
 	ResetViewportAfterLoadGame();
+
+	ScriptObject::InitializeRandomizers();
 
 	for (Company *c : Company::Iterate()) {
 		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
@@ -302,7 +305,6 @@ static void InitializeWindowsAndCaches()
 
 	CheckTrainsLengths();
 	ShowNewGRFError();
-	ShowAIDebugWindowIfAIError();
 
 	/* Rebuild the smallmap list of owners. */
 	BuildOwnerLegend();
@@ -538,6 +540,24 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 }
 
 /**
+ * Start the scripts.
+ */
+static void StartScripts()
+{
+	/* Script debug window requires AIs to be started before trying to start GameScript. */
+
+	/* Start the AIs. */
+	for (const Company *c : Company::Iterate()) {
+		if (Company::IsValidAiID(c->index)) AI::StartNew(c->index, false);
+	}
+
+	/* Start the GameScript. */
+	Game::StartNew();
+
+	ShowScriptDebugWindowIfScriptError();
+}
+
+/**
  * Perform a (large) amount of savegame conversion *magic* in order to
  * load older savegames and to fill the caches for various purposes.
  * @return True iff conversion went without a problem.
@@ -546,7 +566,7 @@ bool AfterLoadGame()
 {
 	SetSignalHandlers();
 
-	TileIndex map_size = MapSize();
+	TileIndex map_size = Map::Size();
 
 	extern TileIndex _cur_tileloop_tile; // From landscape.cpp.
 	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
@@ -798,13 +818,6 @@ bool AfterLoadGame()
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
 
-	/* Make sure there is an AI attached to an AI company */
-	{
-		for (const Company *c : Company::Iterate()) {
-			if (c->is_ai && c->ai_instance == nullptr) AI::StartNew(c->index);
-		}
-	}
-
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && Town::GetNumItems() == 0) {
 		SetSaveLoadError(STR_ERROR_NO_TOWN_IN_SCENARIO);
@@ -819,18 +832,6 @@ bool AfterLoadGame()
 	 * version. It didn't show up before r12070. */
 	if (IsSavegameVersionBefore(SLV_87)) UpdateVoidTiles();
 
-	/* If Load Scenario / New (Scenario) Game is used,
-	 *  a company does not exist yet. So create one here.
-	 * 1 exception: network-games. Those can have 0 companies
-	 *   But this exception is not true for non-dedicated network servers! */
-	if (!_networking || (_networking && _network_server && !_network_dedicated)) {
-		CompanyID first_human_company = GetFirstPlayableCompanyID();
-		if (!Company::IsValidID(first_human_company)) {
-			Company *c = DoStartupNewCompany(false, first_human_company);
-			c->settings = _settings_client.company;
-		}
-	}
-
 	/* Fix the cache for cargo payments. */
 	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		cp->front->cargo_payment = cp;
@@ -839,7 +840,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_72)) {
 		/* Locks in very old savegames had OWNER_WATER as owner */
-		for (TileIndex t = 0; t < MapSize(); t++) {
+		for (TileIndex t = 0; t < Map::Size(); t++) {
 			switch (GetTileType(t)) {
 				default: break;
 
@@ -1834,7 +1835,7 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			/* skip oil rigs at borders! */
 			if ((IsTileType(t, MP_WATER) || IsBuoyTile(t)) &&
-					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1)) {
+					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == Map::MaxX() - 1 || TileY(t) == Map::MaxY() - 1)) {
 				/* Some version 86 savegames have wrong water class at map borders (under buoy, or after removing buoy).
 				 * This conversion has to be done before buoys with invalid owner are removed. */
 				SetWaterClass(t, WATER_CLASS_SEA);
@@ -1983,13 +1984,6 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_101)) {
 		for (const Train *t : Train::Iterate()) {
 			if (t->First() == t) t->ReserveTrackUnderConsist();
-		}
-	}
-
-	if (IsSavegameVersionBefore(SLV_102)) {
-		for (TileIndex t = 0; t < map_size; t++) {
-			/* Now all crossings should be in correct state */
-			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t, false);
 		}
 	}
 
@@ -2340,8 +2334,7 @@ bool AfterLoadGame()
 			if (IsTileType(t, MP_TREES)) {
 				uint density = GB(_m[t].m2, 6, 2);
 				uint ground = GB(_m[t].m2, 4, 2);
-				uint counter = GB(_m[t].m2, 0, 4);
-				_m[t].m2 = ground << 6 | density << 4 | counter;
+				_m[t].m2 = ground << 6 | density << 4;
 			}
 		}
 	}
@@ -2949,7 +2942,6 @@ bool AfterLoadGame()
 				RoadVehicle *u = v;
 				RoadVehicle *prev = nullptr;
 				for (uint sf : skip_frames) {
-					extern bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
 					if (sf >= cur_skip) IndividualRoadVehicleController(u, prev);
 
 					prev = u;
@@ -3148,6 +3140,70 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Use current order time to approximate last loading time */
+	if (IsSavegameVersionBefore(SLV_LAST_LOADING_TICK)) {
+		for (Vehicle *v : Vehicle::Iterate()) {
+			v->last_loading_tick = std::max(_tick_counter, static_cast<uint64>(v->current_order_time)) - v->current_order_time;
+		}
+	}
+
+	/* Road stops is 'only' updating some caches, but they are needed for PF calls in SLV_MULTITRACK_LEVEL_CROSSINGS teleporting. */
+	AfterLoadRoadStops();
+
+	/* Road vehicles stopped on multitrack level crossings need teleporting to a depot
+	 * to avoid crashing into the side of the train they're waiting for. */
+	if (IsSavegameVersionBefore(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
+		/* Teleport road vehicles to the nearest depot. */
+		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
+			/* Ignore trailers of articulated vehicles. */
+			if (rv->IsArticulatedPart()) continue;
+
+			/* Ignore moving vehicles. */
+			if (rv->cur_speed > 0) continue;
+
+			/* Ignore crashed vehicles. */
+			if (rv->vehstatus & VS_CRASHED) continue;
+
+			/* Ignore vehicles not on level crossings. */
+			TileIndex cur_tile = rv->tile;
+			if (!IsLevelCrossingTile(cur_tile)) continue;
+
+			ClosestDepot closestDepot = rv->FindClosestDepot();
+
+			/* Try to find a depot with a distance limit of 512 tiles (Manhattan distance). */
+			if (closestDepot.found && DistanceManhattan(rv->tile, closestDepot.location) < 512u) {
+				/* Teleport all parts of articulated vehicles. */
+				for (RoadVehicle *u = rv; u != nullptr; u = u->Next()) {
+					u->tile = closestDepot.location;
+					int x = TileX(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
+					int y = TileY(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
+					u->x_pos = x;
+					u->y_pos = y;
+					u->z_pos = GetSlopePixelZ(x, y);
+
+					u->vehstatus |= VS_HIDDEN;
+					u->state = RVSB_IN_DEPOT;
+					u->UpdatePosition();
+				}
+				RoadVehLeaveDepot(rv, false);
+			}
+		}
+
+		if (IsSavegameVersionBeforeOrAt(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
+			/* Reset unused tree counters to reduce the savegame size. */
+			for (TileIndex t = 0; t < map_size; t++) {
+				if (IsTileType(t, MP_TREES)) {
+					SB(_m[t].m2, 0, 4, 0);
+				}
+			}
+		}
+
+		/* Refresh all level crossings to bar adjacent crossing tiles, if needed. */
+		for (TileIndex tile = 0; tile < Map::Size(); tile++) {
+			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false);
+		}
+	}
+
 	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	Station::RecomputeCatchmentForAll();
 
@@ -3156,8 +3212,6 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
 	}
 
-	/* Road stops is 'only' updating some caches */
-	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();
@@ -3169,6 +3223,23 @@ bool AfterLoadGame()
 	ResetSignalHandlers();
 
 	AfterLoadLinkGraphs();
+
+	/* Start the scripts. This MUST happen after everything else except
+	 * starting a new company. */
+	StartScripts();
+
+	/* If Load Scenario / New (Scenario) Game is used,
+	 *  a company does not exist yet. So create one here.
+	 * 1 exception: network-games. Those can have 0 companies
+	 *   But this exception is not true for non-dedicated network servers! */
+	if (!_networking || (_networking && _network_server && !_network_dedicated)) {
+		CompanyID first_human_company = GetFirstPlayableCompanyID();
+		if (!Company::IsValidID(first_human_company)) {
+			Company *c = DoStartupNewCompany(false, first_human_company);
+			c->settings = _settings_client.company;
+		}
+	}
+
 	return true;
 }
 

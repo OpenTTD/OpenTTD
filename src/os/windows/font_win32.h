@@ -21,7 +21,7 @@ private:
 	HDC dc = nullptr;     ///< Cached GDI device context.
 	HGDIOBJ old_font;     ///< Old font selected into the GDI context.
 	SIZE glyph_size;      ///< Maximum size of regular glyphs.
-	std::string fontname; ///< Cached copy of this->logfont.lfFaceName
+	std::string fontname; ///< Cached copy of loaded font facename
 
 	void SetFontSize(FontSize fs, int pixels);
 

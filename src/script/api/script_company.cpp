@@ -48,7 +48,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, name != nullptr);
-	const char *text = name->GetDecodedText();
+	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
@@ -69,7 +69,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, name != nullptr);
-	const char *text = name->GetDecodedText();
+	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
@@ -97,9 +97,10 @@
 	EnforcePrecondition(false, gender == GENDER_MALE || gender == GENDER_FEMALE);
 	EnforcePrecondition(false, GetPresidentGender(ScriptCompany::COMPANY_SELF) != gender);
 
+	Randomizer &randomizer = ScriptObject::GetRandomizer();
 	CompanyManagerFace cmf;
-	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (::InteractiveRandom() & (1 << ETHNICITY_BLACK)));
-	RandomCompanyManagerFaceBits(cmf, ge, false);
+	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (randomizer.Next() & (1 << ETHNICITY_BLACK)));
+	RandomCompanyManagerFaceBits(cmf, ge, false, randomizer);
 
 	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
 }

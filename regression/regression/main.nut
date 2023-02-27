@@ -341,6 +341,7 @@ function Regression::Cargo()
 		print("    GetCargoIncome(10, 10):  " + AICargo.GetCargoIncome(i, 10, 10));
 		print("    GetCargoIncome(100, 10): " + AICargo.GetCargoIncome(i, 100, 10));
 		print("    GetCargoIncome(10, 100): " + AICargo.GetCargoIncome(i, 10, 100));
+		print("    GetWeight(100):          " + AICargo.GetWeight(i, 100));
 		print("    GetRoadVehicleTypeForCargo(): " + AIRoad.GetRoadVehicleTypeForCargo(i));
 	}
 }
@@ -559,6 +560,25 @@ function Regression::Prices()
 	print("  BT_CLEAR_FIELDS: " + AITile.GetBuildCost(AITile.BT_CLEAR_FIELDS));
 	print("  BT_CLEAR_HOUSE:  " + AITile.GetBuildCost(AITile.BT_CLEAR_HOUSE));
 	print("  BT_CLEAR_WATER:  " + AITile.GetBuildCost(AITile.BT_CLEAR_WATER));
+}
+
+function Regression::Commands()
+{
+	print("");
+	print("--Commands--");
+
+	print(" -Command accounting-");
+	local test = AITestMode();
+	local costs = AIAccounting();
+	AITile.DemolishTile(2834);
+	print("  Command cost:              " + costs.GetCosts());
+	{
+		local inner = AIAccounting();
+		print("  New inner cost scope:      " + costs.GetCosts());
+		AITile.DemolishTile(2835);
+		print("  Further command cost:      " + costs.GetCosts());
+	}
+	print("  Saved cost of outer scope: " + costs.GetCosts());
 }
 
 function cost_callback(old_path, new_tile, new_direction, self) { if (old_path == null) return 0; return old_path.GetCost() + 1; }
@@ -1683,6 +1703,7 @@ function Regression::Vehicle()
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(33417, 153));
 	print("  IsValidVehicle(12):   " + AIVehicle.IsValidVehicle(12));
 	print("  CloneVehicle():       " + AIVehicle.CloneVehicle(33417, 12, true));
+	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(-1, 153));
 
 	local bank_after = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 
@@ -1939,6 +1960,7 @@ function Regression::Start()
 	/* Do this first as it gains maximum loan (which is faked to quite a lot). */
 	this.Company();
 
+	this.Commands();
 	this.Airport();
 	this.Bridge();
 	this.BridgeList();

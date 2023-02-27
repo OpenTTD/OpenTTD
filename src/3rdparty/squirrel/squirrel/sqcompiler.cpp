@@ -607,7 +607,6 @@ public:
 		switch(_token)
 		{
 		case TK_STRING_LITERAL: {
-				//SQObjectPtr id(SQString::Create(_ss(_vm), _lex._svalue,_lex._longstr.size()-1));
 				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetConstant(_fs->CreateString(_lex._svalue,_lex._longstr.size()-1)));
 				Lex();
 			}
@@ -840,7 +839,6 @@ public:
 			unsigned char flags = (hasattrs?NEW_SLOT_ATTRIBUTES_FLAG:0)|(isstatic?NEW_SLOT_STATIC_FLAG:0);
 			SQInteger table = _fs->TopTarget(); //<<BECAUSE OF THIS NO COMMON EMIT FUNC IS POSSIBLE
 			_fs->AddInstruction(_OP_NEWSLOTA, flags, table, key, val);
-			//_fs->PopTarget();
 		}
 		if(separator == ',') //hack recognizes a table from the separator
 			_fs->SetIntructionParam(tpos, 1, nkeys);
@@ -1053,7 +1051,6 @@ public:
 		if(tonextcondjmp != -1)
 			_fs->SetIntructionParam(tonextcondjmp, 1, _fs->GetCurrentPos() - tonextcondjmp);
 		if(_token == TK_DEFAULT) {
-		//	_fs->AddLineInfos(_lex._currentline, _lineinfo);
 			Lex(); Expect(':');
 			SQInteger stacksize = _fs->GetStackSize();
 			_last_stacksize = _fs->GetStackSize();
@@ -1167,11 +1164,6 @@ public:
 		}
 		SQTable *enums = _table(_ss(_vm)->_consts);
 		SQObjectPtr strongid = id;
-		/*SQObjectPtr dummy;
-		if(enums->Get(strongid,dummy)) {
-			dummy.Null(); strongid.Null();
-			Error("enumeration already exists");
-		}*/
 		enums->NewSlot(SQObjectPtr(strongid),SQObjectPtr(table));
 		strongid.Null();
 		Lex();
@@ -1318,7 +1310,6 @@ public:
 		funcstate->AddLineInfos(_lex._prevtoken == '\n'?_lex._lasttokenline:_lex._currentline, _lineinfo, true);
         funcstate->AddInstruction(_OP_RETURN, -1);
 		funcstate->SetStackSize(0);
-		//_fs->->_stacksize = _fs->_stacksize;
 		SQFunctionProto *func = funcstate->BuildProto();
 #ifdef _DEBUG_DUMP
 		funcstate->Dump(func);

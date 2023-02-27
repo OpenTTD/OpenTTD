@@ -79,10 +79,13 @@ void AskExitGame();
 void AskExitToGameMenu();
 
 int openttd_main(int argc, char *argv[]);
+void StateGameLoop();
 void HandleExitGameRequest();
 
 void SwitchToMode(SwitchMode new_mode);
 
 bool RequestNewGRFScan(struct NewGRFScanCallback *callback = nullptr);
+
+void OpenBrowser(const char *url);
 
 #endif /* OPENTTD_H */

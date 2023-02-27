@@ -30,6 +30,7 @@
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val, ModifyTimetableFlags mtf, bool timetabled)
 {
 	Order *order = v->GetOrder(order_number);
+	assert(order != nullptr);
 	int total_delta = 0;
 	int timetable_delta = 0;
 
@@ -174,12 +175,46 @@ CommandCost CmdChangeTimetable(DoCommandFlag flags, VehicleID veh, VehicleOrderI
 }
 
 /**
+ * Change timetable data of all orders of a vehicle.
+ * @param flags Operation to perform.
+ * @param veh Vehicle with the orders to change.
+ * @param mtf Timetable data to change (@see ModifyTimetableFlags)
+ * @param data The data to modify as specified by \c mtf.
+ *             0 to clear times, UINT16_MAX to clear speed limit.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdBulkChangeTimetable(DoCommandFlag flags, VehicleID veh, ModifyTimetableFlags mtf, uint16 data)
+{
+	Vehicle *v = Vehicle::GetIfValid(veh);
+	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	if (ret.Failed()) return ret;
+
+	if (mtf >= MTF_END) return CMD_ERROR;
+
+	if (v->GetNumOrders() == 0) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		for (VehicleOrderID order_number = 0; order_number < v->GetNumOrders(); order_number++) {
+			Order *order = v->GetOrder(order_number);
+			if (order == nullptr || order->IsType(OT_IMPLICIT)) continue;
+
+			Command<CMD_CHANGE_TIMETABLE>::Do(DC_EXEC, v->index, order_number, mtf, data);
+		}
+	}
+
+	return CommandCost();
+}
+
+/**
  * Clear the lateness counter to make the vehicle on time.
  * @param flags Operation to perform.
  * @param veh Vehicle with the orders to change.
+ * @param apply_to_group Set to reset the late counter for all vehicles sharing the orders.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh)
+CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh, bool apply_to_group)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
@@ -188,8 +223,23 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh)
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
-		v->lateness_counter = 0;
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		if (apply_to_group) {
+			int32 most_late = 0;
+			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
+				if (u->lateness_counter > most_late) {
+					most_late = u->lateness_counter;
+				}
+			}
+			if (most_late > 0) {
+				for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
+					u->lateness_counter -= most_late;
+					SetWindowDirty(WC_VEHICLE_TIMETABLE, u->index);
+				}
+			}
+		} else {
+			v->lateness_counter = 0;
+			SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		}
 	}
 
 	return CommandCost();
@@ -357,6 +407,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (v->cur_real_order_index >= v->GetNumOrders()) return;
 	Order *real_current_order = v->GetOrder(v->cur_real_order_index);
+	assert(real_current_order != nullptr);
 
 	VehicleOrderID first_manual_order = 0;
 	for (Order *o = v->GetFirstOrder(); o != nullptr && o->IsType(OT_IMPLICIT); o = o->next) {

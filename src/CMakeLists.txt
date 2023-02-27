@@ -216,6 +216,12 @@ add_files(
     landscape_cmd.h
     landscape_type.h
     language.h
+    league_base.h
+    league_cmd.h
+    league_cmd.cpp
+    league_gui.h
+    league_gui.cpp
+    league_type.h
     livery.h
     main_gui.cpp
     map.cpp
@@ -268,6 +274,8 @@ add_files(
     newgrf_properties.h
     newgrf_railtype.cpp
     newgrf_railtype.h
+    newgrf_roadstop.cpp
+    newgrf_roadstop.h
     newgrf_roadtype.cpp
     newgrf_roadtype.h
     newgrf_sound.cpp

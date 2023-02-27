@@ -35,6 +35,7 @@ public:
 	 * @param tile The tile to put in the center of the screen.
 	 * @pre ScriptObject::GetCompany() == OWNER_DEITY
 	 * @pre ScriptMap::IsValidTile(tile)
+	 * @return True iff the command was executed successfully.
 	 */
 	static bool ScrollEveryoneTo(TileIndex tile);
 
@@ -46,6 +47,7 @@ public:
 	 * @pre ScriptObject::GetCompany() == OWNER_DEITY
 	 * @pre ScriptMap::IsValidTile(tile)
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
+	 * @return True iff the command was executed successfully.
 	 */
 	static bool ScrollCompanyClientsTo(ScriptCompany::CompanyID company, TileIndex tile);
 
@@ -58,6 +60,7 @@ public:
 	 * @pre ScriptObject::GetCompany() == OWNER_DEITY
 	 * @pre ScriptMap::IsValidTile(tile)
 	 * @pre ResolveClientID(client) != CLIENT_INVALID
+	 * @return True iff the command was executed successfully.
 	 */
 	static bool ScrollClientTo(ScriptClient::ClientID client, TileIndex tile);
 };

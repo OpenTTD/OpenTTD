@@ -144,9 +144,9 @@ void Blitter_8bppBase::ScrollBuffer(void *video, int &left, int &top, int &width
 	}
 }
 
-int Blitter_8bppBase::BufferSize(int width, int height)
+size_t Blitter_8bppBase::BufferSize(uint width, uint height)
 {
-	return width * height;
+	return static_cast<size_t>(width) * height;
 }
 
 void Blitter_8bppBase::PaletteAnimate(const Palette &palette)

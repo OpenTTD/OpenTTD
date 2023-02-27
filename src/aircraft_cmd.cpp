@@ -231,7 +231,7 @@ void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID en
 		VehicleSpriteSeq rotor_seq;
 		GetCustomRotorIcon(engine, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
-		rotor_seq.Draw(preferred_x, y - ScaleGUITrad(5), PAL_NONE, false);
+		rotor_seq.Draw(preferred_x, y - ScaleSpriteTrad(5), PAL_NONE, false);
 	}
 }
 
@@ -252,8 +252,8 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoff
 	Rect rect;
 	seq.GetBounds(&rect);
 
-	width  = UnScaleGUI(rect.right - rect.left + 1);
-	height = UnScaleGUI(rect.bottom - rect.top + 1);
+	width  = UnScaleGUI(rect.Width());
+	height = UnScaleGUI(rect.Height());
 	xoffs  = UnScaleGUI(rect.left);
 	yoffs  = UnScaleGUI(rect.top);
 }
@@ -388,7 +388,7 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 }
 
 
-bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+ClosestDepot Aircraft::FindClosestDepot()
 {
 	const Station *st = GetTargetAirportIfValid(this);
 	/* If the station is not a valid airport or if it has no hangars */
@@ -396,15 +396,12 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
 		/* the aircraft has to search for a hangar on its own */
 		StationID station = FindNearestHangar(this);
 
-		if (station == INVALID_STATION) return false;
+		if (station == INVALID_STATION) return ClosestDepot();
 
 		st = Station::Get(station);
 	}
 
-	if (location    != nullptr) *location    = st->xy;
-	if (destination != nullptr) *destination = st->index;
-
-	return true;
+	return ClosestDepot(st->xy, st->index);
 }
 
 static void CheckIfAircraftNeedsService(Aircraft *v)
@@ -532,12 +529,12 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 
 	Aircraft *u = v->Next();
 
-	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
-	int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
+	int safe_x = Clamp(x, 0, Map::MaxX() * TILE_SIZE);
+	int safe_y = Clamp(y - 1, 0, Map::MaxY() * TILE_SIZE);
 	u->x_pos = x;
 	u->y_pos = y - ((v->z_pos - GetSlopePixelZ(safe_x, safe_y)) >> 3);
 
-	safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
+	safe_y = Clamp(u->y_pos, 0, Map::MaxY() * TILE_SIZE);
 	u->z_pos = GetSlopePixelZ(safe_x, safe_y);
 	u->sprite_cache.sprite_seq.CopyWithoutPalette(v->sprite_cache.sprite_seq); // the shadow is never coloured
 
@@ -699,8 +696,8 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
  */
 int GetTileHeightBelowAircraft(const Vehicle *v)
 {
-	int safe_x = Clamp(v->x_pos, 0, MapMaxX() * TILE_SIZE);
-	int safe_y = Clamp(v->y_pos, 0, MapMaxY() * TILE_SIZE);
+	int safe_x = Clamp(v->x_pos, 0, Map::MaxX() * TILE_SIZE);
+	int safe_y = Clamp(v->y_pos, 0, Map::MaxY() * TILE_SIZE);
 	return TileHeight(TileVirtXY(safe_x, safe_y)) * TILE_HEIGHT;
 }
 
@@ -1167,7 +1164,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 
 	/* make aircraft crash down to the ground */
 	if (v->crashed_counter < 500 && st == nullptr && ((v->crashed_counter % 3) == 0) ) {
-		int z = GetSlopePixelZ(Clamp(v->x_pos, 0, MapMaxX() * TILE_SIZE), Clamp(v->y_pos, 0, MapMaxY() * TILE_SIZE));
+		int z = GetSlopePixelZ(Clamp(v->x_pos, 0, Map::MaxX() * TILE_SIZE), Clamp(v->y_pos, 0, Map::MaxY() * TILE_SIZE));
 		v->z_pos -= 1;
 		if (v->z_pos == z) {
 			v->crashed_counter = 500;

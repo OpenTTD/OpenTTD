@@ -65,6 +65,8 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
+bool TrainOnCrossing(TileIndex tile);
+
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
 	/* Cached wagon override spritegroup */
@@ -107,23 +109,24 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
 
-	void MarkDirty();
-	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
-	void PlayLeaveStationSound() const;
-	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
-	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
-	int GetDisplaySpeed() const { return this->gcache.last_speed; }
-	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
-	Money GetRunningCost() const;
+	void MarkDirty() override;
+	void UpdateDeltaXY() override;
+	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
+	void PlayLeaveStationSound(bool force = false) const override;
+	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
+	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
+	int GetDisplaySpeed() const override { return this->gcache.last_speed; }
+	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
+	Money GetRunningCost() const override;
+	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const { return this->track == TRACK_BIT_DEPOT; }
-	bool Tick();
-	void OnNewDay();
-	uint Crash(bool flooded = false);
-	Trackdir GetVehicleTrackdir() const;
-	TileIndex GetOrderStationLocation(StationID station);
-	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+	bool Tick() override;
+	void OnNewDay() override;
+	uint Crash(bool flooded = false) override;
+	Trackdir GetVehicleTrackdir() const override;
+	TileIndex GetOrderStationLocation(StationID station) override;
+	ClosestDepot FindClosestDepot() override;
 
 	void ReserveTrackUnderConsist() const;
 
@@ -135,7 +138,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void UpdateAcceleration();
 
-	int GetCurrentMaxSpeed() const;
+	int GetCurrentMaxSpeed() const override;
 
 	/**
 	 * Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
@@ -213,7 +216,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline uint16 GetWeight() const
 	{
-		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.StoredCount() * FreightWagonMult(this->cargo_type)) / 16;
+		uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnitsInTrain(this->cargo.StoredCount());
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {
@@ -227,6 +230,12 @@ protected: // These functions should not be called outside acceleration code.
 
 		return weight;
 	}
+
+	/**
+	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
+	 * @return Weight value in tonnes.
+	 */
+	uint16 GetMaxWeight() const override;
 
 	/**
 	 * Allows to know the tractive effort value that this vehicle will use.

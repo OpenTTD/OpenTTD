@@ -521,6 +521,11 @@ public:
 		return IsRailStationTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
+	inline bool TileBelongsToRoadStop(TileIndex tile) const
+	{
+		return IsRoadStopTile(tile) && GetStationIndex(tile) == this->index;
+	}
+
 	inline bool TileBelongsToAirport(TileIndex tile) const
 	{
 		return IsAirportTile(tile) && GetStationIndex(tile) == this->index;
@@ -555,9 +560,9 @@ public:
 		return *this;
 	}
 
-	virtual TileIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new AirportTileIterator(*this);
+		return std::make_unique<AirportTileIterator>(*this);
 	}
 };
 

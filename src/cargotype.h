@@ -123,6 +123,13 @@ struct CargoSpec {
 
 	SpriteID GetCargoIcon() const;
 
+	inline uint64 WeightOfNUnits(uint32 n) const
+	{
+		return n * this->weight / 16u;
+	}
+
+	uint64 WeightOfNUnitsInTrain(uint32 n) const;
+
 	/**
 	 * Iterator to iterate all valid CargoSpec
 	 */

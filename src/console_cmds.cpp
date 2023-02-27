@@ -23,6 +23,7 @@
 #include "settings_func.h"
 #include "fios.h"
 #include "fileio_func.h"
+#include "fontcache.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "strings_func.h"
@@ -44,6 +45,8 @@
 #include "walltime_func.h"
 #include "company_cmd.h"
 #include "misc_cmd.h"
+
+#include <sstream>
 
 #include "safeguards.h"
 
@@ -283,7 +286,11 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
 		case 2: {
 			uint32 level;
 			if (GetArgumentInteger(&level, argv[1])) {
-				if (level < ZOOM_LVL_MIN) {
+				/* In case ZOOM_LVL_MIN is more than 0, the next if statement needs to be amended.
+				 * A simple check for less than ZOOM_LVL_MIN does not work here because we are
+				 * reading an unsigned integer from the console, so just check for a '-' char. */
+				static_assert(ZOOM_LVL_MIN == 0);
+				if (argv[1][0] == '-') {
 					IConsolePrint(CC_ERROR, "Zoom-in levels below {} are not supported.", ZOOM_LVL_MIN);
 				} else if (level < _settings_client.gui.zoom_min) {
 					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming in below level {}.", _settings_client.gui.zoom_min);
@@ -292,7 +299,7 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
 				} else if (level > _settings_client.gui.zoom_max) {
 					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming out beyond level {}.", _settings_client.gui.zoom_max);
 				} else {
-					Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+					Window *w = GetMainWindow();
 					Viewport *vp = w->viewport;
 					while (vp->zoom > level) DoZoomInOutWindow(ZOOM_IN, w);
 					while (vp->zoom < level) DoZoomInOutWindow(ZOOM_OUT, w);
@@ -337,7 +344,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 		case 1: {
 			uint32 result;
 			if (GetArgumentInteger(&result, argv[arg_index])) {
-				if (result >= MapSize()) {
+				if (result >= Map::Size()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
@@ -350,7 +357,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 		case 2: {
 			uint32 x, y;
 			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
-				if (x >= MapSizeX() || y >= MapSizeY()) {
+				if (x >= Map::SizeX() || y >= Map::SizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
@@ -451,8 +458,8 @@ DEF_CONSOLE_CMD(ConRemove)
 	_console_file_list.ValidateFileList();
 	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != nullptr) {
-		if (!FiosDelete(item->name)) {
-			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", file);
+		if (unlink(item->name) != 0) {
+			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
 		}
 	} else {
 		IConsolePrint(CC_ERROR, "'{}' could not be found.", file);
@@ -922,6 +929,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		return false;
 	}
 	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
+	assert(ci != nullptr);
 	if (ci->client_playas == index) {
 		IConsolePrint(CC_ERROR, "Cannot remove company: the server is connected to that company.");
 		return true;
@@ -1061,6 +1069,9 @@ DEF_CONSOLE_CMD(ConReturn)
  *  default console commands
  ******************************/
 extern bool CloseConsoleLogIfActive();
+extern const std::vector<GRFFile *> &GetAllGRFFiles();
+extern void ConPrintFramerate(); // framerate_gui.cpp
+extern void ShowFramerateWindow();
 
 DEF_CONSOLE_CMD(ConScript)
 {
@@ -1135,8 +1146,8 @@ DEF_CONSOLE_CMD(ConRestart)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = MapLogX();
-	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
+	_settings_game.game_creation.map_x = Map::LogX();
+	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RESTARTGAME;
 	return true;
 }
@@ -1152,66 +1163,73 @@ DEF_CONSOLE_CMD(ConReload)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = MapLogX();
-	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
+	_settings_game.game_creation.map_x = Map::LogX();
+	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RELOADGAME;
 	return true;
 }
 
 /**
  * Print a text buffer line by line to the console. Lines are separated by '\n'.
- * @param buf The buffer to print.
- * @note All newlines are replace by '\0' characters.
+ * @param full_string The multi-line string to print.
  */
-static void PrintLineByLine(char *buf)
+static void PrintLineByLine(const std::string &full_string)
 {
-	char *p = buf;
-	/* Print output line by line */
-	for (char *p2 = buf; *p2 != '\0'; p2++) {
-		if (*p2 == '\n') {
-			*p2 = '\0';
-			IConsolePrint(CC_DEFAULT, p);
-			p = p2 + 1;
-		}
+	std::istringstream in(full_string);
+	std::string line;
+	while (std::getline(in, line)) {
+		IConsolePrint(CC_DEFAULT, line.c_str());
 	}
 }
 
 DEF_CONSOLE_CMD(ConListAILibs)
 {
-	char buf[4096];
-	AI::GetConsoleLibraryList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed AI libraries. Usage: 'list_ai_libs'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
+	const std::string output_str = AI::GetConsoleLibraryList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
 
 DEF_CONSOLE_CMD(ConListAI)
 {
-	char buf[4096];
-	AI::GetConsoleList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed AIs. Usage: 'list_ai'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
+	const std::string output_str = AI::GetConsoleList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
 
 DEF_CONSOLE_CMD(ConListGameLibs)
 {
-	char buf[4096];
-	Game::GetConsoleLibraryList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed Game Script libraries. Usage: 'list_game_libs'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
+	const std::string output_str = Game::GetConsoleLibraryList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
 
 DEF_CONSOLE_CMD(ConListGame)
 {
-	char buf[4096];
-	Game::GetConsoleList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed Game Scripts. Usage: 'list_game'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
+	const std::string output_str = Game::GetConsoleList();
+	PrintLineByLine(output_str);
 
 	return true;
 }
@@ -1484,6 +1502,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 		IConsolePrint(CC_HELP, "  'minimap' makes a top-viewed minimap screenshot of the whole world which represents one tile by one pixel.");
 		IConsolePrint(CC_HELP, "  'no_con' hides the console to create the screenshot (only useful in combination with 'viewport').");
 		IConsolePrint(CC_HELP, "  'size' sets the width and height of the viewport to make a screenshot of (only useful in combination with 'normal' or 'big').");
+		IConsolePrint(CC_HELP, "  A filename ending in # will prevent overwriting existing files and will number files counting upwards.");
 		return true;
 	}
 
@@ -1972,6 +1991,79 @@ DEF_CONSOLE_CMD(ConContent)
 }
 #endif /* defined(WITH_ZLIB) */
 
+DEF_CONSOLE_CMD(ConFont)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Manage the fonts configuration.");
+		IConsolePrint(CC_HELP, "Usage 'font'.");
+		IConsolePrint(CC_HELP, "  Print out the fonts configuration.");
+		IConsolePrint(CC_HELP, "Usage 'font [medium|small|large|mono] [<name>] [<size>] [aa|noaa]'.");
+		IConsolePrint(CC_HELP, "  Change the configuration for a font.");
+		IConsolePrint(CC_HELP, "  Omitting an argument will keep the current value.");
+		IConsolePrint(CC_HELP, "  Set <name> to \"\" for the sprite font (size and aa have no effect on sprite font).");
+		return true;
+	}
+
+	FontSize argfs;
+	for (argfs = FS_BEGIN; argfs < FS_END; argfs++) {
+		if (argc > 1 && strcasecmp(argv[1], FontSizeToName(argfs)) == 0) break;
+	}
+
+	/* First argument must be a FontSize. */
+	if (argc > 1 && argfs == FS_END) return false;
+
+	if (argc > 2) {
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
+		std::string font = setting->font;
+		uint size = setting->size;
+		bool aa = setting->aa;
+
+		byte arg_index = 2;
+		/* We may encounter "aa" or "noaa" but it must be the last argument. */
+		if (strcasecmp(argv[arg_index], "aa") == 0 || strcasecmp(argv[arg_index], "noaa") == 0) {
+			aa = strncasecmp(argv[arg_index++], "no", 2) != 0;
+			if (argc > arg_index) return false;
+		} else {
+			/* For <name> we want a string. */
+			uint v;
+			if (!GetArgumentInteger(&v, argv[arg_index])) {
+				font = argv[arg_index++];
+			}
+		}
+
+		if (argc > arg_index) {
+			/* For <size> we want a number. */
+			uint v;
+			if (GetArgumentInteger(&v, argv[arg_index])) {
+				size = v;
+				arg_index++;
+			}
+		}
+
+		if (argc > arg_index) {
+			/* Last argument must be "aa" or "noaa". */
+			if (strcasecmp(argv[arg_index], "aa") != 0 && strcasecmp(argv[arg_index], "noaa") != 0) return false;
+			aa = strncasecmp(argv[arg_index++], "no", 2) != 0;
+			if (argc > arg_index) return false;
+		}
+
+		SetFont(argfs, font, size, aa);
+	}
+
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache *fc = FontCache::Get(fs);
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+		/* Make sure all non sprite fonts are loaded. */
+		if (!setting->font.empty() && !fc->HasParent()) {
+			InitFontCache(fs == FS_MONO);
+			fc = FontCache::Get(fs);
+		}
+		IConsolePrint(CC_DEFAULT, "{}: \"{}\" {} {} [\"{}\" {} {}]", FontSizeToName(fs), fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs) ? "aa" : "noaa", setting->font, setting->size, setting->aa ? "aa" : "noaa");
+	}
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConSetting)
 {
 	if (argc == 0) {
@@ -2124,7 +2216,6 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		return true;
 	}
 
-	extern const std::vector<GRFFile *> &GetAllGRFFiles();
 	const std::vector<GRFFile *> &files = GetAllGRFFiles();
 
 	/* "list" sub-command */
@@ -2249,8 +2340,6 @@ static void IConsoleDebugLibRegister()
 
 DEF_CONSOLE_CMD(ConFramerate)
 {
-	extern void ConPrintFramerate(); // framerate_gui.cpp
-
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Show frame rate and game speed information.");
 		return true;
@@ -2262,8 +2351,6 @@ DEF_CONSOLE_CMD(ConFramerate)
 
 DEF_CONSOLE_CMD(ConFramerateWindow)
 {
-	extern void ShowFramerateWindow();
-
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Open the frame rate window.");
 		return true;
@@ -2470,6 +2557,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("cd",                      ConChangeDirectory);
 	IConsole::CmdRegister("pwd",                     ConPrintWorkingDirectory);
 	IConsole::CmdRegister("clear",                   ConClearBuffer);
+	IConsole::CmdRegister("font",                    ConFont);
 	IConsole::CmdRegister("setting",                 ConSetting);
 	IConsole::CmdRegister("setting_newgame",         ConSettingNewgame);
 	IConsole::CmdRegister("list_settings",           ConListSettings);

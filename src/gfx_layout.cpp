@@ -11,6 +11,7 @@
 #include "gfx_layout.h"
 #include "string_func.h"
 #include "strings_func.h"
+#include "zoom_func.h"
 #include "debug.h"
 
 #include "table/control_codes.h"
@@ -333,18 +334,25 @@ public:
 FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const WChar *chars, int char_count, int x) :
 		font(font), glyph_count(char_count)
 {
+	const bool isbuiltin = font->fc->IsBuiltInFont();
+
 	this->glyphs = MallocT<GlyphID>(this->glyph_count);
 	this->glyph_to_char = MallocT<int>(this->glyph_count);
 
 	/* Positions contains the location of the begin of each of the glyphs, and the end of the last one. */
 	this->positions = MallocT<float>(this->glyph_count * 2 + 2);
 	this->positions[0] = x;
-	this->positions[1] = 0;
 
 	for (int i = 0; i < this->glyph_count; i++) {
 		this->glyphs[i] = font->fc->MapCharToGlyph(chars[i]);
+		if (isbuiltin) {
+			this->positions[2 * i + 1] = font->fc->GetAscender(); // Apply sprite font's ascender.
+		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
+			this->positions[2 * i + 1] = (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2; // Align sprite font to centre
+		} else {
+			this->positions[2 * i + 1] = 0;                       // No ascender adjustment.
+		}
 		this->positions[2 * i + 2] = this->positions[2 * i] + font->fc->GetGlyphWidth(this->glyphs[i]);
-		this->positions[2 * i + 3] = 0;
 		this->glyph_to_char[i] = i;
 	}
 }
@@ -544,8 +552,6 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 			next_run = this->buffer_begin + iter->first;
 			begin = this->buffer;
-
-			last_space = nullptr;
 		}
 
 		if (IsWhitespace(c)) last_space = this->buffer;
@@ -583,7 +589,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		this->buffer++;
 	}
 
-	if (l->size() == 0 || last_char - begin != 0) {
+	if (l->size() == 0 || last_char - begin > 0) {
 		int w = l->GetWidth();
 		l->emplace_back(iter->second, begin, last_char - begin, w);
 	}

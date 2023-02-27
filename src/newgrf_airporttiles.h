@@ -82,7 +82,6 @@ private:
 	friend void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts);
 };
 
-StationGfx GetTranslatedAirportTileID(StationGfx gfx);
 void AnimateAirportTile(TileIndex tile);
 void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
 void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);

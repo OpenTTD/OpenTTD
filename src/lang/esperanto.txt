@@ -198,6 +198,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}ĉ
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ĉp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
@@ -368,10 +369,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj opcioj
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Agordoj
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Ludo skripto agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
@@ -908,36 +908,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Alia...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Kartvela Lario (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irana Rialo (IRR)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Veturu maldekstre
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Veturu dekstre
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Urbonomoj
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elektu stilon de urbonomoj
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angle (Originale)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :France
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Germane
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angle (Aldone)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerike
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Angle (Stulte)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svede
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nederlande
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finne
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pole
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovake
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvege
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungare
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Aŭstrie
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumane
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Ĉeĥe
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svise
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dane
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turke
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itale
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalune
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Aŭtomata konservado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
 
@@ -962,11 +932,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfacgrandeco
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duobla grandeco
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kvaroble grandeco
 
 
 
@@ -1010,8 +975,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Ŝanĝi 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭvido: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pundo (£) en via valuto
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝi parametron por alia monunuo
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Neniom
 STR_FUNDING_ONLY                                                :Funduso sola
@@ -1061,6 +1024,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Modera landaspekto
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Arktikeca landaspekto
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropikeca landaspekto
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Ludolandaspekto
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Tre Ebene
@@ -1121,6 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dekstre
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimuma komenca prunto: {STRING}
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rentumtarifoj: {STRING}
 
@@ -1285,6 +1255,10 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Neniu
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originale
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Plibonigita
 
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Veturu maldekstre
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Veturu dekstre
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Altecmapa turniĝo: {STRING}
 ###length 2
@@ -1577,7 +1551,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padtrovilo por 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaloj: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomendite)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Rekomendite)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ŝanĝu agord-valoron
 
@@ -1644,12 +1618,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetoj n
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ŝanĝu daton: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu nunan jaron
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Modera landaspekto
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktikeca landaspekto
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropikeca landaspekto
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Ludolandaspekto
 
 # Livery window
 
@@ -2021,6 +1989,8 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Baskulig
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ŝarĝregiona marko
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Malaktiva
@@ -2093,8 +2063,6 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto d
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elektu Relan Ponton
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elektu Vojan Ponton
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pontelekto - klaku vian preferatan ponton por konstrui ĝin
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ŝtala pendanta
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ŝtala ebena
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ŝtala luksa
@@ -2418,15 +2386,39 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Mapgrand
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selektu la grandeco de la mapo en azuleĥoj. La nombro de disponeblaj azuleĥoj estos iom pli malgranda
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kiom da urboj:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Urbonomoj
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Elektu stilon de urbonomoj
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da industrioj:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Marnivelo:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Marnivelo:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Riveroj:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Reguleco:
 STR_MAPGEN_VARIETY                                              :{BLACK}Diverseca distribuo:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generu
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angle (Originale)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :France
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Germane
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Angle (Aldone)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerike
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Angle (Stulte)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svede
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Nederlande
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finne
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pole
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovake
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvege
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungare
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Aŭstrie
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumane
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Ĉeĥe
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Svise
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dane
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turke
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Itale
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalune
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Maprandoj:
@@ -2545,6 +2537,10 @@ STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sekvanta
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iru al bildeto
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Antaŭa bildeto
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movadi la bildeton, ŝanĝante la X kaj Y distancojn. Stir-klako por movi la bildeton je 8 unuoj samtempe
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Elektu bildeton ie el la ekrano
 
@@ -2555,7 +2551,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Averto: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eraro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Neriparebla NewGRF-eraro okazis:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por la {STRING} versio de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} estas intencita por uzo kun {STRING}
@@ -2937,6 +2932,8 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Transfor
 STR_PURCHASE_INFO_ALL_TYPES                                     :Ĉiaj ŝarĝoj
 STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimuma Tiro: {GOLD}{FORCE}
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trajnveturila elektolisto - alklaku veturilon por informoj
@@ -3517,10 +3514,10 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu for
 
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Ludo Skripto Agordo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
 STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
 STR_AI_CONFIG_NONE                                              :(neniu)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Movi supren
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movi elektitan AI-on supren en la listo
@@ -3529,7 +3526,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movi ele
 
 STR_AI_CONFIG_AI                                                :{SILVER}AIj
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Agordi
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi parametroj de la skripto
 
@@ -3546,8 +3542,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametroj
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
@@ -3944,6 +3939,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro da v
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorgintervalon...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veturilo estas detrua
+
 
 
 # Specific vehicle errors

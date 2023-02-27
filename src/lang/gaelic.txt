@@ -385,6 +385,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
@@ -562,10 +563,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Fàg an-seo
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghainnean a' gheama
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Roghainnean
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Roghainnean IF/sgriobt geama
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Roghainnean NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghainnean trìd-shoilleireachd
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ainmean nam bailtean gan sealltainn
@@ -1129,36 +1129,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Gnàthaichte...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheileach (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach (IRR)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Draibheadh air an taobh chlì
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Draibheadh air an taobh deas
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Ainmean bhailtean
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Tagh stoidhle aig ainmean nam bailtean
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Beurla (Tùsail)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frangach
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Gearmailteach
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Beurla (a bharrachd)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Aimeireaga Laidinneach
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Gòrach
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suaineach
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Duitseach
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fionnlannach
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pòlannach
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slòbhacach
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Nirribheach
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungaireach
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Ostaireach
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romàineach
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Seiceach
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Eilbheiseach
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danmhairgeach
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcach
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Eadailteach
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanach
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
 
@@ -1183,12 +1153,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Meud na h-eadar-aghaidh
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Tagh am meud airson rud san eadar-aghaidh
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Àbhaisteach
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dà uiread a mheud
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Ceithir uiread a mheud
 
 
 
@@ -1236,8 +1200,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Dèan su
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Ro-shealladh: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 not (£) san airgeadra agad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Atharraich paramadair an airgeadra ghnàthaichte
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Chan eil gin
 STR_FUNDING_ONLY                                                :Le maoineachadh a-mhàin
@@ -1287,6 +1249,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Cruth-tìre measarra
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Cruth-tìre fo-artach
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Cruth-tìre fo-thropaigeach
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Cruth-tìre nan dèideag
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Glè rèidh
@@ -1361,6 +1329,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ris an taobh de
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Iasad tòiseachaidh as motha: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :An t-airgead as motha as urrainn dha chompanaidh fhaighinn mar iasad (a' fàgail an atmhorachd dhan darna taobh)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Luach-rèidh: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Luach-rèidh iasaid; stiùiridh seo an atmhorachd cuideachd ma tha e an comas
@@ -1622,6 +1591,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Leasaichte
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Carbadan-rathaid: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Tagh an taobh air an draibhear
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Draibheadh air an taobh chlì
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Draibheadh air an taobh deas
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Cuairteachadh a' mhapa-àirde: {STRING}
 ###length 2
@@ -2100,7 +2073,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Taobh contrarra
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Faodaidh trèanaichean tilleadh aig comharra nuair a bhios iad air feitheamh ann ùine fada
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(molta)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(molta)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Atharraich luach na roghainn
 
@@ -2141,7 +2114,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Clàr na
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Roghainnean
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Roghainnean NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Susbaint air loidhne
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Roghainnean sgriobt IF/Geama
 STR_INTRO_QUIT                                                  :{BLACK}Fàg an-seo
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Tòisich geama ùr. Ctrl+Briogadh gus leum thairis air rèiteachadh a mhapa
@@ -2161,7 +2133,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Seall cl
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Roghainnean an t-seallaidh
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Seall na roghainnean NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Thoir sùil airson susbainte ùire no air a h-ùrachadh ri luchdadh a-nuas
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Seall roghainnean sgriobt IF/geama
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fàg “OpenTTD"
 
 STR_INTRO_BASESET                                               :{BLACK}Tha {NUM} {P sprìd sprìd sprìdean sprìd} a dhìth air an t-seata grafaigeachd bhunasach a thagh thu. Thoir sùil airson ùrachaidhean an t-seata bhunasaich.
@@ -2190,12 +2161,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Deasaich
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Atharraich an ceann-latha: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Atharraich am bliadhna an-dràsta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan saothrachaidh: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Cruth-tìre measarra
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Cruth-tìre fo-artach
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Cruth-tìre fo-thropaigeach
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Cruth-tìre nan dèideag
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Sgeama nan dath
@@ -2595,6 +2560,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}sàsaichte
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}cus dheth
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Seall raon-còmhdachaidh
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Air
@@ -2695,8 +2662,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Meudaich
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Tagh drochaid rèile
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Tagh drochaid rathaid
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Tagh drochaid - briog air an drochaid a thogras tu gus a togail
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Crochaidh, Stàilinn
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Teannadair, Stàilinn
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Starr-chrann, Stàillinn
@@ -3098,15 +3063,39 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Meud a' 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Tagh co mheud leacan a bhios sa mhapa. Bidh an àireamh dhe leacan ri làimh beagan nas lugha
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Bailtean:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Ainmean bhailtean
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tagh stoidhle aig ainmean nam bailtean
 STR_MAPGEN_DATE                                                 :{BLACK}Ceann-latha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gnìomhachasan:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Seòrsa a' chrutha-thìre:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Àirde na mara:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Àirde na mara:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Aibhnichean:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Dè cho rèidh:
 STR_MAPGEN_VARIETY                                              :{BLACK}Sgaoileadh caochlaidh:
 STR_MAPGEN_GENERATE                                             :{WHITE}Gin am mapa
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Beurla (Tùsail)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frangach
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Gearmailteach
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Beurla (a bharrachd)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Aimeireaga Laidinneach
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Gòrach
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suaineach
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Duitseach
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Fionnlannach
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pòlannach
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slòbhacach
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Nirribheach
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungaireach
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Ostaireach
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romàineach
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Seiceach
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Eilbheiseach
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danmhairgeach
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcach
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Eadailteach
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanach
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Oirean a' mhapa:
@@ -3247,6 +3236,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}An sprit
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lean air adhart dhan sprite àbhaisteach roimhe, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an toiseach gun sprite mu dheireadh
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Riochdachadh air an sprite a thagh thu an-dràsta. Thèid an co-thaobhadh a chur dhan dàrna taobh nuair a thèid an sprite a tharraing
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Gluais an sprite mu thimcheall, ag atharrachadh nam frith-àireamhan aig X is Y
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Ath-shuidhich na frith-àireamhean dàimheach
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Ath-shuidhich na frith-àireamhean dàimheach làithreach
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}frith-àireamh X: {NUM}, frith-àireamh Y: {NUM} (absaloideach)
@@ -3261,7 +3254,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rabhadh: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Mearachd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Marbhtach: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Thachair mearachd NewGRF marbhtach:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Chan obraich {1:STRING} leis an tionndadh aig TTDPatch a chaidh aithris le OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Tha {1:STRING} airson tionndadh {STRING} aig TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Chaidh {1:STRING} a dhealbhachadh gus cleachdadh le {STRING}
@@ -3765,6 +3757,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Na h-uile ach {
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Spàirn tàirnge as motha: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Astar: {GOLD}{COMMA} {P leac leac leacan leac}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Seòrsa a' charbaid-adhair: {GOLD}{STRING}
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liosta airson carbadan-rèile a thaghadh. Briog air carbad airson fiosrachaidh. Ctrl+briog gus toglachadh an tèid seòrsa a’ charbaid fhalach gus nach tèid
@@ -4395,12 +4389,12 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuislic
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Chan eil an uinneag dì-bhugaidh aig an IF/sgriobt geama ri làimh ach airson an fhrithealaiche
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Rèiteachadh an IF/sgriobt geama
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}An sgriobt geama a thèid a luchdadh leis an ath-gheama
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Na IF a thèid a luchdadh leis an ath-gheama
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Cluicheadair daonna
 STR_AI_CONFIG_RANDOM_AI                                         :IF air thuaiream
 STR_AI_CONFIG_NONE                                              :(gun IF)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Àireamh as motha dhe cho-fharpaisich: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gluais suas
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Gluais an IF a thagh thu suas air an liosta
@@ -4410,8 +4404,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Gluais a
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Sgriobt geama
 STR_AI_CONFIG_AI                                                :{SILVER}IFan
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Tagh {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IF
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Sgriobt geama
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Luchdaich sgriobt eile
@@ -4434,10 +4426,8 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Sguir dh
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Na atharraich an sgriobt
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramadairean aig {STRING}
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IF
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Sgriobt geama
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dùin
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ath-shuidhich
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4842,6 +4832,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tha cus 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Cha ghabh tricead na h-obrach-glèidhidh atharrachadh...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... chaidh an carbad a mhilleadh
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Cha bhi carbad sam bith ri làimh
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Atharraich an rèiteachadh NewGRF agad

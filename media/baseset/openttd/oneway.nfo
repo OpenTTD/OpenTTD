@@ -4,10 +4,24 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
    -1 * 0	 0C "One way road graphics"
-   -1 * 3	 05 09 06
-   -1 sprites/oneway.png 8bpp  34    8  24  16 -12  -8 normal
-   -1 sprites/oneway.png 8bpp  66    8  24  16 -12  -8 normal
-   -1 sprites/oneway.png 8bpp  98    8  24  16 -12  -8 normal
-   -1 sprites/oneway.png 8bpp 130    8  24  16 -12  -8 normal
-   -1 sprites/oneway.png 8bpp 162    8  24  16 -12  -8 normal
-   -1 sprites/oneway.png 8bpp 194    8  24  16 -12  -8 normal
+   -1 * 3	 05 09 12
+   -1 sprites/oneway.png 8bpp  34    8  24  16 -10   -9 normal
+   -1 sprites/oneway.png 8bpp  66    8  24  16 -13   -7 normal
+   -1 sprites/oneway.png 8bpp  98    8  24  16 -12   -8 normal
+   -1 sprites/oneway.png 8bpp 130    8  24  16 -15  -10 normal
+   -1 sprites/oneway.png 8bpp 162    8  24  16 -12   -9 normal
+   -1 sprites/oneway.png 8bpp 194    8  24  16 -11   -8 normal
+
+   -1 sprites/oneway.png 8bpp  34   40  24  16 -13  -10 normal
+   -1 sprites/oneway.png 8bpp  66   40  24  16 -12   -8 normal
+   -1 sprites/oneway.png 8bpp  98   40  24  16 -12   -9 normal
+   -1 sprites/oneway.png 8bpp 130   40  24  16 -11   -8 normal
+   -1 sprites/oneway.png 8bpp 162   40  24  16  -9  -10 normal
+   -1 sprites/oneway.png 8bpp 194   40  24  16 -10   -9 normal
+
+   -1 sprites/oneway.png 8bpp  34   72  24  16  -8  -11 normal
+   -1 sprites/oneway.png 8bpp  66   72  24  16 -11   -5 normal
+   -1 sprites/oneway.png 8bpp  98   72  24  16 -12   -8 normal
+   -1 sprites/oneway.png 8bpp 130   72  24  16 -12   -5 normal
+   -1 sprites/oneway.png 8bpp 162   72  24  16 -14  -10 normal
+   -1 sprites/oneway.png 8bpp 194   72  24  16 -12   -8 normal

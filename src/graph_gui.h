@@ -16,7 +16,6 @@ void ShowDeliveredCargoGraph();
 void ShowPerformanceHistoryGraph();
 void ShowCompanyValueGraph();
 void ShowCargoPaymentRates();
-void ShowCompanyLeagueTable();
 void ShowPerformanceRatingDetail();
 
 #endif /* GRAPH_GUI_H */

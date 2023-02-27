@@ -14,8 +14,7 @@
 #include "linkgraphjob.h"
 #include "linkgraphschedule.h"
 
-typedef LinkGraphJob::Node Node;
-typedef LinkGraphJob::Edge Edge;
-typedef LinkGraphJob::EdgeIterator EdgeIterator;
+typedef LinkGraphJob::NodeAnnotation Node;
+typedef LinkGraphJob::EdgeAnnotation Edge;
 
 #endif /* LINKGRAPHJOB_BASE_H */

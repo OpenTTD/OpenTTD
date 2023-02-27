@@ -22,6 +22,7 @@
 #include "strings_func.h"
 #include "fios.h"
 #include "ai/ai_gui.hpp"
+#include "game/game_gui.hpp"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "language.h"
@@ -221,7 +222,7 @@ struct SelectGameWindow : public Window {
 		}
 
 		IntroGameViewportCommand &vc = intro_viewport_commands[this->cur_viewport_command_index];
-		Window *mw = FindWindowByClass(WC_MAIN_WINDOW);
+		Window *mw = GetMainWindow();
 		Viewport *vp = mw->viewport;
 
 		/* Early exit if the current command hasn't elapsed and isn't animated. */
@@ -368,6 +369,7 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 			case WID_SGI_AI_SETTINGS:     ShowAIConfigWindow(); break;
+			case WID_SGI_GS_SETTINGS:     ShowGSConfigWindow(); break;
 			case WID_SGI_EXIT:            HandleExitGameRequest(); break;
 		}
 	}
@@ -378,7 +380,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 	NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 
-	/* 'generate game' and 'load game' buttons */
+	/* 'New Game' and 'Load Game' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GENERATE_GAME), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -388,7 +390,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'play scenario' and 'play heightmap' buttons */
+	/* 'Play Scenario' and 'Play Heightmap' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -398,7 +400,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'edit scenario' and 'play multiplayer' buttons */
+	/* 'Scenario Editor' and 'Multiplayer' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -408,7 +410,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 
-	/* climate selection buttons */
+	/* Climate selection buttons */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
 		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_SGI_TEMPERATE_LANDSCAPE), SetMinimalSize(77, 55),
@@ -437,7 +439,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 
-	/* 'game options' and 'advanced settings' buttons */
+	/* 'Game Options' and 'Settings' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
@@ -447,27 +449,35 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'script settings' and 'newgrf settings' buttons */
+	/* 'AI Settings' and 'Game Script Settings' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_AI_SETTINGS), SetMinimalSize(158, 12),
-							SetDataTip(STR_INTRO_SCRIPT_SETTINGS, STR_INTRO_TOOLTIP_SCRIPT_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+							SetDataTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GS_SETTINGS), SetMinimalSize(158, 12),
+							SetDataTip(STR_INTRO_GAMESCRIPT_SETTINGS, STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+	EndContainer(),
+
+	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
+
+	/* 'Check Online Content' and 'NewGRF Settings' buttons */
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
+							SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetPadding(0, 0, 0, 10), SetFill(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'online content' and 'highscore' buttons */
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
-							SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HIGHSCORE), SetMinimalSize(158, 12),
-							SetDataTip(STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+	/* 'Highscore Table' button */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HIGHSCORE), SetMinimalSize(316, 12),
+							SetDataTip(STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetPadding(0, 10, 0, 10), SetFill(1, 0),
 	EndContainer(),
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'exit program' button */
+	/* 'Exit' button */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SPACER), SetFill(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EXIT), SetMinimalSize(128, 12),

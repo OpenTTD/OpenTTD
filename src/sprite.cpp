@@ -125,7 +125,7 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 		} else {
 			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
 			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
-			DrawSprite(image, pal, x + child_offset.x + ScaleGUITrad(offs_x), y + child_offset.y + ScaleGUITrad(offs_y));
+			DrawSprite(image, pal, x + child_offset.x + ScaleSpriteTrad(offs_x), y + child_offset.y + ScaleSpriteTrad(offs_y));
 		}
 	}
 }

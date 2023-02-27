@@ -13,6 +13,7 @@
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"
+#include "mixer.h"
 
 #include "fontcache.h"
 #include "error.h"
@@ -88,7 +89,10 @@ void ResetMusic();
 void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
+extern void AfterLoadCompanyStats();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern void OSOpenBrowser(const char *url);
+extern void RebuildTownCaches();
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
 
@@ -176,7 +180,7 @@ static void ShowHelp()
 		"\n"
 		"Command line options:\n"
 		"  -v drv              = Set video driver (see below)\n"
-		"  -s drv              = Set sound driver (see below) (param bufsize,hz)\n"
+		"  -s drv              = Set sound driver (see below)\n"
 		"  -m drv              = Set music driver (see below)\n"
 		"  -b drv              = Set the blitter to use (see below)\n"
 		"  -r res              = Set resolution (for instance 800x600)\n"
@@ -227,12 +231,14 @@ static void ShowHelp()
 
 	/* We need to initialize the AI, so it finds the AIs */
 	AI::Initialize();
-	p = AI::GetConsoleList(p, lastof(buf), true);
+	const std::string ai_list = AI::GetConsoleList(true);
+	p = strecpy(p, ai_list.c_str(), lastof(buf));
 	AI::Uninitialize(true);
 
 	/* We need to initialize the GameScript, so it finds the GSs */
 	Game::Initialize();
-	p = Game::GetConsoleList(p, lastof(buf), true);
+	const std::string game_list = Game::GetConsoleList(true);
+	p = strecpy(p, game_list.c_str(), lastof(buf));
 	Game::Uninitialize(true);
 
 	/* ShowInfo put output to stderr, but version information should go
@@ -399,7 +405,6 @@ void OpenBrowser(const char *url)
 	/* Make sure we only accept urls that are sure to open a browser. */
 	if (strstr(url, "http://") != url && strstr(url, "https://") != url) return;
 
-	extern void OSOpenBrowser(const char *url);
 	OSOpenBrowser(url);
 }
 
@@ -450,8 +455,9 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		/* We have loaded the config, so we may possibly save it. */
 		_save_config = save_config;
 
-		/* restore saved music volume */
+		/* restore saved music and effects volumes */
 		MusicDriver::GetInstance()->SetVolume(_settings_client.music.music_vol);
+		SetEffectVolume(_settings_client.music.effect_vol);
 
 		if (startyear != INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", startyear);
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
@@ -752,7 +758,9 @@ int openttd_main(int argc, char *argv[])
 
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;
-	UpdateGUIZoom();
+
+	/* The video driver is now selected, now initialise GUI zoom */
+	AdjustGUIZoom(false);
 
 	NetworkStartUp(); // initialize network-core
 
@@ -1155,7 +1163,6 @@ static void CheckCaches()
 		old_town_caches.push_back(t->cache);
 	}
 
-	extern void RebuildTownCaches();
 	RebuildTownCaches();
 	RebuildSubsidisedSourceAndDestinationCache();
 
@@ -1171,7 +1178,6 @@ static void CheckCaches()
 	std::vector<CompanyInfrastructure> old_infrastructure;
 	for (const Company *c : Company::Iterate()) old_infrastructure.push_back(c->infrastructure);
 
-	extern void AfterLoadCompanyStats();
 	AfterLoadCompanyStats();
 
 	i = 0;
@@ -1192,7 +1198,6 @@ static void CheckCaches()
 	}
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		extern void FillNewGRFVehicleCache(const Vehicle *v);
 		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
 
 		uint length = 0;
@@ -1397,7 +1402,7 @@ void StateGameLoop()
 
 #ifndef DEBUG_DUMP_COMMANDS
 		{
-			PerformanceMeasurer framerate(PFE_ALLSCRIPTS);
+			PerformanceMeasurer script_framerate(PFE_ALLSCRIPTS);
 			AI::GameLoop();
 			Game::GameLoop();
 		}

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -920,6 +918,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	int pitch = Align(w, 4);
+	size_t line_pixel_count = static_cast<size_t>(pitch) * h;
 
 	_glViewport(0, 0, w, h);
 
@@ -930,27 +929,27 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 		_glDeleteBuffers(1, &this->vid_pbo);
 		_glGenBuffers(1, &this->vid_pbo);
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-		_glBufferStorage(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
+		_glBufferStorage(GL_PIXEL_UNPACK_BUFFER, line_pixel_count * bpp / 8, nullptr, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
 	} else {
 		/* Re-allocate video buffer texture and backing store. */
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-		_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_DYNAMIC_DRAW);
+		_glBufferData(GL_PIXEL_UNPACK_BUFFER, line_pixel_count * bpp / 8, nullptr, GL_DYNAMIC_DRAW);
 	}
 
 	if (bpp == 32) {
 		/* Initialize backing store alpha to opaque for 32bpp modes. */
 		Colour black(0, 0, 0);
 		if (_glClearBufferSubData != nullptr) {
-			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_RGBA8, 0, pitch * h * bpp / 8, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &black.data);
+			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_RGBA8, 0, line_pixel_count * bpp / 8, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &black.data);
 		} else {
-			ClearPixelBuffer<uint32>(pitch * h, black.data);
+			ClearPixelBuffer<uint32>(line_pixel_count, black.data);
 		}
 	} else if (bpp == 8) {
 		if (_glClearBufferSubData != nullptr) {
 			byte b = 0;
-			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, pitch * h, GL_RED, GL_UNSIGNED_BYTE, &b);
+			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, line_pixel_count, GL_RED, GL_UNSIGNED_BYTE, &b);
 		} else {
-			ClearPixelBuffer<byte>(pitch * h, 0);
+			ClearPixelBuffer<byte>(line_pixel_count, 0);
 		}
 	}
 
@@ -974,18 +973,18 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 			_glDeleteBuffers(1, &this->anim_pbo);
 			_glGenBuffers(1, &this->anim_pbo);
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-			_glBufferStorage(GL_PIXEL_UNPACK_BUFFER, pitch * h, nullptr, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
+			_glBufferStorage(GL_PIXEL_UNPACK_BUFFER, line_pixel_count, nullptr, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
 		} else {
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-			_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h, nullptr, GL_DYNAMIC_DRAW);
+			_glBufferData(GL_PIXEL_UNPACK_BUFFER, line_pixel_count, nullptr, GL_DYNAMIC_DRAW);
 		}
 
 		/* Initialize buffer as 0 == no remap. */
 		if (_glClearBufferSubData != nullptr) {
 			byte b = 0;
-			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, pitch * h, GL_RED, GL_UNSIGNED_BYTE, &b);
+			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, line_pixel_count, GL_RED, GL_UNSIGNED_BYTE, &b);
 		} else {
-			ClearPixelBuffer<byte>(pitch * h, 0);
+			ClearPixelBuffer<byte>(line_pixel_count, 0);
 		}
 
 		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
@@ -1121,8 +1120,8 @@ void OpenGLBackend::PopulateCursorCache()
 		if (!this->cursor_cache.Contains(sprite)) {
 			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, ST_NORMAL, &SimpleSpriteAlloc, this));
 			if (old != nullptr) {
-				OpenGLSprite *sprite = (OpenGLSprite *)old->data;
-				sprite->~OpenGLSprite();
+				OpenGLSprite *gl_sprite = (OpenGLSprite *)old->data;
+				gl_sprite->~OpenGLSprite();
 				free(old);
 			}
 		}
@@ -1193,7 +1192,7 @@ uint8 *OpenGLBackend::GetAnimBuffer()
 		this->anim_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
 	} else if (this->anim_buffer == nullptr) {
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-		this->anim_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, _screen.pitch * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+		this->anim_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
 	}
 
 	return (uint8 *)this->anim_buffer;
@@ -1493,8 +1492,9 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 
 	if (this->tex[TEX_RGBA] != 0) {
 		/* Unpack pixel data */
-		Colour *rgba = buf_rgba.Allocate(width * height);
-		for (size_t i = 0; i < width * height; i++) {
+		size_t size = static_cast<size_t>(width) * height;
+		Colour *rgba = buf_rgba.Allocate(size);
+		for (size_t i = 0; i < size; i++) {
 			rgba[i].r = data[i].r;
 			rgba[i].g = data[i].g;
 			rgba[i].b = data[i].b;
@@ -1507,7 +1507,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 
 	if (this->tex[TEX_REMAP] != 0) {
 		/* Unpack and align pixel data. */
-		int pitch = Align(width, 4);
+		size_t pitch = Align(width, 4);
 
 		uint8 *pal = buf_pal.Allocate(pitch * height);
 		const SpriteLoader::CommonPixel *row = data;

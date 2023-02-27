@@ -198,6 +198,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hö.
 STR_UNITS_POWER_METRIC                                          :{COMMA}hö.
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}tonn
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
@@ -354,9 +355,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gervigreind/leikjaforskrift
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bæjanöfn sýnd
@@ -895,36 +895,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérsniðinn...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstristefna
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Hægristefna
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bæjanöfn
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Tungumál bæjarnafna
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ensk (Upphafleg)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frönsk
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Þýsk
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ensk (Aukaleg)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Rómönsk-Amerísk
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fáránleg
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sænsk
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollensk
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnsk
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pólsk
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slóvakísk
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norsk
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungversk
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austurrísk
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rúmensk
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tékknesk
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svissnesk
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dönsk
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrknesk
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ítölsk
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalónsk
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tíðni sjálfvirkra vistana
 
@@ -945,7 +915,6 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Smelltu 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
-
 
 
 
@@ -997,8 +966,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: 
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pund (£) í þessum gjaldmiðli
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérsniðnum gjaldmiðli
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Engin
 STR_FUNDING_ONLY                                                :Með fjármögnun
 STR_MINIMAL                                                     :Lágmark
@@ -1047,6 +1014,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temprað landslag
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Heimskautalandslag
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Miðjarðarlandslag
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Leikfangalandslag
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Mjög slétt
@@ -1113,6 +1086,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hámarkslán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hámarks upphæð sem fyrirtæki getur fengið lánað (ekki er gert ráð fyrir verðbólgu)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Vextir: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Vextir á lánum, stjórnar einnig verðbólgu, ef hún er virk
@@ -1353,6 +1327,10 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Hvergi
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Venjulega
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Nýstárlega
 
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vinstristefna
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Hægristefna
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Snúningur hæðakorts: {STRING}
 ###length 2
@@ -1759,7 +1737,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Snúa járnbrau
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leyfa járnbrautarlestum að snúa við á umferðarmerkjum ef þau hafa beðið þar í langan tíma
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ráðlegt)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ráðlegt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
@@ -1799,7 +1777,6 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stilling
 STR_INTRO_HIGHSCORE                                             :{BLACK}Stigatafla
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}GG/forskriftar stillingar
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+smella sleppir kortastillingum
@@ -1818,7 +1795,6 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Stilla O
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Birta stigatöflu
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Birta stillingar fyrir gervigreind/forskrift
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Það vantar {NUM} þýðing{P u ar} í þetta tungumál. Vinsamlegast hjálpaðu við að gera OpenTTD betra með því að skrá þig sem þýðanda. Nánari upplýsingar í readme.txt.
@@ -1844,12 +1820,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Þotur 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Breyta um ár
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temprað landslag
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Heimskautalandslag
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Miðjarðarlandslag
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leikfangalandslag
 
 # Livery window
 
@@ -2241,6 +2211,8 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gera hlu
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fela
@@ -2329,8 +2301,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auka þ�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Veldu tegund brúar
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Veldu vegabrú
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brúarval - smelltu á brú að eigin vali til að reysa hana
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hengibrú, stál
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Burðarbitabrú, stál
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Svifbitabrú, stál
@@ -2681,15 +2651,39 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kortast�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Veldu stærð kortsins í reitum. Fjöldi reita verða aðeins færri
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Fjöldi bæja:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bæjanöfn
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tungumál bæjarnafna
 STR_MAPGEN_DATE                                                 :{BLACK}Dags.:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi iðnaða:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magn sjávar:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Magn sjávar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ár:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Sléttleiki lands:
 STR_MAPGEN_VARIETY                                              :{BLACK}Fjölbreytileikadreifing:
 STR_MAPGEN_GENERATE                                             :{WHITE}Mynda land
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ensk (Upphafleg)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frönsk
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Þýsk
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ensk (Aukaleg)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Rómönsk-Amerísk
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Fáránleg
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sænsk
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollensk
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnsk
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pólsk
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slóvakísk
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norsk
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungversk
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austurrísk
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rúmensk
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tékknesk
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Svissnesk
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dönsk
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrknesk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ítölsk
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalónsk
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Hliðar korts:
@@ -2816,6 +2810,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Fyrri hr
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fara á fyrri venjulegu hreyfimynd, sleppir gervi/endurlitun/letur hreyfimyndum og fer aftast í listen þegar upphafi er náð.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Framsetning á valinni hreyfimynd. Samstillingu er sleppt við teikningu á þessari hreyfimynd.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Færðu hreyfimyndina, breytir X og Y hliðrun
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Veldu hreyfimynd
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Veldu hreyfimynd hvaðan sem er af skjánum
 
@@ -2826,7 +2824,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Villa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Banvænt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Alvarleg NewGRF villa átti sér stað:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er fyrir {STRING} útgáfu af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er hannað til að notast með {STRING}
@@ -3279,6 +3276,8 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Allar tegundir 
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks togkrafur: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Drægni: {GOLD}{COMMA} reitir
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
@@ -3881,12 +3880,12 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af f
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar/forskriftar er aðeins aðgengilegur á þjóni
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar/forskriftar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Forskriftin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Gervigreindin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
 STR_AI_CONFIG_NONE                                              :(engin)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Færa upp
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Færa valda gerfigreind upp listann
@@ -3896,8 +3895,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa va
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Forskrift
 STR_AI_CONFIG_AI                                                :{SILVER}Gervigreindir
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Veldu {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :gervigreind
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Forskrift
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Hlaða annarri forskrift
@@ -3920,10 +3917,8 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Hætta v
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} breytur
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Leikja forskriftar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4321,6 +4316,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Of mörg
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki breytt viðgerðarmillibili...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ökutæki er eyðilagt
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Engin farartæki verða í boði
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Breyta NewGRF stillingunum þínum

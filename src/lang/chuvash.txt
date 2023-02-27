@@ -163,6 +163,7 @@ STR_UNITS_POWER_SI                                              :{COMMA}кВт
 
 
 
+
 # Common window strings
 
 
@@ -225,7 +226,7 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Вӗҫле
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи майлаштару
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майлаштару
 
@@ -484,30 +485,6 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлт
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла тенкӗ (RUR)
 
-###length 2
-
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Акӑлчан
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францири
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нимӗҫ
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Акӑлчан (Хушма)
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Акӑлчан (Кулӑшма)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Шведла
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Голланд
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Финла
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Поляк
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словак
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Венгрла
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австри
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Рим
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чехла
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швеци
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датчан
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турккӑла
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Итали
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Катталун
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
 
 # Autosave dropdown
@@ -533,7 +510,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 
 
-
 # Custom currency window
 
 
@@ -543,7 +519,6 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суф�
 
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Малтанласа пӑхса тухни: {ORANGE}{CURRENCY_LONG}
-
 
 STR_NONE                                                        :Ҫук
 STR_NUM_CUSTOM                                                  :Харпӑр хӑй
@@ -567,6 +542,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Виҫеллӗ климат
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Сивӗ климат
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Тропик климат
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Вӑйӑ пахчи
 
 ###length 7
 
@@ -597,6 +578,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Сулахай�
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Варринче
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмра
 
+###setting-zero-is-special
 
 
 
@@ -691,6 +673,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ҫук
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Чӑн
 
+
+###length 2
 
 ###length 2
 
@@ -891,12 +875,6 @@ STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑйй
 # Cheat window
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳрлет кун: {ORANGE}{DATE_SHORT}
 
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Виҫеллӗ климат
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Сивӗ климат
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Тропик климат
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Вӑйӑ пахчи
-
 # Livery window
 
 
@@ -1056,6 +1034,8 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 
 # Join station window
@@ -1206,6 +1186,27 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Виҫа картти:
 STR_MAPGEN_BY                                                   :{BLACK}*
 
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Акӑлчан
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Францири
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Нимӗҫ
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Акӑлчан (Хушма)
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Акӑлчан (Кулӑшма)
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Шведла
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Голланд
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Финла
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Поляк
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Словак
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Венгрла
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Австри
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Рим
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Чехла
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Швеци
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Датчан
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Турккӑла
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Итали
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Катталун
+
 # Strings for map borders at game generation
 
 
@@ -1238,6 +1239,10 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Объект
 
 
 # Sprite aligner window
+
+###length 2
+
+
 
 
 # NewGRF (self) generated warnings/errors
@@ -1377,6 +1382,8 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 # Vehicle availability
 ###length VEHICLE_TYPES
 
+
+###length 3
 
 ###length VEHICLE_TYPES
 
@@ -1578,7 +1585,6 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -1586,7 +1592,7 @@ STR_AI_LIST_VERSION                                             :{LTBLUE}Вер�
 
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
@@ -1690,6 +1696,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 ###length VEHICLE_TYPES
 
 ###length VEHICLE_TYPES
+
 
 
 

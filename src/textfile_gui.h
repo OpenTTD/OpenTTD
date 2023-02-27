@@ -36,9 +36,6 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 
 	uint max_length;                 ///< Maximum length of unwrapped text line.
 
-	static const int TOP_SPACING    = WD_FRAMETEXT_TOP;    ///< Additional spacing at the top of the #WID_TF_BACKGROUND widget.
-	static const int BOTTOM_SPACING = WD_FRAMETEXT_BOTTOM; ///< Additional spacing at the bottom of the #WID_TF_BACKGROUND widget.
-
 	TextfileWindow(TextfileType file_type);
 	~TextfileWindow();
 

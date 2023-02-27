@@ -58,9 +58,9 @@ public:
 		return this->att->gfx;
 	}
 
-	virtual AirportTileTableIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new AirportTileTableIterator(*this);
+		return std::make_unique<AirportTileTableIterator>(*this);
 	}
 };
 

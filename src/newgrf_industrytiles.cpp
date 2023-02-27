@@ -257,7 +257,7 @@ uint16 GetSimpleIndustryCallback(CallbackID callback, uint32 param1, uint32 para
 }
 
 /** Helper class for animation control. */
-struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback> {
+struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback, TileAnimationFrameAnimationHelper<Industry> > {
 	static const CallbackID cb_animation_speed      = CBID_INDTILE_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_INDTILE_ANIM_NEXT_FRAME;
 

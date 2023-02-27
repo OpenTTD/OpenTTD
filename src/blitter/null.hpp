@@ -27,7 +27,7 @@ public:
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override {};
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override {};
 	void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y) override {};
-	int BufferSize(int width, int height) override { return 0; };
+	size_t BufferSize(uint width, uint height) override { return 0; };
 	void PaletteAnimate(const Palette &palette) override { };
 	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PALETTE_ANIMATION_NONE; };
 

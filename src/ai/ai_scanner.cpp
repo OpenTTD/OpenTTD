@@ -10,9 +10,11 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../network/network.h"
+#include "../openttd.h"
 #include "../core/random_func.hpp"
 
 #include "../script/squirrel_class.hpp"
+#include "../script/api/script_object.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 
@@ -33,7 +35,6 @@ void AIScannerInfo::Initialize()
 
 	/* Create the dummy AI */
 	this->main_script = "%_dummy";
-	extern void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
 	Script_CreateDummyInfo(this->engine->GetVM(), "AI", "ai");
 }
 
@@ -59,6 +60,11 @@ void AIScannerInfo::RegisterAPI(class Squirrel *engine)
 
 AIInfo *AIScannerInfo::SelectRandomAI() const
 {
+	if (_game_mode == GM_MENU) {
+		Debug(script, 0, "The intro game should not use AI, loading 'dummy' AI.");
+		return this->info_dummy;
+	}
+
 	uint num_random_ais = 0;
 	for (const auto &item : info_single_list) {
 		AIInfo *i = static_cast<AIInfo *>(item.second);
@@ -71,12 +77,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 	}
 
 	/* Find a random AI */
-	uint pos;
-	if (_networking) {
-		pos = InteractiveRandomRange(num_random_ais);
-	} else {
-		pos = RandomRange(num_random_ais);
-	}
+	uint pos = ScriptObject::GetRandomizer(OWNER_NONE).Next(num_random_ais);
 
 	/* Find the Nth item from the array */
 	ScriptInfoList::const_iterator it = this->info_single_list.begin();

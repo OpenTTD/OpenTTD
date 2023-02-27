@@ -82,20 +82,18 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->mode_instance;
 }
 
-/* static */ void ScriptObject::SetLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd)
+/* static */ void ScriptObject::SetLastCommand(const CommandDataBuffer &data, Commands cmd)
 {
 	ScriptStorage *s = GetStorage();
-	Debug(script, 6, "SetLastCommand company={:02d} tile={:06x} cmd={} data={}", s->root_company, tile, cmd, FormatArrayAsHex(data));
-	s->last_tile = tile;
+	Debug(script, 6, "SetLastCommand company={:02d} cmd={} data={}", s->root_company, cmd, FormatArrayAsHex(data));
 	s->last_data = data;
 	s->last_cmd = cmd;
 }
 
-/* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, const CommandDataBuffer &data, Commands cmd)
+/* static */ bool ScriptObject::CheckLastCommand(const CommandDataBuffer &data, Commands cmd)
 {
 	ScriptStorage *s = GetStorage();
-	Debug(script, 6, "CheckLastCommand company={:02d} tile={:06x} cmd={} data={}", s->root_company, tile, cmd, FormatArrayAsHex(data));
-	if (s->last_tile != tile) return false;
+	Debug(script, 6, "CheckLastCommand company={:02d} cmd={} data={}", s->root_company, cmd, FormatArrayAsHex(data));
 	if (s->last_cmd != cmd) return false;
 	if (s->last_data != data) return false;
 	return true;
@@ -103,7 +101,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 /* static */ void ScriptObject::SetDoCommandCosts(Money value)
 {
-	GetStorage()->costs = CommandCost(value);
+	GetStorage()->costs = CommandCost(INVALID_EXPENSES, value); // Expense type is never read.
 }
 
 /* static */ void ScriptObject::IncreaseDoCommandCosts(Money value)
@@ -310,4 +308,20 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 	}
 
 	NOT_REACHED();
+}
+
+
+/* static */ Randomizer ScriptObject::random_states[OWNER_END];
+
+Randomizer &ScriptObject::GetRandomizer(Owner owner)
+{
+	return ScriptObject::random_states[owner];
+}
+
+void ScriptObject::InitializeRandomizers()
+{
+	Randomizer random = _random;
+	for (Owner owner = OWNER_BEGIN; owner < OWNER_END; owner++) {
+		ScriptObject::GetRandomizer(owner).SetSeed(random.Next());
+	}
 }

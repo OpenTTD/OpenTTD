@@ -387,6 +387,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
@@ -564,10 +565,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Exire
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludi optiones
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Electiones
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Optiones IA/Ludi scriptorum
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Optiones NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiones perluciditatis
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomina oppidorum spectabilia
@@ -1121,36 +1121,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gubernantur sinistro
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gubernantur dextro
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomina oppidorum
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Eligere oppidorum nomina
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglica (Primigenia)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francogallica
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Theodisca
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglica (Additicia)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Americae Latinae
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ridicula
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suecica
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Batavica
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnica
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polonica
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovaca
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegica
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarica
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austriaca
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanica
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Cecha
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Helvetica
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danica
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcica
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiana
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalana
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Eligere crebritatem automatice ludum servandi
 
@@ -1175,19 +1145,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Magnitudo interfaciei
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Eligere magnitudinem interfaciei adhibendam
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Simplex
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duplex
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quadruplex
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Magnitudo Litterarum
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Eligere magnitudinem litterarum adhibendam
-
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Simplex
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duplex
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quadruplex
 
 
 
@@ -1233,8 +1192,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mutare a
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Praevisum: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}Copia nummi tui quae aequa est 10000 Librae Britannicae (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mutare parametrum nummi proprii
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Numerus competitorum maximus: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Nullae
 STR_FUNDING_ONLY                                                :Modo conditu
@@ -1284,6 +1241,12 @@ STR_SUBSIDY_X1_5                                                :Sesquiplex
 STR_SUBSIDY_X2                                                  :Duplex
 STR_SUBSIDY_X3                                                  :Triplex
 STR_SUBSIDY_X4                                                  :Quadruplex
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Terra temperata
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Terra subarctica
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Terra subtropica
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Terra ludicrorum
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Planissimus
@@ -1358,6 +1321,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dextro
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Creditum maximum in initio: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Copia crediti maxima (sine inflatione)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Proportio faenoris: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Proportio faenoris creditorum; etiam inflationem afficit, si inflatio adest
@@ -1620,6 +1584,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Melior
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehicula viaria: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Eligere latus viae gubernandi
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gubernantur sinistro
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Gubernantur dextro
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotatio tabulae altitudinum: {STRING}
 ###length 2
@@ -2107,7 +2075,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Reversio automa
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sinere tramina reverti apud signale, si illic valde morati sunt
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Commendatum)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Commendatum)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mutare valorem optionis
 
@@ -2148,7 +2116,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Album Pu
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Electiones
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Optiones
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Inspicere Inventarium Interretiale
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA/Ludi Scriptorum Optiones
 STR_INTRO_QUIT                                                  :{BLACK}Exire
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Incipere novum ludum. Ctrl+Preme ut configuratio tabulae omittatur
@@ -2168,7 +2135,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Monstrar
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Monstrare electiones
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Monstrare optiones NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Inspicere inventarium Interretiale in quo res sicut NewGRF, scaenaria, musica, etc. sunt
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Monstrare optiones IA/Ludi scriptorum
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exire OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Hoc fundamento graphico desunt spiritus {NUM}. Quaere novam editionem huius fundamenti.
@@ -2197,12 +2163,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Eligere 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Mutare annum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mutare annum currentem
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sinere mutare productiones industriarum: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Terra temperata
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Terra subarctica
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Terra subtropica
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Terra ludicrorum
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} Schema Coloris
@@ -2613,6 +2573,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}satur
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}superoneratus
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Regio Acceptionis
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Celata
@@ -2705,8 +2667,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augere i
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eligere Pontem Ferriviarium
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Eligere Pontem Viarium
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Electio pontium - preme in pontem delectum ut struatur
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Pendulus, Chalybeius
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Trabum, Chalybeius
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Prominens, Chalybeius
@@ -3071,15 +3031,39 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Tabulae 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Eligere magnitudinem tegularum tabulae geographicae. Tegulae parabiles fere minores erunt
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numerus oppidorum:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomina oppidorum
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Eligere oppidorum nomina
 STR_MAPGEN_DATE                                                 :{BLACK}Dies:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numerus industriarum:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatrum terrae:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typus terrae:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magnitudo maris:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Magnitudo maris:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Numerus fluviorum:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lenitas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Partitio Varietatis:
 STR_MAPGEN_GENERATE                                             :{WHITE}Creare
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Anglica (Primigenia)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francogallica
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Theodisca
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Anglica (Additicia)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Americae Latinae
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Ridicula
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suecica
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Batavica
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnica
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polonica
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovaca
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegica
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungarica
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriaca
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Romanica
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Cecha
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Helvetica
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danica
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turcica
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiana
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalana
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Fines tabulae:
@@ -3221,6 +3205,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Spiritum
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ire ad spiritum naturalem priorem et, termino contacto, ad ultimum revertere
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Imago spiritus electi. Directio neglegitur cum hic spiritus pingitur
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movere spiritum mutatione X et Y incrementa. Ctrl+Preme ut spiritus octoni incrementa moveatur
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reponere relativas
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reponere positiones relativas
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Positio X: {NUM}, Positio Y: {NUM} (Absolutae)
@@ -3235,7 +3223,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Cautio: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Error Fatalis: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Error NewGRF fatalis:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non operat apud editionem TTDPatch ab OpenTTD dicta
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} spectat ad editionem {STRING} TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} spectat ad {STRING}
@@ -3752,6 +3739,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Omnibus praeter
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Vis Tractionis Maxima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Max. distantia volatus: {GOLD}{COMMA} tegulas
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Typus aeroplani: {GOLD}{STRING}
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Index electionis vehiculorum ferriviariorum. Preme in vehiculum ut plura indicia monstrentur. Ctrl+Preme ut typus vehiculi celetur
@@ -4393,12 +4382,12 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Unum cur
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fenestra Emendationis IA/Ludi Scripti tantum servatro licet uti
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuratio IA/Ludi Scriptum
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ludi Scriptum quod imponet ludo proximo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IA quae imponet ludo proximo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lusor humanus
 STR_AI_CONFIG_RANDOM_AI                                         :IA Fortuita
 STR_AI_CONFIG_NONE                                              :(nullum)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Numerus competitorum maximus: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Sursum Movere
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movere IA electam sursum in indice
@@ -4408,8 +4397,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movere I
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Ludi Scriptum
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Eligere {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Scriptum
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Legere aliud ludi scriptum
@@ -4432,10 +4419,8 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancella
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non scriptum mutare
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametra
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ludi Scripti
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Claudere
 STR_AI_SETTINGS_RESET                                           :{BLACK}Revertere
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4840,6 +4825,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Nimis ve
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Non licet intervallum ministrationis mutare...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehiculum est destructum!
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nulla vehicula omnino parabilia erunt
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muta configurationem NewGRF tuam

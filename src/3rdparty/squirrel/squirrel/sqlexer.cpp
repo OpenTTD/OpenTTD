@@ -177,7 +177,6 @@ SQInteger SQLexer::Lex()
 			else if ( CUR_CHAR == '-' ) { NEXT(); RETURN_TOKEN(TK_NEWSLOT); }
 			else if ( CUR_CHAR == '<' ) { NEXT(); RETURN_TOKEN(TK_SHIFTL); }
 			else if ( CUR_CHAR == '/' ) { NEXT(); RETURN_TOKEN(TK_ATTR_OPEN); }
-			//else if ( CUR_CHAR == '[' ) { NEXT(); ReadMultilineString(); RETURN_TOKEN(TK_STRING_LITERAL); }
 			else { RETURN_TOKEN('<') }
 		case '>':
 			NEXT();

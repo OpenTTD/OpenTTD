@@ -10,11 +10,6 @@
 #ifndef AI_GUI_HPP
 #define AI_GUI_HPP
 
-#include "../company_type.h"
-
-Window* ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY);
 void ShowAIConfigWindow();
-void ShowAIDebugWindowIfAIError();
-void InitializeAIGui();
 
 #endif /* AI_GUI_HPP */

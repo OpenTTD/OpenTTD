@@ -10,6 +10,7 @@
 - Peter Nelson (peter1138) - Spiritual descendant from newGRF gods (since 0.4.5)
 - Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)
 - Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op
+- Tyler Trahan (2TallTyler) - General coding (since 13)
 
 ### Inactive Developers:
 

@@ -58,7 +58,7 @@ enum RoadTypeSpriteGroup {
 	ROTSG_CURSORS,        ///< Optional: Cursor and toolbar icon images
 	ROTSG_OVERLAY,        ///< Optional: Images for overlaying track
 	ROTSG_GROUND,         ///< Required: Main group of ground images
-	ROTSG_reserved1,      ///<           Placeholder, if we need specific tunnel sprites.
+	ROTSG_TUNNEL,         ///< Optional: Ground images for tunnels
 	ROTSG_CATENARY_FRONT, ///< Optional: Catenary front
 	ROTSG_CATENARY_BACK,  ///< Optional: Catenary back
 	ROTSG_BRIDGE,         ///< Required: Bridge surface images
@@ -66,6 +66,7 @@ enum RoadTypeSpriteGroup {
 	ROTSG_DEPOT,          ///< Optional: Depot images
 	ROTSG_reserved3,      ///<           Placeholder, if we add road fences (for highways).
 	ROTSG_ROADSTOP,       ///< Required: Drive-in stop surface
+	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
 	ROTSG_END,
 };
 

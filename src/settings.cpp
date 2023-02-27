@@ -58,7 +58,6 @@ std::string _config_file; ///< Configuration file of OpenTTD.
 std::string _private_file; ///< Private configuration file of OpenTTD.
 std::string _secrets_file; ///< Secrets configuration file of OpenTTD.
 
-typedef std::list<ErrorMessageData> ErrorList;
 static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
 
 /**
@@ -1016,7 +1015,7 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
 			}
 
-			SetDParamStr(0, StrEmpty(filename) ? item->name : filename);
+			SetDParamStr(0, StrEmpty(filename) ? item->name.c_str() : filename);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
 			delete c;
 			continue;
@@ -1250,7 +1249,6 @@ void LoadFromConfig(bool startup)
 		DebugReconsiderSendRemoteMessages();
 
 		/* Display scheduled errors */
-		extern void ScheduleErrorMessage(ErrorList &datas);
 		ScheduleErrorMessage(_settings_error_list);
 		if (FindWindowById(WC_ERRMSG, 0) == nullptr) ShowFirstError();
 	}
@@ -1602,8 +1600,8 @@ void SyncCompanySettings()
 	const void *new_object = &_settings_client.company;
 	for (auto &desc : _company_settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
-		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
-		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
+		uint32 old_value = (uint32)sd->AsIntSetting()->Read(old_object);
+		uint32 new_value = (uint32)sd->AsIntSetting()->Read(new_object);
 		if (old_value != new_value) Command<CMD_CHANGE_COMPANY_SETTING>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
 	}
 }

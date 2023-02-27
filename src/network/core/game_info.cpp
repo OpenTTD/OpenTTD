@@ -126,8 +126,8 @@ void FillStaticNetworkServerGameInfo()
 	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
-	_network_game_info.map_width      = MapSizeX();
-	_network_game_info.map_height     = MapSizeY();
+	_network_game_info.map_width      = Map::SizeX();
+	_network_game_info.map_height     = Map::SizeY();
 	_network_game_info.landscape      = _settings_game.game_creation.landscape;
 	_network_game_info.dedicated      = _network_dedicated;
 	_network_game_info.grfconfig      = _grfconfig;
@@ -281,14 +281,14 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		}
 
 		case 4: {
-			GRFConfig **dst = &info->grfconfig;
-			uint i;
+			/* Ensure that the maximum number of NewGRFs and the field in the network
+			 * protocol are matched to eachother. If that is not the case anymore a
+			 * check must be added to ensure the received data is still valid. */
+			static_assert(std::numeric_limits<uint8>::max() == NETWORK_MAX_GRF_COUNT);
 			uint num_grfs = p->Recv_uint8();
 
-			/* Broken/bad data. It cannot have that many NewGRFs. */
-			if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
-
-			for (i = 0; i < num_grfs; i++) {
+			GRFConfig **dst = &info->grfconfig;
+			for (uint i = 0; i < num_grfs; i++) {
 				NamedGRFIdentifier grf;
 				switch (newgrf_serialisation) {
 					case NST_GRFID_MD5:

@@ -146,7 +146,7 @@ public:
 	/**
 	 * Allocate a new iterator that is a copy of this one.
 	 */
-	virtual TileIterator *Clone() const = 0;
+	virtual std::unique_ptr<TileIterator> Clone() const = 0;
 
 	/**
 	 * Equality comparison.
@@ -177,6 +177,8 @@ public:
 	{
 		return this->tile != rhs;
 	}
+
+	static std::unique_ptr<TileIterator> Create(TileIndex corner1, TileIndex corner2, bool diagonal);
 };
 
 /** Iterator to iterate over a tile area (rectangle) of the map. */
@@ -223,9 +225,9 @@ public:
 		return *this;
 	}
 
-	virtual TileIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new OrthogonalTileIterator(*this);
+		return std::make_unique<OrthogonalTileIterator>(*this);
 	}
 };
 
@@ -262,9 +264,9 @@ public:
 
 	TileIterator& operator ++();
 
-	virtual TileIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new DiagonalTileIterator(*this);
+		return std::make_unique<DiagonalTileIterator>(*this);
 	}
 };
 

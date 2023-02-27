@@ -125,6 +125,9 @@ std::string FiosMakeSavegameName(const char *name);
 
 FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
 
+void ScanScenarios();
+const char *FindScenario(const ContentInfo *ci, bool md5sum);
+
 /**
  * A savegame name automatically numbered.
  */

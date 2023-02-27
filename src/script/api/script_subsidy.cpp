@@ -80,7 +80,7 @@
 
 /* static */ int32 ScriptSubsidy::GetSourceIndex(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
 
 	return ::Subsidy::Get(subsidy_id)->src;
 }
@@ -94,7 +94,7 @@
 
 /* static */ int32 ScriptSubsidy::GetDestinationIndex(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
 
 	return ::Subsidy::Get(subsidy_id)->dst;
 }

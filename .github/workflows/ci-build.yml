@@ -9,6 +9,10 @@ on:
 env:
   CTEST_OUTPUT_ON_FAILURE: 1
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
 jobs:
   emscripten:
     name: Emscripten
@@ -16,7 +20,7 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:2.0.31
+      image: emscripten/emsdk:3.1.28
 
     steps:
     - name: Checkout
@@ -26,7 +30,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 2.0.31-${{ runner.os }}
+        key: 3.1.28-${{ runner.os }}
 
     - name: Patch Emscripten to support LZMA
       run: |
@@ -102,6 +106,7 @@ jobs:
         echo "::group::Install dependencies"
         sudo apt-get install -y --no-install-recommends \
           liballegro4-dev \
+          libcurl4-openssl-dev \
           libfontconfig-dev \
           libicu-dev \
           liblzma-dev \
@@ -162,16 +167,25 @@ jobs:
 
     runs-on: macos-latest
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.14
+      MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Install dependencies
+      env:
+        HOMEBREW_NO_AUTO_UPDATE: 1
+        HOMEBREW_NO_INSTALL_CLEANUP: 1
+      run: |
+        brew install \
+          pkg-config \
+          # EOF
+
     - name: Prepare cache key
       id: key
       run: |
-        echo "::set-output name=image::$ImageOS-$ImageVersion"
+        echo "image=$ImageOS-$ImageVersion" >> $GITHUB_OUTPUT
 
     - name: Enable vcpkg cache
       uses: actions/cache@v3
@@ -184,6 +198,7 @@ jobs:
     - name: Prepare vcpkg
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-osx \
+          curl \
           liblzma \
           libpng \
           lzo \
@@ -253,7 +268,7 @@ jobs:
         # Work around caching failure with GNU tar
         New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
 
-        Write-Output "::set-output name=image::$env:ImageOS-$env:ImageVersion"
+        Write-Output "image=$env:ImageOS-$env:ImageVersion" >> $env:GITHUB_OUTPUT
 
     - name: Enable vcpkg cache
       uses: actions/cache@v3
@@ -408,4 +423,4 @@ jobs:
 
     steps:
     - name: Check annotations
-      uses: OpenTTD/actions/annotation-check@v2
+      uses: OpenTTD/actions/annotation-check@v3

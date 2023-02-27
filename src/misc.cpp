@@ -11,7 +11,7 @@
 #include "landscape.h"
 #include "news_func.h"
 #include "ai/ai.hpp"
-#include "ai/ai_gui.hpp"
+#include "script/script_gui.h"
 #include "newgrf.h"
 #include "newgrf_house.h"
 #include "economy_func.h"
@@ -61,7 +61,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	 * related to the new game we're about to start/load. */
 	UnInitWindowSystem();
 
-	AllocateMap(size_x, size_y);
+	Map::Allocate(size_x, size_y);
 
 	_pause_mode = PM_UNPAUSED;
 	_game_speed = 100;
@@ -100,7 +100,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeGraphGui();
 	InitializeObjectGui();
 	InitializeTownGui();
-	InitializeAIGui();
+	InitializeScriptGui();
 	InitializeTrees();
 	InitializeIndustries();
 	InitializeObjects();

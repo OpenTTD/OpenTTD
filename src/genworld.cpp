@@ -108,6 +108,7 @@ static void _GenerateWorld()
 		_random.SetSeed(_settings_game.game_creation.generation_seed);
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
+		ScriptObject::InitializeRandomizers();
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 
@@ -121,8 +122,8 @@ static void _GenerateWorld()
 
 			/* Make sure the tiles at the north border are void tiles if needed. */
 			if (_settings_game.construction.freeform_edges) {
-				for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
-				for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+				for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
+				for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
 			}
 
 			/* Make the map the height of the setting */
@@ -335,9 +336,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	ShowGenerateWorldProgress();
 
 	/* Centre the view on the map */
-	if (FindWindowById(WC_MAIN_WINDOW, 0) != nullptr) {
-		ScrollMainWindowToTile(TileXY(MapSizeX() / 2, MapSizeY() / 2), true);
-	}
+	ScrollMainWindowToTile(TileXY(Map::SizeX() / 2, Map::SizeY() / 2), true);
 
 	_GenerateWorld();
 }

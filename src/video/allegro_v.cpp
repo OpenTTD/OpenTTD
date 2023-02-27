@@ -204,7 +204,7 @@ static bool CreateMainSurface(uint w, uint h)
 	_screen.dst_ptr = _allegro_screen->line[0];
 
 	/* Initialise the screen so we don't blit garbage to the screen */
-	memset(_screen.dst_ptr, 0, _screen.height * _screen.pitch);
+	memset(_screen.dst_ptr, 0, static_cast<size_t>(_screen.height) * _screen.pitch);
 
 	/* Set the mouse at the place where we expect it */
 	poll_mouse();
@@ -467,13 +467,9 @@ void VideoDriver_Allegro::InputLoop()
 	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
 	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
 
-#if defined(_DEBUG)
-	this->fast_forward_key_pressed = _shift_pressed;
-#else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
 	this->fast_forward_key_pressed = key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0;
-#endif
 
 	/* Determine which directional keys are down. */
 	_dirkeys =

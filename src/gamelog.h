@@ -10,6 +10,7 @@
 #ifndef GAMELOG_H
 #define GAMELOG_H
 
+#include <functional>
 #include "newgrf_config.h"
 
 /** The actions we log. */
@@ -32,13 +33,7 @@ void GamelogStopAnyAction();
 void GamelogFree(struct LoggedAction *gamelog_action, uint gamelog_actions);
 void GamelogReset();
 
-/**
- * Callback for printing text.
- * @param s The string to print.
- */
-typedef void GamelogPrintProc(const char *s);
-void GamelogPrint(GamelogPrintProc *proc); // needed for WIN32 crash.log
-
+void GamelogPrint(std::function<void(const char *)> proc);
 void GamelogPrintDebug(int level);
 void GamelogPrintConsole();
 

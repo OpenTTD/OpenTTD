@@ -47,9 +47,7 @@ void FixOldMapArray()
 {
 	/* TTO/TTD/TTDP savegames could have buoys at tile 0
 	 * (without assigned station struct) */
-	MemSetT(&_m[0], 0);
-	SetTileType(0, MP_WATER);
-	SetTileOwner(0, OWNER_WATER);
+	MakeSea(0);
 }
 
 static void FixTTDMapArray()
@@ -386,11 +384,13 @@ static bool FixTTOEngines()
 	}
 
 	/* Load the default engine set. Many of them will be overridden later */
-	uint j = 0;
-	for (uint i = 0; i < lengthof(_orig_rail_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
-	for (uint i = 0; i < lengthof(_orig_road_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
-	for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
-	for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
+	{
+		uint j = 0;
+		for (uint i = 0; i < lengthof(_orig_rail_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
+		for (uint i = 0; i < lengthof(_orig_road_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
+		for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
+		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
+	}
 
 	Date aging_date = std::min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
 
@@ -401,7 +401,8 @@ static bool FixTTOEngines()
 		if (oi == 255) {
 			/* Default engine is used */
 			_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-			StartupOneEngine(e, aging_date);
+			StartupOneEngine(e, aging_date, 0);
+			CalcEngineReliability(e, false);
 			e->intro_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
 			_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
 
@@ -1466,8 +1467,7 @@ static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
 static bool LoadOldMapPart1(LoadgameState *ls, int num)
 {
 	if (_savegame_type == SGT_TTO) {
-		MemSetT(_m, 0, OLD_MAP_SIZE);
-		MemSetT(_me, 0, OLD_MAP_SIZE);
+		Map::Allocate(OLD_MAP_SIZE, OLD_MAP_SIZE);
 	}
 
 	for (uint i = 0; i < OLD_MAP_SIZE; i++) {

@@ -174,9 +174,6 @@ static void PlaceTree(TileIndex tile, uint32 r)
 		if (ground != TREE_GROUND_SNOW_DESERT && ground != TREE_GROUND_ROUGH_SNOW && ground != TREE_GROUND_SHORE) {
 			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
 		}
-
-		/* Set the counter to a random start value */
-		SetTreeCounter(tile, (TreeGround)GB(r, 24, 4));
 	}
 }
 
@@ -250,7 +247,7 @@ void PlaceTreesRandomly()
 {
 	int i, j, ht;
 
-	i = ScaleByMapSize(DEFAULT_TREE_STEPS);
+	i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 	do {
 		uint32 r = Random();
@@ -278,7 +275,7 @@ void PlaceTreesRandomly()
 
 	/* place extra trees at rainforest area */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		i = ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
+		i = Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
 		if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 
 		do {
@@ -308,6 +305,7 @@ void PlaceTreesRandomly()
  */
 uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone)
 {
+	assert(_game_mode == GM_EDITOR); // Due to InteractiveRandom being used in this function
 	assert(treetype < TREE_TOYLAND + TREE_COUNT_TOYLAND);
 	const bool allow_desert = treetype == TREE_CACTUS;
 	uint planted = 0;
@@ -364,10 +362,10 @@ void GenerateTrees()
 		default: NOT_REACHED();
 	}
 
-	total = ScaleByMapSize(DEFAULT_TREE_STEPS);
-	if (_settings_game.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
+	total = Map::ScaleBySize(DEFAULT_TREE_STEPS);
+	if (_settings_game.game_creation.landscape == LT_TROPIC) total += Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
 	total *= i;
-	uint num_groups = (_settings_game.game_creation.landscape != LT_TOYLAND) ? ScaleByMapSize(GB(Random(), 0, 5) + 25) : 0;
+	uint num_groups = (_settings_game.game_creation.landscape != LT_TOYLAND) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
 	total += num_groups * DEFAULT_TREE_STEPS;
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
@@ -384,22 +382,24 @@ void GenerateTrees()
  * @param tile end tile of area-drag
  * @param start_tile start tile of area-drag of tree plantation
  * @param tree_to_plant tree type, TREE_INVALID means random.
+ * @param diagonal Whether to use the Orthogonal (false) or Diagonal (true) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant)
+CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, byte tree_to_plant, bool diagonal)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
 
-	if (start_tile >= MapSize()) return CMD_ERROR;
+	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
 	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
 
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
 
-	TileArea ta(tile, start_tile);
-	for (TileIndex current_tile : ta) {
+	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
+	for (; *iter != INVALID_TILE; ++(*iter)) {
+		TileIndex current_tile = *iter;
 		switch (GetTileType(current_tile)) {
 			case MP_TREES:
 				/* no more space for trees? */
@@ -707,10 +707,14 @@ static void TileLoop_Trees(TileIndex tile)
 
 	AmbientSoundEffect(tile);
 
-	uint treeCounter = GetTreeCounter(tile);
+	/* _tick_counter is incremented by 256 between each call, so ignore lower 8 bits.
+	 * Also, we use a simple hash to spread the updates evenly over the map.
+	 * 11 and 9 are just some co-prime numbers for better spread.
+	 */
+	uint32 cycle = 11 * TileX(tile) + 9 * TileY(tile) + (_tick_counter >> 8);
 
 	/* Handle growth of grass (under trees/on MP_TREES tiles) at every 8th processings, like it's done for grass on MP_CLEAR tiles. */
-	if ((treeCounter & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
+	if ((cycle & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
 		uint density = GetTreeDensity(tile);
 		if (density < 3) {
 			SetTreeGroundDensity(tile, TREE_GROUND_GRASS, density + 1);
@@ -720,11 +724,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 	if (_settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
 
-	if (GetTreeCounter(tile) < 15) {
-		AddTreeCounter(tile, 1);
-		return;
-	}
-	SetTreeCounter(tile, 0);
+	if ((cycle & 15) != 15) return;
 
 	switch (GetTreeGrowth(tile)) {
 		case 3: // regular sized tree
@@ -824,7 +824,7 @@ bool DecrementTreeCounter()
 
 	/* byte underflow */
 	byte old_trees_tick_ctr = _trees_tick_ctr;
-	_trees_tick_ctr -= ScaleByMapSize(1);
+	_trees_tick_ctr -= Map::ScaleBySize(1);
 	return old_trees_tick_ctr <= _trees_tick_ctr;
 }
 
@@ -840,12 +840,12 @@ void OnTick_Trees()
 	/* Skip some tree ticks for map sizes below 256 * 256. 64 * 64 is 16 times smaller, so
 	 * this is the maximum number of ticks that are skipped. Number of ticks to skip is
 	 * inversely proportional to map size, so that is handled to create a mask. */
-	int skip = ScaleByMapSize(16);
+	int skip = Map::ScaleBySize(16);
 	if (skip < 16 && (_tick_counter & (16 / skip - 1)) != 0) return;
 
 	/* place a tree at a random rainforest spot */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		for (uint c = ScaleByMapSize(1); c > 0; c--) {
+		for (uint c = Map::ScaleBySize(1); c > 0; c--) {
 			if ((r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 				CanPlantTreesOnTile(tile, false) &&
 				(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {

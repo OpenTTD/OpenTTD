@@ -86,11 +86,11 @@ struct CFollowTrackT
 		m_railtypes = railtype_override;
 	}
 
-	inline static TransportType TT() { return Ttr_type_; }
-	inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
-	inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
+	debug_inline static TransportType TT() { return Ttr_type_; }
+	debug_inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
+	debug_inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
 	inline bool IsTram() { return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(m_veh)->roadtype); }
-	inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
+	debug_inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
 	inline static bool Allow90degTurns() { return T90deg_turns_allowed_; }
 	inline static bool DoTrackMasking() { return Tmask_reserved_tracks; }
 
@@ -371,7 +371,7 @@ protected:
 			/* entered railway station
 			 * get platform length */
 			uint length = BaseStation::GetByTile(m_new_tile)->GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
-			/* how big step we must do to get to the last platform tile; */
+			/* how big step we must do to get to the last platform tile? */
 			m_tiles_skipped = length - 1;
 			/* move to the platform end */
 			TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);

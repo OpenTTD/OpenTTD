@@ -81,3 +81,9 @@
 	if (!ScriptCargo::IsValidCargo(cargo_type)) return INVALID_DISTRIBUTION_TYPE;
 	return (ScriptCargo::DistributionType)_settings_game.linkgraph.GetDistributionType(cargo_type);
 }
+
+/* static */ int64 ScriptCargo::GetWeight(CargoID cargo_type, uint32 amount)
+{
+	if (!IsValidCargo(cargo_type)) return -1;
+	return ::CargoSpec::Get(cargo_type)->WeightOfNUnits(amount);
+}

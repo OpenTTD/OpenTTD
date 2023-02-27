@@ -518,6 +518,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 
 			{
 				const Vehicle *w = v->Next();
+				assert(w != nullptr);
 				uint16 altitude = ClampToU16(v->z_pos - w->z_pos); // Aircraft height - shadow height
 				byte airporttype = ATP_TTDP_LARGE;
 
@@ -975,6 +976,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			case 0x92: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF); // Date of last service
 			case 0x93: return GB(Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
 			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
+			case 0xC6: return Engine::Get(this->self_type)->grf_prop.local_id;
+			case 0xC7: return GB(Engine::Get(this->self_type)->grf_prop.local_id, 8, 8);
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle
 			case 0xF2: return 0; // Cargo subtype
 		}

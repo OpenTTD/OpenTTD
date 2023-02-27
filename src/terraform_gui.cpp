@@ -113,8 +113,8 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 	if (!_settings_game.construction.freeform_edges) {
 		/* When end_tile is MP_VOID, the error tile will not be visible to the
 		 * user. This happens when terraforming at the southern border. */
-		if (TileX(end_tile) == MapMaxX()) end_tile += TileDiffXY(-1, 0);
-		if (TileY(end_tile) == MapMaxY()) end_tile += TileDiffXY(0, -1);
+		if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
+		if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 	}
 
 	switch (proc) {
@@ -201,7 +201,7 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case WID_TT_BUY_LAND: // Buy land button
-				HandlePlacePushButton(this, WID_TT_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT);
+				HandlePlacePushButton(this, WID_TT_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
@@ -242,7 +242,7 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case WID_TT_BUY_LAND: // Buy land button
-				Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL, tile, OBJECT_OWNED_LAND, 0);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
 				break;
 
 			case WID_TT_PLACE_SIGN: // Place sign button
@@ -275,6 +275,16 @@ struct TerraformToolbarWindow : Window {
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					break;
+				case DDSP_BUILD_OBJECT:
+					if (!_settings_game.construction.freeform_edges) {
+						/* When end_tile is MP_VOID, the error tile will not be visible to the
+							* user. This happens when terraforming at the southern border. */
+						if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
+						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
+					}
+					Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL,
+						end_tile, start_tile, OBJECT_OWNED_LAND, 0, (_ctrl_pressed ? true : false));
 					break;
 			}
 		}

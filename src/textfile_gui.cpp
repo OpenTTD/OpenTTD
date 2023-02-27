@@ -8,6 +8,7 @@
 /** @file textfile_gui.cpp Implementation of textfile window. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "fileio_func.h"
 #include "fontcache.h"
 #include "gfx_type.h"
@@ -88,7 +89,7 @@ uint TextfileWindow::ReflowContent()
 			line.bottom = height;
 		}
 	} else {
-		int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
+		int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WidgetDimensions::scaled.frametext.Horizontal();
 		for (auto &line : this->lines) {
 			line.top = height;
 			height += GetStringHeight(line.text, max_width, FS_MONO) / FONT_HEIGHT_MONO;
@@ -111,7 +112,7 @@ uint TextfileWindow::GetContentHeight()
 		case WID_TF_BACKGROUND:
 			resize->height = FONT_HEIGHT_MONO;
 
-			size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
+			size->height = 4 * resize->height + WidgetDimensions::scaled.frametext.Vertical(); // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 			break;
 	}
@@ -128,7 +129,7 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	} else {
 		uint height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
 		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
-		this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		this->hscroll->SetCount(this->max_length + WidgetDimensions::scaled.frametext.Horizontal());
 	}
 
 	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
@@ -148,17 +149,14 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 {
 	if (widget != WID_TF_BACKGROUND) return;
 
-	const int x = r.left + WD_FRAMETEXT_LEFT;
-	const int y = r.top + WD_FRAMETEXT_TOP;
-	const int right = r.right - WD_FRAMETEXT_RIGHT;
-	const int bottom = r.bottom - WD_FRAMETEXT_BOTTOM;
+	Rect fr = r.Shrink(WidgetDimensions::scaled.frametext);
 
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, x, y, right - x + 1, bottom - y + 1)) return;
-	DrawPixelInfo *old_dpi = _cur_dpi;
-	_cur_dpi = &new_dpi;
+	if (!FillDrawPixelInfo(&new_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
+	fr = fr.Translate(-fr.left, -fr.top);
 	int line_height = FONT_HEIGHT_MONO;
 	int pos = this->vscroll->GetPosition();
 	int cap = this->vscroll->GetCapacity();
@@ -169,18 +167,16 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 
 		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			DrawStringMultiLine(0, right - x, y_offset, bottom - y, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, line.text, TC_BLACK, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
-			DrawString(-this->hscroll->GetPosition(), right - x, y_offset, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawString(-this->hscroll->GetPosition(), fr.right, y_offset, line.text, TC_BLACK, SA_TOP | SA_LEFT, false, FS_MONO);
 		}
 	}
-
-	_cur_dpi = old_dpi;
 }
 
 /* virtual */ void TextfileWindow::OnResize()
 {
-	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, TOP_SPACING + BOTTOM_SPACING);
+	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.Vertical());
 	this->hscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND);
 
 	this->SetupScrollbars(false);

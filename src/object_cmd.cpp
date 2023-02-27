@@ -311,6 +311,7 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 	}
 
 	int hq_score = 0;
+	uint build_object_size = 1;
 	switch (type) {
 		case OBJECT_TRANSMITTER:
 		case OBJECT_LIGHTHOUSE:
@@ -349,7 +350,14 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 			return CMD_ERROR;
 
 		default: // i.e. NewGRF provided.
+			build_object_size = size_x * size_y;
 			break;
+	}
+
+	/* Don't allow building more objects if the company has reached its limit. */
+	Company *c = Company::GetIfValid(_current_company);
+	if (c != nullptr && GB(c->build_object_limit, 16, 16) < build_object_size) {
+		return_cmd_error(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
 	}
 
 	if (flags & DC_EXEC) {
@@ -357,12 +365,69 @@ CommandCost CmdBuildObject(DoCommandFlag flags, TileIndex tile, ObjectType type,
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);
+
+		/* Subtract the tile from the build limit. */
+		if (c != nullptr) c->build_object_limit -= build_object_size << 16;
 	}
 
-	cost.AddCost(ObjectSpec::Get(type)->GetBuildCost() * size_x * size_y);
+	cost.AddCost(spec->GetBuildCost() * build_object_size);
 	return cost;
 }
 
+/**
+ * Construct multiple objects in an area
+ * @param flags of operation to conduct
+ * @param tile end tile of area dragging
+ * @param start_tile start tile of area dragging
+ * @param type the object type to build
+ * @param view the view for the object
+ * @param diagonal Whether to use the Orthogonal (0) or Diagonal (1) iterator.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdBuildObjectArea(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, ObjectType type, uint8 view, bool diagonal)
+{
+	if (start_tile >= Map::Size()) return CMD_ERROR;
+
+	if (type >= NUM_OBJECTS) return CMD_ERROR;
+	const ObjectSpec *spec = ObjectSpec::Get(type);
+	if (view >= spec->views) return CMD_ERROR;
+
+	if (spec->size != OBJECT_SIZE_1X1) return CMD_ERROR;
+
+	Money money = GetAvailableMoneyForCommand();
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
+
+	const Company *c = Company::GetIfValid(_current_company);
+	int limit = (c == nullptr ? INT32_MAX : GB(c->build_object_limit, 16, 16));
+
+	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
+	for (; *iter != INVALID_TILE; ++(*iter)) {
+		TileIndex t = *iter;
+		CommandCost ret = Command<CMD_BUILD_OBJECT>::Do(flags & ~DC_EXEC, t, type, view);
+
+		/* If we've reached the limit, stop building (or testing). */
+		if (c != nullptr && limit-- <= 0) break;
+
+		if (ret.Failed()) {
+			last_error = ret;
+			continue;
+		}
+
+		had_success = true;
+		if (flags & DC_EXEC) {
+			money -= ret.GetCost();
+
+			/* If we run out of money, stop building. */
+			if (ret.GetCost() > 0 && money < 0) break;
+			Command<CMD_BUILD_OBJECT>::Do(flags, t, type, view);
+		}
+		cost.AddCost(ret);
+	}
+
+	return had_success ? cost : last_error;
+}
 
 static Foundation GetFoundation_Object(TileIndex tile, Slope tileh);
 
@@ -372,7 +437,7 @@ static void DrawTile_Object(TileInfo *ti)
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	/* Fall back for when the object doesn't exist anymore. */
-	if (!spec->enabled) type = OBJECT_TRANSMITTER;
+	if (!spec->IsEnabled()) type = OBJECT_TRANSMITTER;
 
 	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
@@ -670,8 +735,8 @@ static bool HasTransmitter(TileIndex tile, void *user)
  */
 static bool TryBuildLightHouse()
 {
-	uint maxx = MapMaxX();
-	uint maxy = MapMaxY();
+	uint maxx = Map::MaxX();
+	uint maxy = Map::MaxY();
 	uint r = Random();
 
 	/* Scatter the lighthouses more evenly around the perimeter */
@@ -697,7 +762,7 @@ static bool TryBuildLightHouse()
 		int h;
 		if (IsTileType(tile, MP_CLEAR) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
 			BuildObject(OBJECT_LIGHTHOUSE, tile);
-			assert(tile < MapSize());
+			assert(tile < Map::Size());
 			return true;
 		}
 		tile += TileOffsByDiagDir(dir);
@@ -732,13 +797,13 @@ void GenerateObjects()
 	/* Determine number of water tiles at map border needed for freeform_edges */
 	uint num_water_tiles = 0;
 	if (_settings_game.construction.freeform_edges) {
-		for (uint x = 0; x < MapMaxX(); x++) {
+		for (uint x = 0; x < Map::MaxX(); x++) {
 			if (IsTileType(TileXY(x, 1), MP_WATER)) num_water_tiles++;
-			if (IsTileType(TileXY(x, MapMaxY() - 1), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(x, Map::MaxY() - 1), MP_WATER)) num_water_tiles++;
 		}
-		for (uint y = 1; y < MapMaxY() - 1; y++) {
+		for (uint y = 1; y < Map::MaxY() - 1; y++) {
 			if (IsTileType(TileXY(1, y), MP_WATER)) num_water_tiles++;
-			if (IsTileType(TileXY(MapMaxX() - 1, y), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(Map::MaxX() - 1, y), MP_WATER)) num_water_tiles++;
 		}
 	}
 
@@ -756,15 +821,15 @@ void GenerateObjects()
 			/* Scale the amount of lighthouses with the amount of land at the borders.
 			 * The -6 is because the top borders are MP_VOID (-2) and all corners
 			 * are counted twice (-4). */
-			amount = ScaleByMapSize1D(amount * num_water_tiles) / (2 * MapMaxY() + 2 * MapMaxX() - 6);
+			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
 		} else if (spec->flags & OBJECT_FLAG_SCALE_BY_WATER) {
-			amount = ScaleByMapSize1D(amount);
+			amount = Map::ScaleBySize1D(amount);
 		} else {
-			amount = ScaleByMapSize(amount);
+			amount = Map::ScaleBySize(amount);
 		}
 
 		/* Now try to place the requested amount of this object */
-		for (uint j = ScaleByMapSize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
+		for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 			switch (i) {
 				case OBJECT_TRANSMITTER:
 					if (TryBuildTransmitter()) amount--;
@@ -841,7 +906,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, int
 				/* If the callback fails, allow autoslope. */
 				uint16 res = GetObjectCallback(CBID_OBJECT_AUTOSLOPE, 0, 0, spec, Object::GetByTile(tile), tile);
 				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(spec->grf_prop.grffile, CBID_OBJECT_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
-			} else if (spec->enabled) {
+			} else if (spec->IsEnabled()) {
 				/* allow autoslope */
 				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			}

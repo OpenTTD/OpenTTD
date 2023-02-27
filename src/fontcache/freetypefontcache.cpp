@@ -65,18 +65,19 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 {
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
-		int scaled_height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
+		int scaled_height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
 		pixels = scaled_height;
 
 		TT_Header *head = (TT_Header *)FT_Get_Sfnt_Table(this->face, ft_sfnt_head);
 		if (head != nullptr) {
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
-			int diff = scaled_height - ScaleFontTrad(this->GetDefaultFontHeight(FS_SMALL));
-			pixels = Clamp(std::min<uint>(head->Lowest_Rec_PPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height, MAX_FONT_SIZE);
+			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FS_SMALL));
+			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
+			pixels = std::min(std::max(std::min<int>(head->Lowest_Rec_PPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 		}
 	} else {
-		pixels = ScaleFontTrad(pixels);
+		pixels = ScaleGUITrad(pixels);
 	}
 	this->used_size = pixels;
 
@@ -121,14 +122,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
  */
 void LoadFreeTypeFont(FontSize fs)
 {
-	FontCacheSubSetting *settings = nullptr;
-	switch (fs) {
-		default: NOT_REACHED();
-		case FS_SMALL:  settings = &_fcsettings.small;  break;
-		case FS_NORMAL: settings = &_fcsettings.medium; break;
-		case FS_LARGE:  settings = &_fcsettings.large;  break;
-		case FS_MONO:   settings = &_fcsettings.mono;   break;
-	}
+	FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
 
 	if (settings->font.empty()) return;
 
@@ -196,8 +190,7 @@ void LoadFreeTypeFont(FontSize fs)
 
 	FT_Done_Face(face);
 
-	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, SIZE_TO_NAME[fs], error);
+	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, FontSizeToName(fs), error);
 	return;
 
 found_face:
@@ -237,16 +230,17 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */
 	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
-	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
-	uint width  = std::max(1U, (uint)slot->bitmap.width + (this->fs == FS_NORMAL));
-	uint height = std::max(1U, (uint)slot->bitmap.rows  + (this->fs == FS_NORMAL));
+	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
+	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint width  = std::max(1U, (uint)slot->bitmap.width + shadow);
+	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
 	SpriteLoader::Sprite sprite;
-	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
+	sprite.AllocateData(ZOOM_LVL_NORMAL, static_cast<size_t>(width) * height);
 	sprite.type = ST_FONT;
 	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
@@ -259,8 +253,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 		for (uint y = 0; y < (uint)slot->bitmap.rows; y++) {
 			for (uint x = 0; x < (uint)slot->bitmap.width; x++) {
 				if (HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
-					sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
-					sprite.data[1 + x + (1 + y) * sprite.width].a = 0xFF;
+					sprite.data[shadow + x + (shadow + y) * sprite.width].m = SHADOW_COLOUR;
+					sprite.data[shadow + x + (shadow + y) * sprite.width].a = 0xFF;
 				}
 			}
 		}

@@ -58,7 +58,7 @@ ObjectSpec _object_specs[NUM_OBJECTS];
  */
 bool ObjectSpec::IsEverAvailable() const
 {
-	return this->enabled && HasBit(this->climate, _settings_game.game_creation.landscape) &&
+	return this->IsEnabled() && HasBit(this->climate, _settings_game.game_creation.landscape) &&
 			(this->flags & ((_game_mode != GM_EDITOR && !_generating_world) ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
 }
 
@@ -510,7 +510,7 @@ uint16 StubGetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, 
 }
 
 /** Helper class for animation control. */
-struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, int, StubGetObjectCallback> {
+struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, int, StubGetObjectCallback, TileAnimationFrameAnimationHelper<Object> > {
 	static const CallbackID cb_animation_speed      = CBID_OBJECT_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_OBJECT_ANIMATION_NEXT_FRAME;
 

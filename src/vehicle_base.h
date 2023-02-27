@@ -220,6 +220,23 @@ struct RefitDesc {
 			cargo(cargo), capacity(capacity), remaining(remaining) {}
 };
 
+/**
+ * Structure to return information about the closest depot location,
+ * and whether it could be found.
+ */
+struct ClosestDepot {
+	TileIndex location;
+	DestinationID destination; ///< The DestinationID as used for orders.
+	bool reverse;
+	bool found;
+
+	ClosestDepot() :
+		location(INVALID_TILE), destination(0), reverse(false), found(false) {}
+
+	ClosestDepot(TileIndex location, DestinationID destination, bool reverse = false) :
+		location(location), destination(destination), reverse(reverse), found(true) {}
+};
+
 /** %Vehicle data structure. */
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle, BaseConsist {
 private:
@@ -315,6 +332,7 @@ public:
 
 	StationID last_station_visited;     ///< The last station we stopped at.
 	StationID last_loading_station;     ///< Last station the vehicle has stopped at and could possibly leave from with any cargo loaded.
+	uint64_t last_loading_tick;         ///< Last time (relative to _tick_counter) the vehicle has stopped at a station and could possibly leave with any cargo loaded.
 
 	CargoID cargo_type;                 ///< type of cargo this vehicle is carrying
 	byte cargo_subtype;                 ///< Used for livery refits (NewGRF variations)
@@ -344,6 +362,15 @@ public:
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
 
 	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
+
+	/**
+	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
+	 * @return Weight value in tonnes.
+	 */
+	virtual uint16 GetMaxWeight() const
+	{
+		return 0;
+	}
 
 	Vehicle(VehicleType type = VEH_INVALID);
 
@@ -440,8 +467,9 @@ public:
 
 	/**
 	 * Play the sound associated with leaving the station
+	 * @param force Should we play the sound even if sound effects are muted? (horn hotkey)
 	 */
-	virtual void PlayLeaveStationSound() const {}
+	virtual void PlayLeaveStationSound(bool force = false) const {}
 
 	/**
 	 * Whether this is the primary vehicle in the chain.
@@ -484,7 +512,7 @@ public:
 	 * Check if the vehicle is a ground vehicle.
 	 * @return True iff the vehicle is a train or a road vehicle.
 	 */
-	inline bool IsGroundVehicle() const
+	debug_inline bool IsGroundVehicle() const
 	{
 		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
 	}
@@ -760,12 +788,9 @@ public:
 	/**
 	 * Find the closest depot for this vehicle and tell us the location,
 	 * DestinationID and whether we should reverse.
-	 * @param location    where do we go to?
-	 * @param destination what hangar do we go to?
-	 * @param reverse     should the vehicle be reversed?
-	 * @return true if a depot could be found.
+	 * @return A structure with information about the closest depot, if found.
 	 */
-	virtual bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) { return false; }
+	virtual ClosestDepot FindClosestDepot() { return {}; }
 
 	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
 
@@ -899,7 +924,7 @@ public:
 	 * Check if the vehicle is a front engine.
 	 * @return Returns true if the vehicle is a front engine.
 	 */
-	inline bool IsFrontEngine() const
+	debug_inline bool IsFrontEngine() const
 	{
 		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_FRONT);
 	}
@@ -1039,6 +1064,9 @@ public:
 	 * @return an iterable ensemble of orders of a vehicle
 	 */
 	IterateWrapper Orders() const { return IterateWrapper(this->orders); }
+
+	uint32 GetDisplayMaxWeight() const;
+	uint32 GetDisplayMinPowerToWeight() const;
 };
 
 /**

@@ -198,6 +198,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
+
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
@@ -371,10 +372,9 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ezarpenak
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :IA/Jokoaren scriptaren ezaugarriak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia ezarpenak
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izenak erakutsita
@@ -916,36 +916,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
 
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerretik gidatu
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eskuinetik gidatu
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Herrien izenak
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Herrien izenen estiloak aukeratu
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelesa (Jatorrizkoa)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frantsesak
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemaniarrak
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ingelesa (Adizionala)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Amerikarra
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Inozoak
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suediarrak
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Herbeheretakoak
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandiarrak
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poloniarrak
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Eslovakiarrak
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegiarrak
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungariarrak
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austriarrak
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Errumaniarrak
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Txekoak
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Suitzarrak
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danierarrak
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiarrak
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiarrak
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanak
-
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokoa automatikoki gordetzeko denbora
 
@@ -970,11 +940,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfaze tamaina
-
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Tamaina doblea
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Tamaina laukoitza
 
 
 
@@ -1021,8 +986,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetar
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreikuspena: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ezer ez
 STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
@@ -1072,6 +1035,12 @@ STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
+
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Klima epeleko paisaia
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Klima artikoko paisaia
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Klima tropikaleko paisaia
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Jostailu munduko paisaia
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Oso laua
@@ -1139,6 +1108,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Eskuina
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Gehienezko mailegua joko hasieran: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Konpainiek eskatu dezaketen gehienezko mailegua(inflazioa kontua hartu gabe)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interes tasa: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Maileguen interes tasa; inflazioa ere kontrolatuko du, gaitzen bada
@@ -1386,6 +1356,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Errepideko garraioak: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Gidatzeko aldea aukeratu
+
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Ezkerretik gidatu
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Eskuinetik gidatu
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera maparen norabidea: {STRING}
 ###length 2
@@ -1814,7 +1788,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Seinaletan auto
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Trenak seinaleetan buelta ematea baimendu, denbora luzez itxaroten ari badira
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Gomendatua)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
@@ -1854,7 +1828,6 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Puntuazi
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ezarpenak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA/Joko Scripten Ezarpenak
 STR_INTRO_QUIT                                                  :{BLACK}Irten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Joko berria hasi. Krtl+klik mapa konfigurazioa desgaitzen du
@@ -1874,7 +1847,6 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puntuazi
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ezarpenak erakutsi
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ezarpenak erakutsi
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Bilatu eduki berria eta eguneratua deskargatzeko
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}IA/Joko Scripten Ezarpenak
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'-tik Irten
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Itzultze honi {NUM} string falta zaio/zaizkio. Mesedez OpenTTD hobeago egiten lagundu itzultzaile bezala aritzen. Ikusi readme.txt xehetasunentzako.
@@ -1900,12 +1872,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Hegazki
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Data aldatu: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Klima epeleko paisaia
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Klima artikoko paisaia
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klima tropikaleko paisaia
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Jostailu munduko paisaia
 
 # Livery window
 
@@ -2299,6 +2265,8 @@ STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Bat ere 
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}erabiltzeke
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}saturatua
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Geltoki irismena erakutsi
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Itzali
@@ -2387,8 +2355,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Seinale 
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Trenbide zubia aukeratu
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Errepide zubia aukeratu
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Zubi aukerak - eraiki nahi duzun zubian klik egin
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Altzairuzko zubi esekia
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Altzairuzko habe zubia
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Altzairuzko mentsula zubia
@@ -2747,15 +2713,39 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Mundua s
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Maparen tamaina:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Herri kopurua:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Herrien izenak
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Herrien izenen estiloak aukeratu
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industria kopurua:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Itsaso kopurua:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Itsaso kopurua:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Errekak:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Leuntasuna:
 STR_MAPGEN_VARIETY                                              :{BLACK}Barietateen distribuzioa:
 STR_MAPGEN_GENERATE                                             :{WHITE}Sortu
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ingelesa (Jatorrizkoa)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frantsesak
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemaniarrak
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ingelesa (Adizionala)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latino-Amerikarra
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Inozoak
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Suediarrak
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Herbeheretakoak
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandiarrak
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Poloniarrak
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Eslovakiarrak
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norvegiarrak
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Hungariarrak
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austriarrak
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Errumaniarrak
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Txekoak
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Suitzarrak
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danierarrak
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkiarrak
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italiarrak
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalanak
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Maparen ertzak:
@@ -2884,6 +2874,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Aldez au
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Aurreko grafiko arruntera joan, pseudo/birkoloretu/grafiko tipoak desgaituz
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Orain aukeratutako grafikoaren aurkezpena. Alineazioa ez da kontua hartzen grafiko hau egiterakoan
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite-a mugitu ingurunean, X eta Y-ren desplazamenduak aldatuz. Ctrl+Klik sprite-a zortzi unitatero mugitzeko
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Erlatiboa berezarri
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Momentuan dauden desplazamendu erlatiboak erreseteatu
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X desplazamendua: {NUM}, Y desplazamendua: {NUM} (Absolutua)
@@ -2898,7 +2892,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Kontuz: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Akatsa {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Larria: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF-an akats larria gertatu da:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ez du funtzionatuko OpenTTD-k esandakoTTDPatch bertsioarekin
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} {STRING} TTD bertsioarentzat da
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} {STRING}arekin erabiltzeko diseinatua izan da
@@ -3386,6 +3379,8 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Zama mota guzti
 STR_PURCHASE_INFO_ALL_BUT                                       :Guztia {CARGO_LIST} ezik
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Gehienezko trakzio indarra: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Irismena: {GOLD}{COMMA} lauki
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trenak aukeratzeko zerrenda - Klik xehetasunak ikusteko. Ctrl+Klik ibilgailu motaren ezkutapenaren artean aukeratzeko
@@ -3998,12 +3993,12 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Abiarazi
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}IA/Joko Script Garbitzailearen lehioa bakarrik zerbitzariarentzako erabilgarria da
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}IA/Joko Script-aren Ezarpenak
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Hurrengo jokoan kargatuko den Joko Script-a
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Hurrengo jokoan kargatuko diren IA-k
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jokalaria
 STR_AI_CONFIG_RANDOM_AI                                         :Ausazko IA
 STR_AI_CONFIG_NONE                                              :(ezer ez)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Gehienezko arerio kopurua: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gora Mugitu
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Auratutako IA zerrendan gora igo
@@ -4013,8 +4008,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Aukeratu
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Jokoaren Script-a
 STR_AI_CONFIG_AI                                                :{SILVER}IAk
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Aukeratu {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script jokoa
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Bestelako script bat kargatu
@@ -4037,10 +4030,8 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Ezeztatu
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ez aldatu script-a
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametroak
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Jokoaren Script-ak
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Itxi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Berrabiarazi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4440,6 +4431,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Jokoan i
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ezin da garraio tartea aldatu...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garraioa suntsituta
+
 
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ez da ibilgailu erabilgarririk egongo
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Aldatu zure NewGRF konfigurazioa

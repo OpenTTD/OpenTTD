@@ -14,11 +14,11 @@
 #include "../script/squirrel_class.hpp"
 
 #include "ai_config.hpp"
-#include "ai_gui.hpp"
 #include "ai.hpp"
 
 #include "../script/script_storage.hpp"
 #include "../script/script_cmd.h"
+#include "../script/script_gui.h"
 #include "ai_info.hpp"
 #include "ai_instance.hpp"
 
@@ -61,7 +61,10 @@ void AIInstance::Died()
 {
 	ScriptInstance::Died();
 
-	ShowAIDebugWindow(_current_company);
+	/* Intro is not supposed to use AI, but it may have 'dummy' AI which instant dies. */
+	if (_game_mode == GM_MENU) return;
+
+	ShowScriptDebugWindow(_current_company);
 
 	const AIInfo *info = AIConfig::GetConfig(_current_company, AIConfig::SSS_FORCE_GAME)->GetInfo();
 	if (info != nullptr) {
@@ -77,7 +80,6 @@ void AIInstance::Died()
 void AIInstance::LoadDummyScript()
 {
 	ScriptAllocatorScope alloc_scope(this->engine);
-	extern void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type);
 	Script_CreateDummy(this->engine->GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
 }
 
@@ -95,11 +97,10 @@ ScriptInfo *AIInstance::FindLibrary(const char *library, int version)
  * DoCommand callback function for all commands executed by AIs.
  * @param cmd cmd as given to DoCommandPInternal.
  * @param result The result of the command.
- * @param tile The tile on which the command was executed.
  * @param data Command data as given to Command<>::Post.
  * @param result_data Additional returned data from the command.
  */
-void CcAI(Commands cmd, const CommandCost &result, TileIndex tile, const CommandDataBuffer &data, CommandDataBuffer result_data)
+void CcAI(Commands cmd, const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data)
 {
 	/*
 	 * The company might not exist anymore. Check for this.
@@ -110,7 +111,7 @@ void CcAI(Commands cmd, const CommandCost &result, TileIndex tile, const Command
 	const Company *c = Company::GetIfValid(_current_company);
 	if (c == nullptr || c->ai_instance == nullptr) return;
 
-	if (c->ai_instance->DoCommandCallback(result, tile, data, std::move(result_data), cmd)) {
+	if (c->ai_instance->DoCommandCallback(result, data, std::move(result_data), cmd)) {
 		c->ai_instance->Continue();
 	}
 }

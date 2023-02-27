@@ -279,6 +279,9 @@ enum CallbackID {
 
 	/** Called to spawn visual effects for vehicles. */
 	CBID_VEHICLE_SPAWN_VISUAL_EFFECT     = 0x160, // 15 bit callback
+
+	/** Called to determine the engine name to show. */
+	CBID_VEHICLE_NAME                    = 0x161, // 15 bit callback
 };
 
 /**
@@ -294,6 +297,7 @@ enum VehicleCallbackMask {
 	CBM_VEHICLE_CARGO_SUFFIX   = 5, ///< Show suffix after cargo name
 	CBM_VEHICLE_COLOUR_REMAP   = 6, ///< Change colour mapping of vehicle
 	CBM_VEHICLE_SOUND_EFFECT   = 7, ///< Vehicle uses custom sound effects
+	CBM_VEHICLE_NAME           = 8, ///< Engine name
 };
 
 /**
@@ -305,6 +309,15 @@ enum StationCallbackMask {
 	CBM_STATION_ANIMATION_NEXT_FRAME = 2, ///< Use a custom next frame callback
 	CBM_STATION_ANIMATION_SPEED      = 3, ///< Customize the animation speed of the station
 	CBM_STATION_SLOPE_CHECK          = 4, ///< Check slope of new station tiles
+};
+
+/**
+ * Callback masks for road stops.
+ */
+enum RoadStopCallbackMask {
+	CBM_ROAD_STOP_AVAIL                = 0, ///< Availability of road stop in construction window
+	CBM_ROAD_STOP_ANIMATION_NEXT_FRAME = 1, ///< Use a custom next frame callback
+	CBM_ROAD_STOP_ANIMATION_SPEED      = 2, ///< Customize the animation speed of the road stop
 };
 
 /**

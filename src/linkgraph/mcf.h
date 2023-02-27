@@ -24,7 +24,7 @@ protected:
 	template<class Tannotation, class Tedge_iterator>
 	void Dijkstra(NodeID from, PathVector &paths);
 
-	uint PushFlow(Edge &edge, Path *path, uint accuracy, uint max_saturation);
+	uint PushFlow(Node &node, NodeID to, Path *path, uint accuracy, uint max_saturation);
 
 	void CleanupPaths(NodeID source, PathVector &paths);
 

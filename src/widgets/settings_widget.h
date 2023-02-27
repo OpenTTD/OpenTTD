@@ -19,7 +19,9 @@ enum GameOptionsWidgets {
 	WID_GO_LANG_DROPDOWN,          ///< Language dropdown.
 	WID_GO_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution.
 	WID_GO_FULLSCREEN_BUTTON,      ///< Toggle fullscreen.
-	WID_GO_GUI_ZOOM_DROPDOWN,      ///< Dropdown for the GUI zoom level.
+	WID_GO_GUI_SCALE,              ///< GUI Scale slider.
+	WID_GO_GUI_SCALE_AUTO,         ///< Autodetect GUI scale button.
+	WID_GO_GUI_SCALE_BEVEL_BUTTON, ///< Toggle for chunky bevels.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_STATUS,        ///< Info about missing files etc.
 	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
@@ -30,10 +32,10 @@ enum GameOptionsWidgets {
 	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_END,     ///< Description of selected base SFX.
 	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
 	WID_GO_BASE_MUSIC_VOLUME,      ///< Change music volume.
+	WID_GO_BASE_MUSIC_JUKEBOX,     ///< Open the jukebox.
 	WID_GO_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
 	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
 	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_END, ///< Description of selected base music set.
-	WID_GO_FONT_ZOOM_DROPDOWN,     ///< Dropdown for the font zoom level.
 	WID_GO_VIDEO_ACCEL_BUTTON,     ///< Toggle for video acceleration.
 	WID_GO_VIDEO_VSYNC_BUTTON,     ///< Toggle for video vsync.
 	WID_GO_REFRESH_RATE_DROPDOWN,  ///< Dropdown for all available refresh rates.

@@ -76,7 +76,7 @@ struct GoalListWindow : public Window {
 				break;
 
 			case WID_GOAL_LIST: {
-				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WD_FRAMERECT_TOP);
+				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WidgetDimensions::scaled.framerect.top);
 				for (const Goal *s : Goal::Iterate()) {
 					if (s->company == this->window_number) {
 						if (y == 0) {
@@ -174,11 +174,12 @@ struct GoalListWindow : public Window {
 		if (widget != WID_GOAL_LIST) return;
 		Dimension d = GetStringBoundingBox(STR_GOALS_NONE);
 
+		resize->width = 1;
 		resize->height = d.height;
 
 		d.height *= 5;
-		d.width += padding.width + WD_FRAMERECT_RIGHT + WD_FRAMERECT_LEFT;
-		d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		d.width += WidgetDimensions::scaled.framerect.Horizontal();
+		d.height += WidgetDimensions::scaled.framerect.Vertical();
 		*size = maxdim(*size, d);
 	}
 
@@ -192,9 +193,7 @@ struct GoalListWindow : public Window {
 	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
 	{
 		/* Get column draw area. */
-		int y = wid->pos_y + WD_FRAMERECT_TOP;
-		int x = wid->pos_x + WD_FRAMERECT_LEFT;
-		int right = x + wid->current_x - WD_FRAMERECT_RIGHT;
+		Rect r = wid->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		bool rtl = _current_text_dir == TD_RTL;
 
 		int pos = -this->vscroll->GetPosition();
@@ -208,8 +207,8 @@ struct GoalListWindow : public Window {
 						case GC_GOAL: {
 							/* Display the goal. */
 							SetDParamStr(0, s->text);
-							uint width_reduction = progress_col_width > 0 ? progress_col_width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT : 0;
-							DrawString(x + (rtl ? width_reduction : 0), right - (rtl ? 0 : width_reduction), y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
+							uint width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
+							DrawString(r.Indent(width_reduction, !rtl), STR_GOALS_TEXT);
 							break;
 						}
 
@@ -217,12 +216,11 @@ struct GoalListWindow : public Window {
 							if (s->progress != nullptr) {
 								SetDParamStr(0, s->progress);
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								int progress_x = x;
-								int progress_right = rtl ? x + progress_col_width : right;
-								DrawString(progress_x, progress_right, y + pos * FONT_HEIGHT_NORMAL, str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								DrawString(r.WithWidth(progress_col_width, !rtl), str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 							}
 							break;
 					}
+					r.top += FONT_HEIGHT_NORMAL;
 				}
 				pos++;
 				num++;
@@ -231,9 +229,8 @@ struct GoalListWindow : public Window {
 
 		if (num == 0) {
 			if (column == GC_GOAL && IsInsideMM(pos, 0, cap)) {
-				DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
+				DrawString(r, STR_GOALS_NONE);
 			}
-			pos++;
 		}
 	}
 
@@ -265,7 +262,7 @@ struct GoalListWindow : public Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_GOAL_LIST);
+		this->vscroll->SetCapacityFromWidget(this, WID_GOAL_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
 	/**
@@ -289,16 +286,15 @@ static const NWidgetPart _nested_goals_list_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GOAL_SELECT_BUTTONS),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WidgetDimensions::unscaled.captiontext.Vertical()), SetDataTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WidgetDimensions::unscaled.captiontext.Vertical()), SetDataTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
 		EndContainer(),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR),
-			NWidget(WWT_EMPTY, COLOUR_GREY, WID_GOAL_LIST), SetResize(1, 1), SetMinimalTextLines(2, 0), SetFill(1, 1), SetPadding(WD_FRAMERECT_TOP, 2, WD_FRAMETEXT_BOTTOM, 2),
+		NWidget(WWT_PANEL, COLOUR_BROWN, WID_GOAL_LIST), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GOAL_SCROLLBAR),
@@ -404,7 +400,7 @@ struct GoalQuestionWindow : public Window {
 		if (widget != WID_GQ_QUESTION) return;
 
 		SetDParamStr(0, this->question);
-		size->height = GetStringHeight(STR_JUST_RAW_STRING, size->width) + WD_PAR_VSEP_WIDE;
+		size->height = GetStringHeight(STR_JUST_RAW_STRING, size->width) + WidgetDimensions::scaled.vsep_wide;
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -412,7 +408,7 @@ struct GoalQuestionWindow : public Window {
 		if (widget != WID_GQ_QUESTION) return;
 
 		SetDParamStr(0, this->question);
-		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, this->colour, SA_TOP | SA_HOR_CENTER);
+		DrawStringMultiLine(r, STR_JUST_RAW_STRING, this->colour, SA_TOP | SA_HOR_CENTER);
 	}
 };
 

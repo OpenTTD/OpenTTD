@@ -20,3 +20,16 @@ AIGroup.CreateGroup <- function(vehicle_type)
 {
 	return AIGroup._CreateGroup(vehicle_type, AIGroup.GROUP_INVALID);
 }
+
+/* 13 really checks RoadType against RoadType */
+AIRoad._HasRoadType <- AIRoad.HasRoadType;
+AIRoad.HasRoadType <- function(tile, road_type)
+{
+	local list = AIRoadTypeList(AIRoad.GetRoadTramType(road_type));
+	foreach (rt, _ in list) {
+		if (AIRoad._HasRoadType(tile, rt)) {
+			return true;
+		}
+	}
+	return false;
+}

@@ -25,7 +25,7 @@
 	CCountedPtr<Text> counter(text);
 
 	EnforcePrecondition(false, text != nullptr);
-	const char *encoded = text->GetEncodedText();
+	const std::string &encoded = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded);
 	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);

@@ -494,11 +494,12 @@ bool strtolower(std::string &str, std::string::size_type offs)
 bool IsValidChar(WChar key, CharSetFilter afilter)
 {
 	switch (afilter) {
-		case CS_ALPHANUMERAL:  return IsPrintable(key);
-		case CS_NUMERAL:       return (key >= '0' && key <= '9');
-		case CS_NUMERAL_SPACE: return (key >= '0' && key <= '9') || key == ' ';
-		case CS_ALPHA:         return IsPrintable(key) && !(key >= '0' && key <= '9');
-		case CS_HEXADECIMAL:   return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
+		case CS_ALPHANUMERAL:   return IsPrintable(key);
+		case CS_NUMERAL:        return (key >= '0' && key <= '9');
+		case CS_NUMERAL_SPACE:  return (key >= '0' && key <= '9') || key == ' ';
+		case CS_NUMERAL_SIGNED: return (key >= '0' && key <= '9') || key == '-';
+		case CS_ALPHA:          return IsPrintable(key) && !(key >= '0' && key <= '9');
+		case CS_HEXADECIMAL:    return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
 		default: NOT_REACHED();
 	}
 }
@@ -617,7 +618,6 @@ size_t Utf8Decode(WChar *c, const char *s)
 		}
 	}
 
-	/* Debug(misc, 1, "[utf8] invalid UTF-8 sequence"); */
 	*c = '?';
 	return 1;
 }
@@ -653,7 +653,6 @@ inline size_t Utf8Encode(T buf, WChar c)
 		return 4;
 	}
 
-	/* Debug(misc, 1, "[utf8] can't UTF-8 encode value 0x{:X}", c); */
 	*buf = '?';
 	return 1;
 }
@@ -764,9 +763,9 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 
 #ifdef WITH_UNISCRIBE
 
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	return new UniscribeStringIterator();
+	return std::make_unique<UniscribeStringIterator>();
 }
 
 #elif defined(WITH_ICU_I18N)
@@ -920,9 +919,9 @@ public:
 	}
 };
 
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	return new IcuStringIterator();
+	return std::make_unique<IcuStringIterator>();
 }
 
 #else
@@ -1031,17 +1030,17 @@ public:
 };
 
 #if defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN)
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	StringIterator *i = OSXStringIterator::Create();
+	std::unique_ptr<StringIterator> i = OSXStringIterator::Create();
 	if (i != nullptr) return i;
 
-	return new DefaultStringIterator();
+	return std::make_unique<DefaultStringIterator>();
 }
 #else
-/* static */ StringIterator *StringIterator::Create()
+/* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
-	return new DefaultStringIterator();
+	return std::make_unique<DefaultStringIterator>();
 }
 #endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 

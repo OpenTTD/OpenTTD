@@ -355,10 +355,10 @@ static void DoRailroadTrack(Track track)
 {
 	if (_remove_button_clicked) {
 		Command<CMD_REMOVE_RAILROAD_TRACK>::Post(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), track);
+				TileVirtXY(_thd.selend.x, _thd.selend.y), TileVirtXY(_thd.selstart.x, _thd.selstart.y), track);
 	} else {
 		Command<CMD_BUILD_RAILROAD_TRACK>::Post(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK, CcPlaySound_CONSTRUCTION_RAIL,
-				TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype, track, _settings_client.gui.auto_remove_signals, false);
+				TileVirtXY(_thd.selend.x, _thd.selend.y), TileVirtXY(_thd.selstart.x, _thd.selstart.y),  _cur_railtype, track, _settings_client.gui.auto_remove_signals, false);
 	}
 }
 
@@ -813,7 +813,7 @@ static const NWidgetPart _nested_build_rail_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_AUTORAIL),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AUTORAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL),
 
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), SetDataTip(0x0, STR_NULL), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), EndContainer(),
 
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_DEMOLISH),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
@@ -968,7 +968,7 @@ private:
 public:
 	BuildRailStationWindow(WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent), filter_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE)
 	{
-		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WD_PAR_VSEP_NORMAL;
+		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WidgetDimensions::scaled.vsep_normal;
 		this->vscroll = nullptr;
 		_railstation.newstations = newstation;
 
@@ -1179,18 +1179,15 @@ public:
 
 		if (this->IsShaded()) return;
 		/* 'Accepts' and 'Supplies' texts. */
-		NWidgetBase *cov = this->GetWidget<NWidgetBase>(WID_BRAS_COVERAGE_TEXTS);
-		int top = cov->pos_y + WD_PAR_VSEP_NORMAL;
-		int left = cov->pos_x + WD_FRAMERECT_LEFT;
-		int right = cov->pos_x + cov->current_x - WD_FRAMERECT_RIGHT;
-		int bottom = cov->pos_y + cov->current_y;
-		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		Rect r = this->GetWidget<NWidgetBase>(WID_BRAS_COVERAGE_TEXTS)->GetCurrentRect();
+		int top = r.top + WidgetDimensions::scaled.vsep_normal;
+		top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
+		top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, true) + WidgetDimensions::scaled.vsep_normal;
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > bottom) {
-			this->coverage_height += top - bottom;
+		if (top > r.bottom) {
+			this->coverage_height += top - r.bottom;
 			this->ReInit();
 		}
 	}
@@ -1204,7 +1201,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(StationClass::Get(station_class)->name));
 				}
 				size->width = std::max(size->width, d.width + padding.width);
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
 				break;
@@ -1235,8 +1232,8 @@ public:
 			case WID_BRAS_PLATFORM_DIR_X:
 			case WID_BRAS_PLATFORM_DIR_Y:
 			case WID_BRAS_IMAGE:
-				size->width  = ScaleGUITrad(64) + 2;
-				size->height = ScaleGUITrad(58) + 2;
+				size->width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size->height = ScaleGUITrad(58) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 
 			case WID_BRAS_COVERAGE_TEXTS:
@@ -1257,41 +1254,37 @@ public:
 		switch (GB(widget, 0, 16)) {
 			case WID_BRAS_PLATFORM_DIR_X:
 				/* Set up a clipping area for the '/' station preview */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
-					DrawPixelInfo *old_dpi = _cur_dpi;
-					_cur_dpi = &tmp_dpi;
-					int x = ScaleGUITrad(31) + 1;
-					int y = r.bottom - r.top - ScaleGUITrad(31);
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					if (!DrawStationTile(x, y, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2);
 					}
-					_cur_dpi = old_dpi;
 				}
 				break;
 
 			case WID_BRAS_PLATFORM_DIR_Y:
 				/* Set up a clipping area for the '\' station preview */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
-					DrawPixelInfo *old_dpi = _cur_dpi;
-					_cur_dpi = &tmp_dpi;
-					int x = ScaleGUITrad(31) + 1;
-					int y = r.bottom - r.top - ScaleGUITrad(31);
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					if (!DrawStationTile(x, y, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 3);
 					}
-					_cur_dpi = old_dpi;
 				}
 				break;
 
 			case WID_BRAS_NEWST_LIST: {
+				Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
 				uint statclass = 0;
-				uint row = 0;
 				for (auto station_class : this->station_classes) {
 					if (this->vscroll->IsVisible(statclass)) {
-						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, row * this->line_height + r.top + WD_MATRIX_TOP,
+						DrawString(ir,
 								StationClass::Get(station_class)->name,
 								station_class == _railstation.station_class ? TC_WHITE : TC_BLACK);
-						row++;
+						ir.top += this->line_height;
 					}
 					statclass++;
 				}
@@ -1304,19 +1297,17 @@ public:
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
 				if (!IsStationAvailable(statspec)) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
 				}
 
 				/* Set up a clipping area for the station preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
-					DrawPixelInfo *old_dpi = _cur_dpi;
-					_cur_dpi = &tmp_dpi;
-					int x = ScaleGUITrad(31) + 1;
-					int y = r.bottom - r.top - ScaleGUITrad(31);
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
 					if (!DrawStationTile(x, y, _cur_railtype, _railstation.orientation, _railstation.station_class, type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2 + _railstation.orientation);
 					}
-					_cur_dpi = old_dpi;
 				}
 				break;
 			}
@@ -1612,7 +1603,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAS_PLATFORM_DRAG_N_DROP), SetMinimalSize(75, 12), SetDataTip(STR_STATION_BUILD_DRAG_DROP, STR_STATION_BUILD_DRAG_DROP_TOOLTIP),
 					NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetPadding(3, 2, 0, 0),
+				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetPadding(WidgetDimensions::unscaled.framerect), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BRAS_HIGHLIGHT_OFF), SetMinimalSize(60, 12),
@@ -1637,7 +1628,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BRAS_COVERAGE_TEXTS), SetPadding(2, 5, 0, 1), SetFill(1, 1), SetResize(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BRAS_COVERAGE_TEXTS), SetPadding(WidgetDimensions::unscaled.framerect), SetFill(1, 1), SetResize(1, 0),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BRAS_SHOW_NEWST_RESIZE),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),
@@ -1676,15 +1667,14 @@ private:
 	 * @param widget_index index of this widget in the window
 	 * @param image        the sprite to draw
 	 */
-	void DrawSignalSprite(byte widget_index, SpriteID image) const
+	void DrawSignalSprite(const Rect &r, int widget_index, SpriteID image) const
 	{
 		Point offset;
 		Dimension sprite_size = GetSpriteSize(image, &offset);
-		const NWidgetBase *widget = this->GetWidget<NWidgetBase>(widget_index);
-		int x = widget->pos_x - offset.x +
-				(widget->current_x - sprite_size.width + offset.x) / 2;  // centered
-		int y = widget->pos_y - sig_sprite_bottom_offset + WD_IMGBTN_TOP +
-				(widget->current_y - WD_IMGBTN_TOP - WD_IMGBTN_BOTTOM + sig_sprite_size.height) / 2; // aligned to bottom
+		Rect ir = r.Shrink(WidgetDimensions::scaled.imgbtn);
+		int x = CenterBounds(ir.left, ir.right, sprite_size.width - offset.x) - offset.x; // centered
+		int y = ir.top - sig_sprite_bottom_offset +
+				(ir.Height() + sig_sprite_size.height) / 2; // aligned to bottom
 
 		DrawSprite(image, PAL_NONE,
 				x + this->IsWidgetLowered(widget_index),
@@ -1745,12 +1735,12 @@ public:
 	{
 		if (widget == WID_BS_DRAG_SIGNALS_DENSITY_LABEL) {
 			/* Two digits for signals density. */
-			size->width = std::max(size->width, 2 * GetDigitWidth() + padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT);
+			size->width = std::max(size->width, 2 * GetDigitWidth() + padding.width + WidgetDimensions::scaled.framerect.Horizontal());
 		} else if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
-			size->width = std::max(size->width, this->sig_sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
-			size->height = std::max(size->height, this->sig_sprite_size.height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
+			size->width = std::max(size->width, this->sig_sprite_size.width + padding.width);
+			size->height = std::max(size->height, this->sig_sprite_size.height + padding.height);
 		} else if (widget == WID_BS_CAPTION) {
-			size->width += WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+			size->width += WidgetDimensions::scaled.frametext.Horizontal();
 		}
 	}
 
@@ -1771,7 +1761,7 @@ public:
 			int var = SIG_SEMAPHORE - (widget - WID_BS_SEMAPHORE_NORM) / SIGTYPE_END; // SignalVariant order is reversed compared to the widgets.
 			SpriteID sprite = GetRailTypeInfo(_cur_railtype)->gui_sprites.signals[type][var][this->IsWidgetLowered(widget)];
 
-			this->DrawSignalSprite(widget, sprite);
+			this->DrawSignalSprite(r, widget, sprite);
 		}
 	}
 
@@ -1934,15 +1924,21 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
 
-		size->width  = ScaleGUITrad(64) + 2;
-		size->height = ScaleGUITrad(48) + 2;
+		size->width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
+		size->height = ScaleGUITrad(48) + WidgetDimensions::scaled.fullbevel.Vertical();
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
 
-		DrawTrainDepotSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
+		DrawPixelInfo tmp_dpi;
+		if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+			int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+			int y = (r.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
+			DrawTrainDepotSprite(x, y, widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -2033,8 +2029,8 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				break;
 
 			case WID_BRW_WAYPOINT:
-				size->width  = ScaleGUITrad(64) + 2;
-				size->height = ScaleGUITrad(58) + 2;
+				size->width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size->height = ScaleGUITrad(58) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 		}
 	}
@@ -2045,10 +2041,17 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			case WID_BRW_WAYPOINT: {
 				byte type = GB(widget, 16, 16);
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(type);
-				DrawWaypointSprite(r.left + 1 + ScaleGUITrad(31), r.bottom - ScaleGUITrad(31), type, _cur_railtype);
+
+				DrawPixelInfo tmp_dpi;
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+					int x = (r.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
+					int y = (r.Height() + ScaleSpriteTrad(58)) / 2 - ScaleSpriteTrad(31);
+					DrawWaypointSprite(x, y, type, _cur_railtype);
+				}
 
 				if (!IsStationAvailable(statspec)) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
 				}
 			}
 		}
@@ -2083,8 +2086,10 @@ static const NWidgetPart _nested_build_waypoint_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BRW_WAYPOINT_MATRIX), SetPIP(3, 2, 3), SetScrollbar(WID_BRW_SCROLL),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BRW_WAYPOINT), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), SetScrollbar(WID_BRW_SCROLL), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+			NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BRW_WAYPOINT_MATRIX), SetPIP(0, 2, 0),  SetPadding(3), SetScrollbar(WID_BRW_SCROLL),
+				NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BRW_WAYPOINT), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), SetScrollbar(WID_BRW_SCROLL), EndContainer(),
+			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_BRW_SCROLL),
@@ -2141,7 +2146,7 @@ static void SetDefaultRailGui()
 			/* Find the most used rail type */
 			uint count[RAILTYPE_END];
 			memset(count, 0, sizeof(count));
-			for (TileIndex t = 0; t < MapSize(); t++) {
+			for (TileIndex t = 0; t < Map::Size(); t++) {
 				if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
 						(IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
 					count[GetRailType(t)]++;

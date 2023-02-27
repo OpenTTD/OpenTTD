@@ -25,7 +25,7 @@ ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 
 ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return;
 
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
 

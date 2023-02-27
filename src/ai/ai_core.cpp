@@ -57,10 +57,12 @@
 	assert(c->ai_instance == nullptr);
 	c->ai_instance = new AIInstance();
 	c->ai_instance->Initialize(info);
+	c->ai_instance->LoadOnStack(config->GetToLoadData());
+	config->SetToLoadData(nullptr);
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
+	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
 	return;
 }
 
@@ -80,18 +82,16 @@
 			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
 			cur_company.Change(c->index);
 			c->ai_instance->GameLoop();
+			/* Occasionally collect garbage; every 255 ticks do one company.
+			 * Effectively collecting garbage once every two months per AI. */
+			if ((AI::frame_counter & 255) == 0 && (CompanyID)GB(AI::frame_counter, 8, 4) == c->index) {
+				c->ai_instance->CollectGarbage();
+			}
 		} else {
 			PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + c->index));
 		}
 	}
 	cur_company.Restore();
-
-	/* Occasionally collect garbage; every 255 ticks do one company.
-	 * Effectively collecting garbage once every two months per AI. */
-	if ((AI::frame_counter & 255) == 0) {
-		CompanyID cid = (CompanyID)GB(AI::frame_counter, 8, 4);
-		if (Company::IsValidAiID(cid)) Company::Get(cid)->ai_instance->CollectGarbage();
-	}
 }
 
 /* static */ uint AI::GetTick()
@@ -113,8 +113,8 @@
 
 	cur_company.Restore();
 
-	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
-	CloseWindowById(WC_AI_SETTINGS, company);
+	InvalidateWindowData(WC_SCRIPT_DEBUG, 0, -1);
+	CloseWindowById(WC_SCRIPT_SETTINGS, company);
 }
 
 /* static */ void AI::Pause(CompanyID company)
@@ -289,21 +289,6 @@
 	}
 }
 
-/* static */ void AI::Load(CompanyID company, int version)
-{
-	if (!_networking || _network_server) {
-		Company *c = Company::GetIfValid(company);
-		assert(c != nullptr && c->ai_instance != nullptr);
-
-		Backup<CompanyID> cur_company(_current_company, company, FILE_LINE);
-		c->ai_instance->Load(version);
-		cur_company.Restore();
-	} else {
-		/* Read, but ignore, the load data */
-		AIInstance::LoadEmpty();
-	}
-}
-
 /* static */ int AI::GetStartNextTime()
 {
 	/* Find the first company which doesn't exist yet */
@@ -315,14 +300,14 @@
 	return DAYS_IN_YEAR;
 }
 
-/* static */ char *AI::GetConsoleList(char *p, const char *last, bool newest_only)
+/* static */ std::string AI::GetConsoleList(bool newest_only)
 {
-	return AI::scanner_info->GetConsoleList(p, last, newest_only);
+	return AI::scanner_info->GetConsoleList(newest_only);
 }
 
-/* static */ char *AI::GetConsoleLibraryList(char *p, const char *last)
+/* static */ std::string AI::GetConsoleLibraryList()
 {
-	 return AI::scanner_library->GetConsoleList(p, last, true);
+	 return AI::scanner_library->GetConsoleList(true);
 }
 
 /* static */ const ScriptInfoList *AI::GetInfoList()
@@ -353,9 +338,9 @@
 	AI::scanner_library->RescanDir();
 	ResetConfig();
 
-	InvalidateWindowData(WC_AI_LIST, 0, 1);
-	SetWindowClassesDirty(WC_AI_DEBUG);
-	InvalidateWindowClassesData(WC_AI_SETTINGS);
+	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
+	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
+	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 }
 
 /**

@@ -454,13 +454,17 @@ void AfterLoadVehicles(bool part_of_load)
 				if (Aircraft::From(v)->IsNormalAircraft()) {
 					v->GetImage(v->direction, EIT_ON_MAP, &v->sprite_cache.sprite_seq);
 
-					/* The plane's shadow will have the same image as the plane, but no colour */
+					/* The aircraft's shadow will have the same image as the aircraft, but no colour */
 					Vehicle *shadow = v->Next();
+					if (shadow == nullptr) SlErrorCorrupt("Missing shadow for aircraft");
+
 					shadow->sprite_cache.sprite_seq.CopyWithoutPalette(v->sprite_cache.sprite_seq);
 
 					/* In the case of a helicopter we will update the rotor sprites */
 					if (v->subtype == AIR_HELICOPTER) {
 						Vehicle *rotor = shadow->Next();
+						if (rotor == nullptr) SlErrorCorrupt("Missing rotor for helicopter");
+
 						GetRotorImage(Aircraft::From(v), EIT_ON_MAP, &rotor->sprite_cache.sprite_seq);
 					}
 
@@ -705,6 +709,7 @@ public:
 		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, last_loading_tick,     SLE_UINT64,                   SLV_LAST_LOADING_TICK, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
 	};
 #if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)

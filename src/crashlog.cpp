@@ -64,12 +64,13 @@
 #ifdef WITH_ZLIB
 # include <zlib.h>
 #endif
+#ifdef WITH_CURL
+# include <curl/curl.h>
+#endif
 
 #include "safeguards.h"
 
-/* static */ const char *CrashLog::message = nullptr;
-/* static */ char *CrashLog::gamelog_buffer = nullptr;
-/* static */ const char *CrashLog::gamelog_last = nullptr;
+/* static */ std::string CrashLog::message{ "<none>" };
 
 char *CrashLog::LogCompiler(char *buffer, const char *last) const
 {
@@ -275,17 +276,18 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	buffer += seprintf(buffer, last, " Zlib:       %s\n", zlibVersion());
 #endif
 
+#ifdef WITH_CURL
+	auto *curl_v = curl_version_info(CURLVERSION_NOW);
+	buffer += seprintf(buffer, last, " Curl:       %s\n", curl_v->version);
+	if (curl_v->ssl_version != nullptr) {
+		buffer += seprintf(buffer, last, " Curl SSL:   %s\n", curl_v->ssl_version);
+	} else {
+		buffer += seprintf(buffer, last, " Curl SSL:   none\n");
+	}
+#endif
+
 	buffer += seprintf(buffer, last, "\n");
 	return buffer;
-}
-
-/**
- * Helper function for printing the gamelog.
- * @param s the string to print.
- */
-/* static */ void CrashLog::GamelogFillCrashLog(const char *s)
-{
-	CrashLog::gamelog_buffer += seprintf(CrashLog::gamelog_buffer, CrashLog::gamelog_last, "%s\n", s);
 }
 
 /**
@@ -296,10 +298,10 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
  */
 char *CrashLog::LogGamelog(char *buffer, const char *last) const
 {
-	CrashLog::gamelog_buffer = buffer;
-	CrashLog::gamelog_last = last;
-	GamelogPrint(&CrashLog::GamelogFillCrashLog);
-	return CrashLog::gamelog_buffer + seprintf(CrashLog::gamelog_buffer, last, "\n");
+	GamelogPrint([&buffer, last](const char *s) {
+		buffer += seprintf(buffer, last, "%s\n", s);
+	});
+	return buffer + seprintf(buffer, last, "\n");
 }
 
 /**
@@ -358,7 +360,7 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	ConvertDateToYMD(_date, &ymd);
 	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, _date_fract);
 
-	buffer = this->LogError(buffer, last, CrashLog::message);
+	buffer = this->LogError(buffer, last, CrashLog::message.c_str());
 	buffer = this->LogOpenTTDVersion(buffer, last);
 	buffer = this->LogRegisters(buffer, last);
 	buffer = this->LogStacktrace(buffer, last);
@@ -413,9 +415,9 @@ bool CrashLog::WriteCrashLog(const char *buffer, char *filename, const char *fil
  */
 bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 {
-	/* If the map array doesn't exist, saving will fail too. If the map got
+	/* If the map doesn't exist, saving will fail too. If the map got
 	 * initialised, there is a big chance the rest is initialised too. */
-	if (_m == nullptr) return false;
+	if (!Map::IsInitialized()) return false;
 
 	try {
 		GamelogEmergency();

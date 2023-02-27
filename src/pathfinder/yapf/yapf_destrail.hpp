@@ -118,6 +118,7 @@ protected:
 	TileIndex    m_destTile;
 	TrackdirBits m_destTrackdirs;
 	StationID    m_dest_station_id;
+	bool         m_any_depot;
 
 	/** to access inherited path finder */
 	Tpf& Yapf()
@@ -128,6 +129,7 @@ protected:
 public:
 	void SetDestination(const Train *v)
 	{
+		m_any_depot = false;
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_WAYPOINT:
 				if (!Waypoint::Get(v->current_order.GetDestination())->IsSingleTile()) {
@@ -145,6 +147,12 @@ public:
 				m_dest_station_id = v->current_order.GetDestination();
 				m_destTrackdirs = INVALID_TRACKDIR_BIT;
 				break;
+
+			case OT_GOTO_DEPOT:
+				if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+					m_any_depot = true;
+				}
+				FALLTHROUGH;
 
 			default:
 				m_destTile = v->dest_tile;
@@ -168,6 +176,10 @@ public:
 			return HasStationTileRail(tile)
 				&& (GetStationIndex(tile) == m_dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
+		}
+
+		if (m_any_depot) {
+			return IsRailDepotTile(tile);
 		}
 
 		return (tile == m_destTile) && HasTrackdir(m_destTrackdirs, td);
