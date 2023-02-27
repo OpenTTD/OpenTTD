@@ -44,6 +44,7 @@
 #include "industry_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
+#include "map_func.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
