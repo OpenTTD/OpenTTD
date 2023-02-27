@@ -52,6 +52,7 @@
 #include "road_cmd.h"
 #include "terraform_cmd.h"
 #include "tunnelbridge_cmd.h"
+#include "map_func.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
