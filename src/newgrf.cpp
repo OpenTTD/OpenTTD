@@ -4762,16 +4762,22 @@ static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader *buf)
 	switch (prop) {
 		case 0x09:
 		case 0x0C:
+		case 0x0F:
+		case 0x11:
 			buf->ReadByte();
 			break;
 
 		case 0x0A:
 		case 0x0B:
+		case 0x0E:
+		case 0x10:
+		case 0x15:
 			buf->ReadWord();
 			break;
 
 		case 0x08:
 		case 0x0D:
+		case 0x12:
 			buf->ReadDWord();
 			break;
 
