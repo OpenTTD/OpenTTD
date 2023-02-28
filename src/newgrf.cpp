@@ -4059,6 +4059,7 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 		case 0x14:
 		case 0x16:
 		case 0x17:
+		case 0x18:
 			buf->ReadByte();
 			break;
 
