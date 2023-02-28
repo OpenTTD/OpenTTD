@@ -53,18 +53,9 @@ ScriptText::ScriptText(HSQUIRRELVM vm) :
 	}
 }
 
-ScriptText::~ScriptText()
-{
-	for (int i = 0; i < SCRIPT_TEXT_MAX_PARAMETERS; i++) {
-		if (std::holds_alternative<ScriptText *>(this->param[i])) std::get<ScriptText *>(this->param[i])->Release();
-	}
-}
-
 SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 {
 	if (parameter >= SCRIPT_TEXT_MAX_PARAMETERS) return SQ_ERROR;
-
-	if (std::holds_alternative<ScriptText *>(this->param[parameter])) std::get<ScriptText *>(this->param[parameter])->Release();
 
 	switch (sq_gettype(vm, -1)) {
 		case OT_STRING: {
@@ -102,8 +93,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 			if (real_instance == nullptr) return SQ_ERROR;
 
 			ScriptText *value = static_cast<ScriptText *>(real_instance);
-			value->AddRef();
-			this->param[parameter] = value;
+			this->param[parameter] = ScriptTextRef(value);
 			break;
 		}
 
@@ -184,9 +174,9 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 			param_count++;
 			continue;
 		}
-		if (std::holds_alternative<ScriptText *>(this->param[i])) {
+		if (std::holds_alternative<ScriptTextRef>(this->param[i])) {
 			p += seprintf(p, lastofp, ":");
-			p = std::get<ScriptText *>(this->param[i])->_GetEncodedText(p, lastofp, param_count);
+			p = std::get<ScriptTextRef>(this->param[i])->_GetEncodedText(p, lastofp, param_count);
 			continue;
 		}
 		p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[i]));

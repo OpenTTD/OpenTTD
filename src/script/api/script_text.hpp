@@ -90,7 +90,6 @@ public:
 	 */
 	ScriptText(StringID string, ...);
 #endif /* DOXYGEN_API */
-	~ScriptText();
 
 #ifndef DOXYGEN_API
 	/**
@@ -129,8 +128,10 @@ public:
 	virtual const std::string GetEncodedText();
 
 private:
+	using ScriptTextRef = ScriptObjectRef<ScriptText>;
+
 	StringID string;
-	std::variant<SQInteger, std::string, ScriptText *> param[SCRIPT_TEXT_MAX_PARAMETERS];
+	std::variant<SQInteger, std::string, ScriptTextRef> param[SCRIPT_TEXT_MAX_PARAMETERS];
 	int paramc;
 
 	/**
