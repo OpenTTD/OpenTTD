@@ -373,8 +373,10 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 				std::sqrt((ptb.x - pta.x) * (ptb.x - pta.x) + (ptb.y - pta.y) * (ptb.y - pta.y));
 			const auto &link = j->second;
 			if (dist <= 4 && link.Usage() > 0 &&
-					pt.x >= std::min(pta.x, ptb.x) &&
-					pt.x <= std::max(pta.x, ptb.x)) {
+					pt.x + 2 >= std::min(pta.x, ptb.x) &&
+					pt.x - 2 <= std::max(pta.x, ptb.x) &&
+					pt.y + 2 >= std::min(pta.y, ptb.y) &&
+					pt.y - 2 <= std::max(pta.y, ptb.y)) {
 				static char buf[1024];
 				char *buf_end = buf;
 				buf[0] = 0;
