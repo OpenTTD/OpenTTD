@@ -262,8 +262,6 @@ private:
 	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend SaveLoadTable GetOrderListDescription(); ///< Saving and loading of order lists.
 
-	StationID GetBestLoadableNext(const Vehicle *v, const Order *o1, const Order *o2) const;
-
 	Order *first;                     ///< First order of the order list.
 	VehicleOrderID num_orders;        ///< NOSAVE: How many orders there are in the list.
 	VehicleOrderID num_manual_orders; ///< NOSAVE: How many manually added orders are there in the list.
