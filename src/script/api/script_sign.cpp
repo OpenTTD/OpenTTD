@@ -22,7 +22,7 @@
 /* static */ bool ScriptSign::IsValidSign(SignID sign_id)
 {
 	const Sign *si = ::Sign::GetIfValid(sign_id);
-	return si != nullptr && (si->owner == ScriptObject::GetCompany() || si->owner == OWNER_DEITY);
+	return si != nullptr && (si->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptSign::GetOwner(SignID sign_id)
