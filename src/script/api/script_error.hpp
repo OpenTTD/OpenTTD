@@ -53,14 +53,14 @@
  * @param returnval The value to return on failure.
  */
 #define EnforceCompanyModeValid(returnval) \
-	EnforcePrecondition(returnval, ScriptCompanyMode::IsValid())
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsValid(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
 
 /**
  * Helper to enforce the precondition that we are in a deity mode.
  * @param returnval The value to return on failure.
  */
 #define EnforceDeityMode(returnval) \
-	EnforcePrecondition(returnval, ScriptCompanyMode::IsDeity())
+	EnforcePreconditionCustomError(returnval, ScriptCompanyMode::IsDeity(), ScriptError::ERR_PRECONDITION_INVALID_COMPANY)
 
 /**
  * Class that handles all error related functions.
