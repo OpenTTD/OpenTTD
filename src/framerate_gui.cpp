@@ -33,7 +33,7 @@
 #include "safeguards.h"
 
 static std::mutex _sound_perf_lock;
-static std::atomic<bool> _sound_perf_pending;
+static std::atomic<int> _sound_perf_pending;
 static std::vector<TimingMeasurement> _sound_perf_measurements;
 
 /**

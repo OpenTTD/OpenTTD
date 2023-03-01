@@ -87,7 +87,7 @@ private:
 
 	std::thread resolve_thread;                         ///< Thread used during resolving.
 	std::atomic<Status> status = Status::Init;          ///< The current status of the connecter.
-	std::atomic<bool> killed = false;                   ///< Whether this connecter is marked as killed.
+	std::atomic<int> killed = false;                   ///< Whether this connecter is marked as killed.
 
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
 	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.

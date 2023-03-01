@@ -53,7 +53,7 @@ enum DisplayOptions {
 
 extern GameMode _game_mode;
 extern SwitchMode _switch_mode;
-extern std::atomic<bool> _exit_game;
+extern std::atomic<int> _exit_game;
 extern bool _save_config;
 
 /** Modes of pausing we've got */

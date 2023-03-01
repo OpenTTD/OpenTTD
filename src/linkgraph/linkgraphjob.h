@@ -166,8 +166,8 @@ protected:
 	std::thread thread;               ///< Thread the job is running in or a default-constructed thread if it's running in the main thread.
 	Date join_date;                   ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
-	std::atomic<bool> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
-	std::atomic<bool> job_aborted;    ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
+	std::atomic<int> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
+	std::atomic<int> job_aborted;    ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
 
 	void EraseFlows(NodeID from);
 	void JoinThread();

@@ -32,7 +32,7 @@ struct QueuedDebugItem {
 	std::string level;   ///< The used debug level.
 	std::string message; ///< The actual formatted message.
 };
-std::atomic<bool> _debug_remote_console; ///< Whether we need to send data to either NetworkAdminConsole or IConsolePrint.
+std::atomic<int> _debug_remote_console; ///< Whether we need to send data to either NetworkAdminConsole or IConsolePrint.
 std::mutex _debug_remote_console_mutex; ///< Mutex to guard the queue of debug messages for either NetworkAdminConsole or IConsolePrint.
 std::vector<QueuedDebugItem> _debug_remote_console_queue; ///< Queue for debug messages to be passed to NetworkAdminConsole or IConsolePrint.
 std::vector<QueuedDebugItem> _debug_remote_console_queue_spare; ///< Spare queue to swap with _debug_remote_console_queue.

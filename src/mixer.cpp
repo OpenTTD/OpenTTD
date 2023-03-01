@@ -35,13 +35,13 @@ struct MixerChannel {
 	bool is16bit;
 };
 
-static std::atomic<uint8> _active_channels;
+static std::atomic<int> _active_channels;
 static MixerChannel _channels[8];
 static uint32 _play_rate = 11025;
 static uint32 _max_size = UINT_MAX;
 static MxStreamCallback _music_stream = nullptr;
 static std::mutex _music_stream_mutex;
-static std::atomic<uint8> _effect_vol;
+static std::atomic<int> _effect_vol;
 
 /**
  * The theoretical maximum volume for a single sound sample. Multiple sound
