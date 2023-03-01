@@ -2357,7 +2357,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Neue Firma)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Eine neue Firma gründen und beitreten
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Das sind Sie
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dies ist der Host des Spiels
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} Client{P "" s} / {NUM} Firm{P a en}
 
 # Matches ConnectionType
 ###length 5

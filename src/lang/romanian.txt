@@ -2358,7 +2358,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Companie nouă
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Creează o nouă companie și intră în ea
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Aici ești tu
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aceasta este gazda jocului
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} {P client clienți "de clienți"} / {NUM}{P companie companii "de companii"}
 
 # Matches ConnectionType
 ###length 5

@@ -2358,7 +2358,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nei Firma)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Eng nei Firma erstellen an hier bäitrieden
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dat bass du
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dest ass den Host vun der Partie
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} Client{P "" en} / {NUM} Firm{P a en}
 
 # Matches ConnectionType
 ###length 5

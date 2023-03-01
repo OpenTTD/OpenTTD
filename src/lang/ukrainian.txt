@@ -2484,7 +2484,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Нова ко�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Створити нову компанію і приєднатись до неї
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Це ти
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Організатор гри
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} клієнт{P "" и ів} / {NUM} компан{P ія ії ій}
 
 # Matches ConnectionType
 ###length 5

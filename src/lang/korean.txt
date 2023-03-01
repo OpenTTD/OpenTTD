@@ -2359,7 +2359,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(새 회사)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}새 회사를 만듭니다
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}당신입니다
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}이 게임을 연 사람입니다
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}접속자 {NUM}명 / 회사 {NUM}개
 
 # Matches ConnectionType
 ###length 5

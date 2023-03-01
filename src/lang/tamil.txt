@@ -2098,7 +2098,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(புதி�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}புதிய நிறுவனத்தினை நிறுவி விளையாடு
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :இது நீன்கள்
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}இது விலையாட்டின் வழங்குபவர்
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} வாடிக்கையாளர்{P "" கள்} / {NUM} நிறுவன{P ம் ங்கள்}
 
 # Matches ConnectionType
 ###length 5

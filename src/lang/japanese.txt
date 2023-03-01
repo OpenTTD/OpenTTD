@@ -2342,7 +2342,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(新規会社�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}新しく会社を設立し参画します
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}これはあなたです
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲームのホストです
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} 個のクライアント / {NUM} 個の企業
 
 # Matches ConnectionType
 ###length 5

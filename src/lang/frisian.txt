@@ -2103,7 +2103,6 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Namme fa
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Sichtberheid
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Dyn namme
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dit bisto sels
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klïïnt{P "" en} / {NUM} bedriuw{P "" en}
 
 # Matches ConnectionType
 ###length 5

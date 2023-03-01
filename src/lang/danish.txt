@@ -2320,7 +2320,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nyt selskab)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Etabler et nyt selskab og tilslut dig det
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dette er dig
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dette er værten for dette spil
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" er} / {NUM} selskab{P "" er}
 
 # Matches ConnectionType
 ###length 5

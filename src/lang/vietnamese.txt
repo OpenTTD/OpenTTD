@@ -2358,7 +2358,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Công ty mới
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Khai sinh một công ty và gia nhập
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Đây là bạn
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Đây là người tổ chức ván chơi
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} người chơi / {NUM} công ty
 
 # Matches ConnectionType
 ###length 5

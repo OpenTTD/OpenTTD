@@ -2445,7 +2445,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nová společn
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Vytvořit novou společnost a připojit se do ní
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tohle jsi ty
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Toto je hostitel hry
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" i i} / {NUM} společnost{P “” i i}
 
 # Matches ConnectionType
 ###length 5

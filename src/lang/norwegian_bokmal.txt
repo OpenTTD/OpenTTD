@@ -2330,7 +2330,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nytt firma)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Opprett et nytt firma og bli med i det
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dette er deg
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dette er verten for spillet
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" s} / {NUM} firma{P et er}
 
 # Matches ConnectionType
 ###length 5

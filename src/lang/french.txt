@@ -2359,7 +2359,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nouvelle compa
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Créer une nouvelle compagnie et la rejoindre
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}C'est vous
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}C'est l'hôte du jeu
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} / {NUM} compagnie{P "" s}
 
 # Matches ConnectionType
 ###length 5
@@ -3353,6 +3352,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attention{NBSP}: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erreur{NBSP}: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erreur fatale{NBSP}: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Le NewGRF "{STRING}" a retourné une erreur fatale{NBSP}:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Le NewGRF "{STRING}" a retourné une erreur{NBSP}:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne fonctionnera pas avec la version de TTDPatch rapportée par OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} est conçu pour la version {2:STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} est conçu pour être utilisé avec {2:STRING}
@@ -4528,7 +4529,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Annuler 
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Annuler la vitesse maximale de déplacement de l'ordre sélectionné. Ctrl-clic pour annuler la vitesse de tous les ordres
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}RAZ compteur de retard
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remettre à zéro le compteur de retard (le véhicule sera donc à l'heure)
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remettre à zéro le compteur de retard, le véhicule sera donc à l'heure. Ctrl-clic pour remettre à zéro le groupe entier, le véhicule le plus en retard sera donc à l'heure et les autres en avance
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplir l'horaire automatiquement avec les valeurs du prochain trajet. Ctrl-clic pour essayer de préserver les temps d'attente

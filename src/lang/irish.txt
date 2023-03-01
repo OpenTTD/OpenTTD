@@ -2313,7 +2313,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Cuideachta nua
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Cruthaigh cuideachta nua agus téigh isteach ann
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Seo tusa
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Is é seo óstach an chluiche
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} {P ch ch ch gc c}liant / {NUM} {P ch ch ch gc c}uideachta
 
 # Matches ConnectionType
 ###length 5

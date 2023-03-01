@@ -2415,7 +2415,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Uus ettevõte)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Loo uus ettevõte ja liitu sellega
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tema oled sina
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Tema on mängu korraldaja
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" i} / {NUM} ettevõt{P e teid}
 
 # Matches ConnectionType
 ###length 5

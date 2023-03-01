@@ -2551,7 +2551,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(novo preduzeć
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Napravi novo preduzeće i pridruži mu se
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ovo si ti
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ovo je domaćin igre
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klijen{P t ata ata} / {NUM} preduzeć{P e a a}
 
 # Matches ConnectionType
 ###length 5

@@ -2420,7 +2420,6 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Új vállalat)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Hozz létre egy új vállalatot és csatlakozz
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ez vagy te
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ez a játék elindítója
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} kliens / {NUM} vállalat
 
 # Matches ConnectionType
 ###length 5
