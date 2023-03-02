@@ -11,6 +11,7 @@
 #define SCRIPT_ERROR_HPP
 
 #include "script_object.hpp"
+#include "script_companymode.hpp"
 #include <map>
 
 /**
@@ -46,6 +47,20 @@
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED); \
 		return returnval; \
 	}
+
+/**
+ * Helper to enforce the precondition that the company mode is valid.
+ * @param returnval The value to return on failure.
+ */
+#define EnforceCompanyModeValid(returnval) \
+	EnforcePrecondition(returnval, ScriptCompanyMode::IsValid())
+
+/**
+ * Helper to enforce the precondition that we are in a deity mode.
+ * @param returnval The value to return on failure.
+ */
+#define EnforceDeityMode(returnval) \
+	EnforcePrecondition(returnval, ScriptCompanyMode::IsDeity())
 
 /**
  * Class that handles all error related functions.
