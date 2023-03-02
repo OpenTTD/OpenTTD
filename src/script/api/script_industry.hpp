@@ -265,7 +265,7 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param control_flags New flags as a combination of IndustryControlFlags values.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @return True if the action succeeded.
 	 * @api -ai
 	 */

@@ -22,7 +22,7 @@
 /* static */ bool ScriptStation::IsValidStation(StationID station_id)
 {
 	const Station *st = ::Station::GetIfValid(station_id);
-	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || st->owner == OWNER_NONE);
+	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || st->owner == OWNER_NONE);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptStation::GetOwner(StationID station_id)

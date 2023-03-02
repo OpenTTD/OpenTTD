@@ -192,7 +192,7 @@ public:
 	 * @pre GetLoanInterval() must be a multiplier of 'loan'.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
 	 * @pre 'loan' - GetLoanAmount() + GetBankBalance() must be non-negative.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if the loan could be set to your requested amount.
 	 */
 	static bool SetLoanAmount(Money loan);
@@ -202,7 +202,7 @@ public:
 	 * @param loan The amount to loan (any positive number).
 	 * @pre 'loan' must be non-negative.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if we could allocate a minimum of 'loan' loan.
 	 */
 	static bool SetMinimumLoanAmount(Money loan);
@@ -244,7 +244,7 @@ public:
 	 * @param expenses_type The account in the finances window that will register the cost.
 	 * @param tile The tile to show text effect on or ScriptMap::TILE_INVALID
 	 * @return True, if the bank balance was changed.
-	 * @game @pre No ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsDeity().
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre delta >= -2**31
 	 * @pre delta <   2**31
@@ -314,7 +314,7 @@ public:
 	 * Build your company's HQ on the given tile.
 	 * @param tile The tile to build your HQ on, this tile is the most northern tile of your HQ.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @return True if the HQ could be build.

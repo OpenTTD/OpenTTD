@@ -28,7 +28,7 @@
 
 /* static */ bool ScriptViewport::ScrollEveryoneTo(TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	return ScriptObject::Command<CMD_SCROLL_VIEWPORT>::Do(tile, VST_EVERYONE, 0);
@@ -36,7 +36,7 @@
 
 /* static */ bool ScriptViewport::ScrollCompanyClientsTo(ScriptCompany::CompanyID company, TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	company = ScriptCompany::ResolveCompanyID(company);
@@ -48,7 +48,7 @@
 /* static */ bool ScriptViewport::ScrollClientTo(ScriptClient::ClientID client, TileIndex tile)
 {
 	EnforcePrecondition(false, ScriptGame::IsMultiplayer());
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	client = ScriptClient::ResolveClientID(client);

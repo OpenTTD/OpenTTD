@@ -111,9 +111,9 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return True if you can build this type of industry at locations of your choice.
 	 * @ai @note Returns false if you can only prospect this type of industry, or not build it at all.
-	 * @game @note If no valid ScriptCompanyMode active in scope, this method returns false if you can
+	 * @game @note When ScriptCompanyMode::IsDeity, this method returns false if you can
 	 * @game only prospect this type of industry, or not build it at all.
-	 * @game @note If no valid ScriptCompanyMode active in scope, the script can
+	 * @game @note When ScriptCompanyMode::IsDeity, the script can
 	 * @game build as long as the industry type can be built. (a NewGRF can for example
 	 * @game reject construction based on current year)
 	 */
@@ -126,10 +126,10 @@ public:
 	 * @return True if you can prospect this type of industry.
 	 * @ai @note If the setting "Manual primary industry construction method" is set
 	 * @ai to either "None" or "as other industries" this function always returns false.
-	 * @game @note If no valid ScriptCompanyMode is active in scope, and if the setting
+	 * @game @note When ScriptCompanyMode::IsDeity, and if the setting
 	 * @game "Manual primary industry construction method" is set to either "None" or
 	 * @game "as other industries" this function always returns false.
-	 * @game @note If no valid ScriptCompanyMode active in scope, the script can
+	 * @game @note When ScriptCompanyMode::IsDeity, the script can
 	 * @game prospect as long as the industry type can be built. (a NewGRF can for
 	 * @game example reject construction based on current year)
 	 */
@@ -152,7 +152,7 @@ public:
 	 * @return True if no error occurred while trying to prospect.
 	 * @note Even if true is returned there is no guarantee a new industry is build.
 	 * @note If true is returned the money is paid, whether a new industry was build or not.
-	 * @game @note if no valid ScriptCompanyMode exist in scope, prospection will not fail
+	 * @game @note When ScriptCompanyMode::IsDeity, prospection will not fail
 	 * @game due to the general chance that prospection may fail. However prospection can still
 	 * @game fail if OpenTTD is unable to find a suitable location to place the industry.
 	 */

@@ -24,7 +24,7 @@ public:
 	/**
 	 * Checks whether the given engine type is valid.
 	 * An engine is valid for a company if it has at least one vehicle of this engine or it's currently buildable.
-	 * @game Outside ScriptCompanyMode scope the function reports all engines valid, which were or will be available at some point.
+	 * @game Outside ScriptCompanyMode scope (ScriptCompanyMode::IsDeity) the function reports all engines valid, which were or will be available at some point.
 	 * @param engine_id The engine to check.
 	 * @return True if and only if the engine type is valid.
 	 */
@@ -32,7 +32,7 @@ public:
 
 	/**
 	 * Checks whether the given engine type is buildable for a company.
-	 * @game Outside ScriptCompanyMode scope the function checks whether the engine is currently buildable by all companies (no exclusive preview).
+	 * @game Outside ScriptCompanyMode scope (ScriptCompanyMode::IsDeity) the function checks whether the engine is currently buildable by all companies (no exclusive preview).
 	 * @param engine_id The engine to check.
 	 * @return True if and only if the engine type is buildable.
 	 */

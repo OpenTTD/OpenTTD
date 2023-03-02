@@ -21,7 +21,7 @@
 ScriptVehicleList::ScriptVehicleList()
 {
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()))) this->AddItem(v->index);
+		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()))) this->AddItem(v->index);
 	}
 }
 
@@ -30,7 +30,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle()) {
+		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle()) {
 			for (const Order *order : v->Orders()) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
 					this->AddItem(v->index);
@@ -78,7 +78,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 	}
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
+		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle() && v->type == type) {
 			for (const Order *order : v->Orders()) {
 				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
 					this->AddItem(v->index);

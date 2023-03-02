@@ -125,7 +125,7 @@
 
 /* static */ bool ScriptRoad::ConvertRoadType(TileIndex start_tile, TileIndex end_tile, RoadType road_type)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(start_tile));
 	EnforcePrecondition(false, ::IsValidTile(end_tile));
 	EnforcePrecondition(false, IsRoadTypeAvailable(road_type));
@@ -507,7 +507,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::BuildOneWayRoad(TileIndex start, TileIndex end)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	return _BuildRoadInternal(start, end, true, false);
 }
 
@@ -518,13 +518,13 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::BuildOneWayRoadFull(TileIndex start, TileIndex end)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	return _BuildRoadInternal(start, end, true, true);
 }
 
 /* static */ bool ScriptRoad::BuildRoadDepot(TileIndex tile, TileIndex front)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, tile != front);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(front));
@@ -538,7 +538,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::_BuildRoadStationInternal(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, bool drive_through, StationID station_id)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, tile != front);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(front));
@@ -565,7 +565,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::RemoveRoad(TileIndex start, TileIndex end)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, start != end);
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, ::IsValidTile(end));
@@ -577,7 +577,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::RemoveRoadFull(TileIndex start, TileIndex end)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, start != end);
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, ::IsValidTile(end));
@@ -589,7 +589,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::RemoveRoadDepot(TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsTileType(tile, MP_ROAD))
 	EnforcePrecondition(false, GetRoadTileType(tile) == ROAD_TILE_DEPOT);
@@ -599,7 +599,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ bool ScriptRoad::RemoveRoadStation(TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsTileType(tile, MP_STATION));
 	EnforcePrecondition(false, IsRoadStop(tile));
