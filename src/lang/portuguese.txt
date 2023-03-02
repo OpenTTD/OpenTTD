@@ -2359,6 +2359,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova empresa)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Criar uma nova empresa e juntar-se a ela
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Este é você
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este é o anfitrião do jogo
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} - {NUM}/{NUM} companhi{P a as}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}O número de clientes ligados atualmente, número de empresas e número máximo de empresas permitido pelo administrador do servidor
 
 # Matches ConnectionType
 ###length 5

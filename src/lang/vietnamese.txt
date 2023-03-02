@@ -2358,6 +2358,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Công ty mới
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Khai sinh một công ty và gia nhập
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Đây là bạn
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Đây là người tổ chức ván chơi
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} nguời chơi - {NUM}/{NUM} công ty
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Số lượng máy trạm, số lượng công ty và số lượng công ty tối đa mà quản lý máy chủ cho phép
 
 # Matches ConnectionType
 ###length 5

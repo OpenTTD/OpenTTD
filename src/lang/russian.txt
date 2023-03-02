@@ -2509,6 +2509,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Новая к�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Основать новую транспортную компанию и присоединиться к ней
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Это вы!
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Это организатор игры
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}Клиентов: {NUM}; компаний: {NUM}/{NUM}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Количество подключённых в данный момент клиентов, существующих компаний и максимально допустимое количество компаний
 
 # Matches ConnectionType
 ###length 5

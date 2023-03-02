@@ -2359,6 +2359,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Yeni şirket)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Yeni bir şirket oluştur ve ona katıl
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Bu sensin
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Bu, oyunun ev sahibi
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} oyuncu - {NUM}/{NUM} şirket
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Şu anda bağlı olan istemci sayısı, şirket sayısı ve sunucu sahibi tarafından izin verilen maksimum şirket sayısı
 
 # Matches ConnectionType
 ###length 5
@@ -4625,7 +4627,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Küçük
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametreler
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}YZ Parametreleri
+STR_AI_SETTINGS_CAPTION_AI                                      :YZ
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
