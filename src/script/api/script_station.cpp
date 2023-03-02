@@ -238,6 +238,7 @@ template<bool Tfrom, bool Tvia>
 
 /* static */ bool ScriptStation::OpenCloseAirport(StationID station_id)
 {
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidStation(station_id));
 	EnforcePrecondition(false, HasStationType(station_id, STATION_AIRPORT));
 

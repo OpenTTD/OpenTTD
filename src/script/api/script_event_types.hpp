@@ -289,6 +289,7 @@ public:
 
 	/**
 	 * Accept the engine preview.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True when the accepting succeeded.
 	 */
 	bool AcceptPreview();
@@ -410,6 +411,7 @@ public:
 
 	/**
 	 * Take over the company for this merger.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return true if the merger was a success.
 	 */
 	bool AcceptMerger();

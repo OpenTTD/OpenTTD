@@ -287,6 +287,7 @@ public:
 	/**
 	 * Toggle the open/closed state of an airport.
 	 * @param station_id The airport to modify.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @pre IsValidStation(station_id).
 	 * @pre HasStationType(station_id, STATION_AIRPORT).
 	 * @return True if the state was toggled successfully.
