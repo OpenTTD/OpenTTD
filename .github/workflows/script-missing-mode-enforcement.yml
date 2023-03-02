@@ -1,0 +1,22 @@
+name: Script missing mode enforcement
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  script-missing-mode-enforcement:
+    name: Script missing mode enforcement
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Check for finding script functions that require company/deity mode enforcement/checks
+      run: |
+        set -ex
+        python3 .github/script-missing-mode-enforcement.py
