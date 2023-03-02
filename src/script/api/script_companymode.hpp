@@ -47,6 +47,22 @@ public:
 	 *   in when the instance was created.
 	 */
 	~ScriptCompanyMode();
+
+	/**
+	 * Check whether a company mode is valid. In other words, are commands
+	 * being executed under some company.
+	 * @return true When a company mode is valid.
+	 * @post !ScriptCompanyMode::IsDeity().
+	 */
+	static bool IsValid();
+
+	/**
+	 * Check whether the company mode is not active, i.e. whether we are a deity.
+	 * In other words, are commands are not being executed under some company.
+	 * @return true When we are a deity, i.e. company mode is not active.
+	 * @post !ScriptCompanyMode::IsValid().
+	 */
+	static bool IsDeity();
 };
 
 #endif /* SCRIPT_COMPANYMODE_HPP */

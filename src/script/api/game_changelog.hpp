@@ -18,6 +18,8 @@
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li GSCompanyMode::IsValid
+ * \li GSCompanyMode::IsDeity
  * \li GSTown::ROAD_LAYOUT_RANDOM
  * \li GSVehicle::IsPrimaryVehicle
  *

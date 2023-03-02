@@ -26,3 +26,13 @@ ScriptCompanyMode::~ScriptCompanyMode()
 {
 	ScriptObject::SetCompany(this->last_company);
 }
+
+/* static */ bool ScriptCompanyMode::IsValid()
+{
+	return ScriptObject::GetCompany() != OWNER_DEITY;
+}
+
+/* static */ bool ScriptCompanyMode::IsDeity()
+{
+	return ScriptObject::GetCompany() == OWNER_DEITY;
+}
