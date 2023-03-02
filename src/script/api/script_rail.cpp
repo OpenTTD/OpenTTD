@@ -69,6 +69,7 @@
 
 /* static */ bool ScriptRail::IsRailTypeAvailable(RailType rail_type)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	if ((::RailType)rail_type >= RAILTYPE_END) return false;
 
 	return ScriptCompanyMode::IsDeity() || ::HasRailtypeAvail(ScriptObject::GetCompany(), (::RailType)rail_type);

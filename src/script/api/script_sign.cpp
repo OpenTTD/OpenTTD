@@ -21,6 +21,7 @@
 
 /* static */ bool ScriptSign::IsValidSign(SignID sign_id)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	const Sign *si = ::Sign::GetIfValid(sign_id);
 	return si != nullptr && (si->owner == ScriptObject::GetCompany() || si->owner == OWNER_DEITY);
 }
@@ -36,6 +37,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidSign(sign_id));
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
@@ -63,6 +65,7 @@
 
 /* static */ bool ScriptSign::RemoveSign(SignID sign_id)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidSign(sign_id));
 	return ScriptObject::Command<CMD_RENAME_SIGN>::Do(sign_id, "");
 }
@@ -71,6 +74,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
+	EnforceDeityOrCompanyModeValid(INVALID_SIGN);
 	EnforcePrecondition(INVALID_SIGN, ::IsValidTile(location));
 	EnforcePrecondition(INVALID_SIGN, name != nullptr);
 	const std::string &text = name->GetDecodedText();

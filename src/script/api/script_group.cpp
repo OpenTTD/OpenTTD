@@ -25,6 +25,7 @@
 
 /* static */ bool ScriptGroup::IsValidGroup(GroupID group_id)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	const Group *g = ::Group::GetIfValid(group_id);
 	return g != nullptr && g->owner == ScriptObject::GetCompany();
 }

@@ -17,6 +17,7 @@
 
 ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_type)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	for (const Waypoint *wp : Waypoint::Iterate()) {
 		if ((wp->facilities & waypoint_type) &&
 				(wp->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || wp->owner == OWNER_NONE)) this->AddItem(wp->index);

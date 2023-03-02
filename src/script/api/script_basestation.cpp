@@ -21,6 +21,7 @@
 
 /* static */ bool ScriptBaseStation::IsValidBaseStation(StationID station_id)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	const BaseStation *st = ::BaseStation::GetIfValid(station_id);
 	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || st->owner == OWNER_NONE);
 }

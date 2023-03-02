@@ -119,6 +119,7 @@
 
 /* static */ bool ScriptIndustryType::BuildIndustry(IndustryType industry_type, TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, CanBuildIndustry(industry_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
@@ -129,6 +130,7 @@
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
 	uint32 seed = ScriptBase::Rand();

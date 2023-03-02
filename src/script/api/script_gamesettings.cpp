@@ -33,6 +33,7 @@
 
 /* static */ bool ScriptGameSettings::SetValue(const char *setting, SQInteger value)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	if (!IsValid(setting)) return false;
 
 	const SettingDesc *sd = GetSettingFromName(setting);

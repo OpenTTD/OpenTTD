@@ -15,6 +15,7 @@
 
 ScriptRoadTypeList::ScriptRoadTypeList(ScriptRoad::RoadTramTypes rtts)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		if (!HasBit(rtts, GetRoadTramType(rt))) continue;
 		if (ScriptCompanyMode::IsDeity() || ::HasRoadTypeAvail(ScriptObject::GetCompany(), rt)) this->AddItem(rt);
