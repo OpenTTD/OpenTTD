@@ -24,6 +24,7 @@
 {
 	CCountedPtr<Text> counter(text);
 
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, text != nullptr);
 	const std::string &encoded = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded);

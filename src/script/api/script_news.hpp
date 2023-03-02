@@ -62,6 +62,7 @@ public:
 	 * @pre text != null.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre The \a reference condition must be fulfilled.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 */
 	static bool Create(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, SQInteger reference);
 };

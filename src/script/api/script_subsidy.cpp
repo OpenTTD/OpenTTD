@@ -33,6 +33,7 @@
 
 /* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id)
 {
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptCargo::IsValidCargo(cargo_type));
 	EnforcePrecondition(false, from_type == SPT_INDUSTRY || from_type == SPT_TOWN);
 	EnforcePrecondition(false, to_type == SPT_INDUSTRY || to_type == SPT_TOWN);

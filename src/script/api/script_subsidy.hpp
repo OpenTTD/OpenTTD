@@ -55,6 +55,7 @@ public:
 	 * @param to_type The type of the subsidy on the 'to' side.
 	 * @param to_id The ID of the 'to' side.
 	 * @return True if the action succeeded.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptCargo::IsValidCargo(cargo_type)
 	 * @pre from_type == SPT_INDUSTRY || from_type == SPT_TOWN.
 	 * @pre to_type   == SPT_INDUSTRY || to_type   == SPT_TOWN.

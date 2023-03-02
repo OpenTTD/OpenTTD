@@ -44,6 +44,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	std::string text;
 	if (name != nullptr) {
@@ -58,6 +59,7 @@
 {
 	CCountedPtr<Text> counter(text);
 
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 
 	return ScriptObject::Command<CMD_TOWN_SET_TEXT>::Do(town_id, text != nullptr ? text->GetEncodedText() : std::string{});
@@ -125,6 +127,7 @@
 
 /* static */ bool ScriptTown::SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, SQInteger goal)
 {
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, ScriptCargo::IsValidTownEffect(towneffect_id));
 
@@ -155,6 +158,7 @@
 
 /* static */ bool ScriptTown::SetGrowthRate(TownID town_id, SQInteger days_between_town_growth)
 {
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	uint16 growth_rate;
 	switch (days_between_town_growth) {
