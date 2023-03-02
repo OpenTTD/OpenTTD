@@ -47,6 +47,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
@@ -68,6 +69,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
@@ -94,6 +96,7 @@
 
 /* static */ bool ScriptCompany::SetPresidentGender(Gender gender)
 {
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, gender == GENDER_MALE || gender == GENDER_FEMALE);
 	EnforcePrecondition(false, GetPresidentGender(ScriptCompany::COMPANY_SELF) != gender);
 
@@ -269,6 +272,7 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewStatus(bool autorenew)
 {
+	EnforceCompanyModeValid(false);
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew", autorenew ? 1 : 0);
 }
 
@@ -282,7 +286,9 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewMonths(SQInteger months)
 {
+	EnforceCompanyModeValid(false);
 	months = Clamp<SQInteger>(months, INT16_MIN, INT16_MAX);
+
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_months", months);
 }
 
@@ -296,6 +302,7 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewMoney(Money money)
 {
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, money >= 0);
 	EnforcePrecondition(false, (int64)money <= UINT32_MAX);
 	return ScriptObject::Command<CMD_CHANGE_COMPANY_SETTING>::Do("company.engine_renew_money", money);
@@ -311,11 +318,13 @@
 
 /* static */ bool ScriptCompany::SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
+	EnforceCompanyModeValid(false);
 	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do((::LiveryScheme)scheme, true, (::Colours)colour);
 }
 
 /* static */ bool ScriptCompany::SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
+	EnforceCompanyModeValid(false);
 	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do((::LiveryScheme)scheme, false, (::Colours)colour);
 }
 
