@@ -82,6 +82,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 
 /* static */ bool ScriptTunnel::BuildTunnel(ScriptVehicle::VehicleType vehicle_type, TileIndex start)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_ROAD);
 	EnforcePrecondition(false, vehicle_type != ScriptVehicle::VT_RAIL || ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType()));
@@ -99,6 +100,8 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 
 /* static */ bool ScriptTunnel::_BuildTunnelRoad1()
 {
+	EnforceDeityOrCompanyModeValid(false);
+
 	/* Build the piece of road on the 'start' side of the tunnel */
 	TileIndex end = ScriptObject::GetCallbackVariable(0);
 	TileIndex start = ScriptTunnel::GetOtherTunnelEnd(end);
@@ -111,6 +114,8 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 
 /* static */ bool ScriptTunnel::_BuildTunnelRoad2()
 {
+	EnforceDeityOrCompanyModeValid(false);
+
 	/* Build the piece of road on the 'end' side of the tunnel */
 	TileIndex end = ScriptObject::GetCallbackVariable(0);
 	TileIndex start = ScriptTunnel::GetOtherTunnelEnd(end);

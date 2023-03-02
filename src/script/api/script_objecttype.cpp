@@ -39,6 +39,7 @@
 
 /* static */ bool ScriptObjectType::BuildObject(ObjectType object_type, SQInteger view, TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidObjectType(object_type));
 	EnforcePrecondition(false, view >= 0 && view < GetViews(object_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));

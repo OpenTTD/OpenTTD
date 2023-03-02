@@ -281,6 +281,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town != TF_FORBIDDEN);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)

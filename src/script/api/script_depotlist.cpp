@@ -16,6 +16,7 @@
 
 ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	::TileType tile_type;
 	switch (transport_type) {
 		default: return;

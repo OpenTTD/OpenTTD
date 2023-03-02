@@ -20,6 +20,7 @@
 
 ScriptVehicleList::ScriptVehicleList()
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()))) this->AddItem(v->index);
 	}
@@ -27,6 +28,7 @@ ScriptVehicleList::ScriptVehicleList()
 
 ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
@@ -43,6 +45,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 
 ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptMap::IsValidTile(tile)) return;
 
 	DestinationID dest;
@@ -100,6 +103,7 @@ ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle
 
 ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
@@ -111,6 +115,7 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 
 ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {

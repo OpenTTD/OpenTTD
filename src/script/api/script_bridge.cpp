@@ -72,6 +72,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 /* static */ bool ScriptBridge::BuildBridge(ScriptVehicle::VehicleType vehicle_type, BridgeID bridge_id, TileIndex start, TileIndex end)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, start != end);
 	EnforcePrecondition(false, ::IsValidTile(start) && ::IsValidTile(end));
 	EnforcePrecondition(false, TileX(start) == TileX(end) || TileY(start) == TileY(end));
@@ -95,6 +96,8 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 /* static */ bool ScriptBridge::_BuildBridgeRoad1()
 {
+	EnforceDeityOrCompanyModeValid(false);
+
 	/* Build the piece of road on the 'start' side of the bridge */
 	TileIndex end = ScriptObject::GetCallbackVariable(0);
 	TileIndex start = ScriptObject::GetCallbackVariable(1);
@@ -107,6 +110,8 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 /* static */ bool ScriptBridge::_BuildBridgeRoad2()
 {
+	EnforceDeityOrCompanyModeValid(false);
+
 	/* Build the piece of road on the 'end' side of the bridge */
 	TileIndex end = ScriptObject::GetCallbackVariable(0);
 	TileIndex start = ScriptObject::GetCallbackVariable(1);

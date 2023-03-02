@@ -18,6 +18,7 @@
 
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	for (Station *st : Station::Iterate()) {
 		if ((st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (st->facilities & station_type) != 0) this->AddItem(st->index);
 	}

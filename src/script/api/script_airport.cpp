@@ -91,6 +91,7 @@
 
 /* static */ SQInteger ScriptAirport::GetNumHangars(TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid(-1);
 	if (!::IsValidTile(tile)) return -1;
 	if (!::IsTileType(tile, MP_STATION)) return -1;
 
@@ -103,6 +104,7 @@
 
 /* static */ TileIndex ScriptAirport::GetHangarOfAirport(TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid(INVALID_TILE);
 	if (!::IsValidTile(tile)) return INVALID_TILE;
 	if (!::IsTileType(tile, MP_STATION)) return INVALID_TILE;
 	if (GetNumHangars(tile) < 1) return INVALID_TILE;
