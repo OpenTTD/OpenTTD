@@ -125,7 +125,7 @@ public:
 	 * @param name The name for the vehicle (can be either a raw string, or a ScriptText object).
 	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @pre name != null && len(name) != 0.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
@@ -316,7 +316,7 @@ public:
 	 * @pre The tile at depot has a depot that can build the engine and
 	 *   is owned by you.
 	 * @pre ScriptEngine::IsBuildable(engine_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
 	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
 	 * @exception ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT
@@ -342,7 +342,7 @@ public:
 	 *   is owned by you.
 	 * @pre ScriptEngine::IsBuildable(engine_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
 	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
 	 * @exception ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT
@@ -375,7 +375,7 @@ public:
 	 * @param share_orders Should the orders be copied or shared?
 	 * @pre The tile 'depot' has a depot on it, allowing 'vehicle_id'-type vehicles.
 	 * @pre IsPrimaryVehicle(vehicle_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
 	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
 	 * @exception ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT
@@ -396,7 +396,7 @@ public:
 	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
 	 * @pre GetVehicleType(source_vehicle_id) == VT_RAIL.
 	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VT_RAIL.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return Whether or not moving the wagon succeeded.
 	 */
 	static bool MoveWagon(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon);
@@ -412,7 +412,7 @@ public:
 	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
 	 * @pre GetVehicleType(source_vehicle_id) == VT_RAIL.
 	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VT_RAIL.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return Whether or not moving the wagons succeeded.
 	 */
 	static bool MoveWagonChain(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon);
@@ -437,7 +437,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT
 	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
@@ -451,7 +451,7 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the vehicle has been sold.
@@ -466,7 +466,7 @@ public:
 	 * @pre wagon < GetNumWagons(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the wagon has been sold.
@@ -481,7 +481,7 @@ public:
 	 * @pre wagon < GetNumWagons(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the wagons have been sold.
@@ -493,7 +493,7 @@ public:
 	 * sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot.
 	 * @pre IsPrimaryVehicle(vehicle_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
 	 * @return True if the current order was changed.
 	 */
@@ -504,7 +504,7 @@ public:
 	 * already been sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot for servicing.
 	 * @pre IsPrimaryVehicle(vehicle_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
 	 * @return True if the current order was changed.
 	 */
@@ -514,7 +514,7 @@ public:
 	 * Starts or stops the given vehicle depending on the current state.
 	 * @param vehicle_id The vehicle to start/stop.
 	 * @pre IsPrimaryVehicle(vehicle_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP
 	 * @exception (For aircraft only): ScriptVehicle::ERR_VEHICLE_IN_FLIGHT
 	 * @exception (For trains only): ScriptVehicle::ERR_VEHICLE_NO_POWER
@@ -527,7 +527,7 @@ public:
 	 * @param vehicle_id The vehicle to turn.
 	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @pre GetVehicleType(vehicle_id) == VT_ROAD || GetVehicleType(vehicle_id) == VT_RAIL.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if the vehicle has started to turn.
 	 * @note Vehicles cannot always be reversed. For example busses and trucks need to be running
 	 *  and not be inside a depot.

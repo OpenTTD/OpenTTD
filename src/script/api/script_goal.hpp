@@ -96,7 +96,7 @@ public:
 	 * @param type The type of the goal.
 	 * @param destination The destination of the \a type type.
 	 * @return The new GoalID, or GOAL_INVALID if it failed.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre goal != null && len(goal) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre if type is GT_STORY_PAGE, the company of the goal and the company of the story page need to match:
@@ -109,7 +109,7 @@ public:
 	 * Remove a goal from the list.
 	 * @param goal_id The goal to remove.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool Remove(GoalID goal_id);
@@ -119,7 +119,7 @@ public:
 	 * @param goal_id The goal to update.
 	 * @param goal The new goal text (can be either a raw string, or a ScriptText object).
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre goal != null && len(goal) != 0.
 	 * @pre IsValidGoal(goal_id).
 	 */
@@ -134,7 +134,7 @@ public:
 	 * or a ScriptText object). To clear the progress string you can pass null or an
 	 * empty string.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool SetProgress(GoalID goal_id, Text *progress);
@@ -144,7 +144,7 @@ public:
 	 * @param goal_id The goal to update.
 	 * @param complete The new goal completed status.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool SetCompleted(GoalID goal_id, bool complete);
@@ -153,7 +153,7 @@ public:
 	 * Checks if a given goal have been marked as completed.
 	 * @param goal_id The goal to check complete status.
 	 * @return True if the goal is completed, otherwise false.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool IsCompleted(GoalID goal_id);
@@ -166,7 +166,7 @@ public:
 	 * @param type The type of question that is being asked.
 	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre question != null && len(question) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
@@ -184,7 +184,7 @@ public:
 	 * @param type The type of question that is being asked.
 	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptGame::IsMultiplayer()
 	 * @pre question != null && len(question) != 0.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
@@ -199,7 +199,7 @@ public:
 	 * Close the question on all clients.
 	 * @param uniqueid The uniqueid of the question you want to close.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
 	 * @note If you send a question to a single company, and get a reply for them,
 	 *   the question is already closed on all clients. Only use this function if

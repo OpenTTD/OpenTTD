@@ -32,7 +32,7 @@
 {
 	CCountedPtr<Text> counter(goal);
 
-	EnforcePrecondition(GOAL_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(GOAL_INVALID);
 	EnforcePrecondition(GOAL_INVALID, goal != nullptr);
 	const std::string &text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(GOAL_INVALID, text);
@@ -58,7 +58,7 @@
 
 /* static */ bool ScriptGoal::Remove(GoalID goal_id)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 
 	return ScriptObject::Command<CMD_REMOVE_GOAL>::Do(goal_id);
@@ -69,7 +69,7 @@
 	CCountedPtr<Text> counter(goal);
 
 	EnforcePrecondition(false, IsValidGoal(goal_id));
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, goal != nullptr);
 	const std::string &text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
@@ -82,7 +82,7 @@
 	CCountedPtr<Text> counter(progress);
 
 	EnforcePrecondition(false, IsValidGoal(goal_id));
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 
 	return ScriptObject::Command<CMD_SET_GOAL_PROGRESS>::Do(goal_id, progress != nullptr ? progress->GetEncodedText() : std::string{});
 }
@@ -90,7 +90,7 @@
 /* static */ bool ScriptGoal::SetCompleted(GoalID goal_id, bool completed)
 {
 	EnforcePrecondition(false, IsValidGoal(goal_id));
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 
 	return ScriptObject::Command<CMD_SET_GOAL_COMPLETED>::Do(goal_id, completed);
 }
@@ -98,7 +98,7 @@
 /* static */ bool ScriptGoal::IsCompleted(GoalID goal_id)
 {
 	EnforcePrecondition(false, IsValidGoal(goal_id));
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 
 	Goal *g = Goal::Get(goal_id);
 	return g != nullptr && g->completed;
@@ -108,7 +108,7 @@
 {
 	CCountedPtr<Text> counter(question);
 
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, question != nullptr);
 	const std::string &text = question->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
@@ -139,7 +139,7 @@
 
 /* static */ bool ScriptGoal::CloseQuestion(SQInteger uniqueid)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, uniqueid >= 0 && uniqueid <= UINT16_MAX);
 
 	return ScriptObject::Command<CMD_GOAL_QUESTION_ANSWER>::Do(uniqueid, 0);

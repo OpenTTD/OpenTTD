@@ -250,7 +250,7 @@
 
 /* static */ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, SQInteger control_flags)
 {
-	if (ScriptObject::GetCompany() != OWNER_DEITY) return false;
+	EnforceDeityMode(false);
 	if (!IsValidIndustry(industry_id)) return false;
 
 	return ScriptObject::Command<CMD_INDUSTRY_SET_FLAGS>::Do(industry_id, (::IndustryControlFlags)control_flags & ::INDCTL_MASK);

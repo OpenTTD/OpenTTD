@@ -96,7 +96,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	const bool deity = ScriptObject::GetCompany() == OWNER_DEITY;
+	const bool deity = ScriptCompanyMode::IsDeity();
 	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
 	if (deity) return true;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
@@ -109,7 +109,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	const bool deity = ScriptObject::GetCompany() == OWNER_DEITY;
+	const bool deity = ScriptCompanyMode::IsDeity();
 	if (!deity && !::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
 	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
 

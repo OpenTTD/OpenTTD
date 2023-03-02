@@ -137,7 +137,7 @@ public:
 	 * @pre vehicle_type == ScriptVehicle::VT_WATER ||
 	 *   (vehicle_type == ScriptVehicle::VT_ROAD && ScriptRoad::IsRoadTypeAvailable(ScriptRoad::GetCurrentRoadType())) ||
 	 *   (vehicle_type == ScriptVehicle::VT_RAIL && ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType())).
-	 * @game @pre Outside CompanyMode: vehicle_type == ScriptVehicle::VT_ROAD.
+	 * @game @pre ScriptCompanyMode::IsValid() || vehicle_type == ScriptVehicle::VT_ROAD.
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
@@ -146,7 +146,7 @@ public:
 	 * @exception ScriptBridge::ERR_BRIDGE_CANNOT_END_IN_WATER
 	 * @exception ScriptBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT
 	 * @return Whether the bridge has been/can be build or not.
-	 * @game @note Building a bridge (without CompanyMode) results in a bridge owned by towns.
+	 * @game @note Building a bridge as deity (ScriptCompanyMode::IsDeity()) results in a bridge owned by towns.
 	 * @note No matter if the road pieces were build or not, if building the
 	 *  bridge succeeded, this function returns true.
 	 */
@@ -156,7 +156,7 @@ public:
 	 * Removes a bridge, by executing it on either the start or end tile.
 	 * @param tile An end or start tile of the bridge.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the bridge has been/can be removed or not.
 	 */

@@ -184,7 +184,7 @@ public:
 	 * @param company The company to create the story page for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
 	 * @return The new StoryPageID, or STORY_PAGE_INVALID if it failed.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 */
 	static StoryPageID New(ScriptCompany::CompanyID company, Text *title);
@@ -200,7 +200,7 @@ public:
 	 *                  use the #BuildPushButtonReference, #BuildTileButtonReference, or #BuildVehicleButtonReference functions to make the values.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page).
 	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
@@ -215,7 +215,7 @@ public:
 	 * @param reference A reference value to the object that is referred to by some page element types. See also NewElement.
 	 * @param text The body text of page elements that allow custom text. See also NewElement.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page).
 	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
@@ -267,7 +267,7 @@ public:
 	 * @param story_page_id The story page to set the date for.
 	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
@@ -277,7 +277,7 @@ public:
 	 * @param story_page_id The story page to update.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool SetTitle(StoryPageID story_page_id, Text *title);
@@ -288,7 +288,7 @@ public:
 	 * companies are affecetd. Otherwise only the clients of the company which the page belongs
 	 * to are affected.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool Show(StoryPageID story_page_id);
@@ -298,7 +298,7 @@ public:
 	 * associated with it.
 	 * @param story_page_id The story page to remove.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool Remove(StoryPageID story_page_id);
@@ -307,7 +307,7 @@ public:
 	 * Removes a story page element.
 	 * @param story_page_element_id The story page element to remove.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPageElement(story_page_element_id).
 	 */
 	static bool RemoveElement(StoryPageElementID story_page_element_id);

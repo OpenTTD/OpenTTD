@@ -207,7 +207,7 @@
 
 /* static */ bool ScriptTown::HasStatue(TownID town_id)
 {
-	if (ScriptObject::GetCompany() == OWNER_DEITY) return false;
+	EnforceCompanyModeValid(false);
 	if (!IsValidTown(town_id)) return false;
 
 	return ::HasBit(::Town::Get(town_id)->statues, ScriptObject::GetCompany());
@@ -236,7 +236,7 @@
 
 /* static */ ScriptCompany::CompanyID ScriptTown::GetExclusiveRightsCompany(TownID town_id)
 {
-	if (ScriptObject::GetCompany() == OWNER_DEITY) return ScriptCompany::COMPANY_INVALID;
+	EnforceCompanyModeValid(ScriptCompany::COMPANY_INVALID);
 	if (!IsValidTown(town_id)) return ScriptCompany::COMPANY_INVALID;
 
 	return (ScriptCompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
@@ -251,7 +251,7 @@
 
 /* static */ bool ScriptTown::IsActionAvailable(TownID town_id, TownAction town_action)
 {
-	if (ScriptObject::GetCompany() == OWNER_DEITY) return false;
+	EnforceCompanyModeValid(false);
 	if (!IsValidTown(town_id)) return false;
 
 	return HasBit(::GetMaskOfTownActions(ScriptObject::GetCompany(), ::Town::Get(town_id)), town_action);
@@ -259,7 +259,7 @@
 
 /* static */ bool ScriptTown::PerformTownAction(TownID town_id, TownAction town_action)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, IsActionAvailable(town_id, town_action));
 
@@ -268,7 +268,7 @@
 
 /* static */ bool ScriptTown::ExpandTown(TownID town_id, SQInteger houses)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, houses > 0);
 
@@ -281,11 +281,11 @@
 {
 	CCountedPtr<Text> counter(name);
 
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY || _settings_game.economy.found_town != TF_FORBIDDEN);
+	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town != TF_FORBIDDEN);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)
-	EnforcePrecondition(false, size != TOWN_SIZE_LARGE || ScriptObject::GetCompany() == OWNER_DEITY);
-	if (ScriptObject::GetCompany() == OWNER_DEITY || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
+	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || size != TOWN_SIZE_LARGE);
+	if (ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
 		EnforcePrecondition(false, layout >= ROAD_LAYOUT_ORIGINAL && layout <= ROAD_LAYOUT_RANDOM);
 	} else {
 		/* The layout parameter is ignored for AIs when custom layouts is disabled. */
@@ -346,7 +346,7 @@
 
 /* static */ bool ScriptTown::ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, SQInteger delta)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);

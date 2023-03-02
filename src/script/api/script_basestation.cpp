@@ -22,7 +22,7 @@
 /* static */ bool ScriptBaseStation::IsValidBaseStation(StationID station_id)
 {
 	const BaseStation *st = ::BaseStation::GetIfValid(station_id);
-	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || st->owner == OWNER_NONE);
+	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || st->owner == OWNER_NONE);
 }
 
 /* static */ char *ScriptBaseStation::GetName(StationID station_id)
@@ -37,7 +37,7 @@
 {
 	CCountedPtr<Text> counter(name);
 
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidBaseStation(station_id));
 	EnforcePrecondition(false, name != nullptr);
 	const std::string &text = name->GetDecodedText();

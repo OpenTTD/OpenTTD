@@ -312,7 +312,7 @@ public:
 	 * Find out if this town has a statue for the current company.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if the town has a statue.
 	 */
 	static bool HasStatue(TownID town_id);
@@ -347,7 +347,7 @@ public:
 	 * Find out which company currently has the exclusive rights of this town.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return The company that has the exclusive rights. The value
 	 *         ScriptCompany::COMPANY_INVALID means that there are currently no
 	 *         exclusive rights given out to anyone.
@@ -369,7 +369,7 @@ public:
 	 * @param town_id The town to perform the action on.
 	 * @param town_action The action to perform on the town.
 	 * @pre IsValidTown(town_id).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if and only if the action can performed.
 	 */
 	static bool IsActionAvailable(TownID town_id, TownAction town_action);
@@ -380,7 +380,7 @@ public:
 	 * @param town_action The action to perform on the town.
 	 * @pre IsValidTown(town_id).
 	 * @pre IsActionAvailable(town_id, town_action).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if the action succeeded.
 	 */
 	static bool PerformTownAction(TownID town_id, TownAction town_action);
@@ -404,14 +404,14 @@ public:
 	 * @param city True if the new town should be a city.
 	 * @param layout The town layout of the new town.
 	 * @param name The name of the new town. Pass null, or an empty string, to use a random town name.
-	 * @game @pre no company mode in scope || ScriptSettings.GetValue("economy.found_town") != 0.
+	 * @game @pre ScriptCompanyMode::IsDeity() || ScriptSettings.GetValue("economy.found_town") != 0.
 	 * @ai @pre ScriptSettings.GetValue("economy.found_town") != 0.
-	 * @game @pre no company mode in scope || size != TOWN_SIZE_LARGE.
+	 * @game @pre ScriptCompanyMode::IsDeity() || size != TOWN_SIZE_LARGE.
 	 * @ai @pre size != TOWN_SIZE_LARGE.
 	 * @pre size != TOWN_SIZE_INVALID.
 	 * @pre layout != ROAD_LAYOUT_INVALID.
 	 * @return True if the action succeeded.
-	 * @game @note Companies are restricted by the advanced setting that controls if funding towns is allowed or not. If custom road layout is forbidden and there is a company mode in scope, the layout parameter will be ignored.
+	 * @game @note Companies are restricted by the advanced setting that controls if funding towns is allowed or not. If custom road layout is forbidden and there is a company mode in scope (ScriptCompanyMode::IsValid()), the layout parameter will be ignored.
 	 * @ai @note AIs are restricted by the advanced setting that controls if funding towns is allowed or not. If custom road layout is forbidden, the layout parameter will be ignored.
 	 */
 	static bool FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name);
@@ -445,7 +445,7 @@ public:
 	 * @return True if the rating was changed.
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCompany.ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID.
-	 * @pre no company mode in scope
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @api -ai
 	 */
 	static bool ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, SQInteger delta);
