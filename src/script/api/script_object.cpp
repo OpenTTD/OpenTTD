@@ -253,7 +253,7 @@ std::tuple<bool, bool, bool> ScriptObject::DoCommandPrep()
 
 	bool networking = _networking && !_generating_world;
 
-	if (ScriptCompanyMode::IsValid() && !::Company::IsValidID(ScriptObject::GetCompany())) {
+	if (!ScriptCompanyMode::IsDeity() && !ScriptCompanyMode::IsValid()) {
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY);
 		return { true, estimate_only, networking };
 	}

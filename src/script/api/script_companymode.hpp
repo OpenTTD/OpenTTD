@@ -50,7 +50,7 @@ public:
 
 	/**
 	 * Check whether a company mode is valid. In other words, are commands
-	 * being executed under some company.
+	 * being executed under some company and does the company still exist?
 	 * @return true When a company mode is valid.
 	 * @post !ScriptCompanyMode::IsDeity().
 	 */

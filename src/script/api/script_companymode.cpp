@@ -29,7 +29,7 @@ ScriptCompanyMode::~ScriptCompanyMode()
 
 /* static */ bool ScriptCompanyMode::IsValid()
 {
-	return ScriptObject::GetCompany() != OWNER_DEITY;
+	return ::Company::IsValidID(ScriptObject::GetCompany());
 }
 
 /* static */ bool ScriptCompanyMode::IsDeity()
