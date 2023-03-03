@@ -74,11 +74,11 @@ static WindowDesc _gs_config_desc(
 );
 
 /**
- * Window to configure which GSs will start.
+ * Window to configure which GS will start.
  */
 struct GSConfigWindow : public Window {
 	ScriptConfig *gs_config; ///< The configuration we're modifying.
-	int line_height;         ///< Height of a single GS-name line.
+	int line_height;         ///< Height of GS-name line.
 	int clicked_button;      ///< The button we clicked.
 	bool clicked_increase;   ///< Whether we clicked the increase or decrease button.
 	bool clicked_dropdown;   ///< Whether the dropdown is open.
@@ -113,7 +113,7 @@ struct GSConfigWindow : public Window {
 
 	/**
 	 * Rebuilds the list of visible settings. GS settings with the flag
-	 * GSCONFIG_GS_DEVELOPER set will only be visible if the game setting
+	 * SCRIPTCONFIG_DEVELOPER set will only be visible if the game setting
 	 * gui.ai_developer_tools is enabled.
 	 */
 	void RebuildVisibleSettings()
@@ -149,7 +149,7 @@ struct GSConfigWindow : public Window {
 
 	/**
 	 * Can the GS config be edited?
-	 * @return True if the given GS Config slot can be edited, otherwise false.
+	 * @return True if the given GS Config can be edited, otherwise false.
 	 */
 	static bool IsEditable()
 	{
@@ -167,7 +167,7 @@ struct GSConfigWindow : public Window {
 					text = STR_JUST_RAW_STRING;
 				}
 
-				/* There is only one slot, unlike with the GS GUI, so it should never be white */
+				/* There is only one slot, unlike with the AI GUI, so it should never be white */
 				DrawString(r.Shrink(WidgetDimensions::scaled.matrix), text, (IsEditable() ? TC_ORANGE : TC_SILVER));
 				break;
 			}
@@ -242,19 +242,19 @@ struct GSConfigWindow : public Window {
 		if (widget >= WID_GSC_TEXTFILE && widget < WID_GSC_TEXTFILE + TFT_END) {
 			if (this->gs_config == nullptr) return;
 
-			ShowScriptTextfileWindow((TextfileType)(widget - WID_GSC_TEXTFILE), (CompanyID)OWNER_DEITY);
+			ShowScriptTextfileWindow((TextfileType)(widget - WID_GSC_TEXTFILE), OWNER_DEITY);
 			return;
 		}
 
 		switch (widget) {
 			case WID_GSC_GSLIST: {
 				this->InvalidateData();
-				if (click_count > 1 && _game_mode != GM_NORMAL) ShowScriptListWindow((CompanyID)OWNER_DEITY);
+				if (click_count > 1 && _game_mode != GM_NORMAL) ShowScriptListWindow(OWNER_DEITY);
 				break;
 			}
 
 			case WID_GSC_CHANGE:  // choose other Game Script
-				ShowScriptListWindow((CompanyID)OWNER_DEITY);
+				ShowScriptListWindow(OWNER_DEITY);
 				break;
 
 			case WID_GSC_CONTENT_DOWNLOAD:
@@ -403,7 +403,7 @@ struct GSConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, this->gs_config->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
+			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, this->gs_config->GetTextfile(tft, OWNER_DEITY) == nullptr);
 		}
 		this->RebuildVisibleSettings();
 		HideDropDownMenu(this);
@@ -413,9 +413,9 @@ private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
 		return _game_mode == GM_MENU
-		    || _game_mode == GM_EDITOR
-		    || (config_item.flags & SCRIPTCONFIG_INGAME) != 0
-		    || _settings_client.gui.ai_developer_tools;
+				|| _game_mode == GM_EDITOR
+				|| (config_item.flags & SCRIPTCONFIG_INGAME) != 0
+				|| _settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)

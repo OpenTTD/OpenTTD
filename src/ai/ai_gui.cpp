@@ -68,7 +68,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 
 /** Window definition for the configure AI window. */
 static WindowDesc _ai_config_desc(
-	WDP_CENTER, "settings_script_config", 0, 0,
+	WDP_CENTER, "settings_ai_config", 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_ai_config_widgets, lengthof(_nested_ai_config_widgets)
@@ -128,7 +128,7 @@ struct AIConfigWindow : public Window {
 	/**
 	 * Can the AI config in the given company slot be edited?
 	 * @param slot The slot to query.
-	 * @return True if and only if the given AI Config slot can e edited.
+	 * @return True if and only if the given AI Config slot can be edited.
 	 */
 	static bool IsEditable(CompanyID slot)
 	{
@@ -194,7 +194,7 @@ struct AIConfigWindow : public Window {
 			case WID_AIC_LIST: { // Select a slot
 				this->selected_slot = (CompanyID)this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 				this->InvalidateData();
-				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowScriptListWindow((CompanyID)this->selected_slot);
+				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowScriptListWindow(this->selected_slot);
 				break;
 			}
 
@@ -217,11 +217,11 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_CHANGE:  // choose other AI
-				ShowScriptListWindow((CompanyID)this->selected_slot);
+				ShowScriptListWindow(this->selected_slot);
 				break;
 
 			case WID_AIC_CONFIGURE: // change the settings for an AI
-				ShowScriptSettingsWindow((CompanyID)this->selected_slot);
+				ShowScriptSettingsWindow(this->selected_slot);
 				break;
 
 			case WID_AIC_CLOSE:
@@ -270,4 +270,3 @@ void ShowAIConfigWindow()
 	CloseWindowByClass(WC_GAME_OPTIONS);
 	new AIConfigWindow();
 }
-

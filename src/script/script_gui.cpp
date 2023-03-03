@@ -72,7 +72,7 @@ struct ScriptListWindow : public Window {
 
 		this->vscroll->SetCount((int)this->info_list->size() + 1);
 
-		/* Try if we can find the currently selected AI */
+		/* Try if we can find the currently selected Script */
 		this->selected = -1;
 		if (this->script_config->HasScript()) {
 			ScriptInfo *info = this->script_config->GetInfo();
@@ -223,12 +223,12 @@ struct ScriptListWindow : public Window {
 
 		this->vscroll->SetCount((int)this->info_list->size() + 1);
 
-		/* selected goes from -1 .. length of ai list - 1. */
+		/* selected goes from -1 .. length of info_list - 1. */
 		this->selected = std::min(this->selected, this->vscroll->GetCount() - 2);
 	}
 };
 
-/** Widgets for the AI list window. */
+/** Widgets for the Script list window. */
 static const NWidgetPart _nested_script_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -250,7 +250,7 @@ static const NWidgetPart _nested_script_list_widgets[] = {
 	EndContainer(),
 };
 
-/** Window definition for the ai list window. */
+/** Window definition for the Script list window. */
 static WindowDesc _script_list_desc(
 	WDP_CENTER, "settings_script_list", 200, 234,
 	WC_SCRIPT_LIST, WC_NONE,
@@ -259,7 +259,7 @@ static WindowDesc _script_list_desc(
 );
 
 /**
- * Open the AI list window to chose an AI for the given company slot.
+ * Open the Script list window to chose a Script for the given company slot or game script.
  * @param slot The slot to change the AI of.
  */
 void ShowScriptListWindow(CompanyID slot)
@@ -313,7 +313,7 @@ struct ScriptSettingsWindow : public Window {
 
 	/**
 	 * Rebuilds the list of visible settings. AI settings with the flag
-	 * AICONFIG_AI_DEVELOPER set will only be visible if the game setting
+	 * SCRIPTCONFIG_DEVELOPER set will only be visible if the game setting
 	 * gui.ai_developer_tools is enabled.
 	 */
 	void RebuildVisibleSettings()
@@ -623,7 +623,7 @@ void ShowScriptSettingsWindow(CompanyID slot)
 }
 
 
-/** Window for displaying the textfile of a AI. */
+/** Window for displaying the textfile of a Script. */
 struct ScriptTextfileWindow : public TextfileWindow {
 	CompanyID slot;              ///< View the textfile of this CompanyID slot.
 	ScriptConfig *script_config; ///< The configuration we selected.
@@ -682,7 +682,7 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 	/* Dead scripts are indicated with red background and
 	 * paused scripts are indicated with yellow background. */
 	Colours colour = dead ? COLOUR_RED :
-		(paused ? COLOUR_YELLOW : COLOUR_GREY);
+			(paused ? COLOUR_YELLOW : COLOUR_GREY);
 	if (button.colour != colour) {
 		button.colour = colour;
 		return true;
@@ -691,18 +691,18 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 }
 
 /**
- * Window with everything an AI prints via ScriptLog.
+ * Window with everything a Script prints via ScriptLog.
  */
 struct ScriptDebugWindow : public Window {
 	static const uint MAX_BREAK_STR_STRING_LENGTH = 256;   ///< Maximum length of the break string.
 
-	static CompanyID script_debug_company;                 ///< The AI that is (was last) being debugged.
+	static CompanyID script_debug_company;                 ///< The Script that is (was last) being debugged.
 	int redraw_timer;                                      ///< Timer for redrawing the window, otherwise it'll happen every tick.
 	int last_vscroll_pos;                                  ///< Last position of the scrolling.
 	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
 	bool show_break_box;                                   ///< Whether the break/debug box is visible.
-	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
-	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
+	static bool break_check_enabled;                       ///< Stop a Script when it prints a matching string
+	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the Script output
 	QueryString break_editbox;                             ///< Break editbox
 	static StringFilter break_string_filter;               ///< Log filter for break.
 	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
@@ -716,7 +716,7 @@ struct ScriptDebugWindow : public Window {
 	}
 
 	/**
-	 * Check whether the currently selected AI/GS is dead.
+	 * Check whether the currently selected Script is dead.
 	 * @return true if dead.
 	 */
 	bool IsDead() const
@@ -748,7 +748,7 @@ struct ScriptDebugWindow : public Window {
 	 */
 	void SelectValidDebugCompany()
 	{
-		/* Check if the currently selected company is still active. */
+		/* Check if the currently selected Script is still active. */
 		if (this->IsValidDebugCompany(script_debug_company)) return;
 
 		script_debug_company = INVALID_COMPANY;
@@ -936,8 +936,8 @@ struct ScriptDebugWindow : public Window {
 	}
 
 	/**
-	 * Change all settings to select another Script.
-	 * @param show_ai The new AI to show.
+	 * Change log to select another Script.
+	 * @param show_script The new Script to show.
 	 */
 	void ChangeToScript(CompanyID show_script)
 	{
@@ -947,7 +947,7 @@ struct ScriptDebugWindow : public Window {
 
 		this->highlight_row = -1; // The highlight of one Script make little sense for another Script.
 
-		/* Close AI settings window to prevent confusion */
+		/* Close Script settings window to prevent confusion */
 		CloseWindowByClass(WC_SCRIPT_SETTINGS);
 
 		this->InvalidateData(-1);
@@ -1095,7 +1095,7 @@ struct ScriptDebugWindow : public Window {
 		extern CompanyID _local_company;
 		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE, script_debug_company == INVALID_COMPANY || script_debug_company == OWNER_DEITY || script_debug_company == _local_company);
 		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, script_debug_company == INVALID_COMPANY ||
-			(script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(script_debug_company)));
+				(script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(script_debug_company)));
 	}
 
 	void OnResize() override
@@ -1156,7 +1156,7 @@ static Hotkey scriptdebug_hotkeys[] = {
 	Hotkey(WKC_RETURN, "continue", WID_SCRD_CONTINUE_BTN),
 	HOTKEY_LIST_END
 };
-HotkeyList ScriptDebugWindow::hotkeys("aidebug", scriptdebug_hotkeys, ScriptDebugGlobalHotkeys);
+HotkeyList ScriptDebugWindow::hotkeys("scriptdebug", scriptdebug_hotkeys, ScriptDebugGlobalHotkeys);
 
 /** Widgets for the Script debug window. */
 static const NWidgetPart _nested_script_debug_widgets[] = {
@@ -1213,8 +1213,8 @@ static WindowDesc _script_debug_desc(
 );
 
 /**
- * Open the Script debug window and select the given company.
- * @param show_company Display debug information about this AI company.
+ * Open the Script debug window and select the given company or game script.
+ * @param show_company Display debug information about this AI company or game script.
  */
 Window *ShowScriptDebugWindow(CompanyID show_company)
 {
@@ -1238,10 +1238,10 @@ void InitializeScriptGui()
 	ScriptDebugWindow::script_debug_company = INVALID_COMPANY;
 }
 
-/** Open the AI debug window if one of the AI scripts has crashed. */
+/** Open the Script debug window if one of the scripts has crashed. */
 void ShowScriptDebugWindowIfScriptError()
 {
-	/* Network clients can't debug AIs. */
+	/* Network clients can't debug Scripts. */
 	if (_networking && !_network_server) return;
 
 	for (const Company *c : Company::Iterate()) {
