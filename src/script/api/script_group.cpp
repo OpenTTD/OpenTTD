@@ -102,14 +102,14 @@
 	return HasBit(::Group::Get(group_id)->flags, GroupFlags::GF_REPLACE_PROTECTION);
 }
 
-/* static */ int32 ScriptGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
+/* static */ SQInteger ScriptGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
 {
 	if (!IsValidGroup(group_id) && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
 
 	return GetGroupNumEngines(ScriptObject::GetCompany(), group_id, engine_id);
 }
 
-/* static */ int32 ScriptGroup::GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type)
+/* static */ SQInteger ScriptGroup::GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type)
 {
 	bool valid_group = IsValidGroup(group_id);
 	if (!valid_group && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
@@ -183,7 +183,7 @@
 	return ::Group::Get(group_id)->statistics.profit_last_year;
 }
 
-/* static */ uint32 ScriptGroup::GetCurrentUsage(GroupID group_id)
+/* static */ SQInteger ScriptGroup::GetCurrentUsage(GroupID group_id)
 {
 	if (!IsValidGroup(group_id)) return -1;
 

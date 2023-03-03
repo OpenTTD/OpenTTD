@@ -126,7 +126,7 @@ public:
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_ALL || group_id == GROUP_DEFAULT.
 	 * @return The number of engines with id engine_id in the group with id group_id.
 	 */
-	static int32 GetNumEngines(GroupID group_id, EngineID engine_id);
+	static SQInteger GetNumEngines(GroupID group_id, EngineID engine_id);
 
 	/**
 	 * Get the total number of vehicles in a given group and its sub-groups.
@@ -140,7 +140,7 @@ public:
 	 *  vehicle_type is retrieved from the group itself and not from the input value.
 	 *  But if the group is GROUP_ALL or GROUP_DEFAULT, then vehicle_type must be valid.
 	 */
-	static int32 GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type);
+	static SQInteger GetNumVehicles(GroupID group_id, ScriptVehicle::VehicleType vehicle_type);
 
 	/**
 	 * Move a vehicle to a group.
@@ -225,7 +225,7 @@ public:
 	 * @pre IsValidGroup(group_id).
 	 * @return The current usage of the group.
 	 */
-	static uint32 GetCurrentUsage(GroupID group_id);
+	static SQInteger GetCurrentUsage(GroupID group_id);
 
 	/**
 	 * Set primary colour for a group.
