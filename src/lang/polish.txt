@@ -2679,7 +2679,7 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszcz
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie miejsca muszą być zapełnione.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firm{P a y ""}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maksymalna liczba firm:
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ogranicz serwer do określonej ilości firm
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ogranicz serwer do określonej liczby firm
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Wpisz nazwę dla gry sieciowej
 
@@ -2738,6 +2738,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nowa firma)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Utwórz nową firmę i dołącz do niej
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}To jesteś ty
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}To jest gospodarz gry
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" ów ów} - {NUM}/{NUM} firm{P ę y ""}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Liczba aktualnie podłączonych klientów, liczba firm oraz maksymalna liczba firm dozwolona przez administratora serwera
 
 # Matches ConnectionType
 ###length 5
