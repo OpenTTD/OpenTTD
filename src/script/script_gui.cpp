@@ -777,7 +777,7 @@ struct ScriptDebugWindow : public Window {
 		this->GetWidget<NWidgetStacked>(WID_SCRD_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(number);
 
-		if (!this->show_break_box) break_check_enabled = false;
+		if (!this->show_break_box) this->break_check_enabled = false;
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -1074,6 +1074,13 @@ struct ScriptDebugWindow : public Window {
 
 		if (!gui_scope) return;
 
+		this->show_break_box = _settings_client.gui.ai_developer_tools;
+		this->GetWidget<NWidgetStacked>(WID_SCRD_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
+		if (!this->show_break_box) this->break_check_enabled = false;
+		this->SetWidgetDisabledState(WID_SCRD_BREAK_STR_ON_OFF_BTN, !this->show_break_box);
+		this->SetWidgetDisabledState(WID_SCRD_MATCH_CASE_BTN, !this->show_break_box);
+		this->SetWidgetDisabledState(WID_SCRD_BREAK_STR_EDIT_BOX, !this->show_break_box);
+
 		this->SelectValidDebugCompany();
 
 		ScriptLog::LogData *log = script_debug_company != INVALID_COMPANY ? this->GetLogPointer() : nullptr;
@@ -1094,7 +1101,7 @@ struct ScriptDebugWindow : public Window {
 		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, script_debug_company == INVALID_COMPANY);
 		extern CompanyID _local_company;
 		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE, script_debug_company == INVALID_COMPANY || script_debug_company == OWNER_DEITY || script_debug_company == _local_company);
-		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, script_debug_company == INVALID_COMPANY ||
+		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, !this->show_break_box || script_debug_company == INVALID_COMPANY ||
 				(script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(script_debug_company)));
 	}
 
