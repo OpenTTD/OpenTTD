@@ -235,7 +235,7 @@ public:
 	{
 		auto args_tuple = std::forward_as_tuple(args...);
 
-		::NetworkSendCommand(Tcmd, err_message, nullptr, _current_company, EndianBufferWriter<CommandDataBuffer>::FromValue(args_tuple));
+		::NetworkSendCommand(Tcmd, err_message, nullptr, company, EndianBufferWriter<CommandDataBuffer>::FromValue(args_tuple));
 	}
 
 	/**
