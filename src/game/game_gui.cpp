@@ -162,8 +162,8 @@ struct GSConfigWindow : public Window {
 			case WID_GSC_GSLIST: {
 				StringID text = STR_AI_CONFIG_NONE;
 
-				if (GameConfig::GetConfig()->GetInfo() != nullptr) {
-					SetDParamStr(0, GameConfig::GetConfig()->GetInfo()->GetName());
+				if (this->gs_config->GetInfo() != nullptr) {
+					SetDParamStr(0, this->gs_config->GetInfo()->GetName());
 					text = STR_JUST_RAW_STRING;
 				}
 
@@ -240,7 +240,7 @@ struct GSConfigWindow : public Window {
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget >= WID_GSC_TEXTFILE && widget < WID_GSC_TEXTFILE + TFT_END) {
-			if (GameConfig::GetConfig() == nullptr) return;
+			if (this->gs_config == nullptr) return;
 
 			ShowScriptTextfileWindow((TextfileType)(widget - WID_GSC_TEXTFILE), (CompanyID)OWNER_DEITY);
 			return;
@@ -407,7 +407,7 @@ struct GSConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
+			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, this->gs_config->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
 		}
 		this->RebuildVisibleSettings();
 		HideDropDownMenu(this);

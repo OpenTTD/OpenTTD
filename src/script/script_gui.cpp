@@ -39,17 +39,12 @@
 #include "../safeguards.h"
 
 
-static ScriptConfig *GetConfig(CompanyID slot)
-{
-	if (slot == OWNER_DEITY) return GameConfig::GetConfig();
-	return AIConfig::GetConfig(slot);
-}
-
 /**
  * Window that let you choose an available Script.
  */
 struct ScriptListWindow : public Window {
 	const ScriptInfoList *info_list;    ///< The list of Scripts.
+	ScriptConfig *script_config;        ///< The configuration we're modifying.
 	int selected;                       ///< The currently selected Script.
 	CompanyID slot;                     ///< The company we're selecting a new Script for.
 	int line_height;                    ///< Height of a row in the matrix widget.
@@ -65,8 +60,10 @@ struct ScriptListWindow : public Window {
 	{
 		if (slot == OWNER_DEITY) {
 			this->info_list = Game::GetUniqueInfoList();
+			this->script_config = GameConfig::GetConfig();
 		} else {
 			this->info_list = AI::GetUniqueInfoList();
+			this->script_config = AIConfig::GetConfig(slot);
 		}
 
 		this->CreateNestedTree();
@@ -77,8 +74,8 @@ struct ScriptListWindow : public Window {
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
-		if (GetConfig(slot)->HasScript()) {
-			ScriptInfo *info = GetConfig(slot)->GetInfo();
+		if (this->script_config->HasScript()) {
+			ScriptInfo *info = this->script_config->GetInfo();
 			int i = 0;
 			for (const auto &item : *this->info_list) {
 				if (item.second == info) {
@@ -165,11 +162,11 @@ struct ScriptListWindow : public Window {
 	void ChangeScript()
 	{
 		if (this->selected == -1) {
-			GetConfig(slot)->Change(nullptr);
+			this->script_config->Change(nullptr);
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->begin();
 			for (int i = 0; i < this->selected; i++) it++;
-			GetConfig(slot)->Change((*it).second->GetName(), (*it).second->GetVersion());
+			this->script_config->Change((*it).second->GetName(), (*it).second->GetVersion());
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
@@ -301,7 +298,11 @@ struct ScriptSettingsWindow : public Window {
 		closing_dropdown(false),
 		timeout(0)
 	{
-		this->script_config = GetConfig(slot);
+		if (slot == OWNER_DEITY) {
+			this->script_config = GameConfig::GetConfig();
+		} else {
+			this->script_config = AIConfig::GetConfig(slot);
+		}
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRS_SCROLLBAR);
@@ -628,10 +629,16 @@ void ShowScriptSettingsWindow(CompanyID slot)
 
 /** Window for displaying the textfile of a AI. */
 struct ScriptTextfileWindow : public TextfileWindow {
-	CompanyID slot; ///< View the textfile of this CompanyID slot.
+	CompanyID slot;              ///< View the textfile of this CompanyID slot.
+	ScriptConfig *script_config; ///< The configuration we selected.
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
+		if (slot == OWNER_DEITY) {
+			this->script_config = GameConfig::GetConfig();
+		} else {
+			this->script_config = AIConfig::GetConfig(slot);
+		}
 		this->OnInvalidateData();
 	}
 
@@ -639,13 +646,13 @@ struct ScriptTextfileWindow : public TextfileWindow {
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+			SetDParamStr(1, script_config->GetInfo()->GetName());
 		}
 	}
 
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		const char *textfile = script_config->GetTextfile(file_type, slot);
 		if (textfile == nullptr) {
 			this->Close();
 		} else {
