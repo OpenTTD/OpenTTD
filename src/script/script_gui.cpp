@@ -479,16 +479,12 @@ struct ScriptSettingsWindow : public Window {
 					int new_val = old_val;
 					if (bool_item) {
 						new_val = !new_val;
-					} else if (x >= SETTING_BUTTON_WIDTH / 2) {
-						/* Increase button clicked */
-						new_val += config_item.step_size;
-						if (new_val > config_item.max_value) new_val = config_item.max_value;
-						this->clicked_increase = true;
 					} else {
-						/* Decrease button clicked */
-						new_val -= config_item.step_size;
-						if (new_val < config_item.min_value) new_val = config_item.min_value;
-						this->clicked_increase = false;
+						/* Increase/Decrease button clicked */
+						this->clicked_increase = (x >= SETTING_BUTTON_WIDTH / 2);
+						new_val = this->clicked_increase ?
+								std::min(config_item.max_value, new_val + config_item.step_size) :
+								std::max(config_item.min_value, new_val - config_item.step_size);
 					}
 
 					if (new_val != old_val) {
