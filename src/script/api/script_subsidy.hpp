@@ -62,7 +62,7 @@ public:
 	 * @pre (to_type   == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(to_id))   || (to_type   == SPT_TOWN && ScriptTown::IsValidTown(to_id))
 	 * @api -ai
 	 */
-	static bool Create(CargoID cargo_type, SubsidyParticipantType from_type, uint16 from_id, SubsidyParticipantType to_type, uint16 to_id);
+	static bool Create(CargoID cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id);
 
 	/**
 	 * Get the company index of the company this subsidy is awarded to.
@@ -109,7 +109,7 @@ public:
 	 * @pre IsValidSubsidy(subsidy_id).
 	 * @return One of TownID/IndustryID.
 	 */
-	static int32 GetSourceIndex(SubsidyID subsidy_id);
+	static SQInteger GetSourceIndex(SubsidyID subsidy_id);
 
 	/**
 	 * Returns the type of destination of subsidy.
@@ -127,7 +127,7 @@ public:
 	 * @pre IsValidSubsidy(subsidy_id).
 	 * @return One of TownID/IndustryID.
 	 */
-	static int32 GetDestinationIndex(SubsidyID subsidy_id);
+	static SQInteger GetDestinationIndex(SubsidyID subsidy_id);
 };
 
 #endif /* SCRIPT_SUBSIDY_HPP */

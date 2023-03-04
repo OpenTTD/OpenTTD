@@ -31,7 +31,7 @@
 	return ::Subsidy::Get(subsidy_id)->IsAwarded();
 }
 
-/* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, uint16 from_id, SubsidyParticipantType to_type, uint16 to_id)
+/* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id)
 {
 	EnforcePrecondition(false, ScriptCargo::IsValidCargo(cargo_type));
 	EnforcePrecondition(false, from_type == SPT_INDUSTRY || from_type == SPT_TOWN);
@@ -78,7 +78,7 @@
 	return (SubsidyParticipantType)(uint)::Subsidy::Get(subsidy_id)->src_type;
 }
 
-/* static */ int32 ScriptSubsidy::GetSourceIndex(SubsidyID subsidy_id)
+/* static */ SQInteger ScriptSubsidy::GetSourceIndex(SubsidyID subsidy_id)
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
 
@@ -92,7 +92,7 @@
 	return (SubsidyParticipantType)(uint)::Subsidy::Get(subsidy_id)->dst_type;
 }
 
-/* static */ int32 ScriptSubsidy::GetDestinationIndex(SubsidyID subsidy_id)
+/* static */ SQInteger ScriptSubsidy::GetDestinationIndex(SubsidyID subsidy_id)
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
 
