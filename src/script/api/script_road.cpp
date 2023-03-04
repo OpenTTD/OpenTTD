@@ -378,7 +378,7 @@ static bool NormaliseTileOffset(int32 *tile)
 		return false;
 }
 
-/* static */ int32 ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> existing, TileIndex start_, TileIndex end_)
+/* static */ SQInteger ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> existing, TileIndex start_, TileIndex end_)
 {
 	::Slope slope = (::Slope)slope_;
 	int32 start = start_;
@@ -399,7 +399,7 @@ static bool NormaliseTileOffset(int32 *tile)
 	return _settings_game.construction.build_on_slopes ? LookupWithBuildOnSlopes(slope, existing, start, end) : LookupWithoutBuildOnSlopes(slope, existing, start, end);
 }
 
-/* static */ int32 ScriptRoad::CanBuildConnectedRoadPartsHere(TileIndex tile, TileIndex start, TileIndex end)
+/* static */ SQInteger ScriptRoad::CanBuildConnectedRoadPartsHere(TileIndex tile, TileIndex start, TileIndex end)
 {
 	if (!::IsValidTile(tile) || !::IsValidTile(start) || !::IsValidTile(end)) return -1;
 	if (::DistanceManhattan(tile, start) != 1 || ::DistanceManhattan(tile, end) != 1) return -1;
@@ -450,7 +450,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	}
 }
 
-/* static */ int32 ScriptRoad::GetNeighbourRoadCount(TileIndex tile)
+/* static */ SQInteger ScriptRoad::GetNeighbourRoadCount(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return -1;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return -1;
@@ -625,14 +625,14 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return (RoadTramTypes)(1 << ::GetRoadTramType((::RoadType)roadtype));
 }
 
-/* static */ int32 ScriptRoad::GetMaxSpeed(RoadType road_type)
+/* static */ SQInteger ScriptRoad::GetMaxSpeed(RoadType road_type)
 {
 	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return -1;
 
 	return GetRoadTypeInfo((::RoadType)road_type)->max_speed;
 }
 
-/* static */ uint16 ScriptRoad::GetMaintenanceCostFactor(RoadType roadtype)
+/* static */ SQInteger ScriptRoad::GetMaintenanceCostFactor(RoadType roadtype)
 {
 	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return 0;
 
