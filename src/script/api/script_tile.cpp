@@ -44,10 +44,10 @@
 	}
 }
 
-/* static */ bool ScriptTile::IsBuildableRectangle(TileIndex tile, uint width, uint height)
+/* static */ bool ScriptTile::IsBuildableRectangle(TileIndex tile, SQInteger width, SQInteger height)
 {
 	/* Check whether we can extract valid X and Y */
-	if (!::IsValidTile(tile)) return false;
+	if (!::IsValidTile(tile) || width < 0 || height < 0) return false;
 
 	uint tx = ScriptMap::GetTileX(tile);
 	uint ty = ScriptMap::GetTileY(tile);
@@ -180,21 +180,21 @@
 	return (Slope)::ComplementSlope((::Slope)slope);
 }
 
-/* static */ int32 ScriptTile::GetMinHeight(TileIndex tile)
+/* static */ SQInteger ScriptTile::GetMinHeight(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return -1;
 
 	return ::GetTileZ(tile);
 }
 
-/* static */ int32 ScriptTile::GetMaxHeight(TileIndex tile)
+/* static */ SQInteger ScriptTile::GetMaxHeight(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return -1;
 
 	return ::GetTileMaxZ(tile);
 }
 
-/* static */ int32 ScriptTile::GetCornerHeight(TileIndex tile, Corner corner)
+/* static */ SQInteger ScriptTile::GetCornerHeight(TileIndex tile, Corner corner)
 {
 	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
 
@@ -224,7 +224,7 @@
 	}
 }
 
-/* static */ int32 ScriptTile::GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius)
+/* static */ SQInteger ScriptTile::GetCargoAcceptance(TileIndex tile, CargoID cargo_type, SQInteger width, SQInteger height, SQInteger radius)
 {
 	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0 || !ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
@@ -232,7 +232,7 @@
 	return acceptance[cargo_type];
 }
 
-/* static */ int32 ScriptTile::GetCargoProduction(TileIndex tile, CargoID cargo_type, int width, int height, int radius)
+/* static */ SQInteger ScriptTile::GetCargoProduction(TileIndex tile, CargoID cargo_type, SQInteger width, SQInteger height, SQInteger radius)
 {
 	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0 || !ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
@@ -240,17 +240,17 @@
 	return produced[cargo_type];
 }
 
-/* static */ int32 ScriptTile::GetDistanceManhattanToTile(TileIndex tile_from, TileIndex tile_to)
+/* static */ SQInteger ScriptTile::GetDistanceManhattanToTile(TileIndex tile_from, TileIndex tile_to)
 {
 	return ScriptMap::DistanceManhattan(tile_from, tile_to);
 }
 
-/* static */ int32 ScriptTile::GetDistanceSquareToTile(TileIndex tile_from, TileIndex tile_to)
+/* static */ SQInteger ScriptTile::GetDistanceSquareToTile(TileIndex tile_from, TileIndex tile_to)
 {
 	return ScriptMap::DistanceSquare(tile_from, tile_to);
 }
 
-/* static */ bool ScriptTile::RaiseTile(TileIndex tile, int32 slope)
+/* static */ bool ScriptTile::RaiseTile(TileIndex tile, Slope slope)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, tile < ScriptMap::GetMapSize());
@@ -258,7 +258,7 @@
 	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, true);
 }
 
-/* static */ bool ScriptTile::LowerTile(TileIndex tile, int32 slope)
+/* static */ bool ScriptTile::LowerTile(TileIndex tile, Slope slope)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, tile < ScriptMap::GetMapSize());
@@ -290,7 +290,7 @@
 	return ScriptObject::Command<CMD_PLANT_TREE>::Do(tile, tile, TREE_INVALID, false);
 }
 
-/* static */ bool ScriptTile::PlantTreeRectangle(TileIndex tile, uint width, uint height)
+/* static */ bool ScriptTile::PlantTreeRectangle(TileIndex tile, SQInteger width, SQInteger height)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
