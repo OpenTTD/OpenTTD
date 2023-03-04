@@ -250,7 +250,7 @@ public:
 	 * @return The number of orders for the given vehicle or a negative
 	 *   value when the vehicle does not exist.
 	 */
-	static int32 GetOrderCount(VehicleID vehicle_id);
+	static SQInteger GetOrderCount(VehicleID vehicle_id);
 
 	/**
 	 * Gets the destination of the given order for the given vehicle.
@@ -320,7 +320,7 @@ public:
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
 	 * @return The value to compare against of the order.
 	 */
-	static int32 GetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position);
+	static SQInteger GetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
 	 * Gets the stoplocation of the given order for the given train.
@@ -398,7 +398,7 @@ public:
 	 * @return Whether the order has been/can be changed.
 	 * @api -game
 	 */
-	static bool SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, int32 value);
+	static bool SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, SQInteger value);
 
 	/**
 	 * Sets the stoplocation of the given order for the given train.
@@ -601,7 +601,7 @@ public:
 	 *         not be compared with map distances
 	 * @see ScriptEngine::GetMaximumOrderDistance and ScriptVehicle::GetMaximumOrderDistance
 	 */
-	static uint GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile);
+	static SQInteger GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile);
 };
 DECLARE_ENUM_AS_BIT_SET(ScriptOrder::ScriptOrderFlags)
 

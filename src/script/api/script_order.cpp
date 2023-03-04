@@ -234,7 +234,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	}
 }
 
-/* static */ int32 ScriptOrder::GetOrderCount(VehicleID vehicle_id)
+/* static */ SQInteger ScriptOrder::GetOrderCount(VehicleID vehicle_id)
 {
 	return ScriptVehicle::IsPrimaryVehicle(vehicle_id) ? ::Vehicle::Get(vehicle_id)->GetNumManualOrders() : -1;
 }
@@ -349,13 +349,13 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	return (CompareFunction)order->GetConditionComparator();
 }
 
-/* static */ int32 ScriptOrder::GetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position)
+/* static */ SQInteger ScriptOrder::GetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position)
 {
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return -1;
 	if (order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position)) return -1;
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
-	int32 value = order->GetConditionValue();
+	SQInteger value = order->GetConditionValue();
 	if (order->GetConditionVariable() == OCV_MAX_SPEED) value = value * 16 / 10;
 	return value;
 }
@@ -408,7 +408,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(0, vehicle_id, order_pos, MOF_COND_COMPARATOR, compare);
 }
 
-/* static */ bool ScriptOrder::SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, int32 value)
+/* static */ bool ScriptOrder::SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, SQInteger value)
 {
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position));
@@ -666,7 +666,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 	return ScriptObject::Command<CMD_CLONE_ORDER>::Do(0, CO_UNSHARE, vehicle_id, 0);
 }
 
-/* static */ uint ScriptOrder::GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile)
+/* static */ SQInteger ScriptOrder::GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile)
 {
 	if (vehicle_type == ScriptVehicle::VT_AIR) {
 		if (ScriptTile::IsStationTile(origin_tile)) {
