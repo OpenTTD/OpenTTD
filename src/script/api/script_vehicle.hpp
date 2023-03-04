@@ -117,7 +117,7 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The number of wagons the vehicle has.
 	 */
-	static int32 GetNumWagons(VehicleID vehicle_id);
+	static SQInteger GetNumWagons(VehicleID vehicle_id);
 
 	/**
 	 * Set the name of a vehicle.
@@ -172,7 +172,7 @@ public:
 	 * @pre wagon < GetNumWagons(vehicle_id).
 	 * @return The engine type the vehicle has.
 	 */
-	static EngineID GetWagonEngineType(VehicleID vehicle_id, int wagon);
+	static EngineID GetWagonEngineType(VehicleID vehicle_id, SQInteger wagon);
 
 	/**
 	 * Get the unitnumber of a vehicle.
@@ -180,7 +180,7 @@ public:
 	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The unitnumber the vehicle has.
 	 */
-	static int32 GetUnitNumber(VehicleID vehicle_id);
+	static SQInteger GetUnitNumber(VehicleID vehicle_id);
 
 	/**
 	 * Get the current age of a vehicle.
@@ -189,7 +189,7 @@ public:
 	 * @return The current age the vehicle has.
 	 * @note The age is in days.
 	 */
-	static int32 GetAge(VehicleID vehicle_id);
+	static SQInteger GetAge(VehicleID vehicle_id);
 
 	/**
 	 * Get the current age of a second (or third, etc.) engine in a train vehicle.
@@ -200,7 +200,7 @@ public:
 	 * @return The current age the vehicle has.
 	 * @note The age is in days.
 	 */
-	static int32 GetWagonAge(VehicleID vehicle_id, int wagon);
+	static SQInteger GetWagonAge(VehicleID vehicle_id, SQInteger wagon);
 
 	/**
 	 * Get the maximum age of a vehicle.
@@ -209,7 +209,7 @@ public:
 	 * @return The maximum age the vehicle has.
 	 * @note The age is in days.
 	 */
-	static int32 GetMaxAge(VehicleID vehicle_id);
+	static SQInteger GetMaxAge(VehicleID vehicle_id);
 
 	/**
 	 * Get the age a vehicle has left (maximum - current).
@@ -218,7 +218,7 @@ public:
 	 * @return The age the vehicle has left.
 	 * @note The age is in days.
 	 */
-	static int32 GetAgeLeft(VehicleID vehicle_id);
+	static SQInteger GetAgeLeft(VehicleID vehicle_id);
 
 	/**
 	 * Get the current speed of a vehicle.
@@ -229,7 +229,7 @@ public:
 	 *       This is mph / 1.6, which is roughly km/h.
 	 *       To get km/h multiply this number by 1.00584.
 	 */
-	static int32 GetCurrentSpeed(VehicleID vehicle_id);
+	static SQInteger GetCurrentSpeed(VehicleID vehicle_id);
 
 	/**
 	 * Get the current state of a vehicle.
@@ -366,7 +366,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The capacity the vehicle will have when refited.
 	 */
-	static int GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo);
+	static SQInteger GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo);
 
 	/**
 	 * Clones a vehicle at the given depot, copying or cloning its orders.
@@ -399,7 +399,7 @@ public:
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return Whether or not moving the wagon succeeded.
 	 */
-	static bool MoveWagon(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
+	static bool MoveWagon(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon);
 
 	/**
 	 * Move a chain of wagons after another wagon.
@@ -415,7 +415,7 @@ public:
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return Whether or not moving the wagons succeeded.
 	 */
-	static bool MoveWagonChain(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
+	static bool MoveWagonChain(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon);
 
 	/**
 	 * Gets the capacity of the given vehicle when refitted to the given cargo type.
@@ -427,7 +427,7 @@ public:
 	 * @pre The vehicle must be stopped in the depot.
 	 * @return The capacity the vehicle will have when refited.
 	 */
-	static int GetRefitCapacity(VehicleID vehicle_id, CargoID cargo);
+	static SQInteger GetRefitCapacity(VehicleID vehicle_id, CargoID cargo);
 
 	/**
 	 * Refits a vehicle to the given cargo type.
@@ -471,7 +471,7 @@ public:
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the wagon has been sold.
 	 */
-	static bool SellWagon(VehicleID vehicle_id, int wagon);
+	static bool SellWagon(VehicleID vehicle_id, SQInteger wagon);
 
 	/**
 	 * Sells all wagons from the vehicle starting from a given position.
@@ -486,7 +486,7 @@ public:
 	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the wagons have been sold.
 	 */
-	static bool SellWagonChain(VehicleID vehicle_id, int wagon);
+	static bool SellWagonChain(VehicleID vehicle_id, SQInteger wagon);
 
 	/**
 	 * Sends the given vehicle to a depot. If the vehicle has already been
@@ -542,7 +542,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The maximum amount of the given cargo the vehicle can transport.
 	 */
-	static int32 GetCapacity(VehicleID vehicle_id, CargoID cargo);
+	static SQInteger GetCapacity(VehicleID vehicle_id, CargoID cargo);
 
 	/**
 	 * Get the length of a the total vehicle in 1/16's of a tile.
@@ -551,7 +551,7 @@ public:
 	 * @pre GetVehicleType(vehicle_id) == VT_ROAD || GetVehicleType(vehicle_id) == VT_RAIL.
 	 * @return The length of the engine.
 	 */
-	static int GetLength(VehicleID vehicle_id);
+	static SQInteger GetLength(VehicleID vehicle_id);
 
 	/**
 	 * Get the amount of a specific cargo the given vehicle is transporting.
@@ -561,7 +561,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The amount of the given cargo the vehicle is currently transporting.
 	 */
-	static int32 GetCargoLoad(VehicleID vehicle_id, CargoID cargo);
+	static SQInteger GetCargoLoad(VehicleID vehicle_id, CargoID cargo);
 
 	/**
 	 * Get the group of a given vehicle.
@@ -594,7 +594,7 @@ public:
 	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The current reliability (0-100%).
 	 */
-	static int GetReliability(VehicleID vehicle_id);
+	static SQInteger GetReliability(VehicleID vehicle_id);
 
 	/**
 	 * Get the maximum allowed distance between two orders for a vehicle.
@@ -609,7 +609,7 @@ public:
 	 *         not be compared with map distances
 	 * @see ScriptOrder::GetOrderDistance
 	 */
-	static uint GetMaximumOrderDistance(VehicleID vehicle_id);
+	static SQInteger GetMaximumOrderDistance(VehicleID vehicle_id);
 
 private:
 	/**
@@ -620,12 +620,12 @@ private:
 	/**
 	 * Internal function used by SellWagon(Chain).
 	 */
-	static bool _SellWagonInternal(VehicleID vehicle_id, int wagon, bool sell_attached_wagons);
+	static bool _SellWagonInternal(VehicleID vehicle_id, SQInteger wagon, bool sell_attached_wagons);
 
 	/**
 	 * Internal function used by MoveWagon(Chain).
 	 */
-	static bool _MoveWagonInternal(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon);
+	static bool _MoveWagonInternal(VehicleID source_vehicle_id, SQInteger source_wagon, bool move_attached_wagons, SQInteger dest_vehicle_id, SQInteger dest_wagon);
 };
 
 #endif /* SCRIPT_VEHICLE_HPP */
