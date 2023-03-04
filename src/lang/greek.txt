@@ -5185,6 +5185,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Αδύν
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... πολύ μακριά από τον προηγούμενο προορισμό
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... δεν επαρκεί η εμβέλεια του αεροσκάφους
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Δεν μπορεί να δρομολογηθεί το όχημα...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Τα οχήματα μπορούν να περιμένουν μόνο στους σταθμούς

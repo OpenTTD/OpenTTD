@@ -1458,6 +1458,8 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ma tista
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tistax taqbeż din l-ordni...
 
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 
 # Sign related errors

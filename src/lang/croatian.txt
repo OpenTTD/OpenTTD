@@ -4920,6 +4920,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nije mog
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleko od prethodnog odredišta
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... avion nema dovoljni domet
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nije moguće zadati vozni red za vozilo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozila mogu čekati samo na postajama.

@@ -1874,6 +1874,8 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}पू�
 # Order related errors
 
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 
 # Sign related errors

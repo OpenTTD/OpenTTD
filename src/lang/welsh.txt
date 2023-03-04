@@ -4617,6 +4617,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Does dim
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... rhy bell o'r gyrchfan flaenorol
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... nid yw o fewn cyrraedd yr awyren
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Methu amserlennu cerbyd...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Dim ond mewn gorsafoedd y gall cerbydau aros

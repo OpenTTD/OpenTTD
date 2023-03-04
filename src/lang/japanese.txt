@@ -5035,6 +5035,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}指令�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}前の目的地から遠すぎます
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}航続距離が足りません
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}この輸送機器にダイヤを設定できません
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}輸送機器は停留施設でのみ待機できます

@@ -4566,6 +4566,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}கட�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... முந்தைய இடத்திலிருந்து நெடுந்தூரம் உள்ளது
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... விமானத்தால் அதிக தூரம் பறக்க இயலாது
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}வாகனத்தை கால அட்டவணை செய்ய இயலாது...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}வாகனங்கள் நிலையங்களில் மட்டுமே காத்திருக்க முடியும்

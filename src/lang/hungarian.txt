@@ -5137,6 +5137,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nem lehe
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... túl távol van az előző céltól
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... a repülőgépnek kicsi a hatótávolsága
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}A jármű nem időzíthető
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}A járművek csak az állomáson várakozhatnak

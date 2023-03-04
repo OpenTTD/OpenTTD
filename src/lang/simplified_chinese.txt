@@ -5081,6 +5081,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}不能�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}……距离前一目的地太远
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 飞机航行距离不足
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能给车辆编制时间表…
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}车辆只能在站内等候。

@@ -4778,6 +4778,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}לא נ�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... רחוק מידי מהיעד הקודם
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... למטוס אין טווח גדול מספיק
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}לא ניתן ליצור לוח זמנים עבור רכב זה...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}כלי רכב יכולים להמתין בתחנות בלבד

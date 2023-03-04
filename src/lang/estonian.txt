@@ -5141,6 +5141,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Sihtpunk
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liiga kaugel eelmisest sihtpunktist
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... ebapiisav õhusõiduki lennuulatus
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Sõidukile ei saa graafikut määrata...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Sõidukid saavad ainult peatustes oodata

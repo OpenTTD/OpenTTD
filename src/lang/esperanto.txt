@@ -3970,6 +3970,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ne povas
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... tro for de la antaŭa destino
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aviadilon ne havas sufiĉe da atingopovo
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ne povas fari katalogon por veturilo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veturiloj povas atendi nur ĉe stacioj.

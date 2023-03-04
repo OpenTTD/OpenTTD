@@ -2359,6 +2359,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Companyia nova
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una companyia nova i uniu-vos.
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Aquest ets tu.
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aquest és l'hoste de la partida.
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} - {NUM}/{NUM} companyi{P a es}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}El nombre de clients connectats actualment, el nombre de companyies i el nombre màxim de companyies permeses per l'administrador del servidor.
 
 # Matches ConnectionType
 ###length 5
@@ -5083,6 +5085,8 @@ STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}No es po
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}No es pot copiar la llista d'ordres...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... massa lluny del destí previ
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'avió no té prou autonomia
+
+# Extra messages which go on the third line of errors, explaining why orders failed
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...

@@ -2129,6 +2129,8 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Авио
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... премногу далеку од претходните дестинација
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... воздухопловот не е доволно опсег
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 
 # Sign related errors

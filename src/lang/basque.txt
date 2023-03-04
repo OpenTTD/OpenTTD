@@ -4465,6 +4465,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ezin da 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... aurreko helmugatik urrutiegi
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... hegazkinaren irismen eremutik kanpo
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ezin da ibilgailuren ordutegia egin...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Ibilgailuek bakarrik geltokietan itxaron dezakete

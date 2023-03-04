@@ -4992,6 +4992,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikke
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... for langt fra forrige destination
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... fly har ikke nok rækkevidde
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikke lave køreplan for transportmiddel...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transportmidler kan kun vente ved stationer.

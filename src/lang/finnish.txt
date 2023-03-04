@@ -2358,6 +2358,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Uusi yhtiö)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Perusta uusi yhtiö ja liity siihen
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tämä olet sinä
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Tämä on pelin ylläpitäjä
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} pelaaja{P "" a} – {NUM}/{NUM} yhtiö{P "" tä}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Tällä hetkellä kytkeytyneiden asiakkaiden määrä, yhtiöiden määrä sekä palvelimen ylläpitäjän sallima yhtiöiden enimmäismäärä
 
 # Matches ConnectionType
 ###length 5
@@ -5082,6 +5084,8 @@ STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Käskyje
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Käskyjä ei voida kopioida...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liian kaukana edellisestä määränpäästä
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... ilma-aluksen toimintasäde ei riitä
+
+# Extra messages which go on the third line of errors, explaining why orders failed
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.

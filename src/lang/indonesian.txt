@@ -5073,6 +5073,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Tidak da
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... terlalu jauh dari tujuan sebelumnya
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... pesawat tidak dapat menjangkau
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kendaran hanya dapat menunggu di stasiun

@@ -4867,6 +4867,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Cha ghab
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ro fhad air falbh on cheann-uidhe roimhe
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... chan eil rainse gu leòr aig a' charbad-adhair
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Cha ghabh clàr-ama toirt dhan charbad...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Chan urrainn dha charbad feitheamh ach aig stèisean

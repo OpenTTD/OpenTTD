@@ -4860,6 +4860,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Non lice
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... nimis procul a destinato priore
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aeroplano non est satis distantia volatus
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Non licet vehiculo dare horarium...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vehicula modo in stationibus possunt manere

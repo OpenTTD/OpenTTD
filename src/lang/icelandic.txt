@@ -4349,6 +4349,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Get ekki
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... of langt frá fyrri stað
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... flugvél hefur ekki næga drægni
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Get ekki gert áætlun farartækis...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Farartæki getur aðeins beðið við stöð

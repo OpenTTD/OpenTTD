@@ -4709,6 +4709,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}ไม�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ไกลจากจุดก่อนหน้านี้มากเกินไป
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... อากาศยานมีพิสัยการบินไม่พอ
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}ไม่สามารถจัดตารางเวลาให้ยานพาหนะนี้ได้...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}พาหนะสามารถหยุดรอได้เฉพาะที่สถานี

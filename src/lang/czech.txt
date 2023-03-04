@@ -5186,6 +5186,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nelze ko
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... příliš daleko od předcházejícího cíle
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... letadlo nemá dostatečný dolet
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tomuto vozidlu nejde nastavit jízdní řád...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozidla mohou čekat jen ve stanicích

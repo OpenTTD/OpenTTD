@@ -1384,6 +1384,8 @@ STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रे�
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... वाहन सभी स्टेशनों तक नहीं जा सकता
 
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 
 # Sign related errors

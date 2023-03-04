@@ -4255,6 +4255,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Senarai 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... terlalu jauh dari destinasi sebelumnya
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... pesawat tidak memiliki jarak mencukupi
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kenderaan tidak boleh dijadualkan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kenderaan hanya boleh menunggu di stesen

@@ -2911,6 +2911,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت
 
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE} ۔ ۔ ۔ ہوائی جہاز کی اتنی پہنچ نہیں ہے
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 
 # Sign related errors

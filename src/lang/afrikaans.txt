@@ -4732,6 +4732,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan nie 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te ver van vorige bestemming
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... vliegtuig kan nie so ver vlieg nie
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan nie voertuig 'n rooster gee nie...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuie kan slegs by stasies wag

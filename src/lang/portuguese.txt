@@ -5086,6 +5086,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Não é 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... muito distante do destino anterior
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avião não tem alcance suficiente
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos apenas podem esperar em estações.

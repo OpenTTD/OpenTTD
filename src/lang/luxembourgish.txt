@@ -5083,6 +5083,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kann d'O
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ze wäit ewech vu leschter Destinatioun
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Fliger huet net genuch Distanz
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kann dem Gefier keen Zäitplang ginn...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Gefierer kënnen nëmmen op Statiounen halen.

@@ -5084,6 +5084,8 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Non se p
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... demasiado lonxe do destino anterior
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avión non ten autonomía suficiente
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Non se pode axusta-lo horario do vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Os vehículos só poden parar nas estacións
