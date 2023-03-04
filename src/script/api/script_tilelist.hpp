@@ -68,7 +68,7 @@ public:
 	 * @pre radius > 0.
 	 * @note A station part built on any of the returned tiles will give you coverage.
 	 */
-	ScriptTileList_IndustryAccepting(IndustryID industry_id, int radius);
+	ScriptTileList_IndustryAccepting(IndustryID industry_id, SQInteger radius);
 };
 
 /**
@@ -86,7 +86,7 @@ public:
 	 * @pre radius > 0.
 	 * @note A station part built on any of the returned tiles will give you acceptance.
 	 */
-	ScriptTileList_IndustryProducing(IndustryID industry_id, int radius);
+	ScriptTileList_IndustryProducing(IndustryID industry_id, SQInteger radius);
 };
 
 /**
