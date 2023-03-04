@@ -260,7 +260,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
-	static bool BuildRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id);
+	static bool BuildRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id);
 
 	/**
 	 * Build a NewGRF rail station. This calls callback 18 to let a NewGRF
@@ -297,7 +297,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
-	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station);
+	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, SQInteger distance, bool source_station);
 
 	/**
 	 * Build a rail waypoint.
@@ -486,7 +486,7 @@ public:
 	 *       This is mph / 1.6, which is roughly km/h.
 	 *       To get km/h multiply this number by 1.00584.
 	 */
-	static int32 GetMaxSpeed(RailType railtype);
+	static SQInteger GetMaxSpeed(RailType railtype);
 
 	/**
 	 * Get the maintenance cost factor of a railtype.
@@ -494,7 +494,7 @@ public:
 	 * @pre IsRailTypeAvailable(railtype)
 	 * @return Maintenance cost factor of the railtype.
 	 */
-	static uint16 GetMaintenanceCostFactor(RailType railtype);
+	static SQInteger GetMaintenanceCostFactor(RailType railtype);
 };
 
 #endif /* SCRIPT_RAIL_HPP */
