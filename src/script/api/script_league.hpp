@@ -92,7 +92,7 @@ public:
 	 * @pre score != null && len(score) != 0.
 	 * @pre IsValidLink(Link(link_type, link_target)).
 	 */
-	static LeagueTableElementID NewElement(LeagueTableID table, int64 rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, LinkTargetID link_target);
+	static LeagueTableElementID NewElement(LeagueTableID table, SQInteger rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, LinkTargetID link_target);
 
 	/**
 	 * Update the attributes of a league table element.
@@ -119,7 +119,7 @@ public:
 	 * @pre IsValidLeagueTableElement(element).
 	 * @pre score != null && len(score) != 0.
 	 */
-	static bool UpdateElementScore(LeagueTableElementID element, int64 rating, Text *score);
+	static bool UpdateElementScore(LeagueTableElementID element, SQInteger rating, Text *score);
 
 
 	/**
