@@ -18,7 +18,7 @@
 #include "../../safeguards.h"
 
 
-/* static */ uint32 ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
+/* static */ SQInteger ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END) return 0;
@@ -26,7 +26,7 @@
 	return ::Company::Get((::CompanyID)company)->infrastructure.rail[railtype];
 }
 
-/* static */ uint32 ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
+/* static */ SQInteger ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END) return 0;
@@ -34,7 +34,7 @@
 	return ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype];
 }
 
-/* static */ uint32 ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
+/* static */ SQInteger ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID) return 0;
