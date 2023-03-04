@@ -88,6 +88,7 @@ class ReplaceVehicleWindow : public Window {
 	byte sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
+	uint num_hidden_engines;      ///< Number of currently hidden engines.
 	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
 	RoadType sel_roadtype;        ///< Type of road selected. #INVALID_ROADTYPE to show all.
 	Scrollbar *vscroll[2];
@@ -146,9 +147,9 @@ class ReplaceVehicleWindow : public Window {
 		byte side = draw_left ? 0 : 1;
 
 		GUIEngineList list;
+		this->num_hidden_engines = 0;
 
 		for (const Engine *e : Engine::IterateType(type)) {
-			if (!draw_left && !this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			switch (type) {
 				case VEH_TRAIN:
@@ -173,6 +174,10 @@ class ReplaceVehicleWindow : public Window {
 				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, this->sel_group) == INVALID_ENGINE) continue;
 			} else {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
+				if (e->IsVariantHidden(_local_company)) {
+					this->num_hidden_engines++;
+					if (!this->show_hidden_engines) continue;
+				}
 			}
 
 			list.emplace_back(eid, e->info.variant_id, (side == 0) ? EngineDisplayFlags::None : e->display_flags, 0);
@@ -454,6 +459,10 @@ public:
 			case WID_RV_ROAD_TYPE_DROPDOWN:
 				SetDParam(0, this->sel_roadtype == INVALID_ROADTYPE ? STR_REPLACE_ALL_ROADTYPE : GetRoadTypeInfo(this->sel_roadtype)->strings.replace_text);
 				break;
+
+			case WID_RV_SHOW_HIDDEN_ENGINES:
+				SetDParam(0, this->num_hidden_engines);
+				break;
 		}
 	}
 
@@ -499,7 +508,14 @@ public:
 
 	void OnPaint() override
 	{
-		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) this->GenerateLists();
+		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) {
+			auto old_num_hidden_engines = this->num_hidden_engines;
+			this->GenerateLists();
+			if (old_num_hidden_engines != this->num_hidden_engines) {
+				this->ReInit();
+				return;
+			}
+		}
 
 		Company *c = Company::Get(_local_company);
 
