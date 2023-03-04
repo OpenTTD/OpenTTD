@@ -34,7 +34,7 @@ public:
 	 * @param grfid The grfid to check.
 	 * @return True if and only if a NewGRF with the given grfid is loaded in the game.
 	 */
-	static bool IsLoaded(uint32 grfid);
+	static bool IsLoaded(SQInteger grfid);
 
 	/**
 	 * Get the version of a loaded NewGRF.
@@ -42,7 +42,7 @@ public:
 	 * @pre ScriptNewGRF::IsLoaded(grfid).
 	 * @return Version of the NewGRF or 0 if the NewGRF specifies no version.
 	 */
-	static uint32 GetVersion(uint32 grfid);
+	static SQInteger GetVersion(SQInteger grfid);
 
 	/**
 	 * Get the name of a loaded NewGRF.
@@ -50,7 +50,7 @@ public:
 	 * @pre ScriptNewGRF::IsLoaded(grfid).
 	 * @return The name of the NewGRF or null if no name is defined.
 	 */
-	static char *GetName(uint32 grfid);
+	static char *GetName(SQInteger grfid);
 };
 
 #endif /* SCRIPT_NEWGRF_HPP */
