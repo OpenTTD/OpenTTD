@@ -189,7 +189,7 @@ public:
 	 * @pre 0x00 <= grf_local_id < NUM_INDUSTRYTYPES_PER_GRF.
 	 * @return the industry-type ID, local to the current game (this diverges from the grf_local_id).
 	 */
-	static IndustryType ResolveNewGRFID(uint32 grfid, uint16 grf_local_id);
+	static IndustryType ResolveNewGRFID(SQInteger grfid, SQInteger grf_local_id);
 };
 
 #endif /* SCRIPT_INDUSTRYTYPE_HPP */
