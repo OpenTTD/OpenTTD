@@ -30,25 +30,26 @@
 	return GetString(ObjectSpec::Get(object_type)->name);
 }
 
-/* static */ uint8 ScriptObjectType::GetViews(ObjectType object_type)
+/* static */ SQInteger ScriptObjectType::GetViews(ObjectType object_type)
 {
 	EnforcePrecondition(0, IsValidObjectType(object_type));
 
 	return ObjectSpec::Get(object_type)->views;
 }
 
-/* static */ bool ScriptObjectType::BuildObject(ObjectType object_type, uint8 view, TileIndex tile)
+/* static */ bool ScriptObjectType::BuildObject(ObjectType object_type, SQInteger view, TileIndex tile)
 {
 	EnforcePrecondition(false, IsValidObjectType(object_type));
+	EnforcePrecondition(false, view >= 0 && view < GetViews(object_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	return ScriptObject::Command<CMD_BUILD_OBJECT>::Do(tile, object_type, view);
 }
 
-/* static */ ObjectType ScriptObjectType::ResolveNewGRFID(uint32 grfid, uint16 grf_local_id)
+/* static */ ObjectType ScriptObjectType::ResolveNewGRFID(SQInteger grfid, SQInteger grf_local_id)
 {
 	EnforcePrecondition(INVALID_OBJECT_TYPE, IsInsideBS(grf_local_id, 0x00, NUM_OBJECTS_PER_GRF));
 
-	grfid = BSWAP32(grfid); // Match people's expectations.
+	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 	return _object_mngr.GetID(grf_local_id, grfid);
 }

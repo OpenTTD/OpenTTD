@@ -41,7 +41,7 @@ public:
 	 * @pre IsValidObjectType(object_type).
 	 * @return The number of views for an object.
 	 */
-	static uint8 GetViews(ObjectType object_type);
+	static SQInteger GetViews(ObjectType object_type);
 
 	/**
 	 * Build an object of the specified type.
@@ -51,7 +51,7 @@ public:
 	 * @pre IsValidObjectType(object_type).
 	 * @return True if the object was successfully build.
 	 */
-	static bool BuildObject(ObjectType object_type, uint8 view, TileIndex tile);
+	static bool BuildObject(ObjectType object_type, SQInteger view, TileIndex tile);
 
 	/**
 	 * Get a specific object-type from a grf.
@@ -60,7 +60,7 @@ public:
 	 * @pre 0x00 <= grf_local_id < NUM_OBJECTS_PER_GRF.
 	 * @return the object-type ID, local to the current game (this diverges from the grf_local_id).
 	 */
-	static ObjectType ResolveNewGRFID(uint32 grfid, uint16 grf_local_id);
+	static ObjectType ResolveNewGRFID(SQInteger grfid, SQInteger grf_local_id);
 };
 
 #endif /* SCRIPT_OBJECTTYPE_HPP */
