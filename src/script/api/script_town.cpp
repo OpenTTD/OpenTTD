@@ -22,9 +22,9 @@
 
 #include "../../safeguards.h"
 
-/* static */ int32 ScriptTown::GetTownCount()
+/* static */ SQInteger ScriptTown::GetTownCount()
 {
-	return (int32)::Town::GetNumItems();
+	return ::Town::GetNumItems();
 }
 
 /* static */ bool ScriptTown::IsValidTown(TownID town_id)
@@ -63,14 +63,14 @@
 	return ScriptObject::Command<CMD_TOWN_SET_TEXT>::Do(town_id, text != nullptr ? text->GetEncodedText() : std::string{});
 }
 
-/* static */ int32 ScriptTown::GetPopulation(TownID town_id)
+/* static */ SQInteger ScriptTown::GetPopulation(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	const Town *t = ::Town::Get(town_id);
 	return t->cache.population;
 }
 
-/* static */ int32 ScriptTown::GetHouseCount(TownID town_id)
+/* static */ SQInteger ScriptTown::GetHouseCount(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	const Town *t = ::Town::Get(town_id);
@@ -84,7 +84,7 @@
 	return t->xy;
 }
 
-/* static */ int32 ScriptTown::GetLastMonthProduction(TownID town_id, CargoID cargo_id)
+/* static */ SQInteger ScriptTown::GetLastMonthProduction(TownID town_id, CargoID cargo_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
@@ -94,7 +94,7 @@
 	return t->supplied[cargo_id].old_max;
 }
 
-/* static */ int32 ScriptTown::GetLastMonthSupplied(TownID town_id, CargoID cargo_id)
+/* static */ SQInteger ScriptTown::GetLastMonthSupplied(TownID town_id, CargoID cargo_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
@@ -104,7 +104,7 @@
 	return t->supplied[cargo_id].old_act;
 }
 
-/* static */ int32 ScriptTown::GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id)
+/* static */ SQInteger ScriptTown::GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
@@ -113,7 +113,7 @@
 	return ::ToPercent8(t->GetPercentTransported(cargo_id));
 }
 
-/* static */ int32 ScriptTown::GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id)
+/* static */ SQInteger ScriptTown::GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return -1;
@@ -123,18 +123,20 @@
 	return t->received[towneffect_id].old_act;
 }
 
-/* static */ bool ScriptTown::SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, uint32 goal)
+/* static */ bool ScriptTown::SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, SQInteger goal)
 {
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, ScriptCargo::IsValidTownEffect(towneffect_id));
 
+	goal = Clamp<SQInteger>(goal, 0, UINT32_MAX);
+
 	return ScriptObject::Command<CMD_TOWN_CARGO_GOAL>::Do(town_id, (::TownEffect)towneffect_id, goal);
 }
 
-/* static */ uint32 ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
+/* static */ SQInteger ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
 {
-	if (!IsValidTown(town_id)) return UINT32_MAX;
-	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return UINT32_MAX;
+	if (!IsValidTown(town_id)) return -1;
+	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
@@ -151,7 +153,7 @@
 	}
 }
 
-/* static */ bool ScriptTown::SetGrowthRate(TownID town_id, uint32 days_between_town_growth)
+/* static */ bool ScriptTown::SetGrowthRate(TownID town_id, SQInteger days_between_town_growth)
 {
 	EnforcePrecondition(false, IsValidTown(town_id));
 	uint16 growth_rate;
@@ -167,14 +169,14 @@
 		default:
 			EnforcePrecondition(false, (days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS) <= MAX_TOWN_GROWTH_TICKS);
 			/* Don't use growth_rate 0 as it means GROWTH_NORMAL */
-			growth_rate = std::max(days_between_town_growth * DAY_TICKS, 2u) - 1;
+			growth_rate = std::max<SQInteger>(days_between_town_growth * DAY_TICKS, 2u) - 1;
 			break;
 	}
 
 	return ScriptObject::Command<CMD_TOWN_GROWTH_RATE>::Do(town_id, growth_rate);
 }
 
-/* static */ int32 ScriptTown::GetGrowthRate(TownID town_id)
+/* static */ SQInteger ScriptTown::GetGrowthRate(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
@@ -185,12 +187,12 @@
 	return RoundDivSU(t->growth_rate + 1, DAY_TICKS);
 }
 
-/* static */ int32 ScriptTown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)
+/* static */ SQInteger ScriptTown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)
 {
 	return ScriptMap::DistanceManhattan(tile, GetLocation(town_id));
 }
 
-/* static */ int32 ScriptTown::GetDistanceSquareToTile(TownID town_id, TileIndex tile)
+/* static */ SQInteger ScriptTown::GetDistanceSquareToTile(TownID town_id, TileIndex tile)
 {
 	return ScriptMap::DistanceSquare(tile, GetLocation(town_id));
 }
@@ -218,14 +220,14 @@
 	return ::Town::Get(town_id)->larger_town;
 }
 
-/* static */ int ScriptTown::GetRoadReworkDuration(TownID town_id)
+/* static */ SQInteger ScriptTown::GetRoadReworkDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
 	return ::Town::Get(town_id)->road_build_months;
 }
 
-/* static */ int ScriptTown::GetFundBuildingsDuration(TownID town_id)
+/* static */ SQInteger ScriptTown::GetFundBuildingsDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
@@ -240,7 +242,7 @@
 	return (ScriptCompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
 }
 
-/* static */ int32 ScriptTown::GetExclusiveRightsDuration(TownID town_id)
+/* static */ SQInteger ScriptTown::GetExclusiveRightsDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
@@ -264,11 +266,13 @@
 	return ScriptObject::Command<CMD_DO_TOWN_ACTION>::Do(town_id, town_action);
 }
 
-/* static */ bool ScriptTown::ExpandTown(TownID town_id, int houses)
+/* static */ bool ScriptTown::ExpandTown(TownID town_id, SQInteger houses)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, houses > 0);
+
+	houses = std::min<SQInteger>(houses, UINT32_MAX);
 
 	return ScriptObject::Command<CMD_EXPAND_TOWN>::Do(town_id, houses);
 }
@@ -330,7 +334,7 @@
 	}
 }
 
-/* static */ int ScriptTown::GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id)
+/* static */ SQInteger ScriptTown::GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id)
 {
 	if (!IsValidTown(town_id)) return TOWN_RATING_INVALID;
 	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
@@ -340,7 +344,7 @@
 	return t->ratings[company];
 }
 
-/* static */ bool ScriptTown::ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, int delta)
+/* static */ bool ScriptTown::ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, SQInteger delta)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, IsValidTown(town_id));
@@ -354,7 +358,7 @@
 	return ScriptObject::Command<CMD_TOWN_RATING>::Do(town_id, (::CompanyID)company_id, new_rating);
 }
 
-/* static */ int ScriptTown::GetAllowedNoise(TownID town_id)
+/* static */ SQInteger ScriptTown::GetAllowedNoise(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 

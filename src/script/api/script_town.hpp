@@ -127,7 +127,7 @@ public:
 	 * Gets the number of towns.
 	 * @return The number of towns.
 	 */
-	static int32 GetTownCount();
+	static SQInteger GetTownCount();
 
 	/**
 	 * Checks whether the given town index is valid.
@@ -170,7 +170,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @return The number of inhabitants.
 	 */
-	static int32 GetPopulation(TownID town_id);
+	static SQInteger GetPopulation(TownID town_id);
 
 	/**
 	 * Gets the number of houses in the town.
@@ -178,7 +178,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @return The number of houses.
 	 */
-	static int32 GetHouseCount(TownID town_id);
+	static SQInteger GetHouseCount(TownID town_id);
 
 	/**
 	 * Gets the location of the town.
@@ -196,7 +196,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The last month's production of the given cargo for this town.
 	 */
-	static int32 GetLastMonthProduction(TownID town_id, CargoID cargo_id);
+	static SQInteger GetLastMonthProduction(TownID town_id, CargoID cargo_id);
 
 	/**
 	 * Get the total amount of cargo supplied from a town last month.
@@ -206,7 +206,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The amount of cargo supplied for transport from this town last month.
 	 */
-	static int32 GetLastMonthSupplied(TownID town_id, CargoID cargo_id);
+	static SQInteger GetLastMonthSupplied(TownID town_id, CargoID cargo_id);
 
 	/**
 	 * Get the percentage of transported production of the given cargo at a town.
@@ -216,7 +216,7 @@ public:
 	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The percentage of given cargo transported from this town last month.
 	 */
-	static int32 GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
+	static SQInteger GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
 
 	/**
 	 * Get the total amount of cargo effects received by a town last month.
@@ -226,19 +226,20 @@ public:
 	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
 	 * @return The amount of cargo received by this town last month for this cargo effect.
 	 */
-	static int32 GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id);
+	static SQInteger GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
 	 * Set the goal of a cargo for this town.
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the towneffect.
 	 * @param goal The new goal.
+	 *             The value will be clamped to 0 .. MAX(uint32).
 	 * @pre IsValidTown(town_id).
 	 * @pre ScriptCargo::IsValidTownEffect(towneffect_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
 	 */
-	static bool SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, uint32 goal);
+	static bool SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, SQInteger goal);
 
 	/**
 	 * Get the amount of cargo that needs to be delivered (per TownEffect) for a
@@ -251,7 +252,7 @@ public:
 	 * @note Goals can change over time. For example with a changing snowline, or
 	 *  with a growing town.
 	 */
-	static uint32 GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
+	static SQInteger GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
 	 * Set the amount of days between town growth.
@@ -265,7 +266,7 @@ public:
 	 * @note When changing the growth rate, the relative progress is preserved and scaled to the new rate.
 	 * @api -ai
 	 */
-	static bool SetGrowthRate(TownID town_id, uint32 days_between_town_growth);
+	static bool SetGrowthRate(TownID town_id, SQInteger days_between_town_growth);
 
 	/**
 	 * Get the amount of days between town growth.
@@ -274,7 +275,7 @@ public:
 	 * @return Amount of days between town growth, or TOWN_GROWTH_NONE.
 	 * @note This function does not indicate when it will grow next. It only tells you the time between growths.
 	 */
-	static int32 GetGrowthRate(TownID town_id);
+	static SQInteger GetGrowthRate(TownID town_id);
 
 	/**
 	 * Get the manhattan distance from the tile to the ScriptTown::GetLocation()
@@ -284,7 +285,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @return The distance between town and tile.
 	 */
-	static int32 GetDistanceManhattanToTile(TownID town_id, TileIndex tile);
+	static SQInteger GetDistanceManhattanToTile(TownID town_id, TileIndex tile);
 
 	/**
 	 * Get the square distance from the tile to the ScriptTown::GetLocation()
@@ -294,7 +295,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @return The distance between town and tile.
 	 */
-	static int32 GetDistanceSquareToTile(TownID town_id, TileIndex tile);
+	static SQInteger GetDistanceSquareToTile(TownID town_id, TileIndex tile);
 
 	/**
 	 * Find out if this tile is within the rating influence of a town.
@@ -331,7 +332,7 @@ public:
 	 * @return The number of months the road reworks are still going to take.
 	 *         The value 0 means that there are currently no road reworks.
 	 */
-	static int GetRoadReworkDuration(TownID town_id);
+	static SQInteger GetRoadReworkDuration(TownID town_id);
 
 	/**
 	 * Find out how long new buildings are still being funded in a town.
@@ -340,7 +341,7 @@ public:
 	 * @return The number of months building construction is still funded.
 	 *         The value 0 means that there is currently no funding.
 	 */
-	static int GetFundBuildingsDuration(TownID town_id);
+	static SQInteger GetFundBuildingsDuration(TownID town_id);
 
 	/**
 	 * Find out which company currently has the exclusive rights of this town.
@@ -361,7 +362,7 @@ public:
 	 *         The value 0 means that there are currently no exclusive rights
 	 *         given out to anyone.
 	 */
-	static int32 GetExclusiveRightsDuration(TownID town_id);
+	static SQInteger GetExclusiveRightsDuration(TownID town_id);
 
 	/**
 	 * Find out if an action can currently be performed on the town.
@@ -388,12 +389,13 @@ public:
 	 * Expand the town.
 	 * @param town_id The town to expand.
 	 * @param houses The amount of houses to grow the town with.
+	 *               The value will be clamped to 0 .. MAX(uint32).
 	 * @pre IsValidTown(town_id).
 	 * @pre houses > 0.
 	 * @return True if the action succeeded.
 	 * @api -ai
 	 */
-	static bool ExpandTown(TownID town_id, int houses);
+	static bool ExpandTown(TownID town_id, SQInteger houses);
 
 	/**
 	 * Found a new town.
@@ -433,7 +435,7 @@ public:
 	 * @return The rating as a number between -1000 (worst) and 1000 (best).
 	 * @api -ai
 	 */
-	static int GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id);
+	static SQInteger GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id);
 
 	/**
 	 * Change the rating of a company within a town.
@@ -446,7 +448,7 @@ public:
 	 * @pre no company mode in scope
 	 * @api -ai
 	 */
-	static bool ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, int delta);
+	static bool ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, SQInteger delta);
 
 	/**
 	 * Get the maximum level of noise that still can be added by airports
@@ -454,7 +456,7 @@ public:
 	 * @param town_id The town to get the allowed noise from.
 	 * @return The noise that still can be added.
 	 */
-	static int GetAllowedNoise(TownID town_id);
+	static SQInteger GetAllowedNoise(TownID town_id);
 
 	/**
 	 * Get the road layout for a town.
