@@ -1577,8 +1577,9 @@ CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID ve
 			/* Trucks can't copy all the orders from busses (and visa versa),
 			 * and neither can helicopters and aircraft. */
 			for (const Order *order : src->Orders()) {
+				if (!OrderGoesToStation(dst, order)) continue;
 				Station *st = Station::Get(order->GetDestination());
-				if (OrderGoesToStation(dst, order) && !CanVehicleUseStation(dst, st)) {
+				if (!CanVehicleUseStation(dst, st)) {
 					return CommandCost(STR_ERROR_CAN_T_COPY_SHARE_ORDER, GetVehicleCannotUseStationReason(dst, st));
 				}
 			}
