@@ -35,7 +35,7 @@ ScriptPriorityQueue::~ScriptPriorityQueue()
 SQInteger ScriptPriorityQueue::Insert(HSQUIRRELVM vm)
 {
 	HSQOBJECT item;
-	int64 priority;
+	SQInteger priority;
 	sq_resetobject(&item);
 	sq_getstackobj(vm, 2, &item);
 	sq_getinteger(vm, 3, &priority);
