@@ -20,7 +20,7 @@
 
 #include "../../safeguards.h"
 
-/* static */ bool ScriptNews::Create(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, uint32 reference)
+/* static */ bool ScriptNews::Create(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, SQInteger reference)
 {
 	CCountedPtr<Text> counter(text);
 
