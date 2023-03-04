@@ -12,6 +12,7 @@
 
 #include "../tile_cmd.h"
 #include "../waypoint_base.h"
+#include "../depot_base.h"
 
 /**
  * Calculates the tile of given station that is closest to a given tile
@@ -45,6 +46,37 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
 
 	/* return the tile of our target coordinates */
 	return TileXY(x, y);
+}
+
+/**
+ * Calculates the tile of a depot that is closest to a given tile.
+ * @param depot_id The depot to calculate the distance to.
+ * @param tile The tile from where to calculate the distance.
+ * @return The closest depot tile to the given tile.
+ */
+static inline TileIndex CalcClosestDepotTile(DepotID depot_id, TileIndex tile)
+{
+	assert(Depot::IsValidID(depot_id));
+	const Depot *dep = Depot::Get(depot_id);
+
+	/* If tile area is empty, use the xy tile. */
+	if (dep->ta.tile == INVALID_TILE) {
+		assert(dep->xy != INVALID_TILE);
+		return dep->xy;
+	}
+
+	TileIndex best_tile = INVALID_TILE;
+	uint best_distance = UINT_MAX;
+
+	for (auto const &depot_tile : dep->depot_tiles) {
+		uint new_distance = DistanceManhattan(depot_tile, tile);
+		if (new_distance < best_distance) {
+			best_tile = depot_tile;
+			best_distance = new_distance;
+		}
+	}
+
+	return best_tile;
 }
 
 /**
