@@ -1160,6 +1160,7 @@ struct BuildVehicleWindow : Window {
 	bool descending_sort_order = false; ///< Sort direction, @see _engine_sort_direction
 	uint8_t sort_criteria = 0; ///< Current sort criterium.
 	bool show_hidden_engines = false; ///< State of the 'show hidden engines' button.
+	uint num_hidden_engines = 0; ///< Number of currently hidden engines.
 	bool listview_mode = false; ///< If set, only display the available vehicles and do not show a 'build' button.
 	EngineID sel_engine = EngineID::Invalid(); ///< Currently selected engine, or #EngineID::Invalid()
 	EngineID rename_engine = EngineID::Invalid(); ///< Engine being renamed.
@@ -1202,7 +1203,10 @@ struct BuildVehicleWindow : Window {
 		this->descending_sort_order = _engine_sort_last_order[type];
 		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
 
+		this->SetCargoFilterArray();
 		this->UpdateFilterByTile();
+		this->eng_list.ForceRebuild();
+		this->GenerateBuildList(); // Needs to be before FinishInitNested to calculate num_hidden_engines for SetStringParameters
 
 		this->CreateNestedTree();
 
@@ -1237,9 +1241,6 @@ struct BuildVehicleWindow : Window {
 		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
-
-		this->eng_list.ForceRebuild();
-		this->GenerateBuildList(); // generate the list, since we need it in the next line
 
 		/* Select the first unshaded engine in the list as default when opening the window */
 		EngineID engine = EngineID::Invalid();
@@ -1377,11 +1378,12 @@ struct BuildVehicleWindow : Window {
 	}
 
 	/* Figure out what train EngineIDs to put in the list */
-	void GenerateBuildTrainList(GUIEngineList &list)
+	EngineID GenerateBuildTrainList(GUIEngineList &list)
 	{
 		FlatSet<EngineID> variants;
 		EngineID sel_id = EngineID::Invalid();
 		size_t num_engines = 0;
+		this->num_hidden_engines = 0;
 
 		list.clear();
 
@@ -1393,7 +1395,6 @@ struct BuildVehicleWindow : Window {
 		 * and if not, reset selection to EngineID::Invalid(). This could be the case
 		 * when engines become obsolete and are removed */
 		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
-			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
@@ -1407,6 +1408,12 @@ struct BuildVehicleWindow : Window {
 
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
+
+			/* Note: needs to be the last check to calculate the number correctly */
+			if (e->IsVariantHidden(_local_company)) {
+				this->num_hidden_engines++;
+				if (!this->show_hidden_engines) continue;
+			}
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1430,8 +1437,6 @@ struct BuildVehicleWindow : Window {
 			}
 		}
 
-		this->SelectEngine(sel_id);
-
 		/* invalidate cached values for name sorter - engine names could change */
 		_last_engine[0] = _last_engine[1] = EngineID::Invalid();
 
@@ -1445,20 +1450,20 @@ struct BuildVehicleWindow : Window {
 
 		/* and finally sort wagons */
 		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
+
+		return sel_id;
 	}
 
 	/* Figure out what road vehicle EngineIDs to put in the list */
 	void GenerateBuildRoadVehList()
 	{
-		EngineID sel_id = EngineID::Invalid();
-
 		this->eng_list.clear();
+		this->num_hidden_engines = 0;
 
 		BadgeTextFilter btf(this->string_filter, GSF_ROADVEHICLES);
 		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
-			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->VehInfo<RoadVehicleInfo>().roadtype, this->filter.roadtype)) continue;
@@ -1467,24 +1472,26 @@ struct BuildVehicleWindow : Window {
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
-			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
+			/* Note: needs to be the last check to calculate the number correctly */
+			if (e->IsVariantHidden(_local_company)) {
+				this->num_hidden_engines++;
+				if (!this->show_hidden_engines) continue;
+			}
 
-			if (eid == this->sel_engine) sel_id = eid;
+			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 		}
-		this->SelectEngine(sel_id);
 	}
 
 	/* Figure out what ship EngineIDs to put in the list */
 	void GenerateBuildShipList()
 	{
-		EngineID sel_id = EngineID::Invalid();
 		this->eng_list.clear();
+		this->num_hidden_engines = 0;
 
 		BadgeTextFilter btf(this->string_filter, GSF_SHIPS);
 		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
-			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 			if (!bdf.Filter(e->badges)) continue;
@@ -1492,19 +1499,21 @@ struct BuildVehicleWindow : Window {
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
-			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
+			/* Note: needs to be the last check to calculate the number correctly */
+			if (e->IsVariantHidden(_local_company)) {
+				this->num_hidden_engines++;
+				if (!this->show_hidden_engines) continue;
+			}
 
-			if (eid == this->sel_engine) sel_id = eid;
+			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 		}
-		this->SelectEngine(sel_id);
 	}
 
 	/* Figure out what aircraft EngineIDs to put in the list */
 	void GenerateBuildAircraftList()
 	{
-		EngineID sel_id = EngineID::Invalid();
-
 		this->eng_list.clear();
+		this->num_hidden_engines = 0;
 
 		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(TileIndex(this->window_number));
 
@@ -1516,7 +1525,6 @@ struct BuildVehicleWindow : Window {
 		 * and if not, reset selection to EngineID::Invalid(). This could be the case
 		 * when planes become obsolete and are removed */
 		for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) {
-			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
@@ -1526,18 +1534,20 @@ struct BuildVehicleWindow : Window {
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
+			/* Note: needs to be the last check to calculate the number correctly */
+			if (e->IsVariantHidden(_local_company)) {
+				this->num_hidden_engines++;
+				if (!this->show_hidden_engines) continue;
+			}
+
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
-
-			if (eid == this->sel_engine) sel_id = eid;
 		}
-
-		this->SelectEngine(sel_id);
 	}
 
 	/* Generate the list of vehicles */
-	void GenerateBuildList()
+	EngineID GenerateBuildList()
 	{
-		if (!this->eng_list.NeedRebuild()) return;
+		if (!this->eng_list.NeedRebuild()) return this->sel_engine;
 
 		/* Update filter type in case the road/railtype of the depot got converted */
 		this->UpdateFilterByTile();
@@ -1545,14 +1555,15 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.clear();
 
 		GUIEngineList list;
+		EngineID sel_id = EngineID::Invalid();
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
-				this->GenerateBuildTrainList(list);
+				sel_id = this->GenerateBuildTrainList(list);
 				GUIEngineListAddChildren(this->eng_list, list);
 				this->eng_list.RebuildDone();
-				return;
+				return sel_id;
 			case VEH_ROAD:
 				this->GenerateBuildRoadVehList();
 				break;
@@ -1565,6 +1576,7 @@ struct BuildVehicleWindow : Window {
 		}
 
 		this->FilterEngineList();
+		sel_id = this->sel_engine;
 
 		/* ensure primary engine of variant group is in list after filtering */
 		FlatSet<EngineID> variants;
@@ -1588,6 +1600,8 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.swap(list);
 		GUIEngineListAddChildren(this->eng_list, list, EngineID::Invalid(), 0);
 		this->eng_list.RebuildDone();
+
+		return sel_id;
 	}
 
 	DropDownList BuildCargoDropDownList() const
@@ -1784,6 +1798,9 @@ struct BuildVehicleWindow : Window {
 				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
 			}
 
+			case WID_BV_SHOW_HIDDEN_ENGINES:
+				return GetString(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + this->vehicle_type, this->num_hidden_engines);
+
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 					return this->GetWidget<NWidgetBadgeFilter>(widget)->GetStringParameter(this->badge_filter_choices);
@@ -1863,8 +1880,16 @@ struct BuildVehicleWindow : Window {
 
 	void OnPaint() override
 	{
-		this->GenerateBuildList();
-		this->vscroll->SetCount(this->eng_list.size());
+		uint old_num_hidden_engines = this->num_hidden_engines;
+		EngineID sel_id = this->GenerateBuildList();
+		if (sel_id != this->sel_engine) this->SelectEngine(sel_id);
+		if (old_num_hidden_engines != this->num_hidden_engines) {
+			this->ReInit();
+			return;
+		}
+
+		this->vscroll->SetCount(
+		this->eng_list.size());
 
 		this->SetWidgetsDisabledState(this->sel_engine == EngineID::Invalid(), WID_BV_SHOW_HIDE, WID_BV_BUILD);
 
