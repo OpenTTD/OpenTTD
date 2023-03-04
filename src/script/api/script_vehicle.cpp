@@ -48,7 +48,7 @@
 	return static_cast<ScriptCompany::CompanyID>((int)::Vehicle::Get(vehicle_id)->owner);
 }
 
-/* static */ int32 ScriptVehicle::GetNumWagons(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetNumWagons(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
@@ -62,7 +62,7 @@
 	return num;
 }
 
-/* static */ int ScriptVehicle::GetLength(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetLength(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
@@ -97,7 +97,7 @@
 	return _BuildVehicleInternal(depot, engine_id, cargo);
 }
 
-/* static */ int ScriptVehicle::GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo)
+/* static */ SQInteger ScriptVehicle::GetBuildWithRefitCapacity(TileIndex depot, EngineID engine_id, CargoID cargo)
 {
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
@@ -117,7 +117,7 @@
 	return 0;
 }
 
-/* static */ bool ScriptVehicle::_MoveWagonInternal(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon)
+/* static */ bool ScriptVehicle::_MoveWagonInternal(VehicleID source_vehicle_id, SQInteger source_wagon, bool move_attached_wagons, SQInteger dest_vehicle_id, SQInteger dest_wagon)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(source_vehicle_id) && source_wagon < GetNumWagons(source_vehicle_id));
@@ -136,17 +136,17 @@
 	return ScriptObject::Command<CMD_MOVE_RAIL_VEHICLE>::Do(v->index, w == nullptr ? ::INVALID_VEHICLE : w->index, move_attached_wagons);
 }
 
-/* static */ bool ScriptVehicle::MoveWagon(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon)
+/* static */ bool ScriptVehicle::MoveWagon(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon)
 {
 	return _MoveWagonInternal(source_vehicle_id, source_wagon, false, dest_vehicle_id, dest_wagon);
 }
 
-/* static */ bool ScriptVehicle::MoveWagonChain(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon)
+/* static */ bool ScriptVehicle::MoveWagonChain(VehicleID source_vehicle_id, SQInteger source_wagon, SQInteger dest_vehicle_id, SQInteger dest_wagon)
 {
 	return _MoveWagonInternal(source_vehicle_id, source_wagon, true, dest_vehicle_id, dest_wagon);
 }
 
-/* static */ int ScriptVehicle::GetRefitCapacity(VehicleID vehicle_id, CargoID cargo)
+/* static */ SQInteger ScriptVehicle::GetRefitCapacity(VehicleID vehicle_id, CargoID cargo)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
@@ -173,7 +173,7 @@
 	return ScriptObject::Command<CMD_SELL_VEHICLE>::Do(vehicle_id, v->type == VEH_TRAIN, false, INVALID_CLIENT_ID);
 }
 
-/* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, int wagon, bool sell_attached_wagons)
+/* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, SQInteger wagon, bool sell_attached_wagons)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && wagon < GetNumWagons(vehicle_id));
@@ -185,12 +185,12 @@
 	return ScriptObject::Command<CMD_SELL_VEHICLE>::Do(v->index, sell_attached_wagons, false, INVALID_CLIENT_ID);
 }
 
-/* static */ bool ScriptVehicle::SellWagon(VehicleID vehicle_id, int wagon)
+/* static */ bool ScriptVehicle::SellWagon(VehicleID vehicle_id, SQInteger wagon)
 {
 	return _SellWagonInternal(vehicle_id, wagon, false);
 }
 
-/* static */ bool ScriptVehicle::SellWagonChain(VehicleID vehicle_id, int wagon)
+/* static */ bool ScriptVehicle::SellWagonChain(VehicleID vehicle_id, SQInteger wagon)
 {
 	return _SellWagonInternal(vehicle_id, wagon, true);
 }
@@ -279,7 +279,7 @@
 	return ::Vehicle::Get(vehicle_id)->engine_type;
 }
 
-/* static */ EngineID ScriptVehicle::GetWagonEngineType(VehicleID vehicle_id, int wagon)
+/* static */ EngineID ScriptVehicle::GetWagonEngineType(VehicleID vehicle_id, SQInteger wagon)
 {
 	if (!IsValidVehicle(vehicle_id)) return INVALID_ENGINE;
 	if (wagon >= GetNumWagons(vehicle_id)) return INVALID_ENGINE;
@@ -291,7 +291,7 @@
 	return v->engine_type;
 }
 
-/* static */ int32 ScriptVehicle::GetUnitNumber(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetUnitNumber(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
@@ -306,14 +306,14 @@
 	return GetString(STR_VEHICLE_NAME);
 }
 
-/* static */ int32 ScriptVehicle::GetAge(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetAge(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->age;
 }
 
-/* static */ int32 ScriptVehicle::GetWagonAge(VehicleID vehicle_id, int wagon)
+/* static */ SQInteger ScriptVehicle::GetWagonAge(VehicleID vehicle_id, SQInteger wagon)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (wagon >= GetNumWagons(vehicle_id)) return -1;
@@ -325,21 +325,21 @@
 	return v->age;
 }
 
-/* static */ int32 ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->max_age;
 }
 
-/* static */ int32 ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	return ::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age;
 }
 
-/* static */ int32 ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
@@ -411,7 +411,7 @@
 	return (ScriptRoad::RoadType)(int)(::RoadVehicle::Get(vehicle_id))->roadtype;
 }
 
-/* static */ int32 ScriptVehicle::GetCapacity(VehicleID vehicle_id, CargoID cargo)
+/* static */ SQInteger ScriptVehicle::GetCapacity(VehicleID vehicle_id, CargoID cargo)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
@@ -424,7 +424,7 @@
 	return amount;
 }
 
-/* static */ int32 ScriptVehicle::GetCargoLoad(VehicleID vehicle_id, CargoID cargo)
+/* static */ SQInteger ScriptVehicle::GetCargoLoad(VehicleID vehicle_id, CargoID cargo)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
@@ -465,7 +465,7 @@
 	return v->orders != nullptr && v->orders->GetNumVehicles() > 1;
 }
 
-/* static */ int ScriptVehicle::GetReliability(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetReliability(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
@@ -473,16 +473,11 @@
 	return ::ToPercent16(v->reliability);
 }
 
-/* static */ uint ScriptVehicle::GetMaximumOrderDistance(VehicleID vehicle_id)
+/* static */ SQInteger ScriptVehicle::GetMaximumOrderDistance(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return 0;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
-	switch (v->type) {
-		case VEH_AIRCRAFT:
-			return ::Aircraft::From(v)->acache.cached_max_range_sqr;
-
-		default:
-			return 0;
-	}
+	if (v->type != VEH_AIRCRAFT) return 0;
+	return ::Aircraft::From(v)->acache.cached_max_range_sqr;
 }
