@@ -111,7 +111,15 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 {
 	if (company == OWNER_DEITY || company == OWNER_TOWN || _game_mode == GM_EDITOR || _generating_world) {
-		return true; // TODO: should there be a proper check?
+		const RoadTypeInfo *rti = GetRoadTypeInfo(roadtype);
+		if (rti->label == 0) return false;
+
+		/*
+		 * Do not allow building hidden road types, except when a town may build it.
+		 * The GS under deity mode, as well as anybody in the editor builds roads that are
+		 * owned by towns. So if a town may build it, it should be buildable by them too.
+		 */
+		return (rti->flags & ROTFB_HIDDEN) == 0 || (rti->flags & ROTFB_TOWN_BUILD) != 0;
 	} else {
 		const Company *c = Company::GetIfValid(company);
 		if (c == nullptr) return false;
