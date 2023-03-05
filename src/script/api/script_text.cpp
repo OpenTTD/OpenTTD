@@ -159,19 +159,25 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 const std::string ScriptText::GetEncodedText()
 {
 	static char buf[1024];
+	static StringIDList seen_ids;
 	int param_count = 0;
-	this->_GetEncodedText(buf, lastof(buf), param_count);
+	seen_ids.clear();
+	this->_GetEncodedText(buf, lastof(buf), param_count, seen_ids);
 	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError(fmt::format("{}: Too many parameters", GetGameStringName(this->string)));
 	return buf;
 }
 
-char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
+char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, StringIDList &seen_ids)
 {
+	const std::string &name = GetGameStringName(this->string);
+
+	if (std::find(seen_ids.begin(), seen_ids.end(), this->string) != seen_ids.end()) throw Script_FatalError(fmt::format("{}: Circular reference detected", name));
+	seen_ids.push_back(this->string);
+
 	p += Utf8Encode(p, SCC_ENCODED);
 	p += seprintf(p, lastofp, "%X", this->string);
 
 	const StringParams &params = GetGameStringParams(this->string);
-	const std::string &name = GetGameStringName(this->string);
 	int cur_idx = 0;
 
 	for (const StringParam &cur_param : params) {
@@ -187,7 +193,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 				if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, cur_idx));
 				int count = 1; // 1 because the string id is included in consumed parameters
 				p += seprintf(p, lastofp, ":");
-				p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count);
+				p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count, seen_ids);
 				if (count != cur_param.consumes) throw Script_FatalError(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, cur_idx, count - 1, cur_param.consumes - 1));
 				break;
 			}
@@ -202,6 +208,8 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 
 		param_count += cur_param.consumes;
 	}
+
+	seen_ids.pop_back();
 
 	return p;
 }
