@@ -757,6 +757,30 @@ static const Units _units_height[] = {
 	{ {   1,  0}, STR_UNITS_HEIGHT_SI,       0 },
 };
 
+/** Unit conversions for time in calendar days or real-time seconds */
+static const Units _units_time_days_or_seconds[] = {
+	{ {1, 0}, STR_UNITS_DAYS,    0 },
+	{ {2, 0}, STR_UNITS_SECONDS, 0 },
+};
+
+/** Unit conversions for time in calendar months or real-time minutes */
+static const Units _units_time_months_or_minutes[] = {
+	{ {1, 0}, STR_UNITS_MONTHS,  0 },
+	{ {1, 0}, STR_UNITS_MINUTES, 0 },
+};
+
+/** Unit conversions for time in calendar years or economic periods */
+static const Units _units_time_years_or_periods[] = {
+	{ {1, 0}, STR_UNITS_YEARS,  0 },
+	{ {1, 0}, STR_UNITS_PERIODS, 0 },
+};
+
+/** Unit conversions for time in calendar years or real-time minutes */
+static const Units _units_time_years_or_minutes[] = {
+	{ {1,  0}, STR_UNITS_YEARS,  0 },
+	{ {12, 0}, STR_UNITS_MINUTES, 0 },
+};
+
 /**
  * Convert the given (internal) speed to the display speed.
  * @param speed the speed to convert
@@ -1317,6 +1341,43 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				int64 args_array[1] = {_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args->GetInt64(SCC_WEIGHT_LONG))};
 				StringParameters tmp_params(args_array);
 				buff = FormatString(buff, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), &tmp_params, last);
+				break;
+			}
+
+			case SCC_UNITS_DAYS_OR_SECONDS: { // {UNITS_DAYS_OR_SECONDS}
+				uint8 realtime = (_game_mode == GM_MENU ? _settings_newgame.economy.use_realtime_units : _settings_game.economy.use_realtime_units);
+				int64 args_array[1] = {_units_time_days_or_seconds[realtime].c.ToDisplay(args->GetInt64())};
+				StringParameters tmp_params(args_array);
+				buff = FormatString(buff, GetStringPtr(_units_time_days_or_seconds[realtime].s), &tmp_params, last);
+				break;
+			}
+
+			case SCC_UNITS_MONTHS_OR_MINUTES: { // {UNITS_MONTHS_OR_MINUTES}
+				uint8 realtime = (_game_mode == GM_MENU ? _settings_newgame.economy.use_realtime_units : _settings_game.economy.use_realtime_units);
+				int64 args_array[1] = {_units_time_months_or_minutes[realtime].c.ToDisplay(args->GetInt64())};
+				StringParameters tmp_params(args_array);
+				buff = FormatString(buff, GetStringPtr(_units_time_months_or_minutes[realtime].s), &tmp_params, last);
+				break;
+			}
+
+			case SCC_UNITS_YEARS_OR_PERIODS: { // {UNITS_YEARS_OR_PERIODS}
+				uint8 realtime = (_game_mode == GM_MENU ? _settings_newgame.economy.use_realtime_units : _settings_game.economy.use_realtime_units);
+				int64 args_array[1] = {_units_time_years_or_periods[realtime].c.ToDisplay(args->GetInt64())};
+				StringParameters tmp_params(args_array);
+				buff = FormatString(buff, GetStringPtr(_units_time_years_or_periods[realtime].s), &tmp_params, last);
+				break;
+			}
+
+			case SCC_UNITS_YEARS_OR_MINUTES: { // {UNITS_YEARS_OR_MINUTES}
+				uint8 realtime = (_game_mode == GM_MENU ? _settings_newgame.economy.use_realtime_units : _settings_game.economy.use_realtime_units);
+				int64 args_array[1] = {_units_time_years_or_minutes[realtime].c.ToDisplay(args->GetInt64())};
+				StringParameters tmp_params(args_array);
+				buff = FormatString(buff, GetStringPtr(_units_time_years_or_minutes[realtime].s), &tmp_params, last);
+				break;
+			}
+
+			case SCC_REAL_TIME_SETTING_LIST: { // {RTS}
+				str = ParseStringChoice(str, (uint8)(_game_mode == GM_MENU ? _settings_newgame.economy.use_realtime_units : _settings_game.economy.use_realtime_units), &buff, last);
 				break;
 			}
 

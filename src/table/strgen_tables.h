@@ -30,6 +30,7 @@ struct CmdStruct {
 };
 
 extern void EmitSingleChar(Buffer *buffer, char *buf, int value);
+extern void EmitRTS(Buffer* buffer, char* buf, int value);
 extern void EmitPlural(Buffer *buffer, char *buf, int value);
 extern void EmitGender(Buffer *buffer, char *buf, int value);
 
@@ -86,6 +87,13 @@ static const CmdStruct _cmd_structs[] = {
 	{"FORCE",             EmitSingleChar, SCC_FORCE,              1,  0, C_NONE},
 	{"VELOCITY",          EmitSingleChar, SCC_VELOCITY,           1,  0, C_NONE},
 	{"HEIGHT",            EmitSingleChar, SCC_HEIGHT,             1,  0, C_NONE},
+
+	{"UNITS_DAYS_OR_SECONDS",   EmitSingleChar, SCC_UNITS_DAYS_OR_SECONDS,   1,  0, C_NONE},
+	{"UNITS_MONTHS_OR_MINUTES", EmitSingleChar, SCC_UNITS_MONTHS_OR_MINUTES, 1,  0, C_NONE},
+	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, C_NONE},
+	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, C_NONE},
+
+	{"RTS",                     EmitRTS,  0,                      0, -1, C_DONTCOUNT}, // Real-time setting string selection, e.g. "{RTS month minute}"
 
 	{"P",                 EmitPlural,     0,                      0, -1, C_DONTCOUNT}, // plural specifier
 	{"G",                 EmitGender,     0,                      0, -1, C_DONTCOUNT}, // gender specifier

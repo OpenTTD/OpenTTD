@@ -424,6 +424,33 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 	EmitWordList(buffer, words, nw);
 }
 
+/**
+ * Handle the selection of time units based on the real-time setting.
+ * This uses the string control character {RTS [value if not real-time] [value if real-time]}, e.g. {RTS month minute}.
+ * @param buffer The output buffer
+ * @param buf    The input buffer
+ * @param value  Unused
+ */
+void EmitRTS(Buffer* buffer, char* buf, int value)
+{
+	/* The correct number of words is 2, but we'll check for more in case of typos. */
+	const char *words[3];
+
+	/* Parse each string. */
+	uint8 nw = 0;
+	for (nw; nw < 3; nw++) {
+		words[nw] = ParseWord(&buf);
+		if (words[nw] == nullptr) break;
+	}
+
+	/* Warn about the wrong number of parameters. */
+	if (nw != 2) {
+		strgen_fatal("%s: Invalid number of RTS options. Expecting %d, found %d.", _cur_ident, 2, nw);
+	}
+
+	buffer->AppendUtf8(SCC_REAL_TIME_SETTING_LIST);
+	EmitWordList(buffer, words, 2);
+}
 
 void EmitGender(Buffer *buffer, char *buf, int value)
 {
