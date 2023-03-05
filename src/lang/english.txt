@@ -255,9 +255,16 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+# Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}day{P "" s}
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}second{P "" s}
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
+
+STR_UNITS_MONTHS                                                :{NUM}{NBSP}month{P "" s}
+STR_UNITS_MINUTES                                               :{NUM}{NBSP}minute{P "" s}
+
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}year{P "" s}
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
