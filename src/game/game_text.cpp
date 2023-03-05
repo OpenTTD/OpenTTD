@@ -355,6 +355,20 @@ const StringParams &GetGameStringParams(uint id)
 }
 
 /**
+ * Get the name of a particular game string.
+ * @param id The ID of the game string.
+ * @return The name of the string.
+ */
+const std::string &GetGameStringName(uint id)
+{
+	/* The name for STR_UNDEFINED. */
+	static const std::string undefined = "STR_UNDEFINED";
+
+	if (id >= _current_data->string_names.size()) return undefined;
+	return _current_data->string_names[id];
+}
+
+/**
  * Register the current translation to the Squirrel engine.
  * @param engine The engine to update/
  */
