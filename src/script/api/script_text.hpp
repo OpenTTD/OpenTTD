@@ -129,6 +129,7 @@ public:
 
 private:
 	using ScriptTextRef = ScriptObjectRef<ScriptText>;
+	using StringIDList = std::vector<StringID>;
 
 	StringID string;
 	std::variant<SQInteger, std::string, ScriptTextRef> param[SCRIPT_TEXT_MAX_PARAMETERS];
@@ -140,9 +141,10 @@ private:
 	 * @param p The current position in the buffer.
 	 * @param lastofp The last position valid in the buffer.
 	 * @param param_count The number of parameters that are in the string.
+	 * @param seen_ids The list of seen StringID.
 	 * @return The new current position in the buffer.
 	 */
-	char *_GetEncodedText(char *p, char *lastofp, int &param_count);
+	char *_GetEncodedText(char *p, char *lastofp, int &param_count, StringIDList &seen_ids);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.
