@@ -2359,6 +2359,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova empresa)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Cria uma nova empresa e se une a ela
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Esse é você
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Esse é o hospedeiro do jogo
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} - {NUM}/{NUM} empres{P a as}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}O número de clientes atualmente conectados, número de empresas e número máximo de empresas permitido pelo administrador do servidor
 
 # Matches ConnectionType
 ###length 5
@@ -5085,6 +5087,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... muit
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aeronave não tem alcance o bastante
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Não há estação ferroviária
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Não há estação de ônibus
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Não há estação de caminhões
+STR_ERROR_NO_DOCK                                               :{WHITE}Não há doca
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Não há aeroporto/heliporto
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Não há paradas com um tipo de estrada compatível
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Não há paradas com um tipo de bonde compatível
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não há paradas adequadas para veículos rodoviários articulados.{}Os veículos rodoviários articulados exigem uma parada drive-through, não uma parada de baia
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avião não pode pousar neste heliporto
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero não pode pousar neste aeroporto
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Não há ponto de referência ferroviário
+STR_ERROR_NO_BUOY                                               :{WHITE}Não há boia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...

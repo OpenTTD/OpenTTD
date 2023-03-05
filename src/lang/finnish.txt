@@ -5086,6 +5086,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liia
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... ilma-aluksen toimintasäde ei riitä
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Tämä lentokone ei voi laskeutua tälle helikopterikentälle
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Tämä helikopteri ei voi laskeutua tälle lentokentälle
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.

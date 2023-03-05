@@ -908,7 +908,7 @@ STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Лес
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Ж/д станция
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Грузовой терминал
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Автобусная станция
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Автобусная остановка
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Аэропорт/Вертодром
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Пристань
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Бездорожье
@@ -2921,7 +2921,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выбо
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Направление остановки
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберите направление автобусной остановки
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберите направление остановки
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориентация терминала
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберите направление грузового терминала
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Направление пассажирской трамвайной остановки
@@ -5273,6 +5273,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... сл
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... дальность полёта воздушного судна недостаточна
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Железнодорожные станции отсутствуют
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Автобусные остановки отсутствуют
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Грузовые терминалы отсутствуют
+STR_ERROR_NO_DOCK                                               :{WHITE}Пристани отсутствуют
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Аэропорты и вертолётные площадки отсутствуют
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Отсутствуют остановки с подходящим типом дороги
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Отсутствуют остановки с подходящим типом трамвайных путей
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Отсутствуют остановки, способные обслуживать сочленённые транспортные средства.{}Для такого транспорта требуются сквозные остановки; оконечные не подходят.
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Этот самолёт не может приземлиться на вертолётной площадке
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Этот вертолёт не может приземлиться в данном аэропорту
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Маршрутные точки отсутствуют
+STR_ERROR_NO_BUOY                                               :{WHITE}Буи отсутствуют
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не удалось составить график движения для этого транспорта...

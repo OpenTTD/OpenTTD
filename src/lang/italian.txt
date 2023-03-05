@@ -5127,6 +5127,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... trop
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'aeromobile non ha sufficiente autonomia
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Non c'è una stazione ferroviaria
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Non c'è una stazione degli autobus
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Non c'è una stazione per i camion
+STR_ERROR_NO_DOCK                                               :{WHITE}Non c'è un molo
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Non c'è un aeroporto/eliporto
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Non ci sono fermate con un tipo di strada compatibile
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Non ci sono fermate con un tipo di tram compatibile
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Non esistono fermate adatte agli autoarticolati.{}Gli autoarticolati necessitano di una fermata passante e non di una fermata a baia.
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}L'aereo non può atterrare in questo eliporto
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}L'elicottero non può atterrare in questo aeroporto
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Non c'è un waypoint ferroviario
+STR_ERROR_NO_BUOY                                               :{WHITE}Non c'è nessuna boa
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossibile dare un orario al veicolo...
