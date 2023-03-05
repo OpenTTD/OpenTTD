@@ -16,6 +16,7 @@
 #include "slope_func.h"
 
 using SetTrackBitIterator = SetBitIterator<Track, TrackBits>;
+using SetTrackdirBitIterator = SetBitIterator<Trackdir, TrackdirBits>;
 
 /**
  * Checks if a Track is valid.

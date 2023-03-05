@@ -61,6 +61,7 @@
 #include "../timer/timer.h"
 #include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_tick.h"
+#include "../pathfinder/water_regions.h"
 
 #include "saveload_internal.h"
 
@@ -3295,6 +3296,8 @@ bool AfterLoadGame()
 			c->settings = _settings_client.company;
 		}
 	}
+
+	if (IsSavegameVersionBefore(SLV_WATER_REGIONS)) InitializeWaterRegions();
 
 	return true;
 }

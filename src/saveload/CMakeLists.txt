@@ -44,4 +44,5 @@ add_files(
     town_sl.cpp
     vehicle_sl.cpp
     waypoint_sl.cpp
+    water_regions_sl.cpp
 )

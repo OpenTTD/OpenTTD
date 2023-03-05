@@ -366,6 +366,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TIMETABLE_START_TICKS,              ///< 321  PR#11468 Convert timetable start from a date to ticks.
 	SLV_TIMETABLE_START_TICKS_FIX,          ///< 322  PR#11557 Fix for missing convert timetable start from a date to ticks.
 	SLV_TIMETABLE_TICKS_TYPE,               ///< 323  PR#11435 Convert timetable current order time to ticks.
+	SLV_WATER_REGIONS,                      ///< 324  PR#10543 Water Regions for ship pathfinder.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

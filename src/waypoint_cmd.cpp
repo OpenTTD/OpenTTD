@@ -15,6 +15,7 @@
 #include "town.h"
 #include "waypoint_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
+#include "pathfinder/water_regions.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
@@ -346,6 +347,7 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 		if (wp->town == nullptr) MakeDefaultName(wp);
 
 		MakeBuoy(tile, wp->index, GetWaterClass(tile));
+		InvalidateWaterRegion(tile);
 		CheckForDockingTile(tile);
 		MarkTileDirtyByTile(tile);
 

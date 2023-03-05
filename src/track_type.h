@@ -86,6 +86,9 @@ enum Trackdir : byte {
 	INVALID_TRACKDIR  = 0xFF,       ///< Flag for an invalid trackdir
 };
 
+/** Allow incrementing of Trackdir variables */
+DECLARE_POSTFIX_INCREMENT(Trackdir)
+
 /**
  * Enumeration of bitmasks for the TrackDirs
  *
