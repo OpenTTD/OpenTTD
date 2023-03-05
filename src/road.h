@@ -40,14 +40,14 @@ enum RoadTypeFlags {
 	ROTF_NO_LEVEL_CROSSING,                                ///< Bit number for disabling level crossing
 	ROTF_NO_HOUSES,                                        ///< Bit number for setting this roadtype as not house friendly
 	ROTF_HIDDEN,                                           ///< Bit number for hidden from construction.
-	ROTF_TOWN_BUILD,                                       ///< Bit number for allowing towns to build this roadtype.
+	ROTF_TOWN_BUILD,                                       ///< Bit number for allowing towns to build this roadtype. Does not override ROTF_HIDDEN.
 
 	ROTFB_NONE = 0,                                        ///< All flags cleared.
 	ROTFB_CATENARY          = 1 << ROTF_CATENARY,          ///< Value for drawing a catenary.
 	ROTFB_NO_LEVEL_CROSSING = 1 << ROTF_NO_LEVEL_CROSSING, ///< Value for disabling a level crossing.
 	ROTFB_NO_HOUSES         = 1 << ROTF_NO_HOUSES,         ///< Value for for setting this roadtype as not house friendly.
 	ROTFB_HIDDEN            = 1 << ROTF_HIDDEN,            ///< Value for hidden from construction.
-	ROTFB_TOWN_BUILD        = 1 << ROTF_TOWN_BUILD,        ///< Value for allowing towns to build this roadtype.
+	ROTFB_TOWN_BUILD        = 1 << ROTF_TOWN_BUILD,        ///< Value for allowing towns to build this roadtype. Does not override ROTFB_HIDDEN.
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTypeFlags)
 
