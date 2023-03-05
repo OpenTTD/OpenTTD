@@ -161,7 +161,7 @@ const std::string ScriptText::GetEncodedText()
 	static char buf[1024];
 	int param_count = 0;
 	this->_GetEncodedText(buf, lastof(buf), param_count);
-	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError("A string had too many parameters");
+	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError(fmt::format("{}: Too many parameters", GetGameStringName(this->string)));
 	return buf;
 }
 
@@ -171,30 +171,31 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 	p += seprintf(p, lastofp, "%X", this->string);
 
 	const StringParams &params = GetGameStringParams(this->string);
+	const std::string &name = GetGameStringName(this->string);
 	int cur_idx = 0;
 
 	for (const StringParam &cur_param : params) {
-		if (cur_idx >= this->paramc) throw Script_FatalError("Not enough string parameters");
+		if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 
 		switch (cur_param.type) {
 			case StringParam::RAW_STRING:
-				if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError("Wrong string parameter type");
+				if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, cur_idx));
 				p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]).c_str());
 				break;
 
 			case StringParam::STRING: {
-				if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError("Wrong string parameter type");
+				if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, cur_idx));
 				int count = 1; // 1 because the string id is included in consumed parameters
 				p += seprintf(p, lastofp, ":");
 				p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count);
-				if (count != cur_param.consumes) throw Script_FatalError("Substring doesn't consume the expected amount of parameters.");
+				if (count != cur_param.consumes) throw Script_FatalError(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, cur_idx, count - 1, cur_param.consumes - 1));
 				break;
 			}
 
 			default:
-				if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError("Not enough string parameters");
+				if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 				for (int i = 0; i < cur_param.consumes; i++) {
-					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError("Wrong string parameter type");
+					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, cur_idx));
 					p += seprintf(p, lastofp,":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
 				}
 		}

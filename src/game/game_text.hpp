@@ -29,6 +29,7 @@ using StringParamsList = std::vector<StringParams>;
 
 const char *GetGameStringPtr(uint id);
 const StringParams &GetGameStringParams(uint id);
+const std::string &GetGameStringName(uint id);
 void RegisterGameTranslation(class Squirrel *engine);
 void ReconsiderGameScriptLanguage();
 
