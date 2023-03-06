@@ -1363,6 +1363,90 @@ static void CheckCaches()
 		}
 		i++;
 	}
+
+	/* Check group vehicle_list */
+	for (const Company *c : Company::Iterate()) {
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			for (const Vehicle *v : Vehicle::Iterate()) {
+				if (v->type == type && v->owner == c->index && v->IsPrimaryVehicle()) {
+					if (std::find(c->group_all[type].vehicle_list.begin(), c->group_all[type].vehicle_list.end(), v) == c->group_all[type].vehicle_list.end()) {
+						Debug(desync, 2, "group_all vehicle list mismatch, vehicle_id {} missing in group_all of company {} of type {}", v->index, c->index, type);
+					}
+					if (v->group_id == DEFAULT_GROUP) {
+						if (std::find(c->group_default[type].vehicle_list.begin(), c->group_default[type].vehicle_list.end(), v) == c->group_default[type].vehicle_list.end()) {
+							Debug(desync, 2, "group_default vehicle list mismatch, vehicle_id {} missing in group_default of company {} of type {}", v->index, c->index, type);
+						}
+					} else if (std::find(Group::Get(v->group_id)->statistics.vehicle_list.begin(), Group::Get(v->group_id)->statistics.vehicle_list.end(), v) == Group::Get(v->group_id)->statistics.vehicle_list.end()) {
+						Debug(desync, 2, "group vehicle list mismatch: vehicle_id {} missing in group {}", v->index, v->group_id);
+					}
+				}
+			}
+			for (const Vehicle *v : c->group_all[type].vehicle_list) {
+				if (v == nullptr) {
+					Debug(desync, 2, "vehicle in group_all vehicle list mismatch: group_all of company {} of type {} has vehicle_id {} which does not exist", c->index, type, v->index);
+					continue;
+				}
+				for (const Company *c2 : Company::Iterate()) {
+					for (VehicleType type2 = VEH_BEGIN; type2 < VEH_COMPANY_END; type2++) {
+						if (c2->index == c->index && type2 == type) continue;
+						if (std::find(c2->group_all[type2].vehicle_list.begin(), c2->group_all[type2].vehicle_list.end(), v) != c2->group_all[type2].vehicle_list.end()) {
+							Debug(desync, 2, "vehicle in group_all vehicle list mismatch: group_all of company {} of type {} has vehicle_id {}, but vehicle is also in group_all of company {} of type {}", c->index, type, v->index, c2->index, type2);
+						}
+					}
+				}
+			}
+			for (const Vehicle *v : c->group_default[type].vehicle_list) {
+				if (v == nullptr) {
+					Debug(desync, 2, "vehicle in group_default vehicle list mismatch: group_default of type {} has vehicle_id {} which does not exist", type, v->index);
+					continue;
+				}
+				for (const Company *c2 : Company::Iterate()) {
+					for (VehicleType type2 = VEH_BEGIN; type2 < VEH_COMPANY_END; type2++) {
+						if (c2->index == c->index && type2 == type) continue;
+						if (std::find(c2->group_default[type2].vehicle_list.begin(), c2->group_default[type2].vehicle_list.end(), v) != c2->group_default[type2].vehicle_list.end()) {
+							Debug(desync, 2, "vehicle in group_default vehicle list mismatch: group_default of company {} of type {} has vehicle_id {}, but vehicle is also in group_default of company {} of type {}", c->index, type, v->index, c2->index, type2);
+						}
+					}
+				}
+				for (const Group *g : Group::Iterate()) {
+					if (std::find(g->statistics.vehicle_list.begin(), g->statistics.vehicle_list.end(), v) != g->statistics.vehicle_list.end()) {
+						Debug(desync, 2, "vehicle in group_default vehicle list mismatch: group_default of company {} of type {} has vehicle_id {}, but vehicle is also in group {}", c->index, type, v->index, g->index);
+					}
+				}
+			}
+		}
+	}
+	for (const Group *g : Group::Iterate()) {
+		for (const Vehicle *v : g->statistics.vehicle_list) {
+			if (v == nullptr) {
+				Debug(desync, 2, "vehicle in group vehicle list mismatch: group {} has vehicle_id {} which does not exist", g->index, v->index);
+				continue;
+			}
+			if (v->group_id != g->index) {
+				Debug(desync, 2, "vehicle in group vehicle list mismatch: group {} has vehicle_id {}, but vehicle has group {}", g->index, v->index, v->group_id);
+			}
+			for (const Group *g2 : Group::Iterate()) {
+				if (g2->index == g->index) continue;
+				if (std::find(g2->statistics.vehicle_list.begin(), g2->statistics.vehicle_list.end(), v) != g2->statistics.vehicle_list.end()) {
+					Debug(desync, 2, "vehicle in group vehicle list mismatch: group {} has vehicle_id {}, but vehicle is also in group {}", g->index, v->index, g2->index);
+				}
+			}
+			for (const Company *c : Company::Iterate()) {
+				for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+					if (std::find(c->group_all[type].vehicle_list.begin(), c->group_all[type].vehicle_list.end(), v) != c->group_all[type].vehicle_list.end()) {
+						if (v->type != type || v->owner != c->index) {
+							Debug(desync, 2, "vehicle in group vehicle list mismatch: group {} has vehicle_id {} of company {} of type {}, but vehicle is also in group_all of company {} of type {}", g->index, v->index, v->owner, v->type, c->index, type);
+						}
+					} else if (v->type == type && v->owner == c->index) {
+						Debug(desync, 2, "vehicle in group vehicle list mismatch: group {} has vehicle_id {} of company {} of type {}, but vehicle is missing in group_all of company {} of type {}", g->index, v->index, v->owner, v->type, c->index, type);
+					}
+					if (std::find(c->group_default[type].vehicle_list.begin(), c->group_default[type].vehicle_list.end(), v) != c->group_default[type].vehicle_list.end()) {
+						Debug(desync, 2, "vehicle in group vehicle list mismatch: group {} has vehicle_id {} of company {} of type {}, but vehicle is also in group_default of company {} of type {}", g->index, v->index, v->owner, v->type, c->index, type);
+					}
+				}
+			}
+		}
+	}
 }
 
 /**

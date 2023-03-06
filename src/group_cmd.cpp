@@ -50,6 +50,8 @@ void GroupStatistics::Clear()
 	/* This is also called when NewGRF change. So the number of engines might have changed. Reallocate. */
 	free(this->num_engines);
 	this->num_engines = CallocT<uint16_t>(Engine::GetPoolSize());
+
+	this->vehicle_list.clear();
 }
 
 /**
@@ -146,6 +148,16 @@ void GroupStatistics::Clear()
 		stats_all.profit_last_year_min_age += v->GetDisplayProfitLastYear() * delta;
 		stats.num_vehicle_min_age += delta;
 		stats.profit_last_year_min_age += v->GetDisplayProfitLastYear() * delta;
+	}
+
+	auto it_all = std::find(stats_all.vehicle_list.begin(), stats_all.vehicle_list.end(), v);
+	auto it = std::find(stats.vehicle_list.begin(), stats.vehicle_list.end(), v);
+	if (delta == 1) {
+		if (it_all == stats_all.vehicle_list.end()) stats_all.vehicle_list.push_back(v);
+		if (it == stats.vehicle_list.end()) stats.vehicle_list.push_back(v);
+	} else {
+		if (it_all != stats_all.vehicle_list.end()) stats_all.vehicle_list.erase(it_all);
+		if (it != stats.vehicle_list.end()) stats.vehicle_list.erase(it);
 	}
 }
 

@@ -16,6 +16,7 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "livery.h"
+#include "vehiclelist.h"
 
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
 extern GroupPool _group_pool; ///< Pool of groups.
@@ -29,6 +30,7 @@ struct GroupStatistics {
 	uint16_t num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
 	bool autoreplace_defined;               ///< Are any autoreplace rules set?
 	bool autoreplace_finished;              ///< Have all autoreplacement finished?
+	VehicleList vehicle_list;               ///< List of vehicles
 
 	GroupStatistics();
 	~GroupStatistics();
