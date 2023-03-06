@@ -5087,6 +5087,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... muit
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avião não tem alcance suficiente
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Não existe estação ferroviária
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Não existe paragem de autocarro
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Não existe estação de camiões
+STR_ERROR_NO_DOCK                                               :{WHITE}Não existe doca
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Não existe aeroporto/heliporto
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Não existem paragens com tipo de estrada compatível
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Não existem paragens compatíveis com o tipo de elétrico
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Não existem paragens adequadas para veículos rodoviários articulados.{}Os veículos rodoviários articulados requerem paragens de rua, e não paragens em becos/terminais
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avião não pode aterrar neste heliporto
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero não pode aterrar neste aeroporto
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Não existe ponto de passagem ferroviário
+STR_ERROR_NO_BUOY                                               :{WHITE}Não existe bóia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...

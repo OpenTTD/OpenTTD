@@ -2458,7 +2458,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Wyjście
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową grę. Ctrl+klik pomija konfigurowanie mapy
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Wczytaj zapisaną grę
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Rozpocznij nowa grę używając mapy wysokości jako krajobrazu
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Rozpocznij nowa grę, używając mapy wysokości jako krajobrazu
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Rozpocznij nową grę, używając przygotowanego scenariusza
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Stwórz własny świat/scenariusz
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Rozpocznij grę wieloosobową
@@ -2478,7 +2478,7 @@ STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Wyświet
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z „OpenTTD”
 
 STR_INTRO_BASESET                                               :{BLACK}Aktualnie używany podstawowy zestaw graficzny nie posiada {NUM} wymagan{P ego ych ych} sprite{P 'u 'ów 'ów}. Proszę poszukać aktualizacji dla zestawu podstawowego.
-STR_INTRO_TRANSLATION                                           :{BLACK}Tej wersji językowej brakuje jeszcze {NUM} wpis{P "" y ów}. Możesz pomóc ulepszyć nam OpenTTD rejestrując się jako tłumacz. Szczegóły znajdziesz w pliku readme.txt.
+STR_INTRO_TRANSLATION                                           :{BLACK}Tej wersji językowej brakuje jeszcze {NUM} wpis{P "" y ów}. Możesz pomóc ulepszyć nam OpenTTD, rejestrując się jako tłumacz. Szczegóły znajdziesz w pliku „readme”.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Wyjście
@@ -5027,7 +5027,7 @@ STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
 ###length 3
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} - plik readme.txt
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} - plik „readme”
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} - lista zmian
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} - licencja
 
@@ -5453,7 +5453,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Samolot 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Brak miejsca na polecenia
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Zbyt wiele poleceń
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nie można wstawić nowego polecenia...
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nie można dodać nowego polecenia...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nie można usunąć tego polecenia...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nie można zmodyfikować tego polecenia...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nie można przenieść tego polecenia...
@@ -5472,6 +5472,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zbyt
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... samolot nie ma wystarczającego zasięgu
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Brak stacji kolejowej
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Brak przystanku autobusowego
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Brak stacji dla ciężarówek
+STR_ERROR_NO_DOCK                                               :{WHITE}Brak doku
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Brak lotniska/lądowiska
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Brak przystanków na odpowiednim typie drogi
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Brak odpowiednich przystanków dla tego typu tramwajów
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Brak przystanków przeznaczonych dla pojazdów przegubowych.{}Pojazdy przegubowe wymagają przystanku przelotowego, a nie zatokowego
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Ten samolot nie może wylądować na tym lądowisku
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Ten helikopter nie może wylądować na tym lotnisku
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Brak posterunku kolejowego
+STR_ERROR_NO_BUOY                                               :{WHITE}Brak boi
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...

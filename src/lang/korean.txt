@@ -2359,6 +2359,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(새 회사)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}새 회사를 만듭니다
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}당신입니다
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}이 게임을 연 사람입니다
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}접속자 {NUM}명 / 회사 {NUM}/{NUM}개
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}현재 접속 중인 클라이언트의 수 및 회사 수와 서버 관리자가 허용한 최대 회사 개수입니다
 
 # Matches ConnectionType
 ###length 5
@@ -5085,6 +5087,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 이�
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 항공기의 항속거리가 충분하지 않습니다.
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}철도 역이 없습니다
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}버스 정류장이 없습니다
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}트럭 적하장이 없습니다
+STR_ERROR_NO_DOCK                                               :{WHITE}항구가 없습니다
+STR_ERROR_NO_AIRPORT                                            :{WHITE}공항/헬리포트가 없습니다
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}이 도로 종류와 호환 가능한 정류장이 없습니다
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}이 전차 선로 종류와 호환 가능한 정류장이 없습니다
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}굴절형 자동차가 이용할 수 있는 정류장이 없습니다.{}굴절형 자동차는 터미널식 정류장이 아니라 통과식 정류장을 사용해야 합니다
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}이 항공기는 이 공항에 착륙할 수 없습니다
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}이 헬리콥터는 이 공항에 착륙할 수 없습니다
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}철도 경유지가 없습니다
+STR_ERROR_NO_BUOY                                               :{WHITE}부표가 없습니다
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}차량의 시간표를 정할 수 없습니다...
