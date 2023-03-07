@@ -5084,6 +5084,9 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prea
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... avionul nu are o rază de acțiune suficientă
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nu există opriri care să fie potrivite pentru vehiculele rutiere articulate.{}Vehiculele rutiere articulate necesită o oprire de drum, nu o oprire într-o rampă.
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Nu există niciun punct intermediar feroviar
+STR_ERROR_NO_BUOY                                               :{WHITE}Nu există geamanduri
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nu pot programa vehiculul...

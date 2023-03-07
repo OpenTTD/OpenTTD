@@ -2358,6 +2358,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(New company)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Create a new company and join it
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}This is you
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}This is the host of the game
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} - {NUM}/{NUM} compan{P y ies}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}The number of currently connected clients, number of companies and maximum number of companies allowed by the server administrator
 
 # Matches ConnectionType
 ###length 5
@@ -5084,6 +5086,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... too 
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aircraft has not enough range
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}There is no railway station
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}There is no bus station
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}There is no lorry station
+STR_ERROR_NO_DOCK                                               :{WHITE}There is no dock
+STR_ERROR_NO_AIRPORT                                            :{WHITE}There is no airport/heliport
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}There are no stops with a compatible road type
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}There are no stops with a compatible tram type
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}There are no stops which are suitable for articulated road vehicles.{}Articulated road vehicles require a drive-through stop, not a bay stop
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}This plane cannot land at this heliport
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}This helicopter cannot land at this airport
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}There is no railway waypoint
+STR_ERROR_NO_BUOY                                               :{WHITE}There is no buoy
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Can't timetable vehicle...
