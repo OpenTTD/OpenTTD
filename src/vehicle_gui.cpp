@@ -2896,7 +2896,6 @@ public:
 			SPR_SEND_AIRCRAFT_TODEPOT,
 		};
 		const Vehicle *v = Vehicle::Get(window_number);
-		Debug(misc, 0, "{}", v->PrintDetails());
 		this->GetWidget<NWidgetCore>(WID_VV_GOTO_DEPOT)->widget_data = vehicle_view_goto_depot_sprites[v->type];
 
 		/* Sprites for the 'clone vehicle' button indexed by vehicle type. */

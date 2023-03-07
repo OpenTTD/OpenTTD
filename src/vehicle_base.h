@@ -1069,7 +1069,6 @@ public:
 	uint32 GetDisplayMinPowerToWeight() const;
 
 	void CopyWagonsFrom(VehicleID vid);
-	std::string PrintDetails() const;
 };
 
 /**

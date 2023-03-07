@@ -18,7 +18,6 @@
 #include "newgrf_text.h"
 #include "vehicle_func.h"
 #include "string_func.h"
-#include "strings_func.h"
 #include "depot_map.h"
 #include "vehiclelist.h"
 #include "engine_func.h"
@@ -782,28 +781,6 @@ CommandCost CmdStopCopyTrainWagons(DoCommandFlag flags, const VehicleListIdentif
 	return {};
 }
 
-//todo: remove for release
-static std::string GetDescrSingleVehicle(Vehicle *v)
-{
-	if (v == nullptr) return "NULL";
-	std::string engine = GetString(v->GetEngine()->info.string_id);
-	std::string cargo = GetString(CargoSpec::Get(v->cargo_type)->name);
-	CargoSpec *cs = CargoSpec::Get(v->cargo_type);
-
-	const std::string &str = fmt::format("{} [{}/{}, {}/{}/{}]", v->index, engine, v->engine_type, cargo, v->cargo_type, v->cargo_subtype);
-	return str;
-}
-
-//todo: remove for release
-std::string GetDescr(Train *train)
-{
-	std::stringstream train_descr;
-	for (Train *t = train->First(); t != nullptr; t = t->GetNextVehicle()) {
-		train_descr << GetDescrSingleVehicle(t) << " | ";
-	}
-	return train_descr.str();
-}
-
 typedef std::tuple<EngineID, CargoID, byte> VehicleFullCargoType;
 
 /**
@@ -889,32 +866,6 @@ static CommandCost CopyTrainWagons(DoCommandFlag flags, Train *train)
 			wagonsDiffByEngineCargo[{v->engine_type, v->cargo_type}]--;
 			wagonsDiffByEngine[v->engine_type]--;
 		}
-
-		void print()
-		{
-			Debug(misc, 0, "\nStats by engine:");
-			for (auto it = wagonsDiffByEngine.begin(); it != wagonsDiffByEngine.end(); it++) {
-				auto[eng, cnt] = *it;
-				std::string engine_str = GetString(Engine::Get(eng)->info.string_id);
-				Debug(misc, 0, "{}({}) : {}", engine_str, eng, cnt);
-			}
-			Debug(misc, 0, "\nStats by engine/cargo:");
-			for (auto it = wagonsDiffByEngineCargo.begin(); it != wagonsDiffByEngineCargo.end(); it++) {
-				auto[key, cnt] = *it;
-				auto[eng, cargo] = key;
-				std::string engine_str = GetString(Engine::Get(eng)->info.string_id);
-				std::string cargo_str = GetString(CargoSpec::Get(cargo)->name);
-				Debug(misc, 0, "{}({})/{}({}) : {}", engine_str, eng, cargo_str, cargo, cnt);
-			}
-			Debug(misc, 0, "\nStats by engine/cargo/subtype:");
-			for (auto it = wagonsDiffByIdentity.begin(); it != wagonsDiffByIdentity.end(); it++) {
-				auto[key, cnt] = *it;
-				auto[eng, cargo, subtype] = key;
-				std::string engine_str = GetString(Engine::Get(eng)->info.string_id);
-				std::string cargo_str = GetString(CargoSpec::Get(cargo)->name);
-				Debug(misc, 0, "{}({})/{}({})/{} : {}", engine_str, eng, cargo_str, cargo, subtype, cnt);
-			}
-		}
 	};
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
 	Train *dst = train;
@@ -926,8 +877,6 @@ static CommandCost CopyTrainWagons(DoCommandFlag flags, Train *train)
 		if (src == nullptr || !src->IsEngine()) {
 			return CMD_ERROR;
 		}
-		Debug(misc, 0, "src: {}", GetDescr(src));
-		Debug(misc, 0, "dst: {}", GetDescr(dst));
 		VehicleStatistics stats;
 		int32 build_plan_len = 0;
 		for (Train *v = dst; v != nullptr; v = v->GetNextVehicle()) {
@@ -942,7 +891,6 @@ static CommandCost CopyTrainWagons(DoCommandFlag flags, Train *train)
 				stats.remove(v);
 			}
 		}
-		stats.print();
 
 		std::vector<Train *> build_plan;
 		build_plan.reserve(build_plan_len);

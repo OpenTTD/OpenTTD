@@ -57,10 +57,7 @@
 #include "vehicle_cmd.h"
 
 #include "table/strings.h"
-#include <string>
-#include <iostream>
-#include <sstream>
-#include "3rdparty/fmt/format.h"
+
 #include "safeguards.h"
 
 /* Number of bits in the hash to use from each vehicle coord */
@@ -3073,14 +3070,4 @@ bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)
 void Vehicle::CopyWagonsFrom(VehicleID src)
 {
 	this->copy_wagons_from = src;
-}
-
-std::string Vehicle::PrintDetails() const
-{
-	std::stringstream ss;
-	ss << "Vehicle";
-	for (Vehicle *v = this->First(); v!= nullptr; v=v->Next() ){
-		ss << fmt::format(" [i{}/e{}/c{}/cs{}]", v->index, v->engine_type, v->cargo_type, v->cargo_subtype);
-	}
-	return ss.str();
 }
