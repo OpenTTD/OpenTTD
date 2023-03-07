@@ -178,6 +178,8 @@ void MusicSystem::ChangeMusicSet(const std::string &set_name)
 	this->ChangePlaylist(this->selected_playlist);
 
 	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS, 0, true);
+	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0, 1, true);
+	InvalidateWindowData(WC_MUSIC_WINDOW, 0, 1, true);
 }
 
 /** Enable shuffle mode and restart playback */
@@ -480,7 +482,12 @@ struct MusicTrackSelectionWindow : public Window {
 			this->SetWidgetLoweredState(WID_MTS_ALL + i, i == _settings_client.music.playlist);
 		}
 		this->SetWidgetDisabledState(WID_MTS_CLEAR, _settings_client.music.playlist <= 3);
-		this->SetDirty();
+
+		if (data == 1) {
+			this->ReInit();
+		} else {
+			this->SetDirty();
+		}
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -764,7 +771,11 @@ struct MusicWindow : public Window {
 
 		UpdateDisabledButtons();
 
-		this->SetDirty();
+		if (data == 1) {
+			this->ReInit();
+		} else {
+			this->SetDirty();
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
