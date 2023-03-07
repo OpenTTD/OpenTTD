@@ -107,12 +107,16 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle()) {
-			for (const Order *order : v->Orders()) {
-				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
-					this->AddItem(v->index);
-					break;
+	for (const Company *c : Company::Iterate()) {
+		if (c->index != ScriptObject::GetCompany() && !ScriptCompanyMode::IsDeity()) continue;
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
+				for (const Order *order : v->Orders()) {
+					if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
+						this->AddItem(v->index);
+						break;
+					}
 				}
 			}
 		}
@@ -156,8 +160,10 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 			return;
 	}
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle() && v->type == type) {
+	for (const Company *c : Company::Iterate()) {
+		if (c->index != ScriptObject::GetCompany() && !ScriptCompanyMode::IsDeity()) continue;
+		const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
 			for (const Order *order : v->Orders()) {
 				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
 					this->AddItem(v->index);
@@ -182,10 +188,9 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 	EnforceCompanyModeValid_Void();
 	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
-			if (v->group_id == group_id) this->AddItem(v->index);
-		}
+	const VehicleList &vehicle_list = ::Group::Get((::GroupID)group_id)->statistics.vehicle_list;
+	for (const Vehicle *v : vehicle_list) {
+		this->AddItem(v->index);
 	}
 }
 
@@ -194,9 +199,8 @@ ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::Ve
 	EnforceCompanyModeValid_Void();
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
-			if (v->type == (::VehicleType)vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
-		}
+	const VehicleList &vehicle_list = Company::Get(ScriptObject::GetCompany())->group_default[(::VehicleType)vehicle_type].vehicle_list;
+	for (const Vehicle *v : vehicle_list) {
+		this->AddItem(v->index);
 	}
 }
