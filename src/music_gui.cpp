@@ -612,9 +612,9 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
 			/* Left panel. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_PLAYLIST_TRACK_INDEX, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(WWT_LABEL, COLOUR_GREY), SetFill(1, 0), SetDataTip(STR_PLAYLIST_TRACK_INDEX, STR_NULL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_LEFT), SetFill(1, 1), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetMinimalSize(0, 2),
 			EndContainer(),
 			/* Middle buttons. */
 			NWidget(NWID_VERTICAL),
@@ -631,9 +631,9 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 			EndContainer(),
 			/* Right panel. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_GREY, WID_MTS_PLAYLIST), SetDataTip(STR_PLAYLIST_PROGRAM, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_RIGHT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
+				NWidget(WWT_LABEL, COLOUR_GREY, WID_MTS_PLAYLIST), SetFill(1, 0), SetDataTip(STR_PLAYLIST_PROGRAM, STR_NULL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_RIGHT), SetFill(1, 1), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
+				NWidget(NWID_SPACER), SetFill(1, 0), SetMinimalSize(0, 2),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
