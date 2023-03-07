@@ -246,8 +246,6 @@ public:
 	 * @return True, if the bank balance was changed.
 	 * @game @pre ScriptCompanyMode::IsDeity().
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @pre delta >= -2**31
-	 * @pre delta <   2**31
 	 * @note You need to create your own news message to inform about costs/gifts that you create using this command.
 	 * @api -ai
 	 */

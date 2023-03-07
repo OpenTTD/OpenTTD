@@ -241,8 +241,6 @@
 {
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, expenses_type < (ExpensesType)::EXPENSES_END);
-	EnforcePrecondition(false, (int64)delta >= INT32_MIN);
-	EnforcePrecondition(false, (int64)delta <= INT32_MAX);
 	EnforcePrecondition(false, tile == INVALID_TILE || ::IsValidTile(tile));
 
 	company = ResolveCompanyID(company);
