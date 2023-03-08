@@ -84,7 +84,7 @@ void SetRandomSeed(uint32_t seed)
 uint32_t DoRandom(int line, const char *file)
 {
 	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::STATUS_INACTIVE))) {
-		Debug(random, 0, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameCalendar::date, TimerGameCalendar::date_fract, _frame_counter, (byte)_current_company, file, line);
+		Debug(random, 0, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _frame_counter, (byte)_current_company, file, line);
 	}
 
 	return _random.Next();

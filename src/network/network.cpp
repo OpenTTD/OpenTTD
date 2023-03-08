@@ -12,7 +12,7 @@
 #include "../strings_func.h"
 #include "../command_func.h"
 #include "../timer/timer_game_tick.h"
-#include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_economy.h"
 #include "network_admin.h"
 #include "network_client.h"
 #include "network_query.h"
@@ -263,7 +263,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 	Utf8Encode(iterator, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
 	std::string message = stream.str() + GetString(strid);
 
-	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameCalendar::date, TimerGameCalendar::date_fract, message);
+	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, message);
 	IConsolePrint(colour, message);
 	NetworkAddChatMessage(colour, _settings_client.gui.network_chat_timeout, message);
 }
@@ -1043,42 +1043,42 @@ void NetworkGameLoop()
 
 	if (_network_server) {
 		/* Log the sync state to check for in-syncedness of replays. */
-		if (TimerGameCalendar::date_fract == 0) {
+		if (TimerGameEconomy::date_fract == 0) {
 			/* We don't want to log multiple times if paused. */
-			static TimerGameCalendar::Date last_log;
-			if (last_log != TimerGameCalendar::date) {
-				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, _random.state[0], _random.state[1]);
-				last_log = TimerGameCalendar::date;
+			static TimerGameEconomy::Date last_log;
+			if (last_log != TimerGameEconomy::date) {
+				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _random.state[0], _random.state[1]);
+				last_log = TimerGameEconomy::date;
 			}
 		}
 
 #ifdef DEBUG_DUMP_COMMANDS
 		/* Loading of the debug commands from -ddesync>=1 */
 		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
-		static TimerGameCalendar::Date next_date(0);
+		static TimerGameEconomy::Date next_date(0);
 		static uint32_t next_date_fract;
 		static CommandPacket *cp = nullptr;
 		static bool check_sync_state = false;
 		static uint32_t sync_state[2];
 		if (f == nullptr && next_date == 0) {
 			Debug(desync, 0, "Cannot open commands.log");
-			next_date = TimerGameCalendar::Date(1);
+			next_date = TimerGameEconomy::Date(1);
 		}
 
 		while (f != nullptr && !feof(f)) {
-			if (TimerGameCalendar::date == next_date && TimerGameCalendar::date_fract == next_date_fract) {
+			if (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)_current_company, cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
 				if (check_sync_state) {
 					if (sync_state[0] == _random.state[0] && sync_state[1] == _random.state[1]) {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", TimerGameCalendar::date, TimerGameCalendar::date_fract);
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", TimerGameEconomy::date, TimerGameEconomy::date_fract);
 					} else {
 						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}",
-									TimerGameCalendar::date, TimerGameCalendar::date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
+									TimerGameEconomy::date, TimerGameEconomy::date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
 						NOT_REACHED();
 					}
 					check_sync_state = false;
@@ -1112,7 +1112,7 @@ void NetworkGameLoop()
 				uint32_t next_date_raw;
 				int ret = sscanf(p, "%x; %x; %x; %x; %x; %255s", &next_date_raw, &next_date_fract, &company, &cmd, &cp->err_msg, buffer);
 				assert(ret == 6);
-				next_date = TimerGameCalendar::Date((int32_t)next_date_raw);
+				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
 				cp->company = (CompanyID)company;
 				cp->cmd = (Commands)cmd;
 
@@ -1129,7 +1129,7 @@ void NetworkGameLoop()
 				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
 				uint32_t next_date_raw;
 				int ret = sscanf(p + 6, "%x; %x", &next_date_raw, &next_date_fract);
-				next_date = TimerGameCalendar::Date((int32_t)next_date_raw);
+				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
 				assert(ret == 2);
 				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
@@ -1140,7 +1140,7 @@ void NetworkGameLoop()
 			} else if (strncmp(p, "sync: ", 6) == 0) {
 				uint32_t next_date_raw;
 				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date_raw, &next_date_fract, &sync_state[0], &sync_state[1]);
-				next_date = TimerGameCalendar::Date((int32_t)next_date_raw);
+				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
 				assert(ret == 4);
 				check_sync_state = true;
 			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||

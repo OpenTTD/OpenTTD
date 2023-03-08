@@ -886,7 +886,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	ci->join_date = TimerGameCalendar::date;
 	ci->client_name = client_name;
 	ci->client_playas = playas;
-	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)ci->client_playas, (int)ci->index);
+	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
@@ -1480,7 +1480,7 @@ void NetworkUpdateClientInfo(ClientID client_id)
 
 	if (ci == nullptr) return;
 
-	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:04x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)ci->client_playas, client_id);
+	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:04x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)ci->client_playas, client_id);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
