@@ -2997,7 +2997,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Plantes de Cact
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estació de Ferrocarril
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar d'Avions
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeroport
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Àrea de càrrega de camions
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Moll de càrrega de camions
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Parada d'autobús
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Moll per vaixells
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boia
@@ -5087,6 +5087,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... mass
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'avió no té prou autonomia
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}No hi ha cap estació ferroviària
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}No hi ha cap estació d'autobusos
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}No hi ha cap estació de camions
+STR_ERROR_NO_DOCK                                               :{WHITE}No hi ha cap port
+STR_ERROR_NO_AIRPORT                                            :{WHITE}No hi ha cap aeroport/heliport
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}No hi ha parades amb un tipus de carretera compatible
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}No hi ha parades amb un tipus de tramvia compatible
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hi ha parades que siguin adequades per a vehicles de carretera articulats.{}Aquest tipus de vehicles necessiten una estació de pas, no pas una estació final
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}L'avió no pot aterrar en aquest aeroport
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}L'helicòpter no pot aterrar en aquest aeroport
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hi ha cap punt de pas ferroviari
+STR_ERROR_NO_BUOY                                               :{WHITE}No hi ha cap boia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...
