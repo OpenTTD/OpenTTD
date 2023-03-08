@@ -930,9 +930,9 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Service subsidy awarded to {RAW_STRING}!{}{}{STRING} from {STRING2} to {STRING2} will pay triple rates for the next {NUM} year{P "" s}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Service subsidy awarded to {RAW_STRING}!{}{}{STRING} from {STRING2} to {STRING2} will pay quadruple rates for the next {NUM} year{P "" s}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding programme funded by {RAW_STRING} brings 6 months of misery to motorists!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding programme funded by {RAW_STRING} brings 6 {TKM months minutes} of misery to motorists!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transport monopoly!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Local authority of {TOWN} signs contract with {RAW_STRING} for one year of exclusive transport rights!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Local authority of {TOWN} signs contract with {RAW_STRING} for 12 {TKM months minutes} of exclusive transport rights!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Viewport {COMMA}
@@ -1397,10 +1397,10 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Main viewport
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Every viewport
 
 STR_CONFIG_SETTING_BRIBE                                        :Allow bribing of the local authority: {STRING2}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Allow companies to try bribing the local town authority. If the bribe is noticed by an inspector, the company will not be able to act in the town for six months
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Allow companies to try bribing the local town authority. If the bribe is noticed by an inspector, the company will not be able to act in the town for six {TKM months minutes}
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Allow buying exclusive transport rights: {STRING2}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :If a company buys exclusive transport rights for a town, opponents' stations (passenger and cargo) won't receive any cargo for a whole year
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :If a company buys exclusive transport rights for a town, opponents' stations (passenger and cargo) won't receive any cargo for twelve {TKM months minutes}
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Allow funding buildings: {STRING2}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Allow companies to give money to towns for funding new houses
@@ -3568,15 +3568,15 @@ STR_TOWN_POPULATION                                             :{BLACK}World po
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} last month: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} last {TKM month minute}: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargo needed for town growth:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} required in winter
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} delivered
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (still required)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (delivered)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK}{NBSP}day{P "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK}{NBSP}day{P "" s} (funded)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town grows every {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{UNITS_DAYS_OR_SECONDS} (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre the main view on town location. Ctrl+Click to open a new viewport on town location
@@ -3616,10 +3616,10 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bribe the local
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a small radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a medium radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a large radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Fund the reconstruction of the urban road network.{}Causes considerable disruption to road traffic for up to 6 months.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Fund the reconstruction of the urban road network.{}Causes considerable disruption to road traffic for up to 6 {TKM months minutes}.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Build a statue in honour of your company.{}Provides a permanent boost to station rating in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Fund the construction of new buildings in the town.{}Provides a temporary boost to town growth in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Buy 1 year's exclusive transport rights in town.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Buy exclusive transport rights in town for 12 {TKM months minutes}.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating and abort a competitor's exclusive transport rights, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 
 # Goal window
@@ -3891,7 +3891,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :None
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production last month:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production last {TKM month minute}:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{RAW_STRING}{BLACK} ({COMMA}% transported)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centre the main view on industry location. Ctrl+Click to open a new viewport on industry location
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Production level: {YELLOW}{COMMA}%
