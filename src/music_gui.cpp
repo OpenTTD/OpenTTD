@@ -147,18 +147,20 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
 {
 	assert(pl < PLCH_MAX && pl >= PLCH_ALLMUSIC);
 
-	this->displayed_playlist = this->standard_playlists[pl];
-	this->active_playlist = this->displayed_playlist;
-	this->selected_playlist = pl;
-	this->playlist_position = 0;
+	if (pl != PLCH_THEMEONLY) _settings_client.music.playlist = pl;
 
-	if (this->selected_playlist != PLCH_THEMEONLY) _settings_client.music.playlist = this->selected_playlist;
+	if (_game_mode != GM_MENU || pl == PLCH_THEMEONLY) {
+		this->displayed_playlist = this->standard_playlists[pl];
+		this->active_playlist = this->displayed_playlist;
+		this->selected_playlist = pl;
+		this->playlist_position = 0;
 
-	if (_settings_client.music.shuffle) {
-		this->Shuffle();
-		/* Shuffle() will also Play() if necessary, only start once */
-	} else if (_settings_client.music.playing) {
-		this->Play();
+		if (_settings_client.music.shuffle) {
+			this->Shuffle();
+			/* Shuffle() will also Play() if necessary, only start once */
+		} else if (_settings_client.music.playing) {
+			this->Play();
+		}
 	}
 
 	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
