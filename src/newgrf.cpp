@@ -1621,7 +1621,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = ctype;
 				} else {
 					ei->cargo_type = CT_INVALID;
-					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
+					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
 				}
 				break;
 			}
