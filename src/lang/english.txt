@@ -2709,9 +2709,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overloaded
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} to be transported per month from {STATION} to {STATION} ({COMMA}% of capacity){RAW_STRING}
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} to be transported per {TKM month minute} from {STATION} to {STATION} ({COMMA}% of capacity){RAW_STRING}
 STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} to be transported back ({COMMA}% of capacity)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Average travel time: {NUM}{NBSP}day{P "" s}
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Average travel time: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Coverage area highlight
