@@ -3710,7 +3710,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Monthly supply and local rating:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Supply per {TKM month minute} and local rating:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Group by
