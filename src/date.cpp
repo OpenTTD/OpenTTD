@@ -237,10 +237,10 @@ extern void ShowEndGameChart();
 /** Available settings for autosave intervals. */
 static const Month _autosave_months[] = {
 	 0, ///< never
-	 1, ///< every month
-	 3, ///< every 3 months
-	 6, ///< every 6 months
-	12, ///< every 12 months
+	 1, ///< every month/minute
+	 3, ///< every 3 months/minutes
+	 6, ///< every 6 months/minutes
+	12, ///< every 12 months/minutes
 };
 
 /**
