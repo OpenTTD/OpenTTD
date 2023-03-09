@@ -746,10 +746,8 @@ public:
 	 */
 	bool SetPosition(int position)
 	{
-		assert(position >= 0);
-		assert(this->count <= this->cap ? (position == 0) : (position + this->cap <= this->count));
 		uint16 old_pos = this->pos;
-		this->pos = position;
+		this->pos = Clamp(position, 0, std::max(this->count - this->cap, 0));
 		return this->pos != old_pos;
 	}
 
@@ -768,7 +766,7 @@ public:
 			case SS_BIG:   difference *= this->cap; break;
 			default: break;
 		}
-		return this->SetPosition(Clamp(this->pos + difference, 0, std::max(this->count - this->cap, 0)));
+		return this->SetPosition(this->pos + difference);
 	}
 
 	/**

@@ -1114,9 +1114,7 @@ struct AIDebugWindow : public Window {
 		}
 		if (this->autoscroll) {
 			int scroll_pos = std::max(0, log->used - this->vscroll->GetCapacity());
-			if (scroll_pos != this->vscroll->GetPosition()) {
-				this->vscroll->SetPosition(scroll_pos);
-
+			if (this->vscroll->SetPosition(scroll_pos)) {
 				/* We need a repaint */
 				this->SetWidgetDirty(WID_AID_SCROLLBAR);
 				this->SetWidgetDirty(WID_AID_LOG_PANEL);
