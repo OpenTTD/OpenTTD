@@ -108,7 +108,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 		int px = rtl ? max_width + skip : -skip;
-		int y = r.Height() / 2;
+		int y = (r.Height() / 2) + WidgetDimensions::scaled.bevel.Vertical();
 		bool sel_articulated = false;
 		bool dragging = (drag_dest != INVALID_VEHICLE);
 		bool drag_at_end_of_train = (drag_dest == v->index); // Head index is used to mark dragging at end of train.

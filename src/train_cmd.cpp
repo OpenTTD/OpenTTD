@@ -534,6 +534,8 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 
 void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {
+	y += WidgetDimensions::scaled.bevel.Vertical();
+
 	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
 		int yf = y;
 		int yr = y;
