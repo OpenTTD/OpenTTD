@@ -83,7 +83,7 @@ for (uint8 i = 0; i < 100000; i++) {
 * Enums are not used to store single numbers.
 * Enums have consecutive numbers OR
 * Enums have consecutive powers of two. Powers of two (bits) are written in hex or with the shift operator.
-* Enums may have special enumerators: "_BEGIN", "_END", and "INVALID_").  See example.
+* Enums may have special enumerators: "_BEGIN", "\_END", and "INVALID\_").  See example.
 * The invalid always has 0xFF, 0xFFFF, 0xFFFFFFFF as a value.
 * Other special values are consecutively less than the invalid.
 * Variables that hold enumerators should have the type of the enumeration.
