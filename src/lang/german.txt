@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Städte 
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrie errichten
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Straße bauen
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Straßenbahngleise bauen
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Strg wählt das Gebiet diagonal aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Schild aufstellen
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt platzieren. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
 
@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen {RED}Benötigt Spielskript, um Startgeld zur Verfügung zu stellen
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zinssatz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für Kredite; beeinflusst auch die Inflation, falls aktiv
@@ -1931,9 +1933,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Symmetrisch�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Verteilungsschema für Post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Symmetrisch“ heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. „Manuell“ heißt, dass keine automatische Verteilung der Post stattfindet.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Verteilungsschema für Wertsachen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnten dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unterschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte (Frachtklasse „ARMOURED“) umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnten dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unterschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Symmetrisch“ heißt, dass etwa die selbe Menge Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet. Hier sollte fast immer „asymmetrisch“ oder „manuell“ gewählt werden.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
@@ -2357,6 +2359,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Neue Firma)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Eine neue Firma gründen und beitreten
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Das sind Sie
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dies ist der Host des Spiels
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} Client{P "" s} – {NUM}/{NUM} Firm{P a en}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Die Anzahl der derzeit verbundenen Clients, die Anzahl der Firmen und die vom Serveradministrator zugelassene maximale Anzahl von Firmen
 
 # Matches ConnectionType
 ###length 5
@@ -2699,6 +2703,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalab
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eisenbahnbrücke auswählen
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßenbrücke wählen
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl – Auf die gewünschte Brücke klicken, um sie zu bauen
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stahlträgerbrücke
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Auslegerbrücke (Stahl)
@@ -2818,7 +2826,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sendemasten
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bäume
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Die zu pflanzende Baumart wählen. Wenn auf dem Feld schon ein Baum steht, wird eine zufällige Baumart gepflanzt
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Strg wählt das Gebiet diagonal aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zufällige Bäume
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Bäume zufällig über die Landschaft verteilen
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -3346,6 +3354,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Schwerer Fehler: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Das NewGRF „{STRING}“ hat einen kritischen Fehler zurückgegeben:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Das NewGRF „{STRING}“ hat einen Fehler ist zurückgegeben:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} funktioniert nicht im Zusammenhang mit der von OpenTTD ermittelten TTDPatch-Version
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ist für die {2:STRING}-Version von TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ist für die Nutzung mit {2:STRING} vorgesehen
@@ -4521,7 +4531,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tempolim
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tempolimit für das Ausführen des ausgewählten Auftrags löschen. Strg+Klick löscht das Tempo für alle Aufträge
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Verspätung löschen
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen (das Fahrzeug gilt dann als pünktlich).
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen, damit das Fahrzeug als pünktlich gilt. Strg+Klick wird die gesamte Gruppe zurücksetzen, so dass das späteste Fahrzeug im Zeitplan ist und alle anderen verfrüht sind
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zeiten automatisch bei der nächsten Fahrt eintragen. Mit Strg+Klick wird versucht, die aktuellen Wartezeiten beizubehalten
@@ -4616,7 +4626,9 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Reliefka
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Übersichtskartenscreenshot
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}KI-Parameter
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
+STR_AI_SETTINGS_CAPTION_AI                                      :KI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spielskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Schließen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Zurücksetzen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5075,6 +5087,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zu w
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Luftfahrzeug hat zu geringe Reichweite
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Es gibt keinen Bahnhof
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Es gibt keine Bushaltestelle
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Es gibt keinen Lkw-Ladeplatz
+STR_ERROR_NO_DOCK                                               :{WHITE}Es gibt keine Anlegestelle
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Es gibt keinen Flughafen/Hubschrauberlandeplatz
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Es gibt keine Haltestellen mit einem kompatiblen Straßentyp
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Es gibt keine Haltestellen mit einen kompatiblen Straßenbahntyp
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Es gibt keine Haltestellen, welche für Gelenkstraßenfahrzeuge geeignet sind.{}Gelenkstraßenfahrzeuge benötigen eine Durchfahrtshaltestelle, keine Haltebucht
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dieses Flugzeug kann nicht auf diesen Hubschrauberlandeplatz landen
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Dieser Helikopter kann auf diesen Flughafen nicht landen
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Es gibt keinen Gleiswegpunkt
+STR_ERROR_NO_BUOY                                               :{WHITE}Es gibt keine Boje
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Fahrplan kann nicht erstellt werden ...

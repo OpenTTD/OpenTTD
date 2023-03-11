@@ -5086,6 +5086,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te v
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... vliegtuig heeft niet genoeg bereik
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Er is geen station
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Er is geen bussstation
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Er is geen vrachtwagenlaadstation
+STR_ERROR_NO_DOCK                                               :{WHITE}Er is geen dok
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Er is geen vliegveld/heliplatform
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Er zijn geen haltes met een compatibel wegtype
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Er zijn geen haltes met een compatibel type tram
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Er zijn geen haltes die geschikt zijn voor gelede wegvoertuigen.{}Gelede wegvoertuigen kunnen alleen stoppen aan de weg, niet bij een laadplatform.
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dit vliegtuig kan niet landen op dit heliplatform
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Deze helikopter kan niet landen op dit vliegveld
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Er is geen routepunt
+STR_ERROR_NO_BUOY                                               :{WHITE}Er is geen boei
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan geen dienstregeling opzetten voor dit voertuig...

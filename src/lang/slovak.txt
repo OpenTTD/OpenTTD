@@ -2426,6 +2426,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nová spoločn
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Založiť novú spoločnosť a pripojiť sa k nej
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Toto ste vy
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Toto je hosť hry
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" "i" "ov"} - {NUM}/{NUM} spoločnos{P "ť" "ti" "tí"}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Počet aktuálne pripojených klientov, počet spoločností a maximálny počet spoločností povolený správcom servera
 
 # Matches ConnectionType
 ###length 5
@@ -5152,6 +5154,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prí
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... lietadlo nemá dostatočný dosah
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Nenašla sa žiadna železničná stanica
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Nenašla sa žiadna autobusová stanica
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Nenašla sa žiadna nakladacia rampa
+STR_ERROR_NO_DOCK                                               :{WHITE}Nenašiel sa žiadny prístav
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Nenašlo sa žiadne letisko/heliport
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Nenašli sa žiadne zastávky s kompatibilným typom cesty
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Nenašli sa žiadne zastávky s kompatibilným typom električky
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nenašli sa žiadne zastávky vhodné pre kĺbové cestné vozidlá.{}Kĺbové cestné vozidlá vyžadujú prejazdovú zastávku, nie zastávku v zálive
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Toto lietadlo nemôže pristáť na tomto heliporte
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Táto helikoptéra nemôže pristáť na tomto letisku
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Nenašiel sa žiadny železničný smerový bod
+STR_ERROR_NO_BUOY                                               :{WHITE}Nenašla sa žiadna bója
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Vozidlu nie je možné zadať cestovný poriadok ...

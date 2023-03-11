@@ -5086,6 +5086,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... quá
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... máy bay không đủ tầm xa
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Không thể hạ cánh trực thăng ở sân bay này
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Không thể lập lịch trình cho phương tiện...
