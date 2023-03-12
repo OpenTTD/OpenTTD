@@ -343,11 +343,22 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 	return z;
 }
 
-int GetSlopePixelZ(int x, int y)
+/**
+ * Return world \c Z coordinate of a given point of a tile. Normally this is the
+ * Z of the ground/foundation at the given location, but in some cases the
+ * ground/foundation can differ from the Z coordinate that the (ground) vehicle
+ * passing over it would take. For example when entering a tunnel or bridge.
+ *
+ * @param x World X coordinate in tile "units".
+ * @param y World Y coordinate in tile "units".
+ * @param ground_vehicle Whether to get the Z coordinate of the ground vehicle, or the ground.
+ * @return World Z coordinate at tile ground (vehicle) level, including slopes and foundations.
+ */
+int GetSlopePixelZ(int x, int y, bool ground_vehicle)
 {
 	TileIndex tile = TileVirtXY(x, y);
 
-	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y);
+	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y, ground_vehicle);
 }
 
 /**
@@ -361,9 +372,9 @@ int GetSlopePixelZ(int x, int y)
 int GetSlopePixelZOutsideMap(int x, int y)
 {
 	if (IsInsideBS(x, 0, Map::SizeX() * TILE_SIZE) && IsInsideBS(y, 0, Map::SizeY() * TILE_SIZE)) {
-		return GetSlopePixelZ(x, y);
+		return GetSlopePixelZ(x, y, false);
 	} else {
-		return _tile_type_procs[MP_VOID]->get_slope_z_proc(INVALID_TILE, x, y);
+		return _tile_type_procs[MP_VOID]->get_slope_z_proc(INVALID_TILE, x, y, false);
 	}
 }
 

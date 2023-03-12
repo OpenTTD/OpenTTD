@@ -2550,7 +2550,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
 
-static int GetSlopePixelZ_Track(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Track(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	if (IsPlainRail(tile)) {
 		int z;

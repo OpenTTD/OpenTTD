@@ -586,7 +586,7 @@ static void DrawTile_Trees(TileInfo *ti)
 }
 
 
-static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);

@@ -277,7 +277,7 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 		int y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
 		v->x_pos = x;
 		v->y_pos = y;
-		v->z_pos = GetSlopePixelZ(x, y);
+		v->z_pos = GetSlopePixelZ(x, y, true);
 
 		v->state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;

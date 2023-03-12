@@ -510,12 +510,12 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 		case INVALID_DIR: break;
 		default: NOT_REACHED();
 	}
-	byte entry_z = GetSlopePixelZ(entry_x, entry_y);
+	byte entry_z = GetSlopePixelZ(entry_x, entry_y, true);
 
 	/* Compute middle of the tile. */
 	int middle_x = (v->x_pos & ~TILE_UNIT_MASK) + TILE_SIZE / 2;
 	int middle_y = (v->y_pos & ~TILE_UNIT_MASK) + TILE_SIZE / 2;
-	byte middle_z = GetSlopePixelZ(middle_x, middle_y);
+	byte middle_z = GetSlopePixelZ(middle_x, middle_y, true);
 
 	/* middle_z == entry_z, no height change. */
 	if (middle_z == entry_z) return 0;
@@ -1249,7 +1249,7 @@ bool AfterLoadGame()
 					case DIAGDIR_SW: if ((v->x_pos & 0xF) != TILE_SIZE - 1) continue; break;
 					case DIAGDIR_NW: if ((v->y_pos & 0xF) !=  0)            continue; break;
 				}
-			} else if (v->z_pos > GetSlopePixelZ(v->x_pos, v->y_pos)) {
+			} else if (v->z_pos > GetSlopePixelZ(v->x_pos, v->y_pos, true)) {
 				v->tile = GetNorthernBridgeEnd(v->tile);
 				v->UpdatePosition();
 			} else {
@@ -2515,7 +2515,7 @@ bool AfterLoadGame()
 			if (!IsTunnelTile(vtile)) continue;
 
 			/* Are we actually in this tunnel? Or maybe a lower tunnel? */
-			if (GetSlopePixelZ(v->x_pos, v->y_pos) != v->z_pos) continue;
+			if (GetSlopePixelZ(v->x_pos, v->y_pos, true) != v->z_pos) continue;
 
 			/* What way are we going? */
 			const DiagDirection dir = GetTunnelBridgeDirection(vtile);
@@ -2661,7 +2661,7 @@ bool AfterLoadGame()
 				/* In old versions, z_pos was 1 unit lower on bridge heads.
 				 * However, this invalid state could be converted to new savegames
 				 * by loading and saving the game in a new version. */
-				v->z_pos = GetSlopePixelZ(v->x_pos, v->y_pos);
+				v->z_pos = GetSlopePixelZ(v->x_pos, v->y_pos, true);
 				DiagDirection dir = GetTunnelBridgeDirection(v->tile);
 				if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) &&
 						v->direction != DiagDirToDir(dir)) {
@@ -2675,7 +2675,7 @@ bool AfterLoadGame()
 
 			/* If the vehicle is really above v->tile (not in a wormhole),
 			 * it should have set v->z_pos correctly. */
-			assert(v->tile != TileVirtXY(v->x_pos, v->y_pos) || v->z_pos == GetSlopePixelZ(v->x_pos, v->y_pos));
+			assert(v->tile != TileVirtXY(v->x_pos, v->y_pos) || v->z_pos == GetSlopePixelZ(v->x_pos, v->y_pos, true));
 		}
 
 		/* Fill Vehicle::cur_real_order_index */
@@ -3183,7 +3183,7 @@ bool AfterLoadGame()
 					int y = TileY(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
 					u->x_pos = x;
 					u->y_pos = y;
-					u->z_pos = GetSlopePixelZ(x, y);
+					u->z_pos = GetSlopePixelZ(x, y, true);
 
 					u->vehstatus |= VS_HIDDEN;
 					u->state = RVSB_IN_DEPOT;

@@ -936,7 +936,7 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 }
 
 
-static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
