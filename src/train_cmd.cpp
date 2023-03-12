@@ -635,7 +635,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 
 		v->x_pos = x;
 		v->y_pos = y;
-		v->z_pos = GetSlopePixelZ(x, y);
+		v->z_pos = GetSlopePixelZ(x, y, true);
 		v->owner = _current_company;
 		v->track = TRACK_BIT_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_DEFPAL;
@@ -761,7 +761,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 		v->owner = _current_company;
 		v->x_pos = x;
 		v->y_pos = y;
-		v->z_pos = GetSlopePixelZ(x, y);
+		v->z_pos = GetSlopePixelZ(x, y, true);
 		v->track = TRACK_BIT_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 		v->spritenum = rvi->image_index;

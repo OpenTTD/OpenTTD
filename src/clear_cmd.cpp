@@ -127,7 +127,7 @@ static void DrawTile_Clear(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);

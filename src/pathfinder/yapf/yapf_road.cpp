@@ -40,12 +40,12 @@ protected:
 		/* height of the center of the current tile */
 		int x1 = TileX(tile) * TILE_SIZE;
 		int y1 = TileY(tile) * TILE_SIZE;
-		int z1 = GetSlopePixelZ(x1 + TILE_SIZE / 2, y1 + TILE_SIZE / 2);
+		int z1 = GetSlopePixelZ(x1 + TILE_SIZE / 2, y1 + TILE_SIZE / 2, true);
 
 		/* height of the center of the next tile */
 		int x2 = TileX(next_tile) * TILE_SIZE;
 		int y2 = TileY(next_tile) * TILE_SIZE;
-		int z2 = GetSlopePixelZ(x2 + TILE_SIZE / 2, y2 + TILE_SIZE / 2);
+		int z2 = GetSlopePixelZ(x2 + TILE_SIZE / 2, y2 + TILE_SIZE / 2, true);
 
 		if (z2 - z1 > 1) {
 			/* Slope up */

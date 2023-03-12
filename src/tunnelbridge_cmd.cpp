@@ -1663,7 +1663,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 }
 
 
-static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
@@ -1672,18 +1672,14 @@ static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
 	y &= 0xF;
 
 	if (IsTunnel(tile)) {
-		uint pos = (DiagDirToAxis(GetTunnelBridgeDirection(tile)) == AXIS_X ? y : x);
-
 		/* In the tunnel entrance? */
-		if (5 <= pos && pos <= 10) return z;
+		if (ground_vehicle) return z;
 	} else { // IsBridge(tile)
 		DiagDirection dir = GetTunnelBridgeDirection(tile);
-		uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
-
 		z += ApplyPixelFoundationToSlope(GetBridgeFoundation(tileh, DiagDirToAxis(dir)), &tileh);
 
 		/* On the bridge ramp? */
-		if (5 <= pos && pos <= 10) {
+		if (ground_vehicle) {
 			int delta;
 
 			if (tileh != SLOPE_FLAT) return z + TILE_HEIGHT;
@@ -1881,7 +1877,7 @@ extern const byte _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
 
 static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
-	int z = GetSlopePixelZ(x, y) - v->z_pos;
+	int z = GetSlopePixelZ(x, y, true) - v->z_pos;
 
 	if (abs(z) > 2) return VETSB_CANNOT_ENTER;
 	/* Direction into the wormhole */
