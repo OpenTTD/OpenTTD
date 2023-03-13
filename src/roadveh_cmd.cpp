@@ -1473,7 +1473,7 @@ again:
 		 * A vehicle has to spend at least 9 frames on a tile, so the following articulated part can follow.
 		 * (The following part may only be one tile behind, and the front part is moved before the following ones.)
 		 * The short (inner) curve has 8 frames, this elongates it to 10. */
-		v->UpdateInclination(false, true);
+		v->UpdateViewport(true, true);
 		return true;
 	}
 
