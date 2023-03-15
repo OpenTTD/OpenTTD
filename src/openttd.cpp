@@ -967,37 +967,51 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 
 	_game_mode = newgm;
 
-	switch (lf == nullptr ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf)) {
-		case SL_OK: return true;
+	SaveOrLoadResult result = (lf == nullptr) ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf);
+	if (result == SL_OK) return true;
 
-		case SL_REINIT:
-			if (_network_dedicated) {
-				/*
-				 * We need to reinit a network map...
-				 * We can't simply load the intro game here as that game has many
-				 * special cases which make clients desync immediately. So we fall
-				 * back to just generating a new game with the current settings.
-				 */
-				Debug(net, 0, "Loading game failed, so a new (random) game will be started");
-				MakeNewGame(false, true);
-				return false;
-			}
-			if (_network_server) {
-				/* We can't load the intro game as server, so disconnect first. */
-				NetworkDisconnect();
-			}
-
-			switch (ogm) {
-				default:
-				case GM_MENU:   LoadIntroGame();      break;
-				case GM_EDITOR: MakeNewEditorWorld(); break;
-			}
-			return false;
-
-		default:
-			_game_mode = ogm;
-			return false;
+	if (_network_dedicated && ogm == GM_MENU) {
+		/*
+		 * If we are a dedicated server *and* we just were in the menu, then we
+		 * are loading the first savegame. If that fails, not starting the
+		 * server is a better reaction than starting the server with a newly
+		 * generated map as it is quite likely to be started from a script.
+		 */
+		Debug(net, 0, "Loading requested map failed; closing server.");
+		_exit_game = true;
+		return false;
 	}
+
+	if (result != SL_REINIT) {
+		_game_mode = ogm;
+		return false;
+	}
+
+	if (_network_dedicated) {
+		/*
+		 * If we are a dedicated server, have already loaded/started a game,
+		 * and then loading the savegame fails in a manner that we need to
+		 * reinitialize everything. We must not fall back into the menu mode
+		 * with the intro game, as that is unjoinable by clients. So there is
+		 * nothing else to do than start a new game, as it might have failed
+		 * trying to reload the originally loaded savegame/scenario.
+		 */
+		Debug(net, 0, "Loading game failed, so a new (random) game will be started");
+		MakeNewGame(false, true);
+		return false;
+	}
+
+	if (_network_server) {
+		/* We can't load the intro game as server, so disconnect first. */
+		NetworkDisconnect();
+	}
+
+	switch (ogm) {
+		default:
+		case GM_MENU:   LoadIntroGame();      break;
+		case GM_EDITOR: MakeNewEditorWorld(); break;
+	}
+	return false;
 }
 
 void SwitchToMode(SwitchMode new_mode)
