@@ -566,6 +566,10 @@ void Squirrel::Initialize()
 
 	sq_pushroottable(this->vm);
 	squirrel_register_global_std(this);
+
+	/* Set consts table as delegate of root table, so consts/enums defined via require() are accessible */
+	sq_pushconsttable(this->vm);
+	sq_setdelegate(this->vm, -2);
 }
 
 class SQFile {
@@ -763,6 +767,12 @@ Squirrel::~Squirrel()
 void Squirrel::Uninitialize()
 {
 	ScriptAllocatorScope alloc_scope(this);
+
+	/* Remove the delegation */
+	sq_pushroottable(this->vm);
+	sq_pushnull(this->vm);
+	sq_setdelegate(this->vm, -2);
+	sq_pop(this->vm, 1);
 
 	/* Clean up the stuff */
 	sq_pop(this->vm, 1);
