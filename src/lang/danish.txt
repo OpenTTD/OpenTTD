@@ -410,7 +410,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstill
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Waypointnavne vist
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rutepunkt-navne vist
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Viste skilte
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fuld animation
@@ -5529,8 +5529,8 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Bøje
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bøje #{COMMA}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Rutepunkt
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Rutepunkt #{COMMA}
 
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tog Depot
