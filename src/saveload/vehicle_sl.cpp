@@ -355,7 +355,6 @@ void AfterLoadVehicles(bool part_of_load)
 				int interval = CompanyServiceInterval(c, v->type);
 
 				v->SetServiceIntervalIsCustom(v->GetServiceInterval() != interval);
-				v->SetServiceIntervalIsPercent(c->settings.vehicle.servint_ispercent);
 			}
 		}
 

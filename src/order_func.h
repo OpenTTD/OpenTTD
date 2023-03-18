@@ -26,11 +26,8 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
 
 void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int left, int middle, int right);
 
-#define MIN_SERVINT_PERCENT  5
-#define MAX_SERVINT_PERCENT 90
-#define MIN_SERVINT_DAYS    30
-#define MAX_SERVINT_DAYS   800
-
-uint16 GetServiceIntervalClamped(uint interval, bool ispercent);
+static const uint8 DEF_SERVINT_PERCENT = 50;
+static const uint8 MIN_SERVINT_PERCENT = 5;
+static const uint8 MAX_SERVINT_PERCENT = 90;
 
 #endif /* ORDER_FUNC_H */

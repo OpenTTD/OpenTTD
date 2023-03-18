@@ -1432,6 +1432,29 @@ bool AfterLoadGame()
 		}
 	}
 
+	/*
+	 * We can no longer specify vehicle service intervals in days, only reliability percentage. Reset all to the default 50%.
+	 */
+	if (IsSavegameVersionBefore(SLV_SERVICE_INTERVAL_PERCENT_ONLY)) {
+		Company *c = Company::GetIfValid(_current_company);
+		VehicleDefaultSettings *vds = &c->settings.vehicle;
+
+		vds->servint_trains   = DEF_SERVINT_PERCENT;
+		vds->servint_roadveh  = DEF_SERVINT_PERCENT;
+		vds->servint_aircraft = DEF_SERVINT_PERCENT;
+		vds->servint_ships    = DEF_SERVINT_PERCENT;
+
+		for (Vehicle* v : Vehicle::Iterate()) {
+			if (v->owner == c->index && v->IsPrimaryVehicle()) {
+				v->SetServiceInterval(CompanyServiceInterval(c, v->type));
+			}
+
+			/* If the player is using custom service intervals, setting them to the default could clog up their network.
+			 * The safest way to handle this is to disable breakdowns entirely. */
+			if (v->ServiceIntervalIsCustom()) _settings_game.difficulty.vehicle_breakdowns = 0;
+		}
+	}
+
 	/* From 32 on we save the industry who made the farmland.
 	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */

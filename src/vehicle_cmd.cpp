@@ -903,7 +903,6 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlag flags, TileInde
 				w_front = w;
 				w->service_interval = v->service_interval;
 				w->SetServiceIntervalIsCustom(v->ServiceIntervalIsCustom());
-				w->SetServiceIntervalIsPercent(v->ServiceIntervalIsPercent());
 			}
 			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}
@@ -1093,10 +1092,9 @@ CommandCost CmdRenameVehicle(DoCommandFlag flags, VehicleID veh_id, const std::s
  * @param veh_id vehicle ID that is being service-interval-changed
  * @param serv_int new service interval
  * @param is_custom service interval is custom flag
- * @param is_percent service interval is percentage flag
  * @return the cost of this operation or an error
  */
-CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16 serv_int, bool is_custom, bool is_percent)
+CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16 serv_int, bool is_custom)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
@@ -1105,18 +1103,12 @@ CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16 se
 	if (ret.Failed()) return ret;
 
 	const Company *company = Company::Get(v->owner);
-	is_percent = is_custom ? is_percent : company->settings.vehicle.servint_ispercent;
 
-	if (is_custom) {
-		if (serv_int != GetServiceIntervalClamped(serv_int, is_percent)) return CMD_ERROR;
-	} else {
-		serv_int = CompanyServiceInterval(company, v->type);
-	}
+	if (!is_custom) serv_int = CompanyServiceInterval(company, v->type);
 
 	if (flags & DC_EXEC) {
 		v->SetServiceInterval(serv_int);
 		v->SetServiceIntervalIsCustom(is_custom);
-		v->SetServiceIntervalIsPercent(is_percent);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 

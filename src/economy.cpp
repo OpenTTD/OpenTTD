@@ -445,7 +445,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			old_company->settings.vehicle.servint_trains = new_company->settings.vehicle.servint_trains;
 			old_company->settings.vehicle.servint_roadveh = new_company->settings.vehicle.servint_roadveh;
 			old_company->settings.vehicle.servint_ships = new_company->settings.vehicle.servint_ships;
-			old_company->settings.vehicle.servint_ispercent = new_company->settings.vehicle.servint_ispercent;
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
@@ -462,7 +461,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					 * However, do not rely on that behaviour.
 					 */
 					int interval = CompanyServiceInterval(new_company, v->type);
-					Command<CMD_CHANGE_SERVICE_INT>::Do(DC_EXEC | DC_BANKRUPT, v->index, interval, false, new_company->settings.vehicle.servint_ispercent);
+					Command<CMD_CHANGE_SERVICE_INT>::Do(DC_EXEC | DC_BANKRUPT, v->index, interval, false);
 				}
 
 				v->owner = new_owner;

@@ -45,19 +45,18 @@ enum VehicleRefitWidgets {
 
 /** Widgets of the #VehicleDetailsWindow class. */
 enum VehicleDetailsWidgets {
-	WID_VD_CAPTION,                     ///< Caption of window.
-	WID_VD_TOP_DETAILS,                 ///< Panel with generic details.
-	WID_VD_INCREASE_SERVICING_INTERVAL, ///< Increase the servicing interval.
-	WID_VD_DECREASE_SERVICING_INTERVAL, ///< Decrease the servicing interval.
-	WID_VD_SERVICE_INTERVAL_DROPDOWN,   ///< Dropdown to select default/days/percent service interval.
-	WID_VD_SERVICING_INTERVAL,          ///< Information about the servicing interval.
-	WID_VD_MIDDLE_DETAILS,              ///< Details for non-trains.
-	WID_VD_MATRIX,                      ///< List of details for trains.
-	WID_VD_SCROLLBAR,                   ///< Scrollbar for train details.
-	WID_VD_DETAILS_CARGO_CARRIED,       ///< Show carried cargo per part of the train.
-	WID_VD_DETAILS_TRAIN_VEHICLES,      ///< Show all parts of the train with their description.
-	WID_VD_DETAILS_CAPACITY_OF_EACH,    ///< Show the capacity of all train parts.
-	WID_VD_DETAILS_TOTAL_CARGO,         ///< Show the capacity and carried cargo amounts aggregated per cargo of the train.
+	WID_VD_CAPTION,                      ///< Caption of window.
+	WID_VD_TOP_DETAILS,                  ///< Panel with generic details.
+	WID_VD_INCREASE_SERVICING_THRESHOLD, ///< Increase the servicing interval.
+	WID_VD_DECREASE_SERVICING_THRESHOLD, ///< Decrease the servicing interval.
+	WID_VD_SERVICING_INTERVAL,           ///< Information about the servicing interval.
+	WID_VD_MIDDLE_DETAILS,               ///< Details for non-trains.
+	WID_VD_MATRIX,                       ///< List of details for trains.
+	WID_VD_SCROLLBAR,                    ///< Scrollbar for train details.
+	WID_VD_DETAILS_CARGO_CARRIED,        ///< Show carried cargo per part of the train.
+	WID_VD_DETAILS_TRAIN_VEHICLES,       ///< Show all parts of the train with their description.
+	WID_VD_DETAILS_CAPACITY_OF_EACH,     ///< Show the capacity of all train parts.
+	WID_VD_DETAILS_TOTAL_CARGO,          ///< Show the capacity and carried cargo amounts aggregated per cargo of the train.
 };
 
 /** Widgets of the #VehicleListWindow class. */

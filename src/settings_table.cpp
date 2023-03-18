@@ -127,58 +127,6 @@ static void UpdateConsists(int32 new_value)
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 }
 
-/* Check service intervals of vehicles, newvalue is value of % or day based servicing */
-static void UpdateAllServiceInterval(int32 new_value)
-{
-	bool update_vehicles;
-	VehicleDefaultSettings *vds;
-	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
-		vds = &_settings_client.company.vehicle;
-		update_vehicles = false;
-	} else {
-		vds = &Company::Get(_current_company)->settings.vehicle;
-		update_vehicles = true;
-	}
-
-	if (new_value != 0) {
-		vds->servint_trains   = 50;
-		vds->servint_roadveh  = 50;
-		vds->servint_aircraft = 50;
-		vds->servint_ships    = 50;
-	} else {
-		vds->servint_trains   = 150;
-		vds->servint_roadveh  = 150;
-		vds->servint_aircraft = 100;
-		vds->servint_ships    = 360;
-	}
-
-	if (update_vehicles) {
-		const Company *c = Company::Get(_current_company);
-		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->owner == _current_company && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
-				v->SetServiceInterval(CompanyServiceInterval(c, v->type));
-				v->SetServiceIntervalIsPercent(new_value != 0);
-			}
-		}
-	}
-
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
-}
-
-static bool CanUpdateServiceInterval(VehicleType type, int32 &new_value)
-{
-	VehicleDefaultSettings *vds;
-	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
-		vds = &_settings_client.company.vehicle;
-	} else {
-		vds = &Company::Get(_current_company)->settings.vehicle;
-	}
-
-	/* Test if the interval is valid */
-	int32 interval = GetServiceIntervalClamped(new_value, vds->servint_ispercent);
-	return interval == new_value;
-}
-
 static void UpdateServiceInterval(VehicleType type, int32 new_value)
 {
 	if (_game_mode != GM_MENU && Company::IsValidID(_current_company)) {

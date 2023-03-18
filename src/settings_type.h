@@ -565,7 +565,7 @@ struct StationSettings {
 
 /** Default settings for vehicles. */
 struct VehicleDefaultSettings {
-	bool   servint_ispercent;                ///< service intervals are in percents
+	bool servint_ispercent;                  ///< Unused value, used to load old savegames.
 	uint16 servint_trains;                   ///< service interval for trains
 	uint16 servint_roadveh;                  ///< service interval for road vehicles
 	uint16 servint_aircraft;                 ///< service interval for aircraft

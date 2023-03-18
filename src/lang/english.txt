@@ -1710,18 +1710,15 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Max memory usag
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :How much memory a single script may consume before it's forcibly terminated. This may need to be increased for large maps.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervals are in percents: {STRING2}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choose whether servicing of vehicles is triggered by the time passed since last service or by reliability dropping by a certain percentage of the maximum reliability
-
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default service interval for trains: {STRING2}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Set the default service interval for new rail vehicles, if no explicit service interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Default service interval for road vehicles: {STRING2}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Set the default service interval for new road vehicles, if no explicit service interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default service interval for aircraft: {STRING2}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the default service interval for new aircraft, if no explicit service interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default service interval for ships: {STRING2}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the default service interval for new ships, if no explicit service interval is set for the vehicle
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}day{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default reliability threshold for automatic service of trains: {STRING2}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Set the default reliability threshold for automatic service of new rail vehicles, if no explicit threshold is set for the vehicle
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Default reliability threshold for automatic service of road vehicles: {STRING2}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Set the reliability threshold for automatic service of new road vehicles, if no explicit threshold is set for the vehicle
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default reliability threshold for automatic service of aircraft: {STRING2}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the reliability threshold for automatic service of new aircraft, if no explicit threshold is set for the vehicle
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default reliability threshold for automatic service of ships: {STRING2}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the reliability threshold for automatic service of new ships, if no explicit threshold is set for the vehicle
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{NUM}%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Disabled
 
@@ -4254,15 +4251,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacity
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servicing interval: {LTBLUE}{COMMA}{NBSP}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase servicing interval by 10. Ctrl+Click increases servicing interval by 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease servicing interval by 10. Ctrl+Click decreases servicing interval by 5
-
-STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Change servicing interval type
-STR_VEHICLE_DETAILS_DEFAULT                                     :Default
-STR_VEHICLE_DETAILS_DAYS                                        :Days
-STR_VEHICLE_DETAILS_PERCENT                                     :Percentage
+STR_VEHICLE_DETAILS_SERVICING_THRESHOLD                         :{BLACK}Service when reliability below: {LTBLUE}{NUM}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_THRESHOLD_TOOLTIP        :{BLACK}Increase reliability threshold by 10%. Ctrl+Click increases reliability threshold by 5%
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_THRESHOLD_TOOLTIP        :{BLACK}Decrease reliability threshold by 10%. Ctrl+Click decreases reliability threshold by 5%
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Name train
