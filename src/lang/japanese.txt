@@ -2079,6 +2079,7 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}設定�
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRFの有効/無効化、各パラメータの設定ができます
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}公式オンラインコンテンツのデータベースからデータの確認・追加・更新ができます
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI設定を表示
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}ゲームスクリプト設定を表示
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD を終了します
 
 STR_INTRO_BASESET                                               :現在選択されているグラフィックのベースセットは {NUM} つのスプライトが欠けています。ベースセットの更新を確認してみてください。
@@ -2342,6 +2343,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(新規会社�
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}新しく会社を設立し参画します
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}これはあなたです
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲームのホストです
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM}個のクライアント - {NUM}/{NUM}個の企業
 
 # Matches ConnectionType
 ###length 5
@@ -2468,13 +2470,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :リンクグラ
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} が参加してきました
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} がゲームに参加してきました (クライアント #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} が 会社 #{2:NUM} の経営に参画してきました
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} がゲームに参加してきました (クライアント #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} が 会社 #{2:NUM} の経営に参画してきました
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} がゲームを観覧し始めました
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} が新会社 (#{2:NUM}) を設立しました
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} が退出しました({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} が新会社 (#{2:NUM}) を設立しました
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} が退出しました({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} は名前を {STRING} に変更しました
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} が {1:STRING} に {2:CURRENCY_LONG} を送金してくれました
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} が {1:STRING} に {2:CURRENCY_LONG} を送金してくれました
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}サーバがセッションを終了しました
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバーは再起動中です…{}しばらくお待ちください…
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING}がキックされました。理由: ({STRING})
@@ -2599,7 +2601,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}停留�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトします
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入貨物: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給貨物: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}メンテナンスコスト: {GOLD}{CURRENCY_SHORT}/年
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}維持費: {GOLD}{CURRENCY_SHORT}/年
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}停留施設を統合
@@ -3133,9 +3135,11 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形のなだらかさ:
 STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF設定
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRFの設定を表示
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI設定
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}AI設定を表示
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}ゲームスクリプト設定
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}ゲームスクリプトの設定を表示
 
 ###length 21
@@ -3324,6 +3328,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}致命的エラー: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF '{STRING}'に致命的なエラーが発生しました:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF '{STRING}'にエラーが発生しました:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンには対応していません
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDのバージョン{STRING}にのみ対応しています
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時には{STRING}を有効にしなければなりません
@@ -3633,17 +3639,19 @@ STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}資本�
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建設費
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}輸送機器購入費
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}列車運用費
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}車両運用費
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空機運用費
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶運用費
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}列車
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}車両
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空機
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}列車
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}車両
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}船舶
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}借入金利息
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}その他
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
 STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
 STR_FINANCES_PROFIT                                             :{WHITE}利益
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}預金残高
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}借入金
@@ -3749,7 +3757,7 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}生産: 
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :、{STRING} {STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      : {BLACK}必要物資:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW} {STRING} {BLACK}：{CARGO_SHORT}待機中{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更 (8の倍数、最大2040)
@@ -4203,8 +4211,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼�
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}収容能力: {LTBLUE}なし{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力: {LTBLUE}{0:CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}収容能力: {LTBLUE}{0:CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}転送による部分払い: {LTBLUE}{CURRENCY_LONG}
@@ -4230,8 +4238,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}この列車の貨物最大収容量:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空荷
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (積載地: {STATION})
@@ -4580,6 +4588,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}ミニ�
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ゲームスクリプト
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5036,6 +5045,12 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}前の�
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}航続距離が足りません
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}駅がありません
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}バス停がありません
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}荷役所がありません
+STR_ERROR_NO_DOCK                                               :{WHITE}埠頭がありません
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}中継駅がありません
+STR_ERROR_NO_BUOY                                               :{WHITE}ブイがありません
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}この輸送機器にダイヤを設定できません
