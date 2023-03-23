@@ -1244,7 +1244,7 @@ STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :設定を有効にすると時折、乗り物や交通インフラを遮断・破壊する災害が起きるようになります
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :議会の姿勢: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :会社が街域で引き起こした騒音(主に空港)や環境破壊がどの程度、街での評価や同じ地域での更なる建設行為に影響するかを設定します
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :会社が街で引き起こした騒音(主に空港)や環境破壊がどの程度、街での評価や更なる建設行為に影響するかを設定します
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :マップ高さ限界: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :マップの地形の最高高度を指定します。"(auto)"で地形生成後に適切な値を設定させるようにします。
@@ -2605,6 +2605,8 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}供給過多
 
 # Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{1:STATION}から{2:STATION}までの輸送需要 {0:CARGO_LONG}/月 (輸送力{3:COMMA}%){4:STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}復路の輸送需要 {CARGO_LONG}/月 (輸送力{COMMA}%)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均移動時間: {NUM}{NBSP}日
 
 # Base for station construction window(s)
@@ -2699,6 +2701,9 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}鉄道�
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路橋建設
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}建設したい橋の種類をクリックしてください
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING}{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING}{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING}{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :吊橋(S造)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :桁橋(S造)
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :カンチレバートラス橋(S造)
@@ -3325,6 +3330,8 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在�
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}オフセットは中心にされました
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}スプライトは中心にされました
 
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}十字
 
@@ -3345,7 +3352,7 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}致命的�
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF '{STRING}'に致命的なエラーが発生しました:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF '{STRING}'にエラーが発生しました:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンには対応していません
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDのバージョン{STRING}にのみ対応しています
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDのバージョン{2:STRING}にのみ対応しています
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時には{STRING}を有効にしなければなりません
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}のパラメータが不正です: パラメータ {STRING}({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}は{STRING}の読み込み前にのみ読み込めます
@@ -4568,7 +4575,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ゲ�
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI 設定
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}ゲームスクリプトの構成
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}このゲームスクリプトは次のゲーム開始時からロードされます
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}}このAIは次のゲーム開始時からロードされます
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}このAIは次のゲーム開始時からロードされます
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
 STR_AI_CONFIG_RANDOM_AI                                         :ランダムなAI
 STR_AI_CONFIG_NONE                                              :(なし)
@@ -4580,6 +4587,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下に�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}ゲームスクリプト
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}パラメータ
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE_AI                                         :AI
@@ -4612,6 +4620,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}ハイ�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}ミニマップのスクリーンショット
 
 # Script Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING}のパラメータ
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ゲームスクリプト
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
