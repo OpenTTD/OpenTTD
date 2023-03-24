@@ -236,8 +236,8 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}フィルター:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルター文字列を入力
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルタリングするキーワードを入力します
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルタリングするキーワードを入力
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルタリングするキーワードを複数入力できます
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}グループの整列法を選択
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択します (昇順 / 降順)
@@ -1014,6 +1014,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}サイ�
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}ここをチェックしてインタフェースのサイズを自動調整します。
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}ベベルのスケール
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}ここをチェックするとベベルはインタフェースのサイズに比例します
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
@@ -2358,6 +2359,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}新し�
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}これはあなたです
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲームのホストです
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM}個のクライアント - {NUM}/{NUM}個の企業
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}現在の接続しているクライアント数、会社数とサーバー管理者によって設定された最大会社数
 
 # Matches ConnectionType
 ###length 5
@@ -2855,6 +2857,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}ラン�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ランダムなところに街を建設します
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな街
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}地図にたくさんの街を建設します
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}すべての街を成長
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}すべての街を少し成長させます
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}街名:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}街名入力
@@ -3330,8 +3334,8 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在�
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
 
 ###length 2
-STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}オフセットは中心にされました
-STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}スプライトは中心にされました
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}オフセット中心
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}スプライト中心
 
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}十字
 
@@ -3353,11 +3357,11 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF '
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF '{STRING}'にエラーが発生しました:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンには対応していません
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDのバージョン{2:STRING}にのみ対応しています
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時には{STRING}を有効にしなければなりません
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}のパラメータが不正です: パラメータ {STRING}({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}は{STRING}の読み込み前にのみ読み込めます
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}は{STRING}の読み込み後にのみ読み込めます
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}にはバージョン{STRING}かそれ以降のOpenTTDが必要です
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時には{2:STRING}を有効にしなければなりません
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}のパラメータが不正です: パラメータ {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}は{2:STRING}の読み込み前にのみ読み込めます
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}は{2:STRING}の読み込み後にのみ読み込めます
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}にはOpenTTDバージョン{2:STRING}以降が必要です
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :このGRFファイルは後発翻訳版です
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRFが多すぎます
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING}を含む{1:STRING}を常用のNewGRFとして読み込むと、同期エラーを起こす可能性があります
@@ -3908,9 +3912,9 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航続�
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}航空機の機種: {GOLD}{STRING}
 
 ###length 3
-STR_CARGO_TYPE_FILTER_ALL                                       :すべての貨物
+STR_CARGO_TYPE_FILTER_ALL                                       :すべての積荷
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :貨物
-STR_CARGO_TYPE_FILTER_NONE                                      :なし
+STR_CARGO_TYPE_FILTER_NONE                                      :積荷なし
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車リスト - 個々の情報を見るには列車をクリックします。Ctrl+クリックでその列車種の表示/非表示を切り替えます
@@ -4239,6 +4243,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}　{BLACK}最大牽引力: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG}) {BLACK}最低パフォーマンス: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度: {LTBLUE}{COMMA}%　{BLACK}点検後の故障数: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
@@ -4590,8 +4595,8 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}ゲー�
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}パラメータ
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :ゲームスクリプト
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}AIを選択
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}ゲームスクリプトを選択
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}他のスクリプトをロードします
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}スクリプトのパラメータを設定します
@@ -4786,6 +4791,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}産業�
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}産業拠点を建設できません
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}ここに{STRING}を建設できません
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}この産業拠点はここには建設できません
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}調査/探鉱できませんでした…
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}他の産業に近すぎます
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}先に街を開設しなければなりません
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}街に一つしか建設できません
@@ -4969,6 +4975,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}灯台/�
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}本社ビルがあります
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}この土地を購入できません
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}すでに所有しています!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}…建設上限に達しています
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}グループを作成できません
@@ -5084,6 +5091,8 @@ STR_ERROR_NO_BUS_STATION                                        :{WHITE}バス�
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}荷役所がありません
 STR_ERROR_NO_DOCK                                               :{WHITE}埠頭がありません
 STR_ERROR_NO_AIRPORT                                            :{WHITE}空港・ヘリポートがありません
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}この飛行機はこのヘリポートに着陸できません
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}このヘリコプターはこの空港に着陸できません
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}中継駅がありません
 STR_ERROR_NO_BUOY                                               :{WHITE}ブイがありません
 
