@@ -386,9 +386,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}街を�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}産業を生成します
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}道路を敷設します
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}軌道敷設
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}木を植えます。Shiftキーを押しながら決定すると費用を見積もります
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}木を植えます。Ctrlで斜めに選択できます。Shiftキーを押しながら決定すると費用を見積もります
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}標識を設置します
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}オブジェクトを設置します。Shiftを押しながら決定すると費用を見積もります
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}オブジェクトを設置します。Ctrlで斜めに選択できます。Shiftを押しながら決定すると費用を見積もります
 
 # Scenario editor file menu
 ###length 7
@@ -1622,7 +1622,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :ダイヤに発
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出発・到着の予定時刻を表示します
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :指令の作成を高速化: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :司令作成画面を開いたときに規定で「駅を選択」を選択するようにします
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :指令作成画面を開いたときに規定で「駅を選択」を選択するようにします
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :デフォルトの線路種類: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :新規ゲーム/ゲームロード直後に選択される線路の種類を指定します。「最初」では最初に開発された種類(普通は非電化の線路)、「最新」では最も新しく開発された種類、「最多」はマップ内で一番使われている種類になります
@@ -1928,11 +1928,11 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :分配グラフ
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :グラフの単一要素に関わる再計算にかけられる時間を設定します。再計算が開始されると、この日数のみ実行可能なスレッドが生成されます。この設定が短いと、期日までにスレッドが終了していない可能性が高くなり、終了するまでゲームが停止します(ラグ)。長くした場合、経路が変更された場合に分配が更新されるまでに時間がかかるようになります
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :旅客の行先分配法: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう乗客とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう旅客数は独立に決められます。「無効」では行き先別分配をしなくなります
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう乗客とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう旅客数は独立に決められます。「無効」では行き先別分配をしなくなります。
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :郵便物の行先分配法: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :郵便がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう郵便とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう郵便数は独立に決められます。「無効」では行き先別分配をしなくなります
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :郵便がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう郵便とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう郵便数は独立に決められます。「無効」では行き先別分配をしなくなります。
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲車輸送品の行先分配法: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :装甲車輸送品とは貴重品(温帯)、金(亜寒帯)、ダイヤモンド(亜熱帯)のことです(NewGRFの導入状況よっては変わることがあります)。これらの品目ががどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう輸送品とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう輸送品数は独立に決められます。「手動」では自動での行き先別分配をしなくなります。亜熱帯・温帯では銀行同士で貴重品のやりとりがあるので「対称」を選択しても問題ありませんが、金やダイヤモンドが銀行から鉱山に送られるようなことはないので、亜寒帯では「非対称」か「手動」にすることをお勧めします。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :装甲車輸送品とは貴重品(温帯)、金(亜寒帯)、ダイヤモンド(亜熱帯)のことです。NewGRFの導入状況よっては変わることがあります。これらの品目がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう輸送品とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう輸送品数は独立に決められます。「手動」では自動での行き先別分配をしなくなります。温帯では銀行同士で貴重品のやりとりがあるので「対称」を選択しても問題ありませんが、金やダイヤモンドが銀行から鉱山に送られるようなことはないので、亜寒帯・亜熱帯では「非対称」か「手動」にすることをお勧めします。
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :一般貨物の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :一般的な貨物がどのように行き先別に分配されるかを設定します。「非対称」ではそれぞれの方向に向かう貨物数はプログラムの任意に決められます。「無効」では行き先別分配をしなくなります。
 ###length 3
@@ -2809,11 +2809,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}土地の角を下げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrlで斜めに選択できます。またShiftを押しながら決定すると工事費用を見積もります
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地の角を上げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrlで斜めに選択できます。またShiftを押しながら決定すると工事費用を見積もります
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}最初に選択した土地の高さに選択範囲をならします。Ctrlで斜めに選択できます。またShiftを押しながら決定すると工事費用を見積もります
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入します。Shiftを押しながら決定すると費用を見積もります
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入します。Ctrlで斜めに選択できます。Shiftを押しながら決定すると費用を見積もります
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}オブジェクトを配置
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}設置するオブジェクトを選択して下さい。Shift+クリックで費用を見積もります
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}設置するオブジェクトを選択して下さい。Ctrlで斜めに選択できます。Shift+クリックで費用を見積もります
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}設置するオブジェクトを選びます
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}オブジェクトをプレビューします
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
@@ -2825,7 +2825,7 @@ STR_OBJECT_CLASS_TRNS                                           :電波塔
 STR_PLANT_TREE_CAPTION                                          :{WHITE}植林
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する樹類を選択します。既に木がある場合は追加で植林されます
 STR_TREES_RANDOM_TYPE                                           :{BLACK}ランダムな樹類
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな樹類で植林します。Shift+クリックで費用を見積もります
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな樹類で植林します。Ctrlで斜めに選択できます。Shift+クリックで費用を見積もります
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランダムに広域植林
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}地表全体にランダムに植林します
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}普通
@@ -3496,14 +3496,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占運送契
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :議会を買収
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}旅客と貨物を確保する為に、街で新聞広告を実施します。{}より多くの旅客と貨物が自社の交通網を利用するようになります。{}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}旅客と貨物を確保する為に、街でラジオCMを実施します{}街の中心部から中範囲にある駅の評価が一時的に高まります。{}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}旅客と貨物を確保する為に、街でTV-CMを開始します{}街の中心部の大範囲にある駅の評価が一時的に高まります。{}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}街内の道路補修工事に出資します。最高6ヶ月間街中の道路交通が途絶します。{}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}社を称える彫像を建設します{}この街の駅の評価を恒久的に高めます。{}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}市街地の開発に出資します{}街の成長速度が一時的に早まります。{}費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}街と一年間の独占運送契約を締結します。{}乗客や貨物はあなたの会社の運送経路のみを使用するようになります。{} 費用: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}買収を行い、議会内の評判を高めます。注意: 露見した場合は処罰されます{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街で新聞広告を実施します。{}より多くの旅客と貨物が自社の交通網を利用するようになります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でラジオCMを実施します{}街の中心部から中範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でTV-CMを開始します{}街の中心部の大範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}街内の道路補修工事に出資します。{}最高6ヶ月間街中の道路交通が途絶します。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}社を称える彫像を建設します{}この街の駅の評価を恒久的に高めます。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}市街地の開発に出資します{}街の成長速度が一時的に早まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}街と一年間の独占運送契約を締結します。{}乗客や貨物はあなたの会社の運送経路のみを使用するようになります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}買収を行い、議会内の評判を高めます。注意: 露見した場合は処罰されます{}{POP_COLOUR}費用: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 目標
@@ -4084,7 +4084,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :航空機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}費用: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{} 最高速度: {VELOCITY} 出力: {POWER}{} 維持費: {CURRENCY_LONG} /年{} 容量: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{}最高速度: {VELOCITY} 出力: {POWER} 最大牽引力: {6:FORCE}{}運用費: {4:CURRENCY_LONG}/年{}収容量 {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {0:CURRENCY_LONG} 重量: {1:WEIGHT_SHORT}{}最高速度: {2:VELOCITY} 出力: {3:POWER} 最大牽引力: {6:FORCE}{}運用費: {4:CURRENCY_LONG}/年{}収容量 {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 容量: {CARGO_LONG}{} 維持費: {CURRENCY_LONG} /年
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 航空機の種類: {STRING}{} 容量: {CARGO_LONG}, {CARGO_LONG}{} 維持費: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}費用: {CURRENCY_LONG} 最高速度: {VELOCITY}{} 航空機の種類: {STRING}{} 容量: {CARGO_LONG}{} 維持費: {CURRENCY_LONG} /年
@@ -4401,7 +4401,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}削除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}選択した指令を削除します
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}指令をすべて除去
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}共有を解除
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}指令の共有を解除します。Ctrl+クリックで全司令を消去します
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}指令の共有を解除します。Ctrl+クリックで全指令を消去します
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}移動先を選択
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :最寄りの車両庫へ向かう
@@ -4518,19 +4518,19 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}始発�
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}始発日時を設定します。Ctrl+クリックでは、指令を共有する輸送機器があり、ダイヤが完全に組まれている場合に限り、その総所要時間に基づき、各輸送機器に指定時刻から均等に始発日時を割り付けます
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の行程時間を変更します
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の行程時間を変更します。Ctrl+クリックで全指令に適用します
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}時刻を消去
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の行程時間を消去します
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の行程時間を消去します。Ctrl+クリックで全指令に適用します
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}制限速度を変更
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}選択した移動区間での最高速度を設定します
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}選択した移動区間での最高速度を変更します。Ctrl+クリックですべての移動区間に適用します
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}制限速度を撤廃
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}選択した移動区間にある最高速度を撤廃します
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}選択した移動区間にある最高速度を撤廃します。Ctrl+クリックですべての移動区間に適用します
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}遅延をリセット
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}ダイヤからの遅延量をリセットして、現状を定刻にします
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}ダイヤからの遅延量をリセットして、現状を定刻にします。Ctrl+クリックでグループ内で最も遅延している輸送機器を時間通りにして、その他の輸送機器を早着状態にします
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}オートフィル
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}実際に各指令が実行された時の所要時間を収集してダイヤを作成します。Ctrl+クリックでは既存の停車時間は維持して移動時間のみ更新します(輸送機器を上位モデルに置き換えたときに便利です)
@@ -5091,6 +5091,9 @@ STR_ERROR_NO_BUS_STATION                                        :{WHITE}バス�
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}荷役所がありません
 STR_ERROR_NO_DOCK                                               :{WHITE}埠頭がありません
 STR_ERROR_NO_AIRPORT                                            :{WHITE}空港・ヘリポートがありません
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}バスに対応する停留所がありません
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}路面電車に対応する停留所がありません
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}連結式車両が停まれるバス停がありません。{}路側型バス停が必要です。
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}この飛行機はこのヘリポートに着陸できません
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}このヘリコプターはこの空港に着陸できません
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}中継駅がありません
