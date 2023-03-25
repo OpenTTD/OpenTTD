@@ -406,49 +406,53 @@ struct NewGRFInspectWindow : Window {
 		::DrawString(r.Shrink(WidgetDimensions::scaled.frametext).Shrink(0, offset * this->resize.step_height, 0, 0), buf, TC_BLACK);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	/**
+	 * Helper function to draw the vehicle chain widget.
+	 * @param r The rectangle to draw within.
+	 */
+	void DrawVehicleChainWidget(const Rect& r) const
 	{
-		switch (widget) {
-			case WID_NGRFI_VEH_CHAIN: {
-				const Vehicle *v = Vehicle::Get(this->GetFeatureIndex());
-				int total_width = 0;
-				int sel_start = 0;
-				int sel_end = 0;
-				for (const Vehicle *u = v->First(); u != nullptr; u = u->Next()) {
-					if (u == v) sel_start = total_width;
-					switch (u->type) {
-						case VEH_TRAIN: total_width += Train      ::From(u)->GetDisplayImageWidth(); break;
-						case VEH_ROAD:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
-						default: NOT_REACHED();
-					}
-					if (u == v) sel_end = total_width;
-				}
-
-				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
-				int width = br.Width();
-				int skip = 0;
-				if (total_width > width) {
-					int sel_center = (sel_start + sel_end) / 2;
-					if (sel_center > width / 2) skip = std::min(total_width - width, sel_center - width / 2);
-				}
-
-				GrfSpecFeature f = GetFeatureNum(this->window_number);
-				int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
-				int y = CenterBounds(br.top, br.bottom, h);
-				DrawVehicleImage(v->First(), br, INVALID_VEHICLE, EIT_IN_DETAILS, skip);
-
-				/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
-				if (_current_text_dir == TD_RTL) {
-					DrawFrameRect(r.right - sel_end   + skip, y, r.right - sel_start + skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
-				} else {
-					DrawFrameRect(r.left  + sel_start - skip, y, r.left  + sel_end   - skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
-				}
-				break;
+		const Vehicle *v = Vehicle::Get(this->GetFeatureIndex());
+		int total_width = 0;
+		int sel_start = 0;
+		int sel_end = 0;
+		for (const Vehicle *u = v->First(); u != nullptr; u = u->Next()) {
+			if (u == v) sel_start = total_width;
+			switch (u->type) {
+				case VEH_TRAIN: total_width += Train::From(u)->GetDisplayImageWidth(); break;
+				case VEH_ROAD:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
+				default: NOT_REACHED();
 			}
+			if (u == v) sel_end = total_width;
 		}
 
-		if (widget != WID_NGRFI_MAINPANEL) return;
+		Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
+		int width = br.Width();
+		int skip = 0;
+		if (total_width > width) {
+			int sel_center = (sel_start + sel_end) / 2;
+			if (sel_center > width / 2) skip = std::min(total_width - width, sel_center - width / 2);
+		}
 
+		GrfSpecFeature f = GetFeatureNum(this->window_number);
+		int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
+		int y = CenterBounds(br.top, br.bottom, h);
+		DrawVehicleImage(v->First(), br, INVALID_VEHICLE, EIT_IN_DETAILS, skip);
+
+		/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
+		if (_current_text_dir == TD_RTL) {
+			DrawFrameRect(r.right - sel_end + skip, y, r.right - sel_start + skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
+		} else {
+			DrawFrameRect(r.left + sel_start - skip, y, r.left + sel_end - skip, y + h, COLOUR_WHITE, FR_BORDERONLY);
+		}
+	}
+
+	/**
+	 * Helper function to draw the main panel widget.
+	 * @param r The rectangle to draw within.
+	 */
+	void DrawMainPanelWidget(const Rect& r) const
+	{
 		uint index = this->GetFeatureIndex();
 		const NIFeature *nif  = GetFeature(this->window_number);
 		const NIHelper *nih   = nif->helper;
@@ -545,6 +549,19 @@ struct NewGRFInspectWindow : Window {
 		 * this whole function just to count the actual number of
 		 * elements. Especially because they need to be redrawn. */
 		const_cast<NewGRFInspectWindow*>(this)->vscroll->SetCount(i);
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		switch (widget) {
+			case WID_NGRFI_VEH_CHAIN:
+				this->DrawVehicleChainWidget(r);
+				break;
+
+			case WID_NGRFI_MAINPANEL:
+				this->DrawMainPanelWidget(r);
+				break;
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
