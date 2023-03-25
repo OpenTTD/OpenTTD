@@ -360,12 +360,9 @@ public:
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		switch (data) {
-			case 1:
-				/* ReInit, "debug" sprite might have changed */
-				this->ReInit();
-				break;
-		}
+
+		/* ReInit, "debug" sprite might have changed */
+		if (data == 1) this->ReInit();
 	}
 };
 

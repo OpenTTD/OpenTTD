@@ -328,12 +328,9 @@ void GamelogPrint(std::function<void(const char*)> proc)
 				case GLCT_GRFBUG: {
 					/* A specific bug in a NewGRF, that could cause wide spread problems, has been noted during the execution of the game. */
 					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
-					switch (lc->grfbug.bug) {
-						default: NOT_REACHED();
-						case GBUG_VEH_LENGTH:
-							buf += seprintf(buf, lastof(buffer), "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc->grfbug.grfid), (uint)lc->grfbug.data);
-							break;
-					}
+					assert (lc->grfbug.bug == GBUG_VEH_LENGTH);
+
+					buf += seprintf(buf, lastof(buffer), "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc->grfbug.grfid), (uint)lc->grfbug.data);
 					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfbug.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
 					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
 					break;
