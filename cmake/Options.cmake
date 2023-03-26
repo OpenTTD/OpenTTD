@@ -56,7 +56,7 @@ function(set_options)
 
     option(OPTION_DEDICATED "Build dedicated server only (no GUI)" OFF)
     option(OPTION_INSTALL_FHS "Install with Filesystem Hierarchy Standard folders" ${DEFAULT_OPTION_INSTALL_FHS})
-    option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)
+    option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" OFF)
     if(EMSCRIPTEN)
         # Although pthreads is supported, it is not in a way yet that is
         # useful for us.
