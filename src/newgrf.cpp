@@ -4516,6 +4516,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 
 			case 0x10: // Road Type flags
 				rti->flags = (RoadTypeFlags)buf->ReadByte();
+				if (HasBit(rti->flags, ROTF_TOWN_BUILD)) ClrBit(rti->flags, ROTF_HIDDEN);
 				break;
 
 			case 0x13: // Construction cost factor
