@@ -222,6 +222,7 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}ك
 STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP} كيلو نيوتن
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP} قدم
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}م
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP} متر
 
 # Common window strings
@@ -930,6 +931,7 @@ STR_GAME_OPTIONS_CURRENCY_KRW                                   :وون كوري
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنوب أفريقيا (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :(GEL) لاري جورجي
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :الدولار التايواني الجديد (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :(CNY) الرنمينبي الصيني
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :(HKD) دولار هونج كونج
 STR_GAME_OPTIONS_CURRENCY_INR                                   :الروبية الهندية (INR)
@@ -960,6 +962,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}تسري
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}اخترهذا المربع للسماح لـ OpenTTD بمحاولة استخدام تسريع الأجهزة. سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}لن يعمل الإعداد إلا بعد إعادة تشغيل اللعبة
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}حدد هذا المربع لمزامنة الشاشة (v-sync). سيتم تطبيق الإعداد الذي تم تغييره فقط عند إعادة تشغيل اللعبة. يعمل فقط مع تمكين تسريع الأجهزة (hardware acceleration)
 
 
@@ -1096,6 +1099,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}مدد �
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}إسحب الكل
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}اعادة ضبط جميع القيم
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(لا يوجد تفسير متوفر)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}تحذير!
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
@@ -1137,6 +1141,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :سعر الفائدة على القرض يتحكم أيضًا في التضخم ، إذا تم تمكينه
 
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :تحديد مستوى تكاليف الصيانة والتشغيل للمركبات والبنية التحتية
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           ::سرعة البناء {STRING}
 
@@ -1186,6 +1191,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :السماح ب
 STR_CONFIG_SETTING_INFLATION                                    :التضخم: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :تمكين التضخم في الاقتصاد ، حيث ترتفع التكاليف بشكل أسرع قليلاً من المدفوعات
 
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :أقصى طول للجسر: {STRING}
 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :الارتفاع الأقصى لبناء الجسور
 
@@ -1382,6 +1388,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :عدم استخ
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :كيبورد على الشاشة: {STRING}
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :غير مفعل
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :نقرة واحدة (عند التركيز)
 
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :سماح
@@ -1472,6 +1479,7 @@ STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :الحد الأ
 STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل شركة: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :حظر القطارات على الحاسوب: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :يؤدي تمكين هذا الإعداد إلى جعل بناء القطارات مستحيلًا لللاعب الآلي
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :حظر العربات على الكمبيوتر: {STRING}
 
@@ -1648,23 +1656,25 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :تشبع الم
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :وحدات السرعة: {STRING}
 ###length 4
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :(متري (كم / ساعة
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :إمبراطوري  (ميل/ساعة)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :متري (كم / ساعة)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :متري (م / ثانية)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :وحدات الطاقة في السيارة: {STRING}
 ###length 3
 
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :(متري (طن
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :متري (طن)
 
 ###length 3
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     ::وحدات جهد الجر {STRING}
 ###length 3
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :متري (كغ - قوة)
 
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :إمبراطوري (قدم)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :م) متري)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :متري (م)
 
 STR_CONFIG_SETTING_GRAPHICS                                     :رسوميات {ORANGE}
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
@@ -1777,6 +1787,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}الع�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع و الاجسام غير القابلة للازالة.{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}يمكن للانفاق ان تتقاطع: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الطائرات النفاثه لا تتحطم (كثيراً) فى المطارات الصغيره: {ORANGE}{STRING}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}تعدبل أقصى ارتفاع لتضاريس الخريطة
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}عدل التاريخ {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}غير السنة الحالية
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}تفعيل تغيير قيمة الانتاج: {ORANGE}{STRING}
@@ -1973,6 +1984,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}اللاعبون عبر الإنترنت
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}الاسم
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}الاسم
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :المشاهدين
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جديدة)
 
@@ -2036,6 +2048,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}لقد �
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}السبب: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}الغش ليس مسموحا به في هذه اللعبة
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}أنت تقوم بإرسال العديد من الأوامر للخادم
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}اسم اللاعب الخاص بك غير صالح
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}احتمال فقد الاتصال
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}اخر {NUM} ثواني لم تصل بيانات من السيرفر
@@ -2451,6 +2464,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}مول �
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}اختر المصنع المناسب من القائمة
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}إنشاء المصانع العشوائية
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}غطي الخريطة عشوائيا بالمصانع
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}إنشاء المصانع العشوائية
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}التكلفة: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK} الاحتمالية
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}بناء
@@ -2616,6 +2630,7 @@ STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}  مخط
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 
 ###length 15
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :تكرارات اللعبة
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 : تكتكة القطار
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :تأخر ارتباط الرسم البياني
 STR_FRAMETIME_CAPTION_SOUND                                     :اختلاط الصوت
@@ -2834,6 +2849,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}حرك �
 
 ###length 2
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}الخطوت المتقاطعة
 
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}الازاحة (X): {NUM}، الازاحة (Y): {NUM} (نسبي)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}اختر عفريتة
@@ -3000,9 +3016,11 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}خطا
 
 # Goal Question button list
 ###length 18
+STR_GOAL_QUESTION_BUTTON_OK                                     :موافقة
 STR_GOAL_QUESTION_BUTTON_NO                                     :لا
 STR_GOAL_QUESTION_BUTTON_YES                                    :نعم
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :إعادة المحاولة
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :الاستمرار
 STR_GOAL_QUESTION_BUTTON_RESTART                                :إعادة تشغيل
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :تأجيل
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :استسلام
@@ -3203,6 +3221,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}وسط الشاشة على المصنع
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}نسبة الانتاج: {YELLOW}{COMMA}%
 
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}ينتج: {YELLOW}{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}:يتطلب
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} تنتظر{STRING}
@@ -3315,11 +3334,13 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} الع�
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :جميع انواع الحمولة
 STR_PURCHASE_INFO_NONE                                          :بدون
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :محركات فقط
 STR_PURCHASE_INFO_ALL_BUT                                       :الكل الا {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}تأثير الجذب القصى: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}نوع الطائرة:{GOLD}{STRING}
 
 ###length 3
+STR_CARGO_TYPE_FILTER_NONE                                      :لا شيء
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}قائمة اختيار القطارات - اضغط على العربة لعرض معلوماتها
@@ -3521,6 +3542,7 @@ STR_REPLACE_TRAM_VEHICLES                                       :مركبات ا
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK} إزالة العربة ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl + Click للتطبيق أيضًا على المجموعات الفرعية
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3799,6 +3821,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :هيئت الى
 STR_ORDER_STOP_ORDER                                            :توقف
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(لا يمكن استخدام المحطة){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(تلقائى)
 
@@ -3938,7 +3961,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاش
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}اعدادات االذكاء الاصطناعي
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}تكوين مخطوط اللعبة
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}مخطوطات اللعبة الذي سيتم تحميله في اللعبة التالية
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}النص البرمجي الخاص باللعبة الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}الذكاء الاصطناعي الذي سيتم تحميله في اللعبة التالية
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
@@ -3954,6 +3977,7 @@ STR_AI_CONFIG_AI                                                :{SILVER} الذ
 
 STR_AI_CONFIG_CHANGE_AI                                         :الذكاء الاصطناعي
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :مخطوط اللعبة
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}تحميل نص برمجي آخر
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK} اعداد
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK} اعداد خواص الذكاء الصناعي
 
@@ -3969,6 +3993,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} اخت�
 STR_AI_LIST_CANCEL                                              :{BLACK} الغاء
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا تغير الذكاء الصناعي
 
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}لقطة شاشة عادية
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}التقط لقطة شاشة كاملة
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}صور الخاريطة الكاملة
 
@@ -4225,6 +4250,7 @@ STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}لا يوجد نظام مطبق للتبديل/ التجديد
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(حدود التكلفة للتبديل)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}العربة الجديدة لا تستطيع حمل {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}لا يمكن تجديد السيارة الجديدة بالترتيب {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}تركيبة سكك غير صالحة

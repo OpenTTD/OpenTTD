@@ -4602,9 +4602,9 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Määrit
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Määritä skriptin parametrit
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Saatavilla {STRING}
-STR_AI_LIST_CAPTION_AI                                          :Tekoälyt
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Peliskriptit
+STR_AI_LIST_CAPTION                                             :{WHITE}Saatavilla olevat {STRING}
+STR_AI_LIST_CAPTION_AI                                          :tekoälyt
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :peliskriptit
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Napsauta valitaksesi skriptin
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Tekijä: {ORANGE}{STRING}

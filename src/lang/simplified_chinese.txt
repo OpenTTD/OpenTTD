@@ -1206,7 +1206,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大初始贷款: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :无贷款 {RED}需要有游戏脚本以提供初始资金
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :贷款利率: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :贷款利率；如果通货膨胀启用，将同时影响通货膨胀率。

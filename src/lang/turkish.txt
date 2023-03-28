@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :En yüsek açılış borcu: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Bir şirketin alabileceği en fazla borç (enflasyon hesaba katılmadan)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Borç yok seçeneği, başlangıç fonunu sağlamak için oyun betiği {RED}gerektirir.
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Faiz oranı: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Borç faiz oranı; eğer aktifse aynı zamanda enflasyonu da belirler

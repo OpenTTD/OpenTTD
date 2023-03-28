@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Städte 
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrie errichten
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Straße bauen
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Straßenbahngleise bauen
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Strg wählt das Gebiet diagonal aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Schild aufstellen
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt platzieren. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
 
@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kein Darlehen {RED}Benötigt Spielskript, um Startgeld zur Verfügung zu stellen
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zinssatz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für Kredite; beeinflusst auch die Inflation, falls aktiv
@@ -1931,9 +1933,9 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Symmetrisch�
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Verteilungsschema für Post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Symmetrisch“ heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. „Manuell“ heißt, dass keine automatische Verteilung der Post stattfindet.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Verteilungsschema für Wertsachen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnten dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unterschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte (Frachtklasse „ARMOURED“) umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnten dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unterschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Symmetrisch“ heißt, dass etwa die selbe Menge Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet. Hier sollte fast immer „asymmetrisch“ oder „manuell“ gewählt werden.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
@@ -2700,6 +2702,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalab
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eisenbahnbrücke auswählen
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßenbrücke wählen
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl – Auf die gewünschte Brücke klicken, um sie zu bauen
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stahlträgerbrücke
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Auslegerbrücke (Stahl)
@@ -2819,7 +2825,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sendemasten
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bäume
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Die zu pflanzende Baumart wählen. Wenn auf dem Feld schon ein Baum steht, wird eine zufällige Baumart gepflanzt
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Strg wählt das Gebiet diagonal aus. Umschalt schaltet zwischen Bauen und Kostenvoranschlag um
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zufällige Bäume
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Bäume zufällig über die Landschaft verteilen
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

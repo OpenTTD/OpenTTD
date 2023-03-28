@@ -1206,7 +1206,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :No loan {RED}Requires Game Script to provide initial funds
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interest rate: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation, if enabled

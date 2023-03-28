@@ -3591,6 +3591,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}קבוצ
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}לחץ ליצירת קבוצה חדשה
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}מחק את הקבוצה שנבחרה
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}שנה את שם הקבוצה
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}שינוי צבע הקבוצה שנבחרה
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}לחץ על מנת להגן על הכלים בקבוצה בפני החלפה אוטומטית
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}מחק קבוצה
@@ -3669,6 +3670,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}רכוש
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}רכוש את כלי הטייס שמודגש. Shift+לחיצה מציג הערכת עלות ללא רכישה
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}לרכוש ולאבזר את הרכבת הנבחרת. לחיצה+מקש Shift תציג עלות משוערת מבלי לבצע רכישה בפועל
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}שנה שם
@@ -4288,6 +4290,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלו�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE} הגדרת בינה מלאכותית
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}הגדרות סקריפטי משחק
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}סקריפט המשחק אשר יטען במשחק הבא
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}שחקני המחשב אשר יטענו במשחק הבא
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי

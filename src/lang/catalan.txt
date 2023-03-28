@@ -2996,7 +2996,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Plantes de Cact
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estació de Ferrocarril
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar d'Avions
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeroport
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Àrea de càrrega de camions
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Moll de càrrega de camions
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Parada d'autobús
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Moll per vaixells
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boia
