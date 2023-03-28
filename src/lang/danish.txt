@@ -2791,7 +2791,7 @@ STR_AIRPORT_SMALL                                               :Lille
 STR_AIRPORT_CITY                                                :By
 STR_AIRPORT_METRO                                               :Metropollufthavn
 STR_AIRPORT_INTERNATIONAL                                       :International lufthavn
-STR_AIRPORT_COMMUTER                                            :Pendler
+STR_AIRPORT_COMMUTER                                            :Pendler lufthavn
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
 STR_AIRPORT_HELIPORT                                            :Helikopterlandingsplads
 STR_AIRPORT_HELIDEPOT                                           :Helikopterværksted

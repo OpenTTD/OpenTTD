@@ -2358,6 +2358,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :（新公司）
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}創立並加入一個新公司
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}這是你
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}這是遊戲的主持端
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM}個用戶端 {NUM}/{NUM}所公司
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}目前已連線客戶端的數量、公司數量，以及伺服器管理員所允許的最大公司數量
 
 # Matches ConnectionType
 ###length 5
@@ -5084,6 +5086,18 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 與�
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 飛機的飛行範圍不足
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}沒有火車站
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}沒有公車站
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}沒有貨車站
+STR_ERROR_NO_DOCK                                               :{WHITE}這裡沒有碼頭
+STR_ERROR_NO_AIRPORT                                            :{WHITE}沒有機場/直昇機場
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}沒有兼容此道路類型的站點
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}沒有兼容此有軌電車道路類型的站點
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}沒有適合聯結式公路車的停車站.{}聯結式公路車需要通過式的停車站，而非港式的停車站
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}這架飛機不能降落在這個直昇機場
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}這架直昇機不能降落在這個機場
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}沒有鐵路路點
+STR_ERROR_NO_BUOY                                               :{WHITE}沒有浮標
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為車輛加入時刻表...
