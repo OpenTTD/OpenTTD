@@ -1206,7 +1206,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalen Ufanksloun: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwäert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Kee Kredit {RED}Spill-Script muss am Ufank e Geldbetrag zur Verfügung ginn
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Zënssaz: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zënssaz; kontrolléiert och d'Inflatioun wann ugeschalt
@@ -1589,7 +1591,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Mécht eng Fens
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autospäicheren: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Setz den Interval tëschend automateschen Späicherstänn
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Benotz {STRING} Datumsformat fir Späichernimm
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Datumsformat fir Späichernimm: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format vum Datum am Numm vum Späicherstand
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :laang (31ten Dez 2008)
@@ -1884,7 +1886,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :ausgeschalt
 
-STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximalen Ranzoom Level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximale Razoom Level: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximal Razoomstuf fir Usiichtsfënsteren. Et gëtt méi Späicher gebraucht wann d'Stufen ze grouss ginn
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximalen Rauszoom Level: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximal Rauszoom-Stuf fir Usiichtsfënsteren. Méi grouss Rauszoom-Stufen kënnen Ruckeler verursaachen
@@ -2044,7 +2046,7 @@ STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :System NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :net mat dëser Versioun vun OpenTTD kompatibel
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekannt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressiounslevel '{STRING}' ass net gültëg.
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Spillstand format '{STRING}' gëtt et net. Revertéiren zu '{STRING}'
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Späicherstand format '{STRING}' gëtt et net. Revertéiren zu '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoréiren Basis Grafik Set '{STRING}': net fonnt
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoréiren Basis Sound Set '{STRING}': net fonnt
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoréiren Basis Musik Set '{STRING}': net fonnt
@@ -2112,7 +2114,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bass du
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheater
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkboxen weisen un dass du den Cheat schon eng Kéier benotzt hues
-STR_CHEATS_NOTE                                                 :{BLACK}Notiz: jeglech Benotzung vun dësen Astellungen wäert am Spillstand opgeholl ginn
+STR_CHEATS_NOTE                                                 :{BLACK}Notiz: jeglech Benotzung vun dësen Astellungen wäert am Späicherstand opgeholl ginn
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY_LONG} erhéijen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma {ORANGE}{COMMA} spillen
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magësche Bulldozer (Industrien ofrappen, onzerstéierbar Objeten): {ORANGE}{STRING}
@@ -4674,7 +4676,7 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Fehler b
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kann d'Datei net läschen
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Fehler beim Lueden{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne Fehler: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Futtissen Spillstand - {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Futtissen Späicherstand - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillstand ass mat enger méi neier Versioun gemaach
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei net liesbar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei net beschreiwbar

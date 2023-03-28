@@ -386,7 +386,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generera
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generera industrier
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygg vägar
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Spårvägskonstruktion
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantera träd. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantera träd. Ctrl väljer ytan diagonalt. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placera skylt
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placera objekt. Ctrl väljer ytan diagonalt. Shift växlar mellan att bygga/visa beräknad kostnad
 
@@ -764,7 +764,7 @@ STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Järnvägsstation
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Lastbrygga
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Busshållplats
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Flygplats/Helikopterplats
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Flygplats/Helikopterflygplats
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Hamn
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Obearbetad mark
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gräsmark
@@ -1206,7 +1206,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Inget lån {RED}Kräver spelskript som sätter startkapital
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
@@ -1926,13 +1928,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Den tid varje omberäkning av en länkgrafkomponent tillåts ta. När en omberäkning startas skapas en tråd som tillåts löpa detta antal dagar. Ju kortare du sätter denna, desto mer troligt är det att tråden inte är hinner bli färdig i tid. Då kommer spelet att stanna tills den är klar (vilket gör att det laggar). Ju längre du sätter denna, desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av passagerare sker.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionssätt för post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av post sker.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetriskt" innebär att ungefär samma mängd post skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd post kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av post sker.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionssätt för den BEPANSRADE godsklassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt klimat, då banker inte skickar tillbaka guld till guldgruvor. Vid tempererat och subtropiskt klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank en viss last av värdesaker kom ifrån.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den BEPANSRADE godsklassen innehåller värdesaker i det tempererade, diamanter i det subtropiska eller guld i det subarktiska klimatet. NewGRFer kan ändra detta. "Symmetriskt" innebär att ungefär samma mängd av detta gods skickas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd av detta gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av denna godstyp sker. Det är rekommenderat att välja "asymmetriskt" eller "manuellt" vid subarktiskt eller subtropiskt klimat, då banker endast tar emot gods i dessa klimat. Vid tempererat klimat kan även "symmetriskt" väljas, då banker kan skicka tillbaka värdesaker till den bank de kom ifrån.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionssätt för övriga godsklasser: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "manuellt" innebär att ingen automatisk distribution av dessa godstyper sker.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asymmetriskt" innebär att en godtycklig mängd gods kan skickas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av dessa godstyper sker.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetriskt
@@ -2642,7 +2644,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/ljussignaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+klick aktiverar öppning av signalväljningsfönstret. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från riktmärken och stationer
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertera/Uppgradera spårtyp. Shift växlar mellan att bygga/visa beräknad kostnad
 
 STR_RAIL_NAME_RAILROAD                                          :Järnväg
@@ -2699,6 +2701,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Öka avs
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Välj järnvägsbro
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Välj vägbro
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Välj bro - klicka på önskad bro för att bygga den
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, Stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, Stål
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsolbro, Stål
@@ -2818,7 +2824,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sändare
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Träd
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Välj trädtyp att plantera. Om rutan redan har ett träd, kommer ytterliggare träd att vara av slumpmässig typ oberoende av vilken trädtyp som valts
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Träd av slumpvald typ
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placera träd av slumpvald typ. Shift växlar mellan att placera träd/visa beräknad kostnad
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placera träd av slumpvald typ. Ctrl väljer ytan diagonalt. Shift växlar mellan att placera träd/visa beräknad kostnad
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Slumpmässigt träd
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera träd slumpmässigt över landskapet
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -3297,7 +3303,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Spara
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Spara den inställda till den nuvarande valda namnet
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF parametrar
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF-parametrar
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Stäng
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Återställ
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Återställ alla parametrar till deras standardvärden
@@ -4697,7 +4703,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala-va
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Endast ett reservdata-ljudsett hittades. Om du vill ha ljud, installera ett ljudsett via nerladdnings-systemet
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Endast ett reservdata-ljudsett hittades. Om du vill ha ljud, installera ett ljudsett via nedladdningssystemet
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Gigantisk skärmdump

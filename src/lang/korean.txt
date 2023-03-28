@@ -3914,7 +3914,7 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}항공�
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :모든 화물 종류
-STR_CARGO_TYPE_FILTER_FREIGHT                                   :무게
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :화물
 STR_CARGO_TYPE_FILTER_NONE                                      :없음
 
 ###length VEHICLE_TYPES
@@ -4244,7 +4244,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고 속력: {LTBLUE}{VELOCITY} {BLACK}최고 견인력: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG}) {BLACK}최소 성취도: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG}) {BLACK}최소 성능: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후 고장 횟수: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
@@ -4735,7 +4735,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 지�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 칸 제거 제한에 다다랐습니다
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 나무 심기 제한에 다다랐습니다
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}이름은 유일해야 합니다
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시 정지 중에는 할 수 없습니다
 
 # Local authority errors
@@ -4903,7 +4903,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}적합한 철도 선로가 없습니다
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}선로를 먼저 제거하십시오
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}이 선로에는 건널목을 만들 수 없습니다.
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}이 선로에는 건널목을 만들 수 없습니다
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}이 도로에는 건널목을 만들 수 없습니다
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}여기에 신호기를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}여기에 선로를 건설할 수 없습니다...

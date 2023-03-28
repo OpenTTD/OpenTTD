@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Pas d'emprunt {RED}Nécessite un script de jeu qui fournit les fonds initiaux
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taux d'intérêt{NBSP}: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intérêt de l'emprunt{NBSP}; contrôle également l'inflation si activé
@@ -2059,18 +2061,18 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE} ... auc
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nouvelle partie
+STR_INTRO_NEW_GAME                                              :{BLACK}Jouer une nouvelle partie
 STR_INTRO_LOAD_GAME                                             :{BLACK}Charger une partie
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jouer un scénario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jouer une carte d'altitude
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Éditeur de scénario
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode multijoueurs
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Jouer en multijoueur
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options globales
 STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres de jeu
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenue additionnel en ligne
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuration des IAs
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuration du script de jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
@@ -2228,18 +2230,18 @@ STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Invitation uniq
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueurs
-STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom du joueur{NBSP}:
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Votre nom de joueur :
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ceci est le nom sous lequel vous serez connu des autres joueurs
 
-STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nom
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nom de la partie
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nom de la partie
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clients
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clients - Compagnies
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clients en ligne / clients max.{}Compagnies en ligne / compagnies max.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}{NBSP}×{NBSP}{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Taille
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Taille de la carte{}Cliquer pour trier par surface
-STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Date
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Année en jeu
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Date courante
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Années
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Nombre d'années{}écoulées dans le jeu
@@ -2273,11 +2275,11 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualis
 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Recherche internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Rechercher des serveurs publiés sur internet
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Recherche LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Recherche sur le réseau local
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Rechercher des serveurs sur le réseau local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ajouter un serveur
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter un serveur à la liste. Ce peut être soit une adresse de serveur, soit un code d'invitation
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Héberger/créer un serveur de jeu
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Créer un serveur de jeu
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarrer son propre serveur, sur cet ordinateur-ci
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Entrer votre nom

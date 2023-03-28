@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Xeració
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Xeración de industrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construción de estradas
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construción de tranvía
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árbores. Shift alterna entre construir/amosar custo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árbores. Ctrl selecciona a area diagonalmente. Shift alterna entre construir/amosar custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar rótulo
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar obxecto. Ctrl selecciona a area diagonalmente. Shift alterna entre construir/amosar custo estimado
 
@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dereita
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Crédito máximo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidade máxima de cartos que unha compañía pode pedir (sen ter en conta a inflación)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Non hai empréstitos. {RED}Require dun script do xogo para ter fondos iniciais
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de interés: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :A taxa de interés do préstamo; controla tamén a inflación, se está activada
@@ -1927,13 +1929,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Leva {STRING}{N
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tempo empregado para cada recálculo dunha compoñente do gráfico de ligazóns. Cando comeza un recálculo, creáse un fío que funciona por este número de días. Canto máis pequeno sexa este, é máis probable que o fío non remate cando se supón. Nese intre o xogo para para compensar este retardo. Canto máis longo sexa, máis tempo leva actualizar a distribución cando cambian as rutas.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasaxeiros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simétrico" singinfica que máis ou menos o mesmo número de pasaxeiros irán dende a estación A cada a estación B e tamén da B cara a A. "asimétrico" significa que calquera número de pasaxeiros pode ir en calquera dirección. "manual" significa que non haberá distribución automática para os pasaxeiros.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que máis ou menos o mesmo número de pasaxeiros irán dende a estación A cada a estación B e tamén da B cara a A. "Asimétrico" significa que calquera número de pasaxeiros pode ir en calquera dirección. "manual" significa que non haberá distribución automática para os pasaxeiros.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribución para correo: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simétrico" significa que máis ou menos a mesma cantidade de correo vai ser enviada da estación A cara a estación B como da estación B cara a A. "asimétrico" signigica que calquera cantidade de correo pode ser enviado en calquera dirección. "manual" significa que non hai distribución automática para o correo.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simétrico" significa que máis ou menos a mesma cantidade de correo vai ser enviada da estación A cara a estación B como da estación B cara a A. "Asimétrico" signigica que calquera cantidade de correo pode ser enviado en calquera dirección. "Manual" significa que non hai distribución automática para o correo.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de disitribución para o tipo de mercadoría BLINDADO: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A calse de mercadoría BLINDADA contén obxectos de valor nos clima morno, diamantes no subtropical ou ouro no clima subártico. Os NewGRFs poden cambiar isto. "simétrico" significa que máis ou menos a mesma cantidade de esta mercadoría será enviadas dende a estación A cara a estación B así como da estación B para a A. "asimétrico" significa que calquera cantidade de esta mercadoría pode ser enviada en calquera dirección. "manual" significa que non haberá distribución automática para esta mercadoría. Recoméndase elixir asimétrico ou manual cando se xoguen mapas subárticos, xa que os bancos non van enviar ouro de volta ás minas. Para climas mornos e subtropicais podes escoller tamén simétrico xa que os bancos retornan valores aos bancos de orixe dalgunha carga de valores.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A clase de mercadoría BLINDADA contén obxectos de valor nos clima morno, diamantes no subtropical ou ouro no clima subártico. Os NewGRFs poden cambiar isto. "Simétrico" significa que máis ou menos a mesma cantidade de esta mercadoría será enviadas dende a estación A cara a estación B así como da estación B para a A. "Asimétrico" significa que calquera cantidade de esta mercadoría pode ser enviada en calquera dirección. "manual" significa que non haberá distribución automática para esta mercadoría. Recoméndase elixir asimétrico ou manual cando se xoguen mapas subárticos ou subtropicais, xa que os bancos só reciben carga nestos climas. Para os climas mornos podes escoller simétrico xa que os bancos enviarán carga de volta o banco orixinal.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Xeito de distribución para outros tipos de mercadoría: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimétrico" significa que calquera cantidade de mercadorías pode ser enviada en calquera dirección. "manual" significa que non haberá distribución automática para estas mercadorías.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que calquera cantidade de mercadorías pode ser enviada en calquera dirección. "Manual" significa que non haberá distribución automática para estas mercadorías.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrica
@@ -2699,7 +2701,11 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona ponte ferroviaria
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona ponte de estrada
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de pontes - picha na ponte seleccionada para construíla
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de pontes - pincha na ponte seleccionada para construíla
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante, aceiro
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas, aceiro
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Voladizo, aceiro
@@ -2819,7 +2825,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmisores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árbores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona-lo tipo de árbore a plantar. Se xa hai unha árbore no cadro, isto engadirá máis árbores de varios tipos independentemente do tipo seleccionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores de tipo aleatorio
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árbores de tipo aleatorio. Shift alterna entre construír e amosa-lo custo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árbores de tipo aleatorio. Ctrl selecciona a area diagonalmente. Shift alterna entre construír e amosa-lo custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árbores aleatorias
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árbores aleatoriamente sobre a paisaxe
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal

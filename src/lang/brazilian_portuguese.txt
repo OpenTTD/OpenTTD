@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Empréstimo Inicial Máximo: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima a ser emprestada para uma companhia (sem levar em conta a inflação)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação, se ativado

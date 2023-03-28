@@ -1293,7 +1293,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximální půjčka: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jak moc si může společnost půjčit (bez ohledu na inflaci)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Žádná půjčka {RED}Vyžaduje herní skript pro získání základního kapitálu.
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Výše úroků: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků z půjček; rovněž ovlivňuje inflaci, pokud je zapnuta

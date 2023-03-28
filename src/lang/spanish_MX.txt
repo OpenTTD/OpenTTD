@@ -387,7 +387,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generaci
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generación de industrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcción de carreteras
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Construcción de tranvía
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Mayús muestra un costo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Poner cartel
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
 
@@ -1207,7 +1207,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo préstamo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una empresa puede pedir prestada (sin tener en cuenta la inflación)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sin préstamo {RED} Se necesita un script de juego para proporcionar fondos iniciales
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasa de interés del préstamo; controla también la inflación, en caso de estar activada
@@ -1927,13 +1929,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING}{N
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo requerido en el cálculo de cada uno de los componentes de la gráfica de distribución. Cuanto menor sea este valor, más probable es que el juego sea más lento. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se produzcan cambios en las rutas
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica" se envía la misma cantidad de pasajeros entre dos estaciones. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. "Manual" significa que no hay distribución automática para los pasajeros.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica", se envía la misma cantidad de pasajeros de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en cualquier direccion. "Manual" significa que no se realiza una distribución automática para los pasajeros.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribución para el correo: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución "Simétrica" se envía la misma cantidad de correo entre dos estaciones. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de correo en ambas direcciones. "Manual" significa que no hay distribución automática para el correo
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución "Simétrica", se envía la misma cantidad de carga de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no se realiza una distribución automática para el correo.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para cargamento de valores: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :El cargamento de valores contiene objetos de valor en el ambiente Templado, diamantes en el Subtropical y oro en el Subártico. Algún NewGRF puede modificar esto. En una distribución "Simétrica", se envía la misma cantidad de carga entre dos estaciones. En una distribución "Asimétrica", se envían cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no hay distribución automática para esta carga. Se recomienda la distribución "Asimétrica" o "Manual" al jugar en ambiente Subártico, ya que los bancos no regresan oro a las minas. En los ambiente Templado y Subtropical se puede escoger "Simétrica", ya que los bancos pueden regresar algunos objetos de valor a su banco de origen.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La clase carga BLINDADA contiene objetos de valor en el clima templado, diamantes en el clima subtropical y oro en el clima subártico. Nuevos escenarios puedieran modificar esto. En una distribución "Simétrica", se envía la misma cantidad de carga de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribución en "Asimétrica" o en "Manual" al jugar en los clima subártico y subtropical, ya que los bancos sólo reciben carga en esos climas. En el clima templado es factible escoger "Simétrica" ya que los bancos pueden enviar objetos de valor de vuelta al banco de origen.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otra carga: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrica" significa que se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para esta clase de carga.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrico" significa que cantidades arbitrarias de carga pueden ser enviadas en cualquier direccion. "Manual" significa que no ocurrira distribución automática para estas cargas.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asimétrica
@@ -2700,6 +2702,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selección de puente de ferrocarril
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selección de puente de carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente. Clic para construir
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante (acero)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas (acero)
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Voladizo (acero)
@@ -2819,7 +2825,7 @@ STR_OBJECT_CLASS_TRNS                                           :Torres de trans
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Elegir el tipo de árboles a plantar. Si la casilla ya tiene un árbol, se añadirán más árboles de distintos tipos sin importar el tipo elegido
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipo aleatorio
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árboles de distinto tipo al azar. Mayús muestra un costo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Coloca árboles de tipo aleatorio. Ctrl permite seleccionar un área diagonalmente. Mayús permite mostrar una estimación del precio
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árboles al azar sobre el terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -2852,6 +2858,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar l
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Muchas localidades aleatorias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubrir el mapa con localidades colocadas al azar
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Expandir todas las localidades
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Hacer que todos los pueblos crezcan lentamente
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nombre de la localidad:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Ingresar el nombre de la localidad
@@ -3328,7 +3335,10 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Represen
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite cambiando los valores X y Y. Ctrl+Clic mueve el sprite ocho unidades de una sola vez
 
 ###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Desfasaje reiniciado al centro
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centrado
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Punto de mira
 
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Restaurar coordenadas relativas
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restaurar las coordenadas relativas
@@ -4509,22 +4519,22 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elegir una fecha de inicio del itinerario. Ctrl+Clic para distribuir uniformemente todos los demás vehículos que lo compartan, siempre y cuando esté programado completamente
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar tiempo
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar cuánto debe tardar el recorrido resaltado
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifica la cantidad de tiempo que la orden seleccionada debe tomar. Ctrl+clic modifica la duración para todas las órdenes
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Borrar tiempo
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Anula el tiempo en el recorrido resaltado
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Borra la cantidad de tiempo para la orden resaltada.Ctrl+clic elimina el tiempo para todas las órdenes
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambiar límite de velocidad
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambiar el límite de velocidad en el recorrido resaltado
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia el límite máximo de velocidad de la orden resaltada. Ctrl+clic cambia el límite para todas las órdenes
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Borrar límite de velocidad
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Anular el límite de velocidad en el recorrido resaltado
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Borra el límite máximo de velocidad de la orden resaltada. Ctrl+clic elimina la velocidad para todas las órdenes
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar el contador del retraso para que el vehículo vaya a tiempo
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Llenar automáticamente
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenar la tabla de itinerarios automáticamente con los valores del siguiente recorrido (Ctrl+Clic para intentar mantener los tiempos de espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores del siguiente recorrido. Ctrl+clic para intentar mantener los tiempos de espera en estación
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
@@ -4795,6 +4805,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... los 
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solo se puede construir por encima del nivel de nieve
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solo se puede construir por debajo del nivel de nieve
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Mala suerte, la financiación no fructificó; inténtentelo de nuevo
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}No se encontraron lugares aptos para hacer prospección de esta industria
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No hubo espacio para industrias de tipo "{STRING}"
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Cambia las opciones de generación para crear un mejor mapa

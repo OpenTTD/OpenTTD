@@ -1208,7 +1208,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimālais sākotnējais aizdevums: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimālais aizdevuma daudzums, ko uzņēmums var izsniegt (neskaitot inflāciju)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Nav aizdevuma {RED}Lai nodrošinātu sākotnējos līdzekļus, ir nepieciešams spēles skripts
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Procentu likme: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Aizdevumu procentu likme; ja ieslēgts, ietekmē arī inflāciju
@@ -1934,7 +1936,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetriska" no
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Izplatīšanas režīms APSARGĀJAMAI preču klasei: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :APSARGĀJAMĀ kravas klase satur vērtslietas mērenajā joslā, dimantus subtropu joslā un zeltu subarktiskajā joslā. NewGRF paplašinājumi var to mainīt. "simetriska" nozīmē, ka apmēram vienāds daudzums kravas tiks nosūtīts virzienā no stacijas A uz B, cik no B uz A. "asimetriska" nozīmē, ka patvaļīgs kravas daudzums var tikt nosūtīts katrā no virzieniem. "manuāli" nozīmē, ka pastam netiks veikta automātiska izplatīšana. Šo vērtību vēlams iestatīt kā asimetrisku vai manuālu, kad spēlē subarktiskajā joslā, jo bankas nesūta zeltu atpakaļ uz zelta raktuvēm. Mērenajā un subtropu joslā var izvēlēties simetrisku, jo bankas sūtīs vērtslietas atpakaļ uz izcelsmes banku, kad saņems vērtslietu pievedumu.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Izplatīšanas modelis citām kravu klasēm: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asimetriska" nozīmē, ka patvaļīgu kravas daudzumu var nosūtīt abos virzienos."manuāli" nozīmē, ka šīm kravām netiks veikta automātiska izplatīšana.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimetrisks" nozīmē, ka jebkurā virzienā var nosūtīt patvaļīgu daudzumu kravas. "Manuāli" nozīmē, ka šīm kravām automātiska sadale nenotiks
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuāli
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
@@ -2703,6 +2705,9 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Palielin
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izvēlēties dzelzceļa tiltu
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izvēlēties tiltu
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Tiltu izvēle - klikšķināt uz vēlamo tiltu, lai to uzbūvētu
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Vanšu, tērauda
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Siju, tērauda
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Izgriežamais, tērauda

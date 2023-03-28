@@ -1206,7 +1206,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức tối đa một công ty có thể vay (không tính lạm phát)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Không có khoản vay {RED}Cần Game Script để cung cấp khoảng vốn ban đầu
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lãi suất vay: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lãi xuất vay; ảnh hưởng tới cả lạm phát nếu bật tùy chọn đó

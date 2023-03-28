@@ -1274,7 +1274,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximálny počiatočný úver: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálna množstvo peňazí ktoré si môže spoločnosť požičať (bez inflácie)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Žiadny úver {RED}Vyžaduje Herný skript na poskytnutie počiatočných prostriedkov
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Úroková sadzba: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Úroková sadzba úveru; kontroluje infláciu ak je povolená

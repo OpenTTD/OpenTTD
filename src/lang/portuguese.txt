@@ -4127,7 +4127,7 @@ STR_REPLACE_ALL_ROADTYPE                                        :Todos os veícu
 
 ###length 2
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecione o tipo de carril para o qual deseja efectuar a substituição dos motores
-STR_REPLACE_HELP_ROADTYPE                                       :BLACK}Selecione o tipo de estrada para o qual deseja efectuar a substituição dos motores
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Selecione o tipo de estrada para o qual deseja efectuar a substituição dos motores
 ###next-name-looks-similar
 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
