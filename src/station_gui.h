@@ -25,7 +25,7 @@ enum StationCoverageType {
 };
 
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies);
-void CheckRedrawStationCoverage(const Window *w);
+void CheckRedrawStationCoverage(Window *w);
 
 using StationPickerCmdProc = std::function<bool(bool test, StationID to_join)>;
 

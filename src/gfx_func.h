@@ -21,7 +21,7 @@
  * (this is btw. also possible if needed). This is used to avoid a
  * flickering of the screen by the video driver constantly repainting it.
  *
- * This whole mechanism is controlled by an rectangle defined in #_invalid_rect. This
+ * This whole mechanism was controlled by an rectangle defined in #_invalid_rect. This
  * rectangle defines the area on the screen which must be repaint. If a new object
  * needs to be repainted this rectangle is extended to 'catch' the object on the
  * screen. At some point (which is normally uninteresting for patch writers) this
@@ -32,7 +32,6 @@
  * rectangle information. Then a new round begins by marking objects "dirty".
  *
  * @see VideoDriver::MakeDirty
- * @see _invalid_rect
  * @see _screen
  */
 
@@ -160,6 +159,8 @@ const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize = 
 
 void DrawDirtyBlocks();
 void AddDirtyBlock(int left, int top, int right, int bottom);
+void AddPendingDirtyBlocks(int left, int top, int right, int bottom);
+void UnsetDirtyBlocks(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
 bool CopyPalette(Palette &local_palette, bool force_copy = false);
@@ -181,6 +182,12 @@ static inline int CenterBounds(int min, int max, int size)
 }
 
 /* window.cpp */
+enum DrawOverlappedWindowFlags {
+    DOWF_NONE         =      0,
+    DOWF_MARK_DIRTY   = 1 << 0,
+    DOWF_SHOW_DEBUG   = 1 << 1,
+};
+DECLARE_ENUM_AS_BIT_SET(DrawOverlappedWindowFlags)
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
 void SetMouseCursorBusy(bool busy);

@@ -617,7 +617,7 @@ void Window::RaiseButtons(bool autoraise)
  * Invalidate a widget, i.e. mark it as being changed and in need of redraw.
  * @param widget_index the widget to redraw.
  */
-void Window::SetWidgetDirty(byte widget_index) const
+void Window::SetWidgetDirty(byte widget_index)
 {
 	/* Sometimes this function is called before the window is even fully initialized */
 	if (this->nested_array == nullptr) return;
@@ -885,27 +885,6 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 }
 
 /**
- * Returns whether a window may be shown or not.
- * @param w The window to consider.
- * @return True iff it may be shown, otherwise false.
- */
-static bool MayBeShown(const Window *w)
-{
-	/* If we're not modal, everything is okay. */
-	if (!HasModalProgress()) return true;
-
-	switch (w->window_class) {
-		case WC_MAIN_WINDOW:    ///< The background, i.e. the game.
-		case WC_MODAL_PROGRESS: ///< The actual progress window.
-		case WC_CONFIRM_POPUP_QUERY: ///< The abort window.
-			return true;
-
-		default:
-			return false;
-	}
-}
-
-/**
  * Generate repaint events for the visible part of window w within the rectangle.
  *
  * The function goes recursively upwards in the window stack, and splits the rectangle
@@ -916,8 +895,9 @@ static bool MayBeShown(const Window *w)
  * @param top Top edge of the rectangle that should be repainted
  * @param right Right edge of the rectangle that should be repainted
  * @param bottom Bottom edge of the rectangle that should be repainted
+ * @param gfx_dirty Whether to mark gfx dirty
  */
-static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
+void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom, DrawOverlappedWindowFlags flags)
 {
 	Window::IteratorToFront it(w);
 	++it;
@@ -932,26 +912,26 @@ static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bo
 			int x;
 
 			if (left < (x = v->left)) {
-				DrawOverlappedWindow(w, left, top, x, bottom);
-				DrawOverlappedWindow(w, x, top, right, bottom);
+				DrawOverlappedWindow(w, left, top, x, bottom, flags);
+				DrawOverlappedWindow(w, x, top, right, bottom, flags);
 				return;
 			}
 
 			if (right > (x = v->left + v->width)) {
-				DrawOverlappedWindow(w, left, top, x, bottom);
-				DrawOverlappedWindow(w, x, top, right, bottom);
+				DrawOverlappedWindow(w, left, top, x, bottom, flags);
+				DrawOverlappedWindow(w, x, top, right, bottom, flags);
 				return;
 			}
 
 			if (top < (x = v->top)) {
-				DrawOverlappedWindow(w, left, top, right, x);
-				DrawOverlappedWindow(w, left, x, right, bottom);
+				DrawOverlappedWindow(w, left, top, right, x, flags);
+				DrawOverlappedWindow(w, left, x, right, bottom, flags);
 				return;
 			}
 
 			if (bottom > (x = v->top + v->height)) {
-				DrawOverlappedWindow(w, left, top, right, x);
-				DrawOverlappedWindow(w, left, x, right, bottom);
+				DrawOverlappedWindow(w, left, top, right, x, flags);
+				DrawOverlappedWindow(w, left, x, right, bottom, flags);
 				return;
 			}
 
@@ -969,6 +949,14 @@ static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bo
 	dp->dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
 	dp->zoom = ZOOM_LVL_NORMAL;
 	w->OnPaint();
+	if (unlikely(flags & DOWF_SHOW_DEBUG)) {
+		extern void ViewportDrawDirtyBlocks();
+		ViewportDrawDirtyBlocks();
+	}
+	if (flags & DOWF_MARK_DIRTY) {
+		VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
+		UnsetDirtyBlocks(left, top, right, bottom);
+	}
 }
 
 /**
@@ -991,7 +979,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 				left < w->left + w->width &&
 				top < w->top + w->height) {
 			/* Window w intersects with the rectangle => needs repaint */
-			DrawOverlappedWindow(w, std::max(left, w->left), std::max(top, w->top), std::min(right, w->left + w->width), std::min(bottom, w->top + w->height));
+			DrawOverlappedWindow(w, std::max(left, w->left), std::max(top, w->top), std::min(right, w->left + w->width), std::min(bottom, w->top + w->height), DOWF_NONE);
 		}
 	}
 }
@@ -1000,10 +988,25 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
  * Mark entire window as dirty (in need of re-paint)
  * @ingroup dirty
  */
-void Window::SetDirty() const
+void Window::SetDirty()
 {
-	AddDirtyBlock(this->left, this->top, this->left + this->width, this->top + this->height);
+	this->flags |= WF_DIRTY;
 }
+
+/**
+ * Mark entire window as dirty (in need of re-paint)
+ * @ingroup dirty
+ */
+void Window::SetDirtyAsBlocks()
+{
+	extern bool _gfx_draw_active;
+	if (_gfx_draw_active) {
+		AddPendingDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height);
+	} else {
+		AddDirtyBlock(this->left, this->top, this->left + this->width, this->top + this->height);
+	}
+}
+
 
 /**
  * Re-initialize a window, and optionally change its size.
@@ -1013,7 +1016,7 @@ void Window::SetDirty() const
  */
 void Window::ReInit(int rx, int ry)
 {
-	this->SetDirty(); // Mark whole current window as dirty.
+	this->SetDirtyAsBlocks(); // Mark whole current window as dirty.
 
 	/* Save current size. */
 	int window_width  = this->width;
@@ -1128,7 +1131,7 @@ void Window::Close()
 
 	this->CloseChildWindows();
 
-	this->SetDirty();
+	this->SetDirtyAsBlocks();
 
 	Window::closed_windows.push_back(this);
 }
@@ -2104,7 +2107,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen)
 			if (new_bottom >= (int)_screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1U, w->nested_root->resize_y));
 		}
 
-		w->SetDirty();
+		w->SetDirtyAsBlocks();
 
 		uint new_xinc = std::max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
 		uint new_yinc = std::max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
@@ -2120,7 +2123,14 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen)
 
 	/* Always call OnResize to make sure everything is initialised correctly if it needs to be. */
 	w->OnResize();
-	w->SetDirty();
+
+	// TODO incapsulate into a function
+	extern bool _gfx_draw_active;
+	if (_gfx_draw_active) {
+		AddPendingDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
+	} else {
+		w->SetDirty();
+	}
 }
 
 /**
@@ -2168,7 +2178,10 @@ static EventState HandleWindowDragging()
 				break;
 			}
 
-			w->SetDirty();
+			if (!(w->flags & WF_DRAG_DIRTIED)) {
+				w->flags |= WF_DRAG_DIRTIED;
+				w->SetDirtyAsBlocks();
+			}
 
 			int x = _cursor.pos.x + _drag_delta.x;
 			int y = _cursor.pos.y + _drag_delta.y;
@@ -2301,7 +2314,7 @@ static EventState HandleWindowDragging()
 			_drag_delta.y += y;
 			if ((w->flags & WF_SIZING_LEFT) && x != 0) {
 				_drag_delta.x -= x; // x > 0 -> window gets longer -> left-edge moves to left -> subtract x to get new position.
-				w->SetDirty();
+				w->SetDirtyAsBlocks();
 				w->left -= x;  // If dragging left edge, move left window edge in opposite direction by the same amount.
 				/* ResizeWindow() below ensures marking new position as dirty. */
 			} else {
@@ -3161,7 +3174,7 @@ void UpdateWindows()
  */
 void SetWindowDirty(WindowClass cls, WindowNumber number)
 {
-	for (const Window *w : Window::Iterate()) {
+	for (Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) w->SetDirty();
 	}
 }
@@ -3174,7 +3187,7 @@ void SetWindowDirty(WindowClass cls, WindowNumber number)
  */
 void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_index)
 {
-	for (const Window *w : Window::Iterate()) {
+	for (Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) {
 			w->SetWidgetDirty(widget_index);
 		}
@@ -3187,7 +3200,7 @@ void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_inde
  */
 void SetWindowClassesDirty(WindowClass cls)
 {
-	for (const Window *w : Window::Iterate()) {
+	for (Window *w : Window::Iterate()) {
 		if (w->window_class == cls) w->SetDirty();
 	}
 }
@@ -3359,7 +3372,7 @@ void CloseConstructionWindows()
 		}
 	}
 
-	for (const Window *w : Window::Iterate()) w->SetDirty();
+	for (Window *w : Window::Iterate()) w->SetDirty();
 }
 
 /** Close all always on-top windows to get an empty screen */
@@ -3481,7 +3494,7 @@ int PositionNetworkChatWindow(Window *w)
  */
 void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index)
 {
-	for (const Window *w : Window::Iterate()) {
+	for (Window *w : Window::Iterate()) {
 		if (w->viewport != nullptr && w->viewport->follow_vehicle == from_index) {
 			w->viewport->follow_vehicle = to_index;
 			w->SetDirty();
