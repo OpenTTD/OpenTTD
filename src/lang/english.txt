@@ -1287,7 +1287,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Construction co
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set level of construction and purchase costs
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING2}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur every few years. During a recession all production is significantly lower (it returns to previous level when the recession is over)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur periodically. During a recession all production is significantly lower (it returns to previous level when the recession is over)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train reversing in stations: {STRING2}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
@@ -1375,8 +1375,8 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :On the left
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :On the driving side
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :On the right
 
-STR_CONFIG_SETTING_SHOWFINANCES                                 :Show finances window at the end of the year: {STRING2}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :If enabled, the finances window pops up at the end of each year to allow easy inspection of the financial status of the company
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Show finances window at the end of the {TKM year period}: {STRING2}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :If enabled, the finances window pops up at the end of each {TKM year period} to allow easy inspection of the financial status of the company
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :New orders are 'non-stop' by default: {STRING2}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normally, a vehicle will stop at every station it passes. By enabling this setting, it will drive through all station on the way to its final destination without stopping. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behaviour nevertheless
@@ -1720,8 +1720,8 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Newspaper: {STRING2}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Play sound upon display of newspapers
 
-STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :End of year: {STRING2}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound at the end of a year summarising the company's performance during the year compared to the previous year
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :End of {TKM year period}: {STRING2}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound at the end of a {TKM year period} summarising the company's performance during the {TKM year period} compared to the previous {TKM year period}
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction: {STRING2}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Play sound on successful constructions or other actions
