@@ -349,6 +349,7 @@ enum SaveLoadVersion : uint16 {
 
 	SLV_VELOCITY_NAUTICAL,                  ///< 305  PR#10594 Separation of land and nautical velocity (knots!)
 	SLV_CONSISTENT_PARTIAL_Z,               ///< 306  PR#10570 Conversion from an inconsistent partial Z calculation for slopes, to one that is (more) consistent.
+	SLV_MORE_CARGO_AGE,                     ///< 307  PR#10596 Track cargo age for a longer period.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
