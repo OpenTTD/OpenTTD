@@ -2721,7 +2721,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Don't hi
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Highlight coverage area of proposed site
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepts: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Supplies: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/yr
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/{TKM year period}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Join station
@@ -3872,7 +3872,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canals
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stations:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Station tiles
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Airports
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/yr
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/{TKM year period}
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
@@ -4005,7 +4005,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Speed on ocean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Speed on canal/river: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY_LONG}/yr
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY_LONG}/{TKM year period}
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(refittable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} year{P "" s}
@@ -4198,13 +4198,13 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramway vehicle
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aircraft
 STR_ENGINE_PREVIEW_SHIP                                         :ship
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY_LONG}/yr{}Capacity: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {0:CURRENCY_LONG} Weight: {1:WEIGHT_SHORT}{}Speed: {2:VELOCITY}  Power: {3:POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/yr{}Capacity: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING} Range: {COMMA} tiles{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING} Range: {COMMA} tiles{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY_LONG}/{TKM year period}{}Capacity: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {0:CURRENCY_LONG} Weight: {1:WEIGHT_SHORT}{}Speed: {2:VELOCITY}  Power: {3:POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/{TKM year period}{}Capacity: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING} Range: {COMMA} tiles{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Aircraft type: {STRING} Range: {COMMA} tiles{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/{TKM year period}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING} - {STRING1}
@@ -4347,9 +4347,9 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name roa
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name ship
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name aircraft
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/yr
 STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/{TKM year period}
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Max. speed: {LTBLUE}{VELOCITY} {BLACK}Aircraft type: {LTBLUE}{STRING}
