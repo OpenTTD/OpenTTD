@@ -330,8 +330,8 @@ STR_SORT_BY_PRODUCTION                                          :Production
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Transported
 STR_SORT_BY_NUMBER                                              :Number
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit last year
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit this year
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit last {TKM year period}
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit this {TKM year period}
 STR_SORT_BY_AGE                                                 :Age
 STR_SORT_BY_RELIABILITY                                         :Reliability
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
@@ -358,10 +358,10 @@ STR_SORT_BY_RANGE                                               :Range
 STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Rating
 STR_SORT_BY_NUM_VEHICLES                                        :Number of vehicles
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Total profit last year
-STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total profit this year
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Average profit last year
-STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this year
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Total profit last {TKM year period}
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total profit this {TKM year period}
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Average profit last {TKM year period}
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Average profit this {TKM year period}
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :None
@@ -906,7 +906,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} is getting very old and urgently needs replacing
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} can't find a path to continue
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is lost
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s profit last year was {CURRENCY_LONG}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s profit last {TKM year period} was {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} can't get to the next destination because it is out of range
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stopped because an ordered refit failed
@@ -1457,7 +1457,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Yes, but exclud
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Of all vehicles
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warn if a vehicle's income is negative: {STRING2}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a news message gets sent when a vehicle has not made any profit within a calendar year
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a news message gets sent when a vehicle has not made any profit within a {TKM year period}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING2}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
@@ -3932,7 +3932,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send ins
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Replace vehicles
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for servicing
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Create group
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this {TKM year period}: {CURRENCY_LONG} (last {TKM year period}: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING1} {STRING1}
 
@@ -3977,8 +3977,8 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehi
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :Profit this year:
-STR_GROUP_PROFIT_LAST_YEAR                                      :Profit last year:
+STR_GROUP_PROFIT_THIS_YEAR                                      :Profit this {TKM year period}:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Profit last {TKM year period}:
 STR_GROUP_OCCUPANCY                                             :Current usage:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4357,8 +4357,8 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Max. spe
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG}) {BLACK}Min. performance: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this {TKM year period}: {LTBLUE}{CURRENCY_LONG} (last {TKM year period}: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profit this {TKM year period}: {LTBLUE}{CURRENCY_LONG} (last {TKM year period}: {CURRENCY_LONG}) {BLACK}Min. performance: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}
