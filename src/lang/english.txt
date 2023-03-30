@@ -672,9 +672,9 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Loan:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 
 ###length 10
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles that turned a profit last year. This includes road vehicles, trains, ships and aircraft
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles that turned a profit last {TKM year period}. This includes road vehicles, trains, ships and aircraft
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-serviced stations. Train stations, bus stops, airports and so on are counted separately even if they belong to the same station
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two {TKM years periods} are considered)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the last 12 quarters
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the highest profit of the last 12 quarters
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the last four quarters
