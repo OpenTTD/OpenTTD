@@ -114,6 +114,9 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 		const RoadTypeInfo *rti = GetRoadTypeInfo(roadtype);
 		if (rti->label == 0) return false;
 
+		/* Not yet introduced at this date. */
+		if (IsInsideMM(rti->introduction_date, 0, MAX_DATE) && rti->introduction_date > TimerGameCalendar::date) return false;
+
 		/*
 		 * Do not allow building hidden road types, except when a town may build it.
 		 * The GS under deity mode, as well as anybody in the editor builds roads that are
