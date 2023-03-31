@@ -702,11 +702,19 @@ struct UnitsLong {
 };
 
 /** Unit conversions for velocity. */
-static const Units _units_velocity[] = {
-	{ {    1,  0}, STR_UNITS_VELOCITY_IMPERIAL,     0 },
-	{ {  103,  6}, STR_UNITS_VELOCITY_METRIC,       0 },
-	{ { 1831, 12}, STR_UNITS_VELOCITY_SI,           0 },
-	{ {37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
+static const Units _units_velocity_calendar[] = {
+	{ {    1,  0}, STR_UNITS_VELOCITY_IMPERIAL,      0 },
+	{ {  103,  6}, STR_UNITS_VELOCITY_METRIC,        0 },
+	{ { 1831, 12}, STR_UNITS_VELOCITY_SI,            0 },
+	{ {37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS_DAY, 1 },
+};
+
+/** Unit conversions for velocity. */
+static const Units _units_velocity_realtime[] = {
+	{ {    1,  0}, STR_UNITS_VELOCITY_IMPERIAL,      0 },
+	{ {  103,  6}, STR_UNITS_VELOCITY_METRIC,        0 },
+	{ { 1831, 12}, STR_UNITS_VELOCITY_SI,            0 },
+	{ {18944, 16}, STR_UNITS_VELOCITY_GAMEUNITS_SEC, 1 },
 };
 
 /** Unit conversions for power. */
@@ -782,6 +790,18 @@ static const Units _units_time_years_or_minutes[] = {
 };
 
 /**
+ * Get the correct velocity units depending on which time system we're using: either calendar days or real time.
+ * @param index The index of the unit selected by the player.
+ * @return The Units of the selected locale and time mode.
+ */
+static const Units GetVelocityUnits(uint index)
+{
+	if (_settings_game.economy.use_realtime_units) return _units_velocity_realtime[index];
+
+	return _units_velocity_calendar[index];
+}
+
+/**
  * Convert the given (internal) speed to the display speed.
  * @param speed the speed to convert
  * @return the converted speed.
@@ -791,7 +811,7 @@ uint ConvertSpeedToDisplaySpeed(uint speed)
 	/* For historical reasons we don't want to mess with the
 	 * conversion for speed. So, don't round it and keep the
 	 * original conversion factors instead of the real ones. */
-	return _units_velocity[_settings_game.locale.units_velocity].c.ToDisplay(speed, false);
+	return GetVelocityUnits(_settings_game.locale.units_velocity).c.ToDisplay(speed, false);
 }
 
 /**
@@ -801,7 +821,7 @@ uint ConvertSpeedToDisplaySpeed(uint speed)
  */
 uint ConvertDisplaySpeedToSpeed(uint speed)
 {
-	return _units_velocity[_settings_game.locale.units_velocity].c.FromDisplay(speed);
+	return GetVelocityUnits(_settings_game.locale.units_velocity).c.FromDisplay(speed);
 }
 
 /**
@@ -811,7 +831,7 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
  */
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
 {
-	return _units_velocity[_settings_game.locale.units_velocity].c.ToDisplay(speed * 10, false) / 16;
+	return GetVelocityUnits(_settings_game.locale.units_velocity).c.ToDisplay(speed * 10, false) / 16;
 }
 
 /**
@@ -821,7 +841,7 @@ uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
  */
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed)
 {
-	return _units_velocity[_settings_game.locale.units_velocity].c.FromDisplay(speed * 16, true, 10);
+	return GetVelocityUnits(_settings_game.locale.units_velocity).c.FromDisplay(speed * 16, true, 10);
 }
 /**
  * Parse most format codes within a string and write the result to a buffer.
@@ -1304,11 +1324,12 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_VELOCITY: { // {VELOCITY}
-				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity));
-				unsigned int decimal_places = _units_velocity[_settings_game.locale.units_velocity].decimal_places;
+				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity_calendar));
+				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity_realtime));
+				unsigned int decimal_places = GetVelocityUnits(_settings_game.locale.units_velocity).decimal_places;
 				uint64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY)), decimal_places};
 				StringParameters tmp_params(args_array, decimal_places ? 2 : 1, nullptr);
-				buff = FormatString(buff, GetStringPtr(_units_velocity[_settings_game.locale.units_velocity].s), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(GetVelocityUnits(_settings_game.locale.units_velocity).s), &tmp_params, last);
 				break;
 			}
 
