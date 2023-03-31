@@ -203,10 +203,7 @@ static Point MapXYZToViewport(const Viewport *vp, int x, int y, int z)
 
 void DeleteWindowViewport(Window *w)
 {
-	if (w->viewport == nullptr) return;
-
-	delete w->viewport->overlay;
-	free(w->viewport);
+	delete w->viewport;
 	w->viewport = nullptr;
 }
 
@@ -227,7 +224,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 {
 	assert(w->viewport == nullptr);
 
-	ViewportData *vp = CallocT<ViewportData>(1);
+	ViewportData *vp = new ViewportData();
 
 	vp->left = x + w->left;
 	vp->top = y + w->top;

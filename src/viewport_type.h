@@ -31,7 +31,7 @@ struct Viewport {
 	int virtual_height;  ///< height << zoom
 
 	ZoomLevel zoom; ///< The zoom level of the viewport.
-	LinkGraphOverlay *overlay;
+	std::shared_ptr<LinkGraphOverlay> overlay;
 };
 
 /** Location information about a sign as seen on the viewport */
