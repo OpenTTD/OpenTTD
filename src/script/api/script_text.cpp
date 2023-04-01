@@ -12,6 +12,7 @@
 #include "../../strings_func.h"
 #include "../../game/game_text.hpp"
 #include "script_text.hpp"
+#include "script_log.hpp"
 #include "../script_fatalerror.hpp"
 #include "../../table/control_codes.h"
 
@@ -179,31 +180,62 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 
 	const StringParams &params = GetGameStringParams(this->string);
 	int cur_idx = 0;
+	int prev_string = -1;
+	int prev_idx = -1;
+	int prev_count = -1;
 
 	for (const StringParam &cur_param : params) {
 		if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 
-		switch (cur_param.type) {
-			case StringParam::RAW_STRING:
-				if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, cur_idx));
-				p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]).c_str());
-				break;
-
-			case StringParam::STRING: {
-				if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, cur_idx));
-				int count = 1; // 1 because the string id is included in consumed parameters
-				p += seprintf(p, lastofp, ":");
-				p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count, seen_ids);
-				if (count != cur_param.consumes) throw Script_FatalError(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, cur_idx, count - 1, cur_param.consumes - 1));
-				break;
-			}
-
-			default:
-				if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
-				for (int i = 0; i < cur_param.consumes; i++) {
-					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, cur_idx));
-					p += seprintf(p, lastofp,":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
+		if (prev_string != -1) {
+			/* The previous substring added more parameters than expected, means we will consume them but can't properly validate them. */
+			for (int i = 0; i < cur_param.consumes; i++) {
+				if (prev_idx < prev_count) {
+					ScriptLog::Warning(fmt::format("{}: Parameter {} uses parameter {} from substring {} and cannot be validated", name, param_count + i, prev_idx++, prev_string).c_str());
+				} else {
+					/* No more extra parameters, assume SQInteger are expected. */
+					if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
+					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
+					p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
 				}
+			}
+			if (prev_idx == prev_count) {
+				/* Re-enable validation. */
+				prev_string = -1;
+			}
+		} else {
+			switch (cur_param.type) {
+				case StringParam::RAW_STRING:
+					if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, param_count));
+					p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]).c_str());
+					break;
+
+				case StringParam::STRING: {
+					if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, param_count));
+					int count = 0;
+					p += seprintf(p, lastofp, ":");
+					p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count, seen_ids);
+					if (++count != cur_param.consumes) {
+						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1).c_str());
+						/* Fill missing params if needed. */
+						for (int i = count; i < cur_param.consumes; i++) p += seprintf(p, lastofp, ":0");
+						/* Disable validation for the extra params if any. */
+						if (count > cur_param.consumes) {
+							prev_string = param_count;
+							prev_idx = cur_param.consumes - 1;
+							prev_count = count - 1;
+						}
+					}
+					break;
+				}
+
+				default:
+					if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
+					for (int i = 0; i < cur_param.consumes; i++) {
+						if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
+						p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
+					}
+			}
 		}
 
 		param_count += cur_param.consumes;
