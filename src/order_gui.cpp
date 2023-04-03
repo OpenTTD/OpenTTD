@@ -177,8 +177,8 @@ static const StringID _order_conditional_condition[] = {
 	INVALID_STRING_ID,
 };
 
-extern uint ConvertSpeedToDisplaySpeed(uint speed);
-extern uint ConvertDisplaySpeedToSpeed(uint speed);
+extern uint ConvertSpeedToDisplaySpeed(uint speed, VehicleType type);
+extern uint ConvertDisplaySpeedToSpeed(uint speed, VehicleType type);
 
 static const StringID _order_depot_action_dropdown[] = {
 	STR_ORDER_DROP_GO_ALWAYS_DEPOT,
@@ -345,7 +345,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				SetDParam(3, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
 
 				uint value = order->GetConditionValue();
-				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, v->type);
 				SetDParam(4, value);
 			}
 
@@ -1149,7 +1149,7 @@ public:
 
 				if (order != nullptr && order->IsType(OT_CONDITIONAL)) {
 					uint value = order->GetConditionValue();
-					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
 					SetDParam(0, value);
 				}
 				break;
@@ -1317,7 +1317,7 @@ public:
 				const Order *order = this->vehicle->GetOrder(this->OrderGetSel());
 				assert(order != nullptr);
 				uint value = order->GetConditionValue();
-				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
 				SetDParam(0, value);
 				ShowQueryString(STR_JUST_INT, STR_ORDER_CONDITIONAL_VALUE_CAPT, 5, this, CS_NUMERAL, QSF_NONE);
 				break;
@@ -1337,7 +1337,7 @@ public:
 
 			switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
 				case OCV_MAX_SPEED:
-					value = ConvertDisplaySpeedToSpeed(value);
+					value = ConvertDisplaySpeedToSpeed(value, this->vehicle->type);
 					break;
 
 				case OCV_RELIABILITY:

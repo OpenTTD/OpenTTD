@@ -267,7 +267,7 @@ public:
 
 		/* Rail speed limit */
 		if (td.rail_speed != 0) {
-			SetDParam(0, td.rail_speed);
+			SetDParam(0, PackVelocity(td.rail_speed, VEH_TRAIN));
 			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT));
 		}
 
@@ -279,7 +279,7 @@ public:
 
 		/* Road speed limit */
 		if (td.road_speed != 0) {
-			SetDParam(0, td.road_speed);
+			SetDParam(0, PackVelocity(td.road_speed, VEH_ROAD));
 			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT));
 		}
 
@@ -291,7 +291,7 @@ public:
 
 		/* Tram speed limit */
 		if (td.tram_speed != 0) {
-			SetDParam(0, td.tram_speed);
+			SetDParam(0, PackVelocity(td.tram_speed, VEH_ROAD));
 			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT));
 		}
 

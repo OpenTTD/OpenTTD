@@ -234,7 +234,8 @@ struct MusicSettings {
 /** Settings related to currency/unit systems. */
 struct LocaleSettings {
 	byte        currency;                         ///< currency we currently use
-	byte        units_velocity;                   ///< unit system for velocity
+	byte        units_velocity;                   ///< unit system for velocity of trains and road vehicles
+	byte        units_velocity_nautical;          ///< unit system for velocity of ships and aircraft
 	byte        units_power;                      ///< unit system for power
 	byte        units_weight;                     ///< unit system for weight
 	byte        units_volume;                     ///< unit system for volume

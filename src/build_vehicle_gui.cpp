@@ -611,7 +611,7 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	if (_settings_game.vehicle.wagon_speed_limits) {
 		uint max_speed = e->GetDisplayMaxSpeed();
 		if (max_speed > 0) {
-			SetDParam(0, max_speed);
+			SetDParam(0, PackVelocity(max_speed, e->type));
 			DrawString(left, right, y, STR_PURCHASE_INFO_SPEED);
 			y += FONT_HEIGHT_NORMAL;
 		}
@@ -646,7 +646,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	y += FONT_HEIGHT_NORMAL;
 
 	/* Max speed - Engine power */
-	SetDParam(0, e->GetDisplayMaxSpeed());
+	SetDParam(0, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 	SetDParam(1, e->GetPower());
 	DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_POWER);
 	y += FONT_HEIGHT_NORMAL;
@@ -701,7 +701,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 		y += FONT_HEIGHT_NORMAL;
 
 		/* Max speed - Engine power */
-		SetDParam(0, e->GetDisplayMaxSpeed());
+		SetDParam(0, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 		SetDParam(1, e->GetPower());
 		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_POWER);
 		y += FONT_HEIGHT_NORMAL;
@@ -715,11 +715,11 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 		if (te.cost != 0) {
 			SetDParam(0, e->GetCost() + te.cost);
 			SetDParam(1, te.cost);
-			SetDParam(2, e->GetDisplayMaxSpeed());
+			SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
 		} else {
 			SetDParam(0, e->GetCost());
-			SetDParam(1, e->GetDisplayMaxSpeed());
+			SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
 		}
 		y += FONT_HEIGHT_NORMAL;
@@ -747,11 +747,11 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 		if (te.cost != 0) {
 			SetDParam(0, e->GetCost() + te.cost);
 			SetDParam(1, te.cost);
-			SetDParam(2, ocean_speed);
+			SetDParam(2, PackVelocity(ocean_speed, e->type));
 			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
 		} else {
 			SetDParam(0, e->GetCost());
-			SetDParam(1, ocean_speed);
+			SetDParam(1, PackVelocity(ocean_speed, e->type));
 			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
 		}
 		y += FONT_HEIGHT_NORMAL;
@@ -766,11 +766,11 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 		}
 		y += FONT_HEIGHT_NORMAL;
 
-		SetDParam(0, ocean_speed);
+		SetDParam(0, PackVelocity(ocean_speed, e->type));
 		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_OCEAN);
 		y += FONT_HEIGHT_NORMAL;
 
-		SetDParam(0, canal_speed);
+		SetDParam(0, PackVelocity(canal_speed, e->type));
 		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_CANAL);
 		y += FONT_HEIGHT_NORMAL;
 	}
@@ -807,11 +807,11 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	if (te.cost != 0) {
 		SetDParam(0, e->GetCost() + te.cost);
 		SetDParam(1, te.cost);
-		SetDParam(2, e->GetDisplayMaxSpeed());
+		SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
 	} else {
 		SetDParam(0, e->GetCost());
-		SetDParam(1, e->GetDisplayMaxSpeed());
+		SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
 	}
 	y += FONT_HEIGHT_NORMAL;

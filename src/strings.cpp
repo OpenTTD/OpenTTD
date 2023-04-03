@@ -703,10 +703,11 @@ struct UnitsLong {
 
 /** Unit conversions for velocity. */
 static const Units _units_velocity[] = {
-	{ {    1,  0}, STR_UNITS_VELOCITY_IMPERIAL,     0 },
-	{ {  103,  6}, STR_UNITS_VELOCITY_METRIC,       0 },
-	{ { 1831, 12}, STR_UNITS_VELOCITY_SI,           0 },
-	{ {37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
+	{ {       1,  0}, STR_UNITS_VELOCITY_IMPERIAL,     0 },
+	{ {     103,  6}, STR_UNITS_VELOCITY_METRIC,       0 },
+	{ {    1831, 12}, STR_UNITS_VELOCITY_SI,           0 },
+	{ {   37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
+	{ { 7289499, 23}, STR_UNITS_VELOCITY_KNOTS,        0 },
 };
 
 /** Unit conversions for power. */
@@ -758,16 +759,28 @@ static const Units _units_height[] = {
 };
 
 /**
+ * Get index for velocity conversion units for a vehicle type.
+ * @param type VehicleType to convert velocity for.
+ * @return Index within velocity conversion units for vehicle type.
+ */
+static byte GetVelocityUnits(VehicleType type)
+{
+	if (type == VEH_SHIP || type == VEH_AIRCRAFT) return _settings_game.locale.units_velocity_nautical;
+
+	return _settings_game.locale.units_velocity;
+}
+
+/**
  * Convert the given (internal) speed to the display speed.
  * @param speed the speed to convert
  * @return the converted speed.
  */
-uint ConvertSpeedToDisplaySpeed(uint speed)
+uint ConvertSpeedToDisplaySpeed(uint speed, VehicleType type)
 {
 	/* For historical reasons we don't want to mess with the
 	 * conversion for speed. So, don't round it and keep the
 	 * original conversion factors instead of the real ones. */
-	return _units_velocity[_settings_game.locale.units_velocity].c.ToDisplay(speed, false);
+	return _units_velocity[GetVelocityUnits(type)].c.ToDisplay(speed, false);
 }
 
 /**
@@ -775,9 +788,9 @@ uint ConvertSpeedToDisplaySpeed(uint speed)
  * @param speed the speed to convert
  * @return the converted speed.
  */
-uint ConvertDisplaySpeedToSpeed(uint speed)
+uint ConvertDisplaySpeedToSpeed(uint speed, VehicleType type)
 {
-	return _units_velocity[_settings_game.locale.units_velocity].c.FromDisplay(speed);
+	return _units_velocity[GetVelocityUnits(type)].c.FromDisplay(speed);
 }
 
 /**
@@ -785,9 +798,9 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
  * @param speed the speed to convert
  * @return the converted speed.
  */
-uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
+uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type)
 {
-	return _units_velocity[_settings_game.locale.units_velocity].c.ToDisplay(speed * 10, false) / 16;
+	return _units_velocity[GetVelocityUnits(type)].c.ToDisplay(speed * 10, false) / 16;
 }
 
 /**
@@ -795,9 +808,9 @@ uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
  * @param speed the speed to convert
  * @return the converted speed.
  */
-uint ConvertDisplaySpeedToKmhishSpeed(uint speed)
+uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
 {
-	return _units_velocity[_settings_game.locale.units_velocity].c.FromDisplay(speed * 16, true, 10);
+	return _units_velocity[GetVelocityUnits(type)].c.FromDisplay(speed * 16, true, 10);
 }
 /**
  * Parse most format codes within a string and write the result to a buffer.
@@ -1280,11 +1293,15 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_VELOCITY: { // {VELOCITY}
-				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity));
-				unsigned int decimal_places = _units_velocity[_settings_game.locale.units_velocity].decimal_places;
-				uint64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY)), decimal_places};
+				int64 arg = args->GetInt64(SCC_VELOCITY);
+				// Unpack vehicle type from packed argument to get desired units.
+				VehicleType vt = static_cast<VehicleType>(GB(arg, 56, 8));
+				byte units = GetVelocityUnits(vt);
+				assert(units < lengthof(_units_velocity));
+				unsigned int decimal_places = _units_velocity[units].decimal_places;
+				uint64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(GB(arg, 0, 56), vt), decimal_places};
 				StringParameters tmp_params(args_array, decimal_places ? 2 : 1, nullptr);
-				buff = FormatString(buff, GetStringPtr(_units_velocity[_settings_game.locale.units_velocity].s), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_velocity[units].s), &tmp_params, last);
 				break;
 			}
 

@@ -2877,6 +2877,11 @@ bool AfterLoadGame()
 		_settings_game.locale.units_height   = Clamp(_old_units, 0, 2);
 	}
 
+	if (IsSavegameVersionBefore(SLV_VELOCITY_NAUTICAL)) {
+		/* Match nautical velocity with land velocity units. */
+		_settings_game.locale.units_velocity_nautical = _settings_game.locale.units_velocity;
+	}
+
 	if (IsSavegameVersionBefore(SLV_186)) {
 		/* Move ObjectType from map to pool */
 		for (auto t : Map::Iterate()) {

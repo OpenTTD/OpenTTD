@@ -14,6 +14,7 @@
 #include "string_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
+#include "vehicle_type.h"
 
 /**
  * Extract the StringTab from a StringID.
@@ -174,8 +175,21 @@ std::string GetString(StringID string);
 char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index = 0, bool game_script = false);
 const char *GetStringPtr(StringID string);
 
-uint ConvertKmhishSpeedToDisplaySpeed(uint speed);
-uint ConvertDisplaySpeedToKmhishSpeed(uint speed);
+uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type);
+uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type);
+
+/**
+ * Pack velocity and vehicle type for use with SCC_VELOCITY string parameter.
+ * @param speed Display speed for parameter.
+ * @param type Type of vehicle for parameter.
+ * @return Bit-packed velocity and vehicle type, for use with SetDParam().
+ */
+static inline int64 PackVelocity(uint speed, VehicleType type)
+{
+	/* Vehicle type is a byte, so packed into the top 8 bits of the 64-bit
+	 * parameter, although only values from 0-3 are relevant. */
+	return speed | (static_cast<uint64>(type) << 56);
+}
 
 /**
  * Set a string parameter \a v at index \a n in a given array \a s.

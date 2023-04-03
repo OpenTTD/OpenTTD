@@ -138,7 +138,7 @@ private:
 	StringID GetBridgeSelectString(const BuildBridgeData &bridge_data) const
 	{
 		SetDParam(0, bridge_data.spec->material);
-		SetDParam(1, bridge_data.spec->speed);
+		SetDParam(1, PackVelocity(bridge_data.spec->speed, static_cast<VehicleType>(this->transport_type)));
 		SetDParam(2, bridge_data.cost);
 		/* If the bridge has no meaningful speed limit, don't display it. */
 		if (bridge_data.spec->speed == UINT16_MAX) {
