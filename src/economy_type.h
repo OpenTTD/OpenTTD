@@ -24,6 +24,21 @@ enum EconomyType : uint8_t {
 	ET_END = 3,
 };
 
+/**
+ * Minimum allowed value of town_cargo_scale/industry_cargo_scale.
+ * Below 13, callback-based industries would produce less than once per month. We round up to 15% because it's a nicer number.
+ * Towns use the same minimum to match, and because below this small towns often produce no cargo.
+ */
+static const int MIN_CARGO_SCALE = 15;
+/**
+ * Maximum allowed value of town_cargo_scale/industry_cargo_scale.
+ * Above 340, callback-based industries would produce more than once per day, which GRFs do not expect.
+ * Towns use the same maximum to match.
+ */
+static const int MAX_CARGO_SCALE = 300;
+/** Default value of town_cargo_scale/industry_cargo_scale. */
+static const int DEF_CARGO_SCALE = 100;
+
 /** Data of the economy. */
 struct Economy {
 	Money max_loan;                       ///< NOSAVE: Maximum possible loan

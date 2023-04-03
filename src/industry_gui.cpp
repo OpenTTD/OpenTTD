@@ -1169,7 +1169,7 @@ static void UpdateIndustryProduction(Industry *i)
 
 	for (auto &p : i->produced) {
 		if (IsValidCargoID(p.cargo)) {
-			p.history[LAST_MONTH].production = 8 * p.rate;
+			p.history[LAST_MONTH].production = ScaleByCargoScale(8 * p.rate, false);
 		}
 	}
 }

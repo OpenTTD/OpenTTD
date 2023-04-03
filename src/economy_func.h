@@ -15,6 +15,8 @@
 #include "cargo_type.h"
 #include "vehicle_type.h"
 #include "company_type.h"
+#include "settings_type.h"
+#include "core/random_func.hpp"
 
 void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(Price price, int factor);
@@ -47,6 +49,50 @@ bool AddInflation(bool check_year = true);
 inline bool EconomyIsInRecession()
 {
 	return _economy.fluct <= 0;
+}
+
+/**
+ * Scale a number by the inverse of the cargo scale setting, e.g. a scale of 25% multiplies the number by 4.
+ * @param num The number to scale.
+ * @param town Are we scaling town production, or industry production?
+ * @return The number scaled by the inverse of the cargo scale setting, minimum of 1.
+ */
+static uint ScaleByInverseCargoScale(uint num, bool town)
+{
+	uint16_t percentage = (town ? _settings_game.economy.town_cargo_scale : _settings_game.economy.industry_cargo_scale);
+
+	/* We might not need to do anything. */
+	if (percentage == 100) return num;
+
+	/* Never return 0, since we often divide by this number. */
+	return std::max((num * 100) / percentage, 1u);
+}
+
+/**
+ * Scale a number by the cargo scale setting.
+ * @param num The number to scale.
+ * @param town Are we scaling town production, or industry production?
+ * @return The number scaled by the current cargo scale setting. May be 0.
+ */
+inline uint ScaleByCargoScale(uint num, bool town)
+{
+	/* Don't bother scaling in the menu, especially since settings don't exist when starting OpenTTD and trying to read them crashes the game. */
+	if (_game_mode == GM_MENU) return num;
+
+	if (num == 0) return num;
+
+	uint16_t percentage = (town ? _settings_game.economy.town_cargo_scale : _settings_game.economy.industry_cargo_scale);
+
+	/* We might not need to do anything. */
+	if (percentage == 100) return num;
+
+	uint scaled = (num * percentage) / 100;
+
+	/* We might round down to 0, so we compensate with a random chance approximately equal to the economy scale,
+	 *  e.g. at 25% scale there's a 1/4 chance to round up to 1. */
+	if (scaled == 0 && Chance16(1, ScaleByInverseCargoScale(1, town))) return 1;
+
+	return scaled;
 }
 
 #endif /* ECONOMY_FUNC_H */

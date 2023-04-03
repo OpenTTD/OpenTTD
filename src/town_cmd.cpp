@@ -521,6 +521,34 @@ static void AdvanceHouseConstruction(TileIndex tile)
 }
 
 /**
+ * Generate cargo for a house, scaled by the current economy scale.
+ * @param t The current town.
+ * @param ct Type of cargo to generate, usually CT_PASSENGERS or CT_MAIL.
+ * @param amount The number of cargo units.
+ * @param stations Available stations for this house.
+ * @param affected_by_recession Is this cargo halved during recessions?
+ */
+static void TownGenerateCargo(Town *t, CargoID ct, uint amount, StationFinder &stations, bool affected_by_recession)
+{
+	if (amount == 0) return;
+
+	/* All production is halved during a recession (except for NewGRF-supplied town cargo). */
+	if (affected_by_recession && EconomyIsInRecession()) {
+		amount = (amount + 1) >> 1;
+	}
+
+	/* Scale by cargo scale setting. */
+	amount = ScaleByCargoScale(amount, true);
+
+	/* Actually generate cargo and update town statistics. */
+	uint moved = MoveGoodsToStation(ct, amount, SourceType::Town, t->index, stations.GetStations());
+	t->supplied[ct].new_max += amount;
+	t->supplied[ct].new_act += moved;
+}
+
+/**
+ * Tile callback function.
+ *
  * Tile callback function. Periodic tick handler for the tiles of a town.
  * @param tile been asked to do its stuff
  */
@@ -565,11 +593,8 @@ static void TileLoop_Town(TileIndex tile)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			uint moved = MoveGoodsToStation(cargo, amt, SourceType::Town, t->index, stations.GetStations());
-
-			const CargoSpec *cs = CargoSpec::Get(cargo);
-			t->supplied[cs->Index()].new_max += amt;
-			t->supplied[cs->Index()].new_act += moved;
+			/* NewGRF-supplied town cargos are not affected by recessions. */
+			TownGenerateCargo(t, cargo, amt, stations, false);
 		}
 	} else {
 		switch (_settings_game.economy.town_cargogen_mode) {
@@ -577,18 +602,12 @@ static void TileLoop_Town(TileIndex tile)
 				/* Original (quadratic) cargo generation algorithm */
 				if (GB(r, 0, 8) < hs->population) {
 					uint amt = GB(r, 0, 8) / 8 + 1;
-
-					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_PASSENGERS].new_max += amt;
-					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Town, t->index, stations.GetStations());
+					TownGenerateCargo(t, CT_PASSENGERS, amt, stations, true);
 				}
 
 				if (GB(r, 8, 8) < hs->mail_generation) {
 					uint amt = GB(r, 8, 8) / 8 + 1;
-
-					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_MAIL].new_max += amt;
-					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, SourceType::Town, t->index, stations.GetStations());
+					TownGenerateCargo(t, CT_MAIL, amt, stations, true);
 				}
 				break;
 
@@ -603,18 +622,14 @@ static void TileLoop_Town(TileIndex tile)
 					/* Mask random value by potential pax and count number of actual pax */
 					uint amt = CountBits(r & genmask);
 					/* Adjust and apply */
-					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_PASSENGERS].new_max += amt;
-					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Town, t->index, stations.GetStations());
+					TownGenerateCargo(t, CT_PASSENGERS, amt, stations, true);
 
 					/* Do the same for mail, with a fresh random */
 					r = Random();
 					genmax = (hs->mail_generation + 7) / 8;
 					genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
 					amt = CountBits(r & genmask);
-					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_MAIL].new_max += amt;
-					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, SourceType::Town, t->index, stations.GetStations());
+					TownGenerateCargo(t, CT_MAIL, amt, stations, true);
 				}
 				break;
 
@@ -1868,8 +1883,8 @@ void UpdateTownRadius(Town *t)
  */
 void UpdateTownMaxPass(Town *t)
 {
-	t->supplied[CT_PASSENGERS].old_max = t->cache.population >> 3;
-	t->supplied[CT_MAIL].old_max = t->cache.population >> 4;
+	t->supplied[CT_PASSENGERS].old_max = ScaleByCargoScale(t->cache.population >> 3, true);
+	t->supplied[CT_MAIL].old_max = ScaleByCargoScale(t->cache.population >> 4, true);
 }
 
 static void UpdateTownGrowthRate(Town *t);

@@ -688,7 +688,13 @@ static void TileLoop_Object(TileIndex tile)
 	/* Top town buildings generate 250, so the top HQ type makes 256. */
 	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
+
+		/* Production is halved during recessions. */
 		if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
+
+		/* Scale by cargo scale setting. */
+		amt = ScaleByCargoScale(amt, true);
+
 		MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
 	}
 
@@ -697,7 +703,13 @@ static void TileLoop_Object(TileIndex tile)
 	 * equations. */
 	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
+
+		/* Production is halved during recessions. */
 		if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
+
+		/* Scale by cargo scale setting. */
+		amt = ScaleByCargoScale(amt, true);
+
 		MoveGoodsToStation(CT_MAIL, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
 	}
 }
