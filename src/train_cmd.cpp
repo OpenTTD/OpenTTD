@@ -294,7 +294,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 	/* Subtract half the front vehicle length of the train so we get the real
 	 * stop location of the train. */
-	return stop - (v->gcache.cached_veh_length + 1) / 2;
+	return stop - (v->gcache.cached_veh_length) / 2 - 1;
 }
 
 
