@@ -19,7 +19,7 @@
 
 /* static */ bool ScriptObjectType::IsValidObjectType(ObjectType object_type)
 {
-	if (object_type >= NUM_OBJECTS) return false;
+	if (object_type >= ObjectSpec::Count()) return false;
 	return ObjectSpec::Get(object_type)->IsEverAvailable();
 }
 

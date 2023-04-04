@@ -29,7 +29,17 @@ ObjectOverrideManager _object_mngr(NEW_OBJECT_OFFSET, NUM_OBJECTS, INVALID_OBJEC
 
 extern const ObjectSpec _original_objects[NEW_OBJECT_OFFSET];
 /** All the object specifications. */
-ObjectSpec _object_specs[NUM_OBJECTS];
+std::vector<ObjectSpec> _object_specs;
+
+const std::vector<ObjectSpec> &ObjectSpec::Specs()
+{
+	return _object_specs;
+}
+
+size_t ObjectSpec::Count()
+{
+	return _object_specs.size();
+}
 
 /**
  * Get the specification associated with a specific ObjectType.
@@ -38,7 +48,11 @@ ObjectSpec _object_specs[NUM_OBJECTS];
  */
 /* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {
+	/* Empty object if index is out of range -- this might happen if NewGRFs are changed. */
+	static ObjectSpec empty = {};
+
 	assert(index < NUM_OBJECTS);
+	if (index >= _object_specs.size()) return &empty;
 	return &_object_specs[index];
 }
 
@@ -87,37 +101,45 @@ bool ObjectSpec::IsAvailable() const
  */
 uint ObjectSpec::Index() const
 {
-	return this - _object_specs;
+	return this - _object_specs.data();
+}
+
+/**
+ * Tie all ObjectSpecs to their class.
+ */
+/* static */ void ObjectSpec::BindToClasses()
+{
+	for (auto &spec : _object_specs) {
+		if (spec.IsEnabled() && spec.cls_id != INVALID_OBJECT_CLASS) {
+			ObjectClass::Assign(&spec);
+		}
+	}
 }
 
 /** This function initialize the spec arrays of objects. */
 void ResetObjects()
 {
 	/* Clean the pool. */
-	for (uint16 i = 0; i < NUM_OBJECTS; i++) {
-		_object_specs[i] = {};
-	}
+	_object_specs.clear();
 
 	/* And add our originals. */
-	MemCpyT(_object_specs, _original_objects, lengthof(_original_objects));
+	_object_specs.resize(lengthof(_original_objects));
 
 	for (uint16 i = 0; i < lengthof(_original_objects); i++) {
+		_object_specs[i] = _original_objects[i];
 		_object_specs[i].grf_prop.local_id = i;
 	}
+
+	/* Set class for originals. */
+	_object_specs[OBJECT_LIGHTHOUSE].cls_id = ObjectClass::Allocate('LTHS');
+	_object_specs[OBJECT_TRANSMITTER].cls_id = ObjectClass::Allocate('TRNS');
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>
 /* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 {
-	ObjectClassID cls = ObjectClass::Allocate('LTHS');
-	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_LTHS;
-	_object_specs[OBJECT_LIGHTHOUSE].cls_id = cls;
-	ObjectClass::Assign(&_object_specs[OBJECT_LIGHTHOUSE]);
-
-	cls = ObjectClass::Allocate('TRNS');
-	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_TRNS;
-	_object_specs[OBJECT_TRANSMITTER].cls_id = cls;
-	ObjectClass::Assign(&_object_specs[OBJECT_TRANSMITTER]);
+	ObjectClass::Get(ObjectClass::Allocate('LTHS'))->name = STR_OBJECT_CLASS_LTHS;
+	ObjectClass::Get(ObjectClass::Allocate('TRNS'))->name = STR_OBJECT_CLASS_TRNS;
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>

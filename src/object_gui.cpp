@@ -275,11 +275,10 @@ public:
 				uint height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
 
 				/* Get the height and view information. */
-				for (int i = 0; i < NUM_OBJECTS; i++) {
-					const ObjectSpec *spec = ObjectSpec::Get(i);
-					if (!spec->IsEverAvailable()) continue;
-					two_wide |= spec->views >= 2;
-					height[spec->views / 4] = std::max<int>(ObjectSpec::Get(i)->height, height[spec->views / 4]);
+				for (const auto &spec : ObjectSpec::Specs()) {
+					if (!spec.IsEverAvailable()) continue;
+					two_wide |= spec.views >= 2;
+					height[spec.views / 4] = std::max<int>(spec.height, height[spec.views / 4]);
 				}
 
 				/* Determine the pixel heights. */
