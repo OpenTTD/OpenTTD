@@ -675,7 +675,7 @@ void StartupOneEngine(Engine *e, Date aging_date, uint32 seed)
 	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= _date) {
 		e->age = (aging_date - e->intro_date) >> 5;
-		e->company_avail = (CompanyMask)-1;
+		e->company_avail = MAX_UVALUE(CompanyMask);
 		e->flags |= ENGINE_AVAILABLE;
 	}
 
@@ -804,7 +804,7 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 	Engine *e = Engine::Get(eid);
 
 	e->preview_company = INVALID_COMPANY;
-	e->preview_asked = (CompanyMask)-1;
+	e->preview_asked = MAX_UVALUE(CompanyMask);
 
 	EnableEngineForCompany(eid, company);
 
@@ -899,7 +899,7 @@ void EnginesDailyLoop()
 				e->preview_company = GetPreviewCompany(e);
 
 				if (e->preview_company == INVALID_COMPANY) {
-					e->preview_asked = (CompanyMask)-1;
+					e->preview_asked = MAX_UVALUE(CompanyMask);
 					continue;
 				}
 
@@ -1028,7 +1028,7 @@ static void NewVehicleAvailable(Engine *e)
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
 	/* Now available for all companies */
-	e->company_avail = (CompanyMask)-1;
+	e->company_avail = MAX_UVALUE(CompanyMask);
 
 	/* Do not introduce new rail wagons */
 	if (IsWagon(index)) return;

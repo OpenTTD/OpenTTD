@@ -413,7 +413,7 @@ static bool FixTTOEngines()
 			/* Make sure for example monorail and maglev are available when they should be */
 			if (_date >= e->intro_date && HasBit(e->info.climates, 0)) {
 				e->flags |= ENGINE_AVAILABLE;
-				e->company_avail = (CompanyMask)0xFF;
+				e->company_avail = MAX_UVALUE(CompanyMask);
 				e->age = _date > e->intro_date ? (_date - e->intro_date) / 30 : 0;
 			}
 		} else {
@@ -438,7 +438,7 @@ static bool FixTTOEngines()
 			 * if at least one of them was available. */
 			for (uint j = 0; j < lengthof(tto_to_ttd); j++) {
 				if (tto_to_ttd[j] == i && _old_engines[j].company_avail != 0) {
-					e->company_avail = (CompanyMask)0xFF;
+					e->company_avail = MAX_UVALUE(CompanyMask);
 					e->flags |= ENGINE_AVAILABLE;
 					break;
 				}
@@ -448,7 +448,7 @@ static bool FixTTOEngines()
 		}
 
 		e->preview_company = INVALID_COMPANY;
-		e->preview_asked = (CompanyMask)-1;
+		e->preview_asked = MAX_UVALUE(CompanyMask);
 		e->preview_wait = 0;
 		e->name = std::string{};
 	}
