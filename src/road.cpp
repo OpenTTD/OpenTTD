@@ -286,7 +286,7 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
 		/* Check whether available for all potential companies */
-		if (e->company_avail != (CompanyMask)-1) continue;
+		if (e->company_avail != MAX_UVALUE(CompanyMask)) continue;
 
 		known_roadtypes |= GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes;
 	}

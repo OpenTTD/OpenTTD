@@ -2011,15 +2011,15 @@ bool AfterLoadGame()
 
 		/* More companies ... */
 		for (Company *c : Company::Iterate()) {
-			if (c->bankrupt_asked == 0xFF) c->bankrupt_asked = 0xFFFF;
+			if (c->bankrupt_asked == 0xFF) c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 		}
 
 		for (Engine *e : Engine::Iterate()) {
-			if (e->company_avail == 0xFF) e->company_avail = 0xFFFF;
+			if (e->company_avail == 0xFF) e->company_avail = MAX_UVALUE(CompanyMask);
 		}
 
 		for (Town *t : Town::Iterate()) {
-			if (t->have_ratings == 0xFF) t->have_ratings = 0xFFFF;
+			if (t->have_ratings == 0xFF) t->have_ratings = MAX_UVALUE(CompanyMask);
 			for (uint i = 8; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
 		}
 	}
