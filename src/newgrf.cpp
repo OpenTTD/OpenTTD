@@ -4793,12 +4793,12 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (id + numinfo > 255) {
-		grfmsg(1, "RoadStopChangeInfo: RoadStop %u is invalid, max %u, ignoring", id + numinfo, 255);
+	if (id + numinfo > NUM_ROADSTOPS_PER_GRF) {
+		grfmsg(1, "RoadStopChangeInfo: RoadStop %u is invalid, max %u, ignoring", id + numinfo, NUM_ROADSTOPS_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
-	if (_cur.grffile->roadstops == nullptr) _cur.grffile->roadstops = CallocT<RoadStopSpec*>(255);
+	if (_cur.grffile->roadstops == nullptr) _cur.grffile->roadstops = CallocT<RoadStopSpec*>(NUM_ROADSTOPS_PER_GRF);
 
 	for (int i = 0; i < numinfo; i++) {
 		RoadStopSpec *rs = _cur.grffile->roadstops[id + i];
