@@ -768,8 +768,16 @@ struct OvertakeData {
 static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
 	const OvertakeData *od = (OvertakeData*)data;
+	TileIndexDiff    front = TileOffsByDiagDir(DirToDiagDir(od->v->direction));
 
-	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : nullptr;
+	/* Distinct road engine is blocking if it's within the tile or the next few of the passer as well as either it being
+	 * directionally opposed to passer, the passed pending movement, or the blocker being stopped while overtaking. */
+	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v
+			&&
+				( v->tile == od->v->tile || v->tile == od->v->tile + front || v->tile == od->v->tile + front + front || v->tile == od->u->tile + front + front )
+			&&
+				( v->direction == ReverseDir(od->v->direction) || !(od->u->vehstatus & VS_STOPPED) || (v->vehstatus & VS_STOPPED && ( (RoadVehicle*)v )->overtaking ) ) )
+			? v : nullptr;
 }
 
 /**
@@ -833,10 +841,10 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	 *  - No barred levelcrossing
 	 *  - No other vehicles in the way
 	 */
+
 	od.tile = v->tile;
 	if (CheckRoadBlockedForOvertaking(&od)) return;
-
-	od.tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
+	od.tile += TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (CheckRoadBlockedForOvertaking(&od)) return;
 
 	/* When the vehicle in front of us is stopped we may only take
