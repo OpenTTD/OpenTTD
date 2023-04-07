@@ -1594,7 +1594,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	if (!this->refresh.Elapsed(delta_ms)) return;
 
 	if (this->map_type == SMT_LINKSTATS) {
-		uint32 company_mask = this->GetOverlayCompanyMask();
+		CompanyMask company_mask = this->GetOverlayCompanyMask();
 		if (this->overlay->GetCompanyMask() != company_mask) {
 			this->overlay->SetCompanyMask(company_mask);
 		} else {

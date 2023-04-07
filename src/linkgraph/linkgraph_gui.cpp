@@ -444,7 +444,7 @@ void LinkGraphOverlay::SetCargoMask(CargoTypes cargo_mask)
  * Set a new company mask and rebuild the cache.
  * @param company_mask New company mask.
  */
-void LinkGraphOverlay::SetCompanyMask(uint32 company_mask)
+void LinkGraphOverlay::SetCompanyMask(CompanyMask company_mask)
 {
 	this->company_mask = company_mask;
 	this->RebuildCache();
@@ -564,7 +564,7 @@ LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc *desc, int window_number
  */
 void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay) {
 	this->overlay = overlay;
-	uint32 companies = this->overlay->GetCompanyMask();
+	CompanyMask companies = this->overlay->GetCompanyMask();
 	for (uint c = 0; c < MAX_COMPANIES; c++) {
 		if (!this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) {
 			this->SetWidgetLoweredState(WID_LGL_COMPANY_FIRST + c, HasBit(companies, c));
