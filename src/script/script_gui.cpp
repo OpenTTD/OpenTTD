@@ -54,19 +54,21 @@ struct ScriptListWindow : public Window {
 	CompanyID slot;                     ///< The company we're selecting a new Script for.
 	int line_height;                    ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;                 ///< Cache of the vertical scrollbar.
+	bool show_all;                      ///< Whether to show all available versions.
 
 	/**
 	 * Constructor for the window.
 	 * @param desc The description of the window.
 	 * @param slot The company we're changing the Script for.
+	 * @param show_all Whether to show all available versions.
 	 */
-	ScriptListWindow(WindowDesc *desc, CompanyID slot) : Window(desc),
-		slot(slot)
+	ScriptListWindow(WindowDesc *desc, CompanyID slot, bool show_all) : Window(desc),
+		slot(slot), show_all(show_all)
 	{
 		if (slot == OWNER_DEITY) {
-			this->info_list = Game::GetUniqueInfoList();
+			this->info_list = this->show_all ? Game::GetInfoList() : Game::GetUniqueInfoList();
 		} else {
-			this->info_list = AI::GetUniqueInfoList();
+			this->info_list = this->show_all ? AI::GetInfoList() : AI::GetUniqueInfoList();
 		}
 
 		this->CreateNestedTree();
@@ -120,11 +122,14 @@ struct ScriptListWindow : public Window {
 					DrawString(tr, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
 					tr.top += this->line_height;
 				}
+				StringID str = this->show_all ? STR_AI_CONFIG_NAME_VERSION : STR_JUST_RAW_STRING;
 				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
-						DrawString(tr, item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						SetDParamStr(0, item.second->GetName());
+						SetDParam(1, item.second->GetVersion());
+						DrawString(tr, str, (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
 						tr.top += this->line_height;
 					}
 				}
@@ -262,13 +267,14 @@ static WindowDesc _script_list_desc(
 );
 
 /**
- * Open the AI list window to chose an AI for the given company slot.
- * @param slot The slot to change the AI of.
+ * Open the Script list window to chose a script for the given company slot.
+ * @param slot The slot to change the script of.
+ * @param show_all Whether to show all available versions.
  */
-void ShowScriptListWindow(CompanyID slot)
+void ShowScriptListWindow(CompanyID slot, bool show_all)
 {
 	CloseWindowByClass(WC_SCRIPT_LIST);
-	new ScriptListWindow(&_script_list_desc, slot);
+	new ScriptListWindow(&_script_list_desc, slot, show_all);
 }
 
 

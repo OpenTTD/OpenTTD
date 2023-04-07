@@ -13,7 +13,7 @@
 #include "../company_type.h"
 #include "../textfile_type.h"
 
-void ShowScriptListWindow(CompanyID slot);
+void ShowScriptListWindow(CompanyID slot, bool show_all);
 Window *ShowScriptDebugWindow(CompanyID show_company = INVALID_COMPANY);
 void ShowScriptSettingsWindow(CompanyID slot);
 void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot);
