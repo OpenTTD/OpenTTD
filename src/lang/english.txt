@@ -4584,6 +4584,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
 STR_AI_CONFIG_RANDOM_AI                                         :Random AI
 STR_AI_CONFIG_NONE                                              :(none)
+STR_AI_CONFIG_NAME_VERSION                                      :{RAW_STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Move Up
@@ -4597,7 +4598,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Select AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Select Game Script
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another script. Ctrl+Click to show all available versions
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configure
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configure the parameters of the Script
 
