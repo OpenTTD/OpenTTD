@@ -151,9 +151,9 @@ protected:
 	 * the _local_company. Spectators get to see all companies' links.
 	 * @return Company mask.
 	 */
-	inline uint32 GetOverlayCompanyMask() const
+	inline CompanyMask GetOverlayCompanyMask() const
 	{
-		return Company::IsValidID(_local_company) ? 1U << _local_company : 0xffffffff;
+		return Company::IsValidID(_local_company) ? 1U << _local_company : MAX_UVALUE(CompanyMask);
 	}
 
 	void RebuildColourIndexIfNecessary();
