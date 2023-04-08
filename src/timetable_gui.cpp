@@ -408,7 +408,7 @@ struct TimetableWindow : Window {
 							string = order->GetMaxSpeed() != UINT16_MAX ?
 									STR_TIMETABLE_TRAVEL_FOR_SPEED : STR_TIMETABLE_TRAVEL_FOR;
 						}
-						SetDParam(2, order->GetMaxSpeed());
+						SetDParam(2, PackVelocity(order->GetMaxSpeed(), v->type));
 
 						DrawString(rtl ? tr.left : middle, rtl ? middle : tr.right, tr.top, string, colour);
 
@@ -568,7 +568,7 @@ struct TimetableWindow : Window {
 				const Order *order = v->GetOrder(real);
 				if (order != nullptr) {
 					if (order->GetMaxSpeed() != UINT16_MAX) {
-						SetDParam(0, ConvertKmhishSpeedToDisplaySpeed(order->GetMaxSpeed()));
+						SetDParam(0, ConvertKmhishSpeedToDisplaySpeed(order->GetMaxSpeed(), v->type));
 						current = STR_JUST_INT;
 					}
 				}
@@ -628,7 +628,7 @@ struct TimetableWindow : Window {
 
 		uint64 val = StrEmpty(str) ? 0 : strtoul(str, nullptr, 10);
 		if (this->query_is_speed_query) {
-			val = ConvertDisplaySpeedToKmhishSpeed(val);
+			val = ConvertDisplaySpeedToKmhishSpeed(val, v->type);
 		} else {
 			if (!_settings_client.gui.timetable_in_ticks) val *= DAY_TICKS;
 		}

@@ -411,7 +411,7 @@ struct BuildRoadToolbarWindow : Window {
 			if (this->rti->max_speed > 0) {
 				SetDParam(0, STR_TOOLBAR_RAILTYPE_VELOCITY);
 				SetDParam(1, this->rti->strings.toolbar_caption);
-				SetDParam(2, this->rti->max_speed / 2);
+				SetDParam(2, PackVelocity(this->rti->max_speed / 2, VEH_ROAD));
 			} else {
 				SetDParam(0, this->rti->strings.toolbar_caption);
 			}

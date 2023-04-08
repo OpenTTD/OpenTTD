@@ -493,7 +493,7 @@ struct BuildRailToolbarWindow : Window {
 			if (rti->max_speed > 0) {
 				SetDParam(0, STR_TOOLBAR_RAILTYPE_VELOCITY);
 				SetDParam(1, rti->strings.toolbar_caption);
-				SetDParam(2, rti->max_speed);
+				SetDParam(2, PackVelocity(rti->max_speed, VEH_TRAIN));
 			} else {
 				SetDParam(0, rti->strings.toolbar_caption);
 			}

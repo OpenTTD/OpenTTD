@@ -1600,6 +1600,7 @@ static SettingsContainer &GetSettingsTree()
 		SettingsPage *localisation = main->Add(new SettingsPage(STR_CONFIG_SETTING_LOCALISATION));
 		{
 			localisation->Add(new SettingEntry("locale.units_velocity"));
+			localisation->Add(new SettingEntry("locale.units_velocity_nautical"));
 			localisation->Add(new SettingEntry("locale.units_power"));
 			localisation->Add(new SettingEntry("locale.units_weight"));
 			localisation->Add(new SettingEntry("locale.units_volume"));
