@@ -1564,6 +1564,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :مجمد
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات الاخرى: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :عند التمكين ، السماح بشراء وبيع أسهم الشركة. ستكون الأسهم متاحة فقط للشركات التي بلغت سنًا معينة
 
+###setting-zero-is-special
 
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :عند السحب ، ضع الإشارات كل: {STRING}
@@ -1655,7 +1656,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :ضبط هذا �
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :تشبع المسارات القصيرة قبل استخدام المسارات عالية القدرة: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :وحدات السرعة: {STRING}
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :إمبراطوري  (ميل/ساعة)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :متري (كم / ساعة)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :متري (م / ثانية)

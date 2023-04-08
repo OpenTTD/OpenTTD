@@ -2015,6 +2015,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Калі ўкл
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мін. узрост кампаніі для выпуску акцыяў: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Мінімальны ўзрост, якога павінна дасягнуць кампанія для пачатку выпуску акцыяў, якімі змогуць гандляваць іншыя гульцы.
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Адсотак даходу, якi налiчваецца пры частковай перавозцы: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Адсотак даходу, які налічваецца на прамежкавых адцінках у вялікіх сетках, даючы большы кантроль над даходамі.
@@ -2149,7 +2150,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Пры наяў
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Сыстэма адзінак для хуткасьці: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Паказваць значэньні хуткасьці ў выбранай сыстэме адзінак
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :ангельскія (міль/г)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :мэтрычная (км/г)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СІ (м/с)

@@ -1521,6 +1521,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun permulaan
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Benarkan membeli saham syarikat lain: {STRING}
 
+###setting-zero-is-special
 
 
 
@@ -1595,7 +1596,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal 
 
 
 
-###length 4
+###length 5
 
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Sistem Imperial (kuasa kuda/hp)

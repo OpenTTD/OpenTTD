@@ -1767,6 +1767,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Má tá sé cum
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Aois íosta na gcuideachtaí le bheith in ann scaireanna a thrádáil: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Socraigh aois íosta na gcuideachtaí sula mbeidh daoine eile in ann scaireanna iontu a cheannach agus a dhíol.
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :An céatadán den bhrabús a íocfar ar chuid den turas i gcórais fhriothálacha: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :An céatadán den bhrabús a thugtar as lastais a thabhairt cuid den bhealach i gcórais fhriothálacha, rud a fhágann go bhfuil tuilleadh smachta agat ar an ioncam
@@ -1912,7 +1913,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Go minic bíonn
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Aonaid luais: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Aon áit a thaispeántar luas sa chomhéadan úsáideora, taispeain sna haonaid roghnaithe é
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Impiriúil (msu)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Méadrach (km/u)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)

@@ -1715,6 +1715,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES                                 :אפשר קני
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :כאשר מאופשר, מתיר קנייה ומכירה של מניות של חברות. מניות יהיו זמינות רק עבור חברות המגיעות לגיל מסוים
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :גיל מינימלי לחברה לסחור במניותיה: {STRING}
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :אחוז הרווח מקטע נסיעה לתשלום במערכות הזנה: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :אחוז הרווח הניתן לקטעי ביניים במערכות הזנה, דבר הנותן שליטה מוגברת על ההכנסות
@@ -1848,7 +1849,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :לעיתים ק
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :יחידות מהירות: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :כאשר מוצגת מהירות השתמש ביחידות הנבחרות
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :בריטית (מייל לשעה)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :מטרי (קמ"ש)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :בינלאומית (מטר לשניה)

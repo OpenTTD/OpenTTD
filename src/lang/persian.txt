@@ -1478,6 +1478,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :سال شروع
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :قابلیت خرید سهام بقیه شرکت‌ها: {STRING}
 
+###setting-zero-is-special
 
 
 
@@ -1551,7 +1552,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابت
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :واحدهای سرعت: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :هر زمان که سرعت در محیط بازی نمایش داده شود، آن را با واحد انتخاب شده نمایش بده
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :امپریال (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :متریک (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)

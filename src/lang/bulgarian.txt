@@ -1656,6 +1656,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Начална 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разреши купуване на акции от други компании: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ако тази опция бъде активирана, ще можете да купувате и продавате дялове на компании. Това ще бъде възможно единствено когато дадената компания достигне определена възраст
 
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент от leg profit to pay in feeder systems: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент от приходите, който се плаща на intermediate legs in feeder systems, давайки ви повече контрол върху приходите
@@ -1767,7 +1768,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Количес�
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Единици за скорост: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Всеки път при показване на скорости, да бъдат изписвани в избраните мерни единици
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)

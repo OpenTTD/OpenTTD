@@ -1959,6 +1959,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Разреша�
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мин. возраст компании для выпуска акций: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Минимальный возраст, которого должна достичь компания для начала выпуска акций, которыми смогут торговать другие игроки.
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент дохода, начисляемый при частичной перевозке: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент прибыли, начисляемый транспорту за частичную перевозку груза.
@@ -2104,7 +2105,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :При нали
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Система единиц для скорости: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показывать значения скорости в выбранной системе единиц
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :английская (миль/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрическая (км/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
@@ -4771,6 +4772,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Моду
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Человек
 STR_AI_CONFIG_RANDOM_AI                                         :Случайный ИИ
 STR_AI_CONFIG_NONE                                              :(нет)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Вверх
@@ -4784,7 +4786,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}ИИ
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}ИИ
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Игровой скрипт
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузить другой скрипт
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузить другой скрипт. Ctrl+щелчок - показать все доступные версии.
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конфигурация
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроить параметры скрипта
 

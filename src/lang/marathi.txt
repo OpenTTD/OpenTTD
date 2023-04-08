@@ -986,6 +986,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 ###length 3
 
 
+###setting-zero-is-special
 
 
 
@@ -1022,7 +1023,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 
 
 
-###length 4
+###length 5
 
 ###length 3
 

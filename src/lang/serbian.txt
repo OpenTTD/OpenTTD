@@ -2001,6 +2001,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ako je omoguće
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Najmanja starost preduzeća za trgovinu akcijama: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Podesi najmanju starost preduzeća da bi drugi mogli da trguju akcijama sa njom.
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenat prihoda koji će biti predan srednjim dionicama prevoza u fider sustavima: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procenat prihoda koji će biti predan srednjim dionicama prevoza u fider sustavima, dajući više kontrole nad prihodima
@@ -2146,7 +2147,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Često postoji 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Mere brzine: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kada brzina bude pokazana u interfejsu, pokaži u željenoj meri
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperijalne mere (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metričke mere (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)

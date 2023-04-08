@@ -782,6 +782,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Тулли
 ###length 3
 
 
+###setting-zero-is-special
 
 
 
@@ -825,7 +826,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑв
 
 
 
-###length 4
+###length 5
 
 ###length 3
 

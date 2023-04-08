@@ -1864,6 +1864,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kui on aktiveer
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Ettevõtte vanuse alampiir aktsiakauplemiseks: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Määra alampiir ettevõtte vanusele, enne kui teised saavad selle aktsiaid osta ja müüa.
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Protsent tuludest mis läheb 'kanna edasi' süsteemis alumistesse lülidesse: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Protsent tuludest mis antakse edasi 'kanna edasi' süsteemidele. Lubab täpsemalt jaotada kasumit erinevate harude vahel.
@@ -2009,7 +2010,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kauba vedamisel
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Kiirusühikud: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Liideses näidatakse kiirust valitud mõõdustikus
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Inglise mõõdustik (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Meetermõõdustik (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI-süsteem (m/s)

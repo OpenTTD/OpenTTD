@@ -1934,6 +1934,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :При вклю
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мінімальний вік компанії для торгівлі акціями: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Встановіть мінімальний вік компанії, щоб інші могли купувати та продавати акції у них.
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Відсоток прибутку за часткове перевезення: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Налаштування проценту прибутку, що нараховується за часткове перевезення вантажу. За допомогою даної опції можна контролювати розподіл прибутків між учасниками багатоланкових перевезень.
@@ -2079,7 +2080,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Часто мі
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Одиниці швидкості: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показувати швидкості в таких одиницях
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Імперські (милі/год)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Метричні (км/год)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СІ (м/с)

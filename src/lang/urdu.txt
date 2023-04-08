@@ -1401,6 +1401,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :شروعاتی 
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :دوسری کمپنیوں کے حصص خریدنے کی اجازت: {STRING}
 
+###setting-zero-is-special
 
 
 
@@ -1471,7 +1472,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 
 
 
-###length 4
+###length 5
 
 ###length 3
 

@@ -1456,6 +1456,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Komenca jaro: {
 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permesu aĉetadon de dividaĵoj en aliaj kompanioj: {STRING}
 
+###setting-zero-is-special
 
 
 
@@ -1519,7 +1520,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgran
 
 
 
-###length 4
+###length 5
 
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metriko (hp)

@@ -1070,6 +1070,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :целосна
 ###length 3
 
 
+###setting-zero-is-special
 
 
 
@@ -1115,7 +1116,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 
-###length 4
+###length 5
 
 ###length 3
 

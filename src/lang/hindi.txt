@@ -546,6 +546,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###length 3
 
 
+###setting-zero-is-special
 
 
 
@@ -585,7 +586,7 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :२x
 
 
 
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :अंतर्राष्ट्रीय मानक (m/s)
 
 ###length 3

@@ -1686,6 +1686,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :หากเศ
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :อนุญาตให้ซื้อหุ้นจากบริษัทอื่นได้: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :เมื่อเปิดการใช้งาน จะสามารถซื้่อชขายหุ้นระหว่างบริษัท จะสามารถซื้อขายหุ้นได้ต่อเมื่อบริษัทเปิดตัวมานานแล้วเท่านั้น
 
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :เปอเซนต์ของผลกำไรที่จะส่งเข้าสู่ระบบกระจายรายได้: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :เปอร์เซนต์ของรายได้ที่ส่งให้ฐานของระบบกระจายรายได้ ส่งผลต่อการควบคุมรายได้ทั้งหมด
@@ -1820,7 +1821,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :ความถ
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :หน่วยวัดความเร็ว: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :หน่วยวัดความเร็ว แสดงผลในหน้าต่างรายละเอียดยานพาหนะ
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :อิมพิเรียล (ไมล์ต่อชั่วโมง)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :เมตริก (กิโลเมตรต่อชั่วโมง)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :มาตรฐานสากล (เมตร/วินาที)

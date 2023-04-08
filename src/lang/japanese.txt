@@ -1808,6 +1808,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :有効にする
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :株式を取引するための最低会社年齢：{STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :他の人が彼らから株式を売買できるように、会社の最低年齢を設定します。
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :区間払いの割合: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :転送を行う輸送網(フィーダーシステム)を構築した場合、中継地点までの輸送で総輸送費の何%を受け取れるかを設定します(転送時に予想される最終輸送費から仮に部分払いし、最終的に貨物が目的地に到着した時点で清算します)。転送元の輸送機器が赤字になるのを防ぎます
@@ -1953,7 +1954,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :二つの停留
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度単位: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :ゲーム中の速度をいずれの単位系で表すか決定します
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :ヤード・ポンド法 (マイル時(mph))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :メートル法 (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国際単位系 (m/s)
