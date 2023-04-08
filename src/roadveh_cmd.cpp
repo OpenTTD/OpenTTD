@@ -790,17 +790,17 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 	/* From here, the third vehicle is blocking if one of the below is true. */
 
 	/* 1: The third vehicle is going the opposite way, so it's not wise to pass. */
-	bool head_on = v->direction == ReverseDir(od->v->direction);
+	if (v->direction == ReverseDir(od->v->direction)) return v;
 
 	/* 2: If the passee is active but not moving, then it is likely wanting to overtake as well.
 	 * It's safer to let it deal with this first. If it is moving, it is better to close passer
 	 * and passee's distance first than it is to try and overtake. */
-	bool passee_pending = !(od->u->vehstatus & VS_STOPPED);
+	if (!(od->u->vehstatus & VS_STOPPED)) return v;
 
 	/* 3: Third vehicle is trying to overtake too, but it is stuck for some reason. */
-	bool has_stuck_overtaker = ((RoadVehicle*)v)->overtaking && v->vehstatus & VS_STOPPED;
+	if (((RoadVehicle*)v)->overtaking && v->vehstatus & VS_STOPPED) return v;
 
-	return (head_on || passee_pending || has_stuck_overtaker) ? v : nullptr;
+	return nullptr;
 }
 
 /**
