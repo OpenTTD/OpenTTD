@@ -68,6 +68,7 @@
 #include "industry.h"
 #include "network/network_gui.h"
 #include "misc_cmd.h"
+#include "worker_thread.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -815,6 +816,8 @@ int openttd_main(int argc, char *argv[])
 
 	/* ScanNewGRFFiles now has control over the scanner. */
 	RequestNewGRFScan(scanner.release());
+
+	_general_worker_pool.Start("ottd:worker", 8);
 
 	VideoDriver::GetInstance()->MainLoop();
 

@@ -522,4 +522,6 @@ add_files(
     window_type.h
     zoom_func.h
     zoom_type.h
+    worker_thread.cpp
+    worker_thread.h
 )

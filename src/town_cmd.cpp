@@ -56,6 +56,8 @@
 #include "table/strings.h"
 #include "table/town_land.h"
 
+#include <mutex>
+
 #include "safeguards.h"
 
 /* Initialize the town-pool */
@@ -394,12 +396,16 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 	return DistanceManhattan(tile, t->xy) < dist;
 }
 
+std::mutex update_lock; ///< Prevent multiple threads to update the coords at the same time.
+
 /**
  * Resize the sign(label) of the town after changes in
  * population (creation or growth or else)
  */
 void Town::UpdateVirtCoord()
 {
+	std::unique_lock<std::mutex> lock(update_lock);
+
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 
 	if (this->cache.sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeTown(this->index));

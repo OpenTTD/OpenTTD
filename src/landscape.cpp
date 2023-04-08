@@ -34,6 +34,7 @@
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
 #include "station_func.h"
+#include "worker_thread.h"
 #include <array>
 #include <list>
 #include <set>
@@ -831,14 +832,30 @@ void RunTileLoop()
 		count--;
 	}
 
-	while (count--) {
-		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
+	do {
+		int local_count = std::min(count, 256);
+		count -= local_count;
+
+		_general_worker_pool.EnqueueJob([](TileIndex tile, uint count) {
+			const uint32 feedback = feedbacks[Map::LogX() + Map::LogY() - 2 * MIN_MAP_SIZE_BITS];
+
+			while (count--) {
+				_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
+
+				/* Get the next tile in sequence using a Galois LFSR. */
+				tile = (tile >> 1) ^ (-(int32)(tile & 1) & feedback);
+			}
+		}, tile, local_count);
 
 		/* Get the next tile in sequence using a Galois LFSR. */
-		tile = (tile >> 1) ^ (-(int32)(tile & 1) & feedback);
-	}
+		while (local_count--) {
+			tile = (tile >> 1) ^ (-(int32)(tile & 1) & feedback);
+		}
+	} while (count > 0);
+	_general_worker_pool.WaitTillEmpty();
 
 	_cur_tileloop_tile = tile;
+
 }
 
 void InitializeLandscape()
