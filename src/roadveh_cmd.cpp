@@ -768,16 +768,39 @@ struct OvertakeData {
 static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
 	const OvertakeData *od = (OvertakeData*)data;
-	TileIndexDiff    front = TileOffsByDiagDir(DirToDiagDir(od->v->direction));
 
-	/* Distinct road engine is blocking if it's within the tile or the next few of the passer as well as either it being
-	 * directionally opposed to passer, the passed pending movement, or the blocker being stopped while overtaking. */
-	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v
-			&&
-				( v->tile == od->v->tile || v->tile == od->v->tile + front || v->tile == od->v->tile + front + front || v->tile == od->u->tile + front + front )
-			&&
-				( v->direction == ReverseDir(od->v->direction) || !(od->u->vehstatus & VS_STOPPED) || (v->vehstatus & VS_STOPPED && ( (RoadVehicle*)v )->overtaking ) ) )
-			? v : nullptr;
+	/* This is the offset to tile in front of either the passer the passee, looking the passer's way. */
+	TileIndexDiff front = TileOffsByDiagDir(DirToDiagDir(od->v->direction));
+
+	/* A vehicle blocking overtake must be an engine running on the road. */
+	if (v->type != VEH_ROAD || v->First() != v) return nullptr;
+
+	/* A vehicle must be a third party to block. If it is the same as either the passer
+	 * or passee, it's just part of the base overtake and there is no blockage. */
+	if (v == od->u || v == od->v) return nullptr;
+
+	/* Overtaking concerns the overtaker's tile as well as the few in front of them.
+	 * If a third party is not in these tiles, it is not blocking the overtake.
+	 * If the overtakee and overtaker are on separate tiles, look one tile further. */
+	if ( v->tile != od->v->tile
+	  && v->tile != od->v->tile + front
+	  && v->tile != od->v->tile + front + front
+	  && v->tile != od->u->tile + front + front) return nullptr;
+
+	/* From here, the third vehicle is blocking if one of the below is true. */
+
+	/* 1: The third vehicle is going the opposite way, so it's not wise to pass. */
+	bool head_on = v->direction == ReverseDir(od->v->direction);
+
+	/* 2: If the passee is active but not moving, then it is likely wanting to overtake as well.
+	 * It's safer to let it deal with this first. If it is moving, it is better to close passer
+	 * and passee's distance first than it is to try and overtake. */
+	bool passee_pending = !(od->u->vehstatus & VS_STOPPED);
+
+	/* 3: Third vehicle is trying to overtake too, but it is stuck for some reason. */
+	bool has_stuck_overtaker = ((RoadVehicle*)v)->overtaking && v->vehstatus & VS_STOPPED;
+
+	return (head_on || passee_pending || has_stuck_overtaker) ? v : nullptr;
 }
 
 /**
@@ -841,10 +864,10 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	 *  - No barred levelcrossing
 	 *  - No other vehicles in the way
 	 */
-
 	od.tile = v->tile;
 	if (CheckRoadBlockedForOvertaking(&od)) return;
-	od.tile += TileOffsByDiagDir(DirToDiagDir(v->direction));
+
+	od.tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (CheckRoadBlockedForOvertaking(&od)) return;
 
 	/* When the vehicle in front of us is stopped we may only take
