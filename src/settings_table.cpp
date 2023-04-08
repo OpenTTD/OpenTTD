@@ -127,7 +127,10 @@ static void UpdateConsists(int32 new_value)
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 }
 
-/* Check service intervals of vehicles, newvalue is value of % or day based servicing */
+/**
+ * Check and update if needed all vehicle service intervals.
+ * @param new_value Contains 0 if service intervals are in days, otherwise intervals use percents.
+ */
 static void UpdateAllServiceInterval(int32 new_value)
 {
 	bool update_vehicles;
@@ -141,15 +144,17 @@ static void UpdateAllServiceInterval(int32 new_value)
 	}
 
 	if (new_value != 0) {
-		vds->servint_trains   = 50;
-		vds->servint_roadveh  = 50;
-		vds->servint_aircraft = 50;
-		vds->servint_ships    = 50;
+		/* Service intervals are in percents. */
+		vds->servint_trains   = DEF_SERVINT_PERCENT;
+		vds->servint_roadveh  = DEF_SERVINT_PERCENT;
+		vds->servint_aircraft = DEF_SERVINT_PERCENT;
+		vds->servint_ships    = DEF_SERVINT_PERCENT;
 	} else {
-		vds->servint_trains   = 150;
-		vds->servint_roadveh  = 150;
-		vds->servint_aircraft = 100;
-		vds->servint_ships    = 360;
+		/* Service intervals are in days. */
+		vds->servint_trains   = DEF_SERVINT_DAYS_TRAINS;
+		vds->servint_roadveh  = DEF_SERVINT_DAYS_ROADVEH;
+		vds->servint_aircraft = DEF_SERVINT_DAYS_AIRCRAFT;
+		vds->servint_ships    = DEF_SERVINT_DAYS_SHIPS;
 	}
 
 	if (update_vehicles) {
