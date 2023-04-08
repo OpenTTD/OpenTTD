@@ -833,7 +833,7 @@ void RunTileLoop()
 	}
 
 	do {
-		int local_count = std::min(count, 256);
+		uint local_count = std::min(count, 1024U);
 		count -= local_count;
 
 		_general_worker_pool.EnqueueJob([](TileIndex tile, uint count) {
