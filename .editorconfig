@@ -1,9 +1,16 @@
+# Set root to true to stop EditorConfig search at the current file.
 root = true
 
+# Apply the following settings to all files.
 [*]
+# Insert a final newline at the end of the file.
 insert_final_newline = true
+# Trim trailing whitespace from each line.
 trim_trailing_whitespace = true
 
-[*.{c,cpp,h,hpp}]
-indent_style = tab
+# Apply the following settings to C and C++ source files.
+[source/*.{c,cpp,h,hpp}]
+# Use spaces for indentation.
+indent_style = space
+# Set the character set to UTF-8.
 charset = utf-8
