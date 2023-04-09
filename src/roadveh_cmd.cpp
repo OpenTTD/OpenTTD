@@ -795,10 +795,10 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 	/* 2: If the passee is active but not moving, then it is likely wanting to overtake as well.
 	 * It's safer to let it deal with this first. If it is moving, it is better to close passer
 	 * and passee's distance first than it is to try and overtake. */
-	if (!(od->u->vehstatus & VS_STOPPED)) return v;
+	if (!(od->u->vehstatus & VS_STOPPED || od->u->breakdown_ctr == 1)) return v;
 
 	/* 3: Third vehicle is trying to overtake too, but it is stuck for some reason. */
-	if (((RoadVehicle*)v)->overtaking && v->vehstatus & VS_STOPPED) return v;
+	if (((RoadVehicle*)v)->overtaking && v->cur_speed == 0) return v;
 
 	return nullptr;
 }
