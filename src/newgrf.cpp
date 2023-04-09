@@ -5689,9 +5689,7 @@ static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "CanalMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		CanalFeature cf = cfs[i];
-
+	for (auto &cf : cfs) {
 		if (cf >= CF_END) {
 			grfmsg(1, "CanalMapSpriteGroup: Canal subset %d out of range, skipping", cf);
 			continue;
@@ -5725,11 +5723,11 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		ctype = TranslateCargo(GSF_STATIONS, ctype);
 		if (ctype == CT_INVALID) continue;
 
-		for (uint i = 0; i < idcount; i++) {
-			StationSpec *statspec = stations[i] >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[stations[i]];
+		for (auto &station : stations) {
+			StationSpec *statspec = station >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[station];
 
 			if (statspec == nullptr) {
-				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
+				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", station);
 				continue;
 			}
 
@@ -5740,22 +5738,22 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		StationSpec *statspec = stations[i] >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[stations[i]];
+	for (auto &station : stations) {
+		StationSpec *statspec = station >= NUM_STATIONS_PER_GRF ? nullptr : _cur.grffile->stations[station];
 
 		if (statspec == nullptr) {
-			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
+			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", station);
 			continue;
 		}
 
 		if (statspec->grf_prop.grffile != nullptr) {
-			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X mapped multiple times, skipping", stations[i]);
+			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X mapped multiple times, skipping", station);
 			continue;
 		}
 
 		statspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.spritegroups[groupid];
 		statspec->grf_prop.grffile = _cur.grffile;
-		statspec->grf_prop.local_id = stations[i];
+		statspec->grf_prop.local_id = station;
 		StationClass::Assign(statspec);
 	}
 }
@@ -5781,11 +5779,11 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		HouseSpec *hs = houses[i] >= NUM_HOUSES_PER_GRF ? nullptr : _cur.grffile->housespec[houses[i]];
+	for (auto &house : houses) {
+		HouseSpec *hs = house >= NUM_HOUSES_PER_GRF ? nullptr : _cur.grffile->housespec[house];
 
 		if (hs == nullptr) {
-			grfmsg(1, "TownHouseMapSpriteGroup: House %d undefined, skipping.", houses[i]);
+			grfmsg(1, "TownHouseMapSpriteGroup: House %d undefined, skipping.", house);
 			continue;
 		}
 
@@ -5813,11 +5811,11 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		IndustrySpec *indsp = industries[i] >= NUM_INDUSTRYTYPES_PER_GRF ? nullptr : _cur.grffile->industryspec[industries[i]];
+	for (auto &industry : industries) {
+		IndustrySpec *indsp = industry >= NUM_INDUSTRYTYPES_PER_GRF ? nullptr : _cur.grffile->industryspec[industry];
 
 		if (indsp == nullptr) {
-			grfmsg(1, "IndustryMapSpriteGroup: Industry %d undefined, skipping", industries[i]);
+			grfmsg(1, "IndustryMapSpriteGroup: Industry %d undefined, skipping", industry);
 			continue;
 		}
 
@@ -5845,11 +5843,11 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		IndustryTileSpec *indtsp = indtiles[i] >= NUM_INDUSTRYTILES_PER_GRF ? nullptr : _cur.grffile->indtspec[indtiles[i]];
+	for (auto &indtile : indtiles) {
+		IndustryTileSpec *indtsp = indtile >= NUM_INDUSTRYTILES_PER_GRF ? nullptr : _cur.grffile->indtspec[indtile];
 
 		if (indtsp == nullptr) {
-			grfmsg(1, "IndustrytileMapSpriteGroup: Industry tile %d undefined, skipping", indtiles[i]);
+			grfmsg(1, "IndustrytileMapSpriteGroup: Industry tile %d undefined, skipping", indtile);
 			continue;
 		}
 
@@ -5872,9 +5870,7 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "CargoMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		CargoID cid = cargoes[i];
-
+	for (auto &cid : cargoes) {
 		if (cid >= NUM_CARGO) {
 			grfmsg(1, "CargoMapSpriteGroup: Cargo ID %d out of range, skipping", cid);
 			continue;
@@ -5908,11 +5904,11 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		ctype = TranslateCargo(GSF_OBJECTS, ctype);
 		if (ctype == CT_INVALID) continue;
 
-		for (uint i = 0; i < idcount; i++) {
-			ObjectSpec *spec = objects[i] >= NUM_OBJECTS_PER_GRF ? nullptr : _cur.grffile->objectspec[objects[i]];
+		for (auto &object : objects) {
+			ObjectSpec *spec = object >= NUM_OBJECTS_PER_GRF ? nullptr : _cur.grffile->objectspec[object];
 
 			if (spec == nullptr) {
-				grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", objects[i]);
+				grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", object);
 				continue;
 			}
 
@@ -5923,22 +5919,22 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "ObjectMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		ObjectSpec *spec = objects[i] >= NUM_OBJECTS_PER_GRF ? nullptr : _cur.grffile->objectspec[objects[i]];
+	for (auto &object : objects) {
+		ObjectSpec *spec = object >= NUM_OBJECTS_PER_GRF ? nullptr : _cur.grffile->objectspec[object];
 
 		if (spec == nullptr) {
-			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", objects[i]);
+			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", object);
 			continue;
 		}
 
 		if (spec->grf_prop.grffile != nullptr) {
-			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X mapped multiple times, skipping", objects[i]);
+			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X mapped multiple times, skipping", object);
 			continue;
 		}
 
 		spec->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 		spec->grf_prop.grffile        = _cur.grffile;
-		spec->grf_prop.local_id       = objects[i];
+		spec->grf_prop.local_id       = object;
 	}
 }
 
@@ -5960,9 +5956,9 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype >= RTSG_END) continue;
 
 		extern RailtypeInfo _railtypes[RAILTYPE_END];
-		for (uint i = 0; i < idcount; i++) {
-			if (railtypes[i] != INVALID_RAILTYPE) {
-				RailtypeInfo *rti = &_railtypes[railtypes[i]];
+		for (auto &railtype : railtypes) {
+			if (railtype != INVALID_RAILTYPE) {
+				RailtypeInfo *rti = &_railtypes[railtype];
 
 				rti->grffile[ctype] = _cur.grffile;
 				rti->group[ctype] = _cur.spritegroups[groupid];
@@ -5994,9 +5990,9 @@ static void RoadTypeMapSpriteGroup(ByteReader *buf, uint8 idcount, RoadTramType 
 		if (ctype >= ROTSG_END) continue;
 
 		extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-		for (uint i = 0; i < idcount; i++) {
-			if (roadtypes[i] != INVALID_ROADTYPE) {
-				RoadTypeInfo *rti = &_roadtypes[roadtypes[i]];
+		for (auto &roadtype : roadtypes) {
+			if (roadtype != INVALID_ROADTYPE) {
+				RoadTypeInfo *rti = &_roadtypes[roadtype];
 
 				rti->grffile[ctype] = _cur.grffile;
 				rti->group[ctype] = _cur.spritegroups[groupid];
@@ -6028,11 +6024,11 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "AirportMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		AirportSpec *as = airports[i] >= NUM_AIRPORTS_PER_GRF ? nullptr : _cur.grffile->airportspec[airports[i]];
+	for (auto &airport : airports) {
+		AirportSpec *as = airport >= NUM_AIRPORTS_PER_GRF ? nullptr : _cur.grffile->airportspec[airport];
 
 		if (as == nullptr) {
-			grfmsg(1, "AirportMapSpriteGroup: Airport %d undefined, skipping", airports[i]);
+			grfmsg(1, "AirportMapSpriteGroup: Airport %d undefined, skipping", airport);
 			continue;
 		}
 
@@ -6060,11 +6056,11 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "AirportTileMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		AirportTileSpec *airtsp = airptiles[i] >= NUM_AIRPORTTILES_PER_GRF ? nullptr : _cur.grffile->airtspec[airptiles[i]];
+	for (auto &airptile : airptiles) {
+		AirportTileSpec *airtsp = airptile >= NUM_AIRPORTTILES_PER_GRF ? nullptr : _cur.grffile->airtspec[airptile];
 
 		if (airtsp == nullptr) {
-			grfmsg(1, "AirportTileMapSpriteGroup: Airport tile %d undefined, skipping", airptiles[i]);
+			grfmsg(1, "AirportTileMapSpriteGroup: Airport tile %d undefined, skipping", airptile);
 			continue;
 		}
 
@@ -6094,11 +6090,11 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		ctype = TranslateCargo(GSF_ROADSTOPS, ctype);
 		if (ctype == CT_INVALID) continue;
 
-		for (uint i = 0; i < idcount; i++) {
-			RoadStopSpec *roadstopspec = roadstops[i] >= NUM_ROADSTOPS_PER_GRF ? nullptr : _cur.grffile->roadstops[roadstops[i]];
+		for (auto &roadstop : roadstops) {
+			RoadStopSpec *roadstopspec = roadstop >= NUM_ROADSTOPS_PER_GRF ? nullptr : _cur.grffile->roadstops[roadstop];
 
 			if (roadstopspec == nullptr) {
-				grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping", roadstops[i]);
+				grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping", roadstop);
 				continue;
 			}
 
@@ -6109,22 +6105,22 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "RoadStopMapSpriteGroup")) return;
 
-	for (uint i = 0; i < idcount; i++) {
-		RoadStopSpec *roadstopspec = roadstops[i] >= NUM_ROADSTOPS_PER_GRF ? nullptr : _cur.grffile->roadstops[roadstops[i]];
+	for (auto &roadstop : roadstops) {
+		RoadStopSpec *roadstopspec = roadstop >= NUM_ROADSTOPS_PER_GRF ? nullptr : _cur.grffile->roadstops[roadstop];
 
 		if (roadstopspec == nullptr) {
-			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping.", roadstops[i]);
+			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping.", roadstop);
 			continue;
 		}
 
 		if (roadstopspec->grf_prop.grffile != nullptr) {
-			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X mapped multiple times, skipping", roadstops[i]);
+			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X mapped multiple times, skipping", roadstop);
 			continue;
 		}
 
 		roadstopspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.spritegroups[groupid];
 		roadstopspec->grf_prop.grffile = _cur.grffile;
-		roadstopspec->grf_prop.local_id = roadstops[i];
+		roadstopspec->grf_prop.local_id = roadstop;
 		RoadStopClass::Assign(roadstopspec);
 	}
 }
