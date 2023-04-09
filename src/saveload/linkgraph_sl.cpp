@@ -58,7 +58,7 @@ public:
 			if (IsSavegameVersionBefore(SLV_191)) {
 				/* We used to save the full matrix ... */
 				for (NodeID to = 0; to < max_size; ++to) {
-					SlObject(&_linkgraph->nodes[_linkgraph_from].edges[to], this->GetLoadDescription());
+					SlObject(&edges[to], this->GetLoadDescription());
 				}
 			} else {
 				size_t used_size = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? max_size : SlGetStructListLength(UINT16_MAX);
