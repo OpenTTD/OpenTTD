@@ -195,15 +195,8 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 	/* only AddCost for non-existing waypoints */
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	bool success = false;
 	for (TileIndex cur_tile : new_location) {
-		if (!IsRailWaypointTile(cur_tile)) {
-			cost.AddCost(_price[PR_BUILD_WAYPOINT_RAIL]);
-			success = true;
-		}
-	}
-	if (!success) {
-		return_cmd_error(STR_ERROR_ALREADY_BUILT);
+		if (!IsRailWaypointTile(cur_tile)) cost.AddCost(_price[PR_BUILD_WAYPOINT_RAIL]);
 	}
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
