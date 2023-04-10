@@ -9,9 +9,6 @@
 
 #include "../../stdafx.h"
 #include "../../textbuf_gui.h"
-#include "../../openttd.h"
-#include "../../crashlog.h"
-#include "../../core/random_func.hpp"
 #include "../../debug.h"
 #include "../../string_func.h"
 #include "../../fios.h"
@@ -55,11 +52,6 @@
 #endif
 
 #if defined(__APPLE__)
-#	if defined(WITH_SDL)
-		/* the mac implementation needs this file included in the same file as main() */
-#		include <SDL.h>
-#	endif
-
 #	include "../macosx/macos.h"
 #endif
 
@@ -234,39 +226,6 @@ void ShowOSErrorBox(const char *buf, bool system)
 	}
 }
 #endif
-
-#ifdef WITH_COCOA
-void CocoaSetupAutoreleasePool();
-void CocoaReleaseAutoreleasePool();
-#endif
-
-int CDECL main(int argc, char *argv[])
-{
-	/* Make sure our arguments contain only valid UTF-8 characters. */
-	for (int i = 0; i < argc; i++) StrMakeValidInPlace(argv[i]);
-
-#ifdef WITH_COCOA
-	CocoaSetupAutoreleasePool();
-	/* This is passed if we are launched by double-clicking */
-	if (argc >= 2 && strncmp(argv[1], "-psn", 4) == 0) {
-		argv[1] = nullptr;
-		argc = 1;
-	}
-#endif
-	CrashLog::InitialiseCrashLog();
-
-	SetRandomSeed(time(nullptr));
-
-	signal(SIGPIPE, SIG_IGN);
-
-	int ret = openttd_main(argc, argv);
-
-#ifdef WITH_COCOA
-	CocoaReleaseAutoreleasePool();
-#endif
-
-	return ret;
-}
 
 #ifndef WITH_COCOA
 bool GetClipboardContents(char *buffer, const char *last)
