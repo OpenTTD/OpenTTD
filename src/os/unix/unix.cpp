@@ -62,10 +62,12 @@ bool FiosIsRoot(const char *path)
 	return path[1] == '\0';
 }
 
+#ifndef __APPLE__
 void FiosGetDrives(FileList &file_list)
 {
 	return;
 }
+#endif
 
 bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 {
