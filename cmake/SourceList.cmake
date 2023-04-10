@@ -17,7 +17,7 @@ function(add_files)
     endif()
 
     foreach(FILE IN LISTS PARAM_FILES)
-        target_sources(openttd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${FILE})
+        target_sources(openttd_lib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${FILE})
     endforeach()
 endfunction()
 

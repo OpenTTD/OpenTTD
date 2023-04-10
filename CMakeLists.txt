@@ -224,7 +224,8 @@ include_directories(${CMAKE_SOURCE_DIR}/src/3rdparty/squirrel/include)
 
 include(MSVCFilters)
 
-add_executable(openttd WIN32 ${GENERATED_SOURCE_FILES})
+add_library(openttd_lib OBJECT ${GENERATED_SOURCE_FILES})
+add_executable(openttd WIN32)
 set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 # All other files are added via target_sources()
 
@@ -240,17 +241,21 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/media)
 add_dependencies(openttd
     find_version)
 
-target_link_libraries(openttd
+target_link_libraries(openttd_lib
     openttd::languages
     openttd::settings
-    openttd::media
-    openttd::basesets
     openttd::script_api
     Threads::Threads
 )
 
+target_link_libraries(openttd
+    openttd_lib
+    openttd::media
+    openttd::basesets
+)
+
 if(HAIKU)
-    target_link_libraries(openttd "be" "network" "midi")
+    target_link_libraries(openttd_lib "be" "network" "midi")
 endif()
 
 if(IPO_FOUND)
@@ -297,7 +302,7 @@ include(CheckAtomic)
 if(APPLE)
     link_package(Iconv TARGET Iconv::Iconv)
 
-    target_link_libraries(openttd
+    target_link_libraries(openttd_lib
         ${AUDIOTOOLBOX_LIBRARY}
         ${AUDIOUNIT_LIBRARY}
         ${COCOA_LIBRARY}
@@ -376,7 +381,7 @@ if(WIN32)
         -DPSAPI_VERSION=1
     )
 
-    target_link_libraries(openttd
+    target_link_libraries(openttd_lib
         ws2_32
         winmm
         imm32

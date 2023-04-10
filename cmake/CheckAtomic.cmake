@@ -83,5 +83,5 @@ else()
 endif()
 
 if(HAVE_CXX_ATOMICS_WITH_LIB OR HAVE_CXX_ATOMICS64_WITH_LIB)
-  target_link_libraries(openttd atomic)
+  target_link_libraries(openttd_lib atomic)
 endif()
