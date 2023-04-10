@@ -1236,7 +1236,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspr
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Lavkonjunkturer forekomme hvert 5. år hvis denne indstilling er slået til. Ved lavkonjunktur falder produktionen markant (produktionen returnerer til tidligere niveau når lavkonjunkturen er ovre)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktiveret, kan lavkonjunktur forekomme hvert par år. Under en lavkonjunktur er al produktion væsentligt lavere (den vender tilbage til tidligere niveau, når recessionen er forbi)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forbyd toge at køre baglængs i stationer: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktiveret, vil tog ikke vende på stationer der ikke er endestationer, også selvom der er en kortere rute til deres næste destination ved at vende
@@ -2790,7 +2790,7 @@ STR_AIRPORT_SMALL                                               :Lille
 STR_AIRPORT_CITY                                                :By
 STR_AIRPORT_METRO                                               :Metropollufthavn
 STR_AIRPORT_INTERNATIONAL                                       :International lufthavn
-STR_AIRPORT_COMMUTER                                            :Pendler
+STR_AIRPORT_COMMUTER                                            :Pendler lufthavn
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
 STR_AIRPORT_HELIPORT                                            :Helikopterlandingsplads
 STR_AIRPORT_HELIDEPOT                                           :Helikopterværksted
@@ -3644,7 +3644,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forhindr
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over vejpunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved rutepunktets lokalitet.
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over rutepunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved rutepunktets lokalitet.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb rutepunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrér skærmen ved bøjens placering. Ctrl+klik åbner et nyt vindue ved bøjens placering
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ændre navnet på bøjen
@@ -3973,7 +3973,7 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Vis
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Toggle skjule / vise af tog type
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Toggle skjule / vise af kørtøjstype
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Toggle skjule / vise af skibstype
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Skift skjul/visning af skibstypen
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Toggle skjule / vise af flytype
 
 ###length VEHICLE_TYPES
