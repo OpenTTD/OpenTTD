@@ -180,6 +180,8 @@ The exact licensing terms can be found in `src/3rdparty/os2/getaddrinfo.c` resp.
 The fmt implementation in `src/3rdparty/fmt` is licensed under the MIT license.
 See `src/3rdparty/fmt/LICENSE.rst` for the complete license text.
 
+The catch2 implementation in `src/3rdparty/catch2` is licensed under the Boost Software License, Version 1.0.
+See `src/3rdparty/catch2/LICENSE.txt` for the complete license text.
 
 ## 4.0 Credits
 
