@@ -471,17 +471,17 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ускорить игру
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение игры, главное меню, выход
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Показать карту
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение/загрузка игры; главное меню; выход
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Карта; окна просмотра; грузовые потоки; таблички
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Список городов
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Показать субсидии
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Субсидии
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Список станций
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Показать финансовую информацию компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Показать основную информацию о компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Показать историю компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Показать список задач
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показать графики
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показать рейтинги компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Информация о финансах компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Основная информация о компаниях
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}История компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Список задач
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Графики компаний и оплаты грузоперевозок
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Рейтинги компаний
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Список существующих предприятий; создание новых
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Список поездов. Ctrl+щелчок переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Список автотранспорта. Ctrl+щелчок переключает отображение по группам.
@@ -496,8 +496,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Строительство аэропортов
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Настройка звука и музыки
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки сообщений
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, консоль, отладка скриптов, снимки экрана, об игре
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки и удаление сообщений
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, об игре и инструментах разработчика, снимки экрана
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключить панели инструментов
 
 # Extra tooltips for the scenario editor toolbar
@@ -2114,7 +2114,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :английс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрическая (км/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :внутриигровая (клетки в день)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Узлы
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :узлы
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Система единиц для мощности: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Показывать значения мощности двигателей транспортных средств в выбранной системе единиц

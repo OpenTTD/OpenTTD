@@ -195,6 +195,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mp
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}tiles/day
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}knots
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
@@ -343,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Open the
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Fast forward the game
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save game, abandon game, exit
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map, extra viewport or list of signs
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options and settings
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save, load or abandon game, exit program
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map, extra viewport, cargo flow or list of signs
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Display town directory
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Display subsidies
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Display list of company's stations
@@ -353,9 +354,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Display 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Display general company information
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Display story book
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Display goal list
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Display graphs
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Display company graphs and cargo payment rates
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Display company league table
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fund construction of new industry or list all industries
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examine industries or fund construction of a new industry
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Display list of company's trains. Ctrl+Click toggles opening the group/vehicle list
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Display list of company's road vehicles. Ctrl+Click toggles opening the group/vehicle list
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Display list of company's ships. Ctrl+Click toggles opening the group/vehicle list
@@ -369,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Build sh
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Build airports
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open the landscaping toolbar to raise/lower land, plant trees, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Show sound/music window
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Show last message/news report, show message options
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information, console, script debug, screenshots, about OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Show last message/news report, messages history or delete all messages
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information, screenshot, about OpenTTD and developer tools
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Switch toolbars
 
 # Extra tooltips for the scenario editor toolbar
@@ -1808,7 +1809,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :When enabled, a
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimum company age to trade shares: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Set the minimum age of a company for others to be able to buy and sell shares from them.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} year{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :No minimum
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage of income given to the intermediate legs in feeder systems, giving more control over the income
@@ -1952,13 +1955,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Setting this to
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation of short paths before using high-capacity paths: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequently there are multiple paths between two given stations. Cargodist will saturate the shortest path first, then use the second shortest path until that is saturated and so on. Saturation is determined by an estimation of capacity and planned usage. Once it has saturated all paths, if there is still demand left, it will overload all paths, prefering the ones with high capacity. Most of the time the algorithm will not estimate the capacity accurately, though. This setting allows you to specify up to which percentage a shorter path must be saturated in the first pass before choosing the next longer one. Set it to less than 100% to avoid overcrowded stations in case of overestimated capacity.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Speed units: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Speed units (land): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Speed units (nautical): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Whenever a speed is shown in the user interface, show it in the selected units
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Game units (tiles/day)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knots
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Vehicle power units: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Whenever a vehicle's power is shown in the user interface, show it in the selected units
