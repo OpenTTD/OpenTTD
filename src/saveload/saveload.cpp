@@ -651,11 +651,11 @@ static size_t _next_offs;
  */
 int SlIterateArray()
 {
-	int index;
-
 	/* After reading in the whole array inside the loop
 	 * we must have read in all the data, so we must be at end of current block. */
-	if (_next_offs != 0 && _sl.reader->GetSize() != _next_offs) SlErrorCorrupt("Invalid chunk size");
+	if (_next_offs != 0 && _sl.reader->GetSize() != _next_offs) {
+		SlErrorCorruptFmt("Invalid chunk size iterating array - expected to be at position {}, actually at {}", _next_offs, _sl.reader->GetSize());
+	}
 
 	for (;;) {
 		uint length = SlReadArrayLength();
@@ -673,6 +673,7 @@ int SlIterateArray()
 			return INT32_MAX;
 		}
 
+		int index;
 		switch (_sl.block_mode) {
 			case CH_SPARSE_TABLE:
 			case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
@@ -2074,8 +2075,6 @@ void SlGlobList(const SaveLoadTable &slt)
  */
 void SlAutolength(AutolengthProc *proc, void *arg)
 {
-	size_t offs;
-
 	assert(_sl.action == SLA_SAVE);
 
 	/* Tell it to calculate the length */
@@ -2087,12 +2086,15 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 	_sl.need_length = NL_WANTLENGTH;
 	SlSetLength(_sl.obj_len);
 
-	offs = _sl.dumper->GetSize() + _sl.obj_len;
+	size_t start_pos = _sl.dumper->GetSize();
+	size_t expected_offs = start_pos + _sl.obj_len;
 
 	/* And write the stuff */
 	proc(arg);
 
-	if (offs != _sl.dumper->GetSize()) SlErrorCorrupt("Invalid chunk size");
+	if (expected_offs != _sl.dumper->GetSize()) {
+		SlErrorCorruptFmt("Invalid chunk size when writing autolength block, expected {}, got {}", _sl.obj_len, _sl.dumper->GetSize() - start_pos);
+	}
 }
 
 void ChunkHandler::LoadCheck(size_t len) const
@@ -2121,8 +2123,6 @@ void ChunkHandler::LoadCheck(size_t len) const
 static void SlLoadChunk(const ChunkHandler &ch)
 {
 	byte m = SlReadByte();
-	size_t len;
-	size_t endoffs;
 
 	_sl.block_mode = m & CH_TYPE_MASK;
 	_sl.obj_len = 0;
@@ -2146,15 +2146,20 @@ static void SlLoadChunk(const ChunkHandler &ch)
 			ch.Load();
 			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
-		case CH_RIFF:
+		case CH_RIFF: {
 			/* Read length */
-			len = (SlReadByte() << 16) | ((m >> 4) << 24);
+			size_t len = (SlReadByte() << 16) | ((m >> 4) << 24);
 			len += SlReadUint16();
 			_sl.obj_len = len;
-			endoffs = _sl.reader->GetSize() + len;
+			size_t start_pos = _sl.reader->GetSize();
+			size_t endoffs = start_pos + len;
 			ch.Load();
-			if (_sl.reader->GetSize() != endoffs) SlErrorCorrupt("Invalid chunk size");
+
+			if (_sl.reader->GetSize() != endoffs) {
+				SlErrorCorruptFmt("Invalid chunk size in RIFF in {} - expected {}, got {}", ch.GetName(), len, _sl.reader->GetSize() - start_pos);
+			}
 			break;
+		}
 		default:
 			SlErrorCorrupt("Invalid chunk type");
 			break;
@@ -2171,8 +2176,6 @@ static void SlLoadChunk(const ChunkHandler &ch)
 static void SlLoadCheckChunk(const ChunkHandler &ch)
 {
 	byte m = SlReadByte();
-	size_t len;
-	size_t endoffs;
 
 	_sl.block_mode = m & CH_TYPE_MASK;
 	_sl.obj_len = 0;
@@ -2194,15 +2197,20 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 		case CH_SPARSE_ARRAY:
 			ch.LoadCheck();
 			break;
-		case CH_RIFF:
+		case CH_RIFF: {
 			/* Read length */
-			len = (SlReadByte() << 16) | ((m >> 4) << 24);
+			size_t len = (SlReadByte() << 16) | ((m >> 4) << 24);
 			len += SlReadUint16();
 			_sl.obj_len = len;
-			endoffs = _sl.reader->GetSize() + len;
+			size_t start_pos = _sl.reader->GetSize();
+			size_t endoffs = start_pos + len;
 			ch.LoadCheck(len);
-			if (_sl.reader->GetSize() != endoffs) SlErrorCorrupt("Invalid chunk size");
+
+			if (_sl.reader->GetSize() != endoffs) {
+				SlErrorCorruptFmt("Invalid chunk size in RIFF in {} - expected {}, got {}", ch.GetName(), len, _sl.reader->GetSize() - start_pos);
+			}
 			break;
+		}
 		default:
 			SlErrorCorrupt("Invalid chunk type");
 			break;
