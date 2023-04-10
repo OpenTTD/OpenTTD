@@ -6,5 +6,6 @@ add_files(
     string_uniscribe.h
     win32.cpp
     win32.h
+    win32_main.cpp
     CONDITION WIN32
 )
