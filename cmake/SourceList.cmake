@@ -21,6 +21,29 @@ function(add_files)
     endforeach()
 endfunction()
 
+# Add a test file to be compiled.
+#
+# add_test_files([file1 ...] CONDITION condition [condition ...])
+#
+# CONDITION is a complete statement that can be evaluated with if().
+# If it evaluates true, the source files will be added; otherwise not.
+# For example: ADD_IF SDL_FOUND AND Allegro_FOUND
+#
+function(add_test_files)
+    cmake_parse_arguments(PARAM "" "" "CONDITION" ${ARGN})
+    set(PARAM_FILES "${PARAM_UNPARSED_ARGUMENTS}")
+
+    if(PARAM_CONDITION)
+        if(NOT (${PARAM_CONDITION}))
+            return()
+        endif()
+    endif()
+
+    foreach(FILE IN LISTS PARAM_FILES)
+        target_sources(openttd_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${FILE})
+    endforeach()
+endfunction()
+
 # This function works around an 'issue' with CMake, where
 # set_source_files_properties() only works in the scope of the file. We want
 # to set properties for the source file on a more global level. To solve this,
