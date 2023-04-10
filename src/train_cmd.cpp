@@ -2098,11 +2098,10 @@ CommandCost CmdForceTrainProceed(DoCommandFlag flags, VehicleID veh_id)
 /**
  * Try to find a depot nearby.
  * @param v %Train that wants a depot.
- * @param max_distance Maximal search distance.
  * @return Information where the closest train depot is located.
  * @pre The given vehicle must not be crashed!
  */
-static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
+static FindDepotData FindClosestTrainDepot(Train *v)
 {
 	assert(!(v->vehstatus & VS_CRASHED));
 
@@ -2112,8 +2111,8 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 	if (IsRailDepotTile(origin.tile)) return FindDepotData(origin.tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainFindNearestDepot(v, max_distance);
-		case VPF_YAPF: return YapfTrainFindNearestDepot(v, max_distance);
+		case VPF_NPF: return NPFTrainFindNearestDepot(v);
+		case VPF_YAPF: return YapfTrainFindNearestDepot(v);
 
 		default: NOT_REACHED();
 	}
@@ -2121,7 +2120,7 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 
 ClosestDepot Train::FindClosestDepot()
 {
-	FindDepotData tfdd = FindClosestTrainDepot(this, 0);
+	FindDepotData tfdd = FindClosestTrainDepot(this);
 	if (tfdd.best_length == UINT_MAX) return ClosestDepot();
 
 	return ClosestDepot(tfdd.tile, GetDepotIndex(tfdd.tile), tfdd.reverse);
@@ -4057,16 +4056,9 @@ static void CheckIfTrainNeedsService(Train *v)
 		return;
 	}
 
-	uint max_penalty;
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
-		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
-		default: NOT_REACHED();
-	}
-
-	FindDepotData tfdd = FindClosestTrainDepot(v, max_penalty);
+	FindDepotData tfdd = FindClosestTrainDepot(v);
 	/* Only go to the depot if it is not too far out of our way. */
-	if (tfdd.best_length == UINT_MAX || tfdd.best_length > max_penalty) {
+	if (tfdd.best_length == UINT_MAX) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal

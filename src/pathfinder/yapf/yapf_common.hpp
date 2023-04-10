@@ -104,7 +104,7 @@ public:
 	/** return true if first two-way signal should be treated as dead end */
 	inline bool TreatFirstRedTwoWaySignalAsEOL()
 	{
-		return Yapf().PfGetSettings().rail_firstred_twoway_eol && m_treat_first_red_two_way_signal_as_eol;
+		return m_treat_first_red_two_way_signal_as_eol;
 	}
 };
 

@@ -27,6 +27,25 @@ static const uint NPF_HASH_SIZE = 1 << NPF_HASH_BITS;
 static const uint NPF_HASH_HALFBITS = NPF_HASH_BITS / 2;
 static const uint NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1;
 
+/* NPF Settings */
+static const uint NPF_RAIL_FIRSTRED_PENALTY        =  10 * NPF_TILE_LENGTH; ///< the penalty for when the first signal is red (and it is not an exit or combo signal)
+static const uint NPF_RAIL_FIRSTRED_EXIT_PENALTY   = 100 * NPF_TILE_LENGTH; ///< the penalty for when the first signal is red (and it is an exit or combo signal)
+static const uint NPF_MAXIMUM_GO_TO_DEPOT_PENALTY  =  20 * NPF_TILE_LENGTH; ///< What is the maximum penalty that may be endured for going to a depot
+static const uint NPF_RAIL_LASTRED_PENALTY         =  10 * NPF_TILE_LENGTH; ///< the penalty for when the last signal is red
+static const uint NPF_RAIL_STATION_PENALTY         =   1 * NPF_TILE_LENGTH; ///< the penalty for station tiles
+static const uint NPF_RAIL_SLOPE_PENALTY           =   1 * NPF_TILE_LENGTH; ///< the penalty for sloping upwards
+static const uint NPF_RAIL_CURVE_PENALTY           =   1 * NPF_TILE_LENGTH; ///< the penalty for curves
+static const uint NPF_RAIL_DEPOT_REVERSE_PENALTY   =  50 * NPF_TILE_LENGTH; ///< the penalty for reversing in depots
+static const uint NPF_RAIL_PBS_CROSS_PENALTY       =   3 * NPF_TILE_LENGTH; ///< the penalty for crossing a reserved rail track
+static const uint NPF_RAIL_PBS_SIGNAL_BACK_PENALTY =  15 * NPF_TILE_LENGTH; ///< the penalty for passing a pbs signal from the backside
+static const uint NPF_BUOY_PENALTY                 =   2 * NPF_TILE_LENGTH; ///< the penalty for going over (through) a buoy
+static const uint NPF_WATER_CURVE_PENALTY          =   1 * NPF_TILE_LENGTH; ///< the penalty for curves
+static const uint NPF_ROAD_CURVE_PENALTY           =   1 * NPF_TILE_LENGTH; ///< the penalty for curves
+static const uint NPF_CROSSING_PENALTY             =   3 * NPF_TILE_LENGTH; ///< the penalty for level crossings
+static const uint NPF_ROAD_DRIVE_THROUGH_PENALTY   =   8 * NPF_TILE_LENGTH; ///< the penalty for going through a drive-through road stop
+static const uint NPF_ROAD_DT_OCCUPIED_PENALTY     =   8 * NPF_TILE_LENGTH; ///< the penalty multiplied by the fill percentage of a drive-through road stop
+static const uint NPF_ROAD_BAY_OCCUPIED_PENALTY    =  15 * NPF_TILE_LENGTH; ///< the penalty multiplied by the fill percentage of a road bay
+
 /** Meant to be stored in AyStar.targetdata */
 struct NPFFindStationOrTileData {
 	TileIndex dest_coords;    ///< An indication of where the station is, for heuristic purposes, or the target tile
@@ -250,7 +269,7 @@ static uint NPFSlopeCost(AyStarNode *current)
 
 	if (z2 - z1 > 1) {
 		/* Slope up */
-		return _settings_game.pf.npf.npf_rail_slope_penalty;
+		return NPF_RAIL_SLOPE_PENALTY;
 	}
 	return 0;
 	/* Should we give a bonus for slope down? Probably not, we
@@ -269,10 +288,10 @@ static uint NPFReservedTrackCost(AyStarNode *current)
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		DiagDirection exitdir = TrackdirToExitdir(current->direction);
 		if (GetTunnelBridgeDirection(tile) == ReverseDiagDir(exitdir)) {
-			return  _settings_game.pf.npf.npf_rail_pbs_cross_penalty * (GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile)) + 1);
+			return  NPF_RAIL_PBS_CROSS_PENALTY * (GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile)) + 1);
 		}
 	}
-	return  _settings_game.pf.npf.npf_rail_pbs_cross_penalty;
+	return  NPF_RAIL_PBS_CROSS_PENALTY;
 }
 
 /**
@@ -320,11 +339,11 @@ static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *par
 	cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
 
 	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(trackdir)) {
-		cost += _settings_game.pf.npf.npf_buoy_penalty; // A small penalty for going over buoys
+		cost += NPF_BUOY_PENALTY; // A small penalty for going over buoys
 	}
 
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
-		cost += _settings_game.pf.npf.npf_water_curve_penalty;
+		cost += NPF_WATER_CURVE_PENALTY;
 	}
 
 	if (IsDockingTile(current->tile)) {
@@ -354,7 +373,7 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 		case MP_ROAD:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for level crossings */
-			if (IsLevelCrossing(tile)) cost += _settings_game.pf.npf.npf_crossing_penalty;
+			if (IsLevelCrossing(tile)) cost += NPF_CROSSING_PENALTY;
 			break;
 
 		case MP_STATION: {
@@ -362,17 +381,17 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 			const RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
 			if (IsDriveThroughStopTile(tile)) {
 				/* Increase the cost for drive-through road stops */
-				cost += _settings_game.pf.npf.npf_road_drive_through_penalty;
+				cost += NPF_ROAD_DRIVE_THROUGH_PENALTY;
 				DiagDirection dir = TrackdirToExitdir(current->direction);
 				if (!RoadStop::IsDriveThroughRoadStopContinuation(tile, tile - TileOffsByDiagDir(dir))) {
 					/* When we're the first road stop in a 'queue' of them we increase
 					 * cost based on the fill percentage of the whole queue. */
 					const RoadStop::Entry *entry = rs->GetEntry(dir);
-					cost += entry->GetOccupied() * _settings_game.pf.npf.npf_road_dt_occupied_penalty / entry->GetLength();
+					cost += entry->GetOccupied() * NPF_ROAD_DT_OCCUPIED_PENALTY / entry->GetLength();
 				}
 			} else {
 				/* Increase cost for filled road stops */
-				cost += _settings_game.pf.npf.npf_road_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
+				cost += NPF_ROAD_BAY_OCCUPIED_PENALTY * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
 			}
 			break;
 		}
@@ -389,7 +408,7 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 	/* Check for turns. Road vehicles only really drive diagonal, turns are
 	 * represented by non-diagonal tracks */
 	if (!IsDiagonalTrackdir(current->direction)) {
-		cost += _settings_game.pf.npf.npf_road_curve_penalty;
+		cost += NPF_ROAD_CURVE_PENALTY;
 	}
 
 	NPFMarkTile(tile);
@@ -428,7 +447,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 			 * give any station tile a penalty, because every possible route will get
 			 * this penalty exactly once, on its end tile (if it's a station) and it
 			 * will therefore not make a difference. */
-			cost = NPF_TILE_LENGTH + _settings_game.pf.npf.npf_rail_station_penalty;
+			cost = NPF_TILE_LENGTH + NPF_RAIL_STATION_PENALTY;
 
 			if (IsRailWaypoint(tile)) {
 				NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
@@ -457,7 +476,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 					if (td == INVALID_TRACKDIR ||
 							!IsSafeWaitingPosition(train, t, td, true, _settings_game.pf.forbid_90_deg) ||
 							!IsWaitingPositionFree(train, t, td, _settings_game.pf.forbid_90_deg)) {
-						cost += _settings_game.pf.npf.npf_rail_lastred_penalty;
+						cost += NPF_RAIL_LASTRED_PENALTY;
 					}
 				}
 			}
@@ -484,9 +503,9 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 					if (!IsPbsSignal(sigtype)) {
 						if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO) {
 							/* Penalise exit and combo signals differently (heavier) */
-							cost += _settings_game.pf.npf.npf_rail_firstred_exit_penalty;
+							cost += NPF_RAIL_FIRSTRED_EXIT_PENALTY;
 						} else {
-							cost += _settings_game.pf.npf.npf_rail_firstred_penalty;
+							cost += NPF_RAIL_FIRSTRED_PENALTY;
 						}
 					}
 				}
@@ -510,7 +529,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 		}
 
 		if (HasPbsSignalOnTrackdir(tile, ReverseTrackdir(trackdir)) && !NPFGetFlag(current, NPF_FLAG_3RD_SIGNAL)) {
-			cost += _settings_game.pf.npf.npf_rail_pbs_signal_back_penalty;
+			cost += NPF_RAIL_PBS_SIGNAL_BACK_PENALTY;
 		}
 	}
 
@@ -520,7 +539,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 	 * of course... */
 	new_node.path.node = *current;
 	if (as->EndNodeCheck(as, &new_node) == AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED)) {
-		cost += _settings_game.pf.npf.npf_rail_lastred_penalty;
+		cost += NPF_RAIL_LASTRED_PENALTY;
 	}
 
 	/* Check for slope */
@@ -528,7 +547,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 
 	/* Check for turns */
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
-		cost += _settings_game.pf.npf.npf_rail_curve_penalty;
+		cost += NPF_RAIL_CURVE_PENALTY;
 	}
 	/* TODO, with realistic acceleration, also the amount of straight track between
 	 *      curves should be taken into account, as this affects the speed limit. */
@@ -538,7 +557,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 		/* Penalise any depot tile that is not the last tile in the path. This
 		 * _should_ penalise every occurrence of reversing in a depot (and only
 		 * that) */
-		cost += _settings_game.pf.npf.npf_rail_depot_reverse_penalty;
+		cost += NPF_RAIL_DEPOT_REVERSE_PENALTY;
 	}
 
 	/* Check for occupied track */
@@ -1113,9 +1132,6 @@ void InitializeNPF()
 	}
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
-	/* We will limit the number of nodes for now, until we have a better
-	 * solution to really fix performance */
-	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
 }
 
 static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *v, bool reserve_path = false)
@@ -1149,12 +1165,12 @@ static void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, const Vehicle *
 
 /*** Road vehicles ***/
 
-FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penalty)
+FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v)
 {
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
 	AyStarUserData user = { v->owner, TRANSPORT_ROAD, RAILTYPES_NONE, v->compatible_roadtypes, GetRoadTramType(v->roadtype) };
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, INVALID_TILE, INVALID_TRACKDIR, false, nullptr, &user, 0, max_penalty);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, INVALID_TILE, INVALID_TRACKDIR, false, nullptr, &user, 0, NPF_MAXIMUM_GO_TO_DEPOT_PENALTY);
 
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
@@ -1246,7 +1262,7 @@ bool NPFShipCheckReverse(const Ship *v, Trackdir *best_td)
 
 /*** Trains ***/
 
-FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)
+FindDepotData NPFTrainFindNearestDepot(const Train *v)
 {
 	const Train *last = v->Last();
 	Trackdir trackdir = v->GetVehicleTrackdir();
@@ -1257,7 +1273,7 @@ FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)
 
 	assert(trackdir != INVALID_TRACKDIR);
 	AyStarUserData user = { v->owner, TRANSPORT_RAIL, v->compatible_railtypes, ROADTYPES_NONE, 0 };
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, &user, NPF_INFINITE_PENALTY, max_penalty);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, &user, NPF_INFINITE_PENALTY, NPF_MAXIMUM_GO_TO_DEPOT_PENALTY);
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
 	/* Found target */
