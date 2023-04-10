@@ -1,3 +1,23 @@
+13.1 (2023-04-10)
+------------------------------------------------------------------------
+Add: [NewGRF] Engine name callback for nested variants. (#10399)
+Fix: Improve main toolbar tooltips (#10616)
+Fix: [NewGRF] Additional validation for Action3 (+others) (#10601)
+Fix: Clear button for editbox didn't take account of padding (#10583)
+Fix: [Script] Access to enum/consts defined outside of main.nut (#10573)
+Fix #10568: Bogus warning when loading a save with a NewGRFs on dedicated servers (#10572)
+Fix #10554: Crash when scrolling in the autoreplace window with collapsed variants (#10555)
+Fix: Network server highlight invisible with RTL languages. (#10551)
+Fix: Client name was not being used as company manager name (#10535)
+Fix: Prevent road vehicles on crossing from crashing into the side of a train (#10496)
+Fix #10477: [macOS] Calculation for window sizes when using custom fonts was being rounded incorrectly (#10489)
+Fix #10486: Crash in debug window when GS started before AIs (#10487)
+Fix #10469: [Script] Negative numbers in League Table window were sorted incorrectly (#10471)
+Fix #10465: Crash on timeout if user never enters a password for server (#10466)
+Fix #10280, #10461: Crash on opening town windows as a spectator (#10462)
+Fix #10059: Script config values stored in the config file could cause crashes (#10444)
+
+
 13.0 (2023-02-05)
 ------------------------------------------------------------------------
 Change #10077: Make maximum loan a positive multiple of the loan interval (#10355)
