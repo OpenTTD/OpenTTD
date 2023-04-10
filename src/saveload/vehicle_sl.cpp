@@ -401,9 +401,11 @@ void AfterLoadVehicles(bool part_of_load)
 
 					rv->roadtype = Engine::Get(rv->engine_type)->u.road.roadtype;
 					rv->compatible_roadtypes = GetRoadTypeInfo(rv->roadtype)->powered_roadtypes;
+					RoadTramType rtt = GetRoadTramType(rv->roadtype);
 					for (RoadVehicle *u = rv; u != nullptr; u = u->Next()) {
 						u->roadtype = rv->roadtype;
 						u->compatible_roadtypes = rv->compatible_roadtypes;
+						if (GetRoadType(u->tile, rtt) == INVALID_ROADTYPE) SlErrorCorrupt("Road vehicle on invalid road type");
 					}
 
 					RoadVehUpdateCache(rv);
