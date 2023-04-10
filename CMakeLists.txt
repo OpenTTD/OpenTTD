@@ -215,6 +215,7 @@ if(OPTION_PACKAGE_DEPENDENCIES)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 endif()
 
+include(CTest)
 include(SourceList)
 
 # Needed by rev.cpp
@@ -226,6 +227,7 @@ include(MSVCFilters)
 
 add_library(openttd_lib OBJECT ${GENERATED_SOURCE_FILES})
 add_executable(openttd WIN32)
+add_executable(openttd_test)
 set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 # All other files are added via target_sources()
 
@@ -253,6 +255,10 @@ target_link_libraries(openttd
     openttd::media
     openttd::basesets
 )
+
+target_link_libraries(openttd_test PRIVATE openttd_lib)
+include(Catch)
+catch_discover_tests(openttd_test)
 
 if(HAIKU)
     target_link_libraries(openttd_lib "be" "network" "midi")
