@@ -15,6 +15,8 @@
 #include "../network/network.h"
 #include "../network/network_content.h"
 #include "../widgets/dropdown_func.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
 
 #include "game.hpp"
 #include "game_gui.hpp"
@@ -83,7 +85,6 @@ struct GSConfigWindow : public Window {
 	bool clicked_increase;   ///< Whether we clicked the increase or decrease button.
 	bool clicked_dropdown;   ///< Whether the dropdown is open.
 	bool closing_dropdown;   ///< True, if the dropdown list is currently closing.
-	GUITimer timeout;        ///< Timeout for unclicking the button.
 	int clicked_row;         ///< The clicked row of settings.
 	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
 	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
@@ -92,8 +93,7 @@ struct GSConfigWindow : public Window {
 	GSConfigWindow() : Window(&_gs_config_desc),
 		clicked_button(-1),
 		clicked_dropdown(false),
-		closing_dropdown(false),
-		timeout(0)
+		closing_dropdown(false)
 	{
 		this->gs_config = GameConfig::GetConfig();
 
@@ -336,7 +336,7 @@ struct GSConfigWindow : public Window {
 					if (new_val != old_val) {
 						this->gs_config->SetSetting(config_item.name, new_val);
 						this->clicked_button = num;
-						this->timeout.SetInterval(150);
+						this->unclick_timeout.Reset();
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
@@ -387,13 +387,11 @@ struct GSConfigWindow : public Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_GSC_SETTINGS);
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (this->timeout.Elapsed(delta_ms)) {
-			this->clicked_button = -1;
-			this->SetDirty();
-		}
-	}
+	/** When reset, unclick the button after a small timeout. */
+	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this](auto) {
+		this->clicked_button = -1;
+		this->SetDirty();
+	}};
 
 	/**
 	 * Some data on this window has become invalid.

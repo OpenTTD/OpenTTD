@@ -30,6 +30,8 @@
 #include "network_gamelist.h"
 #include "../core/backup_type.hpp"
 #include "../thread.h"
+#include "../timer/timer.h"
+#include "../timer/timer_network.h"
 
 #include "table/strings.h"
 
@@ -262,7 +264,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
  */
 /* static */ bool ClientNetworkGameSocketHandler::GameLoop()
 {
-	_frame_counter++;
+	TimerManager<TimerNetwork>::Elapsed(1);
 
 	NetworkExecuteLocalCommandQueue();
 

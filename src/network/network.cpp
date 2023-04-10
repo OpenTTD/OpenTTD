@@ -36,6 +36,8 @@
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../misc_cmd.h"
+#include "../timer/timer.h"
+#include "../timer/timer_network.h"
 #include <charconv>
 #include <sstream>
 #include <iomanip>
@@ -1162,8 +1164,8 @@ void NetworkGameLoop()
 
 		bool send_frame = false;
 
-		/* We first increase the _frame_counter */
-		_frame_counter++;
+		TimerManager<TimerNetwork>::Elapsed(1);
+
 		/* Update max-frame-counter */
 		if (_frame_counter > _frame_counter_max) {
 			_frame_counter_max = _frame_counter + _settings_client.network.frame_freq;

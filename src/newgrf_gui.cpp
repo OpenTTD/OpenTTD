@@ -28,7 +28,8 @@
 #include "textfile_gui.h"
 #include "tilehighlight_func.h"
 #include "fios.h"
-#include "guitimer_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/newgrf_widget.h"
 #include "widgets/misc_widget.h"
@@ -155,7 +156,6 @@ struct NewGRFParametersWindow : public Window {
 	bool clicked_increase; ///< True if the increase button was clicked, false for the decrease button.
 	bool clicked_dropdown; ///< Whether the dropdown is open.
 	bool closing_dropdown; ///< True, if the dropdown list is currently closing.
-	GUITimer timeout;      ///< How long before we unpress the last-pressed button?
 	uint clicked_row;      ///< The selected parameter
 	int line_height;       ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;
@@ -404,7 +404,7 @@ struct NewGRFParametersWindow : public Window {
 						par_info->SetValue(this->grf_config, val);
 
 						this->clicked_button = num;
-						this->timeout.SetInterval(150);
+						this->unclick_timeout.Reset();
 					}
 				} else if (par_info->type == PTYPE_UINT_ENUM && !par_info->complete_labels && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
@@ -484,13 +484,11 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (timeout.Elapsed(delta_ms)) {
-			this->clicked_button = UINT_MAX;
-			this->SetDirty();
-		}
-	}
+	/** When reset, unclick the button after a small timeout. */
+	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this](auto) {
+		this->clicked_button = UINT_MAX;
+		this->SetDirty();
+	}};
 };
 GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 

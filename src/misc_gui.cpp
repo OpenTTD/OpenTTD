@@ -24,10 +24,11 @@
 #include "core/geometry_func.hpp"
 #include "newgrf_debug.h"
 #include "zoom_func.h"
-#include "guitimer_func.h"
 #include "viewport_func.h"
 #include "landscape_cmd.h"
 #include "rev.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/misc_widget.h"
 
@@ -470,9 +471,6 @@ struct AboutWindow : public Window {
 	int line_height;                         ///< The height of a single line
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
-	static const uint TIMER_INTERVAL = 2100; ///< Scrolling interval, scaled by line text line height. This value chosen to maintain parity: 2100 / FONT_HEIGHT_NORMAL = 150ms
-	GUITimer timer;
-
 	AboutWindow() : Window(&_about_desc)
 	{
 		this->InitNested(WN_GAME_OPTIONS_ABOUT);
@@ -500,10 +498,6 @@ struct AboutWindow : public Window {
 			d.width = std::max(d.width, GetStringBoundingBox(_credits[i]).width);
 		}
 		*size = maxdim(*size, d);
-
-		/* Set scroll interval based on required speed. To keep scrolling smooth,
-		 * the interval is adjusted rather than the distance moved. */
-		this->timer.SetInterval(TIMER_INTERVAL / FONT_HEIGHT_NORMAL);
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -521,18 +515,19 @@ struct AboutWindow : public Window {
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		uint count = this->timer.CountElapsed(delta_ms);
-		if (count > 0) {
-			this->text_position -= count;
-			/* If the last text has scrolled start a new from the start */
-			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
-				this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
-			}
-			this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
+	/**
+	 * Scroll the text in the about window slow.
+	 *
+	 * The interval of 2100ms is chosen to maintain parity: 2100 / FONT_HEIGHT_NORMAL = 150ms.
+	 */
+	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(2100) / FONT_HEIGHT_NORMAL, [this](uint count) {
+		this->text_position -= count;
+		/* If the last text has scrolled start a new from the start */
+		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
+			this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 		}
-	}
+		this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
+	}};
 };
 
 void ShowAboutWindow()

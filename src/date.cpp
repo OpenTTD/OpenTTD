@@ -20,6 +20,8 @@
 #include "saveload/saveload.h"
 #include "newgrf_profiling.h"
 #include "widgets/statusbar_widget.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "safeguards.h"
 
@@ -189,7 +191,7 @@ static const Month _autosave_months[] = {
 /**
  * Runs various procedures that have to be done yearly
  */
-static void OnNewYear()
+static IntervalTimer<TimerGameCalendar> _on_new_year({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
 {
 	CompaniesYearlyLoop();
 	VehiclesYearlyLoop();
@@ -222,12 +224,12 @@ static void OnNewYear()
 	}
 
 	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
-}
+});
 
 /**
  * Runs various procedures that have to be done monthly
  */
-static void OnNewMonth()
+static IntervalTimer<TimerGameCalendar> _on_new_month({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto)
 {
 	if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
 		_do_autosave = true;
@@ -242,12 +244,12 @@ static void OnNewMonth()
 	SubsidyMonthlyLoop();
 	StationMonthlyLoop();
 	if (_network_server) NetworkServerMonthlyLoop();
-}
+});
 
 /**
  * Runs various procedures that have to be done daily
  */
-static void OnNewDay()
+static IntervalTimer<TimerGameCalendar> _on_new_day({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](auto)
 {
 	if (!_newgrf_profilers.empty() && _newgrf_profile_end_date <= _date) {
 		NewGRFProfiler::FinishAll();
@@ -263,45 +265,4 @@ static void OnNewDay()
 
 	/* Refresh after possible snowline change */
 	SetWindowClassesDirty(WC_TOWN_VIEW);
-}
-
-/**
- * Increases the tick counter, increases date  and possibly calls
- * procedures that have to be called daily, monthly or yearly.
- */
-void IncreaseDate()
-{
-	/* increase day, and check if a new day is there? */
-	_tick_counter++;
-
-	if (_game_mode == GM_MENU) return;
-
-	_date_fract++;
-	if (_date_fract < DAY_TICKS) return;
-	_date_fract = 0;
-
-	/* increase day counter */
-	_date++;
-
-	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
-
-	/* check if we entered a new month? */
-	bool new_month = ymd.month != _cur_month;
-
-	/* check if we entered a new year? */
-	bool new_year = ymd.year != _cur_year;
-
-	/* update internal variables before calling the daily/monthly/yearly loops */
-	_cur_month = ymd.month;
-	_cur_year  = ymd.year;
-
-	/* yes, call various daily loops */
-	OnNewDay();
-
-	/* yes, call various monthly loops */
-	if (new_month) OnNewMonth();
-
-	/* yes, call various yearly loops */
-	if (new_year) OnNewYear();
-}
+});

@@ -89,7 +89,6 @@ void NetworkInitChatMessage();
 void NetworkReInitChatBoxSize();
 void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message);
 void NetworkUndrawChatMessage();
-void NetworkChatMessageLoop();
 
 void NetworkAfterNewGRFScan();
 

@@ -21,6 +21,8 @@
 #include "../hotkeys.h"
 #include "../company_cmd.h"
 #include "../misc_cmd.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
 
 #include "script_gui.h"
 #include "script_log.hpp"
@@ -288,7 +290,6 @@ struct ScriptSettingsWindow : public Window {
 	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
 	bool clicked_dropdown;                ///< Whether the dropdown is open.
 	bool closing_dropdown;                ///< True, if the dropdown list is currently closing.
-	GUITimer timeout;                     ///< Timeout for unclicking the button.
 	int clicked_row;                      ///< The clicked row of settings.
 	int line_height;                      ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
@@ -304,8 +305,7 @@ struct ScriptSettingsWindow : public Window {
 		slot(slot),
 		clicked_button(-1),
 		clicked_dropdown(false),
-		closing_dropdown(false),
-		timeout(0)
+		closing_dropdown(false)
 	{
 		this->script_config = GetConfig(slot);
 
@@ -499,7 +499,7 @@ struct ScriptSettingsWindow : public Window {
 					if (new_val != old_val) {
 						this->script_config->SetSetting(config_item.name, new_val);
 						this->clicked_button = num;
-						this->timeout.SetInterval(150);
+						this->unclick_timeout.Reset();
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
@@ -551,13 +551,11 @@ struct ScriptSettingsWindow : public Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_SCRS_BACKGROUND);
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (this->timeout.Elapsed(delta_ms)) {
-			this->clicked_button = -1;
-			this->SetDirty();
-		}
-	}
+	/** When reset, unclick the button after a small timeout. */
+	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this](auto) {
+		this->clicked_button = -1;
+		this->SetDirty();
+	}};
 
 	/**
 	 * Some data on this window has become invalid.

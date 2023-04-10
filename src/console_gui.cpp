@@ -12,7 +12,6 @@
 #include "window_gui.h"
 #include "console_gui.h"
 #include "console_internal.h"
-#include "guitimer_func.h"
 #include "window_func.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -21,6 +20,8 @@
 #include "console_func.h"
 #include "rev.h"
 #include "video/video_driver.hpp"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 #include <deque>
 #include <string>
 
@@ -115,14 +116,12 @@ struct IConsoleWindow : Window
 	static size_t scroll;
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
-	GUITimer truncate_timer;
 
 	IConsoleWindow() : Window(&_console_window_desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
 
 		this->InitNested(0);
-		this->truncate_timer.SetInterval(3000);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 
@@ -186,10 +185,8 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (this->truncate_timer.CountElapsed(delta_ms) == 0) return;
-
+	/** Check on a regular interval if the console buffer needs truncating. */
+	IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
 		assert(this->height >= 0 && this->line_height > 0);
 		size_t visible_lines = (size_t)(this->height / this->line_height);
 
@@ -198,7 +195,7 @@ struct IConsoleWindow : Window
 			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll, max_scroll);
 			this->SetDirty();
 		}
-	}
+	}};
 
 	void OnMouseLoop() override
 	{

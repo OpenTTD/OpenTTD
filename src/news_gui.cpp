@@ -32,10 +32,11 @@
 #include "command_func.h"
 #include "company_base.h"
 #include "settings_internal.h"
-#include "guitimer_func.h"
 #include "group_gui.h"
 #include "zoom_func.h"
 #include "news_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/news_widget.h"
 
@@ -267,9 +268,6 @@ struct NewsWindow : Window {
 	const NewsItem *ni;   ///< News item to display.
 	static int duration;  ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
-	static const uint TIMER_INTERVAL = 210; ///< Scrolling interval, scaled by line text line height. This value chosen to maintain the 15ms at normal zoom.
-	GUITimer timer;
-
 	NewsWindow(WindowDesc *desc, const NewsItem *ni) : Window(desc), ni(ni)
 	{
 		NewsWindow::duration = 16650;
@@ -320,11 +318,6 @@ struct NewsWindow : Window {
 		}
 
 		PositionNewsMessage(this);
-	}
-
-	void OnInit() override
-	{
-		this->timer.SetInterval(TIMER_INTERVAL / FONT_HEIGHT_NORMAL);
 	}
 
 	void DrawNewsBorder(const Rect &r) const
@@ -554,17 +547,20 @@ struct NewsWindow : Window {
 
 	void OnRealtimeTick(uint delta_ms) override
 	{
-		int count = this->timer.CountElapsed(delta_ms);
-		if (count > 0) {
-			/* Scroll up newsmessages from the bottom */
-			int newtop = std::max(this->top - 2 * count, _screen.height - this->height - this->status_height - this->chat_height);
-			this->SetWindowTop(newtop);
-		}
-
 		/* Decrement the news timer. We don't need to action an elapsed event here,
 		 * so no need to use TimerElapsed(). */
 		if (NewsWindow::duration > 0) NewsWindow::duration -= delta_ms;
 	}
+
+	/**
+	 * Scroll the news message slowly up from the bottom.
+	 *
+	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / FONT_HEIGHT_NORMAL = 15ms.
+	 */
+	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / FONT_HEIGHT_NORMAL, [this](uint count) {
+		int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
+		this->SetWindowTop(newtop);
+	}};
 
 private:
 	/**

@@ -42,6 +42,8 @@
 #include "industry_cmd.h"
 #include "querystring_gui.h"
 #include "stringfilter_type.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "table/strings.h"
 
@@ -723,8 +725,7 @@ public:
 		if (success && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 
-	void OnHundredthTick() override
-	{
+	IntervalTimer<TimerWindow> update_interval = {std::chrono::seconds(3), [this](auto) {
 		if (_game_mode == GM_EDITOR) return;
 		if (this->count == 0) return;
 		const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
@@ -739,7 +740,7 @@ public:
 				this->SetDirty();
 			}
 		}
-	}
+	}};
 
 	void OnTimeout() override
 	{
@@ -1820,11 +1821,11 @@ public:
 		this->DrawWidgets();
 	}
 
-	void OnHundredthTick() override
-	{
+	/** Rebuild the industry list on a regular interval. */
+	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->industries.ForceResort();
 		this->BuildSortIndustriesList();
-	}
+	}};
 
 	/**
 	 * Some data on this window has become invalid.

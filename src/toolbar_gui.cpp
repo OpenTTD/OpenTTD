@@ -49,11 +49,12 @@
 #include "story_base.h"
 #include "toolbar_gui.h"
 #include "framerate_type.h"
-#include "guitimer_func.h"
 #include "screenshot_gui.h"
 #include "misc_cmd.h"
 #include "league_gui.h"
 #include "league_base.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -1992,8 +1993,6 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 
 /** Main toolbar. */
 struct MainToolbarWindow : Window {
-	GUITimer timer;
-
 	MainToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -2004,8 +2003,6 @@ struct MainToolbarWindow : Window {
 		this->SetWidgetDisabledState(WID_TN_FAST_FORWARD, _networking); // if networking, disable fast-forward button
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
-
-		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	void FindWindowPlacementAndResize(int def_width, int def_height) override
@@ -2109,11 +2106,8 @@ struct MainToolbarWindow : Window {
 		_last_started_action = CBF_NONE;
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (!this->timer.Elapsed(delta_ms)) return;
-		this->timer.SetInterval(MILLISECONDS_PER_TICK);
-
+	/** Refresh the state of pause / game-speed on a regular interval.*/
+	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->IsWidgetLowered(WID_TN_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
 			this->SetWidgetDirty(WID_TN_PAUSE);
@@ -2123,7 +2117,7 @@ struct MainToolbarWindow : Window {
 			this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
 			this->SetWidgetDirty(WID_TN_FAST_FORWARD);
 		}
-	}
+	}};
 
 	void OnTimeout() override
 	{
@@ -2353,8 +2347,6 @@ enum MainToolbarEditorHotkeys {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
-	GUITimer timer;
-
 	ScenarioEditorToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -2363,8 +2355,6 @@ struct ScenarioEditorToolbarWindow : Window {
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
-
-		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	void FindWindowPlacementAndResize(int def_width, int def_height) override
@@ -2495,11 +2485,8 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->SetWidgetDirty(WID_TE_DATE_FORWARD);
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (!this->timer.Elapsed(delta_ms)) return;
-		this->timer.SetInterval(MILLISECONDS_PER_TICK);
-
+	/** Refresh the state of pause / game-speed on a regular interval.*/
+	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->IsWidgetLowered(WID_TE_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
 			this->SetDirty();
@@ -2509,7 +2496,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			this->ToggleWidgetLoweredState(WID_TE_FAST_FORWARD);
 			this->SetDirty();
 		}
-	}
+	}};
 
 	/**
 	 * Some data on this window has become invalid.

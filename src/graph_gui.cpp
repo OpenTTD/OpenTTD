@@ -20,6 +20,8 @@
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "currency.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 #include "zoom_func.h"
 
 #include "widgets/graph_widget.h"
@@ -892,7 +894,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->vscroll->SetCount(static_cast<int>(_sorted_standard_cargo_specs.size()));
 
 		/* Initialise the dataset */
-		this->OnHundredthTick();
+		this->UpdatePaymentRates();
 
 		this->FinishInitNested(window_number);
 	}
@@ -1030,10 +1032,18 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		this->OnHundredthTick();
+		this->UpdatePaymentRates();
 	}
 
-	void OnHundredthTick() override
+	/** Update the payment rates on a regular interval. */
+	IntervalTimer<TimerWindow> update_payment_interval = {std::chrono::seconds(3), [this](auto) {
+		this->UpdatePaymentRates();
+	}};
+
+	/**
+	 * Update the payment rates according to the latest information.
+	 */
+	void UpdatePaymentRates()
 	{
 		this->UpdateExcludedData();
 

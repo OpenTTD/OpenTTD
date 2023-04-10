@@ -34,6 +34,8 @@
 #include "widgets/dropdown_func.h"
 #include "town_kdtree.h"
 #include "town_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/town_widget.h"
 
@@ -307,10 +309,10 @@ public:
 		}
 	}
 
-	void OnHundredthTick() override
-	{
+	/** Redraw the whole window on a regular interval. */
+	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
-	}
+	}};
 
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
@@ -966,11 +968,11 @@ public:
 		this->DrawWidgets();
 	}
 
-	void OnHundredthTick() override
-	{
+	/** Redraw the whole window on a regular interval. */
+	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->BuildSortTownList();
 		this->SetDirty();
-	}
+	}};
 
 	void OnResize() override
 	{
