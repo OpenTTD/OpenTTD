@@ -391,6 +391,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PRODUCTION_HISTORY,                 ///< 343  PR#10541 Industry production history.
 	SLV_ROAD_TYPE_LABEL_MAP,                ///< 344  PR#13021 Add road type label map to allow upgrade/conversion of road types.
 
+	SLV_REMOVE_PF_SETTINGS,                 ///< 345  PR#10623 Removal of pathfinder settings.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

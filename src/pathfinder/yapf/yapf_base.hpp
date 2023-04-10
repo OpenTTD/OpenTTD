@@ -59,10 +59,10 @@ public:
 	NodeList nodes; ///< node list multi-container
 
 protected:
+	static const int MAX_SEARCH_NODES = 10000; ///< stop path-finding when this number of nodes visited
+
 	Node *best_dest_node = nullptr; ///< pointer to the destination node found at last round
 	Node *best_intermediate_node = nullptr; ///< here should be node closest to the destination if path not found
-	const YAPFSettings *settings; ///< current settings (_settings_game.yapf)
-	int max_search_nodes; ///< maximum number of nodes we are allowed to visit before we give up
 	const VehicleType *vehicle = nullptr; ///< vehicle that we are trying to drive
 
 	int stats_cost_calcs = 0; ///< stats - how many node's costs were calculated
@@ -73,7 +73,7 @@ public:
 
 public:
 	/** default constructor */
-	inline CYapfBaseT() : settings(&_settings_game.pf.yapf), max_search_nodes(PfGetSettings().max_search_nodes) {}
+	inline CYapfBaseT() {}
 
 	/** default destructor */
 	~CYapfBaseT() {}
@@ -86,19 +86,13 @@ protected:
 	}
 
 public:
-	/** return current settings (can be custom - company based - but later) */
-	inline const YAPFSettings &PfGetSettings() const
-	{
-		return *this->settings;
-	}
-
 	/**
 	 * Main pathfinder routine:
 	 *   - set startup node(s)
 	 *   - main loop that stops if:
 	 *      - the destination was found
 	 *      - or the open list is empty (no route to destination).
-	 *      - or the maximum amount of loops reached - max_search_nodes (default = 10000)
+	 *      - or the maximum amount of loops reached - MAX_SEARCH_NODES
 	 * @return true if the path was found
 	 */
 	inline bool FindPath(const VehicleType *v)
@@ -118,7 +112,7 @@ public:
 			}
 
 			Yapf().PfFollowNode(*best_open_node);
-			if (this->max_search_nodes != 0 && this->nodes.ClosedCount() >= this->max_search_nodes) break;
+			if (this->nodes.ClosedCount() >= MAX_SEARCH_NODES) break;
 
 			this->nodes.PopOpenNode(best_open_node->GetKey());
 			this->nodes.InsertClosedNode(*best_open_node);
@@ -227,7 +221,7 @@ public:
 
 		/* The new node can be set as the best intermediate node only once we're
 		 * certain it will be finalized by being inserted into the open list. */
-		bool set_intermediate = this->max_search_nodes > 0 && (this->best_intermediate_node == nullptr || (this->best_intermediate_node->GetCostEstimate() - this->best_intermediate_node->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
+		bool set_intermediate = this->best_intermediate_node == nullptr || (this->best_intermediate_node->GetCostEstimate() - this->best_intermediate_node->GetCost()) > (n.GetCostEstimate() - n.GetCost());
 
 		/* check new node against open list */
 		Node *open_node = this->nodes.FindOpenNode(n.GetKey());

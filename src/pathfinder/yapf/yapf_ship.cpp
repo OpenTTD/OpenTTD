@@ -24,6 +24,9 @@ constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATE
 
 constexpr int SHIP_LOST_PATH_LENGTH = 8; // The length of the (aimless) path assigned when a ship is lost.
 
+constexpr uint YAPF_SHIP_CURVE45_PENALTY = 1 * YAPF_TILE_LENGTH; ///< penalty for 45-deg curve for ships
+constexpr uint YAPF_SHIP_CURVE90_PENALTY = 6 * YAPF_TILE_LENGTH; ///< penalty for 90-deg curve for ships
+
 template <class Types>
 class CYapfDestinationTileWaterT
 {
@@ -224,7 +227,7 @@ public:
 		 * However the pathfinder can hit the node limit in certain situations such as long aqueducts or maze-like terrain.
 		 * If that happens we run the pathfinder again, but restricted only to the regions provided by the region pathfinder. */
 		for (int attempt = 0; attempt < 2; ++attempt) {
-			Tpf pf(MAX_SHIP_PF_NODES);
+			Tpf pf;
 
 			/* Set origin and destination nodes */
 			pf.SetOrigin(v->tile, forward_dirs | reverse_dirs);
@@ -346,10 +349,10 @@ public:
 
 		if (HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
 			/* 90-deg curve penalty. */
-			return Yapf().PfGetSettings().ship_curve90_penalty;
+			return YAPF_SHIP_CURVE90_PENALTY;
 		} else if (td2 != NextTrackdir(td1)) {
 			/* 45-deg curve penalty. */
-			return Yapf().PfGetSettings().ship_curve45_penalty;
+			return YAPF_SHIP_CURVE45_PENALTY;
 		}
 		return 0;
 	}
@@ -420,7 +423,7 @@ struct CYapfShip_TypesT
 
 struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip, CFollowTrackWater, CShipNodeListExitDir > >
 {
-	explicit CYapfShip(int max_nodes) { this->max_search_nodes = max_nodes; }
+	CYapfShip() {}
 };
 
 /** Ship controller helper - path finder invoker. */

@@ -209,9 +209,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	uint max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH;
-
-	const Depot *depot = FindClosestShipDepot(v, max_distance);
+	static const int MAXIMUM_GOTO_DEPOT_DISTANCE = 20;
+	const Depot *depot = FindClosestShipDepot(v, MAXIMUM_GOTO_DEPOT_DISTANCE);
 
 	if (depot == nullptr) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
