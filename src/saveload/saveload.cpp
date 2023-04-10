@@ -315,7 +315,7 @@ static void SlNullPointers()
 	_sl_version = SAVEGAME_VERSION;
 
 	for (const ChunkHandler &ch : ChunkHandlers()) {
-		Debug(sl, 3, "Nulling pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+		Debug(sl, 3, "Nulling pointers for {}", ch.GetName());
 		ch.FixPointers();
 	}
 
@@ -365,27 +365,6 @@ void NORETURN SlError(StringID string, const char *extra_msg)
 void NORETURN SlErrorCorrupt(const char *msg)
 {
 	SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, msg);
-}
-
-void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
-
-/**
- * Issue an SlErrorCorrupt with a format string.
- * @param format format string
- * @param ... arguments to format string
- * @note This function does never return as it throws an exception to
- *       break out of all the saveload code.
- */
-void NORETURN SlErrorCorruptFmt(const char *format, ...)
-{
-	va_list ap;
-	char msg[256];
-
-	va_start(ap, format);
-	vseprintf(msg, lastof(msg), format, ap);
-	va_end(ap);
-
-	SlErrorCorrupt(msg);
 }
 
 
@@ -2242,7 +2221,7 @@ static void SlSaveChunk(const ChunkHandler &ch)
 	if (ch.type == CH_READONLY) return;
 
 	SlWriteUint32(ch.id);
-	Debug(sl, 2, "Saving chunk {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+	Debug(sl, 2, "Saving chunk {}", ch.GetName());
 
 	_sl.block_mode = ch.type;
 	_sl.expect_table_header = (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
@@ -2331,7 +2310,7 @@ static void SlFixPointers()
 	_sl.action = SLA_PTRS;
 
 	for (const ChunkHandler &ch : ChunkHandlers()) {
-		Debug(sl, 3, "Fixing pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+		Debug(sl, 3, "Fixing pointers for {}", ch.GetName());
 		ch.FixPointers();
 	}
 

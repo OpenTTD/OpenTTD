@@ -10,9 +10,9 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
+#include "saveload_error.hpp"
 #include "../fileio_type.h"
 #include "../fios.h"
-#include "../strings_type.h"
 #include "../core/span_type.hpp"
 #include <optional>
 #include <string>
@@ -449,6 +449,15 @@ struct ChunkHandler {
 	 * @param len Number of bytes to skip.
 	 */
 	virtual void LoadCheck(size_t len = 0) const;
+
+	std::string GetName() const
+	{
+		return std::string()
+			+ static_cast<char>(this->id >> 24)
+			+ static_cast<char>(this->id >> 16)
+			+ static_cast<char>(this->id >> 8)
+			+ static_cast<char>(this->id);
+	}
 };
 
 /** A reference to ChunkHandler. */
@@ -1164,8 +1173,6 @@ void SlCopy(void *object, size_t length, VarType conv);
 std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt);
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct);
 void SlObject(void *object, const SaveLoadTable &slt);
-void NORETURN SlError(StringID string, const char *extra_msg = nullptr);
-void NORETURN SlErrorCorrupt(const char *msg);
 
 bool SaveloadCrashWithMissingNewGRFs();
 
