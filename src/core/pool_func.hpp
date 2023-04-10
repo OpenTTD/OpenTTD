@@ -14,7 +14,7 @@
 #include "mem_func.hpp"
 #include "pool_type.hpp"
 
-extern void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
+#include "../saveload/saveload_error.hpp" // SlErrorCorruptFmt
 
 /**
  * Helper for defining the method's signature.
@@ -157,13 +157,13 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 {
 	if (index >= Tmax_size) {
-		SlErrorCorruptFmt("%s index " PRINTF_SIZE " out of range (" PRINTF_SIZE ")", this->name, index, Tmax_size);
+		SlErrorCorruptFmt("{} index {} out of range ({})", this->name, index, Tmax_size);
 	}
 
 	if (index >= this->size) this->ResizeFor(index);
 
 	if (this->data[index] != nullptr) {
-		SlErrorCorruptFmt("%s index " PRINTF_SIZE " already in use", this->name, index);
+		SlErrorCorruptFmt("{} index {} already in use", this->name, index);
 	}
 
 	return this->AllocateItem(size, index);
