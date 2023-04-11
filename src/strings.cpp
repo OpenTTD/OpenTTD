@@ -35,6 +35,7 @@
 #include "game/game_text.hpp"
 #include "network/network_content_gui.h"
 #include "newgrf_engine.h"
+#include "core/backup_type.hpp"
 #include <stack>
 
 #include "table/strings.h"
@@ -1458,9 +1459,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 				static bool use_cache = true;
 				if (use_cache) { // Use cached version if first call
-					use_cache = false;
+					AutoRestoreBackup cache_backup(use_cache, false);
 					buff = strecpy(buff, i->GetCachedName(), last);
-					use_cache = true;
 				} else if (_scan_for_gender_data) {
 					/* Gender is defined by the industry type.
 					 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
@@ -1508,9 +1508,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 				static bool use_cache = true;
 				if (use_cache) { // Use cached version if first call
-					use_cache = false;
+					AutoRestoreBackup cache_backup(use_cache, false);
 					buff = strecpy(buff, st->GetCachedName(), last);
-					use_cache = true;
 				} else if (!st->name.empty()) {
 					int64 args_array[] = {(int64)(size_t)st->name.c_str()};
 					StringParameters tmp_params(args_array);
@@ -1543,9 +1542,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 				static bool use_cache = true;
 				if (use_cache) { // Use cached version if first call
-					use_cache = false;
+					AutoRestoreBackup cache_backup(use_cache, false);
 					buff = strecpy(buff, t->GetCachedName(), last);
-					use_cache = true;
 				} else if (!t->name.empty()) {
 					int64 args_array[] = {(int64)(size_t)t->name.c_str()};
 					StringParameters tmp_params(args_array);
