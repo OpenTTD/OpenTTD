@@ -8,7 +8,6 @@
 /** @file animated_tile.cpp Everything related to animated tiles. */
 
 #include "stdafx.h"
-#include "core/alloc_func.hpp"
 #include "core/smallvec_type.hpp"
 #include "tile_cmd.h"
 #include "viewport_func.h"

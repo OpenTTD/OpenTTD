@@ -10,7 +10,6 @@
 #include "../../stdafx.h"
 #include "../../crashlog.h"
 #include "win32.h"
-#include "../../core/alloc_func.hpp"
 #include "../../core/math_func.hpp"
 #include "../../string_func.h"
 #include "../../fileio_func.h"
