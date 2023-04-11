@@ -591,62 +591,63 @@ struct GenerateLandscapeWindow : public Window {
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
+		Dimension d{0, (uint)FONT_HEIGHT_NORMAL};
 		const StringID *strs = nullptr;
 		switch (widget) {
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
 				SetDParam(0, MAX_TILE_HEIGHT);
-				*size = GetStringBoundingBox(STR_JUST_INT);
+				d = GetStringBoundingBox(STR_JUST_INT);
 				break;
 
 			case WID_GL_START_DATE_TEXT:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
-				*size = maxdim(*size, GetStringBoundingBox(STR_BLACK_DATE_LONG));
+				d = GetStringBoundingBox(STR_BLACK_DATE_LONG);
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN:
 			case WID_GL_MAPSIZE_Y_PULLDOWN:
 				SetDParamMaxValue(0, MAX_MAP_SIZE);
-				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
+				d = GetStringBoundingBox(STR_JUST_INT);
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT:
 				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_SNOW_COVERAGE_TEXT));
+				d = GetStringBoundingBox(STR_MAPGEN_SNOW_COVERAGE_TEXT);
 				break;
 
 			case WID_GL_DESERT_COVERAGE_TEXT:
 				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_DESERT_COVERAGE_TEXT));
+				d = GetStringBoundingBox(STR_MAPGEN_DESERT_COVERAGE_TEXT);
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
 				SetDParam(0, this->x);
 				SetDParam(1, this->y);
-				*size = maxdim(*size, GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE));
+				d = GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE);
 				break;
 
 			case WID_GL_TOWN_PULLDOWN:
 				strs = _num_towns;
 				SetDParamMaxValue(0, CUSTOM_TOWN_MAX_NUMBER);
-				*size = maxdim(*size, GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER));
+				d = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:
 				strs = _num_inds;
 				SetDParamMaxValue(0, IndustryPool::MAX_SIZE);
-				*size = maxdim(*size, GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER));
+				d = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN:
 				strs = _elevations;
 				SetDParamMaxValue(0, MAX_MAP_HEIGHT_LIMIT);
-				*size = maxdim(*size, GetStringBoundingBox(STR_TERRAIN_TYPE_CUSTOM_VALUE));
+				d = GetStringBoundingBox(STR_TERRAIN_TYPE_CUSTOM_VALUE);
 				break;
 
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
 				SetDParamMaxValue(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
-				*size = maxdim(*size, GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE));
+				d = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
 				break;
 
 			case WID_GL_RIVER_PULLDOWN:      strs = _rivers; break;
@@ -654,14 +655,14 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_VARIETY_PULLDOWN:    strs = _variety; break;
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: strs = _rotation; break;
 			case WID_GL_BORDERS_RANDOM:
-				*size = maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_RANDOMIZE), GetStringBoundingBox(STR_MAPGEN_BORDER_MANUAL));
+				d = maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_RANDOMIZE), GetStringBoundingBox(STR_MAPGEN_BORDER_MANUAL));
 				break;
 
 			case WID_GL_WATER_NE:
 			case WID_GL_WATER_NW:
 			case WID_GL_WATER_SE:
 			case WID_GL_WATER_SW:
-				*size = maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_RANDOM), maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_WATER), GetStringBoundingBox(STR_MAPGEN_BORDER_FREEFORM)));
+				d = maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_RANDOM), maxdim(GetStringBoundingBox(STR_MAPGEN_BORDER_WATER), GetStringBoundingBox(STR_MAPGEN_BORDER_FREEFORM)));
 				break;
 
 			case WID_GL_HEIGHTMAP_NAME_TEXT:
@@ -673,11 +674,12 @@ struct GenerateLandscapeWindow : public Window {
 		}
 		if (strs != nullptr) {
 			while (*strs != INVALID_STRING_ID) {
-				*size = maxdim(*size, GetStringBoundingBox(*strs++));
+				d = maxdim(d, GetStringBoundingBox(*strs++));
 			}
 		}
-		size->width += padding.width;
-		size->height = std::max(size->height, (uint)(FONT_HEIGHT_NORMAL + padding.height));
+		d.width += padding.width;
+		d.height += padding.height;
+		*size = maxdim(*size, d);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -1158,9 +1160,10 @@ struct CreateScenarioWindow : public Window
 			default:
 				return;
 		}
-		*size = maxdim(*size, GetStringBoundingBox(str));
-		size->width += padding.width;
-		size->height += padding.height;
+		Dimension d = GetStringBoundingBox(str);
+		d.width += padding.width;
+		d.height += padding.height;
+		*size = maxdim(*size, d);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
