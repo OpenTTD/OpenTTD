@@ -1456,7 +1456,12 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				const Industry *i = Industry::GetIfValid(args->GetInt32(SCC_INDUSTRY_NAME));
 				if (i == nullptr) break;
 
-				if (_scan_for_gender_data) {
+				static bool use_cache = true;
+				if (use_cache) { // Use cached version if first call
+					use_cache = false;
+					buff = strecpy(buff, i->GetCachedName(), last);
+					use_cache = true;
+				} else if (_scan_for_gender_data) {
 					/* Gender is defined by the industry type.
 					 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
 					StringParameters tmp_params(nullptr, 0, nullptr);
@@ -1501,7 +1506,12 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 					break;
 				}
 
-				if (!st->name.empty()) {
+				static bool use_cache = true;
+				if (use_cache) { // Use cached version if first call
+					use_cache = false;
+					buff = strecpy(buff, st->GetCachedName(), last);
+					use_cache = true;
+				} else if (!st->name.empty()) {
 					int64 args_array[] = {(int64)(size_t)st->name.c_str()};
 					StringParameters tmp_params(args_array);
 					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
@@ -1531,7 +1541,12 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				const Town *t = Town::GetIfValid(args->GetInt32(SCC_TOWN_NAME));
 				if (t == nullptr) break;
 
-				if (!t->name.empty()) {
+				static bool use_cache = true;
+				if (use_cache) { // Use cached version if first call
+					use_cache = false;
+					buff = strecpy(buff, t->GetCachedName(), last);
+					use_cache = true;
+				} else if (!t->name.empty()) {
 					int64 args_array[] = {(int64)(size_t)t->name.c_str()};
 					StringParameters tmp_params(args_array);
 					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
