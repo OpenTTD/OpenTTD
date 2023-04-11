@@ -118,10 +118,6 @@
 #	define strcasecmp stricmp
 #endif
 
-#if defined(SUNOS) || defined(HPUX) || defined(__CYGWIN__)
-#	include <alloca.h>
-#endif
-
 /* Stuff for GCC */
 #if defined(__GNUC__) || (defined(__clang__) && !defined(_MSC_VER))
 #	define NORETURN __attribute__ ((noreturn))
@@ -165,10 +161,6 @@
 #	include <malloc.h>
 #endif /* __WATCOMC__ */
 
-#if defined(__MINGW32__)
-#	include <malloc.h> // alloca()
-#endif
-
 #if defined(_WIN32)
 #	define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 #endif
@@ -192,7 +184,6 @@
 #	pragma warning(disable: 6011)   // code analyzer: Dereferencing NULL pointer 'pfGetAddrInfo': Lines: 995, 996, 998, 999, 1001
 #	pragma warning(disable: 6326)   // code analyzer: potential comparison of a constant with another constant
 #	pragma warning(disable: 6031)   // code analyzer: Return value ignored: 'ReadFile'
-#	pragma warning(disable: 6255)   // code analyzer: _alloca indicates failure by raising a stack overflow exception. Consider using _malloca instead
 #	pragma warning(disable: 6246)   // code analyzer: Local declaration of 'statspec' hides declaration of the same name in outer scope. For additional information, see previous declaration at ...
 
 #	if (_MSC_VER == 1500)           // Addresses item #13 on http://blogs.msdn.com/b/vcblog/archive/2008/08/11/tr1-fixes-in-vc9-sp1.aspx, for Visual Studio 2008
@@ -200,7 +191,6 @@
 #		include <intrin.h>
 #	endif
 
-#	include <malloc.h> // alloca()
 #	define NORETURN __declspec(noreturn)
 #	if (_MSC_VER < 1900)
 #		define inline __forceinline
