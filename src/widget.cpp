@@ -2810,7 +2810,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 				NWidgetLeaf::dropdown_dimension.width += WidgetDimensions::scaled.vscrollbar.Horizontal();
 				NWidgetLeaf::dropdown_dimension.height += WidgetDimensions::scaled.vscrollbar.Vertical();
 			}
-			padding = {WidgetDimensions::scaled.dropdowntext.Horizontal() + NWidgetLeaf::dropdown_dimension.width, WidgetDimensions::scaled.dropdowntext.Vertical()};
+			padding = {WidgetDimensions::scaled.dropdowntext.Horizontal() + NWidgetLeaf::dropdown_dimension.width + WidgetDimensions::scaled.fullbevel.Horizontal(), WidgetDimensions::scaled.dropdowntext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			Dimension d2 = GetStringBoundingBox(this->widget_data);
 			d2.width += padding.width;
