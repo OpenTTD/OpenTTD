@@ -2413,12 +2413,14 @@ struct VehicleDetailsWindow : Window {
 				break;
 
 			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
+				Dimension d{0, 0};
 				StringID *strs = _service_interval_dropdown;
 				while (*strs != INVALID_STRING_ID) {
-					*size = maxdim(*size, GetStringBoundingBox(*strs++));
+					d = maxdim(d, GetStringBoundingBox(*strs++));
 				}
-				size->width += padding.width;
-				size->height = FONT_HEIGHT_NORMAL + padding.height;
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
 				break;
 			}
 

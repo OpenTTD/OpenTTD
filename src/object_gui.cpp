@@ -242,9 +242,8 @@ public:
 				for (auto object_class_id : this->object_classes) {
 					ObjectClass *objclass = ObjectClass::Get(object_class_id);
 					if (objclass->GetUISpecCount() == 0) continue;
-					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width);
+					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width + padding.width);
 				}
-				size->width += padding.width;
 				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
