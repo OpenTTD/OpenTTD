@@ -2257,7 +2257,7 @@ struct GameSettingsWindow : Window {
 						list.emplace_back(new DropDownListStringItem(sd->str_val + i - sd->min, i, false));
 					}
 
-					ShowDropDownListAt(this, std::move(list), value, -1, wi_rect, COLOUR_ORANGE, true);
+					ShowDropDownListAt(this, std::move(list), value, -1, wi_rect, COLOUR_ORANGE);
 				}
 			}
 			this->SetDirty();

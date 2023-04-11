@@ -3078,7 +3078,7 @@ struct IndustryCargoesWindow : public Window {
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
-					ShowDropDownList(this, std::move(lst), selected, WID_IC_CARGO_DROPDOWN, 0, true);
+					ShowDropDownList(this, std::move(lst), selected, WID_IC_CARGO_DROPDOWN);
 				}
 				break;
 			}
@@ -3092,7 +3092,7 @@ struct IndustryCargoesWindow : public Window {
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
-					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN, 0, true);
+					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN);
 				}
 				break;
 			}

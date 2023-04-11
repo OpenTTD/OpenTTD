@@ -98,8 +98,8 @@ public:
  */
 typedef std::vector<std::unique_ptr<const DropDownListItem>> DropDownList;
 
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button, Rect wi_rect, Colours wi_colour, bool auto_width = false, bool instant_close = false);
+void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button, Rect wi_rect, Colours wi_colour, bool instant_close = false);
 
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, uint width = 0, bool auto_width = false, bool instant_close = false);
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, uint width = 0, bool instant_close = false);
 
 #endif /* WIDGETS_DROPDOWN_TYPE_H */
