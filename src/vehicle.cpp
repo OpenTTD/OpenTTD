@@ -770,7 +770,7 @@ uint32 Vehicle::GetGRFID() const
  */
 void Vehicle::ShiftDates(int interval)
 {
-	this->date_of_last_service += interval;
+	this->date_of_last_service = std::max(this->date_of_last_service + interval, 0);
 }
 
 /**
