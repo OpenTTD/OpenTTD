@@ -33,9 +33,7 @@ void DropDownListItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 
 uint DropDownListStringItem::Width() const
 {
-	char buffer[512];
-	GetString(buffer, this->String(), lastof(buffer));
-	return GetStringBoundingBox(buffer).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
+	return GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
 }
 
 void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
