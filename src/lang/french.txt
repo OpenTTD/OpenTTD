@@ -196,6 +196,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mp
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cases/jour
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}nœuds
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ch
@@ -344,9 +345,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Ouvrir l
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mettre le jeu en pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rapide du jeu
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sauvegarder, abandonner, quitter
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afficher la mini-carte, vue supplémentaire ou liste des panneaux
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options et paramètres
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sauvegarder, charger ou abandonner une partie, quitter le programme
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afficher la mini-carte, vue supplémentaire, le flux des marchandises ou la liste des panneaux
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Afficher l'annuaire des villes
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afficher les subventions
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Afficher la liste des stations de la compagnie
@@ -354,9 +355,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Afficher
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Afficher les informations générales
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Afficher le livre d'histoire
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Afficher la liste des objectifs
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afficher les graphiques
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afficher les graphiques de compagnie et les valeurs des marchandises
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Afficher le tableau de classement des compagnies
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financer la construction de nouvelles industries ou lister toutes les industries
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examiner les industries ou financer la construction de nouvelles industries
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afficher la liste des trains de la compagnie. Ctrl-clic pour ouvrir dans l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afficher la liste des véhicules routiers de la compagnie. Ctrl-clic pour ouvrir dans l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afficher la liste des navires de la compagnie. Ctrl-clic pour ouvrir dans l'autre mode (avancé/normal)
@@ -370,8 +371,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construc
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construction aéronautique
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ouvrir la barre d'outils de terraformation pour relever/abaisser du terrain, planter des arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Options son et musique
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afficher le dernier message/bulletin, afficher les options des messages
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d'inspection du paysage, console, débogage de script, copies d'écran, à propos d'OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afficher le dernier message/bulletin, l'historique des messages ou supprimer tous les messages
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d'inspection du paysage, copies d'écran, à propos d'OpenTTD et outils pour développeurs
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Changer de barre d'outils
 
 # Extra tooltips for the scenario editor toolbar
@@ -1809,7 +1810,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Lorsqu'il est a
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Âge minimum de la compagnie pour la vente d'actions{NBSP}: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Définir l'âge minimum qu'une compagnie doit avoir pour que les autres puissent acheter ou vendre ses parts.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} an{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Pas de minimum
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Pourcentage du profit de branche à payer dans les systèmes multimodaux{NBSP}: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Pourcentage du profit donné aux branches intermédiaires dans les systèmes multimodaux, donnant plus de contrôle sur les profits
@@ -1953,13 +1956,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Définir ici un
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation des chemins courts avant utilisation des chemins à forte capacité{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Il y a souvent plusieurs routes possibles entre deux stations. Cargodist s'efforce d'utiliser d'abord le chemin le plus court jusqu'à saturation, ensuite les chemins un peu moins courts, et ainsi de suite. La saturation est déterminée par une estimation de la capacité et de la fréquentation prévue. Une fois que tous les chemins sont saturés, s'il y a encore une demande, il va surcharger tous les chemins, en privilégiant ceux à plus haute capacité. Mais la plupart du temps, la capacité n'est pas évaluée précisément. Ce réglage permets de spécifier jusqu'à quel pourcentage un chemin court doit être initialement saturé avant de passer au prochain chemin moins court. Il vaut mieux le régler à moins de 100% pour éviter que les stations soient surchargées en cas de surestimation de la capacité.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unité de vitesse{NBSP}: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unité de vitesse (terrestre){NBSP}: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unité de vitesse (nautique){NBSP}: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quand une vitesse est affichée dans l'interface utilisateur, utiliser l'unité sélectionnée
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Impérial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrique (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unités du jeu (cases/jour)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nœuds
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unité de puissance de véhicule{NBSP}: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quand une puissance de véhicule est affichée dans l'interface utilisateur, utiliser l'unité sélectionnée
@@ -4586,6 +4591,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
 STR_AI_CONFIG_NONE                                              :(aucun)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nombre maximal de concurrents{NBSP}: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Déplacer vers le haut
@@ -4599,7 +4605,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Sélectionner une IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Sélectionner le script de jeu
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger un autre script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger un autre script. Ctrl-clic pour afficher toutes les versions disponibles
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurer les paramètres du script
 
