@@ -134,6 +134,11 @@ public:
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
 	}
 
+	bool OnRightClick(Point pt, int widget) override
+	{
+		return widget == WID_EV_VIEWPORT;
+	}
+
 	void OnMouseWheel(int wheel) override
 	{
 		if (_settings_client.gui.scrollwheel_scrolling != 2) {
