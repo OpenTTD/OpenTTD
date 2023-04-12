@@ -1362,6 +1362,20 @@ static inline bool RoadTypesAllowHouseHere(TileIndex t)
 	return !allow;
 }
 
+/** Test if town can grow road onto a specific tile.
+ * @param town Town that is building.
+ * @param tile Tile to build upon.
+ * @return true iff the tile's road type don't prevent extending the road.
+ */
+static bool TownCanGrowRoad(const Town *town, TileIndex tile)
+{
+	if (!IsTileType(tile, MP_ROAD)) return true;
+
+	/* Allow extending on roadtypes which can be built by town, or if the road type matches the type the town will build. */
+	RoadType rt = GetRoadTypeRoad(tile);
+	return HasBit(GetRoadTypeInfo(rt)->flags, ROTF_TOWN_BUILD) || GetTownRoadType(town) == rt;
+}
+
 /**
  * Grows the given town.
  * There are at the moment 3 possible way's for
@@ -1438,6 +1452,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		}
 
 	} else if (target_dir < DIAGDIR_END && !(cur_rb & DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
+		if (!TownCanGrowRoad(t1, tile)) return;
+
 		/* Continue building on a partial road.
 		 * Should be always OK, so we only generate
 		 * the fitting RoadBits */
@@ -1556,6 +1572,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			}
 			return;
 		}
+
+		if (!TownCanGrowRoad(t1, tile)) return;
 
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 	}
