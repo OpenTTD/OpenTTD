@@ -592,9 +592,14 @@ public:
 		return this->result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[this->result];
 	}
 
+	uint Width() const override
+	{
+		return ScaleGUITrad(28) + WidgetDimensions::scaled.hsep_normal + GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
+	}
+
 	uint Height(uint width) const override
 	{
-		return std::max(FONT_HEIGHT_NORMAL, ScaleGUITrad(12) + 2);
+		return std::max(FONT_HEIGHT_NORMAL, ScaleGUITrad(12) + WidgetDimensions::scaled.vsep_normal);
 	}
 
 	bool Selectable() const override
