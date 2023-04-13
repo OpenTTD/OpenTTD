@@ -155,6 +155,13 @@
 #      define NOACCESS(args)
 #endif
 
+/* [[nodiscard]] on constructors doesn't work in GCC older than 10.1. */
+#if __GNUC__ < 10 || (__GNUC__ == 10 && __GNUC_MINOR__ < 1)
+#      define NODISCARD
+#else
+#      define NODISCARD [[nodiscard]]
+#endif
+
 #if defined(__WATCOMC__)
 #	define NORETURN
 #	define CDECL

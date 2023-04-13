@@ -68,6 +68,8 @@
 #include "industry.h"
 #include "network/network_gui.h"
 #include "misc_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -82,7 +84,6 @@
 #endif
 
 void CallLandscapeTick();
-void IncreaseDate();
 void DoPaletteAnimations();
 void MusicLoop();
 void ResetMusic();
@@ -1408,7 +1409,7 @@ void StateGameLoop()
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
-		IncreaseDate();
+		TimerManager<TimerGameCalendar>::Elapsed(1);
 		RunTileLoop();
 		CallVehicleTicks();
 		CallLandscapeTick();
