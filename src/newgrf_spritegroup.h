@@ -90,7 +90,7 @@ struct RealSpriteGroup : SpriteGroup {
 	std::vector<const SpriteGroup *> loading; ///< List of loading groups (can be SpriteIDs or Callback results)
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const;
+	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
 /* Shared by deterministic and random groups. */
@@ -179,7 +179,7 @@ struct DeterministicSpriteGroup : SpriteGroup {
 	const SpriteGroup *error_group; // was first range, before sorting ranges
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const;
+	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
 enum RandomizedSpriteGroupCompareMode {
@@ -201,7 +201,7 @@ struct RandomizedSpriteGroup : SpriteGroup {
 	std::vector<const SpriteGroup *> groups; ///< Take the group with appropriate index:
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const;
+	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
 
@@ -227,7 +227,7 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	}
 
 	uint16_t result;
-	uint16_t GetCallbackResult() const { return this->result; }
+	uint16_t GetCallbackResult() const override { return this->result; }
 };
 
 
@@ -249,8 +249,8 @@ struct ResultSpriteGroup : SpriteGroup {
 
 	SpriteID sprite;
 	byte num_sprites;
-	SpriteID GetResult() const { return this->sprite; }
-	byte GetNumResults() const { return this->num_sprites; }
+	SpriteID GetResult() const override { return this->sprite; }
+	byte GetNumResults() const override { return this->num_sprites; }
 };
 
 /**

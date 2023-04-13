@@ -32,7 +32,7 @@ public:
 	 * Call the demand calculator on the given component.
 	 * @param job Component to calculate the demands for.
 	 */
-	virtual void Run(LinkGraphJob &job) const { DemandCalculator c(job); }
+	void Run(LinkGraphJob &job) const override { DemandCalculator c(job); }
 
 	/**
 	 * Virtual destructor has to be defined because of virtual Run().

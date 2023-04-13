@@ -121,22 +121,22 @@ struct TranslationWriter : LanguageWriter {
 	{
 	}
 
-	void WriteHeader(const LanguagePackHeader *)
+	void WriteHeader(const LanguagePackHeader *) override
 	{
 		/* We don't use the header. */
 	}
 
-	void Finalise()
+	void Finalise() override
 	{
 		/* Nothing to do. */
 	}
 
-	void WriteLength(uint)
+	void WriteLength(uint) override
 	{
 		/* We don't write the length. */
 	}
 
-	void Write(const byte *buffer, size_t length)
+	void Write(const byte *buffer, size_t length) override
 	{
 		this->strings.emplace_back((const char *)buffer, length);
 	}
@@ -154,12 +154,12 @@ struct StringNameWriter : HeaderWriter {
 	{
 	}
 
-	void WriteStringID(const std::string &name, int stringid)
+	void WriteStringID(const std::string &name, int stringid) override
 	{
 		if (stringid == (int)this->strings.size()) this->strings.emplace_back(name);
 	}
 
-	void Finalise(const StringData &)
+	void Finalise(const StringData &) override
 	{
 		/* Nothing to do. */
 	}

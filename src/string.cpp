@@ -812,14 +812,14 @@ public:
 	{
 	}
 
-	virtual void SetString(const char *s)
+	void SetString(const char *s) override
 	{
 		this->string = s;
 		this->len = strlen(s);
 		this->cur_pos = 0;
 	}
 
-	virtual size_t SetCurPosition(size_t pos)
+	size_t SetCurPosition(size_t pos) override
 	{
 		assert(this->string != nullptr && pos <= this->len);
 		/* Sanitize in case we get a position inside an UTF-8 sequence. */
@@ -827,7 +827,7 @@ public:
 		return this->cur_pos = pos;
 	}
 
-	virtual size_t Next(IterType what)
+	size_t Next(IterType what) override
 	{
 		assert(this->string != nullptr);
 
@@ -865,7 +865,7 @@ public:
 		return END;
 	}
 
-	virtual size_t Prev(IterType what)
+	size_t Prev(IterType what) override
 	{
 		assert(this->string != nullptr);
 

@@ -50,7 +50,7 @@ public:
 	/**
 	 * @api -all
 	 */
-	virtual void FinalRelease();
+	void FinalRelease() override;
 };
 
 #endif /* SCRIPT_TESTMODE_HPP */

@@ -665,19 +665,19 @@ public:
 	};
 	inline const static SaveLoadCompatTable compat_description = _station_normal_sl_compat;
 
-	void Save(BaseStation *bst) const
+	void Save(BaseStation *bst) const override
 	{
 		if ((bst->facilities & FACIL_WAYPOINT) != 0) return;
 		SlObject(bst, this->GetDescription());
 	}
 
-	void Load(BaseStation *bst) const
+	void Load(BaseStation *bst) const override
 	{
 		if ((bst->facilities & FACIL_WAYPOINT) != 0) return;
 		SlObject(bst, this->GetLoadDescription());
 	}
 
-	void FixPointers(BaseStation *bst) const
+	void FixPointers(BaseStation *bst) const override
 	{
 		if ((bst->facilities & FACIL_WAYPOINT) != 0) return;
 		SlObject(bst, this->GetDescription());
@@ -696,19 +696,19 @@ public:
 	};
 	inline const static SaveLoadCompatTable compat_description = _station_waypoint_sl_compat;
 
-	void Save(BaseStation *bst) const
+	void Save(BaseStation *bst) const override
 	{
 		if ((bst->facilities & FACIL_WAYPOINT) == 0) return;
 		SlObject(bst, this->GetDescription());
 	}
 
-	void Load(BaseStation *bst) const
+	void Load(BaseStation *bst) const override
 	{
 		if ((bst->facilities & FACIL_WAYPOINT) == 0) return;
 		SlObject(bst, this->GetLoadDescription());
 	}
 
-	void FixPointers(BaseStation *bst) const
+	void FixPointers(BaseStation *bst) const override
 	{
 		if ((bst->facilities & FACIL_WAYPOINT) == 0) return;
 		SlObject(bst, this->GetDescription());

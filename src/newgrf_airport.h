@@ -43,7 +43,7 @@ public:
 	{
 	}
 
-	inline TileIterator& operator ++()
+	inline TileIterator& operator ++() override
 	{
 		this->att++;
 		if (this->att->ti.x == -0x80) {
@@ -60,7 +60,7 @@ public:
 		return this->att->gfx;
 	}
 
-	virtual std::unique_ptr<TileIterator> Clone() const
+	std::unique_ptr<TileIterator> Clone() const override
 	{
 		return std::make_unique<AirportTileTableIterator>(*this);
 	}

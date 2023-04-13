@@ -113,7 +113,7 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 		return this->storage[pos];
 	}
 
-	void ClearChanges()
+	void ClearChanges() override
 	{
 		if (this->prev_storage) {
 			this->storage = *this->prev_storage;

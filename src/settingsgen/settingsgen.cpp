@@ -159,7 +159,7 @@ struct SettingsIniFile : IniLoadFile {
 	{
 	}
 
-	virtual FILE *OpenFile(const std::string &filename, Subdirectory, size_t *size)
+	FILE *OpenFile(const std::string &filename, Subdirectory, size_t *size) override
 	{
 		/* Open the text file in binary mode to prevent end-of-line translations
 		 * done by ftell() and friends, as defined by K&R. */
@@ -173,7 +173,7 @@ struct SettingsIniFile : IniLoadFile {
 		return in;
 	}
 
-	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
+	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override
 	{
 		FatalError("{}{}{}", pre, buffer, post);
 	}

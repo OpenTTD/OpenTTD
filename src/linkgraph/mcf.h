@@ -80,7 +80,7 @@ public:
 	 * Run the calculation.
 	 * @param graph Component to be calculated.
 	 */
-	virtual void Run(LinkGraphJob &job) const { Tpass pass(job); }
+	void Run(LinkGraphJob &job) const override { Tpass pass(job); }
 };
 
 #endif /* MCF_H */

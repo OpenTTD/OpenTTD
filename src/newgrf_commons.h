@@ -246,7 +246,7 @@ public:
 struct IndustryTileSpec;
 class IndustryTileOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16_t testid) { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
 	IndustryTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
@@ -266,7 +266,7 @@ public:
 struct AirportTileSpec;
 class AirportTileOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
 	AirportTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
@@ -277,7 +277,7 @@ public:
 struct ObjectSpec;
 class ObjectOverrideManager : public OverrideManagerBase {
 protected:
-	virtual bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
 	ObjectOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}

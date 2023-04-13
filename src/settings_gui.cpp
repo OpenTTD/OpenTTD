@@ -1016,11 +1016,11 @@ struct SettingEntry : BaseSettingEntry {
 
 	SettingEntry(const char *name);
 
-	virtual void Init(byte level = 0);
-	virtual void ResetAll();
-	virtual uint Length() const;
-	virtual uint GetMaxHelpHeight(int maxw);
-	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible);
+	void Init(byte level = 0) override;
+	void ResetAll() override;
+	uint Length() const override;
+	uint GetMaxHelpHeight(int maxw) override;
+	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 
 	void SetButtons(byte new_val);
 
@@ -1036,7 +1036,7 @@ struct SettingEntry : BaseSettingEntry {
 	void SetValueDParams(uint first_param, int32_t value) const;
 
 protected:
-	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const;
+	void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const override;
 
 private:
 	bool IsVisibleByRestrictionMode(RestrictionMode mode) const;
@@ -1077,23 +1077,23 @@ struct SettingsPage : BaseSettingEntry, SettingsContainer {
 
 	SettingsPage(StringID title);
 
-	virtual void Init(byte level = 0);
-	virtual void ResetAll();
-	virtual void FoldAll();
-	virtual void UnFoldAll();
+	void Init(byte level = 0) override;
+	void ResetAll() override;
+	void FoldAll() override;
+	void UnFoldAll() override;
 
-	virtual uint Length() const;
-	virtual void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
-	virtual bool IsVisible(const BaseSettingEntry *item) const;
-	virtual BaseSettingEntry *FindEntry(uint row, uint *cur_row);
-	virtual uint GetMaxHelpHeight(int maxw) { return SettingsContainer::GetMaxHelpHeight(maxw); }
+	uint Length() const override;
+	void GetFoldingState(bool &all_folded, bool &all_unfolded) const override;
+	bool IsVisible(const BaseSettingEntry *item) const override;
+	BaseSettingEntry *FindEntry(uint row, uint *cur_row) override;
+	uint GetMaxHelpHeight(int maxw) override { return SettingsContainer::GetMaxHelpHeight(maxw); }
 
-	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible);
+	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 
-	virtual uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
+	uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const override;
 
 protected:
-	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const;
+	void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const override;
 };
 
 /* == BaseSettingEntry methods == */

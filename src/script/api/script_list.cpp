@@ -90,7 +90,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->buckets.empty()) return 0;
 		this->has_no_more_items = false;
@@ -105,7 +105,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->bucket_list = nullptr;
 		this->has_no_more_items = true;
@@ -135,7 +135,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -144,7 +144,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -179,7 +179,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->buckets.empty()) return 0;
 		this->has_no_more_items = false;
@@ -199,7 +199,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->bucket_list = nullptr;
 		this->has_no_more_items = true;
@@ -232,7 +232,7 @@ public:
 		this->item_next = *this->bucket_list_iter;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -241,7 +241,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -271,7 +271,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
@@ -284,7 +284,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->has_no_more_items = true;
 	}
@@ -302,7 +302,7 @@ public:
 		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -311,7 +311,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 
@@ -344,7 +344,7 @@ public:
 		this->End();
 	}
 
-	SQInteger Begin()
+	SQInteger Begin() override
 	{
 		if (this->list->items.empty()) return 0;
 		this->has_no_more_items = false;
@@ -358,7 +358,7 @@ public:
 		return item_current;
 	}
 
-	void End()
+	void End() override
 	{
 		this->has_no_more_items = true;
 	}
@@ -381,7 +381,7 @@ public:
 		if (this->item_iter != this->list->items.end()) item_next = (*this->item_iter).first;
 	}
 
-	SQInteger Next()
+	SQInteger Next() override
 	{
 		if (this->IsEnd()) return 0;
 
@@ -390,7 +390,7 @@ public:
 		return item_current;
 	}
 
-	void Remove(SQInteger item)
+	void Remove(SQInteger item) override
 	{
 		if (this->IsEnd()) return;
 

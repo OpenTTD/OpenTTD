@@ -28,7 +28,7 @@ public:
 	 *              values. Only do that on the very last flow mapping.
 	 */
 	FlowMapper(bool scale) : scale(scale) {}
-	virtual void Run(LinkGraphJob &job) const;
+	void Run(LinkGraphJob &job) const override;
 
 private:
 
