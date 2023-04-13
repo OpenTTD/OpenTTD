@@ -17,12 +17,13 @@
 #include "strings_func.h"
 #include "console_func.h"
 #include "console_type.h"
-#include "guitimer_func.h"
 #include "company_base.h"
 #include "ai/ai_info.hpp"
 #include "ai/ai_instance.hpp"
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/framerate_widget.h"
 
@@ -410,7 +411,6 @@ static const NWidgetPart _framerate_window_widgets[] = {
 struct FramerateWindow : Window {
 	bool small;
 	bool showing_memory;
-	GUITimer next_update;
 	int num_active;
 	int num_displayed;
 
@@ -456,7 +456,6 @@ struct FramerateWindow : Window {
 		this->showing_memory = true;
 		this->UpdateData();
 		this->num_displayed = this->num_active;
-		this->next_update.SetInterval(100);
 
 		/* Window is always initialised to MIN_ELEMENTS height, resize to contain num_displayed */
 		ResizeWindow(this, 0, (std::max(MIN_ELEMENTS, this->num_displayed) - MIN_ELEMENTS) * FONT_HEIGHT_NORMAL);
@@ -464,21 +463,20 @@ struct FramerateWindow : Window {
 
 	void OnRealtimeTick(uint delta_ms) override
 	{
-		bool elapsed = this->next_update.Elapsed(delta_ms);
-
 		/* Check if the shaded state has changed, switch caption text if it has */
 		if (this->small != this->IsShaded()) {
 			this->small = this->IsShaded();
 			this->GetWidget<NWidgetLeaf>(WID_FRW_CAPTION)->SetDataTip(this->small ? STR_FRAMERATE_CAPTION_SMALL : STR_FRAMERATE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-			elapsed = true;
-		}
-
-		if (elapsed) {
 			this->UpdateData();
 			this->SetDirty();
-			this->next_update.SetInterval(100);
 		}
 	}
+
+	/** Update the window on a regular interval. */
+	IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(100), [this](auto) {
+		this->UpdateData();
+		this->SetDirty();
+	}};
 
 	void UpdateData()
 	{
@@ -754,7 +752,6 @@ static const NWidgetPart _frametime_graph_window_widgets[] = {
 struct FrametimeGraphWindow : Window {
 	int vertical_scale;       ///< number of TIMESTAMP_PRECISION units vertically
 	int horizontal_scale;     ///< number of half-second units horizontally
-	GUITimer next_scale_update; ///< interval for next scale update
 
 	PerformanceElement element; ///< what element this window renders graph for
 	Dimension graph_size;       ///< size of the main graph area (excluding axis labels)
@@ -764,9 +761,9 @@ struct FrametimeGraphWindow : Window {
 		this->element = (PerformanceElement)number;
 		this->horizontal_scale = 4;
 		this->vertical_scale = TIMESTAMP_PRECISION / 10;
-		this->next_scale_update.SetInterval(1);
 
 		this->InitNested(number);
+		this->UpdateScale();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -882,14 +879,14 @@ struct FrametimeGraphWindow : Window {
 		this->SelectVerticalScale(peak_value);
 	}
 
+	/** Update the scaling on a regular interval. */
+	IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(500), [this](auto) {
+		this->UpdateScale();
+	}};
+
 	void OnRealtimeTick(uint delta_ms) override
 	{
 		this->SetDirty();
-
-		if (this->next_scale_update.Elapsed(delta_ms)) {
-			this->next_scale_update.SetInterval(500);
-			this->UpdateScale();
-		}
 	}
 
 	/** Scale and interpolate a value from a source range into a destination range */

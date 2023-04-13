@@ -15,7 +15,8 @@
 #include "company_type.h"
 #include "command_type.h"
 #include "core/geometry_type.hpp"
-#include "guitimer_func.h"
+
+#include <chrono>
 
 struct GRFFile;
 
@@ -30,7 +31,7 @@ enum WarningLevel {
 /** The data of the error message. */
 class ErrorMessageData {
 protected:
-	GUITimer display_timer;         ///< Timer before closing the message.
+	bool is_critical;               ///< Whether the error message is critical.
 	uint64 decode_params[20];       ///< Parameters of the message strings.
 	const char *strings[20];        ///< Copies of raw strings that were used.
 	const GRFFile *textref_stack_grffile; ///< NewGRF that filled the #TextRefStack for the error message.
@@ -45,7 +46,7 @@ protected:
 public:
 	ErrorMessageData(const ErrorMessageData &data);
 	~ErrorMessageData();
-	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration = 0, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
+	ErrorMessageData(StringID summary_msg, StringID detailed_msg, bool is_critical = false, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
 
 	/* Remove the copy assignment, as the default implementation will not do the right thing. */
 	ErrorMessageData &operator=(ErrorMessageData &rhs) = delete;

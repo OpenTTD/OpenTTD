@@ -42,6 +42,8 @@
 #include "group_cmd.h"
 #include "misc_cmd.h"
 #include "object_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/company_widget.h"
 
@@ -519,15 +521,18 @@ struct CompanyFinancesWindow : Window {
 		}
 	}
 
-	void OnHundredthTick() override
-	{
+	/**
+	 * Check on a regular interval if the maximum amount of money has changed.
+	 * If it has, rescale the window to fit the new amount.
+	 */
+	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		if (c->money > CompanyFinancesWindow::max_money) {
 			CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
 			this->SetupWidgets();
 			this->ReInit();
 		}
-	}
+	}};
 };
 
 /** First conservative estimate of the maximum amount of money */
@@ -2679,11 +2684,10 @@ struct CompanyWindow : Window
 		}
 	}
 
-	void OnHundredthTick() override
-	{
-		/* redraw the window every now and then */
+	/** Redraw the window on a regular interval. */
+	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
-	}
+	}};
 
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{

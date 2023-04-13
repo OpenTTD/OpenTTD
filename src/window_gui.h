@@ -622,13 +622,6 @@ public:
 	virtual void OnGameTick() {}
 
 	/**
-	 * Called once every 100 (game) ticks, or once every 3s, whichever comes last.
-	 * In normal game speed the frequency is 1 call every 100 ticks (can be more than 3s).
-	 * In fast-forward the frequency is 1 call every ~3s (can be more than 100 ticks).
-	 */
-	virtual void OnHundredthTick() {}
-
-	/**
 	 * Called periodically.
 	 */
 	virtual void OnRealtimeTick(uint delta_ms) {}

@@ -18,6 +18,8 @@
 #include "../toolbar_gui.h"
 #include "../core/geometry_func.hpp"
 #include "../zoom_func.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
 #include "network.h"
 #include "network_client.h"
 #include "network_base.h"
@@ -170,9 +172,8 @@ void NetworkUndrawChatMessage()
 	}
 }
 
-/** Check if a message is expired. */
-void NetworkChatMessageLoop()
-{
+/** Check if a message is expired on a regular interval. */
+static IntervalTimer<TimerWindow> network_message_expired_interval(std::chrono::seconds(1), [](auto) {
 	auto now = std::chrono::steady_clock::now();
 	for (auto &cmsg : _chatmsg_list) {
 		/* Message has expired, remove from the list */
@@ -182,7 +183,7 @@ void NetworkChatMessageLoop()
 			break;
 		}
 	}
-}
+});
 
 /** Draw the chat message-box */
 void NetworkDrawChatMessage()

@@ -17,7 +17,8 @@
 #include "blitter/factory.hpp"
 #include "linkgraph/linkgraph_gui.h"
 #include "widgets/smallmap_widget.h"
-#include "guitimer_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 /* set up the cargos to be displayed in the smallmap's route legend */
 void BuildLinkStatsLegend();
@@ -74,8 +75,6 @@ protected:
 	static int map_height_limit;  ///< Currently used/cached map height limit.
 
 	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
-	static const uint FORCE_REFRESH_PERIOD = 930; ///< map is redrawn after that many milliseconds.
-	static const uint BLINK_PERIOD         = 450; ///< highlight blinking interval in milliseconds.
 
 	uint min_number_of_columns;    ///< Minimal number of columns in legends.
 	uint min_number_of_fixed_rows; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
@@ -87,7 +86,6 @@ protected:
 	int32 subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
 	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
-	GUITimer refresh; ///< Refresh timer.
 	LinkGraphOverlay *overlay;
 
 	static void BreakIndustryChainLink();
@@ -156,6 +154,16 @@ protected:
 		return Company::IsValidID(_local_company) ? 1U << _local_company : MAX_UVALUE(CompanyMask);
 	}
 
+	/** Blink the industries (if selected) on a regular interval. */
+	IntervalTimer<TimerWindow> blink_interval = {std::chrono::milliseconds(450), [this](auto) {
+		Blink();
+	}};
+
+	/** Update the whole map on a regular interval. */
+	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(930), [this](auto) {
+		ForceRefresh();
+	}};
+
 	void RebuildColourIndexIfNecessary();
 	uint GetNumberRowsLegend(uint columns) const;
 	void SelectLegendItem(int click_pos, LegendAndColour *legend, int end_legend_item, int begin_legend_item = 0);
@@ -178,6 +186,10 @@ protected:
 
 	int GetPositionOnLegend(Point pt);
 
+	void UpdateLinks();
+	void Blink();
+	void ForceRefresh();
+
 public:
 	friend class NWidgetSmallmapDisplay;
 
@@ -196,7 +208,6 @@ public:
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 	bool OnRightClick(Point pt, int widget) override;
 	void OnMouseWheel(int wheel) override;
-	void OnRealtimeTick(uint delta_ms) override;
 	void OnScroll(Point delta) override;
 	void OnMouseOver(Point pt, int widget) override;
 };
