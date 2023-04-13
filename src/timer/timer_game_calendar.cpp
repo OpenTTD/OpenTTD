@@ -98,3 +98,20 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
 	}
 }
+
+#ifdef WITH_ASSERT
+template<>
+void TimerManager<TimerGameCalendar>::Validate(TimerGameCalendar::TPeriod period)
+{
+	if (period.priority == TimerGameCalendar::Priority::NONE) return;
+
+	/* Validate we didn't make a developer error and scheduled more than one
+	 * entry on the same priority/trigger. There can only be one timer on
+	 * a specific trigger/priority, to ensure we are deterministic. */
+	for (const auto &timer : TimerManager<TimerGameCalendar>::GetTimers()) {
+		if (timer->period.trigger != period.trigger) continue;
+
+		assert(timer->period.priority != period.priority);
+	}
+}
+#endif /* WITH_ASSERT */
