@@ -39,6 +39,8 @@
 #include "network/network_func.h"
 #include "guitimer_func.h"
 #include "news_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "safeguards.h"
 
@@ -3076,6 +3078,34 @@ void CallWindowRealtimeTickEvent(uint delta_ms)
 	}
 }
 
+/** Update various of window-related information on a regular interval. */
+static IntervalTimer<TimerWindow> window_interval(std::chrono::milliseconds(30), [](auto) {
+	extern int _caret_timer;
+	_caret_timer += 3;
+	CursorTick();
+
+	HandleKeyScrolling();
+	HandleAutoscroll();
+	DecreaseWindowCounters();
+});
+
+/** Blink the window highlight colour constantly. */
+static IntervalTimer<TimerWindow> highlight_interval(std::chrono::milliseconds(450), [](auto) {
+	_window_highlight_colour = !_window_highlight_colour;
+});
+
+/** Blink all windows marked with a white border. */
+static IntervalTimer<TimerWindow> white_border_interval(std::chrono::milliseconds(30), [](auto) {
+	if (_network_dedicated) return;
+
+	for (Window *w : Window::Iterate()) {
+		if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
+			CLRBITS(w->flags, WF_WHITE_BORDER);
+			w->SetDirty();
+		}
+	}
+});
+
 /**
  * Update the continuously changing contents of the windows, such as the viewports
  */
@@ -3093,13 +3123,8 @@ void UpdateWindows()
 
 	ProcessPendingPerformanceMeasurements();
 
+	TimerManager<TimerWindow>::Elapsed(std::chrono::milliseconds(delta_ms));
 	CallWindowRealtimeTickEvent(delta_ms);
-
-	static GUITimer network_message_timer = GUITimer(1);
-	if (network_message_timer.Elapsed(delta_ms)) {
-		network_message_timer.SetInterval(1000);
-		NetworkChatMessageLoop();
-	}
 
 	/* Process invalidations before anything else. */
 	for (Window *w : Window::Iterate()) {
@@ -3107,41 +3132,11 @@ void UpdateWindows()
 		w->ProcessHighlightedInvalidations();
 	}
 
-	static GUITimer window_timer = GUITimer(1);
-	if (window_timer.Elapsed(delta_ms)) {
-		if (_network_dedicated) window_timer.SetInterval(MILLISECONDS_PER_TICK);
-
-		extern int _caret_timer;
-		_caret_timer += 3;
-		CursorTick();
-
-		HandleKeyScrolling();
-		HandleAutoscroll();
-		DecreaseWindowCounters();
-	}
-
-	static GUITimer highlight_timer = GUITimer(1);
-	if (highlight_timer.Elapsed(delta_ms)) {
-		highlight_timer.SetInterval(450);
-		_window_highlight_colour = !_window_highlight_colour;
-	}
-
 	if (!_pause_mode || _game_mode == GM_EDITOR || _settings_game.construction.command_pause_level > CMDPL_NO_CONSTRUCTION) MoveAllTextEffects(delta_ms);
 
 	/* Skip the actual drawing on dedicated servers without screen.
 	 * But still empty the invalidation queues above. */
 	if (_network_dedicated) return;
-
-	if (window_timer.HasElapsed()) {
-		window_timer.SetInterval(MILLISECONDS_PER_TICK);
-
-		for (Window *w : Window::Iterate()) {
-			if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
-				CLRBITS(w->flags, WF_WHITE_BORDER);
-				w->SetDirty();
-			}
-		}
-	}
 
 	DrawDirtyBlocks();
 
