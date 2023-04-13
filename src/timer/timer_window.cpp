@@ -58,3 +58,10 @@ void TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 		timer->Elapsed(delta);
 	}
 }
+
+#ifdef WITH_ASSERT
+template<>
+void TimerManager<TimerWindow>::Validate(TimerWindow::TPeriod period)
+{
+}
+#endif /* WITH_ASSERT */

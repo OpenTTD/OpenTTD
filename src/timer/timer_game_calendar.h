@@ -26,6 +26,7 @@
  * For example:
  *   IntervalTimer<TimerGameCalendar>({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](uint count){});
  *
+ * @note Callbacks are executed in the game-thread.
  */
 class TimerGameCalendar {
 public:

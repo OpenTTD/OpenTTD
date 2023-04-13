@@ -28,6 +28,7 @@ class BaseTimer;
 template <typename TTimerType>
 class TimerManager {
 public:
+	using TPeriod = typename TTimerType::TPeriod;
 	using TElapsed = typename TTimerType::TElapsed;
 
 	/* Avoid copying this object; it is a singleton object. */
@@ -40,6 +41,9 @@ public:
 	 * @param timer The timer to register.
 	 */
 	static void RegisterTimer(BaseTimer<TTimerType> &timer) {
+#ifdef WITH_ASSERT
+		Validate(timer.period);
+#endif /* WITH_ASSERT */
 		GetTimers().insert(&timer);
 	}
 
@@ -51,6 +55,21 @@ public:
 	static void UnregisterTimer(BaseTimer<TTimerType> &timer) {
 		GetTimers().erase(&timer);
 	}
+
+#ifdef WITH_ASSERT
+	/**
+	 * Validate that a new period is actually valid.
+	 *
+	 * For most timers this is not an issue, but some want to make sure their
+	 * period is unique, to ensure deterministic game-play.
+	 *
+	 * This is meant purely to protect a developer from making a mistake.
+	 * As such, assert() when validation fails.
+	 *
+	 * @param period The period to validate.
+	 */
+	static void Validate(TPeriod period);
+#endif /* WITH_ASSERT */
 
 	/**
 	 * Called when time for this timer elapsed.
