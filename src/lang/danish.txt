@@ -195,6 +195,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} miles/t
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/t
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}felter/dag
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}knob
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
@@ -343,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Åbn ord
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Sæt spillet på pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Kør spillet hurtigere
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valg
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valgmuligheder og indstillinger
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gem spillet, forlad spillet, afslut
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kortet
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kort, ekstra viewport eller liste over skilte
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vis byoversigten
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis tilskudsordninger
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vis liste over selskabets stationer
@@ -369,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byg havn
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byg lufthavne
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åbn landskabsværktøjslinjen for at hæve/sænke terræn, plante træer, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikvindue
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis seneste besked/nyhedsrapport, vis beskedvalg
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Information om landområde, konsol, debug af script, skærmbillede, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis sidste besked/nyhedsrapport, beskedhistorik eller slet alle beskeder
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information, konsol, script debug, skærmbilleder, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift værktøjslinier
 
 # Extra tooltips for the scenario editor toolbar
@@ -863,7 +864,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} øger produktionen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kulåre fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kulmine fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nye oliereserver fundet tæt ved {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Forbedrede landbrugsmetoder ved {INDUSTRY} gør at produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} vokser med {COMMA}%!
@@ -872,7 +873,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} sænkes med {COMMA}%!
 
 ###length VEHICLE_TYPES
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i remisen
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i depotet
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
@@ -883,7 +884,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har dublerede ordrer
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en ugyldig station i sine ordrer
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har i sine ordrer en lufthavn, hvis bane er for kort
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har en lufthavn i sine ordrer, hvis bane er for kort
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammel
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er meget gammel
@@ -1808,7 +1809,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Hvis aktiveret,
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Mindste selskabsalder for aktiehandel: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Indstil mindste alder på selskaber, før andre kan købe og sælge aktier i dem.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} år{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Intet minimum
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentdel af deloverskud som skal betales i hovedsystemer: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentdel af indkomst givet til de mellemliggende dele i hovedsystemer, giver mere kontrol over indkomst
@@ -1953,12 +1956,14 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Mætning af kor
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Der er ofte flere veje mellem to givne stationer. Cargodist vil mætte den korteste vej først, så bruge den næstkorteste vej indtil den er mættet, osv.. Mætning bestemmes af en vurdering af kapacitet og planlagt brug. Når den har mættet alle veje, og hvis der stadig er efterspørgsel tilbage, vil den overbelaste alle veje, og foretrække vejene med høj kapacitet. Det meste af tiden vil algoritmen dog ikke vurdere kapaciteten nøjagtigt. Denne indstilling giver dig mulighed for at bestemme op til hvilken procentdel en kortere vej skal være mættet i første omgang før den næste, længere vej vælges. Sæt denne indstilling til mindre end 100% for at undgå overfyldte stationer i tilfælde af overvurderet kapacitet.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighedsenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighedsenheder (nautisk): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighed er vist i brugergrænsefladen, så vis dem i de valgte enheder
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperisk (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/t)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spil-enheder (felter/dag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knob
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Køretøjskraftenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Når et køretøjs kraft er vist i brugergrænsefladen, så vis dem i de valgte enheder
@@ -2526,7 +2531,7 @@ STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besøg h
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Download det valgte indhold
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse af download: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INDHOLDSINFO
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INDHOLDS INFORMATION
 
 ###length 5
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikke valgt denne til download
@@ -3199,7 +3204,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri udfo
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vand
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfældige
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfældige
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Højdekortets rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdekortets navn:
@@ -3986,8 +3991,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ændere depotets navn
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb depot
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Skift navn på depot
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb værksted
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -4585,6 +4590,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI`er de
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfældig computerspiller
 STR_AI_CONFIG_NONE                                              :(ingen)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flyt op
@@ -4598,7 +4604,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}AI'er
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Vælg AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Vælg Spilscript
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs et andet script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs et andet script. Ctrl+klik for at vise alle tilgængelige versioner
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurer computerspiller
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurer parametre for script'et
 
