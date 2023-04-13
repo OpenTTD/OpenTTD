@@ -31,6 +31,8 @@
 #include "airport_cmd.h"
 #include "station_cmd.h"
 #include "zoom_func.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/airport_widget.h"
 
@@ -581,6 +583,10 @@ public:
 	{
 		CheckRedrawStationCoverage(this);
 	}
+
+	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->InvalidateData();
+	}};
 };
 
 static const NWidgetPart _nested_build_airport_widgets[] = {

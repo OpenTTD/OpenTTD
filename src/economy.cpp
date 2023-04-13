@@ -52,6 +52,8 @@
 #include "company_cmd.h"
 #include "economy_cmd.h"
 #include "vehicle_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -1983,7 +1985,7 @@ void LoadUnloadStation(Station *st)
 /**
  * Monthly update of the economic data (of the companies as well as economic fluctuations).
  */
-void CompaniesMonthlyLoop()
+static IntervalTimer<TimerGameCalendar> _companies_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
 	CompaniesGenStatistics();
 	if (_settings_game.economy.inflation) {
@@ -1992,7 +1994,7 @@ void CompaniesMonthlyLoop()
 	}
 	CompaniesPayInterest();
 	HandleEconomyFluctuations();
-}
+});
 
 static void DoAcquireCompany(Company *c)
 {

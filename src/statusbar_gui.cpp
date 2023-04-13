@@ -27,6 +27,7 @@
 #include "core/geometry_func.hpp"
 #include "zoom_func.h"
 #include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"
 
 #include "widgets/statusbar_widget.h"
@@ -232,6 +233,10 @@ struct StatusBarWindow : Window {
 
 	TimeoutTimer<TimerWindow> reminder_timeout = {REMINDER_START, [this]() {
 		this->SetWidgetDirty(WID_S_MIDDLE);
+	}};
+
+	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->SetWidgetDirty(WID_S_LEFT);
 	}};
 };
 

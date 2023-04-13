@@ -15,6 +15,8 @@
 #include "settings_type.h"
 #include "date_func.h"
 #include "string_type.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -138,7 +140,7 @@ uint64 GetMaskOfAllowedCurrencies()
 /**
  * Verify if the currency chosen by the user is about to be converted to Euro
  */
-void CheckSwitchToEuro()
+static IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
 {
 	if (_currency_specs[_settings_game.locale.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&
@@ -146,7 +148,7 @@ void CheckSwitchToEuro()
 		_settings_game.locale.currency = 2; // this is the index of euro above.
 		AddNewsItem(STR_NEWS_EURO_INTRODUCTION, NT_ECONOMY, NF_NORMAL);
 	}
-}
+});
 
 /**
  * Will fill _currency_specs array with

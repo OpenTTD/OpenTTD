@@ -25,6 +25,8 @@
 #include "string_func.h"
 #include "tile_cmd.h"
 #include "subsidy_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -477,7 +479,7 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 }
 
 /** Perform the monthly update of open subsidies, and try to create a new one. */
-void SubsidyMonthlyLoop()
+static IntervalTimer<TimerGameCalendar> _subsidies_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::SUBSIDY}, [](auto)
 {
 	bool modified = false;
 
@@ -547,7 +549,7 @@ void SubsidyMonthlyLoop()
 	modified |= passenger_subsidy || town_subsidy || industry_subsidy;
 
 	if (modified) InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
-}
+});
 
 /**
  * Tests whether given delivery is subsidised and possibly awards the subsidy to delivering company

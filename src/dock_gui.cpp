@@ -30,6 +30,8 @@
 #include "station_cmd.h"
 #include "water_cmd.h"
 #include "waypoint_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/dock_widget.h"
 
@@ -477,6 +479,10 @@ public:
 	{
 		CheckRedrawStationCoverage(this);
 	}
+
+	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->InvalidateData();
+	}};
 };
 
 /** Nested widget parts of a build dock station window. */

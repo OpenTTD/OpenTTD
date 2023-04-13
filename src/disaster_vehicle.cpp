@@ -47,6 +47,8 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "landscape_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -935,14 +937,14 @@ static void ResetDisasterDelay()
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-void DisasterDailyLoop()
+static IntervalTimer<TimerGameCalendar> _disaster_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::DISASTER}, [](auto)
 {
 	if (--_disaster_delay != 0) return;
 
 	ResetDisasterDelay();
 
 	if (_settings_game.difficulty.disasters != 0) DoDisaster();
-}
+});
 
 void StartupDisasters()
 {

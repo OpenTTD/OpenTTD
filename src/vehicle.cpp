@@ -56,6 +56,8 @@
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
 #include "newgrf_roadstop.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -2826,7 +2828,7 @@ void Vehicle::RemoveFromShared()
 	this->previous_shared = nullptr;
 }
 
-void VehiclesYearlyLoop()
+static IntervalTimer<TimerGameCalendar> _vehicles_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::VEHICLE}, [](auto)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {
@@ -2851,8 +2853,7 @@ void VehiclesYearlyLoop()
 	SetWindowClassesDirty(WC_SHIPS_LIST);
 	SetWindowClassesDirty(WC_ROADVEH_LIST);
 	SetWindowClassesDirty(WC_AIRCRAFT_LIST);
-}
-
+});
 
 /**
  * Can this station be used by the given engine type?
