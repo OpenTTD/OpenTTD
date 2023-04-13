@@ -90,8 +90,8 @@ struct IniFile : IniLoadFile {
 
 	bool SaveToDisk(const std::string &filename);
 
-	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size);
-	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post);
+	FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) override;
+	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override;
 };
 
 #endif /* INI_TYPE_H */

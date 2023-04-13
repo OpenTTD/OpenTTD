@@ -89,28 +89,28 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	/** We want to 'destruct' the right class. */
 	virtual ~Aircraft() { this->PreDestructor(); }
 
-	void MarkDirty();
-	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN; }
-	bool IsPrimaryVehicle() const                  { return this->IsNormalAircraft(); }
-	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
-	int GetDisplaySpeed() const    { return this->cur_speed; }
-	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
-	int GetSpeedOldUnits() const   { return this->vcache.cached_max_speed * 10 / 128; }
-	int GetCurrentMaxSpeed() const { return this->GetSpeedOldUnits(); }
-	Money GetRunningCost() const;
+	void MarkDirty() override;
+	void UpdateDeltaXY() override;
+	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN; }
+	bool IsPrimaryVehicle() const override                  { return this->IsNormalAircraft(); }
+	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
+	int GetDisplaySpeed() const override    { return this->cur_speed; }
+	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
+	int GetSpeedOldUnits() const            { return this->vcache.cached_max_speed * 10 / 128; }
+	int GetCurrentMaxSpeed() const override { return this->GetSpeedOldUnits(); }
+	Money GetRunningCost() const override;
 
-	bool IsInDepot() const
+	bool IsInDepot() const override
 	{
 		assert(this->IsPrimaryVehicle());
 		return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile);
 	}
 
-	bool Tick();
-	void OnNewDay();
-	uint Crash(bool flooded = false);
-	TileIndex GetOrderStationLocation(StationID station);
-	ClosestDepot FindClosestDepot();
+	bool Tick() override;
+	void OnNewDay() override;
+	uint Crash(bool flooded = false) override;
+	TileIndex GetOrderStationLocation(StationID station) override;
+	ClosestDepot FindClosestDepot() override;
 
 	/**
 	 * Check if the aircraft type is a normal flying device; eg

@@ -399,7 +399,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		static_assert(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
 	}
 
-	virtual void OnNewGRFsScanned()
+	void OnNewGRFsScanned() override
 	{
 		ResetGRFConfig(false);
 

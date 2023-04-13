@@ -97,7 +97,7 @@ struct Pool : PoolBase {
 	Titem **data;        ///< Pointer to array of pointers to Titem
 
 	Pool(const char *name);
-	virtual void CleanPool();
+	void CleanPool() override;
 
 	/**
 	 * Returns Titem with given index

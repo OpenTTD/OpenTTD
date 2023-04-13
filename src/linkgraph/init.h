@@ -16,7 +16,7 @@ public:
 	 * Initialize the link graph job.
 	 * @param job Job to be initialized.
 	 */
-	virtual void Run(LinkGraphJob &job) const { job.Init(); }
+	void Run(LinkGraphJob &job) const override { job.Init(); }
 };
 
 #endif /* INIT_H */

@@ -1862,17 +1862,17 @@ static ContentType StringToContentType(const char *str)
 
 /** Asynchronous callback */
 struct ConsoleContentCallback : public ContentCallback {
-	void OnConnect(bool success)
+	void OnConnect(bool success) override
 	{
 		IConsolePrint(CC_DEFAULT, "Content server connection {}.", success ? "established" : "failed");
 	}
 
-	void OnDisconnect()
+	void OnDisconnect() override
 	{
 		IConsolePrint(CC_DEFAULT, "Content server connection closed.");
 	}
 
-	void OnDownloadComplete(ContentID cid)
+	void OnDownloadComplete(ContentID cid) override
 	{
 		IConsolePrint(CC_DEFAULT, "Completed download of {}.", cid);
 	}

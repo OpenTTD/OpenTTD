@@ -238,7 +238,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		this->output_stream << "#define TABLE_STRINGS_H\n";
 	}
 
-	void WriteStringID(const std::string &name, int stringid)
+	void WriteStringID(const std::string &name, int stringid) override
 	{
 		if (prev + 1 != stringid) this->output_stream << "\n";
 		fmt::print(this->output_stream, "static const StringID {} = 0x{:X};\n", name, stringid);
@@ -246,7 +246,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		total_strings++;
 	}
 
-	void Finalise(const StringData &data)
+	void Finalise(const StringData &data) override
 	{
 		/* Find the plural form with the most amount of cases. */
 		int max_plural_forms = 0;
@@ -293,18 +293,18 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 	{
 	}
 
-	void WriteHeader(const LanguagePackHeader *header)
+	void WriteHeader(const LanguagePackHeader *header) override
 	{
 		this->Write((const byte *)header, sizeof(*header));
 	}
 
-	void Finalise()
+	void Finalise() override
 	{
 		this->output_stream.put(0);
 		this->FileWriter::Finalise();
 	}
 
-	void Write(const byte *buffer, size_t length)
+	void Write(const byte *buffer, size_t length) override
 	{
 		this->output_stream.write((const char *)buffer, length);
 	}

@@ -210,7 +210,7 @@ public:
 	/**
 	 * Move ourselves to the next tile in the rectangle on the map.
 	 */
-	inline TileIterator& operator ++()
+	inline TileIterator& operator ++() override
 	{
 		assert(this->tile != INVALID_TILE);
 
@@ -225,7 +225,7 @@ public:
 		return *this;
 	}
 
-	virtual std::unique_ptr<TileIterator> Clone() const
+	std::unique_ptr<TileIterator> Clone() const override
 	{
 		return std::make_unique<OrthogonalTileIterator>(*this);
 	}
@@ -262,9 +262,9 @@ public:
 		*this = DiagonalTileIterator(DiagonalTileArea(corner1, corner2));
 	}
 
-	TileIterator& operator ++();
+	TileIterator& operator ++() override;
 
-	virtual std::unique_ptr<TileIterator> Clone() const
+	std::unique_ptr<TileIterator> Clone() const override
 	{
 		return std::make_unique<DiagonalTileIterator>(*this);
 	}
