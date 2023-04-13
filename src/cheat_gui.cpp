@@ -30,6 +30,8 @@
 #include "error.h"
 #include "misc_cmd.h"
 #include "core/geometry_func.hpp"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/cheat_widget.h"
 
@@ -417,6 +419,10 @@ struct CheatWindow : Window {
 		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
 		this->SetDirty();
 	}
+
+	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->SetDirty();
+	}};
 };
 
 /** Window description of the cheats GUI. */

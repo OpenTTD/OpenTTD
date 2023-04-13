@@ -31,6 +31,8 @@
 #include "../core/random_func.hpp"
 #include "../company_cmd.h"
 #include "../rev.h"
+#include "../timer/timer.h"
+#include "../timer/timer_game_calendar.h"
 #include <mutex>
 #include <condition_variable>
 
@@ -1812,26 +1814,32 @@ void NetworkServer_Tick(bool send_frame)
 }
 
 /** Yearly "callback". Called whenever the year changes. */
-void NetworkServerYearlyLoop()
+static IntervalTimer<TimerGameCalendar> _network_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
 {
+	if (!_network_server) return;
+
 	NetworkCheckRestartMap();
 	NetworkAdminUpdate(ADMIN_FREQUENCY_ANUALLY);
-}
+});
 
 /** Monthly "callback". Called whenever the month changes. */
-void NetworkServerMonthlyLoop()
+static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto)
 {
+	if (!_network_server) return;
+
 	NetworkAutoCleanCompanies();
 	NetworkAdminUpdate(ADMIN_FREQUENCY_MONTHLY);
 	if ((_cur_month % 3) == 0) NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
-}
+});
 
 /** Daily "callback". Called whenever the date changes. */
-void NetworkServerDailyLoop()
+static IntervalTimer<TimerGameCalendar> _network_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](auto)
 {
+	if (!_network_server) return;
+
 	NetworkAdminUpdate(ADMIN_FREQUENCY_DAILY);
 	if ((_date % 7) == 3) NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
-}
+});
 
 /**
  * Get the IP address/hostname of the connected client.

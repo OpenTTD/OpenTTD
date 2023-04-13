@@ -44,6 +44,8 @@
 #include "industry_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -2947,7 +2949,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
  * For small maps, it implies that less than one change per month is required, while on bigger maps,
  * it would be way more. The daily loop handles those changes.
  */
-void IndustryDailyLoop()
+static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::INDUSTRY}, [](auto)
 {
 	_economy.industry_daily_change_counter += _economy.industry_daily_increment;
 
@@ -2987,9 +2989,9 @@ void IndustryDailyLoop()
 
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
-}
+});
 
-void IndustryMonthlyLoop()
+static IntervalTimer<TimerGameCalendar> _industries_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::INDUSTRY}, [](auto)
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
@@ -3009,7 +3011,7 @@ void IndustryMonthlyLoop()
 
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
-}
+});
 
 
 void InitializeIndustries()

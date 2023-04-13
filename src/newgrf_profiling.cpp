@@ -14,6 +14,8 @@
 #include "console_func.h"
 #include "spritecache.h"
 #include "walltime_func.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include <chrono>
 
@@ -158,3 +160,13 @@ uint32 NewGRFProfiler::FinishAll()
 
 	return total_microseconds;
 }
+
+/**
+ * Check whether profiling is active and should be finished.
+ */
+static IntervalTimer<TimerGameCalendar> _check_profiling_finished({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	if (_newgrf_profilers.empty() || _newgrf_profile_end_date > _date) return;
+
+	NewGRFProfiler::FinishAll();
+});

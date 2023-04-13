@@ -102,7 +102,6 @@ extern CurrencySpec _currency_specs[CURRENCY_END];
 #define _currency ((const CurrencySpec*)&_currency_specs[GetGameSettings().locale.currency])
 
 uint64 GetMaskOfAllowedCurrencies();
-void CheckSwitchToEuro();
 void ResetCurrencies(bool preserve_custom = true);
 StringID *BuildCurrencyDropdown();
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);

@@ -86,4 +86,15 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 			timer->Elapsed(TimerGameCalendar::YEAR);
 		}
 	}
+
+	/* check if we reached the maximum year, decrement dates by a year */
+	if (_cur_year == MAX_YEAR + 1) {
+		int days_this_year;
+
+		_cur_year--;
+		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
+		_date -= days_this_year;
+		for (Vehicle *v : Vehicle::Iterate()) v->ShiftDates(-days_this_year);
+		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
+	}
 }

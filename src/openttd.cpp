@@ -101,6 +101,15 @@ bool _save_config = false;
 bool _request_newgrf_scan = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 
+/** Available settings for autosave intervals. */
+static const Month _autosave_months[] = {
+	 0, ///< never
+	 1, ///< every month
+	 3, ///< every 3 months
+	 6, ///< every 6 months
+	12, ///< every 12 months
+};
+
 /**
  * Error handling for fatal user errors.
  * @param s the string to print.
@@ -1431,6 +1440,15 @@ void StateGameLoop()
 
 	assert(IsLocalCompany());
 }
+
+static IntervalTimer<TimerGameCalendar> _autosave_interval({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::AUTOSAVE}, [](auto)
+{
+	if (_settings_client.gui.autosave == 0) return;
+	if ((_cur_month % _autosave_months[_settings_client.gui.autosave]) != 0) return;
+
+	_do_autosave = true;
+	SetWindowDirty(WC_STATUS_BAR, 0);
+});
 
 /**
  * Create an autosave. The default name is "autosave#.sav". However with

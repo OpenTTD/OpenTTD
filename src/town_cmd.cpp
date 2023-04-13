@@ -52,6 +52,8 @@
 #include "road_cmd.h"
 #include "terraform_cmd.h"
 #include "tunnelbridge_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -3756,7 +3758,7 @@ CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType
 	return CommandCost();
 }
 
-void TownsMonthlyLoop()
+static IntervalTimer<TimerGameCalendar> _towns_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::TOWN}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
 		if (t->road_build_months != 0) t->road_build_months--;
@@ -3770,17 +3772,16 @@ void TownsMonthlyLoop()
 		UpdateTownRating(t);
 		UpdateTownUnwanted(t);
 	}
+});
 
-}
-
-void TownsYearlyLoop()
+static IntervalTimer<TimerGameCalendar> _towns_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::TOWN}, [](auto)
 {
 	/* Increment house ages */
 	for (TileIndex t = 0; t < Map::Size(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 		IncrementHouseAge(t);
 	}
-}
+});
 
 static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
