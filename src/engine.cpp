@@ -30,6 +30,8 @@
 #include "articulated_vehicles.h"
 #include "error.h"
 #include "engine_base.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 #include "table/engines.h"
@@ -878,7 +880,7 @@ static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
 }
 
 /** Daily check to offer an exclusive engine preview to the companies. */
-void EnginesDailyLoop()
+static IntervalTimer<TimerGameCalendar> _engines_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::ENGINE}, [](auto)
 {
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, _date);
@@ -915,7 +917,7 @@ void EnginesDailyLoop()
 			}
 		}
 	}
-}
+});
 
 /**
  * Clear the 'hidden' flag for all engines of a new company.
@@ -1109,6 +1111,11 @@ void EnginesMonthlyLoop()
 		}
 	}
 }
+
+static IntervalTimer<TimerGameCalendar> _engines_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::ENGINE}, [](auto)
+{
+	EnginesMonthlyLoop();
+});
 
 /**
  * Is \a name still free as name for an engine?

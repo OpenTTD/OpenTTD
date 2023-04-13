@@ -39,6 +39,8 @@
 #include "sortlist_type.h"
 #include "stringfilter_type.h"
 #include "string_func.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/road_widget.h"
 
@@ -1585,6 +1587,10 @@ public:
 	{
 		CheckRedrawStationCoverage(this);
 	}
+
+	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->InvalidateData();
+	}};
 
 	static HotkeyList hotkeys;
 };

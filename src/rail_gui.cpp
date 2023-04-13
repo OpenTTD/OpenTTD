@@ -40,6 +40,8 @@
 #include "tunnelbridge_cmd.h"
 #include "waypoint_cmd.h"
 #include "rail_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -1505,6 +1507,10 @@ public:
 		CheckRedrawStationCoverage(this);
 	}
 
+	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->SetDirty();
+	}};
+
 	static HotkeyList hotkeys;
 };
 
@@ -2200,6 +2206,13 @@ void ResetSignalVariant(int32 new_value)
 		_cur_signal_variant = new_variant;
 	}
 }
+
+static IntervalTimer<TimerGameCalendar> _check_reset_signal({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	if (_cur_year != _settings_client.gui.semaphore_build_before) return;
+
+	ResetSignalVariant();
+});
 
 /**
  * Resets the rail GUI - sets default railtype to build

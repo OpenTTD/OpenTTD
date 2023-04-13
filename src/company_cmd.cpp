@@ -36,6 +36,8 @@
 #include "story_base.h"
 #include "widgets/statusbar_widget.h"
 #include "company_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -743,7 +745,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-void CompaniesYearlyLoop()
+static IntervalTimer<TimerGameCalendar> _companies_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {
@@ -761,7 +763,7 @@ void CompaniesYearlyLoop()
 			if (_settings_client.sound.new_year) SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
-}
+});
 
 /**
  * Fill the CompanyNewsInformation struct with the required data.

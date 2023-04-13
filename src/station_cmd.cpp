@@ -60,6 +60,8 @@
 #include "landscape_cmd.h"
 #include "rail_cmd.h"
 #include "newgrf_roadstop.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -4007,7 +4009,7 @@ void OnTick_Station()
 }
 
 /** Monthly loop for stations. */
-void StationMonthlyLoop()
+static IntervalTimer<TimerGameCalendar> _stations_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::STATION}, [](auto)
 {
 	for (Station *st : Station::Iterate()) {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -4016,8 +4018,7 @@ void StationMonthlyLoop()
 			ClrBit(ge->status, GoodsEntry::GES_CURRENT_MONTH);
 		}
 	}
-}
-
+});
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius)
 {

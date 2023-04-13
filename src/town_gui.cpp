@@ -35,6 +35,7 @@
 #include "town_kdtree.h"
 #include "town_cmd.h"
 #include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"
 
 #include "widgets/town_widget.h"
@@ -596,6 +597,11 @@ public:
 
 		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, this->window_number, str);
 	}
+
+	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		/* Refresh after possible snowline change */
+		this->SetDirty();
+	}};
 };
 
 static const NWidgetPart _nested_town_game_view_widgets[] = {
