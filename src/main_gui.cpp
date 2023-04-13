@@ -30,10 +30,11 @@
 #include "linkgraph/linkgraph_gui.h"
 #include "tilehighlight_func.h"
 #include "hotkeys.h"
-#include "guitimer_func.h"
 #include "error.h"
 #include "news_gui.h"
 #include "misc_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "saveload/saveload.h"
 
@@ -209,12 +210,6 @@ enum {
 
 struct MainWindow : Window
 {
-	GUITimer refresh;
-
-	/* Refresh times in milliseconds */
-	static const uint LINKGRAPH_REFRESH_PERIOD = 7650;
-	static const uint LINKGRAPH_DELAY = 450;
-
 	MainWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -225,15 +220,12 @@ struct MainWindow : Window
 		nvp->InitializeViewport(this, TileXY(32, 32), ScaleZoomGUI(ZOOM_LVL_VIEWPORT));
 
 		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, 0, 0, 2);
-		this->refresh.SetInterval(LINKGRAPH_DELAY);
+		this->refresh_timeout.Reset();
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
+	/** Refresh the link-graph overlay. */
+	void RefreshLinkGraph()
 	{
-		if (!this->refresh.Elapsed(delta_ms)) return;
-
-		this->refresh.SetInterval(LINKGRAPH_REFRESH_PERIOD);
-
 		if (this->viewport->overlay->GetCargoMask() == 0 ||
 				this->viewport->overlay->GetCompanyMask() == 0) {
 			return;
@@ -242,6 +234,22 @@ struct MainWindow : Window
 		this->viewport->overlay->SetDirty();
 		this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
 	}
+
+	/** Refresh the link-graph overlay on a regular interval. */
+	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(7650), [this](auto) {
+		RefreshLinkGraph();
+	}};
+
+	/**
+	 * Sometimes when something happened, force an update to the link-graph a bit sooner.
+	 *
+	 * We don't do it instantly on those changes, as for example when you are scrolling,
+	 * constantly refreshing the link-graph would be very slow. So we delay it a bit,
+	 * and only draw it once the scrolling settles down.
+	 */
+	TimeoutTimer<TimerWindow> refresh_timeout = {std::chrono::milliseconds(450), [this]() {
+		RefreshLinkGraph();
+	}};
 
 	void OnPaint() override
 	{
@@ -416,7 +424,7 @@ struct MainWindow : Window
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-		this->refresh.SetInterval(LINKGRAPH_DELAY);
+		this->refresh_timeout.Reset();
 	}
 
 	void OnMouseWheel(int wheel) override
@@ -431,7 +439,7 @@ struct MainWindow : Window
 		if (this->viewport != nullptr) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
-			this->refresh.SetInterval(LINKGRAPH_DELAY);
+			this->refresh_timeout.Reset();
 		}
 	}
 

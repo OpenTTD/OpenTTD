@@ -192,7 +192,6 @@ add_files(
     group_gui.h
     group_type.h
     gui.h
-    guitimer_func.h
     heightmap.cpp
     heightmap.h
     highscore.cpp

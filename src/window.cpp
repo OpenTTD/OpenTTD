@@ -37,7 +37,6 @@
 #include "video/video_driver.hpp"
 #include "framerate_type.h"
 #include "network/network_func.h"
-#include "guitimer_func.h"
 #include "news_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
@@ -1888,14 +1887,9 @@ void ResetWindowSystem()
 
 static void DecreaseWindowCounters()
 {
-	static byte hundredth_tick_timeout = 100;
-
 	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
-	if (hundredth_tick_timeout != 0) hundredth_tick_timeout--;
 
 	for (Window *w : Window::Iterate()) {
-		if (!_network_dedicated && hundredth_tick_timeout == 0) w->OnHundredthTick();
-
 		if (_scroller_click_timeout == 0) {
 			/* Unclick scrollbar buttons if they are pressed. */
 			for (uint i = 0; i < w->nested_array_size; i++) {
@@ -1927,8 +1921,6 @@ static void DecreaseWindowCounters()
 			w->RaiseButtons(true);
 		}
 	}
-
-	if (hundredth_tick_timeout == 0) hundredth_tick_timeout = 100;
 }
 
 static void HandlePlacePresize()
@@ -3111,28 +3103,27 @@ static IntervalTimer<TimerWindow> white_border_interval(std::chrono::millisecond
  */
 void UpdateWindows()
 {
-	static std::chrono::steady_clock::time_point last_time = std::chrono::steady_clock::now();
-	uint delta_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - last_time).count();
+	static auto last_time = std::chrono::steady_clock::now();
+	auto now = std::chrono::steady_clock::now();
+	auto delta_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now - last_time);
 
-	if (delta_ms == 0) return;
+	if (delta_ms.count() == 0) return;
 
-	last_time = std::chrono::steady_clock::now();
+	last_time = now;
 
 	PerformanceMeasurer framerate(PFE_DRAWING);
 	PerformanceAccumulator::Reset(PFE_DRAWWORLD);
 
 	ProcessPendingPerformanceMeasurements();
 
-	TimerManager<TimerWindow>::Elapsed(std::chrono::milliseconds(delta_ms));
-	CallWindowRealtimeTickEvent(delta_ms);
+	TimerManager<TimerWindow>::Elapsed(delta_ms);
+	CallWindowRealtimeTickEvent(delta_ms.count());
 
 	/* Process invalidations before anything else. */
 	for (Window *w : Window::Iterate()) {
 		w->ProcessScheduledInvalidations();
 		w->ProcessHighlightedInvalidations();
 	}
-
-	if (!_pause_mode || _game_mode == GM_EDITOR || _settings_game.construction.command_pause_level > CMDPL_NO_CONSTRUCTION) MoveAllTextEffects(delta_ms);
 
 	/* Skip the actual drawing on dedicated servers without screen.
 	 * But still empty the invalidation queues above. */

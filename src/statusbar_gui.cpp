@@ -25,8 +25,9 @@
 #include "statusbar_gui.h"
 #include "toolbar_gui.h"
 #include "core/geometry_func.hpp"
-#include "guitimer_func.h"
 #include "zoom_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -78,19 +79,14 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 struct StatusBarWindow : Window {
 	bool saving;
 	int ticker_scroll;
-	GUITimer ticker_timer;
-	GUITimer reminder_timeout;
 
 	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
-	static const int REMINDER_START = 1350; ///< time in ms for reminder notification (red dot on the right) to stay
-	static const int REMINDER_STOP  =    0; ///< reminder disappears when counter reaches this value
 	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
+	static constexpr auto REMINDER_START = std::chrono::milliseconds(1350); ///< time in ms for reminder notification (red dot on the right) to stay
 
 	StatusBarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->ticker_scroll = TICKER_STOP;
-		this->ticker_timer.SetInterval(15);
-		this->reminder_timeout.SetInterval(REMINDER_STOP);
 
 		this->InitNested();
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -186,7 +182,7 @@ struct StatusBarWindow : Window {
 					}
 				}
 
-				if (!this->reminder_timeout.HasElapsed()) {
+				if (!this->reminder_timeout.HasFired()) {
 					Dimension icon_size = GetSpriteSize(SPR_UNREAD_NEWS);
 					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, tr.right - icon_size.width, CenterBounds(r.top, r.bottom, icon_size.height));
 				}
@@ -207,10 +203,10 @@ struct StatusBarWindow : Window {
 			case SBI_SAVELOAD_START:  this->saving = true;  break;
 			case SBI_SAVELOAD_FINISH: this->saving = false; break;
 			case SBI_SHOW_TICKER:     this->ticker_scroll = 0; break;
-			case SBI_SHOW_REMINDER:   this->reminder_timeout.SetInterval(REMINDER_START); break;
+			case SBI_SHOW_REMINDER:   this->reminder_timeout.Reset(); break;
 			case SBI_NEWS_DELETED:
 				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
-				this->reminder_timeout.SetInterval(REMINDER_STOP); // ... and reminder
+				this->reminder_timeout.Abort(); // ... and reminder
 				break;
 		}
 	}
@@ -224,23 +220,19 @@ struct StatusBarWindow : Window {
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
+	/** Move information on the ticker slowly from one side to the other. */
+	IntervalTimer<TimerWindow> ticker_scroll_interval = {std::chrono::milliseconds(15), [this](uint count) {
 		if (_pause_mode != PM_UNPAUSED) return;
 
-		if (this->ticker_scroll < TICKER_STOP) { // Scrolling text
-			uint count = this->ticker_timer.CountElapsed(delta_ms);
-			if (count > 0) {
-				this->ticker_scroll += count;
-				this->SetWidgetDirty(WID_S_MIDDLE);
-			}
-		}
-
-		// Red blot to show there are new unread newsmessages
-		if (this->reminder_timeout.Elapsed(delta_ms)) {
+		if (this->ticker_scroll < TICKER_STOP) {
+			this->ticker_scroll += count;
 			this->SetWidgetDirty(WID_S_MIDDLE);
 		}
-	}
+	}};
+
+	TimeoutTimer<TimerWindow> reminder_timeout = {REMINDER_START, [this]() {
+		this->SetWidgetDirty(WID_S_MIDDLE);
+	}};
 };
 
 static const NWidgetPart _nested_main_status_widgets[] = {

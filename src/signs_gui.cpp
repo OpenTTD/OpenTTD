@@ -27,6 +27,8 @@
 #include "transparency.h"
 #include "gui.h"
 #include "signs_cmd.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/sign_widget.h"
 
@@ -312,11 +314,11 @@ struct SignListWindow : Window, SignList {
 		this->SortSignsList();
 	}
 
-	void OnHundredthTick() override
-	{
+	/** Resort the sign listing on a regular interval. */
+	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->BuildSortSignList();
 		this->SetDirty();
-	}
+	}};
 
 	/**
 	 * Some data on this window has become invalid.
