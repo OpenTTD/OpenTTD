@@ -70,6 +70,7 @@
 #include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
 
 #include "linkgraph/linkgraphschedule.h"
@@ -103,12 +104,12 @@ bool _request_newgrf_scan = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 
 /** Available settings for autosave intervals. */
-static const TimerGameCalendar::Month _autosave_months[] = {
-	 0, ///< never
-	 1, ///< every month
-	 3, ///< every 3 months
-	 6, ///< every 6 months
-	12, ///< every 12 months
+static const std::chrono::milliseconds _autosave_ticks[] = {
+	std::chrono::minutes::zero(), ///< never
+	std::chrono::minutes(10),
+	std::chrono::minutes(30),
+	std::chrono::minutes(60),
+	std::chrono::minutes(120),
 };
 
 /**
@@ -1033,6 +1034,9 @@ void SwitchToMode(SwitchMode new_mode)
 	/* Make sure all AI controllers are gone at quitting game */
 	if (new_mode != SM_SAVE_GAME) AI::KillAll();
 
+	/* When we change mode, reset the autosave. */
+	if (new_mode != SM_SAVE_GAME) ChangeAutosaveFrequency(true);
+
 	switch (new_mode) {
 		case SM_EDITOR: // Switch to scenario editor
 			MakeNewEditorWorld();
@@ -1415,23 +1419,35 @@ void StateGameLoop()
 	assert(IsLocalCompany());
 }
 
-static IntervalTimer<TimerGameCalendar> _autosave_interval({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::AUTOSAVE}, [](auto)
+/** Interval for regular autosaves. Initialized at zero to disable till settings are loaded. */
+static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::milliseconds::zero(), TimerGameRealtime::AUTOSAVE}, [](auto)
 {
-	if (_settings_client.gui.autosave == 0) return;
-	if ((TimerGameCalendar::month % _autosave_months[_settings_client.gui.autosave]) != 0) return;
+	/* We reset the command-during-pause mode here, so we don't continue
+	 * to make auto-saves when nothing more is changing. */
+	_pause_mode &= ~PM_COMMAND_DURING_PAUSE;
 
 	_do_autosave = true;
+	SetWindowDirty(WC_STATUS_BAR, 0);
+
+	static FiosNumberedSaveName _autosave_ctr("autosave");
+	DoAutoOrNetsave(_autosave_ctr);
+
+	_do_autosave = false;
 	SetWindowDirty(WC_STATUS_BAR, 0);
 });
 
 /**
- * Create an autosave. The default name is "autosave#.sav". However with
- * the setting 'keep_all_autosave' the name defaults to company-name + date
+ * Reset the interval of the autosave.
+ *
+ * If reset is not set, this does not set the elapsed time on the timer,
+ * so if the interval is smaller, it might result in an autosave being done
+ * immediately.
+ *
+ * @param reset Whether to reset the timer back to zero, or to continue.
  */
-static void DoAutosave()
+void ChangeAutosaveFrequency(bool reset)
 {
-	static FiosNumberedSaveName _autosave_ctr("autosave");
-	DoAutoOrNetsave(_autosave_ctr);
+	_autosave_interval.SetInterval({_autosave_ticks[_settings_client.gui.autosave], TimerGameRealtime::AUTOSAVE}, reset);
 }
 
 /**
@@ -1469,11 +1485,14 @@ void GameLoop()
 
 	ProcessAsyncSaveFinish();
 
-	/* autosave game? */
-	if (_do_autosave) {
-		DoAutosave();
-		_do_autosave = false;
-		SetWindowDirty(WC_STATUS_BAR, 0);
+	if (_game_mode == GM_NORMAL) {
+		static auto last_time = std::chrono::steady_clock::now();
+		auto now = std::chrono::steady_clock::now();
+		auto delta_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now - last_time);
+		if (delta_ms.count() != 0) {
+			TimerManager<TimerGameRealtime>::Elapsed(delta_ms);
+			last_time = now;
+		}
 	}
 
 	/* switch game mode? */

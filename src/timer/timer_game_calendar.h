@@ -42,7 +42,6 @@ public:
 
 		/* All other may have a Random() call in them, so order is important.
 		 * For safety, you can only setup a single timer on a single priority. */
-		AUTOSAVE,
 		COMPANY,
 		DISASTER,
 		ENGINE,
