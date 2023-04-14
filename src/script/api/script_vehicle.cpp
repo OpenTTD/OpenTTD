@@ -391,6 +391,23 @@
 	return ::Vehicle::Get(vehicle_id)->value;
 }
 
+/* static */ Money ScriptVehicle::GetCurrentChainValue(VehicleID vehicle_id);
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+	
+	SQInteger wagon = GetNumWagons(vehicle_id);
+	Money value_full = ::Vehicle::Get(vehicle_id)->value;
+
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+	if (v->type == VEH_TRAIN) {
+		while (wagon-- > 0) {
+			v = ::Train::From(v)->GetNextUnit();
+			value_full += v->value;
+		}
+	}
+	return value_full;
+}
+
 /* static */ ScriptVehicle::VehicleType ScriptVehicle::GetVehicleType(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return VT_INVALID;
