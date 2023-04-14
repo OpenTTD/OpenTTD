@@ -154,11 +154,12 @@ public:
  * location. These versions assist with situations like that.
  */
 enum IniFileVersion : uint32 {
-	IFV_0,               ///< 0  All versions prior to introduction.
-	IFV_PRIVATE_SECRETS, ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
-	IFV_GAME_TYPE,       ///< 2  PR#9515  Convert server_advertise to server_game_type.
+	IFV_0,                 ///< 0  All versions prior to introduction.
+	IFV_PRIVATE_SECRETS,   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
+	IFV_GAME_TYPE,         ///< 2  PR#9515  Convert server_advertise to server_game_type.
+	IFV_LINKGRAPH_SECONDS, ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
 
-	IFV_MAX_VERSION,     ///< Highest possible ini-file version.
+	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
 
 const uint16 INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
@@ -1234,6 +1235,11 @@ void LoadFromConfig(bool startup)
 					}
 				}
 			}
+		}
+
+		if (generic_version < IFV_LINKGRAPH_SECONDS) {
+			_settings_newgame.linkgraph.recalc_interval *= SECONDS_PER_DAY;
+			_settings_newgame.linkgraph.recalc_time     *= SECONDS_PER_DAY;
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
