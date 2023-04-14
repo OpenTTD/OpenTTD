@@ -195,6 +195,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mp
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/u
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}tegels/dag
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}knopen
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}pk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}pk
@@ -343,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Open het
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hiermee pauzeer je het spel
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hiermee verhoog je de spelsnelheid
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, spel stoppen, afsluiten
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster of lijst met bordjes weergeven
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties en instellingen
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, laden of stoppen, afsluiten
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kaart, extra kijkvenster, vrachtstroom of lijst met bordjes weergeven
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Stedenlijst weergeven
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidies weergeven
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lijst met stations van het bedrijf weergeven
@@ -353,9 +354,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Financi�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Algemene informatie over het bedrijf weergeven
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Verhaal weergeven
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Doellijst weergeven
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafieken weergeven
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Bedrijfsgrafieken en vrachtprijzen weergeven
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Bedrijfsscoretabel weergeven
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bouw van nieuwe industrie financieren of lijst van alle industrieën weergeven
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Industrieën onderzoeken of bouw van nieuwe industrie financieren
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lijst met treinen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lijst met wegvoertuigen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lijst met schepen van het bedrijf weergeven. Ctrl+klik schakelt tussen lijst van groepen/voertuigen.
@@ -369,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Dokken e
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Vliegvelden bouwen
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Hiermee open je de landschapsbalk om land te verhogen/verlagen, bomen te planten, enz.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Geluid-/muziekvenster weergeven
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Laatste (nieuws-)bericht weergeven, berichtinstellingen weergeven
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, console, foutopsporing in scripts, schermfoto's, over OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Laatste (nieuws-)bericht weergeven, berichtengeschiedenis of alle berichten verwijderen
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, schermfoto, over OpenTTD en ontwikkelaarshulpmiddelen
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Knoppenbalken wisselen
 
 # Extra tooltips for the scenario editor toolbar
@@ -1808,7 +1809,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wanneer ingesch
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimale leeftijd van bedrijf om aandelen te kunnen verhandelen: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Hiermee wordt de minimale leeftijd van een bedrijf ingesteld waarna anderen aandelen in dat bedrijf kunnen gaan kopen en verkopen.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} jaar
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Geen minimum
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage van routeopbrengst in overdrachtssysteem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage van het inkomen besteed aan de intermediaire delen in feedersystemen waardoor er meer controle over de inkomsten is
@@ -1952,13 +1955,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Door dit op min
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Verzadiging van korte routes voordat routes met hoge capaciteit worden gebruikt: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. De vrachtdistributie verzadigt eerst de kortste route, gebruikt dan de op één na kortste route tot die verzadigd is enzovoort. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Wanneer alle routes verzadigd zijn, maar er is meer vraag, raken alle wegen overbelast, die met hoge capaciteit als eerste. In veel gevallen schat het algoritme helaas de capaciteit niet nauwkeurig in. Met deze instelling kun je aangeven tot welk percentage een korter pad moet worden verzadigd voordat de eerstvolgende, langere route wordt gekozen. Stel dit in op minder dan 100% om overvolle stations in geval van overschatte capaciteit te voorkomen.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Snelheidseenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Snelheidseenheden (land): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Snelheidseenheden (nautisch): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Wanneer een snelheid wordt weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiaal (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Speleenheden (tegels/dag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knopen
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Voertuigkrachteenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Als het verbruik van een voertuig wordt weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
@@ -4585,6 +4590,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}De AI's 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
 STR_AI_CONFIG_NONE                                              :(geen)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Omhoog verplaatsen
@@ -4598,7 +4604,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}AI's
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}AI selecteren
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Spelscript selecteren
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ander script laden
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ander script laden. Ctrl+klik geeft alle beschikbare versies
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configureren
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}De parameters van het script configureren
 
