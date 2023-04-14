@@ -275,6 +275,15 @@ public:
 	 *  when you would sell the vehicle right now).
 	 */
 	static Money GetCurrentValue(VehicleID vehicle_id);
+	
+	/**
+	 * Get the current value of a vehicle PLUS all its wagons.
+	 * @param vehicle_id The vehicle to get the value of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The value the full vehicle chain currently has (the amount you should get
+	 *  when you would sell the vehicle chain right now).
+	 */
+	static Money GetCurrentChainValue(VehicleID vehicle_id);
 
 	/**
 	 * Get the type of vehicle.
