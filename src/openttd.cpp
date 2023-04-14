@@ -70,6 +70,7 @@
 #include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -1419,6 +1420,7 @@ void StateGameLoop()
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
 		TimerManager<TimerGameCalendar>::Elapsed(1);
+		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
 		CallVehicleTicks();
 		CallLandscapeTick();

@@ -379,14 +379,8 @@ struct ScriptSettingsWindow : public Window {
 			TextColour colour;
 			uint idx = 0;
 			if (StrEmpty(config_item.description)) {
-				if (this->slot != OWNER_DEITY && !strcmp(config_item.name, "start_date")) {
-					/* Build-in translation */
-					str = STR_AI_SETTINGS_START_DELAY;
-					colour = TC_LIGHT_BLUE;
-				} else {
-					str = STR_JUST_STRING;
-					colour = TC_ORANGE;
-				}
+				str = STR_JUST_STRING;
+				colour = TC_ORANGE;
 			} else {
 				str = STR_AI_SETTINGS_SETTING;
 				colour = TC_LIGHT_BLUE;

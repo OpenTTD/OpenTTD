@@ -58,6 +58,8 @@
 #include "../disaster_vehicle.h"
 #include "../ship.h"
 #include "../water.h"
+#include "../timer/timer.h"
+#include "../timer/timer_game_tick.h"
 
 #include "saveload_internal.h"
 
@@ -3257,6 +3259,16 @@ bool AfterLoadGame()
 	/* Station acceptance is some kind of cache */
 	if (IsSavegameVersionBefore(SLV_127)) {
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
+	}
+
+	if (IsSavegameVersionBefore(SLV_AI_START_DATE)) {
+		/* For older savegames, we don't now the actual interval; so set it to the newgame value. */
+		_settings_game.difficulty.competitors_interval = _settings_newgame.difficulty.competitors_interval;
+
+		/* We did load the "period" of the timer, but not the fired/elapsed. We can deduce that here. */
+		extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
+		_new_competitor_timeout.storage.elapsed = 0;
+		_new_competitor_timeout.fired = _new_competitor_timeout.period == 0;
 	}
 
 	AfterLoadLabelMaps();

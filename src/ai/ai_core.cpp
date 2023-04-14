@@ -289,17 +289,6 @@
 	}
 }
 
-/* static */ int AI::GetStartNextTime()
-{
-	/* Find the first company which doesn't exist yet */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->GetSetting("start_date");
-	}
-
-	/* Currently no AI can be started, check again in a year. */
-	return DAYS_IN_YEAR;
-}
-
 /* static */ std::string AI::GetConsoleList(bool newest_only)
 {
 	return AI::scanner_info->GetConsoleList(newest_only);

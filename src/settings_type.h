@@ -76,6 +76,7 @@ struct DifficultySettings {
 	byte   competitor_intelligence;          ///< Unused value, used to load old savegames.
 
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
+	uint16 competitors_interval;             ///< the interval (in minutes) between adding competitors
 	byte   number_towns;                     ///< the amount of towns
 	byte   industry_density;                 ///< The industry density. @see IndustryDensity
 	uint32 max_loan;                         ///< the maximum initial loan

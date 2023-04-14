@@ -15,9 +15,12 @@
 /** Widgets of the #AIConfigWindow class. */
 enum AIConfigWidgets {
 	WID_AIC_BACKGROUND,       ///< Window background.
-	WID_AIC_DECREASE,         ///< Decrease the number of AIs.
-	WID_AIC_INCREASE,         ///< Increase the number of AIs.
+	WID_AIC_DECREASE_NUMBER,  ///< Decrease the number of AIs.
+	WID_AIC_INCREASE_NUMBER,  ///< Increase the number of AIs.
 	WID_AIC_NUMBER,           ///< Number of AIs.
+	WID_AIC_DECREASE_INTERVAL,///< Decrease the interval.
+	WID_AIC_INCREASE_INTERVAL,///< Increase the interval.
+	WID_AIC_INTERVAL,         ///< Interval between time AIs start.
 	WID_AIC_LIST,             ///< List with currently selected AIs.
 	WID_AIC_SCROLLBAR,        ///< Scrollbar to scroll through the selected AIs.
 	WID_AIC_MOVE_UP,          ///< Move up button.
