@@ -1624,6 +1624,12 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				break;
 			}
 
+			case SCC_COLOUR: { // {COLOUR}
+				StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetInt32(SCC_COLOUR));
+				if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.Utf8Encode(scc);
+				break;
+			}
+
 			default:
 				builder.Utf8Encode(b);
 				break;
