@@ -44,6 +44,7 @@
 #include "industry_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
+#include "map_func.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -2281,7 +2282,7 @@ static uint GetNumberOfIndustries()
 
 	if (difficulty == ID_CUSTOM) return std::min<uint>(IndustryPool::MAX_SIZE, _settings_game.game_creation.custom_industry_number);
 
-	return std::min<uint>(IndustryPool::MAX_SIZE, Map::ScaleBySize(numof_industry_table[difficulty]));
+	return std::min<uint>(IndustryPool::MAX_SIZE, ScaleByWaterLevel(Map::ScaleBySize(numof_industry_table[difficulty])));
 }
 
 /**

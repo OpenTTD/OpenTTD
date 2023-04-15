@@ -308,6 +308,16 @@ public:
 		return Map::SizeY() - 1;
 	}
 
+/**
+ * Scales the given value by the number of water tiles.
+ * @param n the value to scale
+ * @return the scaled size
+ */
+static inline uint ScaleByWaterLevel(uint n)
+{
+	extern uint _map_land_scale;
+	return n * _map_land_scale / 100;
+}
 
 	/**
 	 * 'Wraps' the given "tile" so it is within the map.

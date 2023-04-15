@@ -81,6 +81,18 @@ static void CleanupGeneration()
 	MarkWholeScreenDirty();
 }
 
+uint _map_land_scale = 0;
+
+static void CountLand()
+{
+	/* Count amount of land */
+	int water = 0;
+	for (TileIndex t = 0; t < Map::Size(); t++) {
+		water += IsWaterTile(t);
+	}
+	_map_land_scale = std::clamp(100 * (Map::Size() - water) / Map::Size(), 1U, 100U);
+}
+
 /**
  * The internal, real, generate function.
  */
@@ -118,12 +130,14 @@ static void _GenerateWorld()
 			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);
 
 			ConvertGroundTilesIntoWaterTiles();
+			CountLand();
 			IncreaseGeneratingWorldProgress(GWP_OBJECT);
 
 			_settings_game.game_creation.snow_line_height = DEF_SNOWLINE_HEIGHT;
 		} else {
 			GenerateLandscape(_gw.mode);
 			GenerateClearTile();
+			CountLand();
 
 			/* Only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {

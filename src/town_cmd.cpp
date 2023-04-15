@@ -52,6 +52,7 @@
 #include "road_cmd.h"
 #include "terraform_cmd.h"
 #include "tunnelbridge_cmd.h"
+#include "map_func.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -2249,7 +2250,7 @@ bool GenerateTowns(TownLayout layout)
 {
 	uint current_number = 0;
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
-	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByWaterLevel(Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7)));
 	total = std::min<uint>(TownPool::MAX_SIZE, total);
 	uint32 townnameparts;
 	TownNames town_names;
