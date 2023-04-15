@@ -1925,7 +1925,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 	if (_cur.grffile->stations.size() < stid + numinfo) _cur.grffile->stations.resize(stid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		StationSpec *statspec = _cur.grffile->stations[stid + i];
+		StationSpec *statspec = _cur.grffile->stations[stid + i].get();
 
 		/* Check that the station we are modifying is defined. */
 		if (statspec == nullptr && prop != 0x08) {
@@ -1935,14 +1935,15 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 		switch (prop) {
 			case 0x08: { // Class ID
-				StationSpec **spec = &_cur.grffile->stations[stid + i];
-
 				/* Property 0x08 is special; it is where the station is allocated */
-				if (*spec == nullptr) *spec = new StationSpec();
+				if (statspec == nullptr) {
+					_cur.grffile->stations[stid + i] = std::make_unique<StationSpec>();
+					statspec = _cur.grffile->stations[stid + i].get();
+				}
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32 classid = buf->ReadDWord();
-				(*spec)->cls_id = StationClass::Allocate(BSWAP32(classid));
+				statspec->cls_id = StationClass::Allocate(BSWAP32(classid));
 				break;
 			}
 
@@ -1998,7 +1999,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x0A: { // Copy sprite layout
 				byte srcid = buf->ReadByte();
-				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid];
+				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid].get();
 
 				if (srcstatspec == nullptr) {
 					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy sprite layout to %u.", srcid, stid + i);
@@ -2052,7 +2053,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x0F: { // Copy custom layout
 				byte srcid = buf->ReadByte();
-				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid];
+				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid].get();
 
 				if (srcstatspec == nullptr) {
 					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy tile layout to %u.", srcid, stid + i);
@@ -2370,7 +2371,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 	if (_cur.grffile->housespec.size() < hid + numinfo) _cur.grffile->housespec.resize(hid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		HouseSpec *housespec = _cur.grffile->housespec[hid + i];
+		HouseSpec *housespec = _cur.grffile->housespec[hid + i].get();
 
 		if (prop != 0x08 && housespec == nullptr) {
 			/* If the house property 08 is not yet set, ignore this property */
@@ -2381,13 +2382,11 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 		switch (prop) {
 			case 0x08: { // Substitute building type, and definition of a new house
-				HouseSpec **house = &_cur.grffile->housespec[hid + i];
 				byte subs_id = buf->ReadByte();
-
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new house, a substitute house id
 					 * of 0xFF disables the old house with the current id. */
-					HouseSpec::Get(hid + i)->enabled = false;
+					if (hid + i < NEW_HOUSE_OFFSET) HouseSpec::Get(hid + i)->enabled = false;
 					continue;
 				} else if (subs_id >= NEW_HOUSE_OFFSET) {
 					/* The substitute id must be one of the original houses. */
@@ -2396,11 +2395,10 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				}
 
 				/* Allocate space for this house. */
-				if (*house == nullptr) *house = CallocT<HouseSpec>(1);
-
-				housespec = *house;
-
-				MemCpyT(housespec, HouseSpec::Get(subs_id));
+				if (housespec == nullptr) {
+					_cur.grffile->housespec[hid + i] = std::make_unique<HouseSpec>(*HouseSpec::Get(subs_id));
+					housespec = _cur.grffile->housespec[hid + i].get();
+				}
 
 				housespec->enabled = true;
 				housespec->grf_prop.local_id = hid + i;
@@ -3207,7 +3205,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 	if (_cur.grffile->indtspec.size() < indtid + numinfo) _cur.grffile->indtspec.resize(indtid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		IndustryTileSpec *tsp = _cur.grffile->indtspec[indtid + i];
+		IndustryTileSpec *tsp = _cur.grffile->indtspec[indtid + i].get();
 
 		if (prop != 0x08 && tsp == nullptr) {
 			ChangeInfoResult cir = IgnoreIndustryTileProperty(prop, buf);
@@ -3217,9 +3215,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 
 		switch (prop) {
 			case 0x08: { // Substitute industry tile type
-				IndustryTileSpec **tilespec = &_cur.grffile->indtspec[indtid + i];
 				byte subs_id = buf->ReadByte();
-
 				if (subs_id >= NEW_INDUSTRYTILEOFFSET) {
 					/* The substitute id must be one of the original industry tile. */
 					grfmsg(2, "IndustryTilesChangeInfo: Attempt to use new industry tile %u as substitute industry tile for %u. Ignoring.", subs_id, indtid + i);
@@ -3227,11 +3223,10 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				}
 
 				/* Allocate space for this industry. */
-				if (*tilespec == nullptr) {
-					*tilespec = CallocT<IndustryTileSpec>(1);
-					tsp = *tilespec;
+				if (tsp == nullptr) {
+					_cur.grffile->indtspec[indtid + i] = std::make_unique<IndustryTileSpec>(_industry_tile_specs[subs_id]);
+					tsp = _cur.grffile->indtspec[indtid + i].get();
 
-					memcpy(tsp, &_industry_tile_specs[subs_id], sizeof(_industry_tile_specs[subs_id]));
 					tsp->enabled = true;
 
 					/* A copied tile should not have the animation infos copied too.
@@ -3466,7 +3461,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 	if (_cur.grffile->industryspec.size() < indid + numinfo) _cur.grffile->industryspec.resize(indid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		IndustrySpec *indsp = _cur.grffile->industryspec[indid + i];
+		IndustrySpec *indsp = _cur.grffile->industryspec[indid + i].get();
 
 		if (prop != 0x08 && indsp == nullptr) {
 			ChangeInfoResult cir = IgnoreIndustryProperty(prop, buf);
@@ -3476,9 +3471,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 		switch (prop) {
 			case 0x08: { // Substitute industry type
-				IndustrySpec **indspec = &_cur.grffile->industryspec[indid + i];
 				byte subs_id = buf->ReadByte();
-
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new industry, a substitute industry id
 					 * of 0xFF disables the old industry with the current id. */
@@ -3493,11 +3486,10 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				/* Allocate space for this industry.
 				 * Only need to do it once. If ever it is called again, it should not
 				 * do anything */
-				if (*indspec == nullptr) {
-					*indspec = new IndustrySpec;
-					indsp = *indspec;
+				if (indsp == nullptr) {
+					_cur.grffile->industryspec[indid + i] = std::make_unique<IndustrySpec>(_origin_industry_specs[subs_id]);
+					indsp = _cur.grffile->industryspec[indid + i].get();
 
-					*indsp = _origin_industry_specs[subs_id];
 					indsp->enabled = true;
 					indsp->grf_prop.local_id = indid + i;
 					indsp->grf_prop.subst_id = subs_id;
@@ -3873,7 +3865,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 	if (_cur.grffile->airportspec.size() < airport + numinfo) _cur.grffile->airportspec.resize(airport + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		AirportSpec *as = _cur.grffile->airportspec[airport + i];
+		AirportSpec *as = _cur.grffile->airportspec[airport + i].get();
 
 		if (as == nullptr && prop != 0x08 && prop != 0x09) {
 			grfmsg(2, "AirportChangeInfo: Attempt to modify undefined airport %u, ignoring", airport + i);
@@ -3883,7 +3875,6 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 		switch (prop) {
 			case 0x08: { // Modify original airport
 				byte subs_id = buf->ReadByte();
-
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new airport, an airport id
 					 * of 0xFF disables the old airport with the current id. */
@@ -3895,15 +3886,13 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 					continue;
 				}
 
-				AirportSpec **spec = &_cur.grffile->airportspec[airport + i];
 				/* Allocate space for this airport.
 				 * Only need to do it once. If ever it is called again, it should not
 				 * do anything */
-				if (*spec == nullptr) {
-					*spec = MallocT<AirportSpec>(1);
-					as = *spec;
+				if (as == nullptr) {
+					_cur.grffile->airportspec[airport + i] = std::make_unique<AirportSpec>(*AirportSpec::GetWithoutOverride(subs_id));
+					as = _cur.grffile->airportspec[airport + i].get();
 
-					memcpy(as, AirportSpec::GetWithoutOverride(subs_id), sizeof(*as));
 					as->enabled = true;
 					as->grf_prop.local_id = airport + i;
 					as->grf_prop.subst_id = subs_id;
@@ -4097,7 +4086,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 	if (_cur.grffile->objectspec.size() < id + numinfo) _cur.grffile->objectspec.resize(id + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		ObjectSpec *spec = _cur.grffile->objectspec[id + i];
+		ObjectSpec *spec = _cur.grffile->objectspec[id + i].get();
 
 		if (prop != 0x08 && spec == nullptr) {
 			/* If the object property 08 is not yet set, ignore this property */
@@ -4108,18 +4097,17 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 
 		switch (prop) {
 			case 0x08: { // Class ID
-				ObjectSpec **ospec = &_cur.grffile->objectspec[id + i];
-
 				/* Allocate space for this object. */
-				if (*ospec == nullptr) {
-					*ospec = CallocT<ObjectSpec>(1);
-					(*ospec)->views = 1; // Default for NewGRFs that don't set it.
-					(*ospec)->size = OBJECT_SIZE_1X1; // Default for NewGRFs that manage to not set it (1x1)
+				if (spec == nullptr) {
+					_cur.grffile->objectspec[id + i] = std::make_unique<ObjectSpec>();
+					spec = _cur.grffile->objectspec[id + i].get();
+					spec->views = 1; // Default for NewGRFs that don't set it.
+					spec->size = OBJECT_SIZE_1X1; // Default for NewGRFs that manage to not set it (1x1)
 				}
 
 				/* Swap classid because we read it in BE. */
 				uint32 classid = buf->ReadDWord();
-				(*ospec)->cls_id = ObjectClass::Allocate(BSWAP32(classid));
+				spec->cls_id = ObjectClass::Allocate(BSWAP32(classid));
 				break;
 			}
 
@@ -4660,7 +4648,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 	if (_cur.grffile->airtspec.size() < airtid + numinfo) _cur.grffile->airtspec.resize(airtid + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		AirportTileSpec *tsp = _cur.grffile->airtspec[airtid + i];
+		AirportTileSpec *tsp = _cur.grffile->airtspec[airtid + i].get();
 
 		if (prop != 0x08 && tsp == nullptr) {
 			grfmsg(2, "AirportTileChangeInfo: Attempt to modify undefined airport tile %u. Ignoring.", airtid + i);
@@ -4669,9 +4657,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 
 		switch (prop) {
 			case 0x08: { // Substitute airport tile type
-				AirportTileSpec **tilespec = &_cur.grffile->airtspec[airtid + i];
 				byte subs_id = buf->ReadByte();
-
 				if (subs_id >= NEW_AIRPORTTILE_OFFSET) {
 					/* The substitute id must be one of the original airport tiles. */
 					grfmsg(2, "AirportTileChangeInfo: Attempt to use new airport tile %u as substitute airport tile for %u. Ignoring.", subs_id, airtid + i);
@@ -4679,11 +4665,10 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 				}
 
 				/* Allocate space for this airport tile. */
-				if (*tilespec == nullptr) {
-					*tilespec = CallocT<AirportTileSpec>(1);
-					tsp = *tilespec;
+				if (tsp == nullptr) {
+					_cur.grffile->airtspec[airtid + i] = std::make_unique<AirportTileSpec>(*AirportTileSpec::Get(subs_id));
+					tsp = _cur.grffile->airtspec[airtid + i].get();
 
-					memcpy(tsp, AirportTileSpec::Get(subs_id), sizeof(AirportTileSpec));
 					tsp->enabled = true;
 
 					tsp->animation.status = ANIM_STATUS_NO_ANIMATION;
@@ -4787,7 +4772,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 	if (_cur.grffile->roadstops.size() < id + numinfo) _cur.grffile->roadstops.resize(id + numinfo);
 
 	for (int i = 0; i < numinfo; i++) {
-		RoadStopSpec *rs = _cur.grffile->roadstops[id + i];
+		RoadStopSpec *rs = _cur.grffile->roadstops[id + i].get();
 
 		if (rs == nullptr && prop != 0x08) {
 			grfmsg(1, "RoadStopChangeInfo: Attempt to modify undefined road stop %u, ignoring", id + i);
@@ -4798,16 +4783,14 @@ static ChangeInfoResult RoadStopChangeInfo(uint id, int numinfo, int prop, ByteR
 
 		switch (prop) {
 			case 0x08: { // Road Stop Class ID
-				RoadStopSpec **spec = &_cur.grffile->roadstops[id + i];
-
-				if (*spec == nullptr) {
-					*spec = CallocT<RoadStopSpec>(1);
-					new (*spec) RoadStopSpec();
+				if (rs == nullptr) {
+					_cur.grffile->roadstops[id + i] = std::make_unique<RoadStopSpec>();
+					rs = _cur.grffile->roadstops[id + i].get();
 				}
 
 				uint32 classid = buf->ReadDWord();
-				(*spec)->cls_id = RoadStopClass::Allocate(BSWAP32(classid));
-				(*spec)->spec_id = id + i;
+				rs->cls_id = RoadStopClass::Allocate(BSWAP32(classid));
+				rs->spec_id = id + i;
 				break;
 			}
 
@@ -5712,7 +5695,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (auto &station : stations) {
-			StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station];
+			StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station].get();
 
 			if (statspec == nullptr) {
 				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", station);
@@ -5727,7 +5710,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
 	for (auto &station : stations) {
-		StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station];
+		StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station].get();
 
 		if (statspec == nullptr) {
 			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", station);
@@ -5768,7 +5751,7 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
 	for (auto &house : houses) {
-		HouseSpec *hs = house >= _cur.grffile->housespec.size() ? nullptr : _cur.grffile->housespec[house];
+		HouseSpec *hs = house >= _cur.grffile->housespec.size() ? nullptr : _cur.grffile->housespec[house].get();
 
 		if (hs == nullptr) {
 			grfmsg(1, "TownHouseMapSpriteGroup: House %d undefined, skipping.", house);
@@ -5800,7 +5783,7 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
 	for (auto &industry : industries) {
-		IndustrySpec *indsp = industry >= _cur.grffile->industryspec.size() ? nullptr : _cur.grffile->industryspec[industry];
+		IndustrySpec *indsp = industry >= _cur.grffile->industryspec.size() ? nullptr : _cur.grffile->industryspec[industry].get();
 
 		if (indsp == nullptr) {
 			grfmsg(1, "IndustryMapSpriteGroup: Industry %d undefined, skipping", industry);
@@ -5832,7 +5815,7 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
 	for (auto &indtile : indtiles) {
-		IndustryTileSpec *indtsp = indtile >= _cur.grffile->indtspec.size() ? nullptr : _cur.grffile->indtspec[indtile];
+		IndustryTileSpec *indtsp = indtile >= _cur.grffile->indtspec.size() ? nullptr : _cur.grffile->indtspec[indtile].get();
 
 		if (indtsp == nullptr) {
 			grfmsg(1, "IndustrytileMapSpriteGroup: Industry tile %d undefined, skipping", indtile);
@@ -5893,7 +5876,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (auto &object : objects) {
-			ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object];
+			ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object].get();
 
 			if (spec == nullptr) {
 				grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", object);
@@ -5908,7 +5891,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "ObjectMapSpriteGroup")) return;
 
 	for (auto &object : objects) {
-		ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object];
+		ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object].get();
 
 		if (spec == nullptr) {
 			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", object);
@@ -6013,7 +5996,7 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "AirportMapSpriteGroup")) return;
 
 	for (auto &airport : airports) {
-		AirportSpec *as = airport >= _cur.grffile->airportspec.size() ? nullptr : _cur.grffile->airportspec[airport];
+		AirportSpec *as = airport >= _cur.grffile->airportspec.size() ? nullptr : _cur.grffile->airportspec[airport].get();
 
 		if (as == nullptr) {
 			grfmsg(1, "AirportMapSpriteGroup: Airport %d undefined, skipping", airport);
@@ -6045,7 +6028,7 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "AirportTileMapSpriteGroup")) return;
 
 	for (auto &airptile : airptiles) {
-		AirportTileSpec *airtsp = airptile >= _cur.grffile->airtspec.size() ? nullptr : _cur.grffile->airtspec[airptile];
+		AirportTileSpec *airtsp = airptile >= _cur.grffile->airtspec.size() ? nullptr : _cur.grffile->airtspec[airptile].get();
 
 		if (airtsp == nullptr) {
 			grfmsg(1, "AirportTileMapSpriteGroup: Airport tile %d undefined, skipping", airptile);
@@ -6079,7 +6062,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		if (ctype == CT_INVALID) continue;
 
 		for (auto &roadstop : roadstops) {
-			RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop];
+			RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop].get();
 
 			if (roadstopspec == nullptr) {
 				grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping", roadstop);
@@ -6094,7 +6077,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "RoadStopMapSpriteGroup")) return;
 
 	for (auto &roadstop : roadstops) {
-		RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop];
+		RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop].get();
 
 		if (roadstopspec == nullptr) {
 			grfmsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x%02X does not exist, skipping.", roadstop);
@@ -8682,10 +8665,6 @@ static void InitializeGRFSpecial()
 static void ResetCustomStations()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto statspec : file->stations) {
-			delete statspec;
-		}
-		/* Free and reset the station data */
 		file->stations.clear();
 	}
 }
@@ -8694,9 +8673,6 @@ static void ResetCustomStations()
 static void ResetCustomHouses()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto housespec : file->housespec) {
-			free(housespec);
-		}
 		file->housespec.clear();
 	}
 }
@@ -8705,7 +8681,7 @@ static void ResetCustomHouses()
 static void ResetCustomAirports()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto as : file->airportspec) {
+		for (auto &as : file->airportspec) {
 			if (as != nullptr) {
 				/* We need to remove the tiles layouts */
 				for (int j = 0; j < as->num_table; j++) {
@@ -8715,15 +8691,9 @@ static void ResetCustomAirports()
 				free(as->table);
 				free(as->depot_table);
 				free(as->rotation);
-
-				free(as);
 			}
 		}
 		file->airportspec.clear();
-
-		for (auto ats : file->airtspec) {
-			free(ats);
-		}
 		file->airtspec.clear();
 	}
 }
@@ -8732,16 +8702,7 @@ static void ResetCustomAirports()
 static void ResetCustomIndustries()
 {
 	for (GRFFile * const file : _grf_files) {
-		/* We are verifiying both tiles and industries specs loaded from the grf file
-		 * First, let's deal with industryspec */
-		for (auto indsp : file->industryspec) {
-			delete indsp;
-		}
 		file->industryspec.clear();
-
-		for (auto indtsp : file->indtspec) {
-			free(indtsp);
-		}
 		file->indtspec.clear();
 	}
 }
@@ -8750,9 +8711,6 @@ static void ResetCustomIndustries()
 static void ResetCustomObjects()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto objectspec : file->objectspec) {
-			free(objectspec);
-		}
 		file->objectspec.clear();
 	}
 }
@@ -8760,9 +8718,6 @@ static void ResetCustomObjects()
 static void ResetCustomRoadStops()
 {
 	for (auto file : _grf_files) {
-		for (auto roadstopspec : file->roadstops) {
-			free(roadstopspec);
-		}
 		file->roadstops.clear();
 	}
 }
@@ -9340,13 +9295,13 @@ static void FinaliseHouseArray()
 
 		size_t num_houses = file->housespec.size();
 		for (size_t i = 0; i < num_houses; i++) {
-			HouseSpec *hs = file->housespec[i];
+			HouseSpec *hs = file->housespec[i].get();
 
 			if (hs == nullptr) continue;
 
-			const HouseSpec *next1 = (i + 1 < num_houses ? file->housespec[i + 1] : nullptr);
-			const HouseSpec *next2 = (i + 2 < num_houses ? file->housespec[i + 2] : nullptr);
-			const HouseSpec *next3 = (i + 3 < num_houses ? file->housespec[i + 3] : nullptr);
+			const HouseSpec *next1 = (i + 1 < num_houses ? file->housespec[i + 1].get() : nullptr);
+			const HouseSpec *next2 = (i + 2 < num_houses ? file->housespec[i + 2].get() : nullptr);
+			const HouseSpec *next3 = (i + 3 < num_houses ? file->housespec[i + 3].get() : nullptr);
 
 			if (!IsHouseSpecValid(hs, next1, next2, next3, file->filename)) continue;
 
@@ -9398,7 +9353,7 @@ static void FinaliseHouseArray()
 static void FinaliseIndustriesArray()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto indsp : file->industryspec) {
+		for (const auto &indsp : file->industryspec) {
 			if (indsp == nullptr || !indsp->enabled) continue;
 
 			StringID strid;
@@ -9427,12 +9382,12 @@ static void FinaliseIndustriesArray()
 				if (strid != STR_UNDEFINED) indsp->station_name = strid;
 			}
 
-			_industry_mngr.SetEntitySpec(indsp);
+			_industry_mngr.SetEntitySpec(indsp.get());
 		}
 
-		for (auto indtsp : file->indtspec) {
+		for (const auto &indtsp : file->indtspec) {
 			if (indtsp != nullptr) {
-				_industile_mngr.SetEntitySpec(indtsp);
+				_industile_mngr.SetEntitySpec(indtsp.get());
 			}
 		}
 	}
@@ -9458,9 +9413,9 @@ static void FinaliseIndustriesArray()
 static void FinaliseObjectsArray()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto objectspec : file->objectspec) {
+		for (auto &objectspec : file->objectspec) {
 			if (objectspec != nullptr && objectspec->grf_prop.grffile != nullptr && objectspec->IsEnabled()) {
-				_object_mngr.SetEntitySpec(objectspec);
+				_object_mngr.SetEntitySpec(objectspec.get());
 			}
 		}
 	}
@@ -9476,15 +9431,15 @@ static void FinaliseObjectsArray()
 static void FinaliseAirportsArray()
 {
 	for (GRFFile * const file : _grf_files) {
-		for (auto as : file->airportspec) {
+		for (auto &as : file->airportspec) {
 			if (as != nullptr && as->enabled) {
-				_airport_mngr.SetEntitySpec(as);
+				_airport_mngr.SetEntitySpec(as.get());
 			}
 		}
 
-		for (auto ats : file->airtspec) {
+		for (auto &ats : file->airtspec) {
 			if (ats != nullptr && ats->enabled) {
-				_airporttile_mngr.SetEntitySpec(ats);
+				_airporttile_mngr.SetEntitySpec(ats.get());
 			}
 		}
 	}
