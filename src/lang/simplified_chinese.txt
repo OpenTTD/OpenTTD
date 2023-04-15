@@ -1923,10 +1923,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :没有
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市规模因子：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时，城市的平均规模相对于普通城镇的比值
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每 {STRING}{NBSP}天刷新一次分配图
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次计算货物分配图之间的时间。由于每次重新计算只会处理一个货物分配图元件，因此本设定不代表“每若干日重新计算整个货物分配图”。{}如果此设定赋值越小，則系统需要使用更多处理器时间计算货物分配图。相反，如果此设定赋值越大，則货物被派往新路线所需的时间越长。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :容许系统用 {STRING}{NBSP}天时间刷新货物分配图
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :当刷新货物分配图时，系统会创建一条线程。此处设定的数值即该线程的持续时间。{}赋值越小，线程越有可能在应当停止的时候还未完成，游戏会暂停运作至线程完成工作。相反，赋值越大，则货物分配功能需要较长时间反映线路网变动的影晌。
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乗客分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的乗客数量与乙站往甲站的乘客数量大致相同。“不对称”指任何一站往另一站的乘客数量皆由系统随意决定。“手动”指系统不会自动分配乘客的目的地。

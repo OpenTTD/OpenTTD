@@ -1926,10 +1926,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kaupunkien keskimääräinen koko suhteessa muihin kuntiin pelin alussa
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Päivitä rahdin jakautuminen {STRING}{NBSP}päivän välein
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Yhteyskuvaajan uudelleenlaskujen välinen aika. Kukin uudelleenlasku laskee yhden kuvaajan komponentin. Tämä tarkoittaa sitä, että koko kuvaajaa ei lasketa uudelleen määrittämäsi ajan välein, vaan ainoastaan yksi komponentti. Mitä lyhyemmäksi määrität asetuksen, sitä enemmän prosessoriaikaa komponentin laskemiseen vaaditaan. Mitä pidemmäksi määrität sen, sitä pidempi aika kuluu, kunnes rahdin jakaminen alkaa uusilla reiteillä.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Käytä {STRING}{NBSP}päivä{P 0:2 "" ä} rahtijakauman päivittämiseen
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Jokaisen yhteyskuvaajan komponentin uudelleenlaskemiseen käytettävä aika. Uudelleenlaskun alkaessa käynnistetään uusi säie, jonka annetaan toimia näin monta päivää. Mitä lyhyemmäksi määrität tämän, sitä todennäköisempää on, että säie ei ole valmis ajoissa. Tällöin peli pysähtyy kunnes lasku on suoritettu loppuun (peli pätkii). Mitä pidemmäksi määrität asetuksen, sitä pitempään rahdin jakauman päivittämiseen kuluu aikaa reittien muuttuessa.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Matkustajien jakautuminen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :”Symmetrinen” tarkoittaa, että suunnilleen sama määrä matkustajia kulkee asemalta A asemalle B kuin asemalta B asemalle A. ”Epäsymmetrinen” tarkoittaa, että matkustajia voi kulkea mielivaltainen määrä kumpaankin suuntaan. ”Manuaalinen” tarkoittaa, että automaattista jakautumista ei sovelleta matkustajiin.

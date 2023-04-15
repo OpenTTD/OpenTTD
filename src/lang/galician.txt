@@ -1924,10 +1924,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ningunha
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial do tamaño da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre o tamaño medio das cidades e o dos pobos ao inicio da partida
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualiza o gráfico de distribución cada {STRING}{NBSP}day{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tempo entre recálculos subseguintes do gráfico de ligazóns. Cada recálculo calcula os plans para unha compoñente do gráfico. Isto non significa que un valor de X para esta opción supoña que o gráfico completo será actualizado cada X días. Só algunhas compoñentes o serán. Canto máis curto sexa, máis tempo de CPU será necesario para calculalo. Canto máis longo sexa, máis tempo levará ata que a distribución das mercadorías comeza para rutas novas.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Leva {STRING}{NBSP}día{P 0:2 "" s} recalcular o gráfico de distribución
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tempo empregado para cada recálculo dunha compoñente do gráfico de ligazóns. Cando comeza un recálculo, creáse un fío que funciona por este número de días. Canto máis pequeno sexa este, é máis probable que o fío non remate cando se supón. Nese intre o xogo para para compensar este retardo. Canto máis longo sexa, máis tempo leva actualizar a distribución cando cambian as rutas.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasaxeiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que máis ou menos o mesmo número de pasaxeiros irán dende a estación A cada a estación B e tamén da B cara a A. "Asimétrico" significa que calquera número de pasaxeiros pode ir en calquera dirección. "manual" significa que non haberá distribución automática para os pasaxeiros.

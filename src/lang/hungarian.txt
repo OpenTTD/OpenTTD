@@ -1985,10 +1985,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nincs
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kezdeti városméret-szorzó: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Átlagos városméret a normál településekhez képest a játék kezdetén
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :A szétosztási gráf frissítése {STRING}{NBSP}naponként
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :A kapcsolati gráf egyes újraszámításai között eltelő idő. Minden számítás a gráf egy adott komponensére vonatkozik. Egy adott X beállítás esetén nem fog a teljes gráf X naponként frissülni, csak egy komponense. Minél rövidebb ez az idő, annál több CPU időre lesz szükség a számítás elvégzéséhez. Minél hosszabb ez az idő, annál több ideig fog tartani, mire a szétosztás megindul az új útvonalakon.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :A szétosztási gráf újraszámolására szánt idő: {STRING}{NBSP}nap
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :A kapcsolati gráf egy komponensének újraszámítására szánt idő. Az újraszámítás egy külön szálon indul el, és a megadott számú napig fut. Minél rövidebb ez az időtartam, annál valószínűbb, hogy a számítás nincs kész az idő lejártakor, ekkor a játék megáll a számítás befejeződéséig (ettől a játék akadhat). Minél hosszabb ez az időtartam, annál több idő kell a szétosztás frissüléséhez, amikor megváltoznak az útvonalak.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Utasok szétosztása: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi utas megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű utas mehet. "Kézi" esetben az utasok nem lesznek automatikusan szétosztva.

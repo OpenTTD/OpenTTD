@@ -196,6 +196,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mp
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}quadrados/dia
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}nós
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
@@ -344,9 +345,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Acelerar o jogo
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, sair
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, janela extra ou lista de placas
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e definições
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar, carregar ou abandonar o jogo, sair do jogo
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, janela de exibição extra, fluxo de carga ou lista de sinais
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibir lista de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Exibir subsídios
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Exibir lista de estações da empresa
@@ -354,9 +355,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Exibir i
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibir informações gerais da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Exibe o livro de histórias
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Exibie a lista de objetivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir gráficos
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir gráficos da empresa e taxas de pagamento de carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Exibir tabela de classificação das empresas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fundar construção de nova indústria or listar todas as indústrias
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examina indústrias ou financia a construção de uma nova indústria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Exibir lista de trens da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Exibir lista de veículos rodoviários da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Exibir lista de embarcações da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
@@ -370,8 +371,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir a barra de paisagismo para elevar ou abaixar terreno, plantar árvores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Exibir janela de som/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Exibir a última mensagem/notícia, exibir opções de mensagem
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações sobre o terreno, console, depurar scripts, capturas de tela, sobre OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostrar a última mensagem/notícia, histórico de mensagens ou apagar todas as mensagens
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações da área de terreno, captura de tela, sobre o OpenTTD e ferramentas de desenvolvedor
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar a barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
@@ -1809,7 +1810,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se ativado, per
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Idade mínima da companhia para trocar ações: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Defina a idade mínima de uma companhia para as outras estarem aptas a comprar e vender ações entre elas.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} ano{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Sem mínimo
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem paga em cada etapa em sistemas de baldeação: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem do lucro dado a cada estação de baldeação em sistemas de mais de um transporte, dando mais controle de lucro
@@ -1924,10 +1927,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador do tamanho inicial da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades grandes em relação às cidades no início do jogo
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Atualizar gráfico de distribuição a cada {STRING}{NBSP}dia{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tempo tomado entre recálculos subsequentes de cada gráfico. Cada recálculo calcula os planos para cada componente do gráfico. Isso significa que um valor X para essa configuração não indica que o gráfico todo será atualizado a cada X dias. Apenas alguns componentes irão. Quanto mais curto você o definir, mais tempo de CPU será necessário para calculá-lo. Quanto mais longo, mais tempo levará até que a distribuição de carga começe em novas rotas.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Demore {STRING}{NBSP}dia{P 0:2 "" s} para recálculo do gráfico de distribuição
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tempo tomado para cada recálculo de um componente de um gráfico. Quando um recálculo começa, um processo é criado e é executado por esse número de dias. Quanto menos dias você define, maior a chance do processo não terminar quando era para ter terminado. Nesse caso, o jogo irá parar até ele terminar ("lag"). Quanto maior você definir isso, mais tempo leva para a distribuição ser atualizada quando as rotas mudarem.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para passageiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que aproximadamente o mesmo número de passageiros irá de uma estação A para uma estação B como de B para A. "Assimétrico" significa que um número arbitrário de passageiros pode ir em qualquer direção. "Manual" significa que não haverá distribuição automática para os passageiros.
@@ -1953,13 +1952,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definir isso pa
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de caminhos curtos antes de usar caminhos de alta capacidade: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente há múltiplos caminhos entre duas estações. Cargodist irá saturar o caminho mais curto primeiro, depois usar o segundo caminho mais curto até saturá-lo, e assim por diante. Saturação é determinada pela estimação da capacidade de do uso planejado. Ao saturar todos os caminhos, se ainda houver demanda, irá sobrecarregar todos os caminhos, com preferência aos de maior capacidade. No entanto, na maior parte do tempo o algorítimo não irá estimar a capacidade corretamente. Essa configuração permite você definir até que porcentagem um caminho mais curto deverá ser saturado na primeira passada antes do algorítimo proceder ao próxido. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade superestimada.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidade de velocidade: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade (terrestre): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unidades de velocidade (náutica): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Sempre que uma velocidade for exibida na interface do usuário, será exibida na unidade selecionada
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades de jogo (quadr./dia)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nós
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidade de potência veicular: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Sempre que a potência de um veículo for exibida na interface de usuário, será exibida na unidade selecionada
@@ -4586,6 +4587,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs q
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatória
 STR_AI_CONFIG_NONE                                              :{G=m}(nenhum)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Número máximo de concorrentes: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
@@ -4599,7 +4601,7 @@ STR_AI_CONFIG_AI                                                :{G=f}{SILVER}IA
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Selecionar IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Selecionar Script do Jogo
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script. Ctrl+Clique para mostrar todas as versões disponíveis
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parâmetros do Script
 

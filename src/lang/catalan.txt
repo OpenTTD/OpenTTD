@@ -196,6 +196,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mp
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cel·les/dia
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}{P nus nusos}
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
@@ -344,9 +345,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Obre la 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Posa en pausa o reprèn la partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avança la partida el més ràpid possible
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa la partida, abandona-la o surt del programa
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra el mapa, finestres de visualització o llista de senyals, entre d'altres
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions i configuració
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa o carrega una partida, abandona-la o surt del programa.
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra el mapa, vistes addicionals, la llista de senyals o el flux de càrrega.
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostra la llista de poblacions
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra les subvencions
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostra la llista d'estacions de la companyia
@@ -356,7 +357,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostra e
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostra la llista d'objectius
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra gràfics de l'evolució de les companyies i les tarifes de transport.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la taula de la lliga de companyies.
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finança la construcció d'una nova indústria
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examina les indústries o finança la construcció d'una indústria nova.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra la llista de trens de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra la llista de vehicles de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra la llista de vaixells de la companyia. Ctrl+Clic canvia entre l'obertura de la llista de grups/vehicles.
@@ -370,8 +371,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construe
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construeix aeroports
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar el terreny, plantar arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies i l'historial disponible
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, consola, depuració de scripts, captures de pantalla, informació de l'OpenTTD...
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies i l'historial disponible o esborra tots els missatges.
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, captures de pantalla i informació sobre l'OpenTTD i eines de desenvolupament.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
@@ -1809,7 +1810,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Permet comprar 
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edat mínima de la companyia per negociar participacions: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Estableix l'edat mínima d'una companyia per tal que els altres competidors puguin comprar-ne o vendre accions.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} any{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Sense mínim
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentatge del benefici total a pagar en transferències: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentatge del benefici donat a branques intermediàries dins els sistemes, donant més control sobre els beneficis
@@ -1924,10 +1927,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida.
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING}{NBSP}di{P 0:2 a es}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING}{NBSP}di{P 0:2 a es} per al recàlcul del graf de distribució
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mode de distribució per passatgers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simètric" vol dir que aproximadament el mateix nombre de passatgers aniran des de l'estació A a la B que de B a A. "Asimètric" significa que un nombre arbitrari de passatgers poden anar en qualsevol dels dos sentits. "Manual" vol dir que no s'aplicarà una distribució automàtica pels passatgers.
@@ -1953,13 +1952,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Indicant menys 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturació de camins curts abans d'usar camins d'alta capacitat: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sovint hi ha diversos camins entre dues estacions donades. Cargodist primer saturarà el camí més curt, després usarà el segon camí més curt fins a saturar-lo i així successivament. La saturació és determinada per una estimació de la capacitat i l'ús previst. Un cop ha saturat tots els camins, si encara hi ha demanda, sobrecarregarà tots els camins, preferint aquells de major capacitat. No obstant, molt sovint l'algoritme no farà una estimació acurada de la capacitat. Aquest paràmetre us permet especificar fins a quin percentatge un camí més curt ha de ser saturat en la primera ronda abans d'escollir el següent en longitud. Indiqueu menys del 100% per evitar la superpoblació d'estacions en cas de capacitat sobreestimada.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitats de velocitat: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitats de velocitat (terrestres): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unitats de velocitat (nàutiques): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quan es mostren velocitats a la interfície d'usuari, presenta-les en les unitats seleccionades
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Mètric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unitats del joc (cel·les/dia)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nusos
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitats de potència dels vehicles: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quan es mostra la potència d'un vehicle a la interfície d'usuari, presenta-la en les unitats seleccionades
@@ -4586,6 +4587,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Aquesta 
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatòria
 STR_AI_CONFIG_NONE                                              :(cap)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nombre màxim de competidors: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mou amunt
@@ -4599,7 +4601,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Trieu una IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Tria un script de partida
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carrega un altre script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carrega un altre script. Si feu Ctrl + clic, es mostraran totes les versions disponibles.
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura els paràmetres de l'script
 

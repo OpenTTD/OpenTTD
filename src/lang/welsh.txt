@@ -1767,10 +1767,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Dim
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lluosydd cychwynol maint dinas: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Maint cymhedrol dinasoedd o gymharu â threfi arferol ar ddechrau'r gêm
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Diweddaru'r graff dosraniad bob {STRING}{NBSP}diwrnod
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Amser rhwng pob ailgifrifiad o'r graff cyswllt. Bydd pob ailgyfrifiad yn cyfrifio'r cynllun ar gyfer un cydran o'r graff. O ganlyn ni fydd dwis gwerth o X yn golygu y bydd y graff cyfan yn cael ei ddiweddaru bob X diwrnod, ond y bydd rhai cydrannau. Bydd ystod byr yn defnyddio mwy o amser y prosesydd yn ailgyfrio graffiau. Bydd ystor hir yn cynyddu'r amser cyn y daw'r dosraniad i ryn ar lwybrau newydd.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Cymryd {STRING}{NBSP}diwrnod ar gyfer ar gyfer ailgyfrifo graff dosraniad
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Yr amser ar gyfer ailgyfrifo pob cydran o raff cyswllt. Pan y dechreuir ailgyfrifo, fe grëir llinyn gwaith a gaiff redeg am nifer penodol o ddiwrnodau. Bydd gosodiad byr yn ei gwneud yn fwy tebygol na fydd y llinyn wedi gorffen mewn pryd. Yna bydd y gêm yn oedi new y bydd yn barod. Bydd gosodiad hir yn cynyddu'r amser y cymerir i'r dosranaid gael ei ddiweddaru pan fo llwybrau'n newid.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Dull dosrannu ar gyfer teithwyr: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" yn golygu y bydd tua'r un faint o deithwyr yn mynd o orsaf A i orsaf B ac yr aiff o B i A. Mae "anghymesur" yn golygu y gall niferoedd mympwyol fynd yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer teithwyr.

@@ -1979,10 +1979,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Mitte ühtegi
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Algne linnade suuruskordaja: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna suurus võrreldes tavalise asulaga mängu alguses
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Jaotusgraafikuid uuendatakse igal {STRING}. päeval
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Aega ahelgraafikute koostamise vahel. Koostamine uuendab plaane ainult ühes graafiku osas. Seega X väärtusega ei uuendata graafikut iga X päeva tagant. Uuendatakse vaid ühte osa. Väiksema arvuga kasutatakse protsessorit rohkem. Suurema arvuga läheb kauem aega, kuni uuel teel alustatakse kaubavedu.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Jaotusgraafikud koostatakse {STRING} päeva jooksul
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Aega ahelgraafiku osa koostamiseks. Koostamise algul käivitatakse protsess, mis võib töötada määratud arv päevi. Väiksema väärtusega on suurem võimalus, et protsess lõppe. Kui protsess ei ole lõppenud, siis mäng seisatakse protsessi lõppemiseni (tekib viivitusi). Suurema arvuga läheb kauem, kuni muudetud teel uuendatakse kaubajaotust.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Reisijate jaotuse viis: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Kui jaamast A läheb jaama B umbes sama hulk reisijaid, kui jaamast B jaama A, siis jaotus on «Sümeetriline». Kui mõlemas suunas võib liikuda ükskõik, kui palju resijaid, siis jaotus on «Asümeetriline». Kui reisijate liikumist ei jaotata, siis jaotus on «Väljas».

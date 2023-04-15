@@ -1923,10 +1923,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keng
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Ufangs-Gréisst vu Stied multiplizéiren mat: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëttsgréisst vu Stied an Proportioun zu normalen Dierfer um Spillstart
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualiséier d'Verdeelungsgrafik all {STRING}{NBSP}D{P 0:2 ag eeg}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Zäit tëscht nofolgenden Neiberechnungen vun der Linkgrafik. All Neiberechnung rechent d'Pläng fir eng Komponent vun der Grafik. Dat heescht, dass en Wert X fir dës Astellung net all X Deeg aktualiséiert gëtt. Nëmmen een Komponent gëtt aktualiséiert. Wat méi kuerz gesat, wat méi CPU Rechenzäit gebraucht gëtt. Wat se méi laang gesat gëtt, wat méi Zäit vergeet bis Wuereverdeelung op enger neier Route gestart gëtt.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benotz {STRING}{NBSP}D{P 0:2 ag eeg} fir d'Neiberechnung vum Verdeelungsgraf
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Zäit déi gebraucht gëtt fir all Neiberechnung vun enger Linkgrafikkomponent. Wann eng Neiberechnung ufenkt, gëtt en Thread erstallt dee fir dës Unzuel un Deeg leeft. Wann de Wäert ze kleng ass, kann den Thread net an der gewënschter Zäit faerdeg ginn an et kënnt zu engem Lag. Wann de Wäert méi héich gesat gëtt, brauch d'Verdeelung méi lang fir erneiert ze ginn wann eng Streck ännert
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verdeelungsmodus fir Passagéier: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetresch" heescht, dass ongeféier d'selwecht vill Passagéier vun A op B wéi vu B op A geschéckt ginn. "Asymmetresch" heescht, dass eng arbiträr Unzuel u Wueren an d'jeweileg Richtung geschéckt ginn. "Manuell" heescht dass keng automatësch Verdeelung stattfënnt fir Passagéier

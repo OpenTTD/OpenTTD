@@ -1971,10 +1971,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nulla
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator magnitudinis initialis urbis: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Quam maiores sunt urbes quam oppida in initio ludi
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Recensere formulam partitionis {STRING} quoque die
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tempus inter recensiones formulae partitionis. Quaeque recensio calculat rationes unius partis formulae. Ergo valor X huius electionis non facit ut cuncta formula recenseatur X quoque die; modo aliquot pars/partes recensebuntur. Valoribus minoribus, plus tempus CPU requiritur. Valoribus maioribus, plus tempus erit ad onerum partitionem incipiendam novis itineribus.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :{STRING}{NBSP}die{P 0:2 "" s} ad formulam partitionis recalculandam
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tempus cuiusque recalculationis partis partitionis. Cum recalculatio incipitur, linea generatur quae agitur hos dies electos. Paucis diebus, magis probabilis est lineam non finiri cum debet esse finitam; tunc ludus intermittitur usque ad finitur ("segnitia"). Pluribus diebus, plus tempus requiritur ad partitionem mutandam cum itinera mutantur.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modus partitionis vectoribus: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Partitio "symmetrica" facit ut fere eadem copia vectorum mittatur a statione A ad stationem B quam a B ad A. Partitio "asymmetrica" facit ut quaelibet copia vectorum mittatur inter A et B. In partitione "manu" vectores non automatice partiuntur.

@@ -1927,10 +1927,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :없음
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :초기 대도시 크기 비율: 일반 도시보다 {STRING}배 크게 시작
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시작했을 때 일반 도시에 대한 대도시의 평균 크기를 설정합니다
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :분배 상태를 매 {STRING}일 마다 갱신
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :다음 연결 상태를 재계산하기까지의 시간입니다. 한 번의 재계산할 때마다 그래프의 한 요소를 위한 계획을 계산합니다. 이는 이 설정의 X값에 따라 모든 그래프가 매 X일마다 갱신되는 것이 아니라는 것을 뜻합니다. 일부 요소만 재계산된다는 뜻입니다. 값이 작으면 작을 수록 CPU가 계산해야 할 횟수가 늘어납니다. 값을 크게 설정할 수록 화물 분배 상태가 새롭게 지정되는 데 더 오랜 시간이 걸립니다.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :화물 분배 연결 상태를 {STRING}일마다 다시 계산
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :각 연결 상태 요소의 재계산을 위해 필요한 시간입니다. 재계산이 시작될 때, 이 날짜만큼 작동하는 스레드가 생성됩니다. 이 값이 작으면 작을수록, 스레드가 끝나야할 때에 스레드가 끝나지 않게 됩니다. 그러면 게임이 랙에 걸려 멈추게 됩니다. 값을 크게 설정할수록 경로가 바뀔 때 분배 상태가 업데이트 되는 시간이 오래 걸리게 됩니다.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :승객에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A역에서 B역으로 가려는 승객의 수가 B에서 A로 가려는 승객의 수와 비슷하다는 뜻입니다. "비대칭"은 승객이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 승객 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.

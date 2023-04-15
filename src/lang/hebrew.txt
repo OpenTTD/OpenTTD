@@ -1818,10 +1818,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ללא
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{STRING} :מכפיל התחלתי של גודל העיירות
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :גודל ממוצע של ערים יחסית לעיירות רגילות בתחילת המשחק
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :עדכן את הגרף מדי {STRING} {P 0:2 יום ימים}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :זמן לחישוב מחדש של גרף הקישור. כל חישוב מחדש מחשב את התכניות של פריט יחיד בגרף. כלומר, בהגדרה של ערך X אין הכרח שכל הגרף יתעדכן מדי X ימים. רק פריט ממנו יתעדכן. ערך קטן יותר דורש יותר זמן מעבד לחישוב. ערך גבוה קובע זמן ארוך יותר עד שחלוקת המטען מתחילה בנתיב חדש.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :המתן {STRING} י{P 0:2 ום מים} לחישוב מחדש של גרף החלוקה
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :הזמן לחישוב מחדש של נקודה בגרף. החישוב מורשה לרוץ במשך מספר ימים זה. בקביעת זמן קצר, החישוב עלול שלא להסתיים במועד. המשחק נעצר עד הסיום (השהיה). בקביעת זמן ארוך, עדכון הערך יתעכב זמן ארוך יותר לאחר שינוי מסלולים.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :אופן החלוקה עבור נוסעים: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"סימטרי" הכוונה שמספר הנוסעים מתחנה א' לתחנה ב' הוא פחות או יותר אותו מספר הנוסעים מתחנה ב' לתחנה א'. "אסימטרי" הכוונה שמספר נוסעים שרירותי יכול ליסוע כל אחד מהכיוונים. "ידני" הכוונה שאין חלוקה אוטומטית עבור נוסעים.

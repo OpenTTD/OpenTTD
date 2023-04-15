@@ -1896,10 +1896,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innledende bystørrelsesmultiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gjennomsnittsstørrelse på (stor)byer i forhold til vanlige byer ved begynnelsen av spillet
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Oppdater distribusjonsgraf hver {STRING}{NBSP}dag{P 0:2 "" er}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellom påfølgende reberegning av koblingsgrafen. Hver reberegning beregner planene for en del av grafen. Det betyr at en verdi X for denne innstillingen ikke betyr at hele grafen vil bli oppdatert for hver X. dag. Bare noen komponenter vil. Jo kortere du setter det, dess mer CPU tid bil være nødvendig for å beregne det. Jo lenger du setter den, dess lenger vil det ta før last-distribusjonen begynner på nye ruter.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benytt {STRING}{NBSP}dag{P 0:2 "" er} for omberegning av distribusjonsgraf
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiden det tar for hver ny reberegning av en graf-link komponent. Når en reberegning iverksettes, blir en tråd startet som tillates å kjøre for dette antall dager. Jo kortere du setter dette, desto mer sannsynlig er det at tråden ikke er ferdig til ønsket tid. Da stopper spillet ("etterslep"). Jo lenger du setter den, desto lenger tid tar det for distribusjonen å bli oppdatert når rutene endres.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribusjonsmodus for passasjerer: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisk" betyr at omtrent like mange passasjerer vil reise fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at et vilkårlig antall passasjerer vil reise i begge retninger. "manuelt" betyr at det ikke vil forekomme automatisk distribusjon for passasjerene

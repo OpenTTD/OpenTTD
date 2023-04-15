@@ -1927,10 +1927,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Recalculer le graphe de distribution tous les {STRING}{NBSP}jour{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Intervalle entre le recalcul du graphe de distribution. À chaque itération, une seule composante du graphe est recalculée. Donc, une valeur X pour ce réglage ne signifie pas que le graphe est réactualisé entièrement tous les X jours. Plus l'intervalle est court, plus de temps CPU est nécessaire pour la recalcul. Plus il est long, et plus de temps sera nécessaire pour que la distribution s'effectue sur de nouvelles routes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Prendre {STRING}{NBSP}jour{P 0:2 "" s} pour recalculer le graphe de distribution
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Durée maximale (en jours) du recalcul d'une composante du graphe. À chaque itération, un thread est initié, qui a une durée maximale définie par ce réglage. Plus celui-ci est court, plus la probabilité que le thread ne termine pas sa tâche à temps est élevée. Le jeu s'interrompt alors jusqu'à la fin du recalcul ("lag"). Plus le réglage est long, et moins rapidement la distribution sera réactualisée en cas de changement de routes.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symétrique" signifie qu'autant de passagers iront d'une station A vers une station B, que de la station B vers la station A. "Asymétrique" signifie qu'un nombre arbitraire de passagers peut être envoyé dans les deux directions. "Manuel" signifie qu'aucune distribution n'est mise en place pour les passagers.

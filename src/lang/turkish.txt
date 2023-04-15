@@ -1924,10 +1924,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Hiçbiri
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Birincil şehir büyüklüğü çarpanı: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Oyun başlangıcında şehirlerin normal kasabalara kıyasla ortalama büyüklüğü
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Dağıtım grafiğini her {STRING}{NBSP}günde bir güncelle
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Bağlantı grafiğinin tekrar hesaplamaları arasında geçen süre. Her tekrar hesaplama grafiğin öğelerinden biri için planları hesaplar. Yani bu ayar için girdiğiniz X değeri tüm grafiğin her X günde bir güncelleneceği manasına gelmez; sadece grafiğin öğelerinden biri güncellenir. Daha kısa sürelere ayarladıkça hesaplamalar için daha fazla işlemci süresi gerekir. Daha uzun süreler seçtikçe yeni güzergahlardaki kargo dağıtımının başlaması da daha uzun sürer.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dağıtım grafiğini {STRING}{NBSP}güne göre tekrar hesapla
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Bağlantı grafiğini oluşturan parçaların her tekrar hesaplaması için kullanılan zaman. Tekrar hesaplama başlatıldığında bu kadar gün sürecek bir işlem başlatılmış olur. Buraya daha kısa süreler girdikçe işlemin bitmesi gerekirken bitmemiş olma ihtimali artar. Ardından oyun ("lag") olana dek durur. Daha uzun süreler girdiğinizde güzergahlar değiştikçe dağıtımın güncellenmesi daha uzun sürer.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Yolcular için dağıtım kipi: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetrik" seçildiğinde A durağından B durağına taşınan ile B'den A'ya taşınan yolcu miktarı kabaca eşit olur. "Asimetrik" seçildiğinde iki yönde de rastgele miktarda yolcu gönderilebilir. "el ile" seçildiğinde yolcular için otomatik dağıtım yapılmaz.

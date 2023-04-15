@@ -2116,10 +2116,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nijedan
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Inicijalni množilac rasta gradova: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Prosečna veličina naselja relativno u odnosu na gradove na početku igre
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Ažuriraj  grafikon distribucije svakih {STRING}{NBSP}dan{P 0:2 a a a}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Vreme između sledećih preračuna grafikona. Svaki preračun izračunava planove za jednu komponentu grafikona. To znači da vrednost X za ovu postavku ne mora da znači i ažuriranje celog grafikona unutar X dana. Samo neke komponente će biti ažurirane. Što je vreme kraće, to će biti potrebno više procesorskih resursa za proračun. Što je vreme duže, više će vremena biti potrebno da se distribucija tereta započne na novim putanjama.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Uzmi {STRING}{NBSP}dan{P 0:2 a a a} za preračun grafikona
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Vreme potrebno za preračun komponente grafikona. Kada se preračun pokrene, stvara se sled koji može raditi broj dana koliko ovdje odredite. Čim kraće vreme odredite, postoji mogućnost da sled neće biti gotov kada bi trebao. Tada se igra usporava odnosno zaustavlja dok ne bude gotovo. Čim duže vreme odredite, potrebno je duže da se distribucija ažurira kada se izmene rute.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Način distribucije putnika: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetrično" znači da će se otprilike isti broj putnika slati od stanice A prema stanici B kao i od B prema A. "Asimetrično" znači da će se proizvoljan broj putnika slati u oba smera. "Ručno" znači da se distribucija putnika neće vršiti automatski.

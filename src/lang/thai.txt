@@ -1790,10 +1790,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ไม่มี
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :ตัวคูณขนาดเมืองเริ่มต้น: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ขนาดโดยเฉลี่ยของเมืองใหญ่ที่สัมพันธ์กับเมืองปกติ
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :อัพเดทกราฟการกระจายสินค้าทุกๆ {STRING} วัน
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :เวลาระหว่างการคำนวณหาเส้นทางการเชื่อมต่อของกราฟ. ทุกครั้งที่มีำการคำนวณใหม่ มีการวางแผนสำหรับหนึ่งชิ้นส่วนในกราฟ ค่าที่ตั้งไว้นี้ คือค่าที่จะให้มีการอัพเดททุกๆเวลากี่วัน การตั้งให้คำนวณถี่มากๆจะกินทรัพยากรเครื่องของท่าน
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :ใช้เวลา {STRING} วัน{P 0:2 s} ในการคำนวนกราฟการกระจายสินค้า
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :เวลาในการคำนวณการกระจายสินค้าสู่จุดหมายต่างๆที่แสดงเป็นเส้นกราฟบนแผนที่ การตั้งค่าถี่เกินไปอาจก่อให้เกิดอาการ lag ได้
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :โหมตการกระจายสินค้าสำหรับผู้โดยสาร: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :ผู้โดยสารจากเมืองหนึ่งเมื่อเดินทางออกไปที่ใดก็ตาม จะต้องย้อนกลับเข้ามายังจุดเริ่มค้น การตั้งค่าเป็นแบบ "สมมาตร" จะทำให้เกิดวงจรปกติเหมือนกับการโดยสารของผู้โดยสาร

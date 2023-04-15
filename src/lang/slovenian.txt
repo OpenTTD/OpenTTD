@@ -1920,10 +1920,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Noben
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Začetni faktor rasti mesta: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Povprečna velikost mest relativno gledano na normalna naselja na začetku igre.
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Posodobi graf razporeda v razmaku {STRING} d{P 0:2 an neva ni ni}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Čas med ponovnimi izračuni za L-G. Vsak preračun izračuna načrte ene komponente grafa. To pomeni da vrednost X za to nastavitev ne pomeni, da bo celotni graf posodobljen vsakih X dni ampak samo nekatere komponente bodo. Krajša nastavitev pomeni več moči za izračun. Daljša pomeni, da bo pozneje tovor razporejen na nove poti.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Porabi {STRING} d{P 0:2 an neva neve dni} za preračun grafa razporeda
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Čas preračuna za vsak izračun L-G komponent. Ko se zažene preračun, se pojavi nit, ki lahko teče za to število dni. Krajša kot je nastavitev, več je možnosti, da se nit ne dokonča kadar bi se morala. Igra se ustavi do zaključka izračuna. Dlje kot je nastavljeno, dlje se osvežuje razpored, ko je pot spremenjena.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Razporedni način za potnike: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "asymmetric" means that arbitrary numbers of passengers can go in either direction. "manual" means that no automatic distribution will take place for passengers.

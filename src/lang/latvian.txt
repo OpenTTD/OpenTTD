@@ -1925,10 +1925,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :neviena
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pilsētu sākuma lieluma reizinātājs: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Pilsētu vidējais lielums attiecībā pret parastām apdzīvotām vietām spēles sākumā
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Atjaunināt sadales grafu ik pa {STRING}{NBSP}dien{P 0:2 ai ām ām}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Laiks starp secīgām saišu grafa pārrēķināšanām. Katra pārrēķināšana izskaitļo plānos vienai grafa komponentei. Tas nozīmē, ka šim iestatījumam vērtība X nenozīmē, ka viss grafs tiks atjaunināts ir pēc X dienām. Tikai dažas komponentes tiks pārrēķinātas. Jo mazāka iestatītā vērtība, jo vairāk laika CPU pavadīs rēķinot. Jo lielāka iestatītā vērtība, jo ilgāk nevarēs sākties kravu izplatīšana jaunos maršrutos.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dot {STRING}{NBSP}dien{P 0:2 u as u} izplatīšanas grafa pārrēķināšanai
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Laiks, ko aizņem katra saišu grafa komponenšu pārrēķināšana. Kad sākas pārrēķināšana, tiek izveidots pavediens, kuram ir atļauts darboties norādīto dienu skaitu. Jo īsāku skaitli šeit ievadīsiet, jo lielāka iespēja, ka pavediens nebūs laicīgi paveicis savu darbu. Tādā gadījumā spēle apstāsies (“iebremzēs”) līdz darbs būs pabeigts. Jo lielāku skaitli šeit iestatīsiet, jo ilgāk aizņems izplatīšanas atjaunināšana, kad tiks mainīti maršruti.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Pasažieru izplatīšanas režīms: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetriska" nozīmē, ka apmēram vienāds daudzums pasažieri vēlēsies doties virzienā no stacijas A uz B, cik no B uz A. "asimetriska" nozīmē, ka patvaļīgs pasažieru daudzums var vēlēties nokļūt katrā no virzieniem. "manuāli" nozīmē, ka pasažieriem netiks veikta automātiska izplatīšana.

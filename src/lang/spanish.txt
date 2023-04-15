@@ -1924,10 +1924,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguna
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial del tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades en relación a los pueblos normales al comienzo de la partida
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el grafo de distribución cada {STRING}{NBSP}día{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Periodo de tiempo entre cálculos consecutivos del grafo de distribución. Esta opción se refiere a los cálculos para cada uno de los componentes del grafo, por lo cual fijar un valor no quiere decir que el grafo completo se actualice tras ese número de días. Cuanto menor sea, mayor tiempo de CPU será necesario para calcular el grafo de distribución. Cuanto mayor sea, más tardará el grafo de distribución en adaptarse a nuevas rutas.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING}{NBSP}día{P 0:2 "" s} para el cálculo del grafo de distribución
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del grafo de distribución. Cuanto menor sea este valor, más probable es que se produzca ralentización en el juego. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica", se envía la misma cantidad de pasajeros de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. "Manual" significa que no se realiza una distribución automática para los pasajeros.

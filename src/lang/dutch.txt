@@ -1926,10 +1926,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Beginfactor voor stadsgroei: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Werk distributiegrafiek elke {STRING}{NBSP}dag{P 0:2 "" en} bij
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tijd tussen opeenvolgende herberekeningen van de koppelinggrafiek. Elke herberekening berekent de plannen voor een component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X dagen wordt bijgewerkt. Alleen een component wordt bijgewerkt. Hoe korter je dit instelt, hoe meer CPU-tijd nodig is om de berekening te maken. Hoe langer je dit instelt, hoe langer het duurt voordat de vrachtdistributie op nieuwe routes start.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :{STRING}{NBSP}dag{P 0:2 "" en} gebruiken voor herberekening van de distributiegrafiek
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tijd die wordt gebruikt voor een herberekening van een component van een koppelinggrafiek . Wanneer een herberekening wordt gestart, wordt een draad voortgebracht die dit aantal dagen mag lopen. Hoe korter je dit instelt, hoe waarschijnlijker het is dat de draad niet is voltooid als dat zou moeten. Dan stopt het spel totdat het 'bij' is ('lag'). Hoe langer je dit instelt, hoe langer het duurt voordat de distributie wordt aangepast als een route wijzigt.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiemodus voor passagiers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :'Symmetrisch' betekent dat ongeveer hetzelfde aantal passagiers van station A naar station B gaat als van B naar A. 'Asymmetrisch' betekent dat willekeurige aantallen passagiers reizen in beide richtingen. 'Handmatig' betekent dat er geen automatische distributie plaatsvindt voor passagiers.

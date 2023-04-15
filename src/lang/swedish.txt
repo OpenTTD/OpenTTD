@@ -1923,10 +1923,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e{NBSP}dag
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det medför att ett värde X för den här inställningen inte innebär att hela grafen uppdateras var X:e dag, utan bara vissa komponenter. Ju kortare intervall du ställer in desto mer processorkraft kommer att behövas för beräkningarna. Ju längre intervall du ställer in desto längre tid kommer det att ta innan distributionen av last börjar använda nya rutter.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING}{NBSP}dag{P 0:2 "" ar} för omberäkning av distributionsgraf
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Den tid varje omberäkning av en länkgrafkomponent tillåts ta. När en omberäkning startas skapas en tråd som tillåts löpa detta antal dagar. Ju kortare du sätter denna, desto mer troligt är det att tråden inte är hinner bli färdig i tid. Då kommer spelet att stanna tills den är klar (vilket gör att det laggar). Ju längre du sätter denna, desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetriskt" innebär att ungefär samma antal passagerare färdas från station A till station B som från B till A. "Asymmetriskt" innebär att en godtycklig mängd passagerare kan färdas i vardera riktningen. "Manuellt" innebär att ingen automatisk distribution av passagerare sker.

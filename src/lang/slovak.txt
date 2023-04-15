@@ -1991,10 +1991,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :žiadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Násobok počiatočnej veľkosti mesta: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Priemerná veľkosť veľkomiest v porovnaní k mestám na začiatku hry.
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovať distribučný graf každ{P 0:2 "ý" "é" "ých"} {STRING} {P 0:2 "deň" "dni" "dní"}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Čas medzi nasledujúcimi prepočtami grafu spojení. Každý prepočet počíta plány pre jednu súčasť grafu. To znamená, že hodnota X pre toto nastavenie neznamená sa celý graf aktualizuje každých X dní, ale iba jedna súčasť. Čím menej nastavíte, tým viac procesorového času bude potrebného na výpočet. Čím viac nastavíte, tým dlhšie bude trvať, kým sa začne distribuovať na nové trasy.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Použiť {STRING} {P 0:2 "deň" "dni" "dní"} na prepočítanie distribučného grafu
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Čas potrebný pre každé prepočítanie grafu spojov. Pri štarte prepočtu je vytvorené vlákno, ktoré môže bežať uvedený počet dní. Čím menej nastavíte, tým je pravdepodobnejšie, že vlákno nestihne skončiť, kým je to možné. Potom sa hra na nejaký čas zasekne. Čím viac nastavíte, tým dlhšie trvá aktualizácia rozdelenia po zmene trasy.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Druh distribúcie pre cestujúcich: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symetricky" znamená, že približne rovnaké množstvo pasažierov bude cestovať zo stanice A do stanice B ako z B do A. "Asymetricky" znamená, že v oboch smeroch môže cestovať ľubovoľné množstvo pasažierov. "Manuálne" znamená, že sa pre pasažierov nevykoná automatická distribúcia.

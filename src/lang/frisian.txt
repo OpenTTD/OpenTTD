@@ -1758,7 +1758,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Gjin
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgrutte fermenigfuldiger: {STRING}
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Wurkje by de grafyk fan distribúsje eltse{STRING}{NBSP}dagen{P 0:2 "" s}
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribusjemodus foar pazzazjiers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribusjemodus foar post: {STRING}

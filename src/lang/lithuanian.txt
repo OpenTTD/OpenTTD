@@ -2109,10 +2109,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenaudojamas
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pradinis miestų dydžio daugiklis: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Vidutinis miestų dydis santykiu su normaliais miestais žaidimo pradžioje
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Pasiskirstymo grafą atnaujinti kas {STRING}{NBSP}dien{P 0:2 ą as ų}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Laiko trukmė tarp grafo mazgų perskaičiavimo operacijų. Kiekviena operacija perskaičiuoja tik vieną mazgą, o ne visą grafą; tad jei šioje nuostatoje nurodytą, kad, pavyzdžiui, grafas bus atnaujinamas kas 4-ias dienas, tai nereiškia, kad jis visas bus atnaujintas, o atnaujinti bus tik kai kurie mazgai. Kuo trumpesnė trukmė tarp perskaičiavimų, tuo daugiau grafo perskaičiavimas sueikvos procesoriaus išteklių, tačiau pats grafas geriau atspindės realią situaciją. Kita vertus, ilgesnė trukmė mažiau apkraus procesorių, tačiau gali tekti ilgėliau palaukti, kol nauji maršrutai bus įtraukti į grafą.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Pasiskirstymo grafo perskaičiavimas užtruks {STRING}{NBSP}dien{P 0:2 ą as ų}
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Laiko trukmė skirta pilnam krovinių paskirstymo grafui perskaičiuoti. Nustačius per mažą reikšmę, žaidimas gali trumpam pakibti, kol bus baigti skaičiavimai. Kita vertus, kuo ilgesnė ši trukmė, tuo vėliau į grafą bus įtraukti maršrutų pakeitimai.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Keleivių paskirstymas: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Simetriškas“ reiškia, jog iš stoties A į stotį B keliaus apytiksliai toks pat keleivių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime.

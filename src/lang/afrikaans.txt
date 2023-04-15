@@ -1800,10 +1800,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Normale stede groote relatief na normale dorpe aan die begin van speletjie
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Herreken die verspreingskaart elke {STRING}{NBSP}da{P 0:2 g e}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tyd tussen daaropvolgende herrekeninge van die verspreidingskaart. Elke herrekening is vir een komponent van die hele kaart, so net 'n gedeelte is dan op datum, nie die hele kaart nie. Hoe korter hierdie stelling is, hoe meer verwerkingskrag word benodig, hoe langer hierdie stelling is, hoe langer vat dit vir die vrag om op nuwe roetes te versprei.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Neem {STRING}{NBSP}da{P 0:2 g e} om verspreidingskaart te herreken
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tyd benodig vir die herrekening van elke komponent van die verspreidingskaart. Elke berekening kan vir hierdie aantal dae hardloop, as hierdie stelling te kort is en die berekening is nie klaar nie, dan kan die spel stop tot die berekening klaar gedoen is. Hoe meer tyd toegelaat word vir hierdie berekeninge, hoe langer vat dit vir die verspreidingskaart om te verander as roetes verander.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verspreidingsmodel vir passasiers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simmetries" beteken dat ongeveer dieselfde hoeveelheid passasiers tussen twee stasies gestuur word. "asimmetries" beteken passasiers word na willekeur tussen twee stasies gestuur. "handmatig" beteken dat passasiers nie outomaties versprei word nie.

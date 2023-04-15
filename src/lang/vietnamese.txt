@@ -1923,10 +1923,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Không
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy mô đô thị coi là thành phố: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước trung bình của thành phố tỉ lệ với đô thị lúc bắt đầu trò chơi
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Cập nhật đồ thị phân phối mỗi {STRING}{NBSP}ngày
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Thời gian giữa các lần tính toán đồ thị. Mỗi lần tính sẽ tính một phần của đồ thị. Nhưng không có nghĩa là giá trị X này sẽ khiến việc tính toán toàn bộ xảy ra sau X ngày, chỉ có một phần thôi. Nếu nhỏ thì CPU cần để tính sẽ nhiều hơn, lớn thì việc tính toán lại phân phối hàng hóa mỗi khi có đường mới sẽ chậm hơn.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dùng {STRING}{NBSP}ngày để tính toán lại đồ thị phân phối
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Thời gian cần thiết cho mỗi bước tính toán đồ thị liên kết. Mỗi khi bắt đầu, chương trình tính toán sẽ được phép chạy trong một số ngày nào đó tùy theo giá trị này. Nếu quá ít có thể không đủ để tính toán, mà nếu quá nhiều thì nó sẽ kéo dài việc tính toán lại phân phối mỗi khi đường đi thay đổi.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Chế độ phân phối đối với hành khách: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Đối xứng" có nghĩa là số lượng hành khách đi từ nhà ga A đến nhà ga B và từ B đến A sẽ tương đương nhau . "Không đối xứng" có nghĩa là số lượng hành khách tùy ý có thể đi theo một trong hai hướng. "Thủ công" có nghĩa là hành khách sẽ không được phân phối tự động.

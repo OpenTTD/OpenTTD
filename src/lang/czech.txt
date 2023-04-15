@@ -2010,10 +2010,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná velikost větších měst v porovnání s ostatními městy na začátku hry
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovat distribuční graf po {STRING}{P 0:2 dni dnech dnech}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Čas mezi přepočítáváním částí grafu spojení. Každý přepočet přepočítává plány jedné části grafu. To znamená, že hodnota X u toho nastavení nezpůsobí, že se každých X dní přepočítá celý graf, ale pouze určité části. Čím kratší interval nastavíš, tím více času CPU bude potřeba ke spočítání. Čím delší nastavíš, tím déle bude trvat dokud si distribuce nákladu najde nové trasy.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Zaber si {STRING}{NBSP}{P 0:2 "den" "dny" "dní"} na přepočet grafu spojení
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Čas vyhrazený pro každý přepočet části grafu spojení. Pokud přepočet začne, je vytvořeno nové vlákno, které má dovoleno běžet po zvolený počet dnů. Čím nižší hodnotu nastavíš tím je pravděpodobnější, že vlákno nebude dokončeno kdy má. Pokud se tak stane, hra se zastaví ("lagne") dokud dokončeno nebude. Čím vyšší hodnotu nastavíš, tím déle bude trvat aktualizace grafu pokud se trasy změní.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mód distribuce pro cestující: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Rovnoměrný" znamená, že téměř stejné množství cestujících chce cestovat ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný" znamená, že libovolné množství cestujících může cestovat v jakémkoliv směru. "Manuální" znamená, že zde nebude žádná automatická distribuce pro cestující.

@@ -1921,10 +1921,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Tidak ada
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Faktor kali ukuran kota awal: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Ukuran rata-rata kota besar terhadap kota kecil saat permainan dimulai
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Perbarui grafik distribusi setiap {STRING}{NBSP}hari
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Waktu diantara dua penghitungan linkgraph berurutan. Setiap penghitungan hanya menghitung satu komponen perencanaan dari grafik. Namun, angka yang diberikan untuk seting ini bukan berarti seluruh grafik akan diperbaharui dalam angka hari yang sama, hanya beberapa bagian. Semakin sedikit semakin banyak proses CPU yang diperlukan untuk menghitung. Semakin banyak semakin lama waktu sebelum cargo distribution dimulai pada rute baru.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Ambil {STRING}{NBSP}hari untuk menghitung grafik distribusi
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Waktu dibutuhkan untuk setiap perhitungan dari komponen 'linkgraph'. Ketika perhitungan dimulai, ada utas 'dibuat' yang boleh dijalankan untuk jumlah hari ini. Semakin pendek anda mengatur ini lebih mungkin utas ini belum selesai ketika itu seharusnya. Kemudian permainan berhenti sampai itu ("lag"). Semakin lama anda mengatur semakin lama itu untuk distribusinya untuk memperbarui ketika rute mengganti.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modus distribusi untuk penumpang: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetris" berarti kira-kira jumlah penumpang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "Asimetris" berarti jumlah penumpang pergi pada kedua arah bisa berbeda-beda. "Manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk penumpang.

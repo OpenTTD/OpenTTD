@@ -1923,10 +1923,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :変化なし
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市サイズ乗数: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の街に比べて平均して何倍の人口規模になるかを設定します
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :分配グラフの更新頻度: {STRING}日
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :リンクグラフを再計算する時間間隔を設定します。それぞれの再計算では、グラフの単一要素に関わる経路計画だけを計算します。つまり、グラフの一部が更新されるだけで、全体が設定した間隔で更新されるという訳ではありません。この間隔を短くすると再計算のためにCPUへの負荷が大きくなります。長くすると、新たなルートが貨物分配に組み込まれるのに時間がかかるようになります。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :分配グラフの再計算時間: {STRING}日
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :グラフの単一要素に関わる再計算にかけられる時間を設定します。再計算が開始されると、この日数のみ実行可能なスレッドが生成されます。この設定が短いと、期日までにスレッドが終了していない可能性が高くなり、終了するまでゲームが停止します(ラグ)。長くした場合、経路が変更された場合に分配が更新されるまでに時間がかかるようになります
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :旅客の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう乗客とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう旅客数は独立に決められます。「無効」では行き先別分配をしなくなります。
