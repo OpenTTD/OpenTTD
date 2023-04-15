@@ -335,10 +335,8 @@ protected:
 	 * Send a DoCommand to the Server:
 	 * uint8   ID of the company (0..MAX_COMPANIES-1).
 	 * uint32  ID of the command (see command.h).
-	 * uint32  P1 (free variables used in DoCommand).
-	 * uint32  P2
-	 * uint32  Tile where this is taking place.
-	 * string  Text.
+	 * <var>   Command specific buffer with encoded parameters of variable length.
+	 *         The content differs per command and can change without notification.
 	 * uint8   ID of the callback.
 	 * @param p The packet that was just received.
 	 */
@@ -348,10 +346,8 @@ protected:
 	 * Sends a DoCommand to the client:
 	 * uint8   ID of the company (0..MAX_COMPANIES-1).
 	 * uint32  ID of the command (see command.h).
-	 * uint32  P1 (free variable used in DoCommand).
-	 * uint32  P2.
-	 * uint32  Tile where this is taking place.
-	 * string  Text.
+	 * <var>   Command specific buffer with encoded parameters of variable length.
+	 *         The content differs per command and can change without notification.
 	 * uint8   ID of the callback.
 	 * uint32  Frame of execution.
 	 * @param p The packet that was just received.
