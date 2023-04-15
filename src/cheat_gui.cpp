@@ -52,30 +52,30 @@ static int32 _money_cheat_amount = 10000000;
  * Note that the amount of money of a company must be changed through a command
  * rather than by setting a variable. Since the cheat data structure expects a
  * variable, the amount of given/taken money is used for this purpose.
- * @param p1 not used.
- * @param p2 is -1 or +1 (down/up)
+ * @param new_value not used.
+ * @param change_direction is -1 or +1 (down/up)
  * @return Amount of money cheat.
  */
-static int32 ClickMoneyCheat(int32 p1, int32 p2)
+static int32 ClickMoneyCheat(int32 new_value, int32 change_direction)
 {
-	Command<CMD_MONEY_CHEAT>::Post(Money(_money_cheat_amount) * p2);
+	Command<CMD_MONEY_CHEAT>::Post(Money(_money_cheat_amount) * change_direction);
 	return _money_cheat_amount;
 }
 
 /**
  * Handle changing of company.
- * @param p1 company to set to
- * @param p2 is -1 or +1 (down/up)
+ * @param new_value company to set to
+ * @param change_direction is -1 or +1 (down/up)
  * @return The new company.
  */
-static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
+static int32 ClickChangeCompanyCheat(int32 new_value, int32 change_direction)
 {
-	while ((uint)p1 < Company::GetPoolSize()) {
-		if (Company::IsValidID((CompanyID)p1)) {
-			SetLocalCompany((CompanyID)p1);
+	while ((uint)new_value < Company::GetPoolSize()) {
+		if (Company::IsValidID((CompanyID)new_value)) {
+			SetLocalCompany((CompanyID)new_value);
 			return _local_company;
 		}
-		p1 += p2;
+		new_value += change_direction;
 	}
 
 	return _local_company;
@@ -83,13 +83,13 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
 
 /**
  * Allow (or disallow) changing production of all industries.
- * @param p1 new value
- * @param p2 unused
+ * @param new_value new value
+ * @param change_direction unused
  * @return New value allowing change of industry production.
  */
-static int32 ClickSetProdCheat(int32 p1, int32 p2)
+static int32 ClickSetProdCheat(int32 new_value, int32 change_direction)
 {
-	_cheats.setup_prod.value = (p1 != 0);
+	_cheats.setup_prod.value = (new_value != 0);
 	InvalidateWindowClassesData(WC_INDUSTRY_VIEW);
 	return _cheats.setup_prod.value;
 }
@@ -98,19 +98,19 @@ extern void EnginesMonthlyLoop();
 
 /**
  * Handle changing of the current year.
- * @param p1 Unused.
- * @param p2 +1 (increase) or -1 (decrease).
+ * @param new_value Unused.
+ * @param change_direction +1 (increase) or -1 (decrease).
  * @return New year.
  */
-static int32 ClickChangeDateCheat(int32 p1, int32 p2)
+static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
 
-	p1 = Clamp(p1, MIN_YEAR, MAX_YEAR);
-	if (p1 == _cur_year) return _cur_year;
+	new_value = Clamp(new_value, MIN_YEAR, MAX_YEAR);
+	if (new_value == _cur_year) return _cur_year;
 
-	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
+	Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
 	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
@@ -126,19 +126,19 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 
 /**
  * Allow (or disallow) a change of the maximum allowed heightlevel.
- * @param p1 new value
- * @param p2 unused
+ * @param new_value new value
+ * @param change_direction unused
  * @return New value (or unchanged old value) of the maximum
  *         allowed heightlevel value.
  */
-static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2)
+static int32 ClickChangeMaxHlCheat(int32 new_value, int32 change_direction)
 {
-	p1 = Clamp(p1, MIN_MAP_HEIGHT_LIMIT, MAX_MAP_HEIGHT_LIMIT);
+	new_value = Clamp(new_value, MIN_MAP_HEIGHT_LIMIT, MAX_MAP_HEIGHT_LIMIT);
 
 	/* Check if at least one mountain on the map is higher than the new value.
 	 * If yes, disallow the change. */
 	for (TileIndex t = 0; t < Map::Size(); t++) {
-		if ((int32)TileHeight(t) > p1) {
+		if ((int32)TileHeight(t) > new_value) {
 			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
 			/* Return old, unchanged value */
 			return _settings_game.construction.map_height_limit;
@@ -146,7 +146,7 @@ static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2)
 	}
 
 	/* Execute the change and reload GRF Data */
-	_settings_game.construction.map_height_limit = p1;
+	_settings_game.construction.map_height_limit = new_value;
 	ReloadNewGRFData();
 
 	/* The smallmap uses an index from heightlevels to colours. Trigger rebuilding it. */
@@ -171,10 +171,10 @@ enum CheatNumbers {
 
 /**
  * Signature of handler function when user clicks at a cheat.
- * @param p1 The new value.
- * @param p2 Change direction (+1, +1), \c 0 for boolean settings.
+ * @param new_value The new value.
+ * @param change_direction Change direction (+1, +1), \c 0 for boolean settings.
  */
-typedef int32 CheckButtonClick(int32 p1, int32 p2);
+typedef int32 CheckButtonClick(int32 new_value, int32 change_direction);
 
 /** Information of a cheat. */
 struct CheatEntry {

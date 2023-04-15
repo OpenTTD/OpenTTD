@@ -96,7 +96,7 @@ static void v_PositionStatusbar(int32 new_value)
 
 /**
  * Redraw the smallmap after a colour scheme change.
- * @param p1 Callback parameter.
+ * @param new_value Callback parameter.
  */
 static void RedrawSmallmap(int32 new_value)
 {
@@ -112,7 +112,7 @@ static void UpdateLinkgraphColours(int32 new_value)
 	MarkWholeScreenDirty();
 }
 
-static void StationSpreadChanged(int32 p1)
+static void StationSpreadChanged(int32 new_value)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0);
 	InvalidateWindowData(WC_BUILD_STATION, 0);
