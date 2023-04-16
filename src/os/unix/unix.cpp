@@ -13,8 +13,11 @@
 #include "../../string_func.h"
 #include "../../fios.h"
 #include "../../thread.h"
+#include "fileio_type.h"
 
-
+#include <map>
+#include <fstream>
+#include <regex>
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -62,10 +65,108 @@ bool FiosIsRoot(const char *path)
 	return path[1] == '\0';
 }
 
-#ifndef __APPLE__
+#if defined(__EMSCRIPTEN__)
+
 void FiosGetDrives(FileList &file_list)
 {
-	return;
+	return; // nothing
+}
+
+#elif !defined(__APPLE__)
+
+static std::string getenv_str(const char *name)
+{
+	char *val = getenv(name);
+	if (val == nullptr) return std::string();
+	else return std::string(val);
+}
+
+static std::vector<FiosItem> FindSpecialFolders()
+{
+	/* This algorithm is modeled after xdg_user_dir_lookup_with_fallback()
+	 * in xdg-user-dir-lookup.c from the xdg-user-dirs package. */
+
+	/* First, find the user-dirs.dirs config file */
+	std::string homedir = getenv_str("HOME");
+	if (homedir.empty()) return {};
+	std::string config_home = getenv_str("XDG_CONFIG_HOME");
+	if (config_home.empty()) config_home = homedir + "/.config";
+	std::string config_file_name = config_home + "/user-dirs.dirs";
+
+	/* Prepare a map for directory names */
+	std::map<std::string, std::string> directory_map;
+	directory_map["XDG_DESKTOP_DIR"] = homedir + "/Desktop"; // required compatibility default
+
+	/* Read the config file */
+	std::ifstream config_file(config_file_name);
+	if (config_file.is_open()) {
+		/* The lines that matter have the format:
+		 *   XDG_<name>_DIR = "<path>"
+		 * where <path> must be enclosed in double quotes,
+		 * and may either start with $HOME, or be absolute.
+		 * Within the double quotes, backslash can be used
+		 * for escaping double quotes and backslashes. */
+		std::regex pattern("^\\s*(XDG_[A-Z]+_DIR)\\s*=\\s*\"(\\$HOME|)(/.*)");
+		while (!config_file.eof()) {
+			std::string line;
+			std::getline(config_file, line);
+			std::smatch match;
+			/* Match against the desired line format */
+			if (std::regex_match(line, match, pattern) && match.size() == 4) {
+				std::string directory_path = match[3];
+				/* Unescape the path, and cut at first unescaped double quote */
+				size_t srcpos = 0, dstpos = 0;
+				while (srcpos < directory_path.size()) {
+					if (directory_path[srcpos] == '"') break;
+					if (directory_path[srcpos] == '\\') ++srcpos;
+					directory_path[dstpos] = directory_path[srcpos];
+					++srcpos;
+					++dstpos;
+				}
+				directory_path.resize(dstpos);
+				/* Adjust for homedir-relative, and store the found path */
+				if (match[2] == "$HOME") directory_path = homedir + directory_path;
+				directory_map[match[1]] = directory_path;
+			}
+		}
+		config_file.close();
+	}
+
+	/* The directories we're interested in returning */
+	const char *DIRNAMES[] = {
+		"XDG_DESKTOP_DIR", "XDG_DOCUMENTS_DIR", "XDG_DOWNLOAD_DIR", "XDG_PICTURES_DIR"
+	};
+
+	/* Look them up in first environment, then the map from the config file */
+	std::vector<FiosItem> result;
+	for (std::string dirname : DIRNAMES) {
+		std::string dirpath = getenv_str(dirname.c_str());
+		if (dirpath.empty()) dirpath = directory_map[dirname];
+		if (dirpath.empty()) continue;
+		/* Check if the dir actually exists, before adding it */
+		DIR *dir = opendir(dirpath.c_str());
+		if (dir != nullptr) {
+			std::string dir_basename = basename(dirpath.c_str());
+			dirpath = dirpath + "/"; // Fios code wants them to end with PATHSEP
+			result.emplace_back(FIOS_TYPE_DRIVE, dirpath, dir_basename);
+			closedir(dir);
+		}
+	}
+
+	return result;
+}
+
+void FiosGetDrives(FileList &file_list)
+{
+	static std::vector<FiosItem> cache;
+	static bool cache_inited = false;
+
+	if (!cache_inited) {
+		cache = FindSpecialFolders();
+		cache_inited = true;
+	}
+
+	file_list.insert(file_list.end(), cache.begin(), cache.end());
 }
 #endif
 
