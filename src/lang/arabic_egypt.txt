@@ -4842,10 +4842,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :باور هيل
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :شركة {COMMA}
 STR_FORMAT_GROUP_NAME                                           :مجموعة{COMMA}

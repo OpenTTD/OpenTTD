@@ -5518,10 +5518,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut 헬�
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{2:NUM}.{1:STRING}.{0:STRING}
+STR_FORMAT_DATE_TINY                                            :{2:NUM}.{1:ZEROFILL_NUM}.{0:ZEROFILL_NUM}
 STR_FORMAT_DATE_SHORT                                           :{1:NUM}년 {0:STRING}
 STR_FORMAT_DATE_LONG                                            :{2:NUM}년 {1:STRING}월 {0:STRING}일
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(회사 {COMMA})
 STR_FORMAT_GROUP_NAME                                           :그룹 {COMMA}
