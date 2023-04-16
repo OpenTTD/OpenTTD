@@ -26,7 +26,6 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 	this->is_random = is_random;
 	if (this->config_list != nullptr) delete this->config_list;
 	this->config_list = (info == nullptr) ? nullptr : new ScriptConfigItemList();
-	if (this->config_list != nullptr) this->PushExtraConfigList();
 	this->to_load_data.reset();
 
 	this->ClearConfigList();
@@ -79,7 +78,6 @@ const ScriptConfigItemList *ScriptConfig::GetConfigList()
 	if (this->info != nullptr) return this->info->GetConfigList();
 	if (this->config_list == nullptr) {
 		this->config_list = new ScriptConfigItemList();
-		this->PushExtraConfigList();
 	}
 	return this->config_list;
 }

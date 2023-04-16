@@ -38,6 +38,7 @@
 #include "company_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
 
@@ -50,7 +51,6 @@ CompanyID _local_company;   ///< Company controlled by the human player at this 
 CompanyID _current_company; ///< Company currently doing an action.
 Colours _company_colours[MAX_COMPANIES];  ///< NOSAVE: can be determined from company structs.
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
-uint _next_competitor_start;              ///< the number of ticks before the next AI is started
 uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
 CompanyPool _company_pool("Company"); ///< Pool of companies.
@@ -599,16 +599,10 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	return c;
 }
 
-/** Start the next competitor now. */
-void StartupCompanies()
-{
-	_next_competitor_start = 0;
-}
-
 /** Start a new competitor company if possible. */
-static bool MaybeStartNewCompany()
-{
-	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return false;
+TimeoutTimer<TimerGameTick> _new_competitor_timeout(0, []() {
+	if (_game_mode == GM_MENU || !AI::CanStartNew()) return;
+	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 
 	/* count number of competitors */
 	uint n = 0;
@@ -616,13 +610,26 @@ static bool MaybeStartNewCompany()
 		if (c->is_ai) n++;
 	}
 
-	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
-		/* Send a command to all clients to start up a new AI.
-		 * Works fine for Multiplayer and Singleplayer */
-		return Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID );
-	}
+	if (n >= (uint)_settings_game.difficulty.max_no_competitors) return;
 
-	return false;
+	/* Send a command to all clients to start up a new AI.
+	 * Works fine for Multiplayer and Singleplayer */
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+});
+
+/** Start of a new game. */
+void StartupCompanies()
+{
+	/* Ensure the timeout is aborted, so it doesn't fire based on information of the last game. */
+	_new_competitor_timeout.Abort();
+
+	/* If there is no delay till the start of the next competitor, start all competitors at the start of the game. */
+	if (_settings_game.difficulty.competitors_interval == 0 && _game_mode != GM_MENU && AI::CanStartNew()) {
+		for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
+			if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
+			Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+		}
+	}
 }
 
 /** Initialize the pool of companies. */
@@ -722,20 +729,15 @@ void OnTick_Companies()
 		if (c->bankrupt_asked != 0) HandleBankruptcyTakeover(c);
 	}
 
-	if (_next_competitor_start == 0) {
-		/* AI::GetStartNextTime() can return 0. */
-		_next_competitor_start = std::max(1, AI::GetStartNextTime() * DAY_TICKS);
-	}
+	if (_new_competitor_timeout.HasFired() && _game_mode != GM_MENU && AI::CanStartNew()) {
+		int32 timeout = _settings_game.difficulty.competitors_interval * 60 * TICKS_PER_SECOND;
+		/* If the interval is zero, check every ~10 minutes if a company went bankrupt and needs replacing. */
+		if (timeout == 0) timeout = 10 * 60 * TICKS_PER_SECOND;
 
-	if (_game_mode != GM_MENU && AI::CanStartNew() && --_next_competitor_start == 0) {
-		/* Allow multiple AIs to possibly start in the same tick. */
-		do {
-			if (!MaybeStartNewCompany()) break;
+		/* Randomize a bit when the AI is actually going to start; ranges from 87.5% .. 112.5% of indicated value. */
+		timeout += ScriptObject::GetRandomizer(OWNER_NONE).Next(timeout / 4) - timeout / 8;
 
-			/* In networking mode, we can only send a command to start but it
-			 * didn't execute yet, so we cannot loop. */
-			if (_networking) break;
-		} while (AI::GetStartNextTime() == 0);
+		_new_competitor_timeout.Reset(std::max(1, timeout));
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;

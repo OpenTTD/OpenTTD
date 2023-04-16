@@ -27,6 +27,8 @@
 #include "../company_base.h"
 #include "../disaster_vehicle.h"
 #include "../core/smallvec_type.hpp"
+#include "../timer/timer.h"
+#include "../timer/timer_game_tick.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
 #include <array>
@@ -489,6 +491,7 @@ static inline uint RemapOrderIndex(uint x)
 }
 
 extern std::vector<TileIndex> _animated_tiles;
+extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 extern char *_old_name_array;
 
 static uint32 _old_town_index;
@@ -1677,7 +1680,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_ASSERT( OC_TTO, 0x496CE ),
 
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_next_competitor_start ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_new_competitor_timeout.period ),
 
 	OCL_CNULL( OC_TTO, 2 ),  ///< available monorail bitmask
 

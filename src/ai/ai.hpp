@@ -20,18 +20,6 @@
 class AI {
 public:
 	/**
-	 * The default months AIs start after each other.
-	 */
-	enum StartNext {
-		START_NEXT_EASY   = DAYS_IN_YEAR * 2,
-		START_NEXT_MEDIUM = DAYS_IN_YEAR,
-		START_NEXT_HARD   = DAYS_IN_YEAR / 2,
-		START_NEXT_MIN    = 0,
-		START_NEXT_MAX    = 3600,
-		START_NEXT_DEVIATION = 60,
-	};
-
-	/**
 	 * Is it possible to start a new AI company?
 	 * @return True if a new AI company can be started.
 	 */
@@ -123,11 +111,6 @@ public:
 	 * Save data from an AI to a savegame.
 	 */
 	static void Save(CompanyID company);
-
-	/**
-	 * Get the number of days before the next AI should start.
-	 */
-	static int GetStartNextTime();
 
 	/** Wrapper function for AIScanner::GetAIConsoleList */
 	static std::string GetConsoleList(bool newest_only = false);
